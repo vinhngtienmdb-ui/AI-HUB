@@ -4,6 +4,19 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.21-KetNoiFirebaseGoogleAuthThat (Ngày 20-10-2026)
+- **Loại hình**: Xóa bỏ hoàn toàn hộp thoại prompt giả lập và nâng cấp cơ chế kết nối Firebase Google Auth thật kèm giao diện cấu hình trực tiếp trên web.
+- **Nội dung hoàn thành**:
+  - **Loại bỏ hộp thoại prompt**: Xóa bỏ hoàn toàn lệnh `window.prompt` gây phản cảm trong `src/lib/firebase.ts`.
+  - **Tích hợp bảng Cấu hình Firebase Google Auth Trực tiếp (`LoginModal.tsx`)**:
+    - Quản trị viên có thể dán đoạn cấu hình `firebaseConfig` từ Firebase Console vào form để hệ thống tự động bóc tách các trường (`apiKey`, `authDomain`, `projectId`, `appId`).
+    - Lưu vào `localStorage` (`aihub_firebase_config`) và tái khởi tạo Firebase Auth SDK ngay tức thì mà không cần deploy lại Vercel.
+    - Cung cấp hướng dẫn trực quan 4 bước để bật Google Sign-in và cấu hình Authorized domain `ai-hub-vn.vercel.app`.
+    - Khi có cấu hình Firebase thật, bấm "Tiếp tục với tài khoản Google" sẽ mở trực tiếp cửa sổ Google Sign-In Popup chính thức của Google (`accounts.google.com`).
+  - **Kiểm thử & Đóng gói**:
+    - Chạy toàn bộ 4 bộ kiểm thử unit tests đạt 100%.
+    - Đóng gói Vite hoàn tất thành công tuyệt đối.
+
 ### Phiên Bản 2.0.20-KhacPhucQuotaExceededErrorBangDeltaStorage (Ngày 20-10-2026)
 - **Loại hình**: Khắc phục dứt điểm lỗi trình duyệt `Setting the value of 'aihub_tools' exceeded the quota` bằng kiến trúc lưu trữ Delta Storage tối ưu.
 - **Nội dung hoàn thành**:

@@ -8,6 +8,17 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Nâng cấp Kết nối Firebase Google Auth Thật & Giao diện Cấu hình Trực tiếp]:
+  - **Giải thích hiện tượng thông báo**: Thông báo popup `window.prompt` xuất hiện trước đó do bản triển khai trên Vercel chưa được gắn các biến môi trường Firebase thật (`VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_PROJECT_ID`...), dẫn đến việc kích hoạt chế độ giả lập đăng nhập dự phòng.
+  - **Loại bỏ hoàn toàn hộp thoại prompt thô sơ**:
+    - Xóa bỏ triệt để lệnh `window.prompt` gây hiểu nhầm trong `src/lib/firebase.ts`.
+    - Thay thế bằng giao diện thông báo và cấu hình chuyên nghiệp ngay bên trong `LoginModal.tsx`.
+  - **Bổ sung bảng Cấu hình Firebase Google Auth Trực tiếp trên giao diện**:
+    - Cho phép Quản trị viên dán trực tiếp đoạn mã cấu hình `firebaseConfig` từ Firebase Console (hệ thống tự động bóc tách các trường `apiKey`, `authDomain`, `projectId`, `appId`).
+    - Hỗ trợ lưu trữ động vào `localStorage` (`aihub_firebase_config`) và tái khởi tạo Firebase Auth SDK ngay lập tức mà không cần deploy lại Vercel.
+    - Cung cấp hướng dẫn trực quan 4 bước chuẩn mực để người dùng bật Google Sign-In trên Firebase Console và cấu hình Authorized Domain `ai-hub-vn.vercel.app`.
+    - Khi có cấu hình Firebase thật, bấm "Tiếp tục với tài khoản Google" sẽ mở trực tiếp cửa sổ Google Auth Popup chính thức (`accounts.google.com`).
+  - Kiểm thử đóng gói Vite hoàn tất thành công 100%.
 - [Khắc phục triệt để lỗi QuotaExceededError trên LocalStorage bằng cơ chế Delta Storage]:
   - **Phát hiện nguyên nhân**: Lỗi `Failed to execute 'setItem' on 'Storage': Setting the value of 'aihub_tools' exceeded the quota` phát sinh do ứng dụng cố gắng lưu toàn bộ mảng dữ liệu 2.194 công cụ (dung lượng ~7MB - 8MB) vào một khóa `aihub_tools` duy nhất trong `localStorage`, trong khi hạn mức chuẩn của trình duyệt chỉ là 5MB.
   - **Kiến trúc giải pháp Delta Storage (`src/lib/storage.ts`)**:

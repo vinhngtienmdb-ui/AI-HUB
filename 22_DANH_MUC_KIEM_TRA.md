@@ -51,6 +51,7 @@
 - [x] Triển khai kiến trúc lưu trữ Delta Storage (`src/lib/storage.ts`), loại bỏ hoàn toàn nguy cơ vượt hạn mức bộ nhớ trình duyệt `QuotaExceededError`, giảm dung lượng lưu trữ từ 8MB xuống dưới 2KB
 - [x] Xây dựng phân hệ Điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn (Admin Taxonomy): Hỗ trợ sửa phân loại trực tiếp cho từng công cụ trên trang chi tiết (`DetailPage.tsx`) và hàng đợi phê duyệt (`AdminApprovalModal.tsx`), đồng thời quản lý danh mục phân loại toàn hệ thống qua `AdminTaxonomyModal.tsx`
 - [x] Tích hợp kết nối Firebase Google Auth (`src/lib/firebase.ts`), cho phép đăng nhập một chạm với tài khoản Google, hỗ trợ đồng bộ trạng thái người dùng an toàn
+- [x] Xây dựng bảng điều khiển Cấu hình Firebase Google Auth Trực tiếp trên giao diện (`LoginModal.tsx`), hỗ trợ dán cấu hình Firebase Project và tự động tái khởi tạo SDK mở popup Google Auth chính thức, xóa bỏ triệt để thông báo prompt giả lập
 - [x] Thiết lập hệ thống phân quyền Quản trị viên tối cao (`Admin Role`): Chỉ tài khoản chỉ định của chủ sở hữu có quyền duyệt công cụ lên hệ thống công cộng
 - [x] Xây dựng phân hệ Hàng đợi phê duyệt công cụ (`src/components/AdminApprovalModal.tsx`): Công cụ do thành viên đóng góp tự động vào trạng thái Chờ duyệt (`pending`), Quản trị viên duyệt xuất bản (`published`) hoặc từ chối kèm lý do (`rejected`)
 - [x] Nâng cấp biểu mẫu Đóng góp tài nguyên (`ContributePage.tsx` và `ContributeModal.tsx`) đồng bộ đầy đủ 13 loại hình thành phần và 18 lĩnh vực chuyên môn chi tiết
