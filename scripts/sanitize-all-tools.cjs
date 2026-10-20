@@ -102,6 +102,10 @@ for (let i = 0; i < tools.length; i++) {
       t.toolType = 'setting';
       t.typeNameVi = 'Setting';
       break;
+    case 'software':
+      t.toolType = 'software';
+      t.typeNameVi = 'Phần mềm';
+      break;
     case 'workflow':
       t.toolType = 'workflow';
       t.typeNameVi = 'Workflow';
@@ -113,29 +117,38 @@ for (let i = 0; i < tools.length; i++) {
   }
 
   // 5. Category & CategoryNameVi
-  const validCategories = ['coding', 'database', 'cloud', 'automation', 'content', 'search', 'vietnam'];
+  const domainNamesVi = {
+    finance_payment: 'Tài chính, Ngân hàng & Thuế',
+    legal_public_service: 'Pháp luật & Hành chính công',
+    business_admin: 'Doanh nghiệp & Quản trị',
+    ecommerce_retail: 'Thương mại điện tử & Bán lẻ',
+    logistics_transport: 'Vận tải & Logistics',
+    telecom_cskh: 'Viễn thông & Chăm sóc khách hàng',
+    hr_recruitment: 'Nhân sự & Tuyển dụng',
+    ai_nlp_data: 'Trí tuệ nhân tạo & Dữ liệu',
+    programming_devops: 'Lập trình & Kỹ thuật phần mềm',
+    system_automation: 'Tự động hóa hệ thống & Web',
+    coding: 'Lập trình',
+    database: 'Cơ sở dữ liệu',
+    cloud: 'Đám mây & Hạ tầng',
+    automation: 'Tự động hóa',
+    content: 'Tạo nội dung',
+    search: 'Tìm kiếm & Tra cứu',
+    vietnam: '🇻🇳 Thị Trường Việt Nam'
+  };
+
+  const validCategories = Object.keys(domainNamesVi);
   if (!validCategories.includes(t.category)) {
     // Nếu ID hoặc tên chứa tiền tố VN hoặc liên quan Việt Nam
-    if (t.id.startsWith('vn-') || (t.tags && t.tags.includes('Việt Nam')) || (t.name && t.name.includes('Việt Nam'))) {
+    if (t.id && (t.id.startsWith('vn-') || (t.tags && t.tags.includes('Việt Nam')) || (t.name && t.name.includes('Việt Nam')))) {
       t.category = 'vietnam';
-      t.categoryNameVi = '🇻🇳 Thị Trường Việt Nam';
     } else {
-      t.category = 'automation';
-      t.categoryNameVi = 'Tự động hóa';
+      t.category = 'system_automation';
     }
     modified = true;
   }
-  if (!t.categoryNameVi) {
-    switch (t.category) {
-      case 'coding': t.categoryNameVi = 'Lập trình'; break;
-      case 'database': t.categoryNameVi = 'Cơ sở dữ liệu'; break;
-      case 'cloud': t.categoryNameVi = 'Đám mây & Hạ tầng'; break;
-      case 'automation': t.categoryNameVi = 'Tự động hóa'; break;
-      case 'content': t.categoryNameVi = 'Tạo nội dung'; break;
-      case 'search': t.categoryNameVi = 'Tìm kiếm & Tra cứu'; break;
-      case 'vietnam': t.categoryNameVi = '🇻🇳 Thị Trường Việt Nam'; break;
-      default: t.categoryNameVi = 'Tự động hóa'; break;
-    }
+  if (!t.categoryNameVi || domainNamesVi[t.category]) {
+    t.categoryNameVi = domainNamesVi[t.category] || 'Tự động hóa';
     modified = true;
   }
 

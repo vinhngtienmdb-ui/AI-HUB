@@ -17,7 +17,8 @@ import {
   Monitor,
   CheckCircle2,
   ExternalLink,
-  BookOpen
+  BookOpen,
+  Laptop
 } from 'lucide-react';
 import { ToolType, Category, Platform, CategoryInfo } from '../types';
 
@@ -29,6 +30,7 @@ interface SidebarProps {
   selectedPlatform: Platform | 'all';
   setSelectedPlatform: (plat: Platform | 'all') => void;
   typeCounts: Record<string, number>;
+  categoryCounts?: Record<string, number>;
   categories: CategoryInfo[];
   totalTools: number;
   onOpenDocs: () => void;
@@ -44,6 +46,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   selectedPlatform,
   setSelectedPlatform,
   typeCounts,
+  categoryCounts = {},
   categories,
   totalTools,
   onOpenDocs,
@@ -55,6 +58,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { id: 'skill', name: 'Skill', count: typeCounts.skill || 0, icon: Sparkles },
     { id: 'agent', name: 'Agent', count: typeCounts.agent || 0, icon: Brain },
     { id: 'mcp', name: 'MCP Server', count: typeCounts.mcp || 0, icon: Cpu },
+    { id: 'software', name: 'Phần mềm', count: typeCounts.software || 0, icon: Laptop },
     { id: 'workflow', name: 'Workflow', count: typeCounts.workflow || 0, icon: Workflow },
     { id: 'command', name: 'Command', count: typeCounts.command || 0, icon: Terminal },
     { id: 'template', name: 'Template', count: typeCounts.template || 0, icon: FolderGit2 },
@@ -168,11 +172,22 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 }`}
               >
                 <span className="truncate">{cat.nameVi}</span>
-                {isVietnam && (
-                  <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-bold ml-1 shrink-0">
-                    HOT
-                  </span>
-                )}
+                <div className="flex items-center space-x-1.5 shrink-0 ml-1.5">
+                  {isVietnam && (
+                    <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-bold">
+                      HOT
+                    </span>
+                  )}
+                  {categoryCounts[cat.id] !== undefined && (
+                    <span className={`text-[11px] px-1.5 py-0.5 rounded-full font-bold ${
+                      isSelected
+                        ? 'bg-white/20 text-white'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+                    }`}>
+                      {categoryCounts[cat.id]}
+                    </span>
+                  )}
+                </div>
               </button>
             );
           })}

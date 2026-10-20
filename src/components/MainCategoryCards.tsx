@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bot, Server, Sparkles, ChevronRight } from 'lucide-react';
+import { Bot, Server, Sparkles, Laptop, Workflow, ChevronRight } from 'lucide-react';
 import { ToolType } from '../types';
 
 interface MainCategoryCardsProps {
@@ -10,34 +10,59 @@ interface MainCategoryCardsProps {
 export const MainCategoryCards: React.FC<MainCategoryCardsProps> = ({ onSelectType, isExpanded = true }) => {
   const categories = [
     {
-      id: 'agent' as ToolType,
-      title: 'Công cụ AI',
-      description: 'Ứng dụng thông minh cho công việc',
-      icon: Bot,
-      bgColor: 'bg-indigo-50 dark:bg-indigo-950/40',
-      iconColor: 'text-indigo-600 dark:text-indigo-400',
-      borderColor: 'border-indigo-100 dark:border-indigo-900/40',
-      hoverBorder: 'hover:border-indigo-300 dark:hover:border-indigo-700',
-    },
-    {
       id: 'mcp' as ToolType,
-      title: 'MCP Servers',
-      description: 'Kết nối mô hình AI với dữ liệu và dịch vụ',
+      title: 'MCP Server',
+      description: 'Giao thức kết nối AI với máy tính, dữ liệu & API',
       icon: Server,
       bgColor: 'bg-blue-50 dark:bg-blue-950/40',
       iconColor: 'text-blue-600 dark:text-blue-400',
       borderColor: 'border-blue-100 dark:border-blue-900/40',
       hoverBorder: 'hover:border-blue-300 dark:hover:border-blue-700',
+      countKey: 'mcp',
     },
     {
       id: 'skill' as ToolType,
-      title: 'Agent Skills',
-      description: 'Bộ kỹ năng cho tác nhân AI',
+      title: 'Skill',
+      description: 'Bộ kỹ năng chuyên môn hướng dẫn tác nhân AI',
       icon: Sparkles,
       bgColor: 'bg-emerald-50 dark:bg-emerald-950/40',
       iconColor: 'text-emerald-600 dark:text-emerald-400',
       borderColor: 'border-emerald-100 dark:border-emerald-900/40',
       hoverBorder: 'hover:border-emerald-300 dark:hover:border-emerald-700',
+      countKey: 'skill',
+    },
+    {
+      id: 'agent' as ToolType,
+      title: 'Agent',
+      description: 'Tác nhân AI tự chủ giải quyết nhiệm vụ phức tạp',
+      icon: Bot,
+      bgColor: 'bg-indigo-50 dark:bg-indigo-950/40',
+      iconColor: 'text-indigo-600 dark:text-indigo-400',
+      borderColor: 'border-indigo-100 dark:border-indigo-900/40',
+      hoverBorder: 'hover:border-indigo-300 dark:hover:border-indigo-700',
+      countKey: 'agent',
+    },
+    {
+      id: 'software' as ToolType,
+      title: 'Phần mềm',
+      description: 'Hệ thống ERP, CRM, Kế toán & Quản trị số',
+      icon: Laptop,
+      bgColor: 'bg-amber-50 dark:bg-amber-950/40',
+      iconColor: 'text-amber-600 dark:text-amber-400',
+      borderColor: 'border-amber-100 dark:border-amber-900/40',
+      hoverBorder: 'hover:border-amber-300 dark:hover:border-amber-700',
+      countKey: 'software',
+    },
+    {
+      id: 'workflow' as ToolType,
+      title: 'Workflow',
+      description: 'Quy trình tự động hóa luồng làm việc tích hợp',
+      icon: Workflow,
+      bgColor: 'bg-purple-50 dark:bg-purple-950/40',
+      iconColor: 'text-purple-600 dark:text-purple-400',
+      borderColor: 'border-purple-100 dark:border-purple-900/40',
+      hoverBorder: 'hover:border-purple-300 dark:hover:border-purple-700',
+      countKey: 'workflow',
     },
   ];
 
@@ -50,32 +75,32 @@ export const MainCategoryCards: React.FC<MainCategoryCardsProps> = ({ onSelectTy
   };
 
   return (
-    <section className={`w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 transition-all duration-300 ${isExpanded ? 'max-w-[98%]' : 'max-w-7xl'}`}>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <section className={`w-full mx-auto px-4 sm:px-6 lg:px-8 py-5 transition-all duration-300 ${isExpanded ? 'max-w-[98%]' : 'max-w-7xl'}`}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {categories.map((cat) => {
           const Icon = cat.icon;
           return (
             <div
               key={cat.id}
               onClick={() => handleClick(cat.id)}
-              className={`group flex items-center justify-between p-5 rounded-2xl bg-white dark:bg-slate-900 border ${cat.borderColor} ${cat.hoverBorder} shadow-sm hover:shadow-md transition-all cursor-pointer`}
+              className={`group flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-slate-900 border ${cat.borderColor} ${cat.hoverBorder} shadow-sm hover:shadow-md transition-all cursor-pointer`}
             >
-              <div className="flex items-center space-x-4">
-                <div className={`w-12 h-12 rounded-xl ${cat.bgColor} flex items-center justify-center shrink-0 border ${cat.borderColor}`}>
-                  <Icon className={`w-6 h-6 ${cat.iconColor}`} />
+              <div className="flex items-center space-x-3 min-w-0">
+                <div className={`w-11 h-11 rounded-xl ${cat.bgColor} flex items-center justify-center shrink-0 border ${cat.borderColor}`}>
+                  <Icon className={`w-5 h-5 ${cat.iconColor}`} />
                 </div>
-                <div>
-                  <h3 className="font-bold text-base text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                <div className="min-w-0">
+                  <h3 className="font-bold text-sm text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors truncate">
                     {cat.title}
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-1">
                     {cat.description}
                   </p>
                 </div>
               </div>
 
-              <div className="p-1 rounded-full text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:translate-x-1 transition-all">
-                <ChevronRight className="w-5 h-5" />
+              <div className="p-1 rounded-full text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:translate-x-1 transition-all shrink-0 ml-1">
+                <ChevronRight className="w-4 h-4" />
               </div>
             </div>
           );

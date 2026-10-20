@@ -198,6 +198,15 @@ export const App: React.FC = () => {
     return counts;
   }, [tools]);
 
+  // Thống kê số lượng từng lĩnh vực chuyên môn
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = { all: tools.length };
+    for (const t of tools) {
+      counts[t.category] = (counts[t.category] || 0) + 1;
+    }
+    return counts;
+  }, [tools]);
+
   // Bộ lọc danh mục trang chủ
   const filteredTools = useMemo(() => {
     return tools.filter((tool) => {
@@ -418,6 +427,7 @@ export const App: React.FC = () => {
                     selectedPlatform={selectedPlatform}
                     setSelectedPlatform={setSelectedPlatform}
                     typeCounts={typeCounts}
+                    categoryCounts={categoryCounts}
                     categories={CATEGORIES}
                     totalTools={tools.length}
                     onOpenDocs={() => setIsDocsOpen(true)}
@@ -632,6 +642,44 @@ export const App: React.FC = () => {
         }}
         isExpanded={isExpandedCanvas}
       />
+
+      {/* Drawer Sidebar cho màn hình di động */}
+      {isMobileSidebarOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden flex">
+          <div 
+            className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm"
+            onClick={() => setIsMobileSidebarOpen(false)}
+          />
+          <div className="relative w-4/5 max-w-xs bg-white dark:bg-slate-900 h-full z-10 shadow-2xl flex flex-col">
+            <div className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800">
+              <span className="font-bold text-sm text-slate-900 dark:text-white">Bộ lọc tìm kiếm</span>
+              <button 
+                onClick={() => setIsMobileSidebarOpen(false)}
+                className="p-1.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto">
+              <Sidebar
+                selectedType={selectedType}
+                setSelectedType={(t) => { setSelectedType(t); setIsMobileSidebarOpen(false); }}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={(c) => { setSelectedCategory(c); setIsMobileSidebarOpen(false); }}
+                selectedPlatform={selectedPlatform}
+                setSelectedPlatform={(p) => { setSelectedPlatform(p); setIsMobileSidebarOpen(false); }}
+                typeCounts={typeCounts}
+                categoryCounts={categoryCounts}
+                categories={CATEGORIES}
+                totalTools={tools.length}
+                onOpenDocs={() => { setIsMobileSidebarOpen(false); setIsDocsOpen(true); }}
+                onOpenTerminal={() => { setIsMobileSidebarOpen(false); setIsTerminalOpen(true); }}
+                onResetFilters={() => { handleResetFilters(); setIsMobileSidebarOpen(false); }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* CÁC MODAL HỆ THỐNG */}
       <DevLifecycleModal

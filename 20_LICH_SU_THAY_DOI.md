@@ -4,6 +4,40 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.15-CanChinhTrangChuPhanLoai10LinhVucTachLoaiHinh (Ngày 20-10-2026)
+- **Loại hình**: Cân chỉnh toàn diện giao diện trang chủ, phân loại 2.194 công cụ vào 10 nhóm lĩnh vực chuyên môn chuẩn hóa và tách riêng biệt các loại hình thành phần (`mcp`, `skill`, `agent`, `phần mềm`, `workflow`).
+- **Nội dung hoàn thành**:
+  - **Phân loại 10 Lĩnh vực chuyên môn**:
+    - Lập trình & Kỹ thuật phần mềm: 1.052 công cụ
+    - Tài chính, Ngân hàng & Thuế: 352 công cụ
+    - Trí tuệ nhân tạo & Dữ liệu: 259 công cụ
+    - Tự động hóa hệ thống & Web: 178 công cụ
+    - Doanh nghiệp & Quản trị ERP: 98 công cụ
+    - Pháp luật & Hành chính công: 89 công cụ
+    - Thương mại điện tử & Bán lẻ: 76 công cụ
+    - Vận tải & Logistics: 37 công cụ
+    - Nhân sự & Tuyển dụng: 29 công cụ
+    - Viễn thông & Chăm sóc khách hàng: 24 công cụ
+  - **Tách riêng biệt các loại hình thành phần**:
+    - `Skill`: 1.028 công cụ
+    - `Agent`: 448 công cụ
+    - `Command`: 289 công cụ
+    - `MCP Server`: 227 công cụ
+    - `Setting`: 71 công cụ
+    - `Hook`: 62 công cụ
+    - `Phần mềm` (Software): 34 công cụ (MISA, Fast, Bravo, EFFECT, 1Office, Base.vn, KiotViet, Sapo, ERP, CRM, HIS, EMR, Cổng DVC)
+    - `Template`: 23 công cụ
+    - `Workflow`: 12 công cụ
+  - **Quy tắc VibeCode**: Không dịch nghĩa `Agent`, `Skill`, `MCP Server`, `Workflow` sang tiếng Việt trong phần ghi chú / nhãn loại hình. Riêng loại phần mềm hiển thị là `Phần mềm`.
+  - **Cân chỉnh giao diện trang chủ**:
+    - `MainCategoryCards`: Mở rộng thành 5 thẻ cân bằng (MCP Server, Skill, Agent, Phần mềm, Workflow).
+    - `FeaturedResources`: Cấu hình lưới 4 thẻ tiêu biểu đại diện 4 loại hình cốt lõi.
+    - `BrowseByNeeds`: Bố trí lưới 8 lĩnh vực chuyên môn phổ biến nhất với số lượng công cụ thực tế.
+    - `Sidebar`: Hiển thị phân loại 'Phần mềm', bổ sung huy hiệu hiển thị số lượng chi tiết cho từng loại hình và từng lĩnh vực chuyên môn.
+    - `ToolCard`: Hệ thống huy hiệu màu sắc phân biệt trực quan cho từng loại hình (mcp: xanh dương, skill: xanh ngọc, agent: chàm, phần mềm: hổ phách, workflow: tím).
+    - Bổ sung Drawer Sidebar trên thiết bị di động khi mở bộ lọc.
+  - **Kiểm thử chất lượng**: Toàn bộ 5 bài kiểm thử unit tests đạt 100%, TypeScript và Vite build thành công không lỗi.
+
 ### Phiên Bản 2.0.14-MoRongQuyMo50CongCuThuongHieuLonVietNamDot10 (Ngày 20-10-2026)
 - **Loại hình**: Tiếp tục mở rộng tự động đợt 10 với **50 công cụ, kỹ năng và máy chủ MCP mới** từ các bệnh viện tuyến cuối quốc gia, cơ quan quản lý nhà nước, BHXH, cổng tuyển sinh, trường đại học hàng đầu, tập đoàn nghỉ dưỡng du lịch, camera AI, kho hoàn tất đơn hàng (Fulfillment), tài chính Web3/blockchain và tổng đài ảo doanh nghiệp tại Việt Nam.
 - **Nội dung hoàn thành**:

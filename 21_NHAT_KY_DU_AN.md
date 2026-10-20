@@ -8,6 +8,28 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Cân chỉnh giao diện trang chủ, Phân loại 10 Lĩnh vực chuyên môn và Tách riêng biệt loại hình]:
+  - Phân loại lại chuẩn xác toàn diện 2.194 công cụ vào 10 Lĩnh vực chuyên môn theo nghiệp vụ Việt Nam:
+    - Lập trình & Kỹ thuật phần mềm: 1.052 công cụ
+    - Tài chính, Ngân hàng & Thuế: 352 công cụ
+    - Trí tuệ nhân tạo & Dữ liệu: 259 công cụ
+    - Tự động hóa hệ thống & Web: 178 công cụ
+    - Doanh nghiệp & Quản trị ERP: 98 công cụ
+    - Pháp luật & Hành chính công: 89 công cụ
+    - Thương mại điện tử & Bán lẻ: 76 công cụ
+    - Vận tải & Logistics: 37 công cụ
+    - Nhân sự & Tuyển dụng: 29 công cụ
+    - Viễn thông & Chăm sóc khách hàng: 24 công cụ
+  - Tách riêng biệt các loại hình thành phần: `Skill` (1.028), `Agent` (448), `Command` (289), `MCP Server` (227), `Setting` (71), `Hook` (62), `Phần mềm` (34), `Template` (23), `Workflow` (12).
+  - Tuyệt đối tuân thủ quy tắc không dịch nghĩa `Agent`, `Skill`, `MCP Server`, `Workflow` sang tiếng Việt trong phần ghi chú / nhãn loại hình. Riêng loại phần mềm hiển thị là `Phần mềm`.
+  - Cân chỉnh toàn diện giao diện trang chủ đạt tỷ lệ cân bằng:
+    - `MainCategoryCards`: Mở rộng thành 5 thẻ cân bằng trên mọi độ phân giải (MCP Server, Skill, Agent, Phần mềm, Workflow).
+    - `FeaturedResources`: Cấu hình lưới 4 thẻ tiêu biểu đại diện 4 loại hình cốt lõi với thông số thực tế.
+    - `BrowseByNeeds`: Bố trí lưới 8 lĩnh vực chuyên môn phổ biến nhất với số lượng công cụ thực tế.
+    - `Sidebar`: Hiển thị phân loại 'Phần mềm' mới, bổ sung huy hiệu hiển thị số lượng chi tiết cho từng loại hình và từng lĩnh vực chuyên môn.
+    - `ToolCard`: Hệ thống huy hiệu màu sắc phân biệt trực quan cho từng loại hình (mcp: xanh dương, skill: xanh ngọc, agent: chàm, phần mềm: hổ phách, workflow: tím).
+    - Bổ sung Drawer Sidebar trên thiết bị di động giúp người dùng lọc công cụ thuận tiện.
+  - Kiểm thử & Build: 5/5 bài kiểm thử unit tests đạt 100%, đóng gói Vite thành công hoàn toàn.
 - [Phân loại Lĩnh vực chuyên môn & Chuẩn hóa nhãn Agent, Skill]:
   - Phân loại 2.044 công cụ vào 10 nhóm lĩnh vực chuyên môn phù hợp: Tài chính & Thuế (97), Doanh nghiệp & Quản trị (22), Bán lẻ & TMĐT (67), Logistics & Vận tải (31), Viễn thông & CSKH (14), Pháp luật & Hành chính công (12), Nhân sự & Tuyển dụng (5), Trí tuệ nhân tạo & Dữ liệu (291), Lập trình & Kỹ thuật phần mềm (1.191), Tự động hóa hệ thống (314).
   - Giữ nguyên các thuật ngữ kỹ thuật quốc tế trong nhãn và ghi chú: `Agent`, `Skill`, `MCP Server`, `Command`, `Template`, `Workflow`, `Hook`, `Setting` (không dịch nghĩa tiếng Việt).
