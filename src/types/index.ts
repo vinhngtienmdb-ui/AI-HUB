@@ -199,6 +199,16 @@ export interface UserProfile {
   joinedAt?: string;
 }
 
+export interface ApiKey {
+  id: string;
+  name: string;
+  key: string;
+  createdAt: string;
+  lastUsedAt?: string;
+  status: 'active' | 'revoked';
+  usageCount: number;
+}
+
 export type PageRoute = 
   | { name: 'home' }
   | { name: 'category'; toolType: ToolType | 'all' }
@@ -207,5 +217,6 @@ export type PageRoute =
   | { name: 'collections' }
   | { name: 'guides' }
   | { name: 'guide_detail'; guideId: string }
-  | { name: 'account' };
+  | { name: 'account' }
+  | { name: 'api' };
 

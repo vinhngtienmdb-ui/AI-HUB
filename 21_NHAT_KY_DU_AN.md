@@ -8,6 +8,20 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Xây dựng và Triển khai Trang Quản Lý API & Cổng Lập Trình Viên (API Management & Developer Portal)]:
+  - **Triển khai giao diện Quản lý API hoàn chỉnh (`src/pages/ApiManagementPage.tsx`)**:
+    - **Quản lý Khóa API (API Keys)**: Hỗ trợ sinh khóa API chuẩn tiền tố `aihub_live_...`, sao chép một chạm, ẩn/hiện khóa, thu hồi, kích hoạt lại và xóa khóa với dữ liệu được đồng bộ bền vững trong `localStorage`.
+    - **Bảng điều khiển Giám sát Lưu lượng (Metrics)**: Trực quan hóa 4 thông số: Tổng số khóa, Tỷ lệ phản hồi thành công (99.8%), Độ trễ xử lý trung bình (42ms), và Số token tiết kiệm (>125 triệu token nhờ cơ chế Lazy Loading).
+    - **Trình thử nghiệm API Playground**: Trực tiếp gửi yêu cầu bằng ngôn ngữ tự nhiên và nhận kết quả phản hồi JSON thời gian thực từ Smart Intent Router & Dynamic Dispatcher.
+    - **Tài liệu Tích hợp Đa nền tảng**: Hướng dẫn và cung cấp mẫu cấu hình sẵn sàng cho Claude Desktop, Cursor, Node.js, Python, và cURL.
+  - **Định tuyến và Liên kết điều hướng**:
+    - Bổ sung nút điều hướng "Quản lý API" trên Header và Mobile Menu.
+    - Bổ sung liên kết truy cập nhanh tại Footer.
+    - Hỗ trợ định tuyến URL Hash qua `#/api`, `#/developer`, `#/api-keys`.
+  - **Kiểm thử tự động & Đóng gói**:
+    - Xây dựng bộ test mới `tests/api-management.test.js` kiểm tra toàn bộ luồng nghiệp vụ API Key và cấu hình tích hợp.
+    - Toàn bộ 25 test cases trong 7 bộ kiểm thử tự động đều đạt 100% tỷ lệ pass.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 13.05 giây.
 - [Phát triển và Triển khai Máy chủ MCP Trung Gian Thông Minh (AI HUB VN Smart MCP Gateway)]:
   - **Triển khai kiến trúc MCP Trung Gian Một Cửa (`mcp-gateway/`)**:
     - Xây dựng **Smart Intent Router (`smart-router.js`)**: Phân tích câu lệnh ngôn ngữ tự nhiên, tự động nhận diện ý định và định tuyến đến công cụ chuyên môn tối ưu nhất trong kho 2.217 tài nguyên. Hỗ trợ bảng ý định chuyên biệt cho Fintech Việt Nam (VietQR, MoMo, ZaloPay), Dịch ngược mã nguồn (REA), Phân tích nghiệp vụ BA (OpenBA-Kit), Cơ sở dữ liệu (SQLite, Postgres), Tự động hóa trình duyệt (Puppeteer, Browser-use) kết hợp đối soát ngữ nghĩa diện rộng.

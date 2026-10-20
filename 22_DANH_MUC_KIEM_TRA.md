@@ -1,8 +1,8 @@
 # Danh Mục Kiểm Tra Dự Án (Checklist)
 
 ## Tổng Quan Tiến Độ
-- Tổng số nhiệm vụ cốt lõi: 22
-- Đã hoàn thành: 22
+- Tổng số nhiệm vụ cốt lõi: 23
+- Đã hoàn thành: 23
 - Đang thực hiện: 0
 - Chưa bắt đầu: 0
 - Bị nghẽn: 0
@@ -48,6 +48,7 @@
 - [x] Lập trình phân hệ Giao diện danh mục, Tìm kiếm tức thời và Phân trang (24 mục/trang)
 - [x] Lập trình phân hệ Chi tiết công cụ và Sao chép cấu hình một chạm
 - [x] Lập trình phân hệ Quản trị nội dung và Đóng góp công cụ
+- [x] Xây dựng và triển khai Trang Quản Lý API & Cổng Lập Trình Viên (`src/pages/ApiManagementPage.tsx`): Quản lý vòng đời API Key (`aihub_live_...`), Bảng giám sát lưu lượng thời gian thực, Trình thử nghiệm API Playground trực tiếp trên web và Hướng dẫn tích hợp 5 nền tảng (Claude Desktop, Cursor, Node.js, Python, cURL)
 - [x] Thiết lập tài khoản `vinh.ngtienmdb@gmail.com` là Quản trị viên tối cao (Admin) duy nhất của toàn bộ hệ thống
 - [x] Phân quyền bảo mật cao: Chỉ duy nhất tài khoản Quản trị viên tối cao mới có quyền điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn (cho từng công cụ và toàn bộ hệ thống)
 - [x] Loại bỏ triệt để toàn bộ các thông báo, bảng dán mã cấu hình Firebase và chỉ dẫn kỹ thuật trên cả giao diện frontend (`LoginModal.tsx`) và trong mã nguồn console (`src/lib/firebase.ts`)

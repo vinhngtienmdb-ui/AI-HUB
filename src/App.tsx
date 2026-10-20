@@ -23,6 +23,7 @@ import { ContributePage } from './pages/ContributePage';
 import { CollectionsPage } from './pages/CollectionsPage';
 import { GuidesPage } from './pages/GuidesPage';
 import { AccountPage } from './pages/AccountPage';
+import { ApiManagementPage } from './pages/ApiManagementPage';
 
 import { INITIAL_TOOLS, CATEGORIES } from './data/mockTools';
 import { INITIAL_COLLECTIONS, INITIAL_GUIDES } from './data/mockGuidesAndCollections';
@@ -232,6 +233,8 @@ export const App: React.FC = () => {
         setCurrentRoute({ name: 'guides' });
       } else if (hash === '/account') {
         setCurrentRoute({ name: 'account' });
+      } else if (hash === '/api' || hash === '/developer' || hash === '/api-keys') {
+        setCurrentRoute({ name: 'api' });
       }
     };
 
@@ -267,6 +270,9 @@ export const App: React.FC = () => {
         break;
       case 'account':
         window.location.hash = '/account';
+        break;
+      case 'api':
+        window.location.hash = '/api';
         break;
     }
   };
@@ -479,6 +485,7 @@ export const App: React.FC = () => {
         setDarkMode={setDarkMode}
         onOpenContribute={() => navigateTo({ name: 'contribute' })}
         onOpenDocs={() => navigateTo({ name: 'guides' })}
+        onOpenApiManagement={() => navigateTo({ name: 'api' })}
         onOpenLogin={() => {
           if (currentUser) {
             navigateTo({ name: 'account' });
@@ -602,6 +609,14 @@ export const App: React.FC = () => {
             localStorage.removeItem('aihub_user_profile');
             navigateTo({ name: 'home' });
           }}
+          isExpanded={isExpandedCanvas}
+        />
+      )}
+
+      {/* TRANG 7: TRANG QUẢN LÝ API & CỔNG LẬP TRÌNH VIÊN (DEVELOPER PORTAL) */}
+      {currentRoute.name === 'api' && (
+        <ApiManagementPage
+          onNavigateHome={() => navigateTo({ name: 'home' })}
           isExpanded={isExpandedCanvas}
         />
       )}
@@ -888,6 +903,7 @@ export const App: React.FC = () => {
       <Footer
         onOpenDocs={() => navigateTo({ name: 'guides' })}
         onOpenContribute={() => navigateTo({ name: 'contribute' })}
+        onOpenApiManagement={() => navigateTo({ name: 'api' })}
         onSelectType={(type) => navigateTo({ name: 'category', toolType: type })}
         onSelectCategory={(cat) => {
           setSelectedCategory(cat);

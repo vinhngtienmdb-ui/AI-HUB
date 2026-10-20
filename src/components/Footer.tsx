@@ -5,6 +5,7 @@ import { ToolType, Category } from '../types';
 interface FooterProps {
   onOpenDocs: () => void;
   onOpenContribute: () => void;
+  onOpenApiManagement?: () => void;
   onSelectType: (type: ToolType) => void;
   onSelectCategory: (category: Category) => void;
   isExpanded?: boolean;
@@ -13,6 +14,7 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({
   onOpenDocs,
   onOpenContribute,
+  onOpenApiManagement,
   onSelectType,
   onSelectCategory,
   isExpanded = true,
@@ -126,6 +128,16 @@ export const Footer: React.FC<FooterProps> = ({
                   Bộ tài liệu thiết kế hệ thống (01 - 22)
                 </button>
               </li>
+              {onOpenApiManagement && (
+                <li>
+                  <button
+                    onClick={onOpenApiManagement}
+                    className="hover:text-indigo-600 dark:hover:text-indigo-400 font-semibold text-indigo-600 dark:text-indigo-400 transition-colors text-left"
+                  >
+                    🔑 Quản lý API & Smart Gateway
+                  </button>
+                </li>
+              )}
               <li>
                 <button
                   onClick={onOpenContribute}

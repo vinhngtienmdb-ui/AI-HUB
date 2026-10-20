@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Moon, Sun, BookOpen, Terminal, Menu, X, User, ShieldCheck, Tags } from 'lucide-react';
+import { Plus, Moon, Sun, BookOpen, Terminal, Menu, X, User, ShieldCheck, Tags, KeyRound } from 'lucide-react';
 import { ToolType, Category } from '../types';
 
 interface HeaderProps {
@@ -7,6 +7,7 @@ interface HeaderProps {
   setDarkMode: (value: boolean) => void;
   onOpenContribute: () => void;
   onOpenDocs: () => void;
+  onOpenApiManagement?: () => void;
   onOpenLogin: () => void;
   currentUser?: string | null;
   userDisplayName?: string;
@@ -28,6 +29,7 @@ export const Header: React.FC<HeaderProps> = ({
   setDarkMode,
   onOpenContribute,
   onOpenDocs,
+  onOpenApiManagement,
   onOpenLogin,
   currentUser,
   userDisplayName,
@@ -134,6 +136,17 @@ export const Header: React.FC<HeaderProps> = ({
             <BookOpen className="w-3.5 h-3.5 mr-0.5 text-slate-400" />
             <span>Hướng dẫn</span>
           </button>
+
+          {onOpenApiManagement && (
+            <button
+              onClick={onOpenApiManagement}
+              className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center space-x-1 text-indigo-600 dark:text-indigo-400 font-semibold"
+              title="Cổng Lập trình viên & Quản lý Khóa API Smart Gateway"
+            >
+              <KeyRound className="w-3.5 h-3.5 mr-0.5" />
+              <span>Quản lý API</span>
+            </button>
+          )}
         </nav>
 
         {/* NHÓM TÁC VỤ BÊN PHẢI */}
@@ -297,6 +310,14 @@ export const Header: React.FC<HeaderProps> = ({
           >
             Hướng dẫn & Quy trình VibeCode
           </button>
+          {onOpenApiManagement && (
+            <button
+              onClick={() => handleNavClick(onOpenApiManagement)}
+              className="block w-full text-left py-2 px-3 rounded-lg text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 font-semibold"
+            >
+              Quản lý API & Cổng Lập trình viên
+            </button>
+          )}
         </div>
       )}
     </header>

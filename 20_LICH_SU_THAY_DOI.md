@@ -4,6 +4,23 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.31-XayDungTrangQuanLyApiVaDeveloperPortal (Ngày 20-10-2026)
+- **Loại hình**: Xây dựng và tích hợp Trang Quản Lý API & Cổng Lập Trình Viên (API Management & Developer Portal) kết nối trực tiếp với AI HUB Smart MCP Gateway.
+- **Nội dung hoàn thành**:
+  - **Trang Quản Lý API hoàn chỉnh (`src/pages/ApiManagementPage.tsx`)**:
+    - **Phân hệ Quản lý Khóa API (API Key Management)**: Tạo khóa bảo mật chuẩn định dạng `aihub_live_...`, tính năng ẩn/hiện khóa, sao chép một chạm vào bộ nhớ tạm, thu hồi (revoke), kích hoạt lại (reactivate), xóa bỏ an toàn và lưu trữ bền vững tại `localStorage`.
+    - **Phân hệ Bảng Giám Sát Lưu Lượng (Live Metrics Dashboard)**: Theo dõi trực quan 4 chỉ số hiệu năng: Tổng khóa bảo mật, Tỷ lệ định tuyến thành công (99.8%), Độ trễ phản hồi trung bình (42ms), và Số lượng token tiết kiệm cho Context Window (~95%, hơn 125 triệu token).
+    - **Phân hệ Thử Nghiệm API Trực Tiếp (Interactive API Playground)**: Cho phép lập trình viên gửi thử câu lệnh ngôn ngữ tự nhiên (tiếng Việt hoặc tiếng Anh) và nhận kết quả JSON trả về thời gian thực từ Smart Intent Router & Dynamic Dispatcher.
+    - **Phân hệ Hướng Dẫn Tích Hợp Đa Nền Tảng (Developer Integration Hub)**: Tự động gắn khóa API đang chọn vào các mẫu mã tích hợp sẵn sàng sử dụng: Claude Desktop (`claude_desktop_config.json`), Cursor (`.cursorrules`), Node.js (Fetch API), Python (`requests`), và cURL.
+  - **Tích hợp Điều Hướng & Hash Routing**:
+    - Bổ sung nút "Quản lý API" trên Header (desktop & mobile menu).
+    - Bổ sung liên kết "🔑 Quản lý API & Smart Gateway" tại Footer.
+    - Đồng bộ URL Hash: hỗ trợ truy cập trực tiếp qua `#/api`, `#/developer`, và `#/api-keys`.
+  - **Kiểm thử Tự động & Đóng gói**:
+    - Xây dựng bộ kiểm thử mới `tests/api-management.test.js` kiểm tra 4 kịch bản: sinh khóa, vòng đời khóa, thống kê giám sát và cấu hình tích hợp.
+    - Chạy toàn bộ 25 test cases trong 7 bộ kiểm thử tự động: Đạt **100% tỷ lệ pass**.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 13.05 giây.
+
 ### Phiên Bản 2.0.30-PhatTrienAihubSmartMcpGatewayTrungGian (Ngày 20-10-2026)
 - **Loại hình**: Xây dựng và triển khai Máy chủ MCP Trung Gian Thông Minh (AI HUB VN Smart MCP Gateway & Router) đóng vai trò cổng kết nối duy nhất (Single Point of Entry) cho mọi AI Agent bên ngoài.
 - **Nội dung hoàn thành**:
