@@ -1,10 +1,11 @@
 # AI Hub - Nền Tảng Quản Lý Công Cụ AI, Máy Chủ MCP & Kỹ Năng Tác Tử Chuẩn Hóa
 
 [![Giấy Phép](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Phiên Bản](https://img.shields.io/badge/Phiên_Bản-1.6.0-emerald.svg)](20_LICH_SU_THAY_DOI.md)
+[![Phiên Bản](https://img.shields.io/badge/Phiên_Bản-1.7.0-emerald.svg)](20_LICH_SU_THAY_DOI.md)
 [![Quy Trình VibeCode](https://img.shields.io/badge/Quy_Trình-VibeCode_12_Giai_Đoạn-purple.svg)](index.md)
-[![Tổng Số Công Cụ](https://img.shields.io/badge/Kho_Dữ_Liệu-1.914+_Mục-orange.svg)](#)
+[![Tổng Số Công Cụ](https://img.shields.io/badge/Kho_Dữ_Liệu-1.922+_Mục-orange.svg)](#)
 [![Ảnh Demo Trực Quan](https://img.shields.io/badge/Ảnh_Demo-100%25_Công_Cụ-blueviolet.svg)](#)
+[![Giao Diện Left Sidebar](https://img.shields.io/badge/Giao_Diện-Left_Sidebar_Chuyên_Nghiệp-blue.svg)](#)
 
 Hệ thống quản lý, tra cứu và thực thi trực tiếp các công cụ Trí tuệ Nhân tạo (AI Tools), Máy chủ Giao thức Ngữ cảnh Mô hình (MCP Servers), Quy trình tự động hóa (Workflows), Kỹ năng tác tử (Agent Skills), Tác tử chuyên sâu (Agents), Lệnh phím tắt (Commands), Móc nối vòng đời (Hooks), Cấu hình tối ưu (Settings) và Bản mẫu dự án (Templates).
 
@@ -14,19 +15,28 @@ Dự án được xây dựng tuân thủ nghiêm ngặt **Quy trình VibeCode C
 
 ## 🌟 Tính Năng Nổi Bật
 
-1. **Kho Lưu Trữ Đồ Sộ (1.914+ Công Cụ & 2.909 Cấu Hình)**:
+1. **Kho Lưu Trữ Đồ Sộ (1.922+ Công Cụ & 2.917 Cấu Hình)**:
    - Tổng hợp và chuẩn hóa dữ liệu từ các nguồn hàng đầu thế giới và Việt Nam (`phandonggiang.com/ai-templates`, `mcpmarket.com`, `awesome-mcp-servers`).
    - Phân loại tách biệt rạch ròi 8 nhóm thành phần kỹ thuật:
      - **Kỹ năng tác tử (Skills)**: 894 mục.
-     - **Tác tử chuyên sâu (Agents)**: 429 mục.
+     - **Tác tử chuyên sâu (Agents)**: 430 mục.
      - **Lệnh phím tắt (Commands)**: 289 mục.
-     - **Máy chủ MCP (MCP Servers)**: 148 mục.
+     - **Máy chủ MCP (MCP Servers)**: 154 mục.
      - **Cấu hình môi trường (Settings)**: 72 mục.
      - **Móc nối tự động (Hooks)**: 62 mục.
-     - **Bản mẫu dự án (Templates)**: 15 mục.
+     - **Bản mẫu dự án (Templates)**: 16 mục.
      - **Quy trình tự động hóa (Workflows)**: 5 mục hàng đầu (n8n, Dify, Flowise, Langflow, FastGPT).
 
-2. **Ảnh Demo Trực Quan (100% Công Cụ Đều Có Ảnh)**:
+2. **Giao Diện Left Sidebar Cố Định & Drawer Di Động Thông Minh**:
+   - Tích hợp thanh Sidebar bên trái hiển thị trực quan các bộ lọc đa tầng (Phân loại loại hình, Lĩnh vực chuyên môn, Môi trường AI) kèm huy hiệu số lượng công cụ thực tế.
+   - Hỗ trợ thao tác gập/mở dạng Drawer trượt mượt mà trên thiết bị di động và máy tính bảng.
+   - Bố cục 2 cột chuyên nghiệp tối ưu hóa diện tích hiển thị lưới công cụ.
+
+3. **Hướng Dẫn Cài Đặt & Sử Dụng Siêu Chi Tiết (100% Công Cụ)**:
+   - Hướng dẫn cài đặt chuẩn hóa 4 bước chi tiết: Bước 1 (Chuẩn bị) -> Bước 2 (Cài đặt CLI) -> Bước 3 (Cấu hình JSON & biến môi trường) -> Bước 4 (Khởi động & kiểm tra).
+   - Kịch bản sử dụng thực tế (Context & Scenario) kèm câu lệnh prompt mẫu và kết quả dự kiến trả về.
+
+4. **Ảnh Demo Trực Quan (100% Công Cụ Đều Có Ảnh)**:
    - Toàn bộ 1.914 công cụ đều được trang bị ảnh demo banner tỉ lệ 16:9 sắc nét và thư viện ảnh chụp màn hình minh họa (Gallery).
    - Tự động đồng bộ ảnh Open Graph banner chính thức từ GitHub và bộ nhận diện thương hiệu công nghệ.
    - Hỗ trợ xem ảnh phóng to toàn màn hình và chuyển đổi thumbnail linh hoạt trong trang chi tiết.

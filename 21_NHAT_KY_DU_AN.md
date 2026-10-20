@@ -123,6 +123,25 @@
   - Nâng tổng số lượng công cụ lên **1.914 mục** và **2.909 mẫu cấu hình JSON**.
   - Kiểm thử tự động đạt 100% qua 5 bài test.
 
+- [Tái Cấu Trúc Giao Diện 2 Cột: Bổ Sung Left Sidebar & Nâng Cấp Hướng Dẫn Siêu Chi Tiết]:
+  - **Tái thiết kế giao diện bố cục 2 cột chuyên nghiệp**:
+    - **Cột trái (Left Sidebar ghim cố định)**:
+      - Tích hợp bộ lọc phân loại thành phần đa tầng (Tất cả, Kỹ năng, Quy trình, Bản mẫu, Tác tử, Lệnh, Máy chủ MCP, Móc nối, Cấu hình) có hiển thị huy hiệu (badge) số lượng công cụ thực tế.
+      - Tích hợp bộ lọc lĩnh vực chuyên môn (đặc biệt tab `🇻🇳 Thị Trường Việt Nam` nổi bật với huy hiệu HOT).
+      - Tích hợp bộ lọc môi trường AI (Claude Desktop, Antigravity, Cursor).
+      - Nút thao tác một chạm: Đặt lại bộ lọc (Reset), Mở Terminal Cục Bộ, Mở tài liệu VibeCode và liên kết kho GitHub chính thức.
+    - **Drawer trượt thông minh trên thiết bị di động/tablet**: Người dùng có thể nhấn nút `Bộ lọc & Danh mục` để mở bảng điều hướng trượt sang phải mượt mà.
+    - **Cột phải (Main Content Grid)**: Lưới hiển thị các thẻ công cụ có ảnh demo banner tỉ lệ 16:9 sắc nét, nhãn Glassmorphism và điều hướng phân trang.
+  - **Nâng cấp nội dung hướng dẫn cài đặt và sử dụng siêu chi tiết cho 100% công cụ**:
+    - `installGuideVi`: Chuẩn hóa cấu trúc 4 bước rõ ràng: Bước 1 (Chuẩn bị môi trường & phụ thuộc) -> Bước 2 (Cài đặt gói lệnh CLI) -> Bước 3 (Cấu hình tệp tham số JSON & giải thích biến môi trường) -> Bước 4 (Khởi động và xác nhận kết nối).
+    - `usageGuideVi`: Bổ sung kịch bản ứng dụng thực tế (Context & Scenario), câu lệnh prompt cụ thể kèm kết quả trả về dự kiến chuẩn mực.
+    - `demoImages`: Trang bị thư viện ít nhất 2-3 hình ảnh minh họa cho từng công cụ trong trang chi tiết, có nút phóng to xem ảnh gốc toàn màn hình.
+  - **Bổ sung các dự án hot tại Việt Nam & Quốc tế**:
+    - VietOCR (nhận dạng chữ viết tiếng Việt & chữ viết tay), UnderTheSea (bộ công cụ NLP tiếng Việt số 1), Chuyển số thành chữ kế toán VND, Kiểm tra cấu trúc 12 số CCCD gắn chip, Tra cứu xử phạt giao thông Nghị định 100 & phạt nguội.
+    - vLLM (động cơ suy luận LLM thông lượng cao), Exo (chạy AI phân tán P2P trên nhiều máy tính), Stanford STORM (tác tử tự động nghiên cứu bài viết Wikipedia).
+  - Nâng tổng số lượng công cụ lên **1.922 mục** và **2.917 mẫu cấu hình JSON**.
+  - Kiểm thử tự động đạt 100% qua 5 bài test.
+
 ### Quyết định kỹ thuật
 - **Định dạng cấu hình mẫu**: Hỗ trợ xuất cấu hình nhanh dạng JSON cho các nền tảng phổ biến (Claude Desktop, Antigravity, Cursor, Windsurf, v.v.).
 - **Ngôn ngữ nội dung**: Mọi hướng dẫn cài đặt, cấu hình và kịch bản sử dụng mẫu bắt buộc phải có nội dung diễn giải bằng tiếng Việt rõ ràng, kèm lệnh mẫu có thể sao chép bằng một nút bấm.

@@ -6,9 +6,10 @@ import { ToolDetailModal } from './components/ToolDetailModal';
 import { ContributeModal } from './components/ContributeModal';
 import { DevLifecycleModal } from './components/DevLifecycleModal';
 import { TerminalDrawer } from './components/TerminalDrawer';
+import { Sidebar } from './components/Sidebar';
 import { INITIAL_TOOLS, CATEGORIES } from './data/mockTools';
 import { AITool, Category, Platform, ToolType } from './types';
-import { SearchX, ChevronLeft, ChevronRight, Layers, Sparkles, Cpu, Terminal, Brain, FolderGit2, Wrench, Workflow } from 'lucide-react';
+import { SearchX, ChevronLeft, ChevronRight, Layers, Sparkles, Cpu, Terminal, Brain, FolderGit2, Wrench, Workflow, SlidersHorizontal, X } from 'lucide-react';
 
 const PAGE_SIZE = 24;
 
@@ -24,7 +25,17 @@ export const App: React.FC = () => {
   const [isDocsOpen, setIsDocsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [pendingTerminalCommand, setPendingTerminalCommand] = useState<string | null>(null);
+
+  const handleResetFilters = () => {
+    setSearchQuery('');
+    setSelectedCategory('all');
+    setSelectedPlatform('all');
+    setSelectedType('all');
+    setCurrentPage(1);
+    setIsMobileSidebarOpen(false);
+  };
 
   const handleExecuteCommand = (command: string) => {
     setPendingTerminalCommand(command);
@@ -128,199 +139,196 @@ export const App: React.FC = () => {
         setSelectedPlatform={setSelectedPlatform}
       />
 
-      {/* Khu vực danh mục và nội dung chính */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Bố cục 2 cột chuyên nghiệp: Left Sidebar cố định + Khu vực nội dung công cụ */}
+      <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex gap-6 relative items-start">
         
-        {/* Hàng 1: Tabs phân loại rạch ròi giữa Template, Skill, Agent, Command, MCP, Hook, Setting */}
-        <div className="mb-4">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-              Phân loại công cụ & thành phần (Tách biệt rõ ràng):
-            </span>
-          </div>
+        {/* CỘT TRÁI: Left Sidebar trên màn hình máy tính (lg+) */}
+        <div className="hidden lg:block sticky top-20 h-[calc(100vh-6rem)] overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900">
+          <Sidebar
+            selectedType={selectedType}
+            setSelectedType={setSelectedType}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+            selectedPlatform={selectedPlatform}
+            setSelectedPlatform={setSelectedPlatform}
+            typeCounts={typeCounts}
+            categories={CATEGORIES}
+            totalTools={tools.length}
+            onOpenDocs={() => setIsDocsOpen(true)}
+            onOpenTerminal={() => setIsTerminalOpen(true)}
+            onResetFilters={handleResetFilters}
+          />
+        </div>
 
-          <div className="flex flex-wrap items-center gap-2">
-            {toolTypeTabs.map((tab) => {
-              const isSelected = selectedType === tab.id;
-              const Icon = tab.icon;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setSelectedType(tab.id)}
-                  className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
-                    isSelected
-                      ? 'bg-blue-600 text-white shadow-sm ring-2 ring-blue-500/30'
-                      : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-850'
-                  }`}
-                >
-                  <Icon className="w-3.5 h-3.5" />
-                  <span>{tab.name}</span>
-                  <span className={`text-[11px] px-1.5 py-0.2 rounded-full font-bold ${
-                    isSelected
-                      ? 'bg-blue-700 text-white'
-                      : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
-                  }`}>
-                    {tab.count}
+        {/* CỘT PHẢI: Toàn bộ nội dung công cụ, phân trang và lưới thẻ */}
+        <main className="flex-1 min-w-0">
+          
+          {/* Thanh tiêu đề danh mục, số lượng kết quả và nút mở bộ lọc trên di động */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div className="flex items-center space-x-2.5">
+              <button
+                onClick={() => setIsMobileSidebarOpen(true)}
+                className="lg:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+                title="Mở bảng bộ lọc danh mục"
+              >
+                <SlidersHorizontal className="w-4 h-4" />
+              </button>
+
+              <div>
+                <div className="flex items-center space-x-2">
+                  <h2 className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                    {selectedType !== 'all'
+                      ? toolTypeTabs.find((t) => t.id === selectedType)?.name
+                      : selectedCategory === 'all'
+                      ? 'Tất Cả Thành Phần & Công Cụ'
+                      : CATEGORIES.find((c) => c.id === selectedCategory)?.nameVi}
+                  </h2>
+                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 font-bold">
+                    {filteredTools.length.toLocaleString()} mục
                   </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Hàng 2: Thanh lọc theo lĩnh vực chuyên môn */}
-        <div className="flex items-center space-x-2 overflow-x-auto pb-3 mb-6 scrollbar-none">
-          {CATEGORIES.map((cat) => {
-            const isSelected = selectedCategory === cat.id;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`whitespace-nowrap px-4 py-2 rounded-2xl text-xs sm:text-sm font-medium transition-all ${
-                  isSelected
-                    ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm'
-                    : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800'
-                }`}
-              >
-                {cat.nameVi}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Tiêu đề danh mục, số lượng kết quả và phân trang nhanh */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
-          <div className="flex items-center space-x-2">
-            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-              {selectedType !== 'all'
-                ? toolTypeTabs.find((t) => t.id === selectedType)?.name
-                : selectedCategory === 'all'
-                ? 'Tất Cả Thành Phần & Công Cụ'
-                : CATEGORIES.find((c) => c.id === selectedCategory)?.nameVi}
-            </h2>
-            <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 font-bold">
-              {filteredTools.length.toLocaleString()} mục
-            </span>
-          </div>
-
-          <div className="flex items-center space-x-3 text-xs">
-            {(searchQuery || selectedCategory !== 'all' || selectedPlatform !== 'all' || selectedType !== 'all') && (
-              <button
-                onClick={() => {
-                  setSearchQuery('');
-                  setSelectedCategory('all');
-                  setSelectedPlatform('all');
-                  setSelectedType('all');
-                }}
-                className="font-semibold text-blue-600 dark:text-blue-400 hover:underline"
-              >
-                Đặt lại bộ lọc
-              </button>
-            )}
-
-            {filteredTools.length > 0 && (
-              <span className="text-slate-500 dark:text-slate-400">
-                Hiển thị trang <strong>{currentPage}</strong> / {totalPages}
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* Lưới hiển thị các thẻ công cụ */}
-        {paginatedTools.length > 0 ? (
-          <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-              {paginatedTools.map((tool) => (
-                <ToolCard
-                  key={tool.id}
-                  tool={tool}
-                  onSelect={(t) => setSelectedTool(t)}
-                />
-              ))}
-            </div>
-
-            {/* Điều hướng phân trang */}
-            {totalPages > 1 && (
-              <div className="flex items-center justify-center space-x-2 py-6 border-t border-slate-200 dark:border-slate-800">
-                <button
-                  onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-                  disabled={currentPage === 1}
-                  className="flex items-center space-x-1 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                  <span>Trang trước</span>
-                </button>
-
-                <div className="flex items-center space-x-1">
-                  {/* Hiển thị số trang */}
-                  {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-                    let pageNum = i + 1;
-                    if (currentPage > 3 && totalPages > 5) {
-                      pageNum = currentPage - 2 + i;
-                      if (pageNum > totalPages) pageNum = totalPages - (4 - i);
-                    }
-                    const isCurrent = pageNum === currentPage;
-                    return (
-                      <button
-                        key={pageNum}
-                        onClick={() => handlePageChange(pageNum)}
-                        className={`w-9 h-9 rounded-xl text-xs sm:text-sm font-semibold transition-colors ${
-                          isCurrent
-                            ? 'bg-blue-600 text-white'
-                            : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
-                        }`}
-                      >
-                        {pageNum}
-                      </button>
-                    );
-                  })}
                 </div>
-
-                <button
-                  onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
-                  disabled={currentPage === totalPages}
-                  className="flex items-center space-x-1 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                >
-                  <span>Trang sau</span>
-                  <ChevronRight className="w-4 h-4" />
-                </button>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 hidden sm:block">
+                  {selectedCategory === 'vietnam' 
+                    ? 'Bộ công cụ, máy chủ MCP và kỹ năng tối ưu hóa riêng cho thị trường Việt Nam'
+                    : 'Tra cứu, xem ảnh demo chi tiết và thực thi lệnh cài đặt một chạm'}
+                </p>
               </div>
-            )}
-          </>
-        ) : (
-          /* Trạng thái rỗng (Empty State) */
-          <div className="text-center py-16 px-4 bg-white dark:bg-slate-900 rounded-3xl border border-dashed border-slate-300 dark:border-slate-800 max-w-lg mx-auto">
-            <div className="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 mx-auto mb-4">
-              <SearchX className="w-8 h-8" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
-              Không tìm thấy công cụ phù hợp
-            </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
-              Không có mục nào khớp với từ khóa "{searchQuery}" hoặc các bộ lọc đã chọn. Hãy thử tìm bằng từ khóa khác hoặc đóng góp công cụ mới.
-            </p>
-            <div className="flex items-center justify-center space-x-3">
+
+            <div className="flex items-center space-x-3 text-xs shrink-0">
+              {(searchQuery || selectedCategory !== 'all' || selectedPlatform !== 'all' || selectedType !== 'all') && (
+                <button
+                  onClick={handleResetFilters}
+                  className="font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  Đặt lại bộ lọc
+                </button>
+              )}
+
+              {filteredTools.length > 0 && (
+                <span className="text-slate-500 dark:text-slate-400">
+                  Trang <strong>{currentPage}</strong> / {totalPages}
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Lưới hiển thị các thẻ công cụ có ảnh demo */}
+          {paginatedTools.length > 0 ? (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mb-8">
+                {paginatedTools.map((tool) => (
+                  <ToolCard
+                    key={tool.id}
+                    tool={tool}
+                    onSelect={(t) => setSelectedTool(t)}
+                  />
+                ))}
+              </div>
+
+              {/* Điều hướng phân trang */}
+              {totalPages > 1 && (
+                <div className="flex items-center justify-center space-x-2 py-6 border-t border-slate-200 dark:border-slate-800">
+                  <button
+                    onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+                    disabled={currentPage === 1}
+                    className="flex items-center space-x-1 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    <span className="hidden sm:inline">Trang trước</span>
+                  </button>
+
+                  <div className="flex items-center space-x-1">
+                    {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                      let pageNum = i + 1;
+                      if (totalPages > 5 && currentPage > 3) {
+                        pageNum = currentPage - 2 + i;
+                        if (pageNum > totalPages) pageNum = totalPages - 4 + i;
+                      }
+                      const isActive = currentPage === pageNum;
+                      return (
+                        <button
+                          key={pageNum}
+                          onClick={() => handlePageChange(pageNum)}
+                          className={`w-8 h-8 rounded-xl text-xs font-semibold transition-all ${
+                            isActive
+                              ? 'bg-blue-600 text-white shadow-sm'
+                              : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+                          }`}
+                        >
+                          {pageNum}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <button
+                    onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
+                    disabled={currentPage === totalPages}
+                    className="flex items-center space-x-1 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                  >
+                    <span className="hidden sm:inline">Trang tiếp</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 shadow-sm">
+              <SearchX className="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
+              <h3 className="text-base font-bold text-slate-800 dark:text-slate-200 mb-1">
+                Không tìm thấy công cụ nào
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto mb-5">
+                Không có công cụ nào khớp với từ khóa "{searchQuery}" trong bộ lọc hiện tại. Hãy thử tìm từ khóa khác hoặc đặt lại bộ lọc.
+              </p>
               <button
-                onClick={() => {
-                  setSearchQuery('');
-                  setSelectedCategory('all');
-                  setSelectedPlatform('all');
-                  setSelectedType('all');
-                }}
-                className="px-4 py-2 rounded-xl text-sm font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200"
+                onClick={handleResetFilters}
+                className="px-4 py-2 rounded-xl text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 shadow-sm transition-all"
               >
                 Đặt lại bộ lọc
               </button>
-              <button
-                onClick={() => setIsContributeOpen(true)}
-                className="px-4 py-2 rounded-xl text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700"
+            </div>
+          )}
+        </main>
+      </div>
+
+      {/* Drawer trượt mở Sidebar trên màn hình di động/tablet (< lg) */}
+      {isMobileSidebarOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden flex">
+          <div 
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setIsMobileSidebarOpen(false)}
+          />
+          <div className="relative w-80 max-w-[85vw] h-full bg-white dark:bg-slate-900 shadow-2xl flex flex-col z-10">
+            <div className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800">
+              <span className="font-bold text-sm text-slate-900 dark:text-white">Bộ lọc & Danh mục</span>
+              <button 
+                onClick={() => setIsMobileSidebarOpen(false)}
+                className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500"
               >
-                Đóng góp công cụ
+                <X className="w-5 h-5" />
               </button>
             </div>
+            <div className="flex-1 overflow-y-auto">
+              <Sidebar
+                selectedType={selectedType}
+                setSelectedType={(t) => { setSelectedType(t); setIsMobileSidebarOpen(false); }}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={(c) => { setSelectedCategory(c); setIsMobileSidebarOpen(false); }}
+                selectedPlatform={selectedPlatform}
+                setSelectedPlatform={(p) => { setSelectedPlatform(p); setIsMobileSidebarOpen(false); }}
+                typeCounts={typeCounts}
+                categories={CATEGORIES}
+                totalTools={tools.length}
+                onOpenDocs={() => { setIsDocsOpen(true); setIsMobileSidebarOpen(false); }}
+                onOpenTerminal={() => { setIsTerminalOpen(true); setIsMobileSidebarOpen(false); }}
+                onResetFilters={handleResetFilters}
+              />
+            </div>
           </div>
-        )}
-      </main>
+        </div>
+      )}
 
       {/* Chân trang */}
       <footer className="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-8 text-xs text-slate-500 dark:text-slate-400">

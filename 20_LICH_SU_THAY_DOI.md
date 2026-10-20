@@ -4,6 +4,22 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 1.7.0-LeftSidebarVaHuongDanSieuChiTiet (Ngày 20-10-2026)
+- **Loại hình**: Tái cấu trúc giao diện 2 cột chuyên nghiệp với Left Sidebar cố định và chuẩn hóa hướng dẫn sử dụng/cài đặt siêu chi tiết.
+- **Nội dung hoàn thành**:
+  - **Tích hợp thành phần Left Sidebar cố định (`src/components/Sidebar.tsx`)**:
+    - Bộ lọc phân loại thành phần đa tầng có huy hiệu số lượng công cụ cập nhật theo thời gian thực.
+    - Bộ lọc danh mục chuyên môn với tab `🇻🇳 Thị Trường Việt Nam` nổi bật cùng huy hiệu HOT.
+    - Bộ lọc môi trường AI (Claude Desktop, Antigravity, Cursor AI).
+    - Hỗ trợ giao diện Drawer trượt thông minh cho thiết bị di động/tablet.
+  - **Nâng cấp nội dung hướng dẫn cài đặt và sử dụng siêu chi tiết cho 100% công cụ**:
+    - Chuẩn hóa cấu trúc 4 bước cài đặt: Chuẩn bị môi trường -> Cài đặt lệnh CLI -> Cấu hình JSON & giải thích biến môi trường -> Khởi động và xác nhận kết nối.
+    - Chuẩn hóa kịch bản sử dụng: Ngữ cảnh bài toán thực tế, câu lệnh prompt chi tiết và kết quả trả về dự kiến.
+    - Trang bị đầy đủ ảnh chụp màn hình và ảnh demo banner cho từng công cụ.
+  - **Bổ sung các dự án AI Việt Nam & Quốc tế mới**:
+    - VietOCR, UnderTheSea NLP, Chuyển đổi số tiền thành chữ kế toán, Kiểm tra cấu trúc 12 số CCCD, Tra cứu xử phạt giao thông Nghị định 100, vLLM Inference Engine, Exo Distributed AI, Stanford STORM Research Agent.
+  - **Kiểm thử tự động & Build**: 100% pass qua 5 bài test, đóng gói production thành công.
+
 ### Phiên Bản 1.6.0-AnhDemoVaQuyTrinhWorkflows (Ngày 20-10-2026)
 - **Loại hình**: Tích hợp phân hệ Quy trình tự động hóa (Workflows) và chuẩn hóa ảnh demo (Demo Images) 100% công cụ.
 - **Nội dung hoàn thành**:
