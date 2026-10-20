@@ -21,6 +21,7 @@
     9. Vietcombank Open Banking Corporate Gateway: Cổng ngân hàng mở Vietcombank bảo mật mTLS (vấn tin số dư, trích nợ tự động).
     10. Petrolimex Fuel Price & Invoice Crawler: Bảng giá xăng dầu điều hành và hóa đơn điện tử cột bơm xăng Petrolimex.
   - Quy mô hệ sinh thái: Đạt mốc **1.984 công cụ** và **2.979 mẫu cấu hình JSON**.
+  - Rà soát và chuẩn hóa đường dẫn nguồn (`sourceUrl`): Khắc phục triệt để tình trạng 26 công cụ trỏ tạm thời về repo của dự án; cập nhật 100% về đúng kho lưu trữ GitHub gốc, Developer Portal hoặc Cổng dịch vụ công cơ quan nhà nước.
   - Kiểm thử chất lượng: Toàn bộ 5 bài kiểm thử tự động đạt 100%, đóng gói Vite thành công trong 9.88 giây.
 - [Quản lý dự án]: Khởi tạo tệp mục lục bộ tài liệu thiết kế `index.md`.
 - [Quản lý dự án]: Khởi tạo tệp nhật ký dự án `21_NHAT_KY_DU_AN.md`.

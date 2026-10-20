@@ -5,7 +5,7 @@
 ## 1. Nhật Ký Phiên Bản
 
 ### Phiên Bản 2.0.6-MoRongTaiNguyenThuongHieuLonVietNam (Ngày 20-10-2026)
-- **Loại hình**: Tiếp tục mở rộng đợt 5 với 10 giải pháp công nghệ, API nền tảng và SDK của các tập đoàn, doanh nghiệp và thương hiệu công nghệ lớn hàng đầu tại Việt Nam: Haravan, Tiki, FPT.AI, MISA, Viettel, VNPT, Be Group, Xanh SM, Vietcombank, Petrolimex.
+- **Loại hình**: Tiếp tục mở rộng đợt 5 với 10 giải pháp công nghệ, API nền tảng và SDK của các tập đoàn, doanh nghiệp và thương hiệu công nghệ lớn hàng đầu tại Việt Nam: Haravan, Tiki, FPT.AI, MISA, Viettel, VNPT, Be Group, Xanh SM, Vietcombank, Petrolimex. Đồng thời rà soát và điều chỉnh triệt để liên kết nguồn chính thức (`sourceUrl`) cho toàn bộ 26 công cụ về đúng kho lưu trữ GitHub gốc, Cổng thông tin lập trình viên (Developer Portal) và Cổng dịch vụ công cơ quan nhà nước, xóa bỏ hoàn toàn việc trỏ tạm thời về repo của hệ thống.
 - **Nội dung hoàn thành**:
   - Tích hợp 10 giải pháp nền tảng doanh nghiệp uy tín:
     1. **Haravan App SDK (`@haravan/app-sdk`)**: Bộ phát triển ứng dụng và kết nối API hệ sinh thái thương mại đa kênh Haravan (đồng bộ sản phẩm, đơn hàng, kho hàng vật lý và sàn thương mại điện tử).
