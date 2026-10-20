@@ -8,6 +8,20 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Chức năng Điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn dành cho Admin]:
+  - Xây dựng component `src/components/EditToolTaxonomyModal.tsx`:
+    - Cho phép Quản trị viên thay đổi trực tiếp Loại hình thành phần (`toolType`) và Lĩnh vực chuyên môn (`category`) cho bất kỳ công cụ nào.
+    - Cập nhật đồng bộ các trường `toolType`, `typeNameVi`, `category`, `categoryNameVi` trong hệ thống và lưu ngay vào `localStorage`.
+  - Tích hợp tính năng điều chỉnh phân loại vào nhiều vị trí quản trị thuận tiện:
+    - **Trang Chi tiết công cụ ([`DetailPage.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/pages/DetailPage.tsx))**: Hiển thị nút "Sửa phân loại (Admin)" nổi bật khi người dùng đăng nhập tài khoản Quản trị viên.
+    - **Hàng đợi phê duyệt ([`AdminApprovalModal.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/components/AdminApprovalModal.tsx))**: Tích hợp nút "Sửa phân loại" trên từng thẻ công cụ chờ duyệt, cho phép Admin nắn chỉnh ngay phân loại trước khi bấm Duyệt.
+  - Xây dựng modal Quản trị phân loại hệ thống `src/components/AdminTaxonomyModal.tsx`:
+    - Quản lý 18 Lĩnh vực chuyên môn: Sửa tên tiếng Việt, sửa mô tả, bổ sung thêm lĩnh vực mới.
+    - Quản lý 13 Loại hình thành phần: Sửa tên nhãn hiển thị tiếng Việt, sửa mô tả, bổ sung thêm loại hình mới.
+    - Lưu cấu hình tùy biến vào `localStorage` (`aihub_custom_categories`, `aihub_custom_tool_types`) và có nút khôi phục về mặc định ban đầu.
+    - Tích hợp nút mở nhanh "Phân loại" trên thanh điều hướng `Header.tsx` dành riêng cho Admin.
+  - Viết bài kiểm thử tự động cập nhật phân loại công cụ trong `tests/approval-and-auth.test.js`, đạt 100% tỷ lệ pass.
+  - Đóng gói toàn bộ dự án (`tsc && vite build`) hoàn thành thành công tuyệt đối.
 - [Tích hợp Firebase Google Auth, Phân quyền Admin & Hàng đợi phê duyệt công cụ]:
   - Tích hợp thành công thư viện Firebase SDK (`firebase^13.0.0`) tại `src/lib/firebase.ts`.
   - Hỗ trợ đăng nhập một chạm bằng Google Auth (`signInWithPopup` với `GoogleAuthProvider`), đồng bộ trạng thái đăng nhập qua `subscribeToAuth` và `localStorage`.

@@ -4,6 +4,24 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.19-DieuChinhLoaiHinhVaLinhVucQuyenAdmin (Ngày 20-10-2026)
+- **Loại hình**: Bổ sung tính năng điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn dành riêng cho Quản trị viên (Admin).
+- **Nội dung hoàn thành**:
+  - **Điều chỉnh phân loại từng công cụ cụ thể (`EditToolTaxonomyModal.tsx`)**:
+    - Quản trị viên có thể thay đổi trực tiếp `toolType` (13 loại hình chuẩn) và `category` (18 lĩnh vực chuyên sâu) của bất kỳ công cụ nào.
+    - Cập nhật tự động và đồng bộ cả mã và tên tiếng Việt (`typeNameVi`, `categoryNameVi`), lưu ngay vào `localStorage`.
+  - **Tích hợp vị trí thao tác thuận tiện**:
+    - Trên **Trang chi tiết công cụ (`DetailPage.tsx`)**: Bổ sung nút "Sửa phân loại (Admin)" nổi bật khi đăng nhập tài khoản Quản trị viên.
+    - Trên **Hàng đợi phê duyệt (`AdminApprovalModal.tsx`)**: Bổ sung nút "Sửa phân loại" trên từng thẻ công cụ chờ duyệt, giúp Admin kịp thời nắn chỉnh phân loại trước khi duyệt xuất bản.
+  - **Quản trị phân loại toàn hệ thống (`AdminTaxonomyModal.tsx`)**:
+    - Quản lý 18 Lĩnh vực chuyên môn: Sửa tên tiếng Việt, sửa mô tả, thêm lĩnh vực chuyên môn mới.
+    - Quản lý 13 Loại hình thành phần: Sửa tên nhãn hiển thị tiếng Việt, sửa mô tả, thêm loại hình thành phần mới.
+    - Lưu cấu hình vào `localStorage` (`aihub_custom_categories`, `aihub_custom_tool_types`) và hỗ trợ nút khôi phục về mặc định.
+    - Thêm nút "Phân loại" trên thanh điều hướng `Header.tsx` dành riêng cho Quản trị viên.
+  - **Kiểm thử & Đóng gói**:
+    - Viết thêm bài kiểm thử tự động trong `tests/approval-and-auth.test.js`, đạt 100% (4/4 test cases pass).
+    - Đóng gói Vite và kiểm tra TypeScript hoàn thành xuất sắc 100%.
+
 ### Phiên Bản 2.0.18-FirebaseGoogleAuthVaHangDoiPheDuyet (Ngày 20-10-2026)
 - **Loại hình**: Tích hợp xác thực Firebase Google Auth, cơ chế phân quyền Quản trị viên tối cao (Admin Role) và Hàng đợi phê duyệt công cụ đóng góp hai cấp.
 - **Nội dung hoàn thành**:

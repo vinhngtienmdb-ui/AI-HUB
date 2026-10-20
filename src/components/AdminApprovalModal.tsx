@@ -10,7 +10,8 @@ import {
   Eye, 
   User, 
   Sparkles,
-  Inbox
+  Inbox,
+  Tags
 } from 'lucide-react';
 import { AITool } from '../types';
 import { getAdminEmail, setAdminEmail } from '../lib/firebase';
@@ -22,6 +23,7 @@ interface AdminApprovalModalProps {
   onApproveTool: (toolId: string) => void;
   onRejectTool: (toolId: string, reason?: string) => void;
   onPreviewTool: (tool: AITool) => void;
+  onEditTaxonomy?: (tool: AITool) => void;
 }
 
 export const AdminApprovalModal: React.FC<AdminApprovalModalProps> = ({
@@ -31,6 +33,7 @@ export const AdminApprovalModal: React.FC<AdminApprovalModalProps> = ({
   onApproveTool,
   onRejectTool,
   onPreviewTool,
+  onEditTaxonomy,
 }) => {
   const [rejectReason, setRejectReason] = useState<Record<string, string>>({});
   const [activeRejectId, setActiveRejectId] = useState<string | null>(null);
@@ -147,7 +150,18 @@ export const AdminApprovalModal: React.FC<AdminApprovalModalProps> = ({
                     </h3>
                   </div>
 
-                  <div className="flex items-center space-x-2 text-xs shrink-0">
+                  <div className="flex items-center space-x-2 text-xs shrink-0 flex-wrap gap-y-1.5">
+                    {onEditTaxonomy && (
+                      <button
+                        onClick={() => onEditTaxonomy(tool)}
+                        className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-xl border border-amber-300 dark:border-amber-700/80 text-amber-700 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-amber-950/40 font-semibold shadow-xs"
+                        title="Điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn"
+                      >
+                        <Tags className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+                        <span>Sửa phân loại</span>
+                      </button>
+                    )}
+
                     <button
                       onClick={() => onPreviewTool(tool)}
                       className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-semibold"

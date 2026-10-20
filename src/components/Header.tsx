@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Moon, Sun, BookOpen, Terminal, Menu, X, User, ShieldCheck } from 'lucide-react';
+import { Plus, Moon, Sun, BookOpen, Terminal, Menu, X, User, ShieldCheck, Tags } from 'lucide-react';
 import { ToolType, Category } from '../types';
 
 interface HeaderProps {
@@ -12,6 +12,7 @@ interface HeaderProps {
   isAdmin?: boolean;
   pendingCount?: number;
   onOpenAdminApproval?: () => void;
+  onOpenTaxonomyManager?: () => void;
   onSelectType?: (type: ToolType | 'all') => void;
   onSelectCategory?: (category: Category | 'all') => void;
   onToggleTerminal?: () => void;
@@ -30,6 +31,7 @@ export const Header: React.FC<HeaderProps> = ({
   isAdmin = false,
   pendingCount = 0,
   onOpenAdminApproval,
+  onOpenTaxonomyManager,
   onSelectType,
   onSelectCategory,
   onToggleTerminal,
@@ -146,6 +148,18 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Terminal className="w-3.5 h-3.5 mr-1 text-emerald-500" />
               <span>Terminal</span>
+            </button>
+          )}
+
+          {/* Nút Quản lý Phân loại dành riêng cho Quản trị viên (Admin) */}
+          {isAdmin && onOpenTaxonomyManager && (
+            <button
+              onClick={onOpenTaxonomyManager}
+              className="hidden lg:flex items-center space-x-1 px-2.5 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-semibold transition-all shadow-xs"
+              title="Quản lý Loại hình thành phần và Lĩnh vực chuyên môn"
+            >
+              <Tags className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+              <span>Phân loại</span>
             </button>
           )}
 

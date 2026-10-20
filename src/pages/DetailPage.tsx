@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { 
   ChevronRight, ExternalLink, Bookmark, Star, Users, Calendar, Check, X, 
   Terminal, Copy, CheckCheck, Play, ArrowUpRight, MessageSquare, ShieldCheck, 
-  Sparkles, Layers, Box, Globe, Bot, Server, Folder, Code2, AlertTriangle, Maximize2 
+  Sparkles, Layers, Box, Globe, Bot, Server, Folder, Code2, AlertTriangle, Maximize2,
+  Tags
 } from 'lucide-react';
 import { AITool } from '../types';
 
@@ -16,6 +17,8 @@ interface DetailPageProps {
   isSaved: boolean;
   onToggleSave: () => void;
   isExpanded?: boolean;
+  isAdmin?: boolean;
+  onOpenEditTaxonomy?: (tool: AITool) => void;
 }
 
 export const DetailPage: React.FC<DetailPageProps> = ({
@@ -28,6 +31,8 @@ export const DetailPage: React.FC<DetailPageProps> = ({
   isSaved,
   onToggleSave,
   isExpanded = true,
+  isAdmin = false,
+  onOpenEditTaxonomy,
 }) => {
   const [activeTab, setActiveTab] = useState<'overview' | 'usage' | 'config'>('overview');
   const [copiedConfigIndex, setCopiedConfigIndex] = useState<number | null>(null);
@@ -183,6 +188,19 @@ export const DetailPage: React.FC<DetailPageProps> = ({
                   >
                     <Play className="w-3.5 h-3.5 fill-current" />
                     <span>Chạy lệnh trên máy</span>
+                  </button>
+                )}
+
+                {/* Nút Điều chỉnh phân loại dành riêng cho Quản trị viên */}
+                {isAdmin && onOpenEditTaxonomy && (
+                  <button
+                    type="button"
+                    onClick={() => onOpenEditTaxonomy(tool)}
+                    className="inline-flex items-center space-x-1.5 px-4 py-3 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700 font-bold text-xs transition-all shadow-xs"
+                    title="Điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn (Quyền Admin)"
+                  >
+                    <Tags className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+                    <span>Sửa phân loại (Admin)</span>
                   </button>
                 )}
               </div>

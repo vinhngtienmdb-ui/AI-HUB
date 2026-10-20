@@ -8,6 +8,8 @@ import { ToolCard } from './components/ToolCard';
 import { ToolDetailModal } from './components/ToolDetailModal';
 import { ContributeModal } from './components/ContributeModal';
 import { AdminApprovalModal } from './components/AdminApprovalModal';
+import { EditToolTaxonomyModal } from './components/EditToolTaxonomyModal';
+import { AdminTaxonomyModal } from './components/AdminTaxonomyModal';
 import { DevLifecycleModal } from './components/DevLifecycleModal';
 import { LoginModal } from './components/LoginModal';
 import { TerminalDrawer } from './components/TerminalDrawer';
@@ -24,7 +26,8 @@ import { AccountPage } from './pages/AccountPage';
 
 import { INITIAL_TOOLS, CATEGORIES } from './data/mockTools';
 import { INITIAL_COLLECTIONS, INITIAL_GUIDES } from './data/mockGuidesAndCollections';
-import { AITool, Category, Platform, ToolType, Collection, GuideArticle, PageRoute } from './types';
+import { DEFAULT_TOOL_TYPES, ToolTypeInfo, getToolTypeNameVi, getCategoryNameVi } from './data/taxonomy';
+import { AITool, Category, CategoryInfo, Platform, ToolType, Collection, GuideArticle, PageRoute } from './types';
 import { subscribeToAuth, checkIsAdmin } from './lib/firebase';
 import { 
   SearchX, ChevronLeft, ChevronRight, Layers, Sparkles, Cpu, Terminal, Brain, 
@@ -78,6 +81,36 @@ export const App: React.FC = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isAdminApprovalOpen, setIsAdminApprovalOpen] = useState(false);
 
+  // Quản lý Loại hình thành phần và Lĩnh vực chuyên môn (Quyền Admin)
+  const [isTaxonomyManagerOpen, setIsTaxonomyManagerOpen] = useState(false);
+  const [editingTaxonomyTool, setEditingTaxonomyTool] = useState<AITool | null>(null);
+
+  const [categories, setCategories] = useState<CategoryInfo[]>(() => {
+    const saved = localStorage.getItem('aihub_custom_categories');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      } catch (e) {
+        console.error('Lỗi khi đọc categories từ localStorage:', e);
+      }
+    }
+    return CATEGORIES;
+  });
+
+  const [toolTypes, setToolTypes] = useState<ToolTypeInfo[]>(() => {
+    const saved = localStorage.getItem('aihub_custom_tool_types');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      } catch (e) {
+        console.error('Lỗi khi đọc toolTypes từ localStorage:', e);
+      }
+    }
+    return DEFAULT_TOOL_TYPES;
+  });
+
   const [currentUser, setCurrentUser] = useState<string | null>(() => {
     return localStorage.getItem('aihub_user') || 'thanhvien@aihub.vn';
   });
@@ -123,6 +156,14 @@ export const App: React.FC = () => {
   useEffect(() => {
     localStorage.setItem('aihub_expanded_canvas', JSON.stringify(isExpandedCanvas));
   }, [isExpandedCanvas]);
+
+  useEffect(() => {
+    localStorage.setItem('aihub_custom_categories', JSON.stringify(categories));
+  }, [categories]);
+
+  useEffect(() => {
+    localStorage.setItem('aihub_custom_tool_types', JSON.stringify(toolTypes));
+  }, [toolTypes]);
 
   useEffect(() => {
     localStorage.setItem('aihub_saved_tool_ids', JSON.stringify(savedToolIds));
@@ -278,6 +319,26 @@ export const App: React.FC = () => {
     );
   };
 
+  // Điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn (Dành riêng cho Quản trị viên)
+  const handleUpdateToolTaxonomy = (toolId: string, newType: ToolType, newCategory: Category) => {
+    const newTypeNameVi = getToolTypeNameVi(newType, toolTypes);
+    const newCategoryNameVi = getCategoryNameVi(newCategory, categories);
+
+    setTools((prev) =>
+      prev.map((t) =>
+        t.id === toolId
+          ? {
+              ...t,
+              toolType: newType,
+              typeNameVi: newTypeNameVi,
+              category: newCategory,
+              categoryNameVi: newCategoryNameVi,
+            }
+          : t
+      )
+    );
+  };
+
   // Thống kê số lượng từng loại hình (chỉ tính công cụ đã phát hành công khai)
   const typeCounts = useMemo(() => {
     const counts: Record<string, number> = { all: publishedTools.length };
@@ -363,6 +424,7 @@ export const App: React.FC = () => {
         isAdmin={isAdmin}
         pendingCount={pendingTools.length}
         onOpenAdminApproval={() => setIsAdminApprovalOpen(true)}
+        onOpenTaxonomyManager={() => setIsTaxonomyManagerOpen(true)}
         onSelectType={(type) => navigateTo({ name: 'category', toolType: type })}
         onSelectCategory={(cat) => {
           setSelectedCategory(cat);
@@ -405,6 +467,8 @@ export const App: React.FC = () => {
           isSaved={savedToolIds.includes(currentDetailTool.id)}
           onToggleSave={() => handleToggleSaveTool(currentDetailTool.id)}
           isExpanded={isExpandedCanvas}
+          isAdmin={isAdmin}
+          onOpenEditTaxonomy={(tool) => setEditingTaxonomyTool(tool)}
         />
       )}
 
@@ -526,7 +590,7 @@ export const App: React.FC = () => {
                     setSelectedPlatform={setSelectedPlatform}
                     typeCounts={typeCounts}
                     categoryCounts={categoryCounts}
-                    categories={CATEGORIES}
+                    categories={categories}
                     totalTools={publishedTools.length}
                     onOpenDocs={() => setIsDocsOpen(true)}
                     onOpenTerminal={() => setIsTerminalOpen(true)}
@@ -768,7 +832,7 @@ export const App: React.FC = () => {
                 setSelectedPlatform={(p) => { setSelectedPlatform(p); setIsMobileSidebarOpen(false); }}
                 typeCounts={typeCounts}
                 categoryCounts={categoryCounts}
-                categories={CATEGORIES}
+                categories={categories}
                 totalTools={publishedTools.length}
                 onOpenDocs={() => { setIsMobileSidebarOpen(false); setIsDocsOpen(true); }}
                 onOpenTerminal={() => { setIsMobileSidebarOpen(false); setIsTerminalOpen(true); }}
@@ -802,6 +866,33 @@ export const App: React.FC = () => {
         onApproveTool={handleApproveTool}
         onRejectTool={handleRejectTool}
         onPreviewTool={(tool) => setSelectedModalTool(tool)}
+        onEditTaxonomy={(tool) => setEditingTaxonomyTool(tool)}
+      />
+
+      {/* Modal Điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn cho một công cụ cụ thể */}
+      <EditToolTaxonomyModal
+        isOpen={editingTaxonomyTool !== null}
+        onClose={() => setEditingTaxonomyTool(null)}
+        tool={editingTaxonomyTool}
+        onSave={handleUpdateToolTaxonomy}
+        customTypes={toolTypes}
+        customCategories={categories}
+      />
+
+      {/* Modal Quản trị Phân loại hệ thống (Taxonomy Manager) */}
+      <AdminTaxonomyModal
+        isOpen={isTaxonomyManagerOpen}
+        onClose={() => setIsTaxonomyManagerOpen(false)}
+        categories={categories}
+        toolTypes={toolTypes}
+        onSaveCategories={(newCats) => setCategories(newCats)}
+        onSaveToolTypes={(newTypes) => setToolTypes(newTypes)}
+        onResetToDefault={() => {
+          setCategories(CATEGORIES);
+          setToolTypes(DEFAULT_TOOL_TYPES);
+          localStorage.removeItem('aihub_custom_categories');
+          localStorage.removeItem('aihub_custom_tool_types');
+        }}
       />
 
       {/* Modal xem nhanh chi tiết công cụ */}

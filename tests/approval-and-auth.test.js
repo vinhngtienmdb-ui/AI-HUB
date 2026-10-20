@@ -85,3 +85,48 @@ test('Kiểm tra hàng đợi phê duyệt của Admin: Duyệt công cụ thàn
   assert.equal(publishedOnly.length, 1);
   assert.equal(publishedOnly[0].id, 'tool-001');
 });
+
+test('Kiểm tra điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn (Admin Taxonomy Update)', () => {
+  const initialTool = {
+    id: 'tool-test-taxonomy',
+    name: 'Thư viện SDK Thanh toán',
+    toolType: 'mcp',
+    typeNameVi: 'MCP Server',
+    category: 'software_development',
+    categoryNameVi: 'Lập trình & Kỹ thuật phần mềm',
+  };
+
+  // Hàm mô phỏng cập nhật phân loại
+  function updateToolTaxonomy(tool, newType, newCategory) {
+    const typeNames = {
+      sdk: 'SDK',
+      mcp: 'MCP Server',
+      skill: 'Skill',
+      agent: 'Agent',
+      api: 'API',
+      software: 'Phần mềm',
+    };
+    const catNames = {
+      finance_payment: 'Tài chính, Ngân hàng & Thanh toán',
+      accounting_tax: 'Kế toán, Thuế & Hóa đơn',
+      software_development: 'Lập trình & Kỹ thuật phần mềm',
+    };
+
+    return {
+      ...tool,
+      toolType: newType,
+      typeNameVi: typeNames[newType] || newType,
+      category: newCategory,
+      categoryNameVi: catNames[newCategory] || newCategory,
+    };
+  }
+
+  // Admin đổi từ mcp -> sdk và từ software_development -> finance_payment
+  const updatedTool = updateToolTaxonomy(initialTool, 'sdk', 'finance_payment');
+
+  assert.equal(updatedTool.toolType, 'sdk', 'Loại hình thành phần phải được cập nhật sang sdk');
+  assert.equal(updatedTool.typeNameVi, 'SDK', 'Tên loại hình tiếng Việt phải là SDK');
+  assert.equal(updatedTool.category, 'finance_payment', 'Lĩnh vực chuyên môn phải là finance_payment');
+  assert.equal(updatedTool.categoryNameVi, 'Tài chính, Ngân hàng & Thanh toán');
+});
+
