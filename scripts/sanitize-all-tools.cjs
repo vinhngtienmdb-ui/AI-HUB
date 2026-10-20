@@ -46,46 +46,70 @@ for (let i = 0; i < tools.length; i++) {
 
   // 4. ToolType & TypeNameVi
   if (!t.toolType) {
-    const rawType = (t.type || '').toLowerCase();
+    const rawType = (t.type || t.category || '').toLowerCase();
     if (rawType.includes('mcp')) {
       t.toolType = 'mcp';
-      t.typeNameVi = 'Máy Chủ MCP';
+      t.typeNameVi = 'MCP Server';
     } else if (rawType.includes('agent')) {
       t.toolType = 'agent';
-      t.typeNameVi = 'Tác Tử AI';
+      t.typeNameVi = 'Agent';
     } else if (rawType.includes('command')) {
       t.toolType = 'command';
-      t.typeNameVi = 'Lệnh Phím Tắt';
+      t.typeNameVi = 'Command';
     } else if (rawType.includes('template')) {
       t.toolType = 'template';
-      t.typeNameVi = 'Bản Mẫu Dự Án';
+      t.typeNameVi = 'Template';
     } else if (rawType.includes('hook')) {
       t.toolType = 'hook';
-      t.typeNameVi = 'Móc Nối Tự Động';
+      t.typeNameVi = 'Hook';
     } else if (rawType.includes('setting')) {
       t.toolType = 'setting';
-      t.typeNameVi = 'Cấu Hình Môi Trường';
+      t.typeNameVi = 'Setting';
     } else if (rawType.includes('workflow')) {
       t.toolType = 'workflow';
-      t.typeNameVi = 'Quy Trình Tự Động';
+      t.typeNameVi = 'Workflow';
     } else {
       t.toolType = 'skill';
-      t.typeNameVi = 'Kỹ Năng Tác Tử';
+      t.typeNameVi = 'Skill';
     }
     modified = true;
   }
-  if (!t.typeNameVi) {
-    switch (t.toolType) {
-      case 'mcp': t.typeNameVi = 'Máy Chủ MCP'; break;
-      case 'agent': t.typeNameVi = 'Tác Tử AI'; break;
-      case 'command': t.typeNameVi = 'Lệnh Phím Tắt'; break;
-      case 'template': t.typeNameVi = 'Bản Mẫu Dự Án'; break;
-      case 'hook': t.typeNameVi = 'Móc Nối Tự Động'; break;
-      case 'setting': t.typeNameVi = 'Cấu Hình Môi Trường'; break;
-      case 'workflow': t.typeNameVi = 'Quy Trình Tự Động'; break;
-      default: t.typeNameVi = 'Kỹ Năng Tác Tử'; break;
-    }
-    modified = true;
+  
+  // Chuẩn hóa typeNameVi không dịch nghĩa theo yêu cầu
+  switch (t.toolType.toLowerCase()) {
+    case 'mcp':
+    case 'mcp server':
+      t.toolType = 'mcp';
+      t.typeNameVi = 'MCP Server';
+      break;
+    case 'agent':
+      t.toolType = 'agent';
+      t.typeNameVi = 'Agent';
+      break;
+    case 'command':
+      t.toolType = 'command';
+      t.typeNameVi = 'Command';
+      break;
+    case 'template':
+      t.toolType = 'template';
+      t.typeNameVi = 'Template';
+      break;
+    case 'hook':
+      t.toolType = 'hook';
+      t.typeNameVi = 'Hook';
+      break;
+    case 'setting':
+      t.toolType = 'setting';
+      t.typeNameVi = 'Setting';
+      break;
+    case 'workflow':
+      t.toolType = 'workflow';
+      t.typeNameVi = 'Workflow';
+      break;
+    default:
+      t.toolType = 'skill';
+      t.typeNameVi = 'Skill';
+      break;
   }
 
   // 5. Category & CategoryNameVi
@@ -201,6 +225,24 @@ for (let i = 0; i < tools.length; i++) {
       }
     ];
     modified = true;
+  } else {
+    for (const cfg of t.configs) {
+      if (!cfg.jsonConfig && cfg.config) {
+        cfg.jsonConfig = cfg.config;
+        modified = true;
+      }
+      if (!cfg.platformName) {
+        if (cfg.platform === 'claude' || cfg.platform === 'claude_desktop') cfg.platformName = 'Claude Desktop';
+        else if (cfg.platform === 'antigravity') cfg.platformName = 'Google Antigravity';
+        else if (cfg.platform === 'cursor') cfg.platformName = 'Cursor IDE';
+        else cfg.platformName = cfg.platform;
+        modified = true;
+      }
+      if (!cfg.cliCommand) {
+        cfg.cliCommand = `npx -y @aihub/${t.id}`;
+        modified = true;
+      }
+    }
   }
 
   if (modified) {

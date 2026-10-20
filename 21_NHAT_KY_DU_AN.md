@@ -304,6 +304,16 @@
     - Unit tests: 5/5 bài kiểm tra đạt 100%.
     - Đóng gói Vite hoàn tất trong 8.33 giây.
 
+- [Mở Rộng Thu Thập Tài Nguyên Thương Hiệu Lớn Việt Nam Đợt 9 với 50 công cụ]:
+  - **Mục tiêu**: Bổ sung tự động đợt 9 gồm 50 công cụ & dịch vụ từ các chuỗi bán lẻ công nghệ, chuỗi nhà thuốc lớn, nền tảng điện toán đám mây và viễn thông quốc gia, EdTech giáo dục trực tuyến, an toàn thông tin không gian mạng, dịch vụ công 5 thành phố trực thuộc Trung ương, bất động sản và các chuỗi F&B tiêu biểu tại Việt Nam.
+  - **Tài nguyên tích hợp (Đợt 9)**:
+    - 50 công cụ & dịch vụ: Thế Giới Di Động, FPT Shop, Điện Máy Xanh, CellphoneS, Hoàng Hà Mobile, Yody, Canifa, IVY moda, FPT Long Châu, An Khang, Pharmacity, DHG Pharma, Traphaco, Viettel Cloud (Viettel IDC), VNPT Cloud, CMC Cloud, FPT Cloud, Bizfly Cloud (VCCorp), MobiFone MEGAPAY, VinaPhone Brandname SMS, Viettel Post, Vuihoc, HOCMAI, TOPICA, Monkey Junior, Prep.vn IELTS, Viettel Cyber Security (VCS), Bkav SafeGate, CMC Cyber Security, VnCoreNLP (ĐHQGHN), VinAI PhoGPT, VAST Speech & NLP, Cổng DVC Hà Nội, Cổng DVC TP.HCM, Cổng DVC Đà Nẵng, Cổng DVC Hải Phòng, Cổng DVC Cần Thơ, Cổng Tra cứu văn bản QPPL Bộ Tư pháp, Cổng Tra cứu BHXH & BHYT, Hệ thống Tiêm chủng quốc gia, Batdongsan.com.vn (PropertyGuru), Alonhadat, Chợ Tốt (ChoTot), Be Group, Xanh SM (GSM), Mailisa Spa, Golden Gate Group (The Golden Spoon), RedSun ITI, Highlands Coffee, The Coffee House.
+    - Nâng tổng số lượng công cụ lên **2.144 công cụ** và **3.459 mẫu cấu hình JSON thực thi**.
+  - **Kiểm thử & Đóng gói**:
+    - `npx tsc --noEmit`: 0 lỗi.
+    - Unit tests: 5/5 bài kiểm tra đạt 100%.
+    - Đóng gói Vite hoàn tất trong 8.10 giây.
+
 ### Quyết định kỹ thuật
 - **Định dạng cấu hình mẫu**: Hỗ trợ xuất cấu hình nhanh dạng JSON cho các nền tảng phổ biến (Claude Desktop, Antigravity, Cursor, Windsurf, v.v.).
 - **Ngôn ngữ nội dung**: Mọi hướng dẫn cài đặt, cấu hình và kịch bản sử dụng mẫu bắt buộc phải có nội dung diễn giải bằng tiếng Việt rõ ràng, kèm lệnh mẫu có thể sao chép bằng một nút bấm.
