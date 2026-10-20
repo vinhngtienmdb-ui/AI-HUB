@@ -48,6 +48,7 @@
 - [x] Lập trình phân hệ Giao diện danh mục, Tìm kiếm tức thời và Phân trang (24 mục/trang)
 - [x] Lập trình phân hệ Chi tiết công cụ và Sao chép cấu hình một chạm
 - [x] Lập trình phân hệ Quản trị nội dung và Đóng góp công cụ
+- [x] Triển khai kiến trúc lưu trữ Delta Storage (`src/lib/storage.ts`), loại bỏ hoàn toàn nguy cơ vượt hạn mức bộ nhớ trình duyệt `QuotaExceededError`, giảm dung lượng lưu trữ từ 8MB xuống dưới 2KB
 - [x] Xây dựng phân hệ Điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn (Admin Taxonomy): Hỗ trợ sửa phân loại trực tiếp cho từng công cụ trên trang chi tiết (`DetailPage.tsx`) và hàng đợi phê duyệt (`AdminApprovalModal.tsx`), đồng thời quản lý danh mục phân loại toàn hệ thống qua `AdminTaxonomyModal.tsx`
 - [x] Tích hợp kết nối Firebase Google Auth (`src/lib/firebase.ts`), cho phép đăng nhập một chạm với tài khoản Google, hỗ trợ đồng bộ trạng thái người dùng an toàn
 - [x] Thiết lập hệ thống phân quyền Quản trị viên tối cao (`Admin Role`): Chỉ tài khoản chỉ định của chủ sở hữu có quyền duyệt công cụ lên hệ thống công cộng

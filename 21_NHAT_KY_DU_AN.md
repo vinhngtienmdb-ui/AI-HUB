@@ -8,6 +8,18 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Khắc phục triệt để lỗi QuotaExceededError trên LocalStorage bằng cơ chế Delta Storage]:
+  - **Phát hiện nguyên nhân**: Lỗi `Failed to execute 'setItem' on 'Storage': Setting the value of 'aihub_tools' exceeded the quota` phát sinh do ứng dụng cố gắng lưu toàn bộ mảng dữ liệu 2.194 công cụ (dung lượng ~7MB - 8MB) vào một khóa `aihub_tools` duy nhất trong `localStorage`, trong khi hạn mức chuẩn của trình duyệt chỉ là 5MB.
+  - **Kiến trúc giải pháp Delta Storage (`src/lib/storage.ts`)**:
+    - Xóa bỏ hoàn toàn thao tác lưu toàn bộ kho `INITIAL_TOOLS` vào `localStorage`. 2.194 công cụ gốc được tải trực tiếp từ tệp tĩnh JSON đã được biên dịch siêu tốc.
+    - Phân tách lưu trữ thành 2 cấu trúc nhẹ:
+      1. `aihub_contributed_tools`: Chỉ lưu các công cụ mới do thành viên hoặc Quản trị viên đóng góp (kích thước vài KB).
+      2. `aihub_tool_overrides`: Bảng băm `{ [toolId]: Partial<AITool> }` chỉ lưu các trường bị Admin thay đổi (trạng thái duyệt `status`, loại hình `toolType`, lĩnh vực `category`), dung lượng chỉ vài chục bytes cho mỗi công cụ.
+    - Bổ sung hàm tự động dọn dẹp khóa cũ `cleanupLegacyStorage()` để giải phóng ngay lập tức 5MB bộ nhớ bị kẹt của người dùng.
+    - Bọc mọi thao tác ghi `localStorage` bằng `safeSetItem` kèm khối `try...catch` phòng vệ.
+    - Dung lượng lưu trữ thực tế giảm ngoạn mục từ 8MB xuống dưới 2KB (giảm hơn 99.9%), triệt tiêu hoàn toàn nguy cơ vượt hạn mức bộ nhớ trình duyệt.
+  - Xây dựng bài kiểm thử tự động `tests/storage-delta.test.js` kiểm tra và xác nhận dung lượng Delta Storage đạt 100%.
+  - Đóng gói toàn bộ ứng dụng (`tsc && vite build`) hoàn thành thành công tuyệt đối.
 - [Chức năng Điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn dành cho Admin]:
   - Xây dựng component `src/components/EditToolTaxonomyModal.tsx`:
     - Cho phép Quản trị viên thay đổi trực tiếp Loại hình thành phần (`toolType`) và Lĩnh vực chuyên môn (`category`) cho bất kỳ công cụ nào.

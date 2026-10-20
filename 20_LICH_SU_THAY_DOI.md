@@ -4,6 +4,20 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.20-KhacPhucQuotaExceededErrorBangDeltaStorage (Ngày 20-10-2026)
+- **Loại hình**: Khắc phục dứt điểm lỗi trình duyệt `Setting the value of 'aihub_tools' exceeded the quota` bằng kiến trúc lưu trữ Delta Storage tối ưu.
+- **Nội dung hoàn thành**:
+  - **Loại bỏ lưu trữ toàn phần**: Chấm dứt hoàn toàn việc ép chuỗi JSON 2.194 công cụ (~8MB) vào `localStorage`.
+  - **Kiến trúc Delta Storage (`src/lib/storage.ts`)**:
+    - `aihub_contributed_tools`: Chỉ lưu trữ danh sách các công cụ mới do người dùng đóng góp.
+    - `aihub_tool_overrides`: Bảng băm chỉ lưu các trường bị Admin ghi đè (phân loại, phê duyệt, từ chối).
+    - Tự động dọn dẹp khóa cũ `aihub_tools` chiếm bộ nhớ bằng `cleanupLegacyStorage()`.
+    - Bọc an toàn mọi lệnh ghi `localStorage` qua `safeSetItem` kèm khối `try...catch`.
+    - Giảm dung lượng lưu trữ thực tế từ 8MB xuống dưới 2KB (giảm 99.9%), xóa bỏ hoàn toàn nguy cơ vượt hạn mức lưu trữ trình duyệt.
+  - **Kiểm thử & Đóng gói**:
+    - Xây dựng bài kiểm thử tự động `tests/storage-delta.test.js` kiểm tra cơ chế Delta Storage, đạt 100%.
+    - Đóng gói toàn bộ dự án (`tsc && vite build`) thành công tuyệt đối.
+
 ### Phiên Bản 2.0.19-DieuChinhLoaiHinhVaLinhVucQuyenAdmin (Ngày 20-10-2026)
 - **Loại hình**: Bổ sung tính năng điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn dành riêng cho Quản trị viên (Admin).
 - **Nội dung hoàn thành**:

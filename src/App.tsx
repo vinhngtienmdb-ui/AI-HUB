@@ -29,6 +29,7 @@ import { INITIAL_COLLECTIONS, INITIAL_GUIDES } from './data/mockGuidesAndCollect
 import { DEFAULT_TOOL_TYPES, ToolTypeInfo, getToolTypeNameVi, getCategoryNameVi } from './data/taxonomy';
 import { AITool, Category, CategoryInfo, Platform, ToolType, Collection, GuideArticle, PageRoute } from './types';
 import { subscribeToAuth, checkIsAdmin } from './lib/firebase';
+import { loadAllTools, saveContributedTool, saveToolOverride, cleanupLegacyStorage } from './lib/storage';
 import { 
   SearchX, ChevronLeft, ChevronRight, Layers, Sparkles, Cpu, Terminal, Brain, 
   FolderGit2, Wrench, Workflow, SlidersHorizontal, X, LayoutGrid, List, 
@@ -38,21 +39,8 @@ import {
 const PAGE_SIZE = 24;
 
 export const App: React.FC = () => {
-  // Dữ liệu cốt lõi có lưu giữ trạng thái phê duyệt qua LocalStorage
-  const [tools, setTools] = useState<AITool[]>(() => {
-    const saved = localStorage.getItem('aihub_tools');
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
-        }
-      } catch (e) {
-        console.error('Lỗi khi đọc danh sách tools từ localStorage:', e);
-      }
-    }
-    return INITIAL_TOOLS;
-  });
+  // Dữ liệu cốt lõi: Khởi tạo an toàn kết hợp INITIAL_TOOLS với các công cụ đóng góp & ghi đè phân loại (tránh tràn quota localStorage)
+  const [tools, setTools] = useState<AITool[]>(() => loadAllTools());
 
   const [collections, setCollections] = useState<Collection[]>(() => {
     const saved = localStorage.getItem('aihub_collections');
@@ -148,10 +136,11 @@ export const App: React.FC = () => {
     setIsAdmin(checkIsAdmin(currentUser));
   }, [currentUser]);
 
-  // Lưu danh sách công cụ vào localStorage mỗi khi có cập nhật (thêm mới hoặc phê duyệt)
+  // Tự động dọn dẹp khóa cũ aihub_tools để giải phóng quota localStorage
   useEffect(() => {
-    localStorage.setItem('aihub_tools', JSON.stringify(tools));
-  }, [tools]);
+    cleanupLegacyStorage();
+  }, []);
+
   // Lưu trạng thái vào localStorage
   useEffect(() => {
     localStorage.setItem('aihub_expanded_canvas', JSON.stringify(isExpandedCanvas));
@@ -287,36 +276,31 @@ export const App: React.FC = () => {
       reviewNote: isOwner ? 'Đã được Quản trị viên phê duyệt trực tiếp' : 'Đang chờ Quản trị viên kiểm duyệt',
     };
     setTools((prev) => [toolToAdd, ...prev]);
+    saveContributedTool(toolToAdd);
   };
 
   // Phê duyệt công cụ từ hàng đợi kiểm duyệt (dành riêng cho Quản trị viên)
   const handleApproveTool = (toolId: string) => {
+    const updateData = {
+      status: 'published' as const,
+      reviewNote: 'Đã được Quản trị viên AI HUB VN phê duyệt chính thức',
+    };
     setTools((prev) =>
-      prev.map((t) =>
-        t.id === toolId
-          ? {
-              ...t,
-              status: 'published',
-              reviewNote: 'Đã được Quản trị viên AI HUB VN phê duyệt chính thức',
-            }
-          : t
-      )
+      prev.map((t) => (t.id === toolId ? { ...t, ...updateData } : t))
     );
+    saveToolOverride(toolId, updateData);
   };
 
   // Từ chối công cụ với lý do cụ thể (dành riêng cho Quản trị viên)
   const handleRejectTool = (toolId: string, reason?: string) => {
+    const updateData = {
+      status: 'rejected' as const,
+      reviewNote: reason || 'Chưa đáp ứng đầy đủ tiêu chuẩn kiểm duyệt của AI HUB VN',
+    };
     setTools((prev) =>
-      prev.map((t) =>
-        t.id === toolId
-          ? {
-              ...t,
-              status: 'rejected',
-              reviewNote: reason || 'Chưa đáp ứng đầy đủ tiêu chuẩn kiểm duyệt của AI HUB VN',
-            }
-          : t
-      )
+      prev.map((t) => (t.id === toolId ? { ...t, ...updateData } : t))
     );
+    saveToolOverride(toolId, updateData);
   };
 
   // Điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn (Dành riêng cho Quản trị viên)
@@ -324,19 +308,17 @@ export const App: React.FC = () => {
     const newTypeNameVi = getToolTypeNameVi(newType, toolTypes);
     const newCategoryNameVi = getCategoryNameVi(newCategory, categories);
 
+    const updateData = {
+      toolType: newType,
+      typeNameVi: newTypeNameVi,
+      category: newCategory,
+      categoryNameVi: newCategoryNameVi,
+    };
+
     setTools((prev) =>
-      prev.map((t) =>
-        t.id === toolId
-          ? {
-              ...t,
-              toolType: newType,
-              typeNameVi: newTypeNameVi,
-              category: newCategory,
-              categoryNameVi: newCategoryNameVi,
-            }
-          : t
-      )
+      prev.map((t) => (t.id === toolId ? { ...t, ...updateData } : t))
     );
+    saveToolOverride(toolId, updateData);
   };
 
   // Thống kê số lượng từng loại hình (chỉ tính công cụ đã phát hành công khai)
