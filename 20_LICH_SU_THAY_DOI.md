@@ -4,6 +4,32 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 1.9.0-ThietKeTrangChuAIHubVNTheoChuanMau (Ngày 20-10-2026)
+- **Loại hình**: Thiết kế và phát triển lại toàn diện giao diện trang chủ AI HUB VN theo phong cách SaaS hiện đại, tinh tế và chuyên nghiệp.
+- **Nội dung hoàn thành**:
+  - **4.1. Thanh điều hướng (Header)**:
+    - Logo chuẩn nhận diện AI HUB VN: Biểu tượng 3 nút tròn liên kết gradient tím/xanh kết hợp tên thương hiệu font chữ đậm sang trọng.
+    - Hệ thống menu điều hướng trung tâm: `Công cụ AI`, `MCP Servers`, `Agent Skills`, `Bộ sưu tập Việt Nam`, `Hướng dẫn & Quy trình VibeCode`.
+    - Cụm tác vụ bên phải: Nút `Đăng nhập` (tích hợp `LoginModal`), nút `+ Đóng góp tài nguyên` màu tím nổi bật, nút `Terminal` thực thi lệnh cục bộ và công tắc chuyển đổi chế độ Sáng / Tối.
+  - **4.2. Khu vực giới thiệu chính (Hero Section)**:
+    - Huy hiệu nổi bật: `KHO TÀI NGUYÊN AI CHO NGƯỜI VIỆT` bo tròn tinh tế.
+    - Tiêu đề lớn ấn tượng: `Tìm đúng công cụ AI. / Làm việc hiệu quả hơn.` (với chữ `công cụ AI.` hiệu ứng gradient tím - xanh).
+    - Khung tìm kiếm trung tâm lớn bo tròn mềm mại, nút `Tìm kiếm` màu tím nổi bật.
+    - Dải phím tắt theo nhu cầu công việc (Tags): `</> Lập trình`, `⚗ Nghiên cứu`, `✎ Tạo nội dung`, `⚙ Tự động hóa`, `🎨 Thiết kế`, `💼 Văn phòng` (khi nhấn sẽ lọc danh mục tức thì và cuộn mượt đến kho tài nguyên).
+  - **4.3. Ba thẻ nhóm tài nguyên chính (Main Category Cards)**:
+    - `Công cụ AI`: Biểu tượng Robot tím pastel, mô tả "Ứng dụng thông minh cho công việc".
+    - `MCP Servers`: Biểu tượng Server xanh dương pastel, mô tả "Kết nối mô hình AI với dữ liệu và dịch vụ".
+    - `Agent Skills`: Biểu tượng Ngôi sao xanh ngọc pastel, mô tả "Bộ kỹ năng cho tác nhân AI".
+  - **4.4. Khám phá tài nguyên nổi bật (Featured Resources)**:
+    - 3 thẻ tiêu biểu: `GitHub Copilot` (Công cụ AI), `Filesystem MCP` (MCP Server), `Code Review` (Agent Skill).
+    - Hiển thị đầy đủ thông số: Sao đánh giá (⭐ 4.6 - 4.8), lượt dùng (6.8k - 12.5k), ngày cập nhật, nút "Xem chi tiết ↗" mở ngay modal 4 khối thông tin.
+  - **4.5. Chọn theo nhu cầu (Browse by Needs)**:
+    - 4 thẻ nhu cầu công việc dạng lưới: `Phát triển phần mềm`, `Marketing & nội dung`, `Phân tích dữ liệu`, `Tự động hóa quy trình`.
+  - **4.6. Chân trang (Footer) & Modal Đăng Nhập (LoginModal)**:
+    - Tích hợp `LoginModal.tsx` hỗ trợ đăng nhập qua GitHub và Email.
+    - Chân trang `Footer.tsx` đầy đủ thông tin bản quyền mã nguồn mở MIT, liên kết tài liệu thiết kế và cộng đồng.
+  - **Kiểm thử tự động & Đóng gói**: Đạt 5/5 bài kiểm thử unit test tự động (100% pass), đóng gói `npm run build` hoàn thành trong 10.21 giây.
+
 ### Phiên Bản 1.8.0-MoRongKhungLamViecVaChuanHoaAnhDemoRepo (Ngày 20-10-2026)
 - **Loại hình**: Mở rộng khung làm việc (Workspace Expansion), chuẩn hóa ảnh demo theo repo thực tế kèm ghi chú rõ ràng, và mở rộng thêm kho lưu trữ GitHub, GitLab.
 - **Nội dung hoàn thành**:

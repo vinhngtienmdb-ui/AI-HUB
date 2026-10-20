@@ -156,6 +156,20 @@
   - Kiểm thử tự động đạt 100% qua 5 bài test (3 unit test quy tắc nghiệp vụ + 2 unit test an toàn câu lệnh).
   - Đóng gói bản phát hành `dist/` thành công không có bất kỳ cảnh báo hoặc lỗi nào.
 
+- [Nhiệm Vụ 1: Thiết Kế Và Phát Triển Toàn Diện Giao Diện Trang Chủ AI HUB VN Chuẩn Mẫu]:
+  - **Khảo sát và đối chiếu yêu cầu**:
+    - Khảo sát website https://ai-hub-vn.vercel.app/ và ảnh thiết kế mẫu đính kèm (`media_1792473409782_a59ac630.png`).
+    - Xác định danh sách thành phần giữ nguyên (1.930 công cụ, 2.925 JSON, 4 khối thông tin bắt buộc, Cầu nối terminal, Bộ lọc dữ liệu đa tầng).
+  - **Thiết kế lại 5 khu vực trọng tâm**:
+    - **4.1. Thanh điều hướng (Header)**: Logo 3 hạt mạng AI nodes tím/xanh, menu trung tâm (Công cụ AI, MCP Servers, Agent Skills, Bộ sưu tập Việt Nam, Hướng dẫn), nút Đăng nhập và nút "+ Đóng góp tài nguyên" nổi bật.
+    - **4.2. Khu vực giới thiệu chính (Hero Section)**: Huy hiệu `KHO TÀI NGUYÊN AI CHO NGƯỜI VIỆT`, tiêu đề lớn `Tìm đúng công cụ AI. / Làm việc hiệu quả hơn.`, ô tìm kiếm lớn bo tròn mềm mại và dải tags nhu cầu công việc (Lập trình, Nghiên cứu, Tạo nội dung, Tự động hóa, Thiết kế, Văn phòng).
+    - **4.3. Ba thẻ nhóm tài nguyên chính (MainCategoryCards)**: Công cụ AI (Robot tím), MCP Servers (Server xanh), Agent Skills (Ngôi sao xanh ngọc) có hiệu ứng hover và điều hướng cuộn mượt.
+    - **4.4. Khám phá tài nguyên nổi bật (FeaturedResources)**: GitHub Copilot, Filesystem MCP, Code Review với thông số đánh giá sao, lượt dùng, ngày cập nhật và nút Xem chi tiết ↗.
+    - **4.5. Chọn theo nhu cầu (BrowseByNeeds)**: Phát triển phần mềm, Marketing & nội dung, Phân tích dữ liệu, Tự động hóa quy trình.
+    - **4.6. Khu vực bổ sung & Chân trang (Footer, LoginModal)**: Tạo `LoginModal.tsx` hỗ trợ đăng nhập GitHub/Email; xây dựng `Footer.tsx` chuẩn mực.
+  - **Kết nối mượt mà vào Kho tài nguyên toàn diện 1.930+ mục** với Left Sidebar, chế độ Lưới/Bảng và Terminal Bridge.
+  - **Kiểm thử tự động & Build**: 100% pass qua 5 bài kiểm tra, biên dịch `npm run build` hoàn tất xuất sắc.
+
 ### Quyết định kỹ thuật
 - **Định dạng cấu hình mẫu**: Hỗ trợ xuất cấu hình nhanh dạng JSON cho các nền tảng phổ biến (Claude Desktop, Antigravity, Cursor, Windsurf, v.v.).
 - **Ngôn ngữ nội dung**: Mọi hướng dẫn cài đặt, cấu hình và kịch bản sử dụng mẫu bắt buộc phải có nội dung diễn giải bằng tiếng Việt rõ ràng, kèm lệnh mẫu có thể sao chép bằng một nút bấm.
