@@ -15,6 +15,7 @@ interface DetailPageProps {
   onExecuteCommand: (command: string) => void;
   isSaved: boolean;
   onToggleSave: () => void;
+  isExpanded?: boolean;
 }
 
 export const DetailPage: React.FC<DetailPageProps> = ({
@@ -26,6 +27,7 @@ export const DetailPage: React.FC<DetailPageProps> = ({
   onExecuteCommand,
   isSaved,
   onToggleSave,
+  isExpanded = true,
 }) => {
   const [activeTab, setActiveTab] = useState<'overview' | 'usage' | 'config'>('overview');
   const [copiedConfigIndex, setCopiedConfigIndex] = useState<number | null>(null);
@@ -78,7 +80,7 @@ export const DetailPage: React.FC<DetailPageProps> = ({
       
       {/* THANH BREADCRUMB PHÂN CẤP */}
       <div className="bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800 py-3.5 transition-colors">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`w-full mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${isExpanded ? 'max-w-[98%]' : 'max-w-6xl'}`}>
           <nav className="flex items-center space-x-2 text-xs text-slate-500 dark:text-slate-400 font-medium">
             <button onClick={onNavigateHome} className="hover:text-indigo-600 transition-colors">
               Trang chủ
@@ -95,7 +97,7 @@ export const DetailPage: React.FC<DetailPageProps> = ({
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
+      <div className={`w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8 transition-all duration-300 ${isExpanded ? 'max-w-[98%]' : 'max-w-6xl'}`}>
         
         {/* KHỐI ĐẦU TRANG: THÔNG TIN TỔNG QUAN & NÚT HÀNH ĐỘNG CHÍNH */}
         <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm">

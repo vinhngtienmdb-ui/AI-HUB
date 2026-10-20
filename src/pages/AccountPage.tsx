@@ -10,6 +10,7 @@ interface AccountPageProps {
   onSelectTool: (tool: AITool) => void;
   onOpenContribute: () => void;
   onLogout: () => void;
+  isExpanded?: boolean;
 }
 
 export const AccountPage: React.FC<AccountPageProps> = ({
@@ -20,6 +21,7 @@ export const AccountPage: React.FC<AccountPageProps> = ({
   onSelectTool,
   onOpenContribute,
   onLogout,
+  isExpanded = true,
 }) => {
   const [activeTab, setActiveTab] = useState<'saved' | 'collections'>('saved');
 
@@ -28,7 +30,7 @@ export const AccountPage: React.FC<AccountPageProps> = ({
       
       {/* BREADCRUMB */}
       <div className="bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800 py-3.5 transition-colors">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`w-full mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${isExpanded ? 'max-w-[98%]' : 'max-w-6xl'}`}>
           <nav className="flex items-center space-x-2 text-xs text-slate-500 dark:text-slate-400 font-medium">
             <button onClick={onNavigateHome} className="hover:text-indigo-600 transition-colors">
               Trang chủ
@@ -41,7 +43,7 @@ export const AccountPage: React.FC<AccountPageProps> = ({
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
+      <div className={`w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8 transition-all duration-300 ${isExpanded ? 'max-w-[98%]' : 'max-w-6xl'}`}>
         
         {/* CARD HỒ SƠ NGƯỜI DÙNG */}
         <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-6">

@@ -54,7 +54,7 @@
 - [x] Phân chia hệ thống danh mục thành 10 Lĩnh vực chuyên môn tiếng Việt: Tài chính, Ngân hàng & Thuế; Trí tuệ nhân tạo & Dữ liệu; Lập trình & Kỹ thuật phần mềm; Tự động hóa hệ thống & Web; Thương mại điện tử & Bán lẻ; Vận tải & Giao vận; Doanh nghiệp & Quản trị; Pháp luật & Hành chính công; Viễn thông & Chăm sóc khách hàng; Nhân sự & Tuyển dụng
 - [x] Triển khai ErrorBoundary toàn cục và cơ chế phòng vệ dữ liệu triệt để, khắc phục hoàn toàn lỗi màn hình trắng (White Screen)
 - [x] Xây dựng thành phần Left Sidebar ghim cố định bên trái (`src/components/Sidebar.tsx`), hỗ trợ thu gọn/mở rộng linh hoạt và Drawer trượt mở cho thiết bị di động
-- [x] Mở rộng khung làm việc (Workspace Expansion): Chế độ toàn màn hình 100% Canvas, chuyển đổi linh hoạt giữa Chế độ Lưới (Grid) và Chế độ Bảng danh sách chi tiết (Table View)
+- [x] Mở rộng khung làm việc (Workspace Expansion): Thiết lập mặc định chế độ mở rộng toàn màn hình (`max-w-[98%]`) trên toàn bộ các trang (Header, Trang chủ, Danh mục, Chi tiết, Bộ sưu tập, Hướng dẫn, Tài khoản, Footer), chuyển đổi linh hoạt giữa Chế độ Lưới (Grid) và Chế độ Bảng danh sách chi tiết (Table View), đồng thời lưu trạng thái vào localStorage
 - [x] Nâng cấp nội dung hướng dẫn cài đặt chuẩn hóa 4 bước chi tiết và kịch bản sử dụng thực tế cho 100% công cụ
 - [x] Chuẩn hóa ảnh demo theo nguyên tắc repo thực tế: Để trống nếu repo không có ảnh demo đính kèm; Chèn tất cả ảnh demo nếu có kèm ghi chú rõ ràng (caption)
 - [x] Bổ sung các dự án AI Việt Nam nổi bật: VietOCR, UnderTheSea, PhoBERT, Chuyển đổi số thành chữ kế toán, Kiểm tra cấu trúc 12 số CCCD, Tra cứu xử phạt giao thông Nghị định 100 & phạt nguội

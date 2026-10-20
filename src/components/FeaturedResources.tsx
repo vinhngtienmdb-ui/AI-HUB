@@ -6,12 +6,14 @@ interface FeaturedResourcesProps {
   tools: AITool[];
   onSelectTool: (tool: AITool) => void;
   onViewAll: () => void;
+  isExpanded?: boolean;
 }
 
 export const FeaturedResources: React.FC<FeaturedResourcesProps> = ({
   tools,
   onSelectTool,
   onViewAll,
+  isExpanded = true,
 }) => {
   // Lấy danh sách 3 tài nguyên tiêu biểu chuẩn xác theo ảnh demo (hoặc các tool nổi bật nhất trong kho)
   // Ưu tiên: GitHub Copilot / OpenHands, Filesystem MCP, Code Review
@@ -103,7 +105,7 @@ export const FeaturedResources: React.FC<FeaturedResourcesProps> = ({
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <section className={`w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 transition-all duration-300 ${isExpanded ? 'max-w-[98%]' : 'max-w-7xl'}`}>
       {/* Tiêu đề mục & liên kết Xem tất cả */}
       <div className="flex items-center justify-between mb-6">
         <div>

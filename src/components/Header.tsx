@@ -14,6 +14,7 @@ interface HeaderProps {
   onToggleTerminal?: () => void;
   isTerminalOpen?: boolean;
   toolCount: number;
+  isExpanded?: boolean;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -28,6 +29,7 @@ export const Header: React.FC<HeaderProps> = ({
   onToggleTerminal,
   isTerminalOpen,
   toolCount,
+  isExpanded = true,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -38,7 +40,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between">
+      <div className={`w-full mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between transition-all duration-300 ${isExpanded ? 'max-w-[98%]' : 'max-w-7xl'}`}>
         
         {/* LOGO VÀ TÊN THƯƠNG HIỆU: AI HUB VN */}
         <div 

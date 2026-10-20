@@ -12,6 +12,7 @@ interface CategoryPageProps {
   onNavigateHome: () => void;
   savedToolIds: string[];
   onToggleSaveTool: (toolId: string) => void;
+  isExpanded?: boolean;
 }
 
 export const CategoryPage: React.FC<CategoryPageProps> = ({
@@ -21,6 +22,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
   onNavigateHome,
   savedToolIds,
   onToggleSaveTool,
+  isExpanded = true,
 }) => {
   // Lọc theo loại hình trang danh mục
   const baseTools = useMemo(() => {
@@ -144,7 +146,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
       
       {/* KHU VỰC ĐẦU TRANG & THANH TÌM KIẾM THEO DANH MỤC */}
       <div className="bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800 pt-6 pb-8 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`w-full mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${isExpanded ? 'max-w-[98%]' : 'max-w-7xl'}`}>
           
           {/* Breadcrumb phân cấp */}
           <nav className="flex items-center space-x-2 text-xs text-slate-500 dark:text-slate-400 mb-4 font-medium">
@@ -227,7 +229,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
       </div>
 
       {/* BỐ CỤC 2 CỘT: CỘT TRÁI (BỘ LỌC) + CỘT PHẢI (DANH SÁCH TÀI NGUYÊN) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex gap-8 items-start">
+      <div className={`w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex gap-8 items-start transition-all duration-300 ${isExpanded ? 'max-w-[98%]' : 'max-w-7xl'}`}>
         
         {/* CỘT TRÁI: BỘ LỌC CHI TIẾT (FILTER SIDEBAR) */}
         <aside className="hidden lg:block w-64 shrink-0 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 p-5 shadow-sm space-y-6">
@@ -382,7 +384,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
           {/* Lưới thẻ sản phẩm 2 cột giống hình ảnh demo */}
           {paginatedTools.length > 0 ? (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+              <div className={`grid gap-5 mb-8 ${isExpanded ? 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1 md:grid-cols-2'}`}>
                 {paginatedTools.map((tool) => {
                   const isSaved = savedToolIds.includes(tool.id);
                   return (

@@ -4,6 +4,19 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.13-MacDinhMoRongManHinhToanTrang (Ngày 20-10-2026)
+- **Loại hình**: Nâng cấp giao diện người dùng (UI/UX) - Thiết lập mặc định chế độ mở rộng màn hình làm việc (Full-Width Workspace Canvas) trên toàn bộ hệ thống trang web.
+- **Nội dung hoàn thành**:
+  - **Mặc định mở rộng 100% Canvas**: Chuyển đổi trạng thái ban đầu của màn hình làm việc sang chế độ mở rộng tối đa (`max-w-[98%]`), tận dụng triệt để không gian hiển thị của các màn hình độ phân giải cao và màn hình rộng (Ultrawide).
+  - **Đồng bộ toàn bộ các trang và phân hệ**:
+    - **Header**: Thanh điều hướng mở rộng cân đối (`max-w-[98%]`) tạo cảm giác thoáng đãng, các nút chức năng và thanh tìm kiếm bố trí hài hòa.
+    - **Trang chủ & Khu vực khám phá (Browse Section)**: Khung lưới công cụ mở rộng với 4 cột (`xl:grid-cols-3 2xl:grid-cols-4`), hiển thị được nhiều công cụ cùng lúc, giảm thiểu thao tác cuộn trang.
+    - **Trang Danh mục (CategoryPage)**: Lưới sản phẩm mở rộng 3 cột linh hoạt trên màn hình lớn (`xl:grid-cols-3`).
+    - **Trang Chi tiết, Bộ sưu tập, Hướng dẫn & Tài khoản**: Toàn bộ các trang con đều được truyền cờ `isExpanded`, mở rộng container để đồng bộ trải nghiệm thị giác xuyên suốt.
+    - **Footer**: Chân trang mở rộng đồng bộ với toàn bộ phần nội dung phía trên.
+  - **Lưu trữ trạng thái bền vững**: Ghi nhớ trạng thái mở rộng vào `localStorage` (`aihub_expanded_canvas`), cho phép người dùng vẫn có thể thu gọn hoặc mở rộng theo nhu cầu cá nhân mà không bị mất thiết lập khi tải lại trang.
+  - **Kiểm thử & Đóng gói**: Đạt 100% kiểm thử quy tắc nghiệp vụ và đóng gói Vite hoàn tất trong 7.43 giây.
+
 ### Phiên Bản 2.0.12-MoRongQuyMo50CongCuThuongHieuLonVietNamDot9 (Ngày 20-10-2026)
 - **Loại hình**: Tiếp tục mở rộng tự động đợt 9 với **50 công cụ, kỹ năng và máy chủ MCP mới** từ các tập đoàn bán lẻ công nghệ, chuỗi nhà thuốc dược phẩm, hạ tầng đám mây (Cloud), viễn thông, giáo dục trực tuyến (EdTech), an ninh mạng, bất động sản, gọi xe công nghệ và chuỗi nhà hàng F&B lớn nhất tại Việt Nam.
 - **Nội dung hoàn thành**:

@@ -4,9 +4,10 @@ import { Category } from '../types';
 
 interface BrowseByNeedsProps {
   onSelectCategory: (category: Category) => void;
+  isExpanded?: boolean;
 }
 
-export const BrowseByNeeds: React.FC<BrowseByNeedsProps> = ({ onSelectCategory }) => {
+export const BrowseByNeeds: React.FC<BrowseByNeedsProps> = ({ onSelectCategory, isExpanded = true }) => {
   const needs = [
     {
       id: 'coding' as Category,
@@ -55,7 +56,7 @@ export const BrowseByNeeds: React.FC<BrowseByNeedsProps> = ({ onSelectCategory }
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <section className={`w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 transition-all duration-300 ${isExpanded ? 'max-w-[98%]' : 'max-w-7xl'}`}>
       <div className="mb-6">
         <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
           Chọn theo nhu cầu

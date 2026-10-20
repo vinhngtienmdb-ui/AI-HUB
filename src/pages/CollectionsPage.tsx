@@ -9,6 +9,7 @@ interface CollectionsPageProps {
   onSelectTool: (tool: AITool) => void;
   onCreateCollection: (name: string, description: string, isPublic: boolean) => void;
   onDeleteCollection: (collectionId: string) => void;
+  isExpanded?: boolean;
 }
 
 export const CollectionsPage: React.FC<CollectionsPageProps> = ({
@@ -18,6 +19,7 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({
   onSelectTool,
   onCreateCollection,
   onDeleteCollection,
+  isExpanded = true,
 }) => {
   const [selectedCollectionId, setSelectedCollectionId] = useState<string>(collections[0]?.id || '');
   const [isCreating, setIsCreating] = useState(false);
@@ -48,7 +50,7 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({
       
       {/* BREADCRUMB */}
       <div className="bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800 py-3.5 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`w-full mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${isExpanded ? 'max-w-[98%]' : 'max-w-7xl'}`}>
           <nav className="flex items-center space-x-2 text-xs text-slate-500 dark:text-slate-400 font-medium">
             <button onClick={onNavigateHome} className="hover:text-indigo-600 transition-colors">
               Trang chủ
@@ -61,7 +63,7 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+      <div className={`w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 transition-all duration-300 ${isExpanded ? 'max-w-[98%]' : 'max-w-7xl'}`}>
         
         {/* HEADER TRANG */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">

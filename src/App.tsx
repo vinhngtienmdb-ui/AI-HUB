@@ -69,11 +69,20 @@ export const App: React.FC = () => {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [pendingTerminalCommand, setPendingTerminalCommand] = useState<string | null>(null);
-  const [isExpandedCanvas, setIsExpandedCanvas] = useState(false);
+
+  // Mặc định mở rộng màn hình làm việc trên toàn bộ trang (Full-Width Workspace Canvas)
+  const [isExpandedCanvas, setIsExpandedCanvas] = useState<boolean>(() => {
+    const saved = localStorage.getItem('aihub_expanded_canvas');
+    return saved !== null ? JSON.parse(saved) : true;
+  });
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'table'>('grid');
 
   // Lưu trạng thái vào localStorage
+  useEffect(() => {
+    localStorage.setItem('aihub_expanded_canvas', JSON.stringify(isExpandedCanvas));
+  }, [isExpandedCanvas]);
+
   useEffect(() => {
     localStorage.setItem('aihub_saved_tool_ids', JSON.stringify(savedToolIds));
   }, [savedToolIds]);
@@ -265,6 +274,7 @@ export const App: React.FC = () => {
         onToggleTerminal={() => setIsTerminalOpen(!isTerminalOpen)}
         isTerminalOpen={isTerminalOpen}
         toolCount={tools.length}
+        isExpanded={isExpandedCanvas}
       />
 
       {/* RENDER NỘI DUNG THEO ĐỊNH TUYẾN TRANG */}
@@ -278,6 +288,7 @@ export const App: React.FC = () => {
           onNavigateHome={() => navigateTo({ name: 'home' })}
           savedToolIds={savedToolIds}
           onToggleSaveTool={handleToggleSaveTool}
+          isExpanded={isExpandedCanvas}
         />
       )}
 
@@ -292,6 +303,7 @@ export const App: React.FC = () => {
           onExecuteCommand={handleExecuteCommand}
           isSaved={savedToolIds.includes(currentDetailTool.id)}
           onToggleSave={() => handleToggleSaveTool(currentDetailTool.id)}
+          isExpanded={isExpandedCanvas}
         />
       )}
 
@@ -315,6 +327,7 @@ export const App: React.FC = () => {
           onSelectTool={(tool) => navigateTo({ name: 'detail', toolId: tool.id })}
           onCreateCollection={handleCreateCollection}
           onDeleteCollection={handleDeleteCollection}
+          isExpanded={isExpandedCanvas}
         />
       )}
 
@@ -324,6 +337,7 @@ export const App: React.FC = () => {
           guides={guides}
           onNavigateHome={() => navigateTo({ name: 'home' })}
           onOpenDocsModal={() => setIsDocsOpen(true)}
+          isExpanded={isExpandedCanvas}
         />
       )}
 
@@ -341,6 +355,7 @@ export const App: React.FC = () => {
             localStorage.removeItem('aihub_user');
             navigateTo({ name: 'home' });
           }}
+          isExpanded={isExpandedCanvas}
         />
       )}
 
@@ -366,6 +381,7 @@ export const App: React.FC = () => {
           {/* 3 THẺ NHÓM TÀI NGUYÊN CHÍNH */}
           <MainCategoryCards
             onSelectType={(type) => navigateTo({ name: 'category', toolType: type })}
+            isExpanded={isExpandedCanvas}
           />
 
           {/* KHÁM PHÁ TÀI NGUYÊN NỔI BẬT */}
@@ -373,6 +389,7 @@ export const App: React.FC = () => {
             tools={tools}
             onSelectTool={(tool) => navigateTo({ name: 'detail', toolId: tool.id })}
             onViewAll={() => navigateTo({ name: 'category', toolType: 'all' })}
+            isExpanded={isExpandedCanvas}
           />
 
           {/* CHỌN THEO NHU CẦU CÔNG VIỆC */}
@@ -382,9 +399,10 @@ export const App: React.FC = () => {
               const el = document.getElementById('browse-section');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
+            isExpanded={isExpandedCanvas}
           />
 
-          {/* KHU VỰC KHÁM PHÁ TOÀN BỘ 1.930+ CÔNG CỤ VỚI SIDEBAR */}
+          {/* KHU VỰC KHÁM PHÁ TOÀN BỘ 2.140+ CÔNG CỤ VỚI SIDEBAR */}
           <div id="browse-section" className="pt-6">
             <div className={`flex-1 w-full mx-auto px-3 sm:px-6 lg:px-8 py-6 flex gap-6 relative items-start transition-all duration-300 ${
               isExpandedCanvas ? 'max-w-[98%]' : 'max-w-7xl'
@@ -612,6 +630,7 @@ export const App: React.FC = () => {
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }, 100);
         }}
+        isExpanded={isExpandedCanvas}
       />
 
       {/* CÁC MODAL HỆ THỐNG */}

@@ -7,6 +7,7 @@ interface FooterProps {
   onOpenContribute: () => void;
   onSelectType: (type: ToolType) => void;
   onSelectCategory: (category: Category) => void;
+  isExpanded?: boolean;
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -14,10 +15,11 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenContribute,
   onSelectType,
   onSelectCategory,
+  isExpanded = true,
 }) => {
   return (
     <footer className="w-full border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors mt-12 text-slate-600 dark:text-slate-400">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className={`w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 transition-all duration-300 ${isExpanded ? 'max-w-[98%]' : 'max-w-7xl'}`}>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           
           {/* Cột 1: Thông tin thương hiệu */}

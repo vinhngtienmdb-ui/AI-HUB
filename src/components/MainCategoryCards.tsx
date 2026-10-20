@@ -4,9 +4,10 @@ import { ToolType } from '../types';
 
 interface MainCategoryCardsProps {
   onSelectType: (type: ToolType) => void;
+  isExpanded?: boolean;
 }
 
-export const MainCategoryCards: React.FC<MainCategoryCardsProps> = ({ onSelectType }) => {
+export const MainCategoryCards: React.FC<MainCategoryCardsProps> = ({ onSelectType, isExpanded = true }) => {
   const categories = [
     {
       id: 'agent' as ToolType,
@@ -49,7 +50,7 @@ export const MainCategoryCards: React.FC<MainCategoryCardsProps> = ({ onSelectTy
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <section className={`w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 transition-all duration-300 ${isExpanded ? 'max-w-[98%]' : 'max-w-7xl'}`}>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {categories.map((cat) => {
           const Icon = cat.icon;

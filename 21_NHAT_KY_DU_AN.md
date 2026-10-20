@@ -314,6 +314,17 @@
     - Unit tests: 5/5 bài kiểm tra đạt 100%.
     - Đóng gói Vite hoàn tất trong 8.10 giây.
 
+- [Mặc Định Mở Rộng Màn Hình Làm Việc Trên Toàn Bộ Trang]:
+  - **Mục tiêu**: Nâng cấp giao diện người dùng theo yêu cầu, thiết lập mặc định không gian làm việc toàn màn hình (`isExpandedCanvas = true`, container `max-w-[98%]`) trên toàn bộ các trang và phân hệ của ứng dụng.
+  - **Công việc đã xử lý**:
+    - Thiết lập giá trị mặc định của `isExpandedCanvas` thành `true` và lưu trữ trạng thái vào `localStorage` (`aihub_expanded_canvas`).
+    - Đồng bộ thuộc tính `isExpanded` cho toàn bộ các thành phần: `Header`, `MainCategoryCards`, `FeaturedResources`, `BrowseByNeeds`, `CategoryPage`, `DetailPage`, `CollectionsPage`, `GuidesPage`, `AccountPage`, `Footer`.
+    - Tối ưu hóa lưới công cụ hiển thị 4 cột trên màn hình lớn, giúp người dùng duyệt nhiều tài nguyên hơn mà không cần cuộn nhiều.
+  - **Kiểm thử & Đóng gói**:
+    - `npx tsc --noEmit`: 0 lỗi.
+    - Unit tests: 5/5 bài kiểm tra đạt 100%.
+    - Đóng gói Vite hoàn tất trong 7.43 giây.
+
 ### Quyết định kỹ thuật
 - **Định dạng cấu hình mẫu**: Hỗ trợ xuất cấu hình nhanh dạng JSON cho các nền tảng phổ biến (Claude Desktop, Antigravity, Cursor, Windsurf, v.v.).
 - **Ngôn ngữ nội dung**: Mọi hướng dẫn cài đặt, cấu hình và kịch bản sử dụng mẫu bắt buộc phải có nội dung diễn giải bằng tiếng Việt rõ ràng, kèm lệnh mẫu có thể sao chép bằng một nút bấm.
