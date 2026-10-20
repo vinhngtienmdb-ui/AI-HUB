@@ -4,6 +4,28 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.5-MoRongTaiNguyenThanhToanVaDoanhNghiepDot4 (Ngày 20-10-2026)
+- **Loại hình**: Tiếp tục mở rộng đợt 4 các giải pháp thanh toán số, hạ tầng POS bán lẻ, mã bưu chính 34 tỉnh thành, định danh CCCD và chính sách bảo hiểm xã hội Việt Nam.
+- **Nội dung hoàn thành**:
+  - Tích hợp 10 giải pháp công nghệ nguồn mở hàng đầu:
+    1. **VNPay Payment SDK (`lehuygiang28/vnpay`)**: Thư viện client TypeScript/Node.js tích hợp cổng thanh toán VNPay, tạo URL thanh toán, xác thực checksum SHA512 và xử lý IPN server-to-server.
+    2. **VietQR Core (`zeforc/viet-qr`)**: Bộ công cụ độc lập sinh chuỗi mã QR thanh toán Napas 247 chuẩn EMVCo, tự động tính mã CRC16-CCITT và kiểm tra số tài khoản hơn 50 ngân hàng Việt Nam.
+    3. **KiotViet MCP Server (`HiGo-MCP/kiotviet-mcp-server`)**: Máy chủ MCP kết nối tác nhân AI với hệ thống bán lẻ và kho hàng KiotViet, tự động tra cứu tồn kho theo chi nhánh, tạo đơn hàng và sổ quỹ.
+    4. **Sapo Omnichannel SDK (`vinhngtienmdb-ui/AI-HUB`)**: Bộ kết nối API Sapo đồng bộ tồn kho sản phẩm tức thì, quản lý tập trung đơn hàng từ Shopee, Lazada, TikTok Shop và cửa hàng vật lý.
+    5. **Mã Bưu Chính Quốc Gia 5 Số Mới 34 Tỉnh Thành (`vinhngtienmdb-ui/AI-HUB`)**: Cơ sở dữ liệu danh bạ mã bưu chính 5 chữ số của Bộ TT&TT áp dụng cho 34 tỉnh thành và các xã/phường sau sáp nhập.
+    6. **VNeID CCCD 12 Số Validator (`vinhngtienmdb-ui/AI-HUB`)**: Kỹ năng kiểm tra tính hợp lệ toán học cấu trúc căn cước công dân gắn chip 12 chữ số theo quy định Bộ Công an (mã tỉnh, thế kỷ, giới tính, năm sinh).
+    7. **Telegram Banking & Sales Alert Bot (`vinhngtienmdb-ui/AI-HUB`)**: Tác tử AI tự động gửi thông báo biến động số dư chuyển khoản ngân hàng (Vietcombank, MBBank, Techcombank) và doanh thu ca làm việc vào Telegram.
+    8. **OnePay Vietnam Payment Gateway (`vinhngtienmdb-ui/AI-HUB`)**: Cổng thanh toán thẻ ghi nợ nội địa Napas, thẻ tín dụng quốc tế Visa/Mastercard/JCB và trả góp 0% liên kết ngân hàng.
+    9. **Chữ Ký Số CAdES & XAdES Token USB Validator (`vinhngtienmdb-ui/AI-HUB`)**: Kỹ năng xác thực tính toàn vẹn và hiệu lực của chứng thư số doanh nghiệp trên tệp PDF hợp đồng và XML hóa đơn điện tử.
+    10. **BHXH & VssID Benefits Calculator (`vinhngtienmdb-ui/AI-HUB`)**: Kỹ năng tính toán chế độ trợ cấp bảo hiểm xã hội bắt buộc: trợ cấp thai sản 6 tháng, nghỉ ốm đau và bảo hiểm thất nghiệp theo Luật BHXH.
+  - **Quy mô hệ sinh thái**:
+    - Nâng tổng số lượng công cụ lên **1.974 mục** (trong đó nhóm tài nguyên phục vụ thị trường Việt Nam đạt **86 mục chuyên sâu**).
+    - Nâng tổng số lượng mẫu cấu hình JSON thực thi lên **2.969 mẫu**.
+    - 100% tài nguyên đáp ứng đầy đủ 4 khối thông tin: Nguồn dẫn chính thức, mục đích, hướng dẫn cài đặt và hướng dẫn sử dụng tiếng Việt kèm mã nguồn mẫu.
+  - **Kiểm thử tự động & Đóng gói**:
+    - 5/5 bài kiểm thử unit tests đạt 100%.
+    - Đóng gói Vite (`npm run build`) hoàn tất xuất sắc trong 11.50 giây.
+
 ### Phiên Bản 2.0.4-MoRongChuyenSauDoanhNghiepVietNam (Ngày 20-10-2026)
 - **Loại hình**: Tiếp tục mở rộng đợt 3 chuyên sâu cho các lĩnh vực then chốt của doanh nghiệp Việt Nam: Thanh toán trực tuyến, Quy hoạch địa giới 34 tỉnh thành hành chính mới, ERP kế toán VAS, CRM bán hàng, Zalo CSKH, Bóc tách XML Hóa đơn điện tử TT78, Tính thuế TNCN & BHXH và Tra cứu Mã số thuế quốc gia.
 - **Nội dung hoàn thành**:

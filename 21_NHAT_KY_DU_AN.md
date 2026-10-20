@@ -231,6 +231,17 @@
     - Unit tests: 5/5 bài kiểm tra đạt 100%.
     - Đóng gói Vite hoàn tất trong 8.65 giây.
 
+- [Mở Rộng Thu Thập Tài Nguyên Việt Nam Đợt 4 (Thanh Toán, POS KiotViet, Sapo, Mã Bưu Chính 34 Tỉnh, CCCD & BHXH)]:
+  - **Mục tiêu**: Bổ sung các giải pháp hạ tầng thanh toán VNPay/VietQR, kết nối bán hàng KiotViet/Sapo, chuẩn hóa mã bưu chính quốc gia 5 số mới cho 34 tỉnh thành và kiểm tra căn cước công dân gắn chip.
+  - **Tài nguyên tích hợp**:
+    - Thêm 10 giải pháp cốt lõi: VNPay Payment SDK (Lê Huy Giang), VietQR Core Napas 247 (zeforc), KiotViet MCP Server (HiGo MCP), Sapo Omnichannel SDK, Mã bưu chính quốc gia 5 số mới cho 34 tỉnh thành (Bộ TT&TT), VNeID CCCD 12 số Validator, Telegram Banking & Sales Alert Bot, OnePay Vietnam Payment Gateway, Chữ ký số CAdES/XAdES Token USB Validator, BHXH & VssID Benefits Calculator.
+    - Nâng quy mô toàn kho tài nguyên lên **1.974 công cụ** và **2.969 mẫu cấu hình JSON thực thi**.
+    - Đáp ứng đầy đủ quy tắc 4 khối thông tin và cơ chế loại bỏ khối ảnh khi không có ảnh demo thực tế từ repo.
+  - **Kiểm thử & Đóng gói**:
+    - `npx tsc --noEmit`: 0 lỗi.
+    - Unit tests: 5/5 bài kiểm tra đạt 100%.
+    - Đóng gói Vite hoàn tất trong 11.50 giây.
+
 ### Quyết định kỹ thuật
 - **Định dạng cấu hình mẫu**: Hỗ trợ xuất cấu hình nhanh dạng JSON cho các nền tảng phổ biến (Claude Desktop, Antigravity, Cursor, Windsurf, v.v.).
 - **Ngôn ngữ nội dung**: Mọi hướng dẫn cài đặt, cấu hình và kịch bản sử dụng mẫu bắt buộc phải có nội dung diễn giải bằng tiếng Việt rõ ràng, kèm lệnh mẫu có thể sao chép bằng một nút bấm.
