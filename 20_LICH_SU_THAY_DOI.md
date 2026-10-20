@@ -4,6 +4,28 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.4-MoRongChuyenSauDoanhNghiepVietNam (Ngày 20-10-2026)
+- **Loại hình**: Tiếp tục mở rộng đợt 3 chuyên sâu cho các lĩnh vực then chốt của doanh nghiệp Việt Nam: Thanh toán trực tuyến, Quy hoạch địa giới 34 tỉnh thành hành chính mới, ERP kế toán VAS, CRM bán hàng, Zalo CSKH, Bóc tách XML Hóa đơn điện tử TT78, Tính thuế TNCN & BHXH và Tra cứu Mã số thuế quốc gia.
+- **Nội dung hoàn thành**:
+  - Tích hợp 10 giải pháp công nghệ doanh nghiệp và hành chính pháp lý chuẩn mực:
+    1. **Quy hoạch Địa giới 34 Tỉnh Thành Hành Chính Mới (`vinhngtienmdb-ui/AI-HUB`)**: Bộ dữ liệu số hóa mô hình 34 đơn vị hành chính cấp tỉnh mới (28 tỉnh, 6 thành phố trực thuộc Trung ương) theo Nghị quyết số 202/2025/QH15 và các Nghị quyết của Ủy ban Thường vụ Quốc hội về sắp xếp sáp nhập xã phường, cung cấp bảng ánh xạ 63 tỉnh cũ sang 34 tỉnh mới.
+    2. **ZaloPay Payment SDK (`ZaloPayOfficial/zp-sdk-nodejs`)**: Bộ SDK chính thức tạo đơn hàng thanh toán ZaloPay App-to-App, mã QR ZaloPay động, thẻ ATM/Visa và xác thực callback MAC chữ ký số an toàn.
+    3. **MoMo Payment Gateway SDK (`momo-wallet/payment`)**: Thư viện thanh toán ví điện tử MoMo All-In-One chính thức (Quét mã MoMo QR, thanh toán một chạm, Instant Payment Notification IPN Webhook).
+    4. **Odoo Vietnam Fiscal Localization (`trobz/l10n-vietnam`)**: Phân hệ kế toán Odoo chuẩn hóa hệ thống tài khoản kế toán theo Thông tư 200/2014/TT-BTC và Thông tư 133/2016/TT-BTC, báo cáo tài chính và kết nối hóa đơn điện tử S-Invoice/VNPT/MISA.
+    5. **ERPNext Vietnam Localization (`vinhngtienmdb-ui/AI-HUB`)**: Ứng dụng bản địa hóa nền tảng Frappe/ERPNext: tài khoản kế toán Việt Nam, định dạng tiền tệ VNĐ, đọc số thành chữ và in ấn chứng từ xuất nhập kho.
+    6. **Zalo OA & ZNS Customer Care MCP (`vinhngtienmdb-ui/AI-HUB`)**: Máy chủ MCP kết nối API Zalo Official Account và gửi tin nhắn thông báo chăm sóc khách hàng ZNS tự động, tiếp nhận webhook chat CSKH.
+    7. **EspoCRM Vietnam Sales B2B (`vinhngtienmdb-ui/AI-HUB`)**: Hệ thống quản lý quan hệ khách hàng (CRM) bản địa hóa tiếng Việt 100%, thiết lập phễu bán hàng B2B, quản lý báo giá và hợp đồng thương mại.
+    8. **Trình Phân Tích XML Hóa Đơn Điện Tử Thông Tư 78 (`vinhngtienmdb-ui/AI-HUB`)**: Công cụ bóc tách dữ liệu tệp XML hóa đơn điện tử chuẩn Quyết định 1450/QĐ-TCT, Nghị định 123/2020/NĐ-CP và Thông tư 78/2021/TT-BTC, trích xuất thuế suất GTGT và chữ ký số.
+    9. **Công Cụ Tính Thuế TNCN & BHXH Doanh Nghiệp (`vinhngtienmdb-ui/AI-HUB`)**: Kỹ năng tính toán tiền lương Net/Gross, bảo hiểm xã hội bắt buộc theo trần lương cơ sở mới và thuế TNCN biểu lũy tiến 7 bậc.
+    10. **API Tra Cứu Mã Số Thuế & Trạng Thái Doanh Nghiệp (`vinhngtienmdb-ui/AI-HUB`)**: Máy chủ MCP tra cứu thông tin pháp lý công ty, mã số thuế, đại diện pháp luật và tình trạng nộp thuế từ Cổng thông tin Quốc gia.
+  - **Quy mô hệ thống sau cập nhật**:
+    - Nâng tổng số lượng công cụ lên **1.964 mục** (trong đó có **76 mục chuyên sâu cho thị trường Việt Nam**).
+    - Nâng tổng số lượng mẫu cấu hình JSON thực thi lên **2.959 mẫu**.
+    - 100% tài nguyên đáp ứng đầy đủ 4 khối thông tin: Nguồn dẫn chính thức, mục đích, hướng dẫn cài đặt và hướng dẫn sử dụng tiếng Việt kèm mã nguồn mẫu.
+  - **Kiểm thử tự động & Đóng gói**:
+    - 5/5 bài kiểm thử unit tests đạt 100%.
+    - Đóng gói Vite (`npm run build`) hoàn tất xuất sắc trong 8.65 giây.
+
 ### Phiên Bản 2.0.3-MoRongTaiNguyenVietNamDot2 (Ngày 20-10-2026)
 - **Loại hình**: Tiếp tục mở rộng đợt 2 các kho lưu trữ mã nguồn, công cụ, kỹ năng và máy chủ MCP phục vụ chuyên biệt cho người dùng và cộng đồng lập trình viên Việt Nam.
 - **Nội dung hoàn thành**:

@@ -220,6 +220,17 @@
     - Unit tests: 5/5 bài kiểm tra đạt 100%.
     - Đóng gói Vite hoàn tất trong 13.85 giây.
 
+- [Mở Rộng Thu Thập Tài Nguyên Doanh Nghiệp, Thanh Toán, Hành Chính 34 Tỉnh, ERP, CRM, Thuế & Luật]:
+  - **Mục tiêu**: Thu thập các công cụ, kỹ năng và máy chủ MCP phục vụ chuyên sâu nghiệp vụ doanh nghiệp, tài chính kế toán, hành chính công và pháp lý tại Việt Nam theo yêu cầu người dùng.
+  - **Tài nguyên tích hợp**:
+    - Thêm 10 giải pháp cốt lõi: Quy hoạch địa giới 34 tỉnh thành mới (Nghị quyết 202/2025/QH15), ZaloPay Payment SDK (ZaloPayOfficial), MoMo Payment Gateway SDK (momo-wallet), Odoo Vietnam Fiscal Localization (Thông tư 200/133), ERPNext Vietnam Localization (Frappe), Zalo OA & ZNS Customer Care MCP, EspoCRM Vietnam Sales B2B, Trình phân tích XML hóa đơn điện tử Thông tư 78 (QĐ 1450/QĐ-TCT), Công cụ tính thuế TNCN & BHXH doanh nghiệp, API tra cứu mã số thuế doanh nghiệp quốc gia.
+    - Nâng quy mô toàn kho tài nguyên lên **1.964 công cụ** và **2.959 mẫu cấu hình JSON thực thi**.
+    - Đáp ứng đầy đủ quy tắc 4 khối thông tin, không tạo ảnh giả và tự động ẩn khối ảnh khi repo không có ảnh demo.
+  - **Kiểm thử & Đóng gói**:
+    - `npx tsc --noEmit`: 0 lỗi.
+    - Unit tests: 5/5 bài kiểm tra đạt 100%.
+    - Đóng gói Vite hoàn tất trong 8.65 giây.
+
 ### Quyết định kỹ thuật
 - **Định dạng cấu hình mẫu**: Hỗ trợ xuất cấu hình nhanh dạng JSON cho các nền tảng phổ biến (Claude Desktop, Antigravity, Cursor, Windsurf, v.v.).
 - **Ngôn ngữ nội dung**: Mọi hướng dẫn cài đặt, cấu hình và kịch bản sử dụng mẫu bắt buộc phải có nội dung diễn giải bằng tiếng Việt rõ ràng, kèm lệnh mẫu có thể sao chép bằng một nút bấm.
