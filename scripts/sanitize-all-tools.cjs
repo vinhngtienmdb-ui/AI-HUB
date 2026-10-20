@@ -106,6 +106,22 @@ for (let i = 0; i < tools.length; i++) {
       t.toolType = 'software';
       t.typeNameVi = 'Phần mềm';
       break;
+    case 'api':
+      t.toolType = 'api';
+      t.typeNameVi = 'API';
+      break;
+    case 'sdk':
+      t.toolType = 'sdk';
+      t.typeNameVi = 'SDK';
+      break;
+    case 'model':
+      t.toolType = 'model';
+      t.typeNameVi = 'Model';
+      break;
+    case 'dataset':
+      t.toolType = 'dataset';
+      t.typeNameVi = 'Dataset';
+      break;
     case 'workflow':
       t.toolType = 'workflow';
       t.typeNameVi = 'Workflow';

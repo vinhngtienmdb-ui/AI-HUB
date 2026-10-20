@@ -8,6 +8,28 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Tách riêng biệt phân loại cho SDK, API, Model, Dataset]:
+  - Mở rộng hệ thống kiểu dữ liệu `ToolType` thêm các loại hình độc lập: `api`, `sdk`, `model`, `dataset`.
+  - Phân loại lại toàn diện 2.194 công cụ vào các loại hình thành phần chuẩn xác:
+    - `Skill`: 894 công cụ (Bộ kỹ năng chuyên môn cho tác nhân AI)
+    - `Agent`: 441 công cụ (Tác nhân AI tự chủ giải quyết nhiệm vụ phức tạp)
+    - `Command`: 273 công cụ (Lệnh điều khiển và thực thi dòng lệnh)
+    - `MCP Server`: 227 công cụ (Máy chủ giao thức ngữ cảnh mô hình)
+    - `API`: 116 công cụ (Cổng giao tiếp lập trình REST, GraphQL, Webhook)
+    - `Setting`: 70 công cụ (Cấu hình môi trường và tham số)
+    - `Hook`: 61 công cụ (Điểm móc chặn và kiểm soát sự kiện)
+    - `Phần mềm`: 34 công cụ (Hệ thống ERP, CRM, Kế toán & Quản trị số)
+    - `Workflow`: 27 công cụ (Quy trình tự động hóa luồng làm việc)
+    - `SDK`: 21 công cụ (Bộ công cụ phát triển phần mềm chính thức)
+    - `Template`: 20 công cụ (Mẫu dự án và cấu hình dựng sẵn)
+    - `Model`: 7 công cụ (Mô hình ngôn ngữ, nền tảng AI và trọng số)
+    - `Dataset`: 3 công cụ (Bộ dữ liệu địa giới hành chính, bản đồ GeoJSON, ngữ liệu)
+  - Cập nhật giao diện:
+    - `MainCategoryCards`: Bố trí lưới 6 thẻ cân bằng (`grid-cols-2 sm:grid-cols-3 lg:grid-cols-6`) tương ứng `MCP Server`, `Skill`, `Agent`, `API`, `SDK`, `Phần mềm`.
+    - `Sidebar`: Bổ sung các tab `API`, `SDK`, `Model`, `Dataset` kèm huy hiệu số lượng thực tế.
+    - `ToolCard`: Huy hiệu màu sắc riêng biệt (API màu xanh trời sky, SDK màu xanh mòng két teal, Model màu hồng tím fuchsia, Dataset màu xanh ngọc cyan).
+    - `CategoryPage`: Bổ sung tiêu đề, breadcrumb và mô tả chuyên biệt cho từng loại hình khi người dùng lọc.
+  - Kiểm thử chất lượng: 5/5 bài kiểm thử unit tests đạt 100%, đóng gói Vite thành công hoàn toàn.
 - [Cân chỉnh giao diện trang chủ, Phân loại 10 Lĩnh vực chuyên môn và Tách riêng biệt loại hình]:
   - Phân loại lại chuẩn xác toàn diện 2.194 công cụ vào 10 Lĩnh vực chuyên môn theo nghiệp vụ Việt Nam:
     - Lập trình & Kỹ thuật phần mềm: 1.052 công cụ

@@ -18,7 +18,8 @@ import {
   CheckCircle2,
   ExternalLink,
   BookOpen,
-  Laptop
+  Laptop,
+  Package
 } from 'lucide-react';
 import { ToolType, Category, Platform, CategoryInfo } from '../types';
 
@@ -58,8 +59,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { id: 'skill', name: 'Skill', count: typeCounts.skill || 0, icon: Sparkles },
     { id: 'agent', name: 'Agent', count: typeCounts.agent || 0, icon: Brain },
     { id: 'mcp', name: 'MCP Server', count: typeCounts.mcp || 0, icon: Cpu },
+    { id: 'api', name: 'API', count: typeCounts.api || 0, icon: Globe },
+    { id: 'sdk', name: 'SDK', count: typeCounts.sdk || 0, icon: Package },
     { id: 'software', name: 'Phần mềm', count: typeCounts.software || 0, icon: Laptop },
     { id: 'workflow', name: 'Workflow', count: typeCounts.workflow || 0, icon: Workflow },
+    { id: 'model', name: 'Model', count: typeCounts.model || 0, icon: Sparkles },
+    { id: 'dataset', name: 'Dataset', count: typeCounts.dataset || 0, icon: Database },
     { id: 'command', name: 'Command', count: typeCounts.command || 0, icon: Terminal },
     { id: 'template', name: 'Template', count: typeCounts.template || 0, icon: FolderGit2 },
     { id: 'hook', name: 'Hook', count: typeCounts.hook || 0, icon: Wrench },

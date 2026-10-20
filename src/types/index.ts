@@ -1,4 +1,18 @@
-export type ToolType = 'mcp' | 'skill' | 'agent' | 'command' | 'template' | 'hook' | 'setting' | 'software' | 'workflow' | 'web_tool';
+export type ToolType = 
+  | 'mcp' 
+  | 'skill' 
+  | 'agent' 
+  | 'api' 
+  | 'sdk' 
+  | 'software' 
+  | 'workflow' 
+  | 'model' 
+  | 'dataset' 
+  | 'command' 
+  | 'template' 
+  | 'hook' 
+  | 'setting' 
+  | 'web_tool';
 
 export type Platform = 'claude_desktop' | 'antigravity' | 'cursor' | 'windsurf' | 'web';
 

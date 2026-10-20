@@ -50,7 +50,7 @@
 - [x] Lập trình phân hệ Quản trị nội dung và Đóng góp công cụ
 - [x] Tích hợp toàn bộ 2.194 công cụ từ AI Templates (Phan Đông Giang), MCP Market, các kho lưu trữ hot thế giới, các nền tảng AI Workflow và hệ sinh thái API Việt Nam (bao gồm 50 giải pháp đợt 7, 50 thương hiệu đợt 8, 50 thương hiệu đợt 9 và 50 giải pháp bệnh viện, quản lý nhà nước, ERP/kế toán, đại học, du lịch, camera AI, fulfillment, Web3, tổng đài đợt 10)
 - [x] Chuẩn hóa 3.609 mẫu cấu hình JSON cho Claude Desktop, Antigravity và Cursor
-- [x] Tách biệt rạch ròi các nhóm thành phần giữ nguyên nhãn quốc tế: Skill, Agent, Command, MCP Server, Phần mềm, Setting, Hook, Template, Workflow (riêng loại phần mềm hiển thị là 'Phần mềm')
+- [x] Tách biệt rạch ròi các nhóm thành phần giữ nguyên nhãn quốc tế: Skill (894), Agent (441), Command (273), MCP Server (227), API (116), Setting (70), Hook (61), Phần mềm (34), Workflow (27), SDK (21), Template (20), Model (7), Dataset (3)
 - [x] Phân chia hệ thống danh mục thành 10 Lĩnh vực chuyên môn tiếng Việt chuẩn hóa và cân bằng toàn diện giao diện trang chủ: Tài chính, Ngân hàng & Thuế (352); Lập trình & Kỹ thuật phần mềm (1.052); Trí tuệ nhân tạo & Dữ liệu (259); Tự động hóa hệ thống & Web (178); Doanh nghiệp & Quản trị ERP (98); Pháp luật & Hành chính công (89); Thương mại điện tử & Bán lẻ (76); Vận tải & Logistics (37); Nhân sự & Tuyển dụng (29); Viễn thông & Chăm sóc khách hàng (24)
 - [x] Triển khai ErrorBoundary toàn cục và cơ chế phòng vệ dữ liệu triệt để, khắc phục hoàn toàn lỗi màn hình trắng (White Screen)
 - [x] Xây dựng thành phần Left Sidebar ghim cố định bên trái (`src/components/Sidebar.tsx`), hỗ trợ thu gọn/mở rộng linh hoạt và Drawer trượt mở cho thiết bị di động

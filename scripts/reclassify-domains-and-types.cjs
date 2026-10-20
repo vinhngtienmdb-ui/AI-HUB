@@ -23,8 +23,12 @@ const typeNamesVi = {
   mcp: 'MCP Server',
   skill: 'Skill',
   agent: 'Agent',
+  api: 'API',
+  sdk: 'SDK',
   software: 'Phần mềm',
   workflow: 'Workflow',
+  model: 'Model',
+  dataset: 'Dataset',
   command: 'Command',
   template: 'Template',
   hook: 'Hook',
@@ -96,21 +100,47 @@ function classifyToolType(tool) {
     (tool.summaryVi || '')
   ).toLowerCase();
 
-  // 1. Nếu là phần mềm doanh nghiệp, kế toán, ERP, CRM, portal công... và không phải mcp
-  if (tool.toolType !== 'mcp' && /phần mềm kế toán|phần mềm quản lý|hệ thống quản trị|bravo|effect|misa|fast accounting|1office|base\.vn|kiotviet|sapo|bệnh viện|his|emr|cổng dịch vụ công|cổng thông tin|hệ thống tiêm chủng|cổng tuyển sinh|lms đại học/.test(text)) {
+  // 1. MCP Server
+  if (tool.toolType === 'mcp' || /mcp server|model context protocol/.test(text)) return 'mcp';
+
+  // 2. Phần mềm doanh nghiệp / ERP / CRM / Kế toán / HIS (không phải API/SDK thuần túy)
+  if (tool.toolType === 'software' || (/phần mềm kế toán|phần mềm quản lý|hệ thống quản trị|bravo|effect|fast business|fast accounting|1office|base\.vn|kiotviet pos|sapo pos|cổng thông tin một cửa|hệ thống tiêm chủng/.test(text) && !/\bsdk\b/.test(text) && !/\bapi\b/.test(tool.id))) {
     return 'software';
   }
 
-  // 2. Nếu đã có toolType rõ ràng
-  if (tool.toolType === 'mcp' || /mcp server|model context protocol/.test(text)) return 'mcp';
-  if (tool.toolType === 'workflow' || /quy trình tự động|pipeline/.test(text)) return 'workflow';
+  // 3. SDK (Bộ công cụ phát triển phần mềm)
+  if (/\bsdk\b|software development kit|client sdk|zmp cli/.test(text)) {
+    return 'sdk';
+  }
+
+  // 4. API (Cổng giao tiếp lập trình ứng dụng, REST API, GraphQL, Webhook, Connector API)
+  if (/\bapi\b|cổng api|rest api|graphql api|endpoint|webhook|connector/.test(text)) {
+    return 'api';
+  }
+
+  // 5. Model (Mô hình ngôn ngữ, nền tảng AI, checkpoint trọng số)
+  if (/mô hình ngôn ngữ|phobert|phogpt|llm model|pre-trained model|foundation model|weights/.test(text)) {
+    return 'model';
+  }
+
+  // 6. Dataset (Bộ dữ liệu, bản đồ GeoJSON, tập ngữ liệu)
+  if (/bộ dữ liệu|tập dữ liệu|geojson|ngữ liệu|corpus/.test(text)) {
+    return 'dataset';
+  }
+
+  // 7. Workflow (Quy trình tự động hóa)
+  if (tool.toolType === 'workflow' || /quy trình tự động|workflow|pipeline/.test(text)) return 'workflow';
+
+  // 8. Command, Template, Hook, Setting
   if (tool.toolType === 'command') return 'command';
   if (tool.toolType === 'template') return 'template';
   if (tool.toolType === 'hook') return 'hook';
   if (tool.toolType === 'setting') return 'setting';
-  if (tool.toolType === 'agent') return 'agent';
-  if (tool.toolType === 'skill') return 'skill';
-  
+
+  // 9. Agent
+  if (tool.toolType === 'agent' || /\bagent\b|trợ lý tự chủ|autonomous agent|ai bot/.test(text)) return 'agent';
+
+  // 10. Skill (mặc định)
   return 'skill';
 }
 

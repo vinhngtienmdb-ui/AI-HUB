@@ -4,6 +4,30 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.16-TachPhanLoaiSDK_API_Model_Dataset (Ngày 20-10-2026)
+- **Loại hình**: Tách riêng biệt các phân loại mới cho `SDK`, `API`, `Model`, `Dataset`, phân chia lại dữ liệu toàn diện cho 2.194 công cụ và cập nhật giao diện cân bằng.
+- **Nội dung hoàn thành**:
+  - **Mở rộng các loại hình thành phần**:
+    - `Skill`: 894 công cụ
+    - `Agent`: 441 công cụ
+    - `Command`: 273 công cụ
+    - `MCP Server`: 227 công cụ
+    - `API`: 116 công cụ (Cổng giao tiếp lập trình ứng dụng REST, GraphQL, Webhook)
+    - `Setting`: 70 công cụ
+    - `Hook`: 61 công cụ
+    - `Phần mềm`: 34 công cụ (Hệ thống ERP, CRM, Kế toán & Quản trị số)
+    - `Workflow`: 27 công cụ (Quy trình tự động hóa luồng làm việc)
+    - `SDK`: 21 công cụ (Bộ công cụ phát triển phần mềm chính thức)
+    - `Template`: 20 công cụ
+    - `Model`: 7 công cụ (Mô hình ngôn ngữ, nền tảng AI và trọng số)
+    - `Dataset`: 3 công cụ (Bộ dữ liệu địa giới hành chính, GeoJSON, ngữ liệu)
+  - **Cân chỉnh giao diện**:
+    - `MainCategoryCards`: Cấu hình 6 thẻ loại hình nổi bật (`MCP Server`, `Skill`, `Agent`, `API`, `SDK`, `Phần mềm`).
+    - `Sidebar`: Thêm đầy đủ các phân loại `API`, `SDK`, `Model`, `Dataset` với số lượng thực tế.
+    - `ToolCard`: Huy hiệu màu sắc riêng biệt giúp người dùng nhận biết ngay lập tức (API màu xanh trời, SDK màu xanh mòng két, Model màu hồng tím, Dataset màu xanh ngọc).
+    - `CategoryPage`: Tự động nhận diện tiêu đề, breadcrumb và mô tả chuyên sâu cho từng loại hình khi người dùng chuyển trang.
+  - **Kiểm thử & Đóng gói**: 5/5 bài kiểm thử unit tests đạt 100%, đóng gói Vite thành công hoàn toàn.
+
 ### Phiên Bản 2.0.15-CanChinhTrangChuPhanLoai10LinhVucTachLoaiHinh (Ngày 20-10-2026)
 - **Loại hình**: Cân chỉnh toàn diện giao diện trang chủ, phân loại 2.194 công cụ vào 10 nhóm lĩnh vực chuyên môn chuẩn hóa và tách riêng biệt các loại hình thành phần (`mcp`, `skill`, `agent`, `phần mềm`, `workflow`).
 - **Nội dung hoàn thành**:

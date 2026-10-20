@@ -48,15 +48,57 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
     switch (toolType) {
       case 'mcp':
         return {
-          title: 'Khám phá MCP Servers',
-          crumb: 'MCP Servers',
+          title: 'Khám phá MCP Server',
+          crumb: 'MCP Server',
           desc: 'Kết nối mô hình AI với tệp tin, cơ sở dữ liệu và các dịch vụ trực tuyến qua giao thức Model Context Protocol.',
         };
       case 'skill':
         return {
-          title: 'Khám phá Agent Skills',
-          crumb: 'Agent Skills',
-          desc: 'Trang bị bộ kỹ năng, chỉ dẫn chuyên sâu và quy trình tự động hóa cho các tác tử trí tuệ nhân tạo.',
+          title: 'Khám phá Skill',
+          crumb: 'Skill',
+          desc: 'Trang bị bộ kỹ năng, chỉ dẫn chuyên môn và năng lực thực thi cho các tác nhân trí tuệ nhân tạo.',
+        };
+      case 'agent':
+        return {
+          title: 'Khám phá Agent',
+          crumb: 'Agent',
+          desc: 'Các tác nhân trí tuệ nhân tạo tự chủ giải quyết tác vụ phức tạp và phối hợp luồng công việc thông minh.',
+        };
+      case 'api':
+        return {
+          title: 'Khám phá Cổng API',
+          crumb: 'API',
+          desc: 'Giao diện lập trình ứng dụng REST, GraphQL và Webhook kết nối dữ liệu và hệ thống dịch vụ trực tiếp.',
+        };
+      case 'sdk':
+        return {
+          title: 'Khám phá Bộ công cụ SDK',
+          crumb: 'SDK',
+          desc: 'Bộ công cụ phát triển phần mềm chính thức từ các nền tảng công nghệ, cổng thanh toán và dịch vụ số.',
+        };
+      case 'software':
+        return {
+          title: 'Khám phá Phần mềm doanh nghiệp',
+          crumb: 'Phần mềm',
+          desc: 'Hệ thống ERP, CRM, phần mềm kế toán, quản trị nhân sự và cổng dịch vụ công chuẩn hóa cho tổ chức.',
+        };
+      case 'workflow':
+        return {
+          title: 'Khám phá Workflow tự động',
+          crumb: 'Workflow',
+          desc: 'Quy trình tự động hóa luồng làm việc tích hợp đa nền tảng giúp tối ưu hóa năng suất hoạt động.',
+        };
+      case 'model':
+        return {
+          title: 'Khám phá Model AI',
+          crumb: 'Model',
+          desc: 'Các mô hình ngôn ngữ lớn, mô hình nền tảng và trọng số AI chuyên sâu phục vụ nghiên cứu và ứng dụng.',
+        };
+      case 'dataset':
+        return {
+          title: 'Khám phá Dataset',
+          crumb: 'Dataset',
+          desc: 'Các bộ dữ liệu địa giới hành chính, bản đồ GeoJSON và ngữ liệu huấn luyện chất lượng cao.',
         };
       default:
         return {
