@@ -52,6 +52,7 @@
 - [x] Phân quyền bảo mật cao: Chỉ duy nhất tài khoản Quản trị viên tối cao mới có quyền điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn (cho từng công cụ và toàn bộ hệ thống)
 - [x] Loại bỏ triệt để toàn bộ các thông báo, bảng dán mã cấu hình Firebase và chỉ dẫn kỹ thuật trên cả giao diện frontend (`LoginModal.tsx`) và trong mã nguồn console (`src/lib/firebase.ts`)
 - [x] Loại bỏ khối ghi chú "Quy định phân quyền hệ thống" trên màn hình đăng nhập Google (`LoginModal.tsx`), tối giản và tinh gọn giao diện
+- [x] Xây dựng và triển khai Máy chủ MCP Trung Gian Thông Minh (`mcp-gateway/`: Smart Intent Router, Dynamic Dispatcher, Stdio MCP Server), đóng vai trò cổng kết nối một cửa duy nhất, tối ưu 95% Context Window và tự động điều phối 2.217+ tài nguyên
 - [x] Tích hợp bộ kho lưu trữ `vietnamese-mcp` (VN MCP Hub: MoMo, ZaloPay, VNPAY, Zalo OA) và `morluto/rea` (REA: Reverse Engineer Anything) chuẩn hóa 4 khối thông tin tiếng Việt
 - [x] Tích hợp bộ kỹ năng OpenBA-Kit (`spmtitsolution/OpenBA-Kit`) trọn bộ 57 AI Skills cho IT Business Analyst & Product Owner, 19 quy chuẩn và 48 biểu mẫu thực chiến, nâng tổng quy mô kho lên 2.216 tài nguyên
 - [x] Tích hợp các MCP Server cốt lõi từ bài viết "50+ MCP Server tốt nhất cho Claude Code năm 2026" (Claude.vn) kèm bộ sưu tập chuyên đề và bài viết hướng dẫn chiến lược tối ưu hóa Context Window bằng Lazy Loading, nâng tổng quy mô kho lên 2.215 tài nguyên

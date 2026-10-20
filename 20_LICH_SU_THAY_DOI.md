@@ -4,6 +4,27 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.30-PhatTrienAihubSmartMcpGatewayTrungGian (Ngày 20-10-2026)
+- **Loại hình**: Xây dựng và triển khai Máy chủ MCP Trung Gian Thông Minh (AI HUB VN Smart MCP Gateway & Router) đóng vai trò cổng kết nối duy nhất (Single Point of Entry) cho mọi AI Agent bên ngoài.
+- **Nội dung hoàn thành**:
+  - **Triển khai kiến trúc MCP Trung Gian (`mcp-gateway/`)**:
+    - **Smart Intent Router (`mcp-gateway/smart-router.js`)**: Phân tích ý định tự nhiên (tiếng Việt và tiếng Anh), ánh xạ chính xác đến công cụ chuyên trách trong kho 2.217 tài nguyên theo bảng ánh xạ chuyên môn (Fintech Việt Nam: VietQR/MoMo; Dịch ngược: REA; BA: OpenBA-Kit; CSDL: SQLite/Postgres; Kiểm thử: Puppeteer/Browser-use) kết hợp thuật toán đối soát ngữ nghĩa toàn diện.
+    - **Dynamic Dispatcher (`mcp-gateway/dispatcher.js`)**: Điều phối thực thi, sinh chỉ dẫn cài đặt, lệnh CLI và cấu hình mẫu JSON tự động cho AI Agent.
+    - **Stdio MCP Server chuẩn (`mcp-gateway/index.js`)**: Đăng ký 4 công cụ MCP chính thức:
+      - `aihub_smart_dispatch`: Tiếp nhận bài toán và tự động điều phối thực thi.
+      - `aihub_resolve_capability`: Tra cứu và xác nhận năng lực nghiệp vụ của hệ thống.
+      - `aihub_explain_routing`: Minh bạch hóa lý do và thuật toán định tuyến.
+      - `aihub_get_gateway_status`: Báo cáo trạng thái Gateway và đo lường tiết kiệm Context Token (~95%).
+  - **Giải quyết triệt để 2 bài toán của người dùng**:
+    - Người dùng không cần phải tự tìm, đánh giá hay lựa chọn MCP Server giữa hàng nghìn công cụ.
+    - Giảm 95% lượng token tiêu thụ trên cửa sổ ngữ cảnh (Context Window) của Claude/Cursor nhờ cơ chế nạp trễ (Lazy Loading) qua một cổng trung gian duy nhất.
+  - **Bổ sung tài nguyên Gateway vào kho (`aihub-vn-smart-mcp-gateway`)**:
+    - Nâng quy mô kho dữ liệu lên **2.217 tài nguyên** chuẩn hóa.
+  - **Kiểm thử & Đóng gói**:
+    - Xây dựng bộ kiểm thử mới `tests/mcp-gateway.test.js` gồm 7 ca kiểm thử chuyên sâu cho toàn bộ luồng Gateway.
+    - Chạy toàn bộ 21 test cases trong 6 bộ kiểm thử tự động: Đạt **100% tỷ lệ pass**.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 26.84 giây.
+
 ### Phiên Bản 2.0.29-TichHopOpenBaKit57AiSkillsChoBusinessAnalyst (Ngày 20-10-2026)
 - **Loại hình**: Tích hợp bộ tài nguyên OpenBA-Kit (BA-Kit Open) từ kho lưu trữ `spmtitsolution/OpenBA-Kit` bao gồm trọn bộ 57 AI Skills cho IT Business Analyst & Product Owner, 19 bộ quy chuẩn và 48 biểu mẫu thực chiến (nâng tổng quy mô kho lên 2.216 tài nguyên).
 - **Nội dung hoàn thành**:

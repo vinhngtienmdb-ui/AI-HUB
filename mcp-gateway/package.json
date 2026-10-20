@@ -1,0 +1,22 @@
+{
+  "name": "aihub-vn-mcp-gateway",
+  "version": "2.0.0",
+  "description": "Máy chủ MCP Trung Gian Thông Minh (Smart MCP Gateway & Router) cho AI HUB VN",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "aihub-mcp": "./index.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "gateway",
+    "smart-router",
+    "claude-code",
+    "antigravity",
+    "cursor",
+    "vietnam"
+  ],
+  "author": "AI HUB VN",
+  "license": "MIT"
+}

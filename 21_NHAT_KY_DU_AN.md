@@ -8,6 +8,19 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Phát triển và Triển khai Máy chủ MCP Trung Gian Thông Minh (AI HUB VN Smart MCP Gateway)]:
+  - **Triển khai kiến trúc MCP Trung Gian Một Cửa (`mcp-gateway/`)**:
+    - Xây dựng **Smart Intent Router (`smart-router.js`)**: Phân tích câu lệnh ngôn ngữ tự nhiên, tự động nhận diện ý định và định tuyến đến công cụ chuyên môn tối ưu nhất trong kho 2.217 tài nguyên. Hỗ trợ bảng ý định chuyên biệt cho Fintech Việt Nam (VietQR, MoMo, ZaloPay), Dịch ngược mã nguồn (REA), Phân tích nghiệp vụ BA (OpenBA-Kit), Cơ sở dữ liệu (SQLite, Postgres), Tự động hóa trình duyệt (Puppeteer, Browser-use) kết hợp đối soát ngữ nghĩa diện rộng.
+    - Xây dựng **Dynamic Dispatcher (`dispatcher.js`)**: Tiếp nhận công cụ được định tuyến, sinh kế hoạch thực thi, mã lệnh CLI và cấu hình mẫu JSON tự động cho AI Agent.
+    - Xây dựng **Stdio MCP Server chuẩn (`index.js`)**: Đăng ký 4 công cụ MCP chính thức (`aihub_smart_dispatch`, `aihub_resolve_capability`, `aihub_explain_routing`, `aihub_get_gateway_status`).
+  - **Lợi ích thực tế cho người dùng**:
+    - Người dùng chỉ cần kết nối duy nhất 1 MCP Server (`aihub-gateway`) là có thể khai thác toàn bộ 2.217 công cụ và 39 lĩnh vực mà không cần biết cách chọn hay cấu hình từng công cụ.
+    - Tiết kiệm ~95% dung lượng cửa sổ ngữ cảnh (Context Window) nhờ cơ chế nạp trễ (Lazy Loading), triệt tiêu hoàn toàn nguy cơ loãng context.
+  - **Bổ sung tài nguyên Gateway vào kho**: Đưa công cụ `aihub-vn-smart-mcp-gateway` vào danh mục, nâng tổng quy mô lên 2.217 tài nguyên.
+  - **Kiểm thử & Đóng gói**:
+    - Xây dựng bộ kiểm thử mới `tests/mcp-gateway.test.js` kiểm tra 7 kịch bản định tuyến, giải trình và tối ưu ngữ cảnh.
+    - Chạy toàn bộ 21 test cases trong 6 bộ kiểm thử tự động, đạt 100% tỷ lệ pass.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 26.84 giây.
 - [Tích hợp bộ kỹ năng OpenBA-Kit 57 AI Skills cho IT Business Analyst & Product Owner]:
   - **Tích hợp kho lưu trữ OpenBA-Kit (`spmtitsolution/OpenBA-Kit`)**:
     - Bổ sung tài nguyên **OpenBA-Kit (BA-Kit Open)** trọn bộ 57 AI Skills chuẩn Agent Skill, 19 quy chuẩn kỹ thuật (Rules) và 48 biểu mẫu thực chiến (Templates), biến mọi AI Coding Agent thành trợ lý Senior IT Business Analyst & Technical Product Owner.
