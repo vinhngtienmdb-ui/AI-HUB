@@ -8,6 +8,8 @@ interface ToolCardProps {
 }
 
 export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
+  const [hasImgError, setHasImgError] = React.useState(false);
+
   const renderIcon = (iconName: string) => {
     switch (iconName) {
       case 'Database': return <Database className="w-4 h-4" />;
@@ -21,23 +23,37 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
     }
   };
 
-  // Xác định xem repo có ảnh demo thực tế hay không
-  const firstDemoImage = tool.demoImages && tool.demoImages.length > 0
-    ? (typeof tool.demoImages[0] === 'string' ? tool.demoImages[0] : tool.demoImages[0].url)
-    : tool.imageUrl;
+  // Xác định xem repo có ảnh demo thực tế hợp lệ hay không
+  const validImageUrl = React.useMemo(() => {
+    if (tool.demoImages && Array.isArray(tool.demoImages) && tool.demoImages.length > 0) {
+      for (const item of tool.demoImages) {
+        const u = typeof item === 'string' ? item : item?.url;
+        if (typeof u === 'string' && u.trim().length > 0 && !u.includes('placeholder')) {
+          return u.trim();
+        }
+      }
+    }
+    if (typeof tool.imageUrl === 'string' && tool.imageUrl.trim().length > 0 && !tool.imageUrl.includes('placeholder')) {
+      return tool.imageUrl.trim();
+    }
+    return null;
+  }, [tool.demoImages, tool.imageUrl]);
+
+  const showImage = Boolean(validImageUrl) && !hasImgError;
 
   return (
     <div 
       onClick={() => onSelect(tool)}
       className="group flex flex-col bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg hover:border-blue-400 dark:hover:border-blue-600 transition-all overflow-hidden cursor-pointer"
     >
-      {/* Khối Ảnh Demo thực tế (Chỉ hiển thị nếu repo có ảnh demo thật, không tự tạo thêm ảnh giả) */}
-      {firstDemoImage ? (
+      {/* Khối Ảnh Demo thực tế (Chỉ hiển thị khi có ảnh demo thật và tải thành công, không để khung ảnh trống) */}
+      {showImage && validImageUrl ? (
         <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100 dark:bg-slate-850 border-b border-slate-100 dark:border-slate-800">
           <img
-            src={firstDemoImage}
+            src={validImageUrl}
             alt={tool.name}
             loading="lazy"
+            onError={() => setHasImgError(true)}
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
@@ -55,23 +71,25 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
             ) : null}
           </div>
         </div>
-      ) : (
-        /* Dải tiêu đề đồ họa công nghệ dành cho các repo không có ảnh demo đính kèm */
-        <div className="relative px-4 pt-4 pb-2 bg-gradient-to-r from-slate-50 to-blue-50/40 dark:from-slate-900 dark:to-slate-850/60 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-          <span className="text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
-            {tool.typeNameVi}
-          </span>
-          {tool.stars ? (
-            <span className="text-[11px] px-2 py-0.5 rounded-full font-bold bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-900 flex items-center space-x-1">
-              <Star className="w-3 h-3 fill-current" />
-              <span>{tool.stars >= 1000 ? `${(tool.stars / 1000).toFixed(1)}k` : tool.stars}</span>
-            </span>
-          ) : null}
-        </div>
-      )}
+      ) : null}
 
       {/* Phần thân thẻ */}
       <div className="p-4 flex-1 flex flex-col">
+        {/* Hàng nhãn loại hình & số sao khi thẻ không có ảnh demo (hiển thị tinh gọn, không để khoảng trống ảnh) */}
+        {!showImage && (
+          <div className="flex items-center justify-between gap-2 mb-3 pb-2.5 border-b border-slate-100 dark:border-slate-800/80">
+            <span className="text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/80 dark:border-blue-900/50">
+              {tool.typeNameVi}
+            </span>
+            {tool.stars ? (
+              <span className="text-[11px] px-2 py-0.5 rounded-full font-bold bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-900 flex items-center space-x-1">
+                <Star className="w-3 h-3 fill-current" />
+                <span>{tool.stars >= 1000 ? `${(tool.stars / 1000).toFixed(1)}k` : tool.stars}</span>
+              </span>
+            ) : null}
+          </div>
+        )}
+
         <div className="flex items-center space-x-2 mb-1.5">
           <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900/40 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
             {renderIcon(tool.icon)}

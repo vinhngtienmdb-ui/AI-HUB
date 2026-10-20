@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { X, ExternalLink, Copy, Check, ShieldCheck, Terminal, Code2, BookOpen, MessageSquareQuote, Layers, Sparkles, Play, Image as ImageIcon, Maximize2 } from 'lucide-react';
 import { AITool, ConfigTemplate } from '../types';
 
@@ -16,11 +16,34 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
   const [copiedConfig, setCopiedConfig] = useState<boolean>(false);
   const [copiedCli, setCopiedCli] = useState<boolean>(false);
   const [copiedPromptIndex, setCopiedPromptIndex] = useState<number | null>(null);
+  const [imageLoadFailed, setImageLoadFailed] = useState<boolean>(false);
 
   useEffect(() => {
     setActiveTab(0);
     setActiveImageIndex(0);
+    setImageLoadFailed(false);
   }, [tool?.id]);
+
+  // Lọc danh sách ảnh demo hợp lệ từ repo (loại bỏ hoàn toàn nếu rỗng, không có ảnh hoặc ảnh lỗi)
+  const validDemoImages = useMemo(() => {
+    const list: { url: string; caption: string }[] = [];
+    if (tool.demoImages && Array.isArray(tool.demoImages)) {
+      tool.demoImages.forEach((img) => {
+        const u = typeof img === 'string' ? img : img?.url;
+        const cap = typeof img === 'object' && img?.caption ? img.caption : `Ảnh minh họa tính năng và giao diện thực tế của ${tool.name}.`;
+        if (typeof u === 'string' && u.trim().length > 0 && !u.includes('placeholder')) {
+          list.push({ url: u.trim(), caption: cap });
+        }
+      });
+    }
+    if (list.length === 0 && typeof tool.imageUrl === 'string' && tool.imageUrl.trim().length > 0 && !tool.imageUrl.includes('placeholder')) {
+      list.push({
+        url: tool.imageUrl.trim(),
+        caption: `Ảnh minh họa tính năng và giao diện thực tế của ${tool.name}.`
+      });
+    }
+    return list;
+  }, [tool.demoImages, tool.imageUrl, tool.name]);
 
   const currentConfig: ConfigTemplate | undefined = tool.configs[activeTab] || tool.configs[0];
 
@@ -74,19 +97,13 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
         {/* Nội dung chi tiết cuộn được */}
         <div className="p-6 sm:p-8 overflow-y-auto space-y-8 divide-y divide-slate-100 dark:divide-slate-800">
           
-          {/* KHỐI ẢNH MINH HỌA / DEMO TRỰC QUAN (Chỉ hiển thị nếu repo có ảnh demo thật, có ghi chú rõ ràng) */}
+          {/* KHỐI ẢNH MINH HỌA / DEMO TRỰC QUAN (Chỉ hiển thị nếu repo có ảnh demo thật và tải thành công, loại bỏ hoàn toàn nếu không có) */}
           {(() => {
-            const hasImages = (tool.demoImages && tool.demoImages.length > 0) || Boolean(tool.imageUrl);
-            if (!hasImages) return null;
+            if (validDemoImages.length === 0 || imageLoadFailed) return null;
 
-            const currentItem = tool.demoImages && tool.demoImages[activeImageIndex]
-              ? tool.demoImages[activeImageIndex]
-              : tool.imageUrl;
-            
-            const currentUrl = typeof currentItem === 'string' ? currentItem : currentItem?.url || tool.imageUrl || '';
-            const currentCaption = typeof currentItem === 'object' && currentItem?.caption 
-              ? currentItem.caption 
-              : `Ảnh minh họa tính năng và giao diện thực tế của ${tool.name} trích xuất từ kho lưu trữ.`;
+            const currentItem = validDemoImages[activeImageIndex] || validDemoImages[0];
+            const currentUrl = currentItem.url;
+            const currentCaption = currentItem.caption;
 
             return (
               <div className="pt-0">
@@ -94,6 +111,7 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
                   <img
                     src={currentUrl}
                     alt={tool.name}
+                    onError={() => setImageLoadFailed(true)}
                     className="w-full h-full object-cover object-center transition-all duration-300"
                   />
                   
@@ -113,7 +131,7 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
                 {/* Khung ghi chú rõ ràng cho từng ảnh demo */}
                 <div className="mt-2.5 px-4 py-2.5 rounded-xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/50 flex items-start space-x-2 text-xs">
                   <span className="font-bold text-blue-700 dark:text-blue-300 shrink-0">
-                    Ghi chú ảnh {tool.demoImages && tool.demoImages.length > 1 ? `(${activeImageIndex + 1}/${tool.demoImages.length})` : ''}:
+                    Ghi chú ảnh {validDemoImages.length > 1 ? `(${activeImageIndex + 1}/${validDemoImages.length})` : ''}:
                   </span>
                   <p className="text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
                     {currentCaption}
@@ -121,24 +139,24 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
                 </div>
 
                 {/* Danh sách thumbnail thu nhỏ nếu có nhiều ảnh demo */}
-                {tool.demoImages && tool.demoImages.length > 1 && (
+                {validDemoImages.length > 1 && (
                   <div className="flex items-center space-x-2.5 mt-3 overflow-x-auto pb-1">
-                    {tool.demoImages.map((imgItem, idx) => {
-                      const thumbUrl = typeof imgItem === 'string' ? imgItem : imgItem.url;
-                      return (
-                        <button
-                          key={idx}
-                          onClick={() => setActiveImageIndex(idx)}
-                          className={`relative w-20 h-12 rounded-lg overflow-hidden border-2 transition-all shrink-0 ${
-                            activeImageIndex === idx
-                              ? 'border-blue-600 ring-2 ring-blue-500/30 scale-105'
-                              : 'border-slate-200 dark:border-slate-800 opacity-60 hover:opacity-100'
-                          }`}
-                        >
-                          <img src={thumbUrl} alt={`demo-${idx}`} className="w-full h-full object-cover" />
-                        </button>
-                      );
-                    })}
+                    {validDemoImages.map((imgItem, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => {
+                          setActiveImageIndex(idx);
+                          setImageLoadFailed(false);
+                        }}
+                        className={`relative w-20 h-12 rounded-lg overflow-hidden border-2 transition-all shrink-0 ${
+                          activeImageIndex === idx
+                            ? 'border-blue-600 ring-2 ring-blue-500/30 scale-105'
+                            : 'border-slate-200 dark:border-slate-800 opacity-60 hover:opacity-100'
+                        }`}
+                      >
+                        <img src={imgItem.url} alt={`demo-${idx}`} className="w-full h-full object-cover" />
+                      </button>
+                    ))}
                   </div>
                 )}
               </div>

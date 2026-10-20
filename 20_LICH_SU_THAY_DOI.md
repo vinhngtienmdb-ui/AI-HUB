@@ -4,6 +4,23 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.1-ToiUuHienThiAnhDemoVaLoaiBoKhungAnhTrong (Ngày 20-10-2026)
+- **Loại hình**: Tối ưu hóa hiển thị giao diện hình ảnh theo yêu cầu: Loại bỏ hoàn toàn khối hiển thị ảnh khi công cụ không có ảnh demo thật, tuyệt đối không hiển thị khung ảnh trống hoặc dải khoảng trắng banner.
+- **Nội dung hoàn thành**:
+  - **1. Thẻ tài nguyên (`src/components/ToolCard.tsx`)**:
+    - Kiểm tra nghiêm ngặt tính hợp lệ của đường dẫn ảnh demo (`validImageUrl`).
+    - Nếu repo KHÔNG CÓ ảnh demo hoặc ảnh rỗng/lỗi tải: Loại bỏ hoàn toàn khối hình ảnh phía trên (trả về `null`), không hiển thị bất kỳ dải gradient hay khung placeholder nào.
+    - Tự động chuyển hàng nhãn phân loại (`tool.typeNameVi`) và đánh giá sao (`tool.stars`) xuống dòng đầu của phần thân thẻ, giúp bố cục thẻ tài nguyên luôn cân đối, gọn gàng và thẩm mỹ.
+    - Tích hợp bắt sự kiện lỗi tải ảnh (`onError`), tự động ẩn khối ảnh nếu đường dẫn ảnh từ kho lưu trữ bên thứ ba bị đứt gãy.
+  - **2. Trang chi tiết tài nguyên (`src/pages/DetailPage.tsx`)**:
+    - Lọc toàn diện danh sách ảnh demo hợp lệ (`validDemoImages`). Nếu không có ảnh hoặc ảnh tải thất bại (`imageLoadFailed`), ẩn hoàn toàn khối ảnh (trả về `null`), không để lại khung viền đen hay ô trống.
+    - Tích hợp tính năng chuyển đổi xem đa ảnh qua thumbnail khi kho lưu trữ cung cấp nhiều ảnh demo thực tế.
+  - **3. Cửa sổ chi tiết nhanh (`src/components/ToolDetailModal.tsx`)**:
+    - Đồng bộ cơ chế lọc ảnh tương tự, loại bỏ hoàn toàn khung hiển thị khi công cụ không có ảnh demo.
+  - **4. Kiểm thử và xác minh**:
+    - Toàn bộ 5/5 bài kiểm thử tự động đạt 100%.
+    - Đóng gói bản phát hành sản phẩm (`npm run build`) thành công trong 10.84 giây.
+
 ### Phiên Bản 2.0.0-BoGiaoDienChiTietAIHubVN (Ngày 20-10-2026)
 - **Loại hình**: Thiết kế và phát triển toàn diện Bộ giao diện chi tiết AI HUB VN (Trang Danh mục, Trang Chi tiết, Trang Đóng góp, Trang Bộ sưu tập, Trang Hướng dẫn, Trang Tài khoản) theo đúng ảnh demo chuẩn mực.
 - **Nội dung hoàn thành**:

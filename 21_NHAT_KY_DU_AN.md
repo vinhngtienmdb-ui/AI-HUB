@@ -186,6 +186,17 @@
     - Đồng bộ mượt mà URL Hash (`#/`, `#/category/:type`, `#/tool/:id`, `#/contribute`, `#/collections`, `#/guides`, `#/account`), hỗ trợ lưu trạng thái vào `localStorage` và nút Back/Forward của trình duyệt.
   - **Kiểm thử & Đóng gói**: Đạt 5/5 bài kiểm thử unit tests, đóng gói Vite hoàn tất trong 10.92 giây.
 
+- [Tối Ưu Hiển Thị Ảnh Demo & Loại Bỏ Hoàn Toàn Khung Ảnh Trống]:
+  - **Mục tiêu**: Loại bỏ triệt để mọi khung hiển thị ảnh trống, dải banner gradient hoặc khung placeholder khi công cụ không có ảnh chụp màn hình/demo thực tế từ kho lưu trữ.
+  - **Triển khai kỹ thuật**:
+    - `src/components/ToolCard.tsx`: Tách hàm kiểm tra ảnh hợp lệ `validImageUrl`. Nếu không có ảnh hoặc ảnh gặp lỗi tải (`onError`), ẩn hoàn toàn khối ảnh (trả về `null`), không render dải gradient hoặc khung placeholder. Di chuyển hàng nhãn phân loại (`tool.typeNameVi`) và đánh giá sao lên đầu phần thân thẻ để đảm bảo tính cân đối thị giác.
+    - `src/pages/DetailPage.tsx`: Xây dựng mảng `validDemoImages`. Nếu không có ảnh hợp lệ hoặc kích hoạt `imageLoadFailed`, component trả về `null` ngay lập tức, không để lại khung đen hoặc khoảng cách trống rỗng.
+    - `src/components/ToolDetailModal.tsx`: Đồng bộ xử lý ẩn hoàn toàn khối ảnh khi không có dữ liệu hình ảnh thực tế từ repo.
+  - **Kiểm thử & Xác minh**:
+    - Kiểm tra `npx tsc --noEmit`: 0 lỗi.
+    - Kiểm tra 5/5 bài kiểm thử tự động đạt 100%.
+    - Đóng gói bản phát hành `npm run build` hoàn tất xuất sắc trong 10.84 giây.
+
 ### Quyết định kỹ thuật
 - **Định dạng cấu hình mẫu**: Hỗ trợ xuất cấu hình nhanh dạng JSON cho các nền tảng phổ biến (Claude Desktop, Antigravity, Cursor, Windsurf, v.v.).
 - **Ngôn ngữ nội dung**: Mọi hướng dẫn cài đặt, cấu hình và kịch bản sử dụng mẫu bắt buộc phải có nội dung diễn giải bằng tiếng Việt rõ ràng, kèm lệnh mẫu có thể sao chép bằng một nút bấm.
