@@ -17,6 +17,59 @@ export type ToolType =
 export type Platform = 'claude_desktop' | 'antigravity' | 'cursor' | 'windsurf' | 'web';
 
 export type Category = 
+  // 1. Lập trình & Kỹ thuật phần mềm (chi tiết hóa không gộp)
+  | 'frontend_ui'
+  | 'backend_api'
+  | 'mobile_app'
+  | 'qa_testing'
+  // 2. Vận hành, Đám mây & Bảo mật
+  | 'devops_cicd'
+  | 'cloud_infrastructure'
+  | 'cybersecurity_security'
+  // 3. Cơ sở dữ liệu & Tri thức
+  | 'database_sql_nosql'
+  | 'vector_rag'
+  // 4. Trí tuệ nhân tạo chuyên sâu
+  | 'nlp_llm'
+  | 'computer_vision'
+  | 'speech_voice'
+  | 'generative_ai_multimedia'
+  // 5. Dữ liệu lớn & Phân tích
+  | 'data_engineering'
+  | 'data_science_analytics'
+  // 6. Tự động hóa
+  | 'web_scraping_crawling'
+  | 'rpa_workflow_automation'
+  // 7. Tài chính & Ngân hàng
+  | 'banking_open_api'
+  | 'payment_gateway'
+  | 'investment_securities'
+  // 8. Kế toán, Thuế & Hóa đơn
+  | 'accounting_finance'
+  | 'e_invoice_tax'
+  // 9. Tài sản số & Web3
+  | 'blockchain_web3'
+  | 'crypto_defi'
+  // 10. Doanh nghiệp & Quản trị
+  | 'erp_enterprise'
+  | 'crm_sales'
+  | 'office_digital_docs'
+  | 'hr_recruitment'
+  // 11. Thương mại điện tử & Bán lẻ
+  | 'ecommerce_marketplace'
+  | 'pos_retail'
+  // 12. Giao nhận & Kho bãi
+  | 'warehouse_inventory'
+  | 'logistics_shipping'
+  // 13. Khách hàng & Dịch vụ số
+  | 'telecom_cskh'
+  | 'healthcare_medical'
+  | 'pharmacy_wellness'
+  | 'education_edtech'
+  | 'legal_public_service'
+  | 'tourism_hospitality'
+  | 'vietnam'
+  // Các phân loại cũ để tương thích ngược hoàn toàn
   | 'software_development'
   | 'devops_cloud'
   | 'database_storage'
@@ -27,20 +80,15 @@ export type Category =
   | 'accounting_tax'
   | 'crypto_blockchain'
   | 'business_erp'
-  | 'hr_recruitment' 
-  | 'telecom_cskh' 
   | 'ecommerce_retail' 
   | 'logistics_warehouse'
-  | 'tourism_hospitality'
-  | 'healthcare_medical'
   | 'education_training'
-  | 'legal_public_service' 
   | 'business_admin' 
   | 'logistics_transport' 
   | 'ai_nlp_data' 
   | 'programming_devops' 
   | 'system_automation'
-  | 'coding' | 'database' | 'cloud' | 'automation' | 'content' | 'search' | 'vietnam';
+  | 'coding' | 'database' | 'cloud' | 'automation' | 'content' | 'search';
 
 export type PricingModel = 'all' | 'free' | 'freemium' | 'paid' | 'contact';
 
@@ -77,6 +125,9 @@ export interface AITool {
   typeNameVi: string;
   category: Category;
   categoryNameVi: string;
+  categories?: Category[]; // Danh sách 1 hoặc nhiều lĩnh vực chuyên môn mà tài nguyên thuộc về
+  categoryNamesVi?: string[]; // Danh sách tên tiếng Việt của các lĩnh vực tương ứng
+  isVietnamMarket?: boolean; // Đánh dấu tài nguyên dành riêng hoặc tối ưu cho thị trường Việt Nam
   platforms: Platform[];
   sourceUrl: string; // Nguồn dẫn chính thức (bắt buộc)
   authorName: string;

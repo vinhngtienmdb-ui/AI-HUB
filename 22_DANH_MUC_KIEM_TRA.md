@@ -51,6 +51,12 @@
 - [x] Thiết lập tài khoản `vinh.ngtienmdb@gmail.com` là Quản trị viên tối cao (Admin) duy nhất của toàn bộ hệ thống
 - [x] Phân quyền bảo mật cao: Chỉ duy nhất tài khoản Quản trị viên tối cao mới có quyền điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn (cho từng công cụ và toàn bộ hệ thống)
 - [x] Loại bỏ triệt để toàn bộ các thông báo, bảng dán mã cấu hình Firebase và chỉ dẫn kỹ thuật trên cả giao diện frontend (`LoginModal.tsx`) và trong mã nguồn console (`src/lib/firebase.ts`)
+- [x] Tách sâu và mở rộng hệ thống lĩnh vực chuyên môn thành 39 danh mục chi tiết, không gộp (`src/types/index.ts`, `src/data/mockTools.ts`)
+- [x] Hỗ trợ cấu trúc đa lĩnh vực chuyên môn (Multi-category): 1 tài nguyên có thể thuộc 1 hoặc nhiều lĩnh vực (`categories?: Category[]`), đồng bộ bộ đếm `categoryCounts` và bộ lọc danh mục
+- [x] Phân loại lại chuyên sâu 2.194 tài nguyên trong kho dữ liệu (`src/data/allTools.json`), phân bổ đa danh mục chính xác theo công năng và thư viện tích hợp
+- [x] Đánh dấu đặc biệt tài nguyên dành riêng hoặc hỗ trợ thị trường Việt Nam (`isVietnamMarket: true`), hiển thị huy hiệu `🇻🇳 Thị trường VN` trên `ToolCard.tsx` và `DetailPage.tsx`
+- [x] Tích hợp nút bật/tắt lọc nhanh `🇻🇳 Thị trường Việt Nam` kèm bộ đếm số lượng tài nguyên thực tế trên `Sidebar.tsx`
+- [x] Nâng cấp Modal điều chỉnh phân loại công cụ dành riêng cho Admin (`EditToolTaxonomyModal.tsx`), hỗ trợ chọn đa danh mục và toggle cờ thị trường Việt Nam
 - [x] Xóa bỏ hoàn toàn cơ chế mặc định đăng nhập tài khoản giả lập `thanhvien@aihub.vn`. Người dùng mới truy cập với tư cách khách vãng lai (`currentUser = null`), tự động dọn dẹp khóa cũ trên `localStorage`
 - [x] Xây dựng phân hệ Quản lý và Chỉnh sửa thông tin cá nhân (`UserProfile`) tại trang cá nhân (`src/pages/AccountPage.tsx`): Cho phép cập nhật Họ tên hiển thị, URL ảnh đại diện avatar, Chức danh chuyên môn, Tiểu sử giới thiệu, Số điện thoại, GitHub, Website và lưu trữ bền vững
 - [x] Chuẩn hóa và triển khai cơ chế Tích dấu sao lưu trữ công cụ (⭐ Star / Save Tool) 1 chạm trên toàn bộ hệ thống: Thẻ công cụ (`ToolCard.tsx`), Danh mục (`CategoryPage.tsx`), Chi tiết công cụ (`DetailPage.tsx`), Bảng danh sách (`Table View`), và quản lý danh sách công cụ đã gắn sao tại Trang cá nhân (`AccountPage.tsx`)

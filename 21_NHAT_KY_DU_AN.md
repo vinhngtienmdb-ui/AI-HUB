@@ -8,6 +8,30 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Phân loại chuyên sâu Đa Lĩnh vực Chuyên môn & Đánh dấu Tài nguyên Thị trường Việt Nam]:
+  - **Tách sâu các lĩnh vực chuyên môn chi tiết, không gộp**:
+    - Thiết kế lại hệ thống danh mục từ 18 nhóm gộp thành **39 lĩnh vực chuyên môn cụ thể**, không còn gộp các mảng kỹ thuật và nghiệp vụ khác nhau vào chung một nhóm:
+      - Tách Kỹ thuật phần mềm: Giao diện người dùng & Frontend (`frontend_ui`), Phát triển dịch vụ máy chủ & Backend (`backend_api`), Cơ sở dữ liệu & Lưu trữ (`database_storage`), Vận hành triển khai & DevOps (`devops_ci_cd`), Kiểm thử & Đảm bảo chất lượng QA (`qa_testing`), An toàn thông tin & An ninh mạng (`cybersecurity`), Ứng dụng di động (`mobile_apps`), Điện toán đám mây & Hạ tầng (`cloud_infrastructure`), Hệ thống nhúng & IoT (`iot_embedded`).
+      - Tách Nghiệp vụ doanh nghiệp: Tài chính & Thanh toán số (`finance_payment`), Ngân hàng & Fintech (`fintech_banking`), Kế toán & Hóa đơn điện tử (`accounting_tax`), Tiếp thị & Quảng cáo số (`marketing_advertising`), Tối ưu hóa công cụ tìm kiếm SEO (`seo_growth`), Bán hàng & Quản lý khách hàng CRM (`sales_crm`), Chăm sóc khách hàng & Trợ lý ảo CS (`customer_support`), Nhân sự & Tiền lương (`hr_recruitment`), Thương mại điện tử & Bán lẻ (`e_commerce`), Chuỗi cung ứng & Kho vận (`logistics_supplychain`), Pháp lý & Tuân thủ hợp đồng (`legal_compliance`).
+      - Tách Dữ liệu & Trí tuệ nhân tạo: Xử lý ngôn ngữ tự nhiên NLP (`nlp_language`), Thị giác máy tính & Xử lý ảnh (`computer_vision`), Giọng nói & Âm thanh (`speech_audio`), Sáng tạo nội dung & Copywriting (`content_writing`), Thiết kế đồ họa & Giao diện UI/UX (`design_graphics`), Sản xuất video & Hoạt họa (`video_animation`), Khoa học dữ liệu & Trực quan hóa BI (`data_analytics`), Kỹ thuật dữ liệu Data Engineering (`data_engineering`), Vận hành mô hình MLOps (`mlops_aiops`).
+    - Cập nhật kiểu dữ liệu `Category` trong `src/types/index.ts` và hằng số `CATEGORIES` trong `src/data/mockTools.ts`.
+  - **Hỗ trợ 1 tài nguyên có thể thuộc 1 hoặc nhiều lĩnh vực chuyên môn (Multi-category)**:
+    - Bổ sung trường `categories?: Category[]` và `categoryNamesVi?: string[]` vào cấu trúc `AITool`.
+    - Điều chỉnh bộ đếm danh mục `categoryCounts` trong `src/App.tsx` để cộng dồn chính xác theo tất cả danh mục của công cụ.
+    - Cập nhật logic lọc: Công cụ được tìm thấy khi người dùng chọn bất kỳ lĩnh vực nào mà công cụ đó tham gia.
+  - **Phân loại lại 2.194 tài nguyên trong kho dữ liệu**:
+    - Chạy kịch bản tự động phân loại chuyên sâu đa lĩnh vực dựa trên tên, mô tả công năng, từ khóa kỹ thuật và thư viện tích hợp.
+    - Cập nhật toàn bộ 2.194 công cụ trong `src/data/allTools.json` (2.126 công cụ được gán từ 2 đến 3 lĩnh vực chuyên sâu).
+  - **Đánh dấu nổi bật tài nguyên dành cho thị trường Việt Nam**:
+    - Nhận diện và gắn cờ `isVietnamMarket: true` cho 286 tài nguyên phục vụ trực tiếp thị trường Việt Nam.
+    - Thêm huy hiệu cờ đỏ sao vàng `🇻🇳 Thị trường VN` trên `ToolCard.tsx` và `DetailPage.tsx`.
+    - Tích hợp nút bật/tắt lọc nhanh `🇻🇳 Thị trường Việt Nam` kèm bộ đếm số lượng tài nguyên thực tế ngay trên đầu `Sidebar.tsx`.
+  - **Nâng cấp Modal điều chỉnh phân loại dành riêng cho Quản trị viên tối cao**:
+    - Cập nhật `EditToolTaxonomyModal.tsx` cho phép Quản trị viên tối cao chọn Loại hình thành phần chính, Lĩnh vực chuyên môn chính, tích chọn thêm nhiều Lĩnh vực phụ thông qua thanh tìm kiếm và hộp kiểm, đồng thời bật/tắt cờ Thị trường Việt Nam.
+  - **Kiểm thử & Đóng gói**:
+    - Bổ sung ca kiểm thử tự động kiểm tra đa lĩnh vực và cờ thị trường Việt Nam trong `tests/approval-and-auth.test.js`.
+    - Toàn bộ 14 bài kiểm tra trong 5 bộ kiểm thử đạt 100% tỷ lệ pass.
+    - Đóng gói toàn bộ ứng dụng bằng `npm run build` (`tsc && vite build`) hoàn thành thành công trong 14.41 giây.
 - [Phân quyền Admin Tối cao vinh.ngtienmdb@gmail.com & Loại bỏ các thông báo cấu hình Firebase]:
   - **Phân quyền Quản trị viên tối cao (Admin)**:
     - Thiết lập tài khoản `vinh.ngtienmdb@gmail.com` là Quản trị viên cao nhất của toàn bộ hệ thống AI HUB VN.

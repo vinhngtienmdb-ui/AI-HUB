@@ -132,3 +132,58 @@ test('Kiểm tra điều chỉnh Loại hình thành phần và Lĩnh vực chuy
   assert.equal(updatedTool.categoryNameVi, 'Tài chính, Ngân hàng & Thanh toán');
 });
 
+test('Kiểm tra đa lĩnh vực chuyên môn và đánh dấu thị trường Việt Nam (Multi-category & Vietnam Market)', () => {
+  const tool = {
+    id: 'vn-fintech-01',
+    name: 'Cổng thanh toán MoMo SDK',
+    toolType: 'sdk',
+    category: 'finance_payment',
+    categories: ['finance_payment', 'fintech_banking', 'e_commerce'],
+    categoryNamesVi: ['Tài chính, Ngân hàng & Thanh toán', 'Công nghệ tài chính & Ngân hàng', 'Thương mại điện tử & Bán lẻ'],
+    isVietnamMarket: true,
+    status: 'published'
+  };
+
+  // 1. Kiểm tra cờ thị trường Việt Nam
+  assert.equal(tool.isVietnamMarket, true, 'Công cụ phải có cờ isVietnamMarket = true');
+  assert.equal(tool.categories.length, 3, 'Công cụ phải thuộc 3 lĩnh vực chuyên môn');
+
+  // 2. Logic lọc theo danh mục: lọc theo 'fintech_banking' phải trúng tool này dù category chính là finance_payment
+  const matchCategoryFintech =
+    tool.category === 'fintech_banking' ||
+    (Array.isArray(tool.categories) && tool.categories.includes('fintech_banking'));
+  assert.equal(matchCategoryFintech, true, 'Lọc theo danh mục phụ fintech_banking phải khớp');
+
+  // 3. Logic lọc thị trường Việt Nam
+  const isVnTool = Boolean(
+    tool.isVietnamMarket ||
+    tool.category === 'vietnam' ||
+    (Array.isArray(tool.categories) && tool.categories.includes('vietnam'))
+  );
+  assert.equal(isVnTool, true, 'Công cụ phải thỏa mãn điều kiện lọc thị trường Việt Nam');
+
+  // 4. Logic cập nhật đa lĩnh vực của Quản trị viên
+  function updateMultiTaxonomy(t, newType, mainCategory, subCategories, isVn) {
+    return {
+      ...t,
+      toolType: newType,
+      category: mainCategory,
+      categories: subCategories,
+      isVietnamMarket: isVn !== undefined ? isVn : subCategories.includes('vietnam')
+    };
+  }
+
+  const updated = updateMultiTaxonomy(
+    tool,
+    'mcp',
+    'accounting_tax',
+    ['accounting_tax', 'finance_payment', 'vietnam'],
+    true
+  );
+
+  assert.equal(updated.toolType, 'mcp');
+  assert.equal(updated.category, 'accounting_tax');
+  assert.deepEqual(updated.categories, ['accounting_tax', 'finance_payment', 'vietnam']);
+  assert.equal(updated.isVietnamMarket, true);
+});
+

@@ -30,10 +30,13 @@ interface SidebarProps {
   setSelectedCategory: (cat: Category | 'all') => void;
   selectedPlatform: Platform | 'all';
   setSelectedPlatform: (plat: Platform | 'all') => void;
+  onlyVietnamMarket?: boolean;
+  setOnlyVietnamMarket?: (val: boolean) => void;
   typeCounts: Record<string, number>;
   categoryCounts?: Record<string, number>;
   categories: CategoryInfo[];
   totalTools: number;
+  vietnamCount?: number;
   onOpenDocs: () => void;
   onOpenTerminal: () => void;
   onResetFilters: () => void;
@@ -46,10 +49,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
   setSelectedCategory,
   selectedPlatform,
   setSelectedPlatform,
+  onlyVietnamMarket = false,
+  setOnlyVietnamMarket,
   typeCounts,
   categoryCounts = {},
   categories,
   totalTools,
+  vietnamCount = 0,
   onOpenDocs,
   onOpenTerminal,
   onResetFilters
@@ -157,7 +163,36 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">
             Lĩnh vực chuyên môn
           </h4>
+          <span className="text-[10px] text-slate-400">
+            {categories.length - 1} lĩnh vực
+          </span>
         </div>
+
+        {/* Nút bật/tắt lọc nhanh tài nguyên Thị trường Việt Nam */}
+        {setOnlyVietnamMarket && (
+          <div className="mb-2.5">
+            <button
+              type="button"
+              onClick={() => setOnlyVietnamMarket(!onlyVietnamMarket)}
+              className={`w-full flex items-center justify-between p-2.5 rounded-xl border transition-all ${
+                onlyVietnamMarket
+                  ? 'bg-gradient-to-r from-rose-600 to-amber-600 text-white font-bold shadow-md border-rose-500'
+                  : 'bg-rose-50/80 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-900/50 hover:bg-rose-100 dark:hover:bg-rose-900/40 font-bold'
+              }`}
+            >
+              <div className="flex items-center space-x-2">
+                <span className="text-base">🇻🇳</span>
+                <span className="text-xs">Thị trường Việt Nam</span>
+              </div>
+              <span className={`text-[11px] px-2 py-0.5 rounded-full font-extrabold ${
+                onlyVietnamMarket ? 'bg-white text-rose-700' : 'bg-rose-200/80 dark:bg-rose-900 text-rose-800 dark:text-rose-200'
+              }`}>
+                {vietnamCount}
+              </span>
+            </button>
+          </div>
+        )}
+
         <div className="space-y-1">
           {categories.map((cat) => {
             const isSelected = selectedCategory === cat.id;

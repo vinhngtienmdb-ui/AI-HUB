@@ -124,13 +124,27 @@ export const DetailPage: React.FC<DetailPageProps> = ({
                         Phổ biến
                       </span>
                     )}
+                    {tool.isVietnamMarket && (
+                      <span className="px-3 py-0.5 rounded-full text-xs font-extrabold bg-rose-50 text-rose-700 dark:bg-rose-950/80 dark:text-rose-300 border border-rose-300 dark:border-rose-800 flex items-center space-x-1 shadow-xs">
+                        <span>🇻🇳 Thị trường Việt Nam</span>
+                      </span>
+                    )}
                   </div>
 
-                  <div className="flex items-center space-x-2.5 mt-2">
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold">
+                  {/* Danh sách các Lĩnh vực chuyên môn mà tài nguyên thuộc về */}
+                  <div className="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 mr-1">Lĩnh vực:</span>
+                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-bold border border-indigo-200 dark:border-indigo-800">
                       {tool.categoryNameVi}
                     </span>
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 font-semibold border border-emerald-200 dark:border-emerald-800">
+                    {(tool.categoryNamesVi || [])
+                      .filter((c) => c !== tool.categoryNameVi && c !== '🇻🇳 Thị Trường Việt Nam')
+                      .map((cName, idx) => (
+                        <span key={idx} className="text-xs px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium border border-slate-200/80 dark:border-slate-700">
+                          {cName}
+                        </span>
+                      ))}
+                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 font-semibold border border-emerald-200 dark:border-emerald-800 ml-1">
                       {(tool.license || '').includes('MIT') ? 'Mã nguồn mở (MIT)' : 'Miễn phí sử dụng'}
                     </span>
                   </div>

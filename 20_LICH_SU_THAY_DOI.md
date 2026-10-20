@@ -4,6 +4,37 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.25-PhanLoaiChuyenSauDaLinhVucVaThiTruongVietNam (Ngày 20-10-2026)
+- **Loại hình**: Tách sâu các lĩnh vực chuyên môn chi tiết không gộp, hỗ trợ đa lĩnh vực chuyên môn cho từng tài nguyên, sắp xếp và phân loại lại 2.194 công cụ, và gắn cờ đánh dấu tài nguyên dành cho thị trường Việt Nam.
+- **Nội dung hoàn thành**:
+  - **Tách sâu các lĩnh vực chuyên môn chi tiết, không gộp**:
+    - Mở rộng từ 18 danh mục gộp lên **39 lĩnh vực chuyên môn chi tiết**, tách bạch độc lập:
+      - Tách Kỹ thuật lập trình thành: Frontend & UI, Backend & API, Database & Lưu trữ dữ liệu, DevOps & CI/CD, QA & Kiểm thử tự động, An toàn thông tin & Bảo mật, Di động & Đa nền tảng, v.v.
+      - Tách Quản trị & Kinh doanh thành: Tài chính & Thanh toán, Kế toán & Hóa đơn điện tử, Tiếp thị & SEO, Bán hàng & Chăm sóc khách hàng, Nhân sự & Tiền lương, Thương mại điện tử & Bán lẻ, v.v.
+      - Tách Dữ liệu & AI thành: Xử lý ngôn ngữ tự nhiên (NLP), Thị giác máy tính (Computer Vision), Âm thanh & Giọng nói, Tạo video & Hoạt họa, Trực quan hóa dữ liệu & BI, MLOps, v.v.
+    - Cập nhật định nghĩa kiểu dữ liệu trong [`src/types/index.ts`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/types/index.ts) và danh mục chuẩn trong [`src/data/mockTools.ts`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/data/mockTools.ts) kèm biểu tượng và mô tả chuyên môn.
+  - **Hỗ trợ 1 tài nguyên thuộc 1 hoặc nhiều lĩnh vực chuyên môn (Multi-category)**:
+    - Bổ sung các trường dữ liệu `categories?: Category[]` và `categoryNamesVi?: string[]` trong interface `AITool`.
+    - Đồng bộ cơ chế lọc danh mục: Một công cụ sẽ xuất hiện khi người dùng chọn danh mục chính `category` hoặc bất kỳ danh mục phụ nào trong mảng `categories`.
+    - Nâng cấp bộ đếm danh mục `categoryCounts` trong [`src/App.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/App.tsx) để tính tổng chính xác trên toàn bộ các lĩnh vực mà công cụ tham gia.
+  - **Sắp xếp và phân loại lại 2.194 công cụ trong kho dữ liệu**:
+    - Xây dựng và thực thi kịch bản tự động phân loại chuyên sâu đa lĩnh vực dựa trên tên, mô tả công năng, từ khóa kỹ thuật và thư viện tích hợp.
+    - Đã phân loại lại toàn bộ 2.194 công cụ trong [`src/data/allTools.json`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/data/allTools.json), trong đó có 2.126 công cụ thuộc từ 2 đến 3 lĩnh vực chuyên sâu.
+  - **Đánh dấu đặc biệt các tài nguyên dành cho thị trường Việt Nam**:
+    - Bổ sung cờ định danh boolean `isVietnamMarket: true` cho 286 tài nguyên phục vụ trực tiếp nghiệp vụ tại Việt Nam (thuế, hóa đơn điện tử, ngân hàng nội địa, cổng thanh toán Việt Nam, xử lý tiếng Việt, văn bản pháp lý Việt Nam, e-commerce trong nước).
+    - Hiển thị huy hiệu cờ đỏ sao vàng nổi bật `🇻🇳 Thị trường VN` trên Thẻ công cụ ([`ToolCard.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/components/ToolCard.tsx)) và Huy hiệu `🇻🇳 Dành cho thị trường Việt Nam` trên Trang chi tiết ([`DetailPage.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/pages/DetailPage.tsx)).
+    - Bổ sung nút chuyển đổi lọc nhanh `🇻🇳 Thị trường Việt Nam` kèm bộ đếm số lượng tài nguyên thực tế ngay trên đầu thanh bên lọc ([`Sidebar.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/components/Sidebar.tsx)).
+  - **Nâng cấp Modal điều chỉnh phân loại dành riêng cho Quản trị viên tối cao**:
+    - Nâng cấp [`EditToolTaxonomyModal.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/components/EditToolTaxonomyModal.tsx) cho phép Quản trị viên:
+      - Chọn 1 Loại hình thành phần chính (Agent, Skill, MCP Server, SDK, API, CLI, Software, Workflow...).
+      - Chọn 1 Lĩnh vực chuyên môn chính.
+      - Tích chọn đồng thời nhiều Lĩnh vực chuyên môn bổ sung qua giao diện tìm kiếm và hộp chọn trực quan.
+      - Bật/tắt cờ công tắc "Đánh dấu tài nguyên dành cho thị trường Việt Nam 🇻🇳".
+  - **Kiểm thử & Đóng gói**:
+    - Bổ sung ca kiểm thử tự động kiểm tra đa lĩnh vực và cờ thị trường Việt Nam trong `tests/approval-and-auth.test.js`.
+    - Toàn bộ 14 bài kiểm tra trong 5 bộ kiểm thử đạt 100% tỷ lệ pass.
+    - Biên dịch TypeScript và đóng gói Vite (`tsc && vite build`) hoàn thành thành công trong 14.41 giây.
+
 ### Phiên Bản 2.0.24-PhanQuyenAdminVinhNgTienMdbVaLoaiBoThongBaoFirebase (Ngày 20-10-2026)
 - **Loại hình**: Phân quyền Admin tối cao cho tài khoản `vinh.ngtienmdb@gmail.com`, giới hạn độc quyền điều chỉnh phân loại chuyên môn và loại bỏ toàn bộ thông báo cấu hình Firebase trên frontend và trong mã nguồn.
 - **Nội dung hoàn thành**:

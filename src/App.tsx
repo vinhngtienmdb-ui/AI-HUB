@@ -60,6 +60,7 @@ export const App: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<Category | 'all'>('all');
   const [selectedPlatform, setSelectedPlatform] = useState<Platform | 'all'>('all');
   const [selectedType, setSelectedType] = useState<ToolType | 'all'>('all');
+  const [onlyVietnamMarket, setOnlyVietnamMarket] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedModalTool, setSelectedModalTool] = useState<AITool | null>(null);
 
@@ -349,19 +350,30 @@ export const App: React.FC = () => {
   };
 
   // Điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn (Chỉ duy nhất tài khoản Quản trị viên tối cao)
-  const handleUpdateToolTaxonomy = (toolId: string, newType: ToolType, newCategory: Category) => {
+  const handleUpdateToolTaxonomy = (
+    toolId: string, 
+    newType: ToolType, 
+    newCategory: Category,
+    newCategories?: Category[],
+    isVn?: boolean
+  ) => {
     if (!isAdmin) {
       alert('Chỉ duy nhất tài khoản Quản trị viên tối cao mới có quyền điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn!');
       return;
     }
     const newTypeNameVi = getToolTypeNameVi(newType, toolTypes);
     const newCategoryNameVi = getCategoryNameVi(newCategory, categories);
+    const cats = newCategories && newCategories.length > 0 ? newCategories : [newCategory];
+    const catNamesVi = cats.map((c) => getCategoryNameVi(c, categories));
 
     const updateData = {
       toolType: newType,
       typeNameVi: newTypeNameVi,
       category: newCategory,
       categoryNameVi: newCategoryNameVi,
+      categories: cats,
+      categoryNamesVi: catNamesVi,
+      isVietnamMarket: isVn !== undefined ? isVn : cats.includes('vietnam'),
     };
 
     setTools((prev) =>
@@ -379,11 +391,25 @@ export const App: React.FC = () => {
     return counts;
   }, [publishedTools]);
 
-  // Thống kê số lượng từng lĩnh vực chuyên môn (chỉ tính công cụ đã phát hành công khai)
+  // Thống kê số lượng tài nguyên dành riêng hoặc hỗ trợ thị trường Việt Nam
+  const vietnamCount = useMemo(() => {
+    return publishedTools.filter(
+      (t) => Boolean(t.isVietnamMarket || t.category === 'vietnam' || (Array.isArray(t.categories) && t.categories.includes('vietnam')))
+    ).length;
+  }, [publishedTools]);
+
+  // Thống kê số lượng từng lĩnh vực chuyên môn (chỉ tính công cụ đã phát hành công khai, hỗ trợ đa lĩnh vực)
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = { all: publishedTools.length };
     for (const t of publishedTools) {
-      counts[t.category] = (counts[t.category] || 0) + 1;
+      const toolCats = new Set<string>();
+      if (t.category) toolCats.add(t.category);
+      if (Array.isArray(t.categories)) {
+        t.categories.forEach((c) => toolCats.add(c));
+      }
+      toolCats.forEach((cat) => {
+        counts[cat] = (counts[cat] || 0) + 1;
+      });
     }
     return counts;
   }, [publishedTools]);
@@ -399,13 +425,21 @@ export const App: React.FC = () => {
         (tool.purposeVi || '').toLowerCase().includes(q) ||
         (tool.authorName || '').toLowerCase().includes(q);
 
-      const matchCategory = selectedCategory === 'all' || tool.category === selectedCategory;
+      const matchCategory =
+        selectedCategory === 'all' ||
+        tool.category === selectedCategory ||
+        (Array.isArray(tool.categories) && tool.categories.includes(selectedCategory)) ||
+        (selectedCategory === 'vietnam' && (tool.isVietnamMarket || tool.category === 'vietnam' || tool.categories?.includes('vietnam')));
+
+      const isVn = Boolean(tool.isVietnamMarket || tool.category === 'vietnam' || (Array.isArray(tool.categories) && tool.categories.includes('vietnam')));
+      const matchVietnamMarket = !onlyVietnamMarket || isVn;
+
       const matchType = selectedType === 'all' || tool.toolType === selectedType;
       const matchPlatform = selectedPlatform === 'all' || (tool.platforms || []).includes(selectedPlatform);
 
-      return matchQuery && matchCategory && matchType && matchPlatform;
+      return matchQuery && matchCategory && matchType && matchPlatform && matchVietnamMarket;
     });
-  }, [publishedTools, searchQuery, selectedCategory, selectedType, selectedPlatform]);
+  }, [publishedTools, searchQuery, selectedCategory, selectedType, selectedPlatform, onlyVietnamMarket]);
 
   const totalPages = Math.ceil(filteredTools.length / PAGE_SIZE) || 1;
   const paginatedTools = useMemo(() => {
@@ -418,6 +452,7 @@ export const App: React.FC = () => {
     setSelectedCategory('all');
     setSelectedPlatform('all');
     setSelectedType('all');
+    setOnlyVietnamMarket(false);
     setCurrentPage(1);
     setIsMobileSidebarOpen(false);
   };
@@ -629,10 +664,13 @@ export const App: React.FC = () => {
                     setSelectedCategory={setSelectedCategory}
                     selectedPlatform={selectedPlatform}
                     setSelectedPlatform={setSelectedPlatform}
+                    onlyVietnamMarket={onlyVietnamMarket}
+                    setOnlyVietnamMarket={setOnlyVietnamMarket}
                     typeCounts={typeCounts}
                     categoryCounts={categoryCounts}
                     categories={categories}
                     totalTools={publishedTools.length}
+                    vietnamCount={vietnamCount}
                     onOpenDocs={() => setIsDocsOpen(true)}
                     onOpenTerminal={() => setIsTerminalOpen(true)}
                     onResetFilters={handleResetFilters}
@@ -887,10 +925,13 @@ export const App: React.FC = () => {
                 setSelectedCategory={(c) => { setSelectedCategory(c); setIsMobileSidebarOpen(false); }}
                 selectedPlatform={selectedPlatform}
                 setSelectedPlatform={(p) => { setSelectedPlatform(p); setIsMobileSidebarOpen(false); }}
+                onlyVietnamMarket={onlyVietnamMarket}
+                setOnlyVietnamMarket={(v) => { setOnlyVietnamMarket(v); setIsMobileSidebarOpen(false); }}
                 typeCounts={typeCounts}
                 categoryCounts={categoryCounts}
                 categories={categories}
                 totalTools={publishedTools.length}
+                vietnamCount={vietnamCount}
                 onOpenDocs={() => { setIsMobileSidebarOpen(false); setIsDocsOpen(true); }}
                 onOpenTerminal={() => { setIsMobileSidebarOpen(false); setIsTerminalOpen(true); }}
                 onResetFilters={() => { handleResetFilters(); setIsMobileSidebarOpen(false); }}

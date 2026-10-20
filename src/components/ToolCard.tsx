@@ -87,9 +87,16 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect, isSaved = fa
 
           {/* Nhãn loại hình & Số sao đánh giá + Nút gắn sao lưu trữ trên ảnh */}
           <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none">
-            <span className="text-[11px] px-2.5 py-0.5 rounded-full font-bold backdrop-blur-md bg-slate-900/80 text-white shadow-sm border border-white/10">
-              {tool.typeNameVi}
-            </span>
+            <div className="flex items-center space-x-1.5 flex-wrap gap-y-1">
+              <span className="text-[11px] px-2.5 py-0.5 rounded-full font-bold backdrop-blur-md bg-slate-900/80 text-white shadow-sm border border-white/10">
+                {tool.typeNameVi}
+              </span>
+              {tool.isVietnamMarket && (
+                <span className="text-[10px] px-2 py-0.5 rounded-full font-bold backdrop-blur-md bg-rose-600/90 text-white shadow-sm flex items-center space-x-1 border border-rose-400/40">
+                  <span>🇻🇳 Thị trường VN</span>
+                </span>
+              )}
+            </div>
             <div className="flex items-center space-x-1.5 pointer-events-auto">
               {tool.stars ? (
                 <span className="text-[11px] px-2 py-0.5 rounded-full font-bold backdrop-blur-md bg-amber-500/90 text-white shadow-sm flex items-center space-x-1">
@@ -121,12 +128,19 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect, isSaved = fa
 
       {/* Phần thân thẻ */}
       <div className="p-4 flex-1 flex flex-col">
-        {/* Hàng nhãn loại hình & số sao khi thẻ không có ảnh demo */}
+        {/* Hàng nhãn loại hình, cờ VN & số sao khi thẻ không có ảnh demo */}
         {!showImage && (
           <div className="flex items-center justify-between gap-2 mb-3 pb-2.5 border-b border-slate-100 dark:border-slate-800/80">
-            <span className={`text-[11px] px-2.5 py-0.5 rounded-full font-bold border ${getBadgeColorClass(tool.toolType)}`}>
-              {tool.typeNameVi}
-            </span>
+            <div className="flex items-center space-x-1.5 flex-wrap gap-y-1">
+              <span className={`text-[11px] px-2.5 py-0.5 rounded-full font-bold border ${getBadgeColorClass(tool.toolType)}`}>
+                {tool.typeNameVi}
+              </span>
+              {tool.isVietnamMarket && (
+                <span className="text-[10px] px-2 py-0.5 rounded-full font-bold bg-rose-50 text-rose-700 dark:bg-rose-950/80 dark:text-rose-300 border border-rose-200 dark:border-rose-800 flex items-center space-x-1">
+                  <span>🇻🇳 Thị trường VN</span>
+                </span>
+              )}
+            </div>
             <div className="flex items-center space-x-1.5">
               {tool.stars ? (
                 <span className="text-[11px] px-2 py-0.5 rounded-full font-bold bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-900 flex items-center space-x-1">
@@ -169,9 +183,29 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect, isSaved = fa
         </p>
 
         {/* Tóm tắt công dụng tiếng Việt */}
-        <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed mb-3">
+        <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed mb-2.5">
           {tool.summaryVi}
         </p>
+
+        {/* Danh sách các Lĩnh vực chuyên môn mà tài nguyên thuộc về */}
+        <div className="flex flex-wrap items-center gap-1 mb-3">
+          <span className="text-[10px] px-2 py-0.5 rounded-md font-medium bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-900/40">
+            {tool.categoryNameVi}
+          </span>
+          {(tool.categoryNamesVi || [])
+            .filter((c) => c !== tool.categoryNameVi && c !== '🇻🇳 Thị Trường Việt Nam')
+            .slice(0, 2)
+            .map((cName, idx) => (
+              <span key={idx} className="text-[10px] px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-700/60">
+                {cName}
+              </span>
+            ))}
+          {(tool.categories || []).filter(c => c !== 'vietnam').length > 3 && (
+            <span className="text-[10px] px-1 py-0.5 rounded text-slate-400 font-semibold" title={(tool.categoryNamesVi || []).join(', ')}>
+              +{(tool.categories || []).filter(c => c !== 'vietnam').length - 3}
+            </span>
+          )}
+        </div>
 
         {/* Nền tảng hỗ trợ */}
         <div className="mt-auto pt-2.5 flex flex-wrap gap-1 border-t border-slate-100 dark:border-slate-800">
