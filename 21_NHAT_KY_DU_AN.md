@@ -8,6 +8,23 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Tích hợp 2 công cụ theo yêu cầu (vietnamese-mcp, morluto/rea) và Mở rộng thu thập thêm các công cụ hàng đầu]:
+  - **Tích hợp kho lưu trữ VN MCP Hub (`nguyenduchuy27111997-creator/vietnamese-mcp`)**:
+    - Bổ sung tài nguyên tổng thể **VN MCP Hub** và các thành phần con độc lập (`mcp-momo-vn`, `mcp-zalo-oa`...) hỗ trợ thanh toán MoMo, ZaloPay, VNPAY, ViettelPay và tương tác tin nhắn Zalo OA cho AI Agents.
+    - Đánh dấu chuẩn hóa cờ `isVietnamMarket: true`, hiển thị huy hiệu `🇻🇳 Thị trường VN`, phân loại đa danh mục (`fintech_banking`, `finance_payment`, `customer_support`, `e_commerce`, `vietnam`).
+  - **Tích hợp kho lưu trữ REA: Reverse Engineer Anything (`morluto/rea`)**:
+    - Bổ sung công cụ AI Agent dịch ngược mã nguồn và nhị phân native hàng đầu **REA**, hỗ trợ phân tích cục bộ an toàn, liên thông Ghidra, Hopper, IDA Pro và ứng dụng JavaScript/Electron.
+    - Cung cấp hướng dẫn cài đặt tự động `npx rea-agents setup`, lệnh phân tích nhanh và tài liệu tiếng Việt.
+  - **Mở rộng thu thập các công cụ / MCP Server / AI Agent thế hệ mới (Kho đạt 2.204 tài nguyên)**:
+    - Bổ sung **Browser Use**: Điều khiển trình duyệt web tự động hóa đa tab cho AI Agent.
+    - Bổ sung **Crawl4AI**: Trích xuất và cào dữ liệu web tối ưu hóa cho RAG / LLMs.
+    - Bổ sung **VietQR Napas247 MCP**: Máy chủ tạo mã QR thanh toán chuẩn liên ngân hàng Việt Nam 50+ ngân hàng nội địa.
+    - Bổ sung **Playwright MCP Server**: Tự động hóa kiểm thử E2E và trích xuất dữ liệu web.
+    - Bổ sung **PostgreSQL Database MCP Server**: Quản trị, phân tích schema và tối ưu truy vấn SQL quan hệ.
+    - Bổ sung **Vietnamese NLP Toolkit**: Bộ công cụ xử lý ngôn ngữ tự nhiên tiếng Việt cho AI (tách từ, gắn nhãn POS, NER, chuẩn hóa chính tả).
+  - **Kiểm thử & Đóng gói**:
+    - Chạy toàn bộ 14 test cases trong 5 bộ kiểm thử tự động, xác minh 2.204 công cụ và 3.623 cấu hình JSON đạt 100% tỷ lệ pass.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 18.03 giây.
 - [Loại bỏ phần ghi chú Quy định phân quyền hệ thống trên màn hình đăng nhập]:
   - **Tinh gọn màn hình đăng nhập Google Auth (`src/components/LoginModal.tsx`)**:
     - Loại bỏ triệt để khối ghi chú "Quy định phân quyền hệ thống" hiển thị mô tả quyền Quản trị viên và quyền Thành viên ở phía dưới nút đăng nhập Google.

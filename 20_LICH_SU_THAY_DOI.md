@@ -4,6 +4,29 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.27-TichHopVnMcpHubVaMorlutoReaVaMoRongKhoTaiNguyen (Ngày 20-10-2026)
+- **Loại hình**: Tích hợp 2 kho lưu trữ mã nguồn mở lớn theo yêu cầu (`vietnamese-mcp` và `morluto/rea`) cùng việc mở rộng thu thập thêm các công cụ MCP Server, AI Agent hàng đầu (tổng cộng 2.204 tài nguyên).
+- **Nội dung hoàn thành**:
+  - **Tích hợp kho lưu trữ VN MCP Hub (`nguyenduchuy27111997-creator/vietnamese-mcp`)**:
+    - **VN MCP Hub Tổng thể**: Bộ sưu tập máy chủ Model Context Protocol đầu tiên cho fintech và nhắn tin Việt Nam (MoMo, ZaloPay, VNPAY, ViettelPay, Zalo OA), bao gồm 18 công cụ API chuẩn hóa, hỗ trợ chế độ giả lập Sandbox ngoại tuyến và cổng gateway Cloudflare Workers.
+    - **VN MCP MoMo (`@vn-mcp/mcp-momo-vn`)**: Máy chủ MCP tạo giao dịch, kiểm tra mã tham chiếu, xử lý hoàn tiền và kiểm tra IPN ví điện tử MoMo.
+    - **VN MCP Zalo OA (`@vn-mcp/mcp-zalo-oa`)**: Máy chủ MCP quản lý gửi tin nhắn tư vấn/giao dịch qua Zalo Official Account, tra cứu người theo dõi và tự động làm mới mã Token.
+    - Đánh dấu chuẩn hóa cờ `isVietnamMarket: true`, gán đa danh mục (`fintech_banking`, `finance_payment`, `customer_support`, `e_commerce`, `vietnam`).
+  - **Tích hợp kho lưu trữ REA: Reverse Engineer Anything (`morluto/rea`)**:
+    - Bộ công cụ MCP Server và AI Agent chuyên sâu cho kỹ thuật dịch ngược (Reverse Engineering) toàn diện: từ phân tích ứng dụng JavaScript, gói Electron `.asar` xuống tận mức mã máy nhị phân native (`Mach-O`, `ELF`, `.dylib`) kết hợp Ghidra, Hopper Disassembler và IDA Pro.
+    - Hoạt động hoàn toàn trên máy cục bộ, không tải dữ liệu lên đám mây, tích hợp sẵn cho Claude Code, Cursor, Gemini CLI và Antigravity (`npx rea-agents setup`).
+    - Gán các lĩnh vực chuyên môn: An toàn thông tin & An ninh mạng (`cybersecurity`), Kiểm thử QA (`qa_testing`), Backend API (`backend_api`), DevOps (`devops_ci_cd`).
+  - **Mở rộng thu thập thêm các công cụ AI & MCP Server thịnh hành**:
+    - **Browser Use (`browser-use/browser-use`)**: Nền tảng điều khiển trình duyệt web tự động hóa đa tab, DOM tree và thị giác máy tính cho AI Agent.
+    - **Crawl4AI (`unclecode/crawl4ai`)**: Bộ cào dữ liệu web bất đồng bộ tối ưu hóa trích xuất Markdown sạch cho hệ thống RAG và LLMs.
+    - **VietQR Napas247 MCP (`vietqr.net`)**: Máy chủ MCP tạo mã QR thanh toán chuẩn liên ngân hàng Việt Nam (VietQR Napas 247) cho 50+ ngân hàng nội địa (`isVietnamMarket: true`).
+    - **Playwright MCP Server (`microsoft/playwright`)**: Máy chủ MCP tự động hóa trình duyệt và kiểm thử giao diện E2E.
+    - **PostgreSQL Database MCP Server (`modelcontextprotocol/server-postgres`)**: Máy chủ MCP quản trị, phân tích chỉ mục và truy vấn cơ sở dữ liệu quan hệ PostgreSQL.
+    - **Vietnamese NLP Toolkit (`underthesea`)**: Bộ công cụ xử lý ngôn ngữ tự nhiên tiếng Việt cho AI (tách từ, gán nhãn POS, nhận dạng thực thể NER, chuẩn hóa chính tả) (`isVietnamMarket: true`).
+  - **Kiểm thử & Đóng gói**:
+    - Toàn bộ 2.204 công cụ và 3.623 mẫu cấu hình JSON đều đạt 100% tiêu chuẩn QT-01, QT-03, QT-04 và vượt qua 14 test cases trong 5 bộ kiểm thử tự động.
+    - Biên dịch và đóng gói thành công bằng Vite (`tsc && vite build`) trong 18.03 giây.
+
 ### Phiên Bản 2.0.26-LoaiBoGhiChuPhanQuyenHeThongTrenManHinhDangNhap (Ngày 20-10-2026)
 - **Loại hình**: Loại bỏ hoàn toàn khối ghi chú "Quy định phân quyền hệ thống" trên màn hình đăng nhập Google Auth.
 - **Nội dung hoàn thành**:
