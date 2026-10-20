@@ -216,7 +216,7 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
                 Các tính năng nổi bật:
               </h4>
               <ul className="space-y-1.5 text-sm text-slate-600 dark:text-slate-300">
-                {tool.featuresVi.map((f, idx) => (
+                {(tool.featuresVi || []).map((f, idx) => (
                   <li key={idx} className="flex items-start">
                     <span className="text-blue-500 mr-2 font-bold">•</span>
                     <span>{f}</span>
@@ -241,7 +241,7 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
             <div className="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-inner">
               <div className="flex items-center justify-between px-4 py-2.5 bg-slate-950/80 border-b border-slate-800">
                 <div className="flex items-center space-x-1">
-                  {tool.configs.map((cfg, idx) => (
+                  {(tool.configs || []).map((cfg, idx) => (
                     <button
                       key={cfg.platform}
                       onClick={() => setActiveTab(idx)}
@@ -347,7 +347,7 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
               <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Câu lệnh (Prompts) gợi ý bằng tiếng Việt:
               </span>
-              {tool.samplePromptsVi.map((prompt, pIdx) => {
+              {(tool.samplePromptsVi || []).map((prompt, pIdx) => {
                 const isCopied = copiedPromptIndex === pIdx;
                 return (
                   <div

@@ -91,9 +91,9 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
       const q = searchQuery.toLowerCase().trim();
       const matchQuery =
         !q ||
-        t.name.toLowerCase().includes(q) ||
-        t.summaryVi.toLowerCase().includes(q) ||
-        t.authorName.toLowerCase().includes(q);
+        (t.name || '').toLowerCase().includes(q) ||
+        (t.summaryVi || '').toLowerCase().includes(q) ||
+        (t.authorName || '').toLowerCase().includes(q);
 
       // Lọc danh mục
       const matchCategory = selectedCategory === 'all' || t.category === selectedCategory;
@@ -101,7 +101,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
       // Lọc mô hình giá
       let matchPricing = true;
       if (selectedPricing === 'free') {
-        matchPricing = t.license.toLowerCase().includes('mit') || t.license.toLowerCase().includes('apache') || (t.pricingModel === 'free');
+        matchPricing = (t.license || '').toLowerCase().includes('mit') || (t.license || '').toLowerCase().includes('apache') || (t.pricingModel === 'free');
       } else if (selectedPricing === 'paid') {
         matchPricing = t.pricingModel === 'paid';
       }
@@ -109,7 +109,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
       // Lọc theo tag nhanh
       let matchQuickTag = true;
       if (selectedQuickTag === 'free') {
-        matchQuickTag = t.license.toLowerCase().includes('mit') || t.license.toLowerCase().includes('apache');
+        matchQuickTag = (t.license || '').toLowerCase().includes('mit') || (t.license || '').toLowerCase().includes('apache');
       } else if (selectedQuickTag === 'top_rated') {
         matchQuickTag = (t.stars || 0) >= 4.5 || (t.stars || 0) >= 1000;
       }

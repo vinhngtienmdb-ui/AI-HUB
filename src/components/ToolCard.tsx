@@ -110,7 +110,7 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
 
         {/* Nền tảng hỗ trợ */}
         <div className="mt-auto pt-2.5 flex flex-wrap gap-1 border-t border-slate-100 dark:border-slate-800">
-          {tool.platforms.map((p) => {
+          {(tool.platforms || []).map((p) => {
             let label = 'Web';
             if (p === 'claude_desktop') label = 'Claude';
             if (p === 'antigravity') label = 'Antigravity';

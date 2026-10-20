@@ -4,6 +4,24 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.9-KhacPhucSuCoManHinhTrangVaTangCuongBaoVeGiaoDien (Ngày 20-10-2026)
+- **Loại hình**: Khắc phục triệt để sự cố màn hình trắng (White Screen of Death) sau khi nạp dữ liệu đợt 7, chuẩn hóa toàn diện 100% cấu trúc dữ liệu theo đúng hợp đồng kiểu `AITool` và thiết lập cơ chế phòng vệ giao diện `ErrorBoundary`.
+- **Nguyên nhân sự cố**:
+  - Khi người dùng truy cập trang, hook `useMemo` lọc danh sách công cụ trong `src/App.tsx` và hàm render nền tảng trong `src/components/ToolCard.tsx` truy cập trực tiếp vào thuộc tính `tool.platforms.includes(...)` và `tool.platforms.map(...)`.
+  - Một số công cụ mới được thêm vào thiếu trường `platforms` hoặc `summaryVi`, dẫn đến ngoại lệ `TypeError: Cannot read properties of undefined` làm sập toàn bộ cây render React của ứng dụng.
+- **Biện pháp xử lý và hoàn thiện**:
+  1. **Chuẩn hóa dữ liệu toàn diện (`scripts/sanitize-all-tools.cjs`)**: Rà soát và cập nhật đồng bộ toàn bộ 2.044 công cụ trong `src/data/allTools.json`, đảm bảo 100% công cụ đều có đầy đủ tất cả các trường: `id`, `slug`, `name`, `icon`, `imageUrl`, `demoImages`, `toolType`, `typeNameVi`, `category`, `categoryNameVi`, `platforms`, `sourceUrl`, `authorName`, `license`, `summaryVi`, `purposeVi`, `featuresVi`, `installGuideVi`, `usageGuideVi`, `samplePromptsVi`, `configs`, `status`, `linkHealth`.
+  2. **Lập trình phòng vệ (Defensive Programming)**:
+     - Tại `src/App.tsx`: Chuyển đổi toàn bộ bộ lọc sang dạng an toàn `(tool.name || '').toLowerCase()`, `(tool.summaryVi || '').toLowerCase()`, `(tool.platforms || []).includes(...)`.
+     - Tại `src/components/ToolCard.tsx`: Sử dụng `(tool.platforms || []).map(...)` để không bao giờ bị lỗi ngay cả khi thuộc tính là undefined.
+     - Tại `src/pages/CategoryPage.tsx` và `src/pages/DetailPage.tsx`: Bổ sung toán tử an toàn cho `license`, `platforms`, `configs`, `featuresVi`.
+  3. **Thiết lập Khung bắt lỗi giao diện (`src/components/ErrorBoundary.tsx`)**: Bọc toàn bộ ứng dụng bằng `ErrorBoundary` trong `src/main.tsx`. Nếu xảy ra bất kỳ ngoại lệ nào trong quá trình render, hệ thống sẽ hiển thị giao diện thông báo lỗi thân thiện kèm nút "Tải lại trang", tuyệt đối chấm dứt hiện tượng màn hình trắng.
+- **Kiểm thử và xác nhận**:
+  - Kiểm tra tính toàn vẹn của dữ liệu: 0 lỗi trên 2.044 công cụ.
+  - Kiểm thử nghiệp vụ tự động: 5/5 bài kiểm thử PASS 100%.
+  - Đóng gói Vite: Hoàn tất xuất sắc trong 9.12 giây.
+  - Kiểm tra máy chủ cục bộ: Giao diện hiển thị mượt mà, đầy đủ 2.044 công cụ.
+
 ### Phiên Bản 2.0.8-MoRongQuyMo50CongCuThuongHieuLonVietNam (Ngày 20-10-2026)
 - **Loại hình**: Tiếp tục mở rộng đợt 7 với quy mô lớn gồm **50 giải pháp công nghệ, API nền tảng, SDK và cổng dịch vụ công** của các tập đoàn, ngân hàng, hãng vận chuyển, sàn thương mại điện tử, nền tảng nhân sự, F&B và cơ quan nhà nước hàng đầu Việt Nam.
 - **Nội dung hoàn thành**:

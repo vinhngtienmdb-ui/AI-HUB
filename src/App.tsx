@@ -195,14 +195,14 @@ export const App: React.FC = () => {
       const q = searchQuery.toLowerCase().trim();
       const matchQuery =
         !q ||
-        tool.name.toLowerCase().includes(q) ||
-        tool.summaryVi.toLowerCase().includes(q) ||
-        tool.purposeVi.toLowerCase().includes(q) ||
-        tool.authorName.toLowerCase().includes(q);
+        (tool.name || '').toLowerCase().includes(q) ||
+        (tool.summaryVi || '').toLowerCase().includes(q) ||
+        (tool.purposeVi || '').toLowerCase().includes(q) ||
+        (tool.authorName || '').toLowerCase().includes(q);
 
       const matchCategory = selectedCategory === 'all' || tool.category === selectedCategory;
       const matchType = selectedType === 'all' || tool.toolType === selectedType;
-      const matchPlatform = selectedPlatform === 'all' || tool.platforms.includes(selectedPlatform);
+      const matchPlatform = selectedPlatform === 'all' || (tool.platforms || []).includes(selectedPlatform);
 
       return matchQuery && matchCategory && matchType && matchPlatform;
     });

@@ -124,7 +124,7 @@ export const DetailPage: React.FC<DetailPageProps> = ({
                       {tool.categoryNameVi}
                     </span>
                     <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 font-semibold border border-emerald-200 dark:border-emerald-800">
-                      {tool.license.includes('MIT') ? 'Mã nguồn mở (MIT)' : 'Miễn phí sử dụng'}
+                      {(tool.license || '').includes('MIT') ? 'Mã nguồn mở (MIT)' : 'Miễn phí sử dụng'}
                     </span>
                   </div>
 
@@ -169,11 +169,11 @@ export const DetailPage: React.FC<DetailPageProps> = ({
                   <span>{isSaved ? 'Đã lưu vào bộ sưu tập' : 'Lưu vào bộ sưu tập'}</span>
                 </button>
 
-                {tool.configs.some((c) => c.cliCommand) && (
+                {(tool.configs || []).some((c) => c.cliCommand) && (
                   <button
                     type="button"
                     onClick={() => {
-                      const cmd = tool.configs.find((c) => c.cliCommand)?.cliCommand;
+                      const cmd = (tool.configs || []).find((c) => c.cliCommand)?.cliCommand;
                       if (cmd) onExecuteCommand(cmd);
                     }}
                     className="inline-flex items-center space-x-1.5 px-4 py-3 rounded-2xl bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 font-bold text-xs transition-colors"
@@ -217,7 +217,7 @@ export const DetailPage: React.FC<DetailPageProps> = ({
               <div>
                 <span className="text-slate-400 block mb-0.5">Nền tảng tương thích</span>
                 <div className="flex flex-wrap gap-1 mt-1">
-                  {tool.platforms.map((p) => (
+                  {(tool.platforms || []).map((p) => (
                     <span key={p} className="px-2 py-0.5 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono text-[10px]">
                       {p}
                     </span>
