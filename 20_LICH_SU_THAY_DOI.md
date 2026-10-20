@@ -4,6 +4,19 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.29-TichHopOpenBaKit57AiSkillsChoBusinessAnalyst (Ngày 20-10-2026)
+- **Loại hình**: Tích hợp bộ tài nguyên OpenBA-Kit (BA-Kit Open) từ kho lưu trữ `spmtitsolution/OpenBA-Kit` bao gồm trọn bộ 57 AI Skills cho IT Business Analyst & Product Owner, 19 bộ quy chuẩn và 48 biểu mẫu thực chiến (nâng tổng quy mô kho lên 2.216 tài nguyên).
+- **Nội dung hoàn thành**:
+  - **Tích hợp OpenBA-Kit (`spmtitsolution-openba-kit-57-ai-skills`)**:
+    - Bộ kỹ năng mở rộng biến mọi AI Coding Agent (Claude Code, Antigravity, Codex, Cursor...) thành trợ lý Senior IT Business Analyst & Technical Product Owner chuyên nghiệp.
+    - Bao quát 9 giai đoạn phát triển phần mềm: Lập kế hoạch sản phẩm, Đặc tả kỹ thuật IEEE 830, Mô hình hóa dữ liệu & thông điệp (ERD, Sequence), Bóc tách User Story chuẩn INVEST & Gherkin AC, Dựng wireframe HTML tương tác, Thiết kế API hợp đồng, Sinh test cases bám sát Error Matrix, Phân tích tác động thay đổi phạm vi (Change Request) và Bàn giao vận hành (Jira, Confluence, Preview portal một chạm).
+    - Tích hợp công cụ **Diagram Design (v2.6)**: Tự động chuyển đổi sơ đồ text Mermaid khô cứng thành bản vẽ vector HTML & SVG chuẩn Editorial (lưới 4px, font Instrument Serif + Geist).
+    - Đánh dấu chuẩn hóa cờ `isVietnamMarket: true`, gán đa danh mục (`devops_ci_cd`, `qa_testing`, `backend_api`, `frontend_ui`, `vietnam`).
+    - Bổ sung vào 3 bộ sưu tập hàng đầu: *Top Công Cụ Lập Trình & Tác Tử Kỹ Sư AI*, *Bộ Sưu Tập AI & Dịch Vụ Số Việt Nam*, và *Tự Động Hóa & Workflow Doanh Nghiệp*.
+  - **Kiểm thử & Đóng gói**:
+    - Toàn bộ 2.216 công cụ và 3.637 mẫu cấu hình JSON đều đạt 100% tiêu chuẩn QT-01, QT-03, QT-04 và vượt qua 14 test cases trong 5 bộ kiểm thử tự động.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 7.16 giây.
+
 ### Phiên Bản 2.0.28-TichHop50McpServerClaudeCodeVaBaiHuongDanToiUuContext (Ngày 20-10-2026)
 - **Loại hình**: Tích hợp danh mục tài nguyên từ bài viết "50+ MCP Server tốt nhất cho Claude Code năm 2026" (Claude.vn) kèm bộ sưu tập tuyển chọn và cẩm nang hướng dẫn chiến lược tối ưu hóa Context Window bằng Lazy Loading.
 - **Nội dung hoàn thành**:

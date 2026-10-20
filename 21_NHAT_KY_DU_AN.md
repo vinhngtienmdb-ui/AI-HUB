@@ -8,6 +8,16 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Tích hợp bộ kỹ năng OpenBA-Kit 57 AI Skills cho IT Business Analyst & Product Owner]:
+  - **Tích hợp kho lưu trữ OpenBA-Kit (`spmtitsolution/OpenBA-Kit`)**:
+    - Bổ sung tài nguyên **OpenBA-Kit (BA-Kit Open)** trọn bộ 57 AI Skills chuẩn Agent Skill, 19 quy chuẩn kỹ thuật (Rules) và 48 biểu mẫu thực chiến (Templates), biến mọi AI Coding Agent thành trợ lý Senior IT Business Analyst & Technical Product Owner.
+    - Hỗ trợ toàn diện 9 giai đoạn: Lập kế hoạch sản phẩm, Thu thập & đặc tả yêu cầu IEEE 830, Sơ đồ nghiệp vụ & dữ liệu (Sequence, ERD, BPMN, D2), Bóc tách User Story chuẩn INVEST & Gherkin AC, Thiết kế Wireframe/Prototype HTML tương tác, Tích hợp API hợp đồng, Sinh Test Cases bám sát Error Matrix, Kiểm soát thay đổi (Change Request impact analysis) và Bàn giao vận hành (Jira, Confluence, Preview portal một chạm).
+    - Tích hợp công cụ **Diagram Design (v2.6)**: Tự động chuyển đổi sơ đồ text Mermaid khô cứng thành bản vẽ vector HTML & SVG chuẩn Editorial (lưới 4px, font Instrument Serif + Geist).
+    - Đánh dấu chuẩn hóa cờ `isVietnamMarket: true`, gán đa danh mục (`devops_ci_cd`, `qa_testing`, `backend_api`, `frontend_ui`, `vietnam`).
+    - Bổ sung liên kết vào 3 bộ sưu tập hàng đầu tại `src/data/mockGuidesAndCollections.ts`.
+  - **Kiểm thử & Đóng gói**:
+    - Chạy toàn bộ 14 test cases trong 5 bộ kiểm thử tự động, xác minh 2.216 công cụ và 3.637 cấu hình JSON đạt 100% tỷ lệ pass.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 7.16 giây.
 - [Tích hợp tài nguyên 50+ MCP Server tốt nhất cho Claude Code năm 2026 từ Claude.vn]:
   - **Bổ sung 11 MCP Server tinh hoa nhất năm 2026 (Quy mô kho đạt 2.215 tài nguyên)**:
     - `sqlite-mcp-database-server`: Truy vấn CSDL SQLite cục bộ bằng tiếng Việt tự nhiên.
