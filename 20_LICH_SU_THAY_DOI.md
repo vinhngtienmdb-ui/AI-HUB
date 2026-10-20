@@ -4,6 +4,28 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.28-TichHop50McpServerClaudeCodeVaBaiHuongDanToiUuContext (Ngày 20-10-2026)
+- **Loại hình**: Tích hợp danh mục tài nguyên từ bài viết "50+ MCP Server tốt nhất cho Claude Code năm 2026" (Claude.vn) kèm bộ sưu tập tuyển chọn và cẩm nang hướng dẫn chiến lược tối ưu hóa Context Window bằng Lazy Loading.
+- **Nội dung hoàn thành**:
+  - **Tích hợp 11 MCP Server tinh hoa nhất năm 2026 cho Claude Code (Nâng quy mô kho lên 2.215 tài nguyên)**:
+    - **SQLite MCP Server (`@modelcontextprotocol/server-sqlite`)**: Máy chủ truy vấn tự nhiên CSDL SQLite nội bộ cho Claude Code.
+    - **Google Drive MCP Server (`@modelcontextprotocol/server-gdrive`)**: Kết nối, tìm kiếm và trích xuất dữ liệu Google Docs/Sheets.
+    - **Brave Search MCP Server (`@modelcontextprotocol/server-brave-search`)**: Tra cứu thông tin web thời gian thực với cam kết bảo mật quyền riêng tư, không theo dõi.
+    - **Puppeteer MCP Server (`@modelcontextprotocol/server-puppeteer`)**: Tự động hóa kiểm thử web, chụp ảnh màn hình và cào dữ liệu cho Claude Code.
+    - **Browserbase MCP Server (`@browserbase/mcp-server-browserbase`)**: Vận hành trình duyệt Chromium đám mây song song quy mô lớn.
+    - **CC Usage & ccflare (`cc-usage`)**: Bộ công cụ CLI và dashboard theo dõi chi phí API và mức tiêu thụ token Claude Code theo thời gian thực.
+    - **Claude Flow (`claude-flow`)**: Nền tảng điều phối sinh mã khung Boilerplate và tái cấu trúc mã nguồn theo mẫu tự động.
+    - **Claude Squad & Swarm SDK (`@swarm/claude-squad`)**: Điều phối biệt đội đa tác tử AI (Multi-Agent Swarm) làm việc song song trên giao diện dòng lệnh.
+    - **Claude Command Suite (`@claude-commands/init`)**: Bộ tuyển tập 119+ lệnh tắt (Slash Commands: `/security-audit`, `/architecture-review`...).
+    - **Anthropic Memory MCP (`@modelcontextprotocol/server-memory`)**: Bộ nhớ dài hạn dạng đồ thị tri thức (Knowledge Graph Memory) chính thức từ Anthropic.
+    - **Claude Context MCP (`@claude-context/mcp-server`)**: Tìm kiếm ngữ nghĩa thông minh trong kho mã nguồn hàng triệu dòng.
+  - **Bổ sung Bộ sưu tập tuyển chọn & Bài viết Hướng dẫn chiến lược**:
+    - **Bộ sưu tập**: *"Top 50+ MCP Server Tinh Hoa Cho Claude Code & AI Agents (2026)"* tại [`src/data/mockGuidesAndCollections.ts`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/data/mockGuidesAndCollections.ts).
+    - **Bài viết hướng dẫn**: *"Chiến Lược Chọn & Tối Ưu 50+ MCP Server Cho Claude Code Năm 2026: Tránh Tràn Context & Kỹ Thuật Lazy Loading"*, giải quyết vấn đề ngốn 15-20% dung lượng cửa sổ ngữ cảnh, phân loại 6 nhóm máy chủ thiết yếu và phương pháp áp dụng MCP Tool Search giảm 95% token overhead.
+  - **Kiểm thử & Đóng gói**:
+    - Toàn bộ 2.215 công cụ và 3.634 mẫu cấu hình JSON đều đạt 100% tiêu chuẩn QT-01, QT-03, QT-04 và vượt qua 14 test cases trong 5 bộ kiểm thử tự động.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 18.21 giây.
+
 ### Phiên Bản 2.0.27-TichHopVnMcpHubVaMorlutoReaVaMoRongKhoTaiNguyen (Ngày 20-10-2026)
 - **Loại hình**: Tích hợp 2 kho lưu trữ mã nguồn mở lớn theo yêu cầu (`vietnamese-mcp` và `morluto/rea`) cùng việc mở rộng thu thập thêm các công cụ MCP Server, AI Agent hàng đầu (tổng cộng 2.204 tài nguyên).
 - **Nội dung hoàn thành**:

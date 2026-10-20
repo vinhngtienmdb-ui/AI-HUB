@@ -8,6 +8,25 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Tích hợp tài nguyên 50+ MCP Server tốt nhất cho Claude Code năm 2026 từ Claude.vn]:
+  - **Bổ sung 11 MCP Server tinh hoa nhất năm 2026 (Quy mô kho đạt 2.215 tài nguyên)**:
+    - `sqlite-mcp-database-server`: Truy vấn CSDL SQLite cục bộ bằng tiếng Việt tự nhiên.
+    - `google-drive-mcp-server`: Kết nối và trích xuất dữ liệu Google Docs/Sheets an toàn qua OAuth 2.0.
+    - `brave-search-privacy-mcp-server`: Tìm kiếm web thời gian thực bảo mật quyền riêng tư không theo dõi.
+    - `puppeteer-browser-automation-mcp`: Điều khiển Chromium tự động hóa kiểm thử QA và cào dữ liệu web.
+    - `browserbase-cloud-browser-mcp-server`: Trình duyệt đám mây song song quy mô lớn cho AI Agent.
+    - `cc-usage-cost-analyzer-cli`: Bộ công cụ CLI và dashboard ccflare theo dõi chi phí API và token Claude Code.
+    - `claude-flow-code-orchestrator`: Điều phối sinh mã khung Boilerplate và tái cấu trúc mã nguồn tự động.
+    - `claude-squad-swarm-sdk`: Nền tảng điều phối đa tác tử AI (Multi-Agent Swarm) làm việc song song.
+    - `claude-command-suite-119`: Bộ tuyển tập 119+ lệnh nhanh (/security-audit, /architecture-review...).
+    - `anthropic-memory-knowledge-graph-mcp`: Máy chủ bộ nhớ dài hạn dạng đồ thị tri thức duy trì ngữ cảnh.
+    - `claude-context-semantic-search-mcp`: Tìm kiếm ngữ nghĩa trong codebase hàng triệu dòng.
+  - **Bổ sung Bộ sưu tập và Bài viết Hướng dẫn chuyên sâu**:
+    - Thêm bộ sưu tập tuyển chọn *"Top 50+ MCP Server Tinh Hoa Cho Claude Code & AI Agents (2026)"* tại `src/data/mockGuidesAndCollections.ts`.
+    - Xuất bản bài viết hướng dẫn chiến lược *"Chiến Lược Chọn & Tối Ưu 50+ MCP Server Cho Claude Code Năm 2026: Tránh Tràn Context & Kỹ Thuật Lazy Loading"* phân tích 6 nhóm máy chủ, vấn đề ngốn 15-20% dung lượng Context Window, mẹo dùng `/mcp`, `/mcp disable` và kỹ thuật MCP Tool Search giảm 95% token overhead.
+  - **Kiểm thử & Đóng gói**:
+    - Toàn bộ 14 test cases trong 5 bộ kiểm thử tự động đạt 100% tỷ lệ pass.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 18.21 giây.
 - [Tích hợp 2 công cụ theo yêu cầu (vietnamese-mcp, morluto/rea) và Mở rộng thu thập thêm các công cụ hàng đầu]:
   - **Tích hợp kho lưu trữ VN MCP Hub (`nguyenduchuy27111997-creator/vietnamese-mcp`)**:
     - Bổ sung tài nguyên tổng thể **VN MCP Hub** và các thành phần con độc lập (`mcp-momo-vn`, `mcp-zalo-oa`...) hỗ trợ thanh toán MoMo, ZaloPay, VNPAY, ViettelPay và tương tác tin nhắn Zalo OA cho AI Agents.
