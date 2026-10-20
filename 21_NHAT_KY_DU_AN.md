@@ -8,6 +8,20 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Bổ sung đợt 5 - Thương hiệu lớn Việt Nam]:
+  - Tiếp tục mở rộng đợt 5 với 10 giải pháp công nghệ, API và SDK từ các tập đoàn, doanh nghiệp và thương hiệu hàng đầu Việt Nam:
+    1. Haravan App SDK (`@haravan/app-sdk`): Kết nối bán hàng đa kênh Omnichannel, quản lý kho hàng và đơn hàng sàn thương mại điện tử.
+    2. Tiki Open Platform & MiniApp SDK (`tikivn/open-api-samples`): Tích hợp gian hàng Tiki, quản lý sản phẩm, đơn hàng và ứng dụng MiniApp.
+    3. FPT.AI Chatbot SDK (`fpt-corp/fptai-chatbot-sdk`): Xử lý ngôn ngữ tự nhiên tiếng Việt cho trợ lý ảo và tổng đài tự động FPT.
+    4. MISA meInvoice Cloud API Connector: Phát hành hóa đơn điện tử chuẩn Thông tư 78/2021/TT-BTC, kết nối MISA SME/AMIS.
+    5. Viettel S-Invoice Cloud API: Hóa đơn điện tử quy mô lớn, phát hành hàng loạt và tích hợp chữ ký số Viettel-CA.
+    6. VNPT Invoice & SmartCA Connector: Hóa đơn điện tử và ký số từ xa không cần Token USB vật lý chuẩn eIDAS.
+    7. Be Delivery & Transportation API: Tích hợp dịch vụ gọi xe và giao hàng hỏa tốc Be Group.
+    8. Xanh SM Corporate EV Ride-Hailing API: Quản lý chi phí di chuyển doanh nghiệp bằng xe điện GSM VinFast.
+    9. Vietcombank Open Banking Corporate Gateway: Cổng ngân hàng mở Vietcombank bảo mật mTLS (vấn tin số dư, trích nợ tự động).
+    10. Petrolimex Fuel Price & Invoice Crawler: Bảng giá xăng dầu điều hành và hóa đơn điện tử cột bơm xăng Petrolimex.
+  - Quy mô hệ sinh thái: Đạt mốc **1.984 công cụ** và **2.979 mẫu cấu hình JSON**.
+  - Kiểm thử chất lượng: Toàn bộ 5 bài kiểm thử tự động đạt 100%, đóng gói Vite thành công trong 9.88 giây.
 - [Quản lý dự án]: Khởi tạo tệp mục lục bộ tài liệu thiết kế `index.md`.
 - [Quản lý dự án]: Khởi tạo tệp nhật ký dự án `21_NHAT_KY_DU_AN.md`.
 - [Quản lý dự án]: Khởi tạo tệp danh mục kiểm tra `22_DANH_MUC_KIEM_TRA.md`.

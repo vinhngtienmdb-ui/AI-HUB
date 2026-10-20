@@ -4,6 +4,29 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.6-MoRongTaiNguyenThuongHieuLonVietNam (Ngày 20-10-2026)
+- **Loại hình**: Tiếp tục mở rộng đợt 5 với 10 giải pháp công nghệ, API nền tảng và SDK của các tập đoàn, doanh nghiệp và thương hiệu công nghệ lớn hàng đầu tại Việt Nam: Haravan, Tiki, FPT.AI, MISA, Viettel, VNPT, Be Group, Xanh SM, Vietcombank, Petrolimex.
+- **Nội dung hoàn thành**:
+  - Tích hợp 10 giải pháp nền tảng doanh nghiệp uy tín:
+    1. **Haravan App SDK (`@haravan/app-sdk`)**: Bộ phát triển ứng dụng và kết nối API hệ sinh thái thương mại đa kênh Haravan (đồng bộ sản phẩm, đơn hàng, kho hàng vật lý và sàn thương mại điện tử).
+    2. **Tiki Open Platform & MiniApp SDK (`tikivn/open-api-samples`)**: Nền tảng mở kết nối gian hàng Tiki Open Platform, quản lý tồn kho, danh mục sản phẩm và tích hợp ứng dụng thu nhỏ Tiki MiniApp.
+    3. **FPT.AI Chatbot SDK & Conversational Engine (`fpt-corp/fptai-chatbot-sdk`)**: Bộ SDK tích hợp nền tảng trí tuệ nhân tạo hội thoại FPT.AI, xử lý ngôn ngữ tự nhiên tiếng Việt cho tổng đài và trợ lý ảo chăm sóc khách hàng.
+    4. **MISA meInvoice Cloud API Connector (`vinhngtienmdb-ui/AI-HUB`)**: Bộ kết nối API hóa đơn điện tử MISA meInvoice chuẩn Thông tư 78/2021/TT-BTC, phát hành hóa đơn có mã của cơ quan thuế và đồng bộ dữ liệu kế toán MISA SME / AMIS.
+    5. **Viettel S-Invoice Cloud API (`vinhngtienmdb-ui/AI-HUB`)**: Bộ API hóa đơn điện tử Viettel S-Invoice phục vụ doanh nghiệp quy mô lớn, phát hành hóa đơn hàng loạt tốc độ cao và tích hợp chữ ký số Viettel-CA.
+    6. **VNPT Invoice & SmartCA Connector (`vinhngtienmdb-ui/AI-HUB`)**: Giải pháp phát hành hóa đơn điện tử VNPT Invoice và ký số từ xa chuẩn châu Âu eIDAS VNPT SmartCA không cần thiết bị Token USB vật lý.
+    7. **Be Delivery & Transportation API (`vinhngtienmdb-ui/AI-HUB`)**: Bộ giao diện lập trình kết nối hệ sinh thái vận tải và giao hàng hỏa tốc Be Group (BeDelivery, BePoint, BeBike/BeCar).
+    8. **Xanh SM Corporate EV Ride-Hailing API (`vinhngtienmdb-ui/AI-HUB`)**: Nền tảng kết nối dịch vụ taxi và xe máy điện thuần VinFast của Công ty Cổ phần Di chuyển Xanh và Thông minh (GSM), quản lý chi phí di chuyển doanh nghiệp tự động.
+    9. **Vietcombank Open Banking Corporate Gateway (`vinhngtienmdb-ui/AI-HUB`)**: Cổng kết nối dịch vụ ngân hàng mở Vietcombank dành cho doanh nghiệp qua kênh bảo mật tương hỗ mTLS và chữ ký số SHA256-RSA (vấn tin số dư, trích nợ tự động, đối soát sao kê).
+    10. **Petrolimex Fuel Price & Invoice Crawler (`vinhngtienmdb-ui/AI-HUB`)**: Trình trích xuất tự động bảng giá xăng dầu điều hành chu kỳ của Tập đoàn Xăng dầu Việt Nam (Petrolimex) và tra cứu hóa đơn xăng dầu điện tử theo mã giao dịch cột bơm.
+  - **Quy mô hệ sinh thái**:
+    - Nâng tổng số lượng công cụ lên **1.984 mục** (trong đó nhóm tài nguyên phục vụ thị trường Việt Nam đạt **96 mục chuyên sâu**).
+    - Nâng tổng số lượng mẫu cấu hình JSON thực thi lên **2.979 mẫu**.
+    - 100% tài nguyên đáp ứng đầy đủ 4 khối thông tin: Nguồn dẫn chính thức, mục đích, hướng dẫn cài đặt và hướng dẫn sử dụng tiếng Việt kèm mã nguồn mẫu.
+    - Tuân thủ nghiêm ngặt nguyên tắc xử lý hình ảnh: Không tự tạo ảnh giả, tự động ẩn khối ảnh khi repo không có hình demo thực tế.
+  - **Kiểm thử tự động & Đóng gói**:
+    - 5/5 bài kiểm thử unit tests đạt 100% (3 bài kiểm thử nghiệp vụ QT-01, QT-03, QT-04 và 2 bài kiểm thử cầu nối lệnh).
+    - Đóng gói Vite (`npm run build`) hoàn tất xuất sắc trong 9.88 giây.
+
 ### Phiên Bản 2.0.5-MoRongTaiNguyenThanhToanVaDoanhNghiepDot4 (Ngày 20-10-2026)
 - **Loại hình**: Tiếp tục mở rộng đợt 4 các giải pháp thanh toán số, hạ tầng POS bán lẻ, mã bưu chính 34 tỉnh thành, định danh CCCD và chính sách bảo hiểm xã hội Việt Nam.
 - **Nội dung hoàn thành**:
