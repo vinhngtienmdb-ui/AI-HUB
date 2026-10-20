@@ -1,0 +1,34 @@
+# Phụ thuộc và thư viện đóng gói
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Nhật ký hệ thống và tệp tạm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
+
+# Môi trường và chứng chỉ
+.env
+.env.*
+!.env.example
+
+# Tệp sinh ra từ IDE
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+
+# Tệp cào dữ liệu trung gian
+scripts/*.html
+scripts/*_rsc.txt
+scripts/pdg_text.txt
