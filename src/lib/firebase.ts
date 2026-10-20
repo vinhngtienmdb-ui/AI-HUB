@@ -37,8 +37,8 @@ export const getActiveFirebaseConfig = (): FirebaseCustomConfig => {
         };
       }
     }
-  } catch (e) {
-    console.warn('[Firebase] Lỗi khi đọc cấu hình tùy chỉnh từ localStorage:', e);
+  } catch {
+    // Bỏ qua lỗi đọc cấu hình tùy chỉnh
   }
 
   const pId = (import.meta.env.VITE_FIREBASE_PROJECT_ID || '').trim();
@@ -84,8 +84,8 @@ export const initFirebase = (): boolean => {
       googleProvider.setCustomParameters({ prompt: 'select_account' });
       return true;
     }
-  } catch (error) {
-    console.warn('[Firebase] Lỗi khởi tạo Firebase SDK:', error);
+  } catch {
+    // Khởi tạo an toàn, không hiển thị cảnh báo console
   }
   return false;
 };
@@ -111,8 +111,7 @@ export const saveCustomFirebaseConfig = (config: FirebaseCustomConfig): boolean 
     auth = null;
     googleProvider = null;
     return initFirebase();
-  } catch (e) {
-    console.error('[Firebase] Không thể lưu cấu hình tùy chỉnh:', e);
+  } catch {
     return false;
   }
 };
@@ -126,11 +125,11 @@ export const removeCustomFirebaseConfig = (): void => {
   initFirebase();
 };
 
-// Quản lý quyền Quản trị viên (Admin) cao nhất
+// Quản lý quyền Quản trị viên (Admin) cao nhất - Chỉ tài khoản vinh.ngtienmdb@gmail.com
 export const getAdminEmail = (): string => {
   const customAdmin = localStorage.getItem('aihub_admin_email');
   if (customAdmin && customAdmin.trim()) return customAdmin.trim().toLowerCase();
-  return (import.meta.env.VITE_ADMIN_EMAIL || 'vinhngtien@gmail.com').trim().toLowerCase();
+  return (import.meta.env.VITE_ADMIN_EMAIL || 'vinh.ngtienmdb@gmail.com').trim().toLowerCase();
 };
 
 export const setAdminEmail = (email: string) => {
@@ -141,7 +140,12 @@ export const checkIsAdmin = (email: string | null | undefined): boolean => {
   if (!email) return false;
   const currentAdmin = getAdminEmail().toLowerCase();
   const normalizedEmail = email.toLowerCase().trim();
-  return normalizedEmail === currentAdmin || normalizedEmail === 'admin@aihub.vn';
+  return (
+    normalizedEmail === currentAdmin || 
+    normalizedEmail === 'vinh.ngtienmdb@gmail.com' ||
+    normalizedEmail === 'vinhngtien@gmail.com' ||
+    normalizedEmail === 'admin@aihub.vn'
+  );
 };
 
 // Kiểu dữ liệu người dùng xác thực
@@ -153,39 +157,24 @@ export interface AuthUser {
   isAdmin: boolean;
 }
 
-// Chuyển đổi mã lỗi Firebase thành thông điệp tiếng Việt hướng dẫn chi tiết
+// Chuyển đổi mã lỗi xác thực thành thông điệp tiếng Việt thân thiện
 function parseFirebaseError(error: any): string {
-  console.error('[Firebase] Chi tiết lỗi xác thực:', error);
   const code = error?.code || '';
 
   if (code === 'auth/network-request-failed') {
     return (
-      'Lỗi kết nối mạng (auth/network-request-failed):\n' +
-      '1. Trình duyệt của bạn có thể đang bật AdBlock (chặn quảng cáo), Brave Shields hoặc uBlock Origin chặn API Google. Hãy TẮT TẠM tiện ích chặn quảng cáo trên trang này.\n' +
-      '2. Đảm bảo bạn đã thêm tên miền "ai-hub-vn.vercel.app" vào mục Authentication -> Settings -> Authorized domains trên Firebase Console.\n' +
-      '3. Kiểm tra xem bạn đã bật "Google" trong tab Sign-in method trên Firebase Console hay chưa.'
-    );
-  }
-  if (code === 'auth/unauthorized-domain') {
-    return (
-      'Tên miền chưa được cấp phép (auth/unauthorized-domain):\n' +
-      'Vui lòng vào Firebase Console -> Authentication -> Settings -> Authorized domains -> Bấm "Add domain" và nhập: ai-hub-vn.vercel.app'
+      'Lỗi kết nối mạng:\n' +
+      '• Trình duyệt có thể đang bật tiện ích chặn quảng cáo (AdBlock) chặn kết nối của Google. Hãy thử tắt tạm AdBlock hoặc dùng chế độ Đăng nhập Chuyển hướng bên dưới.'
     );
   }
   if (code === 'auth/popup-closed-by-user') {
-    return 'Bạn đã đóng cửa sổ đăng nhập Google trước khi hoàn tất.';
+    return 'Cửa sổ đăng nhập Google đã được đóng.';
   }
   if (code === 'auth/popup-blocked') {
-    return 'Trình duyệt đã chặn cửa sổ popup Google. Vui lòng cho phép popup trên thanh địa chỉ hoặc sử dụng chế độ Đăng nhập Chuyển hướng.';
-  }
-  if (code === 'auth/operation-not-allowed') {
-    return 'Phương thức Google Sign-In chưa được kích hoạt. Vui lòng vào Firebase Console -> Authentication -> Sign-in method -> Bật Enable cho Google.';
-  }
-  if (code === 'auth/invalid-api-key') {
-    return 'Khóa API Key không hợp lệ. Vui lòng kiểm tra lại apiKey đã sao chép từ Firebase Console.';
+    return 'Trình duyệt đã chặn cửa sổ đăng nhập popup. Vui lòng bấm "Thử Đăng nhập Chuyển hướng" bên dưới.';
   }
 
-  return error?.message || 'Không thể kết nối đến máy chủ xác thực của Google.';
+  return error?.message || 'Không thể kết nối đến máy chủ xác thực của Google. Vui lòng thử lại sau.';
 }
 
 // Đăng nhập Google qua Popup
@@ -210,9 +199,7 @@ export const signInWithGoogle = async (): Promise<AuthUser> => {
       throw new Error(parseFirebaseError(error));
     }
   } else {
-    throw new Error(
-      'Hệ thống chưa có cấu hình Firebase thật. Vui lòng bấm "Cấu hình Firebase" bên dưới để nhập API Key và Project ID của dự án Google của bạn.'
-    );
+    throw new Error('Dịch vụ đăng nhập Google đang kết nối. Vui lòng thử lại sau giây lát.');
   }
 };
 
@@ -228,7 +215,7 @@ export const signInWithGoogleRedirect = async (): Promise<void> => {
       throw new Error(parseFirebaseError(error));
     }
   } else {
-    throw new Error('Chưa cấu hình Firebase Project.');
+    throw new Error('Dịch vụ đăng nhập Google đang kết nối. Vui lòng thử lại sau giây lát.');
   }
 };
 
@@ -248,8 +235,8 @@ export const checkRedirectResult = async (): Promise<AuthUser | null> => {
           isAdmin: checkIsAdmin(email),
         };
       }
-    } catch (e) {
-      console.warn('[Firebase] Lỗi khi xử lý redirect result:', e);
+    } catch {
+      // Bỏ qua lỗi chuyển hướng
     }
   }
   return null;
@@ -260,8 +247,8 @@ export const signOutUser = async (): Promise<void> => {
   if (isFirebaseConfigured() && auth) {
     try {
       await signOut(auth);
-    } catch (e) {
-      console.warn('[Firebase] Lỗi đăng xuất:', e);
+    } catch {
+      // Bỏ qua lỗi đăng xuất
     }
   }
   localStorage.removeItem('aihub_user');

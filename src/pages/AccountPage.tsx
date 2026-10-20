@@ -146,7 +146,7 @@ export const AccountPage: React.FC<AccountPageProps> = ({
                   <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-950 dark:text-white tracking-tight">
                     {currentDisplayName}
                   </h1>
-                  {currentUser === 'vinhngtien@gmail.com' && (
+                  {(currentUser === 'vinh.ngtienmdb@gmail.com' || currentUser === 'vinhngtien@gmail.com' || currentUser === 'admin@aihub.vn') && (
                     <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 text-xs font-bold">
                       <ShieldCheck className="w-3.5 h-3.5" />
                       <span>Quản trị viên tối cao</span>

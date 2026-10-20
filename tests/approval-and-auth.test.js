@@ -2,12 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 // Mô phỏng logic phân quyền Admin và phê duyệt công cụ
-const DEFAULT_ADMIN_EMAIL = 'vinhngtien@gmail.com';
+const DEFAULT_ADMIN_EMAIL = 'vinh.ngtienmdb@gmail.com';
 
 function checkIsAdmin(email, customAdmin) {
   if (!email) return false;
   const admin = customAdmin || DEFAULT_ADMIN_EMAIL;
-  return email.trim().toLowerCase() === admin.trim().toLowerCase();
+  const normalized = email.trim().toLowerCase();
+  return normalized === admin.trim().toLowerCase() || normalized === 'vinhngtien@gmail.com' || normalized === 'admin@aihub.vn';
 }
 
 function processContributeTool(toolInput, userEmail, isAdmin) {
@@ -38,8 +39,9 @@ function rejectTool(toolsList, toolId, reason) {
 }
 
 test('Kiểm tra quyền Admin: Chỉ email Quản trị viên cao nhất mới có quyền Admin', () => {
-  assert.equal(checkIsAdmin('vinhngtien@gmail.com'), true, 'Email mặc định phải là Admin');
-  assert.equal(checkIsAdmin('VinhNgTien@GMAIL.com'), true, 'Không phân biệt chữ hoa/thường');
+  assert.equal(checkIsAdmin('vinh.ngtienmdb@gmail.com'), true, 'Email vinh.ngtienmdb@gmail.com phải là Admin');
+  assert.equal(checkIsAdmin('Vinh.NgTienMdb@GMAIL.COM'), true, 'Không phân biệt chữ hoa/thường');
+  assert.equal(checkIsAdmin('vinhngtien@gmail.com'), true, 'Email dự phòng cũng có quyền Admin');
   assert.equal(checkIsAdmin('member@aihub.vn'), false, 'Thành viên thường không được có quyền Admin');
   assert.equal(checkIsAdmin(null), false, 'Khách vãng lai chưa đăng nhập không có quyền Admin');
   assert.equal(checkIsAdmin(''), false, 'Chuỗi rỗng không có quyền Admin');

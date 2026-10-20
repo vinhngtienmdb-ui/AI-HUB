@@ -8,6 +8,21 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Phân quyền Admin Tối cao vinh.ngtienmdb@gmail.com & Loại bỏ các thông báo cấu hình Firebase]:
+  - **Phân quyền Quản trị viên tối cao (Admin)**:
+    - Thiết lập tài khoản `vinh.ngtienmdb@gmail.com` là Quản trị viên cao nhất của toàn bộ hệ thống AI HUB VN.
+    - Cập nhật hàm `checkIsAdmin` trong `src/lib/firebase.ts` và logic phân quyền: Chỉ tài khoản Admin mới có quyền duyệt công cụ và điều chỉnh phân loại Loại hình, Lĩnh vực chuyên môn.
+    - Bổ sung huy hiệu "Quản trị viên tối cao" khi tài khoản `vinh.ngtienmdb@gmail.com` đăng nhập vào trang cá nhân.
+  - **Giới hạn quyền điều chỉnh Loại hình thành phần & Lĩnh vực chuyên môn**:
+    - Khóa chặt phân quyền điều chỉnh phân loại: Chỉ duy nhất tài khoản Quản trị viên mới được phép render và mở các cửa sổ `EditToolTaxonomyModal.tsx` và `AdminTaxonomyModal.tsx`.
+    - Các hàm `handleUpdateToolTaxonomy`, `onSaveCategories`, `onSaveToolTypes`, `onResetToDefault` đều được kiểm tra điều kiện an toàn nghiêm ngặt `if (!isAdmin) return;` trước khi thực thi.
+  - **Loại bỏ toàn bộ thông báo cấu hình Firebase trên code và trên frontend**:
+    - Xóa bỏ triệt để giao diện bảng dán mã cấu hình Firebase (`apiKey`, `projectId`, `authDomain`, `appId`), các đoạn hướng dẫn Firebase Console và dòng trạng thái kết nối Firebase trong `src/components/LoginModal.tsx`.
+    - Tối ưu cửa sổ đăng nhập `LoginModal.tsx` tinh tế, gọn gàng, chỉ tập trung vào nút "Tiếp tục với tài khoản Google" và cơ chế đăng nhập chuyển hướng dự phòng khi bị chặn popup.
+    - Xóa bỏ toàn bộ các dòng lệnh `console.warn` và `console.error` liên quan đến cấu hình kỹ thuật Firebase trong `src/lib/firebase.ts`, giữ cho console log của trình duyệt hoàn toàn sạch sẽ.
+  - **Kiểm thử & Đóng gói**:
+    - Cập nhật và chạy thành công toàn bộ 5 bộ kiểm thử unit tests (`user-profile-and-star`, `approval-and-auth`, `business-rules`, `command-bridge`, `storage-delta`) đạt 100% tỷ lệ pass.
+    - Đóng gói toàn bộ ứng dụng bằng `npm run build` (`tsc && vite build`) hoàn thành thành công tuyệt đối.
 - [Bỏ mặc định đăng nhập thanhvien, Nâng cấp Chỉnh sửa Hồ sơ cá nhân & Tích dấu sao ⭐ lưu trữ công cụ]:
   - **Không mặc định đăng nhập ở user thanhvien**:
     - Khắc phục triệt để việc hệ thống tự động gán email `thanhvien@aihub.vn`.

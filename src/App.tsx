@@ -348,8 +348,12 @@ export const App: React.FC = () => {
     saveToolOverride(toolId, updateData);
   };
 
-  // Điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn (Dành riêng cho Quản trị viên)
+  // Điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn (Chỉ duy nhất tài khoản Quản trị viên tối cao)
   const handleUpdateToolTaxonomy = (toolId: string, newType: ToolType, newCategory: Category) => {
+    if (!isAdmin) {
+      alert('Chỉ duy nhất tài khoản Quản trị viên tối cao mới có quyền điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn!');
+      return;
+    }
     const newTypeNameVi = getToolTypeNameVi(newType, toolTypes);
     const newCategoryNameVi = getCategoryNameVi(newCategory, categories);
 
@@ -922,31 +926,42 @@ export const App: React.FC = () => {
         onEditTaxonomy={(tool) => setEditingTaxonomyTool(tool)}
       />
 
-      {/* Modal Điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn cho một công cụ cụ thể */}
-      <EditToolTaxonomyModal
-        isOpen={editingTaxonomyTool !== null}
-        onClose={() => setEditingTaxonomyTool(null)}
-        tool={editingTaxonomyTool}
-        onSave={handleUpdateToolTaxonomy}
-        customTypes={toolTypes}
-        customCategories={categories}
-      />
+      {/* Modal Điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn cho một công cụ cụ thể (Chỉ duy nhất Quản trị viên) */}
+      {isAdmin && (
+        <EditToolTaxonomyModal
+          isOpen={editingTaxonomyTool !== null}
+          onClose={() => setEditingTaxonomyTool(null)}
+          tool={editingTaxonomyTool}
+          onSave={handleUpdateToolTaxonomy}
+          customTypes={toolTypes}
+          customCategories={categories}
+        />
+      )}
 
-      {/* Modal Quản trị Phân loại hệ thống (Taxonomy Manager) */}
-      <AdminTaxonomyModal
-        isOpen={isTaxonomyManagerOpen}
-        onClose={() => setIsTaxonomyManagerOpen(false)}
-        categories={categories}
-        toolTypes={toolTypes}
-        onSaveCategories={(newCats) => setCategories(newCats)}
-        onSaveToolTypes={(newTypes) => setToolTypes(newTypes)}
-        onResetToDefault={() => {
-          setCategories(CATEGORIES);
-          setToolTypes(DEFAULT_TOOL_TYPES);
-          localStorage.removeItem('aihub_custom_categories');
-          localStorage.removeItem('aihub_custom_tool_types');
-        }}
-      />
+      {/* Modal Quản trị Phân loại hệ thống - Taxonomy Manager (Chỉ duy nhất Quản trị viên) */}
+      {isAdmin && (
+        <AdminTaxonomyModal
+          isOpen={isTaxonomyManagerOpen}
+          onClose={() => setIsTaxonomyManagerOpen(false)}
+          categories={categories}
+          toolTypes={toolTypes}
+          onSaveCategories={(newCats) => {
+            if (!isAdmin) return;
+            setCategories(newCats);
+          }}
+          onSaveToolTypes={(newTypes) => {
+            if (!isAdmin) return;
+            setToolTypes(newTypes);
+          }}
+          onResetToDefault={() => {
+            if (!isAdmin) return;
+            setCategories(CATEGORIES);
+            setToolTypes(DEFAULT_TOOL_TYPES);
+            localStorage.removeItem('aihub_custom_categories');
+            localStorage.removeItem('aihub_custom_tool_types');
+          }}
+        />
+      )}
 
       {/* Modal xem nhanh chi tiết công cụ */}
       <ToolDetailModal

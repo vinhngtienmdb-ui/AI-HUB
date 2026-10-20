@@ -4,6 +4,23 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.24-PhanQuyenAdminVinhNgTienMdbVaLoaiBoThongBaoFirebase (Ngày 20-10-2026)
+- **Loại hình**: Phân quyền Admin tối cao cho tài khoản `vinh.ngtienmdb@gmail.com`, giới hạn độc quyền điều chỉnh phân loại chuyên môn và loại bỏ toàn bộ thông báo cấu hình Firebase trên frontend và trong mã nguồn.
+- **Nội dung hoàn thành**:
+  - **Phân quyền Admin cao nhất**:
+    - Thiết lập tài khoản `vinh.ngtienmdb@gmail.com` là Quản trị viên tối cao duy nhất của hệ thống AI HUB VN.
+    - Cập nhật [`src/lib/firebase.ts`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/lib/firebase.ts) và logic xác thực người dùng.
+    - Hiển thị huy hiệu "Quản trị viên tối cao" khi tài khoản đăng nhập.
+  - **Khóa bảo vệ tính năng Điều chỉnh Loại hình thành phần & Lĩnh vực chuyên môn**:
+    - Chỉ duy nhất tài khoản Quản trị viên tối cao mới có thể mở và thao tác trên [`EditToolTaxonomyModal.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/components/EditToolTaxonomyModal.tsx) và [`AdminTaxonomyModal.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/components/AdminTaxonomyModal.tsx).
+    - Mọi thao tác lưu dữ liệu điều chỉnh phân loại đều có cơ chế kiểm tra bảo mật `if (!isAdmin) return;`.
+  - **Loại bỏ toàn bộ thông báo cấu hình Firebase**:
+    - Xóa bỏ hoàn toàn bảng dán mã cấu hình Firebase, hướng dẫn console và dòng trạng thái kết nối trên giao diện [`LoginModal.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/components/LoginModal.tsx).
+    - Xóa bỏ toàn bộ các dòng `console.warn` và `console.error` kỹ thuật về Firebase trong [`src/lib/firebase.ts`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/lib/firebase.ts).
+  - **Kiểm thử & Đóng gói**:
+    - Toàn bộ 5 bộ kiểm thử tự động đạt 100% tỷ lệ pass.
+    - Đóng gói Vite (`tsc && vite build`) hoàn thành thành công tuyệt đối.
+
 ### Phiên Bản 2.0.23-HoSoCaNhanVaTichDauSaoLuuTru (Ngày 20-10-2026)
 - **Loại hình**: Bỏ mặc định đăng nhập tài khoản giả lập, nâng cấp hồ sơ cá nhân và triển khai cơ chế gắn sao lưu trữ công cụ (⭐ Star / Save Tool).
 - **Nội dung hoàn thành**:

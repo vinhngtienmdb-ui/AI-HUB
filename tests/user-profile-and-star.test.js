@@ -63,13 +63,13 @@ test('Kiểm tra không mặc định đăng nhập: Khách truy cập khởi t�
   assert.strictEqual(getInitialUser('thanhvien@aihub.vn'), null);
 
   // Người dùng thực tế đã đăng nhập thì giữ nguyên
-  assert.strictEqual(getInitialUser('vinhngtien@gmail.com'), 'vinhngtien@gmail.com');
+  assert.strictEqual(getInitialUser('vinh.ngtienmdb@gmail.com'), 'vinh.ngtienmdb@gmail.com');
   assert.strictEqual(getInitialUser('user@example.com'), 'user@example.com');
 });
 
 test('Kiểm tra hồ sơ cá nhân: Khởi tạo và cập nhật đầy đủ các trường thông tin', () => {
-  const profile = createInitialProfile('vinhngtien@gmail.com', 'Vinh Nguyễn', 'https://avatar.url/vinh.jpg');
-  assert.strictEqual(profile.email, 'vinhngtien@gmail.com');
+  const profile = createInitialProfile('vinh.ngtienmdb@gmail.com', 'Vinh Nguyễn', 'https://avatar.url/vinh.jpg');
+  assert.strictEqual(profile.email, 'vinh.ngtienmdb@gmail.com');
   assert.strictEqual(profile.displayName, 'Vinh Nguyễn');
   assert.strictEqual(profile.title, 'Chuyên gia AI & Phần mềm');
 
@@ -88,7 +88,7 @@ test('Kiểm tra hồ sơ cá nhân: Khởi tạo và cập nhật đầy đủ 
   assert.strictEqual(updated.phone, '0988123456');
   assert.strictEqual(updated.githubUrl, 'https://github.com/vinhngtienmdb-ui');
   assert.strictEqual(updated.websiteUrl, 'https://vinhnguyen.ai');
-  assert.strictEqual(updated.email, 'vinhngtien@gmail.com');
+  assert.strictEqual(updated.email, 'vinh.ngtienmdb@gmail.com');
 });
 
 test('Kiểm tra cơ chế gắn sao lưu trữ (⭐ Star / Save Tool): Bắt buộc đăng nhập và lưu/bỏ lưu chính xác', () => {
@@ -102,7 +102,7 @@ test('Kiểm tra cơ chế gắn sao lưu trữ (⭐ Star / Save Tool): Bắt bu
   assert.strictEqual(guestResult.savedToolIds.length, 0);
 
   // Khi đã đăng nhập: Gắn sao lưu trữ công cụ
-  const loggedInUser = 'vinhngtien@gmail.com';
+  const loggedInUser = 'vinh.ngtienmdb@gmail.com';
   const saveResult = toggleSaveTool(loggedInUser, savedIds, toolId);
   assert.strictEqual(saveResult.success, true);
   assert.strictEqual(saveResult.isSaved, true);

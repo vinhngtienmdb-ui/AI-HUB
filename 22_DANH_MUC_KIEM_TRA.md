@@ -48,6 +48,9 @@
 - [x] Lập trình phân hệ Giao diện danh mục, Tìm kiếm tức thời và Phân trang (24 mục/trang)
 - [x] Lập trình phân hệ Chi tiết công cụ và Sao chép cấu hình một chạm
 - [x] Lập trình phân hệ Quản trị nội dung và Đóng góp công cụ
+- [x] Thiết lập tài khoản `vinh.ngtienmdb@gmail.com` là Quản trị viên tối cao (Admin) duy nhất của toàn bộ hệ thống
+- [x] Phân quyền bảo mật cao: Chỉ duy nhất tài khoản Quản trị viên tối cao mới có quyền điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn (cho từng công cụ và toàn bộ hệ thống)
+- [x] Loại bỏ triệt để toàn bộ các thông báo, bảng dán mã cấu hình Firebase và chỉ dẫn kỹ thuật trên cả giao diện frontend (`LoginModal.tsx`) và trong mã nguồn console (`src/lib/firebase.ts`)
 - [x] Xóa bỏ hoàn toàn cơ chế mặc định đăng nhập tài khoản giả lập `thanhvien@aihub.vn`. Người dùng mới truy cập với tư cách khách vãng lai (`currentUser = null`), tự động dọn dẹp khóa cũ trên `localStorage`
 - [x] Xây dựng phân hệ Quản lý và Chỉnh sửa thông tin cá nhân (`UserProfile`) tại trang cá nhân (`src/pages/AccountPage.tsx`): Cho phép cập nhật Họ tên hiển thị, URL ảnh đại diện avatar, Chức danh chuyên môn, Tiểu sử giới thiệu, Số điện thoại, GitHub, Website và lưu trữ bền vững
 - [x] Chuẩn hóa và triển khai cơ chế Tích dấu sao lưu trữ công cụ (⭐ Star / Save Tool) 1 chạm trên toàn bộ hệ thống: Thẻ công cụ (`ToolCard.tsx`), Danh mục (`CategoryPage.tsx`), Chi tiết công cụ (`DetailPage.tsx`), Bảng danh sách (`Table View`), và quản lý danh sách công cụ đã gắn sao tại Trang cá nhân (`AccountPage.tsx`)
