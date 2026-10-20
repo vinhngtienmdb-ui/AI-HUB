@@ -1,8 +1,10 @@
-import { initializeApp, getApps, FirebaseApp, deleteApp } from 'firebase/app';
+import { initializeApp, getApps, FirebaseApp } from 'firebase/app';
 import { 
   getAuth, 
   GoogleAuthProvider, 
   signInWithPopup, 
+  signInWithRedirect,
+  getRedirectResult,
   signOut, 
   onAuthStateChanged, 
   User, 
@@ -27,7 +29,7 @@ export const getActiveFirebaseConfig = (): FirebaseCustomConfig => {
       if (parsed.apiKey && parsed.projectId) {
         return {
           apiKey: (parsed.apiKey || '').trim(),
-          authDomain: (parsed.authDomain || '').trim(),
+          authDomain: (parsed.authDomain || `${parsed.projectId.trim()}.firebaseapp.com`).trim(),
           projectId: (parsed.projectId || '').trim(),
           storageBucket: (parsed.storageBucket || '').trim(),
           messagingSenderId: (parsed.messagingSenderId || '').trim(),
@@ -39,10 +41,11 @@ export const getActiveFirebaseConfig = (): FirebaseCustomConfig => {
     console.warn('[Firebase] Lỗi khi đọc cấu hình tùy chỉnh từ localStorage:', e);
   }
 
+  const pId = (import.meta.env.VITE_FIREBASE_PROJECT_ID || '').trim();
   return {
     apiKey: (import.meta.env.VITE_FIREBASE_API_KEY || '').trim(),
-    authDomain: (import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || '').trim(),
-    projectId: (import.meta.env.VITE_FIREBASE_PROJECT_ID || '').trim(),
+    authDomain: (import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || (pId ? `${pId}.firebaseapp.com` : '')).trim(),
+    projectId: pId,
     storageBucket: (import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || '').trim(),
     messagingSenderId: (import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '').trim(),
     appId: (import.meta.env.VITE_FIREBASE_APP_ID || '').trim(),
@@ -70,7 +73,6 @@ export const initFirebase = (): boolean => {
   try {
     const cfg = getActiveFirebaseConfig();
     if (isFirebaseConfigured()) {
-      // Dọn dẹp instance cũ nếu có
       const existingApps = getApps();
       if (existingApps.length > 0) {
         app = existingApps[0];
@@ -96,8 +98,15 @@ export { auth, googleProvider };
 // Lưu cấu hình Firebase trực tiếp từ giao diện Admin
 export const saveCustomFirebaseConfig = (config: FirebaseCustomConfig): boolean => {
   try {
-    localStorage.setItem('aihub_firebase_config', JSON.stringify(config));
-    // Reset và khởi tạo lại
+    const sanitized: FirebaseCustomConfig = {
+      apiKey: config.apiKey.trim(),
+      projectId: config.projectId.trim(),
+      authDomain: config.authDomain?.trim() || `${config.projectId.trim()}.firebaseapp.com`,
+      storageBucket: config.storageBucket?.trim() || `${config.projectId.trim()}.appspot.com`,
+      messagingSenderId: config.messagingSenderId?.trim() || '',
+      appId: config.appId?.trim() || '',
+    };
+    localStorage.setItem('aihub_firebase_config', JSON.stringify(sanitized));
     app = null;
     auth = null;
     googleProvider = null;
@@ -144,9 +153,43 @@ export interface AuthUser {
   isAdmin: boolean;
 }
 
-// Hàm đăng nhập bằng Google Auth thật qua Firebase
+// Chuyển đổi mã lỗi Firebase thành thông điệp tiếng Việt hướng dẫn chi tiết
+function parseFirebaseError(error: any): string {
+  console.error('[Firebase] Chi tiết lỗi xác thực:', error);
+  const code = error?.code || '';
+
+  if (code === 'auth/network-request-failed') {
+    return (
+      'Lỗi kết nối mạng (auth/network-request-failed):\n' +
+      '1. Trình duyệt của bạn có thể đang bật AdBlock (chặn quảng cáo), Brave Shields hoặc uBlock Origin chặn API Google. Hãy TẮT TẠM tiện ích chặn quảng cáo trên trang này.\n' +
+      '2. Đảm bảo bạn đã thêm tên miền "ai-hub-vn.vercel.app" vào mục Authentication -> Settings -> Authorized domains trên Firebase Console.\n' +
+      '3. Kiểm tra xem bạn đã bật "Google" trong tab Sign-in method trên Firebase Console hay chưa.'
+    );
+  }
+  if (code === 'auth/unauthorized-domain') {
+    return (
+      'Tên miền chưa được cấp phép (auth/unauthorized-domain):\n' +
+      'Vui lòng vào Firebase Console -> Authentication -> Settings -> Authorized domains -> Bấm "Add domain" và nhập: ai-hub-vn.vercel.app'
+    );
+  }
+  if (code === 'auth/popup-closed-by-user') {
+    return 'Bạn đã đóng cửa sổ đăng nhập Google trước khi hoàn tất.';
+  }
+  if (code === 'auth/popup-blocked') {
+    return 'Trình duyệt đã chặn cửa sổ popup Google. Vui lòng cho phép popup trên thanh địa chỉ hoặc sử dụng chế độ Đăng nhập Chuyển hướng.';
+  }
+  if (code === 'auth/operation-not-allowed') {
+    return 'Phương thức Google Sign-In chưa được kích hoạt. Vui lòng vào Firebase Console -> Authentication -> Sign-in method -> Bật Enable cho Google.';
+  }
+  if (code === 'auth/invalid-api-key') {
+    return 'Khóa API Key không hợp lệ. Vui lòng kiểm tra lại apiKey đã sao chép từ Firebase Console.';
+  }
+
+  return error?.message || 'Không thể kết nối đến máy chủ xác thực của Google.';
+}
+
+// Đăng nhập Google qua Popup
 export const signInWithGoogle = async (): Promise<AuthUser> => {
-  // Đảm bảo Firebase đã được khởi tạo
   if (!auth || !googleProvider) {
     initFirebase();
   }
@@ -164,24 +207,52 @@ export const signInWithGoogle = async (): Promise<AuthUser> => {
         isAdmin: checkIsAdmin(email),
       };
     } catch (error: any) {
-      console.error('[Firebase] Lỗi đăng nhập Google Popup:', error);
-      let errorMsg = 'Không thể kết nối đến tài khoản Google.';
-      if (error.code === 'auth/popup-closed-by-user') {
-        errorMsg = 'Bạn đã đóng cửa sổ đăng nhập Google trước khi hoàn tất.';
-      } else if (error.code === 'auth/unauthorized-domain') {
-        errorMsg = 'Tên miền này chưa được thêm vào mục Authorized domains trên Firebase Console.';
-      } else if (error.code === 'auth/operation-not-allowed') {
-        errorMsg = 'Google Sign-in chưa được kích hoạt trong tab Sign-in method của Firebase Console.';
-      } else if (error.message) {
-        errorMsg = error.message;
-      }
-      throw new Error(errorMsg);
+      throw new Error(parseFirebaseError(error));
     }
   } else {
     throw new Error(
       'Hệ thống chưa có cấu hình Firebase thật. Vui lòng bấm "Cấu hình Firebase" bên dưới để nhập API Key và Project ID của dự án Google của bạn.'
     );
   }
+};
+
+// Đăng nhập Google qua Chuyển hướng (Dự phòng khi Popup bị chặn hoặc lỗi Cookie bên thứ ba)
+export const signInWithGoogleRedirect = async (): Promise<void> => {
+  if (!auth || !googleProvider) {
+    initFirebase();
+  }
+  if (isFirebaseConfigured() && auth && googleProvider) {
+    try {
+      await signInWithRedirect(auth, googleProvider);
+    } catch (error: any) {
+      throw new Error(parseFirebaseError(error));
+    }
+  } else {
+    throw new Error('Chưa cấu hình Firebase Project.');
+  }
+};
+
+// Kiểm tra kết quả sau khi chuyển hướng quay lại trang
+export const checkRedirectResult = async (): Promise<AuthUser | null> => {
+  if (!auth) initFirebase();
+  if (isFirebaseConfigured() && auth) {
+    try {
+      const result = await getRedirectResult(auth);
+      if (result && result.user && result.user.email) {
+        const email = result.user.email.toLowerCase().trim();
+        return {
+          uid: result.user.uid,
+          email,
+          displayName: result.user.displayName || email.split('@')[0],
+          photoURL: result.user.photoURL || undefined,
+          isAdmin: checkIsAdmin(email),
+        };
+      }
+    } catch (e) {
+      console.warn('[Firebase] Lỗi khi xử lý redirect result:', e);
+    }
+  }
+  return null;
 };
 
 // Hàm đăng xuất
@@ -203,6 +274,14 @@ export const subscribeToAuth = (callback: (user: AuthUser | null) => void) => {
     initFirebase();
   }
 
+  // Tự động kiểm tra kết quả Redirect nếu có
+  checkRedirectResult().then((redirectUser) => {
+    if (redirectUser) {
+      localStorage.setItem('aihub_user', redirectUser.email);
+      callback(redirectUser);
+    }
+  });
+
   if (isFirebaseConfigured() && auth) {
     return onAuthStateChanged(auth, (user: User | null) => {
       if (user && user.email) {
@@ -219,7 +298,6 @@ export const subscribeToAuth = (callback: (user: AuthUser | null) => void) => {
       }
     });
   } else {
-    // Theo dõi qua localStorage nếu chưa cấu hình Firebase
     const saved = localStorage.getItem('aihub_user');
     if (saved) {
       callback({

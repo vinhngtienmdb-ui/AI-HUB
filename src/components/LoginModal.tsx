@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { 
   signInWithGoogle, 
+  signInWithGoogleRedirect,
   isFirebaseConfigured, 
   getAdminEmail, 
   getActiveFirebaseConfig,
@@ -68,6 +69,17 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onLogin
       if (!isFirebaseConfigured()) {
         setShowConfigPanel(true);
       }
+    }
+  };
+
+  const handleGoogleRedirectLogin = async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      await signInWithGoogleRedirect();
+    } catch (err: any) {
+      setIsLoading(false);
+      setError(err.message || 'Đăng nhập chuyển hướng thất bại.');
     }
   };
 
@@ -335,9 +347,27 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onLogin
               </button>
 
               {error && (
-                <div className="flex items-start space-x-2 p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/40 text-rose-700 dark:text-rose-300 text-xs">
-                  <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
-                  <span>{error}</span>
+                <div className="space-y-2 p-3.5 rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/40 text-rose-700 dark:text-rose-300 text-xs">
+                  <div className="flex items-start space-x-2">
+                    <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-rose-600" />
+                    <span className="whitespace-pre-line leading-relaxed">{error}</span>
+                  </div>
+
+                  {/* Nút dự phòng: Đăng nhập chuyển hướng nếu popup bị chặn */}
+                  {hasFirebase && (
+                    <div className="pt-1 border-t border-rose-200/60 dark:border-rose-900/40 flex items-center justify-between">
+                      <span className="text-[11px] text-slate-500 dark:text-slate-400">
+                        Nếu popup tiếp tục bị lỗi mạng hoặc bị chặn:
+                      </span>
+                      <button
+                        type="button"
+                        onClick={handleGoogleRedirectLogin}
+                        className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline"
+                      >
+                        Thử Đăng nhập Chuyển hướng &rarr;
+                      </button>
+                    </div>
+                  )}
                 </div>
               )}
 

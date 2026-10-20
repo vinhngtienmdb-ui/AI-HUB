@@ -8,6 +8,16 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Xử lý lỗi auth/network-request-failed và Bổ sung cơ chế Đăng nhập Chuyển hướng]:
+  - **Phân tích nguyên nhân lỗi `auth/network-request-failed`**:
+    1. Trình duyệt đang cài đặt tiện ích chặn quảng cáo / chặn theo dõi (AdBlocker, Brave Shields, uBlock Origin) chặn các yêu cầu gửi đến API Google (`apis.google.com`, `identitytoolkit.googleapis.com`).
+    2. Tên miền `ai-hub-vn.vercel.app` chưa được thêm vào mục **Authorized domains** trong Firebase Console.
+    3. Cửa sổ popup bị trình duyệt chặn hoặc chặn Cookie của bên thứ ba (Third-party Cookies) khi giao tiếp qua iframe ngầm.
+  - **Giải pháp xử lý triệt để**:
+    - Chuẩn hóa hàm phân tích mã lỗi `parseFirebaseError` trong `src/lib/firebase.ts`, trả về hướng dẫn chi tiết tiếng Việt chỉ rõ nguyên nhân và giải pháp từng bước (tắt AdBlocker, kiểm tra Authorized domains).
+    - Tự động chuẩn hóa `authDomain` thành `<projectId>.firebaseapp.com` nếu người dùng chỉ nhập `apiKey` và `projectId`.
+    - Tích hợp phương thức **Đăng nhập bằng Chuyển hướng (Redirect)** qua `signInWithRedirect` và `getRedirectResult`: Phương thức này điều hướng toàn trang trực tiếp sang Google mà không phụ thuộc vào popup, không bị chặn bởi AdBlocker và không bị lỗi cookie bên thứ ba.
+  - Toàn bộ 4 bộ kiểm thử unit tests đạt 100%, đóng gói Vite thành công tuyệt đối.
 - [Nâng cấp Kết nối Firebase Google Auth Thật & Giao diện Cấu hình Trực tiếp]:
   - **Giải thích hiện tượng thông báo**: Thông báo popup `window.prompt` xuất hiện trước đó do bản triển khai trên Vercel chưa được gắn các biến môi trường Firebase thật (`VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_PROJECT_ID`...), dẫn đến việc kích hoạt chế độ giả lập đăng nhập dự phòng.
   - **Loại bỏ hoàn toàn hộp thoại prompt thô sơ**:

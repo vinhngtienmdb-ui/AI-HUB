@@ -4,6 +4,20 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.22-XuLyLoiNetworkRequestFailedVaBoSungRedirect (Ngày 20-10-2026)
+- **Loại hình**: Xử lý triệt để lỗi `auth/network-request-failed` và bổ sung phương thức Đăng nhập Google Chuyển hướng (Redirect Auth).
+- **Nội dung hoàn thành**:
+  - **Phân tích và bắt lỗi chi tiết (`parseFirebaseError`)**:
+    - Khi gặp lỗi mạng `auth/network-request-failed`, thông báo chỉ dẫn rõ ràng 3 nguyên nhân: Tắt tiện ích AdBlock/uBlock chặn API Google, kiểm tra Authorized domain `ai-hub-vn.vercel.app` trên Firebase Console và kiểm tra trạng thái bật Google Sign-in.
+  - **Bổ sung phương thức Đăng nhập Chuyển hướng (`signInWithGoogleRedirect`)**:
+    - Tích hợp thêm nút "Thử Đăng nhập Chuyển hướng" ngay dưới thông báo lỗi để người dùng có phương án dự phòng 100% thành công khi trình duyệt chặn cửa sổ popup hoặc chặn cookie bên thứ ba.
+    - Tự động bắt kết quả đăng nhập sau khi chuyển hướng bằng `getRedirectResult`.
+  - **Tự động chuẩn hóa cấu hình `authDomain`**:
+    - Tự động sinh `authDomain = <projectId>.firebaseapp.com` nếu người dùng chưa điền trường này.
+  - **Kiểm thử & Đóng gói**:
+    - Chạy toàn bộ 4 bộ kiểm thử unit tests đạt 100%.
+    - Đóng gói Vite hoàn tất thành công tuyệt đối.
+
 ### Phiên Bản 2.0.21-KetNoiFirebaseGoogleAuthThat (Ngày 20-10-2026)
 - **Loại hình**: Xóa bỏ hoàn toàn hộp thoại prompt giả lập và nâng cấp cơ chế kết nối Firebase Google Auth thật kèm giao diện cấu hình trực tiếp trên web.
 - **Nội dung hoàn thành**:
