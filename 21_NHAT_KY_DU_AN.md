@@ -293,6 +293,17 @@
     - Unit tests: 5/5 bài kiểm tra đạt 100%.
     - Đóng gói Vite hoàn tất trong 11.50 giây.
 
+- [Phân loại 10 Lĩnh vực chuyên môn, Khắc phục màn hình trắng và Mở rộng Đợt 8 với 50 công cụ]:
+  - **Mục tiêu**: Tái cơ cấu hệ thống phân loại danh mục thành 10 Lĩnh vực chuyên môn tiếng Việt rõ ràng, giữ nguyên các nhãn loại hình quốc tế (`Agent`, `Skill`, `MCP Server`, `Command`, `Setting`, `Hook`, `Template`, `Workflow`), khắc phục triệt để lỗi màn hình trắng (White Screen) bằng ErrorBoundary và cơ chế phòng vệ dữ liệu; đồng thời tự động thu thập và tích hợp thêm 50 công cụ & dịch vụ số thương hiệu lớn tại Việt Nam.
+  - **Tài nguyên tích hợp (Đợt 8)**:
+    - 50 công cụ thương hiệu lớn: MoMo Mini App, ZaloPay Merchant, VietinBank iConnect, Agribank, SHB, HDBank, MSB, OCB, SeABank, BaoViet Bank, Bảo hiểm Bảo Việt, Bảo Minh, PVI, PTI, VNDirect, SSI iBoard, TCBS, MBS, VPS SmartOne, FPT Smart Cloud AI, Viettel AI, VNPT AI, Cốc Cốc, Zalo AI, FPT.eInvoice, VNPT eContract, Viettel vContract, MISA WeSign, Bkav eHoadon, ThaiSon E-Invoice, Cổng thông tin Tổng cục Hải quan, Cổng một cửa quốc gia NSW, Cổng thông tin Thuế nhà cung cấp nước ngoài, Dịch vụ công Bộ Công Thương, Hệ thống Quản lý hoạt động TMĐT, Cổng Cục Sở hữu trí tuệ, Hệ thống quản lý tên miền .vn (VNNIC), Trung tâm Giám sát an toàn không gian mạng quốc gia (NCSC), Cổng tra cứu Hóa đơn điện tử TCT, Hệ thống tra cứu phạt nguội CSGT, Cổng tra cứu đăng kiểm phương tiện xe cơ giới, Ứng dụng BHXH số VssID, VnTrip, Gotadi, Klook Vietnam, Traveloka Vietnam, Vexere, Phần mềm quản lý Spa Booking, Medpro, YouMed.
+    - Nâng quy mô toàn kho tài nguyên lên **2.094 công cụ** và **3.309 mẫu cấu hình JSON thực thi**.
+    - Phân chia lại 10 Lĩnh vực chuyên môn: `finance_payment`, `ai_nlp_data`, `programming_devops`, `system_automation`, `ecommerce_retail`, `logistics_transport`, `business_admin`, `legal_public_service`, `telecom_cskh`, `hr_recruitment`.
+  - **Kiểm thử & Đóng gói**:
+    - `npx tsc --noEmit`: 0 lỗi.
+    - Unit tests: 5/5 bài kiểm tra đạt 100%.
+    - Đóng gói Vite hoàn tất trong 8.33 giây.
+
 ### Quyết định kỹ thuật
 - **Định dạng cấu hình mẫu**: Hỗ trợ xuất cấu hình nhanh dạng JSON cho các nền tảng phổ biến (Claude Desktop, Antigravity, Cursor, Windsurf, v.v.).
 - **Ngôn ngữ nội dung**: Mọi hướng dẫn cài đặt, cấu hình và kịch bản sử dụng mẫu bắt buộc phải có nội dung diễn giải bằng tiếng Việt rõ ràng, kèm lệnh mẫu có thể sao chép bằng một nút bấm.

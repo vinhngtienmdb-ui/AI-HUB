@@ -48,9 +48,11 @@
 - [x] Lập trình phân hệ Giao diện danh mục, Tìm kiếm tức thời và Phân trang (24 mục/trang)
 - [x] Lập trình phân hệ Chi tiết công cụ và Sao chép cấu hình một chạm
 - [x] Lập trình phân hệ Quản trị nội dung và Đóng góp công cụ
-- [x] Tích hợp toàn bộ 2.044 công cụ từ AI Templates (Phan Đông Giang), MCP Market, các kho lưu trữ hot thế giới, các nền tảng AI Workflow và hệ sinh thái API Việt Nam (bao gồm 50 giải pháp quy mô lớn đợt 7: GHTK, Ahamove, Techcombank, MB Bank, BIDV, TopCV, VinBigdata, Cổng DVC Quốc gia, EVN, F&B, Logistics, 34 tỉnh thành...)
-- [x] Chuẩn hóa 3.159 mẫu cấu hình JSON cho Claude Desktop, Antigravity và Cursor
-- [x] Tách biệt rạch ròi 8 nhóm thành phần: Skills (897), Agents (432), Commands (290), MCPs (154), Workflows (6), Hooks (62), Settings (72), Templates (17)
+- [x] Tích hợp toàn bộ 2.094 công cụ từ AI Templates (Phan Đông Giang), MCP Market, các kho lưu trữ hot thế giới, các nền tảng AI Workflow và hệ sinh thái API Việt Nam (bao gồm 50 giải pháp quy mô lớn đợt 7 và 50 thương hiệu lớn đợt 8: MoMo, ZaloPay, VietinBank, Agribank, FPT, Viettel, VNPT, Cốc Cốc, chứng khoán, bảo hiểm, Hải quan, DVC...)
+- [x] Chuẩn hóa 3.309 mẫu cấu hình JSON cho Claude Desktop, Antigravity và Cursor
+- [x] Tách biệt rạch ròi 8 nhóm thành phần giữ nguyên nhãn quốc tế: Skill (1.004), Agent (451), Command (290), MCP Server (186), Setting (72), Hook (62), Template (23), Workflow (6)
+- [x] Phân chia hệ thống danh mục thành 10 Lĩnh vực chuyên môn tiếng Việt: Tài chính, Ngân hàng & Thuế; Trí tuệ nhân tạo & Dữ liệu; Lập trình & Kỹ thuật phần mềm; Tự động hóa hệ thống & Web; Thương mại điện tử & Bán lẻ; Vận tải & Giao vận; Doanh nghiệp & Quản trị; Pháp luật & Hành chính công; Viễn thông & Chăm sóc khách hàng; Nhân sự & Tuyển dụng
+- [x] Triển khai ErrorBoundary toàn cục và cơ chế phòng vệ dữ liệu triệt để, khắc phục hoàn toàn lỗi màn hình trắng (White Screen)
 - [x] Xây dựng thành phần Left Sidebar ghim cố định bên trái (`src/components/Sidebar.tsx`), hỗ trợ thu gọn/mở rộng linh hoạt và Drawer trượt mở cho thiết bị di động
 - [x] Mở rộng khung làm việc (Workspace Expansion): Chế độ toàn màn hình 100% Canvas, chuyển đổi linh hoạt giữa Chế độ Lưới (Grid) và Chế độ Bảng danh sách chi tiết (Table View)
 - [x] Nâng cấp nội dung hướng dẫn cài đặt chuẩn hóa 4 bước chi tiết và kịch bản sử dụng thực tế cho 100% công cụ
@@ -65,7 +67,7 @@
 - [x] Lập kế hoạch kiểm thử (`17_KE_HOACH_KIEM_THU.md`)
 - [x] Xây dựng kịch bản kiểm thử (`18_KICH_BAN_KIEM_THU.md`)
 - [x] Thiết lập chính sách an toàn bảo mật (`19_AN_TOAN_BAO_MAT.md`)
-- [x] Thực hiện kiểm thử tự động quy tắc nghiệp vụ (`tests/business-rules.test.js`) đạt 100% trên toàn bộ 2.044 công cụ và 3.159 cấu hình JSON
+- [x] Thực hiện kiểm thử tự động quy tắc nghiệp vụ (`tests/business-rules.test.js`) đạt 100% trên toàn bộ 2.094 công cụ và 3.309 cấu hình JSON
 - [x] Thực hiện kiểm thử tự động chính sách an toàn lệnh (`tests/command-bridge.test.js`) đạt 100% (chấp nhận lệnh hợp lệ, chặn lệnh nguy hiểm)
 - [x] Kiểm thử đóng gói bản phát hành (Production Build) đạt 100%
 
