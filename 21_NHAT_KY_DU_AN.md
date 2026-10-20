@@ -100,6 +100,18 @@
   - Kiểm thử tự động đạt 100% qua 5 bài test (`tests/business-rules.test.js` và `tests/command-bridge.test.js`).
   - Đóng gói bản phát hành thành công (`npm run build`).
 
+- [Đồng bộ và phát hành lên kho lưu trữ GitHub chính thức]:
+  - Đã khởi tạo Git repository và cấu hình tệp bỏ qua `.gitignore`, giấy phép bản quyền `LICENSE` (MIT) và tài liệu tổng quan dự án `README.md` chuyên nghiệp.
+  - Tạo thành công cam kết gốc (Initial Commit `436dcb3`) bao gồm toàn bộ 78 tệp tin:
+    - 22 tệp tài liệu thiết kế đặc tả 12 giai đoạn theo quy trình VibeCode chuẩn (`01_` đến `22_` và `index.md`).
+    - Toàn bộ mã nguồn giao diện React 19, TypeScript, Vite và Tailwind CSS.
+    - Cầu nối thực thi lệnh cục bộ an toàn (`server/commandBridge.js`).
+    - Phân hệ Thiết bị đầu cuối tương tác (`TerminalDrawer.tsx`).
+    - Toàn bộ cơ sở dữ liệu đồ sộ gồm **1.904 công cụ** và **2.899 mẫu cấu hình JSON** đã bản địa hóa 100% tiếng Việt.
+    - Trọn bộ kịch bản kiểm thử tự động quy tắc nghiệp vụ và an toàn câu lệnh.
+  - Đã đẩy thành công toàn bộ mã nguồn lên kho lưu trữ GitHub chính thức tại địa chỉ:
+    👉 **https://github.com/vinhngtienmdb-ui/AI-HUB.git** (nhánh `main`).
+
 ### Quyết định kỹ thuật
 - **Định dạng cấu hình mẫu**: Hỗ trợ xuất cấu hình nhanh dạng JSON cho các nền tảng phổ biến (Claude Desktop, Antigravity, Cursor, Windsurf, v.v.).
 - **Ngôn ngữ nội dung**: Mọi hướng dẫn cài đặt, cấu hình và kịch bản sử dụng mẫu bắt buộc phải có nội dung diễn giải bằng tiếng Việt rõ ràng, kèm lệnh mẫu có thể sao chép bằng một nút bấm.
