@@ -4,6 +4,29 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.3-MoRongTaiNguyenVietNamDot2 (Ngày 20-10-2026)
+- **Loại hình**: Tiếp tục mở rộng đợt 2 các kho lưu trữ mã nguồn, công cụ, kỹ năng và máy chủ MCP phục vụ chuyên biệt cho người dùng và cộng đồng lập trình viên Việt Nam.
+- **Nội dung hoàn thành**:
+  - Tích hợp 11 công cụ và giải pháp công nghệ bản địa hóa trọng yếu:
+    1. **payOS SDK (`payOSHQ/payos-lib-node`)**: Bộ SDK chính thức cho Node.js/TypeScript tạo link thanh toán VietQR Napas247 tự động, quản lý webhook và xác nhận thanh toán trực tuyến tức thì.
+    2. **Cốc Cốc Tokenizer (`coccoc/coccoc-tokenizer`)**: Bộ tách từ tiếng Việt hiệu năng cao bằng C++ và Python của đội ngũ kỹ sư Cốc Cốc, xử lý hàng triệu ký tự mỗi giây cho bộ máy tìm kiếm và Elasticsearch.
+    3. **Goong Maps SDK (`goong-io/goong-js`)**: Bản đồ số và API tra cứu địa chỉ số nhà, ngõ ngách tiếng Việt chuyên sâu tại 63 tỉnh thành, định tuyến tối ưu lộ trình giao nhận.
+    4. **vietTTS (`NTT123/vietTTS`)**: Hệ thống tổng hợp tiếng nói tiếng Việt tự nhiên mã nguồn mở với Duration Model và HiFi-GAN Vocoder cho âm thanh giọng đọc truyền cảm.
+    5. **VietAI Diacritic Restoration (`vietai/aivivn-vn-diacritic`)**: Mô hình học sâu Transformer tự động khôi phục dấu tiếng Việt cho các đoạn văn bản gõ không dấu, xử lý tin nhắn SMS và văn bản thô.
+    6. **Vietnamese Stopwords (`stopwords/vietnamese-stopwords`)**: Danh mục hơn 2.000 từ dừng tiếng Việt chuẩn phục vụ lọc nhiễu, trích xuất từ khóa và cấu hình tìm kiếm toàn văn.
+    7. **DVHCVN (`daohoangson/dvhcvn`)**: Cơ sở dữ liệu đơn vị hành chính Việt Nam phân cấp 3 tầng kèm thư viện Dart/Flutter và dữ liệu tọa độ ranh giới GIS của Đào Hoàng Sơn.
+    8. **VNPost EMS Logistics MCP (`vinhngtienmdb-ui/AI-HUB`)**: Máy chủ MCP kết nối API Bưu điện Việt Nam và chuyển phát nhanh quốc tế EMS tra cứu hành trình bưu kiện và cước bưu chính.
+    9. **GHN Express SDK MCP (`vinhngtienmdb-ui/AI-HUB`)**: Tích hợp API Giao Hàng Nhanh tạo đơn hàng hỏa tốc, in tem vận đơn barcode và tự động đối soát COD.
+    10. **Vietnamese Telecom Validator (`vinhngtienmdb-ui/AI-HUB`)**: Kỹ năng chuẩn hóa định dạng số điện thoại di động Việt Nam (+84) và nhận diện các nhà mạng Viettel, VinaPhone, MobiFone, Vietnamobile, Wintel.
+    11. **Vietnamese Law Semantic Search (`vinhngtienmdb-ui/AI-HUB`)**: Tác tử AI tra cứu ngữ nghĩa các quy định pháp luật doanh nghiệp, thuế, lao động Việt Nam theo tình huống thực tế.
+  - **Quy mô hệ thống**:
+    - Nâng tổng số lượng công cụ lên **1.954 mục**.
+    - Nâng tổng số lượng mẫu cấu hình JSON thực thi lên **2.949 mẫu**.
+    - 100% tài nguyên đáp ứng đầy đủ 4 khối thông tin: Nguồn dẫn chính thức, mục đích, hướng dẫn cài đặt và hướng dẫn sử dụng tiếng Việt kèm mã nguồn mẫu.
+  - **Kiểm thử tự động & Đóng gói**:
+    - 5/5 bài kiểm thử unit tests đạt 100%.
+    - Đóng gói Vite (`npm run build`) hoàn tất xuất sắc trong 13.85 giây.
+
 ### Phiên Bản 2.0.2-MoRongTaiNguyenThiTruongVietNam (Ngày 20-10-2026)
 - **Loại hình**: Tiếp tục mở rộng và thu thập dữ liệu chuyên sâu các kho lưu trữ mã nguồn (Repositories), Kỹ năng (Skills), Máy chủ MCP và Giao diện lập trình ứng dụng (APIs) phù hợp với thị trường Việt Nam.
 - **Nội dung hoàn thành**:

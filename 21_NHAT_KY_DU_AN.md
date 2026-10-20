@@ -209,6 +209,17 @@
     - Chạy kiểm thử tự động 5/5 bài kiểm tra: Toàn bộ 1.943 công cụ và 2.938 JSON cấu hình đều đạt chuẩn 100%.
     - Đóng gói Vite hoàn tất trong 7.14 giây.
 
+- [Mở Rộng Thu Thập Tài Nguyên Việt Nam Đợt 2]:
+  - **Mục tiêu**: Bổ sung các giải pháp hạ tầng thanh toán, bản đồ số, thư viện ngôn ngữ tự nhiên và chuyển phát vận tải hàng đầu tại Việt Nam.
+  - **Tài nguyên tích hợp**:
+    - Thêm 11 giải pháp công nghệ: payOS SDK (payOSHQ), Cốc Cốc Tokenizer (Cốc Cốc), Goong Maps SDK (Goong.io), vietTTS (NTT123), VietAI Diacritic Restoration (VietAI), Vietnamese Stopwords (Stopwords Community), DVHCVN (Đào Hoàng Sơn), VNPost EMS Logistics MCP, GHN Express SDK MCP, Vietnamese Telecom Validator, Vietnamese Law Semantic Search.
+    - Nâng quy mô toàn kho tài nguyên lên **1.954 công cụ** và **2.949 mẫu cấu hình JSON thực thi**.
+    - Đáp ứng đầy đủ quy tắc 4 khối thông tin và cơ chế loại bỏ khối ảnh khi không có ảnh demo thực tế từ repo.
+  - **Kiểm thử & Đóng gói**:
+    - `npx tsc --noEmit`: 0 lỗi.
+    - Unit tests: 5/5 bài kiểm tra đạt 100%.
+    - Đóng gói Vite hoàn tất trong 13.85 giây.
+
 ### Quyết định kỹ thuật
 - **Định dạng cấu hình mẫu**: Hỗ trợ xuất cấu hình nhanh dạng JSON cho các nền tảng phổ biến (Claude Desktop, Antigravity, Cursor, Windsurf, v.v.).
 - **Ngôn ngữ nội dung**: Mọi hướng dẫn cài đặt, cấu hình và kịch bản sử dụng mẫu bắt buộc phải có nội dung diễn giải bằng tiếng Việt rõ ràng, kèm lệnh mẫu có thể sao chép bằng một nút bấm.
