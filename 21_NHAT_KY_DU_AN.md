@@ -325,6 +325,14 @@
     - Unit tests: 5/5 bài kiểm tra đạt 100%.
     - Đóng gói Vite hoàn tất trong 7.43 giây.
 
+- [Mở Rộng Thu Thập Tài Nguyên Việt Nam Đợt 10 với 50 công cụ]:
+  - **Mục tiêu**: Bổ sung tự động đợt 10 gồm 50 công cụ & dịch vụ số từ các bệnh viện tuyến cuối (Chợ Rẫy, Bạch Mai, ĐH Y Dược TP.HCM, Viện K, Vinmec), cơ quan nhà nước & BHXH (Đăng ký kinh doanh, Xuất nhập cảnh E-visa, DVC BHXH, Cục Đăng kiểm, KTTV), phần mềm kế toán & ERP (FAST, BRAVO, EFFECT, MISA SME, Thuế TNCN), trường đại học & tuyển sinh (Cổng Tuyển sinh THPT, Bách Khoa HUST, ĐHQG-HCM, UEH, FPT), du lịch nghỉ dưỡng (Vinpearl, Sun World, Vietravel, Saigontourist, Mường Thanh), camera an ninh AI (Hanet, Bkav AI View, VNPT Camera, Viettel vCam, FPT Camera IQ), kho bãi & fulfillment (Boxme, N&H Logistics, GHN, Ninja Van, J&T), ví & Web3 (Coin98, KyberSwap, Ronin Network, Foxpay, VNPAY SmartPOS), tổng đài ảo & CSKH (FPT Oncall, MobiFone 3C, VNPT VCC, CMC Voice, Stringee), quản trị nhân sự (Base.vn, 1Office, VietnamWorks, FPT.eContract, Haravan).
+  - **Tài nguyên tích hợp**: Thêm đúng 50 công cụ chuẩn hóa, nâng tổng quy mô toàn hệ thống lên **2.194 công cụ** và **3.609 mẫu cấu hình JSON thực thi**.
+  - **Kiểm thử & Đóng gói**:
+    - `npx tsc --noEmit`: 0 lỗi.
+    - Unit tests: 5/5 bài kiểm tra đạt 100%.
+    - Đóng gói Vite hoàn tất trong 8.16 giây.
+
 ### Quyết định kỹ thuật
 - **Định dạng cấu hình mẫu**: Hỗ trợ xuất cấu hình nhanh dạng JSON cho các nền tảng phổ biến (Claude Desktop, Antigravity, Cursor, Windsurf, v.v.).
 - **Ngôn ngữ nội dung**: Mọi hướng dẫn cài đặt, cấu hình và kịch bản sử dụng mẫu bắt buộc phải có nội dung diễn giải bằng tiếng Việt rõ ràng, kèm lệnh mẫu có thể sao chép bằng một nút bấm.
