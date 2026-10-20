@@ -13,6 +13,8 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod';
 import { routeTask, getAllTools } from './smart-router.js';
 import { dispatchTask } from './dispatcher.js';
+import { sanitizeInput, authenticateBearerToken } from './security.js';
+import { startApiServer } from './api-server.js';
 
 // Khởi tạo máy chủ MCP
 const server = new McpServer({
@@ -29,8 +31,26 @@ server.tool(
     parameters: z.record(z.any()).optional().describe('Các tham số bổ sung tùy chọn cho bài toán')
   },
   async ({ task_description, parameters = {} }) => {
-    const routingResult = routeTask(task_description);
-    const dispatchResult = dispatchTask(routingResult, task_description, parameters);
+    // Kiểm tra và làm sạch dữ liệu đầu vào chống Injection
+    const sanitized = sanitizeInput(task_description);
+    if (!sanitized.safe) {
+      return {
+        isError: true,
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify({
+              status: 'SECURITY_ALERT',
+              error: sanitized.error,
+              message: 'Yêu cầu bị từ chối do vi phạm quy chuẩn an toàn bảo mật hệ thống AI HUB VN.'
+            }, null, 2)
+          }
+        ]
+      };
+    }
+
+    const routingResult = routeTask(sanitized.sanitizedText);
+    const dispatchResult = dispatchTask(routingResult, sanitized.sanitizedText, parameters);
 
     return {
       content: [
@@ -157,10 +177,19 @@ async function main() {
     const sampleQuery = args.find(a => !a.startsWith('-')) || 'Tạo mã thanh toán VietQR ngân hàng Techcombank 500k';
     console.log(`Bài toán mẫu: "${sampleQuery}"\n`);
 
-    const result = routeTask(sampleQuery);
-    const dispatched = dispatchTask(result, sampleQuery);
+    const sanitized = sanitizeInput(sampleQuery);
+    const result = routeTask(sanitized.sanitizedText);
+    const dispatched = dispatchTask(result, sanitized.sanitizedText);
     console.log(JSON.stringify(dispatched, null, 2));
     process.exit(0);
+  }
+
+  // Chế độ khởi chạy REST API Server độc lập hoặc song song
+  if (args.includes('--serve') || args.includes('-s')) {
+    const portIndex = args.indexOf('--port');
+    const customPort = portIndex !== -1 && args[portIndex + 1] ? parseInt(args[portIndex + 1], 10) : 4000;
+    await startApiServer(customPort);
+    return;
   }
 
   // Chế độ Stdio MCP Server chuẩn cho Claude Desktop, Cursor, Antigravity

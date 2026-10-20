@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Moon, Sun, BookOpen, Terminal, Menu, X, User, ShieldCheck, Tags, KeyRound } from 'lucide-react';
+import { Plus, Moon, Sun, BookOpen, Terminal, Menu, X, User, ShieldCheck, Tags, KeyRound, Server } from 'lucide-react';
 import { ToolType, Category } from '../types';
 
 interface HeaderProps {
@@ -8,6 +8,7 @@ interface HeaderProps {
   onOpenContribute: () => void;
   onOpenDocs: () => void;
   onOpenApiManagement?: () => void;
+  onOpenMcpServer?: () => void;
   onOpenLogin: () => void;
   currentUser?: string | null;
   userDisplayName?: string;
@@ -30,6 +31,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenContribute,
   onOpenDocs,
   onOpenApiManagement,
+  onOpenMcpServer,
   onOpenLogin,
   currentUser,
   userDisplayName,
@@ -137,11 +139,22 @@ export const Header: React.FC<HeaderProps> = ({
             <span>Hướng dẫn</span>
           </button>
 
+          {onOpenMcpServer && (
+            <button
+              onClick={onOpenMcpServer}
+              className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center space-x-1 text-slate-700 dark:text-slate-200 font-medium"
+              title="Máy Chủ MCP Server & Cổng Điều Phối Thông Minh (Smart Gateway)"
+            >
+              <Server className="w-3.5 h-3.5 mr-0.5 text-indigo-500" />
+              <span>Máy chủ MCP</span>
+            </button>
+          )}
+
           {onOpenApiManagement && (
             <button
               onClick={onOpenApiManagement}
               className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center space-x-1 text-indigo-600 dark:text-indigo-400 font-semibold"
-              title="Cổng Lập trình viên & Quản lý Khóa API Smart Gateway"
+              title="Cổng Lập trình viên & Quản lý Khóa API"
             >
               <KeyRound className="w-3.5 h-3.5 mr-0.5" />
               <span>Quản lý API</span>
@@ -310,6 +323,14 @@ export const Header: React.FC<HeaderProps> = ({
           >
             Hướng dẫn & Quy trình VibeCode
           </button>
+          {onOpenMcpServer && (
+            <button
+              onClick={() => handleNavClick(onOpenMcpServer)}
+              className="block w-full text-left py-2 px-3 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold"
+            >
+              Máy chủ MCP Server & Smart Gateway
+            </button>
+          )}
           {onOpenApiManagement && (
             <button
               onClick={() => handleNavClick(onOpenApiManagement)}

@@ -24,6 +24,7 @@ import { CollectionsPage } from './pages/CollectionsPage';
 import { GuidesPage } from './pages/GuidesPage';
 import { AccountPage } from './pages/AccountPage';
 import { ApiManagementPage } from './pages/ApiManagementPage';
+import { McpServerPage } from './pages/McpServerPage';
 
 import { INITIAL_TOOLS, CATEGORIES } from './data/mockTools';
 import { INITIAL_COLLECTIONS, INITIAL_GUIDES } from './data/mockGuidesAndCollections';
@@ -235,6 +236,8 @@ export const App: React.FC = () => {
         setCurrentRoute({ name: 'account' });
       } else if (hash === '/api' || hash === '/developer' || hash === '/api-keys') {
         setCurrentRoute({ name: 'api' });
+      } else if (hash === '/mcp' || hash === '/mcp-server' || hash === '/mcp-gateway') {
+        setCurrentRoute({ name: 'mcp' });
       }
     };
 
@@ -273,6 +276,9 @@ export const App: React.FC = () => {
         break;
       case 'api':
         window.location.hash = '/api';
+        break;
+      case 'mcp':
+        window.location.hash = '/mcp';
         break;
     }
   };
@@ -485,6 +491,7 @@ export const App: React.FC = () => {
         setDarkMode={setDarkMode}
         onOpenContribute={() => navigateTo({ name: 'contribute' })}
         onOpenDocs={() => navigateTo({ name: 'guides' })}
+        onOpenMcpServer={() => navigateTo({ name: 'mcp' })}
         onOpenApiManagement={() => navigateTo({ name: 'api' })}
         onOpenLogin={() => {
           if (currentUser) {
@@ -613,10 +620,20 @@ export const App: React.FC = () => {
         />
       )}
 
-      {/* TRANG 7: TRANG QUẢN LÝ API & CỔNG LẬP TRÌNH VIÊN (DEVELOPER PORTAL) */}
+      {/* TRANG 7: TRANG QUẢN LÝ API & BẢO MẬT HỆ THỐNG */}
       {currentRoute.name === 'api' && (
         <ApiManagementPage
           onNavigateHome={() => navigateTo({ name: 'home' })}
+          onNavigateMcp={() => navigateTo({ name: 'mcp' })}
+          isExpanded={isExpandedCanvas}
+        />
+      )}
+
+      {/* TRANG 8: TRANG MÁY CHỦ MCP SERVER & SMART GATEWAY */}
+      {currentRoute.name === 'mcp' && (
+        <McpServerPage
+          onNavigateHome={() => navigateTo({ name: 'home' })}
+          onNavigateApi={() => navigateTo({ name: 'api' })}
           isExpanded={isExpandedCanvas}
         />
       )}
@@ -903,6 +920,7 @@ export const App: React.FC = () => {
       <Footer
         onOpenDocs={() => navigateTo({ name: 'guides' })}
         onOpenContribute={() => navigateTo({ name: 'contribute' })}
+        onOpenMcpServer={() => navigateTo({ name: 'mcp' })}
         onOpenApiManagement={() => navigateTo({ name: 'api' })}
         onSelectType={(type) => navigateTo({ name: 'category', toolType: type })}
         onSelectCategory={(cat) => {

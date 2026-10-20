@@ -4,6 +4,29 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.32-NangCapBaoMatProductionVaTachBietTrangMcpVaApi (Ngày 20-10-2026)
+- **Loại hình**: Tách riêng hai trang độc lập (Quản Lý API và Máy Chủ MCP Server), chuyển đổi hệ thống từ demo sang kiến trúc vận hành thực tế (Production-grade) với lớp bảo mật an ninh toàn diện và hoàn thiện cẩm nang hướng dẫn cài đặt.
+- **Nội dung hoàn thành**:
+  - **Tách riêng 2 trang chuyên biệt trên giao diện**:
+    - **Trang Quản Lý API (`src/pages/ApiManagementPage.tsx` - Đường dẫn `#/api`)**: Chuyên sâu về quản lý vòng đời khóa bảo mật `aihub_live_...`, thiết lập Rate Limit (req/phút) và Daily Quota, bảng nhật ký kiểm toán an ninh thời gian thực (Security Audit Logs) và trình thử nghiệm REST API Playground.
+    - **Trang Máy Chủ MCP Server (`src/pages/McpServerPage.tsx` - Đường dẫn `#/mcp`)**: Chuyên sâu về máy chủ Model Context Protocol (MCP) chuẩn Anthropic, hỗ trợ chế độ kép Stdio Transport (Local) và HTTP SSE Transport (Remote), trình kiểm tra Live MCP Inspector (gọi trực tiếp 4 công cụ `aihub_smart_dispatch`, `aihub_resolve_capability`, `aihub_explain_routing`, `aihub_get_gateway_status`), và cấu hình 1 chạm cho Claude Desktop, Cursor, Claude Code, Antigravity.
+  - **Xây dựng module bảo mật lõi cấp công nghiệp (`mcp-gateway/security.js`)**:
+    - Băm mật mã khóa API bằng HMAC-SHA256 kết hợp muối bảo mật nội bộ `AIHUB_SECURITY_SALT`.
+    - Chống tấn công phân tích thời gian (Timing Attacks) với cơ chế `crypto.timingSafeEqual`.
+    - Bộ giới hạn tần suất yêu cầu (Rate Limiter) dạng cửa sổ trượt (Sliding Window) chống tấn công từ chối dịch vụ (DoS).
+    - Làm sạch và thẩm định dữ liệu đầu vào (Input Sanitization) phòng chống Prompt Injection và Command Injection (`rm -rf`, `curl | sh`, `system()`, `eval()`).
+    - Xác thực nghiêm ngặt Bearer Token (`Authorization: Bearer aihub_live_...`).
+    - Lưu vết nhật ký kiểm toán an ninh minh bạch (Audit Logging).
+  - **Máy chủ REST API Backend thực thụ (`mcp-gateway/api-server.js`)**:
+    - Vận hành REST API độc lập (Port 4000) với các điểm cuối chuẩn: `GET /api/v1/health`, `POST /api/v1/dispatch`, `GET /api/v1/tools`, `POST /api/v1/keys/generate`, `POST /api/v1/keys/revoke`, `GET /api/v1/stats`.
+    - Tích hợp đầy đủ các tiêu đề an ninh HTTP (CORS, CSP, X-Content-Type-Options: nosniff, X-Frame-Options: DENY).
+  - **Cẩm nang hướng dẫn cài đặt & sử dụng (`HUONG_DAN_CAI_DAT_VA_SU_DUNG_MCP_API.md`)**:
+    - Tài liệu chi tiết từ A đến Z bằng tiếng Việt hướng dẫn cài đặt qua Node.js, khởi chạy Stdio/REST API, tích hợp từng bước vào Claude Desktop, Cursor, Claude Code, Python, Node.js và cURL.
+  - **Kiểm thử tự động & Đóng gói**:
+    - Xây dựng bộ kiểm thử an ninh chuyên sâu `tests/security-and-auth.test.js` kiểm tra 6 ca kiểm thử bảo mật.
+    - Chạy toàn bộ **31/31 bài test** trong 7 bộ kiểm thử tự động: Đạt **100% tỷ lệ pass**.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 15.82 giây.
+
 ### Phiên Bản 2.0.31-XayDungTrangQuanLyApiVaDeveloperPortal (Ngày 20-10-2026)
 - **Loại hình**: Xây dựng và tích hợp Trang Quản Lý API & Cổng Lập Trình Viên (API Management & Developer Portal) kết nối trực tiếp với AI HUB Smart MCP Gateway.
 - **Nội dung hoàn thành**:

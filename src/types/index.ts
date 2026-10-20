@@ -203,10 +203,29 @@ export interface ApiKey {
   id: string;
   name: string;
   key: string;
+  prefix?: string;
   createdAt: string;
   lastUsedAt?: string;
+  expiresAt?: string;
   status: 'active' | 'revoked';
   usageCount: number;
+  role?: 'developer' | 'admin' | 'read_only';
+  rateLimitPerMin?: number;
+  dailyQuota?: number;
+  ipWhitelist?: string[];
+}
+
+export interface SecurityAuditLog {
+  id: string;
+  timestamp: string;
+  keyId: string;
+  ip: string;
+  endpoint: string;
+  method: string;
+  statusCode: number;
+  latencyMs: number;
+  action: string;
+  details: string;
 }
 
 export type PageRoute = 
@@ -218,5 +237,6 @@ export type PageRoute =
   | { name: 'guides' }
   | { name: 'guide_detail'; guideId: string }
   | { name: 'account' }
-  | { name: 'api' };
+  | { name: 'api' }
+  | { name: 'mcp' };
 

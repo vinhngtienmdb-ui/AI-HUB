@@ -41,3 +41,4 @@ Hệ thống tài liệu thiết kế và đặc tả kỹ thuật cho dự án 
 - [20. Lịch sử thay đổi](20_LICH_SU_THAY_DOI.md): Nhật ký các phiên bản và thay đổi mã nguồn.
 - [21. Nhật ký dự án](21_NHAT_KY_DU_AN.md): Nhật ký hoạt động chi tiết theo từng ngày làm việc.
 - [22. Danh mục kiểm tra](22_DANH_MUC_KIEM_TRA.md): Bảng theo dõi tiến độ công việc và trạng thái nghiệm thu.
+- [Hướng dẫn cài đặt & sử dụng MCP Server & API Gateway](HUONG_DAN_CAI_DAT_VA_SU_DUNG_MCP_API.md): Cẩm nang chi tiết thiết lập Stdio MCP Server cho Claude Desktop/Cursor và Cổng REST API có xác thực Bearer token.

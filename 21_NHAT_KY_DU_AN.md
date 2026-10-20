@@ -8,6 +8,25 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Nâng cấp Bảo mật Toàn diện và Tách riêng Trang Quản Lý API & Máy Chủ MCP Server]:
+  - **Tách riêng 2 trang độc lập**:
+    - **Trang Quản Lý API (`src/pages/ApiManagementPage.tsx`)**: Tập trung vào vòng đời khóa bảo mật `aihub_live_...`, hạn mức tần suất Rate Limit, Quota ngày, Nhật ký kiểm toán an ninh thời gian thực (Audit Logs) và REST API Playground.
+    - **Trang Máy Chủ MCP Server (`src/pages/McpServerPage.tsx`)**: Tập trung vào vận hành máy chủ Model Context Protocol (MCP) chuẩn Anthropic, hỗ trợ Stdio Transport và HTTP SSE, Trình kiểm tra Live MCP Inspector (4 công cụ MCP) và Cấu hình 1 chạm cho Claude Desktop / Cursor / Claude Code / Antigravity.
+  - **Triển khai kiến trúc bảo mật cấp công nghiệp (`mcp-gateway/security.js`)**:
+    - Mã hóa băm HMAC-SHA256 kèm muối bảo mật `AIHUB_SECURITY_SALT`.
+    - So sánh an toàn thời gian `crypto.timingSafeEqual` chống tấn công Timing Attacks.
+    - Giới hạn tần suất yêu cầu (Sliding Window Rate Limiter) chống DoS.
+    - Làm sạch và phòng vệ dữ liệu đầu vào (Input Sanitization) chống Prompt Injection và Command Injection.
+    - Xác thực Bearer Token bắt buộc cho các yêu cầu điều phối `/api/v1/dispatch`.
+    - Ghi nhận và lưu vết nhật ký kiểm toán an ninh (Audit Logging).
+  - **Máy chủ REST API Backend thực thụ (`mcp-gateway/api-server.js`)**:
+    - Chạy dịch vụ HTTP REST API độc lập (Port 4000) với đầy đủ Security Headers.
+  - **Hoàn thành Cẩm nang hướng dẫn cài đặt & sử dụng (`HUONG_DAN_CAI_DAT_VA_SU_DUNG_MCP_API.md`)**:
+    - Hướng dẫn chi tiết từng bước cài đặt qua Node.js, cấu hình Claude Desktop, Cursor, Claude Code và tích hợp Python/Node.js/cURL.
+  - **Kiểm thử tự động & Đóng gói**:
+    - Xây dựng bộ test an ninh `tests/security-and-auth.test.js`.
+    - Toàn bộ **31/31 bài test** trong 7 bộ kiểm thử tự động đạt 100% tỷ lệ pass.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 15.82 giây.
 - [Xây dựng và Triển khai Trang Quản Lý API & Cổng Lập Trình Viên (API Management & Developer Portal)]:
   - **Triển khai giao diện Quản lý API hoàn chỉnh (`src/pages/ApiManagementPage.tsx`)**:
     - **Quản lý Khóa API (API Keys)**: Hỗ trợ sinh khóa API chuẩn tiền tố `aihub_live_...`, sao chép một chạm, ẩn/hiện khóa, thu hồi, kích hoạt lại và xóa khóa với dữ liệu được đồng bộ bền vững trong `localStorage`.

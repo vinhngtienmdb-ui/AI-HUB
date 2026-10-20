@@ -6,6 +6,7 @@ interface FooterProps {
   onOpenDocs: () => void;
   onOpenContribute: () => void;
   onOpenApiManagement?: () => void;
+  onOpenMcpServer?: () => void;
   onSelectType: (type: ToolType) => void;
   onSelectCategory: (category: Category) => void;
   isExpanded?: boolean;
@@ -15,6 +16,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenDocs,
   onOpenContribute,
   onOpenApiManagement,
+  onOpenMcpServer,
   onSelectType,
   onSelectCategory,
   isExpanded = true,
@@ -128,13 +130,23 @@ export const Footer: React.FC<FooterProps> = ({
                   Bộ tài liệu thiết kế hệ thống (01 - 22)
                 </button>
               </li>
+              {onOpenMcpServer && (
+                <li>
+                  <button
+                    onClick={onOpenMcpServer}
+                    className="hover:text-indigo-600 dark:hover:text-indigo-400 font-semibold text-slate-700 dark:text-slate-300 transition-colors text-left"
+                  >
+                    🌐 Máy chủ Smart MCP Server
+                  </button>
+                </li>
+              )}
               {onOpenApiManagement && (
                 <li>
                   <button
                     onClick={onOpenApiManagement}
                     className="hover:text-indigo-600 dark:hover:text-indigo-400 font-semibold text-indigo-600 dark:text-indigo-400 transition-colors text-left"
                   >
-                    🔑 Quản lý API & Smart Gateway
+                    🔑 Quản lý API & Bảo Mật
                   </button>
                 </li>
               )}
