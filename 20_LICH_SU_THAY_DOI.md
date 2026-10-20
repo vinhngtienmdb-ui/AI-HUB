@@ -4,6 +4,29 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.10-PhanLoaiLinhVucChuyenMonVaChuanHoaNhanThuatNgu (Ngày 20-10-2026)
+- **Loại hình**: Phân loại lại toàn bộ 2.044 công cụ vào 10 nhóm lĩnh vực chuyên môn thực tế, đồng thời chuẩn hóa nhãn loại hình giữ nguyên thuật ngữ kỹ thuật quốc tế (Agent, Skill, MCP Server, Command, Template, Workflow, Hook, Setting) theo đúng yêu cầu người dùng.
+- **Nội dung hoàn thành**:
+  1. **Phân loại lại 10 nhóm lĩnh vực chuyên môn phù hợp**:
+     - `finance_payment` (Tài chính, Ngân hàng & Thuế): 97 công cụ (Vietcombank, MB Bank, BIDV, VietinBank, VPBank, ACB, TPBank, VNPay, MoMo, ZaloPay, OnePay, SmartPay, PayOS, Kredivo, Fundiin, eTax, hóa đơn điện tử TT78...).
+     - `business_admin` (Doanh nghiệp & Quản trị): 22 công cụ (Base.vn, 1Office, FastWork, Odoo, ERPNext, EspoCRM, Bizfly CRM, Getfly CRM, MISA AMIS...).
+     - `ecommerce_retail` (Thương mại điện tử & Bán lẻ): 67 công cụ (Shopee, Lazada, Tiki, TikTok Shop, Sapo, Haravan, KiotViet, F&B, MISA CukCuk, iPOS.vn, GrabFood, ShopeeFood...).
+     - `logistics_transport` (Vận tải & Giao vận): 31 công cụ (GHTK, GHN, Ahamove, Lalamove, ViettelPost, VNPost, J&T Express, Ninja Van, Be Group, Xanh SM GSM, Vietnam Airlines, Vietjet Air, Petrolimex...).
+     - `telecom_cskh` (Viễn thông & Chăm sóc khách hàng): 14 công cụ (Zalo OA, Stringee VoIP, eSMS Brandname, SpeedSMS OTP, FPT Telecom, VietGuys...).
+     - `legal_public_service` (Pháp luật & Hành chính công): 12 công cụ (Địa giới 34 tỉnh thành mới, Cổng DVC Quốc gia VNeID, Bộ Tư pháp, Đấu thầu e-GP, Thư viện pháp luật, EVN...).
+     - `hr_recruitment` (Nhân sự & Tuyển dụng): 5 công cụ (TopCV, VietnamWorks, tính lương BHXH, bảng chấm công FaceID...).
+     - `ai_nlp_data` (Trí tuệ nhân tạo & Dữ liệu): 291 công cụ (VinBigdata ViGPT, VinAI PhoBERT, PhoWhisper, VietOCR, Vbee TTS, DeepSeek, Ollama, vLLM, RAGFlow, BigQuery...).
+     - `programming_devops` (Lập trình & Kỹ thuật phần mềm): 1.191 công cụ (Công cụ code, git, Docker, test, debug, refactor, CLI...).
+     - `system_automation` (Tự động hóa hệ thống & Web): 314 công cụ (Browser-use, OpenHands, crawl dữ liệu, web scraping, workflows...).
+  2. **Chuẩn hóa nhãn loại hình (Giữ nguyên thuật ngữ Agent, Skill...)**:
+     - Giữ nguyên chữ **`Skill`** (thay vì "Kỹ năng tác tử").
+     - Giữ nguyên chữ **`Agent`** (thay vì "Tác tử AI").
+     - Giữ nguyên chữ **`MCP Server`** (thay vì "Máy chủ MCP").
+     - Giữ nguyên các chữ **`Command`**, **`Template`**, **`Workflow`**, **`Hook`**, **`Setting`** trên các tab thanh bên (Sidebar) và huy hiệu phân loại thẻ.
+- **Kiểm thử và xác nhận**:
+  - Đóng gói Vite hoàn tất trong 7.64 giây.
+  - Toàn bộ 5 bài kiểm thử tự động đạt 100%.
+
 ### Phiên Bản 2.0.9-KhacPhucSuCoManHinhTrangVaTangCuongBaoVeGiaoDien (Ngày 20-10-2026)
 - **Loại hình**: Khắc phục triệt để sự cố màn hình trắng (White Screen of Death) sau khi nạp dữ liệu đợt 7, chuẩn hóa toàn diện 100% cấu trúc dữ liệu theo đúng hợp đồng kiểu `AITool` và thiết lập cơ chế phòng vệ giao diện `ErrorBoundary`.
 - **Nguyên nhân sự cố**:

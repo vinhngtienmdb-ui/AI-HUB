@@ -52,14 +52,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const toolTypeTabs: { id: ToolType | 'all'; name: string; count: number; icon: any }[] = [
     { id: 'all', name: 'Tất cả thành phần', count: typeCounts.all || 0, icon: Layers },
-    { id: 'skill', name: 'Kỹ năng (Skills)', count: typeCounts.skill || 0, icon: Sparkles },
-    { id: 'workflow', name: 'Quy trình (Workflows)', count: typeCounts.workflow || 0, icon: Workflow },
-    { id: 'mcp', name: 'Máy chủ MCP', count: typeCounts.mcp || 0, icon: Cpu },
-    { id: 'agent', name: 'Tác tử (Agents)', count: typeCounts.agent || 0, icon: Brain },
-    { id: 'command', name: 'Lệnh (Commands)', count: typeCounts.command || 0, icon: Terminal },
-    { id: 'template', name: 'Bản mẫu (Templates)', count: typeCounts.template || 0, icon: FolderGit2 },
-    { id: 'hook', name: 'Móc nối (Hooks)', count: typeCounts.hook || 0, icon: Wrench },
-    { id: 'setting', name: 'Cấu hình (Settings)', count: typeCounts.setting || 0, icon: Wrench },
+    { id: 'skill', name: 'Skill', count: typeCounts.skill || 0, icon: Sparkles },
+    { id: 'agent', name: 'Agent', count: typeCounts.agent || 0, icon: Brain },
+    { id: 'mcp', name: 'MCP Server', count: typeCounts.mcp || 0, icon: Cpu },
+    { id: 'workflow', name: 'Workflow', count: typeCounts.workflow || 0, icon: Workflow },
+    { id: 'command', name: 'Command', count: typeCounts.command || 0, icon: Terminal },
+    { id: 'template', name: 'Template', count: typeCounts.template || 0, icon: FolderGit2 },
+    { id: 'hook', name: 'Hook', count: typeCounts.hook || 0, icon: Wrench },
+    { id: 'setting', name: 'Setting', count: typeCounts.setting || 0, icon: Wrench },
   ];
 
   const platforms: { id: Platform | 'all'; name: string; icon: any }[] = [

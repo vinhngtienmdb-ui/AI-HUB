@@ -8,6 +8,11 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Phân loại Lĩnh vực chuyên môn & Chuẩn hóa nhãn Agent, Skill]:
+  - Phân loại 2.044 công cụ vào 10 nhóm lĩnh vực chuyên môn phù hợp: Tài chính & Thuế (97), Doanh nghiệp & Quản trị (22), Bán lẻ & TMĐT (67), Logistics & Vận tải (31), Viễn thông & CSKH (14), Pháp luật & Hành chính công (12), Nhân sự & Tuyển dụng (5), Trí tuệ nhân tạo & Dữ liệu (291), Lập trình & Kỹ thuật phần mềm (1.191), Tự động hóa hệ thống (314).
+  - Giữ nguyên các thuật ngữ kỹ thuật quốc tế trong nhãn và ghi chú: `Agent`, `Skill`, `MCP Server`, `Command`, `Template`, `Workflow`, `Hook`, `Setting` (không dịch nghĩa tiếng Việt).
+  - Cập nhật Sidebar và Hero Section để điều hướng theo lĩnh vực chuyên môn mượt mà.
+  - Toàn bộ 5 bài kiểm thử và build Vite hoàn thành xuất sắc 100%.
 - [Khắc phục sự cố & Tăng cường phòng vệ giao diện]:
   - Phát hiện nguyên nhân sự cố màn hình trắng do một số công cụ mới thiếu trường `platforms` dẫn đến `TypeError: Cannot read properties of undefined (reading 'map')` trong React.
   - Chuẩn hóa toàn bộ 2.044 công cụ đạt 100% tiêu chuẩn kiểu `AITool` qua script `scripts/sanitize-all-tools.cjs`.

@@ -2,7 +2,18 @@ export type ToolType = 'mcp' | 'skill' | 'agent' | 'command' | 'template' | 'hoo
 
 export type Platform = 'claude_desktop' | 'antigravity' | 'cursor' | 'windsurf' | 'web';
 
-export type Category = 'coding' | 'database' | 'cloud' | 'automation' | 'content' | 'search' | 'vietnam';
+export type Category = 
+  | 'finance_payment' 
+  | 'business_admin' 
+  | 'ecommerce_retail' 
+  | 'logistics_transport' 
+  | 'telecom_cskh' 
+  | 'legal_public_service' 
+  | 'hr_recruitment' 
+  | 'ai_nlp_data' 
+  | 'programming_devops' 
+  | 'system_automation'
+  | 'coding' | 'database' | 'cloud' | 'automation' | 'content' | 'search' | 'vietnam';
 
 export type PricingModel = 'all' | 'free' | 'freemium' | 'paid' | 'contact';
 

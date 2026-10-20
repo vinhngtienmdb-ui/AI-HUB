@@ -17,14 +17,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   setSelectedCategory,
   onSearchSubmit,
 }) => {
-  // Danh sách các lối tắt theo nhu cầu công việc (chuẩn xác theo ảnh demo)
+  // Danh sách các lối tắt theo nhu cầu công việc
   const shortcuts = [
-    { id: 'coding' as Category, label: 'Lập trình', icon: Code2 },
-    { id: 'search' as Category, label: 'Nghiên cứu', icon: FlaskConical },
-    { id: 'content' as Category, label: 'Tạo nội dung', icon: PenTool },
-    { id: 'automation' as Category, label: 'Tự động hóa', icon: Cog },
-    { id: 'coding' as Category, label: 'Thiết kế', icon: Palette },
-    { id: 'vietnam' as Category, label: 'Văn phòng', icon: Briefcase },
+    { id: 'programming_devops' as Category, label: 'Lập trình', icon: Code2 },
+    { id: 'finance_payment' as Category, label: 'Tài chính & Thuế', icon: Briefcase },
+    { id: 'business_admin' as Category, label: 'Doanh nghiệp', icon: Briefcase },
+    { id: 'ecommerce_retail' as Category, label: 'Bán lẻ & TMĐT', icon: PenTool },
+    { id: 'system_automation' as Category, label: 'Tự động hóa', icon: Cog },
+    { id: 'ai_nlp_data' as Category, label: 'Trí tuệ nhân tạo', icon: FlaskConical },
   ];
 
   const handleShortcutClick = (cat: Category) => {
