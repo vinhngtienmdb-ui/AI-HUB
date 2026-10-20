@@ -4,6 +4,17 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.26-LoaiBoGhiChuPhanQuyenHeThongTrenManHinhDangNhap (Ngày 20-10-2026)
+- **Loại hình**: Loại bỏ hoàn toàn khối ghi chú "Quy định phân quyền hệ thống" trên màn hình đăng nhập Google Auth.
+- **Nội dung hoàn thành**:
+  - **Tinh gọn giao diện Đăng nhập ([`src/components/LoginModal.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/components/LoginModal.tsx))**:
+    - Xóa bỏ khối thẻ thông tin "Quy định phân quyền hệ thống" mô tả quyền Admin và quyền Thành viên bên dưới nút đăng nhập Google.
+    - Dọn dẹp các biến và biểu tượng không còn sử dụng (`ShieldCheck`, `getAdminEmail`, `currentAdmin`).
+    - Giữ giao diện đăng nhập tối giản, thanh lịch, tập trung hoàn toàn vào nút tương tác đăng nhập tài khoản Google và cơ chế đăng nhập chuyển hướng dự phòng.
+  - **Kiểm thử & Đóng gói**:
+    - Chạy toàn bộ 14 test cases trong 5 bộ kiểm thử tự động, đạt tỷ lệ pass 100%.
+    - Biên dịch và đóng gói thành công bằng Vite (`tsc && vite build`) trong 13.22 giây.
+
 ### Phiên Bản 2.0.25-PhanLoaiChuyenSauDaLinhVucVaThiTruongVietNam (Ngày 20-10-2026)
 - **Loại hình**: Tách sâu các lĩnh vực chuyên môn chi tiết không gộp, hỗ trợ đa lĩnh vực chuyên môn cho từng tài nguyên, sắp xếp và phân loại lại 2.194 công cụ, và gắn cờ đánh dấu tài nguyên dành cho thị trường Việt Nam.
 - **Nội dung hoàn thành**:

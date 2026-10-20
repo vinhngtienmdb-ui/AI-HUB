@@ -8,6 +8,14 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Loại bỏ phần ghi chú Quy định phân quyền hệ thống trên màn hình đăng nhập]:
+  - **Tinh gọn màn hình đăng nhập Google Auth (`src/components/LoginModal.tsx`)**:
+    - Loại bỏ triệt để khối ghi chú "Quy định phân quyền hệ thống" hiển thị mô tả quyền Quản trị viên và quyền Thành viên ở phía dưới nút đăng nhập Google.
+    - Dọn dẹp sạch sẽ các biến trạng thái, import biểu tượng không còn sử dụng (`ShieldCheck`, `getAdminEmail`, `currentAdmin`).
+    - Giúp trải nghiệm đăng nhập Google trên AI HUB VN trở nên thông thoáng, trực quan, chuyên nghiệp và tối giản, tập trung chính xác vào nút bấm tương tác "Tiếp tục với tài khoản Google" và đường dẫn đăng nhập chuyển hướng dự phòng.
+  - **Kiểm thử & Đóng gói**:
+    - Kiểm thử tự động với 14 test cases trong 5 bộ kiểm thử đều đạt 100% tỷ lệ pass.
+    - Biên dịch và đóng gói Vite (`tsc && vite build`) hoàn thành thành công trong 13.22 giây.
 - [Phân loại chuyên sâu Đa Lĩnh vực Chuyên môn & Đánh dấu Tài nguyên Thị trường Việt Nam]:
   - **Tách sâu các lĩnh vực chuyên môn chi tiết, không gộp**:
     - Thiết kế lại hệ thống danh mục từ 18 nhóm gộp thành **39 lĩnh vực chuyên môn cụ thể**, không còn gộp các mảng kỹ thuật và nghiệp vụ khác nhau vào chung một nhóm:

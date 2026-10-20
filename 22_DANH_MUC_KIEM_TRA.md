@@ -51,6 +51,7 @@
 - [x] Thiết lập tài khoản `vinh.ngtienmdb@gmail.com` là Quản trị viên tối cao (Admin) duy nhất của toàn bộ hệ thống
 - [x] Phân quyền bảo mật cao: Chỉ duy nhất tài khoản Quản trị viên tối cao mới có quyền điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn (cho từng công cụ và toàn bộ hệ thống)
 - [x] Loại bỏ triệt để toàn bộ các thông báo, bảng dán mã cấu hình Firebase và chỉ dẫn kỹ thuật trên cả giao diện frontend (`LoginModal.tsx`) và trong mã nguồn console (`src/lib/firebase.ts`)
+- [x] Loại bỏ khối ghi chú "Quy định phân quyền hệ thống" trên màn hình đăng nhập Google (`LoginModal.tsx`), tối giản và tinh gọn giao diện
 - [x] Tách sâu và mở rộng hệ thống lĩnh vực chuyên môn thành 39 danh mục chi tiết, không gộp (`src/types/index.ts`, `src/data/mockTools.ts`)
 - [x] Hỗ trợ cấu trúc đa lĩnh vực chuyên môn (Multi-category): 1 tài nguyên có thể thuộc 1 hoặc nhiều lĩnh vực (`categories?: Category[]`), đồng bộ bộ đếm `categoryCounts` và bộ lọc danh mục
 - [x] Phân loại lại chuyên sâu 2.194 tài nguyên trong kho dữ liệu (`src/data/allTools.json`), phân bổ đa danh mục chính xác theo công năng và thư viện tích hợp

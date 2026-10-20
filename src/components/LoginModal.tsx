@@ -3,15 +3,13 @@ import {
   X, 
   Sparkles, 
   CheckCircle2, 
-  ShieldCheck, 
   AlertCircle, 
   Loader2, 
   ArrowRight
 } from 'lucide-react';
 import { 
   signInWithGoogle, 
-  signInWithGoogleRedirect,
-  getAdminEmail
+  signInWithGoogleRedirect
 } from '../lib/firebase';
 
 interface LoginModalProps {
@@ -59,8 +57,6 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onLogin
       setError(err.message || 'Đăng nhập chuyển hướng thất bại.');
     }
   };
-
-  const currentAdmin = getAdminEmail();
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-fadeIn overflow-y-auto">
@@ -164,20 +160,6 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onLogin
                   </div>
                 </div>
               )}
-
-              {/* Thông tin phân quyền Quản trị viên & Thành viên */}
-              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-850/60 border border-slate-200/80 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 space-y-2.5">
-                <div className="flex items-center space-x-1.5 font-bold text-slate-700 dark:text-slate-300">
-                  <ShieldCheck className="w-4 h-4 text-emerald-500" />
-                  <span>Quy định phân quyền hệ thống:</span>
-                </div>
-                <p className="leading-relaxed">
-                  • <strong>Quản trị viên (Admin):</strong> Tài khoản <code className="font-semibold text-indigo-600 dark:text-indigo-400">{currentAdmin}</code> có quyền cao nhất để phê duyệt công cụ và điều chỉnh phân loại Loại hình, Lĩnh vực chuyên môn.
-                </p>
-                <p className="leading-relaxed">
-                  • <strong>Thành viên:</strong> Được tự do gắn sao ⭐ lưu trữ công cụ, cập nhật hồ sơ và gửi đóng góp tài nguyên mới lên hàng đợi kiểm duyệt.
-                </p>
-              </div>
             </div>
           )}
         </div>
