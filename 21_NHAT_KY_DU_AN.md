@@ -112,6 +112,17 @@
   - Đã đẩy thành công toàn bộ mã nguồn lên kho lưu trữ GitHub chính thức tại địa chỉ:
     👉 **https://github.com/vinhngtienmdb-ui/AI-HUB.git** (nhánh `main`).
 
+- [Bổ sung Phân hệ Quy trình tự động hóa (Workflows) và Ảnh Demo trực quan 100% công cụ]:
+  - Bổ sung nhóm công cụ Quy trình tự động hóa (AI Workflows): n8n Workflow, Dify LLM Application Workflow, Flowise Drag-and-Drop, Langflow Multi-Agent Canvas, FastGPT Enterprise Knowledge, Shopee Vietnam API, TikTok Shop Vietnam API, Whisper Transcription Tiếng Việt 3 miền, Đấu thầu mua sắm công quốc gia, Bảng lãi suất tiết kiệm ngân hàng.
+  - Tách biệt tab điều hướng mới: Thêm tab **Quy trình (Workflows)** trên thanh phân loại công cụ.
+  - **Triển khai chuẩn hóa ảnh demo (Demo Images) cho 100% công cụ (1.914 mục)**:
+    - 1.890 công cụ có liên kết GitHub được tự động trích xuất ảnh Open Graph banner chính thức độ phân giải cao (`https://opengraph.githubassets.com/1/{owner}/{repo}`).
+    - Các công cụ và dịch vụ API Việt Nam được trang bị ảnh banner nhận diện thương hiệu công nghệ và ảnh chụp giao diện thực tế.
+    - Cập nhật thẻ hiển thị `ToolCard.tsx`: Tích hợp ảnh banner demo tỉ lệ 16:9 ở đầu thẻ với hiệu ứng zoom mượt mà khi di chuột, nhãn loại hình và số sao nổi bật.
+    - Cập nhật cửa sổ chi tiết `ToolDetailModal.tsx`: Hiển thị ảnh demo lớn ở đầu modal kèm nút phóng to `Xem ảnh gốc` và thư viện ảnh nhỏ (thumbnails) cho phép chuyển đổi ảnh trực quan.
+  - Nâng tổng số lượng công cụ lên **1.914 mục** và **2.909 mẫu cấu hình JSON**.
+  - Kiểm thử tự động đạt 100% qua 5 bài test.
+
 ### Quyết định kỹ thuật
 - **Định dạng cấu hình mẫu**: Hỗ trợ xuất cấu hình nhanh dạng JSON cho các nền tảng phổ biến (Claude Desktop, Antigravity, Cursor, Windsurf, v.v.).
 - **Ngôn ngữ nội dung**: Mọi hướng dẫn cài đặt, cấu hình và kịch bản sử dụng mẫu bắt buộc phải có nội dung diễn giải bằng tiếng Việt rõ ràng, kèm lệnh mẫu có thể sao chép bằng một nút bấm.

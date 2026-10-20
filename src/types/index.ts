@@ -1,4 +1,4 @@
-export type ToolType = 'mcp' | 'skill' | 'agent' | 'command' | 'template' | 'hook' | 'setting' | 'web_tool';
+export type ToolType = 'mcp' | 'skill' | 'agent' | 'command' | 'template' | 'hook' | 'setting' | 'web_tool' | 'workflow';
 
 export type Platform = 'claude_desktop' | 'antigravity' | 'cursor' | 'windsurf' | 'web';
 
@@ -16,6 +16,9 @@ export interface AITool {
   slug: string;
   name: string;
   icon: string;
+  imageUrl?: string; // Ảnh đại diện / Banner demo chính thức
+  demoImages?: string[]; // Danh sách các ảnh chụp màn hình / ảnh minh họa quy trình demo
+  demoVideoUrl?: string; // Đường dẫn video demo nếu có
   toolType: ToolType;
   typeNameVi: string;
   category: Category;

@@ -4,6 +4,20 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 1.6.0-AnhDemoVaQuyTrinhWorkflows (Ngày 20-10-2026)
+- **Loại hình**: Tích hợp phân hệ Quy trình tự động hóa (Workflows) và chuẩn hóa ảnh demo (Demo Images) 100% công cụ.
+- **Nội dung hoàn thành**:
+  - **Bổ sung và chuẩn hóa ảnh demo trực quan cho toàn bộ 1.914 công cụ**:
+    - Trích xuất tự động Open Graph banner chất lượng cao cho 1.890+ kho lưu trữ GitHub (`https://opengraph.githubassets.com/1/{owner}/{repo}`).
+    - Gán bộ ảnh chụp màn hình nhận diện thương hiệu công nghệ cho các công cụ và API tại Việt Nam.
+    - Cập nhật giao diện `ToolCard.tsx`: Tích hợp ảnh banner tỉ lệ 16:9 ở đầu thẻ, nhãn phân loại trong suốt mờ ảo (Glassmorphism), hiệu ứng zoom mượt mà khi di chuột.
+    - Cập nhật giao diện `ToolDetailModal.tsx`: Tích hợp ảnh demo lớn, nút xem ảnh gốc toàn màn hình và thư viện ảnh chuyển đổi thumbnail.
+  - **Bổ sung Phân hệ Quy trình tự động hóa (AI Workflows)**:
+    - n8n Workflow AI Automation (52K sao), Dify LLM Application Workflow (64K sao), Flowise Drag-and-Drop (35K sao), Langflow Canvas Workflow (48K sao), FastGPT Knowledge Workflow (21K sao).
+  - **Bổ sung công cụ thương mại điện tử và tài chính Việt Nam**:
+    - Shopee Vietnam Open API, TikTok Shop Vietnam Open API, Whisper nhận dạng tiếng Việt 3 miền, Đấu thầu mua sắm công quốc gia, Biểu lãi suất tiết kiệm 35 ngân hàng.
+  - **Kiểm thử tự động và đóng gói**: 100% bài kiểm tra unit tests pass, biên dịch đóng gói sản xuất thành công.
+
 ### Phiên Bản 1.5.0-MoRongQuyMoToanCauVaVietNam (Ngày 20-10-2026)
 - **Loại hình**: Mở rộng quy mô cơ sở dữ liệu lên 1.904 công cụ và 2.899 mẫu cấu hình JSON.
 - **Nội dung hoàn thành**:

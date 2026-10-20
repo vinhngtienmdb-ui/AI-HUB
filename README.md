@@ -1,11 +1,12 @@
 # AI Hub - Nền Tảng Quản Lý Công Cụ AI, Máy Chủ MCP & Kỹ Năng Tác Tử Chuẩn Hóa
 
 [![Giấy Phép](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Phiên Bản](https://img.shields.io/badge/Phiên_Bản-1.5.0-emerald.svg)](20_LICH_SU_THAY_DOI.md)
+[![Phiên Bản](https://img.shields.io/badge/Phiên_Bản-1.6.0-emerald.svg)](20_LICH_SU_THAY_DOI.md)
 [![Quy Trình VibeCode](https://img.shields.io/badge/Quy_Trình-VibeCode_12_Giai_Đoạn-purple.svg)](index.md)
-[![Tổng Số Công Cụ](https://img.shields.io/badge/Kho_Dữ_Liệu-1.904+_Mục-orange.svg)](#)
+[![Tổng Số Công Cụ](https://img.shields.io/badge/Kho_Dữ_Liệu-1.914+_Mục-orange.svg)](#)
+[![Ảnh Demo Trực Quan](https://img.shields.io/badge/Ảnh_Demo-100%25_Công_Cụ-blueviolet.svg)](#)
 
-Hệ thống quản lý, tra cứu và thực thi trực tiếp các công cụ Trí tuệ Nhân tạo (AI Tools), Máy chủ Giao thức Ngữ cảnh Mô hình (MCP Servers), Kỹ năng tác tử (Agent Skills), Tác tử chuyên sâu (Agents), Lệnh phím tắt (Commands), Móc nối vòng đời (Hooks), Cấu hình tối ưu (Settings) và Bản mẫu dự án (Templates).
+Hệ thống quản lý, tra cứu và thực thi trực tiếp các công cụ Trí tuệ Nhân tạo (AI Tools), Máy chủ Giao thức Ngữ cảnh Mô hình (MCP Servers), Quy trình tự động hóa (Workflows), Kỹ năng tác tử (Agent Skills), Tác tử chuyên sâu (Agents), Lệnh phím tắt (Commands), Móc nối vòng đời (Hooks), Cấu hình tối ưu (Settings) và Bản mẫu dự án (Templates).
 
 Dự án được xây dựng tuân thủ nghiêm ngặt **Quy trình VibeCode Chuẩn 12 Giai Đoạn** với 100% tài liệu và nội dung bản địa hóa tiếng Việt.
 
@@ -13,18 +14,24 @@ Dự án được xây dựng tuân thủ nghiêm ngặt **Quy trình VibeCode C
 
 ## 🌟 Tính Năng Nổi Bật
 
-1. **Kho Lưu Trữ Đồ Sộ (1.904+ Công Cụ & 2.899 Cấu Hình)**:
+1. **Kho Lưu Trữ Đồ Sộ (1.914+ Công Cụ & 2.909 Cấu Hình)**:
    - Tổng hợp và chuẩn hóa dữ liệu từ các nguồn hàng đầu thế giới và Việt Nam (`phandonggiang.com/ai-templates`, `mcpmarket.com`, `awesome-mcp-servers`).
-   - Phân loại tách biệt rạch ròi 7 nhóm thành phần kỹ thuật:
-     - **Kỹ năng tác tử (Skills)**: 893 mục.
+   - Phân loại tách biệt rạch ròi 8 nhóm thành phần kỹ thuật:
+     - **Kỹ năng tác tử (Skills)**: 894 mục.
      - **Tác tử chuyên sâu (Agents)**: 429 mục.
      - **Lệnh phím tắt (Commands)**: 289 mục.
-     - **Máy chủ MCP (MCP Servers)**: 144 mục.
+     - **Máy chủ MCP (MCP Servers)**: 148 mục.
      - **Cấu hình môi trường (Settings)**: 72 mục.
      - **Móc nối tự động (Hooks)**: 62 mục.
      - **Bản mẫu dự án (Templates)**: 15 mục.
+     - **Quy trình tự động hóa (Workflows)**: 5 mục hàng đầu (n8n, Dify, Flowise, Langflow, FastGPT).
 
-2. **Quy Chuẩn Bắt Buộc 4 Khối Thông Tin**:
+2. **Ảnh Demo Trực Quan (100% Công Cụ Đều Có Ảnh)**:
+   - Toàn bộ 1.914 công cụ đều được trang bị ảnh demo banner tỉ lệ 16:9 sắc nét và thư viện ảnh chụp màn hình minh họa (Gallery).
+   - Tự động đồng bộ ảnh Open Graph banner chính thức từ GitHub và bộ nhận diện thương hiệu công nghệ.
+   - Hỗ trợ xem ảnh phóng to toàn màn hình và chuyển đổi thumbnail linh hoạt trong trang chi tiết.
+
+3. **Quy Chuẩn Bắt Buộc 4 Khối Thông Tin**:
    - **Nguồn dẫn chính thức**: Mọi công cụ đều liên kết trực tiếp đến kho lưu trữ GitHub hoặc trang nhà phát triển chính chủ.
    - **Công dụng tiếng Việt**: Mô tả chi tiết tính năng và bài toán giải quyết.
    - **Hướng dẫn cài đặt**: Hướng dẫn từng bước cấu hình môi trường.

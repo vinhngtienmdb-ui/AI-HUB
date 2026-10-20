@@ -8,7 +8,7 @@ import { DevLifecycleModal } from './components/DevLifecycleModal';
 import { TerminalDrawer } from './components/TerminalDrawer';
 import { INITIAL_TOOLS, CATEGORIES } from './data/mockTools';
 import { AITool, Category, Platform, ToolType } from './types';
-import { SearchX, ChevronLeft, ChevronRight, Layers, Sparkles, Cpu, Terminal, Brain, FolderGit2, Wrench } from 'lucide-react';
+import { SearchX, ChevronLeft, ChevronRight, Layers, Sparkles, Cpu, Terminal, Brain, FolderGit2, Wrench, Workflow } from 'lucide-react';
 
 const PAGE_SIZE = 24;
 
@@ -93,6 +93,7 @@ export const App: React.FC = () => {
   const toolTypeTabs: { id: ToolType | 'all'; name: string; count: number; icon: any }[] = [
     { id: 'all', name: 'Tất cả', count: typeCounts.all || 0, icon: Layers },
     { id: 'skill', name: 'Kỹ năng (Skills)', count: typeCounts.skill || 0, icon: Sparkles },
+    { id: 'workflow', name: 'Quy trình (Workflows)', count: typeCounts.workflow || 0, icon: Workflow },
     { id: 'template', name: 'Bản mẫu (Templates)', count: typeCounts.template || 0, icon: FolderGit2 },
     { id: 'agent', name: 'Tác tử (Agents)', count: typeCounts.agent || 0, icon: Brain },
     { id: 'command', name: 'Lệnh (Commands)', count: typeCounts.command || 0, icon: Terminal },

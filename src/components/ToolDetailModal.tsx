@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { X, ExternalLink, Copy, Check, ShieldCheck, Terminal, Code2, BookOpen, MessageSquareQuote, Layers, Sparkles, Play } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, ExternalLink, Copy, Check, ShieldCheck, Terminal, Code2, BookOpen, MessageSquareQuote, Layers, Sparkles, Play, Image as ImageIcon, Maximize2 } from 'lucide-react';
 import { AITool, ConfigTemplate } from '../types';
 
 interface ToolDetailModalProps {
@@ -12,9 +12,15 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
   if (!tool) return null;
 
   const [activeTab, setActiveTab] = useState<number>(0);
+  const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
   const [copiedConfig, setCopiedConfig] = useState<boolean>(false);
   const [copiedCli, setCopiedCli] = useState<boolean>(false);
   const [copiedPromptIndex, setCopiedPromptIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    setActiveTab(0);
+    setActiveImageIndex(0);
+  }, [tool?.id]);
 
   const currentConfig: ConfigTemplate | undefined = tool.configs[activeTab] || tool.configs[0];
 
@@ -68,8 +74,63 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
         {/* Nội dung chi tiết cuộn được */}
         <div className="p-6 sm:p-8 overflow-y-auto space-y-8 divide-y divide-slate-100 dark:divide-slate-800">
           
+          {/* KHỐI ẢNH MINH HỌA / BANNER DEMO TRỰC QUAN */}
+          {(tool.imageUrl || (tool.demoImages && tool.demoImages.length > 0)) && (
+            <div className="pt-0">
+              <div className="relative aspect-[21/9] sm:aspect-[2.4/1] w-full rounded-2xl overflow-hidden bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-md group">
+                <img
+                  src={
+                    tool.demoImages && tool.demoImages[activeImageIndex]
+                      ? tool.demoImages[activeImageIndex]
+                      : tool.imageUrl
+                  }
+                  alt={tool.name}
+                  className="w-full h-full object-cover object-center transition-all duration-300"
+                  onError={(e) => {
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80';
+                  }}
+                />
+                
+                {/* Nút xem ảnh kích thước thật trong tab mới */}
+                <a
+                  href={
+                    tool.demoImages && tool.demoImages[activeImageIndex]
+                      ? tool.demoImages[activeImageIndex]
+                      : tool.imageUrl
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-3 right-3 flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-semibold backdrop-blur-md shadow-lg opacity-90 hover:opacity-100 transition-opacity"
+                  title="Mở ảnh gốc trong tab mới"
+                >
+                  <Maximize2 className="w-3.5 h-3.5" />
+                  <span>Xem ảnh gốc</span>
+                </a>
+              </div>
+
+              {/* Danh sách thumbnail thu nhỏ nếu có nhiều ảnh demo */}
+              {tool.demoImages && tool.demoImages.length > 1 && (
+                <div className="flex items-center space-x-2.5 mt-3 overflow-x-auto pb-1">
+                  {tool.demoImages.map((img, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveImageIndex(idx)}
+                      className={`relative w-20 h-12 rounded-lg overflow-hidden border-2 transition-all shrink-0 ${
+                        activeImageIndex === idx
+                          ? 'border-blue-600 ring-2 ring-blue-500/30 scale-105'
+                          : 'border-slate-200 dark:border-slate-800 opacity-60 hover:opacity-100'
+                      }`}
+                    >
+                      <img src={img} alt={`demo-${idx}`} className="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
           {/* KHỐI 1: NGUỒN GỐC VÀ THÔNG TIN CHÍNH THỨC */}
-          <div className="pt-0">
+          <div className="pt-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">

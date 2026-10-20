@@ -48,10 +48,13 @@
 - [x] Lập trình phân hệ Giao diện danh mục, Tìm kiếm tức thời và Phân trang (24 mục/trang)
 - [x] Lập trình phân hệ Chi tiết công cụ và Sao chép cấu hình một chạm
 - [x] Lập trình phân hệ Quản trị nội dung và Đóng góp công cụ
-- [x] Tích hợp toàn bộ 1.904 công cụ từ AI Templates (Phan Đông Giang), MCP Market, các kho lưu trữ hot thế giới và hệ sinh thái API Việt Nam
-- [x] Chuẩn hóa 2.899 mẫu cấu hình JSON cho Claude Desktop, Antigravity và Cursor
-- [x] Tách biệt rạch ròi 7 nhóm thành phần: Skills (893), Agents (429), Commands (289), MCPs (144), Hooks (62), Settings (72), Templates (15)
-- [x] Bổ sung 27 công cụ, MCP và Kỹ năng tác tử chuyên biệt cho thị trường Việt Nam
+- [x] Tích hợp toàn bộ 1.914 công cụ từ AI Templates (Phan Đông Giang), MCP Market, các kho lưu trữ hot thế giới, các nền tảng AI Workflow và hệ sinh thái API Việt Nam
+- [x] Chuẩn hóa 2.909 mẫu cấu hình JSON cho Claude Desktop, Antigravity và Cursor
+- [x] Tách biệt rạch ròi 8 nhóm thành phần: Skills (894), Agents (429), Commands (289), MCPs (148), Workflows (5), Hooks (62), Settings (72), Templates (15)
+- [x] Bổ sung và chuẩn hóa ảnh demo (Demo Images) trực quan cho 100% tất cả 1.914 công cụ (qua Open Graph banner chính thức và bộ ảnh minh họa tính năng)
+- [x] Cập nhật giao diện thẻ công cụ (`ToolCard.tsx`) và cửa sổ chi tiết (`ToolDetailModal.tsx`) với khối hiển thị ảnh demo banner tỉ lệ 16:9 và thư viện ảnh chuyển đổi linh hoạt
+- [x] Bổ sung 32 công cụ, MCP và Kỹ năng tác tử chuyên biệt cho thị trường Việt Nam
+- [x] Bổ sung các nền tảng AI Workflow nổi tiếng: n8n, Dify, Flowise, Langflow, FastGPT
 - [x] Bổ sung các kho lưu trữ GitHub AI hot nhất thế giới: Ollama, Browser-Use, Cline, CrewAI, RAGFlow, Mem0, OpenHands, uv, ComfyUI, AutoGen, DeepSeek-V3, LangGraph, shadcn/ui
 - [x] Dịch thuật và bản địa hóa 100% nội dung mô tả, công dụng, hướng dẫn sử dụng tiếng Anh sang tiếng Việt chuẩn kỹ thuật
 - [x] Xây dựng Cầu nối thực thi lệnh cục bộ an toàn (`server/commandBridge.js`) kèm danh sách trắng bảo mật
@@ -61,7 +64,7 @@
 - [x] Lập kế hoạch kiểm thử (`17_KE_HOACH_KIEM_THU.md`)
 - [x] Xây dựng kịch bản kiểm thử (`18_KICH_BAN_KIEM_THU.md`)
 - [x] Thiết lập chính sách an toàn bảo mật (`19_AN_TOAN_BAO_MAT.md`)
-- [x] Thực hiện kiểm thử tự động quy tắc nghiệp vụ (`tests/business-rules.test.js`) đạt 100% trên 1.904 công cụ và 2.899 cấu hình JSON
+- [x] Thực hiện kiểm thử tự động quy tắc nghiệp vụ (`tests/business-rules.test.js`) đạt 100% trên 1.914 công cụ và 2.909 cấu hình JSON
 - [x] Thực hiện kiểm thử tự động chính sách an toàn lệnh (`tests/command-bridge.test.js`) đạt 100% (chấp nhận lệnh hợp lệ, chặn lệnh nguy hiểm)
 - [x] Kiểm thử đóng gói bản phát hành (Production Build) đạt 100%
 
