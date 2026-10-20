@@ -4,6 +4,13 @@ export type Platform = 'claude_desktop' | 'antigravity' | 'cursor' | 'windsurf' 
 
 export type Category = 'coding' | 'database' | 'cloud' | 'automation' | 'content' | 'search' | 'vietnam';
 
+export interface DemoImageItem {
+  url: string;
+  caption: string; // Ghi chú rõ ràng về ảnh demo (chức năng, giao diện, kịch bản)
+}
+
+export type DemoImage = string | DemoImageItem;
+
 export interface ConfigTemplate {
   platform: Platform;
   platformName: string;
@@ -16,8 +23,8 @@ export interface AITool {
   slug: string;
   name: string;
   icon: string;
-  imageUrl?: string; // Ảnh đại diện / Banner demo chính thức
-  demoImages?: string[]; // Danh sách các ảnh chụp màn hình / ảnh minh họa quy trình demo
+  imageUrl?: string; // Ảnh đại diện / Banner demo chính thức (để trống nếu repo không có ảnh demo)
+  demoImages?: DemoImage[]; // Danh sách tất cả ảnh demo có trong repo kèm ghi chú rõ ràng (để trống nếu repo không có)
   demoVideoUrl?: string; // Đường dẫn video demo nếu có
   toolType: ToolType;
   typeNameVi: string;

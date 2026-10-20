@@ -142,6 +142,20 @@
   - Nâng tổng số lượng công cụ lên **1.922 mục** và **2.917 mẫu cấu hình JSON**.
   - Kiểm thử tự động đạt 100% qua 5 bài test.
 
+- [Mở Rộng Khung Làm Việc (Workspace Expansion) & Chuẩn Hóa Ảnh Demo Repo Gốc]:
+  - **Mở rộng không gian làm việc (Workspace Expansion)**:
+    - Bổ sung nút chuyển đổi chế độ Khung làm việc mở rộng (`Full-width Fluid Canvas 100%`) cho phép tận dụng trọn vẹn bề ngang màn hình máy tính.
+    - Bổ sung nút Thu gọn / Mở rộng thanh bên (Collapsible Sidebar) giúp giải phóng tối đa diện tích hiển thị dữ liệu, tự động mở rộng lưới thẻ từ 3 cột lên 4 hoặc 5 cột linh hoạt.
+    - Bổ sung Chế độ xem Bảng danh sách chi tiết mở rộng (Detailed Table / List View) bên cạnh Chế độ xem Thẻ (Grid View), giúp duyệt nhanh hàng ngàn công cụ trong một không gian làm việc chuyên nghiệp.
+  - **Chuẩn hóa ảnh demo theo nguyên tắc repo thực tế**:
+    - Đối với các repo không có ảnh demo đính kèm: Để trống hoàn toàn theo đúng chỉ đạo của người dùng, không tự tạo thêm ảnh giả hay ảnh placeholder.
+    - Đối với các repo có ảnh demo thực tế (giao diện, sơ đồ kiến trúc, demo GIF): Chèn đầy đủ tất cả các ảnh vào khung chi tiết và bổ sung **ghi chú rõ ràng (caption)** cho từng ảnh giải thích chức năng, giao diện hoặc kịch bản minh họa.
+  - **Thu thập thêm các kho lưu trữ hot từ GitHub, GitLab và các nguồn khác**:
+    - Bổ sung `browser-use/browser-use`, `All-Hands-AI/OpenHands`, `langgenius/dify`, `undertheseanlp/underthesea`, `pbcquoc/vietocr`, `VinAIResearch/PhoBERT`, API tra cứu phạt nguội giao thông toàn quốc, Thư viện đọc số tiền thành chữ kế toán.
+    - Nâng tổng số lượng công cụ lên **1.930 mục** và **2.925 mẫu cấu hình JSON**.
+  - Kiểm thử tự động đạt 100% qua 5 bài test (3 unit test quy tắc nghiệp vụ + 2 unit test an toàn câu lệnh).
+  - Đóng gói bản phát hành `dist/` thành công không có bất kỳ cảnh báo hoặc lỗi nào.
+
 ### Quyết định kỹ thuật
 - **Định dạng cấu hình mẫu**: Hỗ trợ xuất cấu hình nhanh dạng JSON cho các nền tảng phổ biến (Claude Desktop, Antigravity, Cursor, Windsurf, v.v.).
 - **Ngôn ngữ nội dung**: Mọi hướng dẫn cài đặt, cấu hình và kịch bản sử dụng mẫu bắt buộc phải có nội dung diễn giải bằng tiếng Việt rõ ràng, kèm lệnh mẫu có thể sao chép bằng một nút bấm.

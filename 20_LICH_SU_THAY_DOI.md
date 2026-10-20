@@ -4,6 +4,20 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 1.8.0-MoRongKhungLamViecVaChuanHoaAnhDemoRepo (Ngày 20-10-2026)
+- **Loại hình**: Mở rộng khung làm việc (Workspace Expansion), chuẩn hóa ảnh demo theo repo thực tế kèm ghi chú rõ ràng, và mở rộng thêm kho lưu trữ GitHub, GitLab.
+- **Nội dung hoàn thành**:
+  - **Mở rộng khung làm việc (Workspace Expansion)**:
+    - Bổ sung công cụ mở rộng không gian làm việc toàn màn hình (`Full-width Fluid Canvas 100%`) cho phép chuyển đổi linh hoạt giữa giao diện căn giữa tiêu chuẩn và không gian rộng tối đa.
+    - Bổ sung nút thu gọn / mở rộng thanh bên trái (Collapsible Left Sidebar) giúp người dùng tối ưu hóa diện tích hiển thị nội dung, tự động dàn trải lưới thẻ từ 3 cột lên 4 hoặc 5 cột.
+    - Bổ sung chế độ xem kép: Chế độ Lưới Thẻ trực quan (Grid View) và Chế độ Bảng danh sách chi tiết mở rộng (Detailed Table / List View) hỗ trợ duyệt nhanh hàng ngàn công cụ.
+  - **Chuẩn hóa ảnh demo theo nguyên tắc repo gốc**:
+    - Đối với các kho lưu trữ không có ảnh demo đính kèm: Để trống hoàn toàn theo đúng yêu cầu, không tự tạo ảnh giả, không dùng ảnh placeholder. Giao diện tự động thích ứng với dải tiêu đề đồ họa công nghệ tinh gọn.
+    - Đối với các kho lưu trữ có ảnh demo thật sự trong repo (ảnh chụp màn hình giao diện, ảnh động demo GIF, sơ đồ kiến trúc): Chèn tất cả các ảnh vào khung chi tiết và bổ sung **ghi chú rõ ràng (caption)** cho từng ảnh giải thích chức năng, giao diện hoặc kịch bản minh họa.
+  - **Mở rộng dữ liệu GitHub, GitLab và nguồn khác lên 1.930 công cụ**:
+    - Bổ sung các repo và tác tử AI hàng đầu: `browser-use/browser-use`, `All-Hands-AI/OpenHands`, `langgenius/dify`, `undertheseanlp/underthesea`, `pbcquoc/vietocr`, `VinAIResearch/PhoBERT`, v.v.
+  - **Kiểm thử tự động & Đóng gói**: 100% bài kiểm thử đơn vị tự động PASS, biên dịch TypeScript và đóng gói Vite hoàn tất thành công.
+
 ### Phiên Bản 1.7.0-LeftSidebarVaHuongDanSieuChiTiet (Ngày 20-10-2026)
 - **Loại hình**: Tái cấu trúc giao diện 2 cột chuyên nghiệp với Left Sidebar cố định và chuẩn hóa hướng dẫn sử dụng/cài đặt siêu chi tiết.
 - **Nội dung hoàn thành**:

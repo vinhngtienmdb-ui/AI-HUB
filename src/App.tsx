@@ -9,7 +9,11 @@ import { TerminalDrawer } from './components/TerminalDrawer';
 import { Sidebar } from './components/Sidebar';
 import { INITIAL_TOOLS, CATEGORIES } from './data/mockTools';
 import { AITool, Category, Platform, ToolType } from './types';
-import { SearchX, ChevronLeft, ChevronRight, Layers, Sparkles, Cpu, Terminal, Brain, FolderGit2, Wrench, Workflow, SlidersHorizontal, X } from 'lucide-react';
+import { 
+  SearchX, ChevronLeft, ChevronRight, Layers, Sparkles, Cpu, Terminal, Brain, 
+  FolderGit2, Wrench, Workflow, SlidersHorizontal, X, LayoutGrid, List, 
+  Maximize2, Minimize2, PanelLeftClose, PanelLeft, Star, ExternalLink, ArrowRight 
+} from 'lucide-react';
 
 const PAGE_SIZE = 24;
 
@@ -27,6 +31,11 @@ export const App: React.FC = () => {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [pendingTerminalCommand, setPendingTerminalCommand] = useState<string | null>(null);
+
+  // Trạng thái mở rộng khung làm việc và chế độ hiển thị
+  const [isExpandedCanvas, setIsExpandedCanvas] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [viewMode, setViewMode] = useState<'grid' | 'table'>('grid');
 
   const handleResetFilters = () => {
     setSearchQuery('');
@@ -139,31 +148,35 @@ export const App: React.FC = () => {
         setSelectedPlatform={setSelectedPlatform}
       />
 
-      {/* Bố cục 2 cột chuyên nghiệp: Left Sidebar cố định + Khu vực nội dung công cụ */}
-      <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex gap-6 relative items-start">
+      {/* Bố cục làm việc linh hoạt: Hỗ trợ mở rộng toàn màn hình và thu gọn cột trái */}
+      <div className={`flex-1 w-full mx-auto px-3 sm:px-6 lg:px-8 py-6 flex gap-6 relative items-start transition-all duration-300 ${
+        isExpandedCanvas ? 'max-w-[98%]' : 'max-w-7xl'
+      }`}>
         
-        {/* CỘT TRÁI: Left Sidebar trên màn hình máy tính (lg+) */}
-        <div className="hidden lg:block sticky top-20 h-[calc(100vh-6rem)] overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900">
-          <Sidebar
-            selectedType={selectedType}
-            setSelectedType={setSelectedType}
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-            selectedPlatform={selectedPlatform}
-            setSelectedPlatform={setSelectedPlatform}
-            typeCounts={typeCounts}
-            categories={CATEGORIES}
-            totalTools={tools.length}
-            onOpenDocs={() => setIsDocsOpen(true)}
-            onOpenTerminal={() => setIsTerminalOpen(true)}
-            onResetFilters={handleResetFilters}
-          />
-        </div>
+        {/* CỘT TRÁI: Left Sidebar trên màn hình máy tính (lg+) - Có thể thu gọn để mở rộng không gian */}
+        {!isSidebarCollapsed && (
+          <div className="hidden lg:block sticky top-20 h-[calc(100vh-6rem)] overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900 transition-all duration-300 shrink-0">
+            <Sidebar
+              selectedType={selectedType}
+              setSelectedType={setSelectedType}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+              selectedPlatform={selectedPlatform}
+              setSelectedPlatform={setSelectedPlatform}
+              typeCounts={typeCounts}
+              categories={CATEGORIES}
+              totalTools={tools.length}
+              onOpenDocs={() => setIsDocsOpen(true)}
+              onOpenTerminal={() => setIsTerminalOpen(true)}
+              onResetFilters={handleResetFilters}
+            />
+          </div>
+        )}
 
-        {/* CỘT PHẢI: Toàn bộ nội dung công cụ, phân trang và lưới thẻ */}
-        <main className="flex-1 min-w-0">
+        {/* CỘT PHẢI: Toàn bộ nội dung công cụ, phân trang và lưới thẻ / bảng danh sách */}
+        <main className="flex-1 min-w-0 transition-all duration-300">
           
-          {/* Thanh tiêu đề danh mục, số lượng kết quả và nút mở bộ lọc trên di động */}
+          {/* Thanh tiêu đề danh mục, công cụ mở rộng không gian và chuyển đổi chế độ xem */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
             <div className="flex items-center space-x-2.5">
               <button
@@ -172,6 +185,15 @@ export const App: React.FC = () => {
                 title="Mở bảng bộ lọc danh mục"
               >
                 <SlidersHorizontal className="w-4 h-4" />
+              </button>
+
+              {/* Nút thu gọn / mở rộng Sidebar trên Desktop */}
+              <button
+                onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+                className="hidden lg:flex p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors items-center space-x-1"
+                title={isSidebarCollapsed ? "Mở rộng thanh bên" : "Thu gọn thanh bên để mở rộng không gian"}
+              >
+                {isSidebarCollapsed ? <PanelLeft className="w-4 h-4" /> : <PanelLeftClose className="w-4 h-4" />}
               </button>
 
               <div>
@@ -190,41 +212,169 @@ export const App: React.FC = () => {
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 hidden sm:block">
                   {selectedCategory === 'vietnam' 
                     ? 'Bộ công cụ, máy chủ MCP và kỹ năng tối ưu hóa riêng cho thị trường Việt Nam'
-                    : 'Tra cứu, xem ảnh demo chi tiết và thực thi lệnh cài đặt một chạm'}
+                    : 'Tra cứu, xem ảnh demo thực tế từ repo và thực thi lệnh cài đặt một chạm'}
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center space-x-3 text-xs shrink-0">
+            {/* Bộ công cụ mở rộng khung làm việc và chuyển chế độ xem */}
+            <div className="flex items-center space-x-2.5 text-xs shrink-0">
+              
+              {/* Nút chuyển đổi Lưới Thẻ / Bảng Danh Sách */}
+              <div className="flex items-center p-1 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`p-1.5 rounded-lg transition-all ${
+                    viewMode === 'grid'
+                      ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm font-semibold'
+                      : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
+                  }`}
+                  title="Chế độ xem Thẻ (Grid)"
+                >
+                  <LayoutGrid className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setViewMode('table')}
+                  className={`p-1.5 rounded-lg transition-all ${
+                    viewMode === 'table'
+                      ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm font-semibold'
+                      : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
+                  }`}
+                  title="Chế độ xem Bảng chi tiết mở rộng (List/Table)"
+                >
+                  <List className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Nút mở rộng toàn màn hình (Canvas Width Toggle) */}
+              <button
+                onClick={() => setIsExpandedCanvas(!isExpandedCanvas)}
+                className={`p-2 rounded-xl border transition-all flex items-center space-x-1.5 ${
+                  isExpandedCanvas
+                    ? 'bg-blue-50 dark:bg-blue-950/60 border-blue-300 dark:border-blue-700 text-blue-600 dark:text-blue-400 font-bold'
+                    : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-750'
+                }`}
+                title={isExpandedCanvas ? "Thu gọn về chiều rộng chuẩn" : "Mở rộng khung làm việc toàn màn hình"}
+              >
+                {isExpandedCanvas ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+                <span className="hidden md:inline">{isExpandedCanvas ? 'Thu gọn' : 'Mở rộng khung'}</span>
+              </button>
+
               {(searchQuery || selectedCategory !== 'all' || selectedPlatform !== 'all' || selectedType !== 'all') && (
                 <button
                   onClick={handleResetFilters}
-                  className="font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+                  className="font-semibold text-blue-600 dark:text-blue-400 hover:underline px-1"
                 >
-                  Đặt lại bộ lọc
+                  Đặt lại
                 </button>
               )}
 
               {filteredTools.length > 0 && (
-                <span className="text-slate-500 dark:text-slate-400">
-                  Trang <strong>{currentPage}</strong> / {totalPages}
+                <span className="text-slate-500 dark:text-slate-400 pl-1 border-l border-slate-200 dark:border-slate-700">
+                  Trang <strong>{currentPage}</strong>/{totalPages}
                 </span>
               )}
             </div>
           </div>
 
-          {/* Lưới hiển thị các thẻ công cụ có ảnh demo */}
+          {/* HIỂN THỊ CÔNG CỤ THEO CHẾ ĐỘ ĐƯỢC CHỌN */}
           {paginatedTools.length > 0 ? (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mb-8">
-                {paginatedTools.map((tool) => (
-                  <ToolCard
-                    key={tool.id}
-                    tool={tool}
-                    onSelect={(t) => setSelectedTool(t)}
-                  />
-                ))}
-              </div>
+              {viewMode === 'grid' ? (
+                /* CHẾ ĐỘ 1: LƯỚI THẺ (Hỗ trợ 3 hoặc 4 cột tùy độ rộng khung làm việc) */
+                <div className={`grid grid-cols-1 md:grid-cols-2 gap-5 mb-8 ${
+                  isExpandedCanvas ? 'xl:grid-cols-3 2xl:grid-cols-4' : 'xl:grid-cols-3'
+                }`}>
+                  {paginatedTools.map((tool) => (
+                    <ToolCard
+                      key={tool.id}
+                      tool={tool}
+                      onSelect={(t) => setSelectedTool(t)}
+                    />
+                  ))}
+                </div>
+              ) : (
+                /* CHẾ ĐỘ 2: BẢNG DANH SÁCH CHI TIẾT MỞ RỘNG */
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm mb-8">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-sm">
+                      <thead className="bg-slate-50 dark:bg-slate-850/80 border-b border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                        <tr>
+                          <th className="py-3.5 px-4">Tên Công Cụ / Thành Phần</th>
+                          <th className="py-3.5 px-3">Loại hình</th>
+                          <th className="py-3.5 px-3">Lĩnh vực</th>
+                          <th className="py-3.5 px-3">Đánh giá</th>
+                          <th className="py-3.5 px-3">Tác giả</th>
+                          <th className="py-3.5 px-4 min-w-[260px]">Tóm tắt công dụng</th>
+                          <th className="py-3.5 px-4 text-right">Thao tác</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                        {paginatedTools.map((tool) => (
+                          <tr 
+                            key={tool.id}
+                            onClick={() => setSelectedTool(tool)}
+                            className="hover:bg-slate-50/80 dark:hover:bg-slate-850/50 cursor-pointer transition-colors group"
+                          >
+                            <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                              <div className="flex items-center space-x-2.5">
+                                <span className="p-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/40 text-xs font-mono">
+                                  {tool.toolType.substring(0, 3).toUpperCase()}
+                                </span>
+                                <span className="line-clamp-1">{tool.name}</span>
+                              </div>
+                            </td>
+                            <td className="py-3.5 px-3 whitespace-nowrap">
+                              <span className="text-xs px-2.5 py-0.5 rounded-full font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                                {tool.typeNameVi}
+                              </span>
+                            </td>
+                            <td className="py-3.5 px-3 whitespace-nowrap text-xs text-slate-600 dark:text-slate-400">
+                              {tool.categoryNameVi}
+                            </td>
+                            <td className="py-3.5 px-3 whitespace-nowrap">
+                              {tool.stars ? (
+                                <span className="text-xs font-bold text-amber-500 flex items-center space-x-1">
+                                  <Star className="w-3.5 h-3.5 fill-current" />
+                                  <span>{tool.stars >= 1000 ? `${(tool.stars / 1000).toFixed(1)}k` : tool.stars}</span>
+                                </span>
+                              ) : (
+                                <span className="text-xs text-slate-400">—</span>
+                              )}
+                            </td>
+                            <td className="py-3.5 px-3 whitespace-nowrap text-xs text-slate-500 dark:text-slate-400">
+                              {tool.authorName}
+                            </td>
+                            <td className="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-300 line-clamp-2">
+                              {tool.summaryVi}
+                            </td>
+                            <td className="py-3.5 px-4 text-right whitespace-nowrap" onClick={(e) => e.stopPropagation()}>
+                              <div className="inline-flex items-center space-x-2">
+                                <a
+                                  href={tool.sourceUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                                  title="Mở liên kết nguồn chính thức"
+                                >
+                                  <ExternalLink className="w-4 h-4" />
+                                </a>
+                                <button
+                                  onClick={() => setSelectedTool(tool)}
+                                  className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 text-xs font-semibold transition-colors"
+                                >
+                                  <span>Chi tiết</span>
+                                  <ArrowRight className="w-3.5 h-3.5" />
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
 
               {/* Điều hướng phân trang */}
               {totalPages > 1 && (

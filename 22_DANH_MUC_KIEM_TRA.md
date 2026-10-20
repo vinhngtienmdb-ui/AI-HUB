@@ -48,14 +48,15 @@
 - [x] Lập trình phân hệ Giao diện danh mục, Tìm kiếm tức thời và Phân trang (24 mục/trang)
 - [x] Lập trình phân hệ Chi tiết công cụ và Sao chép cấu hình một chạm
 - [x] Lập trình phân hệ Quản trị nội dung và Đóng góp công cụ
-- [x] Tích hợp toàn bộ 1.922 công cụ từ AI Templates (Phan Đông Giang), MCP Market, các kho lưu trữ hot thế giới, các nền tảng AI Workflow và hệ sinh thái API Việt Nam
-- [x] Chuẩn hóa 2.917 mẫu cấu hình JSON cho Claude Desktop, Antigravity và Cursor
-- [x] Tách biệt rạch ròi 8 nhóm thành phần: Skills (894), Agents (430), Commands (289), MCPs (154), Workflows (5), Hooks (62), Settings (72), Templates (16)
-- [x] Xây dựng thành phần Left Sidebar ghim cố định bên trái (`src/components/Sidebar.tsx`) và Drawer trượt mở cho thiết bị di động
+- [x] Tích hợp toàn bộ 1.930 công cụ từ AI Templates (Phan Đông Giang), MCP Market, các kho lưu trữ hot thế giới, các nền tảng AI Workflow và hệ sinh thái API Việt Nam
+- [x] Chuẩn hóa 2.925 mẫu cấu hình JSON cho Claude Desktop, Antigravity và Cursor
+- [x] Tách biệt rạch ròi 8 nhóm thành phần: Skills (897), Agents (432), Commands (290), MCPs (154), Workflows (6), Hooks (62), Settings (72), Templates (17)
+- [x] Xây dựng thành phần Left Sidebar ghim cố định bên trái (`src/components/Sidebar.tsx`), hỗ trợ thu gọn/mở rộng linh hoạt và Drawer trượt mở cho thiết bị di động
+- [x] Mở rộng khung làm việc (Workspace Expansion): Chế độ toàn màn hình 100% Canvas, chuyển đổi linh hoạt giữa Chế độ Lưới (Grid) và Chế độ Bảng danh sách chi tiết (Table View)
 - [x] Nâng cấp nội dung hướng dẫn cài đặt chuẩn hóa 4 bước chi tiết và kịch bản sử dụng thực tế cho 100% công cụ
-- [x] Bổ sung và chuẩn hóa ảnh demo (Demo Images) trực quan cho 100% tất cả 1.922 công cụ (Open Graph banner và thư viện ảnh chi tiết)
-- [x] Bổ sung các dự án AI Việt Nam nổi bật: VietOCR, UnderTheSea, Chuyển đổi số thành chữ kế toán, Kiểm tra cấu trúc 12 số CCCD, Tra cứu xử phạt giao thông Nghị định 100
-- [x] Bổ sung các kho lưu trữ GitHub AI hot nhất thế giới: vLLM, Exo, Stanford STORM, Ollama, Browser-Use, Cline, CrewAI, RAGFlow, Mem0, OpenHands, uv, ComfyUI, AutoGen, DeepSeek-V3, LangGraph, shadcn/ui
+- [x] Chuẩn hóa ảnh demo theo nguyên tắc repo thực tế: Để trống nếu repo không có ảnh demo đính kèm; Chèn tất cả ảnh demo nếu có kèm ghi chú rõ ràng (caption)
+- [x] Bổ sung các dự án AI Việt Nam nổi bật: VietOCR, UnderTheSea, PhoBERT, Chuyển đổi số thành chữ kế toán, Kiểm tra cấu trúc 12 số CCCD, Tra cứu xử phạt giao thông Nghị định 100 & phạt nguội
+- [x] Bổ sung các kho lưu trữ GitHub, GitLab AI hot nhất thế giới: Browser-Use, OpenHands, Dify, Langflow, Flowise, Open Interpreter, vLLM, Exo, Stanford STORM, Ollama, Cline, CrewAI, RAGFlow, Mem0, uv, ComfyUI, AutoGen, DeepSeek-V3, LangGraph, shadcn/ui
 - [x] Dịch thuật và bản địa hóa 100% nội dung mô tả, công dụng, hướng dẫn sử dụng tiếng Anh sang tiếng Việt chuẩn kỹ thuật
 - [x] Xây dựng Cầu nối thực thi lệnh cục bộ an toàn (`server/commandBridge.js`) kèm danh sách trắng bảo mật
 - [x] Xây dựng Giao diện Thiết bị đầu cuối tương tác (`TerminalDrawer.tsx`) với tính năng truyền luồng kết quả (SSE), lịch sử lệnh và nút chạy lệnh trực tiếp trên từng công cụ
