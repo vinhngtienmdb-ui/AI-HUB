@@ -8,6 +8,33 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Bỏ mặc định đăng nhập thanhvien, Nâng cấp Chỉnh sửa Hồ sơ cá nhân & Tích dấu sao ⭐ lưu trữ công cụ]:
+  - **Không mặc định đăng nhập ở user thanhvien**:
+    - Khắc phục triệt để việc hệ thống tự động gán email `thanhvien@aihub.vn`.
+    - Trạng thái người dùng mới mặc định là khách vãng lai chưa đăng nhập (`currentUser = null`), Header hiển thị nút "Đăng nhập".
+    - Tự động phát hiện và dọn dẹp giá trị email giả định cũ trong bộ nhớ trình duyệt `localStorage`.
+  - **Chỉnh sửa thông tin cá nhân (User Profile)**:
+    - Bổ sung cấu trúc dữ liệu `UserProfile` trong `src/types/index.ts` hỗ trợ: Tên hiển thị (`displayName`), Ảnh đại diện/Avatar URL (`photoURL`), Chức danh chuyên môn (`title`), Tiểu sử/giới thiệu (`bio`), Số điện thoại (`phone`), Liên kết GitHub (`githubUrl`), Website cá nhân (`websiteUrl`).
+    - Nâng cấp trang cá nhân `src/pages/AccountPage.tsx`:
+      - Hiển thị thông tin hồ sơ trực quan: Ảnh đại diện avatar bo viền, tên hiển thị, chức danh, email, các liên kết mạng xã hội và huy hiệu "Quản trị viên tối cao" (nếu là Admin).
+      - Tích hợp modal "Chỉnh sửa thông tin cá nhân" cho phép người dùng cập nhật hồ sơ cá nhân và lưu trữ bền vững vào `localStorage`.
+      - Bổ sung thông báo cập nhật hồ sơ thành công trực quan.
+    - Đồng bộ hiển thị tên người dùng và ảnh avatar đại diện lên thanh điều hướng `Header.tsx`.
+  - **Tích dấu sao (⭐) để lưu trữ công cụ cần thiết**:
+    - Chuẩn hóa biểu tượng lưu trữ thành Ngôi sao (Star ⭐) theo đúng yêu cầu:
+      - Khi chưa lưu: Ngôi sao viền xám mờ tinh tế, di chuột chuyển sắc thái nổi bật (`text-slate-400 hover:text-amber-500`).
+      - Khi đã lưu: Ngôi sao màu vàng cam óng ánh rực rỡ (`fill-amber-400 text-amber-500 drop-shadow-sm`).
+    - Triển khai nút ngôi sao ⭐ tương tác 1 chạm trên toàn bộ hệ thống:
+      - **Thẻ công cụ ([`ToolCard.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/components/ToolCard.tsx))**: Tích hợp nút sao ⭐ tương tác trên cả thẻ có ảnh demo và thẻ văn bản tiêu chuẩn.
+      - **Trang Danh mục ([`CategoryPage.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/pages/CategoryPage.tsx))**: Thay thế nút lưu bằng icon ngôi sao ⭐ vàng óng.
+      - **Trang Chi tiết ([`DetailPage.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/pages/DetailPage.tsx))**: Nút "Gắn sao lưu trữ ⭐" / "Đã gắn sao lưu trữ ⭐".
+      - **Chế độ xem dạng bảng (Table View trong [`App.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/App.tsx))**: Thêm cột ngôi sao ⭐ cho phép người dùng lưu/bỏ lưu trực tiếp ngay trên bảng.
+      - **Trang cá nhân ([`AccountPage.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/pages/AccountPage.tsx))**: Tab "Công cụ đã gắn sao ⭐", cho phép xem danh sách và bỏ gắn sao trực tiếp.
+    - Bảo vệ người dùng: Khi khách chưa đăng nhập bấm vào dấu sao ⭐, hệ thống tự động mở modal đăng nhập để hướng dẫn người dùng đăng nhập tài khoản.
+  - **Kiểm thử & Đóng gói**:
+    - Viết mới bộ kiểm thử tự động `tests/user-profile-and-star.test.js` kiểm tra toàn diện 3 chức năng: Khởi tạo chưa đăng nhập, Cập nhật hồ sơ người dùng, và Cơ chế gắn sao công cụ.
+    - Toàn bộ 5 bộ kiểm thử đạt tỷ lệ thành công 100%.
+    - Đóng gói toàn bộ ứng dụng bằng `npm run build` (`tsc && vite build`) hoàn thành thành công tuyệt đối.
 - [Xử lý lỗi auth/network-request-failed và Bổ sung cơ chế Đăng nhập Chuyển hướng]:
   - **Phân tích nguyên nhân lỗi `auth/network-request-failed`**:
     1. Trình duyệt đang cài đặt tiện ích chặn quảng cáo / chặn theo dõi (AdBlocker, Brave Shields, uBlock Origin) chặn các yêu cầu gửi đến API Google (`apis.google.com`, `identitytoolkit.googleapis.com`).

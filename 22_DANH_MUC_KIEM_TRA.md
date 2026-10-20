@@ -48,6 +48,10 @@
 - [x] Lập trình phân hệ Giao diện danh mục, Tìm kiếm tức thời và Phân trang (24 mục/trang)
 - [x] Lập trình phân hệ Chi tiết công cụ và Sao chép cấu hình một chạm
 - [x] Lập trình phân hệ Quản trị nội dung và Đóng góp công cụ
+- [x] Xóa bỏ hoàn toàn cơ chế mặc định đăng nhập tài khoản giả lập `thanhvien@aihub.vn`. Người dùng mới truy cập với tư cách khách vãng lai (`currentUser = null`), tự động dọn dẹp khóa cũ trên `localStorage`
+- [x] Xây dựng phân hệ Quản lý và Chỉnh sửa thông tin cá nhân (`UserProfile`) tại trang cá nhân (`src/pages/AccountPage.tsx`): Cho phép cập nhật Họ tên hiển thị, URL ảnh đại diện avatar, Chức danh chuyên môn, Tiểu sử giới thiệu, Số điện thoại, GitHub, Website và lưu trữ bền vững
+- [x] Chuẩn hóa và triển khai cơ chế Tích dấu sao lưu trữ công cụ (⭐ Star / Save Tool) 1 chạm trên toàn bộ hệ thống: Thẻ công cụ (`ToolCard.tsx`), Danh mục (`CategoryPage.tsx`), Chi tiết công cụ (`DetailPage.tsx`), Bảng danh sách (`Table View`), và quản lý danh sách công cụ đã gắn sao tại Trang cá nhân (`AccountPage.tsx`)
+- [x] Xây dựng bộ kiểm thử tự động `tests/user-profile-and-star.test.js` kiểm tra toàn diện 3 tính năng mới (Không mặc định đăng nhập, Chỉnh sửa hồ sơ, Gắn sao lưu trữ), đạt 100% tỷ lệ vượt qua
 - [x] Triển khai kiến trúc lưu trữ Delta Storage (`src/lib/storage.ts`), loại bỏ hoàn toàn nguy cơ vượt hạn mức bộ nhớ trình duyệt `QuotaExceededError`, giảm dung lượng lưu trữ từ 8MB xuống dưới 2KB
 - [x] Xây dựng phân hệ Điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn (Admin Taxonomy): Hỗ trợ sửa phân loại trực tiếp cho từng công cụ trên trang chi tiết (`DetailPage.tsx`) và hàng đợi phê duyệt (`AdminApprovalModal.tsx`), đồng thời quản lý danh mục phân loại toàn hệ thống qua `AdminTaxonomyModal.tsx`
 - [x] Tích hợp kết nối Firebase Google Auth (`src/lib/firebase.ts`), cho phép đăng nhập một chạm với tài khoản Google, hỗ trợ đồng bộ trạng thái người dùng an toàn

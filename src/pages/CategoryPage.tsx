@@ -458,21 +458,21 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                             </div>
                           </div>
 
-                          {/* Nút lưu vào bộ sưu tập */}
+                          {/* Nút gắn sao lưu trữ công cụ */}
                           <button
                             type="button"
                             onClick={(e) => {
                               e.stopPropagation();
                               onToggleSaveTool(tool.id);
                             }}
-                            className={`p-1.5 rounded-lg border transition-colors ${
+                            className={`p-1.5 rounded-lg border transition-all hover:scale-110 active:scale-95 ${
                               isSaved
-                                ? 'bg-indigo-50 border-indigo-200 text-indigo-600 dark:bg-indigo-950 dark:border-indigo-800 dark:text-indigo-400'
-                                : 'border-transparent text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800'
+                                ? 'bg-amber-50 border-amber-300 text-amber-500 dark:bg-amber-950/80 dark:border-amber-700 dark:text-amber-400 shadow-xs'
+                                : 'border-slate-200 dark:border-slate-700 text-slate-400 hover:text-amber-500 hover:border-amber-300 dark:hover:border-amber-600'
                             }`}
-                            title={isSaved ? "Bỏ lưu tài nguyên" : "Lưu vào bộ sưu tập"}
+                            title={isSaved ? "Đã gắn sao lưu trữ (Bấm để bỏ lưu)" : "Gắn sao để lưu trữ công cụ"}
                           >
-                            <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-current' : ''}`} />
+                            <Star className={`w-4 h-4 ${isSaved ? 'fill-amber-400 text-amber-500' : ''}`} />
                           </button>
                         </div>
 

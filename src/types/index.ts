@@ -136,6 +136,18 @@ export interface GuideArticle {
   contentVi: string;
 }
 
+export interface UserProfile {
+  email: string;
+  displayName: string;
+  photoURL?: string;
+  title?: string; // Ví dụ: Kỹ sư AI, Chuyên gia giải pháp...
+  bio?: string; // Tiểu sử ngắn / Giới thiệu bản thân
+  phone?: string;
+  githubUrl?: string;
+  websiteUrl?: string;
+  joinedAt?: string;
+}
+
 export type PageRoute = 
   | { name: 'home' }
   | { name: 'category'; toolType: ToolType | 'all' }

@@ -4,6 +4,26 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.23-HoSoCaNhanVaTichDauSaoLuuTru (Ngày 20-10-2026)
+- **Loại hình**: Bỏ mặc định đăng nhập tài khoản giả lập, nâng cấp hồ sơ cá nhân và triển khai cơ chế gắn sao lưu trữ công cụ (⭐ Star / Save Tool).
+- **Nội dung hoàn thành**:
+  - **Bỏ mặc định đăng nhập `thanhvien@aihub.vn`**:
+    - Trạng thái người dùng khởi tạo mặc định là khách vãng lai (`currentUser = null`), hiển thị nút "Đăng nhập" trên Header.
+    - Tự động dọn dẹp các giá trị email giả lập cũ trong `localStorage`.
+  - **Chỉnh sửa thông tin hồ sơ cá nhân (`UserProfile`)**:
+    - Bổ sung cấu trúc dữ liệu `UserProfile` (`displayName`, `photoURL`, `title`, `bio`, `phone`, `githubUrl`, `websiteUrl`).
+    - Nâng cấp giao diện trang cá nhân [`AccountPage.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/pages/AccountPage.tsx) hiển thị avatar, thông tin chi tiết và modal cập nhật hồ sơ cá nhân lưu vào `localStorage`.
+    - Đồng bộ hiển thị tên người dùng và ảnh đại diện lên thanh điều hướng [`Header.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/components/Header.tsx).
+  - **Tích dấu sao (⭐) để lưu trữ công cụ cần thiết**:
+    - Chuẩn hóa biểu tượng lưu trữ thành Ngôi sao (Star ⭐) theo đúng yêu cầu:
+      - Khi chưa lưu: Ngôi sao viền xám mờ tinh tế (`text-slate-400 hover:text-amber-500`).
+      - Khi đã lưu: Ngôi sao vàng cam óng ánh rực rỡ (`fill-amber-400 text-amber-500`).
+    - Triển khai nút ngôi sao ⭐ tương tác 1 chạm trên toàn bộ hệ thống: Thẻ công cụ ([`ToolCard.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/components/ToolCard.tsx)), Trang danh mục ([`CategoryPage.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/pages/CategoryPage.tsx)), Trang chi tiết ([`DetailPage.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/pages/DetailPage.tsx)), Chế độ bảng ([`Table View`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/App.tsx)), và quản lý danh sách công cụ đã gắn sao tại Trang cá nhân ([`AccountPage.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/pages/AccountPage.tsx)).
+    - Bảo vệ người dùng: Tự động mở modal đăng nhập khi khách vãng lai nhấp vào dấu sao ⭐.
+  - **Kiểm thử & Đóng gói**:
+    - Xây dựng bài kiểm thử `tests/user-profile-and-star.test.js` kiểm tra 3 luồng chức năng, đạt 100%.
+    - Đóng gói toàn bộ dự án (`tsc && vite build`) hoàn thành thành công tuyệt đối.
+
 ### Phiên Bản 2.0.22-XuLyLoiNetworkRequestFailedVaBoSungRedirect (Ngày 20-10-2026)
 - **Loại hình**: Xử lý triệt để lỗi `auth/network-request-failed` và bổ sung phương thức Đăng nhập Google Chuyển hướng (Redirect Auth).
 - **Nội dung hoàn thành**:

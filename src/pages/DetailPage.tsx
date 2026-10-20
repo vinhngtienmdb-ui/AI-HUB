@@ -166,14 +166,15 @@ export const DetailPage: React.FC<DetailPageProps> = ({
                 <button
                   type="button"
                   onClick={onToggleSave}
-                  className={`inline-flex items-center space-x-2 px-5 py-3 rounded-2xl border font-bold text-sm transition-all ${
+                  className={`inline-flex items-center space-x-2 px-5 py-3 rounded-2xl border font-bold text-sm transition-all hover:scale-[1.02] active:scale-[0.98] ${
                     isSaved
-                      ? 'bg-indigo-50 border-indigo-300 text-indigo-700 dark:bg-indigo-950 dark:border-indigo-700 dark:text-indigo-300'
-                      : 'bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50'
+                      ? 'bg-amber-50 border-amber-300 text-amber-800 dark:bg-amber-950/80 dark:border-amber-700 dark:text-amber-300 shadow-xs'
+                      : 'bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750'
                   }`}
+                  title={isSaved ? "Nhấn để bỏ gắn sao" : "Gắn sao để lưu trữ công cụ"}
                 >
-                  <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-current text-indigo-600' : ''}`} />
-                  <span>{isSaved ? 'Đã lưu vào bộ sưu tập' : 'Lưu vào bộ sưu tập'}</span>
+                  <Star className={`w-4 h-4 ${isSaved ? 'fill-amber-400 text-amber-500' : 'text-slate-400'}`} />
+                  <span>{isSaved ? 'Đã gắn sao lưu trữ ⭐' : 'Gắn sao lưu trữ ⭐'}</span>
                 </button>
 
                 {(tool.configs || []).some((c) => c.cliCommand) && (

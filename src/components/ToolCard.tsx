@@ -5,9 +5,11 @@ import { AITool } from '../types';
 interface ToolCardProps {
   tool: AITool;
   onSelect: (tool: AITool) => void;
+  isSaved?: boolean;
+  onToggleSave?: (toolId: string) => void;
 }
 
-export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
+export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect, isSaved = false, onToggleSave }) => {
   const [hasImgError, setHasImgError] = React.useState(false);
 
   const renderIcon = (iconName: string) => {
@@ -83,35 +85,73 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
 
-          {/* Nhãn loại hình & Số sao đánh giá trên ảnh */}
+          {/* Nhãn loại hình & Số sao đánh giá + Nút gắn sao lưu trữ trên ảnh */}
           <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none">
             <span className="text-[11px] px-2.5 py-0.5 rounded-full font-bold backdrop-blur-md bg-slate-900/80 text-white shadow-sm border border-white/10">
               {tool.typeNameVi}
             </span>
-            {tool.stars ? (
-              <span className="text-[11px] px-2 py-0.5 rounded-full font-bold backdrop-blur-md bg-amber-500/90 text-white shadow-sm flex items-center space-x-1">
-                <Star className="w-3 h-3 fill-current" />
-                <span>{tool.stars >= 1000 ? `${(tool.stars / 1000).toFixed(1)}k` : tool.stars}</span>
-              </span>
-            ) : null}
+            <div className="flex items-center space-x-1.5 pointer-events-auto">
+              {tool.stars ? (
+                <span className="text-[11px] px-2 py-0.5 rounded-full font-bold backdrop-blur-md bg-amber-500/90 text-white shadow-sm flex items-center space-x-1">
+                  <Star className="w-3 h-3 fill-current" />
+                  <span>{tool.stars >= 1000 ? `${(tool.stars / 1000).toFixed(1)}k` : tool.stars}</span>
+                </span>
+              ) : null}
+              {onToggleSave && (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggleSave(tool.id);
+                  }}
+                  className={`p-1 rounded-full backdrop-blur-md transition-transform hover:scale-110 active:scale-95 shadow-sm border ${
+                    isSaved
+                      ? 'bg-amber-400 text-slate-900 border-amber-300'
+                      : 'bg-slate-900/70 text-slate-200 border-white/20 hover:text-amber-300'
+                  }`}
+                  title={isSaved ? "Đã gắn sao lưu trữ (Bấm để bỏ lưu)" : "Gắn sao để lưu trữ công cụ"}
+                >
+                  <Star className={`w-3.5 h-3.5 ${isSaved ? 'fill-current text-slate-950' : ''}`} />
+                </button>
+              )}
+            </div>
           </div>
         </div>
       ) : null}
 
       {/* Phần thân thẻ */}
       <div className="p-4 flex-1 flex flex-col">
-        {/* Hàng nhãn loại hình & số sao khi thẻ không có ảnh demo (hiển thị tinh gọn, không để khoảng trống ảnh) */}
+        {/* Hàng nhãn loại hình & số sao khi thẻ không có ảnh demo */}
         {!showImage && (
           <div className="flex items-center justify-between gap-2 mb-3 pb-2.5 border-b border-slate-100 dark:border-slate-800/80">
             <span className={`text-[11px] px-2.5 py-0.5 rounded-full font-bold border ${getBadgeColorClass(tool.toolType)}`}>
               {tool.typeNameVi}
             </span>
-            {tool.stars ? (
-              <span className="text-[11px] px-2 py-0.5 rounded-full font-bold bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-900 flex items-center space-x-1">
-                <Star className="w-3 h-3 fill-current" />
-                <span>{tool.stars >= 1000 ? `${(tool.stars / 1000).toFixed(1)}k` : tool.stars}</span>
-              </span>
-            ) : null}
+            <div className="flex items-center space-x-1.5">
+              {tool.stars ? (
+                <span className="text-[11px] px-2 py-0.5 rounded-full font-bold bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-900 flex items-center space-x-1">
+                  <Star className="w-3 h-3 fill-current" />
+                  <span>{tool.stars >= 1000 ? `${(tool.stars / 1000).toFixed(1)}k` : tool.stars}</span>
+                </span>
+              ) : null}
+              {onToggleSave && (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggleSave(tool.id);
+                  }}
+                  className={`p-1 rounded-lg border transition-all hover:scale-110 active:scale-95 ${
+                    isSaved
+                      ? 'bg-amber-50 dark:bg-amber-950/80 border-amber-300 dark:border-amber-700 text-amber-500 shadow-xs'
+                      : 'border-slate-200 dark:border-slate-700 text-slate-400 hover:text-amber-500 hover:border-amber-300'
+                  }`}
+                  title={isSaved ? "Đã gắn sao lưu trữ (Bấm để bỏ lưu)" : "Gắn sao để lưu trữ công cụ"}
+                >
+                  <Star className={`w-3.5 h-3.5 ${isSaved ? 'fill-amber-400 text-amber-500' : ''}`} />
+                </button>
+              )}
+            </div>
           </div>
         )}
 

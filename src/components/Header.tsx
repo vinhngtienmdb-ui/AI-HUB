@@ -9,6 +9,8 @@ interface HeaderProps {
   onOpenDocs: () => void;
   onOpenLogin: () => void;
   currentUser?: string | null;
+  userDisplayName?: string;
+  userPhotoURL?: string;
   isAdmin?: boolean;
   pendingCount?: number;
   onOpenAdminApproval?: () => void;
@@ -28,6 +30,8 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenDocs,
   onOpenLogin,
   currentUser,
+  userDisplayName,
+  userPhotoURL,
   isAdmin = false,
   pendingCount = 0,
   onOpenAdminApproval,
@@ -187,8 +191,21 @@ export const Header: React.FC<HeaderProps> = ({
           >
             {currentUser ? (
               <span className="flex items-center space-x-1.5 text-indigo-600 dark:text-indigo-400">
-                <User className="w-4 h-4" />
-                <span className="max-w-[100px] truncate">{currentUser.split('@')[0]}</span>
+                {userPhotoURL ? (
+                  <img
+                    src={userPhotoURL}
+                    alt={userDisplayName || currentUser}
+                    className="w-5 h-5 rounded-full object-cover border border-indigo-400"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                    }}
+                  />
+                ) : (
+                  <User className="w-4 h-4" />
+                )}
+                <span className="max-w-[110px] truncate">
+                  {userDisplayName || currentUser.split('@')[0]}
+                </span>
                 {isAdmin && (
                   <span className="text-[10px] px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-700 dark:bg-indigo-950/80 dark:text-indigo-300 font-bold uppercase tracking-wider">
                     Admin

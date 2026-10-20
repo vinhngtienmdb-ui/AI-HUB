@@ -27,7 +27,7 @@ import { AccountPage } from './pages/AccountPage';
 import { INITIAL_TOOLS, CATEGORIES } from './data/mockTools';
 import { INITIAL_COLLECTIONS, INITIAL_GUIDES } from './data/mockGuidesAndCollections';
 import { DEFAULT_TOOL_TYPES, ToolTypeInfo, getToolTypeNameVi, getCategoryNameVi } from './data/taxonomy';
-import { AITool, Category, CategoryInfo, Platform, ToolType, Collection, GuideArticle, PageRoute } from './types';
+import { AITool, Category, CategoryInfo, Platform, ToolType, Collection, GuideArticle, PageRoute, UserProfile } from './types';
 import { subscribeToAuth, checkIsAdmin } from './lib/firebase';
 import { loadAllTools, saveContributedTool, saveToolOverride, cleanupLegacyStorage } from './lib/storage';
 import { 
@@ -100,7 +100,25 @@ export const App: React.FC = () => {
   });
 
   const [currentUser, setCurrentUser] = useState<string | null>(() => {
-    return localStorage.getItem('aihub_user') || 'thanhvien@aihub.vn';
+    const saved = localStorage.getItem('aihub_user');
+    if (!saved || saved === 'thanhvien@aihub.vn') {
+      localStorage.removeItem('aihub_user');
+      return null;
+    }
+    return saved;
+  });
+
+  // Hồ sơ thông tin người dùng cá nhân (Tên hiển thị, Chức danh, Tiểu sử, Avatar...)
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(() => {
+    const saved = localStorage.getItem('aihub_user_profile');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error('Lỗi khi đọc profile người dùng:', e);
+      }
+    }
+    return null;
   });
 
   // Quản trị viên cao nhất
@@ -126,10 +144,33 @@ export const App: React.FC = () => {
       if (firebaseUser?.email) {
         setCurrentUser(firebaseUser.email);
         localStorage.setItem('aihub_user', firebaseUser.email);
+
+        setUserProfile((prev) => {
+          if (prev && prev.email === firebaseUser.email) return prev;
+          const initialProfile: UserProfile = {
+            email: firebaseUser.email,
+            displayName: firebaseUser.displayName || firebaseUser.email.split('@')[0],
+            photoURL: firebaseUser.photoURL || undefined,
+            title: prev?.title || 'Chuyên gia AI & Phần mềm',
+            bio: prev?.bio || 'Thành viên đam mê khám phá và xây dựng ứng dụng trí tuệ nhân tạo.',
+            phone: prev?.phone || '',
+            githubUrl: prev?.githubUrl || '',
+            websiteUrl: prev?.websiteUrl || '',
+          };
+          localStorage.setItem('aihub_user_profile', JSON.stringify(initialProfile));
+          return initialProfile;
+        });
       }
     });
     return () => unsubscribe();
   }, []);
+
+  // Đồng bộ userProfile vào localStorage khi thay đổi
+  useEffect(() => {
+    if (userProfile) {
+      localStorage.setItem('aihub_user_profile', JSON.stringify(userProfile));
+    }
+  }, [userProfile]);
 
   // Cập nhật quyền Admin mỗi khi currentUser thay đổi
   useEffect(() => {
@@ -230,6 +271,10 @@ export const App: React.FC = () => {
   };
 
   const handleToggleSaveTool = (toolId: string) => {
+    if (!currentUser) {
+      setIsLoginOpen(true);
+      return;
+    }
     setSavedToolIds((prev) => 
       prev.includes(toolId) ? prev.filter((id) => id !== toolId) : [...prev, toolId]
     );
@@ -403,6 +448,8 @@ export const App: React.FC = () => {
           }
         }}
         currentUser={currentUser}
+        userDisplayName={userProfile?.displayName}
+        userPhotoURL={userProfile?.photoURL}
         isAdmin={isAdmin}
         pendingCount={pendingTools.length}
         onOpenAdminApproval={() => setIsAdminApprovalOpen(true)}
@@ -498,14 +545,22 @@ export const App: React.FC = () => {
       {currentRoute.name === 'account' && (
         <AccountPage
           currentUser={currentUser}
+          userProfile={userProfile}
+          onUpdateProfile={(updated) => {
+            setUserProfile(updated);
+            localStorage.setItem('aihub_user_profile', JSON.stringify(updated));
+          }}
           savedTools={savedToolsList}
           userCollections={collections}
           onNavigateHome={() => navigateTo({ name: 'home' })}
           onSelectTool={(tool) => navigateTo({ name: 'detail', toolId: tool.id })}
+          onToggleSaveTool={handleToggleSaveTool}
           onOpenContribute={() => navigateTo({ name: 'contribute' })}
           onLogout={() => {
             setCurrentUser(null);
+            setUserProfile(null);
             localStorage.removeItem('aihub_user');
+            localStorage.removeItem('aihub_user_profile');
             navigateTo({ name: 'home' });
           }}
           isExpanded={isExpandedCanvas}
@@ -663,6 +718,8 @@ export const App: React.FC = () => {
                             key={tool.id}
                             tool={tool}
                             onSelect={(t) => navigateTo({ name: 'detail', toolId: t.id })}
+                            isSaved={savedToolIds.includes(tool.id)}
+                            onToggleSave={() => handleToggleSaveTool(tool.id)}
                           />
                         ))}
                       </div>
@@ -672,6 +729,7 @@ export const App: React.FC = () => {
                           <table className="w-full text-left text-sm">
                             <thead className="bg-slate-50 dark:bg-slate-850/80 border-b border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase">
                               <tr>
+                                <th className="py-3.5 px-3 w-12 text-center">Lưu</th>
                                 <th className="py-3.5 px-4">Tên Công Cụ</th>
                                 <th className="py-3.5 px-3">Loại hình</th>
                                 <th className="py-3.5 px-3">Lĩnh vực</th>
@@ -680,42 +738,55 @@ export const App: React.FC = () => {
                               </tr>
                             </thead>
                             <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                              {paginatedTools.map((tool) => (
-                                <tr 
-                                  key={tool.id}
-                                  onClick={() => navigateTo({ name: 'detail', toolId: tool.id })}
-                                  className="hover:bg-slate-50/80 dark:hover:bg-slate-850/50 cursor-pointer"
-                                >
-                                  <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-white">
-                                    {tool.name}
-                                  </td>
-                                  <td className="py-3.5 px-3">
-                                    <span className="text-xs px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
-                                      {tool.typeNameVi}
-                                    </span>
-                                  </td>
-                                  <td className="py-3.5 px-3 text-xs text-slate-600 dark:text-slate-400">
-                                    {tool.categoryNameVi}
-                                  </td>
-                                  <td className="py-3.5 px-3">
-                                    <span className="text-xs font-bold text-amber-500 flex items-center space-x-1">
-                                      <Star className="w-3.5 h-3.5 fill-current" />
-                                      <span>{tool.stars || 4.8}</span>
-                                    </span>
-                                  </td>
-                                  <td className="py-3.5 px-4 text-right">
-                                    <button
-                                      onClick={(e) => {
-                                        e.stopPropagation();
-                                        navigateTo({ name: 'detail', toolId: tool.id });
-                                      }}
-                                      className="px-3 py-1.5 rounded-xl bg-indigo-50 text-indigo-600 text-xs font-bold"
-                                    >
-                                      Chi tiết
-                                    </button>
-                                  </td>
-                                </tr>
-                              ))}
+                              {paginatedTools.map((tool) => {
+                                const isSaved = savedToolIds.includes(tool.id);
+                                return (
+                                  <tr 
+                                    key={tool.id}
+                                    onClick={() => navigateTo({ name: 'detail', toolId: tool.id })}
+                                    className="hover:bg-slate-50/80 dark:hover:bg-slate-850/50 cursor-pointer"
+                                  >
+                                    <td className="py-3.5 px-3 text-center" onClick={(e) => e.stopPropagation()}>
+                                      <button
+                                        type="button"
+                                        onClick={() => handleToggleSaveTool(tool.id)}
+                                        className="p-1 rounded-lg transition-transform hover:scale-125 active:scale-95"
+                                        title={isSaved ? "Bỏ gắn sao lưu trữ" : "Gắn sao để lưu trữ công cụ"}
+                                      >
+                                        <Star className={`w-4 h-4 ${isSaved ? 'fill-amber-400 text-amber-500' : 'text-slate-300 dark:text-slate-600 hover:text-amber-500'}`} />
+                                      </button>
+                                    </td>
+                                    <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-white">
+                                      {tool.name}
+                                    </td>
+                                    <td className="py-3.5 px-3">
+                                      <span className="text-xs px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                                        {tool.typeNameVi}
+                                      </span>
+                                    </td>
+                                    <td className="py-3.5 px-3 text-xs text-slate-600 dark:text-slate-400">
+                                      {tool.categoryNameVi}
+                                    </td>
+                                    <td className="py-3.5 px-3">
+                                      <span className="text-xs font-bold text-amber-500 flex items-center space-x-1">
+                                        <Star className="w-3.5 h-3.5 fill-current" />
+                                        <span>{tool.stars || 4.8}</span>
+                                      </span>
+                                    </td>
+                                    <td className="py-3.5 px-4 text-right">
+                                      <button
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          navigateTo({ name: 'detail', toolId: tool.id });
+                                        }}
+                                        className="px-3 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 text-xs font-bold hover:bg-indigo-100 transition-colors"
+                                      >
+                                        Chi tiết
+                                      </button>
+                                    </td>
+                                  </tr>
+                                );
+                              })}
                             </tbody>
                           </table>
                         </div>
