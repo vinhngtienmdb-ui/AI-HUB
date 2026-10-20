@@ -88,7 +88,10 @@ export interface AITool {
   usageGuideVi: string; // Hướng dẫn sử dụng tiếng Việt (bắt buộc)
   samplePromptsVi: string[];
   configs: ConfigTemplate[];
-  status: 'published' | 'pending' | 'draft';
+  status: 'published' | 'pending' | 'draft' | 'rejected';
+  contributedBy?: string; // Email người đóng góp
+  contributedAt?: string; // Thời gian gửi đóng góp
+  reviewNote?: string; // Ghi chú xét duyệt của Quản trị viên
   stars?: number;
   featured?: boolean;
   linkHealth: 'healthy' | 'broken' | 'unchecked';

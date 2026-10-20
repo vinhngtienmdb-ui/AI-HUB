@@ -8,6 +8,22 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Tích hợp Firebase Google Auth, Phân quyền Admin & Hàng đợi phê duyệt công cụ]:
+  - Tích hợp thành công thư viện Firebase SDK (`firebase^13.0.0`) tại `src/lib/firebase.ts`.
+  - Hỗ trợ đăng nhập một chạm bằng Google Auth (`signInWithPopup` với `GoogleAuthProvider`), đồng bộ trạng thái đăng nhập qua `subscribeToAuth` và `localStorage`.
+  - Thiết lập cơ chế kiểm soát phân quyền Quản trị viên cao nhất (`checkIsAdmin`):
+    - Chỉ tài khoản Quản trị viên sở hữu quyền cao nhất (mặc định cấu hình `vinhngtien@gmail.com` hoặc qua biến môi trường `VITE_ADMIN_EMAIL`/giao diện cấu hình).
+    - Thành viên thông thường đăng nhập Google Auth có quyền đóng góp tài nguyên và lưu trữ bộ sưu tập cá nhân.
+  - Xây dựng quy trình kiểm duyệt chất lượng 2 cấp:
+    - Khi thành viên thường đóng góp, công cụ tự động được gắn trạng thái `status: 'pending'` (Chờ Quản trị viên duyệt), chưa hiển thị ra ngoài cộng đồng.
+    - Xây dựng modal Hàng đợi phê duyệt `AdminApprovalModal.tsx` dành riêng cho Quản trị viên với các chức năng: xem danh sách chờ duyệt, xem trước chi tiết nội dung, phê duyệt (`status: 'published'`) hoặc từ chối (`status: 'rejected'`) kèm lý do cụ thể.
+    - Trên thanh điều hướng `Header.tsx`, Quản trị viên được gắn huy hiệu Admin kèm nút truy cập nhanh "Duyệt công cụ" hiển thị số lượng công cụ đang chờ duyệt theo thời gian thực.
+  - Viết lại toàn diện biểu mẫu Đóng góp tài nguyên (`ContributePage.tsx` và `ContributeModal.tsx`):
+    - Đồng bộ chuẩn xác 13 loại hình thành phần (`Skill`, `Agent`, `API`, `SDK`, `MCP Server`, `Phần mềm`, `Workflow`, `Model`, `Dataset`, `Command`, `Template`, `Hook`, `Setting`).
+    - Đồng bộ chuẩn xác 18 lĩnh vực chuyên môn (Tài chính, Kế toán & Thuế, Doanh nghiệp ERP, Logistics, Y tế, Pháp luật, v.v.).
+    - Bổ sung trường thông tin người đóng góp (`contributedBy`), ngày gửi (`contributedAt`) và ghi chú kiểm duyệt (`reviewNote`).
+  - Xây dựng tệp kiểm thử tự động `tests/approval-and-auth.test.js` kiểm tra toàn bộ luồng phân quyền và phê duyệt, kết quả 3/3 bài kiểm thử đạt 100%.
+  - Đóng gói toàn bộ ứng dụng thành công tuyệt đối (`tsc && vite build` exit code 0).
 - [Mở rộng và Tách chi tiết 18 Lĩnh vực chuyên môn]:
   - Phân tích và tách các nhóm lĩnh vực bị gộp quá nhiều thành 18 lĩnh vực chuyên môn rạch ròi, giải quyết triệt để sự chồng lấn:
     1. `software_development` (Lập trình & Kỹ thuật phần mềm): 995 công cụ

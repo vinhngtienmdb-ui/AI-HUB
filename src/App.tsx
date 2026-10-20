@@ -7,6 +7,7 @@ import { BrowseByNeeds } from './components/BrowseByNeeds';
 import { ToolCard } from './components/ToolCard';
 import { ToolDetailModal } from './components/ToolDetailModal';
 import { ContributeModal } from './components/ContributeModal';
+import { AdminApprovalModal } from './components/AdminApprovalModal';
 import { DevLifecycleModal } from './components/DevLifecycleModal';
 import { LoginModal } from './components/LoginModal';
 import { TerminalDrawer } from './components/TerminalDrawer';
@@ -24,6 +25,7 @@ import { AccountPage } from './pages/AccountPage';
 import { INITIAL_TOOLS, CATEGORIES } from './data/mockTools';
 import { INITIAL_COLLECTIONS, INITIAL_GUIDES } from './data/mockGuidesAndCollections';
 import { AITool, Category, Platform, ToolType, Collection, GuideArticle, PageRoute } from './types';
+import { subscribeToAuth, checkIsAdmin } from './lib/firebase';
 import { 
   SearchX, ChevronLeft, ChevronRight, Layers, Sparkles, Cpu, Terminal, Brain, 
   FolderGit2, Wrench, Workflow, SlidersHorizontal, X, LayoutGrid, List, 
@@ -33,8 +35,22 @@ import {
 const PAGE_SIZE = 24;
 
 export const App: React.FC = () => {
-  // Dữ liệu cốt lõi
-  const [tools, setTools] = useState<AITool[]>(INITIAL_TOOLS);
+  // Dữ liệu cốt lõi có lưu giữ trạng thái phê duyệt qua LocalStorage
+  const [tools, setTools] = useState<AITool[]>(() => {
+    const saved = localStorage.getItem('aihub_tools');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      } catch (e) {
+        console.error('Lỗi khi đọc danh sách tools từ localStorage:', e);
+      }
+    }
+    return INITIAL_TOOLS;
+  });
+
   const [collections, setCollections] = useState<Collection[]>(() => {
     const saved = localStorage.getItem('aihub_collections');
     return saved ? JSON.parse(saved) : INITIAL_COLLECTIONS;
@@ -60,9 +76,14 @@ export const App: React.FC = () => {
   const [isContributeOpen, setIsContributeOpen] = useState(false);
   const [isDocsOpen, setIsDocsOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isAdminApprovalOpen, setIsAdminApprovalOpen] = useState(false);
+
   const [currentUser, setCurrentUser] = useState<string | null>(() => {
     return localStorage.getItem('aihub_user') || 'thanhvien@aihub.vn';
   });
+
+  // Quản trị viên cao nhất
+  const [isAdmin, setIsAdmin] = useState<boolean>(() => checkIsAdmin(currentUser));
 
   // Giao diện và Terminal
   const [darkMode, setDarkMode] = useState(false);
@@ -78,6 +99,26 @@ export const App: React.FC = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'table'>('grid');
 
+  // Lắng nghe trạng thái đăng nhập Firebase Google Auth
+  useEffect(() => {
+    const unsubscribe = subscribeToAuth((firebaseUser) => {
+      if (firebaseUser?.email) {
+        setCurrentUser(firebaseUser.email);
+        localStorage.setItem('aihub_user', firebaseUser.email);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  // Cập nhật quyền Admin mỗi khi currentUser thay đổi
+  useEffect(() => {
+    setIsAdmin(checkIsAdmin(currentUser));
+  }, [currentUser]);
+
+  // Lưu danh sách công cụ vào localStorage mỗi khi có cập nhật (thêm mới hoặc phê duyệt)
+  useEffect(() => {
+    localStorage.setItem('aihub_tools', JSON.stringify(tools));
+  }, [tools]);
   // Lưu trạng thái vào localStorage
   useEffect(() => {
     localStorage.setItem('aihub_expanded_canvas', JSON.stringify(isExpandedCanvas));
@@ -185,31 +226,79 @@ export const App: React.FC = () => {
     setIsTerminalOpen(true);
   };
 
+  // Phân tách danh sách công cụ: Đã phát hành (Published) và Chờ duyệt (Pending)
+  const publishedTools = useMemo(() => {
+    return tools.filter((t) => t.status === 'published' || !t.status);
+  }, [tools]);
+
+  const pendingTools = useMemo(() => {
+    return tools.filter((t) => t.status === 'pending');
+  }, [tools]);
+
+  // Xử lý thêm công cụ mới: Admin duyệt ngay, Thành viên thường chuyển vào hàng đợi pending
   const handleAddNewTool = (newTool: AITool) => {
-    setTools([newTool, ...tools]);
+    const isOwner = checkIsAdmin(currentUser);
+    const toolToAdd: AITool = {
+      ...newTool,
+      status: isOwner ? (newTool.status || 'published') : 'pending',
+      contributedBy: currentUser || 'Thành viên ẩn danh',
+      contributedAt: new Date().toISOString().split('T')[0],
+      reviewNote: isOwner ? 'Đã được Quản trị viên phê duyệt trực tiếp' : 'Đang chờ Quản trị viên kiểm duyệt',
+    };
+    setTools((prev) => [toolToAdd, ...prev]);
   };
 
-  // Thống kê số lượng từng loại hình
+  // Phê duyệt công cụ từ hàng đợi kiểm duyệt (dành riêng cho Quản trị viên)
+  const handleApproveTool = (toolId: string) => {
+    setTools((prev) =>
+      prev.map((t) =>
+        t.id === toolId
+          ? {
+              ...t,
+              status: 'published',
+              reviewNote: 'Đã được Quản trị viên AI HUB VN phê duyệt chính thức',
+            }
+          : t
+      )
+    );
+  };
+
+  // Từ chối công cụ với lý do cụ thể (dành riêng cho Quản trị viên)
+  const handleRejectTool = (toolId: string, reason?: string) => {
+    setTools((prev) =>
+      prev.map((t) =>
+        t.id === toolId
+          ? {
+              ...t,
+              status: 'rejected',
+              reviewNote: reason || 'Chưa đáp ứng đầy đủ tiêu chuẩn kiểm duyệt của AI HUB VN',
+            }
+          : t
+      )
+    );
+  };
+
+  // Thống kê số lượng từng loại hình (chỉ tính công cụ đã phát hành công khai)
   const typeCounts = useMemo(() => {
-    const counts: Record<string, number> = { all: tools.length };
-    for (const t of tools) {
+    const counts: Record<string, number> = { all: publishedTools.length };
+    for (const t of publishedTools) {
       counts[t.toolType] = (counts[t.toolType] || 0) + 1;
     }
     return counts;
-  }, [tools]);
+  }, [publishedTools]);
 
-  // Thống kê số lượng từng lĩnh vực chuyên môn
+  // Thống kê số lượng từng lĩnh vực chuyên môn (chỉ tính công cụ đã phát hành công khai)
   const categoryCounts = useMemo(() => {
-    const counts: Record<string, number> = { all: tools.length };
-    for (const t of tools) {
+    const counts: Record<string, number> = { all: publishedTools.length };
+    for (const t of publishedTools) {
       counts[t.category] = (counts[t.category] || 0) + 1;
     }
     return counts;
-  }, [tools]);
+  }, [publishedTools]);
 
-  // Bộ lọc danh mục trang chủ
+  // Bộ lọc danh mục trang chủ (chỉ lọc trên các công cụ đã được phát hành)
   const filteredTools = useMemo(() => {
-    return tools.filter((tool) => {
+    return publishedTools.filter((tool) => {
       const q = searchQuery.toLowerCase().trim();
       const matchQuery =
         !q ||
@@ -224,7 +313,7 @@ export const App: React.FC = () => {
 
       return matchQuery && matchCategory && matchType && matchPlatform;
     });
-  }, [tools, searchQuery, selectedCategory, selectedType, selectedPlatform]);
+  }, [publishedTools, searchQuery, selectedCategory, selectedType, selectedPlatform]);
 
   const totalPages = Math.ceil(filteredTools.length / PAGE_SIZE) || 1;
   const paginatedTools = useMemo(() => {
@@ -243,16 +332,16 @@ export const App: React.FC = () => {
 
   // Danh sách công cụ đã lưu
   const savedToolsList = useMemo(() => {
-    return tools.filter((t) => savedToolIds.includes(t.id));
-  }, [tools, savedToolIds]);
+    return publishedTools.filter((t) => savedToolIds.includes(t.id));
+  }, [publishedTools, savedToolIds]);
 
-  // Tìm công cụ chi tiết khi route là 'detail'
+  // Tìm công cụ chi tiết khi route là 'detail' (cho phép tìm cả trong tools đầy đủ để Admin có thể xem trước)
   const currentDetailTool = useMemo(() => {
     if (currentRoute.name === 'detail') {
-      return tools.find((t) => t.id === currentRoute.toolId || t.slug === currentRoute.toolId) || tools[0];
+      return tools.find((t) => t.id === currentRoute.toolId || t.slug === currentRoute.toolId) || publishedTools[0];
     }
     return null;
-  }, [currentRoute, tools]);
+  }, [currentRoute, tools, publishedTools]);
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
@@ -271,6 +360,9 @@ export const App: React.FC = () => {
           }
         }}
         currentUser={currentUser}
+        isAdmin={isAdmin}
+        pendingCount={pendingTools.length}
+        onOpenAdminApproval={() => setIsAdminApprovalOpen(true)}
         onSelectType={(type) => navigateTo({ name: 'category', toolType: type })}
         onSelectCategory={(cat) => {
           setSelectedCategory(cat);
@@ -282,7 +374,7 @@ export const App: React.FC = () => {
         }}
         onToggleTerminal={() => setIsTerminalOpen(!isTerminalOpen)}
         isTerminalOpen={isTerminalOpen}
-        toolCount={tools.length}
+        toolCount={publishedTools.length}
         isExpanded={isExpandedCanvas}
       />
 
@@ -292,7 +384,7 @@ export const App: React.FC = () => {
       {currentRoute.name === 'category' && (
         <CategoryPage
           toolType={currentRoute.toolType}
-          tools={tools}
+          tools={publishedTools}
           onSelectTool={(tool) => navigateTo({ name: 'detail', toolId: tool.id })}
           onNavigateHome={() => navigateTo({ name: 'home' })}
           savedToolIds={savedToolIds}
@@ -305,7 +397,7 @@ export const App: React.FC = () => {
       {currentRoute.name === 'detail' && currentDetailTool && (
         <DetailPage
           tool={currentDetailTool}
-          allTools={tools}
+          allTools={publishedTools}
           onNavigateHome={() => navigateTo({ name: 'home' })}
           onNavigateCategory={() => navigateTo({ name: 'category', toolType: currentDetailTool.toolType })}
           onSelectAlternative={(alt) => navigateTo({ name: 'detail', toolId: alt.id })}
@@ -320,9 +412,15 @@ export const App: React.FC = () => {
       {currentRoute.name === 'contribute' && (
         <ContributePage
           onNavigateHome={() => navigateTo({ name: 'home' })}
+          currentUserEmail={currentUser}
+          isAdmin={isAdmin}
           onSubmitSuccess={(newTool) => {
             handleAddNewTool(newTool);
-            navigateTo({ name: 'detail', toolId: newTool.id });
+            if (isAdmin) {
+              navigateTo({ name: 'detail', toolId: newTool.id });
+            } else {
+              navigateTo({ name: 'home' });
+            }
           }}
         />
       )}
@@ -331,7 +429,7 @@ export const App: React.FC = () => {
       {currentRoute.name === 'collections' && (
         <CollectionsPage
           collections={collections}
-          tools={tools}
+          tools={publishedTools}
           onNavigateHome={() => navigateTo({ name: 'home' })}
           onSelectTool={(tool) => navigateTo({ name: 'detail', toolId: tool.id })}
           onCreateCollection={handleCreateCollection}
@@ -395,7 +493,7 @@ export const App: React.FC = () => {
 
           {/* KHÁM PHÁ TÀI NGUYÊN NỔI BẬT */}
           <FeaturedResources
-            tools={tools}
+            tools={publishedTools}
             onSelectTool={(tool) => navigateTo({ name: 'detail', toolId: tool.id })}
             onViewAll={() => navigateTo({ name: 'category', toolType: 'all' })}
             isExpanded={isExpandedCanvas}
@@ -411,7 +509,7 @@ export const App: React.FC = () => {
             isExpanded={isExpandedCanvas}
           />
 
-          {/* KHU VỰC KHÁM PHÁ TOÀN BỘ 2.140+ CÔNG CỤ VỚI SIDEBAR */}
+          {/* KHU VỰC KHÁM PHÁ TOÀN BỘ CÔNG CỤ VỚI SIDEBAR */}
           <div id="browse-section" className="pt-6">
             <div className={`flex-1 w-full mx-auto px-3 sm:px-6 lg:px-8 py-6 flex gap-6 relative items-start transition-all duration-300 ${
               isExpandedCanvas ? 'max-w-[98%]' : 'max-w-7xl'
@@ -429,7 +527,7 @@ export const App: React.FC = () => {
                     typeCounts={typeCounts}
                     categoryCounts={categoryCounts}
                     categories={CATEGORIES}
-                    totalTools={tools.length}
+                    totalTools={publishedTools.length}
                     onOpenDocs={() => setIsDocsOpen(true)}
                     onOpenTerminal={() => setIsTerminalOpen(true)}
                     onResetFilters={handleResetFilters}
@@ -671,7 +769,7 @@ export const App: React.FC = () => {
                 typeCounts={typeCounts}
                 categoryCounts={categoryCounts}
                 categories={CATEGORIES}
-                totalTools={tools.length}
+                totalTools={publishedTools.length}
                 onOpenDocs={() => { setIsMobileSidebarOpen(false); setIsDocsOpen(true); }}
                 onOpenTerminal={() => { setIsMobileSidebarOpen(false); setIsTerminalOpen(true); }}
                 onResetFilters={() => { handleResetFilters(); setIsMobileSidebarOpen(false); }}
@@ -693,6 +791,38 @@ export const App: React.FC = () => {
         onLoginSuccess={(email) => {
           setCurrentUser(email);
           localStorage.setItem('aihub_user', email);
+        }}
+      />
+
+      {/* Modal Hàng đợi phê duyệt (Dành riêng cho Quản trị viên cao nhất) */}
+      <AdminApprovalModal
+        isOpen={isAdminApprovalOpen}
+        onClose={() => setIsAdminApprovalOpen(false)}
+        pendingTools={pendingTools}
+        onApproveTool={handleApproveTool}
+        onRejectTool={handleRejectTool}
+        onPreviewTool={(tool) => setSelectedModalTool(tool)}
+      />
+
+      {/* Modal xem nhanh chi tiết công cụ */}
+      <ToolDetailModal
+        tool={selectedModalTool}
+        onClose={() => setSelectedModalTool(null)}
+        onExecuteCommand={handleExecuteCommand}
+      />
+
+      {/* Modal đóng góp nhanh */}
+      <ContributeModal
+        isOpen={isContributeOpen}
+        onClose={() => setIsContributeOpen(false)}
+        currentUserEmail={currentUser}
+        isAdmin={isAdmin}
+        onSubmit={(newTool) => {
+          handleAddNewTool(newTool);
+          setIsContributeOpen(false);
+          if (isAdmin) {
+            navigateTo({ name: 'detail', toolId: newTool.id });
+          }
         }}
       />
 

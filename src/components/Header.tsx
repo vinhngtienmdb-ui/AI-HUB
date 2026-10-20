@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Moon, Sun, BookOpen, Terminal, Menu, X, User } from 'lucide-react';
+import { Plus, Moon, Sun, BookOpen, Terminal, Menu, X, User, ShieldCheck } from 'lucide-react';
 import { ToolType, Category } from '../types';
 
 interface HeaderProps {
@@ -9,6 +9,9 @@ interface HeaderProps {
   onOpenDocs: () => void;
   onOpenLogin: () => void;
   currentUser?: string | null;
+  isAdmin?: boolean;
+  pendingCount?: number;
+  onOpenAdminApproval?: () => void;
   onSelectType?: (type: ToolType | 'all') => void;
   onSelectCategory?: (category: Category | 'all') => void;
   onToggleTerminal?: () => void;
@@ -24,6 +27,9 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenDocs,
   onOpenLogin,
   currentUser,
+  isAdmin = false,
+  pendingCount = 0,
+  onOpenAdminApproval,
   onSelectType,
   onSelectCategory,
   onToggleTerminal,
@@ -143,6 +149,23 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           )}
 
+          {/* Nút Hàng đợi phê duyệt dành riêng cho Quản trị viên (Admin) */}
+          {isAdmin && onOpenAdminApproval && (
+            <button
+              onClick={onOpenAdminApproval}
+              className="relative flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-700 dark:text-amber-400 border border-amber-300 dark:border-amber-600/50 text-xs sm:text-sm font-semibold transition-all shadow-sm"
+              title="Mở Hàng đợi phê duyệt công cụ từ thành viên"
+            >
+              <ShieldCheck className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+              <span className="hidden sm:inline">Duyệt công cụ</span>
+              {pendingCount > 0 && (
+                <span className="px-1.5 py-0.2 rounded-full bg-amber-600 text-white text-[11px] font-bold">
+                  {pendingCount}
+                </span>
+              )}
+            </button>
+          )}
+
           {/* Nút Đăng nhập / Trạng thái người dùng */}
           <button
             onClick={onOpenLogin}
@@ -152,6 +175,11 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="flex items-center space-x-1.5 text-indigo-600 dark:text-indigo-400">
                 <User className="w-4 h-4" />
                 <span className="max-w-[100px] truncate">{currentUser.split('@')[0]}</span>
+                {isAdmin && (
+                  <span className="text-[10px] px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-700 dark:bg-indigo-950/80 dark:text-indigo-300 font-bold uppercase tracking-wider">
+                    Admin
+                  </span>
+                )}
               </span>
             ) : (
               <span>Đăng nhập</span>

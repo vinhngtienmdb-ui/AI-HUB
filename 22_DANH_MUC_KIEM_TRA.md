@@ -48,6 +48,11 @@
 - [x] Lập trình phân hệ Giao diện danh mục, Tìm kiếm tức thời và Phân trang (24 mục/trang)
 - [x] Lập trình phân hệ Chi tiết công cụ và Sao chép cấu hình một chạm
 - [x] Lập trình phân hệ Quản trị nội dung và Đóng góp công cụ
+- [x] Tích hợp kết nối Firebase Google Auth (`src/lib/firebase.ts`), cho phép đăng nhập một chạm với tài khoản Google, hỗ trợ đồng bộ trạng thái người dùng an toàn
+- [x] Thiết lập hệ thống phân quyền Quản trị viên tối cao (`Admin Role`): Chỉ tài khoản chỉ định của chủ sở hữu có quyền duyệt công cụ lên hệ thống công cộng
+- [x] Xây dựng phân hệ Hàng đợi phê duyệt công cụ (`src/components/AdminApprovalModal.tsx`): Công cụ do thành viên đóng góp tự động vào trạng thái Chờ duyệt (`pending`), Quản trị viên duyệt xuất bản (`published`) hoặc từ chối kèm lý do (`rejected`)
+- [x] Nâng cấp biểu mẫu Đóng góp tài nguyên (`ContributePage.tsx` và `ContributeModal.tsx`) đồng bộ đầy đủ 13 loại hình thành phần và 18 lĩnh vực chuyên môn chi tiết
+- [x] Xây dựng tệp kiểm thử tự động phân quyền và luồng phê duyệt (`tests/approval-and-auth.test.js`) đạt 100% tỷ lệ vượt qua
 - [x] Tích hợp toàn bộ 2.194 công cụ từ AI Templates (Phan Đông Giang), MCP Market, các kho lưu trữ hot thế giới, các nền tảng AI Workflow và hệ sinh thái API Việt Nam (bao gồm 50 giải pháp đợt 7, 50 thương hiệu đợt 8, 50 thương hiệu đợt 9 và 50 giải pháp bệnh viện, quản lý nhà nước, ERP/kế toán, đại học, du lịch, camera AI, fulfillment, Web3, tổng đài đợt 10)
 - [x] Chuẩn hóa 3.609 mẫu cấu hình JSON cho Claude Desktop, Antigravity và Cursor
 - [x] Tách biệt rạch ròi các nhóm thành phần giữ nguyên nhãn quốc tế: Skill (894), Agent (441), Command (273), MCP Server (227), API (116), Setting (70), Hook (61), Phần mềm (34), Workflow (27), SDK (21), Template (20), Model (7), Dataset (3)

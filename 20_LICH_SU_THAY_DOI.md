@@ -4,6 +4,27 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.18-FirebaseGoogleAuthVaHangDoiPheDuyet (Ngày 20-10-2026)
+- **Loại hình**: Tích hợp xác thực Firebase Google Auth, cơ chế phân quyền Quản trị viên tối cao (Admin Role) và Hàng đợi phê duyệt công cụ đóng góp hai cấp.
+- **Nội dung hoàn thành**:
+  - **Kết nối Firebase Google Auth**:
+    - Tích hợp gói thư viện `firebase` SDK chính thức (`src/lib/firebase.ts`).
+    - Hỗ trợ đăng nhập một chạm với tài khoản Google (`signInWithPopup` bằng `GoogleAuthProvider`), đồng bộ trạng thái đăng nhập qua `subscribeToAuth` và `localStorage`.
+    - Hỗ trợ cơ chế chuyển đổi thông minh an toàn nếu người dùng chưa thiết lập khóa API môi trường, tránh tuyệt đối lỗi màn hình trắng.
+  - **Phân quyền Quản trị viên tối cao (Admin Role)**:
+    - Thiết lập hàm kiểm soát `checkIsAdmin`: Chỉ email chỉ định của chủ sở hữu (mặc định `vinhngtien@gmail.com` hoặc qua biến `VITE_ADMIN_EMAIL`/cấu hình trực tiếp) mới sở hữu quyền Quản trị viên cao nhất.
+    - Thành viên thông thường đăng nhập Google Auth có quyền đóng góp công cụ và tạo/lưu trữ bộ sưu tập cá nhân.
+  - **Quy trình Phê duyệt công cụ hai cấp**:
+    - Khi thành viên thông thường đóng góp, công cụ được lưu với trạng thái `status: 'pending'`, không hiển thị công khai trên trang chủ hay danh mục.
+    - Xây dựng modal Hàng đợi phê duyệt `AdminApprovalModal.tsx` dành riêng cho Quản trị viên: xem danh sách chờ duyệt, xem trước thông tin chi tiết, phê duyệt chuyển trạng thái sang `published` để hiển thị trên hệ thống, hoặc từ chối chuyển sang `rejected` kèm lý do cụ thể.
+    - Trên thanh điều hướng `Header.tsx`, Quản trị viên được hiển thị huy hiệu `Admin` và nút "Duyệt công cụ" kèm số lượng chờ duyệt theo thời gian thực.
+  - **Nâng cấp Biểu mẫu Đóng góp tài nguyên**:
+    - Viết lại toàn bộ `ContributePage.tsx` và `ContributeModal.tsx` đồng bộ chuẩn xác với 13 loại hình thành phần và 18 lĩnh vực chuyên môn.
+    - Bổ sung các trường người đóng góp (`contributedBy`), ngày đóng góp (`contributedAt`) và ghi chú phản hồi kiểm duyệt (`reviewNote`).
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Xây dựng bài kiểm thử tự động `tests/approval-and-auth.test.js` kiểm tra 100% logic phân quyền và luồng phê duyệt (3/3 pass).
+    - Đóng gói toàn bộ dự án (`tsc && vite build`) thành công tuyệt đối không phát sinh cảnh báo hay lỗi.
+
 ### Phiên Bản 2.0.17-TachChiTiet18LinhVucChuyenMon (Ngày 20-10-2026)
 - **Loại hình**: Tách chi tiết và sắp xếp lại các lĩnh vực chuyên môn thành 18 danh mục độc lập, chấm dứt việc gộp chung các nghiệp vụ khác biệt (như Y tế/Bệnh viện với Pháp luật, Kế toán/Thuế với Ngân hàng/Thanh toán, Du lịch/Khách sạn với TMĐT, Giáo dục/Đại học với ERP).
 - **Nội dung hoàn thành**:
