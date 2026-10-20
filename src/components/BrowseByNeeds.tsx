@@ -1,13 +1,17 @@
 import React from 'react';
 import { 
-  CreditCard, 
-  Scale, 
-  Briefcase, 
-  ShoppingBag, 
-  Truck, 
-  Headphones, 
-  Brain, 
   Code2, 
+  CreditCard, 
+  Receipt, 
+  Cloud, 
+  Brain, 
+  Briefcase, 
+  Activity, 
+  ShoppingBag, 
+  Database, 
+  BarChart3, 
+  Truck, 
+  Scale, 
   ChevronRight 
 } from 'lucide-react';
 import { Category } from '../types';
@@ -20,43 +24,97 @@ interface BrowseByNeedsProps {
 export const BrowseByNeeds: React.FC<BrowseByNeedsProps> = ({ onSelectCategory, isExpanded = true }) => {
   const needs = [
     {
+      id: 'software_development' as Category,
+      title: 'Lập trình & Kỹ thuật phần mềm',
+      description: 'Mã nguồn, refactoring, code review & kiểm thử',
+      icon: Code2,
+      bgColor: 'bg-indigo-50 dark:bg-indigo-950/40',
+      iconColor: 'text-indigo-600 dark:text-indigo-400',
+      borderColor: 'border-indigo-100 dark:border-indigo-900/40',
+    },
+    {
       id: 'finance_payment' as Category,
-      title: 'Tài chính, Ngân hàng & Thuế',
-      description: 'VietQR, ví điện tử, kế toán thuế & hóa đơn',
+      title: 'Tài chính, Ngân hàng & Thanh toán',
+      description: 'VietQR, ví điện tử MoMo, ZaloPay & ngân hàng mở',
       icon: CreditCard,
       bgColor: 'bg-emerald-50 dark:bg-emerald-950/40',
       iconColor: 'text-emerald-600 dark:text-emerald-400',
       borderColor: 'border-emerald-100 dark:border-emerald-900/40',
     },
     {
-      id: 'legal_public_service' as Category,
-      title: 'Hành chính công & Pháp luật',
-      description: 'Địa giới 34 tỉnh thành, VNeID, BHXH, văn bản luật',
-      icon: Scale,
-      bgColor: 'bg-blue-50 dark:bg-blue-950/40',
-      iconColor: 'text-blue-600 dark:text-blue-400',
-      borderColor: 'border-blue-100 dark:border-blue-900/40',
-    },
-    {
-      id: 'business_admin' as Category,
-      title: 'Doanh nghiệp & Quản trị ERP',
-      description: 'MISA, Fast, Bravo, Base.vn, CRM văn phòng số',
-      icon: Briefcase,
+      id: 'accounting_tax' as Category,
+      title: 'Kế toán, Thuế & Hóa đơn',
+      description: 'MISA, Fast, hóa đơn điện tử, eTax & quyết toán',
+      icon: Receipt,
       bgColor: 'bg-amber-50 dark:bg-amber-950/40',
       iconColor: 'text-amber-600 dark:text-amber-400',
       borderColor: 'border-amber-100 dark:border-amber-900/40',
+    },
+    {
+      id: 'devops_cloud' as Category,
+      title: 'DevOps, Đám mây & Hạ tầng',
+      description: 'Docker, Kubernetes, CI/CD, AWS, GCP & Linux',
+      icon: Cloud,
+      bgColor: 'bg-sky-50 dark:bg-sky-950/40',
+      iconColor: 'text-sky-600 dark:text-sky-400',
+      borderColor: 'border-sky-100 dark:border-sky-900/40',
+    },
+    {
+      id: 'ai_nlp_vision' as Category,
+      title: 'Trí tuệ nhân tạo & Thị giác máy tính',
+      description: 'Mô hình ngôn ngữ, PhoBERT, Camera AI & OCR',
+      icon: Brain,
+      bgColor: 'bg-purple-50 dark:bg-purple-950/40',
+      iconColor: 'text-purple-600 dark:text-purple-400',
+      borderColor: 'border-purple-100 dark:border-purple-900/40',
+    },
+    {
+      id: 'business_erp' as Category,
+      title: 'Doanh nghiệp & Quản trị ERP',
+      description: 'MISA, Bravo, 1Office, Base.vn, CRM văn phòng số',
+      icon: Briefcase,
+      bgColor: 'bg-orange-50 dark:bg-orange-950/40',
+      iconColor: 'text-orange-600 dark:text-orange-400',
+      borderColor: 'border-orange-100 dark:border-orange-900/40',
+    },
+    {
+      id: 'healthcare_medical' as Category,
+      title: 'Y tế, Bệnh viện & Sức khỏe',
+      description: 'Bệnh viện Chợ Rẫy, Bạch Mai, Vinmec & Medpro',
+      icon: Activity,
+      bgColor: 'bg-rose-50 dark:bg-rose-950/40',
+      iconColor: 'text-rose-600 dark:text-rose-400',
+      borderColor: 'border-rose-100 dark:border-rose-900/40',
     },
     {
       id: 'ecommerce_retail' as Category,
       title: 'Thương mại điện tử & Bán lẻ',
       description: 'Shopee, Lazada, TikTok Shop, POS, F&B chuỗi',
       icon: ShoppingBag,
-      bgColor: 'bg-rose-50 dark:bg-rose-950/40',
-      iconColor: 'text-rose-600 dark:text-rose-400',
-      borderColor: 'border-rose-100 dark:border-rose-900/40',
+      bgColor: 'bg-pink-50 dark:bg-pink-950/40',
+      iconColor: 'text-pink-600 dark:text-pink-400',
+      borderColor: 'border-pink-100 dark:border-pink-900/40',
     },
     {
-      id: 'logistics_transport' as Category,
+      id: 'database_storage' as Category,
+      title: 'Cơ sở dữ liệu & Lưu trữ',
+      description: 'PostgreSQL, MySQL, Redis, MongoDB & Supabase',
+      icon: Database,
+      bgColor: 'bg-blue-50 dark:bg-blue-950/40',
+      iconColor: 'text-blue-600 dark:text-blue-400',
+      borderColor: 'border-blue-100 dark:border-blue-900/40',
+    },
+    {
+      id: 'data_analytics_science' as Category,
+      title: 'Dữ liệu lớn, RAG & Phân tích',
+      description: 'BigQuery, Spark, dbt, RAG & vector database',
+      icon: BarChart3,
+      bgColor: 'bg-teal-50 dark:bg-teal-950/40',
+      iconColor: 'text-teal-600 dark:text-teal-400',
+      borderColor: 'border-teal-100 dark:border-teal-900/40',
+    },
+    {
+      id: 'logistics_warehouse' as Category,
       title: 'Vận tải & Giao vận Logistics',
       description: 'GHN, GHTK, Viettel Post, WMS kho bãi & vận tải',
       icon: Truck,
@@ -65,31 +123,13 @@ export const BrowseByNeeds: React.FC<BrowseByNeedsProps> = ({ onSelectCategory, 
       borderColor: 'border-cyan-100 dark:border-cyan-900/40',
     },
     {
-      id: 'telecom_cskh' as Category,
-      title: 'Viễn thông & CSKH Tổng đài',
-      description: 'Zalo OA, tổng đài ảo VoIP, SMS Brandname OTP',
-      icon: Headphones,
-      bgColor: 'bg-indigo-50 dark:bg-indigo-950/40',
-      iconColor: 'text-indigo-600 dark:text-indigo-400',
-      borderColor: 'border-indigo-100 dark:border-indigo-900/40',
-    },
-    {
-      id: 'ai_nlp_data' as Category,
-      title: 'Trí tuệ nhân tạo & Dữ liệu',
-      description: 'LLM Tiếng Việt, PhoBERT, Camera AI, giọng nói',
-      icon: Brain,
-      bgColor: 'bg-purple-50 dark:bg-purple-950/40',
-      iconColor: 'text-purple-600 dark:text-purple-400',
-      borderColor: 'border-purple-100 dark:border-purple-900/40',
-    },
-    {
-      id: 'programming_devops' as Category,
-      title: 'Lập trình & Kỹ thuật phần mềm',
-      description: 'Mã nguồn, Docker, CI/CD, kiểm thử & đám mây',
-      icon: Code2,
-      bgColor: 'bg-violet-50 dark:bg-violet-950/40',
-      iconColor: 'text-violet-600 dark:text-violet-400',
-      borderColor: 'border-violet-100 dark:border-violet-900/40',
+      id: 'legal_public_service' as Category,
+      title: 'Hành chính công & Pháp luật',
+      description: 'Địa giới 34 tỉnh thành, VNeID, BHXH, văn bản luật',
+      icon: Scale,
+      bgColor: 'bg-slate-100 dark:bg-slate-800',
+      iconColor: 'text-slate-700 dark:text-slate-300',
+      borderColor: 'border-slate-200 dark:border-slate-700',
     },
   ];
 
@@ -108,11 +148,11 @@ export const BrowseByNeeds: React.FC<BrowseByNeedsProps> = ({ onSelectCategory, 
           Chọn theo lĩnh vực chuyên môn
         </h2>
         <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-          Khám phá các giải pháp AI, MCP và phần mềm chuẩn hóa theo từng bài toán nghiệp vụ
+          Khám phá các giải pháp AI, MCP, API và phần mềm được phân chia chuyên sâu theo từng bài toán thực tế
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {needs.map((item) => {
           const Icon = item.icon;
           return (

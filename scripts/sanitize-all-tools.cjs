@@ -134,13 +134,28 @@ for (let i = 0; i < tools.length; i++) {
 
   // 5. Category & CategoryNameVi
   const domainNamesVi = {
-    finance_payment: 'Tài chính, Ngân hàng & Thuế',
-    legal_public_service: 'Pháp luật & Hành chính công',
-    business_admin: 'Doanh nghiệp & Quản trị',
-    ecommerce_retail: 'Thương mại điện tử & Bán lẻ',
-    logistics_transport: 'Vận tải & Logistics',
-    telecom_cskh: 'Viễn thông & Chăm sóc khách hàng',
+    software_development: 'Lập trình & Kỹ thuật phần mềm',
+    devops_cloud: 'DevOps, Đám mây & Hạ tầng',
+    database_storage: 'Cơ sở dữ liệu & Lưu trữ',
+    ai_nlp_vision: 'Trí tuệ nhân tạo, Thị giác & Giọng nói',
+    data_analytics_science: 'Dữ liệu lớn, RAG & Phân tích',
+    automation_crawling: 'Tự động hóa & Thu thập dữ liệu',
+    finance_payment: 'Tài chính, Ngân hàng & Thanh toán',
+    accounting_tax: 'Kế toán, Thuế & Hóa đơn',
+    crypto_blockchain: 'Tài sản số, Web3 & Blockchain',
+    business_erp: 'Doanh nghiệp & Quản trị ERP',
     hr_recruitment: 'Nhân sự & Tuyển dụng',
+    telecom_cskh: 'Viễn thông & Chăm sóc khách hàng',
+    ecommerce_retail: 'Thương mại điện tử & Bán lẻ',
+    logistics_warehouse: 'Vận tải, Giao vận & Kho bãi',
+    tourism_hospitality: 'Du lịch, Khách sạn & Nghỉ dưỡng',
+    healthcare_medical: 'Y tế, Bệnh viện & Sức khỏe',
+    education_training: 'Giáo dục, Đào tạo & Đại học',
+    legal_public_service: 'Pháp luật & Hành chính công',
+    // Giữ tương thích
+    finance_payment: 'Tài chính, Ngân hàng & Thanh toán',
+    business_admin: 'Doanh nghiệp & Quản trị',
+    logistics_transport: 'Vận tải & Logistics',
     ai_nlp_data: 'Trí tuệ nhân tạo & Dữ liệu',
     programming_devops: 'Lập trình & Kỹ thuật phần mềm',
     system_automation: 'Tự động hóa hệ thống & Web',
@@ -159,12 +174,12 @@ for (let i = 0; i < tools.length; i++) {
     if (t.id && (t.id.startsWith('vn-') || (t.tags && t.tags.includes('Việt Nam')) || (t.name && t.name.includes('Việt Nam')))) {
       t.category = 'vietnam';
     } else {
-      t.category = 'system_automation';
+      t.category = 'software_development';
     }
     modified = true;
   }
   if (!t.categoryNameVi || domainNamesVi[t.category]) {
-    t.categoryNameVi = domainNamesVi[t.category] || 'Tự động hóa';
+    t.categoryNameVi = domainNamesVi[t.category] || 'Lập trình & Kỹ thuật phần mềm';
     modified = true;
   }
 

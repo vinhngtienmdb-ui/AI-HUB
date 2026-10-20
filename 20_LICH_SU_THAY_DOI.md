@@ -4,6 +4,35 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.17-TachChiTiet18LinhVucChuyenMon (Ngày 20-10-2026)
+- **Loại hình**: Tách chi tiết và sắp xếp lại các lĩnh vực chuyên môn thành 18 danh mục độc lập, chấm dứt việc gộp chung các nghiệp vụ khác biệt (như Y tế/Bệnh viện với Pháp luật, Kế toán/Thuế với Ngân hàng/Thanh toán, Du lịch/Khách sạn với TMĐT, Giáo dục/Đại học với ERP).
+- **Nội dung hoàn thành**:
+  - **Phân bổ chi tiết 18 Lĩnh vực chuyên môn**:
+    1. `software_development` (Lập trình & Kỹ thuật phần mềm): 995 công cụ
+    2. `finance_payment` (Tài chính, Ngân hàng & Thanh toán): 255 công cụ
+    3. `devops_cloud` (DevOps, Đám mây & Hạ tầng): 188 công cụ
+    4. `ai_nlp_vision` (Trí tuệ nhân tạo, Thị giác & Giọng nói): 134 công cụ
+    5. `accounting_tax` (Kế toán, Thuế & Hóa đơn): 90 công cụ
+    6. `business_erp` (Doanh nghiệp & Quản trị ERP): 82 công cụ
+    7. `data_analytics_science` (Dữ liệu lớn, RAG & Phân tích): 80 công cụ
+    8. `ecommerce_retail` (Thương mại điện tử & Bán lẻ): 68 công cụ
+    9. `healthcare_medical` (Y tế, Bệnh viện & Sức khỏe): 66 công cụ
+    10. `database_storage` (Cơ sở dữ liệu & Lưu trữ): 54 công cụ
+    11. `legal_public_service` (Pháp luật & Hành chính công): 36 công cụ
+    12. `logistics_warehouse` (Vận tải, Giao vận & Kho bãi): 33 công cụ
+    13. `hr_recruitment` (Nhân sự & Tuyển dụng): 27 công cụ
+    14. `crypto_blockchain` (Tài sản số, Web3 & Blockchain): 23 công cụ
+    15. `telecom_cskh` (Viễn thông & Chăm sóc khách hàng): 22 công cụ
+    16. `education_training` (Giáo dục, Đào tạo & Đại học): 19 công cụ
+    17. `automation_crawling` (Tự động hóa & Thu thập dữ liệu): 12 công cụ
+    18. `tourism_hospitality` (Du lịch, Khách sạn & Nghỉ dưỡng): 10 công cụ
+  - **Đồng bộ giao diện**:
+    - `Sidebar`: Danh mục 18 lĩnh vực chuyên môn với số lượng công cụ thực tế.
+    - `BrowseByNeeds`: Hiển thị 12 lĩnh vực trọng điểm cho người dùng tra cứu nhanh.
+    - `HeroSection`: Lối tắt chọn nhanh danh mục theo nghiệp vụ.
+    - `types/index.ts` & `mockTools.ts`: Bổ sung toàn bộ kiểu và thông tin danh mục.
+  - **Kiểm thử chất lượng**: Toàn bộ 5 bài kiểm thử unit tests đạt 100%, đóng gói Vite thành công hoàn toàn.
+
 ### Phiên Bản 2.0.16-TachPhanLoaiSDK_API_Model_Dataset (Ngày 20-10-2026)
 - **Loại hình**: Tách riêng biệt các phân loại mới cho `SDK`, `API`, `Model`, `Dataset`, phân chia lại dữ liệu toàn diện cho 2.194 công cụ và cập nhật giao diện cân bằng.
 - **Nội dung hoàn thành**:

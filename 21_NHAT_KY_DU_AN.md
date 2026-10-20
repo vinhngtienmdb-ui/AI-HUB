@@ -8,6 +8,32 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Mở rộng và Tách chi tiết 18 Lĩnh vực chuyên môn]:
+  - Phân tích và tách các nhóm lĩnh vực bị gộp quá nhiều thành 18 lĩnh vực chuyên môn rạch ròi, giải quyết triệt để sự chồng lấn:
+    1. `software_development` (Lập trình & Kỹ thuật phần mềm): 995 công cụ
+    2. `finance_payment` (Tài chính, Ngân hàng & Thanh toán): 255 công cụ
+    3. `devops_cloud` (DevOps, Đám mây & Hạ tầng): 188 công cụ
+    4. `ai_nlp_vision` (Trí tuệ nhân tạo, Thị giác & Giọng nói): 134 công cụ
+    5. `accounting_tax` (Kế toán, Thuế & Hóa đơn): 90 công cụ
+    6. `business_erp` (Doanh nghiệp & Quản trị ERP): 82 công cụ
+    7. `data_analytics_science` (Dữ liệu lớn, RAG & Phân tích): 80 công cụ
+    8. `ecommerce_retail` (Thương mại điện tử & Bán lẻ): 68 công cụ
+    9. `healthcare_medical` (Y tế, Bệnh viện & Sức khỏe): 66 công cụ
+    10. `database_storage` (Cơ sở dữ liệu & Lưu trữ): 54 công cụ
+    11. `legal_public_service` (Pháp luật & Hành chính công): 36 công cụ
+    12. `logistics_warehouse` (Vận tải, Giao vận & Kho bãi): 33 công cụ
+    13. `hr_recruitment` (Nhân sự & Tuyển dụng): 27 công cụ
+    14. `crypto_blockchain` (Tài sản số, Web3 & Blockchain): 23 công cụ
+    15. `telecom_cskh` (Viễn thông & Chăm sóc khách hàng): 22 công cụ
+    16. `education_training` (Giáo dục, Đào tạo & Đại học): 19 công cụ
+    17. `automation_crawling` (Tự động hóa & Thu thập dữ liệu): 12 công cụ
+    18. `tourism_hospitality` (Du lịch, Khách sạn & Nghỉ dưỡng): 10 công cụ
+  - Cập nhật giao diện đồng bộ:
+    - `Sidebar`: Hiển thị phân cấp 18 lĩnh vực chuyên môn kèm huy hiệu số lượng chính xác từng công cụ.
+    - `BrowseByNeeds`: Bố trí lưới 12 lĩnh vực chuyên môn được tra cứu nhiều nhất.
+    - `HeroSection`: Các phím tắt chọn nhanh lĩnh vực theo nhu cầu thực tế.
+    - `types/index.ts` & `mockTools.ts`: Định nghĩa kiểu và siêu dữ liệu 18 lĩnh vực chuẩn mực.
+  - Toàn bộ 5 bài kiểm thử unit tests đạt 100%, TypeScript và Vite build thành công không có lỗi.
 - [Tách riêng biệt phân loại cho SDK, API, Model, Dataset]:
   - Mở rộng hệ thống kiểu dữ liệu `ToolType` thêm các loại hình độc lập: `api`, `sdk`, `model`, `dataset`.
   - Phân loại lại toàn diện 2.194 công cụ vào các loại hình thành phần chuẩn xác:
