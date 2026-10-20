@@ -170,6 +170,22 @@
   - **Kết nối mượt mà vào Kho tài nguyên toàn diện 1.930+ mục** với Left Sidebar, chế độ Lưới/Bảng và Terminal Bridge.
   - **Kiểm thử tự động & Build**: 100% pass qua 5 bài kiểm tra, biên dịch `npm run build` hoàn tất xuất sắc.
 
+- [Nhiệm Vụ 2: Thiết Kế Và Phát Triển Bộ Giao Diện Chi Tiết AI HUB VN Chuẩn Mẫu]:
+  - **Khảo sát và đối chiếu ảnh demo bộ giao diện chi tiết** (`media_1792474069448_65463741.png`):
+    - Màn hình 1: Trang danh mục tài nguyên với Breadcrumb, ô tìm kiếm danh mục, hàng tag lọc nhanh, bộ lọc đa tầng bên trái và danh sách thẻ 2 cột bên phải.
+    - Màn hình 2: Trang chi tiết tài nguyên với Header lớn, badge Phổ biến, Cột thông tin nhà phát triển, nút hành động chính, Giới thiệu, Tính năng nổi bật (Grid icon), Hai khối so sánh Ưu/Nhược điểm, Bảng giá, Lựa chọn thay thế và tab Hướng dẫn 4 bước / Cấu hình JSON.
+    - Màn hình 3: Trang đóng góp tài nguyên với Form 3 nhóm thông tin phân cấp (Cơ bản, Mô tả, Bổ sung), Khung Lưu ý và nút gửi tím toàn chiều rộng.
+  - **Phát triển các trang thành phần mới**:
+    - `src/pages/CategoryPage.tsx`: Trang danh mục Công cụ AI, MCP Servers, Agent Skills.
+    - `src/pages/DetailPage.tsx`: Trang chi tiết tài nguyên chuyên sâu.
+    - `src/pages/ContributePage.tsx`: Trang đóng góp tài nguyên mới.
+    - `src/pages/CollectionsPage.tsx`: Trang bộ sưu tập tài nguyên cá nhân và cộng đồng.
+    - `src/pages/GuidesPage.tsx`: Trang thư viện bài viết hướng dẫn chuyên sâu.
+    - `src/pages/AccountPage.tsx`: Trang hồ sơ tài khoản và tài nguyên đã lưu.
+  - **Hệ thống điều hướng đa trang (Multi-page Hash Router)**:
+    - Đồng bộ mượt mà URL Hash (`#/`, `#/category/:type`, `#/tool/:id`, `#/contribute`, `#/collections`, `#/guides`, `#/account`), hỗ trợ lưu trạng thái vào `localStorage` và nút Back/Forward của trình duyệt.
+  - **Kiểm thử & Đóng gói**: Đạt 5/5 bài kiểm thử unit tests, đóng gói Vite hoàn tất trong 10.92 giây.
+
 ### Quyết định kỹ thuật
 - **Định dạng cấu hình mẫu**: Hỗ trợ xuất cấu hình nhanh dạng JSON cho các nền tảng phổ biến (Claude Desktop, Antigravity, Cursor, Windsurf, v.v.).
 - **Ngôn ngữ nội dung**: Mọi hướng dẫn cài đặt, cấu hình và kịch bản sử dụng mẫu bắt buộc phải có nội dung diễn giải bằng tiếng Việt rõ ràng, kèm lệnh mẫu có thể sao chép bằng một nút bấm.

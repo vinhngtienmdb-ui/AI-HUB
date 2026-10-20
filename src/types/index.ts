@@ -4,12 +4,21 @@ export type Platform = 'claude_desktop' | 'antigravity' | 'cursor' | 'windsurf' 
 
 export type Category = 'coding' | 'database' | 'cloud' | 'automation' | 'content' | 'search' | 'vietnam';
 
+export type PricingModel = 'all' | 'free' | 'freemium' | 'paid' | 'contact';
+
 export interface DemoImageItem {
   url: string;
   caption: string; // Ghi chú rõ ràng về ảnh demo (chức năng, giao diện, kịch bản)
 }
 
 export type DemoImage = string | DemoImageItem;
+
+export interface PricingPlan {
+  plan: string;
+  price: string;
+  actionText?: string;
+  isPopular?: boolean;
+}
 
 export interface ConfigTemplate {
   platform: Platform;
@@ -45,6 +54,17 @@ export interface AITool {
   stars?: number;
   featured?: boolean;
   linkHealth: 'healthy' | 'broken' | 'unchecked';
+
+  // Các trường bổ sung hỗ trợ bộ giao diện chi tiết chuẩn mẫu
+  pricingModel?: PricingModel;
+  pricingText?: string; // Ví dụ: "Miễn phí", "Trả phí từ $20/tháng"
+  pricingDetails?: PricingPlan[];
+  prosVi?: string[]; // Ưu điểm nổi bật
+  consVi?: string[]; // Nhược điểm & giới hạn
+  usageCount?: string; // Lượt sử dụng (ví dụ: "12.5k")
+  reviewCount?: string; // Lượt đánh giá (ví dụ: "12.5k")
+  languages?: string[]; // Ngôn ngữ hỗ trợ (ví dụ: ["Tiếng Việt", "Tiếng Anh"])
+  websiteUrl?: string; // Trang chủ chính thức
 }
 
 export interface CategoryInfo {
@@ -53,3 +73,35 @@ export interface CategoryInfo {
   descriptionVi: string;
   icon: string;
 }
+
+export interface Collection {
+  id: string;
+  name: string;
+  description: string;
+  toolIds: string[];
+  isPublic: boolean;
+  createdAt: string;
+}
+
+export interface GuideArticle {
+  id: string;
+  slug: string;
+  title: string;
+  summary: string;
+  category: string;
+  readTime: string;
+  author: string;
+  updatedAt: string;
+  contentVi: string;
+}
+
+export type PageRoute = 
+  | { name: 'home' }
+  | { name: 'category'; toolType: ToolType | 'all' }
+  | { name: 'detail'; toolId: string }
+  | { name: 'contribute' }
+  | { name: 'collections' }
+  | { name: 'guides' }
+  | { name: 'guide_detail'; guideId: string }
+  | { name: 'account' };
+

@@ -4,6 +4,34 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.0-BoGiaoDienChiTietAIHubVN (Ngày 20-10-2026)
+- **Loại hình**: Thiết kế và phát triển toàn diện Bộ giao diện chi tiết AI HUB VN (Trang Danh mục, Trang Chi tiết, Trang Đóng góp, Trang Bộ sưu tập, Trang Hướng dẫn, Trang Tài khoản) theo đúng ảnh demo chuẩn mực.
+- **Nội dung hoàn thành**:
+  - **4.1. Trang danh mục tài nguyên (`src/pages/CategoryPage.tsx`)**:
+    - Breadcrumb phân cấp (`Trang chủ > Công cụ AI / MCP Servers / Agent Skills`).
+    - Thanh tìm kiếm theo danh mục với các tag lọc nhanh: `Phổ biến`, `Mới nhất`, `Đánh giá cao`, `Miễn phí`, `Trả phí`.
+    - Bố cục 2 cột: Cột trái (Bộ lọc Lĩnh vực, Mô hình giá, Đánh giá sao, Ngôn ngữ) và Cột phải (Danh sách thẻ tài nguyên 2 cột, sắp xếp, phân trang và nút Lưu yêu thích).
+  - **4.2. Trang chi tiết tài nguyên (`src/pages/DetailPage.tsx`)**:
+    - Header lớn: Logo nhận diện, Tên, Badge Phổ biến, Đánh giá ⭐ 4.8 (12.5k đánh giá), 12.5k lượt dùng.
+    - Cột thông tin nhanh: Nhà phát triển, Kho lưu trữ, Ngôn ngữ hỗ trợ, Nền tảng tương thích.
+    - Cụm nút hành động: `Truy cập nguồn chính thức ↗`, `Lưu vào bộ sưu tập`, `▶ Chạy lệnh trên máy`.
+    - Nội dung: Giới thiệu, Tính năng nổi bật (Grid icon), Hai khối so sánh Ưu điểm (xanh lá) & Nhược điểm (đỏ/hồng), Bảng thông tin giá (Pricing Table), Các lựa chọn thay thế cùng lĩnh vực (Alternatives), Kịch bản sử dụng (Prompt) và Cấu hình mẫu JSON.
+  - **4.3. Trang đóng góp tài nguyên (`src/pages/ContributePage.tsx`)**:
+    - Biểu mẫu 3 phần: Thông tin cơ bản, Mô tả (ngắn và chi tiết), Thông tin bổ sung (tác giả, ngôn ngữ, nền tảng).
+    - Khung Lưu ý kiểm duyệt và nút gửi màu tím nổi bật.
+  - **4.4. Trang bộ sưu tập tài nguyên (`src/pages/CollectionsPage.tsx`)**:
+    - Quản lý danh sách bộ sưu tập (Top công cụ lập trình, Hệ sinh thái AI Việt Nam, Tự động hóa).
+    - Tạo bộ sưu tập mới (form tạo nhanh), xem danh sách tài nguyên trong bộ sưu tập.
+  - **4.5. Trang thư viện hướng dẫn (`src/pages/GuidesPage.tsx`)**:
+    - 4 bài viết hướng dẫn chuyên sâu: Cách chọn công cụ AI, Cài đặt MCP Servers trên Claude Desktop & Cursor, Tối ưu Agent Skills, An toàn bảo mật thông tin khi dùng AI.
+    - Cửa sổ đọc chi tiết bài viết với định dạng markdown rõ ràng.
+  - **4.6. Trang hồ sơ tài khoản & lưu yêu thích (`src/pages/AccountPage.tsx`)**:
+    - Hồ sơ cá nhân, Tab Tài nguyên đã lưu (lưu trữ đồng bộ qua `localStorage`), Tab Bộ sưu tập người dùng và nút Đăng xuất.
+  - **Hệ thống điều hướng đa trang (Multi-page Hash Router)**:
+    - Chuyển trang liền mạch và đồng bộ URL Hash (`#/`, `#/category/agent`, `#/category/mcp`, `#/category/skill`, `#/tool/:id`, `#/contribute`, `#/collections`, `#/guides`, `#/account`).
+    - Hỗ trợ nút Back/Forward của trình duyệt mà không tải lại trang.
+  - **Kiểm thử tự động & Đóng gói**: 100% pass qua 5 bài test tự động, đóng gói Vite hoàn tất trong 10.92 giây.
+
 ### Phiên Bản 1.9.0-ThietKeTrangChuAIHubVNTheoChuanMau (Ngày 20-10-2026)
 - **Loại hình**: Thiết kế và phát triển lại toàn diện giao diện trang chủ AI HUB VN theo phong cách SaaS hiện đại, tinh tế và chuyên nghiệp.
 - **Nội dung hoàn thành**:
