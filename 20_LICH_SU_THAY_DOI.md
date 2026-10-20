@@ -4,6 +4,32 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.2-MoRongTaiNguyenThiTruongVietNam (Ngày 20-10-2026)
+- **Loại hình**: Tiếp tục mở rộng và thu thập dữ liệu chuyên sâu các kho lưu trữ mã nguồn (Repositories), Kỹ năng (Skills), Máy chủ MCP và Giao diện lập trình ứng dụng (APIs) phù hợp với thị trường Việt Nam.
+- **Nội dung hoàn thành**:
+  - Bổ sung 13 công cụ và tài nguyên AI/NLP/FinTech/Hành chính hàng đầu tại Việt Nam:
+    1. **BARTpho (`VinAIResearch/BARTpho`)**: Mô hình Transformer chuỗi-sang-chuỗi (seq2seq) quy mô lớn đầu tiên cho tiếng Việt (BART Large, phiên bản âm tiết và từ ngữ) phục vụ tóm tắt tin tức, dịch máy và chuẩn hóa văn bản.
+    2. **PhoWhisper (`VinAIResearch/PhoWhisper`)**: Hệ thống nhận dạng giọng nói tự động ASR tiếng Việt độ chính xác cao tinh chỉnh từ Whisper trên 844 giờ dữ liệu 3 miền Bắc - Trung - Nam.
+    3. **pyvi (`trungtv/pyvi`)**: Thư viện tách từ (Word Segmentation) và gán nhãn từ loại (POS Tagging) tiếng Việt bằng mô hình Conditional Random Field (CRF) siêu nhẹ của Trần Việt Trung.
+    4. **ViT5 (`vietai/ViT5`)**: Mô hình Text-to-Text Transformer đa tác vụ tiếng Việt của VietAI (T5 base/large) phục vụ sinh tóm tắt văn bản, dịch máy và đọc hiểu hỏi đáp.
+    5. **VnCoreNLP (`vncorenlp/VnCoreNLP`)**: Bộ công cụ xử lý ngôn ngữ tự nhiên tiếng Việt chuyên sâu 4 tầng (Tách từ, Gán nhãn từ loại, Nhận dạng thực thể NER, Phân tích cú pháp phụ thuộc) công bố tại NAACL 2018.
+    6. **Vistral (`Viet-Mistral/Vistral-7B-Chat`)**: Mô hình ngôn ngữ lớn nguồn mở 7B chuyên biệt cho tiếng Việt phát triển từ kiến trúc Mistral 7B, am hiểu sâu sắc văn hóa, đời sống và pháp luật Việt Nam.
+    7. **vnstock (`thinh-vu/vnstock`)**: Hệ sinh thái dữ liệu thị trường tài chính chứng khoán Việt Nam của Thịnh Vũ, trích xuất giá realtime, báo cáo tài chính, chỉ số sàn HOSE, HNX, UPCoM.
+    8. **DiaGioiHanhChinhVN (`kenzouno1/DiaGioiHanhChinhVN`)**: Cơ sở dữ liệu và JSON API địa giới hành chính 63 tỉnh/thành phố, toàn bộ quận/huyện và xã/phường chuẩn Tổng cục Thống kê.
+    9. **SePay Webhook MCP (`sepayvn/laravel-sepay`)**: Máy chủ MCP tiếp nhận Webhook ngân hàng tự động, khớp lệnh thanh toán VietQR trong 2 giây từ các ngân hàng lớn tại Việt Nam.
+    10. **pyvnlunar (`Min9802/pyvnlunar`)**: Thuật toán thiên văn chuyển đổi Âm lịch Việt Nam chuẩn xác của Tiến sĩ Hồ Ngọc Đức, tra cứu can chi, ngày hoàng đạo và 24 tiết khí.
+    11. **Vietnamese Tone Normalizer & Spell Checker (`vunb/vietnamese-tone-normalizer`)**: Kỹ năng tác tử chuẩn hóa vị trí dấu thanh theo chuẩn mới của Bộ Giáo dục và tự động phát hiện, sửa lỗi chính tả tiếng Việt.
+    12. **BKAI Foundation Models (`bkai-foundation-models`)**: Tập hợp các mô hình nền tảng AI tiếng Việt chuyên sâu (hỏi đáp đọc hiểu QA, Bi-Encoder) của Phòng Thí Nghiệm Trí Tuệ Nhân Tạo Đại Học Bách Khoa Hà Nội.
+    13. **VIVOS Speech Corpus (`aivivn/vivos`)**: Bộ ngữ liệu và bản mẫu huấn luyện nhận dạng giọng nói tiếng Việt nguồn mở 15 giờ ghi âm chuẩn của nhóm AIVIVN.
+  - **Đảm bảo tính toàn vẹn dữ liệu**:
+    - Nâng tổng số lượng công cụ trong kho dữ liệu lên **1.943 mục**.
+    - Nâng tổng số mẫu cấu hình JSON thực thi lên **2.938 mẫu**.
+    - 100% tài nguyên có đầy đủ 4 khối thông tin bắt buộc: Nguồn dẫn chính thức, công dụng/mục đích, hướng dẫn cài đặt từng bước và hướng dẫn sử dụng có mã nguồn minh họa bằng tiếng Việt.
+    - Tuân thủ nguyên tắc hình ảnh: Không có ảnh demo từ repo thì để trống (`demoImages: []`, `imageUrl: ""`), giao diện tự động ẩn khối ảnh để hiển thị đẹp mắt, không sinh ảnh giả.
+  - **Kiểm thử tự động & Đóng gói**:
+    - Vượt qua 100% 5/5 bài kiểm thử unit tests tự động.
+    - Đóng gói Vite (`npm run build`) hoàn tất xuất sắc trong 7.14 giây.
+
 ### Phiên Bản 2.0.1-ToiUuHienThiAnhDemoVaLoaiBoKhungAnhTrong (Ngày 20-10-2026)
 - **Loại hình**: Tối ưu hóa hiển thị giao diện hình ảnh theo yêu cầu: Loại bỏ hoàn toàn khối hiển thị ảnh khi công cụ không có ảnh demo thật, tuyệt đối không hiển thị khung ảnh trống hoặc dải khoảng trắng banner.
 - **Nội dung hoàn thành**:

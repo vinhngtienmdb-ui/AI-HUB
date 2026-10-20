@@ -197,6 +197,18 @@
     - Kiểm tra 5/5 bài kiểm thử tự động đạt 100%.
     - Đóng gói bản phát hành `npm run build` hoàn tất xuất sắc trong 10.84 giây.
 
+- [Mở Rộng Thu Thập Tài Nguyên Repo, Skill, MCP, API Cho Thị Trường Việt Nam]:
+  - **Mục tiêu**: Thu thập các kho lưu trữ mã nguồn mở, kỹ năng tác tử, máy chủ MCP và giao diện lập trình ứng dụng hàng đầu tại Việt Nam, phục vụ người dùng và doanh nghiệp Việt.
+  - **Dữ liệu thu thập & tích hợp**:
+    - Bổ sung 13 công cụ nguồn mở trọng yếu: BARTpho (VinAI), PhoWhisper (VinAI), pyvi (Trần Việt Trung), ViT5 (VietAI), VnCoreNLP (HUST/VnCoreNLP), Vistral 7B (Viet-Mistral/AIVM), vnstock (Thịnh Vũ), DiaGioiHanhChinhVN (Kenzouno1), SePay Webhook MCP (SePay Vietnam), pyvnlunar (Hồ Ngọc Đức & Min9802), Vietnamese Tone Normalizer & Spell Checker (Vũ Nguyên Bình), BKAI Foundation Models (Bách Khoa AI Lab), VIVOS Speech Corpus (AIVIVN).
+    - Tăng quy mô toàn hệ thống lên **1.943 công cụ** và **2.938 mẫu cấu hình JSON thực thi**.
+    - Đáp ứng 100% 4 khối thông tin bắt buộc: Nguồn dẫn chính thức, mục đích, hướng dẫn cài đặt từng bước và hướng dẫn sử dụng tiếng Việt kèm mã nguồn mẫu.
+    - Áp dụng triệt để nguyên tắc không tạo ảnh demo giả: Các repo không có ảnh demo đều để mảng rỗng, giao diện tự động ẩn khối ảnh để hiển thị đồng bộ và tinh gọn.
+  - **Kiểm thử & Đóng gói**:
+    - Kiểm tra `npx tsc --noEmit`: Đạt 0 lỗi.
+    - Chạy kiểm thử tự động 5/5 bài kiểm tra: Toàn bộ 1.943 công cụ và 2.938 JSON cấu hình đều đạt chuẩn 100%.
+    - Đóng gói Vite hoàn tất trong 7.14 giây.
+
 ### Quyết định kỹ thuật
 - **Định dạng cấu hình mẫu**: Hỗ trợ xuất cấu hình nhanh dạng JSON cho các nền tảng phổ biến (Claude Desktop, Antigravity, Cursor, Windsurf, v.v.).
 - **Ngôn ngữ nội dung**: Mọi hướng dẫn cài đặt, cấu hình và kịch bản sử dụng mẫu bắt buộc phải có nội dung diễn giải bằng tiếng Việt rõ ràng, kèm lệnh mẫu có thể sao chép bằng một nút bấm.
