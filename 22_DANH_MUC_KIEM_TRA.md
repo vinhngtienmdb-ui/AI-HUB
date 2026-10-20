@@ -48,8 +48,8 @@
 - [x] Lập trình phân hệ Giao diện danh mục, Tìm kiếm tức thời và Phân trang (24 mục/trang)
 - [x] Lập trình phân hệ Chi tiết công cụ và Sao chép cấu hình một chạm
 - [x] Lập trình phân hệ Quản trị nội dung và Đóng góp công cụ
-- [x] Tích hợp toàn bộ 1.984 công cụ từ AI Templates (Phan Đông Giang), MCP Market, các kho lưu trữ hot thế giới, các nền tảng AI Workflow và hệ sinh thái API Việt Nam (đặc biệt là 10 thương hiệu lớn: Haravan, Tiki, FPT.AI, MISA, Viettel, VNPT, Be, Xanh SM, Vietcombank, Petrolimex)
-- [x] Chuẩn hóa 2.979 mẫu cấu hình JSON cho Claude Desktop, Antigravity và Cursor
+- [x] Tích hợp toàn bộ 1.994 công cụ từ AI Templates (Phan Đông Giang), MCP Market, các kho lưu trữ hot thế giới, các nền tảng AI Workflow và hệ sinh thái API Việt Nam (đặc biệt là các giải pháp thương mại điện tử, tổng đài ảo, SMS OTP, quản trị doanh nghiệp: Base.vn, Stringee, eSMS, TikTok Shop, Shopee, Lazada, Vbee, SmartPay, SpeedSMS, eTax Mobile)
+- [x] Chuẩn hóa 3.009 mẫu cấu hình JSON cho Claude Desktop, Antigravity và Cursor
 - [x] Tách biệt rạch ròi 8 nhóm thành phần: Skills (897), Agents (432), Commands (290), MCPs (154), Workflows (6), Hooks (62), Settings (72), Templates (17)
 - [x] Xây dựng thành phần Left Sidebar ghim cố định bên trái (`src/components/Sidebar.tsx`), hỗ trợ thu gọn/mở rộng linh hoạt và Drawer trượt mở cho thiết bị di động
 - [x] Mở rộng khung làm việc (Workspace Expansion): Chế độ toàn màn hình 100% Canvas, chuyển đổi linh hoạt giữa Chế độ Lưới (Grid) và Chế độ Bảng danh sách chi tiết (Table View)
@@ -65,7 +65,7 @@
 - [x] Lập kế hoạch kiểm thử (`17_KE_HOACH_KIEM_THU.md`)
 - [x] Xây dựng kịch bản kiểm thử (`18_KICH_BAN_KIEM_THU.md`)
 - [x] Thiết lập chính sách an toàn bảo mật (`19_AN_TOAN_BAO_MAT.md`)
-- [x] Thực hiện kiểm thử tự động quy tắc nghiệp vụ (`tests/business-rules.test.js`) đạt 100% trên toàn bộ 1.984 công cụ và 2.979 cấu hình JSON
+- [x] Thực hiện kiểm thử tự động quy tắc nghiệp vụ (`tests/business-rules.test.js`) đạt 100% trên toàn bộ 1.994 công cụ và 3.009 cấu hình JSON
 - [x] Thực hiện kiểm thử tự động chính sách an toàn lệnh (`tests/command-bridge.test.js`) đạt 100% (chấp nhận lệnh hợp lệ, chặn lệnh nguy hiểm)
 - [x] Kiểm thử đóng gói bản phát hành (Production Build) đạt 100%
 

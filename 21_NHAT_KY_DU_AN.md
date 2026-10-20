@@ -8,6 +8,20 @@
 - Báo cáo ý tưởng thiết kế ban đầu và xin ý kiến xác nhận của người dùng trước khi chuyển tiếp sang Giai đoạn 02.
 
 ### Các công việc đã thực hiện
+- [Bổ sung đợt 6 - Thương mại điện tử, Tổng đài ảo & Viễn thông Việt Nam]:
+  - Tích hợp 10 giải pháp công nghệ trọng yếu:
+    1. Base.vn Open API Connector (`https://open.base.vn/`): Quản trị doanh nghiệp, đề xuất Base Request, giao việc Base Wework, quản lý nhân sự Base HRM.
+    2. Stringee Voice & Contact Center SDK (`https://developer.stringee.com/`): Tổng đài ảo VoIP và Video Call thông minh cho doanh nghiệp.
+    3. eSMS.vn Brandname & OTP API (`https://esms.vn/tai-lieu-api`): Gửi SMS Brandname và xác thực mã OTP qua 5 nhà mạng và Zalo ZNS.
+    4. TikTok Shop Partner API (`https://partner.tiktokshop.com/`): Tự động hóa đồng bộ đơn hàng livestream và kho hàng TikTok Shop.
+    5. Shopee Open Platform SDK (`https://open.shopee.com/`): Quản lý gian hàng Shopee v2, in mã vận đơn và đối soát doanh thu.
+    6. Lazada Open Platform SDK (`https://open.lazada.com/`): Kết nối gian hàng trực tuyến Lazada Seller Center và đồng bộ tồn kho.
+    7. Vbee AIVoice Studio API (`https://vbee.vn/`): Giọng nói trí tuệ nhân tạo tiếng Việt 3 miền Bắc - Trung - Nam cho tổng đài tự động.
+    8. SmartPay Merchant API (`https://smartpayvn.com/`): Thanh toán số mã QR SmartPay và quản lý điểm bán lẻ POS.
+    9. SpeedSMS API Client (`https://github.com/speedsms/speedsms-python`): SMS Gateway và cuộc gọi tự động Voice OTP dự phòng.
+    10. eTax Mobile & Thuế Điện Tử Tra Cứu MCP (`https://thuedientu.gdt.gov.vn/`): Tra cứu mã số thuế cá nhân theo CCCD và nộp thuế điện tử.
+  - Quy mô hệ sinh thái: Đạt mốc **1.994 công cụ** và **3.009 mẫu cấu hình JSON**.
+  - Kiểm thử chất lượng: 5/5 bài kiểm thử unit tests đạt 100%, đóng gói Vite thành công trong 12.16 giây.
 - [Bổ sung đợt 5 - Thương hiệu lớn Việt Nam]:
   - Tiếp tục mở rộng đợt 5 với 10 giải pháp công nghệ, API và SDK từ các tập đoàn, doanh nghiệp và thương hiệu hàng đầu Việt Nam:
     1. Haravan App SDK (`@haravan/app-sdk`): Kết nối bán hàng đa kênh Omnichannel, quản lý kho hàng và đơn hàng sàn thương mại điện tử.
