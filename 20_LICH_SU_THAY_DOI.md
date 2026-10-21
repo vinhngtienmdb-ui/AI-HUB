@@ -4,6 +4,25 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.34-CaiDatMayChuMcpAiHubVnVaoClaudeCodeVaAntigravity (Ngày 21-10-2026)
+- **Loại hình**: Cài đặt máy chủ MCP AI HUB VN Smart Gateway (`aihub-smart-gateway`) vào hai nền tảng trợ lý lập trình Claude Code và Google Antigravity, đồng thời hỗ trợ đồng bộ cho ứng dụng Claude Desktop.
+- **Nội dung hoàn thành**:
+  - **Cấu hình máy chủ MCP cho Claude Code và Claude Desktop**:
+    - **Claude Code CLI (`C:\Users\vinhn\.claude.json`)**: Bổ sung cấu hình máy chủ MCP `aihub-smart-gateway` vận hành qua cơ chế Stdio Transport (`node mcp-gateway/index.js`), kết nối trực tiếp với 2.218 tài nguyên AI HUB VN.
+    - **Claude Desktop App (`C:\Users\vinhn\AppData\Roaming\Claude\claude_desktop_config.json`)**: Thiết lập khối cấu hình `mcpServers` chuẩn Anthropic để nạp máy chủ MCP AI HUB VN khi khởi động ứng dụng Claude trên máy tính.
+  - **Cấu hình máy chủ MCP và đặc tả công cụ cho Google Antigravity**:
+    - **Cấu hình toàn cục Antigravity (`C:\Users\vinhn\.gemini\config\mcp_config.json`)**: Đăng ký máy chủ `aihub-smart-gateway` với môi trường `production`.
+    - **Khởi tạo thư mục định nghĩa công cụ (`C:\Users\vinhn\.gemini\antigravity\mcp\aihub-smart-gateway\`)**: Tạo đầy đủ 4 tệp định dạng JSON Schema chuẩn cho cơ chế Lazy-loading MCP Tools:
+      - `aihub_smart_dispatch.json`: Tiếp nhận yêu cầu công việc tự nhiên từ người dùng, tự động phân tích ý định và định tuyến đến công cụ phù hợp.
+      - `aihub_resolve_capability.json`: Tra cứu năng lực hỗ trợ theo 39 lĩnh vực chuyên môn.
+      - `aihub_explain_routing.json`: Minh bạch hóa lý do và thuật toán định tuyến khi chọn công cụ.
+      - `aihub_get_gateway_status.json`: Báo cáo trạng thái Gateway, số lượng tài nguyên và mức tiết kiệm token.
+      - `instructions.md`: Hướng dẫn chuyên môn cho các AI Agent khi tương tác với AI HUB VN Gateway.
+  - **Kiểm thử tự động & Nghiệm thu**:
+    - Kiểm tra tính hợp lệ của toàn bộ các tệp cấu hình JSON (`.claude.json`, `claude_desktop_config.json`, `mcp_config.json`).
+    - Kiểm tra chạy thử nghiệm Stdio Gateway với lệnh `--test`.
+    - Toàn bộ **32/32 bài test** tự động của dự án đạt **100% tỷ lệ pass**.
+
 ### Phiên Bản 2.0.33-CaiDatVaTichHopFindSkillsVaoHeThongAiHub (Ngày 21-10-2026)
 - **Loại hình**: Cài đặt meta-skill Find Skills (Vercel Labs) vào hai nền tảng tác tử Claude Code và Google Antigravity, đồng thời chuẩn hóa và tích hợp vào kho dữ liệu hệ thống AI HUB VN (nâng tổng quy mô kho lên 2.218 tài nguyên).
 - **Nội dung hoàn thành**:

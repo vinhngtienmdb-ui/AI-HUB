@@ -143,14 +143,55 @@ Khởi động lại Claude Desktop, biểu tượng công cụ (hình chiếc b
 ---
 
 ### 3. Tích Hợp Vào Claude Code (CLI)
-Mở cửa sổ dòng lệnh trong thư mục dự án và thực hiện lệnh:
+Cấu hình máy chủ MCP `aihub-smart-gateway` vào tệp cấu hình toàn cục `~/.claude.json` (tại `C:\Users\vinhn\.claude.json`) hoặc chạy lệnh qua CLI:
 ```bash
-claude mcp add aihub-gateway node ./mcp-gateway/index.js
+claude mcp add aihub-smart-gateway node C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/mcp-gateway/index.js
+```
+Hoặc cấu hình trực tiếp vào mục `"mcpServers"` trong tệp `~/.claude.json`:
+```json
+"aihub-smart-gateway": {
+  "command": "node",
+  "args": [
+    "C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/mcp-gateway/index.js"
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
 ```
 
 ---
 
-### 4. Tích Hợp Gọi REST API Qua Mã Nguồn Ứng Dụng
+### 4. Tích Hợp Vào Google Antigravity
+Google Antigravity hỗ trợ máy chủ MCP toàn cục qua tệp `~/.gemini/config/mcp_config.json` và cơ chế Lazy Tools trong thư mục `~/.gemini/antigravity/mcp/`:
+
+1. **Đăng ký máy chủ trong `mcp_config.json`**:
+```json
+{
+  "mcpServers": {
+    "aihub-smart-gateway": {
+      "command": "node",
+      "args": [
+        "C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/mcp-gateway/index.js"
+      ],
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
+```
+
+2. **Định nghĩa lược đồ công cụ (JSON Schema)** tại thư mục `C:\Users\vinhn\.gemini\antigravity\mcp\aihub-smart-gateway\`:
+- `aihub_smart_dispatch.json`: Tiếp nhận và điều phối công việc tự động.
+- `aihub_resolve_capability.json`: Tra cứu năng lực theo 39 lĩnh vực.
+- `aihub_explain_routing.json`: Minh bạch hóa lý do thuật toán định tuyến.
+- `aihub_get_gateway_status.json`: Trạng thái máy chủ và thống kê tiết kiệm token.
+- `instructions.md`: Cẩm nang chỉ dẫn AI Agent tương tác tối ưu.
+
+---
+
+### 5. Tích Hợp Gọi REST API Qua Mã Nguồn Ứng Dụng
 
 #### Ví dụ bằng cURL (Dòng lệnh):
 ```bash

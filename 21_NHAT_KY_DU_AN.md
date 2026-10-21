@@ -5,8 +5,15 @@
 - Tìm kiếm, xác định và cài đặt meta-skill Find Skills (Vercel Labs) vào hệ thống Claude Code và Antigravity.
 - Tích hợp tài nguyên kỹ năng vào kho dữ liệu AI HUB VN, nâng quy mô kho lên 2.218 tài nguyên.
 - Cập nhật Smart MCP Router hỗ trợ nhận diện và điều phối bài toán tìm kiếm kỹ năng tác tử.
+- Cài đặt máy chủ MCP AI HUB VN (Smart Gateway & Router) cho Claude Code và Antigravity.
 
 ### Các công việc đã thực hiện
+- [Cài đặt Máy chủ MCP AI HUB VN cho Claude Code và Google Antigravity]:
+  - **Cấu hình cho Claude Code**: Bổ sung `aihub-smart-gateway` vào `C:\Users\vinhn\.claude.json`.
+  - **Cấu hình cho Claude Desktop**: Bổ sung `aihub-smart-gateway` vào `C:\Users\vinhn\AppData\Roaming\Claude\claude_desktop_config.json`.
+  - **Cấu hình cho Google Antigravity**: Đăng ký `aihub-smart-gateway` vào `C:\Users\vinhn\.gemini\config\mcp_config.json`.
+  - **Tạo cấu trúc schema cho Antigravity**: Khởi tạo thư mục `C:\Users\vinhn\.gemini\antigravity\mcp\aihub-smart-gateway\` chứa 4 công cụ (`aihub_smart_dispatch.json`, `aihub_resolve_capability.json`, `aihub_explain_routing.json`, `aihub_get_gateway_status.json`) và cẩm nang `instructions.md`.
+  - **Kiểm thử vận hành**: Kiểm tra cấu hình JSON hợp lệ 100%, chạy thử Stdio Gateway với lệnh `--test`, kiểm thử tự động toàn diện đạt 32/32 tests pass.
 - [Cài đặt và Tích hợp Kỹ năng Find Skills vào Claude Code, Antigravity và Hệ thống AI HUB VN]:
   - **Cài đặt cho Claude Code**: Khởi tạo tệp `C:\Users\vinhn\.claude\skills\find-skills\SKILL.md`.
   - **Cài đặt cho Google Antigravity**: Khởi tạo tệp `C:\Users\vinhn\.gemini\antigravity\skills\find-skills\SKILL.md`.

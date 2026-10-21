@@ -7,6 +7,11 @@
   "bin": {
     "aihub-mcp": "./index.js"
   },
+  "scripts": {
+    "test": "node index.js --test",
+    "start": "node index.js",
+    "serve": "node index.js --serve"
+  },
   "keywords": [
     "mcp",
     "model-context-protocol",
