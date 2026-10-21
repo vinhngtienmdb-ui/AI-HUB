@@ -25,6 +25,16 @@ export function getAllTools() {
 // Bảng ánh xạ ý định chuyên biệt (Core Intent Profiles)
 const CORE_INTENTS = [
   {
+    intentId: 'agent_workforce_paperclip',
+    targetToolId: 'paperclipai-paperclip',
+    keywords: [
+      'paperclip', 'quản lý agent', 'quản trị agent', 'điều phối agent', 'agent workforce', 
+      'multi-agent management', 'control plane', 'org chart agent', 'quản lý tác tử', 
+      'phê duyệt agent', 'human in the loop', 'quản lý đội ngũ agent'
+    ],
+    priority: 13
+  },
+  {
     intentId: 'ai_job_search_framework',
     targetToolId: 'mads-lorentzen-ai-job-search',
     keywords: [

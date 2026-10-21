@@ -46,7 +46,19 @@ export function routeTaskFrontend(query: string): RoutingFrontendResult {
     };
   }
 
-  // 0.1. Ý định Tìm việc & Tự động hóa ứng tuyển (AI Job Search)
+  // 0.1. Ý định Quản trị & Điều phối lực lượng tác tử (Paperclip Control Plane)
+  if (normalized.includes('paperclip') || normalized.includes('quản lý agent') || normalized.includes('quản trị agent') || normalized.includes('điều phối agent') || normalized.includes('control plane') || normalized.includes('agent workforce')) {
+    const paperclipTool = allTools.find(t => t.id === 'paperclipai-paperclip') || allTools[0];
+    return {
+      strategy: 'SPECIALIZED_INTENT_RULE',
+      matchedTool: paperclipTool,
+      confidence: 0.98,
+      intentId: 'agent_workforce_paperclip',
+      reasoningVi: 'Đã nhận diện ý định quản trị tập trung và điều phối đội ngũ tác tử AI với nền tảng Paperclip Control Plane.'
+    };
+  }
+
+  // 0.2. Ý định Tìm việc & Tự động hóa ứng tuyển (AI Job Search)
   if (normalized.includes('job search') || normalized.includes('tìm việc') || normalized.includes('săn việc') || normalized.includes('xin việc') || normalized.includes('viết cv') || normalized.includes('ats resume') || normalized.includes('cover letter')) {
     const jobTool = allTools.find(t => t.id === 'mads-lorentzen-ai-job-search') || allTools[0];
     return {

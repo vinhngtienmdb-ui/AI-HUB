@@ -53,6 +53,13 @@ test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ T�
   assert.ok(resJob.confidence >= 0.9);
 });
 
+test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ Quản trị & Điều phối lực lượng Agent (Paperclip)', () => {
+  const resPaperclip = routeTask('Quản lý và điều phối biệt đội tác tử Claude Code theo sơ đồ tổ chức phòng ban với Paperclip');
+  assert.equal(resPaperclip.success, true);
+  assert.equal(resPaperclip.matchedTool.id, 'paperclipai-paperclip');
+  assert.ok(resPaperclip.confidence >= 0.9);
+});
+
 test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ Cơ sở dữ liệu (SQLite & Postgres)', () => {
   const resSqlite = routeTask('Truy vấn tệp cơ sở dữ liệu SQLite cục bộ dev.db bằng ngôn ngữ tự nhiên');
   assert.equal(resSqlite.success, true);

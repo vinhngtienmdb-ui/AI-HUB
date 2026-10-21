@@ -4,6 +4,20 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.36-TichHopPaperclipControlPlaneVaoHeThongAiHub (Ngày 21-10-2026)
+- **Loại hình**: Chuẩn hóa và tích hợp nền tảng mã nguồn mở quản trị và điều phối lực lượng tác tử Paperclip (`paperclipai/paperclip`) vào kho dữ liệu AI HUB VN, nâng quy mô kho lên 2.220 tài nguyên, đồng thời cập nhật bộ định tuyến Smart MCP Gateway.
+- **Nội dung hoàn thành**:
+  - **Tích hợp tài nguyên vào kho AI HUB VN (`paperclipai-paperclip`)**:
+    - Chuẩn hóa đầy đủ 4 khối thông tin bắt buộc theo quy tắc QT-01, QT-04 và quy trình VibeCode bằng tiếng Việt: Nguồn dẫn chính thức (`https://github.com/paperclipai/paperclip`), công dụng nghiệp vụ (mặt bằng điều hành tập trung Control Plane quản lý lực lượng tác tử AI theo cấu trúc phòng ban doanh nghiệp thực thụ), hướng dẫn cài đặt khởi chạy nhanh qua lệnh `npx paperclipai onboard --yes`, hướng dẫn vận hành quy trình điều phối Org Chart, Ticket Kanban, Human-in-the-Loop Governance và giám sát ngân sách token.
+    - Thiết lập phân loại danh mục đa tầng: `rpa_workflow_automation` (Tự động hóa quy trình & RPA), `devops_cicd` (DevOps & Tự động hóa CI/CD), `erp_enterprise` (Hệ thống quản trị doanh nghiệp), `backend_api` (Backend & Kiến trúc API), `office_digital_docs` (Văn phòng số & Xử lý tài liệu).
+    - Cung cấp cấu hình mẫu JSON chuẩn xác cho Claude Code, Google Antigravity và Cursor IDE.
+  - **Mở rộng Smart MCP Router & Client Adapter**:
+    - Bổ sung quy tắc ý định chuyên biệt `agent_workforce_paperclip` vào `mcp-gateway/smart-router.js` và `src/lib/mcpClient.ts`, nhận diện các từ khóa `paperclip`, `quản lý agent`, `quản trị agent`, `điều phối agent`, `agent workforce`, `control plane`, `org chart agent`, `human in the loop` để tự động điều phối trực tiếp đến `paperclipai-paperclip`.
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Bổ sung ca kiểm thử định tuyến mới vào `tests/mcp-gateway.test.js`.
+    - Chạy toàn bộ **34/34 bài test** trong 7 bộ kiểm thử tự động: Đạt **100% tỷ lệ pass**.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 28.98 giây.
+
 ### Phiên Bản 2.0.35-TichHopAiJobSearchVaoHeThongAiHub (Ngày 21-10-2026)
 - **Loại hình**: Chuẩn hóa và tích hợp bộ công cụ tự động hóa quy trình tìm việc, viết CV may đo và luyện phỏng vấn AI Job Search (`MadsLorentzen/ai-job-search`) vào kho dữ liệu AI HUB VN, nâng quy mô kho lên 2.219 tài nguyên, đồng thời cập nhật bộ định tuyến Smart MCP Gateway.
 - **Nội dung hoàn thành**:

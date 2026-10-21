@@ -7,8 +7,20 @@
 - Cập nhật Smart MCP Router hỗ trợ nhận diện và điều phối bài toán tìm kiếm kỹ năng tác tử.
 - Cài đặt máy chủ MCP AI HUB VN (Smart Gateway & Router) cho Claude Code và Antigravity.
 - Tích hợp bộ công cụ tự động hóa quy trình tìm việc AI Job Search (Mads Lorentzen) vào kho dữ liệu AI HUB VN, nâng quy mô lên 2.219 tài nguyên.
+- Tích hợp nền tảng mã nguồn mở quản trị và điều phối lực lượng tác tử Paperclip (`paperclipai/paperclip`) vào kho dữ liệu AI HUB VN, nâng quy mô lên 2.220 tài nguyên.
 
 ### Các công việc đã thực hiện
+- [Tích hợp Nền Tảng Quản Trị & Điều Phối Tác Tử Paperclip vào Hệ Thống AI HUB VN]:
+  - **Bổ sung tài nguyên vào kho dữ liệu (`paperclipai-paperclip`)**:
+    - Nâng quy mô kho dữ liệu lên **2.220 tài nguyên**.
+    - Đầy đủ 4 khối thông tin bắt buộc tiếng Việt theo quy tắc QT-01, QT-04: Nguồn GitHub chính thức (`https://github.com/paperclipai/paperclip`), công dụng nghiệp vụ (mặt bằng điều hành trung tâm Control Plane quản trị lực lượng tác tử AI theo cấu trúc phòng ban doanh nghiệp thực thụ), hướng dẫn cài đặt khởi chạy nhanh qua lệnh `npx paperclipai onboard --yes`, hướng dẫn sử dụng Org Chart, Ticket Kanban, Human-in-the-Loop Governance và giám sát ngân sách token.
+    - Cung cấp cấu hình mẫu JSON chuẩn xác cho Claude Code, Google Antigravity và Cursor IDE.
+  - **Mở rộng Smart MCP Router & Client Adapter**:
+    - Bổ sung cấu hình ý định `agent_workforce_paperclip` vào `mcp-gateway/smart-router.js` và `src/lib/mcpClient.ts`, tự động nhận diện các yêu cầu quản trị tác tử, điều phối lực lượng agent, sơ đồ tổ chức phòng ban để điều phối tới công cụ.
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Bổ sung bài test định tuyến vào `tests/mcp-gateway.test.js`.
+    - Toàn bộ **34/34 bài test** trong 7 bộ kiểm thử tự động đạt 100% tỷ lệ pass.
+    - Đóng gói hoàn chỉnh bằng Vite (`npm run build`) đạt chuẩn trong 28.98 giây.
 - [Tích hợp Bộ Công Cụ AI Job Search (Mads Lorentzen) vào Hệ Thống AI HUB VN]:
   - **Bổ sung tài nguyên vào kho dữ liệu (`mads-lorentzen-ai-job-search`)**:
     - Nâng quy mô kho dữ liệu lên **2.219 tài nguyên**.

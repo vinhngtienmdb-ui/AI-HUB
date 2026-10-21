@@ -137585,5 +137585,98 @@
       "Tiếng Anh"
     ],
     "websiteUrl": "https://github.com/MadsLorentzen/ai-job-search"
+  },
+  {
+    "id": "paperclipai-paperclip",
+    "slug": "paperclipai-paperclip",
+    "name": "Paperclip — Nền Tảng Mã Nguồn Mở Quản Trị & Điều Phối Lực Lượng Tác Tử Trí Tuệ Nhân Tạo (AI Agent Workforce Control Plane)",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "rpa_workflow_automation",
+    "categoryNameVi": "Tự động hóa quy trình & RPA (Automation)",
+    "categories": [
+      "rpa_workflow_automation",
+      "devops_cicd",
+      "erp_enterprise",
+      "backend_api",
+      "office_digital_docs"
+    ],
+    "categoryNamesVi": [
+      "Tự động hóa quy trình & RPA (Automation)",
+      "DevOps & Tự động hóa CI/CD",
+      "Hệ thống quản trị doanh nghiệp (ERP)",
+      "Backend & Kiến trúc API",
+      "Văn phòng số & Xử lý tài liệu (Docs & PDF)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "antigravity",
+      "cursor",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/paperclipai/paperclip",
+    "websiteUrl": "https://paperclip.inc",
+    "authorName": "Paperclip AI",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Nền tảng mã nguồn mở quản trị và điều phối lực lượng tác tử trí tuệ nhân tạo (AI Agent Workforce) tập trung, biến hàng chục tác tử AI độc lập (Claude Code, Cursor, Codex, Gemini CLI) thành một tổ chức làm việc phối hợp nhịp nhàng theo cấu trúc phòng ban doanh nghiệp thực thụ. Hệ thống cung cấp bảng điều khiển trung tâm (Control Plane), sơ đồ tổ chức phân cấp (Org Chart), bảng giao việc theo Ticket/Kanban, cơ chế con người phê duyệt chốt chặn (Human-in-the-Loop Governance), giám sát ngân sách token và nhịp tim tác vụ chạy ngầm định kỳ (Heartbeats & Routines).",
+    "purposeVi": "Giải quyết triệt để vấn đề hỗn loạn khi phải quản lý thủ công hàng chục cửa sổ dòng lệnh tác tử AI rời rạc. Paperclip mang đến một mặt bằng điều hành tập trung (Control Plane), giúp người dùng đóng vai trò Hội đồng quản trị (Board) điều hành toàn bộ đội ngũ tác tử AI chuyên môn hóa, phân bổ công việc theo mục tiêu chiến lược và kiểm soát rủi ro an toàn cũng như chi phí tiêu thụ token.",
+    "featuresVi": [
+      "Sơ đồ tổ chức phân cấp tác tử (Org Chart): 'Tuyển dụng' và phân định vai trò chuyên môn cho từng AI Agent (CEO, Lập trình viên, Kiểm thử viên, Nghiên cứu viên) với tuyến báo cáo rõ ràng",
+      "Quản lý công việc theo Ticket & Kanban: Chia nhỏ mục tiêu dự án thành các thẻ công việc (Tickets), tự động điều phối và theo dõi tiến độ hoàn thành của từng tác tử",
+      "Cơ chế phê duyệt an toàn của con người (Human-in-the-Loop Governance): Đặt người dùng ở vị trí Hội đồng quản trị, bắt buộc ký duyệt trước khi Agent thực hiện các thao tác ghi nhận mã nguồn nhạy cảm hoặc vượt hạn mức chi phí",
+      "Nhịp tim & Lịch trình định kỳ (Heartbeats & Routines): Duy trì hoạt động chạy ngầm không gián đoạn, tự động tổ chức họp báo cáo tiến độ (Standup) định kỳ và đồng bộ kết quả",
+      "Kiểm soát chi phí & Ngân sách token: Đo lường chi tiết mức tiêu thụ token và chi phí vận hành theo thời gian thực trên từng tác tử và từng dự án",
+      "Khởi chạy cục bộ một chạm với npx: Tự động khởi tạo cơ sở dữ liệu nhúng PostgreSQL và mở giao diện quản trị tại cổng localhost:3100 mà không cần cấu hình phức tạp"
+    ],
+    "installGuideVi": "### Hướng dẫn cài đặt và khởi chạy Paperclip trên máy tính cá nhân:\n\n1. **Khởi chạy nhanh không cần cài đặt (Khuyến nghị)**:\n   Yêu cầu máy tính đã cài đặt Node.js phiên bản 18 trở lên. Mở Terminal và thực thi lệnh:\n   ```bash\n   npx paperclipai onboard --yes\n   ```\n   Lệnh trên sẽ tự động thiết lập cơ sở dữ liệu PostgreSQL nhúng cục bộ và mở giao diện quản trị tại `http://localhost:3100`.\n\n2. **Cài đặt từ mã nguồn (Dành cho nhà phát triển)**:\n   ```bash\n   git clone https://github.com/paperclipai/paperclip.git\n   cd paperclip\n   pnpm install\n   pnpm dev\n   ```\n\n3. **Cài đặt qua tập lệnh Bootstrap (Linux / macOS / WSL2)**:\n   ```bash\n   curl -fsSLO https://paperclip.ing/install.sh\n   bash install.sh\n   ```",
+    "usageGuideVi": "### Quy trình vận hành và điều phối đội ngũ tác tử AI với Paperclip:\n\n- **Bước 1 — Thiết lập sơ đồ tổ chức (Org Chart)**: Truy cập giao diện `http://localhost:3100`, tạo các hồ sơ tác tử cho dự án (ví dụ: Tác tử Trưởng nhóm kiến trúc, Tác tử Kỹ sư Frontend, Tác tử Kỹ sư Backend, Tác tử Kiểm thử QA) và kết nối với các công cụ như Claude Code, Cursor hoặc API LLM tương ứng.\n- **Bước 2 — Tạo vé công việc (Create Ticket)**: Khởi tạo các nhiệm vụ cần thực hiện trên bảng Kanban và giao (Assign) trực tiếp cho tác tử chuyên trách.\n- **Bước 3 — Theo dõi thực thi & Phê duyệt (Approval Gate)**: Khi tác tử hoàn thành bản nháp hoặc chuẩn bị đưa ra quyết định thay đổi quan trọng, Paperclip sẽ kích hoạt thông báo phê duyệt. Người quản trị xem xét báo cáo và nhấn 'Approve' để cho phép tiếp tục.\n- **Bước 4 — Báo cáo định kỳ & Giám sát ngân sách**: Thiết lập nhịp tim (Heartbeat) để tác tử tự động tổng hợp báo cáo kết quả công việc vào cuối ngày và kiểm tra biểu đồ tiêu hao token để đảm bảo nằm trong ngân sách cho phép.",
+    "samplePromptsVi": [
+      "Khởi động Paperclip tại cổng localhost:3100 để quản lý biệt đội tác tử Claude Code",
+      "Tạo sơ đồ tổ chức bao gồm 1 AI Architect, 2 AI Coders và 1 AI QA Tester trên Paperclip",
+      "Thiết lập quy tắc phê duyệt Human-in-the-Loop cho mọi lệnh commit mã nguồn của Agent",
+      "Kiểm tra mức tiêu hao token và báo cáo tiến độ công việc hàng ngày của từng tác tử"
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Code & Desktop",
+        "cliCommand": "npx paperclipai onboard --yes",
+        "jsonConfig": "{\n  \"name\": \"paperclip\",\n  \"command\": \"npx\",\n  \"args\": [\n    \"-y\",\n    \"paperclipai\",\n    \"onboard\",\n    \"--yes\"\n  ]\n}"
+      },
+      {
+        "platform": "antigravity",
+        "platformName": "Google Antigravity",
+        "cliCommand": "npx paperclipai onboard --yes",
+        "jsonConfig": "{\n  \"name\": \"paperclip\",\n  \"url\": \"http://localhost:3100\",\n  \"type\": \"agent-workforce-manager\",\n  \"features\": [\n    \"org-chart\",\n    \"ticket-kanban\",\n    \"human-in-the-loop\",\n    \"heartbeat-routines\"\n  ]\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor IDE",
+        "cliCommand": "npx paperclipai onboard --yes",
+        "jsonConfig": "{\n  \"name\": \"paperclip\",\n  \"endpoint\": \"http://localhost:3100\",\n  \"type\": \"control-plane\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "stars": 8500,
+    "featured": true,
+    "pricingModel": "free",
+    "pricingText": "Miễn phí mã nguồn mở (MIT)",
+    "prosVi": [
+      "Giao diện quản trị trực quan, gom toàn bộ các tác tử AI đang phân tán về một nơi duy nhất",
+      "Cơ chế phê duyệt của con người (Human-in-the-Loop) giúp kiểm soát an toàn tuyệt đối các tác tử tự hành",
+      "Khởi chạy cực nhanh bằng lệnh npx, có sẵn cơ sở dữ liệu PostgreSQL nhúng nội bộ không cần cài riêng"
+    ],
+    "consVi": [
+      "Yêu cầu máy tính có cài sẵn môi trường Node.js 18+ để vận hành dịch vụ máy chủ cục bộ"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ]
   }
 ]
