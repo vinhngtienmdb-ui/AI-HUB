@@ -65,8 +65,26 @@ export function getToolOverrides(): Record<string, Partial<AITool>> {
 }
 
 /**
+ * Sắp xếp danh sách công cụ: đưa công cụ mới cập nhật / đóng góp lên trên đầu danh sách
+ */
+export function sortToolsByUpdated(toolList: AITool[]): AITool[] {
+  return [...toolList].sort((a, b) => {
+    const dateA = a.updatedAt || a.contributedAt || '';
+    const dateB = b.updatedAt || b.contributedAt || '';
+    if (dateA && dateB) {
+      const cmp = dateB.localeCompare(dateA);
+      if (cmp !== 0) return cmp;
+    }
+    if (dateA && !dateB) return -1;
+    if (!dateA && dateB) return 1;
+    return 0;
+  });
+}
+
+/**
  * Khởi tạo danh sách công cụ hoàn chỉnh:
- * INITIAL_TOOLS (2.194 công cụ sẵn có) + Công cụ đóng góp mới + Các ghi đè phân loại/phê duyệt của Admin
+ * INITIAL_TOOLS (2.220 công cụ sẵn có) + Công cụ đóng góp mới + Các ghi đè phân loại/phê duyệt của Admin,
+ * tự động sắp xếp đưa các công cụ mới cập nhật lên trên đầu danh sách.
  */
 export function loadAllTools(): AITool[] {
   // Dọn dẹp key cũ trước nếu còn tồn tại
@@ -87,14 +105,17 @@ export function loadAllTools(): AITool[] {
     }
   }
 
-  // Áp dụng các thay đổi ghi đè (status, toolType, category...)
-  return combined.map((tool) => {
+  // Áp dụng các thay đổi ghi đè (status, toolType, category, updatedAt...)
+  const mapped = combined.map((tool) => {
     const override = overrides[tool.id];
     if (override) {
       return { ...tool, ...override };
     }
     return tool;
   });
+
+  // Tự động sắp xếp đưa công cụ mới cập nhật lên đầu danh sách
+  return sortToolsByUpdated(mapped);
 }
 
 /**
@@ -102,7 +123,13 @@ export function loadAllTools(): AITool[] {
  */
 export function saveContributedTool(newTool: AITool): void {
   const current = getContributedTools();
-  const updated = [newTool, ...current.filter((t) => t.id !== newTool.id)];
+  const today = new Date().toISOString().split('T')[0];
+  const toolWithTimestamp: AITool = {
+    ...newTool,
+    updatedAt: newTool.updatedAt || today,
+    contributedAt: newTool.contributedAt || today,
+  };
+  const updated = [toolWithTimestamp, ...current.filter((t) => t.id !== newTool.id)];
   safeSetItem(CONTRIBUTED_KEY, JSON.stringify(updated));
 }
 
@@ -114,6 +141,7 @@ export function saveToolOverride(toolId: string, overrideData: Partial<AITool>):
   currentOverrides[toolId] = {
     ...(currentOverrides[toolId] || {}),
     ...overrideData,
+    updatedAt: new Date().toISOString().split('T')[0],
   };
   safeSetItem(OVERRIDES_KEY, JSON.stringify(currentOverrides));
 }

@@ -142,6 +142,7 @@ export interface AITool {
   status: 'published' | 'pending' | 'draft' | 'rejected';
   contributedBy?: string; // Email người đóng góp
   contributedAt?: string; // Thời gian gửi đóng góp
+  updatedAt?: string; // Thời gian cập nhật công cụ gần nhất
   reviewNote?: string; // Ghi chú xét duyệt của Quản trị viên
   stars?: number;
   featured?: boolean;

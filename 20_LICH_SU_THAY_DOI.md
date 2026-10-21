@@ -4,6 +4,23 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.37-ToiUuThuTuSapXepUuTienCongCuMoiCapNhat (Ngày 21-10-2026)
+- **Loại hình**: Tối ưu hóa thứ tự sắp xếp danh mục tài nguyên, tự động đưa các công cụ mới cập nhật, mới đóng góp hoặc mới phê duyệt lên trên đầu danh sách trên toàn bộ hệ thống giao diện (Trang chủ và Trang danh mục).
+- **Nội dung hoàn thành**:
+  - **Chuẩn hóa cấu trúc dữ liệu thời gian cập nhật**:
+    - Bổ sung trường dữ liệu `updatedAt?: string` vào giao diện TypeScript `AITool` tại [`src/types/index.ts`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/types/index.ts).
+    - Cập nhật dấu mốc thời gian `updatedAt: "2026-10-21"` cho các công cụ mới nhất (`paperclipai-paperclip`, `mads-lorentzen-ai-job-search`, `vercel-labs-find-skills`, `aihub-vn-smart-mcp-gateway`), sắp xếp lại kho dữ liệu gốc [`src/data/allTools.json`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/data/allTools.json) với thứ tự ưu tiên mới nhất ở vị trí đầu tiên.
+  - **Thuật toán sắp xếp tự động tại tầng lưu trữ (`src/lib/storage.ts`)**:
+    - Xây dựng hàm `sortToolsByUpdated`: So sánh ngày cập nhật (`updatedAt`) hoặc ngày đóng góp (`contributedAt`) theo thứ tự giảm dần thời gian, ưu tiên công cụ có mốc cập nhật mới nhất.
+    - Tự động gắn mốc `updatedAt` khi Quản trị viên duyệt công cụ (`handleApproveTool`) hoặc điều chỉnh phân loại (`handleUpdateToolTaxonomy`).
+  - **Tích hợp bộ chọn sắp xếp trên giao diện người dùng**:
+    - **Trang chủ (`src/App.tsx`)**: Bổ sung bộ chọn sắp xếp ngay trên thanh điều hướng danh mục: *⚡ Mới cập nhật (Mặc định)*, *⭐ Đánh giá cao nhất*, *🔤 Tên (A - Z)*. Danh sách công cụ hiển thị mặc định các tài nguyên mới nhất ở trang đầu tiên.
+    - **Trang danh mục chi tiết (`src/pages/CategoryPage.tsx`)**: Đặt chế độ sắp xếp mặc định là *⚡ Mới cập nhật* (`sortBy = 'newest'`), hoàn thiện thuật toán đối soát ngày tháng chuẩn xác.
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Bổ sung ca kiểm thử chuyên sâu về thuật toán sắp xếp theo ngày cập nhật vào [`tests/storage-delta.test.js`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/tests/storage-delta.test.js).
+    - Chạy toàn bộ **35/35 bài test** trong 7 bộ kiểm thử tự động: Đạt **100% tỷ lệ pass**.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 19.35 giây.
+
 ### Phiên Bản 2.0.36-TichHopPaperclipControlPlaneVaoHeThongAiHub (Ngày 21-10-2026)
 - **Loại hình**: Chuẩn hóa và tích hợp nền tảng mã nguồn mở quản trị và điều phối lực lượng tác tử Paperclip (`paperclipai/paperclip`) vào kho dữ liệu AI HUB VN, nâng quy mô kho lên 2.220 tài nguyên, đồng thời cập nhật bộ định tuyến Smart MCP Gateway.
 - **Nội dung hoàn thành**:

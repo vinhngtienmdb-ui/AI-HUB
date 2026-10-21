@@ -63,6 +63,7 @@ export const App: React.FC = () => {
   const [selectedPlatform, setSelectedPlatform] = useState<Platform | 'all'>('all');
   const [selectedType, setSelectedType] = useState<ToolType | 'all'>('all');
   const [onlyVietnamMarket, setOnlyVietnamMarket] = useState<boolean>(false);
+  const [sortBy, setSortBy] = useState<'newest' | 'stars' | 'name'>('newest');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedModalTool, setSelectedModalTool] = useState<AITool | null>(null);
 
@@ -326,11 +327,13 @@ export const App: React.FC = () => {
   // Xử lý thêm công cụ mới: Admin duyệt ngay, Thành viên thường chuyển vào hàng đợi pending
   const handleAddNewTool = (newTool: AITool) => {
     const isOwner = checkIsAdmin(currentUser);
+    const today = new Date().toISOString().split('T')[0];
     const toolToAdd: AITool = {
       ...newTool,
       status: isOwner ? (newTool.status || 'published') : 'pending',
       contributedBy: currentUser || 'Thành viên ẩn danh',
-      contributedAt: new Date().toISOString().split('T')[0],
+      contributedAt: today,
+      updatedAt: today,
       reviewNote: isOwner ? 'Đã được Quản trị viên phê duyệt trực tiếp' : 'Đang chờ Quản trị viên kiểm duyệt',
     };
     setTools((prev) => [toolToAdd, ...prev]);
@@ -342,6 +345,7 @@ export const App: React.FC = () => {
     const updateData = {
       status: 'published' as const,
       reviewNote: 'Đã được Quản trị viên AI HUB VN phê duyệt chính thức',
+      updatedAt: new Date().toISOString().split('T')[0],
     };
     setTools((prev) =>
       prev.map((t) => (t.id === toolId ? { ...t, ...updateData } : t))
@@ -386,6 +390,7 @@ export const App: React.FC = () => {
       categories: cats,
       categoryNamesVi: catNamesVi,
       isVietnamMarket: isVn !== undefined ? isVn : cats.includes('vietnam'),
+      updatedAt: new Date().toISOString().split('T')[0],
     };
 
     setTools((prev) =>
@@ -428,7 +433,7 @@ export const App: React.FC = () => {
 
   // Bộ lọc danh mục trang chủ (chỉ lọc trên các công cụ đã được phát hành)
   const filteredTools = useMemo(() => {
-    return publishedTools.filter((tool) => {
+    const list = publishedTools.filter((tool) => {
       const q = searchQuery.toLowerCase().trim();
       const matchQuery =
         !q ||
@@ -451,7 +456,29 @@ export const App: React.FC = () => {
 
       return matchQuery && matchCategory && matchType && matchPlatform && matchVietnamMarket;
     });
-  }, [publishedTools, searchQuery, selectedCategory, selectedType, selectedPlatform, onlyVietnamMarket]);
+
+    // Tự động sắp xếp đưa công cụ mới cập nhật lên đầu danh sách
+    return list.sort((a, b) => {
+      if (sortBy === 'newest') {
+        const dateA = a.updatedAt || a.contributedAt || '';
+        const dateB = b.updatedAt || b.contributedAt || '';
+        if (dateA && dateB) {
+          const cmp = dateB.localeCompare(dateA);
+          if (cmp !== 0) return cmp;
+        }
+        if (dateA && !dateB) return -1;
+        if (!dateA && dateB) return 1;
+        return 0;
+      }
+      if (sortBy === 'stars') {
+        return (b.stars || 0) - (a.stars || 0);
+      }
+      if (sortBy === 'name') {
+        return (a.name || '').localeCompare(b.name || '');
+      }
+      return 0;
+    });
+  }, [publishedTools, searchQuery, selectedCategory, selectedType, selectedPlatform, onlyVietnamMarket, sortBy]);
 
   const totalPages = Math.ceil(filteredTools.length / PAGE_SIZE) || 1;
   const paginatedTools = useMemo(() => {
@@ -744,6 +771,23 @@ export const App: React.FC = () => {
                   </div>
 
                   <div className="flex items-center space-x-2.5 text-xs shrink-0">
+                    {/* BỘ CHỌN THỨ TỰ SẮP XẾP */}
+                    <div className="flex items-center space-x-1.5 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
+                      <select
+                        value={sortBy}
+                        onChange={(e) => {
+                          setSortBy(e.target.value as 'newest' | 'stars' | 'name');
+                          setCurrentPage(1);
+                        }}
+                        className="bg-transparent text-xs font-semibold text-slate-700 dark:text-slate-200 focus:outline-none px-2 py-1 cursor-pointer"
+                        title="Thứ tự sắp xếp danh sách"
+                      >
+                        <option value="newest" className="dark:bg-slate-800">⚡ Mới cập nhật</option>
+                        <option value="stars" className="dark:bg-slate-800">⭐ Đánh giá cao nhất</option>
+                        <option value="name" className="dark:bg-slate-800">🔤 Tên (A - Z)</option>
+                      </select>
+                    </div>
+
                     <div className="flex items-center p-1 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                       <button
                         onClick={() => setViewMode('grid')}

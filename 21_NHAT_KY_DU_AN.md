@@ -8,8 +8,14 @@
 - Cài đặt máy chủ MCP AI HUB VN (Smart Gateway & Router) cho Claude Code và Antigravity.
 - Tích hợp bộ công cụ tự động hóa quy trình tìm việc AI Job Search (Mads Lorentzen) vào kho dữ liệu AI HUB VN, nâng quy mô lên 2.219 tài nguyên.
 - Tích hợp nền tảng mã nguồn mở quản trị và điều phối lực lượng tác tử Paperclip (`paperclipai/paperclip`) vào kho dữ liệu AI HUB VN, nâng quy mô lên 2.220 tài nguyên.
+- Điều chỉnh thuật toán và giao diện sắp xếp danh mục tài nguyên, tự động đưa các công cụ mới cập nhật lên trên đầu danh sách.
 
 ### Các công việc đã thực hiện
+- [Tối Ưu Hóa Thứ Tự Sắp Xếp: Đưa Công Cụ Mới Cập Nhật Lên Đầu Danh Sách]:
+  - **Mô hình dữ liệu**: Bổ sung trường `updatedAt?: string` vào giao diện TypeScript `AITool` và cập nhật mốc ngày `2026-10-21` cho các công cụ mới nhất trong `allTools.json`.
+  - **Thuật toán sắp xếp**: Triển khai hàm `sortToolsByUpdated` trong `src/lib/storage.ts`, tự động sắp xếp theo ngày cập nhật mới nhất giảm dần khi tải kho dữ liệu, phê duyệt hoặc điều chỉnh phân loại công cụ.
+  - **Giao diện người dùng**: Bổ sung bộ chọn sắp xếp trên thanh công cụ `src/App.tsx` (*⚡ Mới cập nhật*, *⭐ Đánh giá cao nhất*, *🔤 Tên A-Z*) với giá trị mặc định là *Mới cập nhật*; đồng thời thiết lập mặc định và hoàn thiện logic tương tự tại `src/pages/CategoryPage.tsx`.
+  - **Kiểm thử tự động & Đóng gói**: Bổ sung kiểm thử tự động trong `tests/storage-delta.test.js`, đạt 100% tỷ lệ pass (35/35 bài test), biên dịch Vite hoàn tất trong 19.35 giây.
 - [Tích hợp Nền Tảng Quản Trị & Điều Phối Tác Tử Paperclip vào Hệ Thống AI HUB VN]:
   - **Bổ sung tài nguyên vào kho dữ liệu (`paperclipai-paperclip`)**:
     - Nâng quy mô kho dữ liệu lên **2.220 tài nguyên**.

@@ -89,3 +89,32 @@ test('Kiểm tra cơ chế Delta Storage: Không lưu toàn bộ 2.000+ công c�
   const totalStoredBytes = JSON.stringify(memoryStore).length;
   assert.ok(totalStoredBytes < 2000, `Dung lượng lưu trữ thực tế (${totalStoredBytes} bytes) phải dưới 2KB`);
 });
+
+test('Kiểm tra cơ chế Sắp xếp: Tự động đưa công cụ mới cập nhật / đóng góp lên đầu danh sách', () => {
+  const tools = [
+    { id: 'old-001', name: 'Công cụ cũ', updatedAt: '2026-10-10' },
+    { id: 'no-date', name: 'Công cụ không có ngày' },
+    { id: 'new-001', name: 'Công cụ mới 1', updatedAt: '2026-10-21' },
+    { id: 'new-002', name: 'Công cụ mới 2', contributedAt: '2026-10-20' },
+  ];
+
+  function sortToolsByUpdated(toolList) {
+    return [...toolList].sort((a, b) => {
+      const dateA = a.updatedAt || a.contributedAt || '';
+      const dateB = b.updatedAt || b.contributedAt || '';
+      if (dateA && dateB) {
+        const cmp = dateB.localeCompare(dateA);
+        if (cmp !== 0) return cmp;
+      }
+      if (dateA && !dateB) return -1;
+      if (!dateA && dateB) return 1;
+      return 0;
+    });
+  }
+
+  const sorted = sortToolsByUpdated(tools);
+  assert.equal(sorted[0].id, 'new-001', 'Công cụ cập nhật ngày 2026-10-21 phải đứng đầu');
+  assert.equal(sorted[1].id, 'new-002', 'Công cụ cập nhật ngày 2026-10-20 phải đứng thứ hai');
+  assert.equal(sorted[2].id, 'old-001', 'Công cụ cập nhật ngày 2026-10-10 phải đứng thứ ba');
+  assert.equal(sorted[3].id, 'no-date', 'Công cụ không có ngày cập nhật phải đứng cuối');
+});

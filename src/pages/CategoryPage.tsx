@@ -37,7 +37,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
   const [selectedPricing, setSelectedPricing] = useState<PricingModel>('all');
   const [minRating, setMinRating] = useState<number>(0);
   const [selectedLanguage, setSelectedLanguage] = useState<'all' | 'vi' | 'en'>('all');
-  const [sortBy, setSortBy] = useState<'popular' | 'rating' | 'newest'>('popular');
+  const [sortBy, setSortBy] = useState<'newest' | 'popular' | 'rating'>('newest');
   const [currentPage, setCurrentPage] = useState(1);
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
@@ -163,6 +163,17 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
 
       return matchQuery && matchCategory && matchPricing && matchQuickTag && matchRating;
     }).sort((a, b) => {
+      if (sortBy === 'newest') {
+        const dateA = a.updatedAt || a.contributedAt || '';
+        const dateB = b.updatedAt || b.contributedAt || '';
+        if (dateA && dateB) {
+          const cmp = dateB.localeCompare(dateA);
+          if (cmp !== 0) return cmp;
+        }
+        if (dateA && !dateB) return -1;
+        if (!dateA && dateB) return 1;
+        return 0;
+      }
       if (sortBy === 'rating') return (b.stars || 0) - (a.stars || 0);
       return (b.stars || 0) - (a.stars || 0);
     });
@@ -417,6 +428,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                 onChange={(e) => setSortBy(e.target.value as any)}
                 className="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-2.5 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 focus:outline-none"
               >
+                <option value="newest">⚡ Mới cập nhật</option>
                 <option value="popular">Phổ biến nhất</option>
                 <option value="rating">Đánh giá cao nhất</option>
               </select>
