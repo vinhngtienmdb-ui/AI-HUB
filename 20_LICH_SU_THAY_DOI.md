@@ -4,6 +4,20 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.35-TichHopAiJobSearchVaoHeThongAiHub (Ngày 21-10-2026)
+- **Loại hình**: Chuẩn hóa và tích hợp bộ công cụ tự động hóa quy trình tìm việc, viết CV may đo và luyện phỏng vấn AI Job Search (`MadsLorentzen/ai-job-search`) vào kho dữ liệu AI HUB VN, nâng quy mô kho lên 2.219 tài nguyên, đồng thời cập nhật bộ định tuyến Smart MCP Gateway.
+- **Nội dung hoàn thành**:
+  - **Tích hợp tài nguyên vào kho AI HUB VN (`mads-lorentzen-ai-job-search`)**:
+    - Chuẩn hóa đầy đủ 4 khối thông tin bắt buộc theo quy tắc QT-01, QT-04 và quy trình VibeCode bằng tiếng Việt: Nguồn dẫn chính thức (`https://github.com/MadsLorentzen/ai-job-search`), công dụng nghiệp vụ (tối ưu hóa quy trình tìm việc khép kín, vượt qua bộ lọc ATS), hướng dẫn cài đặt Fork repo/Claude Code CLI, và hướng dẫn tương tác với 8 khẩu lệnh (`/setup`, `/scrape`, `/apply`, `/interview`, `/rank`, `/outcome`, `/upskill`, `/add-portal`).
+    - Thiết lập phân loại danh mục đa tầng: `hr_recruitment` (Quản trị nhân sự & Tuyển dụng), `rpa_workflow_automation` (Tự động hóa quy trình & RPA), `office_digital_docs` (Văn phòng số & Xử lý tài liệu), `web_scraping_crawling` (Thu thập dữ liệu web), `nlp_llm` (Xử lý ngôn ngữ tự nhiên & Mô hình LLM).
+    - Cung cấp cấu hình mẫu JSON chuẩn xác cho Claude Code, Google Antigravity và Cursor IDE.
+  - **Mở rộng Smart MCP Router & Client Adapter**:
+    - Bổ sung quy tắc ý định chuyên biệt `ai_job_search_framework` vào `mcp-gateway/smart-router.js` và `src/lib/mcpClient.ts`, nhận diện các từ khóa `job search`, `tìm việc`, `săn việc`, `xin việc`, `viết cv`, `cover letter`, `luyện phỏng vấn`, `ats resume`, `mads lorentzen` để tự động điều phối trực tiếp đến `mads-lorentzen-ai-job-search`.
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Bổ sung ca kiểm thử định tuyến mới vào `tests/mcp-gateway.test.js`.
+    - Chạy toàn bộ **33/33 bài test** trong 7 bộ kiểm thử tự động: Đạt **100% tỷ lệ pass**.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 18.07 giây.
+
 ### Phiên Bản 2.0.34-CaiDatMayChuMcpAiHubVnVaoClaudeCodeVaAntigravity (Ngày 21-10-2026)
 - **Loại hình**: Cài đặt máy chủ MCP AI HUB VN Smart Gateway (`aihub-smart-gateway`) vào hai nền tảng trợ lý lập trình Claude Code và Google Antigravity, đồng thời hỗ trợ đồng bộ cho ứng dụng Claude Desktop.
 - **Nội dung hoàn thành**:

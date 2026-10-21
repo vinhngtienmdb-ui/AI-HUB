@@ -6,8 +6,20 @@
 - Tích hợp tài nguyên kỹ năng vào kho dữ liệu AI HUB VN, nâng quy mô kho lên 2.218 tài nguyên.
 - Cập nhật Smart MCP Router hỗ trợ nhận diện và điều phối bài toán tìm kiếm kỹ năng tác tử.
 - Cài đặt máy chủ MCP AI HUB VN (Smart Gateway & Router) cho Claude Code và Antigravity.
+- Tích hợp bộ công cụ tự động hóa quy trình tìm việc AI Job Search (Mads Lorentzen) vào kho dữ liệu AI HUB VN, nâng quy mô lên 2.219 tài nguyên.
 
 ### Các công việc đã thực hiện
+- [Tích hợp Bộ Công Cụ AI Job Search (Mads Lorentzen) vào Hệ Thống AI HUB VN]:
+  - **Bổ sung tài nguyên vào kho dữ liệu (`mads-lorentzen-ai-job-search`)**:
+    - Nâng quy mô kho dữ liệu lên **2.219 tài nguyên**.
+    - Đầy đủ 4 khối thông tin bắt buộc tiếng Việt theo quy tắc QT-01, QT-04: Nguồn GitHub chính thức, công dụng nghiệp vụ (tự động hóa tìm việc, viết CV may đo, luyện phỏng vấn qua Claude Code), hướng dẫn cài đặt Fork repo/Claude Code CLI, hướng dẫn sử dụng 8 khẩu lệnh (`/setup`, `/scrape`, `/apply`, `/interview`, `/rank`, `/outcome`, `/upskill`, `/add-portal`).
+    - Cung cấp cấu hình mẫu JSON chuẩn xác cho Claude Code, Antigravity và Cursor IDE.
+  - **Mở rộng Smart MCP Router & Client Adapter**:
+    - Bổ sung cấu hình ý định `ai_job_search_framework` vào `mcp-gateway/smart-router.js` và `src/lib/mcpClient.ts`, tự động nhận diện các yêu cầu tìm việc, viết CV, luyện phỏng vấn để điều phối tới công cụ.
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Bổ sung bài test định tuyến vào `tests/mcp-gateway.test.js`.
+    - Toàn bộ **33/33 bài test** trong 7 bộ kiểm thử tự động đạt 100% tỷ lệ pass.
+    - Đóng gói hoàn chỉnh bằng Vite (`npm run build`) đạt chuẩn.
 - [Cài đặt Máy chủ MCP AI HUB VN cho Claude Code và Google Antigravity]:
   - **Cấu hình cho Claude Code**: Bổ sung `aihub-smart-gateway` vào `C:\Users\vinhn\.claude.json`.
   - **Cấu hình cho Claude Desktop**: Bổ sung `aihub-smart-gateway` vào `C:\Users\vinhn\AppData\Roaming\Claude\claude_desktop_config.json`.

@@ -25,6 +25,16 @@ export function getAllTools() {
 // Bảng ánh xạ ý định chuyên biệt (Core Intent Profiles)
 const CORE_INTENTS = [
   {
+    intentId: 'ai_job_search_framework',
+    targetToolId: 'mads-lorentzen-ai-job-search',
+    keywords: [
+      'ai job search', 'job search', 'tìm việc', 'săn việc', 'xin việc', 'viết cv', 'tạo cv', 'cover letter', 
+      'thư xin việc', 'luyện phỏng vấn', 'phỏng vấn thử', 'ats resume', 'ats checker', 'mads lorentzen', 
+      'job application', 'phỏng vấn tuyển dụng', 'nộp hồ sơ', 'hồ sơ ứng tuyển'
+    ],
+    priority: 12
+  },
+  {
     intentId: 'find_agent_skills',
     targetToolId: 'vercel-labs-find-skills',
     keywords: [

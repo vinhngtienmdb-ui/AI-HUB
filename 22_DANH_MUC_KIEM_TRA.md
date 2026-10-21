@@ -1,8 +1,8 @@
 # Danh Mục Kiểm Tra Dự Án (Checklist)
 
 ## Tổng Quan Tiến Độ
-- Tổng số nhiệm vụ cốt lõi: 26
-- Đã hoàn thành: 26
+- Tổng số nhiệm vụ cốt lõi: 27
+- Đã hoàn thành: 27
 - Đang thực hiện: 0
 - Chưa bắt đầu: 0
 - Bị nghẽn: 0
@@ -48,6 +48,7 @@
 - [x] Lập trình phân hệ Giao diện danh mục, Tìm kiếm tức thời và Phân trang (24 mục/trang)
 - [x] Lập trình phân hệ Chi tiết công cụ và Sao chép cấu hình một chạm
 - [x] Lập trình phân hệ Quản trị nội dung và Đóng góp công cụ
+- [x] Tích hợp bộ công cụ tự động hóa tìm việc & viết CV may đo AI Job Search (`MadsLorentzen/ai-job-search`) vào kho dữ liệu AI HUB VN, nâng quy mô kho lên 2.219 tài nguyên và tích hợp ý định định tuyến thông minh vào Smart MCP Gateway
 - [x] Cài đặt máy chủ MCP AI HUB VN Smart Gateway (`aihub-smart-gateway`) cho Claude Code (`~/.claude.json`), Claude Desktop (`claude_desktop_config.json`) và Google Antigravity (`mcp_config.json` + `mcp/aihub-smart-gateway/`), kích hoạt 4 công cụ định tuyến tự động
 - [x] Cài đặt kỹ năng Find Skills (Vercel Labs) vào hệ thống Claude Code và Antigravity, đồng thời tích hợp vào kho dữ liệu AI HUB VN, nâng quy mô kho lên 2.218 tài nguyên
 - [x] Nâng cấp hệ thống MCP Server & REST API đạt chuẩn thực tế (Production-grade), triển khai bảo mật toàn diện (HMAC-SHA256, Sliding Window Rate Limit, Bearer Auth, Input Sanitization, Audit Logs), viết tài liệu hướng dẫn cài đặt và tách riêng 2 trang Quản lý API và Máy chủ MCP Server

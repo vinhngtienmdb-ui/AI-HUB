@@ -137491,5 +137491,99 @@
       "Quản lý bán lẻ (POS) & Chuỗi F&B",
       "🇻🇳 Thị Trường Việt Nam"
     ]
+  },
+  {
+    "id": "mads-lorentzen-ai-job-search",
+    "slug": "mads-lorentzen-ai-job-search",
+    "name": "AI Job Search (Mads Lorentzen) — Bộ Công Cụ Tự Động Hóa Quy Trình Tìm Việc & Viết CV Trên Claude Code",
+    "icon": "Briefcase",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "workflow",
+    "typeNameVi": "Quy trình tác tử (Agent Workflow)",
+    "category": "hr_recruitment",
+    "categoryNameVi": "Quản trị nhân sự & Tuyển dụng (HRM)",
+    "categories": [
+      "hr_recruitment",
+      "rpa_workflow_automation",
+      "office_digital_docs",
+      "web_scraping_crawling",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Quản trị nhân sự & Tuyển dụng (HRM)",
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Văn phòng số & Xử lý tài liệu (Docs & PDF)",
+      "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "antigravity",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/MadsLorentzen/ai-job-search",
+    "authorName": "Mads Lorentzen",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Bộ khung làm việc (Framework) tự động hóa toàn bộ vòng đời tìm kiếm việc làm và ứng tuyển cá nhân hóa chạy trực tiếp trên máy tính cá nhân bằng Claude Code. Hệ thống điều phối chuỗi tác tử thông minh khép kín: xây dựng hồ sơ năng lực cá nhân, cào dữ liệu và tổng hợp tin tuyển dụng từ nhiều cổng việc làm, đánh giá độ khớp với bản mô tả công việc (JD), tự động may đo CV và thư ứng tuyển (Cover Letter) được kiểm duyệt bởi tác tử phản biện độc lập, kiểm tra định dạng hệ thống lọc ATS, tự động biên dịch PDF hoàn chỉnh và mô phỏng luyện tập phỏng vấn theo từng vòng.",
+    "purposeVi": "Tối ưu hóa toàn diện hiệu suất tìm kiếm việc làm cho ứng viên với chi phí thời gian tối thiểu. Thay vì nộp hàng loạt hồ sơ đại trà rập khuôn, hệ thống giúp ứng viên cá nhân hóa chuyên sâu từng bộ hồ sơ cho từng vị trí tuyển dụng, vượt qua các thuật toán lọc hồ sơ tự động ATS khắt khe, đồng thời trang bị kiến thức và kỹ năng phỏng vấn thực chiến cho từng vòng.",
+    "featuresVi": [
+      "Lệnh /setup: Tự động khởi tạo hồ sơ năng lực cá nhân từ CV hiện có, hồ sơ LinkedIn hoặc phỏng vấn nhanh do AI dẫn dắt",
+      "Lệnh /scrape: Thu thập dữ liệu từ nhiều cổng tuyển dụng (mặc định hỗ trợ LinkedIn và các cổng tích hợp), tự động loại bỏ tin trùng lặp và sắp xếp theo độ phù hợp",
+      "Lệnh /apply: Phân tích độ tương thích giữa hồ sơ và JD, tự động viết CV và thư xin việc được may đo chuẩn xác cho từng tin tuyển dụng",
+      "Tác tử phản biện độc lập (Critic Agent): Nghiên cứu văn hóa doanh nghiệp, rà soát khắt khe và đóng góp ý kiến hoàn thiện bản nháp trước khi phê duyệt",
+      "Biên dịch PDF & Kiểm tra ATS: Tự động biên dịch tệp PDF chuẩn mực, kiểm tra cấu trúc và tính tương thích với các hệ thống lọc hồ sơ tự động (ATS Checker)",
+      "Lệnh /interview: Xây dựng ngân hàng câu hỏi chiến lược theo từng vòng tuyển dụng (văn hóa, chuyên môn kỹ thuật, quản lý) và đóng vai nhà tuyển dụng phỏng vấn thử",
+      "Lệnh /rank, /outcome, /upskill: Chấm điểm hàng loạt cơ hội việc làm, theo dõi tiến trình phản hồi và chỉ ra những lỗ hổng kỹ năng cần bồi dưỡng thêm",
+      "Lệnh /add-portal: Cho phép tự xây dựng kỹ năng cào dữ liệu cho các cổng việc làm nội địa tại từng quốc gia"
+    ],
+    "installGuideVi": "### Hướng dẫn cài đặt và thiết lập AI Job Search trên máy tính cá nhân:\n\n1. **Sao chép (Fork) kho lưu trữ**:\n   Truy cập `https://github.com/MadsLorentzen/ai-job-search` và nhấn nút **Fork** về tài khoản cá nhân (khuyến nghị đặt ở chế độ riêng tư Private để bảo mật thông tin cá nhân).\n\n2. **Tải mã nguồn về máy**:\n   ```bash\n   git clone https://github.com/YOUR_USERNAME/ai-job-search.git\n   cd ai-job-search\n   ```\n\n3. **Cài đặt Claude Code CLI** (yêu cầu Node.js 18+ và tài khoản Claude Pro/Max/Team hoặc API Key):\n   ```bash\n   npm install -g @anthropic-ai/claude-code\n   ```\n\n4. **Khởi chạy Claude Code và thiết lập ban đầu**:\n   ```bash\n   claude\n   /setup\n   ```",
+    "usageGuideVi": "### Quy trình sử dụng AI Job Search qua các khẩu lệnh Claude Code:\n\n- **Bước 1 — Thiết lập hồ sơ**: Chạy lệnh `/setup` để nạp tệp CV hoặc thông tin LinkedIn. AI sẽ phân tích các dự án và thành tựu nổi bật của bạn.\n- **Bước 2 — Quét cơ hội việc làm**: Sử dụng lệnh `/scrape` để thu thập và xếp hạng các tin tuyển dụng tiềm năng từ LinkedIn và các cổng việc làm.\n- **Bước 3 — Tạo hồ sơ ứng tuyển**: Chạy lệnh `/apply` cho công việc mục tiêu. Hệ thống sẽ viết nháp CV và Cover Letter, sau đó tác tử phản biện độc lập sẽ đánh giá và tinh chỉnh.\n- **Bước 4 — Xuất bản PDF chuẩn ATS**: Hệ thống tự động kiểm tra định dạng ATS và xuất tệp PDF đẹp mắt, sẵn sàng gửi đến nhà tuyển dụng.\n- **Bước 5 — Luyện phỏng vấn thực chiến**: Chạy lệnh `/interview` để AI mô phỏng buổi phỏng vấn thử theo vòng, đưa ra nhận xét và mẹo trả lời tối ưu.",
+    "samplePromptsVi": [
+      "Chạy lệnh /setup để nạp thông tin CV và xây dựng hồ sơ ứng viên cá nhân",
+      "Dùng lệnh /scrape quét các vị trí tuyển dụng AI Engineer phù hợp nhất",
+      "Thực hiện lệnh /apply và nhờ tác tử phản biện tối ưu hóa CV cho bản mô tả công việc này",
+      "Khởi động lệnh /interview để mô phỏng phỏng vấn kỹ thuật vòng 2"
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Code & Desktop",
+        "cliCommand": "git clone https://github.com/MadsLorentzen/ai-job-search.git && cd ai-job-search && claude",
+        "jsonConfig": "{\n  \"framework\": \"ai-job-search\",\n  \"engine\": \"claude-code\",\n  \"repository\": \"https://github.com/MadsLorentzen/ai-job-search\",\n  \"slashCommands\": [\n    \"/setup\",\n    \"/scrape\",\n    \"/apply\",\n    \"/interview\",\n    \"/rank\",\n    \"/outcome\",\n    \"/upskill\",\n    \"/add-portal\"\n  ]\n}"
+      },
+      {
+        "platform": "antigravity",
+        "platformName": "Google Antigravity",
+        "cliCommand": "git clone https://github.com/MadsLorentzen/ai-job-search.git",
+        "jsonConfig": "{\n  \"name\": \"ai-job-search\",\n  \"source\": \"https://github.com/MadsLorentzen/ai-job-search\",\n  \"workflow\": \"multi-agent-job-hunting\",\n  \"components\": [\n    \"profile_setup\",\n    \"job_scraper\",\n    \"ats_resume_builder\",\n    \"critic_agent\",\n    \"interview_simulator\"\n  ]\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor IDE",
+        "cliCommand": "git clone https://github.com/MadsLorentzen/ai-job-search.git",
+        "jsonConfig": "{\n  \"name\": \"ai-job-search\",\n  \"repository\": \"https://github.com/MadsLorentzen/ai-job-search\",\n  \"type\": \"agent-workflow\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "stars": 60000,
+    "featured": true,
+    "pricingModel": "free",
+    "pricingText": "Miễn phí mã nguồn mở (MIT) - Cần gói Claude Pro/Max hoặc API Credit",
+    "prosVi": [
+      "Quy trình tự động hóa khép kín từ khâu tìm việc, viết CV may đo đến luyện phỏng vấn",
+      "Có tác tử phản biện độc lập (Critic Agent) giúp chất lượng hồ sơ đạt mức hoàn thiện cao nhất",
+      "Chạy hoàn toàn trên máy tính cá nhân (Local), bảo vệ an toàn quyền riêng tư hồ sơ ứng viên"
+    ],
+    "consVi": [
+      "Yêu cầu gói thuê bao Claude Pro/Max/Team hoặc số dư API Credit để vận hành Claude Code"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "websiteUrl": "https://github.com/MadsLorentzen/ai-job-search"
   }
 ]

@@ -46,6 +46,18 @@ export function routeTaskFrontend(query: string): RoutingFrontendResult {
     };
   }
 
+  // 0.1. Ý định Tìm việc & Tự động hóa ứng tuyển (AI Job Search)
+  if (normalized.includes('job search') || normalized.includes('tìm việc') || normalized.includes('săn việc') || normalized.includes('xin việc') || normalized.includes('viết cv') || normalized.includes('ats resume') || normalized.includes('cover letter')) {
+    const jobTool = allTools.find(t => t.id === 'mads-lorentzen-ai-job-search') || allTools[0];
+    return {
+      strategy: 'SPECIALIZED_INTENT_RULE',
+      matchedTool: jobTool,
+      confidence: 0.98,
+      intentId: 'ai_job_search_framework',
+      reasoningVi: 'Đã nhận diện ý định tự động hóa tìm việc, viết CV may đo và luyện phỏng vấn với AI Job Search (Claude Code).'
+    };
+  }
+
   // 1. Phân tích ý định Fintech & Thanh toán Việt Nam
   if (normalized.includes('vietqr') || normalized.includes('napas') || normalized.includes('chuyển khoản')) {
     const vietqrTool = allTools.find(t => t.id === 'vietqr-generator-napas247-mcp') || allTools[0];

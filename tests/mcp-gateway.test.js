@@ -46,6 +46,13 @@ test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ Tì
   assert.ok(resFindSkill.confidence >= 0.9);
 });
 
+test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ Tự động hóa tìm việc & Viết CV (AI Job Search)', () => {
+  const resJob = routeTask('Tự động quét tin tuyển dụng, viết CV may đo và luyện phỏng vấn xin việc với Claude Code');
+  assert.equal(resJob.success, true);
+  assert.equal(resJob.matchedTool.id, 'mads-lorentzen-ai-job-search');
+  assert.ok(resJob.confidence >= 0.9);
+});
+
 test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ Cơ sở dữ liệu (SQLite & Postgres)', () => {
   const resSqlite = routeTask('Truy vấn tệp cơ sở dữ liệu SQLite cục bộ dev.db bằng ngôn ngữ tự nhiên');
   assert.equal(resSqlite.success, true);
