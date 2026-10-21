@@ -25,6 +25,16 @@ export function getAllTools() {
 // Bảng ánh xạ ý định chuyên biệt (Core Intent Profiles)
 const CORE_INTENTS = [
   {
+    intentId: 'find_agent_skills',
+    targetToolId: 'vercel-labs-find-skills',
+    keywords: [
+      'find skill', 'find-skill', 'find-skills', 'tìm skill', 'tìm giúp tôi skill', 
+      'tìm kiếm skill', 'tìm kỹ năng', 'skills.sh', 'npx skills', 'cài đặt skill', 'khám phá skill', 
+      'agent skills', 'agent skill', 'cài skill', 'skill', 'skills'
+    ],
+    priority: 15
+  },
+  {
     intentId: 'fintech_vietnam_momo',
     targetToolId: 'vn-mcp-momo-payment',
     keywords: ['momo', 'ví momo', 'thanh toán momo', 'hoàn tiền momo', 'ipn momo'],

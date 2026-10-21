@@ -4,6 +4,21 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.33-CaiDatVaTichHopFindSkillsVaoHeThongAiHub (Ngày 21-10-2026)
+- **Loại hình**: Cài đặt meta-skill Find Skills (Vercel Labs) vào hai nền tảng tác tử Claude Code và Google Antigravity, đồng thời chuẩn hóa và tích hợp vào kho dữ liệu hệ thống AI HUB VN (nâng tổng quy mô kho lên 2.218 tài nguyên).
+- **Nội dung hoàn thành**:
+  - **Cài đặt kỹ năng vào hệ thống máy tính của người dùng**:
+    - **Claude Code**: Khởi tạo cấu hình kỹ năng chuẩn tại `C:\Users\vinhn\.claude\skills\find-skills\SKILL.md`.
+    - **Google Antigravity**: Khởi tạo cấu hình kỹ năng chuẩn tại `C:\Users\vinhn\.gemini\antigravity\skills\find-skills\SKILL.md`.
+  - **Tích hợp tài nguyên vào kho AI HUB VN (`vercel-labs-find-skills`)**:
+    - Chuẩn hóa đầy đủ 4 khối thông tin bắt buộc tiếng Việt theo quy tắc QT-01, QT-04 và quy trình VibeCode: Nguồn dẫn chính thức (`https://github.com/vercel-labs/skills`), công dụng chi tiết, hướng dẫn cài đặt CLI (`npx skills add vercel-labs/skills --skill find-skills`) và hướng dẫn tương tác với AI Agent.
+    - Cung cấp cấu hình mẫu JSON cho Claude Desktop, Antigravity và Cursor IDE.
+  - **Mở rộng Smart MCP Router & Client Adapter**:
+    - Bổ sung cấu hình ý định chuyên biệt `find_agent_skills` vào `mcp-gateway/smart-router.js` và `src/lib/mcpClient.ts`, nhận diện các từ khóa `find skill`, `tìm skill`, `skills.sh`, `agent skills` để tự động điều phối trực tiếp đến kỹ năng Find Skills.
+  - **Kiểm thử tự động & Đóng gói**:
+    - Bổ sung ca kiểm thử định tuyến mới vào `tests/mcp-gateway.test.js`.
+    - Chạy toàn bộ **32/32 bài test** trong 7 bộ kiểm thử tự động: Đạt **100% tỷ lệ pass**.
+
 ### Phiên Bản 2.0.32-NangCapBaoMatProductionVaTachBietTrangMcpVaApi (Ngày 20-10-2026)
 - **Loại hình**: Tách riêng hai trang độc lập (Quản Lý API và Máy Chủ MCP Server), chuyển đổi hệ thống từ demo sang kiến trúc vận hành thực tế (Production-grade) với lớp bảo mật an ninh toàn diện và hoàn thiện cẩm nang hướng dẫn cài đặt.
 - **Nội dung hoàn thành**:

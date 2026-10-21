@@ -34,6 +34,18 @@ export function routeTaskFrontend(query: string): RoutingFrontendResult {
   const normalized = query.toLowerCase().trim();
   const allTools = INITIAL_TOOLS;
 
+  // 0. Ý định Tìm kiếm và cài đặt Agent Skills (Find Skills)
+  if (normalized.includes('find skill') || normalized.includes('tìm skill') || normalized.includes('skills.sh') || normalized.includes('cài skill')) {
+    const findSkillTool = allTools.find(t => t.id === 'vercel-labs-find-skills') || allTools[0];
+    return {
+      strategy: 'SPECIALIZED_INTENT_RULE',
+      matchedTool: findSkillTool,
+      confidence: 0.98,
+      intentId: 'find_agent_skills',
+      reasoningVi: 'Đã nhận diện ý định tìm kiếm, khám phá và cài đặt kỹ năng tác tử (Agent Skills) từ Vercel Labs qua kho skills.sh.'
+    };
+  }
+
   // 1. Phân tích ý định Fintech & Thanh toán Việt Nam
   if (normalized.includes('vietqr') || normalized.includes('napas') || normalized.includes('chuyển khoản')) {
     const vietqrTool = allTools.find(t => t.id === 'vietqr-generator-napas247-mcp') || allTools[0];

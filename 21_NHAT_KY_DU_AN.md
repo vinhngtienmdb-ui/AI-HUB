@@ -1,5 +1,23 @@
 # Nhật Ký Dự Án
 
+## [2026-10-21]
+### Mục tiêu trong ngày
+- Tìm kiếm, xác định và cài đặt meta-skill Find Skills (Vercel Labs) vào hệ thống Claude Code và Antigravity.
+- Tích hợp tài nguyên kỹ năng vào kho dữ liệu AI HUB VN, nâng quy mô kho lên 2.218 tài nguyên.
+- Cập nhật Smart MCP Router hỗ trợ nhận diện và điều phối bài toán tìm kiếm kỹ năng tác tử.
+
+### Các công việc đã thực hiện
+- [Cài đặt và Tích hợp Kỹ năng Find Skills vào Claude Code, Antigravity và Hệ thống AI HUB VN]:
+  - **Cài đặt cho Claude Code**: Khởi tạo tệp `C:\Users\vinhn\.claude\skills\find-skills\SKILL.md`.
+  - **Cài đặt cho Google Antigravity**: Khởi tạo tệp `C:\Users\vinhn\.gemini\antigravity\skills\find-skills\SKILL.md`.
+  - **Bổ sung tài nguyên vào kho AI HUB VN (`vercel-labs-find-skills`)**:
+    - Nâng quy mô kho dữ liệu lên **2.218 tài nguyên**.
+    - Đầy đủ 4 khối thông tin bắt buộc tiếng Việt, cấu hình mẫu JSON cho Claude, Antigravity, Cursor.
+  - **Đồng bộ Smart MCP Router**:
+    - Bổ sung ý định `find_agent_skills` vào `mcp-gateway/smart-router.js` và `src/lib/mcpClient.ts`.
+  - **Kiểm thử tự động**:
+    - Thêm test case vào `tests/mcp-gateway.test.js`. Toàn bộ 32/32 bài test đạt 100% pass.
+
 ## [2026-10-20]
 ### Mục tiêu trong ngày
 - Khởi động dự án và thiết lập cấu trúc tài liệu quản lý cốt lõi theo quy trình VibeCode chuẩn.

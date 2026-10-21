@@ -39,6 +39,13 @@ test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ Ph�
   assert.ok(resBa.confidence >= 0.9);
 });
 
+test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ Tìm kiếm và Cài đặt Agent Skills (Find Skills)', () => {
+  const resFindSkill = routeTask('Tìm giúp tôi skill chuyên về tối ưu hóa truy vấn PostgreSQL trên skills.sh');
+  assert.equal(resFindSkill.success, true);
+  assert.equal(resFindSkill.matchedTool.id, 'vercel-labs-find-skills');
+  assert.ok(resFindSkill.confidence >= 0.9);
+});
+
 test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ Cơ sở dữ liệu (SQLite & Postgres)', () => {
   const resSqlite = routeTask('Truy vấn tệp cơ sở dữ liệu SQLite cục bộ dev.db bằng ngôn ngữ tự nhiên');
   assert.equal(resSqlite.success, true);
