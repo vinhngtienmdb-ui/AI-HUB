@@ -6,6 +6,7 @@ import {
   Tags, BookOpen
 } from 'lucide-react';
 import { AITool } from '../types';
+import { GitHubReadmeViewer } from '../components/GitHubReadmeViewer';
 
 interface DetailPageProps {
   tool: AITool;
@@ -36,7 +37,6 @@ export const DetailPage: React.FC<DetailPageProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<'overview' | 'usage' | 'config' | 'readme'>('overview');
   const [copiedConfigIndex, setCopiedConfigIndex] = useState<number | null>(null);
-  const [copiedReadme, setCopiedReadme] = useState<boolean>(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [imageLoadFailed, setImageLoadFailed] = useState(false);
 
@@ -644,56 +644,11 @@ export const DetailPage: React.FC<DetailPageProps> = ({
         {/* TAB 4: TÀI LIỆU KỸ THUẬT & README GITHUB TIẾNG VIỆT */}
         {activeTab === 'readme' && tool.readmeVi && (
           <div className="space-y-6 animate-fadeIn">
-            <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm space-y-4">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800 gap-3">
-                <div>
-                  <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center space-x-2">
-                    <BookOpen className="w-5 h-5 text-indigo-600" />
-                    <span>Tài Liệu Kỹ Thuật Chi Tiết (README Tiếng Việt)</span>
-                  </h2>
-                  <p className="text-xs text-slate-500 mt-1">
-                    Được biên soạn, dịch thuật và chuẩn hóa theo quy chuẩn VibeCode từ kho lưu trữ GitHub chính thức.
-                  </p>
-                </div>
-
-                <div className="flex items-center space-x-2">
-                  <a
-                    href={tool.sourceUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold transition-colors"
-                  >
-                    <ExternalLink className="w-3.5 h-3.5" />
-                    <span>Xem repo gốc</span>
-                  </a>
-                  <button
-                    onClick={() => {
-                      if (!tool.readmeVi) return;
-                      navigator.clipboard.writeText(tool.readmeVi);
-                      setCopiedReadme(true);
-                      setTimeout(() => setCopiedReadme(false), 2000);
-                    }}
-                    className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold transition-all shadow-sm"
-                  >
-                    {copiedReadme ? (
-                      <>
-                        <CheckCheck className="w-4 h-4 text-emerald-200" />
-                        <span>Đã chép Markdown!</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-4 h-4" />
-                        <span>Sao chép Markdown</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-              </div>
-
-              <div className="p-5 sm:p-6 rounded-2xl bg-slate-950 text-slate-100 font-mono text-xs sm:text-sm leading-relaxed whitespace-pre-wrap overflow-x-auto border border-slate-800 max-h-[70vh] overflow-y-auto">
-                {tool.readmeVi}
-              </div>
-            </div>
+            <GitHubReadmeViewer 
+              markdown={tool.readmeVi} 
+              sourceUrl={tool.sourceUrl} 
+              fileName="README.md"
+            />
           </div>
         )}
 

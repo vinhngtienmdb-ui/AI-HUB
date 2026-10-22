@@ -7,8 +7,18 @@
 - Cài đặt tệp kỹ năng VibeCoding cho Claude Code và bổ sung định tuyến tự động vào Smart MCP Gateway.
 - Rà soát toàn bộ kho dữ liệu hệ thống (2.221 công cụ), bổ sung và dịch thuật tài liệu kỹ thuật README từ GitHub sang tiếng Việt chuẩn mực.
 - Cập nhật giao diện Modal chi tiết và Trang chi tiết toàn màn hình hỗ trợ xem và sao chép tài liệu README Markdown.
+- Chuẩn hóa phần hiển thị tài liệu README giữ nguyên phong cách giao diện trực quan của GitHub (không biến dạng thành khối code thô đen).
 
 ### Các công việc đã thực hiện
+- [Chuẩn Hóa Giao Diện Hiển Thị README Giữ Nguyên Phong Cách GitHub]:
+  - **Phát triển thành phần giao diện (`src/components/GitHubReadmeViewer.tsx`)**:
+    - Thiết kế khung hiển thị giống 100% trang GitHub: Tiêu đề tệp `README.md`, icon tệp, nhãn ngôn ngữ Tiếng Việt, liên kết mở trực tiếp repo gốc trên GitHub.
+    - Hỗ trợ 2 chế độ hiển thị linh hoạt: **Xem trước trực quan (Preview)** với kiểu dáng GitHub và **Mã nguồn thô (Raw Markdown)** kèm nút sao chép một chạm.
+  - **Bộ quy chuẩn định dạng CSS GitHub Flavored Markdown (`src/index.css`)**:
+    - Định nghĩa lớp `.github-markdown-body` tái hiện đầy đủ kiểu dáng Typography của GitHub: Tiêu đề H1/H2 có đường kẻ ngang phân cách mờ, trích dẫn Blockquote có viền xám tinh tế, danh sách có bullet point chuẩn mực, inline code và fenced code block được phân biệt rõ ràng.
+  - **Tích hợp đồng bộ**: Áp dụng vào cả [`ToolDetailModal.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/components/ToolDetailModal.tsx) và [`DetailPage.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/pages/DetailPage.tsx).
+  - **Kiểm thử & Đóng gói**: Vượt qua 37/37 bài kiểm thử tự động, biên dịch Vite hoàn tất thành công trong 11.53 giây.
+
 - [Rà Soát Dữ Liệu Toàn Hệ Thống & Biên Soạn Tài Liệu Kỹ Thuật README Tiếng Việt]:
   - **Mô hình dữ liệu**: Bổ sung trường `readmeVi?: string;` vào kiểu dữ liệu `AITool` trong `src/types/index.ts`.
   - **Rà soát & Biên soạn tài liệu**:

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { X, ExternalLink, Copy, Check, ShieldCheck, Terminal, Code2, BookOpen, MessageSquareQuote, Layers, Sparkles, Play, Image as ImageIcon, Maximize2 } from 'lucide-react';
 import { AITool, ConfigTemplate } from '../types';
+import { GitHubReadmeViewer } from './GitHubReadmeViewer';
 
 interface ToolDetailModalProps {
   tool: AITool | null;
@@ -16,7 +17,6 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
   const [copiedConfig, setCopiedConfig] = useState<boolean>(false);
   const [copiedCli, setCopiedCli] = useState<boolean>(false);
   const [copiedPromptIndex, setCopiedPromptIndex] = useState<number | null>(null);
-  const [copiedReadme, setCopiedReadme] = useState<boolean>(false);
   const [imageLoadFailed, setImageLoadFailed] = useState<boolean>(false);
 
   useEffect(() => {
@@ -66,13 +66,6 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
     navigator.clipboard.writeText(prompt);
     setCopiedPromptIndex(index);
     setTimeout(() => setCopiedPromptIndex(null), 2000);
-  };
-
-  const handleCopyReadme = () => {
-    if (!tool.readmeVi) return;
-    navigator.clipboard.writeText(tool.readmeVi);
-    setCopiedReadme(true);
-    setTimeout(() => setCopiedReadme(false), 2000);
   };
 
   return (
@@ -382,31 +375,16 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
           {/* KHỐI 5: TÀI LIỆU KỸ THUẬT & README GITHUB TIẾNG VIỆT */}
           {tool.readmeVi && (
             <div className="pt-6">
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center space-x-2 text-indigo-600 dark:text-indigo-400 font-bold text-base">
-                  <BookOpen className="w-5 h-5" />
-                  <span>4. Tài Liệu Kỹ Thuật Chi Tiết (README GitHub Tiếng Việt)</span>
-                </div>
-                <button
-                  onClick={handleCopyReadme}
-                  className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/50 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 text-xs font-semibold transition-all shadow-xs"
-                >
-                  {copiedReadme ? (
-                    <>
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span className="text-emerald-600">Đã sao chép Markdown!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3.5 h-3.5" />
-                      <span>Sao chép toàn bộ README</span>
-                    </>
-                  )}
-                </button>
+              <div className="flex items-center space-x-2 text-indigo-600 dark:text-indigo-400 font-bold text-base mb-3">
+                <BookOpen className="w-5 h-5" />
+                <span>4. Tài Liệu Kỹ Thuật Chi Tiết (README GitHub Tiếng Việt)</span>
               </div>
-
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-xs sm:text-sm text-slate-800 dark:text-slate-200 max-h-96 overflow-y-auto font-mono whitespace-pre-wrap leading-relaxed">
-                {tool.readmeVi}
+              <div className="max-h-[60vh] overflow-y-auto rounded-2xl">
+                <GitHubReadmeViewer 
+                  markdown={tool.readmeVi} 
+                  sourceUrl={tool.sourceUrl} 
+                  fileName="README.md"
+                />
               </div>
             </div>
           )}

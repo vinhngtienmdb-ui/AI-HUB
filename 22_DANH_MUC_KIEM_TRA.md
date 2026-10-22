@@ -1,8 +1,8 @@
 # Danh Mục Kiểm Tra Dự Án (Checklist)
 
 ## Tổng Quan Tiến Độ
-- Tổng số nhiệm vụ cốt lõi: 31
-- Đã hoàn thành: 31
+- Tổng số nhiệm vụ cốt lõi: 32
+- Đã hoàn thành: 32
 - Đang thực hiện: 0
 - Chưa bắt đầu: 0
 - Bị nghẽn: 0
@@ -45,6 +45,7 @@
 - [x] Khởi tạo tệp danh mục kiểm tra (`22_DANH_MUC_KIEM_TRA.md`)
 
 ## Giai Đoạn 09: Xây Dựng Theo Module
+- [x] Chuẩn hóa giao diện hiển thị tài liệu README giữ nguyên phong cách tài liệu trực quan của GitHub (GitHub Flavored Markdown Body, typography H1/H2 gạch chân phân cách mờ, blockquote thanh lịch, danh sách bullet point, bảng biểu), tích hợp thành phần `GitHubReadmeViewer.tsx` hỗ trợ chế độ xem trước trực quan (Preview) và xem mã nguồn thô (Raw) trên `ToolDetailModal.tsx` và `DetailPage.tsx`
 - [x] Rà soát toàn bộ dữ liệu hệ thống (2.221 tài nguyên), dịch thuật và chuẩn hóa tài liệu kỹ thuật README từ GitHub sang tiếng Việt chuẩn mực cho 100% công cụ (`readmeVi`), nâng cấp giao diện Modal chi tiết (`ToolDetailModal.tsx`) và Trang chi tiết (`DetailPage.tsx`) hỗ trợ xem và sao chép Markdown
 - [x] Lập trình phân hệ Giao diện danh mục, Tìm kiếm tức thời và Phân trang (24 mục/trang)
 - [x] Lập trình phân hệ Chi tiết công cụ và Sao chép cấu hình một chạm

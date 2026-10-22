@@ -4,6 +4,25 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.40-ChuanHoaGiaoDienReadmeTheoPhongCachGitHub (Ngày 22-10-2026)
+- **Loại hình**: Nâng cấp trải nghiệm người dùng, chuyển đổi hoàn toàn cách hiển thị tài liệu README từ khối code đen mono thô sơ sang giao diện trực quan chuẩn GitHub Flavored Markdown (GFM), giữ nguyên 100% phong cách trình bày của GitHub.
+- **Nội dung hoàn thành**:
+  - **Xây dựng thành phần giao diện chuyên dụng (`src/components/GitHubReadmeViewer.tsx`)**:
+    - Khung viền và thanh tiêu đề chuẩn GitHub: Biểu tượng tệp tin, tên tệp `README.md`, nhãn ngôn ngữ Tiếng Việt và đường dẫn liên kết mở nhanh repo gốc.
+    - Bộ công cụ thao tác linh hoạt: Hỗ trợ chuyển đổi qua lại giữa chế độ **Xem trước (Preview trực quan)** và **Mã nguồn thô (Raw Markdown)**.
+    - Nút sao chép mã nguồn Markdown một chạm với thông báo phản hồi trạng thái trực quan.
+  - **Bộ quy chuẩn định dạng CSS GitHub (`src/index.css`)**:
+    - Định nghĩa lớp định dạng `.github-markdown-body` hỗ trợ đầy đủ chế độ sáng (Light) và tối (Dark).
+    - Tiêu đề H1, H2 có đường gạch chân phân cách mờ thanh lịch chuẩn GitHub.
+    - Trích dẫn (Blockquote) có dải viền xám bên trái và nền mờ chuyên nghiệp.
+    - Khối mã nguồn (Code Blocks), mã nội dòng (Inline Code), danh sách đánh số, gạch đầu dòng, bảng biểu và liên kết hiển thị tự nhiên, hoàn toàn không bị biến dạng thành khối code đen thô ráp.
+  - **Tích hợp đồng bộ hệ thống giao diện**:
+    - **Modal chi tiết (`src/components/ToolDetailModal.tsx`)**: Tích hợp `GitHubReadmeViewer` với khung cuộn độc lập mượt mà.
+    - **Trang chi tiết toàn màn hình (`src/pages/DetailPage.tsx`)**: Tích hợp `GitHubReadmeViewer` vào Tab "Tài liệu README (GitHub)".
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Chạy toàn bộ **37/37 bài test** trong 7 bộ kiểm thử tự động: Đạt **100% tỷ lệ pass**.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 11.53 giây.
+
 ### Phiên Bản 2.0.39-RaSoatDuLieuVaBoSungReadmeTiengViet (Ngày 22-10-2026)
 - **Loại hình**: Rà soát toàn bộ dữ liệu hệ thống, dịch thuật và bổ sung tài liệu kỹ thuật README từ GitHub sang tiếng Việt chuẩn mực cho 100% tài nguyên (2.221 công cụ), nâng cấp giao diện Modal chi tiết và Trang chi tiết toàn màn hình hỗ trợ xem và sao chép Markdown.
 - **Nội dung hoàn thành**:
