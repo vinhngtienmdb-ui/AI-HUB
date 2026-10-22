@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { AITool } from '../types';
 import { GitHubReadmeViewer } from '../components/GitHubReadmeViewer';
+import { GitHubCodeViewer } from '../components/GitHubCodeViewer';
 
 interface DetailPageProps {
   tool: AITool;
@@ -651,56 +652,35 @@ export const DetailPage: React.FC<DetailPageProps> = ({
         {/* TAB 3: CẤU HÌNH MẪU JSON VÀ LỆNH CLI */}
         {activeTab === 'config' && (
           <div className="space-y-6 animate-fadeIn">
-            {tool.configs.map((config, idx) => (
-              <div key={idx} className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
-                  <span className="font-bold text-sm text-slate-900 dark:text-white">
-                    Cấu hình cho {config.platformName}
-                  </span>
-                  <button
-                    onClick={() => handleCopy(config.jsonConfig, idx)}
-                    className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-600 dark:bg-indigo-950 dark:text-indigo-300 font-bold text-xs transition-colors"
-                  >
-                    {copiedConfigIndex === idx ? <CheckCheck className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
-                    <span>{copiedConfigIndex === idx ? 'Đã sao chép' : 'Sao chép JSON'}</span>
-                  </button>
-                </div>
+            {tool.configs.map((config, idx) => {
+              const platformFileName = 
+                config.platform === 'claude_desktop' ? 'claude_desktop_config.json' :
+                config.platform === 'antigravity' ? 'mcp_config.json' :
+                config.platform === 'cursor' ? '.cursor/mcp.json' :
+                config.platform === 'windsurf' ? 'mcp_config.json' : 'config.json';
 
-                {config.cliCommand && (
-                  <div>
-                    <span className="text-xs text-slate-400 block mb-1">Lệnh cài đặt CLI:</span>
-                    <div className="flex items-center justify-between p-3 rounded-xl bg-slate-950 text-emerald-400 font-mono text-xs overflow-x-auto">
-                      <span>{config.cliCommand}</span>
-                      <button
-                        type="button"
-                        onClick={() => handleCopy(config.cliCommand!, 500 + idx)}
-                        className="ml-3 flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-750 text-slate-200 font-sans text-xs font-semibold shrink-0 transition-colors border border-slate-700 shadow-xs"
-                        title="Sao chép câu lệnh cài đặt CLI"
-                      >
-                        {copiedConfigIndex === 500 + idx ? (
-                          <>
-                            <CheckCheck className="w-3.5 h-3.5 text-emerald-400" />
-                            <span className="text-emerald-400 font-bold">Đã chép</span>
-                          </>
-                        ) : (
-                          <>
-                            <Copy className="w-3.5 h-3.5 text-slate-300" />
-                            <span>Sao chép</span>
-                          </>
-                        )}
-                      </button>
+              return (
+                <div key={idx} className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm space-y-4">
+                  <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+                    <div className="flex items-center space-x-2">
+                      <span className="font-bold text-sm text-slate-900 dark:text-white">
+                        Cấu hình cho {config.platformName}
+                      </span>
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-mono">
+                        {config.platform}
+                      </span>
                     </div>
                   </div>
-                )}
 
-                <div>
-                  <span className="text-xs text-slate-400 block mb-1">Mã cấu hình JSON:</span>
-                  <pre className="p-4 rounded-2xl bg-slate-950 text-slate-200 font-mono text-xs overflow-x-auto border border-slate-800">
-                    <code>{config.jsonConfig}</code>
-                  </pre>
+                  <GitHubCodeViewer 
+                    code={config.jsonConfig}
+                    fileName={platformFileName}
+                    platformName={config.platformName}
+                    cliCommand={config.cliCommand}
+                  />
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
 

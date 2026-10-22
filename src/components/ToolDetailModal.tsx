@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { X, ExternalLink, Copy, Check, ShieldCheck, Terminal, Code2, BookOpen, MessageSquareQuote, Layers, Sparkles, Play, Image as ImageIcon, Maximize2 } from 'lucide-react';
 import { AITool, ConfigTemplate } from '../types';
 import { GitHubReadmeViewer } from './GitHubReadmeViewer';
+import { GitHubCodeViewer } from './GitHubCodeViewer';
 
 interface ToolDetailModalProps {
   tool: AITool | null;
@@ -14,8 +15,6 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
 
   const [activeTab, setActiveTab] = useState<number>(0);
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
-  const [copiedConfig, setCopiedConfig] = useState<boolean>(false);
-  const [copiedCli, setCopiedCli] = useState<boolean>(false);
   const [copiedPromptIndex, setCopiedPromptIndex] = useState<number | null>(null);
   const [imageLoadFailed, setImageLoadFailed] = useState<boolean>(false);
 
@@ -47,20 +46,6 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
   }, [tool.demoImages, tool.imageUrl, tool.name]);
 
   const currentConfig: ConfigTemplate | undefined = tool.configs[activeTab] || tool.configs[0];
-
-  const handleCopyConfig = () => {
-    if (!currentConfig) return;
-    navigator.clipboard.writeText(currentConfig.jsonConfig);
-    setCopiedConfig(true);
-    setTimeout(() => setCopiedConfig(false), 2000);
-  };
-
-  const handleCopyCli = () => {
-    if (!currentConfig?.cliCommand) return;
-    navigator.clipboard.writeText(currentConfig.cliCommand);
-    setCopiedCli(true);
-    setTimeout(() => setCopiedCli(false), 2000);
-  };
 
   const handleCopyPrompt = (prompt: string, index: number) => {
     navigator.clipboard.writeText(prompt);
@@ -239,101 +224,36 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
             </div>
 
             {/* Các tab chọn môi trường cấu hình */}
-            <div className="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-inner">
-              <div className="flex items-center justify-between px-4 py-2.5 bg-slate-950/80 border-b border-slate-800">
-                <div className="flex items-center space-x-1">
-                  {(tool.configs || []).map((cfg, idx) => (
-                    <button
-                      key={cfg.platform}
-                      onClick={() => setActiveTab(idx)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                        activeTab === idx
-                          ? 'bg-blue-600 text-white'
-                          : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
-                      }`}
-                    >
-                      {cfg.platformName}
-                    </button>
-                  ))}
-                </div>
-
-                <span className="text-[11px] text-slate-400 font-mono">
-                  Định dạng JSON
-                </span>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-1.5 overflow-x-auto pb-1">
+                {(tool.configs || []).map((cfg, idx) => (
+                  <button
+                    key={cfg.platform}
+                    onClick={() => setActiveTab(idx)}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-xs ${
+                      activeTab === idx
+                        ? 'bg-blue-600 text-white shadow-blue-500/20'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+                    }`}
+                  >
+                    {cfg.platformName}
+                  </button>
+                ))}
               </div>
 
-              {/* Lệnh chạy dòng lệnh nhanh nếu có */}
-              {currentConfig?.cliCommand ? (
-                <div className="px-4 py-3 bg-slate-900/60 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono">
-                  <div className="flex items-center space-x-2 overflow-x-auto text-emerald-400 pr-2">
-                    <span className="text-slate-500 select-none">$</span>
-                    <span>{currentConfig.cliCommand}</span>
-                  </div>
-                  <div className="flex items-center space-x-2 shrink-0">
-                    <button
-                      onClick={handleCopyCli}
-                      className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition-colors shadow-xs"
-                      title="Sao chép câu lệnh cài đặt"
-                    >
-                      {copiedCli ? (
-                        <>
-                          <Check className="w-3.5 h-3.5 text-emerald-400" />
-                          <span className="text-emerald-400 font-bold">Đã sao chép!</span>
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="w-3.5 h-3.5" />
-                          <span>Sao chép lệnh</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                /* Gợi ý lệnh khởi chạy nhanh nếu là máy chủ MCP */
-                tool.toolType === 'mcp' && (
-                  <div className="px-4 py-2.5 bg-slate-900/60 border-b border-slate-800 flex items-center justify-between text-xs font-mono">
-                    <span className="text-slate-400">
-                      Gợi ý lệnh kiểm tra: <code className="text-emerald-400 font-bold">npx -y {tool.slug.replace(/-mcp$/, '')} --help</code>
-                    </span>
-                    <button
-                      onClick={() => {
-                        navigator.clipboard.writeText(`npx -y ${tool.slug.replace(/-mcp$/, '')} --help`);
-                        setCopiedCli(true);
-                        setTimeout(() => setCopiedCli(false), 2000);
-                      }}
-                      className="flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs transition-colors border border-slate-700"
-                    >
-                      {copiedCli ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
-                      <span>{copiedCli ? 'Đã chép' : 'Chép lệnh'}</span>
-                    </button>
-                  </div>
-                )
+              {currentConfig && (
+                <GitHubCodeViewer 
+                  code={currentConfig.jsonConfig}
+                  fileName={
+                    currentConfig.platform === 'claude_desktop' ? 'claude_desktop_config.json' :
+                    currentConfig.platform === 'antigravity' ? 'mcp_config.json' :
+                    currentConfig.platform === 'cursor' ? '.cursor/mcp.json' :
+                    currentConfig.platform === 'windsurf' ? 'mcp_config.json' : 'config.json'
+                  }
+                  platformName={currentConfig.platformName}
+                  cliCommand={currentConfig.cliCommand}
+                />
               )}
-
-              {/* Khối hiển thị mã JSON cấu hình mẫu */}
-              <div className="relative p-4">
-                <button
-                  onClick={handleCopyConfig}
-                  className="absolute top-3 right-3 z-10 flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md transition-all active:scale-95"
-                >
-                  {copiedConfig ? (
-                    <>
-                      <Check className="w-3.5 h-3.5" />
-                      <span>Đã sao chép cấu hình!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3.5 h-3.5" />
-                      <span>Sao chép cấu hình</span>
-                    </>
-                  )}
-                </button>
-
-                <pre className="text-xs sm:text-sm text-slate-200 overflow-x-auto leading-relaxed font-mono pt-6">
-                  <code>{currentConfig?.jsonConfig}</code>
-                </pre>
-              </div>
             </div>
           </div>
 

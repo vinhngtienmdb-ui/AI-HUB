@@ -4,6 +4,21 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.42-ChuanHoaTabCauHinhMauJsonTheoPhongCachGitHub (Ngày 22-10-2026)
+- **Loại hình**: Chuẩn hóa toàn diện Tab "Cấu hình mẫu JSON" và khối cấu hình môi trường theo đúng phong cách trình xem mã nguồn của GitHub (GitHub Code Blob Viewer), tích hợp cột số dòng, thanh tiêu đề tệp tin chuẩn nền tảng và nút sao chép chuyên dụng.
+- **Nội dung hoàn thành**:
+  - **Xây dựng thành phần giao diện chuyên dụng (`src/components/GitHubCodeViewer.tsx`)**:
+    - Thanh tiêu đề file chuẩn GitHub: Biểu tượng `FileCode`, tên tệp tin thực tế theo từng nền tảng (`claude_desktop_config.json`, `mcp_config.json`, `.cursor/mcp.json`), nhãn nền tảng, số dòng và dung lượng byte.
+    - Cột số thứ tự dòng (Line Numbers): Đặt ở mép trái với đường phân cách mờ nhạt, hỗ trợ đổi màu khi rê chuột (hover).
+    - Khối lệnh Terminal CLI (nếu có): Ký hiệu `$ `, font mono `JetBrains Mono` và nút sao chép câu lệnh riêng biệt.
+    - Nút sao chép JSON một chạm có phản hồi trạng thái trực quan.
+  - **Tích hợp đồng bộ hệ thống giao diện**:
+    - **Trang chi tiết toàn màn hình (`src/pages/DetailPage.tsx`)**: Nâng cấp toàn bộ Tab "Cấu hình mẫu JSON", hiển thị từng cấu hình nền tảng thành một hộp GitHub Code Viewer chuyên nghiệp.
+    - **Cửa sổ chi tiết công cụ (`src/components/ToolDetailModal.tsx`)**: Nâng cấp khối hiển thị cấu hình, hỗ trợ chọn tab nền tảng linh hoạt và xem code chuẩn GitHub.
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Toàn bộ **37/37 bài test** trong 7 bộ kiểm thử tự động đạt **100% tỷ lệ pass**.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 10.63 giây.
+
 ### Phiên Bản 2.0.41-BaoToanNguyenVenNoiDungGitHubVaChuanHoaTabCaiDat (Ngày 22-10-2026)
 - **Loại hình**: Bảo toàn nguyên vẹn 100% nội dung và cấu trúc phân loại gốc từ GitHub (không cắt xén, không xáo trộn), vẽ bổ sung sơ đồ trực quan (Flowchart Diagram) cho quy trình 13 giai đoạn VibeCode, tích hợp nút sao chép mã nguồn cho từng khối code block kiểu GitHub và chuẩn hóa Tab "Cách sử dụng & Cài đặt" (loại bỏ nút chạy lệnh trên web, chuyển thành các khối lệnh terminal có thể sao chép).
 - **Nội dung hoàn thành**:

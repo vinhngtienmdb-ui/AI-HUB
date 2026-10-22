@@ -10,8 +10,18 @@
 - Chuẩn hóa phần hiển thị tài liệu README giữ nguyên phong cách giao diện trực quan của GitHub (không biến dạng thành khối code thô đen).
 - Bảo toàn nguyên vẹn 100% nội dung và cấu trúc phân loại gốc từ GitHub (không cắt xén, giữ nguyên sơ đồ mũi tên ASCII 13 giai đoạn, vẽ thêm sơ đồ Diagram trực quan).
 - Chuẩn hóa Tab "Cách sử dụng & Cài đặt": Loại bỏ hoàn toàn các nút chạy lệnh trên web, chuyển các lệnh terminal sang khối định dạng chuẩn GitHub kèm nút sao chép.
+- Chuẩn hóa Tab "Cấu hình mẫu JSON" theo phong cách trình xem mã nguồn GitHub (Code Blob Viewer có cột số dòng, thanh tiêu đề file và nút sao chép JSON).
 
 ### Các công việc đã thực hiện
+- [Chuẩn Hóa Tab Cấu Hình Mẫu JSON Theo Phong Cách GitHub]:
+  - **Phát triển thành phần giao diện (`src/components/GitHubCodeViewer.tsx`)**:
+    - Thiết kế khung hiển thị mã nguồn chuẩn GitHub Code Blob: Biểu tượng `FileCode`, tên file cấu hình theo từng nền tảng (`claude_desktop_config.json`, `mcp_config.json`, `.cursor/mcp.json`), nhãn nền tảng, số lượng dòng code và dung lượng byte.
+    - Cột số thứ tự dòng (Line Numbers) hiển thị ở mép trái với đường phân cách mờ nhạt và hỗ trợ hover tương tác.
+    - Khối lệnh Terminal CLI (nếu có): Ký hiệu `$ `, font mono `JetBrains Mono` và nút sao chép câu lệnh riêng biệt.
+    - Nút sao chép JSON một chạm với phản hồi trạng thái trực quan.
+  - **Tích hợp đồng bộ**: Áp dụng vào Tab "Cấu hình mẫu JSON" trên [`DetailPage.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/pages/DetailPage.tsx) và khối cấu hình trên [`ToolDetailModal.tsx`](file:///C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/src/components/ToolDetailModal.tsx).
+  - **Kiểm thử & Đóng gói**: Vượt qua 37/37 bài kiểm thử tự động, biên dịch Vite hoàn tất thành công trong 10.63 giây.
+
 - [Bảo Toàn Nguyên Vẹn Nội Dung GitHub & Chuẩn Hóa Tab Cài Đặt]:
   - **Bảo toàn nguyên tắc toàn vẹn nội dung (`src/data/allTools.json`)**:
     - Tích hợp toàn bộ 492 dòng nguyên bản từ `SKILL.md` vào `vibecoding-skill-dev-lifecycle`: Giữ nguyên 100% tiêu đề, các đề mục I đến VII, 8 nguyên tắc cốt lõi, sơ đồ ASCII 13 giai đoạn, chi tiết từng giai đoạn, cấu trúc Task 17 mục, cổng kiểm soát chất lượng và 3 tệp quản lý cốt lõi.

@@ -1,8 +1,8 @@
 # Danh Mục Kiểm Tra Dự Án (Checklist)
 
 ## Tổng Quan Tiến Độ
-- Tổng số nhiệm vụ cốt lõi: 33
-- Đã hoàn thành: 33
+- Tổng số nhiệm vụ cốt lõi: 34
+- Đã hoàn thành: 34
 - Đang thực hiện: 0
 - Chưa bắt đầu: 0
 - Bị nghẽn: 0
@@ -45,6 +45,7 @@
 - [x] Khởi tạo tệp danh mục kiểm tra (`22_DANH_MUC_KIEM_TRA.md`)
 
 ## Giai Đoạn 09: Xây Dựng Theo Module
+- [x] Chuẩn hóa Tab "Cấu hình mẫu JSON" theo phong cách trình xem mã nguồn của GitHub (GitHub Code Blob Viewer), tích hợp thành phần `GitHubCodeViewer.tsx` với cột số thứ tự dòng, thanh tiêu đề tệp tin theo từng nền tảng, khối Terminal lệnh CLI và nút sao chép JSON một chạm trên `DetailPage.tsx` và `ToolDetailModal.tsx`
 - [x] Bảo toàn nguyên tắc toàn vẹn nội dung từ GitHub (toàn văn 492 dòng `SKILL.md` VibeCode, sơ đồ mũi tên ASCII, vẽ thêm sơ đồ Diagram trực quan đa khối), tự động gắn nút Copy Code góc phải cho mọi code block, và chuẩn hóa Tab "Cách sử dụng & Cài đặt" (loại bỏ nút chạy lệnh trên web, chuyển lệnh CLI sang khối terminal có thể sao chép)
 - [x] Chuẩn hóa giao diện hiển thị tài liệu README giữ nguyên phong cách tài liệu trực quan của GitHub (GitHub Flavored Markdown Body, typography H1/H2 gạch chân phân cách mờ, blockquote thanh lịch, danh sách bullet point, bảng biểu), tích hợp thành phần `GitHubReadmeViewer.tsx` hỗ trợ chế độ xem trước trực quan (Preview) và xem mã nguồn thô (Raw) trên `ToolDetailModal.tsx` và `DetailPage.tsx`
 - [x] Rà soát toàn bộ dữ liệu hệ thống (2.221 tài nguyên), dịch thuật và chuẩn hóa tài liệu kỹ thuật README từ GitHub sang tiếng Việt chuẩn mực cho 100% công cụ (`readmeVi`), nâng cấp giao diện Modal chi tiết (`ToolDetailModal.tsx`) và Trang chi tiết (`DetailPage.tsx`) hỗ trợ xem và sao chép Markdown
