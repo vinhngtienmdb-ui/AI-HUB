@@ -2,6 +2,8 @@
 
 ## [2026-10-22]
 ### Mục tiêu trong ngày
+- Tái thiết kế toàn diện sơ đồ Flowchart 13 giai đoạn VibeCode và sơ đồ tác tử trực quan theo phong cách thẻ hiện đại, phân chia 4 chặng sắc nét.
+- Loại bỏ triệt để giao diện mono đen và chữ xanh lá kiểu hacker terminal trên toàn hệ thống, chuyển đổi sang giao diện tài liệu kỹ thuật sáng sủa, trang nhã.
 - Tích hợp bộ kỹ năng và quy tắc phát triển phần mềm chuẩn VibeCode (VibeCoding Skill `vinhngtienmdb-ui/vibecoding_skill`) vào kho tài nguyên AI HUB VN.
 - Nâng quy mô kho dữ liệu lên 2.221 tài nguyên và đảm bảo hiển thị ở vị trí đầu tiên của danh mục công cụ mới cập nhật.
 - Cài đặt tệp kỹ năng VibeCoding cho Claude Code và bổ sung định tuyến tự động vào Smart MCP Gateway.
@@ -13,6 +15,19 @@
 - Chuẩn hóa Tab "Cấu hình mẫu JSON" theo phong cách trình xem mã nguồn GitHub (Code Blob Viewer có cột số dòng, thanh tiêu đề file và nút sao chép JSON).
 
 ### Các công việc đã thực hiện
+- [Tái Thiết Kế Sơ Đồ Flowchart & Loại Bỏ Giao Diện Mono Đen]:
+  - **Tái thiết kế Sơ đồ Flowchart (`src/components/GitHubReadmeViewer.tsx`)**:
+    - Phân chia 4 chặng rõ ràng với thẻ bo góc mềm mại, huy hiệu số thứ tự tròn viền nổi bật, tên giai đoạn in đậm và tên tệp tài liệu tương ứng:
+      - Chặng 1: Khởi tạo & Đặc tả (01 - 04) - Xanh dương thanh thoát.
+      - Chặng 2: Thiết kế hệ thống & Dữ liệu (05 - 08) - Tím nhạt tinh tế.
+      - Chặng 3: Xây dựng & Bảo mật (09 - 11) - Ngọc bích thanh nhã.
+      - Chặng 4: Triển khai & Vận hành (12 - 13) - Hổ phách trang nhã.
+    - Sơ đồ tác tử AI Job Search và kiến trúc Paperclip cũng được thiết kế lại dạng thẻ sáng sủa, chuyên nghiệp.
+  - **Loại bỏ triệt để giao diện Mono đen**:
+    - Chuyển toàn bộ các khối dòng lệnh Terminal CLI từ nền đen kịt `bg-slate-950 text-emerald-400` trong `GitHubCodeViewer.tsx` và `DetailPage.tsx` sang nền tài liệu sáng xám trang nhã `bg-slate-50/80 dark:bg-slate-800/90`, chữ `text-slate-800 dark:text-slate-100`, ký hiệu `$ ` màu chàm tím `text-indigo-600 dark:text-indigo-400`.
+    - Chuyển chế độ xem thô (Raw View) trong `GitHubReadmeViewer.tsx` từ nền đen sang theme tài liệu hài hòa.
+  - **Kiểm thử & Đóng gói**: Vượt qua 37/37 bài kiểm thử tự động, biên dịch Vite hoàn tất thành công trong 12.32 giây.
+
 - [Chuẩn Hóa Tab Cấu Hình Mẫu JSON Theo Phong Cách GitHub]:
   - **Phát triển thành phần giao diện (`src/components/GitHubCodeViewer.tsx`)**:
     - Thiết kế khung hiển thị mã nguồn chuẩn GitHub Code Blob: Biểu tượng `FileCode`, tên file cấu hình theo từng nền tảng (`claude_desktop_config.json`, `mcp_config.json`, `.cursor/mcp.json`), nhãn nền tảng, số lượng dòng code và dung lượng byte.

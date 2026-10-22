@@ -4,6 +4,25 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.43-ThietKeLaiFlowchartVaLoaiBoGiaoDienMonoDen (Ngày 22-10-2026)
+- **Loại hình**: Thiết kế lại toàn diện sơ đồ Flowchart 13 giai đoạn VibeCode và sơ đồ tương tác tác tử đa luồng theo phong cách hiện đại, trực quan, phân 4 chặng rõ nét; đồng thời loại bỏ triệt để giao diện mono đen/chữ xanh lá hacker terminal, chuyển đổi sang phong cách tài liệu kỹ thuật sáng sủa, thanh lịch, trang nhã.
+- **Nội dung hoàn thành**:
+  - **Tái thiết kế Sơ đồ Flowchart (`src/components/GitHubReadmeViewer.tsx`)**:
+    - Phân chia 4 chặng tiến trình rõ ràng với màu sắc nhận diện đặc trưng:
+      - Chặng 1: Khởi tạo & Đặc tả (Giai đoạn 01 đến 04) - Sắc xanh dương nhạt.
+      - Chặng 2: Thiết kế hệ thống & Dữ liệu (Giai đoạn 05 đến 08) - Sắc tím hoa cà nhạt.
+      - Chặng 3: Xây dựng & Bảo mật (Giai đoạn 09 đến 11) - Sắc ngọc bích nhạt.
+      - Chặng 4: Triển khai & Vận hành (Giai đoạn 12 đến 13) - Sắc hổ phách nhạt.
+    - Từng nút bước được thiết kế dạng thẻ bo góc mềm mại, có huy hiệu số thứ tự tròn viền sắc nét, tên giai đoạn in đậm, tên tệp markdown tương ứng, liên kết bằng mũi tên chuyển tiếp mượt mà.
+    - Sơ đồ tác tử cho `ai-job-search` và cấu trúc `paperclip` cũng được đồng bộ hóa sang giao diện thẻ sáng sủa, tinh tế.
+  - **Loại bỏ triệt để giao diện Mono đen**:
+    - **Thành phần xem mã (`src/components/GitHubCodeViewer.tsx`)**: Khối lệnh Terminal CLI được chuyển từ nền đen kịt `bg-slate-950 text-emerald-400` sang giao diện tài liệu hiện đại `bg-slate-50/80 dark:bg-slate-800/90`, viền `border-slate-200 dark:border-slate-700`, chữ `text-slate-800 dark:text-slate-100`, ký hiệu `$ ` màu chàm tím `text-indigo-600 dark:text-indigo-400`. Khối bảng mã nguồn JSON chuyển sang nền `bg-slate-50/50 dark:bg-slate-900`.
+    - **Trang chi tiết (`src/pages/DetailPage.tsx`)**: Toàn bộ khối lệnh dòng lệnh Terminal trong Tab "Cách sử dụng & Cài đặt" được đồng bộ hóa sang theme sáng/tối thanh lịch, không dùng nền đen hay chữ xanh lá.
+    - **Chế độ xem thô (Raw View) của `GitHubReadmeViewer.tsx`**: Chuyển từ khung đen sang khung tài liệu `bg-slate-50 dark:bg-slate-850 border-slate-200 dark:border-slate-700`.
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Vượt qua toàn bộ **37/37 bài kiểm thử tự động** trong 7 bộ test (tỷ lệ pass 100%).
+    - Biên dịch và đóng gói Vite hoàn tất thành công (`tsc && vite build`) trong 12.32 giây.
+
 ### Phiên Bản 2.0.42-ChuanHoaTabCauHinhMauJsonTheoPhongCachGitHub (Ngày 22-10-2026)
 - **Loại hình**: Chuẩn hóa toàn diện Tab "Cấu hình mẫu JSON" và khối cấu hình môi trường theo đúng phong cách trình xem mã nguồn của GitHub (GitHub Code Blob Viewer), tích hợp cột số dòng, thanh tiêu đề tệp tin chuẩn nền tảng và nút sao chép chuyên dụng.
 - **Nội dung hoàn thành**:
