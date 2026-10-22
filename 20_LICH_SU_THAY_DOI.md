@@ -4,6 +4,24 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.45-TichHopTaiNguyenBoNhoDaiHanHindsight (Ngày 22-10-2026)
+- **Loại hình**: Bổ sung tài nguyên hệ thống bộ nhớ dài hạn phỏng sinh học cho tác tử AI Hindsight (`vectorize-io/hindsight`) lên vị trí đầu tiên của hệ thống, tích hợp toàn diện 4 khối thông tin chuẩn VibeCode, sơ đồ kiến trúc nhận thức Mermaid, bộ cấu hình mẫu đa nền tảng và bổ sung định tuyến thông minh trong Smart MCP Gateway.
+- **Nội dung hoàn thành**:
+  - **Tích hợp kho dữ liệu chuẩn hóa (`src/data/allTools.json`)**:
+    - Bổ sung tài nguyên `vectorize-io-hindsight` vào vị trí đầu tiên của danh mục công cụ (`index 0`), nâng quy mô thư viện lên **2.222 công cụ**.
+    - Đáp ứng trọn vẹn 4 khối thông tin bắt buộc:
+      - Nguồn dẫn chính thức: `https://github.com/vectorize-io/hindsight`.
+      - Công dụng tiếng Việt chi tiết (`purposeVi`): Cung cấp cơ chế ghi nhớ bền vững, truy hồi bối cảnh 4 chiều song song (Vector, BM25, Đồ thị, Thời gian) và suy ngẫm kinh nghiệm cho các tác tử AI qua các phiên làm việc độc lập.
+      - Hướng dẫn cài đặt tiếng Việt 4 bước (`installGuideVi`): Từ cài đặt CLI qua `uvx hindsight-embed configure` đến tích hợp MCP Server.
+      - Hướng dẫn sử dụng chi tiết (`usageGuideVi`): 3 thao tác cốt lõi Ghi nhớ (Retain), Truy hồi (Recall) và Suy ngẫm (Reflect).
+      - Tài liệu README tiếng Việt (`readmeVi`): Phân tích chuyên sâu triết lý bộ nhớ phỏng sinh học, so sánh chi tiết với RAG truyền thống, hướng dẫn triển khai Docker tự lưu trữ và sơ đồ Mermaid luồng nhận thức 5 tầng.
+  - **Cập nhật Smart MCP Gateway Router (`mcp-gateway/smart-router.js`)**:
+    - Khởi tạo quy tắc định tuyến `agent_memory_hindsight` với độ ưu tiên cao (Priority 14), nhận diện các từ khóa: `hindsight`, `bộ nhớ tác tử`, `agent memory`, `biomimetic memory`, `retain`, `recall`, `reflect`, `mental model`, `mô hình nhận thức`.
+    - Bổ sung bài kiểm thử định tuyến tự động vào `tests/mcp-gateway.test.js`.
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Vượt qua toàn bộ **38/38 bài kiểm thử tự động** trong 7 bộ test (tỷ lệ pass 100%).
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 15.09 giây.
+
 ### Phiên Bản 2.0.44-DongBoSoDoChuanMermaidVaQualityGatesTuPhienGoc (Ngày 22-10-2026)
 - **Loại hình**: Tham chiếu và đồng bộ hóa chuẩn xác 100% hai sơ đồ cốt lõi từ phiên làm việc `0e6ec2b7-0f68-4ab2-b94b-c90d8e376337`: Sơ đồ 13 Giai đoạn VibeCode tích hợp Cổng kiểm soát chất lượng (Quality Gates QG1, QG2), nhánh Rollback, vòng phản hồi Feedback, và Sơ đồ Mô hình Quản trị & Phân luồng trách nhiệm (Governance Workflow).
 - **Nội dung hoàn thành**:

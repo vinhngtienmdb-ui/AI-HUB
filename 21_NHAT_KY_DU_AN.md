@@ -2,6 +2,7 @@
 
 ## [2026-10-22]
 ### Mục tiêu trong ngày
+- Bổ sung tài nguyên hệ thống bộ nhớ dài hạn phỏng sinh học Hindsight (`vectorize-io/hindsight`) lên đầu hệ thống, tích hợp đầy đủ 4 khối thông tin chuẩn mực và định tuyến thông minh qua Smart MCP Gateway.
 - Tham chiếu và đồng bộ hóa chuẩn xác 100% hai sơ đồ cốt lõi từ phiên làm việc `0e6ec2b7-0f68-4ab2-b94b-c90d8e376337`: Sơ đồ 13 Giai đoạn VibeCode tích hợp 2 Cổng chất lượng (QG1, QG2), nhánh Rollback, vòng phản hồi Feedback, và Sơ đồ Mô hình Quản trị & Phân luồng trách nhiệm.
 - Tái thiết kế toàn diện sơ đồ Flowchart 13 giai đoạn VibeCode và sơ đồ tác tử trực quan theo phong cách thẻ hiện đại, phân chia 4 chặng sắc nét.
 - Loại bỏ triệt để giao diện mono đen và chữ xanh lá kiểu hacker terminal trên toàn hệ thống, chuyển đổi sang giao diện tài liệu kỹ thuật sáng sủa, trang nhã.
@@ -16,6 +17,15 @@
 - Chuẩn hóa Tab "Cấu hình mẫu JSON" theo phong cách trình xem mã nguồn GitHub (Code Blob Viewer có cột số dòng, thanh tiêu đề file và nút sao chép JSON).
 
 ### Các công việc đã thực hiện
+- [Tích Hợp Tài Nguyên Bộ Nhớ Dài Hạn Hindsight (vectorize-io/hindsight)]:
+  - **Tích hợp kho dữ liệu (`src/data/allTools.json`)**:
+    - Thêm tài nguyên `vectorize-io-hindsight` vào vị trí đầu tiên danh sách (`index 0`), nâng quy mô thư viện lên **2.222 công cụ**.
+    - Cung cấp đầy đủ 4 khối thông tin bắt buộc: Nguồn dẫn chính thức, Công dụng tiếng Việt chi tiết (`purposeVi`), Hướng dẫn cài đặt 4 bước (`installGuideVi`), Hướng dẫn sử dụng (`usageGuideVi`), Cấu hình JSON đa nền tảng (Claude Desktop, Antigravity, Cursor) và tài liệu README tiếng Việt toàn diện (`readmeVi`) kèm sơ đồ Mermaid luồng nhận thức 5 tầng.
+  - **Cập nhật Smart MCP Gateway Router (`mcp-gateway/smart-router.js`)**:
+    - Bổ sung quy tắc định tuyến `agent_memory_hindsight` (Priority 14) nhận diện các tác vụ liên quan đến bộ nhớ tác tử, retain, recall, reflect.
+    - Thêm bài kiểm thử định tuyến tự động vào `tests/mcp-gateway.test.js`.
+  - **Kiểm thử & Đóng gói**: Vượt qua **38/38 bài kiểm thử tự động**, đóng gói Vite hoàn tất trong 15.09 giây.
+
 - [Đồng Bộ Sơ Đồ Mermaid & Cổng Chất Lượng Tham Chiếu Từ Phiên 0e6ec2b7-0f68-4ab2-b94b-c90d8e376337]:
   - **Đồng bộ nội dung tệp kỹ năng VibeCode (`src/data/allTools.json`)**:
     - Tích hợp nguyên vẹn toàn văn nội dung tệp `SKILL.md` (bao gồm đầy đủ 2 khối diagram Mermaid chuẩn mực) từ phiên `0e6ec2b7-0f68-4ab2-b94b-c90d8e376337` vào `vibecoding-skill-dev-lifecycle`.

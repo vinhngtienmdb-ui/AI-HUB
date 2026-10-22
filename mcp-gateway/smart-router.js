@@ -35,6 +35,16 @@ const CORE_INTENTS = [
     priority: 14
   },
   {
+    intentId: 'agent_memory_hindsight',
+    targetToolId: 'vectorize-io-hindsight',
+    keywords: [
+      'hindsight', 'vectorize', 'bộ nhớ tác tử', 'agent memory', 'bộ nhớ dài hạn cho agent',
+      'biomimetic memory', 'bộ nhớ phỏng sinh học', 'retain', 'recall', 'reflect', 'mental model', 
+      'mô hình nhận thức', 'hindsight-embed', 'học hỏi kinh nghiệm tác tử'
+    ],
+    priority: 14
+  },
+  {
     intentId: 'agent_workforce_paperclip',
     targetToolId: 'paperclipai-paperclip',
     keywords: [

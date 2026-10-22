@@ -67,6 +67,13 @@ test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ Quy
   assert.ok(resVibe.confidence >= 0.9);
 });
 
+test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ Bộ nhớ tác tử Hindsight (Vectorize Hindsight)', () => {
+  const resHindsight = routeTask('Tôi cần bộ nhớ tác tử Hindsight để ghi nhớ retain và truy hồi recall kinh nghiệm qua các phiên');
+  assert.equal(resHindsight.success, true);
+  assert.equal(resHindsight.matchedTool.id, 'vectorize-io-hindsight');
+  assert.ok(resHindsight.confidence >= 0.9);
+});
+
 test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ Cơ sở dữ liệu (SQLite & Postgres)', () => {
   const resSqlite = routeTask('Truy vấn tệp cơ sở dữ liệu SQLite cục bộ dev.db bằng ngôn ngữ tự nhiên');
   assert.equal(resSqlite.success, true);
