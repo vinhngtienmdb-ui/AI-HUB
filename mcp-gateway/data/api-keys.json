@@ -835,5 +835,36 @@
     "requestsCount": 1,
     "lastUsedAt": "2026-10-22T05:18:26.404Z",
     "revokedAt": "2026-10-22T05:18:26.408Z"
+  },
+  {
+    "id": "key_1792646697656_91c754d6",
+    "name": "Khóa Thử Nghiệm Bảo Mật",
+    "prefix": "aihub_live_gHSN...",
+    "hashedKey": "2a65cfd0d841bf86336fe5598722089b05c24028445b49a96ac628ad27145a40",
+    "role": "developer",
+    "status": "active",
+    "rateLimitPerMin": 30,
+    "dailyQuota": 1000,
+    "createdAt": "2026-10-22T05:24:57.655Z",
+    "expiresAt": "2027-10-22T05:24:57.655Z",
+    "ipWhitelist": [],
+    "requestsCount": 0,
+    "lastUsedAt": null
+  },
+  {
+    "id": "key_1792646697662_06a7a6ab",
+    "name": "Khóa Xác Thực",
+    "prefix": "aihub_live_hILi...",
+    "hashedKey": "9c426fd497356cb3dd44ab66e0589a5749130ea91864249a2aca22711902c5c2",
+    "role": "developer",
+    "status": "revoked",
+    "rateLimitPerMin": 60,
+    "dailyQuota": 5000,
+    "createdAt": "2026-10-22T05:24:57.662Z",
+    "expiresAt": "2027-10-22T05:24:57.662Z",
+    "ipWhitelist": [],
+    "requestsCount": 1,
+    "lastUsedAt": "2026-10-22T05:24:57.689Z",
+    "revokedAt": "2026-10-22T05:24:57.696Z"
   }
 ]

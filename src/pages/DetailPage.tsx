@@ -3,11 +3,12 @@ import {
   ChevronRight, ExternalLink, Bookmark, Star, Users, Calendar, Check, X, 
   Terminal, Copy, CheckCheck, Play, ArrowUpRight, MessageSquare, ShieldCheck, 
   Sparkles, Layers, Box, Globe, Bot, Server, Folder, Code2, AlertTriangle, Maximize2,
-  Tags, BookOpen
+  Tags, BookOpen, GitBranch
 } from 'lucide-react';
 import { AITool } from '../types';
 import { GitHubReadmeViewer } from '../components/GitHubReadmeViewer';
 import { GitHubCodeViewer } from '../components/GitHubCodeViewer';
+import { VisualDiagramViewer } from '../components/VisualDiagramViewer';
 
 interface DetailPageProps {
   tool: AITool;
@@ -36,7 +37,7 @@ export const DetailPage: React.FC<DetailPageProps> = ({
   isAdmin = false,
   onOpenEditTaxonomy,
 }) => {
-  const [activeTab, setActiveTab] = useState<'overview' | 'usage' | 'config' | 'readme'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'diagram' | 'usage' | 'config' | 'readme'>('overview');
   const [copiedConfigIndex, setCopiedConfigIndex] = useState<number | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [imageLoadFailed, setImageLoadFailed] = useState(false);
@@ -343,11 +344,11 @@ export const DetailPage: React.FC<DetailPageProps> = ({
           </div>
         )}
 
-        {/* THANH TABS NỘI DUNG (TỔNG QUAN • CÁCH SỬ DỤNG • CẤU HÌNH JSON) */}
-        <div className="flex border-b border-slate-200 dark:border-slate-800 space-x-8 text-sm font-bold">
+        {/* THANH TABS NỘI DUNG (TỔNG QUAN • SƠ ĐỒ TRỰC QUAN • CÁCH SỬ DỤNG • CẤU HÌNH JSON • README) */}
+        <div className="flex border-b border-slate-200 dark:border-slate-800 space-x-6 sm:space-x-8 text-sm font-bold overflow-x-auto">
           <button
             onClick={() => setActiveTab('overview')}
-            className={`pb-3 border-b-2 transition-colors ${
+            className={`pb-3 border-b-2 transition-colors shrink-0 ${
               activeTab === 'overview'
                 ? 'border-indigo-600 text-indigo-600 dark:text-indigo-400'
                 : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
@@ -356,8 +357,22 @@ export const DetailPage: React.FC<DetailPageProps> = ({
             Tổng quan
           </button>
           <button
+            onClick={() => setActiveTab('diagram')}
+            className={`pb-3 border-b-2 transition-colors flex items-center space-x-1.5 shrink-0 ${
+              activeTab === 'diagram'
+                ? 'border-indigo-600 text-indigo-600 dark:text-indigo-400'
+                : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
+            }`}
+          >
+            <GitBranch className="w-4 h-4" />
+            <span>Sơ đồ trực quan</span>
+            <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-indigo-100 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300">
+              Vector SVG
+            </span>
+          </button>
+          <button
             onClick={() => setActiveTab('usage')}
-            className={`pb-3 border-b-2 transition-colors ${
+            className={`pb-3 border-b-2 transition-colors shrink-0 ${
               activeTab === 'usage'
                 ? 'border-indigo-600 text-indigo-600 dark:text-indigo-400'
                 : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
@@ -562,7 +577,18 @@ export const DetailPage: React.FC<DetailPageProps> = ({
           </div>
         )}
 
-        {/* TAB 2: CÁCH SỬ DỤNG VÀ HƯỚNG DẪN CÀI ĐẶT 4 BƯỚC */}
+        {/* TAB 2: SƠ ĐỒ TRỰC QUAN (DIAGRAM VECTOR SVG & THẺ PHÂN CHẶNG) */}
+        {activeTab === 'diagram' && (
+          <div className="space-y-6 animate-fadeIn">
+            <VisualDiagramViewer 
+              toolId={tool.id} 
+              toolName={tool.name} 
+              markdown={tool.readmeVi} 
+            />
+          </div>
+        )}
+
+        {/* TAB 3: CÁCH SỬ DỤNG VÀ HƯỚNG DẪN CÀI ĐẶT 4 BƯỚC */}
         {activeTab === 'usage' && (
           <div className="space-y-6 animate-fadeIn">
             
@@ -685,13 +711,15 @@ export const DetailPage: React.FC<DetailPageProps> = ({
           </div>
         )}
 
-        {/* TAB 4: TÀI LIỆU KỸ THUẬT & README GITHUB TIẾNG VIỆT */}
+        {/* TAB 5: TÀI LIỆU KỸ THUẬT & README GITHUB TIẾNG VIỆT */}
         {activeTab === 'readme' && tool.readmeVi && (
           <div className="space-y-6 animate-fadeIn">
             <GitHubReadmeViewer 
               markdown={tool.readmeVi} 
               sourceUrl={tool.sourceUrl} 
               fileName="README.md"
+              toolId={tool.id}
+              toolName={tool.name}
             />
           </div>
         )}

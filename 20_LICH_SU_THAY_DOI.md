@@ -4,6 +4,24 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.48-TachSoDoTrucQuanThanhTabDocLapKhoiReadme (Ngày 22-10-2026)
+- **Loại hình**: Tách biệt hoàn toàn khối Sơ đồ trực quan (Diagram) thành một Tab chuyên biệt độc lập trên cả Trang chi tiết (`DetailPage.tsx`) và Modal chi tiết (`ToolDetailModal.tsx`), không nằm trong Tab README; xây dựng thành phần `VisualDiagramViewer.tsx` chuyên biệt và trả lại giao diện chuẩn mực GitHub Markdown cho `GitHubReadmeViewer.tsx`.
+- **Nội dung hoàn thành**:
+  - **Xây dựng thành phần Sơ đồ trực quan độc lập (`src/components/VisualDiagramViewer.tsx`)**:
+    - Quản lý và hiển thị toàn bộ các sơ đồ Vector SVG chuẩn mẫu kỹ thuật (VibeCode, Hindsight, AI Job Search, Paperclip, Smart MCP Gateway, Find Skills và sơ đồ luồng tích hợp MCP chuẩn hóa).
+    - Tích hợp sẵn bộ điều khiển Zoom/Toàn màn hình/Tải SVG và bộ chuyển đổi giữa chế độ **Sơ Đồ Vector SVG** và **Thẻ Phân Chặng Rút Gọn**.
+  - **Tách Tab Sơ đồ trực quan trên Trang chi tiết (`src/pages/DetailPage.tsx`)**:
+    - Bổ sung Tab mới `diagram` ("Sơ đồ trực quan - Vector SVG") trên thanh điều hướng chính: `Tổng quan` • `Sơ đồ trực quan` • `Cách sử dụng & Cài đặt` • `Cấu hình mẫu JSON` • `Tài liệu README (GitHub)`.
+    - Tab `readme` hoàn toàn độc lập, chỉ hiển thị tài liệu kỹ thuật README Markdown chuẩn GitHub, không bị xen lẫn sơ đồ.
+  - **Tách Tab Sơ đồ trực quan trên Cửa sổ Modal chi tiết (`src/components/ToolDetailModal.tsx`)**:
+    - Nâng cấp giao diện điều hướng Modal với thanh 5 Tab rõ ràng: `Tổng quan` • `Sơ đồ trực quan` • `Cài đặt & Cấu hình` • `Câu lệnh & Hướng dẫn` • `Tài liệu README (GitHub)`.
+    - Người dùng có thể chuyển đổi mượt mà, xem trực tiếp sơ đồ kiến trúc phóng to thu nhỏ mà không làm gián đoạn việc đọc tài liệu.
+  - **Chuẩn hóa thành phần `src/components/GitHubReadmeViewer.tsx`**:
+    - Loại bỏ hoàn toàn các khối sơ đồ chèn lấn khỏi trình xem README, bảo toàn 100% định dạng và bố cục GitHub Flavored Markdown nguyên bản.
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Vượt qua toàn bộ **38/38 bài kiểm thử tự động** trong 7 bộ test (tỷ lệ pass 100%).
+    - Đóng gói sản phẩm hoàn hảo với Vite (`tsc && vite build`) trong 9.83 giây.
+
 ### Phiên Bản 2.0.47-ApDungSoDoVectorSvgChuanMermaidChoToanBoTaiNguyen (Ngày 22-10-2026)
 - **Loại hình**: Mở rộng và áp dụng chuẩn mực thiết kế sơ đồ Vector SVG kỹ thuật (theo mẫu `mermaid-diagram.svg`) cho toàn bộ các tài nguyên cốt lõi trong hệ thống; tạo mới các bản vẽ vector chuyên dụng cho Hindsight, AI Job Search, Paperclip, Smart MCP Gateway và Find Skills; nâng cấp thành phần `MermaidDiagramSvgViewer.tsx` và `GitHubReadmeViewer.tsx` hỗ trợ xem đa tài nguyên.
 - **Nội dung hoàn thành**:

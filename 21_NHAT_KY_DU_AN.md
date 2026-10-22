@@ -2,6 +2,7 @@
 
 ## [2026-10-22]
 ### Mục tiêu trong ngày
+- Tách biệt hoàn toàn khối Sơ đồ trực quan (Diagram) thành một Tab chuyên biệt độc lập trên cả Trang chi tiết (`DetailPage.tsx`) và Modal chi tiết (`ToolDetailModal.tsx`), không nằm trong Tab README; xây dựng thành phần `VisualDiagramViewer.tsx` chuyên biệt.
 - Mở rộng và áp dụng chuẩn mực thiết kế sơ đồ Vector SVG kỹ thuật (theo mẫu `mermaid-diagram.svg`) cho toàn bộ các tài nguyên cốt lõi trong hệ thống: Hindsight, AI Job Search, Paperclip, Smart MCP Gateway và Find Skills.
 - Nâng cấp thành phần `MermaidDiagramSvgViewer.tsx` và `GitHubReadmeViewer.tsx` để hiển thị động các sơ đồ vector tương ứng với từng tài nguyên.
 - Tích hợp chuẩn xác 100% bản vẽ vector kỹ thuật `mermaid-diagram.svg` do người dùng cung cấp vào hệ thống; phát triển thành phần trình xem vector tương tác chuyên dụng (`MermaidDiagramSvgViewer.tsx`) hỗ trợ phóng to/thu nhỏ, mở toàn màn hình và tải về tệp SVG.
@@ -20,6 +21,17 @@
 - Chuẩn hóa Tab "Cấu hình mẫu JSON" theo phong cách trình xem mã nguồn GitHub (Code Blob Viewer có cột số dòng, thanh tiêu đề file và nút sao chép JSON).
 
 ### Các công việc đã thực hiện
+- [Tách Phân Sơ Đồ Trực Quan Thành 1 Tab Riêng Biệt Khỏi Readme]:
+  - **Khởi tạo thành phần Sơ đồ trực quan độc lập (`src/components/VisualDiagramViewer.tsx`)**:
+    - Quản lý toàn bộ sơ đồ Vector SVG chuẩn Mermaid và chế độ xem Thẻ phân chặng rút gọn cho VibeCode, Hindsight, AI Job Search, Paperclip, Smart MCP Gateway, Find Skills và sơ đồ luồng chung.
+  - **Tách Tab Sơ đồ trực quan trên Trang chi tiết (`src/pages/DetailPage.tsx`)**:
+    - Thêm Tab mới `diagram` ("Sơ đồ trực quan - Vector SVG") trên thanh điều hướng chính, tách rời hoàn toàn khỏi Tab `readme`.
+  - **Tách Tab Sơ đồ trực quan trên Cửa sổ Modal chi tiết (`src/components/ToolDetailModal.tsx`)**:
+    - Tổ chức thanh 5 Tab điều hướng độc lập: `Tổng quan` • `Sơ đồ trực quan` • `Cài đặt & Cấu hình` • `Câu lệnh & Hướng dẫn` • `Tài liệu README (GitHub)`.
+  - **Làm sạch thành phần `src/components/GitHubReadmeViewer.tsx`**:
+    - Trả lại 100% diện tích và định dạng cho tài liệu README GitHub Markdown thuần túy, không bị xen lẫn sơ đồ.
+  - **Kiểm thử & Đóng gói**: Vượt qua **38/38 bài kiểm thử tự động**, đóng gói Vite hoàn tất trong 9.83 giây.
+
 - [Áp Dụng Sơ Đồ Vector SVG Kỹ Thuật Chuẩn Mermaid Cho Toàn Bộ Tài Nguyên Khác]:
   - **Tạo mới các bản vẽ Vector SVG chuẩn mực đồ họa (`public/` & `src/assets/`)**:
     - `public/hindsight-diagram.svg`: Sơ đồ kiến trúc nhận thức 5 tầng phỏng sinh học của Hindsight (Dòng tương tác đầu vào → Động cơ tiếp nhận Retain → Lưu trữ 3 lớp Semantic/Episodic/World View → Động cơ truy hồi Recall 4 chiều → Động cơ tự suy ngẫm Reflect kèm vòng lặp tiến hóa Feedback Loop).
