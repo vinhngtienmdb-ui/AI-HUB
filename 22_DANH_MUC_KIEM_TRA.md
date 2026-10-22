@@ -1,8 +1,8 @@
 # Danh Mục Kiểm Tra Dự Án (Checklist)
 
 ## Tổng Quan Tiến Độ
-- Tổng số nhiệm vụ cốt lõi: 35
-- Đã hoàn thành: 35
+- Tổng số nhiệm vụ cốt lõi: 36
+- Đã hoàn thành: 36
 - Đang thực hiện: 0
 - Chưa bắt đầu: 0
 - Bị nghẽn: 0
@@ -45,6 +45,7 @@
 - [x] Khởi tạo tệp danh mục kiểm tra (`22_DANH_MUC_KIEM_TRA.md`)
 
 ## Giai Đoạn 09: Xây Dựng Theo Module
+- [x] Tham chiếu và đồng bộ hóa chuẩn xác 100% hai sơ đồ cốt lõi từ phiên làm việc `0e6ec2b7-0f68-4ab2-b94b-c90d8e376337`: Sơ đồ 13 Giai đoạn VibeCode tích hợp 2 Cổng chất lượng (QG1, QG2), nhánh Rollback, vòng phản hồi Feedback, và Sơ đồ Mô hình Quản trị & Phân luồng trách nhiệm (Governance Workflow) trên `GitHubReadmeViewer.tsx` và `src/data/allTools.json`
 - [x] Tái thiết kế toàn diện sơ đồ Flowchart 13 giai đoạn VibeCode và sơ đồ tương tác tác tử đa luồng theo phong cách hiện đại trực quan, phân 4 chặng sắc nét; đồng thời loại bỏ triệt để giao diện mono đen/chữ xanh lá hacker terminal trên toàn hệ thống (`GitHubCodeViewer.tsx`, `DetailPage.tsx`, `GitHubReadmeViewer.tsx`)
 - [x] Chuẩn hóa Tab "Cấu hình mẫu JSON" theo phong cách trình xem mã nguồn của GitHub (GitHub Code Blob Viewer), tích hợp thành phần `GitHubCodeViewer.tsx` với cột số thứ tự dòng, thanh tiêu đề tệp tin theo từng nền tảng, khối Terminal lệnh CLI và nút sao chép JSON một chạm trên `DetailPage.tsx` và `ToolDetailModal.tsx`
 - [x] Bảo toàn nguyên tắc toàn vẹn nội dung từ GitHub (toàn văn 492 dòng `SKILL.md` VibeCode, sơ đồ mũi tên ASCII, vẽ thêm sơ đồ Diagram trực quan đa khối), tự động gắn nút Copy Code góc phải cho mọi code block, và chuẩn hóa Tab "Cách sử dụng & Cài đặt" (loại bỏ nút chạy lệnh trên web, chuyển lệnh CLI sang khối terminal có thể sao chép)

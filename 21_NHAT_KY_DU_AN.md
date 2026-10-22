@@ -2,6 +2,7 @@
 
 ## [2026-10-22]
 ### Mục tiêu trong ngày
+- Tham chiếu và đồng bộ hóa chuẩn xác 100% hai sơ đồ cốt lõi từ phiên làm việc `0e6ec2b7-0f68-4ab2-b94b-c90d8e376337`: Sơ đồ 13 Giai đoạn VibeCode tích hợp 2 Cổng chất lượng (QG1, QG2), nhánh Rollback, vòng phản hồi Feedback, và Sơ đồ Mô hình Quản trị & Phân luồng trách nhiệm.
 - Tái thiết kế toàn diện sơ đồ Flowchart 13 giai đoạn VibeCode và sơ đồ tác tử trực quan theo phong cách thẻ hiện đại, phân chia 4 chặng sắc nét.
 - Loại bỏ triệt để giao diện mono đen và chữ xanh lá kiểu hacker terminal trên toàn hệ thống, chuyển đổi sang giao diện tài liệu kỹ thuật sáng sủa, trang nhã.
 - Tích hợp bộ kỹ năng và quy tắc phát triển phần mềm chuẩn VibeCode (VibeCoding Skill `vinhngtienmdb-ui/vibecoding_skill`) vào kho tài nguyên AI HUB VN.
@@ -15,6 +16,15 @@
 - Chuẩn hóa Tab "Cấu hình mẫu JSON" theo phong cách trình xem mã nguồn GitHub (Code Blob Viewer có cột số dòng, thanh tiêu đề file và nút sao chép JSON).
 
 ### Các công việc đã thực hiện
+- [Đồng Bộ Sơ Đồ Mermaid & Cổng Chất Lượng Tham Chiếu Từ Phiên 0e6ec2b7-0f68-4ab2-b94b-c90d8e376337]:
+  - **Đồng bộ nội dung tệp kỹ năng VibeCode (`src/data/allTools.json`)**:
+    - Tích hợp nguyên vẹn toàn văn nội dung tệp `SKILL.md` (bao gồm đầy đủ 2 khối diagram Mermaid chuẩn mực) từ phiên `0e6ec2b7-0f68-4ab2-b94b-c90d8e376337` vào `vibecoding-skill-dev-lifecycle`.
+  - **Nâng cấp thành phần giao diện (`src/components/GitHubReadmeViewer.tsx`)**:
+    - Tích hợp bộ chuyển tab trực quan giữa 2 sơ đồ:
+      - Tab 1: 13 Giai đoạn & Cổng kiểm soát chất lượng (QG1 Bảo mật với nhánh rẽ Không đạt quay về G09 sửa lỗi; QG2 Nghiệm thu phát hành với nhánh Sự cố Rollback an toàn quay về G09; Vòng phản hồi Feedback từ G13 quay về G02).
+      - Tab 2: Mô hình quản lý và phân luồng trách nhiệm (PO → Nghiệp vụ → Đặc tả → Rẽ đôi UI/UX & Architecture → AI Coding → Kiểm thử → Bảo mật → Nghiệm thu → Deploy → Vận hành → Phản hồi).
+  - **Kiểm thử & Đóng gói**: Vượt qua 37/37 bài kiểm thử tự động, đóng gói Vite hoàn tất trong 14.72 giây.
+
 - [Tái Thiết Kế Sơ Đồ Flowchart & Loại Bỏ Giao Diện Mono Đen]:
   - **Tái thiết kế Sơ đồ Flowchart (`src/components/GitHubReadmeViewer.tsx`)**:
     - Phân chia 4 chặng rõ ràng với thẻ bo góc mềm mại, huy hiệu số thứ tự tròn viền nổi bật, tên giai đoạn in đậm và tên tệp tài liệu tương ứng:
