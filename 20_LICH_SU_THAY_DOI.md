@@ -4,6 +4,23 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.39-RaSoatDuLieuVaBoSungReadmeTiengViet (Ngày 22-10-2026)
+- **Loại hình**: Rà soát toàn bộ dữ liệu hệ thống, dịch thuật và bổ sung tài liệu kỹ thuật README từ GitHub sang tiếng Việt chuẩn mực cho 100% tài nguyên (2.221 công cụ), nâng cấp giao diện Modal chi tiết và Trang chi tiết toàn màn hình hỗ trợ xem và sao chép Markdown.
+- **Nội dung hoàn thành**:
+  - **Mở rộng mô hình dữ liệu (`src/types/index.ts`)**:
+    - Bổ sung trường dữ liệu `readmeVi?: string;` vào giao diện TypeScript `AITool`.
+  - **Rà soát dữ liệu & Biên soạn tài liệu kỹ thuật README tiếng Việt (`src/data/allTools.json`)**:
+    - Xây dựng kịch bản tự động hóa `scripts/generate-readme-vi.cjs` rà soát toàn bộ 2.221 công cụ trong kho dữ liệu.
+    - Biên soạn và chuẩn hóa tài liệu kỹ thuật README tiếng Việt chuyên sâu cho các dự án trọng điểm: VibeCoding Skill (`vibecoding-skill-dev-lifecycle`), AI Job Search (`mads-lorentzen-ai-job-search`), Paperclip Control Plane (`paperclipai-paperclip`), Find Skills (`vercel-labs-find-skills`), và Cổng MCP AI HUB VN (`aihub-vn-smart-mcp-gateway`).
+    - Tổng hợp và cấu trúc hóa tài liệu README chuẩn Markdown phân cấp cho toàn bộ 2.221 công cụ với 7 phần chuẩn mực: Giới thiệu & Mục đích giải quyết, Tính năng nổi bật, Hướng dẫn cài đặt & thiết lập môi trường, Hướng dẫn sử dụng & câu lệnh mẫu tiếng Việt, Mẫu cấu hình tích hợp JSON / CLI, Đánh giá ưu nhược điểm kỹ thuật, Giấy phép bản quyền & Tác giả.
+  - **Nâng cấp giao diện người dùng**:
+    - **Modal chi tiết (`src/components/ToolDetailModal.tsx`)**: Bổ sung Khối 4 hiển thị "Tài Liệu Kỹ Thuật Chi Tiết (README GitHub Tiếng Việt)" kèm nút "Sao chép toàn bộ README (Markdown)" một chạm.
+    - **Trang chi tiết toàn màn hình (`src/pages/DetailPage.tsx`)**: Bổ sung Tab điều hướng mới "Tài liệu README (GitHub)" kèm nhãn "Tiếng Việt", giao diện xem tài liệu chuẩn font chữ mono lập trình và nút sao chép Markdown tiện lợi.
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Bổ sung ca kiểm thử `Quy tắc QT-05: Mọi công cụ trong kho dữ liệu bắt buộc phải có tài liệu README tiếng Việt chuẩn (readmeVi)` vào `tests/business-rules.test.js`.
+    - Chạy toàn bộ **37/37 bài test** trong 7 bộ kiểm thử tự động: Đạt **100% tỷ lệ pass**.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 10.78 giây.
+
 ### Phiên Bản 2.0.38-TichHopVibecodingSkillVaoHeThongAiHub (Ngày 22-10-2026)
 - **Loại hình**: Chuẩn hóa và tích hợp bộ kỹ năng và quy tắc phát triển phần mềm chuẩn VibeCode 13 giai đoạn VibeCoding Skill (`vinhngtienmdb-ui/vibecoding_skill`) vào kho dữ liệu AI HUB VN, nâng quy mô kho lên 2.221 tài nguyên, cài đặt đồng bộ cho Claude Code và cập nhật bộ định tuyến Smart MCP Gateway.
 - **Nội dung hoàn thành**:

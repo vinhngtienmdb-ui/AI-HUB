@@ -5,8 +5,24 @@
 - Tích hợp bộ kỹ năng và quy tắc phát triển phần mềm chuẩn VibeCode (VibeCoding Skill `vinhngtienmdb-ui/vibecoding_skill`) vào kho tài nguyên AI HUB VN.
 - Nâng quy mô kho dữ liệu lên 2.221 tài nguyên và đảm bảo hiển thị ở vị trí đầu tiên của danh mục công cụ mới cập nhật.
 - Cài đặt tệp kỹ năng VibeCoding cho Claude Code và bổ sung định tuyến tự động vào Smart MCP Gateway.
+- Rà soát toàn bộ kho dữ liệu hệ thống (2.221 công cụ), bổ sung và dịch thuật tài liệu kỹ thuật README từ GitHub sang tiếng Việt chuẩn mực.
+- Cập nhật giao diện Modal chi tiết và Trang chi tiết toàn màn hình hỗ trợ xem và sao chép tài liệu README Markdown.
 
 ### Các công việc đã thực hiện
+- [Rà Soát Dữ Liệu Toàn Hệ Thống & Biên Soạn Tài Liệu Kỹ Thuật README Tiếng Việt]:
+  - **Mô hình dữ liệu**: Bổ sung trường `readmeVi?: string;` vào kiểu dữ liệu `AITool` trong `src/types/index.ts`.
+  - **Rà soát & Biên soạn tài liệu**:
+    - Xây dựng kịch bản Node.js `scripts/generate-readme-vi.cjs`.
+    - Dịch thuật và biên soạn tài liệu README chuyên sâu bằng tiếng Việt chuẩn cho các công cụ trọng điểm (`vibecoding-skill-dev-lifecycle`, `mads-lorentzen-ai-job-search`, `paperclipai-paperclip`, `vercel-labs-find-skills`, `aihub-vn-smart-mcp-gateway`).
+    - Tự động chuẩn hóa và sinh tài liệu README Markdown phân cấp đầy đủ 7 phần kỹ thuật cho toàn bộ 2.221 công cụ trong kho dữ liệu `src/data/allTools.json`.
+  - **Nâng cấp giao diện người dùng**:
+    - Cập nhật `src/components/ToolDetailModal.tsx`: Bổ sung Khối 4 hiển thị "Tài Liệu Kỹ Thuật Chi Tiết (README GitHub Tiếng Việt)" với nút "Sao chép toàn bộ README (Markdown)".
+    - Cập nhật `src/pages/DetailPage.tsx`: Bổ sung Tab "Tài liệu README (GitHub)" với giao diện xem code block tối màu chuyên nghiệp và nút sao chép tiện lợi.
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Bổ sung ca kiểm thử `Quy tắc QT-05: Mọi công cụ trong kho dữ liệu bắt buộc phải có tài liệu README tiếng Việt chuẩn (readmeVi)` vào `tests/business-rules.test.js`.
+    - 37/37 bài test tự động đều vượt qua với tỷ lệ thành công 100%.
+    - Đóng gói sản phẩm thành công bằng `tsc && vite build`.
+
 - [Tích hợp VibeCoding Skill vào Hệ Thống AI HUB VN và Cài Đặt Cho Claude Code]:
   - **Bổ sung tài nguyên vào kho dữ liệu (`vibecoding-skill-dev-lifecycle`)**:
     - Nâng quy mô kho dữ liệu lên **2.221 tài nguyên**.

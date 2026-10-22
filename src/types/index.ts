@@ -138,6 +138,7 @@ export interface AITool {
   installGuideVi: string; // Hướng dẫn cài đặt tiếng Việt (bắt buộc)
   usageGuideVi: string; // Hướng dẫn sử dụng tiếng Việt (bắt buộc)
   samplePromptsVi: string[];
+  readmeVi?: string; // Tài liệu README kỹ thuật tiếng Việt (dịch từ GitHub / tổng hợp chuẩn Markdown)
   configs: ConfigTemplate[];
   status: 'published' | 'pending' | 'draft' | 'rejected';
   contributedBy?: string; // Email người đóng góp

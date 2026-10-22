@@ -1,8 +1,8 @@
 # Danh Mục Kiểm Tra Dự Án (Checklist)
 
 ## Tổng Quan Tiến Độ
-- Tổng số nhiệm vụ cốt lõi: 30
-- Đã hoàn thành: 30
+- Tổng số nhiệm vụ cốt lõi: 31
+- Đã hoàn thành: 31
 - Đang thực hiện: 0
 - Chưa bắt đầu: 0
 - Bị nghẽn: 0
@@ -45,6 +45,7 @@
 - [x] Khởi tạo tệp danh mục kiểm tra (`22_DANH_MUC_KIEM_TRA.md`)
 
 ## Giai Đoạn 09: Xây Dựng Theo Module
+- [x] Rà soát toàn bộ dữ liệu hệ thống (2.221 tài nguyên), dịch thuật và chuẩn hóa tài liệu kỹ thuật README từ GitHub sang tiếng Việt chuẩn mực cho 100% công cụ (`readmeVi`), nâng cấp giao diện Modal chi tiết (`ToolDetailModal.tsx`) và Trang chi tiết (`DetailPage.tsx`) hỗ trợ xem và sao chép Markdown
 - [x] Lập trình phân hệ Giao diện danh mục, Tìm kiếm tức thời và Phân trang (24 mục/trang)
 - [x] Lập trình phân hệ Chi tiết công cụ và Sao chép cấu hình một chạm
 - [x] Lập trình phân hệ Quản trị nội dung và Đóng góp công cụ

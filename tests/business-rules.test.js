@@ -66,3 +66,19 @@ test('Quy tắc QT-04: Ngôn ngữ hướng dẫn sử dụng và công dụng p
     assert.ok(hasViKeyword, `Nội dung của công cụ [${tool.name}] phải có các từ vựng tiếng Việt chuyên ngành`);
   }
 });
+
+test('Quy tắc QT-05: Mọi công cụ trong kho dữ liệu bắt buộc phải có tài liệu README tiếng Việt chuẩn (readmeVi)', () => {
+  let countWithReadme = 0;
+  for (const tool of toolsData) {
+    assert.ok(
+      typeof tool.readmeVi === 'string' && tool.readmeVi.trim().length >= 100,
+      `Công cụ [${tool.name}] thiếu tài liệu README tiếng Việt chi tiết (readmeVi)`
+    );
+    assert.ok(
+      tool.readmeVi.includes('# ') && tool.readmeVi.includes('## '),
+      `Tài liệu README của công cụ [${tool.name}] phải theo định dạng Markdown phân cấp chuẩn`
+    );
+    countWithReadme++;
+  }
+  console.log(`Đã kiểm tra thành công toàn bộ ${countWithReadme} công cụ đều có README tiếng Việt chuẩn chỉ.`);
+});
