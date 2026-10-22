@@ -4,6 +4,25 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.46-TichHopSoDoVectorMermaidSvgChuanMau (Ngày 22-10-2026)
+- **Loại hình**: Tích hợp trực tiếp và tham chiếu chuẩn xác 100% bản vẽ vector kỹ thuật `mermaid-diagram.svg` do người dùng cung cấp vào hệ thống; xây dựng thành phần trình xem vector tương tác chuyên dụng (`MermaidDiagramSvgViewer.tsx`) hỗ trợ phóng to/thu nhỏ, mở toàn màn hình, tải về SVG và tự động đồng bộ giao diện sáng/tối.
+- **Nội dung hoàn thành**:
+  - **Nhúng và quản lý tài sản vector (`public/mermaid-diagram.svg` & `src/assets/mermaid-diagram.svg`)**:
+    - Sao chép tệp bản vẽ gốc `file:///C:/Users/vinhn/OneDrive/Máy tính/mermaid-diagram.svg` vào hệ thống dự án, đảm bảo giữ nguyên 100% cấu trúc vector, các tọa độ điểm mút, đường kết nối đa điểm (polylines), hình thoi cổng chất lượng (QG1, QG2), nhánh Rollback và vòng phản hồi Feedback.
+  - **Phát triển thành phần trình xem vector chuyên dụng (`src/components/MermaidDiagramSvgViewer.tsx`)**:
+    - Thanh điều khiển công cụ chuyên nghiệp:
+      - Nút thu nhỏ (`ZoomOut`), hiển thị phần trăm tỷ lệ thực tế, nút phóng to (`ZoomIn`), và nút đặt lại tỷ lệ chuẩn (`100%`).
+      - Nút mở toàn màn hình độc lập (`ExternalLink`) mở trực tiếp file SVG trong tab mới.
+      - Nút tải về tệp SVG bản quyền độ nét cao (`Download`).
+    - Khung hiển thị canvas cao cấp: Lớp nền họa tiết ô lưới kỹ thuật mờ ảo (Technical Grid Pattern), hỗ trợ cuộn mượt mà và giới hạn chiều cao tối đa phù hợp với mọi kích thước màn hình.
+  - **Tích hợp đồng bộ vào Trình xem README (`src/components/GitHubReadmeViewer.tsx`)**:
+    - Bổ sung thanh chuyển đổi chế độ xem linh hoạt trong Tab 13 Giai đoạn:
+      - Chế độ **Sơ Đồ Vector SVG (Chuẩn Mẫu Mermaid)**: Mặc định hiển thị bản vẽ kỹ thuật gốc của người dùng.
+      - Chế độ **Thẻ Phân Chặng Rút Gọn (Card Grid)**: Hỗ trợ tra cứu nhanh 4 chặng tiến trình trên các thiết bị màn hình nhỏ.
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Vượt qua toàn bộ **38/38 bài kiểm thử tự động** trong 7 bộ test (tỷ lệ pass 100%).
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 9.51 giây.
+
 ### Phiên Bản 2.0.45-TichHopTaiNguyenBoNhoDaiHanHindsight (Ngày 22-10-2026)
 - **Loại hình**: Bổ sung tài nguyên hệ thống bộ nhớ dài hạn phỏng sinh học cho tác tử AI Hindsight (`vectorize-io/hindsight`) lên vị trí đầu tiên của hệ thống, tích hợp toàn diện 4 khối thông tin chuẩn VibeCode, sơ đồ kiến trúc nhận thức Mermaid, bộ cấu hình mẫu đa nền tảng và bổ sung định tuyến thông minh trong Smart MCP Gateway.
 - **Nội dung hoàn thành**:

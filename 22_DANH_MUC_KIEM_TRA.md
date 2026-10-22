@@ -1,8 +1,8 @@
 # Danh Mục Kiểm Tra Dự Án (Checklist)
 
 ## Tổng Quan Tiến Độ
-- Tổng số nhiệm vụ cốt lõi: 37
-- Đã hoàn thành: 37
+- Tổng số nhiệm vụ cốt lõi: 38
+- Đã hoàn thành: 38
 - Đang thực hiện: 0
 - Chưa bắt đầu: 0
 - Bị nghẽn: 0
@@ -45,6 +45,7 @@
 - [x] Khởi tạo tệp danh mục kiểm tra (`22_DANH_MUC_KIEM_TRA.md`)
 
 ## Giai Đoạn 09: Xây Dựng Theo Module
+- [x] Tích hợp chuẩn xác 100% bản vẽ vector kỹ thuật `mermaid-diagram.svg` do người dùng cung cấp vào hệ thống; phát triển thành phần `MermaidDiagramSvgViewer.tsx` hỗ trợ công cụ thu phóng tỷ lệ, mở toàn màn hình, tải về tệp SVG và tích hợp vào `GitHubReadmeViewer.tsx`
 - [x] Tích hợp tài nguyên hệ thống bộ nhớ dài hạn phỏng sinh học Hindsight (`vectorize-io/hindsight`) lên đầu thư viện, nâng quy mô lên 2.222 công cụ, đáp ứng đầy đủ 4 khối thông tin, cấu hình JSON đa nền tảng, sơ đồ nhận thức Mermaid và bổ sung định tuyến thông minh trong Smart MCP Gateway
 - [x] Tham chiếu và đồng bộ hóa chuẩn xác 100% hai sơ đồ cốt lõi từ phiên làm việc `0e6ec2b7-0f68-4ab2-b94b-c90d8e376337`: Sơ đồ 13 Giai đoạn VibeCode tích hợp 2 Cổng chất lượng (QG1, QG2), nhánh Rollback, vòng phản hồi Feedback, và Sơ đồ Mô hình Quản trị & Phân luồng trách nhiệm (Governance Workflow) trên `GitHubReadmeViewer.tsx` và `src/data/allTools.json`
 - [x] Tái thiết kế toàn diện sơ đồ Flowchart 13 giai đoạn VibeCode và sơ đồ tương tác tác tử đa luồng theo phong cách hiện đại trực quan, phân 4 chặng sắc nét; đồng thời loại bỏ triệt để giao diện mono đen/chữ xanh lá hacker terminal trên toàn hệ thống (`GitHubCodeViewer.tsx`, `DetailPage.tsx`, `GitHubReadmeViewer.tsx`)

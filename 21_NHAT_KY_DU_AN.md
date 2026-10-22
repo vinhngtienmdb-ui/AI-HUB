@@ -2,6 +2,7 @@
 
 ## [2026-10-22]
 ### Mục tiêu trong ngày
+- Tích hợp chuẩn xác 100% bản vẽ vector kỹ thuật `mermaid-diagram.svg` do người dùng cung cấp vào hệ thống; phát triển thành phần trình xem vector tương tác chuyên dụng (`MermaidDiagramSvgViewer.tsx`) hỗ trợ phóng to/thu nhỏ, mở toàn màn hình và tải về tệp SVG.
 - Bổ sung tài nguyên hệ thống bộ nhớ dài hạn phỏng sinh học Hindsight (`vectorize-io/hindsight`) lên đầu hệ thống, tích hợp đầy đủ 4 khối thông tin chuẩn mực và định tuyến thông minh qua Smart MCP Gateway.
 - Tham chiếu và đồng bộ hóa chuẩn xác 100% hai sơ đồ cốt lõi từ phiên làm việc `0e6ec2b7-0f68-4ab2-b94b-c90d8e376337`: Sơ đồ 13 Giai đoạn VibeCode tích hợp 2 Cổng chất lượng (QG1, QG2), nhánh Rollback, vòng phản hồi Feedback, và Sơ đồ Mô hình Quản trị & Phân luồng trách nhiệm.
 - Tái thiết kế toàn diện sơ đồ Flowchart 13 giai đoạn VibeCode và sơ đồ tác tử trực quan theo phong cách thẻ hiện đại, phân chia 4 chặng sắc nét.
@@ -17,6 +18,16 @@
 - Chuẩn hóa Tab "Cấu hình mẫu JSON" theo phong cách trình xem mã nguồn GitHub (Code Blob Viewer có cột số dòng, thanh tiêu đề file và nút sao chép JSON).
 
 ### Các công việc đã thực hiện
+- [Tích Hợp Sơ Đồ Vector Kỹ Thuật mermaid-diagram.svg Chuẩn Mẫu]:
+  - **Quản lý tài nguyên vector (`public/mermaid-diagram.svg` & `src/assets/mermaid-diagram.svg`)**:
+    - Sao chép bản vẽ vector gốc từ đường dẫn do người dùng cung cấp (`file:///C:/Users/vinhn/OneDrive/Máy tính/mermaid-diagram.svg`) vào thư mục `public/` và `src/assets/` của dự án.
+  - **Phát triển thành phần trình xem vector tương tác (`src/components/MermaidDiagramSvgViewer.tsx`)**:
+    - Cung cấp bộ công cụ điều khiển linh hoạt: Nút thu nhỏ (`ZoomOut`), thanh hiển thị tỷ lệ %, nút phóng to (`ZoomIn`), nút đặt lại kích thước chuẩn (`100%`), nút mở toàn màn hình trong tab mới (`ExternalLink`), và nút tải xuống tệp SVG (`Download`).
+    - Khung canvas hiển thị với nền ô lưới kỹ thuật mờ ảo (Technical Grid Pattern), hỗ trợ cuộn mượt mà.
+  - **Tích hợp đồng bộ vào Trình xem README (`src/components/GitHubReadmeViewer.tsx`)**:
+    - Cho phép người dùng chuyển đổi linh hoạt giữa chế độ xem **Sơ Đồ Vector SVG (Mặc định)** và **Thẻ Phân Chặng Rút Gọn (Card Grid)**.
+  - **Kiểm thử & Đóng gói**: Vượt qua **38/38 bài kiểm thử tự động**, đóng gói Vite hoàn tất trong 9.51 giây.
+
 - [Tích Hợp Tài Nguyên Bộ Nhớ Dài Hạn Hindsight (vectorize-io/hindsight)]:
   - **Tích hợp kho dữ liệu (`src/data/allTools.json`)**:
     - Thêm tài nguyên `vectorize-io-hindsight` vào vị trí đầu tiên danh sách (`index 0`), nâng quy mô thư viện lên **2.222 công cụ**.

@@ -4,8 +4,9 @@ import {
   FileText, Copy, Check, ExternalLink, Code2, Eye, GitBranch, 
   ArrowRight, ArrowDown, Layers, Compass, Layout, Cpu, ShieldCheck, 
   Rocket, Server, CheckCircle2, AlertTriangle, RotateCcw, RefreshCw,
-  Users, UserCheck, ShieldAlert
+  Users, UserCheck, ShieldAlert, Sparkles, Image as ImageIcon
 } from 'lucide-react';
+import { MermaidDiagramSvgViewer } from './MermaidDiagramSvgViewer';
 
 interface GitHubReadmeViewerProps {
   markdown: string;
@@ -20,6 +21,7 @@ export const GitHubReadmeViewer: React.FC<GitHubReadmeViewerProps> = ({
 }) => {
   const [viewMode, setViewMode] = useState<'preview' | 'raw'>('preview');
   const [vibeDiagramTab, setVibeDiagramTab] = useState<'stages' | 'governance'>('stages');
+  const [stagesViewMode, setStagesViewMode] = useState<'svg' | 'cards'>('svg');
   const [copiedAll, setCopiedAll] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -239,7 +241,48 @@ export const GitHubReadmeViewer: React.FC<GitHubReadmeViewerProps> = ({
 
           {/* SƠ ĐỒ 1: 13 GIAI ĐOẠN VÀ CÁC CỔNG KIỂM SOÁT CHẤT LƯỢNG (QUALITY GATES) */}
           {vibeDiagramTab === 'stages' && (
-            <div className="space-y-5 animate-fadeIn">
+            <div className="space-y-4 animate-fadeIn">
+              
+              {/* THANH CHUYỂN ĐỔI CHẾ ĐỘ XEM: SƠ ĐỒ VECTOR SVG CHUẨN MẪU / DẠNG THẺ TỔNG HỢP */}
+              <div className="flex flex-wrap items-center justify-between gap-2 p-1.5 rounded-xl bg-slate-100/90 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs">
+                <div className="flex items-center space-x-2 pl-2 text-slate-700 dark:text-slate-300 font-medium">
+                  <Sparkles className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                  <span>Chế độ trực quan hóa:</span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <button
+                    type="button"
+                    onClick={() => setStagesViewMode('svg')}
+                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
+                      stagesViewMode === 'svg'
+                        ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    }`}
+                  >
+                    <ImageIcon className="w-3.5 h-3.5" />
+                    <span>Sơ Đồ Vector SVG (Chuẩn Mẫu Mermaid)</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setStagesViewMode('cards')}
+                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
+                      stagesViewMode === 'cards'
+                        ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    }`}
+                  >
+                    <Layers className="w-3.5 h-3.5" />
+                    <span>Thẻ Phân Chặng Rút Gọn (Card Grid)</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* NẾU CHỌN CHẾ ĐỘ SVG: HIỂN THỊ TRỰC TIẾP BẢN VẼ VECTOR TỪ MERMAID-DIAGRAM.SVG */}
+              {stagesViewMode === 'svg' ? (
+                <MermaidDiagramSvgViewer />
+              ) : (
+                /* NẾU CHỌN DẠNG THẺ: HIỂN THỊ 4 CHẶNG CARDS TIỆN TRA CỨU */
+                <div className="space-y-5 animate-fadeIn">
               
               {/* CHẶNG 1: KHỞI TẠO & PHÂN TÍCH */}
               <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-blue-200/80 dark:border-blue-900/40 shadow-xs space-y-3">
@@ -517,6 +560,9 @@ export const GitHubReadmeViewer: React.FC<GitHubReadmeViewerProps> = ({
 
                 </div>
               </div>
+
+                </div>
+              )}
 
             </div>
           )}
