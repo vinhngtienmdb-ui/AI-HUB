@@ -4,6 +4,27 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.47-ApDungSoDoVectorSvgChuanMermaidChoToanBoTaiNguyen (Ngày 22-10-2026)
+- **Loại hình**: Mở rộng và áp dụng chuẩn mực thiết kế sơ đồ Vector SVG kỹ thuật (theo mẫu `mermaid-diagram.svg`) cho toàn bộ các tài nguyên cốt lõi trong hệ thống; tạo mới các bản vẽ vector chuyên dụng cho Hindsight, AI Job Search, Paperclip, Smart MCP Gateway và Find Skills; nâng cấp thành phần `MermaidDiagramSvgViewer.tsx` và `GitHubReadmeViewer.tsx` hỗ trợ xem đa tài nguyên.
+- **Nội dung hoàn thành**:
+  - **Khởi tạo hệ thống tệp bản vẽ Vector SVG chuẩn mực đồ họa (`public/` & `src/assets/`)**:
+    - `public/hindsight-diagram.svg`: Sơ đồ kiến trúc nhận thức 5 tầng phỏng sinh học của Hindsight (Dòng tương tác đầu vào → Động cơ tiếp nhận Retain → Lưu trữ 3 lớp Semantic/Episodic/World View → Động cơ truy hồi Recall 4 chiều → Động cơ tự suy ngẫm Reflect kèm vòng lặp tiến hóa Feedback Loop).
+    - `public/job-search-diagram.svg`: Sơ đồ quy trình săn việc tự động hóa đa tác tử 6 bước của AI Job Search (/setup → /scrape → /apply kèm Critic Agent và Cổng kiểm soát QG1 → Biên dịch PDF & Tối ưu hóa ATS kèm Cổng QG2 → /interview mô phỏng STAR → /rank theo dõi tiến độ).
+    - `public/paperclip-diagram.svg`: Sơ đồ kiến trúc quản trị và điều phối lực lượng tác tử doanh nghiệp Paperclip (Quản trị con người Human Governance → Mặt phẳng điều khiển Control Plane & Cây phân cấp tổ chức → Biệt đội tác tử thực thi Planner/Coder/QA/Security → Giám sát an toàn, Cổng phê duyệt con người Human Approval Gate & Nhật ký kiểm toán bất biến).
+    - `public/smart-gateway-diagram.svg`: Sơ đồ kiến trúc máy chủ trung gian AI HUB VN Smart MCP Gateway (Tiếp nhận tương tác tác tử → Phân loại ý định & Định tuyến thông minh → Bộ nén cắt tỉa lược đồ và nạp động tiết kiệm 95% Context Window → Thực thi JSON-RPC và tổng hợp kết quả cô đọng).
+    - `public/find-skills-diagram.svg`: Sơ đồ quy trình khám phá & nạp động kỹ năng tác tử Find Skills (Nhận diện khoảng trống kỹ năng → Đối sánh vector ngữ nghĩa trong kho Skills toàn cầu → Cổng kiểm soát an toàn QG1 & Giấy phép → Nạp tức thì vào System Prompt tác tử).
+  - **Nâng cấp thành phần trình xem vector động (`src/components/MermaidDiagramSvgViewer.tsx`)**:
+    - Tham số hóa toàn diện: Hỗ trợ linh hoạt các thuộc tính `svgUrl`, `title`, `subtitle`, `downloadFileName`, `stageCountText`, `maxWidth`.
+    - Duy trì trọn vẹn bộ điều khiển: Thu nhỏ (`ZoomOut`), Tỷ lệ thực tế (`%`), Phóng to (`ZoomIn`), Đặt lại kích thước (`100%`), Mở toàn màn hình (`ExternalLink`) và Tải về SVG (`Download`).
+  - **Tích hợp đồng bộ vào Trình xem README (`src/components/GitHubReadmeViewer.tsx`)**:
+    - Nhận diện chính xác từng công cụ qua `toolId` và nội dung markdown.
+    - Cung cấp thanh chuyển đổi chế độ xem: **Sơ Đồ Vector SVG (Chuẩn Mẫu Mermaid)** và **Thẻ Phân Chặng Rút Gọn (Card Grid)** cho tất cả các tài nguyên trọng điểm.
+  - **Đồng bộ hóa Modal Chi Tiết Công Cụ (`src/components/ToolDetailModal.tsx`)**:
+    - Truyền trực tiếp `toolId` và `toolName` vào `GitHubReadmeViewer` để định danh chính xác công cụ đang mở.
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Vượt qua toàn bộ **38/38 bài kiểm thử tự động** trong 7 bộ test (tỷ lệ pass 100%).
+    - Đóng gói thành công với Vite (`tsc && vite build`) trong 11.40 giây.
+
 ### Phiên Bản 2.0.46-TichHopSoDoVectorMermaidSvgChuanMau (Ngày 22-10-2026)
 - **Loại hình**: Tích hợp trực tiếp và tham chiếu chuẩn xác 100% bản vẽ vector kỹ thuật `mermaid-diagram.svg` do người dùng cung cấp vào hệ thống; xây dựng thành phần trình xem vector tương tác chuyên dụng (`MermaidDiagramSvgViewer.tsx`) hỗ trợ phóng to/thu nhỏ, mở toàn màn hình, tải về SVG và tự động đồng bộ giao diện sáng/tối.
 - **Nội dung hoàn thành**:

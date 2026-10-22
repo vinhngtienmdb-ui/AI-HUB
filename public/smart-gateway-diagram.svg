@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 1380" width="880" height="1380" style="--bg:#FFFFFF;--fg:#3B3B3B;--line:#3B3B3B;--accent:#005FB8;--muted:#3B3B3BCC;--surface:#F8F8F8;--border:#3B3B3B;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 85%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="5" refX="7" refY="2.5" orient="auto">
+    <polygon points="0 0, 8 2.5, 0 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+</defs>
+
+<!-- TIÊU ĐỀ BẢN VẼ -->
+<g class="header-box">
+  <rect x="50" y="25" width="780" height="50" rx="4" fill="var(--_surface)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="440" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="var(--_text)">KIẾN TRÚC MÁY CHỦ TRUNG GIAN AI HUB VN SMART MCP GATEWAY</text>
+  <text x="440" y="65" text-anchor="middle" font-size="11" font-weight="500" fill="var(--_text-sec)">Cơ chế phân loại ý định, định tuyến thông minh &amp; nén ngữ cảnh tiết kiệm 95% Context Window</text>
+</g>
+
+<!-- TẦNG 1: TIẾP NHẬN YÊU CẦU TỪ TÁC TỬ -->
+<g class="subgraph" data-id="SG_GATEWAY_T1">
+  <rect x="50" y="100" width="780" height="120" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="50" y="100" width="780" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="65" y="118" font-size="12" font-weight="600" fill="var(--_text-sec)">TẦNG 1: TIẾP NHẬN LỜI GỌI TỪ CÁC TÁC TỬ AI (AGENT INTERACTION)</text>
+
+  <g class="node">
+    <rect x="75" y="145" width="345" height="58" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="247" y="170" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">Các Nền Tảng Tác Tử AI</text>
+    <text x="247" y="188" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Antigravity, Claude Code, Cursor, Windsurf, Roo</text>
+  </g>
+
+  <g class="node">
+    <rect x="460" y="145" width="350" height="58" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="635" y="170" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">Yêu Cầu Tác Vụ &amp; Trích Xuất Ngữ Cảnh</text>
+    <text x="635" y="188" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Trích xuất ý định, tham số đầu vào và mục tiêu</text>
+  </g>
+</g>
+
+<!-- Mũi tên Tầng 1 -> Tầng 2 -->
+<polyline class="edge" points="440,220 440,250" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+
+<!-- TẦNG 2: BỘ PHÂN LOẠI Ý ĐỊNH & ĐỊNH TUYẾN THÔNG MINH -->
+<g class="subgraph" data-id="SG_GATEWAY_T2">
+  <rect x="50" y="250" width="780" height="230" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="50" y="250" width="780" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="65" y="268" font-size="12" font-weight="600" fill="var(--_text-sec)">TẦNG 2: PHÂN LOẠI Ý ĐỊNH &amp; ĐỊNH TUYẾN THÔNG MINH (SMART INTENT ROUTER)</text>
+
+  <!-- Diamond Cổng Kiểm Tra Ý Định -->
+  <polygon points="440,295 560,335 440,375 320,335" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="440" y="330" text-anchor="middle" font-size="12" font-weight="600" fill="var(--_text)">Phân Loại Năng Lực</text>
+  <text x="440" y="348" text-anchor="middle" font-size="11" font-weight="500" fill="var(--accent)">Capability Resolver</text>
+
+  <!-- 4 Hộp Phân Nhóm Năng Lực -->
+  <g class="node">
+    <rect x="75" y="400" width="160" height="60" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="155" y="425" text-anchor="middle" font-size="12" font-weight="600" fill="var(--_text)">Dữ Liệu &amp; Database</text>
+    <text x="155" y="443" text-anchor="middle" font-size="10" font-weight="400" fill="var(--_text-sec)">Postgres, BigQuery, Redis</text>
+  </g>
+
+  <g class="node">
+    <rect x="265" y="400" width="160" height="60" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="345" y="425" text-anchor="middle" font-size="12" font-weight="600" fill="var(--_text)">Hệ Thống Tệp &amp; Mã</text>
+    <text x="345" y="443" text-anchor="middle" font-size="10" font-weight="400" fill="var(--_text-sec)">Filesystem, Git, Docker</text>
+  </g>
+
+  <g class="node">
+    <rect x="455" y="400" width="160" height="60" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="535" y="425" text-anchor="middle" font-size="12" font-weight="600" fill="var(--_text)">Bộ Nhớ Dài Hạn</text>
+    <text x="535" y="443" text-anchor="middle" font-size="10" font-weight="400" fill="var(--_text-sec)">Hindsight, Mem0, Claude-Mem</text>
+  </g>
+
+  <g class="node">
+    <rect x="645" y="400" width="165" height="60" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="727" y="425" text-anchor="middle" font-size="12" font-weight="600" fill="var(--_text)">Thanh Toán &amp; VN API</text>
+    <text x="727" y="443" text-anchor="middle" font-size="10" font-weight="400" fill="var(--_text-sec)">VietQR, MoMo, Zalo OA</text>
+  </g>
+
+  <!-- Mũi tên từ Diamond xuống 4 nhóm -->
+  <polyline class="edge" points="440,375 440,388 155,388 155,400" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+  <polyline class="edge" points="440,375 440,388 345,388 345,400" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+  <polyline class="edge" points="440,375 440,388 535,388 535,400" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+  <polyline class="edge" points="440,375 440,388 727,388 727,400" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+</g>
+
+<!-- Mũi tên Tầng 2 -> Tầng 3 -->
+<polyline class="edge" points="440,480 440,510" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+
+<!-- TẦNG 3: BỘ NÉN NGỮ CẢNH & TỐI ƯU HÓA 95% CONTEXT WINDOW -->
+<g class="subgraph" data-id="SG_GATEWAY_T3">
+  <rect x="50" y="510" width="780" height="230" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="50" y="510" width="780" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="65" y="528" font-size="12" font-weight="600" fill="var(--_text-sec)">TẦNG 3: BỘ NÉN &amp; TỐI ƯU HÓA NGỮ CẢNH 95% (CONTEXT WINDOW OPTIMIZER)</text>
+
+  <g class="node">
+    <rect x="75" y="555" width="345" height="85" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="247" y="582" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">Cắt Tỉa Lược Đồ (Schema Pruning)</text>
+    <text x="247" y="600" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Loại bỏ hơn 2.000 mô tả công cụ dư thừa,</text>
+    <text x="247" y="618" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">chỉ giữ lại công cụ khớp chính xác với ý định</text>
+  </g>
+
+  <g class="node">
+    <rect x="460" y="555" width="350" height="85" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="635" y="582" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">Nạp Động Theo Nhu Cầu (Lazy Injection)</text>
+    <text x="635" y="600" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Tiết kiệm tới 95% không gian Token Context,</text>
+    <text x="635" y="618" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">tăng tốc độ phản hồi của mô hình lên 4 lần</text>
+  </g>
+
+  <!-- Thanh So Sánh Hiệu Quả -->
+  <g class="node">
+    <rect x="75" y="655" width="735" height="60" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="440" y="678" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent)">HIỆU QUẢ NÉN: Từ 150.000 Tokens công cụ thô → Chỉ còn 3.500 Tokens thực dụng</text>
+    <text x="440" y="698" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Ngăn chặn triệt để hiện tượng tràn Context Window và giảm chi phí API đáng kể</text>
+  </g>
+</g>
+
+<!-- Mũi tên Tầng 3 -> Tầng 4 -->
+<polyline class="edge" points="440,740 440,770" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+
+<!-- TẦNG 4: KẾT NỐI MÁY CHỦ MCP MỤC TIÊU & TỔNG HỢP KẾT QUẢ -->
+<g class="subgraph" data-id="SG_GATEWAY_T4">
+  <rect x="50" y="770" width="780" height="230" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="50" y="770" width="780" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="65" y="788" font-size="12" font-weight="600" fill="var(--_text-sec)">TẦNG 4: THỰC THI &amp; TỔNG HỢP KẾT QUẢ (EXECUTION &amp; RESPONSE SYNTHESIS)</text>
+
+  <g class="node">
+    <rect x="75" y="815" width="345" height="75" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="247" y="842" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">Thực Thi Qua Giao Thức Chuẩn JSON-RPC</text>
+    <text x="247" y="860" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Gọi trực tiếp máy chủ MCP cục bộ hoặc từ xa,</text>
+    <text x="247" y="876" text-anchor="middle" font-size="10" font-weight="500" fill="var(--accent)">Hỗ trợ Stdio, SSE và WebSockets</text>
+  </g>
+
+  <g class="node">
+    <rect x="460" y="815" width="350" height="75" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="635" y="842" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">Kiểm Tra &amp; Cô Đọng Kết Quả Trả Về</text>
+    <text x="635" y="860" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Lọc bỏ trường rác, chuẩn hóa định dạng,</text>
+    <text x="635" y="876" text-anchor="middle" font-size="10" font-weight="500" fill="var(--accent)">Đảm bảo an toàn không rò rỉ dữ liệu nhạy cảm</text>
+  </g>
+
+  <!-- Mũi tên kết nối 2 node -->
+  <polyline class="edge" points="420,852 460,852" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+
+  <g class="node">
+    <rect x="75" y="910" width="735" height="65" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="440" y="935" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">Phản Hồi Trực Tiếp Cho Tác Tử AI</text>
+    <text x="440" y="955" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Tác tử tiếp tục chu trình suy luận mà không bị nghẽn bộ nhớ hoặc quá tải thông tin</text>
+  </g>
+
+  <polyline class="edge" points="635,890 635,910" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+</g>
+
+<!-- CHÂN TRANG GHI CHÚ -->
+<g class="footer-box">
+  <rect x="50" y="1025" width="780" height="60" rx="4" fill="var(--_surface)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="440" y="1050" text-anchor="middle" font-size="11" font-weight="600" fill="var(--_text)">TIÊU CHUẨN ĐIỀU PHỐI AI HUB VN SMART MCP GATEWAY</text>
+  <text x="440" y="1068" text-anchor="middle" font-size="10" font-weight="400" fill="var(--_text-sec)">Chuẩn hóa giao thức Model Context Protocol • Độ trễ dưới 15ms • Tương thích 100% với 2.222 công cụ</text>
+</g>
+
+</svg>

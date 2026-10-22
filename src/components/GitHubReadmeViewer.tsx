@@ -4,7 +4,8 @@ import {
   FileText, Copy, Check, ExternalLink, Code2, Eye, GitBranch, 
   ArrowRight, ArrowDown, Layers, Compass, Layout, Cpu, ShieldCheck, 
   Rocket, Server, CheckCircle2, AlertTriangle, RotateCcw, RefreshCw,
-  Users, UserCheck, ShieldAlert, Sparkles, Image as ImageIcon
+  Users, UserCheck, ShieldAlert, Sparkles, Image as ImageIcon,
+  Brain, Workflow, Boxes, HardDrive, Filter, Activity, Compass as CompassIcon
 } from 'lucide-react';
 import { MermaidDiagramSvgViewer } from './MermaidDiagramSvgViewer';
 
@@ -12,16 +13,25 @@ interface GitHubReadmeViewerProps {
   markdown: string;
   sourceUrl?: string;
   fileName?: string;
+  toolId?: string;
+  toolName?: string;
 }
 
 export const GitHubReadmeViewer: React.FC<GitHubReadmeViewerProps> = ({
   markdown,
   sourceUrl,
-  fileName = 'README.md'
+  fileName = 'README.md',
+  toolId,
+  toolName
 }) => {
   const [viewMode, setViewMode] = useState<'preview' | 'raw'>('preview');
+  
+  // Tab chuyển đổi riêng cho VibeCoding
   const [vibeDiagramTab, setVibeDiagramTab] = useState<'stages' | 'governance'>('stages');
-  const [stagesViewMode, setStagesViewMode] = useState<'svg' | 'cards'>('svg');
+  
+  // Chế độ xem sơ đồ chung (SVG chuẩn Mermaid vs Dạng thẻ Card Grid)
+  const [diagramViewMode, setDiagramViewMode] = useState<'svg' | 'cards'>('svg');
+  
   const [copiedAll, setCopiedAll] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -41,16 +51,37 @@ export const GitHubReadmeViewer: React.FC<GitHubReadmeViewerProps> = ({
 
   // Nhận diện tài nguyên đặc thù
   const isVibeCoding = useMemo(() => {
-    return markdown.includes('01. Xác định ý tưởng') && markdown.includes('13. Vận hành');
-  }, [markdown]);
+    return toolId === 'vibecoding-skill-dev-lifecycle' || 
+      (markdown.includes('01. Xác định ý tưởng') && markdown.includes('13. Vận hành'));
+  }, [toolId, markdown]);
+
+  const isHindsight = useMemo(() => {
+    return toolId === 'vectorize-io-hindsight' || 
+      markdown.includes('Hindsight') || 
+      markdown.includes('Agent Memory That Learns');
+  }, [toolId, markdown]);
 
   const isJobSearch = useMemo(() => {
-    return markdown.includes('/setup') && markdown.includes('/scrape') && markdown.includes('/apply');
-  }, [markdown]);
+    return toolId === 'mads-lorentzen-ai-job-search' || 
+      (markdown.includes('/setup') && markdown.includes('/scrape') && markdown.includes('/apply'));
+  }, [toolId, markdown]);
 
   const isPaperclip = useMemo(() => {
-    return markdown.includes('Paperclip') && markdown.includes('Control Plane');
-  }, [markdown]);
+    return toolId === 'paperclipai-paperclip' || 
+      (markdown.includes('Paperclip') && markdown.includes('Control Plane'));
+  }, [toolId, markdown]);
+
+  const isSmartGateway = useMemo(() => {
+    return toolId === 'aihub-vn-smart-mcp-gateway' || 
+      markdown.includes('Smart MCP Gateway') || 
+      markdown.includes('mcp-gateway');
+  }, [toolId, markdown]);
+
+  const isFindSkills = useMemo(() => {
+    return toolId === 'vercel-labs-find-skills' || 
+      markdown.includes('Find Skills') || 
+      markdown.includes('find-skills');
+  }, [toolId, markdown]);
 
   // Tự động gắn nút Copy chuẩn phong cách GitHub cho tất cả các thẻ <pre> code block (giao diện sáng thanh lịch)
   useEffect(() => {
@@ -120,6 +151,11 @@ export const GitHubReadmeViewer: React.FC<GitHubReadmeViewerProps> = ({
           <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60">
             Tiếng Việt
           </span>
+          {toolName && (
+            <span className="hidden md:inline-block text-[11px] text-slate-500 dark:text-slate-400 font-medium truncate max-w-[280px]">
+              • {toolName}
+            </span>
+          )}
         </div>
 
         {/* CÁC THAO TÁC CÔNG CỤ */}
@@ -190,11 +226,9 @@ export const GitHubReadmeViewer: React.FC<GitHubReadmeViewerProps> = ({
         </div>
       </div>
 
-      {/* SƠ ĐỒ TRỰC QUAN FLOWCHART CHUẨN VIBECODE TỪ PHIÊN LÀM VIỆC CỐT LÕI (GIAO DIỆN SÁNG, TINH TẾ) */}
+      {/* 1. SƠ ĐỒ TRỰC QUAN CHO VIBECODING SKILL (13 GIAI ĐOẠN & CỔNG CHẤT LƯỢNG) */}
       {viewMode === 'preview' && isVibeCoding && (
         <div className="m-6 sm:m-8 p-6 sm:p-7 rounded-3xl bg-slate-50/80 dark:bg-slate-850/60 border border-slate-200 dark:border-slate-800 shadow-xs space-y-6">
-          
-          {/* Header của Flowchart */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 gap-3">
             <div className="flex items-center space-x-2.5">
               <div className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
@@ -210,7 +244,6 @@ export const GitHubReadmeViewer: React.FC<GitHubReadmeViewerProps> = ({
               </div>
             </div>
 
-            {/* Bộ chuyển đổi giữa 2 sơ đồ cốt lõi */}
             <div className="flex items-center bg-slate-200/80 dark:bg-slate-800 p-1 rounded-xl text-xs font-semibold self-start sm:self-auto">
               <button
                 type="button"
@@ -239,11 +272,8 @@ export const GitHubReadmeViewer: React.FC<GitHubReadmeViewerProps> = ({
             </div>
           </div>
 
-          {/* SƠ ĐỒ 1: 13 GIAI ĐOẠN VÀ CÁC CỔNG KIỂM SOÁT CHẤT LƯỢNG (QUALITY GATES) */}
           {vibeDiagramTab === 'stages' && (
             <div className="space-y-4 animate-fadeIn">
-              
-              {/* THANH CHUYỂN ĐỔI CHẾ ĐỘ XEM: SƠ ĐỒ VECTOR SVG CHUẨN MẪU / DẠNG THẺ TỔNG HỢP */}
               <div className="flex flex-wrap items-center justify-between gap-2 p-1.5 rounded-xl bg-slate-100/90 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs">
                 <div className="flex items-center space-x-2 pl-2 text-slate-700 dark:text-slate-300 font-medium">
                   <Sparkles className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
@@ -252,9 +282,9 @@ export const GitHubReadmeViewer: React.FC<GitHubReadmeViewerProps> = ({
                 <div className="flex items-center space-x-1">
                   <button
                     type="button"
-                    onClick={() => setStagesViewMode('svg')}
+                    onClick={() => setDiagramViewMode('svg')}
                     className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
-                      stagesViewMode === 'svg'
+                      diagramViewMode === 'svg'
                         ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs'
                         : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                     }`}
@@ -264,9 +294,9 @@ export const GitHubReadmeViewer: React.FC<GitHubReadmeViewerProps> = ({
                   </button>
                   <button
                     type="button"
-                    onClick={() => setStagesViewMode('cards')}
+                    onClick={() => setDiagramViewMode('cards')}
                     className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
-                      stagesViewMode === 'cards'
+                      diagramViewMode === 'cards'
                         ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs'
                         : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                     }`}
@@ -277,483 +307,452 @@ export const GitHubReadmeViewer: React.FC<GitHubReadmeViewerProps> = ({
                 </div>
               </div>
 
-              {/* NẾU CHỌN CHẾ ĐỘ SVG: HIỂN THỊ TRỰC TIẾP BẢN VẼ VECTOR TỪ MERMAID-DIAGRAM.SVG */}
-              {stagesViewMode === 'svg' ? (
-                <MermaidDiagramSvgViewer />
+              {diagramViewMode === 'svg' ? (
+                <MermaidDiagramSvgViewer 
+                  svgUrl="/mermaid-diagram.svg"
+                  title="Sơ Đồ Quy Trình VibeCode 13 Giai Đoạn & Cổng Chất Lượng"
+                  subtitle="Chu trình phát triển phần mềm chuẩn mực, tích hợp cổng kiểm soát chất lượng và phương án quay lui"
+                  downloadFileName="vibecode-lifecycle-diagram.svg"
+                  stageCountText="13 Giai đoạn & 2 Cổng kiểm soát"
+                />
               ) : (
-                /* NẾU CHỌN DẠNG THẺ: HIỂN THỊ 4 CHẶNG CARDS TIỆN TRA CỨU */
-                <div className="space-y-5 animate-fadeIn">
-              
-              {/* CHẶNG 1: KHỞI TẠO & PHÂN TÍCH */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-blue-200/80 dark:border-blue-900/40 shadow-xs space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <span className="w-6 h-6 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 flex items-center justify-center text-xs font-black">
-                      I
-                    </span>
-                    <span className="text-xs font-bold text-blue-700 dark:text-blue-300 uppercase tracking-wider">
-                      Giai Đoạn 1: Khởi Tạo Và Phân Tích
-                    </span>
+                <div className="space-y-4 animate-fadeIn text-xs">
+                  <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-blue-200 dark:border-blue-900/40">
+                    <span className="font-bold text-blue-700 dark:text-blue-300 block mb-1">GIAI ĐOẠN 1: KHỞI TẠO VÀ PHÂN TÍCH (01 → 04)</span>
+                    <span className="text-slate-500">Xác định ý tưởng • Xác định phạm vi • Phân tích nghiệp vụ • Đặc tả yêu cầu & Tiêu chí nghiệm thu</span>
                   </div>
-                  <span className="text-[11px] text-slate-400 font-medium">Giai đoạn 01 → 04</span>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
-                  {[
-                    { step: '01', name: 'Xác định ý tưởng', file: '01_TONG_QUAN_DU_AN.md' },
-                    { step: '02', name: 'Xác định phạm vi', file: '02_PHAM_VI_DU_AN.md', hasFeedback: true },
-                    { step: '03', name: 'Phân tích nghiệp vụ', file: '03-06_LUONG_NGHIEP_VU.md' },
-                    { step: '04', name: 'Đặc tả yêu cầu & Nghiệm thu', file: '07_YEU_CAU & 08_NGHIEM_THU.md' }
-                  ].map((item, idx) => (
-                    <div key={idx} className="relative p-3 rounded-xl bg-slate-50/70 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-800 hover:border-blue-300 transition-all">
-                      <div className="flex items-center justify-between mb-1">
-                        <div className="flex items-center space-x-2">
-                          <span className="w-5 h-5 rounded-md bg-blue-600 text-white flex items-center justify-center text-[10px] font-bold">
-                            {item.step}
-                          </span>
-                          <span className="font-bold text-xs text-slate-800 dark:text-slate-100">
-                            {item.name}
-                          </span>
-                        </div>
-                        {item.hasFeedback && (
-                          <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800" title="Điểm tiếp nhận yêu cầu phản hồi từ vận hành">
-                            Điểm phản hồi
-                          </span>
-                        )}
-                      </div>
-                      <span className="text-[10px] font-mono text-slate-500 block truncate">
-                        {item.file}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Mũi tên chuyển tiếp */}
-              <div className="flex justify-center text-slate-400">
-                <ArrowDown className="w-4 h-4 animate-bounce" />
-              </div>
-
-              {/* CHẶNG 2: THIẾT KẾ KỸ THUẬT VÀ DỮ LIỆU */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-purple-200/80 dark:border-purple-900/40 shadow-xs space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <span className="w-6 h-6 rounded-lg bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 flex items-center justify-center text-xs font-black">
-                      II
-                    </span>
-                    <span className="text-xs font-bold text-purple-700 dark:text-purple-300 uppercase tracking-wider">
-                      Giai Đoạn 2: Thiết Kế Kỹ Thuật Và Dữ Liệu
-                    </span>
+                  <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-purple-200 dark:border-purple-900/40">
+                    <span className="font-bold text-purple-700 dark:text-purple-300 block mb-1">GIAI ĐOẠN 2: THIẾT KẾ KỸ THUẬT VÀ DỮ LIỆU (05 → 08)</span>
+                    <span className="text-slate-500">Thiết kế hệ thống & công nghệ • Thiết kế giao diện • Thiết kế cơ sở dữ liệu & API • Môi trường AI</span>
                   </div>
-                  <span className="text-[11px] text-slate-400 font-medium">Giai đoạn 05 → 08</span>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
-                  {[
-                    { step: '05', name: 'Thiết kế hệ thống & Công nghệ', file: '09_KIEN_TRUC & 10_CONG_NGHE.md' },
-                    { step: '06', name: 'Thiết kế giao diện (UI/UX)', file: '11_GIAO_DIEN & 12_QUY_CHUAN.md' },
-                    { step: '07', name: 'Thiết kế cơ sở dữ liệu & API', file: '13_CO_SO_DU_LIEU & 14_API.md' },
-                    { step: '08', name: 'Chuẩn bị môi trường AI', file: '15, 16, index.md, 23, 24' }
-                  ].map((item, idx) => (
-                    <div key={idx} className="relative p-3 rounded-xl bg-slate-50/70 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-800 hover:border-purple-300 transition-all">
-                      <div className="flex items-center space-x-2 mb-1">
-                        <span className="w-5 h-5 rounded-md bg-purple-600 text-white flex items-center justify-center text-[10px] font-bold">
-                          {item.step}
-                        </span>
-                        <span className="font-bold text-xs text-slate-800 dark:text-slate-100">
-                          {item.name}
-                        </span>
-                      </div>
-                      <span className="text-[10px] font-mono text-slate-500 block truncate">
-                        {item.file}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Mũi tên chuyển tiếp */}
-              <div className="flex justify-center text-slate-400">
-                <ArrowDown className="w-4 h-4 animate-bounce" />
-              </div>
-
-              {/* CHẶNG 3: XÂY DỰNG VÀ KIỂM THỬ */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-emerald-200/80 dark:border-emerald-900/40 shadow-xs space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <span className="w-6 h-6 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 flex items-center justify-center text-xs font-black">
-                      III
-                    </span>
-                    <span className="text-xs font-bold text-emerald-700 dark:text-emerald-300 uppercase tracking-wider">
-                      Giai Đoạn 3: Xây Dựng Và Kiểm Thử Từng Bước Nhỏ
-                    </span>
+                  <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-emerald-200 dark:border-emerald-900/40">
+                    <span className="font-bold text-emerald-700 dark:text-emerald-300 block mb-1">GIAI ĐOẠN 3: XÂY DỰNG VÀ KIỂM THỬ (09 → 10)</span>
+                    <span className="text-slate-500">Xây dựng theo từng Task nhỏ • Kiểm thử đa tầng và hồi quy</span>
                   </div>
-                  <span className="text-[11px] text-slate-400 font-medium">Giai đoạn 09 → 10</span>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="relative p-3.5 rounded-xl bg-slate-50/70 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-800 hover:border-emerald-300 transition-all">
-                    <div className="flex items-center justify-between mb-1.5">
-                      <div className="flex items-center space-x-2">
-                        <span className="w-5 h-5 rounded-md bg-emerald-600 text-white flex items-center justify-center text-[10px] font-bold">
-                          09
-                        </span>
-                        <span className="font-bold text-xs text-slate-800 dark:text-slate-100">
-                          Xây dựng theo từng nhiệm vụ nhỏ (Module)
-                        </span>
-                      </div>
-                      <span className="text-[9px] font-semibold px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-                        Điểm sửa lỗi & Rollback
-                      </span>
-                    </div>
-                    <span className="text-[11px] font-mono text-slate-500 block">
-                      Mã nguồn • Migration • Kiểm thử đơn vị (Unit Test)
-                    </span>
+                  <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-900/40">
+                    <span className="font-bold text-rose-700 dark:text-rose-300 block mb-1">GIAI ĐOẠN 4: BẢO MẬT, TRIỂN KHAI VÀ BẢO TRÌ (11 → 13)</span>
+                    <span className="text-slate-500">Bảo mật hệ thống • Cổng QG1 • Triển khai phát hành (Deploy) • Cổng QG2 • Rollback • Vận hành & Bảo trì</span>
                   </div>
-
-                  <div className="relative p-3.5 rounded-xl bg-slate-50/70 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-800 hover:border-emerald-300 transition-all">
-                    <div className="flex items-center space-x-2 mb-1.5">
-                      <span className="w-5 h-5 rounded-md bg-emerald-600 text-white flex items-center justify-center text-[10px] font-bold">
-                        10
-                      </span>
-                      <span className="font-bold text-xs text-slate-800 dark:text-slate-100">
-                        Kiểm thử đa tầng và hồi quy
-                      </span>
-                    </div>
-                    <span className="text-[11px] font-mono text-slate-500 block">
-                      17_KE_HOACH_KIEM_THU.md • 18_KICH_BAN_KIEM_THU.md
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Mũi tên chuyển tiếp */}
-              <div className="flex justify-center text-slate-400">
-                <ArrowDown className="w-4 h-4 animate-bounce" />
-              </div>
-
-              {/* CHẶNG 4: BẢO MẬT, TRIỂN KHAI VÀ BẢO TRÌ (KÈM 2 CỔNG CHẤT LƯỢNG VÀ NHÁNH ROLLBACK) */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-rose-200/80 dark:border-rose-900/40 shadow-xs space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <span className="w-6 h-6 rounded-lg bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 flex items-center justify-center text-xs font-black">
-                      IV
-                    </span>
-                    <span className="text-xs font-bold text-rose-700 dark:text-rose-300 uppercase tracking-wider">
-                      Giai Đoạn 4: Bảo Mật, Triển Khai & Bảo Trì (Kèm Cổng Chất Lượng)
-                    </span>
-                  </div>
-                  <span className="text-[11px] text-slate-400 font-medium">Giai đoạn 11 → 13</span>
-                </div>
-
-                <div className="space-y-3.5">
-                  
-                  {/* Bước 11: Bảo mật */}
-                  <div className="p-3.5 rounded-xl bg-slate-50/70 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-800 flex items-center justify-between">
-                    <div className="flex items-center space-x-2.5">
-                      <span className="w-5 h-5 rounded-md bg-rose-600 text-white flex items-center justify-center text-[10px] font-bold">
-                        11
-                      </span>
-                      <div>
-                        <span className="font-bold text-xs text-slate-800 dark:text-slate-100 block">
-                          11. Bảo mật hệ thống - Security
-                        </span>
-                        <span className="text-[10px] text-slate-500 font-mono">
-                          Xác thực • Phân quyền • Mã hóa dữ liệu • Quét lỗ hổng (19_AN_TOAN_BAO_MAT.md)
-                        </span>
-                      </div>
-                    </div>
-                    <ArrowDown className="w-4 h-4 text-slate-400 hidden sm:block" />
-                  </div>
-
-                  {/* CỔNG KIỂM TRA BẢO MẬT QG1 (HÌNH THOI / QUYẾT ĐỊNH) */}
-                  <div className="p-3 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-300/80 dark:border-amber-800 flex flex-col md:flex-row md:items-center justify-between gap-2.5 text-xs">
-                    <div className="flex items-center space-x-2">
-                      <ShieldAlert className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
-                      <span className="font-bold text-amber-900 dark:text-amber-200">
-                        Cổng Kiểm Tra Bảo Mật (QG1): Đạt chuẩn không có lỗ hổng?
-                      </span>
-                    </div>
-
-                    <div className="flex items-center space-x-2 shrink-0">
-                      <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-md bg-rose-100 dark:bg-rose-950/80 text-rose-700 dark:text-rose-300 border border-rose-200 text-[11px] font-semibold">
-                        <RotateCcw className="w-3 h-3" />
-                        <span>Không đạt → Quay về Giai đoạn 09</span>
-                      </span>
-                      <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 text-[11px] font-semibold">
-                        <CheckCircle2 className="w-3 h-3" />
-                        <span>Đạt chuẩn → Chuyển sang 12</span>
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Bước 12: Triển khai phát hành */}
-                  <div className="p-3.5 rounded-xl bg-slate-50/70 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-800 flex items-center justify-between">
-                    <div className="flex items-center space-x-2.5">
-                      <span className="w-5 h-5 rounded-md bg-indigo-600 text-white flex items-center justify-center text-[10px] font-bold">
-                        12
-                      </span>
-                      <div>
-                        <span className="font-bold text-xs text-slate-800 dark:text-slate-100 block">
-                          12. Triển khai phát hành - Deploy
-                        </span>
-                        <span className="text-[10px] text-slate-500 font-mono">
-                          Đóng gói Build • Cấu hình môi trường • CI/CD • Rollback Plan (20_QUY_TRINH_TRIEN_KHAI.md)
-                        </span>
-                      </div>
-                    </div>
-                    <ArrowDown className="w-4 h-4 text-slate-400 hidden sm:block" />
-                  </div>
-
-                  {/* CỔNG NGHIỆM THU PHÁT HÀNH QG2 (HÌNH THOI / QUYẾT ĐỊNH) */}
-                  <div className="p-3 rounded-xl bg-purple-50/70 dark:bg-purple-950/30 border border-purple-300/80 dark:border-purple-800 flex flex-col md:flex-row md:items-center justify-between gap-2.5 text-xs">
-                    <div className="flex items-center space-x-2">
-                      <AlertTriangle className="w-4 h-4 text-purple-600 dark:text-purple-400 shrink-0" />
-                      <span className="font-bold text-purple-900 dark:text-purple-200">
-                        Cổng Nghiệm Thu Phát Hành (QG2): Vượt qua Smoke Test & Kiểm tra sức khỏe?
-                      </span>
-                    </div>
-
-                    <div className="flex items-center space-x-2 shrink-0">
-                      <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-md bg-rose-100 dark:bg-rose-950/80 text-rose-700 dark:text-rose-300 border border-rose-200 text-[11px] font-semibold" title="Kích hoạt Rollback về phiên bản an toàn rồi quay lại sửa tại G09">
-                        <RotateCcw className="w-3 h-3" />
-                        <span>Sự cố → Rollback an toàn → Về G09</span>
-                      </span>
-                      <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 text-[11px] font-semibold">
-                        <CheckCircle2 className="w-3 h-3" />
-                        <span>Thành công → Chuyển sang 13</span>
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Bước 13: Vận hành và bảo trì */}
-                  <div className="p-3.5 rounded-xl bg-slate-50/70 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-800 flex items-center justify-between">
-                    <div className="flex items-center space-x-2.5">
-                      <span className="w-5 h-5 rounded-md bg-emerald-600 text-white flex items-center justify-center text-[10px] font-bold">
-                        13
-                      </span>
-                      <div>
-                        <span className="font-bold text-xs text-slate-800 dark:text-slate-100 block">
-                          13. Vận hành và bảo trì - Maintenance
-                        </span>
-                        <span className="text-[10px] text-slate-500 font-mono">
-                          Giám sát Monitoring • Ghi log tập trung • Sao lưu Backup định kỳ (21_KE_HOACH_BAO_TRI.md)
-                        </span>
-                      </div>
-                    </div>
-                    <span className="text-emerald-600 text-xs font-bold hidden sm:inline-block">Đang vận hành</span>
-                  </div>
-
-                  {/* VÒNG LẶP PHẢN HỒI (FEEDBACK LOOP) */}
-                  <div className="p-3 rounded-xl bg-blue-50/60 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900 flex items-center justify-between text-xs">
-                    <div className="flex items-center space-x-2">
-                      <RefreshCw className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
-                      <span className="text-slate-700 dark:text-slate-300">
-                        <strong className="text-blue-700 dark:text-blue-300 font-bold">Vòng Lặp Phản Hồi (Feedback):</strong> Yêu cầu phát sinh mới hoặc phản hồi lỗi vận hành
-                      </span>
-                    </div>
-                    <span className="inline-flex items-center space-x-1 text-[11px] font-bold text-blue-700 dark:text-blue-300">
-                      <span>Quay lại Giai đoạn 02 (Xác định phạm vi)</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </span>
-                  </div>
-
-                </div>
-              </div>
-
                 </div>
               )}
-
             </div>
           )}
 
-          {/* SƠ ĐỒ 2: MÔ HÌNH QUẢN LÝ VÀ PHÂN LUỒNG TRÁCH NHIỆM (GOVERNANCE WORKFLOW) */}
           {vibeDiagramTab === 'governance' && (
-            <div className="space-y-4 animate-fadeIn">
-              <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-indigo-200/80 dark:border-indigo-900/40 shadow-xs space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <UserCheck className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-                    <span className="text-xs font-bold text-indigo-700 dark:text-indigo-300 uppercase tracking-wider">
-                      Mô Hình Quản Trị Trách Nhiệm: Con Người Quyết Định & AI Thực Thi
-                    </span>
-                  </div>
-                  <span className="text-[11px] text-slate-400 font-medium">10 Điểm Chuyển Tiếp Khép Kín</span>
+            <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4 animate-fadeIn text-xs">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-4 rounded-xl bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800/60">
+                  <span className="font-bold text-indigo-700 dark:text-indigo-300 block mb-2">TRÁCH NHIỆM CỦA CON NGƯỜI (HUMAN)</span>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Quyết định mục tiêu, phạm vi sản phẩm, quy tắc nghiệp vụ, quyền hạn người dùng và phê duyệt các cổng chất lượng.
+                  </p>
                 </div>
-
-                {/* Luồng trách nhiệm theo từng nút bước */}
-                <div className="flex flex-col space-y-2 text-xs">
-                  
-                  {/* Cấp độ 1: Khởi nguồn */}
-                  <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800 flex items-center justify-between">
-                    <span className="font-bold text-indigo-900 dark:text-indigo-200">
-                      1. Chủ sở hữu sản phẩm (Product Owner)
-                    </span>
-                    <span className="text-[11px] text-slate-500">Đưa ra định hướng & bài toán kinh doanh</span>
-                  </div>
-
-                  <div className="flex justify-center text-slate-400">
-                    <ArrowDown className="w-3.5 h-3.5" />
-                  </div>
-
-                  {/* Cấp độ 2: Nghiệp vụ */}
-                  <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 flex items-center justify-between">
-                    <span className="font-bold text-blue-900 dark:text-blue-200">
-                      2. Yêu cầu nghiệp vụ (Business Requirements - BR)
-                    </span>
-                    <span className="text-[11px] text-slate-500">Mô hình hóa quy trình, quy tắc & vai trò người dùng</span>
-                  </div>
-
-                  <div className="flex justify-center text-slate-400">
-                    <ArrowDown className="w-3.5 h-3.5" />
-                  </div>
-
-                  {/* Cấp độ 3: Đặc tả */}
-                  <div className="p-3 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800 flex items-center justify-between">
-                    <span className="font-bold text-purple-900 dark:text-purple-200">
-                      3. Đặc tả kỹ thuật (Specification)
-                    </span>
-                    <span className="text-[11px] text-slate-500">Tiêu chí nghiệm thu & yêu cầu chức năng</span>
-                  </div>
-
-                  <div className="flex justify-center text-slate-400">
-                    <ArrowDown className="w-3.5 h-3.5" />
-                  </div>
-
-                  {/* Cấp độ 4: Rẽ đôi song song Thiết kế UI và Kiến trúc */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                      <span className="font-bold text-slate-800 dark:text-slate-100 block">
-                        4a. Thiết kế giao diện (UI/UX)
-                      </span>
-                      <span className="text-[10px] text-slate-500">Bố cục màn hình, luồng điều hướng</span>
-                    </div>
-                    <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                      <span className="font-bold text-slate-800 dark:text-slate-100 block">
-                        4b. Thiết kế kiến trúc (Architecture)
-                      </span>
-                      <span className="text-[10px] text-slate-500">Mô hình dữ liệu, công nghệ, API</span>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-center text-slate-400">
-                    <ArrowDown className="w-3.5 h-3.5" />
-                  </div>
-
-                  {/* Cấp độ 5: Lập trình AI */}
-                  <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 flex items-center justify-between">
-                    <span className="font-bold text-emerald-900 dark:text-emerald-200">
-                      5. Lập trình mã nguồn (AI Coding theo từng Task nhỏ)
-                    </span>
-                    <span className="text-[11px] text-slate-500">Không suy đoán, tuân thủ nghiêm ngặt đặc tả</span>
-                  </div>
-
-                  <div className="flex justify-center text-slate-400">
-                    <ArrowDown className="w-3.5 h-3.5" />
-                  </div>
-
-                  {/* Cấp độ 6: Kiểm thử & Bảo mật */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                    <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center">
-                      <span className="font-bold text-slate-800 dark:text-slate-200 block">6. Kiểm thử (Testing)</span>
-                      <span className="text-[10px] text-slate-500">Đa tầng & hồi quy</span>
-                    </div>
-                    <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center">
-                      <span className="font-bold text-slate-800 dark:text-slate-200 block">7. Bảo mật (Security)</span>
-                      <span className="text-[10px] text-slate-500">Quét lỗ hổng, phân quyền</span>
-                    </div>
-                    <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center">
-                      <span className="font-bold text-slate-800 dark:text-slate-200 block">8. Rà soát & Nghiệm thu</span>
-                      <span className="text-[10px] text-slate-500">Con người phê duyệt</span>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-center text-slate-400">
-                    <ArrowDown className="w-3.5 h-3.5" />
-                  </div>
-
-                  {/* Cấp độ 7: Phát hành & Vận hành */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800">
-                      <span className="font-bold text-amber-900 dark:text-amber-200 block">
-                        9. Triển khai phát hành (Deploy)
-                      </span>
-                      <span className="text-[10px] text-slate-500">CI/CD, kiểm tra sức khỏe, phương án rollback</span>
-                    </div>
-                    <div className="p-3 rounded-xl bg-teal-50 dark:bg-teal-950/40 border border-teal-200 dark:border-teal-800">
-                      <span className="font-bold text-teal-900 dark:text-teal-200 block">
-                        10. Vận hành và bảo trì (Maintenance)
-                      </span>
-                      <span className="text-[10px] text-slate-500">Giám sát hiệu năng, nhật ký tập trung, sao lưu</span>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-center text-slate-400">
-                    <ArrowDown className="w-3.5 h-3.5" />
-                  </div>
-
-                  {/* Cấp độ 8: Vòng lặp cải tiến quay lại BR */}
-                  <div className="p-3 rounded-xl bg-blue-100/60 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700 flex items-center justify-between">
-                    <span className="font-bold text-blue-900 dark:text-blue-100 flex items-center space-x-1.5">
-                      <RefreshCw className="w-3.5 h-3.5" />
-                      <span>Phản hồi và cải tiến (Feedback Loop)</span>
-                    </span>
-                    <span className="text-[11px] font-semibold text-blue-700 dark:text-blue-300">
-                      Quay trở lại Bước 2: Yêu cầu nghiệp vụ (Business Requirements)
-                    </span>
-                  </div>
-
+                <div className="p-4 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60">
+                  <span className="font-bold text-emerald-700 dark:text-emerald-300 block mb-2">TRÁCH NHIỆM CỦA TRÍ TUỆ NHÂN TẠO (AI)</span>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Hỗ trợ phân tích, đề xuất giải pháp, lập trình mã nguồn sạch, kiểm thử đa tầng và lập tài liệu kỹ thuật chi tiết.
+                  </p>
                 </div>
               </div>
             </div>
           )}
-
         </div>
       )}
 
-      {/* SƠ ĐỒ TRỰC QUAN CHO AI JOB SEARCH (GIAO DIỆN SÁNG THANH LỊCH) */}
-      {viewMode === 'preview' && isJobSearch && (
-        <div className="m-6 sm:m-8 p-6 rounded-3xl bg-slate-50/80 dark:bg-slate-850/60 border border-slate-200 dark:border-slate-800 shadow-xs space-y-4">
-          <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
-              <Rocket className="w-4 h-4" />
+      {/* 2. SƠ ĐỒ TRỰC QUAN CHO HINDSIGHT (BỘ NHỚ DÀI HẠN PHỎNG SINH HỌC 5 TẦNG) */}
+      {viewMode === 'preview' && isHindsight && (
+        <div className="m-6 sm:m-8 p-6 sm:p-7 rounded-3xl bg-slate-50/80 dark:bg-slate-850/60 border border-slate-200 dark:border-slate-800 shadow-xs space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 gap-3">
+            <div className="flex items-center space-x-2.5">
+              <div className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                <Brain className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="font-extrabold text-sm sm:text-base text-slate-900 dark:text-white">
+                  Kiến Trúc Nhận Thức 5 Tầng Phỏng Sinh Học Hindsight
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400">
+                  Chu trình tiếp nhận (Retain) → Lưu trữ 3 lớp → Truy hồi đa chiều (Recall) → Tự suy ngẫm (Reflect)
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="font-extrabold text-sm text-slate-900 dark:text-white">
-                Sơ Đồ Quy Trình Tự Động Hóa Ứng Tuyển Đa Tác Tử (Multi-Agent Workflow)
-              </h3>
-              <p className="text-xs text-slate-500">Chuỗi phối hợp tác tử từ quét tin đến luyện phỏng vấn</p>
+
+            <div className="flex items-center space-x-1 p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => setDiagramViewMode('svg')}
+                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                  diagramViewMode === 'svg'
+                    ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <ImageIcon className="w-3.5 h-3.5" />
+                <span>Sơ Đồ Vector SVG</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setDiagramViewMode('cards')}
+                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                  diagramViewMode === 'cards'
+                    ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <Layers className="w-3.5 h-3.5" />
+                <span>Thẻ Rút Gọn</span>
+              </button>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 text-xs">
-            <div className="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs font-semibold">
-              <span className="text-indigo-600 font-mono font-bold mr-1.5">1.</span>
-              <span>/setup (Hồ sơ)</span>
+          {diagramViewMode === 'svg' ? (
+            <MermaidDiagramSvgViewer 
+              svgUrl="/hindsight-diagram.svg"
+              title="Kiến Trúc Bộ Nhớ Phỏng Sinh Học Hindsight Cho Tác Tử AI"
+              subtitle="Quy trình 5 tầng: Tiếp nhận (Retain) → Lưu trữ 3 lớp → Truy hồi đa chiều (Recall) → Tự suy ngẫm (Reflect)"
+              downloadFileName="hindsight-architecture-diagram.svg"
+              stageCountText="5 Tầng Nhận Thức Phỏng Sinh Học"
+            />
+          ) : (
+            <div className="space-y-4 animate-fadeIn text-xs">
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="font-bold text-slate-800 dark:text-slate-100 block mb-1">TẦNG 1: DÒNG TƯƠNG TÁC ĐẦU VÀO</span>
+                <span className="text-slate-500">Hội thoại người dùng • Hành động tác tử • Phản hồi môi trường & runtime logs</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-900/40">
+                <span className="font-bold text-indigo-700 dark:text-indigo-300 block mb-1">TẦNG 2: ĐỘNG CƠ TIẾP NHẬN (RETAIN ENGINE)</span>
+                <span className="text-slate-500">Trích xuất quan sát • Lọc nhiễu & khử trùng bảo mật • Chấm điểm tầm quan trọng (Salience 0.0 - 1.0)</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-blue-200 dark:border-blue-900/40">
+                <span className="font-bold text-blue-700 dark:text-blue-300 block mb-1">TẦNG 3: LƯU TRỮ PHỎNG SINH HỌC 3 LỚP</span>
+                <span className="text-slate-500">Semantic Facts (Sự thật bất biến) • Episodic Memory (Ký ức sự kiện & lịch sử lỗi) • World View (Thế giới quan & sở thích)</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-amber-200 dark:border-amber-900/40">
+                <span className="font-bold text-amber-700 dark:text-amber-300 block mb-1">TẦNG 4: ĐỘNG CƠ TRUY HỒI ĐA CHIỀU (RECALL ENGINE)</span>
+                <span className="text-slate-500">Cân bằng 4 trọng số: Độ mới (Recency) + Tương đồng ngữ nghĩa (Relevance) + Tầm quan trọng + Tần suất củng cố</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-emerald-200 dark:border-emerald-900/40">
+                <span className="font-bold text-emerald-700 dark:text-emerald-300 block mb-1">TẦNG 5: TỰ SUY NGẪM & TIẾN HÓA (REFLECT ENGINE)</span>
+                <span className="text-slate-500">Tự suy ngẫm sau nhiệm vụ • Củng cố kinh nghiệm tốt & làm mờ thông tin suy thoái • Tối ưu hóa hành động tương lai</span>
+              </div>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
-            <div className="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs font-semibold">
-              <span className="text-indigo-600 font-mono font-bold mr-1.5">2.</span>
-              <span>/scrape (Quét tin)</span>
+          )}
+        </div>
+      )}
+
+      {/* 3. SƠ ĐỒ TRỰC QUAN CHO AI JOB SEARCH (6 BƯỚC TỰ ĐỘNG HÓA PIPELINE) */}
+      {viewMode === 'preview' && isJobSearch && (
+        <div className="m-6 sm:m-8 p-6 sm:p-7 rounded-3xl bg-slate-50/80 dark:bg-slate-850/60 border border-slate-200 dark:border-slate-800 shadow-xs space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 gap-3">
+            <div className="flex items-center space-x-2.5">
+              <div className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                <Rocket className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="font-extrabold text-sm sm:text-base text-slate-900 dark:text-white">
+                  Quy Trình Tự Động Hóa Săn Việc Đa Tác Tử (AI Job Search Pipeline)
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400">
+                  Chuỗi phối hợp tác tử 6 bước: /setup → /scrape → /apply & Critic Agent → Biên dịch ATS → /interview → /rank
+                </p>
+              </div>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
-            <div className="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs font-semibold">
-              <span className="text-indigo-600 font-mono font-bold mr-1.5">3.</span>
-              <span>/apply (May đo CV)</span>
-            </div>
-            <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
-            <div className="px-3.5 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 shadow-xs font-bold">
-              <span>Agent Phản Biện (Thẩm định)</span>
-            </div>
-            <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
-            <div className="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs font-semibold">
-              <span>Biên dịch PDF & ATS</span>
-            </div>
-            <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
-            <div className="px-3.5 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 shadow-xs font-bold">
-              <span>/interview (Luyện phỏng vấn)</span>
+
+            <div className="flex items-center space-x-1 p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => setDiagramViewMode('svg')}
+                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                  diagramViewMode === 'svg'
+                    ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <ImageIcon className="w-3.5 h-3.5" />
+                <span>Sơ Đồ Vector SVG</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setDiagramViewMode('cards')}
+                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                  diagramViewMode === 'cards'
+                    ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <Layers className="w-3.5 h-3.5" />
+                <span>Thẻ Rút Gọn</span>
+              </button>
             </div>
           </div>
+
+          {diagramViewMode === 'svg' ? (
+            <MermaidDiagramSvgViewer 
+              svgUrl="/job-search-diagram.svg"
+              title="Quy Trình Săn Việc Tự Động Hóa Đa Tác Tử (AI Job Search)"
+              subtitle="Chuỗi 6 bước khép kín tích hợp Critic Agent và Cổng kiểm soát chất lượng chuẩn ATS"
+              downloadFileName="ai-job-search-pipeline-diagram.svg"
+              stageCountText="6 Bước Khép Kín & 2 Cổng Thẩm Định"
+            />
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 animate-fadeIn text-xs">
+              <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="font-bold text-indigo-600 dark:text-indigo-400 block mb-1">1. /setup (Hồ sơ)</span>
+                <span className="text-slate-500">Nạp CV gốc, kỹ năng cốt lõi & tiêu chí vị trí mục tiêu</span>
+              </div>
+              <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="font-bold text-indigo-600 dark:text-indigo-400 block mb-1">2. /scrape (Quét tin)</span>
+                <span className="text-slate-500">Thu thập và bóc tách cấu trúc yêu cầu JD đa nền tảng</span>
+              </div>
+              <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="font-bold text-indigo-600 dark:text-indigo-400 block mb-1">3. /apply & Critic Agent</span>
+                <span className="text-slate-500">May đo CV, tạo Cover Letter và thẩm định phản biện</span>
+              </div>
+              <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="font-bold text-indigo-600 dark:text-indigo-400 block mb-1">4. Biên dịch PDF & ATS</span>
+                <span className="text-slate-500">Xuất PDF chuẩn máy quét ATS đạt điểm tương thích ≥ 85%</span>
+              </div>
+              <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="font-bold text-indigo-600 dark:text-indigo-400 block mb-1">5. /interview (Mô phỏng)</span>
+                <span className="text-slate-500">Huấn luyện phỏng vấn 1-1 với câu trả lời chuẩn khung STAR</span>
+              </div>
+              <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="font-bold text-indigo-600 dark:text-indigo-400 block mb-1">6. /rank (Theo dõi)</span>
+                <span className="text-slate-500">Xếp hạng cơ hội tiềm năng & quản lý toàn bộ vòng tuyển dụng</span>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* 4. SƠ ĐỒ TRỰC QUAN CHO PAPERCLIP (QUẢN TRỊ TÁC TỬ DOANH NGHIỆP) */}
+      {viewMode === 'preview' && isPaperclip && (
+        <div className="m-6 sm:m-8 p-6 sm:p-7 rounded-3xl bg-slate-50/80 dark:bg-slate-850/60 border border-slate-200 dark:border-slate-800 shadow-xs space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 gap-3">
+            <div className="flex items-center space-x-2.5">
+              <div className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                <Boxes className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="font-extrabold text-sm sm:text-base text-slate-900 dark:text-white">
+                  Kiến Trúc Quản Trị & Điều Phối Lực Lượng Tác Tử Paperclip
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400">
+                  Mặt phẳng điều khiển (Control Plane), sơ đồ phân cấp tổ chức, kiểm soát ngân sách & Human Approval Gate
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-1 p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => setDiagramViewMode('svg')}
+                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                  diagramViewMode === 'svg'
+                    ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <ImageIcon className="w-3.5 h-3.5" />
+                <span>Sơ Đồ Vector SVG</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setDiagramViewMode('cards')}
+                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                  diagramViewMode === 'cards'
+                    ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <Layers className="w-3.5 h-3.5" />
+                <span>Thẻ Rút Gọn</span>
+              </button>
+            </div>
+          </div>
+
+          {diagramViewMode === 'svg' ? (
+            <MermaidDiagramSvgViewer 
+              svgUrl="/paperclip-diagram.svg"
+              title="Kiến Trúc Quản Trị & Điều Phối Tác Tử Doanh Nghiệp Paperclip"
+              subtitle="Mặt phẳng điều khiển (Control Plane), sơ đồ phân cấp tổ chức, kiểm soát ngân sách thời gian thực & Human Approval Gate"
+              downloadFileName="paperclip-agent-governance-diagram.svg"
+              stageCountText="5 Tầng Quản Trị & Cổng Phê Duyệt Con Người"
+            />
+          ) : (
+            <div className="space-y-4 animate-fadeIn text-xs">
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="font-bold text-slate-800 dark:text-slate-100 block mb-1">TẦNG 1: QUẢN TRỊ CON NGƯỜI (HUMAN GOVERNANCE)</span>
+                <span className="text-slate-500">Ban điều hành con người thiết lập mục tiêu chiến lược, hạn mức chi phí và ngân sách tối đa</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-900/40">
+                <span className="font-bold text-indigo-700 dark:text-indigo-300 block mb-1">TẦNG 2: MẶT PHẲNG ĐIỀU KHIỂN (CONTROL PLANE)</span>
+                <span className="text-slate-500">Sơ đồ tổ chức phân cấp (Agent Org Chart) • Điều phối hàng đợi nhiệm vụ • Kiểm soát ngân sách thời gian thực</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-blue-200 dark:border-blue-900/40">
+                <span className="font-bold text-blue-700 dark:text-blue-300 block mb-1">TẦNG 3: BIỆT ĐỘI TÁC TỬ THỰC THI (AGENT WORKFORCE)</span>
+                <span className="text-slate-500">Planner Agent (Kế hoạch) • Coder Agent (Lập trình) • QA & Test Agent (Kiểm thử) • Security Agent (Bảo mật)</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-900/40">
+                <span className="font-bold text-rose-700 dark:text-rose-300 block mb-1">TẦNG 4: GIÁM SÁT AN TOÀN & CỔNG PHÊ DUYỆT CON NGƯỜI</span>
+                <span className="text-slate-500">Cổng kiểm soát rủi ro QG1 • Human Approval Gate khi vượt hạn mức • Nhật ký kiểm toán bất biến (Immutable Audit Trail)</span>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* 5. SƠ ĐỒ TRỰC QUAN CHO SMART MCP GATEWAY */}
+      {viewMode === 'preview' && isSmartGateway && (
+        <div className="m-6 sm:m-8 p-6 sm:p-7 rounded-3xl bg-slate-50/80 dark:bg-slate-850/60 border border-slate-200 dark:border-slate-800 shadow-xs space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 gap-3">
+            <div className="flex items-center space-x-2.5">
+              <div className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                <Server className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="font-extrabold text-sm sm:text-base text-slate-900 dark:text-white">
+                  Kiến Trúc AI HUB VN Smart MCP Gateway
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400">
+                  Cơ chế phân loại ý định, định tuyến thông minh & nén 95% Context Window qua giao thức Model Context Protocol
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-1 p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => setDiagramViewMode('svg')}
+                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                  diagramViewMode === 'svg'
+                    ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <ImageIcon className="w-3.5 h-3.5" />
+                <span>Sơ Đồ Vector SVG</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setDiagramViewMode('cards')}
+                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                  diagramViewMode === 'cards'
+                    ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <Layers className="w-3.5 h-3.5" />
+                <span>Thẻ Rút Gọn</span>
+              </button>
+            </div>
+          </div>
+
+          {diagramViewMode === 'svg' ? (
+            <MermaidDiagramSvgViewer 
+              svgUrl="/smart-gateway-diagram.svg"
+              title="Kiến Trúc Máy Chủ Trung Gian AI HUB VN Smart MCP Gateway"
+              subtitle="Cơ chế phân loại ý định, định tuyến thông minh & nén ngữ cảnh tiết kiệm 95% Context Window"
+              downloadFileName="smart-mcp-gateway-diagram.svg"
+              stageCountText="4 Tầng Định Tuyến & Tối Ưu Ngữ Cảnh"
+            />
+          ) : (
+            <div className="space-y-4 animate-fadeIn text-xs">
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="font-bold text-slate-800 dark:text-slate-100 block mb-1">TẦNG 1: TIẾP NHẬN YÊU CẦU TỪ TÁC TỬ (AGENT INTERACTION)</span>
+                <span className="text-slate-500">Nhận lời gọi từ Antigravity, Claude Code, Cursor, Windsurf và bóc tách ngữ cảnh mục tiêu</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-900/40">
+                <span className="font-bold text-indigo-700 dark:text-indigo-300 block mb-1">TẦNG 2: PHÂN LOẠI Ý ĐỊNH & ĐỊNH TUYẾN THÔNG MINH</span>
+                <span className="text-slate-500">Phân loại nhu cầu năng lực: Database, Filesystem & Git, Bộ nhớ dài hạn (Hindsight), Thanh toán VN</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-emerald-200 dark:border-emerald-900/40">
+                <span className="font-bold text-emerald-700 dark:text-emerald-300 block mb-1">TẦNG 3: BỘ NÉN NGỮ CẢNH 95% (CONTEXT WINDOW OPTIMIZER)</span>
+                <span className="text-slate-500">Cắt tỉa lược đồ (Schema Pruning) • Nạp động theo nhu cầu • Giảm từ 150.000 Tokens xuống chỉ còn 3.500 Tokens</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-blue-200 dark:border-blue-900/40">
+                <span className="font-bold text-blue-700 dark:text-blue-300 block mb-1">TẦNG 4: THỰC THI & TỔNG HỢP KẾT QUẢ</span>
+                <span className="text-slate-500">Thực thi chuẩn JSON-RPC qua Stdio / SSE / WebSockets • Cô đọng kết quả và phản hồi trực tiếp cho tác tử</span>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* 6. SƠ ĐỒ TRỰC QUAN CHO FIND SKILLS */}
+      {viewMode === 'preview' && isFindSkills && (
+        <div className="m-6 sm:m-8 p-6 sm:p-7 rounded-3xl bg-slate-50/80 dark:bg-slate-850/60 border border-slate-200 dark:border-slate-800 shadow-xs space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 gap-3">
+            <div className="flex items-center space-x-2.5">
+              <div className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                <Workflow className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="font-extrabold text-sm sm:text-base text-slate-900 dark:text-white">
+                  Quy Trình Khám Phá & Nạp Động Kỹ Năng Tác Tử (Find Skills Pipeline)
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400">
+                  Tự động phát hiện khoảng trống kỹ năng từ Prompt, đối sánh vector ngữ nghĩa, kiểm định an toàn và tiêm động
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-1 p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => setDiagramViewMode('svg')}
+                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                  diagramViewMode === 'svg'
+                    ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <ImageIcon className="w-3.5 h-3.5" />
+                <span>Sơ Đồ Vector SVG</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setDiagramViewMode('cards')}
+                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                  diagramViewMode === 'cards'
+                    ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <Layers className="w-3.5 h-3.5" />
+                <span>Thẻ Rút Gọn</span>
+              </button>
+            </div>
+          </div>
+
+          {diagramViewMode === 'svg' ? (
+            <MermaidDiagramSvgViewer 
+              svgUrl="/find-skills-diagram.svg"
+              title="Quy Trình Khám Phá & Nạp Động Kỹ Năng Tác Tử (Find Skills)"
+              subtitle="Khám phá kỹ năng tự động từ Prompt người dùng, kiểm định an toàn và nạp tức thì vào ngữ cảnh tác tử"
+              downloadFileName="find-skills-pipeline-diagram.svg"
+              stageCountText="4 Tầng Khám Phá & Nạp Tức Thì"
+            />
+          ) : (
+            <div className="space-y-4 animate-fadeIn text-xs">
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="font-bold text-slate-800 dark:text-slate-100 block mb-1">TẦNG 1: NHẬN DIỆN KHOẢNG TRỐNG KỸ NĂNG</span>
+                <span className="text-slate-500">Phân tích Prompt & nhận diện nhu cầu chuyên môn chưa có trong cấu hình hiện tại</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-900/40">
+                <span className="font-bold text-indigo-700 dark:text-indigo-300 block mb-1">TẦNG 2: TÌM KIẾM NGỮ NGHĨA TRONG KHO SKILLS</span>
+                <span className="text-slate-500">Truy vấn chỉ mục hơn 200+ bộ kỹ năng toàn cầu và đối sánh vector độ tương đồng</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-amber-200 dark:border-amber-900/40">
+                <span className="font-bold text-amber-700 dark:text-amber-300 block mb-1">TẦNG 3: CỔNG KIỂM SOÁT AN TOÀN QG1</span>
+                <span className="text-slate-500">Kiểm tra mã độc, quyền hạn truy cập tài nguyên và tính hợp lệ của giấy phép mã nguồn mở</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-emerald-200 dark:border-emerald-900/40">
+                <span className="font-bold text-emerald-700 dark:text-emerald-300 block mb-1">TẦNG 4: NẠP ĐỘNG & KÍCH HOẠT VÀO TÁC TỬ</span>
+                <span className="text-slate-500">Tiêm chỉ dẫn SKILL.md vào System Prompt và nạp tức thì công cụ mà không cần khởi động lại</span>
+              </div>
+            </div>
+          )}
         </div>
       )}
 

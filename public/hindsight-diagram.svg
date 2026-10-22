@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 1320" width="880" height="1320" style="--bg:#FFFFFF;--fg:#3B3B3B;--line:#3B3B3B;--accent:#005FB8;--muted:#3B3B3BCC;--surface:#F8F8F8;--border:#3B3B3B;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 85%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="5" refX="7" refY="2.5" orient="auto">
+    <polygon points="0 0, 8 2.5, 0 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="5" refX="1" refY="2.5" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.5, 8 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+</defs>
+
+<!-- TIÊU ĐỀ BẢN VẼ -->
+<g class="header-box">
+  <rect x="50" y="30" width="780" height="50" rx="4" fill="var(--_surface)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="440" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="var(--_text)">KIẾN TRÚC BỘ NHỚ PHỎNG SINH HỌC HINDSIGHT CHO TÁC TỬ AI</text>
+  <text x="440" y="71" text-anchor="middle" font-size="11" font-weight="500" fill="var(--_text-sec)">Quy trình 5 tầng: Tiếp nhận (Retain) → Lưu trữ 3 lớp → Truy hồi đa chiều (Recall) → Tự suy ngẫm (Reflect)</text>
+</g>
+
+<!-- SUBGRAPH 1: DÒNG THÔNG TIN ĐẦU VÀO -->
+<g class="subgraph" data-id="SG_INPUT">
+  <rect x="50" y="110" width="780" height="130" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="50" y="110" width="780" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="65" y="128" font-size="12" font-weight="600" fill="var(--_text-sec)">TẦNG 1: DÒNG TƯƠNG TÁC ĐẦU VÀO (INPUT & AGENT INTERACTION)</text>
+  
+  <g class="node">
+    <rect x="75" y="155" width="220" height="60" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="185" y="180" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">Hội Thoại Người Dùng</text>
+    <text x="185" y="198" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Câu lệnh, phản hồi, chỉ dẫn</text>
+  </g>
+
+  <g class="node">
+    <rect x="330" y="155" width="220" height="60" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="440" y="180" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">Hành Động Của Tác Tử</text>
+    <text x="440" y="198" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Lời gọi công cụ, tạo mã, sửa lỗi</text>
+  </g>
+
+  <g class="node">
+    <rect x="585" y="155" width="225" height="60" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="697" y="180" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">Phản Hồi Môi Trường</text>
+    <text x="697" y="198" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Kết quả kiểm thử, lỗi Runtime, log</text>
+  </g>
+</g>
+
+<!-- Polyline từ Tầng 1 xuống Tầng 2 -->
+<polyline class="edge" points="440,240 440,270" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+
+<!-- SUBGRAPH 2: ĐỘNG CƠ TIẾP NHẬN & CÔ ĐỌNG (RETAIN ENGINE) -->
+<g class="subgraph" data-id="SG_RETAIN">
+  <rect x="50" y="270" width="780" height="150" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="50" y="270" width="780" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="65" y="288" font-size="12" font-weight="600" fill="var(--_text-sec)">TẦNG 2: ĐỘNG CƠ TIẾP NHẬN & CÔ ĐỌNG THÔNG TIN (RETAIN ENGINE)</text>
+
+  <g class="node">
+    <rect x="75" y="318" width="220" height="75" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="185" y="345" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">Trích Xuất Quan Sát</text>
+    <text x="185" y="363" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Tách ý định, bài học &amp; giải pháp</text>
+    <text x="185" y="378" text-anchor="middle" font-size="10" font-weight="500" fill="var(--accent)">Observation Extraction</text>
+  </g>
+
+  <g class="node">
+    <rect x="330" y="318" width="220" height="75" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="440" y="345" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">Lọc Nhiễu &amp; Khử Trùng</text>
+    <text x="440" y="363" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Loại bỏ tin rác, che giấu bí mật</text>
+    <text x="440" y="378" text-anchor="middle" font-size="10" font-weight="500" fill="var(--accent)">Noise Reduction &amp; Sanitization</text>
+  </g>
+
+  <g class="node">
+    <rect x="585" y="318" width="225" height="75" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="697" y="345" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">Chấm Điểm Tầm Quan Trọng</text>
+    <text x="697" y="363" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Gán điểm Salience (0.0 - 1.0)</text>
+    <text x="697" y="378" text-anchor="middle" font-size="10" font-weight="500" fill="var(--accent)">Salience &amp; Priority Scoring</text>
+  </g>
+</g>
+
+<!-- Polyline từ Tầng 2 xuống Tầng 3 -->
+<polyline class="edge" points="440,420 440,450" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+
+<!-- SUBGRAPH 3: TẦNG LƯU TRỮ PHỎNG SINH HỌC 3 LỚP (BIOMIMETIC STORAGE) -->
+<g class="subgraph" data-id="SG_STORAGE">
+  <rect x="50" y="450" width="780" height="190" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="50" y="450" width="780" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="65" y="468" font-size="12" font-weight="600" fill="var(--_text-sec)">TẦNG 3: TẦNG LƯU TRỮ PHỎNG SINH HỌC 3 LỚP (BIOMIMETIC MEMORY REPOSITORY)</text>
+
+  <g class="node">
+    <rect x="75" y="498" width="220" height="115" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="185" y="525" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">1. Semantic Facts</text>
+    <text x="185" y="543" text-anchor="middle" font-size="11" font-weight="500" fill="var(--accent)">Tri thức ngữ nghĩa bền vững</text>
+    <text x="185" y="565" text-anchor="middle" font-size="10" font-weight="400" fill="var(--_text-sec)">• Kiến trúc dự án, Stack công nghệ</text>
+    <text x="185" y="582" text-anchor="middle" font-size="10" font-weight="400" fill="var(--_text-sec)">• Quy tắc nghiệp vụ cố định</text>
+    <text x="185" y="599" text-anchor="middle" font-size="10" font-weight="400" fill="var(--_text-sec)">• Hằng số &amp; API Contract</text>
+  </g>
+
+  <g class="node">
+    <rect x="330" y="498" width="220" height="115" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="440" y="525" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">2. Episodic Memory</text>
+    <text x="440" y="543" text-anchor="middle" font-size="11" font-weight="500" fill="var(--accent)">Ký ức tình tiết &amp; trải nghiệm</text>
+    <text x="440" y="565" text-anchor="middle" font-size="10" font-weight="400" fill="var(--_text-sec)">• Nhật ký lỗi cụ thể &amp; cách fix</text>
+    <text x="440" y="582" text-anchor="middle" font-size="10" font-weight="400" fill="var(--_text-sec)">• Lịch sử các phiên làm việc</text>
+    <text x="440" y="599" text-anchor="middle" font-size="10" font-weight="400" fill="var(--_text-sec)">• Quyết định kỹ thuật quá khứ</text>
+  </g>
+
+  <g class="node">
+    <rect x="585" y="498" width="225" height="115" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="697" y="525" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">3. World View</text>
+    <text x="697" y="543" text-anchor="middle" font-size="11" font-weight="500" fill="var(--accent)">Thế giới quan &amp; Sở thích</text>
+    <text x="697" y="565" text-anchor="middle" font-size="10" font-weight="400" fill="var(--_text-sec)">• Thói quen lập trình người dùng</text>
+    <text x="697" y="582" text-anchor="middle" font-size="10" font-weight="400" fill="var(--_text-sec)">• Phong cách giao diện ưu tiên</text>
+    <text x="697" y="599" text-anchor="middle" font-size="10" font-weight="400" fill="var(--_text-sec)">• Triết lý vận hành hệ thống</text>
+  </g>
+</g>
+
+<!-- Polyline từ Tầng 3 xuống Tầng 4 -->
+<polyline class="edge" points="440,640 440,670" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+
+<!-- SUBGRAPH 4: ĐỘNG CƠ TRUY HỒI ĐA CHIỀU (RECALL ENGINE) -->
+<g class="subgraph" data-id="SG_RECALL">
+  <rect x="50" y="670" width="780" height="240" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="50" y="670" width="780" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="65" y="688" font-size="12" font-weight="600" fill="var(--_text-sec)">TẦNG 4: ĐỘNG CƠ TRUY HỒI ĐA CHIỀU (RECALL &amp; RETRIEVAL ENGINE)</text>
+
+  <!-- Diamond Cổng Kiểm Tra Bộ Nhớ -->
+  <polygon points="440,715 550,755 440,795 330,755" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="440" y="752" text-anchor="middle" font-size="12" font-weight="600" fill="var(--_text)">Cần Tái Sử Dụng</text>
+  <text x="440" y="768" text-anchor="middle" font-size="11" font-weight="500" fill="var(--accent)">Kinh Nghiệm Cũ?</text>
+
+  <!-- Nhãn rẽ nhánh không cần -->
+  <g class="edge-label">
+    <rect x="580" y="740" width="95" height="25" rx="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+    <text x="627" y="756" text-anchor="middle" font-size="11" font-weight="500" fill="var(--_text-sec)">Không cần → Bỏ qua</text>
+  </g>
+
+  <!-- Khối Công Thức 4 Chiều -->
+  <g class="node">
+    <rect x="75" y="825" width="735" height="65" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="440" y="848" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent)">CÔNG THỨC ĐIỂM TRUY HỒI HỢP NHẤT: Score = w1·Recency + w2·Relevance + w3·Importance + w4·Reinforcement</text>
+    <text x="440" y="868" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Tự động cân bằng giữa độ mới theo thời gian, độ tương đồng vector ngữ nghĩa, tầm quan trọng cốt lõi và số lần được tái sử dụng thành công</text>
+  </g>
+
+  <!-- Mũi tên từ Diamond xuống Khối công thức -->
+  <polyline class="edge" points="440,795 440,825" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+</g>
+
+<!-- Polyline từ Tầng 4 xuống Tầng 5 -->
+<polyline class="edge" points="440,910 440,940" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+
+<!-- SUBGRAPH 5: ĐỘNG CƠ TỰ SUY NGẪM & TIẾN HÓA (REFLECT ENGINE) -->
+<g class="subgraph" data-id="SG_REFLECT">
+  <rect x="50" y="940" width="780" height="200" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="50" y="940" width="780" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="65" y="958" font-size="12" font-weight="600" fill="var(--_text-sec)">TẦNG 5: TỰ SUY NGẪM, TIẾN HÓA &amp; TỐI ƯU HÀNH ĐỘNG (REFLECT &amp; EVOLUTION ENGINE)</text>
+
+  <g class="node">
+    <rect x="75" y="990" width="220" height="80" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="185" y="1018" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">Suy Ngẫm Sau Nhiệm Vụ</text>
+    <text x="185" y="1036" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Đánh giá kết quả thực thi,</text>
+    <text x="185" y="1053" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">rút kinh nghiệm quy trình</text>
+  </g>
+
+  <g class="node">
+    <rect x="330" y="990" width="220" height="80" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="440" y="1018" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">Củng Cố &amp; Làm Mờ Ký Ức</text>
+    <text x="440" y="1036" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Tăng trọng số giải pháp tốt,</text>
+    <text x="440" y="1053" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">làm mờ thông tin suy thoái</text>
+  </g>
+
+  <g class="node">
+    <rect x="585" y="990" width="225" height="80" rx="0.75" ry="0.75" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+    <text x="697" y="1018" text-anchor="middle" font-size="13" font-weight="600" fill="var(--_text)">Tác Tử Hành Động Chuẩn Xác</text>
+    <text x="697" y="1036" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">Không lặp lại lỗi cũ,</text>
+    <text x="697" y="1053" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)">nâng cao hiệu suất 300%</text>
+  </g>
+
+  <!-- Mũi tên kết nối giữa 3 node -->
+  <polyline class="edge" points="295,1030 330,1030" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+  <polyline class="edge" points="550,1030 585,1030" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+
+  <!-- Dòng phản hồi hồi quy về Tầng 3 -->
+  <polyline class="edge" points="697,1070 697,1105 50,1105 50,545 75,545" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrowhead)" />
+  <g class="edge-label">
+    <rect x="310" y="1092" width="260" height="25" rx="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+    <text x="440" y="1108" text-anchor="middle" font-size="11" font-weight="600" fill="var(--accent)">Vòng lặp tiến hóa (Feedback Loop) cập nhật ngược vào Ký ức</text>
+  </g>
+</g>
+
+<!-- CHÂN TRANG GHI CHÚ CHUẨN KỸ THUẬT -->
+<g class="footer-box">
+  <rect x="50" y="1170" width="780" height="60" rx="4" fill="var(--_surface)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="440" y="1195" text-anchor="middle" font-size="11" font-weight="600" fill="var(--_text)">TIÊU CHUẨN AN TOÀN VÀ HIỆU QUẢ CỦA HINDSIGHT</text>
+  <text x="440" y="1213" text-anchor="middle" font-size="10" font-weight="400" fill="var(--_text-sec)">Bảo vệ quyền riêng tư 100% • Không lưu trữ khóa bí mật • Giảm tới 80% chi phí Context Window • Tái sử dụng tri thức vĩnh cửu</text>
+</g>
+
+</svg>

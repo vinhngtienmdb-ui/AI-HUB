@@ -308,6 +308,8 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
                   markdown={tool.readmeVi} 
                   sourceUrl={tool.sourceUrl} 
                   fileName="README.md"
+                  toolId={tool.id}
+                  toolName={tool.name}
                 />
               </div>
             </div>

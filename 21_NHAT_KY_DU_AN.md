@@ -2,6 +2,8 @@
 
 ## [2026-10-22]
 ### Mục tiêu trong ngày
+- Mở rộng và áp dụng chuẩn mực thiết kế sơ đồ Vector SVG kỹ thuật (theo mẫu `mermaid-diagram.svg`) cho toàn bộ các tài nguyên cốt lõi trong hệ thống: Hindsight, AI Job Search, Paperclip, Smart MCP Gateway và Find Skills.
+- Nâng cấp thành phần `MermaidDiagramSvgViewer.tsx` và `GitHubReadmeViewer.tsx` để hiển thị động các sơ đồ vector tương ứng với từng tài nguyên.
 - Tích hợp chuẩn xác 100% bản vẽ vector kỹ thuật `mermaid-diagram.svg` do người dùng cung cấp vào hệ thống; phát triển thành phần trình xem vector tương tác chuyên dụng (`MermaidDiagramSvgViewer.tsx`) hỗ trợ phóng to/thu nhỏ, mở toàn màn hình và tải về tệp SVG.
 - Bổ sung tài nguyên hệ thống bộ nhớ dài hạn phỏng sinh học Hindsight (`vectorize-io/hindsight`) lên đầu hệ thống, tích hợp đầy đủ 4 khối thông tin chuẩn mực và định tuyến thông minh qua Smart MCP Gateway.
 - Tham chiếu và đồng bộ hóa chuẩn xác 100% hai sơ đồ cốt lõi từ phiên làm việc `0e6ec2b7-0f68-4ab2-b94b-c90d8e376337`: Sơ đồ 13 Giai đoạn VibeCode tích hợp 2 Cổng chất lượng (QG1, QG2), nhánh Rollback, vòng phản hồi Feedback, và Sơ đồ Mô hình Quản trị & Phân luồng trách nhiệm.
@@ -18,6 +20,21 @@
 - Chuẩn hóa Tab "Cấu hình mẫu JSON" theo phong cách trình xem mã nguồn GitHub (Code Blob Viewer có cột số dòng, thanh tiêu đề file và nút sao chép JSON).
 
 ### Các công việc đã thực hiện
+- [Áp Dụng Sơ Đồ Vector SVG Kỹ Thuật Chuẩn Mermaid Cho Toàn Bộ Tài Nguyên Khác]:
+  - **Tạo mới các bản vẽ Vector SVG chuẩn mực đồ họa (`public/` & `src/assets/`)**:
+    - `public/hindsight-diagram.svg`: Sơ đồ kiến trúc nhận thức 5 tầng phỏng sinh học của Hindsight (Dòng tương tác đầu vào → Động cơ tiếp nhận Retain → Lưu trữ 3 lớp Semantic/Episodic/World View → Động cơ truy hồi Recall 4 chiều → Động cơ tự suy ngẫm Reflect kèm vòng lặp tiến hóa Feedback Loop).
+    - `public/job-search-diagram.svg`: Sơ đồ quy trình săn việc tự động hóa đa tác tử 6 bước của AI Job Search (/setup → /scrape → /apply kèm Critic Agent và Cổng kiểm soát QG1 → Biên dịch PDF & Tối ưu hóa ATS kèm Cổng QG2 → /interview mô phỏng STAR → /rank theo dõi tiến độ).
+    - `public/paperclip-diagram.svg`: Sơ đồ kiến trúc quản trị và điều phối lực lượng tác tử doanh nghiệp Paperclip (Quản trị con người Human Governance → Mặt phẳng điều khiển Control Plane & Cây phân cấp tổ chức → Biệt đội tác tử thực thi Planner/Coder/QA/Security → Giám sát an toàn, Cổng phê duyệt con người Human Approval Gate & Nhật ký kiểm toán bất biến).
+    - `public/smart-gateway-diagram.svg`: Sơ đồ kiến trúc máy chủ trung gian AI HUB VN Smart MCP Gateway (Tiếp nhận tương tác tác tử → Phân loại ý định & Định tuyến thông minh → Bộ nén cắt tỉa lược đồ và nạp động tiết kiệm 95% Context Window → Thực thi JSON-RPC và tổng hợp kết quả cô đọng).
+    - `public/find-skills-diagram.svg`: Sơ đồ quy trình khám phá & nạp động kỹ năng tác tử Find Skills (Nhận diện khoảng trống kỹ năng → Đối sánh vector ngữ nghĩa trong kho Skills toàn cầu → Cổng kiểm soát an toàn QG1 & Giấy phép → Nạp tức thì vào System Prompt tác tử).
+  - **Nâng cấp thành phần trình xem vector động (`src/components/MermaidDiagramSvgViewer.tsx`)**:
+    - Tham số hóa toàn diện: Hỗ trợ linh hoạt các thuộc tính `svgUrl`, `title`, `subtitle`, `downloadFileName`, `stageCountText`, `maxWidth`.
+    - Duy trì trọn vẹn bộ điều khiển: Thu nhỏ (`ZoomOut`), Tỷ lệ thực tế (`%`), Phóng to (`ZoomIn`), Đặt lại kích thước (`100%`), Mở toàn màn hình (`ExternalLink`) và Tải về SVG (`Download`).
+  - **Tích hợp đồng bộ vào Trình xem README (`src/components/GitHubReadmeViewer.tsx`)**:
+    - Nhận diện chính xác từng công cụ qua `toolId` và nội dung markdown.
+    - Cung cấp thanh chuyển đổi chế độ xem: **Sơ Đồ Vector SVG (Chuẩn Mẫu Mermaid)** và **Thẻ Phân Chặng Rút Gọn (Card Grid)** cho tất cả các tài nguyên trọng điểm.
+  - **Kiểm thử & Đóng gói**: Vượt qua **38/38 bài kiểm thử tự động**, đóng gói Vite hoàn tất trong 11.40 giây.
+
 - [Tích Hợp Sơ Đồ Vector Kỹ Thuật mermaid-diagram.svg Chuẩn Mẫu]:
   - **Quản lý tài nguyên vector (`public/mermaid-diagram.svg` & `src/assets/mermaid-diagram.svg`)**:
     - Sao chép bản vẽ vector gốc từ đường dẫn do người dùng cung cấp (`file:///C:/Users/vinhn/OneDrive/Máy tính/mermaid-diagram.svg`) vào thư mục `public/` và `src/assets/` của dự án.
