@@ -25,6 +25,16 @@ export function getAllTools() {
 // Bảng ánh xạ ý định chuyên biệt (Core Intent Profiles)
 const CORE_INTENTS = [
   {
+    intentId: 'vibecoding_dev_lifecycle',
+    targetToolId: 'vibecoding-skill-dev-lifecycle',
+    keywords: [
+      'vibecoding', 'vibecode', 'quy trình vibecode', 'quy trình vibecoding', 'dev-lifecycle', 
+      '13 giai đoạn', 'chuẩn phát triển phần mềm', 'bộ tài liệu dự án', 'không suy đoán', 
+      'không phá vỡ dự án', 'hướng dẫn vibecode', 'kỹ năng vibecoding'
+    ],
+    priority: 14
+  },
+  {
     intentId: 'agent_workforce_paperclip',
     targetToolId: 'paperclipai-paperclip',
     keywords: [

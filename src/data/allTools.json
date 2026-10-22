@@ -1,5 +1,102 @@
 [
   {
+    "id": "vibecoding-skill-dev-lifecycle",
+    "slug": "vibecoding-skill-dev-lifecycle",
+    "name": "VibeCoding Skill (dev-lifecycle) — Bộ Kỹ Năng & Quy Trình Phát Triển Phần Mềm Chuẩn VibeCode 13 Giai Đoạn",
+    "icon": "CheckSquare",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "skill",
+    "typeNameVi": "Kỹ năng tác nhân (Agent Skill)",
+    "category": "devops_cicd",
+    "categoryNameVi": "Vận hành triển khai & DevOps",
+    "categories": [
+      "devops_cicd",
+      "rpa_workflow_automation",
+      "office_digital_docs",
+      "backend_api",
+      "qa_testing",
+      "cybersecurity_security",
+      "vietnam"
+    ],
+    "categoryNamesVi": [
+      "DevOps & Tự động hóa CI/CD",
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Văn phòng số & Xử lý tài liệu (Docs & PDF)",
+      "Backend & Kiến trúc API",
+      "Kiểm thử phần mềm & QA/QC",
+      "An toàn thông tin & Bảo mật (Security)",
+      "🇻🇳 Thị Trường Việt Nam"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "claude_desktop",
+      "antigravity",
+      "cursor",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/vinhngtienmdb-ui/vibecoding_skill",
+    "websiteUrl": "https://github.com/vinhngtienmdb-ui/vibecoding_skill",
+    "authorName": "vinhngtienmdb-ui",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Bộ kỹ năng tác tử và khung quy tắc quản trị phát triển phần mềm chuẩn VibeCode toàn diện có sự hỗ trợ của trí tuệ nhân tạo. Chuẩn hóa toàn bộ vòng đời dự án qua 13 giai đoạn tuần tự nghiêm ngặt (từ xác định ý tưởng, bóc tách phạm vi, phân tích nghiệp vụ, thiết kế hệ thống/giao diện/dữ liệu đến lập trình theo module, kiểm thử, an toàn bảo mật, triển khai phát hành và bảo trì vận hành), đi kèm hệ thống tài liệu chuẩn hóa 24 tệp có đánh số thứ tự hai chữ số hoàn toàn bằng tiếng Việt.",
+    "purposeVi": "Thiết lập kỷ luật kỹ thuật và hàng rào bảo vệ vững chắc cho quá trình lập trình cùng AI Coding Agents (Claude Code, Google Antigravity, Cursor). Ngăn chặn triệt để tình trạng AI tự ý suy đoán yêu cầu, tự phá vỡ mã nguồn đang chạy hoặc tự động phát sinh tính năng ngoài phạm vi, đảm bảo mọi dự án phần mềm đều được xây dựng theo từng bước nhỏ có kiểm chứng, có tài liệu và đạt chuẩn bảo mật thực tế.",
+    "featuresVi": [
+      "Quy trình 13 giai đoạn tuần tự khép kín: Có cổng kiểm soát chất lượng nghiêm ngặt (Quality Gate) tại từng bước trước khi chuyển tiếp giai đoạn",
+      "Bộ quy tắc bất khả xâm phạm (Core Guardrails): Nguyên tắc không suy đoán, nguyên tắc không xóa chức năng/không phá vỡ hệ thống, nguyên tắc không tự ý sinh tính năng mới",
+      "Phân định vai trò tuyệt đối: Con người làm chủ mục tiêu và nghiệp vụ (WHAT & WHY); AI hỗ trợ phương pháp và thực thi (HOW & EXECUTION)",
+      "Quy chuẩn tài liệu hóa 24 tệp bắt buộc: Đánh số thứ tự hai chữ số bằng tiếng Việt từ 01_TONG_QUAN_DU_AN đến 24_DANH_MUC_KIEM_TRA, điều hướng tập trung qua tệp index.md",
+      "Chu trình xây dựng từng bước nhỏ: Nhận nhiệm vụ -> Phân tích -> Thiết kế -> Con người phê duyệt -> Triển khai -> Kiểm thử -> Rà soát -> Nghiệm thu -> Commit",
+      "Tương thích đa nền tảng tác tử: Kích hoạt dưới dạng Plugin hoặc Kỹ năng cho Google Antigravity, Claude Code, Cursor và OpenAI Codex"
+    ],
+    "installGuideVi": "### Hướng dẫn cài đặt Kỹ năng VibeCoding (dev-lifecycle):\n\n1. **Cài đặt cho Google Antigravity (Dưới dạng Plugin toàn cục)**:\n   Nhân bản kho lưu trữ về thư mục plugin của Antigravity:\n   ```bash\n   git clone https://github.com/vinhngtienmdb-ui/vibecoding_skill.git ~/.gemini/config/plugins/dev-lifecycle\n   ```\n\n2. **Cài đặt cho Claude Code (CLI)**:\n   Nhân bản hoặc sao chép tệp kỹ năng vào thư mục kỹ năng Claude:\n   ```bash\n   git clone https://github.com/vinhngtienmdb-ui/vibecoding_skill.git temp-vibe\n   mkdir -p ~/.claude/skills/vibecoding\n   cp temp-vibe/skills/vibecoding/SKILL.md ~/.claude/skills/vibecoding/SKILL.md\n   ```\n\n3. **Cài đặt cho từng dự án phần mềm riêng lẻ**:\n   Sao chép tệp quy tắc `rules/AGENTS.md` đặt tại thư mục gốc của dự án hoặc trong `.agents/rules/AGENTS.md`.",
+    "usageGuideVi": "### Cách vận hành và tương tác với AI Agent theo chuẩn VibeCode:\n\n- **Bước 1 — Khởi động dự án**: Yêu cầu AI Agent khởi tạo bộ khung quản lý cốt lõi gồm `index.md`, `23_NHAT_KY_DU_AN.md` và `24_DANH_MUC_KIEM_TRA.md` tại thư mục gốc.\n- **Bước 2 — Thực hiện tuần tự 13 giai đoạn**: Bắt đầu từ Giai đoạn 01 (`01_TONG_QUAN_DU_AN.md`) -> Giai đoạn 02 (`02_PHAM_VI_DU_AN.md`) -> Giai đoạn 03... Mỗi giai đoạn phải được con người phê duyệt trước khi chuyển sang giai đoạn kế tiếp.\n- **Bước 3 — Lập trình theo từng nhiệm vụ nhỏ**: Khi bắt đầu một tính năng, yêu cầu AI phân tích, thiết kế giải pháp và chờ con người xác nhận trước khi viết mã nguồn.\n- **Bước 4 — Kiểm thử và nghiệm thu**: Chạy kiểm thử tự động, kiểm tra bảo mật và chỉ đánh dấu hoàn thành nhiệm vụ trong `24_DANH_MUC_KIEM_TRA.md` khi đáp ứng đủ tiêu chuẩn.",
+    "samplePromptsVi": [
+      "Hãy khởi tạo bộ hồ sơ tài liệu quản lý cốt lõi theo quy trình VibeCode chuẩn cho dự án này",
+      "Phân tích yêu cầu và soạn thảo tài liệu Giai đoạn 01: Tổng quan dự án bằng tiếng Việt",
+      "Rà soát tính tuân thủ quy tắc Không suy đoán và Không phá vỡ mã nguồn hiện có trước khi thực hiện nhiệm vụ",
+      "Cập nhật tiến độ vào tệp 23_NHAT_KY_DU_AN.md và 24_DANH_MUC_KIEM_TRA.md sau khi hoàn thành tính năng"
+    ],
+    "configs": [
+      {
+        "platform": "antigravity",
+        "platformName": "Google Antigravity",
+        "cliCommand": "git clone https://github.com/vinhngtienmdb-ui/vibecoding_skill.git ~/.gemini/config/plugins/dev-lifecycle",
+        "jsonConfig": "{\n  \"plugins\": {\n    \"dev-lifecycle\": {\n      \"enabled\": true,\n      \"source\": \"https://github.com/vinhngtienmdb-ui/vibecoding_skill.git\"\n    }\n  }\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Code & Desktop",
+        "cliCommand": "git clone https://github.com/vinhngtienmdb-ui/vibecoding_skill.git ~/.claude/skills/vibecoding",
+        "jsonConfig": "{\n  \"skills\": [\n    {\n      \"name\": \"vibecoding\",\n      \"path\": \"~/.claude/skills/vibecoding/SKILL.md\",\n      \"source\": \"https://github.com/vinhngtienmdb-ui/vibecoding_skill.git\"\n    }\n  ]\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor IDE",
+        "cliCommand": "git clone https://github.com/vinhngtienmdb-ui/vibecoding_skill.git",
+        "jsonConfig": "{\n  \"rules\": [\n    \".agents/rules/AGENTS.md\"\n  ]\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "stars": 1500,
+    "featured": true,
+    "pricingModel": "free",
+    "pricingText": "Miễn phí mã nguồn mở (MIT)",
+    "prosVi": [
+      "Quy chuẩn hóa 13 giai đoạn bài bản giúp dự án có cấu trúc rõ ràng, dễ bảo trì lâu dài",
+      "Bảo vệ an toàn tuyệt đối chống việc AI tự ý xóa mã nguồn hoặc phát sinh tính năng bừa bãi",
+      "Bộ khung tài liệu 24 tệp tiếng Việt giúp quản lý tiến độ và kiểm toán chất lượng minh bạch"
+    ],
+    "consVi": [
+      "Đòi hỏi kỷ luật cao trong việc phê duyệt tài liệu và xác nhận trước khi viết mã"
+    ],
+    "languages": [
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-22"
+  },
+  {
     "id": "paperclipai-paperclip",
     "slug": "paperclipai-paperclip",
     "name": "Paperclip — Nền Tảng Mã Nguồn Mở Quản Trị & Điều Phối Lực Lượng Tác Tử Trí Tuệ Nhân Tạo (AI Agent Workforce Control Plane)",

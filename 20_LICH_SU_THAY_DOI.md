@@ -4,6 +4,24 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.38-TichHopVibecodingSkillVaoHeThongAiHub (Ngày 22-10-2026)
+- **Loại hình**: Chuẩn hóa và tích hợp bộ kỹ năng và quy tắc phát triển phần mềm chuẩn VibeCode 13 giai đoạn VibeCoding Skill (`vinhngtienmdb-ui/vibecoding_skill`) vào kho dữ liệu AI HUB VN, nâng quy mô kho lên 2.221 tài nguyên, cài đặt đồng bộ cho Claude Code và cập nhật bộ định tuyến Smart MCP Gateway.
+- **Nội dung hoàn thành**:
+  - **Tích hợp tài nguyên vào kho AI HUB VN (`vibecoding-skill-dev-lifecycle`)**:
+    - Chuẩn hóa đầy đủ 4 khối thông tin bắt buộc theo quy tắc QT-01, QT-04 và quy trình VibeCode bằng tiếng Việt: Nguồn dẫn chính thức (`https://github.com/vinhngtienmdb-ui/vibecoding_skill`), công dụng nghiệp vụ (khung kỷ luật kỹ thuật 13 giai đoạn và bộ tài liệu 24 tệp chuẩn hóa cho AI Coding Agents), hướng dẫn cài đặt dưới dạng Plugin cho Google Antigravity và Kỹ năng cho Claude Code / Cursor, hướng dẫn vận hành chu trình từng bước nhỏ và nguyên tắc không suy đoán / không phá vỡ mã nguồn.
+    - Thiết lập phân loại danh mục đa tầng: `devops_cicd` (DevOps & Tự động hóa CI/CD), `rpa_workflow_automation` (Tự động hóa quy trình & RPA), `office_digital_docs` (Văn phòng số & Xử lý tài liệu), `backend_api` (Backend & Kiến trúc API), `qa_testing` (Kiểm thử phần mềm & QA/QC), `cybersecurity_security` (An toàn thông tin & Bảo mật), `vietnam` (Thị trường Việt Nam).
+    - Cung cấp cấu hình mẫu JSON chuẩn xác cho Google Antigravity, Claude Code và Cursor IDE.
+    - Đặt mốc cập nhật `updatedAt: "2026-10-22"` và xếp ở vị trí đầu tiên của kho dữ liệu `allTools.json`.
+  - **Cài đặt kỹ năng vào môi trường máy tính người dùng**:
+    - **Claude Code**: Khởi tạo thư mục và cài đặt tệp kỹ năng chuẩn tại `C:\Users\vinhn\.claude\skills\vibecoding\SKILL.md`.
+    - **Google Antigravity**: Sẵn sàng qua plugin toàn cục `dev-lifecycle` tại `C:\Users\vinhn\.gemini\config\plugins\dev-lifecycle\`.
+  - **Mở rộng Smart MCP Router & Client Adapter**:
+    - Bổ sung quy tắc ý định chuyên biệt `vibecoding_dev_lifecycle` vào `mcp-gateway/smart-router.js` và `src/lib/mcpClient.ts`, nhận diện các từ khóa `vibecoding`, `vibecode`, `quy trình vibecode`, `dev-lifecycle`, `13 giai đoạn`, `chuẩn phát triển phần mềm`, `bộ tài liệu dự án` để tự động điều phối trực tiếp đến `vibecoding-skill-dev-lifecycle`.
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Bổ sung ca kiểm thử định tuyến mới vào `tests/mcp-gateway.test.js`.
+    - Chạy toàn bộ **36/36 bài test** trong 7 bộ kiểm thử tự động: Đạt **100% tỷ lệ pass**.
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 21.36 giây.
+
 ### Phiên Bản 2.0.37-ToiUuThuTuSapXepUuTienCongCuMoiCapNhat (Ngày 21-10-2026)
 - **Loại hình**: Tối ưu hóa thứ tự sắp xếp danh mục tài nguyên, tự động đưa các công cụ mới cập nhật, mới đóng góp hoặc mới phê duyệt lên trên đầu danh sách trên toàn bộ hệ thống giao diện (Trang chủ và Trang danh mục).
 - **Nội dung hoàn thành**:

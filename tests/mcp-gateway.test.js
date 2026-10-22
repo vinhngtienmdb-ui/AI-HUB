@@ -60,6 +60,13 @@ test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ Qu�
   assert.ok(resPaperclip.confidence >= 0.9);
 });
 
+test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ Quy trình VibeCode (dev-lifecycle)', () => {
+  const resVibe = routeTask('Áp dụng quy trình VibeCode 13 giai đoạn và khởi tạo bộ tài liệu chuẩn cho dự án phần mềm');
+  assert.equal(resVibe.success, true);
+  assert.equal(resVibe.matchedTool.id, 'vibecoding-skill-dev-lifecycle');
+  assert.ok(resVibe.confidence >= 0.9);
+});
+
 test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ Cơ sở dữ liệu (SQLite & Postgres)', () => {
   const resSqlite = routeTask('Truy vấn tệp cơ sở dữ liệu SQLite cục bộ dev.db bằng ngôn ngữ tự nhiên');
   assert.equal(resSqlite.success, true);

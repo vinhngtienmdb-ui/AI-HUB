@@ -34,7 +34,19 @@ export function routeTaskFrontend(query: string): RoutingFrontendResult {
   const normalized = query.toLowerCase().trim();
   const allTools = INITIAL_TOOLS;
 
-  // 0. Ý định Tìm kiếm và cài đặt Agent Skills (Find Skills)
+  // 0. Ý định Quy trình phát triển phần mềm chuẩn VibeCode (dev-lifecycle)
+  if (normalized.includes('vibecode') || normalized.includes('vibecoding') || normalized.includes('dev-lifecycle') || normalized.includes('13 giai đoạn') || normalized.includes('quy trình phần mềm')) {
+    const vibeTool = allTools.find(t => t.id === 'vibecoding-skill-dev-lifecycle') || allTools[0];
+    return {
+      strategy: 'SPECIALIZED_INTENT_RULE',
+      matchedTool: vibeTool,
+      confidence: 0.99,
+      intentId: 'vibecoding_dev_lifecycle',
+      reasoningVi: 'Đã nhận diện ý định áp dụng quy trình phát triển phần mềm chuẩn VibeCode 13 giai đoạn (dev-lifecycle).'
+    };
+  }
+
+  // 0.1. Ý định Tìm kiếm và cài đặt Agent Skills (Find Skills)
   if (normalized.includes('find skill') || normalized.includes('tìm skill') || normalized.includes('skills.sh') || normalized.includes('cài skill')) {
     const findSkillTool = allTools.find(t => t.id === 'vercel-labs-find-skills') || allTools[0];
     return {
