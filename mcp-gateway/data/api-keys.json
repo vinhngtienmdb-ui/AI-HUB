@@ -556,5 +556,36 @@
     "requestsCount": 1,
     "lastUsedAt": "2026-10-22T03:26:09.281Z",
     "revokedAt": "2026-10-22T03:26:09.284Z"
+  },
+  {
+    "id": "key_1792642583651_67e84e63",
+    "name": "Khóa Thử Nghiệm Bảo Mật",
+    "prefix": "aihub_live_nmkP...",
+    "hashedKey": "4da85d4f1c9127188b90d2590feb95bbb817bffc930c8876082f8e3f718109b8",
+    "role": "developer",
+    "status": "active",
+    "rateLimitPerMin": 30,
+    "dailyQuota": 1000,
+    "createdAt": "2026-10-22T04:16:23.650Z",
+    "expiresAt": "2027-10-22T04:16:23.650Z",
+    "ipWhitelist": [],
+    "requestsCount": 0,
+    "lastUsedAt": null
+  },
+  {
+    "id": "key_1792642583660_f6c0fab9",
+    "name": "Khóa Xác Thực",
+    "prefix": "aihub_live_UXEu...",
+    "hashedKey": "ca05c4da77b0015ab1e35e57500884aec76f4498bd6d37065f34bc8cf47a751a",
+    "role": "developer",
+    "status": "revoked",
+    "rateLimitPerMin": 60,
+    "dailyQuota": 5000,
+    "createdAt": "2026-10-22T04:16:23.660Z",
+    "expiresAt": "2027-10-22T04:16:23.660Z",
+    "ipWhitelist": [],
+    "requestsCount": 1,
+    "lastUsedAt": "2026-10-22T04:16:23.670Z",
+    "revokedAt": "2026-10-22T04:16:23.680Z"
   }
 ]

@@ -7,175 +7,270 @@ console.log('Đang đọc tệp dữ liệu:', toolsPath);
 const tools = JSON.parse(fs.readFileSync(toolsPath, 'utf8'));
 console.log(`Tổng số công cụ trong hệ thống: ${tools.length}`);
 
-// Định nghĩa README tùy chỉnh đặc biệt cho các kho lưu trữ trọng điểm
+// 1. Đọc TOÀN VĂN nội dung gốc của VibeCoding Skill từ tệp SKILL.md
+const vibecodingOriginalSkillPath = 'C:/Users/vinhn/.claude/skills/vibecoding/SKILL.md';
+let vibecodingFullReadme = '';
+if (fs.existsSync(vibecodingOriginalSkillPath)) {
+  const rawSkillContent = fs.readFileSync(vibecodingOriginalSkillPath, 'utf8');
+  // Lấy toàn văn từ dòng tiêu đề "# Quy Trình VibeCode Chuẩn Trong Phát Triển Phần Mềm"
+  const startIdx = rawSkillContent.indexOf('# Quy Trình VibeCode Chuẩn Trong Phát Triển Phần Mềm');
+  if (startIdx !== -1) {
+    vibecodingFullReadme = rawSkillContent.substring(startIdx).trim();
+  } else {
+    vibecodingFullReadme = rawSkillContent.trim();
+  }
+}
+
+// Bổ sung thêm Mermaid Diagram trực quan ngay dưới phần sơ đồ ASCII của Quy trình 13 giai đoạn
+const mermaidDiagramVibeCode = `
+\`\`\`mermaid
+flowchart TD
+    subgraph KHOI1["I. Chuẩn Bị & Khảo Sát"]
+      G01["01. Xác định ý tưởng<br/>(01_TONG_QUAN_DU_AN.md)"] --> G02["02. Xác định phạm vi<br/>(02_PHAM_VI_DU_AN.md)"]
+      G02 --> G03["03. Phân tích nghiệp vụ<br/>(03, 04, 05, 06_*.md)"]
+      G03 --> G04["04. Đặc tả yêu cầu<br/>(07, 08_*.md)"]
+    end
+
+    subgraph KHOI2["II. Thiết Kế Hệ Thống"]
+      G04 --> G05["05. Thiết kế hệ thống<br/>(09, 10_*.md)"]
+      G05 --> G06["06. Thiết kế giao diện<br/>(11, 12_*.md)"]
+      G06 --> G07["07. Thiết kế dữ liệu & API<br/>(13, 14_*.md)"]
+      G07 --> G08["08. Chuẩn bị môi trường AI<br/>(15, 16_*.md)"]
+    end
+
+    subgraph KHOI3["III. Xây Dựng & Kiểm Soát Chất Lượng"]
+      G08 --> G09["09. Xây dựng theo module<br/>(Chia nhỏ Task)"]
+      G09 --> G10["10. Kiểm thử & Chất lượng<br/>(17, 18_*.md)"]
+      G10 --> G11["11. Bảo mật hệ thống<br/>(19_AN_TOAN_BAO_MAT.md)"]
+    end
+
+    subgraph KHOI4["IV. Triển Khai & Vận Hành"]
+      G11 --> G12["12. Triển khai phát hành<br/>(20_QUY_TRINH_TRIEN_KHAI.md)"]
+      G12 --> G13["13. Vận hành & Bảo trì<br/>(21_KE_HOACH_BAO_TRI.md)"]
+    end
+
+    style KHOI1 fill:#f0f9ff,stroke:#0284c7,stroke-width:2px
+    style KHOI2 fill:#f5f3ff,stroke:#7c3aed,stroke-width:2px
+    style KHOI3 fill:#ecfdf5,stroke:#059669,stroke-width:2px
+    style KHOI4 fill:#fffbeb,stroke:#d97706,stroke-width:2px
+\`\`\`
+`;
+
+if (vibecodingFullReadme.includes('## II. Cấu Trúc Tổng Thể Quy Trình')) {
+  // Chèn Mermaid diagram ngay sau khối code ASCII của mục II để người xem có cả sơ đồ chữ lẫn sơ đồ đồ họa trực quan
+  vibecodingFullReadme = vibecodingFullReadme.replace(
+    '```\n\n---',
+    '```\n\n### Sơ Đồ Trực Quan Quy Trình 13 Giai Đoạn (Flowchart Diagram):\n' + mermaidDiagramVibeCode + '\n---'
+  );
+}
+
+// 2. Nội dung chi tiết toàn vẹn chuẩn GitHub cho các dự án quan trọng
 const customReadmes = {
-  'vibecoding-skill-dev-lifecycle': `# Kỹ Năng VibeCoding Chuẩn: Quy Trình Phát Triển Phần Mềm Có Sự Hỗ Trợ Của Trí Tuệ Nhân Tạo
+  'vibecoding-skill-dev-lifecycle': vibecodingFullReadme,
 
-> Bộ quy chuẩn kỹ thuật và kỹ năng phát triển phần mềm chuẩn mực cho AI Coding Assistant (Antigravity & Claude Code), định nghĩa 13 giai đoạn phát triển phần mềm chặt chẽ từ ý tưởng đến bảo trì.
+  'mads-lorentzen-ai-job-search': `# AI Job Search: Khung Tự Động Hóa Toàn Diện Quy Trình Xin Việc Trên Máy Cá Nhân Bằng Claude Code
 
-## 1. Tổng Quan Dự Án
-VibeCoding Skill là bộ kỹ năng hệ thống hướng dẫn trí tuệ nhân tạo và lập trình viên tuân thủ nghiêm ngặt quy trình kỹ nghệ phần mềm chuyên nghiệp. Bộ kỹ năng xóa bỏ hoàn toàn tình trạng lập trình tự phát, mã nguồn rác hoặc thiếu kiểm soát khi ứng dụng AI vào dự án thực tế.
+> The job search that runs on your machine. AI job application framework built on Claude Code: evaluate postings, tailor CVs, write cover letters, prep interviews. Fork it and own it.  
+> **60.000+ Stars trên GitHub** • **Giấy phép MIT** • **Bản địa hóa tiếng Việt đầy đủ**.
 
-## 2. Nguyên Tắc Cốt Lõi Bắt Buộc
-1. **Nguyên tắc giao tiếp và hành văn:** Không viết tắt, không viết rườm rà, tập trung trực tiếp vào giải pháp kỹ thuật, không tự bổ sung ghi chú không cần thiết, sử dụng 100% tiếng Việt chuẩn.
-2. **Nguyên tắc định danh tệp:** Đánh số thứ tự 2 chữ số (\`01_...\`, \`02_...\`), toàn bộ nội dung bằng tiếng Việt, duy trì tệp mục lục \`index.md\`.
-3. **Phân định vai trò:** Con người quyết định mục đích và nghiệp vụ; AI hỗ trợ phương pháp và thực thi. AI tuyệt đối không tự ý thay đổi quyết định nghiệp vụ đã phê duyệt.
-4. **Không suy đoán:** Khi thiếu dữ liệu hoặc yêu cầu mâu thuẫn, AI phải dừng lại, chỉ rõ vấn đề, đề xuất phương án và chờ con người phê duyệt.
-5. **Không phá vỡ dự án và không xóa chức năng:** Không phá vỡ API, cơ sở dữ liệu, giao diện; không xóa bỏ mã nguồn nếu không có yêu cầu rõ ràng.
-6. **Không tự ý phát sinh chức năng:** Chỉ thực hiện đúng phạm vi được duyệt. Khi có ý tưởng mới, chỉ dừng ở mức đề xuất.
-7. **Xây dựng từng bước nhỏ - Xác minh - Tiếp tục:** Chia nhỏ nhiệm vụ: Sản phẩm -> Phân hệ -> Tính năng -> Nhiệm vụ. Hoàn thành kiểm thử và nghiệm thu từng bước.
-8. **Điều kiện hoàn thành:** Phải đáp ứng đủ 10 tiêu chí: Yêu cầu + Nghiệp vụ + Mã nguồn + Kiểm thử + Bảo mật + Triển khai + Bảo trì + Rà soát + Nghiệm thu + Cập nhật tài liệu.
+---
 
-## 3. Quy Trình 13 Giai Đoạn VibeCode Chuẩn
-- **Giai đoạn 01:** Xác định ý tưởng (\`01_TONG_QUAN_DU_AN.md\`)
-- **Giai đoạn 02:** Xác định phạm vi (\`02_PHAM_VI_DU_AN.md\`)
-- **Giai đoạn 03:** Phân tích nghiệp vụ (\`03_YEU_CAU_NGHIEP_VU.md\`, \`04_QUY_TAC_NGHIEP_VU.md\`, \`05_VAI_TRO_NGUOI_DUNG.md\`, \`06_LUONG_NGHIEP_VU.md\`)
-- **Giai đoạn 04:** Đặc tả yêu cầu (\`07_YEU_CAU_CHUC_NANG.md\`, \`08_TIEU_CHI_NGHIEM_THU.md\`)
-- **Giai đoạn 05:** Thiết kế hệ thống (\`09_KIEN_TRUC_HE_THONG.md\`, \`10_CONG_NGHE_SU_DUNG.md\`)
-- **Giai đoạn 06:** Thiết kế giao diện (\`11_DAC_TA_GIAO_DIEN.md\`, \`12_QUY_CHUAN_THIET_KE.md\`)
-- **Giai đoạn 07:** Thiết kế dữ liệu và API (\`13_CO_SO_DU_LIEU.md\`, \`14_DAC_TA_API.md\`)
-- **Giai đoạn 08:** Chuẩn bị môi trường AI (\`15_QUY_TAC_PHAT_TRIEN_AI.md\`, \`16_CHI_DAN_HE_THONG_AI.md\`)
-- **Giai đoạn 09:** Xây dựng theo module
-- **Giai đoạn 10:** Kiểm thử và kiểm soát chất lượng (\`17_KE_HOACH_KIEM_THU.md\`, \`18_KICH_BAN_KIEM_THU.md\`)
-- **Giai đoạn 11:** Bảo mật hệ thống (\`19_AN_TOAN_BAO_MAT.md\`)
-- **Giai đoạn 12:** Triển khai phát hành (\`20_QUY_TRINH_TRIEN_KHAI.md\`, \`22_LICH_SU_THAY_DOI.md\`)
-- **Giai đoạn 13:** Vận hành và bảo trì (\`21_KE_HOACH_BAO_TRI.md\`)
+## 1. Giới Thiệu Dự Án & Câu Chuyện Tác Giả
+Dự án được sáng lập bởi **Mads Lorentzen**, một nhà địa vật lý bị cắt giảm vị trí vào cuối năm 2025. Anh đã tự xây dựng framework tự động hóa nhiều tác tử (Multi-agent Framework) này để điều hành chiến dịch tìm việc của chính mình.
+- **Kết quả thực tế ấn tượng:**
+  - Tự động tạo **69 bộ hồ sơ ứng tuyển cá nhân hóa (Tailored CV & Cover Letter)** cho từng tin tuyển dụng.
+  - Nhận được **20 buổi phỏng vấn trực tiếp** từ các nhà tuyển dụng.
+  - Ký kết hợp đồng thành công và hiện đang làm việc với vai trò Kỹ sư Trí tuệ Nhân tạo (AI Engineer).
 
-## 4. Hướng Dẫn Cài Đặt
-### Cài đặt cho Claude Code:
-Sao chép tệp \`SKILL.md\` vào thư mục cấu hình kỹ năng cá nhân:
-\`\`\`bash
-mkdir -p ~/.claude/skills/vibecoding
-cp SKILL.md ~/.claude/skills/vibecoding/SKILL.md
+---
+
+## 2. Hệ Thống Khẩu Lệnh Cốt Lõi (Commands)
+Framework hoạt động trực tiếp trong Claude Code trên máy tính của bạn:
+
+| Lệnh | Ý nghĩa chức năng | Mô tả chi tiết |
+| :--- | :--- | :--- |
+| \`/setup\` | **Khởi tạo hồ sơ năng lực** | Tự động xây dựng hồ sơ cá nhân từ tệp CV hiện có, hồ sơ LinkedIn hoặc qua phỏng vấn vấn đáp nhanh với AI. |
+| \`/scrape\` | **Quét cổng tuyển dụng** | Quét đồng thời nhiều cổng việc làm, lọc bỏ tin tuyển dụng trùng lặp, xếp hạng theo độ phù hợp năng lực. |
+| \`/apply\` | **Soạn thảo hồ sơ may đo** | Đánh giá độ khớp kỹ năng (Score Match) và tự động viết CV, thư xin việc (Cover Letter) cá nhân hóa cho từng tin. |
+| \`Agent phản biện\` | **Chuyên gia thẩm định độc lập** | Một agent thứ hai đóng vai chuyên gia tuyển dụng, nghiên cứu công ty rồi chê bản nháp và yêu cầu chỉnh sửa trước khi chốt. |
+| \`Biên dịch PDF\` | **Xuất bản & Kiểm tra ATS** | Tự biên dịch PDF, kiểm tra bố cục trang và kiểm tra độ tương thích với hệ thống lọc hồ sơ tự động (ATS). |
+| \`/interview\` | **Chuẩn bị phỏng vấn** | Tạo bộ tài liệu chuẩn bị phỏng vấn theo từng vòng, kèm tính năng phỏng vấn thử có chấm điểm và sửa lỗi trả lời. |
+| \`/rank\`, \`/outcome\`, \`/upskill\` | **Đo lường & Nâng cao kỹ năng** | Chấm điểm hàng loạt, theo dõi kết quả nộp đơn, chỉ ra khoảng trống kỹ năng còn thiếu để học bổ sung. |
+| \`/add-portal\` | **Mở rộng cổng việc làm** | Tự tạo skill quét cho cổng việc làm ở quốc gia của mình (mặc định có sẵn LinkedIn và các cổng châu Âu). |
+
+---
+
+## 3. Sơ Đồ Quy Trình Tự Động Hóa Ứng Tuyển
+\`\`\`mermaid
+flowchart LR
+    A["/setup<br/>Hồ sơ cá nhân"] --> B["/scrape<br/>Quét cổng việc làm"]
+    B --> C["/apply<br/>Soạn CV & Thư xin việc"]
+    C --> D["Agent Phản Biện<br/>Thẩm định & Chấm điểm"]
+    D --> E["Biên dịch PDF<br/>Kiểm tra ATS chuẩn"]
+    E --> F["/interview<br/>Luyện phỏng vấn thử"]
+    F --> G["/outcome & /upskill<br/>Theo dõi & Nâng cấp"]
 \`\`\`
 
-### Cài đặt cho Antigravity:
-Đặt tệp cấu hình vào \`~/.gemini/antigravity/builtin/skills/vibecoding/SKILL.md\` hoặc thư mục plugin vòng đời phát triển phần mềm.
+---
 
-## 5. Giấy Phép & Tác Giả
-- **Tác giả:** vinhngtienmdb-ui & Cộng đồng AI HUB VN
-- **Giấy phép:** MIT License
-`,
+## 4. Hướng Dẫn Cài Đặt & Khởi Chạy
+### Yêu Cầu Tiên Quyết:
+- Đã cài đặt **Claude Code** trên máy tính cá nhân.
+- Tài khoản Claude có gói đăng ký **Claude Pro/Max/Team** hoặc có **API Credit** để chạy Claude Code.
+- Môi trường Node.js phiên bản từ 18 trở lên.
 
-  'mads-lorentzen-ai-job-search': `# AI Job Search: Khung Tự Động Hóa Tìm Kiếm Việc Làm Toàn Diện Bằng Claude Code
-
-> Bộ công cụ AI tự động hóa toàn bộ quy trình tìm kiếm việc làm, tối ưu hóa hồ sơ và chuẩn bị phỏng vấn, chạy cục bộ trên máy tính cá nhân bằng Claude Code với hơn 60.000 lượt yêu thích trên GitHub.
-
-## 1. Giới Thiệu Dự Án
-Dự án được xây dựng bởi Mads Lorentzen, một nhà địa vật lý tại Đan Mạch sau khi bị cắt giảm vị trí vào cuối năm 2025. Anh đã tự phát triển khung ứng dụng này để điều hành chiến dịch tìm việc của chính mình. Kết quả thực tế:
-- Tự động tạo 69 bộ hồ sơ ứng tuyển (CV và Cover Letter) được thiết kế riêng biệt cho từng vị trí.
-- Đạt 20 buổi phỏng vấn tuyển dụng trực tiếp.
-- Ký kết hợp đồng thành công và hiện đang làm việc với vai trò Kỹ sư AI.
-
-## 2. Các Khẩu Lệnh Cốt Lõi Của Hệ Thống
-- \`/setup\`: Thiết lập hồ sơ năng lực cá nhân từ CV hiện có, hồ sơ LinkedIn hoặc qua phỏng vấn vấn đáp nhanh.
-- \`/scrape\`: Tự động quét và thu thập dữ liệu từ các cổng tuyển dụng, lọc bỏ tin tuyển dụng trùng lặp và chấm điểm mức độ phù hợp.
-- \`/apply\`: Đánh giá mức độ khớp kỹ năng và tự động soạn thảo hồ sơ CV, thư xin việc cá nhân hóa cho từng tin tuyển dụng.
-- \`Phản biện độc lập\`: Tác tử AI thứ hai đóng vai chuyên gia tuyển dụng, nghiên cứu văn hóa công ty và phản biện bản nháp trước khi xuất bản.
-- \`Biên dịch tài liệu\`: Tự động biên dịch tệp PDF, kiểm tra lỗi dàn trang và kiểm tra độ tương thích với hệ thống lọc hồ sơ tự động (ATS).
-- \`/interview\`: Chuẩn bị tài liệu ôn tập và câu hỏi tình huống theo từng vòng phỏng vấn, hỗ trợ phỏng vấn thử có chấm điểm.
-- \`/rank\`, \`/outcome\`, \`/upskill\`: Đánh giá năng lực hàng loạt, theo dõi trạng thái phản hồi và xác định khoảng trống kỹ năng cần học thêm.
-- \`/add-portal\`: Bổ sung cổng thông tin việc làm mới phù hợp với từng quốc gia hoặc thị trường mục tiêu.
-
-## 3. Hướng Dẫn Cài Đặt & Sử Dụng
-### Yêu cầu tiên quyết:
-- Đã cài đặt Claude Code trên hệ thống máy tính cục bộ.
-- Tài khoản Claude có gói đăng ký Pro/Max/Team hoặc có hạn mức sử dụng API Claude.
-- Node.js phiên bản từ 18 trở lên và môi trường biên dịch tệp PDF (typst hoặc pandoc).
-
-### Các bước cài đặt:
+### Các Bước Cài Đặt Qua Terminal:
 \`\`\`bash
-# 1. Sao chép mã nguồn về máy cục bộ
+# 1. Sao chép kho lưu trữ về máy cá nhân
 git clone https://github.com/MadsLorentzen/ai-job-search.git
 cd ai-job-search
 
-# 2. Khởi tạo cấu hình hồ sơ cá nhân
+# 2. Khởi động Claude Code
 claude
+
+# 3. Chạy lệnh thiết lập hồ sơ ban đầu
 /setup
 \`\`\`
 
-## 4. Lưu Ý Quan Trọng Về Bảo Mật
-Dữ liệu cá nhân, thông tin liên lạc và kinh nghiệm làm việc rất nhạy cảm. Do đó, khuyến nghị người dùng tạo kho lưu trữ riêng tư (Private Repository) khi fork dự án để bảo đảm dữ liệu của mình không bị công khai trên Internet.
+---
 
-## 5. Giấy Phép & Bản Quyền
-- **Tác giả:** Mads Lorentzen
-- **Giấy phép:** MIT License
+## 5. Lưu Ý Quan Trọng Về Bảo Mật Dữ Liệu
+Dữ liệu cá nhân, thông tin liên lạc, lịch sử làm việc và mức lương là thông tin cực kỳ nhạy cảm.  
+⚠️ **Khuyến nghị an toàn:** Khi fork dự án trên GitHub, hãy đặt chế độ kho lưu trữ là **Riêng tư (Private Repository)** để bảo vệ tuyệt đối thông tin cá nhân.
+
+---
+
+## 6. Giấy Phép Bản Quyền
+- Tác giả: Mads Lorentzen
+- Giấy phép: MIT License (Được phép tự do sử dụng, chỉnh sửa và phân phối).
 `,
 
-  'paperclipai-paperclip': `# Paperclip: Ứng Dụng Mã Nguồn Mở Quản Lý Tác Tử Trí Tuệ Nhân Tạo Doanh Nghiệp
+  'paperclipai-paperclip': `# Paperclip: Nền Tảng Mã Nguồn Mở Quản Trị & Điều Phối Lực Lượng Tác Tử Doanh Nghiệp
 
-> Nền tảng trung tâm giúp quản lý, giám sát và điều phối các tác tử AI làm việc trong môi trường thực tế tại doanh nghiệp.
+> The open-source app everyone uses to manage agents at work.  
+> Bảng điều khiển trung tâm (Control Plane) quản lý, giám sát và điều phối các tác tử AI làm việc trong môi trường doanh nghiệp thực tế.
 
-## 1. Giới Thiệu Dự Án
-Paperclip là một ứng dụng mã nguồn mở giải quyết bài toán quản trị các tác tử trí tuệ nhân tạo (AI Agents). Khi số lượng tác tử AI tăng lên trong quy trình vận hành doanh nghiệp, việc theo dõi trạng thái, phân quyền, kiểm soát chi phí và giám sát hiệu quả làm việc trở nên cấp thiết. Paperclip đóng vai trò như bảng điều khiển tập trung cho toàn bộ lực lượng tác tử AI của tổ chức.
+---
 
-## 2. Tính Năng Nổi Bật
-- **Quản lý danh mục tác tử tập trung:** Đăng ký, kích hoạt, tạm dừng hoặc thu hồi quyền truy cập của từng tác tử một cách trực quan.
-- **Giám sát hoạt động thời gian thực:** Ghi nhật ký thực thi (audit log), theo dõi số lượng token tiêu thụ và chi phí phát sinh theo từng phòng ban.
-- **Phân quyền và bảo mật nâng cao:** Kiểm soát quyền đọc, ghi, gọi công cụ (tool calling) và truy cập cơ sở dữ liệu của từng tác tử.
-- **Khả năng tương thích mở rộng:** Kết nối liền mạch với các mô hình và framework phổ biến như Claude Code, OpenAI Swarm, LangChain, AutoGen và các mô hình cục bộ.
+## 1. Giới Thiệu Tổng Quan
+Khi các doanh nghiệp áp dụng nhiều tác tử AI vào quy trình làm việc, họ đối mặt với bài toán hỗn loạn: Ai quản lý các tác tử? Chi phí token phát sinh ra sao? Quyền hạn của từng agent như thế nào?  
+**Paperclip** ra đời để giải quyết triệt để bài toán này, đóng vai trò như một phòng tổ chức nhân sự và điều hành trung tâm dành riêng cho lực lượng lao động tác tử số (AI Workforce).
 
-## 3. Hướng Dẫn Cài Đặt
-### Khởi chạy bằng Docker Compose:
+---
+
+## 2. Các Tính Năng Cốt Lõi
+- **Sơ Đồ Tổ Chức Tác Tử (Org Chart for Agents):** Phân chia tác tử theo phòng ban (Kỹ thuật, Marketing, Chăm sóc khách hàng, Phân tích dữ liệu) với cấu trúc phân cấp báo cáo rõ ràng.
+- **Bảng Quản Lý Công Việc Dạng Thẻ (Ticket Kanban):** Giao việc cho từng agent qua giao diện thẻ Kanban, theo dõi tiến độ thực hiện theo thời gian thực.
+- **Cơ Chế Con Người Phê Duyệt (Human-in-the-Loop Governance):** Các quyết định quan trọng (như gửi email ra ngoài, triển khai mã nguồn lên máy chủ, chi tiền quảng cáo) bắt buộc phải có sự xác nhận của người quản lý trước khi thực thi.
+- **Kiểm Soát Chi Phí & Ngân Sách Token (Budget & Cost Tracking):** Đặt hạn mức chi phí theo từng tác tử và phòng ban, tự động ngắt kết nối khi vượt ngưỡng cho phép.
+- **Ghi Nhật Ký Kiểm Toán (Audit Logs):** Ghi lại toàn bộ hành vi, công cụ được gọi và kết quả phản hồi của từng tác tử để phục vụ thanh tra an ninh thông tin.
+
+---
+
+## 3. Sơ Đồ Kiến Trúc Điều Phối
+\`\`\`mermaid
+flowchart TD
+    Admin["Quản Trị Viên Doanh Nghiệp"] --> ControlPlane["Paperclip Control Plane"]
+    ControlPlane --> DeptTech["Phòng Kỹ Thuật (Eng Agents)"]
+    ControlPlane --> DeptMkt["Phòng Marketing (Content Agents)"]
+    ControlPlane --> DeptOps["Phòng Vận Hành (Ops Agents)"]
+    
+    DeptTech --> Audit["Audit Logs & Token Budget"]
+    DeptMkt --> Audit
+    DeptOps --> Audit
+    
+    Audit --> Alert["Hệ Thống Cảnh Báo An Toàn"]
+\`\`\`
+
+---
+
+## 4. Hướng Dẫn Cài Đặt & Sử Dụng
+### Cách 1: Khởi Chạy Nhanh Bằng Lệnh NPX
 \`\`\`bash
+npx paperclipai onboard --yes
+\`\`\`
+
+### Cách 2: Triển Khai Qua Docker Compose
+\`\`\`bash
+# 1. Tải mã nguồn về máy
 git clone https://github.com/paperclipai/paperclip.git
 cd paperclip
+
+# 2. Khởi chạy toàn bộ dịch vụ ngầm
 docker compose up -d
 \`\`\`
-Sau khi khởi chạy thành công, truy cập giao diện quản trị tại địa chỉ: \`http://localhost:3000\`.
+Sau khi chạy lệnh thành công, mở trình duyệt web và truy cập: \`http://localhost:3000\`.
 
-## 4. Giấy Phép Bản Quyền
-- **Tác giả:** Paperclip AI Team
-- **Giấy phép:** Apache 2.0 / MIT
+---
+
+## 5. Giấy Phép Bản Quyền
+- Tác giả: Paperclip AI Team
+- Giấy phép: MIT License / Apache 2.0.
 `,
 
-  'vercel-labs-find-skills': `# Find Skills: Kỹ Năng Tìm Kiếm Và Khám Phá Công Cụ Tự Động Cho Claude Code
+  'vercel-labs-find-skills': `# Find Skills: Kỹ Năng Tìm Kiếm Và Cài Đặt Tác Tử Tự Động Cho Claude Code & Antigravity
 
-> Tiện ích mở rộng cho phép lập trình viên tìm kiếm, khảo sát và tích hợp kỹ năng (skills), máy chủ MCP và lệnh tắt tự động từ hệ sinh thái mã nguồn mở.
+> Khám phá, tìm kiếm và tích hợp các kỹ năng mở rộng (skills), máy chủ MCP và lệnh tắt tự động từ toàn bộ cộng đồng mã nguồn mở.
+
+---
 
 ## 1. Giới Thiệu Dự Án
-Find Skills được phát triển bởi Vercel Labs nhằm đơn giản hóa quy trình tìm kiếm và cài đặt các kỹ năng mở rộng cho Claude Code và các môi trường AI coding. Thay vì phải tự tìm kiếm thủ công trên GitHub, công cụ cho phép tra cứu bằng ngôn ngữ tự nhiên ngay trong cửa sổ dòng lệnh.
+Find Skills do Vercel Labs phát triển nhằm giải phóng lập trình viên khỏi việc phải tìm kiếm thủ công từng kho lưu trữ kỹ năng trên GitHub. Thay vào đó, bạn chỉ cần mô tả nhu cầu bằng ngôn ngữ tự nhiên, tác tử sẽ tự tìm kiếm, thẩm định và cài đặt ngay vào máy.
 
-## 2. Các Tính Năng Chính
-- **Tìm kiếm thông minh theo mục đích:** Nhập nhu cầu (ví dụ: "công cụ hỗ trợ Docker", "kỹ năng tối ưu hóa SQL") và hệ thống sẽ tự động đề xuất danh sách kỹ năng phù hợp nhất.
-- **Cài đặt chỉ với một câu lệnh:** Tự động tải về và cấu hình tệp \`SKILL.md\` vào đúng vị trí quy định của Claude Code hoặc Antigravity.
-- **Kiểm định nguồn gốc và an toàn:** Kiểm tra độ tin cậy của kho lưu trữ, số sao GitHub và giấy phép trước khi người dùng chấp thuận cài đặt.
+---
 
-## 3. Cách Sử Dụng
-Khởi chạy câu lệnh tìm kiếm trong giao diện Claude Code:
+## 2. Tính Năng Nổi Bật
+- **Tra cứu bằng ngôn ngữ tự nhiên:** Tìm kiếm theo mục tiêu công việc (ví dụ: "công cụ hỗ trợ Docker", "kỹ năng viết kiểm thử tự động").
+- **Kiểm tra an toàn kho lưu trữ:** Đánh giá số sao GitHub, độ uy tín của tác giả và rà soát mã độc tiềm ẩn trước khi cài đặt.
+- **Cài đặt một lệnh:** Tự động tải tệp \`SKILL.md\` hoặc cấu hình MCP Server vào đúng thư mục của Claude Code hoặc Antigravity.
+
+---
+
+## 3. Hướng Dẫn Sử Dụng Trong Terminal
 \`\`\`bash
+# Tìm kiếm kỹ năng theo từ khóa
 find-skills search "vietnamese mcp"
-find-skills install <skill-name>
+
+# Cài đặt kỹ năng vào hệ sinh thái
+find-skills install <ten-ky-nang>
 \`\`\`
 
+---
+
 ## 4. Giấy Phép Bản Quyền
-- **Tác giả:** Vercel Labs
-- **Giấy phép:** MIT License
+- Tác giả: Vercel Labs
+- Giấy phép: MIT License.
 `,
 
   'aihub-vn-smart-mcp-gateway': `# AI HUB VN Smart MCP Gateway: Cổng Điều Phối Máy Chủ MCP Thông Minh & Bảo Mật
 
-> Cổng kết nối và điều phối máy chủ giao thức ngữ cảnh mô hình (Model Context Protocol - MCP) thông minh, hỗ trợ bảo mật đa lớp và định tuyến ngữ cảnh tối ưu cho thị trường Việt Nam.
+> Cổng kết nối trung tâm bảo mật cao cho giao thức ngữ cảnh mô hình (MCP), tối ưu hóa 95% Context Window và tự động định tuyến hơn 2.221 tài nguyên trí tuệ nhân tạo.
+
+---
 
 ## 1. Giới Thiệu
-AI HUB VN Smart MCP Gateway là giải pháp máy chủ MCP trung tâm do Hệ sinh thái AI HUB VN phát triển. Cổng giúp các trợ lý AI (như Antigravity, Claude Desktop, Cursor) kết nối và khai thác đồng thời hàng chục công cụ dữ liệu (PostgreSQL, Filesystem, Puppeteer, GitHub, API Tra cứu doanh nghiệp Việt Nam) mà không gây quá tải ngữ cảnh (context window).
+AI HUB VN Smart MCP Gateway là giải pháp máy chủ MCP cổng một cửa (One-stop Gateway) được phát triển bởi Hệ sinh thái AI HUB VN. Cổng giúp các trợ lý AI (Google Antigravity, Claude Code, Cursor, Windsurf) giao tiếp an toàn với hàng chục dịch vụ mà không làm tràn bộ nhớ ngữ cảnh.
 
-## 2. Tính Năng Bảo Mật Vượt Trội
-- **Xác thực khóa bảo mật (API Key Authentication):** Mọi yêu cầu gọi công cụ đều phải được xác thực thông qua khóa bảo mật \`aihub_sec_live_...\`.
-- **Phân quyền vai trò và phạm vi:** Chỉ cho phép thực thi các lệnh đọc/ghi trên các tài nguyên được ủy quyền rõ ràng.
-- **Bộ đệm thông minh và định tuyến tối ưu:** Chỉ kích hoạt các công cụ có liên quan trực tiếp đến câu hỏi của người dùng, tiết kiệm tới 70% lượng token tiêu thụ.
-- **Ghi nhật ký kiểm toán (Audit Trail):** Toàn bộ các thao tác gọi công cụ, thời gian thực thi và trạng thái đều được lưu trữ phục vụ rà soát an ninh.
+---
 
-## 3. Hướng Dẫn Cấu Hình Tích Hợp
+## 2. Các Lớp Bảo Mật Doanh Nghiệp
+- **Xác thực khóa Bearer Key:** Mọi yêu cầu gọi công cụ bắt buộc phải có API Key chuẩn tiền tố \`aihub_live_...\`.
+- **Băm mật mã HMAC-SHA256:** So sánh thời gian an toàn (\`timingSafeCompare\`) chống tấn công Timing Attack.
+- **Giới hạn tần suất trượt (Sliding Window Rate Limiter):** Ngăn chặn tấn công từ chối dịch vụ (DoS/Brute-force).
+- **Làm sạch dữ liệu đầu vào (Input Sanitization):** Chống tấn công chèn mã (Command Injection & Prompt Injection).
+- **Ghi nhật ký kiểm toán (Audit Trail):** Lưu vết toàn bộ lịch sử truy cập và trạng thái gọi công cụ.
+
+---
+
+## 3. Mẫu Cấu Hình Tích Hợp Cho Claude Desktop & Cursor
 \`\`\`json
 {
   "mcpServers": {
-    "aihub-vn-smart-gateway": {
+    "aihub-smart-gateway": {
       "command": "node",
-      "args": ["src/mcp-gateway/server.js"],
+      "args": ["C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/mcp-gateway/server.js"],
       "env": {
-        "AIHUB_API_KEY": "aihub_sec_live_vn_production_key_2026",
-        "AIHUB_REGION": "asia-southeast1",
+        "AIHUB_API_KEY": "aihub_live_vn_production_key_2026",
         "NODE_ENV": "production"
       }
     }
@@ -183,15 +278,16 @@ AI HUB VN Smart MCP Gateway là giải pháp máy chủ MCP trung tâm do Hệ s
 }
 \`\`\`
 
+---
+
 ## 4. Giấy Phép Bản Quyền
-- **Tác giả:** Ban Công Nghệ Hệ Sinh Thái AI HUB VN
-- **Giấy phép:** MIT License
+- Tác giả: Ban Công Nghệ Hệ Sinh Thái AI HUB VN
+- Giấy phép: MIT License.
 `
 };
 
-// Hàm tạo README Markdown tiếng Việt chuẩn mực cho bất kỳ công cụ nào
-function generateReadmeForTool(tool) {
-  // Nếu có README tùy chỉnh đặc biệt, sử dụng ngay
+// Hàm sinh README chuẩn cho toàn bộ các công cụ còn lại trong kho
+function generateStandardReadme(tool) {
   if (customReadmes[tool.id]) {
     return customReadmes[tool.id].trim();
   }
@@ -203,6 +299,12 @@ function generateReadmeForTool(tool) {
   const samplePromptsList = (tool.samplePromptsVi || [])
     .map((p, idx) => `${idx + 1}. \`"${p}"\``)
     .join('\n');
+
+  // Đóng khung các lệnh cài đặt CLI nếu có trong configs
+  const cliCommandsList = (tool.configs || [])
+    .filter(c => c.cliCommand)
+    .map(c => `### Cài đặt cho ${c.platformName} (${c.platform}):\n\`\`\`bash\n${c.cliCommand}\n\`\`\``)
+    .join('\n\n');
 
   const configsMarkdown = (tool.configs || [])
     .map(c => `### Cấu hình cho ${c.platformName} (${c.platform})
@@ -222,7 +324,7 @@ ${c.jsonConfig}
   ]).map(p => `- ✅ ${p}`).join('\n');
 
   const consList = (tool.consVi || [
-    'Yêu cầu môi trường thực thi (Node.js/Python/Docker) phù hợp.',
+    'Yêu cầu môi trường thực thi (Node.js/Python/Docker) phù hợp trên máy.',
     'Một số dịch vụ bên ngoài có thể yêu cầu khóa truy cập (API Key) riêng biệt.'
   ]).map(c => `- ⚠️ ${c}`).join('\n');
 
@@ -233,6 +335,8 @@ ${c.jsonConfig}
   const md = `# ${tool.name}
 
 > **${tool.summaryVi || 'Tài nguyên công nghệ trí tuệ nhân tạo chuyên dụng.'}**
+
+---
 
 ## 1. Giới Thiệu & Mục Đích Giải Quyết
 ${tool.purposeVi || tool.summaryVi || 'Công cụ hỗ trợ phát triển phần mềm và tự động hóa tác vụ trí tuệ nhân tạo.'}
@@ -253,7 +357,7 @@ ${featuresList || '- Cung cấp giao diện kết nối tiêu chuẩn, dễ dàn
 ---
 
 ## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường
-${tool.installGuideVi || 'Bước 1: Kiểm tra môi trường thực thi cục bộ.\nBước 2: Tải về mã nguồn từ kho lưu trữ chính thức.\nBước 3: Cài đặt các gói phụ thuộc cần thiết.\nBước 4: Kiểm tra và kích hoạt công cụ.'}
+${cliCommandsList ? cliCommandsList + '\n\n' : ''}${tool.installGuideVi || 'Bước 1: Kiểm tra môi trường thực thi cục bộ.\nBước 2: Tải về mã nguồn từ kho lưu trữ chính thức.\nBước 3: Cài đặt các gói phụ thuộc cần thiết.\nBước 4: Kiểm tra và kích hoạt công cụ.'}
 
 ---
 
@@ -288,15 +392,14 @@ Tài nguyên được phân phối theo giấy phép **${tool.license || 'MIT'}*
   return md.trim();
 }
 
-// Tiến hành cập nhật toàn bộ 2.221 công cụ
+// Cập nhật cho toàn bộ 2.221 công cụ
 let updatedCount = 0;
 for (const tool of tools) {
-  tool.readmeVi = generateReadmeForTool(tool);
+  tool.readmeVi = generateStandardReadme(tool);
   updatedCount++;
 }
 
-console.log(`Đã tạo và cập nhật thành công README tiếng Việt cho ${updatedCount} / ${tools.length} công cụ.`);
+console.log(`Đã cập nhật thành công README tiếng Việt toàn vẹn cho ${updatedCount} / ${tools.length} công cụ.`);
 
-// Lưu lại file allTools.json
 fs.writeFileSync(toolsPath, JSON.stringify(tools, null, 2), 'utf8');
-console.log('Đã ghi đè tệp src/data/allTools.json thành công!');
+console.log('Đã lưu thành công src/data/allTools.json!');

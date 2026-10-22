@@ -8,8 +8,22 @@
 - Rà soát toàn bộ kho dữ liệu hệ thống (2.221 công cụ), bổ sung và dịch thuật tài liệu kỹ thuật README từ GitHub sang tiếng Việt chuẩn mực.
 - Cập nhật giao diện Modal chi tiết và Trang chi tiết toàn màn hình hỗ trợ xem và sao chép tài liệu README Markdown.
 - Chuẩn hóa phần hiển thị tài liệu README giữ nguyên phong cách giao diện trực quan của GitHub (không biến dạng thành khối code thô đen).
+- Bảo toàn nguyên vẹn 100% nội dung và cấu trúc phân loại gốc từ GitHub (không cắt xén, giữ nguyên sơ đồ mũi tên ASCII 13 giai đoạn, vẽ thêm sơ đồ Diagram trực quan).
+- Chuẩn hóa Tab "Cách sử dụng & Cài đặt": Loại bỏ hoàn toàn các nút chạy lệnh trên web, chuyển các lệnh terminal sang khối định dạng chuẩn GitHub kèm nút sao chép.
 
 ### Các công việc đã thực hiện
+- [Bảo Toàn Nguyên Vẹn Nội Dung GitHub & Chuẩn Hóa Tab Cài Đặt]:
+  - **Bảo toàn nguyên tắc toàn vẹn nội dung (`src/data/allTools.json`)**:
+    - Tích hợp toàn bộ 492 dòng nguyên bản từ `SKILL.md` vào `vibecoding-skill-dev-lifecycle`: Giữ nguyên 100% tiêu đề, các đề mục I đến VII, 8 nguyên tắc cốt lõi, sơ đồ ASCII 13 giai đoạn, chi tiết từng giai đoạn, cấu trúc Task 17 mục, cổng kiểm soát chất lượng và 3 tệp quản lý cốt lõi.
+    - Vẽ thêm sơ đồ trực quan (Interactive Flowchart Diagram) 4 khối giai đoạn lớn cho VibeCode và sơ đồ Multi-Agent cho AI Job Search.
+    - Tự động gắn nút Copy code cho tất cả các thẻ `<pre>` code block giống hệt GitHub.
+  - **Chuẩn hóa Tab "Cách sử dụng & Cài đặt" (`DetailPage.tsx` và `ToolDetailModal.tsx`)**:
+    - Loại bỏ nút "Chạy lệnh trên máy" và "Chạy thử MCP" trên giao diện Web.
+    - Định dạng toàn bộ lệnh cài đặt và kịch bản sử dụng thành các khối Terminal chuẩn phong cách GitHub (nền tối, `$ `, font JetBrains) với nút sao chép một chạm.
+  - **Kiểm thử tự động & Đóng gói**:
+    - Vượt qua 37/37 bài kiểm thử tự động (100% pass).
+    - Đóng gói hoàn tất bằng Vite (`npm run build`) trong 28.91 giây.
+
 - [Chuẩn Hóa Giao Diện Hiển Thị README Giữ Nguyên Phong Cách GitHub]:
   - **Phát triển thành phần giao diện (`src/components/GitHubReadmeViewer.tsx`)**:
     - Thiết kế khung hiển thị giống 100% trang GitHub: Tiêu đề tệp `README.md`, icon tệp, nhãn ngôn ngữ Tiếng Việt, liên kết mở trực tiếp repo gốc trên GitHub.

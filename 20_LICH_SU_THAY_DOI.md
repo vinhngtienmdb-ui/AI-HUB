@@ -4,6 +4,22 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.41-BaoToanNguyenVenNoiDungGitHubVaChuanHoaTabCaiDat (Ngày 22-10-2026)
+- **Loại hình**: Bảo toàn nguyên vẹn 100% nội dung và cấu trúc phân loại gốc từ GitHub (không cắt xén, không xáo trộn), vẽ bổ sung sơ đồ trực quan (Flowchart Diagram) cho quy trình 13 giai đoạn VibeCode, tích hợp nút sao chép mã nguồn cho từng khối code block kiểu GitHub và chuẩn hóa Tab "Cách sử dụng & Cài đặt" (loại bỏ nút chạy lệnh trên web, chuyển thành các khối lệnh terminal có thể sao chép).
+- **Nội dung hoàn thành**:
+  - **Bảo toàn nguyên tắc toàn vẹn nội dung (`src/data/allTools.json`)**:
+    - Tích hợp toàn văn 492 dòng nguyên bản của tệp `SKILL.md` vào tài nguyên `vibecoding-skill-dev-lifecycle`: Giữ nguyên 100% cấu trúc 8 nguyên tắc cốt lõi, sơ đồ mũi tên ASCII 13 giai đoạn, chi tiết từng giai đoạn từ 01 đến 13, cấu trúc chuẩn của một Task, cổng kiểm soát chất lượng, danh mục 24 tệp tài liệu và 3 tệp quản lý cốt lõi (`index.md`, `23_NHAT_KY_DU_AN.md`, `24_DANH_MUC_KIEM_TRA.md`).
+    - Giữ nguyên cấu trúc phân loại và toàn văn nội dung chi tiết của `mads-lorentzen-ai-job-search`, `paperclipai-paperclip`, `vercel-labs-find-skills` và `aihub-vn-smart-mcp-gateway`.
+  - **Bổ sung sơ đồ trực quan (Flowchart Diagram) trên `GitHubReadmeViewer.tsx`**:
+    - Vẽ thêm sơ đồ trực quan 4 khối giai đoạn nối tiếp nhau bằng mũi tên (I. Khảo sát & Yêu cầu -> II. Thiết kế hệ thống -> III. Xây dựng & Bảo mật -> IV. Triển khai & Vận hành).
+    - Tự động gắn nút sao chép (Copy code button) ở góc trên bên phải của mọi khối `<pre>` code block giống y hệt GitHub.
+  - **Chuẩn hóa Tab "Cách sử dụng & Cài đặt" (`DetailPage.tsx` và `ToolDetailModal.tsx`)**:
+    - Loại bỏ triệt để các nút "Chạy lệnh trên máy" và "Chạy thử MCP" trên giao diện Web (do trình duyệt chưa thể chạy lệnh trực tiếp).
+    - Format toàn bộ các câu lệnh cài đặt CLI và kịch bản sử dụng thành các khối Terminal chuẩn phong cách GitHub (nền tối, ký hiệu `$ `, font mono JetBrains) kèm nút "Sao chép lệnh" một chạm.
+  - **Kiểm thử tự động & Đóng gói sản phẩm**:
+    - Vượt qua toàn bộ **37/37 bài test** trong 7 bộ kiểm thử tự động (100% pass).
+    - Biên dịch và đóng gói hoàn chỉnh bằng Vite (`tsc && vite build`) trong 28.91 giây.
+
 ### Phiên Bản 2.0.40-ChuanHoaGiaoDienReadmeTheoPhongCachGitHub (Ngày 22-10-2026)
 - **Loại hình**: Nâng cấp trải nghiệm người dùng, chuyển đổi hoàn toàn cách hiển thị tài liệu README từ khối code đen mono thô sơ sang giao diện trực quan chuẩn GitHub Flavored Markdown (GFM), giữ nguyên 100% phong cách trình bày của GitHub.
 - **Nội dung hoàn thành**:

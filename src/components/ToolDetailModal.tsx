@@ -270,38 +270,42 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose,
                     <span>{currentConfig.cliCommand}</span>
                   </div>
                   <div className="flex items-center space-x-2 shrink-0">
-                    {onExecuteCommand && (
-                      <button
-                        onClick={() => onExecuteCommand(currentConfig.cliCommand!)}
-                        className="flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs transition-colors shadow-sm active:scale-95"
-                        title="Thực thi câu lệnh trực tiếp trên máy tính qua Terminal cục bộ"
-                      >
-                        <Play className="w-3.5 h-3.5 fill-current" />
-                        <span>Chạy lệnh trên máy</span>
-                      </button>
-                    )}
                     <button
                       onClick={handleCopyCli}
-                      className="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs transition-colors"
+                      className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition-colors shadow-xs"
+                      title="Sao chép câu lệnh cài đặt"
                     >
-                      {copiedCli ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                      <span>{copiedCli ? 'Đã sao chép' : 'Sao chép'}</span>
+                      {copiedCli ? (
+                        <>
+                          <Check className="w-3.5 h-3.5 text-emerald-400" />
+                          <span className="text-emerald-400 font-bold">Đã sao chép!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-3.5 h-3.5" />
+                          <span>Sao chép lệnh</span>
+                        </>
+                      )}
                     </button>
                   </div>
                 </div>
               ) : (
                 /* Gợi ý lệnh khởi chạy nhanh nếu là máy chủ MCP */
-                tool.toolType === 'mcp' && onExecuteCommand && (
+                tool.toolType === 'mcp' && (
                   <div className="px-4 py-2.5 bg-slate-900/60 border-b border-slate-800 flex items-center justify-between text-xs font-mono">
                     <span className="text-slate-400">
-                      Gợi ý kiểm tra máy chủ: <code className="text-emerald-400 font-bold">npx -y {tool.slug.replace(/-mcp$/, '')} --help</code>
+                      Gợi ý lệnh kiểm tra: <code className="text-emerald-400 font-bold">npx -y {tool.slug.replace(/-mcp$/, '')} --help</code>
                     </span>
                     <button
-                      onClick={() => onExecuteCommand(`npx -y ${tool.slug.replace(/-mcp$/, '')} --help`)}
-                      className="flex items-center space-x-1 px-2.5 py-1 rounded bg-emerald-600/80 hover:bg-emerald-600 text-white text-xs transition-colors"
+                      onClick={() => {
+                        navigator.clipboard.writeText(`npx -y ${tool.slug.replace(/-mcp$/, '')} --help`);
+                        setCopiedCli(true);
+                        setTimeout(() => setCopiedCli(false), 2000);
+                      }}
+                      className="flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs transition-colors border border-slate-700"
                     >
-                      <Play className="w-3 h-3 fill-current" />
-                      <span>Chạy thử MCP</span>
+                      {copiedCli ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                      <span>{copiedCli ? 'Đã chép' : 'Chép lệnh'}</span>
                     </button>
                   </div>
                 )
