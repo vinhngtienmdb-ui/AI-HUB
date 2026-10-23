@@ -1,10 +1,12 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { BRIDGE_TOKEN, handleExecuteCommand, handleKillCommand, handleSystemStatus } from './server/commandBridge.js';
+import { toolDataSplitPlugin } from './server/toolDataSplit.js';
 
 export default defineConfig({
   plugins: [
     react(),
+    toolDataSplitPlugin({ dataFile: 'src/data/allTools.json' }),
     {
       name: 'local-command-bridge',
       apply: 'serve',

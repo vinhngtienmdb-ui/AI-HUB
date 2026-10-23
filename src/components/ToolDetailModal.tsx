@@ -10,6 +10,7 @@ import { GitHubCodeViewer } from './GitHubCodeViewer';
 import { VisualDiagramViewer } from './VisualDiagramViewer';
 import { getVerifiedStars } from '../lib/verification';
 import { VerificationNotice } from './VerificationNotice';
+import { useToolDetails } from '../lib/toolDetails';
 
 interface ToolDetailModalProps {
   tool: AITool | null;
@@ -17,7 +18,9 @@ interface ToolDetailModalProps {
   onExecuteCommand?: (command: string) => void;
 }
 
-export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose }) => {
+export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool: baseTool, onClose }) => {
+  // Bổ sung README, hướng dẫn cài đặt/sử dụng, câu lệnh mẫu (tải theo nhu cầu)
+  const tool = useToolDetails(baseTool);
   if (!tool) return null;
 
   const [modalTab, setModalTab] = useState<'overview' | 'diagram' | 'setup' | 'usage' | 'readme'>('overview');

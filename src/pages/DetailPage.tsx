@@ -11,6 +11,7 @@ import { GitHubCodeViewer } from '../components/GitHubCodeViewer';
 import { VisualDiagramViewer } from '../components/VisualDiagramViewer';
 import { formatStars, getVerifiedStars } from '../lib/verification';
 import { VerificationNotice } from '../components/VerificationNotice';
+import { useToolDetails } from '../lib/toolDetails';
 
 interface DetailPageProps {
   tool: AITool;
@@ -27,7 +28,7 @@ interface DetailPageProps {
 }
 
 export const DetailPage: React.FC<DetailPageProps> = ({
-  tool,
+  tool: baseTool,
   allTools,
   onNavigateHome,
   onNavigateCategory,
@@ -39,6 +40,8 @@ export const DetailPage: React.FC<DetailPageProps> = ({
   isAdmin = false,
   onOpenEditTaxonomy,
 }) => {
+  // Bổ sung README, hướng dẫn cài đặt/sử dụng, câu lệnh mẫu (tải theo nhu cầu)
+  const tool = useToolDetails(baseTool);
   const [activeTab, setActiveTab] = useState<'overview' | 'diagram' | 'usage' | 'config' | 'readme'>('overview');
   const [copiedConfigIndex, setCopiedConfigIndex] = useState<number | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
