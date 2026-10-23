@@ -50,15 +50,25 @@ function readComponents() {
   }
 }
 
-// Frontmatter YAML đơn giản: khóa: giá trị trên một dòng (giá trị có thể nằm trong dấu nháy)
+// Frontmatter YAML đơn giản: khóa: giá trị trên một dòng (có thể nằm trong dấu nháy),
+// hoặc khối nhiều dòng dạng `>` / `|` (kèm `-`, `+`) với các dòng thụt lề bên dưới
 function parseFrontmatter(text) {
   const m = /^---\r?\n([\s\S]*?)\r?\n---/.exec(text);
   const fields = {};
   if (!m) return fields;
-  for (const line of m[1].split(/\r?\n/)) {
-    const kv = /^([A-Za-z][\w-]*):\s*(.*)$/.exec(line);
+  const lines = m[1].split(/\r?\n/);
+  for (let i = 0; i < lines.length; i++) {
+    const kv = /^([A-Za-z][\w-]*):\s*(.*)$/.exec(lines[i]);
     if (!kv) continue;
     let value = kv[2].trim();
+    if (/^[>|][-+]?\d*$/.test(value)) {
+      const block = [];
+      while (i + 1 < lines.length && (/^\s+\S/.test(lines[i + 1]) || lines[i + 1].trim() === '')) {
+        block.push(lines[++i].trim());
+      }
+      fields[kv[1]] = value.startsWith('>') ? block.join(' ').replace(/\s+/g, ' ').trim() : block.join('\n').trim();
+      continue;
+    }
     if (/^".*"$/.test(value)) {
       try { value = JSON.parse(value); } catch (_) { value = value.slice(1, -1); }
     } else if (/^'.*'$/.test(value)) {
@@ -87,8 +97,17 @@ function cleanDescription(desc) {
 
 const RUNTIME_REQUIREMENTS = {
   npx: 'Node.js (để chạy npx)', node: 'Node.js', uvx: 'uv (cung cấp lệnh uvx)', uv: 'uv',
-  docker: 'Docker', python: 'Python', python3: 'Python 3', bash: 'bash', jq: 'jq'
+  pipx: 'pipx', pnpx: 'pnpm (cung cấp lệnh pnpx)', pnpm: 'pnpm', bunx: 'Bun (cung cấp lệnh bunx)', bun: 'Bun',
+  deno: 'Deno', docker: 'Docker', python: 'Python', python3: 'Python 3', bash: 'bash', jq: 'jq'
 };
+// Lệnh khởi chạy máy chủ MCP: chương trình chạy (npx, uvx...), đường dẫn mẫu cần thay, hoặc chương trình cài riêng
+function describeRuntime(command) {
+  const first = String(command || '').trim().split(/\s+/)[0];
+  if (!first) return {};
+  if (RUNTIME_REQUIREMENTS[first]) return { requirement: RUNTIME_REQUIREMENTS[first] };
+  if (/[\/<\\]/.test(first)) return { pathPlaceholder: first };
+  return { binary: first };
+}
 const isPlaceholder = (v) => typeof v === 'string' && (/^</.test(v) || /your[-_ ]|YOUR_|api[-_]?key$|xxx/i.test(v) || v === '');
 
 function guideForComponent(kind, name, content) {
@@ -121,16 +140,26 @@ function guideForComponent(kind, name, content) {
     original = cleanDescription(json.description || serverDescriptions[0]);
     if (kind === 'mcps') {
       const servers = Object.entries(json.mcpServers || {});
-      const requirements = new Set();
+      const requirements = new Set(['Claude Code', 'Node.js (để chạy npx)']);
       const envVars = [];
+      const binaries = new Set();
+      const paths = new Set();
       for (const [, server] of servers) {
-        if (server.command && RUNTIME_REQUIREMENTS[server.command]) requirements.add(RUNTIME_REQUIREMENTS[server.command]);
+        const runtime = describeRuntime(server.command);
+        if (runtime.requirement) requirements.add(runtime.requirement);
+        if (runtime.binary) binaries.add(runtime.binary);
+        if (runtime.pathPlaceholder) paths.add(runtime.pathPlaceholder);
         for (const [key, value] of Object.entries(server.env || {})) if (isPlaceholder(value)) envVars.push(key);
       }
-      if (requirements.size) install[0] = `Yêu cầu: Claude Code, Node.js (để chạy npx) và ${[...requirements].filter(r => !r.startsWith('Node.js')).join(', ') || 'Node.js'}.`.replace(' và Node.js.', '.');
+      const reqList = [...requirements];
+      install[0] = `Yêu cầu: ${reqList.slice(0, -1).join(', ')} và ${reqList[reqList.length - 1]}.`;
+      if (binaries.size) install.splice(1, 0, `Chương trình ${[...binaries].map(code).join(', ')} phải được cài sẵn trên máy theo hướng dẫn của máy chủ tại liên kết nguồn.`);
       install.push(`Bước 3: Lệnh ghi cấu hình máy chủ ${servers.map(([n]) => code(n)).join(', ')} vào tệp ${code('.mcp.json')} của dự án (gộp nếu tệp đã có).`);
-      if (envVars.length) install.push(`Bước 4: Mở ${code('.mcp.json')} và điền giá trị thật cho biến môi trường: ${envVars.map(code).join(', ')}.`);
-      install.push(`Bước ${envVars.length ? 5 : 4}: Khởi động lại Claude Code, kiểm tra kết nối bằng lệnh ${code('/mcp')}.`);
+      const fixes = [];
+      if (paths.size) fixes.push(`thay đường dẫn mẫu ${[...paths].map(code).join(', ')} bằng đường dẫn thật trên máy`);
+      if (envVars.length) fixes.push(`điền giá trị thật cho biến môi trường: ${envVars.map(code).join(', ')}`);
+      if (fixes.length) install.push(`Bước 4: Mở ${code('.mcp.json')}, ${fixes.join('; ')}.`);
+      install.push(`Bước ${fixes.length ? 5 : 4}: Khởi động lại Claude Code, kiểm tra kết nối bằng lệnh ${code('/mcp')}.`);
       usage.push(`Sau khi kết nối, Claude Code dùng các công cụ do máy chủ MCP ${servers.map(([n]) => code(n)).join(', ')} cung cấp khi yêu cầu của bạn cần đến.`);
       for (const [n, server] of servers) {
         const run = server.url ? `kết nối từ xa tới ${server.url}` : `chạy lệnh ${code([server.command, ...(server.args || [])].join(' '))}`;
@@ -161,7 +190,9 @@ function guideForComponent(kind, name, content) {
             else if (isPlaceholder(v)) placeholders.push(`${prefix}${k}`);
           }
         };
-        collect(json, '');
+        // Bỏ qua trường mô tả (siêu dữ liệu), chỉ xét giá trị cấu hình thật
+        const { description: _metadata, ...settingValues } = json;
+        collect(settingValues, '');
         if (placeholders.length) install.push(`Bước 4: Thay giá trị mẫu bằng giá trị thật cho: ${placeholders.map(code).join(', ')}.`);
         install.push(`Bước ${placeholders.length ? 5 : 4}: Khởi động lại Claude Code để cấu hình có hiệu lực.`);
         usage.push(`Cấu hình đặt các mục: ${keys.map(code).join(', ')}. Sau khi khởi động lại, Claude Code áp dụng các giá trị này cho mọi phiên làm việc thuộc phạm vi đã chọn.`);
