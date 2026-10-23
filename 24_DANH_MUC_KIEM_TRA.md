@@ -1,8 +1,8 @@
 # Danh Mục Kiểm Tra Dự Án (Checklist)
 
 ## Tổng Quan Tiến Độ
-- Tổng số nhiệm vụ cốt lõi: 118
-- Đã hoàn thành: 113
+- Tổng số nhiệm vụ cốt lõi: 119
+- Đã hoàn thành: 114
 - Đang thực hiện: 0
 - Chưa bắt đầu: 4
 - Bị nghẽn: 1
@@ -142,7 +142,9 @@
   - Tiêu chí nghiệm thu: `npm run data:validate`; mọi bản ghi có trường `verification`; giao diện chỉ hiển thị số sao đã xác minh và cảnh báo dữ liệu chưa xác minh (`tests/business-rules.test.js`)
 - [x] CL-05b (A): Xử lý nguồn không tồn tại, gói npm không tồn tại, trùng lặp; thay câu lệnh bịa bằng câu lệnh thật
   - Tiêu chí nghiệm thu: công cụ đang hiển thị không có nguồn không tồn tại; câu lệnh cài đặt lấy từ CLI hoặc README thật; script chạy lại cho cùng kết quả; 50/50 kiểm thử đạt
-- [ ] CL-05b (B): Viết lại 1.914 hướng dẫn dạng mẫu bằng nội dung từ README gốc
+- [x] CL-05b (B): Viết lại hướng dẫn dạng mẫu bằng nội dung từ tệp thành phần và README gốc
+  - Tiêu chí nghiệm thu: 0 công cụ đang hiển thị còn hướng dẫn dạng mẫu; câu lệnh đối chiếu với README; 50/50 kiểm thử đạt
+- [ ] CL-05d: Viết lại tóm tắt, mô tả công dụng, README hiển thị và câu lệnh mẫu của 1.830 thành phần template (đang là nội dung mẫu chung, một số lĩnh vực phân loại sai)
 - [ ] CL-05c: Lấy số sao thật: chạy `GITHUB_TOKEN=... npm run data:validate -- --online --write` trên máy có token GitHub
 - [x] CL-06: Hợp nhất bộ định tuyến ý định phía trình duyệt và máy chủ vào một nguồn dữ liệu chung (`mcp-gateway/core-intents.json`, `mcp-gateway/intent-matcher.js`)
 - [x] CL-07: Chuyển script dùng một lần vào `scripts/archive/` (kèm README giải thích), chỉ giữ `scripts/validate-data.cjs`; bỏ đường dẫn Windows viết cứng

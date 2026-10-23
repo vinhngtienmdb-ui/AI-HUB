@@ -4,6 +4,13 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.52 (Ngày 23-10-2026)
+- **Loại hình**: Viết lại hướng dẫn cài đặt và sử dụng dạng mẫu (CL-05b phần B), script `scripts/migrations/2026-10-23-b-viet-lai-huong-dan.cjs`.
+- **1.830 thành phần claude-code-templates**: hướng dẫn sinh từ chính tệp thành phần: câu lệnh cài đặt thật, tệp đích, biến môi trường cần điền (MCP), sự kiện và điều kiện kích hoạt (hook), khóa cấu hình và giá trị mẫu cần thay (setting), công cụ và mô hình chỉ định (agent), cú pháp gọi lệnh (command), mô tả gốc của tác giả.
+- **32 dự án khác**: hướng dẫn và câu lệnh chép từ README chính thức; sửa 13 câu lệnh trỏ tới gói npm có thật nhưng không phải công cụ được mô tả (ví dụ `npx -y firecrawl`, `npx -y tavily`) và 6 câu lệnh `agy skill add` bịa.
+- **Kết quả**: 0 công cụ đang hiển thị còn hướng dẫn dạng mẫu.
+- **Kiểm thử**: 50/50 đạt.
+
 ### Phiên Bản 2.0.51 (Ngày 23-10-2026)
 - **Loại hình**: Xử lý dữ liệu đã gắn nhãn kiểm định (CL-05b phần A), script `scripts/migrations/2026-10-23-a-xu-ly-du-lieu-gan-nhan.cjs`.
 - **Sửa liên kết nguồn (1.844 bản ghi)**:
