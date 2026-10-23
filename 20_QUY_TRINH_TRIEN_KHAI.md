@@ -70,14 +70,15 @@ Mặc định đóng góp và phê duyệt chỉ lưu trong trình duyệt. Đ�
 
 Quay lui: xóa biến `VITE_FIRESTORE_ENABLED` và triển khai lại; dữ liệu trên Firestore được giữ nguyên.
 
+### 5.4. Máy chủ MCP (stdio)
+Người dùng cập nhật bằng `git pull` và khởi động lại ứng dụng tác tử AI (Claude Desktop, Cursor). Không có tiến trình máy chủ cần triển khai.
+
+
 ### 5.5. Cập nhật số sao và kiểm định dữ liệu tự động
 - Workflow `.github/workflows/cap-nhat-so-sao.yml` chạy hằng tuần hoặc chạy tay (tab Actions → "Cập nhật số sao và kiểm định dữ liệu" → Run workflow).
 - Số sao chỉ gán cho công cụ trỏ tới gốc repo GitHub; thành phần nằm trong một repo lớn không mang số sao của cả repo.
 - Điều kiện một lần: Settings → Actions → General → Workflow permissions → bật **Allow GitHub Actions to create and approve pull requests**.
 - Pull request do workflow tạo được kích hoạt CI bằng `workflow_dispatch` để đáp ứng kiểm tra bắt buộc `kiem-tra` của nhánh `main`.
-
-### 5.4. Máy chủ MCP (stdio)
-Người dùng cập nhật bằng `git pull` và khởi động lại ứng dụng tác tử AI (Claude Desktop, Cursor). Không có tiến trình máy chủ cần triển khai.
 
 ---
 
