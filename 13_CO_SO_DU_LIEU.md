@@ -7,6 +7,28 @@ Tài liệu này xác định chi tiết cấu trúc cơ sở dữ liệu quan h
 
 ---
 
+## 1.1. Hiện Trạng Lưu Trữ Thực Tế (2026-10-23)
+
+Các bảng ở mục 2 và 3 là **thiết kế mục tiêu**, chưa có hệ quản trị cơ sở dữ liệu. Dữ liệu hiện được lưu như sau:
+
+| Dữ liệu | Nơi lưu | Ghi chú |
+|---|---|---|
+| Kho công cụ (tương ứng bảng `tools`, `config_templates`) | `src/data/allTools.json` (mảng JSON, mỗi phần tử theo kiểu `AITool` trong `src/types/index.ts`) | Nguồn dữ liệu duy nhất. Khi build, các trường `readmeVi`, `installGuideVi`, `usageGuideVi`, `samplePromptsVi` được tách ra `tool-details/<id>.json` (`server/toolDataSplit.js`). |
+| Công cụ đóng góp, ghi đè phân loại và phê duyệt, bộ sưu tập, hồ sơ | `localStorage` của từng trình duyệt (`src/lib/storage.ts`) | Không dùng chung giữa người dùng (xem HC-01, HC-02 trong `19_AN_TOAN_BAO_MAT.md`). |
+| Khóa API và salt của Cổng REST API | `mcp-gateway/data/` | Không đưa lên kho mã. |
+
+Trường kiểm định trong mỗi bản ghi công cụ (`verification`, sinh bởi `npm run data:validate -- --online --write`):
+
+| Trường | Kiểu | Ý nghĩa |
+|---|---|---|
+| `checkedAt` | Chuỗi ISO 8601 | Thời điểm kiểm định gần nhất |
+| `sourceStatus` | `ok` \| `missing` \| `unknown` | Liên kết nguồn tồn tại / không tồn tại (repo GitHub không đọc được, hoặc trang trả về 404/410) / không kết luận được |
+| `missingPackages` | Mảng chuỗi | Gói npm trong câu lệnh cài đặt không tồn tại trên registry |
+| `guideIsTemplate` | Boolean | Hướng dẫn cài đặt hoặc sử dụng là nội dung mẫu chung |
+| `starsVerified` | Boolean | Số sao đã được lấy từ GitHub API. Giao diện chỉ hiển thị số sao khi giá trị này là `true` |
+
+`linkHealth` được suy ra từ `sourceStatus`: `ok` → `healthy`, `missing` → `broken`, `unknown` → `unchecked`.
+
 ## 2. Sơ Đồ Thực Thể Quan Hệ (Entity Relationship Diagram)
 
 ```mermaid

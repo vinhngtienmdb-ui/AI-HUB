@@ -82,3 +82,20 @@ test('Quy tắc QT-05: Mọi công cụ trong kho dữ liệu bắt buộc phả
   }
   console.log(`Đã kiểm tra thành công toàn bộ ${countWithReadme} công cụ đều có README tiếng Việt chuẩn chỉ.`);
 });
+
+test('Kiểm định dữ liệu: Mọi công cụ mang kết quả kiểm định, nhãn khớp với nội dung thực tế', () => {
+  const TEMPLATE_PREFIXES = [
+    ['installGuideVi', 'Bước 1 (Chuẩn bị môi trường): Kiểm tra máy tính đã cài đặt sẵn Node.js'],
+    ['usageGuideVi', 'Kịch bản mẫu: Áp dụng trong quy trình phát triển và vận hành hệ thống thông tin.']
+  ];
+  for (const tool of toolsData) {
+    const v = tool.verification;
+    assert.ok(v, `Công cụ ${tool.id} chưa được kiểm định (chạy: npm run data:validate -- --online --write)`);
+    const isTemplate = TEMPLATE_PREFIXES.some(([field, prefix]) => String(tool[field] || '').startsWith(prefix));
+    assert.equal(v.guideIsTemplate, isTemplate, `Nhãn hướng dẫn mẫu của ${tool.id} không khớp nội dung`);
+    assert.ok(['ok', 'missing', 'unknown'].includes(v.sourceStatus), `sourceStatus của ${tool.id} không hợp lệ`);
+    const expectedHealth = v.sourceStatus === 'ok' ? 'healthy' : v.sourceStatus === 'missing' ? 'broken' : 'unchecked';
+    assert.equal(tool.linkHealth, expectedHealth, `linkHealth của ${tool.id} không khớp kết quả kiểm định`);
+    assert.ok(Array.isArray(v.missingPackages));
+  }
+});

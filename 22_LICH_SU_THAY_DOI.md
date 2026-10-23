@@ -1,8 +1,37 @@
-# 20. Lịch Sử Thay Đổi: Hệ Thống Quản Lý Và Tra Cứu Công Cụ Trí Tuệ Nhân Tạo
+# 22. Lịch Sử Thay Đổi: Hệ Thống Quản Lý Và Tra Cứu Công Cụ Trí Tuệ Nhân Tạo
 
 ---
 
 ## 1. Nhật Ký Phiên Bản
+
+### Phiên Bản 2.0.50 (Ngày 23-10-2026)
+- **Loại hình**: Chất lượng dữ liệu, hiệu năng, hợp nhất mã nguồn, đồng bộ tài liệu theo chuẩn VibeCode 2.0.
+- **Dữ liệu**:
+  - Thêm `npm run data:validate` (`scripts/validate-data.cjs`): kiểm tra repo GitHub, gói npm, liên kết nguồn, hướng dẫn dạng mẫu, trùng lặp; ghi kết quả vào trường `verification`.
+  - Kết quả kiểm định: 35 nguồn không tồn tại, 376 công cụ trỏ tới gói npm không tồn tại, 1.914 hướng dẫn dạng mẫu, 30 liên kết nguồn trùng lặp. Không xóa bản ghi nào.
+  - Giao diện chỉ hiển thị số sao đã xác minh; bỏ các số liệu viết cứng (4.8 sao, 12.5k lượt sử dụng, 12.5k đánh giá); hiển thị cảnh báo dữ liệu chưa xác minh trên trang và cửa sổ chi tiết.
+  - Bỏ đường dẫn `C:/Users/...` và khóa API giả khỏi cấu hình mẫu.
+- **Hiệu năng**: Tách README và hướng dẫn chi tiết khỏi gói JavaScript chính, tải theo nhu cầu. Gói chính giảm từ 19,7 MB (gzip 1,02 MB) xuống 5,7 MB (gzip 0,59 MB).
+- **Mã nguồn**:
+  - Hợp nhất bộ định tuyến ý định giữa giao diện web và máy chủ MCP (`mcp-gateway/core-intents.json`, `mcp-gateway/intent-matcher.js`).
+  - Chuyển 56 script dùng một lần vào `scripts/archive/` do chạy lại sẽ ghi đè dữ liệu.
+  - Số lượng công cụ hiển thị lấy từ dữ liệu thực tế.
+- **Tài liệu**: Đổi tên `20`, `21`, `22` thành `22_LICH_SU_THAY_DOI.md`, `23_NHAT_KY_DU_AN.md`, `24_DANH_MUC_KIEM_TRA.md`; tạo `20_QUY_TRINH_TRIEN_KHAI.md`, `21_KE_HOACH_BAO_TRI.md`; bổ sung hiện trạng lưu trữ thực tế vào `13_CO_SO_DU_LIEU.md`; giao diện hiển thị đủ 13 giai đoạn.
+- **Kiểm thử**: 49/49 đạt.
+
+### Phiên Bản 2.0.49 (Ngày 23-10-2026)
+- **Loại hình**: Sửa lỗi bảo mật nghiêm trọng và lỗi chức năng.
+- **Bảo mật**:
+  - Cầu nối lệnh cục bộ: kiểm tra nguồn yêu cầu (loopback, Host, Origin, mã phiên), chạy không qua shell, ràng buộc tham số theo từng chương trình; lệnh từ trang chi tiết chỉ được điền sẵn, không tự chạy. Máy chủ phát triển chỉ lắng nghe `127.0.0.1`.
+  - API Gateway: điểm cuối quản trị bắt buộc khóa admin; mặc định lắng nghe `127.0.0.1`; CORS chỉ cho phép localhost hoặc `AIHUB_ALLOWED_ORIGINS`; chỉ tin `X-Forwarded-For` khi đặt `AIHUB_TRUST_PROXY=1`; bỏ muối HMAC viết cứng.
+  - Bỏ `mcp-gateway/data/` khỏi kho mã.
+  - Làm sạch HTML README bằng DOMPurify.
+- **Sửa lỗi**:
+  - Terminal hủy tiến trình ngay sau khi gửi lệnh nên không hiển thị kết quả.
+  - Bộ định tuyến ý định nhận nhầm "react" thành công cụ dịch ngược REA và "database" thành phân tích nghiệp vụ BA.
+- **Vận hành**: Thêm CI (kiểm thử, kiểm tra kiểu, đóng gói). Kiểm thử không còn ghi vào dữ liệu trong kho mã.
+- **Thay đổi không tương thích**: Gọi `/api/v1/stats`, `/api/v1/keys*`, `/api/v1/audit-logs` cần tiêu đề `Authorization: Bearer <khóa admin>`. Truy cập API Gateway từ máy khác cần đặt `AIHUB_API_HOST=0.0.0.0`.
+- **Kiểm thử**: 46/46 đạt.
 
 ### Phiên Bản 2.0.48-TachSoDoTrucQuanThanhTabDocLapKhoiReadme (Ngày 22-10-2026)
 - **Loại hình**: Tách biệt hoàn toàn khối Sơ đồ trực quan (Diagram) thành một Tab chuyên biệt độc lập trên cả Trang chi tiết (`DetailPage.tsx`) và Modal chi tiết (`ToolDetailModal.tsx`), không nằm trong Tab README; xây dựng thành phần `VisualDiagramViewer.tsx` chuyên biệt và trả lại giao diện chuẩn mực GitHub Markdown cho `GitHubReadmeViewer.tsx`.

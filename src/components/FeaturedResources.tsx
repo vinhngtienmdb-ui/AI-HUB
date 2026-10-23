@@ -1,6 +1,7 @@
 import React from 'react';
-import { Star, Users, Calendar, ArrowUpRight, ArrowRight, Folder, Code2, Bot, Server, Sparkles, Laptop } from 'lucide-react';
+import { Star, Calendar, ArrowUpRight, ArrowRight, Folder, Code2, Bot, Server, Sparkles, Laptop } from 'lucide-react';
 import { AITool } from '../types';
+import { formatStars, getVerifiedStars } from '../lib/verification';
 
 interface FeaturedResourcesProps {
   tools: AITool[];
@@ -180,14 +181,12 @@ export const FeaturedResources: React.FC<FeaturedResourcesProps> = ({
               <div>
                 {/* Thông số thống kê: Sao, Lượt dùng, Cập nhật */}
                 <div className="flex items-center space-x-3 text-[11px] text-slate-500 dark:text-slate-400 pt-3 border-t border-slate-100 dark:border-slate-800/80 mb-3">
-                  <span className="flex items-center space-x-1 font-semibold text-amber-500">
-                    <Star className="w-3.5 h-3.5 fill-current" />
-                    <span>{t.stars || 4.8}</span>
-                  </span>
-                  <span className="flex items-center space-x-1">
-                    <Users className="w-3.5 h-3.5" />
-                    <span>{idx === 0 ? '12.5k' : idx === 1 ? '8.2k' : idx === 2 ? '6.8k' : '15.1k'}</span>
-                  </span>
+                  {getVerifiedStars(t) !== null && (
+                    <span className="flex items-center space-x-1 font-semibold text-amber-500">
+                      <Star className="w-3.5 h-3.5 fill-current" />
+                      <span>{formatStars(getVerifiedStars(t)!)}</span>
+                    </span>
+                  )}
                   <span className="flex items-center space-x-1">
                     <Calendar className="w-3.5 h-3.5" />
                     <span>Cập nhật mới</span>

@@ -30,16 +30,23 @@ quan-ly-cong-cu-ai/
 ├── 16_CHI_DAN_HE_THONG_AI.md     # Giai đoạn 08: Chỉ dẫn hệ thống AI
 ├── 17_KE_HOACH_KIEM_THU.md       # Giai đoạn 10: Kế hoạch kiểm thử
 ├── 18_KICH_BAN_KIEM_THU.md       # Giai đoạn 10: Kịch bản kiểm thử
-├── 19_AN_TOAN_BAO_MAT.md         # Giai đoạn 10: An toàn bảo mật
-├── 20_LICH_SU_THAY_DOI.md        # Giai đoạn 11: Lịch sử thay đổi
-├── 21_NHAT_KY_DU_AN.md           # Tệp quản lý nhật ký theo ngày
-├── 22_DANH_MUC_KIEM_TRA.md       # Tệp quản lý tiến độ kiểm tra
-├── src/                          # Thư mục mã nguồn chính
-│   ├── app/                      # Bộ định tuyến App Router (Next.js)
+├── 19_AN_TOAN_BAO_MAT.md         # Giai đoạn 11: An toàn bảo mật
+├── 20_QUY_TRINH_TRIEN_KHAI.md    # Giai đoạn 12: Quy trình triển khai
+├── 21_KE_HOACH_BAO_TRI.md        # Giai đoạn 13: Kế hoạch bảo trì
+├── 22_LICH_SU_THAY_DOI.md        # Giai đoạn 12: Lịch sử thay đổi
+├── 23_NHAT_KY_DU_AN.md           # Tệp quản lý nhật ký theo ngày
+├── 24_DANH_MUC_KIEM_TRA.md       # Tệp quản lý tiến độ kiểm tra
+├── .github/workflows/ci.yml      # Kiểm tra liên tục (CI)
+├── server/                       # Cầu nối thực thi lệnh cục bộ (gắn vào máy chủ phát triển Vite)
+├── mcp-gateway/                  # Máy chủ MCP (stdio) và cổng REST API
+├── scripts/                      # Kịch bản xử lý dữ liệu
+├── src/                          # Mã nguồn giao diện React + Vite
 │   ├── components/               # Các thành phần giao diện tái sử dụng
-│   ├── lib/                      # Các hàm tiện ích, cấu hình cơ sở dữ liệu
+│   ├── pages/                    # Các trang màn hình
+│   ├── lib/                      # Các hàm tiện ích, định tuyến ý định, Firebase
+│   ├── data/                     # Kho dữ liệu công cụ (allTools.json)
 │   └── types/                    # Định nghĩa kiểu dữ liệu TypeScript
-└── tests/                        # Các tệp kịch bản kiểm thử tự động
+└── tests/                        # Các tệp kịch bản kiểm thử tự động (node --test)
 ```
 
 ---
@@ -52,5 +59,5 @@ Khi nhận bất kỳ nhiệm vụ lập trình nào, trí tuệ nhân tạo ph�
 3. **Thiết kế giải pháp**: Xác định rõ các thành phần cần viết mới hoặc sửa đổi.
 4. **Viết mã nguồn**: Triển khai mã nguồn sạch, an toàn kiểu dữ liệu, bắt lỗi đầy đủ.
 5. **Kiểm thử xác minh**: Chạy thử nghiệm và xác nhận mọi tiêu chí nghiệm thu đều đạt 100%.
-6. **Cập nhật danh mục kiểm tra**: Đánh dấu hoàn thành trong tệp `22_DANH_MUC_KIEM_TRA.md`.
-7. **Ghi nhật ký hoạt động**: Cập nhật tóm tắt công việc vào tệp `21_NHAT_KY_DU_AN.md`.
+6. **Cập nhật danh mục kiểm tra**: Đánh dấu hoàn thành trong tệp `24_DANH_MUC_KIEM_TRA.md`.
+7. **Ghi nhật ký hoạt động**: Cập nhật tóm tắt công việc vào tệp `23_NHAT_KY_DU_AN.md`.

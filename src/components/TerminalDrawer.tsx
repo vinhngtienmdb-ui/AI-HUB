@@ -29,6 +29,12 @@ interface TerminalDrawerProps {
   onClearPendingCommand?: () => void;
 }
 
+// Mã phiên cầu nối do máy chủ phát triển nhúng vào trang (xem vite.config.ts)
+const getBridgeHeaders = (): Record<string, string> => {
+  const token = document.querySelector<HTMLMetaElement>('meta[name="aihub-bridge-token"]')?.content || '';
+  return { 'Content-Type': 'application/json', 'X-AIHub-Bridge-Token': token };
+};
+
 export const TerminalDrawer: React.FC<TerminalDrawerProps> = ({
   isOpen,
   onClose,
@@ -45,7 +51,7 @@ export const TerminalDrawer: React.FC<TerminalDrawerProps> = ({
     {
       id: 'init-2',
       type: 'info',
-      text: 'Chỉ chấp nhận các lệnh trong danh sách an toàn: npx, npm, node, claude, git, uv, python, echo, dir, ls...',
+      text: 'Chỉ chấp nhận một lệnh đơn trong danh sách an toàn: npx, npm, claude, agy, git, uv, uvx, node -v, python --version, echo, dir, ls, where.',
       time: new Date().toLocaleTimeString()
     }
   ]);
@@ -67,10 +73,12 @@ export const TerminalDrawer: React.FC<TerminalDrawerProps> = ({
     }
   }, [lines]);
 
-  // Nếu có lệnh được truyền vào từ bên ngoài (ví dụ từ ToolDetailModal)
+  // Lệnh truyền vào từ bên ngoài (ví dụ từ ToolDetailModal) chỉ được điền sẵn vào ô nhập,
+  // người dùng phải tự kiểm tra và bấm Chạy để tránh thực thi gói bên thứ ba ngoài ý muốn.
   useEffect(() => {
     if (isOpen && pendingCommand) {
-      runCommand(pendingCommand);
+      setInputCommand(pendingCommand);
+      appendLine('info', 'Lệnh đã được điền sẵn. Hãy kiểm tra kỹ nội dung rồi bấm Chạy (hoặc Enter) để thực thi.');
       if (onClearPendingCommand) {
         onClearPendingCommand();
       }
@@ -114,12 +122,13 @@ export const TerminalDrawer: React.FC<TerminalDrawerProps> = ({
     try {
       const response = await fetch('/api/execute-command', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getBridgeHeaders(),
         body: JSON.stringify({ command: trimmed })
       });
 
       if (!response.ok) {
-        throw new Error(`Máy chủ trả về mã lỗi: ${response.status} ${response.statusText}`);
+        const detail = await response.json().catch(() => null);
+        throw new Error(detail?.error || `Máy chủ trả về mã lỗi: ${response.status} ${response.statusText}`);
       }
 
       const reader = response.body?.getReader();
@@ -177,7 +186,7 @@ export const TerminalDrawer: React.FC<TerminalDrawerProps> = ({
       appendLine('info', `Đang gửi tín hiệu dừng tiến trình PID: ${currentPid}...`);
       await fetch('/api/kill-command', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getBridgeHeaders(),
         body: JSON.stringify({ pid: currentPid })
       });
       appendLine('error', `[Đã dừng]: Người dùng đã hủy tiến trình PID ${currentPid}.`);

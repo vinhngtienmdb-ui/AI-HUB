@@ -37,6 +37,7 @@ import {
   FolderGit2, Wrench, Workflow, SlidersHorizontal, X, LayoutGrid, List, 
   Maximize2, Minimize2, PanelLeftClose, PanelLeft, Star, ExternalLink, ArrowRight 
 } from 'lucide-react';
+import { formatStars, getVerifiedStars } from './lib/verification';
 
 const PAGE_SIZE = 24;
 
@@ -887,8 +888,8 @@ export const App: React.FC = () => {
                                     </td>
                                     <td className="py-3.5 px-3">
                                       <span className="text-xs font-bold text-amber-500 flex items-center space-x-1">
-                                        <Star className="w-3.5 h-3.5 fill-current" />
-                                        <span>{tool.stars || 4.8}</span>
+                                        {getVerifiedStars(tool) !== null && <Star className="w-3.5 h-3.5 fill-current" />}
+                                        <span>{getVerifiedStars(tool) !== null ? formatStars(getVerifiedStars(tool)!) : '—'}</span>
                                       </span>
                                     </td>
                                     <td className="py-3.5 px-4 text-right">

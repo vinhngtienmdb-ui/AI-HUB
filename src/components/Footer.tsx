@@ -46,7 +46,7 @@ export const Footer: React.FC<FooterProps> = ({
             <div className="pt-1">
               <span className="inline-flex items-center space-x-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
                 <ShieldCheck className="w-3.5 h-3.5" />
-                <span>Quy trình VibeCode 12 Giai Đoạn</span>
+                <span>Quy trình VibeCode 13 Giai Đoạn</span>
               </span>
             </div>
           </div>

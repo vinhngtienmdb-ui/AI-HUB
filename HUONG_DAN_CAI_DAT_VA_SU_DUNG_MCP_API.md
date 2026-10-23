@@ -114,7 +114,6 @@ Thêm khối cấu hình sau vào mục `mcpServers`:
         "C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/mcp-gateway/index.js"
       ],
       "env": {
-        "AIHUB_SECURITY_SALT": "aihub_vn_production_master_secret_salt_2026",
         "NODE_ENV": "production"
       }
     }
@@ -269,7 +268,15 @@ Hệ thống được thiết kế theo nguyên tắc "Bảo mật ngay từ thi
    - Phát hiện và chặn đứng mọi câu lệnh nguy hại (`rm -rf`, `curl | sh`, `system()`, `eval()`).
    - Giới hạn độ dài nội dung truy vấn tối đa 2.000 ký tự để chống tấn công tràn ngữ cảnh Prompt Injection.
 
-4. **Nhật Ký Kiểm Toán An Ninh (Security Audit Logs)**:
+4. **Phân Quyền Điểm Cuối Quản Trị Và Giới Hạn Mạng**:
+   - Các điểm cuối `GET /api/v1/stats`, `GET /api/v1/keys`, `POST /api/v1/keys/generate`, `POST /api/v1/keys/revoke`, `GET /api/v1/audit-logs` bắt buộc tiêu đề `Authorization: Bearer <khóa có vai trò admin>`.
+   - Lần đầu khởi chạy `npm run mcp:api` khi chưa có khóa quản trị, máy chủ tự tạo một khóa admin và in ra màn hình **một lần duy nhất**. Hãy lưu lại ngay.
+   - Máy chủ mặc định chỉ lắng nghe trên `127.0.0.1`. Chỉ đặt `AIHUB_API_HOST=0.0.0.0` khi triển khai sau reverse proxy HTTPS.
+   - Trình duyệt chỉ được gọi API từ trang chạy trên `localhost`; bổ sung nguồn khác qua `AIHUB_ALLOWED_ORIGINS` (phân tách bằng dấu phẩy).
+   - Tiêu đề `X-Forwarded-For` chỉ được tin cậy khi đặt `AIHUB_TRUST_PROXY=1`.
+   - Muối HMAC lấy từ `AIHUB_SECURITY_SALT`; nếu không đặt, hệ thống tự sinh ngẫu nhiên và lưu tại `mcp-gateway/data/.security-salt`. Thư mục `mcp-gateway/data/` không được đưa lên kho mã.
+
+5. **Nhật Ký Kiểm Toán An Ninh (Security Audit Logs)**:
    - Ghi lại đầy đủ: thời điểm, địa chỉ IP, mã định danh khóa, điểm cuối, mã trạng thái và độ trễ phản hồi.
    - Giúp quản trị viên phát hiện kịp thời các hành vi bất thường.
 

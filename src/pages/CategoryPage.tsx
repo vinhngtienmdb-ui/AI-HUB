@@ -4,6 +4,7 @@ import {
   RotateCcw, Check, Sparkles, Bot, Server, Folder, Code2, Globe, Cpu, Box 
 } from 'lucide-react';
 import { AITool, ToolType, Category, PricingModel } from '../types';
+import { formatStars, getVerifiedStars } from '../lib/verification';
 
 interface CategoryPageProps {
   toolType: ToolType | 'all';
@@ -497,10 +498,12 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                       {/* Footer thẻ: Đánh giá sao, giá và nút Chi tiết -> */}
                       <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs">
                         <div className="flex items-center space-x-3">
-                          <span className="font-bold text-amber-500 flex items-center space-x-1">
-                            <Star className="w-3.5 h-3.5 fill-current" />
-                            <span>{tool.stars ? (tool.stars >= 1000 ? `${(tool.stars / 1000).toFixed(1)}k` : tool.stars) : '4.8'}</span>
-                          </span>
+                          {getVerifiedStars(tool) !== null && (
+                            <span className="font-bold text-amber-500 flex items-center space-x-1">
+                              <Star className="w-3.5 h-3.5 fill-current" />
+                              <span>{formatStars(getVerifiedStars(tool)!)}</span>
+                            </span>
+                          )}
                           <span className="text-[11px] text-slate-400">
                             {tool.license.includes('MIT') ? 'Miễn phí' : 'Mã nguồn mở'}
                           </span>

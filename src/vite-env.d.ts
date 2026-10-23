@@ -13,3 +13,9 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+// Danh sách công cụ không chứa các trường chi tiết (sinh bởi server/toolDataSplit.js)
+declare module 'virtual:tool-index' {
+  const tools: unknown[];
+  export default tools;
+}

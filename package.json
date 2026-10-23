@@ -7,14 +7,16 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "node --test tests/*.test.js",
+    "test": "node --import ./tests/setup.js --test tests/*.test.js",
     "mcp:stdio": "node mcp-gateway/index.js",
     "mcp:api": "node mcp-gateway/api-server.js",
-    "mcp:test": "node mcp-gateway/index.js --test"
+    "mcp:test": "node mcp-gateway/index.js --test",
+    "data:validate": "node scripts/validate-data.cjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.1",
     "clsx": "^2.1.1",
+    "dompurify": "^3.4.17",
     "firebase": "^13.0.0",
     "lucide-react": "^1.16.0",
     "marked": "^18.1.1",

@@ -26,6 +26,9 @@ import {
 import { routeTaskFrontend, dispatchTaskFrontend, getAllToolsFrontend } from '../lib/mcpClient';
 import { AITool } from '../types';
 
+// Số công cụ lấy từ kho dữ liệu thực tế, định dạng tiếng Việt (ví dụ 2.222)
+const TOOL_COUNT_LABEL = getAllToolsFrontend().length.toLocaleString('vi-VN');
+
 interface McpServerPageProps {
   onNavigateHome: () => void;
   onNavigateApi?: () => void;
@@ -132,10 +135,9 @@ export const McpServerPage: React.FC<McpServerPageProps> = ({
       "aihub-smart-gateway": {
         command: "node",
         args: [
-          "C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/mcp-gateway/index.js"
+          "<DUONG_DAN_TOI_AI-HUB>/mcp-gateway/index.js"
         ],
         env: {
-          AIHUB_SECURITY_SALT: "aihub_vn_production_master_secret_salt_2026",
           NODE_ENV: "production"
         }
       }
@@ -211,14 +213,14 @@ claude mcp add aihub-gateway node ./mcp-gateway/index.js`;
               <p className="text-sm text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">
                 Máy chủ trung gian thông minh đóng vai trò <strong>Cổng kết nối duy nhất (Single Point of Entry)</strong>. 
                 Bạn chỉ cần kết nối 1 MCP Server duy nhất này là các tác tử AI (Claude Desktop, Cursor, Claude Code, Antigravity) 
-                có thể khai thác toàn bộ <strong>2.217 công cụ và 39 lĩnh vực</strong> mà không bị loãng cửa sổ ngữ cảnh (tiết kiệm ~95% token).
+                có thể khai thác toàn bộ <strong>{TOOL_COUNT_LABEL} công cụ và 39 lĩnh vực</strong> mà không bị loãng cửa sổ ngữ cảnh (tiết kiệm ~95% token).
               </p>
             </div>
 
             <div className="flex items-center space-x-3 shrink-0">
               <span className="flex items-center space-x-2 px-3.5 py-2 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 text-xs font-semibold">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Máy Chủ Hoạt Động: 2.217 Tools</span>
+                <span>Máy Chủ Hoạt Động: {TOOL_COUNT_LABEL} Tools</span>
               </span>
             </div>
           </div>
@@ -231,7 +233,7 @@ claude mcp add aihub-gateway node ./mcp-gateway/index.js`;
                 <span>Tổng Tài Nguyên Điều Phối</span>
               </div>
               <div className="text-2xl font-bold text-slate-900 dark:text-white">
-                2.217 <span className="text-xs text-slate-500 font-normal">công cụ</span>
+                {TOOL_COUNT_LABEL} <span className="text-xs text-slate-500 font-normal">công cụ</span>
               </div>
             </div>
 
@@ -540,7 +542,7 @@ claude mcp add aihub-gateway node ./mcp-gateway/index.js`;
                 )}
                 {activeClientTab === 'antigravity' && (
                   <p className="text-[11px]">
-                    Thêm cấu hình vào danh mục MCP Servers của Antigravity Agent để mở rộng toàn bộ 2.217 kỹ năng.
+                    Thêm cấu hình vào danh mục MCP Servers của Antigravity Agent để mở rộng toàn bộ {TOOL_COUNT_LABEL} kỹ năng.
                   </p>
                 )}
               </div>

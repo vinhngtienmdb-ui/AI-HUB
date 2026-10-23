@@ -8,6 +8,9 @@ import { AITool, ConfigTemplate } from '../types';
 import { GitHubReadmeViewer } from './GitHubReadmeViewer';
 import { GitHubCodeViewer } from './GitHubCodeViewer';
 import { VisualDiagramViewer } from './VisualDiagramViewer';
+import { getVerifiedStars } from '../lib/verification';
+import { VerificationNotice } from './VerificationNotice';
+import { useToolDetails } from '../lib/toolDetails';
 
 interface ToolDetailModalProps {
   tool: AITool | null;
@@ -15,7 +18,9 @@ interface ToolDetailModalProps {
   onExecuteCommand?: (command: string) => void;
 }
 
-export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose }) => {
+export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool: baseTool, onClose }) => {
+  // Bổ sung README, hướng dẫn cài đặt/sử dụng, câu lệnh mẫu (tải theo nhu cầu)
+  const tool = useToolDetails(baseTool);
   if (!tool) return null;
 
   const [modalTab, setModalTab] = useState<'overview' | 'diagram' | 'setup' | 'usage' | 'readme'>('overview');
@@ -160,6 +165,7 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose 
 
         {/* Nội dung chi tiết theo từng Tab */}
         <div className="p-6 sm:p-8 overflow-y-auto space-y-6 flex-1">
+          <VerificationNotice tool={tool} />
           
           {/* TAB 1: TỔNG QUAN */}
           {modalTab === 'overview' && (
@@ -236,10 +242,10 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose 
                     <span>Tác giả: <strong className="text-slate-700 dark:text-slate-300 font-medium">{tool.authorName}</strong></span>
                     <span>•</span>
                     <span>Giấy phép: <span className="font-mono">{tool.license}</span></span>
-                    {tool.stars && (
+                    {getVerifiedStars(tool) !== null && (
                       <>
                         <span>•</span>
-                        <span>Đánh giá: <strong>{tool.stars.toLocaleString()}</strong> sao</span>
+                        <span>GitHub: <strong>{getVerifiedStars(tool)!.toLocaleString()}</strong> sao</span>
                       </>
                     )}
                     <span className="inline-flex items-center text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-full font-semibold">
@@ -403,7 +409,7 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose 
 
         {/* Chân Modal */}
         <div className="sticky bottom-0 z-10 px-6 py-3.5 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-          <span>Định dạng theo tiêu chuẩn tài liệu VibeCode 12 giai đoạn</span>
+          <span>Định dạng theo tiêu chuẩn tài liệu VibeCode 13 giai đoạn</span>
           <button
             onClick={onClose}
             className="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors"

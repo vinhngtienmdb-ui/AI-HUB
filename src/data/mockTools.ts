@@ -1,5 +1,7 @@
 import { AITool, CategoryInfo } from '../types';
-import allToolsJson from './allTools.json';
+// Danh sách công cụ không gồm README và hướng dẫn chi tiết; các trường đó được tải theo nhu cầu
+// qua src/lib/toolDetails.ts (xem server/toolDataSplit.js)
+import toolIndex from 'virtual:tool-index';
 
 export const CATEGORIES: CategoryInfo[] = [
   { id: 'all', nameVi: 'Tất cả lĩnh vực', descriptionVi: 'Toàn bộ kho tài nguyên công nghệ và giải pháp số', icon: 'Layers' },
@@ -72,4 +74,4 @@ export const CATEGORIES: CategoryInfo[] = [
   { id: 'vietnam', nameVi: '🇻🇳 Thị Trường Việt Nam', descriptionVi: 'Các công cụ, phần mềm, API và giải pháp công nghệ chuyên biệt cho người Việt', icon: 'Flag' }
 ];
 
-export const INITIAL_TOOLS: AITool[] = allToolsJson as AITool[];
+export const INITIAL_TOOLS: AITool[] = toolIndex as AITool[];

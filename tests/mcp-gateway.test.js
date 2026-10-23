@@ -106,3 +106,35 @@ test('Kiểm tra Smart MCP Router: Xử lý ngoại lệ đầu vào rỗng ho�
   const nullRes = routeTask(null);
   assert.equal(nullRes.success, false);
 });
+
+test('Kiểm tra Smart MCP Router: Từ khóa ngắn chỉ khớp nguyên từ, không khớp chuỗi con', () => {
+  assert.notStrictEqual(routeTask('Thiết kế database cho hệ thống đơn hàng').intentId, 'business_analysis_openba_kit');
+  assert.notStrictEqual(routeTask('Tạo ứng dụng react mới').intentId, 'reverse_engineering_rea');
+  assert.strictEqual(routeTask('Viết user story cho BA').intentId, 'business_analysis_openba_kit');
+});
+
+test('Bảng ý định dùng chung: Mọi ý định trỏ tới công cụ có thật, không trùng mã, từ khóa viết thường', async () => {
+  const { readFileSync } = await import('node:fs');
+  const intents = JSON.parse(readFileSync(new URL('../mcp-gateway/core-intents.json', import.meta.url), 'utf-8'));
+  const toolIds = new Set(getAllTools().map(t => t.id));
+  const seen = new Set();
+  for (const intent of intents) {
+    assert.ok(toolIds.has(intent.targetToolId), `Ý định ${intent.intentId} trỏ tới công cụ không tồn tại: ${intent.targetToolId}`);
+    assert.ok(!seen.has(intent.intentId), `Trùng mã ý định ${intent.intentId}`);
+    seen.add(intent.intentId);
+    for (const kw of intent.keywords) assert.strictEqual(kw, kw.toLowerCase(), `Từ khóa "${kw}" phải viết thường`);
+  }
+});
+
+test('Bộ so khớp ý định dùng chung: Khớp nguyên từ với từ khóa ngắn, chọn ý định điểm cao nhất', async () => {
+  const { matchesKeyword, findBestIntent } = await import('../mcp-gateway/intent-matcher.js');
+  assert.strictEqual(matchesKeyword('thiết kế database', 'ba'), false);
+  assert.strictEqual(matchesKeyword('viết srs cho ba.', 'ba'), true);
+  assert.strictEqual(matchesKeyword('tạo app react', 'rea'), false);
+  const intents = [
+    { intentId: 'a', targetToolId: 'x', keywords: ['momo'], priority: 5 },
+    { intentId: 'b', targetToolId: 'y', keywords: ['momo', 'ví momo'], priority: 1 }
+  ];
+  assert.strictEqual(findBestIntent('Thanh toán qua ví MoMo', intents).intent.intentId, 'b');
+  assert.strictEqual(findBestIntent('không liên quan', intents), null);
+});

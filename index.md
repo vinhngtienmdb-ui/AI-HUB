@@ -30,15 +30,19 @@ Hệ thống tài liệu thiết kế và đặc tả kỹ thuật cho dự án 
 - [13. Cơ sở dữ liệu](13_CO_SO_DU_LIEU.md): Cấu trúc bảng dữ liệu, trường thông tin và ràng buộc toàn vẹn.
 - [14. Đặc tả API](14_DAC_TA_API.md): Danh sách các điểm cuối (Endpoints), tham số gửi đi và định dạng phản hồi.
 
-## VII. Kiểm Thử Và An Toàn Bảo Mật
+## VII. Môi Trường AI Và Kiểm Thử Chất Lượng
 - [15. Quy tắc phát triển AI](15_QUY_TAC_PHAT_TRIEN_AI.md): Quy tắc phát triển và kỷ luật kỹ thuật dành cho trí tuệ nhân tạo.
 - [16. Chỉ dẫn hệ thống AI](16_CHI_DAN_HE_THONG_AI.md): Ngữ cảnh hệ thống và hướng dẫn thực thi cho trí tuệ nhân tạo.
 - [17. Kế hoạch kiểm thử](17_KE_HOACH_KIEM_THU.md): Chiến lược và các giai đoạn kiểm thử hệ thống.
 - [18. Kịch bản kiểm thử](18_KICH_BAN_KIEM_THU.md): Danh sách các trường hợp kiểm thử chi tiết.
-- [19. An toàn bảo mật](19_AN_TOAN_BAO_MAT.md): Cơ chế xác thực, phân quyền và bảo vệ dữ liệu.
 
-## VIII. Vận Hành Và Quản Lý Dự Án
-- [20. Lịch sử thay đổi](20_LICH_SU_THAY_DOI.md): Nhật ký các phiên bản và thay đổi mã nguồn.
-- [21. Nhật ký dự án](21_NHAT_KY_DU_AN.md): Nhật ký hoạt động chi tiết theo từng ngày làm việc.
-- [22. Danh mục kiểm tra](22_DANH_MUC_KIEM_TRA.md): Bảng theo dõi tiến độ công việc và trạng thái nghiệm thu.
-- [Hướng dẫn cài đặt & sử dụng MCP Server & API Gateway](HUONG_DAN_CAI_DAT_VA_SU_DUNG_MCP_API.md): Cẩm nang chi tiết thiết lập Stdio MCP Server cho Claude Desktop/Cursor và Cổng REST API có xác thực Bearer token.
+## VIII. Bảo Mật, Triển Khai Và Bảo Trì
+- [19. An toàn bảo mật](19_AN_TOAN_BAO_MAT.md): Biện pháp bảo mật đã triển khai, kiểm thử chứng minh và hạn chế đã biết.
+- [20. Quy trình triển khai](20_QUY_TRINH_TRIEN_KHAI.md): Đóng gói, kiểm tra liên tục (CI), cấu hình môi trường và phương án quay lui.
+- [21. Kế hoạch bảo trì](21_KE_HOACH_BAO_TRI.md): Giám sát, sao lưu, xử lý sự cố và bảo trì định kỳ.
+
+## IX. Vận Hành Và Quản Lý Dự Án
+- [22. Lịch sử thay đổi](22_LICH_SU_THAY_DOI.md): Nhật ký các phiên bản và thay đổi mã nguồn.
+- [23. Nhật ký dự án](23_NHAT_KY_DU_AN.md): Nhật ký hoạt động chi tiết theo từng ngày làm việc.
+- [24. Danh mục kiểm tra](24_DANH_MUC_KIEM_TRA.md): Bảng theo dõi tiến độ công việc và trạng thái nghiệm thu.
+- [Hướng dẫn cài đặt & sử dụng MCP Server & API Gateway](HUONG_DAN_CAI_DAT_VA_SU_DUNG_MCP_API.md): Thiết lập Stdio MCP Server cho Claude Desktop/Cursor và Cổng REST API có xác thực Bearer token.

@@ -9,6 +9,9 @@ import { AITool } from '../types';
 import { GitHubReadmeViewer } from '../components/GitHubReadmeViewer';
 import { GitHubCodeViewer } from '../components/GitHubCodeViewer';
 import { VisualDiagramViewer } from '../components/VisualDiagramViewer';
+import { formatStars, getVerifiedStars } from '../lib/verification';
+import { VerificationNotice } from '../components/VerificationNotice';
+import { useToolDetails } from '../lib/toolDetails';
 
 interface DetailPageProps {
   tool: AITool;
@@ -25,7 +28,7 @@ interface DetailPageProps {
 }
 
 export const DetailPage: React.FC<DetailPageProps> = ({
-  tool,
+  tool: baseTool,
   allTools,
   onNavigateHome,
   onNavigateCategory,
@@ -37,6 +40,8 @@ export const DetailPage: React.FC<DetailPageProps> = ({
   isAdmin = false,
   onOpenEditTaxonomy,
 }) => {
+  // Bổ sung README, hướng dẫn cài đặt/sử dụng, câu lệnh mẫu (tải theo nhu cầu)
+  const tool = useToolDetails(baseTool);
   const [activeTab, setActiveTab] = useState<'overview' | 'diagram' | 'usage' | 'config' | 'readme'>('overview');
   const [copiedConfigIndex, setCopiedConfigIndex] = useState<number | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -154,16 +159,19 @@ export const DetailPage: React.FC<DetailPageProps> = ({
 
                   {/* Sao và Lượt dùng */}
                   <div className="flex items-center space-x-4 mt-3 text-xs text-slate-500 dark:text-slate-400">
-                    <span className="flex items-center space-x-1 font-bold text-amber-500">
-                      <Star className="w-4 h-4 fill-current" />
-                      <span>{tool.stars ? (tool.stars >= 1000 ? `${(tool.stars / 1000).toFixed(1)}k` : tool.stars) : '4.8'}</span>
-                      <span className="text-slate-400 font-normal">({tool.reviewCount || '12.5k đánh giá'})</span>
-                    </span>
-                    <span>•</span>
-                    <span className="flex items-center space-x-1">
-                      <Users className="w-3.5 h-3.5" />
-                      <span>{tool.usageCount || '12.5k lượt sử dụng'}</span>
-                    </span>
+                    {getVerifiedStars(tool) !== null && (
+                      <span className="flex items-center space-x-1 font-bold text-amber-500">
+                        <Star className="w-4 h-4 fill-current" />
+                        <span>{formatStars(getVerifiedStars(tool)!)}</span>
+                        {tool.reviewCount && <span className="text-slate-400 font-normal">({tool.reviewCount})</span>}
+                      </span>
+                    )}
+                    {tool.usageCount && (
+                      <span className="flex items-center space-x-1">
+                        <Users className="w-3.5 h-3.5" />
+                        <span>{tool.usageCount}</span>
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
@@ -407,6 +415,8 @@ export const DetailPage: React.FC<DetailPageProps> = ({
           )}
         </div>
 
+        <VerificationNotice tool={tool} className="mb-6" />
+
         {/* NỘI DUNG THEO TAB */}
         {activeTab === 'overview' && (
           <div className="space-y-8 animate-fadeIn">
@@ -561,8 +571,12 @@ export const DetailPage: React.FC<DetailPageProps> = ({
                       </p>
                       <div className="flex items-center justify-between mt-3 text-[10px] text-amber-500 font-bold">
                         <span className="flex items-center space-x-0.5">
-                          <Star className="w-3 h-3 fill-current" />
-                          <span>{alt.stars || '4.8'}</span>
+                          {getVerifiedStars(alt) !== null && (
+                            <>
+                              <Star className="w-3 h-3 fill-current" />
+                              <span>{formatStars(getVerifiedStars(alt)!)}</span>
+                            </>
+                          )}
                         </span>
                         <span className="text-indigo-600 group-hover:translate-x-0.5 transition-transform">
                           Xem chi tiết →

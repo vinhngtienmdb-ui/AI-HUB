@@ -125,7 +125,7 @@ export const ContributeModal: React.FC<ContributeModalProps> = ({
       contributedBy: currentUserEmail || 'Thành viên ẩn danh',
       contributedAt: new Date().toISOString().split('T')[0],
       stars: 5.0,
-      linkHealth: 'healthy',
+      linkHealth: 'unchecked',
       featured: false,
     };
 

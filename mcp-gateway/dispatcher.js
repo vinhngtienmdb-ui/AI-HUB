@@ -3,6 +3,8 @@
  * Chịu trách nhiệm tạo gói phản hồi hoàn chỉnh, sinh chỉ dẫn cấu hình và lệnh chạy cho AI Agent
  */
 
+import { getAllTools } from './smart-router.js';
+
 export function dispatchTask(routingResult, taskDescription, userParameters = {}) {
   if (!routingResult || !routingResult.matchedTool) {
     return {
@@ -57,7 +59,7 @@ export function dispatchTask(routingResult, taskDescription, userParameters = {}
     contextOptimization: {
       status: 'ACTIVE',
       tokenSavedRatio: '~95%',
-      explanation: 'Người dùng không cần nạp toàn bộ 2.216 công cụ vào cửa sổ ngữ cảnh. MCP Gateway chỉ nạp duy nhất định nghĩa của công cụ được điều phối.'
+      explanation: `Người dùng không cần nạp toàn bộ ${getAllTools().length.toLocaleString('vi-VN')} công cụ vào cửa sổ ngữ cảnh. MCP Gateway chỉ nạp duy nhất định nghĩa của công cụ được điều phối.`
     }
   };
 }
