@@ -4,6 +4,22 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.51 (Ngày 23-10-2026)
+- **Loại hình**: Xử lý dữ liệu đã gắn nhãn kiểm định (CL-05b phần A), script `scripts/migrations/2026-10-23-a-xu-ly-du-lieu-gan-nhan.cjs`.
+- **Sửa liên kết nguồn (1.844 bản ghi)**:
+  - 1.830 thành phần của `davila7/claude-code-templates` trỏ tới đường dẫn cũ; chuyển sang `cli-tool/components/...` khi đường dẫn mới có thật.
+  - 5 máy chủ MCP tham chiếu (sqlite, postgres, puppeteer, brave-search, gdrive) chuyển sang `modelcontextprotocol/servers-archived`.
+  - 9 dự án có URL sai được sửa sau khi đọc README thật: UnderTheSea, ZaloPay SDK, Claude Context, Claude Command Suite, Claude Squad, Claude Flow, ccusage, REA, Playwright MCP.
+- **Thay câu lệnh cài đặt bịa bằng câu lệnh thật**:
+  - 1.830 thành phần template: dùng `npx claude-code-templates@latest --<loại> <nhóm>/<tên> --yes` (cờ xác minh trong mã nguồn CLI); cấu hình JSON của MCP, setting, hook lấy nguyên từ tệp gốc. Trước đây là các lệnh không tồn tại như `agy skill add`, `claude plugin add`, `claude hook add`.
+  - 21 dự án khác: câu lệnh chép từ README chính thức (ollama, n8n, vLLM, Context7, mem0, Playwright MCP...).
+  - Thêm nền tảng `claude_code` (Claude Code).
+- **Ẩn 286 bản ghi** (trạng thái `rejected`, lý do ghi trong `reviewNote`, có thể khôi phục): 47 nguồn không tồn tại, 227 "MCP server"/SDK có gói cài đặt không tồn tại và nguồn chỉ là trang chủ doanh nghiệp, 12 bản ghi trùng lặp.
+- **Bộ định tuyến**: chỉ định tuyến tới công cụ đang hiển thị; ý định VietQR trỏ sang VietQR Core (`zeforc/viet-qr`), ý định phân tích nghiệp vụ trỏ sang Business Analyst Agent (OpenBA-Kit không có repo).
+- **Kiểm định**: `validate-data.cjs` kiểm tra thêm đường dẫn bên trong repo GitHub.
+- **Kết quả**: 1.936 công cụ đang hiển thị, 0 công cụ có nguồn không tồn tại, 0 công cụ có câu lệnh dùng gói không tồn tại ngoài 2 thành phần template có lỗi ở tệp gốc (có cảnh báo).
+- **Kiểm thử**: 50/50 đạt.
+
 ### Phiên Bản 2.0.50 (Ngày 23-10-2026)
 - **Loại hình**: Chất lượng dữ liệu, hiệu năng, hợp nhất mã nguồn, đồng bộ tài liệu theo chuẩn VibeCode 2.0.
 - **Dữ liệu**:

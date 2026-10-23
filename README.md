@@ -1,9 +1,9 @@
 # AI Hub - Nền Tảng Quản Lý Công Cụ AI, Máy Chủ MCP & Kỹ Năng Tác Tử Chuẩn Hóa
 
 [![Giấy Phép](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Phiên Bản](https://img.shields.io/badge/Phiên_Bản-2.0.50-emerald.svg)](22_LICH_SU_THAY_DOI.md)
+[![Phiên Bản](https://img.shields.io/badge/Phiên_Bản-2.0.51-emerald.svg)](22_LICH_SU_THAY_DOI.md)
 [![Quy Trình VibeCode](https://img.shields.io/badge/Quy_Trình-VibeCode_13_Giai_Đoạn-purple.svg)](index.md)
-[![Tổng Số Công Cụ](https://img.shields.io/badge/Kho_Dữ_Liệu-2.222_Mục-orange.svg)](#)
+[![Tổng Số Công Cụ](https://img.shields.io/badge/Kho_Dữ_Liệu-1.936_Mục-orange.svg)](#)
 [![Khung Làm Việc Mở Rộng](https://img.shields.io/badge/Khung_Làm_Việc-Mở_Rộng_Toàn_Màn_Hình-blueviolet.svg)](#)
 [![Giao Diện Linh Hoạt](https://img.shields.io/badge/Giao_Diện-Left_Sidebar_Thu_Gọn-blue.svg)](#)
 
@@ -15,17 +15,17 @@ Dự án được xây dựng tuân thủ nghiêm ngặt **Quy trình VibeCode C
 
 ## 🌟 Tính Năng Nổi Bật
 
-1. **Kho Lưu Trữ Đồ Sộ (2.222 Công Cụ & 3.655 Cấu Hình)**:
-   - Tổng hợp và chuẩn hóa dữ liệu từ các nguồn hàng đầu thế giới và Việt Nam (`phandonggiang.com/ai-templates`, `mcpmarket.com`, `awesome-mcp-servers`, GitHub, GitLab).
-   - Phân loại tách biệt rạch ròi 8 nhóm thành phần kỹ thuật:
-     - **Kỹ năng tác tử (Skills)**: 897 mục.
-     - **Tác tử chuyên sâu (Agents)**: 432 mục.
-     - **Lệnh phím tắt (Commands)**: 290 mục.
-     - **Máy chủ MCP (MCP Servers)**: 154 mục.
-     - **Cấu hình môi trường (Settings)**: 72 mục.
-     - **Móc nối tự động (Hooks)**: 62 mục.
-     - **Bản mẫu dự án (Templates)**: 17 mục.
-     - **Quy trình tự động hóa (Workflows)**: 6 mục hàng đầu (n8n, Dify, Flowise, Langflow, FastGPT).
+1. **Kho Dữ Liệu Đã Kiểm Định (1.936 Công Cụ Đang Hiển Thị & 1.960 Cấu Hình)**:
+   - Tổng hợp từ các nguồn `davila7/claude-code-templates`, `mcpmarket.com`, `awesome-mcp-servers`, GitHub và các dự án Việt Nam.
+   - Mọi công cụ đang hiển thị có liên kết nguồn đã kiểm tra tồn tại và câu lệnh cài đặt không dùng gói npm không tồn tại (`npm run data:validate`). 286 bản ghi không xác minh được hoặc trùng lặp được ẩn kèm lý do (trạng thái `rejected`).
+   - Phân loại theo nhóm thành phần (số liệu ngày 2026-10-23):
+     - **Kỹ năng tác tử (Skills)**: 862 mục.
+     - **Tác tử chuyên sâu (Agents)**: 437 mục.
+     - **Lệnh phím tắt (Commands)**: 272 mục.
+     - **Máy chủ MCP (MCP Servers)**: 156 mục.
+     - **Cấu hình môi trường (Settings)**: 70 mục.
+     - **Móc nối tự động (Hooks)**: 61 mục.
+     - **API, SDK, phần mềm, mô hình, bản mẫu, quy trình và loại khác**: 78 mục.
 
 2. **Mở Rộng Khung Làm Việc (Workspace Expansion)**:
    - **Chế độ Mở rộng Toàn Màn hình (Full-width Fluid Canvas 100%)**: Chuyển đổi linh hoạt giữa giao diện căn giữa tiêu chuẩn và không gian làm việc rộng mở cực đại.

@@ -12,8 +12,11 @@ import coreIntents from '../../mcp-gateway/core-intents.json';
 
 const CORE_INTENTS = coreIntents as CoreIntent[];
 
+// Chỉ định tuyến tới công cụ đang hiển thị (bỏ qua công cụ bị ẩn do không xác minh được hoặc trùng lặp)
+const PUBLISHED_TOOLS = INITIAL_TOOLS.filter(t => t.status === 'published' || !t.status);
+
 export function getAllToolsFrontend(): AITool[] {
-  return INITIAL_TOOLS;
+  return PUBLISHED_TOOLS;
 }
 
 export interface RoutingFrontendResult {
@@ -36,7 +39,7 @@ export function routeTaskFrontend(query: string): RoutingFrontendResult {
   }
 
   const normalized = query.toLowerCase().trim();
-  const allTools = INITIAL_TOOLS;
+  const allTools = PUBLISHED_TOOLS;
 
   // Ý định chuyên biệt: dùng chung bảng và bộ so khớp với máy chủ MCP (mcp-gateway/core-intents.json)
   const bestIntent = findBestIntent(normalized, CORE_INTENTS);
@@ -97,7 +100,7 @@ export function dispatchTaskFrontend(
   taskDescription: string,
   parameters: Record<string, any> = {}
 ) {
-  const tool = routing.matchedTool || INITIAL_TOOLS[0];
+  const tool = routing.matchedTool || PUBLISHED_TOOLS[0];
   const sampleCli = tool.configs && tool.configs.length > 0 && tool.configs[0].cliCommand
     ? tool.configs[0].cliCommand
     : `npx @aihub/${tool.id} run`;

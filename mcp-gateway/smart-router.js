@@ -23,6 +23,11 @@ export function getAllTools() {
   return cachedTools;
 }
 
+// Công cụ đang hiển thị (bỏ qua công cụ bị ẩn do không xác minh được hoặc trùng lặp)
+export function getPublishedTools() {
+  return getAllTools().filter(t => t.status === 'published' || !t.status);
+}
+
 // Bảng ánh xạ ý định chuyên biệt (Core Intent Profiles), dùng chung với giao diện web
 const CORE_INTENTS = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'core-intents.json'), 'utf-8'));
 
@@ -42,7 +47,7 @@ export function routeTask(taskDescription) {
   }
 
   const queryNormalized = taskDescription.toLowerCase().trim();
-  const allTools = getAllTools();
+  const allTools = getPublishedTools();
   const toolMap = new Map(allTools.map(t => [t.id, t]));
 
   // 1. Kiểm tra đối sánh với bảng ý định chuyên biệt (Core Intent Profiles)
@@ -94,8 +99,8 @@ export function routeTask(taskDescription) {
     };
   }
 
-  // 3. Nếu không có kết quả khớp, chọn OpenBA-Kit làm trợ lý phân tích nghiệp vụ mặc định
-  const defaultTool = toolMap.get('spmtitsolution-openba-kit-57-ai-skills') || allTools[0];
+  // 3. Nếu không có kết quả khớp, chọn tác tử phân tích nghiệp vụ làm trợ lý mặc định
+  const defaultTool = toolMap.get('agent-1013') || allTools[0];
   return {
     success: true,
     strategy: 'DEFAULT_ANALYST_FALLBACK',

@@ -80,6 +80,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const platforms: { id: Platform | 'all'; name: string; icon: any }[] = [
     { id: 'all', name: 'Tất cả nền tảng', icon: Monitor },
     { id: 'claude_desktop', name: 'Claude Desktop', icon: Monitor },
+    { id: 'claude_code', name: 'Claude Code', icon: Monitor },
     { id: 'antigravity', name: 'Antigravity IDE', icon: Monitor },
     { id: 'cursor', name: 'Cursor AI', icon: Monitor },
   ];

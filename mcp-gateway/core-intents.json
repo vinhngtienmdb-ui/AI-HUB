@@ -121,7 +121,7 @@
   },
   {
     "intentId": "fintech_vietnam_vietqr",
-    "targetToolId": "vietqr-generator-napas247-mcp",
+    "targetToolId": "vn-repo-vietqr-emvco-core",
     "keywords": [
       "vietqr",
       "mã qr ngân hàng",
@@ -181,8 +181,8 @@
     "priority": 10
   },
   {
-    "intentId": "business_analysis_openba_kit",
-    "targetToolId": "spmtitsolution-openba-kit-57-ai-skills",
+    "intentId": "business_analysis",
+    "targetToolId": "agent-1013",
     "keywords": [
       "business analyst",
       "ba",
