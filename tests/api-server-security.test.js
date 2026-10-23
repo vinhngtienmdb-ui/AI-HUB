@@ -75,3 +75,29 @@ test('API Gateway 03: CORS chỉ cho phép nguồn localhost, chặn trang web l
     server.close();
   }
 });
+
+test('API Gateway 04: Khởi động qua node index.js --serve vẫn tạo khóa admin đầu tiên', async () => {
+  const { spawn } = await import('node:child_process');
+  const fs = await import('node:fs');
+  const os = await import('node:os');
+  const path = await import('node:path');
+  const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'aihub-serve-'));
+  const child = spawn(process.execPath, ['mcp-gateway/index.js', '--serve', '--port', '0'], {
+    env: { ...process.env, AIHUB_DATA_DIR: dataDir },
+    stdio: ['ignore', 'pipe', 'pipe']
+  });
+  let output = '';
+  child.stdout.on('data', d => { output += d; });
+  child.stderr.on('data', d => { output += d; });
+  try {
+    const deadline = Date.now() + 15000;
+    while (!/aihub_live_/.test(output) && Date.now() < deadline) {
+      await new Promise(r => setTimeout(r, 100));
+    }
+    assert.match(output, /aihub_live_[A-Za-z0-9_-]+/, `Không thấy khóa admin được in ra:\n${output}`);
+    const keys = JSON.parse(fs.readFileSync(path.join(dataDir, 'api-keys.json'), 'utf-8'));
+    assert.ok(keys.some(k => k.role === 'admin' && k.status === 'active'));
+  } finally {
+    child.kill();
+  }
+});

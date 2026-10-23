@@ -57,12 +57,14 @@ const ADMIN_ENDPOINTS = new Set([
 
 const ALLOWED_ROLES = ['developer', 'admin'];
 
-// Khởi tạo một số khóa mẫu nếu kho lưu trữ chưa có khóa nào
-const initialKeys = loadAllKeyRecords();
-const shouldBootstrapAdminKey =
-  initialKeys.filter(k => k.role === 'admin' && k.status === 'active').length === 0 &&
-  process.argv[1] && process.argv[1].endsWith('api-server.js');
-if (shouldBootstrapAdminKey) {
+/**
+ * Tạo khóa quản trị viên đầu tiên khi kho khóa chưa có khóa admin nào đang hoạt động.
+ * Gọi khi khởi động máy chủ (cả `node api-server.js` lẫn `node index.js --serve`),
+ * không gọi khi chỉ import module (kiểm thử, máy chủ MCP stdio).
+ */
+export function bootstrapAdminKeyIfMissing() {
+  const hasActiveAdmin = loadAllKeyRecords().some(k => k.role === 'admin' && k.status === 'active');
+  if (hasActiveAdmin) return null;
   const { rawKey } = generateSecureApiKey({
     name: 'Khóa Mặc Định Cho Quản Trị Viên',
     role: 'admin',
@@ -71,6 +73,7 @@ if (shouldBootstrapAdminKey) {
   });
   console.log('[AI HUB] Đã tạo khóa quản trị viên. Lưu lại ngay, khóa chỉ hiển thị một lần:');
   console.log(`[AI HUB] ${rawKey}`);
+  return rawKey;
 }
 
 /**
@@ -514,6 +517,7 @@ export const server = http.createServer(requestHandler);
  * Hàm khởi chạy dịch vụ
  */
 export function startApiServer(port = PORT, host = HOST) {
+  bootstrapAdminKeyIfMissing();
   return new Promise((resolve, reject) => {
     server.listen(port, host, () => {
       console.log(`=======================================================`);
