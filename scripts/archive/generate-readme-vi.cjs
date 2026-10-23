@@ -1,4 +1,5 @@
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 
 const toolsPath = path.join(__dirname, '..', 'src', 'data', 'allTools.json');
@@ -8,7 +9,9 @@ const tools = JSON.parse(fs.readFileSync(toolsPath, 'utf8'));
 console.log(`Tổng số công cụ trong hệ thống: ${tools.length}`);
 
 // 1. Đọc TOÀN VĂN nội dung gốc của VibeCoding Skill từ tệp SKILL.md
-const vibecodingOriginalSkillPath = 'C:/Users/vinhn/.claude/skills/vibecoding/SKILL.md';
+// Đường dẫn SKILL.md: biến môi trường VIBECODING_SKILL_PATH, mặc định ~/.claude/skills/vibecoding/SKILL.md
+const vibecodingOriginalSkillPath = process.env.VIBECODING_SKILL_PATH ||
+  path.join(os.homedir(), '.claude', 'skills', 'vibecoding', 'SKILL.md');
 let vibecodingFullReadme = '';
 if (fs.existsSync(vibecodingOriginalSkillPath)) {
   const rawSkillContent = fs.readFileSync(vibecodingOriginalSkillPath, 'utf8');
@@ -19,6 +22,10 @@ if (fs.existsSync(vibecodingOriginalSkillPath)) {
   } else {
     vibecodingFullReadme = rawSkillContent.trim();
   }
+}
+
+if (!vibecodingFullReadme) {
+  console.warn(`Không tìm thấy ${vibecodingOriginalSkillPath}; giữ nguyên README hiện có của VibeCoding Skill.`);
 }
 
 // Bổ sung thêm Mermaid Diagram trực quan ngay dưới phần sơ đồ ASCII của Quy trình 13 giai đoạn
@@ -66,7 +73,9 @@ if (vibecodingFullReadme.includes('## II. Cấu Trúc Tổng Thể Quy Trình'))
 
 // 2. Nội dung chi tiết toàn vẹn chuẩn GitHub cho các dự án quan trọng
 const customReadmes = {
-  'vibecoding-skill-dev-lifecycle': vibecodingFullReadme,
+  // Không tìm thấy SKILL.md thì giữ nguyên README hiện có thay vì thay bằng README mẫu chung
+  'vibecoding-skill-dev-lifecycle': vibecodingFullReadme ||
+    (tools.find(t => t.id === 'vibecoding-skill-dev-lifecycle') || {}).readmeVi || '',
 
   'mads-lorentzen-ai-job-search': `# AI Job Search: Khung Tự Động Hóa Toàn Diện Quy Trình Xin Việc Trên Máy Cá Nhân Bằng Claude Code
 
@@ -268,9 +277,8 @@ AI HUB VN Smart MCP Gateway là giải pháp máy chủ MCP cổng một cửa (
   "mcpServers": {
     "aihub-smart-gateway": {
       "command": "node",
-      "args": ["C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/mcp-gateway/server.js"],
+      "args": ["<DUONG_DAN_TOI_AI-HUB>/mcp-gateway/index.js"],
       "env": {
-        "AIHUB_API_KEY": "aihub_live_vn_production_key_2026",
         "NODE_ENV": "production"
       }
     }
