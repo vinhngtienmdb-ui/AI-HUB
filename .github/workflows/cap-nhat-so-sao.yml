@@ -1,0 +1,59 @@
+name: Cập nhật số sao và kiểm định dữ liệu
+
+# Chạy hằng tuần (thứ Hai 02:17 UTC) hoặc chạy tay trong tab Actions.
+# Lấy số sao thật từ GitHub API bằng GITHUB_TOKEN có sẵn, kiểm định lại liên kết và gói cài đặt,
+# rồi mở pull request để quản trị viên xem xét trước khi hợp nhất (không ghi thẳng lên main).
+on:
+  schedule:
+    - cron: '17 2 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+concurrency:
+  group: cap-nhat-so-sao
+  cancel-in-progress: false
+
+jobs:
+  cap-nhat:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: tu-dong/cap-nhat-so-sao
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Cài đặt gói phụ thuộc
+        run: npm ci
+      - name: Kiểm định trực tuyến và lấy số sao thật
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run data:validate -- --online --write
+      - name: Kiểm thử dữ liệu
+        run: npm test
+      - name: Mở pull request khi dữ liệu thay đổi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- src/data/allTools.json; then
+            echo "Dữ liệu không thay đổi."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git add src/data/allTools.json
+          git commit -m "chore(data): cập nhật số sao thật và kết quả kiểm định ($(date -u +%F))"
+          git push --force origin "$BRANCH"
+          if [ -z "$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')" ]; then
+            gh pr create --base main --head "$BRANCH" \
+              --title "Cập nhật số sao thật và kết quả kiểm định dữ liệu" \
+              --body "Tạo tự động bởi workflow \`cap-nhat-so-sao.yml\`: số sao lấy từ GitHub API cho công cụ trỏ tới gốc repo, cập nhật \`linkHealth\` và trường \`verification\`. Kiểm tra các công cụ chuyển sang \`broken\` trước khi hợp nhất."
+          fi
+          # Pull request do GITHUB_TOKEN tạo không tự kích hoạt CI; chạy CI bằng workflow_dispatch trên nhánh này
+          gh workflow run ci.yml --ref "$BRANCH"

@@ -53,6 +53,7 @@ Sự cố bảo mật (ví dụ lộ khóa API): thu hồi khóa qua `POST /api/
 | Tần suất | Công việc |
 |---|---|
 | Mỗi pull request | CI: kiểm thử, kiểm tra kiểu, đóng gói. |
+| Hằng tuần (tự động) | Workflow `.github/workflows/cap-nhat-so-sao.yml` (thứ Hai 02:17 UTC): kiểm định trực tuyến, lấy số sao thật từ GitHub API, mở pull request `tu-dong/cap-nhat-so-sao` khi dữ liệu thay đổi; quản trị viên xem các công cụ chuyển sang `broken` rồi hợp nhất. |
 | Hằng tuần | Sao lưu `mcp-gateway/data/`. Chạy `npm audit --omit=dev`, ghi nhận lỗ hổng mới vào `19_AN_TOAN_BAO_MAT.md`. |
 | Hằng tháng | Cập nhật gói phụ thuộc (`npm outdated`), chạy lại CI. Chạy `npm run data:validate` để kiểm tra chất lượng kho dữ liệu công cụ. |
 | Hằng quý | Rà soát khóa API không sử dụng hoặc sắp hết hạn, thu hồi khóa thừa. Rà soát lại `19_AN_TOAN_BAO_MAT.md`. |
