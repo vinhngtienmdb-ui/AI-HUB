@@ -7,6 +7,9 @@
  * 1. Thành phần của davila7/claude-code-templates: sinh hướng dẫn từ chính tệp thành phần
  *    (frontmatter của agent/command/skill, cấu hình JSON của MCP/hook/setting).
  * 2. Các dự án khác: hướng dẫn và câu lệnh chép từ README chính thức (đọc ngày 2026-10-23).
+ * 3. Bỏ cấu hình dùng lệnh `agy` khi README của nguồn không có hướng dẫn tương ứng (giữ cho dự án AI HUB của chủ dự án).
+ * 4. README hiển thị (readmeVi) có cấu trúc sinh tự động: sinh lại mục 3 (cài đặt), 4 (sử dụng), 5 (cấu hình)
+ *    từ configs, installGuideVi, usageGuideVi, samplePromptsVi để không còn mâu thuẫn với các tab khác.
  *
  * Sau khi chạy: npm run data:validate -- --online --write
  */
@@ -69,6 +72,11 @@ function parseFrontmatter(text) {
 // Mô tả gốc: bỏ phần ví dụ, gộp khoảng trắng, giới hạn độ dài theo câu
 function cleanDescription(desc) {
   let text = String(desc || '').split(/<example>/i)[0].replace(/\\n/g, ' ').replace(/\s+/g, ' ').trim();
+  // Câu cuối kết thúc bằng dấu hai chấm dẫn vào phần ví dụ đã bị bỏ: lược câu đó
+  if (text.endsWith(':')) {
+    const lastEnd = Math.max(text.lastIndexOf('. '), text.lastIndexOf('! '), text.lastIndexOf('? '));
+    if (lastEnd > 0) text = text.slice(0, lastEnd + 1);
+  }
   if (text.length > 420) {
     const cut = text.slice(0, 420);
     const end = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('. '));
@@ -309,6 +317,50 @@ for (const tool of pending) {
   tool.usageGuideVi = [...guide.usage, `Tài liệu gốc: ${tool.sourceUrl}`].join('\n');
   tool.verification.guideIsTemplate = false;
   stats.readmeGuides++;
+}
+
+// 3. Lệnh `agy ...` không có trong README của nguồn (đã kiểm tra morluto/rea, vietnamese-mcp, kyberswap)
+const KEEP_AGY = new Set(['aihub-vn-smart-mcp-gateway']);
+for (const tool of tools) {
+  if (!isPublished(tool) || KEEP_AGY.has(tool.id)) continue;
+  const kept = (tool.configs || []).filter(c => !/^agy\s/.test(String(c.cliCommand || '').trim()));
+  if (kept.length && kept.length < (tool.configs || []).length) {
+    tool.configs = kept;
+    tool.platforms = [...new Set(kept.map(c => c.platform))];
+    stats.agyRemoved = (stats.agyRemoved || 0) + 1;
+  }
+}
+
+// 4. Đồng bộ mục 3-5 của README sinh tự động với dữ liệu hiện tại
+const README_START = '\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường';
+const README_END = '\n## 6. ';
+const fence = (lang, body) => ['```' + lang, body, '```'].join('\n');
+function readmeSections(tool) {
+  const configs = tool.configs || [];
+  const install = ['## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường'];
+  for (const cfg of configs.filter(c => c.cliCommand)) install.push(`### Cài đặt cho ${cfg.platformName}:`, fence('bash', cfg.cliCommand), '');
+  install.push(tool.installGuideVi || '');
+  const usage = ['## 4. Hướng Dẫn Sử Dụng & Kịch Bản Thực Tế', tool.usageGuideVi || ''];
+  const prompts = Array.isArray(tool.samplePromptsVi) ? tool.samplePromptsVi.filter(Boolean) : [];
+  if (prompts.length) usage.push('', '### Các Câu Lệnh / Lời Nhắc (Prompts) Mẫu Bằng Tiếng Việt', ...prompts.map((p, i) => `${i + 1}. \`"${p}"\``));
+  const config = ['## 5. Mẫu Cấu Hình Tích Hợp Hệ Thống'];
+  for (const cfg of configs) {
+    config.push(`### Cấu hình cho ${cfg.platformName}`);
+    if (cfg.cliCommand) config.push('**Lệnh cài đặt:**', fence('bash', cfg.cliCommand), '');
+    config.push('**Mẫu cấu hình JSON:**', fence('json', cfg.jsonConfig), '');
+  }
+  return ['', install.join('\n'), '', '---', '', usage.join('\n'), '', '---', '', config.join('\n'), '', '---', ''].join('\n');
+}
+for (const tool of tools) {
+  if (!isPublished(tool) || typeof tool.readmeVi !== 'string') continue;
+  const start = tool.readmeVi.indexOf(README_START);
+  const end = tool.readmeVi.indexOf(README_END, start + 1);
+  if (start === -1 || end === -1) continue;
+  const updated = tool.readmeVi.slice(0, start) + readmeSections(tool) + tool.readmeVi.slice(end);
+  if (updated !== tool.readmeVi) {
+    tool.readmeVi = updated;
+    stats.readmeSynced = (stats.readmeSynced || 0) + 1;
+  }
 }
 
 fs.writeFileSync(DATA_FILE, JSON.stringify(tools, null, 2), 'utf-8');
