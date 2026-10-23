@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { findBestIntent } from './intent-matcher.js';
+import { routeQuery } from './gateway-core.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 // Đọc toàn bộ kho dữ liệu công cụ AI HUB VN
 const allToolsPath = path.resolve(__dirname, '../src/data/allTools.json');
 let cachedTools = null;
+let cachedPublished = null;
 
 export function getAllTools() {
   if (!cachedTools) {
@@ -25,88 +26,19 @@ export function getAllTools() {
 
 // Công cụ đang hiển thị (bỏ qua công cụ bị ẩn do không xác minh được hoặc trùng lặp)
 export function getPublishedTools() {
-  return getAllTools().filter(t => t.status === 'published' || !t.status);
+  if (!cachedPublished) cachedPublished = getAllTools().filter(t => t.status === 'published' || !t.status);
+  return cachedPublished;
 }
 
 // Bảng ánh xạ ý định chuyên biệt (Core Intent Profiles), dùng chung với giao diện web
-const CORE_INTENTS = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'core-intents.json'), 'utf-8'));
+export const CORE_INTENTS = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'core-intents.json'), 'utf-8'));
 
 /**
- * Phân tích ý định người dùng và định tuyến đến công cụ phù hợp nhất
+ * Phân tích ý định người dùng và định tuyến đến công cụ phù hợp nhất.
+ * Thuật toán nằm ở gateway-core.js, dùng chung với giao diện web.
  * @param {string} taskDescription Câu lệnh / bài toán nghiệp vụ người dùng yêu cầu
  * @returns {object} Kết quả định tuyến
  */
 export function routeTask(taskDescription) {
-  if (!taskDescription || typeof taskDescription !== 'string') {
-    return {
-      success: false,
-      error: 'Vui lòng cung cấp mô tả bài toán cần thực thi.',
-      matchedTool: null,
-      confidence: 0
-    };
-  }
-
-  const queryNormalized = taskDescription.toLowerCase().trim();
-  const allTools = getPublishedTools();
-  const toolMap = new Map(allTools.map(t => [t.id, t]));
-
-  // 1. Kiểm tra đối sánh với bảng ý định chuyên biệt (Core Intent Profiles)
-  const bestMatch = findBestIntent(queryNormalized, CORE_INTENTS);
-  const bestIntentMatch = bestMatch ? bestMatch.intent : null;
-  const highestScore = bestMatch ? bestMatch.score : 0;
-
-  if (bestIntentMatch && toolMap.has(bestIntentMatch.targetToolId)) {
-    const targetTool = toolMap.get(bestIntentMatch.targetToolId);
-    return {
-      success: true,
-      strategy: 'DIRECT_INTENT_MATCH',
-      confidence: Math.min(0.99, 0.75 + (highestScore / 100)),
-      intentId: bestIntentMatch.intentId,
-      matchedTool: targetTool,
-      reasoningVi: `Hệ thống nhận diện ý định thuộc nhóm chuyên môn [${targetTool.categoryNameVi}]. Công cụ được chọn là "${targetTool.name}" do đáp ứng sát nhất các từ khóa và nghiệp vụ yêu cầu.`
-    };
-  }
-
-  // 2. Tìm kiếm dự phòng theo độ tương đồng nội dung trong toàn bộ kho tài nguyên
-  const tokens = queryNormalized.split(/\s+/).filter(w => w.length > 2);
-  let bestFallbackTool = null;
-  let maxTokenHits = 0;
-
-  for (const tool of allTools) {
-    let hits = 0;
-    const searchableText = `${tool.name} ${tool.summaryVi} ${tool.purposeVi} ${(tool.tags || []).join(' ')}`.toLowerCase();
-
-    for (const token of tokens) {
-      if (searchableText.includes(token)) {
-        hits++;
-      }
-    }
-
-    if (hits > maxTokenHits) {
-      maxTokenHits = hits;
-      bestFallbackTool = tool;
-    }
-  }
-
-  if (bestFallbackTool && maxTokenHits > 0) {
-    return {
-      success: true,
-      strategy: 'SEMANTIC_KEYWORD_MATCH',
-      confidence: Math.min(0.85, 0.5 + (maxTokenHits * 0.1)),
-      intentId: 'general_domain_match',
-      matchedTool: bestFallbackTool,
-      reasoningVi: `Đã đối soát ngữ nghĩa trên toàn bộ kho ${allTools.length.toLocaleString('vi-VN')} tài nguyên của AI HUB VN và chọn "${bestFallbackTool.name}" thuộc lĩnh vực [${bestFallbackTool.categoryNameVi}].`
-    };
-  }
-
-  // 3. Nếu không có kết quả khớp, chọn tác tử phân tích nghiệp vụ làm trợ lý mặc định
-  const defaultTool = toolMap.get('agent-1013') || allTools[0];
-  return {
-    success: true,
-    strategy: 'DEFAULT_ANALYST_FALLBACK',
-    confidence: 0.5,
-    intentId: 'default_business_analyst',
-    matchedTool: defaultTool,
-    reasoningVi: `Yêu cầu mở rộng được chuyển tiếp đến trợ lý phân tích nghiệp vụ "${defaultTool.name}" để phỏng vấn làm rõ bài toán và bóc tách yêu cầu chi tiết.`
-  };
+  return routeQuery(taskDescription, getPublishedTools(), CORE_INTENTS);
 }

@@ -94,8 +94,48 @@ test('Kiểm tra Smart MCP Dispatcher: Đóng gói phản hồi, kế hoạch th
   assert.equal(dispatched.dispatchedTool.id, 'vn-repo-vietqr-emvco-core');
   assert.ok(dispatched.executionPlan.quickCliCommand);
   assert.ok(dispatched.executionPlan.sampleJsonConfig);
-  assert.equal(dispatched.contextOptimization.status, 'ACTIVE');
-  assert.equal(dispatched.contextOptimization.tokenSavedRatio, '~95%');
+  assert.match(dispatched.contextNote, /chỉ trả về định nghĩa của công cụ được chọn/);
+});
+
+test('Smart MCP Router: không đủ tin cậy thì trả NO_CONFIDENT_MATCH kèm gợi ý, không tự chọn công cụ', () => {
+  for (const query of ['viết bài thơ về mùa thu', 'thiết kế logo']) {
+    const routing = routeTask(query);
+    assert.equal(routing.strategy, 'NO_CONFIDENT_MATCH', query);
+    assert.equal(routing.success, false);
+    assert.equal(routing.matchedTool, null);
+    assert.ok(routing.suggestions.some(s => s.id === 'agent-1013'), 'luôn gợi ý trợ lý làm rõ yêu cầu');
+
+    const dispatched = dispatchTask(routing, query);
+    assert.equal(dispatched.status, 'NO_CONFIDENT_MATCH');
+    assert.equal(dispatched.dispatchedTool, undefined);
+  }
+});
+
+test('Smart MCP Router: cụm từ tiếng Việt khớp nguyên cụm ("thiết kế" không khớp "kế toán")', async () => {
+  const { scoreTools } = await import('../mcp-gateway/gateway-core.js');
+  const tools = [
+    { id: 'a', name: 'Phần mềm kế toán doanh nghiệp', summaryVi: '' },
+    { id: 'b', name: 'Công cụ thiết kế giao diện', summaryVi: '' },
+    { id: 'c', name: 'Bộ thiết kế logo', summaryVi: '' }
+  ];
+  const ids = scoreTools('thiết kế', tools).map(c => c.tool.id);
+  assert.deepEqual(ids.sort(), ['b', 'c']);
+});
+
+test('Smart MCP Router: khớp từ khóa trả độ tin cậy dưới mức ý định chuyên biệt và kèm phương án khác', () => {
+  const routing = routeTask('helm chart');
+  assert.equal(routing.strategy, 'KEYWORD_MATCH');
+  assert.ok(routing.confidence <= 0.85);
+  assert.match(routing.matchedTool.name, /helm/i);
+  assert.ok(Array.isArray(routing.suggestions));
+});
+
+test('Smart MCP Dispatcher: không bịa lệnh cài khi công cụ không có cliCommand', async () => {
+  const { buildDispatchResult } = await import('../mcp-gateway/gateway-core.js');
+  const tool = { id: 'no-cmd-tool', name: 'Công cụ không có lệnh', configs: [] };
+  const result = buildDispatchResult({ strategy: 'KEYWORD_MATCH', confidence: 0.7, intentId: 'keyword_match', matchedTool: tool, suggestions: [], reasoningVi: '' }, 1);
+  assert.equal(result.executionPlan.quickCliCommand, null);
+  assert.equal(result.executionPlan.sampleJsonConfig, null);
 });
 
 test('Kiểm tra Smart MCP Router: Xử lý ngoại lệ đầu vào rỗng hoặc không hợp lệ', () => {

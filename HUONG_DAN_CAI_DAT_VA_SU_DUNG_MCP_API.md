@@ -19,13 +19,13 @@ Hệ thống AI HUB VN không còn là bản mô phỏng (demo) mà là hệ th�
 │  MÁY CHỦ MCP (Stdio Server)          │  │  CỔNG REST API GATEWAY       │
 │  - Giao thức MCP JSON-RPC 2.0        │  │  - Điểm cuối: /api/v1/...    │
 │  - 4 Công cụ MCP chính thức          │  │  - Xác thực Bearer Token     │
-│  - Tối ưu 95% Context Window         │  │  - Giới hạn tần suất DoS     │
+│  - Chỉ trả về công cụ được chọn      │  │  - Giới hạn tần suất DoS     │
 └───────────────────┬──────────────────┘  └──────────────┬───────────────┘
                     │                                    │
                     ▼                                    ▼
 ┌────────────────────────────────────────────────────────────────────────┐
 │               BỘ ĐỊNH TUYẾN THÔNG MINH (SMART INTENT ROUTER)           │
-│   Nhận diện ý định tự nhiên -> Ánh xạ 39 Lĩnh vực -> 2.217 Tài nguyên │
+│  Bảng ý định chuyên biệt -> Chấm điểm từ khóa -> Công cụ đã kiểm duyệt │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -58,7 +58,22 @@ npm -v
 
 ## III. Hướng Dẫn Khởi Chạy Hệ Thống
 
-Toàn bộ mã nguồn dịch vụ nằm tại thư mục `mcp-gateway/` bên trong dự án.
+Toàn bộ mã nguồn dịch vụ nằm tại thư mục `mcp-gateway/` bên trong dự án. Máy chủ đọc kho dữ liệu `src/data/allTools.json`, nên cần tải toàn bộ kho mã và cài gói ở thư mục gốc:
+
+```bash
+git clone https://github.com/vinhngtienmdb-ui/AI-HUB.git
+cd AI-HUB
+npm install
+```
+
+### Cách Máy Chủ Chọn Công Cụ
+Mã nguồn: `mcp-gateway/gateway-core.js` (dùng chung cho máy chủ MCP, Cổng REST API và trang "Máy chủ MCP" trên web, nên cùng một câu hỏi cho cùng một kết quả).
+
+1. **Bảng ý định chuyên biệt** (`mcp-gateway/core-intents.json`): câu hỏi chứa từ khóa của một nhóm được chuyển thẳng tới công cụ gán cho nhóm đó (`DIRECT_INTENT_MATCH`).
+2. **Chấm điểm từ khóa** trên tên, nhãn, mô tả của toàn bộ công cụ đã kiểm duyệt: khớp nguyên từ, cụm từ tiếng Việt ("thiết kế", "tài liệu") khớp nguyên cụm, từ càng hiếm càng nặng. Chỉ chọn khi các từ khớp chiếm ít nhất 50% "lượng thông tin" của câu hỏi và có từ khớp ở tên hoặc nhãn công cụ (`KEYWORD_MATCH`, độ tin cậy tối đa 85%).
+3. **Không đủ tin cậy**: trả `NO_CONFIDENT_MATCH`, không tự chọn công cụ, kèm danh sách gợi ý gần nhất và trợ lý làm rõ yêu cầu (`agent-1013`).
+
+Lệnh cài (`quickCliCommand`) và cấu hình mẫu chỉ lấy từ dữ liệu đã kiểm định; công cụ không có lệnh cài thì trả `null`, xem `installGuideVi`.
 
 ### 1. Khởi Chạy Máy Chủ MCP Ở Chế Độ Stdio (Dành cho Claude Desktop & Cursor)
 Chế độ Stdio (Standard Input/Output) cho phép các ứng dụng tác tử giao tiếp trực tiếp qua tiến trình con mà không cần mở cổng mạng:
@@ -124,9 +139,9 @@ Thêm khối cấu hình sau vào mục `mcpServers`:
 
 Khởi động lại Claude Desktop, biểu tượng công cụ (hình chiếc búa) sẽ xuất hiện 4 công cụ của AI HUB VN:
 - `aihub_smart_dispatch`: Tự động phân tích yêu cầu và điều phối đến công cụ phù hợp nhất.
-- `aihub_resolve_capability`: Tra cứu năng lực chuyên môn theo 39 lĩnh vực.
+- `aihub_resolve_capability`: Tra cứu xem kho có công cụ cho một lĩnh vực, nghiệp vụ hay công nghệ không.
 - `aihub_explain_routing`: Minh bạch hóa lý do và chiến lược định tuyến.
-- `aihub_get_gateway_status`: Báo cáo số lượng công cụ quản lý và tỷ lệ tiết kiệm token.
+- `aihub_get_gateway_status`: Báo cáo số công cụ, số lĩnh vực và các nhóm ý định chuyên biệt (tính từ kho dữ liệu).
 
 ---
 
@@ -136,15 +151,15 @@ Khởi động lại Claude Desktop, biểu tượng công cụ (hình chiếc b
 3. Điền các trường thông tin:
    - **Name**: `aihub-smart-gateway`
    - **Type**: `command`
-   - **Command**: `node ./mcp-gateway/index.js`
-4. Lưu cấu hình. Mọi cửa sổ hội thoại của Cursor Composer và Agent sẽ tự động khai thác toàn bộ 2.217 công cụ qua máy chủ trung gian.
+   - **Command**: `node <DUONG_DAN_TOI_AI-HUB>/mcp-gateway/index.js` (đường dẫn tuyệt đối)
+4. Lưu cấu hình. Cursor Composer và Agent gọi được 4 công cụ của máy chủ trung gian.
 
 ---
 
 ### 3. Tích Hợp Vào Claude Code (CLI)
 Cấu hình máy chủ MCP `aihub-smart-gateway` vào tệp cấu hình toàn cục `~/.claude.json` (tại `C:\Users\vinhn\.claude.json`) hoặc chạy lệnh qua CLI:
 ```bash
-claude mcp add aihub-smart-gateway node C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/mcp-gateway/index.js
+claude mcp add aihub-smart-gateway -- node C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/mcp-gateway/index.js
 ```
 Hoặc cấu hình trực tiếp vào mục `"mcpServers"` trong tệp `~/.claude.json`:
 ```json
@@ -183,9 +198,9 @@ Google Antigravity hỗ trợ máy chủ MCP toàn cục qua tệp `~/.gemini/co
 
 2. **Định nghĩa lược đồ công cụ (JSON Schema)** tại thư mục `C:\Users\vinhn\.gemini\antigravity\mcp\aihub-smart-gateway\`:
 - `aihub_smart_dispatch.json`: Tiếp nhận và điều phối công việc tự động.
-- `aihub_resolve_capability.json`: Tra cứu năng lực theo 39 lĩnh vực.
+- `aihub_resolve_capability.json`: Tra cứu năng lực theo lĩnh vực, nghiệp vụ, công nghệ.
 - `aihub_explain_routing.json`: Minh bạch hóa lý do thuật toán định tuyến.
-- `aihub_get_gateway_status.json`: Trạng thái máy chủ và thống kê tiết kiệm token.
+- `aihub_get_gateway_status.json`: Trạng thái máy chủ, số công cụ, số lĩnh vực, nhóm ý định.
 - `instructions.md`: Cẩm nang chỉ dẫn AI Agent tương tác tối ưu.
 
 ---

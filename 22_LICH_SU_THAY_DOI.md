@@ -4,6 +4,16 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.2 (Ngày 23-10-2026)
+- **Loại hình**: Rà soát máy chủ MCP (`mcp-gateway/`), bỏ số liệu và khả năng ghi cứng, định tuyến trung thực hơn.
+- **Lõi dùng chung `mcp-gateway/gateway-core.js`**: thuật toán định tuyến và cấu trúc kết quả của 4 công cụ MCP dùng chung cho máy chủ stdio, Cổng REST API và trang "Máy chủ MCP" trên web. Trước đây web và máy chủ chấm điểm khác nhau nên cùng câu hỏi có thể ra hai kết quả.
+- **Định tuyến**: khớp nguyên từ, cụm từ tiếng Việt khớp nguyên cụm, từ hiếm nặng hơn từ phổ biến. Không đủ tin cậy thì trả `NO_CONFIDENT_MATCH` kèm gợi ý thay vì báo thành công (trước đây "viết bài thơ về mùa thu" chọn OpenHands với độ tin cậy 80%).
+- **Bỏ nội dung ghi cứng**: "39 lĩnh vực" (thực tế 30 lĩnh vực có công cụ), "tiết kiệm ~95% token" (không có phép đo), danh sách khả năng viết tay (có OpenBA-Kit đã bị ẩn); nay tính từ kho dữ liệu và `core-intents.json`.
+- **Bỏ lệnh cài bịa** khi công cụ không có lệnh (`npx -y <id>` ở máy chủ, `npx @aihub/<id> run` trên web); trả `null`.
+- **Trang Máy chủ MCP**: bỏ độ trễ giả lập, bỏ biến `AIHUB_API_KEY` không được dùng trong cấu hình Cursor, sửa lệnh `claude mcp add ... -- node <đường dẫn tuyệt đối>`, thêm bước `git clone` và `npm install`.
+- `aihub_resolve_capability`, `aihub_explain_routing` làm sạch đầu vào như `aihub_smart_dispatch`. Khai báo `zod` là phụ thuộc trực tiếp; `mcp-gateway/package.json` khai báo phụ thuộc và đánh dấu `private`.
+- **Kiểm thử**: `tests/mcp-stdio.test.js` khởi chạy máy chủ thật và gọi qua JSON-RPC (initialize, tools/list, tools/call); thêm kiểm thử định tuyến không đủ tin cậy, khớp cụm từ, không bịa lệnh. 56/56 đạt.
+
 ### Phiên Bản 2.1.1 (Ngày 23-10-2026)
 - **Loại hình**: Số sao thật (CL-05c).
 - Workflow `.github/workflows/cap-nhat-so-sao.yml`: hằng tuần lấy số sao từ GitHub API bằng `GITHUB_TOKEN` có sẵn, kiểm định lại dữ liệu, mở pull request để duyệt.

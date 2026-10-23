@@ -4,167 +4,93 @@
  * AI HUB VN — Smart MCP Gateway & Router (Máy Chủ MCP Trung Gian)
  * 
  * Đóng vai trò làm cổng kết nối duy nhất (Single Point of Entry) cho mọi AI Agent.
- * Tự động tiếp nhận ý định, định tuyến thông minh đến toàn bộ công cụ trong kho dữ liệu,
- * tối ưu hóa 95% cửa sổ ngữ cảnh (Context Window) và loại bỏ hoàn toàn việc phải cấu hình thủ công.
+ * Tiếp nhận ý định, chọn công cụ phù hợp trong kho dữ liệu và trả về hướng dẫn cài đặt của riêng công cụ đó,
+ * thay vì nạp toàn bộ kho vào cửa sổ ngữ cảnh của tác tử.
  */
 
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
-import { routeTask, getPublishedTools } from './smart-router.js';
+import { routeTask, getPublishedTools, CORE_INTENTS } from './smart-router.js';
 import { dispatchTask } from './dispatcher.js';
-import { sanitizeInput, authenticateBearerToken } from './security.js';
+import { sanitizeInput } from './security.js';
+import { GATEWAY_VERSION, buildCapabilityResult, buildExplanationResult, buildStatusResult } from './gateway-core.js';
 import { startApiServer } from './api-server.js';
 
 // Khởi tạo máy chủ MCP
 const server = new McpServer({
   name: 'aihub-vn-mcp-gateway',
-  version: '2.0.0'
+  version: GATEWAY_VERSION
 });
 
-// Tool 1: aihub_smart_dispatch — Nhận bài toán và tự động điều phối thực thi
+const jsonContent = (data, isError = false) => ({
+  ...(isError ? { isError: true } : {}),
+  content: [{ type: 'text', text: JSON.stringify(data, null, 2) }]
+});
+
+// Làm sạch đầu vào cho mọi công cụ nhận văn bản; trả về null nếu an toàn, hoặc phản hồi lỗi
+function rejectUnsafe(sanitized) {
+  if (sanitized.safe) return null;
+  return jsonContent({
+    status: 'SECURITY_ALERT',
+    error: sanitized.error,
+    message: 'Yêu cầu bị từ chối do vi phạm quy chuẩn an toàn bảo mật hệ thống AI HUB VN.'
+  }, true);
+}
+
+// Tool 1: aihub_smart_dispatch — Nhận bài toán và trả về công cụ phù hợp kèm hướng dẫn cài đặt
 server.tool(
   'aihub_smart_dispatch',
-  `Tiếp nhận yêu cầu công việc tự nhiên từ người dùng, tự động phân tích ý định và định tuyến đến công cụ AI hoặc máy chủ MCP chuyên trách phù hợp nhất trong kho ${getPublishedTools().length.toLocaleString('vi-VN')} tài nguyên AI HUB VN.`,
+  `Tiếp nhận yêu cầu công việc tự nhiên, phân tích ý định và chọn công cụ AI hoặc máy chủ MCP phù hợp nhất trong kho ${getPublishedTools().length.toLocaleString('vi-VN')} tài nguyên AI HUB VN. Khi không đủ tin cậy, trả về NO_CONFIDENT_MATCH kèm danh sách gợi ý.`,
   {
     task_description: z.string().describe('Mô tả chi tiết bài toán, nghiệp vụ hoặc tính năng cần thực hiện (Ví dụ: "Tạo đơn hàng thanh toán MoMo 100k", "Dịch ngược file nhị phân native", "Viết bản SRS IEEE 830", "Tạo mã VietQR Napas247")'),
-    parameters: z.record(z.any()).optional().describe('Các tham số bổ sung tùy chọn cho bài toán')
+    parameters: z.record(z.string(), z.any()).optional().describe('Các tham số bổ sung tùy chọn cho bài toán')
   },
   async ({ task_description, parameters = {} }) => {
-    // Kiểm tra và làm sạch dữ liệu đầu vào chống Injection
     const sanitized = sanitizeInput(task_description);
-    if (!sanitized.safe) {
-      return {
-        isError: true,
-        content: [
-          {
-            type: 'text',
-            text: JSON.stringify({
-              status: 'SECURITY_ALERT',
-              error: sanitized.error,
-              message: 'Yêu cầu bị từ chối do vi phạm quy chuẩn an toàn bảo mật hệ thống AI HUB VN.'
-            }, null, 2)
-          }
-        ]
-      };
-    }
-
+    const rejected = rejectUnsafe(sanitized);
+    if (rejected) return rejected;
     const routingResult = routeTask(sanitized.sanitizedText);
-    const dispatchResult = dispatchTask(routingResult, sanitized.sanitizedText, parameters);
-
-    return {
-      content: [
-        {
-          type: 'text',
-          text: JSON.stringify(dispatchResult, null, 2)
-        }
-      ]
-    };
+    return jsonContent(dispatchTask(routingResult, sanitized.sanitizedText, parameters));
   }
 );
 
 // Tool 2: aihub_resolve_capability — Kiểm tra năng lực nghiệp vụ
 server.tool(
   'aihub_resolve_capability',
-  'Tra cứu xem AI HUB VN có khả năng hỗ trợ mảng nghiệp vụ cụ thể hay không (Ví dụ: "fintech việt nam", "dịch ngược binary", "business analyst", "tự động hóa trình duyệt", "quản trị cơ sở dữ liệu").',
+  'Tra cứu xem AI HUB VN có công cụ hỗ trợ mảng nghiệp vụ cụ thể hay không (Ví dụ: "fintech việt nam", "dịch ngược binary", "business analyst", "tự động hóa trình duyệt", "quản trị cơ sở dữ liệu").',
   {
     capability_query: z.string().describe('Tên lĩnh vực, từ khóa hoặc công nghệ cần kiểm tra')
   },
   async ({ capability_query }) => {
-    const routingResult = routeTask(capability_query);
-    const tool = routingResult.matchedTool;
-
-    return {
-      content: [
-        {
-          type: 'text',
-          text: JSON.stringify({
-            query: capability_query,
-            supported: Boolean(tool),
-            confidence: Math.round(routingResult.confidence * 100) + '%',
-            recommendedTool: tool ? {
-              id: tool.id,
-              name: tool.name,
-              categoryNameVi: tool.categoryNameVi,
-              isVietnamMarket: Boolean(tool.isVietnamMarket),
-              officialUrl: tool.sourceUrl
-            } : null,
-            reasoningVi: routingResult.reasoningVi
-          }, null, 2)
-        }
-      ]
-    };
+    const sanitized = sanitizeInput(capability_query);
+    const rejected = rejectUnsafe(sanitized);
+    if (rejected) return rejected;
+    return jsonContent(buildCapabilityResult(sanitized.sanitizedText, routeTask(sanitized.sanitizedText)));
   }
 );
 
 // Tool 3: aihub_explain_routing — Minh bạch hóa quyết định định tuyến
 server.tool(
   'aihub_explain_routing',
-  'Giải trình chi tiết lý do và thuật toán định tuyến của MCP Gateway khi chọn một công cụ cụ thể cho yêu cầu của người dùng.',
+  'Giải trình lý do và thuật toán định tuyến của MCP Gateway khi chọn (hoặc không chọn được) công cụ cho yêu cầu của người dùng.',
   {
     task_description: z.string().describe('Bài toán cần phân tích lý do định tuyến')
   },
   async ({ task_description }) => {
-    const routingResult = routeTask(task_description);
-
-    return {
-      content: [
-        {
-          type: 'text',
-          text: JSON.stringify({
-            taskDescription: task_description,
-            routingStrategy: routingResult.strategy,
-            confidenceScore: routingResult.confidence,
-            intentIdentified: routingResult.intentId,
-            matchedTool: routingResult.matchedTool ? {
-              id: routingResult.matchedTool.id,
-              name: routingResult.matchedTool.name,
-              category: routingResult.matchedTool.categoryNameVi
-            } : null,
-            fullExplanationVi: routingResult.reasoningVi
-          }, null, 2)
-        }
-      ]
-    };
+    const sanitized = sanitizeInput(task_description);
+    const rejected = rejectUnsafe(sanitized);
+    if (rejected) return rejected;
+    return jsonContent(buildExplanationResult(sanitized.sanitizedText, routeTask(sanitized.sanitizedText)));
   }
 );
 
-// Tool 4: aihub_get_gateway_status — Trạng thái Gateway & Thống kê tối ưu hóa
+// Tool 4: aihub_get_gateway_status — Trạng thái Gateway, số liệu tính trực tiếp từ kho dữ liệu
 server.tool(
   'aihub_get_gateway_status',
-  'Báo cáo trạng thái hoạt động của MCP Gateway: số lượng tài nguyên sẵn sàng điều phối, số lượng công cụ Việt Nam và thống kê tiết kiệm Context Window.',
+  'Báo cáo trạng thái MCP Gateway: số công cụ đang điều phối, số công cụ thị trường Việt Nam, số lĩnh vực và các nhóm ý định chuyên biệt.',
   {},
-  async () => {
-    const tools = getPublishedTools();
-    const vnTools = tools.filter(t => t.isVietnamMarket || t.category === 'vietnam');
-
-    return {
-      content: [
-        {
-          type: 'text',
-          text: JSON.stringify({
-            status: 'ONLINE',
-            serverName: 'AI HUB VN Smart MCP Gateway',
-            version: '2.0.0',
-            protocol: 'Model Context Protocol (JSON-RPC 2.0 / stdio)',
-            totalManagedTools: tools.length,
-            vietnamMarketTools: vnTools.length,
-            categoriesCount: 39,
-            contextWindowSavings: 'Tiết kiệm tới ~95% token so với việc nạp thủ công toàn bộ công cụ vào Agent',
-            routingCapabilities: [
-              'Fintech & Cổng thanh toán Việt Nam (MoMo, ZaloPay, VNPAY, VietQR Napas 247)',
-              'Kỹ thuật dịch ngược mã nguồn & Binary Native (REA, Ghidra, Hopper, IDA Pro)',
-              'Bộ kỹ năng phân tích nghiệp vụ toàn diện (OpenBA-Kit 57 Skills, IEEE 830, INVEST, Gherkin)',
-              'Tự động hóa trình duyệt & Kiểm thử QA (Puppeteer, Browser Use, Playwright)',
-              'Quản trị cơ sở dữ liệu quan hệ (PostgreSQL, SQLite)',
-              'Bộ công cụ xử lý ngôn ngữ tự nhiên tiếng Việt (NLP UnderTheSea)',
-              'Giám sát chi phí API & Token Claude Code (CC Usage, ccflare)'
-            ]
-          }, null, 2)
-        }
-      ]
-    };
-  }
+  async () => jsonContent(buildStatusResult(getPublishedTools(), CORE_INTENTS, 'Model Context Protocol (JSON-RPC 2.0 / stdio)'))
 );
 
 // Khởi chạy máy chủ
