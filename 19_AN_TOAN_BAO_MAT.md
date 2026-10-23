@@ -35,7 +35,14 @@ Tài liệu này xác định các chính sách an toàn thông tin, kiểm soá
    - `X-Forwarded-For` chỉ được tin cậy khi đặt `AIHUB_TRUST_PROXY=1`.
    - Kiểm thử: `tests/api-server-security.test.js`, `tests/security-and-auth.test.js`.
 
-5. **Quản lý bí mật**:
+5. **Lưu trữ dùng chung và quyền quản trị phía máy chủ (Firestore)** — bật bằng `VITE_FIRESTORE_ENABLED=true`:
+   - Quyền quản trị được máy chủ xác minh qua quy tắc bảo mật `firestore.rules`: người dùng là quản trị viên khi tồn tại tài liệu `admins/{uid}`. Không ai ghi được vào `admins` từ ứng dụng; quản trị viên được thêm thủ công trong Firebase Console.
+   - Đóng góp (`contributions`): khách chỉ đọc công cụ đã duyệt; thành viên gửi đóng góp ở trạng thái chờ duyệt với đúng `uid` và email trong token, chỉ sửa được đóng góp chờ duyệt của mình và không tự đổi trạng thái; chỉ quản trị viên duyệt, từ chối, xóa. Danh sách trường và độ dài được kiểm tra; liên kết nguồn bắt buộc `https://`.
+   - Điều chỉnh công cụ (`toolOverrides`): ai cũng đọc, chỉ quản trị viên ghi và chỉ các trường trạng thái, ghi chú, phân loại.
+   - Mọi đường dẫn khác bị từ chối.
+   - Kiểm thử: `tests/rules/firestore-rules.test.js` chạy trên Firestore Emulator (`npm run test:rules`, có trong CI), gồm các trường hợp tự cấp quyền admin, mạo danh, tự duyệt, sửa bài người khác.
+
+6. **Quản lý bí mật**:
    - Tệp `.env` và `.env.*` (trừ `.env.example`) bị loại khỏi kho mã. Cấu hình Firebase phía trình duyệt là thông tin công khai theo thiết kế của Firebase.
 
 ---
@@ -44,6 +51,6 @@ Tài liệu này xác định các chính sách an toàn thông tin, kiểm soá
 
 | Mã | Hạn chế | Ảnh hưởng | Hướng xử lý |
 |---|---|---|---|
-| HC-01 | Vai trò quản trị viên trên giao diện web được xác định bằng so sánh email phía trình duyệt (`src/lib/firebase.ts`), có thể bị ghi đè qua `localStorage`. | Chỉ ảnh hưởng dữ liệu cục bộ của chính người dùng vì chưa có máy chủ lưu trữ dùng chung. | Khi có máy chủ lưu trữ, xác minh vai trò bằng Firebase Custom Claims hoặc quy tắc bảo mật phía máy chủ. |
-| HC-02 | Chưa có quy trình kiểm duyệt phía máy chủ; dữ liệu đóng góp lưu trong `localStorage`. | Không có dữ liệu dùng chung để bảo vệ. | Thiết kế cùng HC-01. |
+| HC-01 | Khi **chưa** bật `VITE_FIRESTORE_ENABLED`, vai trò quản trị viên trên giao diện vẫn xác định bằng so sánh email phía trình duyệt (`src/lib/firebase.ts`), có thể bị ghi đè qua `localStorage`. | Chỉ ảnh hưởng dữ liệu cục bộ của chính người dùng. | Triển khai `firestore.rules`, tạo tài liệu `admins/{uid}`, bật `VITE_FIRESTORE_ENABLED=true` (mục 5.3 của `20_QUY_TRINH_TRIEN_KHAI.md`). |
+| HC-02 | Luồng giao diện với Firestore (đăng nhập Google, gửi, duyệt) chưa được kiểm thử tự động đầu-cuối; chỉ quy tắc bảo mật được kiểm thử trên emulator. | Lỗi giao diện không làm lộ dữ liệu vì máy chủ vẫn áp dụng quy tắc bảo mật. | Kiểm tra thủ công sau khi bật trên dự án Firebase thật. |
 | HC-03 | Gói `firebase` phụ thuộc `@grpc/grpc-js` có lỗ hổng mức cao theo `npm audit`; chưa có bản vá từ nhà phát triển. | Không khai thác được vì hệ thống không dùng Firestore. | Cập nhật `firebase` khi có bản vá. |

@@ -38,3 +38,7 @@ mcp-gateway/data/
 
 # Báo cáo kiểm định dữ liệu sinh bởi npm run data:validate
 scripts/data-validation-report.json
+
+# Nhật ký Firebase Emulator
+firebase-debug.log
+firestore-debug.log

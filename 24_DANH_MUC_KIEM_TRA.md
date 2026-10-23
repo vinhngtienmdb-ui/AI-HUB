@@ -1,11 +1,11 @@
 # Danh Mục Kiểm Tra Dự Án (Checklist)
 
 ## Tổng Quan Tiến Độ
-- Tổng số nhiệm vụ cốt lõi: 119
-- Đã hoàn thành: 114
+- Tổng số nhiệm vụ cốt lõi: 120
+- Đã hoàn thành: 115
 - Đang thực hiện: 0
-- Chưa bắt đầu: 4
-- Bị nghẽn: 1
+- Chưa bắt đầu: 5
+- Bị nghẽn: 0
 
 ---
 
@@ -129,8 +129,9 @@
 - [x] BM-05: Bỏ `mcp-gateway/data/api-keys.json` khỏi kho mã, bỏ muối HMAC viết cứng, kiểm thử ghi vào thư mục tạm
 - [x] BM-06: Làm sạch HTML của README bằng DOMPurify
 - [x] BM-07: Cập nhật `19_AN_TOAN_BAO_MAT.md` đúng với mã nguồn thực tế
-- [-] BM-08: Xác minh vai trò quản trị viên phía máy chủ (HC-01 trong `19_AN_TOAN_BAO_MAT.md`)
-  - Bị nghẽn: hệ thống chưa có máy chủ lưu trữ dữ liệu dùng chung; cần quyết định kiến trúc (Firebase Firestore kèm quy tắc bảo mật, hoặc máy chủ riêng) trước khi triển khai.
+- [x] BM-08: Xác minh vai trò quản trị viên phía máy chủ bằng Firestore và `firestore.rules`
+  - Tiêu chí nghiệm thu: 10/10 kiểm thử quy tắc trên emulator, gồm tự cấp quyền admin, mạo danh, tự duyệt, sửa bài người khác đều bị chặn
+- [ ] BM-09: Bật Firestore trên dự án Firebase thật theo mục 5.3 của `20_QUY_TRINH_TRIEN_KHAI.md` và kiểm tra thủ công luồng gửi, duyệt
 
 ### Phân hệ: Chất lượng mã nguồn và vận hành
 - [x] CL-01: Sửa so khớp từ khóa ngắn (`rea`, `ba`, `po`) trong bộ định tuyến ý định

@@ -82,40 +82,28 @@ export function sortToolsByUpdated(toolList: AITool[]): AITool[] {
 }
 
 /**
- * Khởi tạo danh sách công cụ hoàn chỉnh:
- * INITIAL_TOOLS (2.220 công cụ sẵn có) + Công cụ đóng góp mới + Các ghi đè phân loại/phê duyệt của Admin,
- * tự động sắp xếp đưa các công cụ mới cập nhật lên trên đầu danh sách.
+ * Gộp kho dữ liệu gốc với công cụ đóng góp và điều chỉnh của quản trị viên
+ * (dùng cho cả localStorage và lưu trữ dùng chung trên Firestore), sắp xếp công cụ mới cập nhật lên đầu.
+ */
+export function mergeTools(
+  base: AITool[],
+  contributed: AITool[],
+  overrides: Record<string, Partial<AITool>>
+): AITool[] {
+  const contributedIds = new Set(contributed.map((t) => t.id));
+  const combined: AITool[] = [...contributed, ...base.filter((tool) => !contributedIds.has(tool.id))];
+  const mapped = combined.map((tool) => (overrides[tool.id] ? { ...tool, ...overrides[tool.id] } : tool));
+  return sortToolsByUpdated(mapped);
+}
+
+/**
+ * Khởi tạo danh sách công cụ từ localStorage:
+ * kho dữ liệu gốc + công cụ đóng góp + điều chỉnh phân loại/phê duyệt của quản trị viên.
  */
 export function loadAllTools(): AITool[] {
   // Dọn dẹp key cũ trước nếu còn tồn tại
   cleanupLegacyStorage();
-
-  const contributed = getContributedTools();
-  const overrides = getToolOverrides();
-
-  // Tạo set các ID công cụ đóng góp để tránh trùng lặp
-  const contributedMap = new Map<string, AITool>();
-  contributed.forEach((t) => contributedMap.set(t.id, t));
-
-  // Gộp danh sách: công cụ đóng góp mới đặt ở đầu
-  const combined: AITool[] = [...contributed];
-  for (const tool of INITIAL_TOOLS) {
-    if (!contributedMap.has(tool.id)) {
-      combined.push(tool);
-    }
-  }
-
-  // Áp dụng các thay đổi ghi đè (status, toolType, category, updatedAt...)
-  const mapped = combined.map((tool) => {
-    const override = overrides[tool.id];
-    if (override) {
-      return { ...tool, ...override };
-    }
-    return tool;
-  });
-
-  // Tự động sắp xếp đưa công cụ mới cập nhật lên đầu danh sách
-  return sortToolsByUpdated(mapped);
+  return mergeTools(INITIAL_TOOLS, getContributedTools(), getToolOverrides());
 }
 
 /**

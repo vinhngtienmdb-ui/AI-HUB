@@ -26,6 +26,7 @@ Mọi thay đổi phải vượt qua quy trình kiểm tra liên tục `.github/
 2. `npm test`: toàn bộ kiểm thử tự động đạt (dữ liệu khóa API được ghi vào thư mục tạm).
 3. `npx tsc --noEmit`: không có lỗi kiểu TypeScript.
 4. `npx vite build`: đóng gói thành công.
+5. `npm run test:rules`: kiểm thử quy tắc bảo mật Firestore trên emulator (job riêng, cần Java).
 
 Không hợp nhất (merge) vào `main` khi CI chưa đạt. Thay đổi liên quan bảo mật phải cập nhật `19_AN_TOAN_BAO_MAT.md` và có kiểm thử tương ứng.
 
@@ -58,7 +59,18 @@ Các bước:
 3. Kiểm tra sức khỏe: `curl http://127.0.0.1:4000/api/v1/health` trả về `"status": "HEALTHY"`.
 4. Khi mở ra mạng: đặt máy chủ sau reverse proxy HTTPS, đặt `AIHUB_API_HOST=0.0.0.0`, `AIHUB_TRUST_PROXY=1`, `AIHUB_ALLOWED_ORIGINS=<tên miền giao diện>`.
 
-### 5.3. Máy chủ MCP (stdio)
+### 5.3. Lưu trữ dùng chung trên Firestore (tùy chọn)
+Mặc định đóng góp và phê duyệt chỉ lưu trong trình duyệt. Để dùng chung và xác minh quyền quản trị phía máy chủ:
+1. Trong Firebase Console của dự án đang dùng cho đăng nhập: tạo cơ sở dữ liệu **Cloud Firestore**.
+2. Triển khai quy tắc bảo mật: `npx firebase deploy --only firestore:rules --project <mã-dự-án>` (cần đăng nhập `npx firebase login`).
+3. Đăng nhập AI Hub bằng tài khoản Google của quản trị viên một lần, lấy **UID** tại Firebase Console → Authentication → Users.
+4. Firestore → tạo collection `admins`, tài liệu có mã đúng bằng UID đó (nội dung tùy ý, ví dụ trường `email`).
+5. Trên Vercel (Settings → Environment Variables) thêm `VITE_FIRESTORE_ENABLED=true` cho môi trường Production, rồi triển khai lại.
+6. Kiểm tra: tài khoản thành viên gửi đóng góp → thấy trong hàng đợi của quản trị viên → duyệt → khách nhìn thấy công cụ.
+
+Quay lui: xóa biến `VITE_FIRESTORE_ENABLED` và triển khai lại; dữ liệu trên Firestore được giữ nguyên.
+
+### 5.4. Máy chủ MCP (stdio)
 Người dùng cập nhật bằng `git pull` và khởi động lại ứng dụng tác tử AI (Claude Desktop, Cursor). Không có tiến trình máy chủ cần triển khai.
 
 ---

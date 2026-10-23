@@ -1,0 +1,88 @@
+rules_version = '2';
+
+// Quy tắc bảo mật Firestore của AI HUB VN.
+// Quyền quản trị được xác minh phía máy chủ: người dùng là quản trị viên khi tồn tại tài liệu admins/{uid}.
+// Không ai ghi được vào admins từ ứng dụng; quản trị viên được thêm thủ công trong Firebase Console.
+// Kiểm thử: npm run test:rules (chạy trên Firestore Emulator).
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // Trường nội dung công cụ người dùng được phép gửi
+    function validToolContent(data) {
+      return data.keys().hasOnly([
+          'id', 'slug', 'name', 'icon', 'imageUrl', 'demoImages', 'toolType', 'typeNameVi',
+          'category', 'categoryNameVi', 'categories', 'categoryNamesVi', 'isVietnamMarket', 'platforms',
+          'sourceUrl', 'websiteUrl', 'authorName', 'license', 'summaryVi', 'purposeVi', 'featuresVi',
+          'installGuideVi', 'usageGuideVi', 'samplePromptsVi', 'configs', 'version', 'pricingModel',
+          'pricingText', 'languages', 'linkHealth', 'status', 'reviewNote', 'contributedBy',
+          'contributedByUid', 'contributedAt', 'updatedAt'
+        ])
+        && data.name is string && data.name.size() > 0 && data.name.size() <= 200
+        && data.sourceUrl is string && data.sourceUrl.matches('^https://.{3,500}$')
+        && data.summaryVi is string && data.summaryVi.size() <= 1000
+        && (!('installGuideVi' in data) || (data.installGuideVi is string && data.installGuideVi.size() <= 20000))
+        && (!('usageGuideVi' in data) || (data.usageGuideVi is string && data.usageGuideVi.size() <= 20000))
+        && (!('configs' in data) || (data.configs is list && data.configs.size() <= 10));
+    }
+
+    // Đóng góp công cụ mới
+    match /contributions/{toolId} {
+      // Công cụ đã duyệt: ai cũng đọc được. Công cụ chờ duyệt/bị từ chối: chỉ người gửi và quản trị viên.
+      allow read: if resource.data.status == 'published'
+        || (signedIn() && resource.data.contributedByUid == request.auth.uid)
+        || isAdmin();
+
+      // Thành viên gửi đóng góp: bắt buộc trạng thái chờ duyệt, gắn đúng danh tính người gửi.
+      allow create: if isAdmin()
+        || (signedIn()
+          && request.resource.id == toolId
+          && request.resource.data.id == toolId
+          && request.resource.data.status == 'pending'
+          && request.resource.data.contributedByUid == request.auth.uid
+          && request.resource.data.contributedBy == request.auth.token.email
+          && validToolContent(request.resource.data));
+
+      // Người gửi sửa đóng góp của mình khi còn chờ duyệt, không được tự đổi trạng thái hay danh tính.
+      // Quản trị viên duyệt, từ chối, sửa.
+      allow update: if isAdmin()
+        || (signedIn()
+          && resource.data.contributedByUid == request.auth.uid
+          && resource.data.status == 'pending'
+          && request.resource.data.status == 'pending'
+          && request.resource.data.contributedByUid == resource.data.contributedByUid
+          && request.resource.data.contributedBy == resource.data.contributedBy
+          && validToolContent(request.resource.data));
+
+      allow delete: if isAdmin();
+    }
+
+    // Điều chỉnh của quản trị viên đối với công cụ trong kho dữ liệu (phân loại, duyệt, ẩn)
+    match /toolOverrides/{toolId} {
+      allow read: if true;
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly([
+          'status', 'reviewNote', 'toolType', 'typeNameVi', 'category', 'categoryNameVi',
+          'categories', 'categoryNamesVi', 'isVietnamMarket', 'updatedAt'
+        ]);
+    }
+
+    // Danh sách quản trị viên: người dùng chỉ đọc được tài liệu của chính mình để biết vai trò
+    match /admins/{uid} {
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow write: if false;
+    }
+
+    // Mọi đường dẫn khác bị từ chối
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

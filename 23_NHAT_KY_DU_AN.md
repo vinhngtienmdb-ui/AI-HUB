@@ -81,6 +81,14 @@
 - **Vấn đề:** Kiểm tra gói npm không phát hiện câu lệnh trỏ tới gói có thật nhưng không liên quan (`npx -y firecrawl` là SDK, không phải MCP server).
 - **Giải pháp:** Đối chiếu từng câu lệnh với README chính thức của 32 dự án.
 
+### Phiên làm việc thứ năm trong ngày: quyền quản trị phía máy chủ (phần C)
+- Viết `firestore.rules`, `src/lib/sharedStore.ts`, nối vào `src/App.tsx`; thêm kiểm thử quy tắc trên Firestore Emulator.
+
+#### Quyết định kỹ thuật
+- Dùng Firestore cùng dự án Firebase đang dùng cho đăng nhập; quản trị viên xác định bằng tài liệu `admins/{uid}` thay vì Custom Claims; lý do: không cần máy chủ riêng hay Cloud Functions, thêm quản trị viên trực tiếp trong Console.
+- Bật bằng biến môi trường, mặc định tắt; lý do: quy tắc bảo mật phải được triển khai trước khi ứng dụng ghi dữ liệu.
+- Kiểm tra lại độ mạnh của bộ kiểm thử bằng cách cố ý nới lỏng quy tắc (bỏ điều kiện trạng thái chờ duyệt): bộ kiểm thử phát hiện.
+
 ## [2026-10-22]
 ### Mục tiêu trong ngày
 - Tách biệt hoàn toàn khối Sơ đồ trực quan (Diagram) thành một Tab chuyên biệt độc lập trên cả Trang chi tiết (`DetailPage.tsx`) và Modal chi tiết (`ToolDetailModal.tsx`), không nằm trong Tab README; xây dựng thành phần `VisualDiagramViewer.tsx` chuyên biệt.

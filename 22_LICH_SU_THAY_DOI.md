@@ -4,6 +4,13 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.0 (Ngày 23-10-2026)
+- **Loại hình**: Lưu trữ dùng chung và quyền quản trị phía máy chủ (BM-08), bật bằng `VITE_FIRESTORE_ENABLED=true`.
+- **Firestore**: `firestore.rules` xác minh quản trị viên bằng tài liệu `admins/{uid}`; đóng góp (`contributions`) và điều chỉnh (`toolOverrides`) được kiểm tra quyền, danh tính người gửi, trạng thái, danh sách trường và độ dài.
+- **Ứng dụng**: `src/lib/sharedStore.ts`; khi bật, vai trò quản trị do máy chủ xác nhận, đóng góp và phê duyệt đồng bộ thời gian thực giữa người dùng. Thư viện Firestore là chunk riêng, chỉ có trong bản build khi bật.
+- **Kiểm thử**: 10 kiểm thử quy tắc bảo mật trên Firestore Emulator (`npm run test:rules`, job CI riêng), 51/51 kiểm thử chính đạt.
+- **Triển khai**: các bước trong mục 5.3 của `20_QUY_TRINH_TRIEN_KHAI.md`; mặc định không bật nên không thay đổi hành vi hiện tại.
+
 ### Phiên Bản 2.0.52 (Ngày 23-10-2026)
 - **Loại hình**: Viết lại hướng dẫn cài đặt và sử dụng dạng mẫu (CL-05b phần B), script `scripts/migrations/2026-10-23-b-viet-lai-huong-dan.cjs`.
 - **1.830 thành phần claude-code-templates**: hướng dẫn sinh từ chính tệp thành phần: câu lệnh cài đặt thật, tệp đích, biến môi trường cần điền (MCP), sự kiện và điều kiện kích hoạt (hook), khóa cấu hình và giá trị mẫu cần thay (setting), công cụ và mô hình chỉ định (agent), cú pháp gọi lệnh (command), mô tả gốc của tác giả.

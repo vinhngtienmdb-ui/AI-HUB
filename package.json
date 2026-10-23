@@ -11,7 +11,8 @@
     "mcp:stdio": "node mcp-gateway/index.js",
     "mcp:api": "node mcp-gateway/api-server.js",
     "mcp:test": "node mcp-gateway/index.js --test",
-    "data:validate": "node scripts/validate-data.cjs"
+    "data:validate": "node scripts/validate-data.cjs",
+    "test:rules": "firebase emulators:exec --project aihub-rules-test --only firestore \"node --test tests/rules/*.test.js\""
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.1",
@@ -25,10 +26,12 @@
     "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "^6.0.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
+    "firebase-tools": "^15.32.1",
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3",

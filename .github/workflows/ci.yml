@@ -25,3 +25,20 @@ jobs:
         run: npx tsc --noEmit
       - name: Đóng gói bản phát hành
         run: npx vite build
+
+  quy-tac-firestore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: Cài đặt gói phụ thuộc
+        run: npm ci
+      - name: Kiểm thử quy tắc bảo mật Firestore trên Emulator
+        run: npm run test:rules

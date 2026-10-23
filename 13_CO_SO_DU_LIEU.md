@@ -14,7 +14,9 @@ Các bảng ở mục 2 và 3 là **thiết kế mục tiêu**, chưa có hệ q
 | Dữ liệu | Nơi lưu | Ghi chú |
 |---|---|---|
 | Kho công cụ (tương ứng bảng `tools`, `config_templates`) | `src/data/allTools.json` (mảng JSON, mỗi phần tử theo kiểu `AITool` trong `src/types/index.ts`) | Nguồn dữ liệu duy nhất. Khi build, các trường `readmeVi`, `installGuideVi`, `usageGuideVi`, `samplePromptsVi` được tách ra `tool-details/<id>.json` (`server/toolDataSplit.js`). |
-| Công cụ đóng góp, ghi đè phân loại và phê duyệt, bộ sưu tập, hồ sơ | `localStorage` của từng trình duyệt (`src/lib/storage.ts`) | Không dùng chung giữa người dùng (xem HC-01, HC-02 trong `19_AN_TOAN_BAO_MAT.md`). |
+| Công cụ đóng góp, ghi đè phân loại và phê duyệt | Mặc định: `localStorage` của từng trình duyệt (`src/lib/storage.ts`). Khi bật `VITE_FIRESTORE_ENABLED`: Firestore, collection `contributions` (đóng góp, khóa là mã công cụ) và `toolOverrides` (điều chỉnh của quản trị viên, khóa là mã công cụ) (`src/lib/sharedStore.ts`) | Quyền truy cập do `firestore.rules` quy định. |
+| Danh sách quản trị viên | Firestore, collection `admins` (khóa là UID Firebase Auth) | Chỉ thêm được qua Firebase Console. |
+| Bộ sưu tập, hồ sơ cá nhân | `localStorage` của từng trình duyệt | Không dùng chung giữa người dùng. |
 | Khóa API và salt của Cổng REST API | `mcp-gateway/data/` | Không đưa lên kho mã. |
 
 Trường kiểm định trong mỗi bản ghi công cụ (`verification`, sinh bởi `npm run data:validate -- --online --write`):

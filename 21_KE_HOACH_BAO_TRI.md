@@ -65,4 +65,4 @@ Sự cố bảo mật (ví dụ lộ khóa API): thu hồi khóa qua `POST /api/
 |---|---|---|
 | BT-01 | Chưa có công cụ giám sát gọi `/api/v1/health` định kỳ và gửi cảnh báo. | Dùng dịch vụ giám sát thời gian hoạt động hoặc tác vụ định kỳ gọi điểm cuối sức khỏe. |
 | BT-02 | Nhật ký kiểm toán chỉ lưu trong bộ nhớ. | Ghi thêm ra tệp hoặc hệ thống nhật ký tập trung khi triển khai cho nhiều người dùng. |
-| BT-03 | Dữ liệu người dùng chỉ nằm trong trình duyệt. | Thiết kế cùng HC-01, HC-02 trong `19_AN_TOAN_BAO_MAT.md`. |
+| BT-03 | Khi chưa bật Firestore, dữ liệu đóng góp chỉ nằm trong trình duyệt. Khi bật, cần sao lưu Firestore (xuất định kỳ bằng `gcloud firestore export` hoặc bật Point-in-time Recovery). | Mục 5.3 của `20_QUY_TRINH_TRIEN_KHAI.md`. |
