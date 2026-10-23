@@ -6,7 +6,7 @@ Tài liệu hướng dẫn toàn diện dành cho lập trình viên và ngườ
 
 ## I. Tổng Quan Kiến Trúc Thực Tế (Production-Grade)
 
-Hệ thống AI HUB VN không còn là bản mô phỏng (demo) mà là hệ thống dịch vụ độc lập hoạt động theo tiêu chuẩn công nghiệp:
+Máy chủ MCP và Cổng REST API là hai tiến trình Node.js chạy trên máy của bạn (hoặc máy chủ riêng). Bản giao diện web triển khai trên Vercel không kèm hai máy chủ này.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -34,11 +34,12 @@ Hệ thống AI HUB VN không còn là bản mô phỏng (demo) mà là hệ th�
    - Quản lý và kiểm thử máy chủ Model Context Protocol (MCP).
    - Kiểm tra trực tiếp 4 công cụ MCP qua trình kiểm tra Stdio Inspector.
    - Cung cấp cấu hình kết nối 1 chạm cho Claude Desktop, Cursor, Claude Code, Antigravity.
-2. **Trang Quản Lý API (`#/api` hoặc `#/api-keys`)**:
-   - Khởi tạo, theo dõi và thu hồi khóa bảo mật `aihub_live_...`.
-   - Giám sát hạn mức tần suất yêu cầu (Rate Limit: yêu cầu/phút) và chỉ tiêu ngày (Daily Quota).
-   - Xem nhật ký kiểm toán an ninh thời gian thực (Security Audit Logs).
-   - Trình thử nghiệm REST API Playground tương tác trực tiếp.
+2. **Trang Quản Lý API (`#/api` hoặc `#/api-keys`)**: điều khiển Cổng REST API đang chạy (mặc định `http://localhost:4000`) bằng khóa admin.
+   - Tạo khóa (khóa thô do máy chủ sinh, chỉ hiển thị một lần) và thu hồi khóa trên máy chủ.
+   - Xem số lượt dùng trong ngày so với hạn mức ngày, giới hạn tần suất, ngày hết hạn của từng khóa.
+   - Xem số liệu và nhật ký kiểm toán đọc từ máy chủ.
+   - Gửi yêu cầu thật tới máy chủ và xem mã trạng thái, thân phản hồi thật.
+   - Trang không lưu khóa admin (mất khi tải lại trang) và không hiển thị dữ liệu mẫu; khi không gọi được máy chủ, trang báo lỗi và hướng dẫn khởi động.
 
 ---
 
@@ -274,9 +275,10 @@ Hệ thống được thiết kế theo nguyên tắc "Bảo mật ngay từ thi
    - Cơ sở dữ liệu và bộ nhớ máy chủ chỉ lưu trữ chuỗi băm HMAC-SHA256 kèm muối bảo mật nội bộ (`AIHUB_SECURITY_SALT`).
    - Hàm so sánh khóa sử dụng `crypto.timingSafeEqual` để triệt tiêu hoàn toàn nguy cơ tấn công phân tích thời gian (Timing Attacks).
 
-2. **Chống Tấn Công Từ Chối Dịch Vụ (Sliding Window Rate Limiter)**:
-   - Mỗi khóa API được cấp hạn mức riêng biệt (mặc định 60 yêu cầu/phút).
-   - Khi vượt ngưỡng, máy chủ trả về mã HTTP `429 Too Many Requests` kèm tiêu đề `Retry-After`.
+2. **Giới Hạn Tần Suất Và Hạn Mức Ngày**:
+   - Mỗi khóa có giới hạn tần suất riêng (mặc định 60 yêu cầu/phút, cho phép 1–1.000). Vượt ngưỡng: HTTP `429`, mã `RATE_LIMITED`, kèm `Retry-After`.
+   - Mỗi khóa có hạn mức số lượt `/dispatch` mỗi ngày (mặc định 5.000, cho phép 1–1.000.000), tính theo ngày UTC. Hết hạn mức: HTTP `429`, mã `DAILY_QUOTA_EXCEEDED`.
+   - Tham số tạo khóa sai kiểu hoặc ngoài giới hạn (kể cả vai trò khác `developer`/`admin`) bị từ chối với HTTP `400`, mã `INVALID_KEY_OPTIONS`.
 
 3. **Làm Sạch Dữ Liệu & Phòng Vệ Tiêm Mã (Input Sanitization & Injection Defense)**:
    - Tự động lọc bỏ các ký tự điều khiển ASCII vô hình.
@@ -287,17 +289,18 @@ Hệ thống được thiết kế theo nguyên tắc "Bảo mật ngay từ thi
    - Các điểm cuối `GET /api/v1/stats`, `GET /api/v1/keys`, `POST /api/v1/keys/generate`, `POST /api/v1/keys/revoke`, `GET /api/v1/audit-logs` bắt buộc tiêu đề `Authorization: Bearer <khóa có vai trò admin>`.
    - Lần đầu khởi chạy `npm run mcp:api` khi chưa có khóa quản trị, máy chủ tự tạo một khóa admin và in ra màn hình **một lần duy nhất**. Hãy lưu lại ngay.
    - Máy chủ mặc định chỉ lắng nghe trên `127.0.0.1`. Chỉ đặt `AIHUB_API_HOST=0.0.0.0` khi triển khai sau reverse proxy HTTPS.
-   - Trình duyệt chỉ được gọi API từ trang chạy trên `localhost`; bổ sung nguồn khác qua `AIHUB_ALLOWED_ORIGINS` (phân tách bằng dấu phẩy).
+   - Trình duyệt chỉ được gọi API từ trang chạy trên `localhost`; bổ sung nguồn khác qua `AIHUB_ALLOWED_ORIGINS` (phân tách bằng dấu phẩy). Ví dụ dùng trang Quản lý API trên bản triển khai Vercel với máy chủ cục bộ: `AIHUB_ALLOWED_ORIGINS=https://<tên-miền-vercel> npm run mcp:api`. Máy chủ trả lời yêu cầu "Private Network Access" của trình duyệt Chromium cho các nguồn được phép.
    - Tiêu đề `X-Forwarded-For` chỉ được tin cậy khi đặt `AIHUB_TRUST_PROXY=1`.
    - Muối HMAC lấy từ `AIHUB_SECURITY_SALT`; nếu không đặt, hệ thống tự sinh ngẫu nhiên và lưu tại `mcp-gateway/data/.security-salt`. Thư mục `mcp-gateway/data/` không được đưa lên kho mã.
 
 5. **Nhật Ký Kiểm Toán An Ninh (Security Audit Logs)**:
-   - Ghi lại đầy đủ: thời điểm, địa chỉ IP, mã định danh khóa, điểm cuối, mã trạng thái và độ trễ phản hồi.
-   - Giúp quản trị viên phát hiện kịp thời các hành vi bất thường.
+   - Ghi lại: thời điểm, địa chỉ IP, mã định danh khóa, điểm cuối, mã trạng thái, độ trễ và kết quả định tuyến. Không ghi nội dung câu hỏi (có thể chứa dữ liệu cá nhân).
+   - Lưu trong bộ nhớ, tối đa 500 bản ghi; mất khi khởi động lại máy chủ.
+   - `GET /api/v1/stats` chỉ trả số liệu đo được: số khóa, tổng lượt yêu cầu, độ trễ điều phối trung bình kèm số mẫu, thời gian chạy, số công cụ và lĩnh vực.
 
 ---
 
 ## VI. Hướng Dẫn Sử Dụng Trên Giao Diện Web
 
-- **Truy cập Trang Máy Chủ MCP**: Nhấn vào nút **"Máy chủ MCP"** trên thanh điều hướng đầu trang (hoặc truy cập đường dẫn `#/mcp`). Tại đây, bạn có thể thử nghiệm trực tiếp 4 công cụ MCP bằng trình kiểm tra Live Inspector và sao chép cấu hình 1 chạm.
-- **Truy cập Trang Quản Lý API**: Nhấn vào nút **"Quản lý API"** trên thanh điều hướng đầu trang (hoặc truy cập đường dẫn `#/api`). Tại đây, bạn có thể tạo khóa bảo mật mới, theo dõi tần suất yêu cầu, xem nhật ký kiểm toán an ninh và thử nghiệm gửi yêu cầu REST API Playground trực tiếp.
+- **Truy cập Trang Máy Chủ MCP**: Nhấn vào nút **"Máy chủ MCP"** trên thanh điều hướng đầu trang (hoặc truy cập đường dẫn `#/mcp`). Tại đây, bạn có thể thử 4 công cụ MCP (trang chạy cùng mã định tuyến với máy chủ, ngay trên trình duyệt) và sao chép cấu hình kết nối.
+- **Truy cập Trang Quản Lý API**: Nhấn vào nút **"Quản lý API"** trên thanh điều hướng đầu trang (hoặc truy cập đường dẫn `#/api`). Khởi động máy chủ bằng `npm run mcp:api`, nhập địa chỉ máy chủ và khóa admin, bấm **Kết nối**; sau đó tạo, thu hồi khóa, xem số liệu, nhật ký và gửi thử yêu cầu tới máy chủ.

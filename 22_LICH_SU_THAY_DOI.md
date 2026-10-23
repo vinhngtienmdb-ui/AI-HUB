@@ -4,6 +4,12 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.3 (Ngày 23-10-2026)
+- **Loại hình**: Rà soát phần Quản lý API (Cổng REST API và trang `#/api`).
+- **Trang Quản lý API viết lại, nối với máy chủ thật**: trước đây khóa được sinh bằng `Math.random` trong trình duyệt, chỉ lưu `localStorage`, không đăng ký với máy chủ nên không dùng được; trang có 2 khóa mẫu, 3 dòng nhật ký mẫu, số liệu "99.8%", "42ms" ghi cứng; khu thử nghiệm tự dựng kết quả "PASSED (HMAC-SHA256 verified)" khi không gọi được máy chủ; mã mẫu trỏ tới `https://gateway.aihub.vn`, địa chỉ không có cấu hình triển khai nào trong kho mã. Nay trang kết nối máy chủ bằng địa chỉ và khóa admin người dùng nhập, tạo/thu hồi khóa, đọc số liệu và nhật ký từ máy chủ, gửi yêu cầu thật và báo lỗi khi không kết nối được.
+- **Máy chủ**: áp dụng hạn mức ngày (`dailyQuota`) trước đây chỉ lưu mà không kiểm tra; kiểm tra tham số tạo khóa; `/api/v1/stats` bỏ `uptimePercentage: 99.98`, `averageLatencyMs: 42`, `estimatedTokensSaved`, "39 lĩnh vực", thay bằng độ trễ đo từ nhật ký và số liệu tính từ dữ liệu; thân JSON sai trả 400; lỗi 500 không lộ chi tiết; nhật ký không lưu nội dung câu hỏi; trả lời Private Network Access; dọn bộ đếm giới hạn tần suất; ghi kho khóa với quyền 600 và báo lỗi khi ghi thất bại.
+- **Kiểm thử**: `tests/api-management.test.js` trước đây kiểm thử các hàm mô phỏng định nghĩa ngay trong tệp; nay kiểm thử mã thật (sinh khóa, thu hồi, kiểm tra tham số, hạn mức ngày). Thêm 4 kiểm thử máy chủ (hạn mức ngày, số liệu, thân JSON sai, Private Network Access). 60/60 đạt.
+
 ### Phiên Bản 2.1.2 (Ngày 23-10-2026)
 - **Loại hình**: Rà soát máy chủ MCP (`mcp-gateway/`), bỏ số liệu và khả năng ghi cứng, định tuyến trung thực hơn.
 - **Lõi dùng chung `mcp-gateway/gateway-core.js`**: thuật toán định tuyến và cấu trúc kết quả của 4 công cụ MCP dùng chung cho máy chủ stdio, Cổng REST API và trang "Máy chủ MCP" trên web. Trước đây web và máy chủ chấm điểm khác nhau nên cùng câu hỏi có thể ra hai kết quả.

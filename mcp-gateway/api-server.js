@@ -16,10 +16,16 @@ import {
   getAuditLogs, 
   generateSecureApiKey, 
   loadAllKeyRecords, 
-  revokeKeyRecord 
+  revokeKeyRecord,
+  validateKeyOptions,
+  consumeDailyQuota
 } from './security.js';
 import { routeTask, getPublishedTools } from './smart-router.js';
 import { dispatchTask } from './dispatcher.js';
+import { GATEWAY_VERSION } from './gateway-core.js';
+
+// Lỗi do yêu cầu của máy khách (thân JSON sai, quá lớn): trả 400 thay vì 500
+class ClientError extends Error {}
 
 const PORT = process.env.AIHUB_API_PORT ? parseInt(process.env.AIHUB_API_PORT, 10) : 4000;
 // Mặc định chỉ lắng nghe trên máy cục bộ. Đặt AIHUB_API_HOST=0.0.0.0 khi cần mở ra mạng (kèm reverse proxy HTTPS).
@@ -84,6 +90,10 @@ function setSecurityHeaders(req, res) {
   if (isAllowedOrigin(origin)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
     res.setHeader('Vary', 'Origin');
+    // Trình duyệt Chromium hỏi trước khi trang công khai (ví dụ bản triển khai Vercel) gọi máy chủ cục bộ
+    if (req.headers['access-control-request-private-network'] === 'true') {
+      res.setHeader('Access-Control-Allow-Private-Network', 'true');
+    }
   }
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
@@ -105,7 +115,7 @@ function readJsonBody(req, maxBytes = 1024 * 1024) {
     req.on('data', chunk => {
       bytes += chunk.length;
       if (bytes > maxBytes) {
-        reject(new Error('Dung lượng nội dung yêu cầu vượt quá giới hạn cho phép (1MB).'));
+        reject(new ClientError('Dung lượng nội dung yêu cầu vượt quá giới hạn cho phép (1MB).'));
         req.destroy();
         return;
       }
@@ -121,7 +131,7 @@ function readJsonBody(req, maxBytes = 1024 * 1024) {
         const parsed = JSON.parse(raw);
         resolve(parsed);
       } catch (err) {
-        reject(new Error('Cú pháp JSON trong thân yêu cầu không hợp lệ.'));
+        reject(new ClientError('Cú pháp JSON trong thân yêu cầu không hợp lệ.'));
       }
     });
 
@@ -193,7 +203,7 @@ export const requestHandler = async (req, res) => {
       res.end(JSON.stringify({
         status: 'HEALTHY',
         serverName: 'AI HUB VN Production API Gateway',
-        version: '2.0.0',
+        version: GATEWAY_VERSION,
         uptimeSeconds: Math.floor(process.uptime()),
         timestamp: new Date().toISOString(),
         totalToolsAvailable: allTools.length,
@@ -212,16 +222,21 @@ export const requestHandler = async (req, res) => {
       const keys = loadAllKeyRecords();
       const allTools = getPublishedTools();
       const totalRequests = keys.reduce((acc, k) => acc + (k.requestsCount || 0), 0);
+      // Độ trễ đo thật từ nhật ký kiểm toán trong bộ nhớ (các lần điều phối thành công kể từ khi khởi động)
+      const dispatchLogs = getAuditLogs(500).filter(l => l.action === 'DISPATCH_SUCCESS');
+      const averageLatencyMs = dispatchLogs.length
+        ? Math.round(dispatchLogs.reduce((acc, l) => acc + l.latencyMs, 0) / dispatchLogs.length)
+        : null;
 
       res.statusCode = 200;
       res.end(JSON.stringify({
         totalActiveKeys: keys.filter(k => k.status === 'active').length,
         totalRevokedKeys: keys.filter(k => k.status === 'revoked').length,
         totalRequestsHandled: totalRequests,
-        averageLatencyMs: 42,
-        estimatedTokensSaved: (totalRequests + 1) * 8500,
-        uptimePercentage: 99.98,
-        categoriesSupported: 39,
+        averageLatencyMs,
+        latencySampleSize: dispatchLogs.length,
+        uptimeSeconds: Math.floor(process.uptime()),
+        categoriesSupported: new Set(allTools.map(t => t.category).filter(Boolean)).size,
         toolsManaged: allTools.length
       }, null, 2));
       return;
@@ -238,8 +253,10 @@ export const requestHandler = async (req, res) => {
         status: k.status,
         rateLimitPerMin: k.rateLimitPerMin,
         dailyQuota: k.dailyQuota,
+        usageToday: k.usageDay === new Date().toISOString().slice(0, 10) ? k.usageToday : 0,
         createdAt: k.createdAt,
         expiresAt: k.expiresAt,
+        revokedAt: k.revokedAt,
         requestsCount: k.requestsCount,
         lastUsedAt: k.lastUsedAt
       }));
@@ -252,17 +269,14 @@ export const requestHandler = async (req, res) => {
     // 4. ENDPOINT: Tạo khóa bảo mật mới
     if (req.method === 'POST' && pathname === '/api/v1/keys/generate') {
       const body = await readJsonBody(req);
-      const name = body.name ? String(body.name).trim() : 'Khóa Ứng Dụng Mới';
-      const role = ALLOWED_ROLES.includes(body.role) ? body.role : 'developer';
-      const rateLimitPerMin = Number(body.rateLimitPerMin) || 60;
-      const dailyQuota = Number(body.dailyQuota) || 5000;
-
-      const { rawKey, keyRecord } = generateSecureApiKey({
-        name,
-        role,
-        rateLimitPerMin,
-        dailyQuota
-      });
+      const validation = validateKeyOptions(body, ALLOWED_ROLES);
+      if (!validation.valid) {
+        res.statusCode = 400;
+        res.end(JSON.stringify({ error: validation.error, code: 'INVALID_KEY_OPTIONS' }, null, 2));
+        return;
+      }
+      const { name } = validation.options;
+      const { rawKey, keyRecord } = generateSecureApiKey(validation.options);
 
       recordAuditLog({
         keyId: keyRecord.id,
@@ -379,6 +393,28 @@ export const requestHandler = async (req, res) => {
         return;
       }
 
+      // Hạn mức số lượt điều phối mỗi ngày (theo ngày UTC) của khóa
+      const quota = consumeDailyQuota(keyRecord.id);
+      if (!quota.allowed) {
+        recordAuditLog({
+          keyId: keyRecord.id,
+          ip: clientIp,
+          endpoint: pathname,
+          method: 'POST',
+          statusCode: 429,
+          latencyMs: Date.now() - startTime,
+          action: 'DAILY_QUOTA_EXCEEDED',
+          details: `Đã dùng hết ${quota.limit} lượt trong ngày.`
+        });
+        res.statusCode = 429;
+        res.end(JSON.stringify({
+          error: 'Vượt quá hạn mức số lượt trong ngày (Daily Quota Exceeded).',
+          message: `Khóa của bạn được cấu hình tối đa ${quota.limit} lượt/ngày (tính theo ngày UTC).`,
+          code: 'DAILY_QUOTA_EXCEEDED'
+        }, null, 2));
+        return;
+      }
+
       // Đọc và kiểm tra nội dung bài toán
       const body = await readJsonBody(req);
       const query = body.query || body.task_description || '';
@@ -408,7 +444,8 @@ export const requestHandler = async (req, res) => {
         statusCode: 200,
         latencyMs: latency,
         action: 'DISPATCH_SUCCESS',
-        details: `Định tuyến: "${sanitized.sanitizedText.substring(0, 50)}..." -> [${routingResult.matchedTool?.name || 'none'}]`
+        // Không lưu nội dung câu hỏi vào nhật ký (có thể chứa dữ liệu cá nhân), chỉ lưu kết quả định tuyến
+        details: `${routingResult.strategy} -> ${routingResult.matchedTool?.id || 'không chọn công cụ'}`
       });
 
       res.statusCode = 200;
@@ -491,6 +528,11 @@ export const requestHandler = async (req, res) => {
 
   } catch (err) {
     const latency = Date.now() - startTime;
+    if (err instanceof ClientError) {
+      res.statusCode = 400;
+      res.end(JSON.stringify({ error: err.message, code: 'INVALID_BODY' }, null, 2));
+      return;
+    }
     recordAuditLog({
       keyId: 'system_error',
       ip: clientIp,
@@ -503,9 +545,10 @@ export const requestHandler = async (req, res) => {
     });
 
     res.statusCode = 500;
+    // Chi tiết lỗi chỉ ghi vào nhật ký kiểm toán, không trả về máy khách
     res.end(JSON.stringify({
       error: 'Lỗi máy chủ nội bộ (Internal Server Error)',
-      message: err.message
+      code: 'INTERNAL_ERROR'
     }, null, 2));
   }
 };
