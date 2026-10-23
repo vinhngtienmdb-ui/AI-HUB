@@ -1,6 +1,7 @@
 import React from 'react';
 import { ExternalLink, Star, ArrowRight, Database, GitPullRequest, FolderTree, Search, Brain, Globe, Sparkles, Box } from 'lucide-react';
 import { AITool } from '../types';
+import { formatStars, getVerifiedStars } from '../lib/verification';
 
 interface ToolCardProps {
   tool: AITool;
@@ -10,6 +11,7 @@ interface ToolCardProps {
 }
 
 export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect, isSaved = false, onToggleSave }) => {
+  const verifiedStars = getVerifiedStars(tool);
   const [hasImgError, setHasImgError] = React.useState(false);
 
   const renderIcon = (iconName: string) => {
@@ -98,10 +100,10 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect, isSaved = fa
               )}
             </div>
             <div className="flex items-center space-x-1.5 pointer-events-auto">
-              {tool.stars ? (
+              {verifiedStars !== null ? (
                 <span className="text-[11px] px-2 py-0.5 rounded-full font-bold backdrop-blur-md bg-amber-500/90 text-white shadow-sm flex items-center space-x-1">
                   <Star className="w-3 h-3 fill-current" />
-                  <span>{tool.stars >= 1000 ? `${(tool.stars / 1000).toFixed(1)}k` : tool.stars}</span>
+                  <span>{formatStars(verifiedStars)}</span>
                 </span>
               ) : null}
               {onToggleSave && (
@@ -142,10 +144,10 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect, isSaved = fa
               )}
             </div>
             <div className="flex items-center space-x-1.5">
-              {tool.stars ? (
+              {verifiedStars !== null ? (
                 <span className="text-[11px] px-2 py-0.5 rounded-full font-bold bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-900 flex items-center space-x-1">
                   <Star className="w-3 h-3 fill-current" />
-                  <span>{tool.stars >= 1000 ? `${(tool.stars / 1000).toFixed(1)}k` : tool.stars}</span>
+                  <span>{formatStars(verifiedStars)}</span>
                 </span>
               ) : null}
               {onToggleSave && (

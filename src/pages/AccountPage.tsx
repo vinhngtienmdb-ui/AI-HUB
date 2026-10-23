@@ -4,6 +4,7 @@ import {
   Edit3, Phone, Globe, Briefcase, Mail, Check, X, ShieldCheck, Code2
 } from 'lucide-react';
 import { AITool, Collection, UserProfile } from '../types';
+import { formatStars, getVerifiedStars } from '../lib/verification';
 
 interface AccountPageProps {
   currentUser: string | null;
@@ -453,8 +454,8 @@ export const AccountPage: React.FC<AccountPageProps> = ({
 
                     <div className="pt-3 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-indigo-600">
                       <span className="text-amber-500 flex items-center space-x-1">
-                        <Star className="w-3.5 h-3.5 fill-current" />
-                        <span>{tool.stars || 4.8}</span>
+                        {getVerifiedStars(tool) !== null && <Star className="w-3.5 h-3.5 fill-current" />}
+                        <span>{getVerifiedStars(tool) !== null ? formatStars(getVerifiedStars(tool)!) : '—'}</span>
                       </span>
                       <span className="flex items-center space-x-1 text-indigo-600 dark:text-indigo-400">
                         <span>Chi tiết</span>

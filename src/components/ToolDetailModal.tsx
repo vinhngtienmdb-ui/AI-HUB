@@ -8,6 +8,8 @@ import { AITool, ConfigTemplate } from '../types';
 import { GitHubReadmeViewer } from './GitHubReadmeViewer';
 import { GitHubCodeViewer } from './GitHubCodeViewer';
 import { VisualDiagramViewer } from './VisualDiagramViewer';
+import { getVerifiedStars } from '../lib/verification';
+import { VerificationNotice } from './VerificationNotice';
 
 interface ToolDetailModalProps {
   tool: AITool | null;
@@ -160,6 +162,7 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose 
 
         {/* Nội dung chi tiết theo từng Tab */}
         <div className="p-6 sm:p-8 overflow-y-auto space-y-6 flex-1">
+          <VerificationNotice tool={tool} />
           
           {/* TAB 1: TỔNG QUAN */}
           {modalTab === 'overview' && (
@@ -236,10 +239,10 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose 
                     <span>Tác giả: <strong className="text-slate-700 dark:text-slate-300 font-medium">{tool.authorName}</strong></span>
                     <span>•</span>
                     <span>Giấy phép: <span className="font-mono">{tool.license}</span></span>
-                    {tool.stars && (
+                    {getVerifiedStars(tool) !== null && (
                       <>
                         <span>•</span>
-                        <span>Đánh giá: <strong>{tool.stars.toLocaleString()}</strong> sao</span>
+                        <span>GitHub: <strong>{getVerifiedStars(tool)!.toLocaleString()}</strong> sao</span>
                       </>
                     )}
                     <span className="inline-flex items-center text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-full font-semibold">

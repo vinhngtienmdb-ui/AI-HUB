@@ -143,7 +143,7 @@ export const ContributePage: React.FC<ContributePageProps> = ({
         contributedAt: new Date().toISOString().split('T')[0],
         stars: 5.0,
         featured: false,
-        linkHealth: 'healthy',
+        linkHealth: 'unchecked',
         pricingModel,
       };
 

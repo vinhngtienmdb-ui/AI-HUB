@@ -113,6 +113,14 @@ export interface ConfigTemplate {
   jsonConfig: string;
 }
 
+export interface ToolVerification {
+  checkedAt: string;
+  sourceStatus: 'ok' | 'missing' | 'unknown';
+  missingPackages: string[];
+  guideIsTemplate: boolean;
+  starsVerified: boolean;
+}
+
 export interface AITool {
   id: string;
   slug: string;
@@ -148,6 +156,7 @@ export interface AITool {
   stars?: number;
   featured?: boolean;
   linkHealth: 'healthy' | 'broken' | 'unchecked';
+  verification?: ToolVerification; // Kết quả kiểm định dữ liệu (scripts/validate-data.cjs)
 
   // Các trường bổ sung hỗ trợ bộ giao diện chi tiết chuẩn mẫu
   pricingModel?: PricingModel;
