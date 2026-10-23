@@ -31,7 +31,8 @@ import { INITIAL_COLLECTIONS, INITIAL_GUIDES } from './data/mockGuidesAndCollect
 import { DEFAULT_TOOL_TYPES, ToolTypeInfo, getToolTypeNameVi, getCategoryNameVi } from './data/taxonomy';
 import { AITool, Category, CategoryInfo, Platform, ToolType, Collection, GuideArticle, PageRoute, UserProfile } from './types';
 import { subscribeToAuth, checkIsAdmin } from './lib/firebase';
-import { loadAllTools, saveContributedTool, saveToolOverride, cleanupLegacyStorage } from './lib/storage';
+import { loadAllTools, mergeTools, saveContributedTool, saveToolOverride, cleanupLegacyStorage } from './lib/storage';
+import { isSharedStoreEnabled, fetchAdminRole, subscribeSharedData, submitContribution, saveSharedUpdate } from './lib/sharedStore';
 import { 
   SearchX, ChevronLeft, ChevronRight, Layers, Sparkles, Cpu, Terminal, Brain, 
   FolderGit2, Wrench, Workflow, SlidersHorizontal, X, LayoutGrid, List, 
@@ -41,9 +42,15 @@ import { formatStars, getVerifiedStars } from './lib/verification';
 
 const PAGE_SIZE = 24;
 
+// Lưu trữ dùng chung trên Firestore (bật bằng VITE_FIRESTORE_ENABLED=true); mặc định dùng localStorage
+const SHARED_STORE = isSharedStoreEnabled();
+
 export const App: React.FC = () => {
   // Dữ liệu cốt lõi: Khởi tạo an toàn kết hợp INITIAL_TOOLS với các công cụ đóng góp & ghi đè phân loại (tránh tràn quota localStorage)
-  const [tools, setTools] = useState<AITool[]>(() => loadAllTools());
+  const [tools, setTools] = useState<AITool[]>(() => (SHARED_STORE ? mergeTools(INITIAL_TOOLS, [], {}) : loadAllTools()));
+  // Mã công cụ do thành viên đóng góp trên Firestore (phân biệt với công cụ trong kho dữ liệu gốc)
+  const [sharedContributionIds, setSharedContributionIds] = useState<Set<string>>(() => new Set());
+  const [currentUid, setCurrentUid] = useState<string | null>(null);
 
   const [collections, setCollections] = useState<Collection[]>(() => {
     const saved = localStorage.getItem('aihub_collections');
@@ -146,6 +153,7 @@ export const App: React.FC = () => {
   // Lắng nghe trạng thái đăng nhập Firebase Google Auth
   useEffect(() => {
     const unsubscribe = subscribeToAuth((firebaseUser) => {
+      setCurrentUid(firebaseUser?.uid || null);
       if (firebaseUser?.email) {
         setCurrentUser(firebaseUser.email);
         localStorage.setItem('aihub_user', firebaseUser.email);
@@ -177,10 +185,47 @@ export const App: React.FC = () => {
     }
   }, [userProfile]);
 
-  // Cập nhật quyền Admin mỗi khi currentUser thay đổi
+  // Cập nhật quyền Admin mỗi khi người dùng thay đổi.
+  // Lưu trữ dùng chung: vai trò do máy chủ xác nhận (tài liệu admins/{uid}), không dựa vào email phía trình duyệt.
   useEffect(() => {
-    setIsAdmin(checkIsAdmin(currentUser));
-  }, [currentUser]);
+    if (!SHARED_STORE) {
+      setIsAdmin(checkIsAdmin(currentUser));
+      return;
+    }
+    if (!currentUid || !currentUser) {
+      setIsAdmin(false);
+      return;
+    }
+    let active = true;
+    fetchAdminRole(currentUid).then((role) => {
+      if (active) setIsAdmin(role);
+    });
+    return () => {
+      active = false;
+    };
+  }, [currentUser, currentUid]);
+
+  // Đồng bộ đóng góp và điều chỉnh dùng chung từ Firestore
+  useEffect(() => {
+    if (!SHARED_STORE) return;
+    const user = currentUid && currentUser ? { uid: currentUid, email: currentUser } : null;
+    return subscribeSharedData(user, isAdmin, (contributions, overrides) => {
+      setSharedContributionIds(new Set(contributions.map((t) => t.id)));
+      setTools(mergeTools(INITIAL_TOOLS, contributions, overrides));
+    });
+  }, [currentUid, currentUser, isAdmin]);
+
+  // Ghi điều chỉnh của quản trị viên (duyệt, từ chối, phân loại)
+  const persistToolUpdate = (toolId: string, updateData: Partial<AITool>) => {
+    if (!SHARED_STORE) {
+      saveToolOverride(toolId, updateData);
+      return;
+    }
+    saveSharedUpdate(toolId, sharedContributionIds.has(toolId), updateData).catch((error) => {
+      console.error('[SharedStore] Lưu điều chỉnh thất bại:', error);
+      alert('Không lưu được thay đổi lên máy chủ. Máy chủ chỉ chấp nhận thao tác của quản trị viên đã được xác nhận.');
+    });
+  };
 
   // Tự động dọn dẹp khóa cũ aihub_tools để giải phóng quota localStorage
   useEffect(() => {
@@ -327,7 +372,7 @@ export const App: React.FC = () => {
 
   // Xử lý thêm công cụ mới: Admin duyệt ngay, Thành viên thường chuyển vào hàng đợi pending
   const handleAddNewTool = (newTool: AITool) => {
-    const isOwner = checkIsAdmin(currentUser);
+    const isOwner = SHARED_STORE ? isAdmin : checkIsAdmin(currentUser);
     const today = new Date().toISOString().split('T')[0];
     const toolToAdd: AITool = {
       ...newTool,
@@ -338,7 +383,18 @@ export const App: React.FC = () => {
       reviewNote: isOwner ? 'Đã được Quản trị viên phê duyệt trực tiếp' : 'Đang chờ Quản trị viên kiểm duyệt',
     };
     setTools((prev) => [toolToAdd, ...prev]);
-    saveContributedTool(toolToAdd);
+    if (!SHARED_STORE) {
+      saveContributedTool(toolToAdd);
+      return;
+    }
+    if (!currentUid || !currentUser) {
+      alert('Vui lòng đăng nhập bằng tài khoản Google để gửi đóng góp.');
+      return;
+    }
+    submitContribution(toolToAdd, { uid: currentUid, email: currentUser }, isOwner).catch((error) => {
+      console.error('[SharedStore] Gửi đóng góp thất bại:', error);
+      alert('Không gửi được đóng góp lên máy chủ. Vui lòng kiểm tra thông tin và thử lại.');
+    });
   };
 
   // Phê duyệt công cụ từ hàng đợi kiểm duyệt (dành riêng cho Quản trị viên)
@@ -351,7 +407,7 @@ export const App: React.FC = () => {
     setTools((prev) =>
       prev.map((t) => (t.id === toolId ? { ...t, ...updateData } : t))
     );
-    saveToolOverride(toolId, updateData);
+    persistToolUpdate(toolId, updateData);
   };
 
   // Từ chối công cụ với lý do cụ thể (dành riêng cho Quản trị viên)
@@ -363,7 +419,7 @@ export const App: React.FC = () => {
     setTools((prev) =>
       prev.map((t) => (t.id === toolId ? { ...t, ...updateData } : t))
     );
-    saveToolOverride(toolId, updateData);
+    persistToolUpdate(toolId, updateData);
   };
 
   // Điều chỉnh Loại hình thành phần và Lĩnh vực chuyên môn (Chỉ duy nhất tài khoản Quản trị viên tối cao)
@@ -397,7 +453,7 @@ export const App: React.FC = () => {
     setTools((prev) =>
       prev.map((t) => (t.id === toolId ? { ...t, ...updateData } : t))
     );
-    saveToolOverride(toolId, updateData);
+    persistToolUpdate(toolId, updateData);
   };
 
   // Thống kê số lượng từng loại hình (chỉ tính công cụ đã phát hành công khai)
@@ -639,6 +695,7 @@ export const App: React.FC = () => {
           onOpenContribute={() => navigateTo({ name: 'contribute' })}
           onLogout={() => {
             setCurrentUser(null);
+            setCurrentUid(null);
             setUserProfile(null);
             localStorage.removeItem('aihub_user');
             localStorage.removeItem('aihub_user_profile');
