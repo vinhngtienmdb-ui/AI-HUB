@@ -4,6 +4,15 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.52 (Ngày 23-10-2026)
+- **Loại hình**: Viết lại hướng dẫn cài đặt và sử dụng dạng mẫu (CL-05b phần B), script `scripts/migrations/2026-10-23-b-viet-lai-huong-dan.cjs`.
+- **1.830 thành phần claude-code-templates**: hướng dẫn sinh từ chính tệp thành phần: câu lệnh cài đặt thật, tệp đích, biến môi trường cần điền (MCP), sự kiện và điều kiện kích hoạt (hook), khóa cấu hình và giá trị mẫu cần thay (setting), công cụ và mô hình chỉ định (agent), cú pháp gọi lệnh (command), mô tả gốc của tác giả.
+- **32 dự án khác**: hướng dẫn và câu lệnh chép từ README chính thức; sửa 13 câu lệnh trỏ tới gói npm có thật nhưng không phải công cụ được mô tả (ví dụ `npx -y firecrawl`, `npx -y tavily`) và 6 câu lệnh `agy skill add` bịa.
+- **README hiển thị**: sinh lại mục 3 (cài đặt), 4 (sử dụng), 5 (cấu hình) của 1.930 README có cấu trúc sinh tự động từ dữ liệu đã sửa; không còn README chứa lệnh bịa.
+- **Bỏ lệnh `agy`** của 3 công cụ mà README nguồn không có hướng dẫn tương ứng.
+- **Kết quả**: 0 công cụ đang hiển thị còn hướng dẫn dạng mẫu hoặc lệnh bịa trong README.
+- **Kiểm thử**: 51/51 đạt.
+
 ### Phiên Bản 2.0.51 (Ngày 23-10-2026)
 - **Loại hình**: Xử lý dữ liệu đã gắn nhãn kiểm định (CL-05b phần A), script `scripts/migrations/2026-10-23-a-xu-ly-du-lieu-gan-nhan.cjs`.
 - **Sửa liên kết nguồn (1.844 bản ghi)**:
@@ -18,7 +27,8 @@
 - **Bộ định tuyến**: chỉ định tuyến tới công cụ đang hiển thị; ý định VietQR trỏ sang VietQR Core (`zeforc/viet-qr`), ý định phân tích nghiệp vụ trỏ sang Business Analyst Agent (OpenBA-Kit không có repo).
 - **Kiểm định**: `validate-data.cjs` kiểm tra thêm đường dẫn bên trong repo GitHub.
 - **Kết quả**: 1.936 công cụ đang hiển thị, 0 công cụ có nguồn không tồn tại, 0 công cụ có câu lệnh dùng gói không tồn tại ngoài 2 thành phần template có lỗi ở tệp gốc (có cảnh báo).
-- **Kiểm thử**: 50/50 đạt.
+- **API Gateway**: `/api/v1/tools`, `/health`, `/stats` và công cụ MCP trạng thái chỉ trả về công cụ đang hiển thị; sửa lỗi `/api/v1/tools?q=...` luôn trả 500 (theo review của Codex).
+- **Kiểm thử**: 51/51 đạt.
 
 ### Phiên Bản 2.0.50 (Ngày 23-10-2026)
 - **Loại hình**: Chất lượng dữ liệu, hiệu năng, hợp nhất mã nguồn, đồng bộ tài liệu theo chuẩn VibeCode 2.0.

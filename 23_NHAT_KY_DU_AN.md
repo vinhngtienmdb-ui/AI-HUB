@@ -69,6 +69,18 @@
 - **Nguyên nhân:** Kho template đổi cấu trúc thư mục; dữ liệu trỏ tới đường dẫn cũ.
 - **Giải pháp:** Sửa đường dẫn khi đường dẫn mới có thật trên nhánh mặc định.
 
+### Phiên làm việc thứ tư trong ngày: viết lại hướng dẫn dạng mẫu (phần B)
+- Sinh hướng dẫn cho 1.830 thành phần template từ tệp gốc (đọc bằng sparse checkout `cli-tool/components`).
+- Viết hướng dẫn cho 32 dự án khác từ README chính thức.
+
+#### Quyết định kỹ thuật
+- Giữ nguyên mô tả gốc tiếng Anh của tác giả trong hướng dẫn sử dụng thay vì tự dịch; lý do: bảo đảm chính xác, các bước thao tác vẫn viết bằng tiếng Việt.
+- Không sửa tóm tắt, mô tả công dụng, README và câu lệnh mẫu của nhóm template (vẫn là nội dung mẫu chung); ghi thành nhiệm vụ riêng.
+
+#### Lỗi phát sinh và giải pháp
+- **Vấn đề:** Kiểm tra gói npm không phát hiện câu lệnh trỏ tới gói có thật nhưng không liên quan (`npx -y firecrawl` là SDK, không phải MCP server).
+- **Giải pháp:** Đối chiếu từng câu lệnh với README chính thức của 32 dự án.
+
 ## [2026-10-22]
 ### Mục tiêu trong ngày
 - Tách biệt hoàn toàn khối Sơ đồ trực quan (Diagram) thành một Tab chuyên biệt độc lập trên cả Trang chi tiết (`DetailPage.tsx`) và Modal chi tiết (`ToolDetailModal.tsx`), không nằm trong Tab README; xây dựng thành phần `VisualDiagramViewer.tsx` chuyên biệt.
