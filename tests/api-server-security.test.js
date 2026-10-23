@@ -46,16 +46,30 @@ test('API Gateway 01: Điểm cuối quản trị từ chối yêu cầu không 
   }
 });
 
-test('API Gateway 02: Khóa admin được tạo khóa mới, vai trò lạ bị hạ về developer', async () => {
+test('API Gateway 02: Khóa admin tạo được khóa mới; vai trò lạ hoặc giới hạn sai bị từ chối', async () => {
   const server = await startServer();
   try {
     const { rawKey: adminKey } = generateSecureApiKey({ name: 'Khóa Admin', role: 'admin' });
-    const created = await call(server, 'POST', '/api/v1/keys/generate', {
-      headers: { Authorization: `Bearer ${adminKey}` },
-      body: { name: 'Khóa Mới', role: 'superuser' }
-    });
+    const auth = { Authorization: `Bearer ${adminKey}` };
+
+    const created = await call(server, 'POST', '/api/v1/keys/generate', { headers: auth, body: { name: 'Khóa Mới' } });
     assert.equal(created.status, 201);
     assert.equal(created.json.keyRecord.role, 'developer');
+    assert.equal(created.json.keyRecord.rateLimitPerMin, 60);
+    assert.equal(created.json.keyRecord.dailyQuota, 5000);
+
+    for (const body of [
+      { name: 'Khóa Mới', role: 'superuser' },
+      { name: 'Khóa Mới', rateLimitPerMin: -5 },
+      { name: 'Khóa Mới', rateLimitPerMin: 1e9 },
+      { name: 'Khóa Mới', dailyQuota: 'nhiều' },
+      { name: 'x'.repeat(101) },
+      { name: '   ' }
+    ]) {
+      const rejected = await call(server, 'POST', '/api/v1/keys/generate', { headers: auth, body });
+      assert.equal(rejected.status, 400, JSON.stringify(body));
+      assert.equal(rejected.json.code, 'INVALID_KEY_OPTIONS');
+    }
   } finally {
     server.close();
   }
@@ -117,6 +131,76 @@ test('API Gateway 05: Danh mục công cụ công khai không chứa công cụ 
         assert.ok(!hiddenIds.has(tool.id), `/api/v1/tools trả về công cụ đã ẩn: ${tool.id}`);
       }
     }
+  } finally {
+    server.close();
+  }
+});
+
+test('API Gateway 06: Hạn mức ngày (dailyQuota) được áp dụng cho /dispatch', async () => {
+  const server = await startServer();
+  try {
+    const { rawKey } = generateSecureApiKey({ name: 'Khóa Hạn Mức', role: 'developer', dailyQuota: 2 });
+    const auth = { Authorization: `Bearer ${rawKey}` };
+    const body = { query: 'Tạo mã VietQR 500k' };
+    assert.equal((await call(server, 'POST', '/api/v1/dispatch', { headers: auth, body })).status, 200);
+    assert.equal((await call(server, 'POST', '/api/v1/dispatch', { headers: auth, body })).status, 200);
+    const third = await call(server, 'POST', '/api/v1/dispatch', { headers: auth, body });
+    assert.equal(third.status, 429);
+    assert.equal(third.json.code, 'DAILY_QUOTA_EXCEEDED');
+  } finally {
+    server.close();
+  }
+});
+
+test('API Gateway 07: /stats chỉ trả số liệu đo được; nhật ký không lưu nội dung câu hỏi', async () => {
+  const server = await startServer();
+  try {
+    const { rawKey: adminKey } = generateSecureApiKey({ name: 'Khóa Admin Số Liệu', role: 'admin' });
+    const { rawKey: devKey } = generateSecureApiKey({ name: 'Khóa Dev Số Liệu', role: 'developer' });
+    const secretQuery = 'Tạo mã VietQR cho Nguyễn Văn A số tài khoản 0123456789';
+    await call(server, 'POST', '/api/v1/dispatch', { headers: { Authorization: `Bearer ${devKey}` }, body: { query: secretQuery } });
+
+    const stats = await call(server, 'GET', '/api/v1/stats', { headers: { Authorization: `Bearer ${adminKey}` } });
+    assert.equal(stats.status, 200);
+    for (const removed of ['uptimePercentage', 'estimatedTokensSaved']) assert.equal(stats.json[removed], undefined);
+    assert.ok(stats.json.latencySampleSize >= 1);
+    assert.equal(typeof stats.json.averageLatencyMs, 'number');
+    assert.ok(stats.json.categoriesSupported > 0 && stats.json.categoriesSupported < 39);
+
+    const logs = await call(server, 'GET', '/api/v1/audit-logs', { headers: { Authorization: `Bearer ${adminKey}` } });
+    assert.doesNotMatch(JSON.stringify(logs.json), /Nguyễn Văn A|0123456789/);
+  } finally {
+    server.close();
+  }
+});
+
+test('API Gateway 08: Thân JSON sai trả 400; lỗi không lộ chi tiết nội bộ', async () => {
+  const server = await startServer();
+  try {
+    const { rawKey: adminKey } = generateSecureApiKey({ name: 'Khóa Admin JSON', role: 'admin' });
+    const { port } = server.address();
+    const res = await fetch(`http://127.0.0.1:${port}/api/v1/keys/generate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${adminKey}` },
+      body: '{ không phải json'
+    });
+    assert.equal(res.status, 400);
+    assert.equal((await res.json()).code, 'INVALID_BODY');
+  } finally {
+    server.close();
+  }
+});
+
+test('API Gateway 09: Trả lời yêu cầu truy cập mạng riêng (Private Network Access) cho nguồn được phép', async () => {
+  const server = await startServer();
+  try {
+    const { port } = server.address();
+    const preflight = await fetch(`http://127.0.0.1:${port}/api/v1/health`, {
+      method: 'OPTIONS',
+      headers: { Origin: 'http://localhost:5173', 'Access-Control-Request-Private-Network': 'true' }
+    });
+    assert.equal(preflight.status, 204);
+    assert.equal(preflight.headers.get('access-control-allow-private-network'), 'true');
   } finally {
     server.close();
   }

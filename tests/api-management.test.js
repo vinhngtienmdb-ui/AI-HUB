@@ -1,110 +1,83 @@
+/**
+ * Kiểm thử nghiệp vụ quản lý khóa API trên mã thật của máy chủ (mcp-gateway/security.js).
+ * Trước đây tệp này kiểm thử các hàm mô phỏng được định nghĩa ngay trong tệp kiểm thử.
+ */
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {
+  generateSecureApiKey,
+  authenticateBearerToken,
+  revokeKeyRecord,
+  loadAllKeyRecords,
+  validateKeyOptions,
+  consumeDailyQuota,
+  KEY_LIMITS
+} from '../mcp-gateway/security.js';
 
-// Mô phỏng logic sinh API key chuẩn định dạng hệ thống AI HUB VN
-function generateMockApiKey(name = 'Khóa thử nghiệm') {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let randomStr = '';
-  for (let i = 0; i < 32; i++) {
-    randomStr += chars.charAt(Math.floor(Math.random() * chars.length));
+test('Quản lý API: Khóa sinh bằng CSPRNG, chuẩn tiền tố aihub_live_, không trùng nhau', () => {
+  const seen = new Set();
+  for (let i = 0; i < 20; i++) {
+    const { rawKey, keyRecord } = generateSecureApiKey({ name: `Khóa ${i}` });
+    assert.match(rawKey, /^aihub_live_[A-Za-z0-9_-]{32}$/);
+    assert.equal(keyRecord.prefix, `${rawKey.slice(0, 15)}...`);
+    assert.ok(!seen.has(rawKey));
+    seen.add(rawKey);
   }
-  const key = `aihub_live_${randomStr}`;
-  return {
-    id: `key_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
-    name,
-    key,
-    createdAt: new Date().toISOString(),
-    status: 'active',
-    requestsCount: 0,
-    lastUsedAt: null,
-  };
-}
-
-// Mô phỏng hàm thu hồi API key
-function revokeApiKey(keysList, keyId) {
-  return keysList.map((k) => (k.id === keyId ? { ...k, status: 'revoked' } : k));
-}
-
-// Mô phỏng hàm kích hoạt lại API key
-function reactivateApiKey(keysList, keyId) {
-  return keysList.map((k) => (k.id === keyId ? { ...k, status: 'active' } : k));
-}
-
-// Mô phỏng hàm xóa API key
-function deleteApiKey(keysList, keyId) {
-  return keysList.filter((k) => k.id !== keyId);
-}
-
-// Mô phỏng tạo mã tích hợp cấu hình cho Claude Desktop
-function generateClaudeDesktopConfig(apiKey) {
-  return JSON.stringify({
-    mcpServers: {
-      "aihub-smart-gateway": {
-        command: "node",
-        args: ["./mcp-gateway/index.js"],
-        env: {
-          AIHUB_API_KEY: apiKey,
-          AIHUB_GATEWAY_URL: "https://gateway.aihub.vn"
-        }
-      }
-    }
-  }, null, 2);
-}
-
-test('Kiểm tra Quản lý API: Sinh khóa API Key chuẩn tiền tố aihub_live_ và độ an toàn cao', () => {
-  const newKey = generateMockApiKey('Khóa dự án Production 2026');
-  
-  assert.ok(newKey.key.startsWith('aihub_live_'), 'API Key phải bắt đầu bằng aihub_live_');
-  assert.equal(newKey.key.length, 11 + 32, 'Độ dài khóa API phải bằng 43 ký tự');
-  assert.equal(newKey.status, 'active', 'Trạng thái ban đầu phải là active');
-  assert.equal(newKey.requestsCount, 0, 'Số lượt gọi ban đầu phải bằng 0');
-  assert.equal(newKey.name, 'Khóa dự án Production 2026');
-  assert.ok(newKey.createdAt, 'Phải có thời điểm tạo');
 });
 
-test('Kiểm tra Quản lý API: Vòng đời thu hồi, kích hoạt lại và xóa bỏ API Key an toàn', () => {
-  const key1 = generateMockApiKey('Khóa Test 1');
-  const key2 = generateMockApiKey('Khóa Test 2');
-  let keys = [key1, key2];
+test('Quản lý API: Thu hồi khóa làm xác thực thất bại ngay lập tức', () => {
+  const { rawKey, keyRecord } = generateSecureApiKey({ name: 'Khóa Sẽ Thu Hồi' });
+  assert.equal(authenticateBearerToken(`Bearer ${rawKey}`).isValid, true);
 
-  // 1. Thu hồi key 1
-  keys = revokeApiKey(keys, key1.id);
-  const foundRevoked = keys.find((k) => k.id === key1.id);
-  assert.equal(foundRevoked.status, 'revoked', 'Khóa 1 phải chuyển sang trạng thái revoked');
-
-  // 2. Kích hoạt lại key 1
-  keys = reactivateApiKey(keys, key1.id);
-  const foundActive = keys.find((k) => k.id === key1.id);
-  assert.equal(foundActive.status, 'active', 'Khóa 1 phải trở lại trạng thái active');
-
-  // 3. Xóa key 2
-  keys = deleteApiKey(keys, key2.id);
-  assert.equal(keys.length, 1, 'Danh sách chỉ còn lại 1 khóa sau khi xóa');
-  assert.equal(keys[0].id, key1.id);
+  assert.equal(revokeKeyRecord(keyRecord.id), true);
+  const after = authenticateBearerToken(`Bearer ${rawKey}`);
+  assert.equal(after.isValid, false);
+  assert.equal(after.statusCode, 403);
+  assert.ok(loadAllKeyRecords().find(k => k.id === keyRecord.id).revokedAt);
+  assert.equal(revokeKeyRecord('khoa-khong-ton-tai'), false);
 });
 
-test('Kiểm tra Quản lý API: Đo lường số liệu giám sát và tính toán token tiết kiệm', () => {
-  const mockStats = {
-    totalRequests: 14250,
-    successRate: 99.8,
-    avgLatencyMs: 42,
-    tokensSaved: 125000000,
-    uptimePercent: 99.99
-  };
+test('Quản lý API: Kiểm tra tham số tạo khóa theo giới hạn', () => {
+  const defaults = validateKeyOptions({});
+  assert.equal(defaults.valid, true);
+  assert.deepEqual(defaults.options, {
+    name: 'Khóa Ứng Dụng Mới', role: 'developer', rateLimitPerMin: 60, dailyQuota: 5000, expiresInDays: 365
+  });
 
-  assert.ok(mockStats.totalRequests > 0, 'Tổng số lượt gọi phải lớn hơn 0');
-  assert.ok(mockStats.successRate >= 99.5, 'Tỷ lệ thành công phải đạt trên 99.5%');
-  assert.ok(mockStats.avgLatencyMs < 100, 'Độ trễ trung bình phải dưới 100ms');
-  assert.ok(mockStats.tokensSaved > 100000000, 'Tiết kiệm hơn 100 triệu token nhờ lọc đúng MCP cần thiết');
+  const custom = validateKeyOptions({ name: '  Ứng dụng  ', role: 'admin', rateLimitPerMin: '120', dailyQuota: 100 });
+  assert.equal(custom.valid, true);
+  assert.equal(custom.options.name, 'Ứng dụng');
+  assert.equal(custom.options.rateLimitPerMin, 120);
+
+  const invalid = [
+    { role: 'superuser' },
+    { name: '' },
+    { name: 'x'.repeat(KEY_LIMITS.nameMaxLength + 1) },
+    { rateLimitPerMin: 0 },
+    { rateLimitPerMin: 1.5 },
+    { rateLimitPerMin: KEY_LIMITS.rateLimitPerMin.max + 1 },
+    { dailyQuota: -1 },
+    { expiresInDays: 99999 }
+  ];
+  for (const body of invalid) assert.equal(validateKeyOptions(body).valid, false, JSON.stringify(body));
 });
 
-test('Kiểm tra Quản lý API: Tạo cấu hình tích hợp Claude Desktop và Cursor chuẩn xác', () => {
-  const activeKey = generateMockApiKey('Production Secret');
-  const claudeConfigJson = generateClaudeDesktopConfig(activeKey.key);
-  const parsed = JSON.parse(claudeConfigJson);
+test('Quản lý API: Hạn mức ngày đếm theo ngày UTC và đặt lại sang ngày mới', () => {
+  const { keyRecord } = generateSecureApiKey({ name: 'Khóa Hạn Mức Ngày', dailyQuota: 3 });
+  assert.deepEqual(consumeDailyQuota(keyRecord.id), { allowed: true, used: 1, limit: 3 });
+  consumeDailyQuota(keyRecord.id);
+  consumeDailyQuota(keyRecord.id);
+  assert.equal(consumeDailyQuota(keyRecord.id).allowed, false);
 
-  assert.ok(parsed.mcpServers['aihub-smart-gateway'], 'Cấu hình phải có aihub-smart-gateway');
-  assert.equal(parsed.mcpServers['aihub-smart-gateway'].command, 'node');
-  assert.equal(parsed.mcpServers['aihub-smart-gateway'].env.AIHUB_API_KEY, activeKey.key);
-  assert.equal(parsed.mcpServers['aihub-smart-gateway'].env.AIHUB_GATEWAY_URL, 'https://gateway.aihub.vn');
+  // Giả lập bản ghi của hôm qua: bộ đếm phải về 0
+  const records = loadAllKeyRecords();
+  const record = records.find(k => k.id === keyRecord.id);
+  assert.equal(record.usageToday, 3);
+  record.usageDay = '2000-01-01';
+  fs.writeFileSync(path.join(process.env.AIHUB_DATA_DIR, 'api-keys.json'), JSON.stringify(records, null, 2));
+  assert.deepEqual(consumeDailyQuota(keyRecord.id), { allowed: true, used: 1, limit: 3 });
+
+  assert.equal(consumeDailyQuota('khoa-khong-ton-tai').allowed, false);
 });

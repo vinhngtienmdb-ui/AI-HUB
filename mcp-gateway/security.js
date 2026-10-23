@@ -94,7 +94,7 @@ export function generateSecureApiKey({
   expiresInDays = 365,
   ipWhitelist = []
 } = {}) {
-  // Sinh 32 bytes ngẫu nhiên an toàn bằng CSPRNG
+  // Sinh 24 byte (192 bit) ngẫu nhiên an toàn bằng CSPRNG
   const randomBytes = crypto.randomBytes(24).toString('base64url');
   const rawKey = `aihub_live_${randomBytes}`;
   const hashedKey = hashApiKey(rawKey);
@@ -153,10 +153,81 @@ export function saveKeyRecord(record) {
     } else {
       list.push(record);
     }
-    fs.writeFileSync(KEYS_FILE, JSON.stringify(list, null, 2), 'utf-8');
+    writeKeyFile(list);
   } catch (err) {
-    // Ghi log dự phòng
+    console.error('[AI HUB] Không ghi được kho khóa api-keys.json:', err.message);
   }
+}
+
+// Kho khóa chỉ chứa chuỗi băm nhưng vẫn giới hạn quyền đọc cho chủ sở hữu
+function writeKeyFile(list) {
+  fs.writeFileSync(KEYS_FILE, JSON.stringify(list, null, 2), { encoding: 'utf-8', mode: 0o600 });
+}
+
+// Giới hạn hợp lệ khi tạo khóa
+export const KEY_LIMITS = {
+  nameMaxLength: 100,
+  rateLimitPerMin: { min: 1, max: 1000 },
+  dailyQuota: { min: 1, max: 1000000 },
+  expiresInDays: { min: 1, max: 3650 }
+};
+
+/**
+ * Kiểm tra tham số tạo khóa. Trường bỏ trống dùng giá trị mặc định; trường sai kiểu hoặc ngoài giới hạn bị từ chối.
+ * @returns {{ valid: true, options: object } | { valid: false, error: string }}
+ */
+export function validateKeyOptions(body = {}, allowedRoles = ['developer', 'admin']) {
+  const name = body.name === undefined ? 'Khóa Ứng Dụng Mới' : String(body.name).trim();
+  if (!name || name.length > KEY_LIMITS.nameMaxLength) {
+    return { valid: false, error: `Tên khóa phải có từ 1 đến ${KEY_LIMITS.nameMaxLength} ký tự.` };
+  }
+  const role = body.role === undefined ? 'developer' : body.role;
+  if (!allowedRoles.includes(role)) {
+    return { valid: false, error: `Vai trò chỉ nhận: ${allowedRoles.join(', ')}.` };
+  }
+  const options = { name, role };
+  for (const [field, fallback] of [['rateLimitPerMin', 60], ['dailyQuota', 5000], ['expiresInDays', 365]]) {
+    const raw = body[field];
+    if (raw === undefined || raw === null || raw === '') {
+      options[field] = fallback;
+      continue;
+    }
+    const value = Number(raw);
+    const { min, max } = KEY_LIMITS[field];
+    if (!Number.isInteger(value) || value < min || value > max) {
+      return { valid: false, error: `${field} phải là số nguyên từ ${min} đến ${max}.` };
+    }
+    options[field] = value;
+  }
+  return { valid: true, options };
+}
+
+const todayUtc = () => new Date().toISOString().slice(0, 10);
+
+/**
+ * Tính một lượt vào hạn mức ngày (theo ngày UTC) của khóa. Gọi sau khi đã xác thực.
+ * @returns {{ allowed: boolean, used: number, limit: number }}
+ */
+export function consumeDailyQuota(keyId) {
+  const list = loadAllKeyRecords();
+  const record = list.find(k => k.id === keyId);
+  if (!record) return { allowed: false, used: 0, limit: 0 };
+  const today = todayUtc();
+  if (record.usageDay !== today) {
+    record.usageDay = today;
+    record.usageToday = 0;
+  }
+  const limit = Number(record.dailyQuota) || 0;
+  if (limit > 0 && record.usageToday >= limit) {
+    return { allowed: false, used: record.usageToday, limit };
+  }
+  record.usageToday += 1;
+  try {
+    writeKeyFile(list);
+  } catch (err) {
+    console.error('[AI HUB] Không ghi được hạn mức ngày:', err.message);
+  }
+  return { allowed: true, used: record.usageToday, limit };
 }
 
 /**
@@ -168,7 +239,7 @@ export function revokeKeyRecord(keyId) {
   if (target) {
     target.status = 'revoked';
     target.revokedAt = new Date().toISOString();
-    fs.writeFileSync(KEYS_FILE, JSON.stringify(list, null, 2), 'utf-8');
+    writeKeyFile(list);
     return true;
   }
   return false;
@@ -280,6 +351,13 @@ const rateLimitBuckets = new Map();
 export function checkRateLimit(identifier, limitPerMin = 60) {
   const now = Date.now();
   const windowMs = 60 * 1000;
+
+  // Dọn các bộ đếm đã hết hạn để bộ nhớ không tăng mãi theo số IP / khóa từng gọi
+  if (rateLimitBuckets.size > 1000) {
+    for (const [id, b] of rateLimitBuckets) {
+      if (!b.timestamps.length || now - b.timestamps[b.timestamps.length - 1] >= windowMs) rateLimitBuckets.delete(id);
+    }
+  }
 
   let bucket = rateLimitBuckets.get(identifier);
   if (!bucket) {
