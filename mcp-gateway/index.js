@@ -4,7 +4,7 @@
  * AI HUB VN — Smart MCP Gateway & Router (Máy Chủ MCP Trung Gian)
  * 
  * Đóng vai trò làm cổng kết nối duy nhất (Single Point of Entry) cho mọi AI Agent.
- * Tự động tiếp nhận ý định, định tuyến thông minh đến 2.216+ công cụ trong kho dữ liệu,
+ * Tự động tiếp nhận ý định, định tuyến thông minh đến toàn bộ công cụ trong kho dữ liệu,
  * tối ưu hóa 95% cửa sổ ngữ cảnh (Context Window) và loại bỏ hoàn toàn việc phải cấu hình thủ công.
  */
 
@@ -25,7 +25,7 @@ const server = new McpServer({
 // Tool 1: aihub_smart_dispatch — Nhận bài toán và tự động điều phối thực thi
 server.tool(
   'aihub_smart_dispatch',
-  'Tiếp nhận yêu cầu công việc tự nhiên từ người dùng, tự động phân tích ý định và định tuyến đến công cụ AI hoặc máy chủ MCP chuyên trách phù hợp nhất trong kho 2.216 tài nguyên AI HUB VN.',
+  `Tiếp nhận yêu cầu công việc tự nhiên từ người dùng, tự động phân tích ý định và định tuyến đến công cụ AI hoặc máy chủ MCP chuyên trách phù hợp nhất trong kho ${getAllTools().length.toLocaleString('vi-VN')} tài nguyên AI HUB VN.`,
   {
     task_description: z.string().describe('Mô tả chi tiết bài toán, nghiệp vụ hoặc tính năng cần thực hiện (Ví dụ: "Tạo đơn hàng thanh toán MoMo 100k", "Dịch ngược file nhị phân native", "Viết bản SRS IEEE 830", "Tạo mã VietQR Napas247")'),
     parameters: z.record(z.any()).optional().describe('Các tham số bổ sung tùy chọn cho bài toán')

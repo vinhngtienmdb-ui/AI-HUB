@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { findBestIntent } from './intent-matcher.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,191 +23,14 @@ export function getAllTools() {
   return cachedTools;
 }
 
-// Bảng ánh xạ ý định chuyên biệt (Core Intent Profiles)
-const CORE_INTENTS = [
-  {
-    intentId: 'vibecoding_dev_lifecycle',
-    targetToolId: 'vibecoding-skill-dev-lifecycle',
-    keywords: [
-      'vibecoding', 'vibecode', 'quy trình vibecode', 'quy trình vibecoding', 'dev-lifecycle', 
-      '13 giai đoạn', 'chuẩn phát triển phần mềm', 'bộ tài liệu dự án', 'không suy đoán', 
-      'không phá vỡ dự án', 'hướng dẫn vibecode', 'kỹ năng vibecoding'
-    ],
-    priority: 14
-  },
-  {
-    intentId: 'agent_memory_hindsight',
-    targetToolId: 'vectorize-io-hindsight',
-    keywords: [
-      'hindsight', 'vectorize', 'bộ nhớ tác tử', 'agent memory', 'bộ nhớ dài hạn cho agent',
-      'biomimetic memory', 'bộ nhớ phỏng sinh học', 'retain', 'recall', 'reflect', 'mental model', 
-      'mô hình nhận thức', 'hindsight-embed', 'học hỏi kinh nghiệm tác tử'
-    ],
-    priority: 14
-  },
-  {
-    intentId: 'agent_workforce_paperclip',
-    targetToolId: 'paperclipai-paperclip',
-    keywords: [
-      'paperclip', 'quản lý agent', 'quản trị agent', 'điều phối agent', 'agent workforce', 
-      'multi-agent management', 'control plane', 'org chart agent', 'quản lý tác tử', 
-      'phê duyệt agent', 'human in the loop', 'quản lý đội ngũ agent'
-    ],
-    priority: 13
-  },
-  {
-    intentId: 'ai_job_search_framework',
-    targetToolId: 'mads-lorentzen-ai-job-search',
-    keywords: [
-      'ai job search', 'job search', 'tìm việc', 'săn việc', 'xin việc', 'viết cv', 'tạo cv', 'cover letter', 
-      'thư xin việc', 'luyện phỏng vấn', 'phỏng vấn thử', 'ats resume', 'ats checker', 'mads lorentzen', 
-      'job application', 'phỏng vấn tuyển dụng', 'nộp hồ sơ', 'hồ sơ ứng tuyển'
-    ],
-    priority: 12
-  },
-  {
-    intentId: 'find_agent_skills',
-    targetToolId: 'vercel-labs-find-skills',
-    keywords: [
-      'find skill', 'find-skill', 'find-skills', 'tìm skill', 'tìm giúp tôi skill', 
-      'tìm kiếm skill', 'tìm kỹ năng', 'skills.sh', 'npx skills', 'cài đặt skill', 'khám phá skill', 
-      'agent skills', 'agent skill', 'cài skill', 'skill', 'skills'
-    ],
-    priority: 15
-  },
-  {
-    intentId: 'fintech_vietnam_momo',
-    targetToolId: 'vn-mcp-momo-payment',
-    keywords: ['momo', 'ví momo', 'thanh toán momo', 'hoàn tiền momo', 'ipn momo'],
-    priority: 10
-  },
-  {
-    intentId: 'fintech_vietnam_vietqr',
-    targetToolId: 'vietqr-generator-napas247-mcp',
-    keywords: ['vietqr', 'mã qr ngân hàng', 'chuyển khoản', 'napas247', 'napas', 'tài khoản ngân hàng', 'qr code thanh toán'],
-    priority: 10
-  },
-  {
-    intentId: 'messaging_vietnam_zalo_oa',
-    targetToolId: 'vn-mcp-zalo-oa-messaging',
-    keywords: ['zalo', 'zalo oa', 'official account', 'nhắn tin zalo', 'zalo api'],
-    priority: 10
-  },
-  {
-    intentId: 'fintech_vietnam_hub',
-    targetToolId: 'vn-mcp-hub-fintech-messaging',
-    keywords: ['thanh toán việt nam', 'cổng thanh toán vn', 'zalopay', 'vnpay', 'viettelpay', 'viettel money', 'ví điện tử việt nam'],
-    priority: 9
-  },
-  {
-    intentId: 'reverse_engineering_rea',
-    targetToolId: 'morluto-rea-reverse-engineer-anything',
-    keywords: [
-      'dịch ngược', 'reverse engineer', 'reverse engineering', 'binary', 'mã máy', 'nhị phân', 
-      'ghidra', 'hopper', 'ida pro', 'disassemble', 'decompilation', 'electron asar', 'native binary'
-    ],
-    priority: 10
-  },
-  {
-    intentId: 'business_analysis_openba_kit',
-    targetToolId: 'spmtitsolution-openba-kit-57-ai-skills',
-    keywords: [
-      'business analyst', 'ba', 'product owner', 'po', 'srs', 'ieee 830', 'user story', 
-      'invest', 'wireframe', 'use case', 'cockburn', 'gherkin', 'acceptance criteria', 'ac', 
-      'change request', 'render diagrams', 'đặc tả yêu cầu', 'phân tích nghiệp vụ'
-    ],
-    priority: 10
-  },
-  {
-    intentId: 'database_sqlite',
-    targetToolId: 'sqlite-mcp-database-server',
-    keywords: ['sqlite', 'database sqlite', 'truy vấn sqlite', 'db local', 'csdl cục bộ'],
-    priority: 9
-  },
-  {
-    intentId: 'database_postgres',
-    targetToolId: 'postgresql-database-mcp-server',
-    keywords: ['postgres', 'postgresql', 'truy vấn postgres', 'pg database'],
-    priority: 9
-  },
-  {
-    intentId: 'browser_automation_puppeteer',
-    targetToolId: 'puppeteer-browser-automation-mcp',
-    keywords: ['puppeteer', 'kiểm thử web', 'qa automation', 'chụp ảnh màn hình', 'screenshot website', 'e2e testing'],
-    priority: 9
-  },
-  {
-    intentId: 'browser_automation_agent',
-    targetToolId: 'browser-use-ai-agent',
-    keywords: ['browser use', 'tự động hóa trình duyệt', 'điều khiển trình duyệt', 'web agent', 'tự động click web'],
-    priority: 9
-  },
-  {
-    intentId: 'web_crawler_rag',
-    targetToolId: 'crawl4ai-web-crawler-llm',
-    keywords: ['cào web', 'crawl web', 'trích xuất markdown', 'crawler rag', 'thu thập dữ liệu web'],
-    priority: 9
-  },
-  {
-    intentId: 'nlp_vietnamese',
-    targetToolId: 'vietnamese-nlp-toolkit-ai-mcp',
-    keywords: ['nlp tiếng việt', 'tách từ tiếng việt', 'pos tagging', 'nhận dạng thực thể', 'chính tả tiếng việt', 'underthesea'],
-    priority: 9
-  },
-  {
-    intentId: 'claude_cost_token',
-    targetToolId: 'cc-usage-cost-analyzer-cli',
-    keywords: ['chi phí api', 'tiêu thụ token', 'token usage', 'cc-usage', 'ccflare', 'kiểm tra chi phí claude'],
-    priority: 9
-  },
-  {
-    intentId: 'claude_slash_commands',
-    targetToolId: 'claude-command-suite-119',
-    keywords: ['lệnh tắt', 'slash command', 'command suite', '/security-audit', '/architecture-review'],
-    priority: 9
-  },
-  {
-    intentId: 'persistent_memory',
-    targetToolId: 'anthropic-memory-knowledge-graph-mcp',
-    keywords: ['bộ nhớ dài hạn', 'ghi nhớ', 'đồ thị tri thức', 'knowledge graph', 'persistent memory'],
-    priority: 9
-  },
-  {
-    intentId: 'semantic_code_search',
-    targetToolId: 'claude-context-semantic-search-mcp',
-    keywords: ['tìm kiếm ngữ nghĩa', 'semantic search', 'codebase lớn', 'ast search', 'tìm hàm trong dự án'],
-    priority: 9
-  },
-  {
-    intentId: 'web_privacy_search',
-    targetToolId: 'brave-search-privacy-mcp-server',
-    keywords: ['tìm kiếm web riêng tư', 'brave search', 'tra cứu internet', 'web search an toàn'],
-    priority: 8
-  },
-  {
-    intentId: 'cloud_storage_gdrive',
-    targetToolId: 'google-drive-mcp-server',
-    keywords: ['google drive', 'gdrive', 'google docs', 'google sheets', 'tài liệu drive'],
-    priority: 8
-  }
-];
+// Bảng ánh xạ ý định chuyên biệt (Core Intent Profiles), dùng chung với giao diện web
+const CORE_INTENTS = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'core-intents.json'), 'utf-8'));
 
 /**
  * Phân tích ý định người dùng và định tuyến đến công cụ phù hợp nhất
  * @param {string} taskDescription Câu lệnh / bài toán nghiệp vụ người dùng yêu cầu
  * @returns {object} Kết quả định tuyến
  */
-
-/**
- * So khớp từ khóa với truy vấn. Từ khóa ngắn (tối đa 3 ký tự như "ba", "po") phải khớp nguyên từ
- * để tránh nhầm với chuỗi con ("database", "report").
- */
-function matchesKeyword(text, keyword) {
-  if (keyword.length > 3) return text.includes(keyword);
-  const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  return new RegExp(`(^|[^\\p{L}\\p{N}])${escaped}($|[^\\p{L}\\p{N}])`, 'u').test(text);
-}
-
 export function routeTask(taskDescription) {
   if (!taskDescription || typeof taskDescription !== 'string') {
     return {
@@ -222,25 +46,9 @@ export function routeTask(taskDescription) {
   const toolMap = new Map(allTools.map(t => [t.id, t]));
 
   // 1. Kiểm tra đối sánh với bảng ý định chuyên biệt (Core Intent Profiles)
-  let bestIntentMatch = null;
-  let highestScore = 0;
-
-  for (const intent of CORE_INTENTS) {
-    let matchCount = 0;
-    for (const kw of intent.keywords) {
-      if (matchesKeyword(queryNormalized, kw)) {
-        matchCount++;
-      }
-    }
-
-    if (matchCount > 0) {
-      const score = matchCount * 10 + intent.priority;
-      if (score > highestScore) {
-        highestScore = score;
-        bestIntentMatch = intent;
-      }
-    }
-  }
+  const bestMatch = findBestIntent(queryNormalized, CORE_INTENTS);
+  const bestIntentMatch = bestMatch ? bestMatch.intent : null;
+  const highestScore = bestMatch ? bestMatch.score : 0;
 
   if (bestIntentMatch && toolMap.has(bestIntentMatch.targetToolId)) {
     const targetTool = toolMap.get(bestIntentMatch.targetToolId);
@@ -254,7 +62,7 @@ export function routeTask(taskDescription) {
     };
   }
 
-  // 2. Tìm kiếm dự phòng theo độ tương đồng nội dung trong toàn bộ 2.216 tài nguyên
+  // 2. Tìm kiếm dự phòng theo độ tương đồng nội dung trong toàn bộ kho tài nguyên
   const tokens = queryNormalized.split(/\s+/).filter(w => w.length > 2);
   let bestFallbackTool = null;
   let maxTokenHits = 0;
@@ -282,7 +90,7 @@ export function routeTask(taskDescription) {
       confidence: Math.min(0.85, 0.5 + (maxTokenHits * 0.1)),
       intentId: 'general_domain_match',
       matchedTool: bestFallbackTool,
-      reasoningVi: `Đã đối soát ngữ nghĩa trên toàn bộ kho 2.216 tài nguyên của AI HUB VN và chọn "${bestFallbackTool.name}" thuộc lĩnh vực [${bestFallbackTool.categoryNameVi}].`
+      reasoningVi: `Đã đối soát ngữ nghĩa trên toàn bộ kho ${allTools.length.toLocaleString('vi-VN')} tài nguyên của AI HUB VN và chọn "${bestFallbackTool.name}" thuộc lĩnh vực [${bestFallbackTool.categoryNameVi}].`
     };
   }
 
