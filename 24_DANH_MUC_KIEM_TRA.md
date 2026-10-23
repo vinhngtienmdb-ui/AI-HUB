@@ -1,8 +1,8 @@
 # Danh Mục Kiểm Tra Dự Án (Checklist)
 
 ## Tổng Quan Tiến Độ
-- Tổng số nhiệm vụ cốt lõi: 116
-- Đã hoàn thành: 111
+- Tổng số nhiệm vụ cốt lõi: 117
+- Đã hoàn thành: 112
 - Đang thực hiện: 0
 - Chưa bắt đầu: 4
 - Bị nghẽn: 1
@@ -150,7 +150,8 @@
 ## Giai Đoạn 12: Triển Khai Phát Hành (Deploy)
 - [x] Khởi tạo lịch sử thay đổi phiên bản (`22_LICH_SU_THAY_DOI.md`)
 - [x] Thiết lập quy trình đóng gói, CI và phương án quay lui (`20_QUY_TRINH_TRIEN_KHAI.md`, `.github/workflows/ci.yml`)
-- [ ] Cấu hình dịch vụ lưu trữ giao diện web và bước triển khai tự động (TK-01)
+- [x] Triển khai giao diện web trên Vercel: bản xem trước cho mỗi pull request, bản chính thức từ `main`
+- [ ] Bật bảo vệ nhánh `main`, bắt buộc CI đạt trước khi hợp nhất (TK-01)
 - [x] Khởi chạy máy chủ phát triển cục bộ và xác minh giao diện trực tiếp
 - [x] Khởi tạo Git repository, cấu hình `.gitignore`, `LICENSE` (MIT) và `README.md`
 - [x] Đồng bộ thành công toàn bộ mã nguồn lên kho lưu trữ GitHub chính thức: `https://github.com/vinhngtienmdb-ui/AI-HUB.git`

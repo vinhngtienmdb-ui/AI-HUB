@@ -11,7 +11,7 @@ Tài liệu này quy định cách đóng gói, kiểm tra, cấu hình môi tr�
 
 | Thành phần | Mã nguồn | Lệnh chạy | Đầu ra / Cổng |
 |---|---|---|---|
-| Giao diện web (trang tĩnh) | `src/`, `public/`, `index.html` | `npm run build` | Thư mục `dist/` (HTML, CSS, JavaScript tĩnh) |
+| Giao diện web (trang tĩnh) | `src/`, `public/`, `index.html` | `npm run build` | Thư mục `dist/` (HTML, CSS, JavaScript tĩnh, `tool-details/*.json`), triển khai trên Vercel (dự án `ai-hub`) |
 | Máy chủ MCP (stdio) | `mcp-gateway/index.js` | `npm run mcp:stdio` | Chạy dưới dạng tiến trình con của Claude Desktop, Cursor, Claude Code |
 | Cổng REST API | `mcp-gateway/api-server.js` | `npm run mcp:api` | `http://127.0.0.1:4000` (mặc định) |
 | Cầu nối lệnh cục bộ | `server/commandBridge.js` | Tự gắn vào `npm run dev` | Chỉ có trong máy chủ phát triển, **không** có trong `dist/` |
@@ -41,12 +41,16 @@ Không hợp nhất (merge) vào `main` khi CI chưa đạt. Thay đổi liên q
 
 ## 5. Các Bước Phát Hành
 
-### 5.1. Giao diện web
-1. Hợp nhất pull request đã đạt CI vào `main`.
+### 5.1. Giao diện web (Vercel)
+Kho mã được kết nối với Vercel qua ứng dụng GitHub:
+- Mỗi pull request có một bản xem trước (Preview) riêng; đường dẫn được Vercel đăng trong bình luận của pull request.
+- Hợp nhất vào `main` sẽ tự động đóng gói (`npm run build`) và triển khai bản chính thức (Production).
+
+Các bước:
+1. Mở pull request, chờ CI đạt và kiểm tra bản xem trước của Vercel.
 2. Cập nhật phiên bản và mô tả thay đổi trong `22_LICH_SU_THAY_DOI.md`.
-3. Đóng gói: `npm ci && npm run build`.
-4. Tải thư mục `dist/` lên dịch vụ lưu trữ trang tĩnh. Dự án hiện **chưa cấu hình** dịch vụ lưu trữ cố định (xem mục 7).
-5. Kiểm tra sau phát hành (Smoke Test): mở trang chủ, tìm kiếm một công cụ, mở trang chi tiết, mở tab README và tab Sơ đồ; không có lỗi trong bảng điều khiển trình duyệt.
+3. Hợp nhất vào `main`; Vercel tự triển khai.
+4. Kiểm tra sau phát hành (Smoke Test): mở trang chủ, tìm kiếm một công cụ, mở trang chi tiết, mở tab README và tab Sơ đồ; không có lỗi trong bảng điều khiển trình duyệt.
 
 ### 5.2. Cổng REST API
 1. Trên máy chủ: `git pull`, `npm ci`.
@@ -63,7 +67,7 @@ Người dùng cập nhật bằng `git pull` và khởi động lại ứng d�
 
 | Thành phần | Cách quay lui |
 |---|---|
-| Giao diện web | Tải lại thư mục `dist/` của phiên bản trước (đóng gói lại từ commit trước: `git checkout <commit> && npm ci && npm run build`). |
+| Giao diện web | Trên bảng điều khiển Vercel, chọn bản triển khai chính thức trước đó và dùng chức năng quay lui tức thì (Instant Rollback / Promote to Production). Sau đó `git revert` commit lỗi trên `main`. |
 | Cổng REST API | `git checkout <commit trước>`, `npm ci`, khởi động lại tiến trình. Dữ liệu `mcp-gateway/data/` không bị ảnh hưởng vì nằm ngoài kho mã. |
 | Mã nguồn | `git revert <commit lỗi>` trên `main`, đi qua CI như thay đổi thông thường. Không viết lại lịch sử nhánh `main`. |
 
@@ -75,5 +79,5 @@ Trước khi nâng cấp Cổng REST API, sao lưu thư mục `mcp-gateway/data/
 
 | Mã | Hạn chế | Hướng xử lý |
 |---|---|---|
-| TK-01 | Chưa có dịch vụ lưu trữ giao diện web cố định và chưa có bước triển khai tự động trong CI. | Chọn dịch vụ lưu trữ trang tĩnh, sau đó thêm bước triển khai vào CI sau khi các bước kiểm tra đạt. |
+| TK-01 | Vercel triển khai `main` độc lập với CI; nếu đẩy thẳng lên `main` mà CI lỗi, bản lỗi vẫn được triển khai. | Bật bảo vệ nhánh `main` trên GitHub (Settings → Branches): bắt buộc pull request và bắt buộc kiểm tra `kiem-tra` đạt trước khi hợp nhất. |
 | TK-02 | Gói JavaScript chính có kích thước lớn do nhúng toàn bộ kho dữ liệu công cụ. | Nhiệm vụ CL-04 trong `24_DANH_MUC_KIEM_TRA.md`. |
