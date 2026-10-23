@@ -1,0 +1,27 @@
+name: Kiểm tra liên tục (CI)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  kiem-tra:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Cài đặt gói phụ thuộc
+        run: npm ci
+      - name: Kiểm thử tự động
+        run: npm test
+      - name: Kiểm tra kiểu TypeScript
+        run: npx tsc --noEmit
+      - name: Đóng gói bản phát hành
+        run: npx vite build

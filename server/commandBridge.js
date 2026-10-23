@@ -1,41 +1,73 @@
 import { spawn, exec } from 'node:child_process';
+import crypto from 'node:crypto';
 import os from 'node:os';
 
 // Lưu trữ các tiến trình đang thực thi để hỗ trợ dừng tiến trình theo yêu cầu
 const activeProcesses = new Map();
 
-// Danh sách trắng các lệnh được phép thực thi vì mục đích an toàn
-const ALLOWED_COMMAND_PREFIXES = [
-  'npx',
-  'npm',
-  'node',
-  'claude',
-  'git',
-  'uv',
-  'uvx',
-  'python',
-  'echo',
-  'dir',
-  'ls',
-  'where'
-];
+// Mã phiên ngẫu nhiên sinh mỗi lần khởi động máy chủ, được nhúng vào trang qua thẻ meta.
+// Trang web khác nguồn không đọc được mã này nên không thể gọi cầu nối.
+export const BRIDGE_TOKEN = crypto.randomBytes(32).toString('hex');
+export const BRIDGE_TOKEN_HEADER = 'x-aihub-bridge-token';
 
-// Danh sách đen các mẫu lệnh nguy hiểm tiềm ẩn phá hoại hệ thống
-const FORBIDDEN_PATTERNS = [
-  /rmdir\s+[\/\-]s/i,
-  /del\s+[\/\-]f/i,
-  /\bformat\b/i,
-  /\bshutdown\b/i,
-  /\breg\s+delete/i,
-  /\|\s*(ba)?sh/i,
-  /powershell.*-enc/i,
-  /rm\s+-rf/i
-];
+// Danh sách trắng chương trình và ràng buộc tham số cho từng chương trình.
+// Chỉ kiểm tra tên chương trình là không đủ: "node -e", "python -c", "git -c" đều chạy được mã tùy ý.
+const COMMAND_RULES = {
+  npx: {},
+  npm: {},
+  claude: { forbiddenArgs: [/^--dangerously-skip-permissions$/i] },
+  uv: {},
+  uvx: {},
+  agy: {},
+  git: {
+    allowedSubcommands: ['clone', 'status', 'log', 'diff', 'branch', '--version', 'version'],
+    forbiddenArgs: [/^-c$/, /^--config/i, /^--upload-pack/i, /^-u$/, /^--receive-pack/i, /^--exec/i, /^--template/i, /^ext::/i]
+  },
+  node: { allowedSubcommands: ['-v', '--version'], maxArgs: 1 },
+  python: { allowedSubcommands: ['-V', '--version'], maxArgs: 1 },
+  echo: {},
+  dir: {},
+  ls: {},
+  where: {}
+};
+
+export const ALLOWED_COMMAND_PREFIXES = Object.keys(COMMAND_RULES);
+
+// Ký tự điều khiển shell không được phép xuất hiện ở bất kỳ đâu (kể cả trong dấu nháy)
+const FORBIDDEN_CHARS = /[;&|`$<>(){}\[\]*?!%^~\r\n\t'#]/;
+
+/**
+ * Tách câu lệnh thành mảng tham số, hỗ trợ dấu nháy kép đơn giản.
+ * @param {string} command
+ * @returns {string[] | null} null nếu dấu nháy không cân bằng
+ */
+export function tokenizeCommand(command) {
+  const tokens = [];
+  let current = '';
+  let inQuotes = false;
+  let hasToken = false;
+  for (const ch of command) {
+    if (ch === '"') {
+      inQuotes = !inQuotes;
+      hasToken = true;
+    } else if (ch === ' ' && !inQuotes) {
+      if (hasToken) tokens.push(current);
+      current = '';
+      hasToken = false;
+    } else {
+      current += ch;
+      hasToken = true;
+    }
+  }
+  if (inQuotes) return null;
+  if (hasToken) tokens.push(current);
+  return tokens;
+}
 
 /**
  * Kiểm tra tính an toàn của câu lệnh trước khi thực thi
  * @param {string} rawCommand 
- * @returns {{ safe: boolean, reason?: string }}
+ * @returns {{ safe: boolean, reason?: string, bin?: string, args?: string[] }}
  */
 export function validateCommand(rawCommand) {
   if (!rawCommand || typeof rawCommand !== 'string') {
@@ -46,42 +78,108 @@ export function validateCommand(rawCommand) {
   if (trimmed.length === 0) {
     return { safe: false, reason: 'Câu lệnh không có nội dung.' };
   }
-
-  // Kiểm tra danh sách đen nguy hiểm
-  for (const pattern of FORBIDDEN_PATTERNS) {
-    if (pattern.test(trimmed)) {
-      return { 
-        safe: false, 
-        reason: 'Lệnh bị từ chối do chứa mẫu cú pháp can thiệp hệ thống nguy hiểm.' 
-      };
-    }
+  if (trimmed.length > 500) {
+    return { safe: false, reason: 'Câu lệnh quá dài.' };
   }
 
-  // Tách từ đầu tiên để kiểm tra danh sách trắng
-  const firstWord = trimmed.split(/[\s|&;]+/)[0].toLowerCase();
-  const isAllowed = ALLOWED_COMMAND_PREFIXES.some(prefix => 
-    firstWord === prefix || firstWord.endsWith(`/${prefix}`) || firstWord.endsWith(`\\${prefix}`)
-  );
-
-  if (!isAllowed) {
-    return { 
-      safe: false, 
-      reason: `Tiền tố lệnh [${firstWord}] không nằm trong danh sách trắng an toàn. Chỉ cho phép các lệnh: ${ALLOWED_COMMAND_PREFIXES.join(', ')}` 
+  if (FORBIDDEN_CHARS.test(trimmed)) {
+    return {
+      safe: false,
+      reason: 'Lệnh bị từ chối do chứa ký tự điều khiển shell (; & | ` $ < > ( ) ...). Mỗi lần chỉ chạy một lệnh đơn.'
     };
   }
 
-  return { safe: true };
+  const tokens = tokenizeCommand(trimmed);
+  if (!tokens || tokens.length === 0) {
+    return { safe: false, reason: 'Dấu nháy kép không cân bằng.' };
+  }
+
+  const [bin, ...args] = tokens;
+  const rule = COMMAND_RULES[bin.toLowerCase()];
+  if (!rule || !/^[a-z]+$/i.test(bin)) {
+    return { 
+      safe: false, 
+      reason: `Chương trình [${bin}] không nằm trong danh sách trắng an toàn. Chỉ cho phép: ${ALLOWED_COMMAND_PREFIXES.join(', ')}` 
+    };
+  }
+
+  if (rule.maxArgs !== undefined && args.length > rule.maxArgs) {
+    return { safe: false, reason: `Chương trình [${bin}] chỉ được phép chạy với tối đa ${rule.maxArgs} tham số.` };
+  }
+  if (rule.allowedSubcommands && (args.length === 0 || !rule.allowedSubcommands.includes(args[0]))) {
+    return {
+      safe: false,
+      reason: `Với [${bin}], chỉ cho phép: ${rule.allowedSubcommands.join(', ')}.`
+    };
+  }
+  if (rule.forbiddenArgs) {
+    const blocked = args.find(arg => rule.forbiddenArgs.some(p => p.test(arg)));
+    if (blocked) {
+      return { safe: false, reason: `Tham số [${blocked}] bị cấm với [${bin}].` };
+    }
+  }
+
+  return { safe: true, bin: bin.toLowerCase(), args };
+}
+
+/**
+ * Kiểm tra yêu cầu đến từ chính trang AI Hub trên máy cục bộ.
+ * Chặn: trang web khác nguồn (CSRF), tấn công DNS rebinding, truy cập từ mạng LAN.
+ * @returns {string | null} lý do từ chối, hoặc null nếu hợp lệ
+ */
+export function verifyBridgeRequest(req) {
+  const isLoopbackHost = (value) => {
+    if (!value) return false;
+    const hostname = value.replace(/:\d+$/, '').replace(/^\[|\]$/g, '').toLowerCase();
+    return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1';
+  };
+
+  const remote = req.socket?.remoteAddress || '';
+  if (!['127.0.0.1', '::1', '::ffff:127.0.0.1'].includes(remote)) {
+    return 'Cầu nối chỉ chấp nhận kết nối từ máy cục bộ.';
+  }
+  if (!isLoopbackHost(req.headers.host)) {
+    return 'Tiêu đề Host không hợp lệ.';
+  }
+  const origin = req.headers.origin;
+  if (origin) {
+    let originHost = '';
+    try {
+      originHost = new URL(origin).host;
+    } catch (_) {
+      return 'Tiêu đề Origin không hợp lệ.';
+    }
+    if (originHost !== req.headers.host || !isLoopbackHost(originHost)) {
+      return 'Yêu cầu đến từ nguồn không được phép.';
+    }
+  }
+  const token = req.headers[BRIDGE_TOKEN_HEADER];
+  if (typeof token !== 'string' || token.length !== BRIDGE_TOKEN.length ||
+      !crypto.timingSafeEqual(Buffer.from(token), Buffer.from(BRIDGE_TOKEN))) {
+    return 'Thiếu hoặc sai mã phiên cầu nối.';
+  }
+  return null;
+}
+
+function rejectRequest(res, reason) {
+  res.writeHead(403, { 'Content-Type': 'application/json; charset=utf-8' });
+  res.end(JSON.stringify({ success: false, error: reason }));
 }
 
 /**
  * Xử lý yêu cầu POST /api/execute-command với giao thức truyền luồng dữ liệu (SSE)
  */
 export function handleExecuteCommand(req, res) {
+  const rejection = verifyBridgeRequest(req);
+  if (rejection) {
+    rejectRequest(res, rejection);
+    return;
+  }
+
   res.writeHead(200, {
     'Content-Type': 'text/event-stream; charset=utf-8',
     'Cache-Control': 'no-cache, no-transform',
-    'Connection': 'keep-alive',
-    'Access-Control-Allow-Origin': '*'
+    'Connection': 'keep-alive'
   });
 
   const sendEvent = (data) => {
@@ -114,12 +212,19 @@ export function handleExecuteCommand(req, res) {
         timestamp: new Date().toISOString()
       });
 
-      // Khởi tạo tiến trình con qua Shell
-      const child = spawn(command.trim(), {
-        shell: true,
-        cwd: process.cwd(),
-        env: { ...process.env, FORCE_COLOR: '1' }
-      });
+      // Trên POSIX chạy trực tiếp không qua shell. Trên Windows, npx/npm là tệp .cmd nên cần shell;
+      // điều này an toàn vì validateCommand đã loại bỏ toàn bộ ký tự điều khiển shell.
+      const isWindows = process.platform === 'win32';
+      const child = spawn(
+        validation.bin,
+        isWindows ? validation.args.map(arg => (arg.includes(' ') ? `"${arg}"` : arg)) : validation.args,
+        {
+          shell: isWindows,
+          detached: !isWindows,
+          cwd: process.cwd(),
+          env: { ...process.env, FORCE_COLOR: '1' }
+        }
+      );
 
       if (!child.pid) {
         sendEvent({
@@ -184,8 +289,10 @@ export function handleExecuteCommand(req, res) {
         res.end();
       });
 
-      // Nếu client ngắt kết nối trình duyệt
-      req.on('close', () => {
+      // Nếu client ngắt kết nối trình duyệt trước khi tiến trình kết thúc.
+      // Dùng res thay vì req: sự kiện 'close' của req phát ra ngay khi đọc xong thân yêu cầu.
+      res.on('close', () => {
+        if (res.writableEnded) return;
         clearTimeout(timeoutId);
         if (activeProcesses.has(pid)) {
           killChildProcess(pid);
@@ -228,6 +335,12 @@ export function killChildProcess(pid) {
  * Xử lý yêu cầu POST /api/kill-command
  */
 export function handleKillCommand(req, res) {
+  const rejection = verifyBridgeRequest(req);
+  if (rejection) {
+    rejectRequest(res, rejection);
+    return;
+  }
+
   let body = '';
   req.on('data', chunk => {
     body += chunk;
@@ -242,7 +355,7 @@ export function handleKillCommand(req, res) {
         return;
       }
 
-      const killed = killChildProcess(pid);
+      const killed = killChildProcess(Number(pid));
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ success: true, killed }));
     } catch (err) {
@@ -256,9 +369,14 @@ export function handleKillCommand(req, res) {
  * Xử lý yêu cầu GET /api/system-status
  */
 export function handleSystemStatus(req, res) {
+  const rejection = verifyBridgeRequest(req);
+  if (rejection) {
+    rejectRequest(res, rejection);
+    return;
+  }
+
   res.writeHead(200, { 
-    'Content-Type': 'application/json; charset=utf-8',
-    'Access-Control-Allow-Origin': '*'
+    'Content-Type': 'application/json; charset=utf-8'
   });
 
   res.end(JSON.stringify({
@@ -267,7 +385,6 @@ export function handleSystemStatus(req, res) {
     arch: process.arch,
     nodeVersion: process.version,
     activeProcessesCount: activeProcesses.size,
-    allowedPrefixes: ALLOWED_COMMAND_PREFIXES,
-    cwd: process.cwd()
+    allowedPrefixes: ALLOWED_COMMAND_PREFIXES
   }));
 }

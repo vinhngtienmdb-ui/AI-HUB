@@ -32,3 +32,6 @@ lerna-debug.log*
 scripts/*.html
 scripts/*_rsc.txt
 scripts/pdg_text.txt
+
+# Dữ liệu khóa API và salt sinh ra khi chạy MCP Gateway (trạng thái cục bộ, không đưa lên kho mã)
+mcp-gateway/data/

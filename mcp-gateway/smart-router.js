@@ -196,6 +196,17 @@ const CORE_INTENTS = [
  * @param {string} taskDescription Câu lệnh / bài toán nghiệp vụ người dùng yêu cầu
  * @returns {object} Kết quả định tuyến
  */
+
+/**
+ * So khớp từ khóa với truy vấn. Từ khóa ngắn (tối đa 3 ký tự như "ba", "po") phải khớp nguyên từ
+ * để tránh nhầm với chuỗi con ("database", "report").
+ */
+function matchesKeyword(text, keyword) {
+  if (keyword.length > 3) return text.includes(keyword);
+  const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(^|[^\\p{L}\\p{N}])${escaped}($|[^\\p{L}\\p{N}])`, 'u').test(text);
+}
+
 export function routeTask(taskDescription) {
   if (!taskDescription || typeof taskDescription !== 'string') {
     return {
@@ -217,7 +228,7 @@ export function routeTask(taskDescription) {
   for (const intent of CORE_INTENTS) {
     let matchCount = 0;
     for (const kw of intent.keywords) {
-      if (queryNormalized.includes(kw)) {
+      if (matchesKeyword(queryNormalized, kw)) {
         matchCount++;
       }
     }

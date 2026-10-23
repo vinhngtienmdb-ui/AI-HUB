@@ -106,3 +106,9 @@ test('Kiểm tra Smart MCP Router: Xử lý ngoại lệ đầu vào rỗng ho�
   const nullRes = routeTask(null);
   assert.equal(nullRes.success, false);
 });
+
+test('Kiểm tra Smart MCP Router: Từ khóa ngắn chỉ khớp nguyên từ, không khớp chuỗi con', () => {
+  assert.notStrictEqual(routeTask('Thiết kế database cho hệ thống đơn hàng').intentId, 'business_analysis_openba_kit');
+  assert.notStrictEqual(routeTask('Tạo ứng dụng react mới').intentId, 'reverse_engineering_rea');
+  assert.strictEqual(routeTask('Viết user story cho BA').intentId, 'business_analysis_openba_kit');
+});

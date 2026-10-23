@@ -32,6 +32,9 @@ export function routeTaskFrontend(query: string): RoutingFrontendResult {
   }
 
   const normalized = query.toLowerCase().trim();
+  // So khớp nguyên từ cho từ khóa ngắn, tránh nhầm "rea" trong "react" hay "ba" trong "database"
+  const hasWord = (text: string, word: string) =>
+    new RegExp(`(^|[^\\p{L}\\p{N}])${word}($|[^\\p{L}\\p{N}])`, 'u').test(text);
   const allTools = INITIAL_TOOLS;
 
   // 0. Ý định Quy trình phát triển phần mềm chuẩn VibeCode (dev-lifecycle)
@@ -106,7 +109,7 @@ export function routeTaskFrontend(query: string): RoutingFrontendResult {
   }
 
   // 2. Ý định Dịch ngược mã nguồn (Reverse Engineering)
-  if (normalized.includes('dịch ngược') || normalized.includes('binary') || normalized.includes('ghidra') || normalized.includes('rea')) {
+  if (normalized.includes('dịch ngược') || normalized.includes('binary') || normalized.includes('ghidra') || hasWord(normalized, 'rea')) {
     const reaTool = allTools.find(t => t.id === 'morluto-rea-reverse-engineer-anything') || allTools[0];
     return {
       strategy: 'SPECIALIZED_INTENT_RULE',
@@ -118,7 +121,7 @@ export function routeTaskFrontend(query: string): RoutingFrontendResult {
   }
 
   // 3. Ý định Phân tích nghiệp vụ BA (OpenBA-Kit)
-  if (normalized.includes('ba') || normalized.includes('business analyst') || normalized.includes('srs') || normalized.includes('invest') || normalized.includes('user story')) {
+  if (hasWord(normalized, 'ba') || normalized.includes('business analyst') || normalized.includes('srs') || normalized.includes('invest') || normalized.includes('user story')) {
     const baTool = allTools.find(t => t.id === 'spmtitsolution-openba-kit-57-ai-skills') || allTools[0];
     return {
       strategy: 'SPECIALIZED_INTENT_RULE',

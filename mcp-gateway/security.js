@@ -16,12 +16,13 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Khóa bí mật nội bộ dùng cho HMAC (có thể ghi đè qua biến môi trường AIHUB_SECURITY_SALT)
-const SECURITY_SALT = process.env.AIHUB_SECURITY_SALT || 'aihub_vn_production_master_secret_salt_2026';
-
-// Đường dẫn lưu trữ dữ liệu khóa bảo mật (nếu có môi trường lưu trữ)
-const DATA_DIR = path.join(__dirname, 'data');
+// Đường dẫn lưu trữ dữ liệu khóa bảo mật (ghi đè qua AIHUB_DATA_DIR, ví dụ khi chạy kiểm thử)
+const DATA_DIR = process.env.AIHUB_DATA_DIR || path.join(__dirname, 'data');
 const KEYS_FILE = path.join(DATA_DIR, 'api-keys.json');
+const SALT_FILE = path.join(DATA_DIR, '.security-salt');
+
+// Giá trị cũ từng được viết cứng trong mã nguồn; chỉ dùng để giữ hiệu lực các khóa đã tạo trước đây
+const LEGACY_SALT = 'aihub_vn_production_master_secret_salt_2026';
 
 // Khởi tạo thư mục dữ liệu nếu chưa tồn tại
 if (!fs.existsSync(DATA_DIR)) {
@@ -31,6 +32,28 @@ if (!fs.existsSync(DATA_DIR)) {
     // Không làm gián đoạn nếu môi trường read-only
   }
 }
+
+/**
+ * Xác định khóa bí mật HMAC theo thứ tự: biến môi trường AIHUB_SECURITY_SALT -> tệp salt cục bộ -> sinh mới.
+ * Kho khóa đã tồn tại từ trước (không có tệp salt) tiếp tục dùng giá trị cũ để không vô hiệu hóa khóa đang dùng.
+ */
+function resolveSecuritySalt() {
+  if (process.env.AIHUB_SECURITY_SALT) return process.env.AIHUB_SECURITY_SALT;
+  try {
+    if (fs.existsSync(SALT_FILE)) {
+      return fs.readFileSync(SALT_FILE, 'utf-8').trim();
+    }
+    const hasLegacyKeys = fs.existsSync(KEYS_FILE) && JSON.parse(fs.readFileSync(KEYS_FILE, 'utf-8')).length > 0;
+    const salt = hasLegacyKeys ? LEGACY_SALT : crypto.randomBytes(32).toString('hex');
+    fs.writeFileSync(SALT_FILE, salt, { encoding: 'utf-8', mode: 0o600 });
+    return salt;
+  } catch (e) {
+    // Môi trường chỉ đọc: dùng salt ngẫu nhiên trong bộ nhớ (khóa chỉ có hiệu lực trong phiên chạy này)
+    return crypto.randomBytes(32).toString('hex');
+  }
+}
+
+const SECURITY_SALT = resolveSecuritySalt();
 
 /**
  * Tạo chuỗi băm HMAC-SHA256 cho một khóa API thô

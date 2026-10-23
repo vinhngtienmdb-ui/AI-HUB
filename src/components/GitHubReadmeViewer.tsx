@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { marked } from 'marked';
+import DOMPurify from 'dompurify';
 import { 
   FileText, Copy, Check, ExternalLink, Code2, Eye 
 } from 'lucide-react';
@@ -22,17 +23,19 @@ export const GitHubReadmeViewer: React.FC<GitHubReadmeViewerProps> = ({
   const [copiedAll, setCopiedAll] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Cấu hình marked để sinh HTML an toàn và đúng chuẩn GitHub Flavored Markdown
+  // Chuyển Markdown sang HTML chuẩn GitHub Flavored Markdown, sau đó làm sạch bằng DOMPurify
+  // (marked không tự lọc thẻ <script>, thuộc tính on*, liên kết javascript: trong README bên thứ ba)
   const htmlContent = useMemo(() => {
     if (!markdown) return '';
     try {
-      return marked.parse(markdown, {
+      const rawHtml = marked.parse(markdown, {
         gfm: true,
         breaks: true
       }) as string;
+      return DOMPurify.sanitize(rawHtml);
     } catch (e) {
       console.error('Lỗi phân tích cú pháp Markdown:', e);
-      return `<p>${markdown}</p>`;
+      return DOMPurify.sanitize(`<p>${markdown}</p>`);
     }
   }, [markdown]);
 

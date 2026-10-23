@@ -4,6 +4,20 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.49 (Ngày 23-10-2026)
+- **Loại hình**: Sửa lỗi bảo mật nghiêm trọng và lỗi chức năng.
+- **Bảo mật**:
+  - Cầu nối lệnh cục bộ: kiểm tra nguồn yêu cầu (loopback, Host, Origin, mã phiên), chạy không qua shell, ràng buộc tham số theo từng chương trình; lệnh từ trang chi tiết chỉ được điền sẵn, không tự chạy. Máy chủ phát triển chỉ lắng nghe `127.0.0.1`.
+  - API Gateway: điểm cuối quản trị bắt buộc khóa admin; mặc định lắng nghe `127.0.0.1`; CORS chỉ cho phép localhost hoặc `AIHUB_ALLOWED_ORIGINS`; chỉ tin `X-Forwarded-For` khi đặt `AIHUB_TRUST_PROXY=1`; bỏ muối HMAC viết cứng.
+  - Bỏ `mcp-gateway/data/` khỏi kho mã.
+  - Làm sạch HTML README bằng DOMPurify.
+- **Sửa lỗi**:
+  - Terminal hủy tiến trình ngay sau khi gửi lệnh nên không hiển thị kết quả.
+  - Bộ định tuyến ý định nhận nhầm "react" thành công cụ dịch ngược REA và "database" thành phân tích nghiệp vụ BA.
+- **Vận hành**: Thêm CI (kiểm thử, kiểm tra kiểu, đóng gói). Kiểm thử không còn ghi vào dữ liệu trong kho mã.
+- **Thay đổi không tương thích**: Gọi `/api/v1/stats`, `/api/v1/keys*`, `/api/v1/audit-logs` cần tiêu đề `Authorization: Bearer <khóa admin>`. Truy cập API Gateway từ máy khác cần đặt `AIHUB_API_HOST=0.0.0.0`.
+- **Kiểm thử**: 46/46 đạt.
+
 ### Phiên Bản 2.0.48-TachSoDoTrucQuanThanhTabDocLapKhoiReadme (Ngày 22-10-2026)
 - **Loại hình**: Tách biệt hoàn toàn khối Sơ đồ trực quan (Diagram) thành một Tab chuyên biệt độc lập trên cả Trang chi tiết (`DetailPage.tsx`) và Modal chi tiết (`ToolDetailModal.tsx`), không nằm trong Tab README; xây dựng thành phần `VisualDiagramViewer.tsx` chuyên biệt và trả lại giao diện chuẩn mực GitHub Markdown cho `GitHubReadmeViewer.tsx`.
 - **Nội dung hoàn thành**:

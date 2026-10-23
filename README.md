@@ -1,9 +1,9 @@
 # AI Hub - Nền Tảng Quản Lý Công Cụ AI, Máy Chủ MCP & Kỹ Năng Tác Tử Chuẩn Hóa
 
 [![Giấy Phép](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Phiên Bản](https://img.shields.io/badge/Phiên_Bản-1.8.0-emerald.svg)](20_LICH_SU_THAY_DOI.md)
+[![Phiên Bản](https://img.shields.io/badge/Phiên_Bản-2.0.49-emerald.svg)](20_LICH_SU_THAY_DOI.md)
 [![Quy Trình VibeCode](https://img.shields.io/badge/Quy_Trình-VibeCode_12_Giai_Đoạn-purple.svg)](index.md)
-[![Tổng Số Công Cụ](https://img.shields.io/badge/Kho_Dữ_Liệu-1.930+_Mục-orange.svg)](#)
+[![Tổng Số Công Cụ](https://img.shields.io/badge/Kho_Dữ_Liệu-2.222_Mục-orange.svg)](#)
 [![Khung Làm Việc Mở Rộng](https://img.shields.io/badge/Khung_Làm_Việc-Mở_Rộng_Toàn_Màn_Hình-blueviolet.svg)](#)
 [![Giao Diện Linh Hoạt](https://img.shields.io/badge/Giao_Diện-Left_Sidebar_Thu_Gọn-blue.svg)](#)
 
@@ -15,7 +15,7 @@ Dự án được xây dựng tuân thủ nghiêm ngặt **Quy trình VibeCode C
 
 ## 🌟 Tính Năng Nổi Bật
 
-1. **Kho Lưu Trữ Đồ Sộ (1.930+ Công Cụ & 2.925 Cấu Hình)**:
+1. **Kho Lưu Trữ Đồ Sộ (2.222 Công Cụ & 3.655 Cấu Hình)**:
    - Tổng hợp và chuẩn hóa dữ liệu từ các nguồn hàng đầu thế giới và Việt Nam (`phandonggiang.com/ai-templates`, `mcpmarket.com`, `awesome-mcp-servers`, GitHub, GitLab).
    - Phân loại tách biệt rạch ròi 8 nhóm thành phần kỹ thuật:
      - **Kỹ năng tác tử (Skills)**: 897 mục.
@@ -61,10 +61,10 @@ Dự án được xây dựng tuân thủ nghiêm ngặt **Quy trình VibeCode C
    - **Đời sống & Tiện ích**: Giá xăng dầu Petrolimex, Lịch Vạn Niên & Âm Lịch, Chất lượng không khí AQI & Thời tiết, Bản đồ hành chính 63 tỉnh thành.
 
 5. **Thiết Bị Đầu Cuối Cục Bộ (Interactive Local Terminal)**:
-   - Cho phép **chạy lệnh dòng lệnh (CLI) trực tiếp từ giao diện trang web** lên máy tính qua cầu nối cục bộ an toàn (`server/commandBridge.js`).
-   - Danh sách trắng an toàn (Whitelist): Chỉ cho phép các lệnh `npx`, `npm`, `node`, `claude`, `git`, `uv`, `python`, `echo`, `dir`, `ls`.
+   - Cho phép **chạy lệnh dòng lệnh (CLI) từ giao diện trang web** lên máy tính qua cầu nối cục bộ (`server/commandBridge.js`), chỉ khi chạy `npm run dev`.
+   - Chỉ chấp nhận yêu cầu từ chính trang AI Hub trên máy cục bộ (kiểm tra Host, Origin và mã phiên), chặn trang web khác gọi vào.
+   - Mỗi lần chạy một lệnh đơn, không qua shell. Chương trình được phép: `npx`, `npm`, `claude`, `agy`, `git` (giới hạn lệnh con), `uv`, `uvx`, `node -v`, `python --version`, `echo`, `dir`, `ls`, `where`. Chi tiết tại `19_AN_TOAN_BAO_MAT.md`.
    - Cơ chế truyền luồng dữ liệu thời gian thực (Server-Sent Events) hiển thị kết quả trực quan.
-   - Nút `▶ Chạy lệnh trên máy` trên từng công cụ giúp cài đặt tự động không cần mở terminal ngoài.
 
 ---
 
@@ -101,8 +101,8 @@ npm run dev
 
 ### Chạy kiểm thử tự động
 ```bash
-# Kiểm tra 100% quy tắc nghiệp vụ 4 khối thông tin và an toàn câu lệnh
-node --test tests/business-rules.test.js tests/command-bridge.test.js
+# Chạy toàn bộ kiểm thử (dữ liệu khóa API được ghi vào thư mục tạm, không ảnh hưởng kho mã)
+npm test
 ```
 
 ### Đóng gói bản phát hành

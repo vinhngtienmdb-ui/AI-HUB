@@ -1,10 +1,10 @@
 # Danh Mục Kiểm Tra Dự Án (Checklist)
 
 ## Tổng Quan Tiến Độ
-- Tổng số nhiệm vụ cốt lõi: 40
-- Đã hoàn thành: 40
+- Tổng số nhiệm vụ cốt lõi: 110
+- Đã hoàn thành: 104
 - Đang thực hiện: 0
-- Chưa bắt đầu: 0
+- Chưa bắt đầu: 6
 - Bị nghẽn: 0
 
 ---
@@ -116,6 +116,30 @@
 - [x] Thực hiện kiểm thử tự động quy tắc nghiệp vụ (`tests/business-rules.test.js`) đạt 100% trên toàn bộ 2.194 công cụ và 3.609 cấu hình JSON
 - [x] Thực hiện kiểm thử tự động chính sách an toàn lệnh (`tests/command-bridge.test.js`) đạt 100% (chấp nhận lệnh hợp lệ, chặn lệnh nguy hiểm)
 - [x] Kiểm thử đóng gói bản phát hành (Production Build) đạt 100%
+
+## Rà Soát Bảo Mật Và Chất Lượng (2026-10-23)
+### Phân hệ: An toàn bảo mật
+- [x] BM-01: Cầu nối lệnh kiểm tra nguồn yêu cầu (loopback, Host, Origin, mã phiên)
+  - Tiêu chí nghiệm thu: Trang web khác nguồn, DNS rebinding, kết nối mạng LAN và yêu cầu thiếu mã phiên đều bị từ chối (`tests/command-bridge.test.js`)
+- [x] BM-02: Cầu nối lệnh chạy không qua shell, ràng buộc tham số theo từng chương trình
+  - Tiêu chí nghiệm thu: `node -e`, `python -c`, `git -c`, `; && | $()` và chuyển hướng `>` đều bị chặn
+- [x] BM-03: Lệnh từ trang chi tiết chỉ được điền sẵn, không tự chạy
+- [x] BM-04: Điểm cuối quản trị API Gateway bắt buộc khóa admin, mặc định lắng nghe `127.0.0.1`, CORS chỉ cho localhost
+  - Tiêu chí nghiệm thu: `tests/api-server-security.test.js`
+- [x] BM-05: Bỏ `mcp-gateway/data/api-keys.json` khỏi kho mã, bỏ muối HMAC viết cứng, kiểm thử ghi vào thư mục tạm
+- [x] BM-06: Làm sạch HTML của README bằng DOMPurify
+- [x] BM-07: Cập nhật `19_AN_TOAN_BAO_MAT.md` đúng với mã nguồn thực tế
+- [ ] BM-08: Xác minh vai trò quản trị viên phía máy chủ (HC-01 trong `19_AN_TOAN_BAO_MAT.md`)
+
+### Phân hệ: Chất lượng mã nguồn và vận hành
+- [x] CL-01: Sửa so khớp từ khóa ngắn (`rea`, `ba`, `po`) trong bộ định tuyến ý định
+- [x] CL-02: Thiết lập CI chạy kiểm thử, kiểm tra kiểu và đóng gói (`.github/workflows/ci.yml`)
+- [x] CL-03: Sửa lỗi cầu nối lệnh tự hủy tiến trình ngay sau khi nhận yêu cầu
+- [ ] CL-04: Tách `allTools.json` (19,7 MB trong gói JavaScript) thành chỉ mục nhẹ và dữ liệu chi tiết tải theo nhu cầu
+- [ ] CL-05: Kiểm định dữ liệu: kiểm tra liên kết và gói npm thật, bỏ số sao sinh ngẫu nhiên, gắn nhãn hướng dẫn dạng mẫu, loại trùng lặp
+- [ ] CL-06: Hợp nhất bộ định tuyến ý định phía trình duyệt và máy chủ vào một nguồn dữ liệu chung
+- [ ] CL-07: Gom các script dữ liệu trong `scripts/` thành một quy trình duy nhất, bỏ đường dẫn Windows viết cứng
+- [ ] CL-08: Đồng bộ bộ tài liệu theo chuẩn VibeCode 2.0 (24 tệp, 13 giai đoạn)
 
 ## Giai Đoạn 11: Nghiệm Thu Và Phát Hành
 - [x] Khởi tạo lịch sử thay đổi phiên bản (`20_LICH_SU_THAY_DOI.md`)

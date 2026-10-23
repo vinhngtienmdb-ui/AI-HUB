@@ -1,5 +1,35 @@
 # Nhật Ký Dự Án
 
+## [2026-10-23]
+### Mục tiêu trong ngày
+- Rà soát toàn bộ dự án (bảo mật, chất lượng mã nguồn, mức tuân thủ quy trình VibeCode) và xử lý các lỗi bảo mật nghiêm trọng.
+
+### Các công việc đã thực hiện
+- [BM-01, BM-02, BM-03]: Viết lại kiểm tra an toàn của cầu nối lệnh (`server/commandBridge.js`, `vite.config.ts`, `src/components/TerminalDrawer.tsx`).
+- [BM-04, BM-05]: Bảo vệ điểm cuối quản trị của API Gateway, bỏ dữ liệu khóa khỏi kho mã (`mcp-gateway/api-server.js`, `mcp-gateway/security.js`, `.gitignore`, `tests/setup.js`).
+- [BM-06]: Làm sạch HTML README bằng DOMPurify (`src/components/GitHubReadmeViewer.tsx`).
+- [CL-01]: Sửa so khớp từ khóa ngắn trong `src/lib/mcpClient.ts` và `mcp-gateway/smart-router.js`.
+- [CL-02]: Thêm CI (`.github/workflows/ci.yml`).
+- [BM-07]: Cập nhật `19_AN_TOAN_BAO_MAT.md`, `HUONG_DAN_CAI_DAT_VA_SU_DUNG_MCP_API.md`, `.env.example`.
+
+### Quyết định kỹ thuật
+- Giữ cầu nối lệnh nhưng chỉ chấp nhận yêu cầu từ chính trang AI Hub cục bộ có mã phiên; lý do: tính năng cài đặt công cụ cần chạy `npx`/`npm`, còn danh sách trắng theo tên chương trình không ngăn được chèn mã qua tham số.
+- Kho khóa API đã tồn tại tiếp tục dùng muối HMAC cũ để không vô hiệu hóa khóa đang dùng; cài đặt mới tự sinh muối ngẫu nhiên.
+
+### Lỗi phát sinh và giải pháp
+- **Vấn đề:** Bất kỳ trang web nào người dùng truy cập có thể chạy lệnh tùy ý trên máy khi `npm run dev` đang chạy.
+- **Nguyên nhân:** Chỉ kiểm tra từ đầu tiên của câu lệnh rồi chạy toàn bộ chuỗi qua shell; không kiểm tra nguồn yêu cầu; CORS mở cho mọi nguồn.
+- **Giải pháp:** BM-01, BM-02.
+- **Vấn đề:** Lệnh hợp lệ trong terminal bị hủy ngay (SIGKILL) và không có kết quả.
+- **Nguyên nhân:** Sự kiện `close` của đối tượng yêu cầu phát ra ngay khi đọc xong thân yêu cầu, không phải khi trình duyệt ngắt kết nối.
+- **Giải pháp:** Chuyển sang lắng nghe sự kiện `close` của đối tượng phản hồi (CL-03).
+- **Vấn đề:** Chạy `npm test` ghi đè `mcp-gateway/data/api-keys.json` trong kho mã.
+- **Giải pháp:** Kiểm thử dùng thư mục tạm qua `AIHUB_DATA_DIR` (BM-05).
+
+### Kết quả đạt được và bước tiếp theo
+- Kết quả: 46/46 kiểm thử đạt, kiểm tra kiểu TypeScript đạt, đóng gói thành công. Đã xác minh trên trình duyệt: terminal chạy `node -v` thành công, lệnh chèn mã bị chặn.
+- Kế hoạch tiếp theo: CL-04 đến CL-08, BM-08 trong `22_DANH_MUC_KIEM_TRA.md`.
+
 ## [2026-10-22]
 ### Mục tiêu trong ngày
 - Tách biệt hoàn toàn khối Sơ đồ trực quan (Diagram) thành một Tab chuyên biệt độc lập trên cả Trang chi tiết (`DetailPage.tsx`) và Modal chi tiết (`ToolDetailModal.tsx`), không nằm trong Tab README; xây dựng thành phần `VisualDiagramViewer.tsx` chuyên biệt.

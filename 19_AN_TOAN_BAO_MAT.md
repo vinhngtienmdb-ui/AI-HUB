@@ -3,25 +3,47 @@
 ---
 
 ## 1. Mục Đích
-Tài liệu này xác định các chính sách an toàn thông tin, kiểm soát rủi ro bảo mật và phương án bảo vệ dữ liệu cho toàn bộ hệ thống.
+Tài liệu này xác định các chính sách an toàn thông tin, kiểm soát rủi ro bảo mật và phương án bảo vệ dữ liệu cho toàn bộ hệ thống. Mỗi biện pháp ghi rõ trạng thái thực tế và kiểm thử chứng minh. Biện pháp chưa có trong mã nguồn được liệt kê riêng tại mục 3, không được mô tả như đã hoàn thành.
 
 ---
 
-## 2. Các Biện Pháp Bảo Mật Trọng Yếu
+## 2. Các Biện Pháp Bảo Mật Đã Triển Khai
 
-1. **Bảo vệ liên kết nguồn và phòng chống phần mềm độc hại**:
-   - Mọi liên kết mã nguồn ngoài đều được mở qua thuộc tính bảo mật `rel="noopener noreferrer" target="_blank"` để ngăn chặn tấn công chiếm quyền điều khiển cửa sổ duyệt web (Tabnabbing).
-   - Chỉ cho phép liên kết sử dụng giao thức an toàn `https://`.
-   - Cơ chế kiểm duyệt nghiêm ngặt từ Quản trị viên trước khi bất kỳ công cụ nào được xuất bản công khai.
-2. **Phòng chống tấn công tiêm mã (XSS - Cross-Site Scripting)**:
-   - Toàn bộ nội dung mô tả, hướng dẫn bằng tiếng Việt và cấu hình JSON do người dùng nhập vào đều được làm sạch (Sanitize) và mã hóa ký tự đặc biệt trước khi hiển thị trên giao diện người dùng.
-3. **Phân quyền và bảo vệ điểm cuối (Endpoint Protection)**:
-   - Các điểm cuối API quản trị (phê duyệt, chỉnh sửa, kiểm tra liên kết) bắt buộc phải có mã thông báo phiên làm việc (Session / JWT Token) hợp lệ và được xác minh vai trò Quản trị viên tại tầng trung gian (Middleware).
-4. **Giới hạn tần suất yêu cầu (Rate Limiting)**:
-   - Áp dụng cơ chế giới hạn tần suất gửi yêu cầu đối với các API tìm kiếm và API gửi đề xuất để ngăn ngừa tấn công từ chối dịch vụ (DDoS) và thu thập dữ liệu tự động trái phép (Scraping).
-5. **Chính sách an toàn cho Cầu nối thực thi lệnh cục bộ (Local Command Execution Bridge)**:
-   - **Giới hạn phạm vi mạng (Loopback Interface Only)**: Chỉ chấp nhận các kết nối xuất phát từ máy cục bộ (`localhost` / `127.0.0.1`), từ chối toàn bộ kết nối từ mạng bên ngoài.
-   - **Danh sách trắng tiền tố lệnh (Command Whitelist)**: Chỉ cho phép các tiền tố lệnh được định nghĩa rõ ràng phục vụ cài đặt và kiểm tra công cụ AI: `npx`, `npm`, `node`, `claude`, `git`, `uv`, `uvx`, `python`, `echo`, `dir`, `ls`.
-   - **Chặn các lệnh nguy hiểm (Blacklist Enforcement)**: Cấm tuyệt đối các lệnh can thiệp hệ thống tệp và cấu hình sâu như `rm -rf`, `del /f`, `format`, `shutdown`, `taskkill`, `reg delete`, `powershell -enc`.
-   - **Giới hạn thời gian sống (Process Timeout)**: Mỗi lệnh thực thi tối đa không quá 120 giây. Nếu vượt quá thời gian quy định, hệ thống tự động ngắt tiến trình (SIGTERM / SIGKILL).
-   - **Kiểm soát hủy tiến trình (Process Cancellation)**: Cung cấp API cho phép người dùng dừng tức thì tiến trình con đang chạy nếu phát hiện sự cố.
+1. **Bảo vệ liên kết nguồn**:
+   - Liên kết ngoài được mở với `rel="noopener noreferrer" target="_blank"` để ngăn tấn công chiếm quyền cửa sổ (Tabnabbing).
+
+2. **Phòng chống tấn công tiêm mã (XSS)**:
+   - Nội dung văn bản được React tự động mã hóa ký tự đặc biệt khi hiển thị.
+   - Nội dung README (Markdown của bên thứ ba) được chuyển sang HTML bằng `marked`, sau đó làm sạch bằng `DOMPurify` trước khi hiển thị (`src/components/GitHubReadmeViewer.tsx`). Thẻ `<script>`, thuộc tính `on*` và liên kết `javascript:` bị loại bỏ.
+
+3. **Cầu nối thực thi lệnh cục bộ (`server/commandBridge.js`)**:
+   - **Chỉ chạy trong máy chủ phát triển**: Cầu nối gắn vào `npm run dev`, không tồn tại trong bản đóng gói. Máy chủ phát triển chỉ lắng nghe trên `127.0.0.1`.
+   - **Kiểm tra nguồn yêu cầu**: Mọi yêu cầu phải thỏa mãn đồng thời: kết nối từ địa chỉ loopback, tiêu đề `Host` là `localhost`/`127.0.0.1`/`::1` (chống DNS rebinding), tiêu đề `Origin` (nếu có) trùng với chính trang AI Hub (chống CSRF), và tiêu đề `X-AIHub-Bridge-Token` khớp mã phiên ngẫu nhiên sinh mỗi lần khởi động. Mã phiên được nhúng vào trang qua thẻ meta; trang web khác nguồn không đọc được.
+   - **Không chạy qua shell**: Câu lệnh được tách thành mảng tham số và chạy trực tiếp (`shell: false` trên POSIX). Mọi ký tự điều khiển shell (`; & | \` $ < > ( ) { } [ ] * ? ! % ^ ~ ' #`, xuống dòng) bị từ chối, nên mỗi lần chỉ chạy được một lệnh đơn.
+   - **Danh sách trắng chương trình kèm ràng buộc tham số**: `npx`, `npm`, `claude`, `agy`, `uv`, `uvx`, `echo`, `dir`, `ls`, `where`; `git` chỉ với `clone`, `status`, `log`, `diff`, `branch`, `--version` và cấm `-c`, `--config`, `--upload-pack`, `--exec`, `ext::`; `node` và `python` chỉ được kiểm tra phiên bản; `claude` cấm `--dangerously-skip-permissions`.
+   - **Không tự chạy lệnh**: Lệnh truyền từ trang chi tiết công cụ chỉ được điền sẵn vào ô nhập; người dùng phải tự kiểm tra và bấm Chạy.
+   - **Giới hạn thời gian**: Mỗi tiến trình tối đa 120 giây, quá hạn bị hủy. Người dùng có thể dừng tiến trình bất kỳ lúc nào.
+   - **Rủi ro còn lại được chấp nhận**: `npx`, `npm`, `uvx` có thể tải và chạy gói bất kỳ từ kho công khai. Đây là chức năng cốt lõi (cài đặt công cụ); biện pháp kiểm soát là người dùng tự xác nhận câu lệnh trước khi chạy.
+   - Kiểm thử: `tests/command-bridge.test.js`.
+
+4. **Cổng REST API Gateway (`mcp-gateway/api-server.js`)**:
+   - Khóa API sinh bằng CSPRNG, chỉ lưu chuỗi băm HMAC-SHA256, so sánh bằng `timingSafeEqual`.
+   - Muối HMAC lấy từ `AIHUB_SECURITY_SALT` hoặc tự sinh ngẫu nhiên và lưu tại `mcp-gateway/data/.security-salt`. Thư mục `mcp-gateway/data/` không được đưa lên kho mã.
+   - Điểm cuối quản trị (`/stats`, `/keys`, `/keys/generate`, `/keys/revoke`, `/audit-logs`) bắt buộc khóa có vai trò `admin` và bị giới hạn 30 yêu cầu/phút/IP. Vai trò khi tạo khóa chỉ nhận `developer` hoặc `admin`.
+   - Điểm cuối `/dispatch` bắt buộc Bearer token, giới hạn tần suất theo từng khóa.
+   - Mặc định lắng nghe trên `127.0.0.1`. CORS chỉ cho phép nguồn `localhost` hoặc danh sách `AIHUB_ALLOWED_ORIGINS`; yêu cầu từ nguồn lạ bị từ chối với mã 403.
+   - `X-Forwarded-For` chỉ được tin cậy khi đặt `AIHUB_TRUST_PROXY=1`.
+   - Kiểm thử: `tests/api-server-security.test.js`, `tests/security-and-auth.test.js`.
+
+5. **Quản lý bí mật**:
+   - Tệp `.env` và `.env.*` (trừ `.env.example`) bị loại khỏi kho mã. Cấu hình Firebase phía trình duyệt là thông tin công khai theo thiết kế của Firebase.
+
+---
+
+## 3. Hạn Chế Đã Biết (Chưa Triển Khai)
+
+| Mã | Hạn chế | Ảnh hưởng | Hướng xử lý |
+|---|---|---|---|
+| HC-01 | Vai trò quản trị viên trên giao diện web được xác định bằng so sánh email phía trình duyệt (`src/lib/firebase.ts`), có thể bị ghi đè qua `localStorage`. | Chỉ ảnh hưởng dữ liệu cục bộ của chính người dùng vì chưa có máy chủ lưu trữ dùng chung. | Khi có máy chủ lưu trữ, xác minh vai trò bằng Firebase Custom Claims hoặc quy tắc bảo mật phía máy chủ. |
+| HC-02 | Chưa có quy trình kiểm duyệt phía máy chủ; dữ liệu đóng góp lưu trong `localStorage`. | Không có dữ liệu dùng chung để bảo vệ. | Thiết kế cùng HC-01. |
+| HC-03 | Gói `firebase` phụ thuộc `@grpc/grpc-js` có lỗ hổng mức cao theo `npm audit`; chưa có bản vá từ nhà phát triển. | Không khai thác được vì hệ thống không dùng Firestore. | Cập nhật `firebase` khi có bản vá. |
