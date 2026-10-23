@@ -1,15 +1,15 @@
 # AI Hub - Nền Tảng Quản Lý Công Cụ AI, Máy Chủ MCP & Kỹ Năng Tác Tử Chuẩn Hóa
 
 [![Giấy Phép](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Phiên Bản](https://img.shields.io/badge/Phiên_Bản-2.0.49-emerald.svg)](20_LICH_SU_THAY_DOI.md)
-[![Quy Trình VibeCode](https://img.shields.io/badge/Quy_Trình-VibeCode_12_Giai_Đoạn-purple.svg)](index.md)
+[![Phiên Bản](https://img.shields.io/badge/Phiên_Bản-2.0.49-emerald.svg)](22_LICH_SU_THAY_DOI.md)
+[![Quy Trình VibeCode](https://img.shields.io/badge/Quy_Trình-VibeCode_13_Giai_Đoạn-purple.svg)](index.md)
 [![Tổng Số Công Cụ](https://img.shields.io/badge/Kho_Dữ_Liệu-2.222_Mục-orange.svg)](#)
 [![Khung Làm Việc Mở Rộng](https://img.shields.io/badge/Khung_Làm_Việc-Mở_Rộng_Toàn_Màn_Hình-blueviolet.svg)](#)
 [![Giao Diện Linh Hoạt](https://img.shields.io/badge/Giao_Diện-Left_Sidebar_Thu_Gọn-blue.svg)](#)
 
 Hệ thống quản lý, tra cứu và thực thi trực tiếp các công cụ Trí tuệ Nhân tạo (AI Tools), Máy chủ Giao thức Ngữ cảnh Mô hình (MCP Servers), Quy trình tự động hóa (Workflows), Kỹ năng tác tử (Agent Skills), Tác tử chuyên sâu (Agents), Lệnh phím tắt (Commands), Móc nối vòng đời (Hooks), Cấu hình tối ưu (Settings) và Bản mẫu dự án (Templates).
 
-Dự án được xây dựng tuân thủ nghiêm ngặt **Quy trình VibeCode Chuẩn 12 Giai Đoạn** với 100% tài liệu và nội dung bản địa hóa tiếng Việt.
+Dự án được xây dựng tuân thủ nghiêm ngặt **Quy trình VibeCode Chuẩn 13 Giai Đoạn** với 100% tài liệu và nội dung bản địa hóa tiếng Việt.
 
 ---
 
@@ -73,7 +73,7 @@ Dự án được xây dựng tuân thủ nghiêm ngặt **Quy trình VibeCode C
 - **Giao diện người dùng (Frontend)**: React 19, TypeScript, Vite, Tailwind CSS, Lucide Icons.
 - **Cầu nối cục bộ (Backend Bridge)**: Node.js, `child_process.spawn` với cơ chế bảo vệ danh sách trắng an toàn, Server-Sent Events (SSE).
 - **Kiểm thử tự động**: Node.js Test Runner (`node:test`, `node:assert`).
-- **Quy chuẩn kiến trúc**: Tuân thủ bộ quy tắc VibeCode với 22 tệp tài liệu đặc tả 12 giai đoạn.
+- **Quy chuẩn kiến trúc**: Tuân thủ bộ quy tắc VibeCode với 24 tệp tài liệu đặc tả 13 giai đoạn.
 
 ---
 
@@ -112,7 +112,7 @@ npm run build
 
 ---
 
-## 📚 Bộ Tài Liệu Thiết Kế VibeCode (22 Tệp Chuẩn Hóa)
+## 📚 Bộ Tài Liệu Thiết Kế VibeCode (24 Tệp Chuẩn Hóa)
 
 Xem chi tiết mục lục tại [index.md](index.md):
 
@@ -135,9 +135,11 @@ Xem chi tiết mục lục tại [index.md](index.md):
 - `17_KE_HOACH_KIEM_THU.md`: Kế hoạch kiểm thử chất lượng.
 - `18_KICH_BAN_KIEM_THU.md`: Kịch bản kiểm thử chi tiết.
 - `19_AN_TOAN_BAO_MAT.md`: Chính sách an toàn và bảo mật thực thi lệnh.
-- `20_LICH_SU_THAY_DOI.md`: Lịch sử các phiên bản phát hành.
-- `21_NHAT_KY_DU_AN.md`: Nhật ký phát triển theo từng ngày.
-- `22_DANH_MUC_KIEM_TRA.md`: Danh mục kiểm tra tiến độ dự án.
+- `20_QUY_TRINH_TRIEN_KHAI.md`: Quy trình đóng gói, cấu hình môi trường, CI và phương án quay lui.
+- `21_KE_HOACH_BAO_TRI.md`: Kế hoạch giám sát, sao lưu, xử lý sự cố và bảo trì định kỳ.
+- `22_LICH_SU_THAY_DOI.md`: Lịch sử các phiên bản phát hành.
+- `23_NHAT_KY_DU_AN.md`: Nhật ký phát triển theo từng ngày.
+- `24_DANH_MUC_KIEM_TRA.md`: Danh mục kiểm tra tiến độ dự án.
 
 ---
 

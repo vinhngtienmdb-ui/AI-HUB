@@ -40,4 +40,4 @@ Tài liệu này xác định các nguyên tắc, kỷ luật kỹ thuật và g
 2. **Không xóa chức năng hoặc tệp tin**:
    - Tuyệt đối không xóa bất kỳ tệp tài liệu từ `01` đến `22` hoặc các thành phần đã xây dựng nếu không có yêu cầu bằng văn bản rõ ràng từ người dùng.
 3. **Cập nhật tài liệu song hành**:
-   - Mỗi khi triển khai thêm một tính năng hoặc điều chỉnh lược đồ dữ liệu, bắt buộc phải cập nhật đồng bộ các tệp tài liệu liên quan (`13_CO_SO_DU_LIEU.md`, `14_DAC_TA_API.md`, `21_NHAT_KY_DU_AN.md`, `22_DANH_MUC_KIEM_TRA.md`).
+   - Mỗi khi triển khai thêm một tính năng hoặc điều chỉnh lược đồ dữ liệu, bắt buộc phải cập nhật đồng bộ các tệp tài liệu liên quan (`13_CO_SO_DU_LIEU.md`, `14_DAC_TA_API.md`, `23_NHAT_KY_DU_AN.md`, `24_DANH_MUC_KIEM_TRA.md`).

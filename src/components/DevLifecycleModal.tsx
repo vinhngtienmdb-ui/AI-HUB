@@ -12,16 +12,17 @@ export const DevLifecycleModal: React.FC<DevLifecycleModalProps> = ({ isOpen, on
   const stages = [
     { num: '01', title: 'Xác định ý tưởng', file: '01_TONG_QUAN_DU_AN.md', desc: 'Làm rõ bối cảnh, vấn đề phân mảnh, mục tiêu và giá trị cốt lõi.', icon: Compass },
     { num: '02', title: 'Xác định phạm vi', file: '02_PHAM_VI_DU_AN.md', desc: 'Phân định rõ phạm vi thực hiện và phạm vi ngoài.', icon: Shield },
-    { num: '03', title: 'Phân tích nghiệp vụ', file: '03_YEU_CAU_NGHIEP_VU.md', desc: 'Đặc tả 4 khối thông tin bắt buộc, ma trận phân quyền và luồng nghiệp vụ.', icon: FileText },
-    { num: '04', title: 'Đặc tả yêu cầu', file: '07_YEU_CAU_CHUC_NANG.md', desc: 'Chức năng chi tiết CN-01 đến CN-07 và tiêu chí nghiệm thu.', icon: CheckCircle2 },
-    { num: '05', title: 'Thiết kế hệ thống', file: '09_KIEN_TRUC_HE_THONG.md', desc: 'Kiến trúc phân tầng và danh mục công nghệ TypeScript/React.', icon: Code2 },
-    { num: '06', title: 'Thiết kế giao diện', file: '11_DAC_TA_GIAO_DIEN.md', desc: 'Đặc tả 4 màn hình chính, hệ thống màu sắc và quy chuẩn.', icon: Layout },
-    { num: '07', title: 'Thiết kế dữ liệu & API', file: '13_CO_SO_DU_LIEU.md', desc: 'Mô hình thực thể quan hệ ERD và đặc tả điểm cuối RESTful API.', icon: Database },
-    { num: '08', title: 'Chuẩn bị môi trường AI', file: '15_QUY_TAC_PHAT_TRIEN_AI.md', desc: 'Quy tắc kỷ luật kỹ thuật và chỉ dẫn hệ thống cho tác tử AI.', icon: Shield },
-    { num: '09', title: 'Xây dựng theo module', file: '22_DANH_MUC_KIEM_TRA.md', desc: 'Triển khai mã nguồn sạch, chia nhỏ theo từng nhiệm vụ.', icon: Code2 },
-    { num: '10', title: 'Kiểm thử & Chất lượng', file: '17_KE_HOACH_KIEM_THU.md', desc: 'Kế hoạch kiểm thử, kịch bản thử nghiệm và an toàn bảo mật.', icon: TestTube2 },
-    { num: '11', title: 'Nghiệm thu & Phát hành', file: '20_LICH_SU_THAY_DOI.md', desc: 'Lịch sử thay đổi và rà soát tiêu chí nghiệm thu.', icon: Rocket },
-    { num: '12', title: 'Vận hành & Cải tiến', file: '21_NHAT_KY_DU_AN.md', desc: 'Ghi chép nhật ký hàng ngày và tiếp nhận cải tiến.', icon: Compass },
+    { num: '03', title: 'Phân tích nghiệp vụ', file: '03_YEU_CAU_NGHIEP_VU.md', desc: 'Yêu cầu, quy tắc, vai trò người dùng và luồng nghiệp vụ (tệp 03 đến 06).', icon: FileText },
+    { num: '04', title: 'Đặc tả yêu cầu', file: '07_YEU_CAU_CHUC_NANG.md', desc: 'Yêu cầu chức năng và tiêu chí nghiệm thu (tệp 07, 08).', icon: CheckCircle2 },
+    { num: '05', title: 'Thiết kế hệ thống', file: '09_KIEN_TRUC_HE_THONG.md', desc: 'Kiến trúc phân tầng và danh mục công nghệ (tệp 09, 10).', icon: Code2 },
+    { num: '06', title: 'Thiết kế giao diện', file: '11_DAC_TA_GIAO_DIEN.md', desc: 'Đặc tả màn hình và quy chuẩn thiết kế (tệp 11, 12).', icon: Layout },
+    { num: '07', title: 'Thiết kế dữ liệu & API', file: '13_CO_SO_DU_LIEU.md', desc: 'Mô hình dữ liệu và đặc tả điểm cuối API (tệp 13, 14).', icon: Database },
+    { num: '08', title: 'Chuẩn bị môi trường AI', file: '15_QUY_TAC_PHAT_TRIEN_AI.md', desc: 'Quy tắc phát triển và chỉ dẫn hệ thống cho tác tử AI (tệp 15, 16).', icon: Shield },
+    { num: '09', title: 'Xây dựng theo module', file: '24_DANH_MUC_KIEM_TRA.md', desc: 'Triển khai mã nguồn theo từng nhiệm vụ nhỏ, theo dõi trong danh mục kiểm tra.', icon: Code2 },
+    { num: '10', title: 'Kiểm thử & Chất lượng', file: '17_KE_HOACH_KIEM_THU.md', desc: 'Kế hoạch và kịch bản kiểm thử (tệp 17, 18).', icon: TestTube2 },
+    { num: '11', title: 'Bảo mật hệ thống', file: '19_AN_TOAN_BAO_MAT.md', desc: 'Biện pháp bảo mật đã triển khai, kiểm thử chứng minh và hạn chế đã biết.', icon: Shield },
+    { num: '12', title: 'Triển khai phát hành', file: '20_QUY_TRINH_TRIEN_KHAI.md', desc: 'Đóng gói, CI, cấu hình môi trường, phương án quay lui; lịch sử thay đổi (tệp 22).', icon: Rocket },
+    { num: '13', title: 'Vận hành & Bảo trì', file: '21_KE_HOACH_BAO_TRI.md', desc: 'Giám sát, sao lưu, xử lý sự cố; nhật ký dự án (tệp 23).', icon: Compass },
   ];
 
   return (
@@ -33,10 +34,10 @@ export const DevLifecycleModal: React.FC<DevLifecycleModalProps> = ({ isOpen, on
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95">
           <div>
             <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-              Quy Trình VibeCode Chuẩn 12 Giai Đoạn (dev-lifecycle)
+              Quy Trình VibeCode Chuẩn 13 Giai Đoạn (dev-lifecycle)
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              Toàn bộ 22 tệp tài liệu đặc tả và thiết kế kỹ thuật bằng tiếng Việt đã được khởi tạo
+              Bộ 24 tệp tài liệu đặc tả và thiết kế kỹ thuật bằng tiếng Việt
             </p>
           </div>
           <button onClick={onClose} className="p-1.5 rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-slate-200">

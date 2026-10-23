@@ -403,7 +403,7 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, onClose 
 
         {/* Chân Modal */}
         <div className="sticky bottom-0 z-10 px-6 py-3.5 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-          <span>Định dạng theo tiêu chuẩn tài liệu VibeCode 12 giai đoạn</span>
+          <span>Định dạng theo tiêu chuẩn tài liệu VibeCode 13 giai đoạn</span>
           <button
             onClick={onClose}
             className="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors"

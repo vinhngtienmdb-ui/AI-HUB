@@ -28,7 +28,7 @@
 
 ### Kết quả đạt được và bước tiếp theo
 - Kết quả: 46/46 kiểm thử đạt, kiểm tra kiểu TypeScript đạt, đóng gói thành công. Đã xác minh trên trình duyệt: terminal chạy `node -v` thành công, lệnh chèn mã bị chặn.
-- Kế hoạch tiếp theo: CL-04 đến CL-08, BM-08 trong `22_DANH_MUC_KIEM_TRA.md`.
+- Kế hoạch tiếp theo: CL-04 đến CL-08, BM-08 trong `24_DANH_MUC_KIEM_TRA.md`.
 
 ## [2026-10-22]
 ### Mục tiêu trong ngày

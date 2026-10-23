@@ -41,8 +41,8 @@
 - [x] Thiết lập quy tắc lập trình cho trí tuệ nhân tạo (`15_QUY_TAC_PHAT_TRIEN_AI.md`)
 - [x] Thiết lập chỉ dẫn hệ thống cho trí tuệ nhân tạo (`16_CHI_DAN_HE_THONG_AI.md`)
 - [x] Khởi tạo tệp mục lục bộ tài liệu thiết kế (`index.md`)
-- [x] Khởi tạo tệp nhật ký dự án (`21_NHAT_KY_DU_AN.md`)
-- [x] Khởi tạo tệp danh mục kiểm tra (`22_DANH_MUC_KIEM_TRA.md`)
+- [x] Khởi tạo tệp nhật ký dự án (`23_NHAT_KY_DU_AN.md`)
+- [x] Khởi tạo tệp danh mục kiểm tra (`24_DANH_MUC_KIEM_TRA.md`)
 
 ## Giai Đoạn 09: Xây Dựng Theo Module
 - [x] Tách biệt hoàn toàn khối Sơ đồ trực quan thành 1 Tab chuyên biệt độc lập trên cả Trang chi tiết (`DetailPage.tsx`) và Modal chi tiết (`ToolDetailModal.tsx`), không nằm trong Tab README; xây dựng thành phần `VisualDiagramViewer.tsx` và trả lại định dạng chuẩn GitHub Markdown cho `GitHubReadmeViewer.tsx`
@@ -117,7 +117,7 @@
 - [x] Thực hiện kiểm thử tự động chính sách an toàn lệnh (`tests/command-bridge.test.js`) đạt 100% (chấp nhận lệnh hợp lệ, chặn lệnh nguy hiểm)
 - [x] Kiểm thử đóng gói bản phát hành (Production Build) đạt 100%
 
-## Rà Soát Bảo Mật Và Chất Lượng (2026-10-23)
+## Giai Đoạn 11: Bảo Mật Hệ Thống Và Rà Soát Chất Lượng (2026-10-23)
 ### Phân hệ: An toàn bảo mật
 - [x] BM-01: Cầu nối lệnh kiểm tra nguồn yêu cầu (loopback, Host, Origin, mã phiên)
   - Tiêu chí nghiệm thu: Trang web khác nguồn, DNS rebinding, kết nối mạng LAN và yêu cầu thiếu mã phiên đều bị từ chối (`tests/command-bridge.test.js`)
@@ -139,14 +139,19 @@
 - [ ] CL-05: Kiểm định dữ liệu: kiểm tra liên kết và gói npm thật, bỏ số sao sinh ngẫu nhiên, gắn nhãn hướng dẫn dạng mẫu, loại trùng lặp
 - [ ] CL-06: Hợp nhất bộ định tuyến ý định phía trình duyệt và máy chủ vào một nguồn dữ liệu chung
 - [ ] CL-07: Gom các script dữ liệu trong `scripts/` thành một quy trình duy nhất, bỏ đường dẫn Windows viết cứng
-- [ ] CL-08: Đồng bộ bộ tài liệu theo chuẩn VibeCode 2.0 (24 tệp, 13 giai đoạn)
+- [x] CL-08: Đồng bộ bộ tài liệu theo chuẩn VibeCode 2.0 (24 tệp, 13 giai đoạn)
+  - Tiêu chí nghiệm thu: Đổi tên tệp 20, 21, 22 thành 22, 23, 24; tạo `20_QUY_TRINH_TRIEN_KHAI.md`, `21_KE_HOACH_BAO_TRI.md`; cập nhật `index.md`, README và giao diện
 
-## Giai Đoạn 11: Nghiệm Thu Và Phát Hành
-- [x] Khởi tạo lịch sử thay đổi phiên bản (`20_LICH_SU_THAY_DOI.md`)
+## Giai Đoạn 12: Triển Khai Phát Hành (Deploy)
+- [x] Khởi tạo lịch sử thay đổi phiên bản (`22_LICH_SU_THAY_DOI.md`)
+- [x] Thiết lập quy trình đóng gói, CI và phương án quay lui (`20_QUY_TRINH_TRIEN_KHAI.md`, `.github/workflows/ci.yml`)
+- [ ] Cấu hình dịch vụ lưu trữ giao diện web và bước triển khai tự động (TK-01)
 - [x] Khởi chạy máy chủ phát triển cục bộ và xác minh giao diện trực tiếp
 - [x] Khởi tạo Git repository, cấu hình `.gitignore`, `LICENSE` (MIT) và `README.md`
 - [x] Đồng bộ thành công toàn bộ mã nguồn lên kho lưu trữ GitHub chính thức: `https://github.com/vinhngtienmdb-ui/AI-HUB.git`
 
-## Giai Đoạn 12: Vận Hành Và Cải Tiến
+## Giai Đoạn 13: Vận Hành Và Bảo Trì (Maintenance)
+- [x] Thiết lập kế hoạch giám sát, sao lưu, xử lý sự cố và bảo trì định kỳ (`21_KE_HOACH_BAO_TRI.md`)
+- [ ] Thiết lập giám sát sức khỏe Cổng REST API tự động và cảnh báo (BT-01)
 - [x] Bàn giao sản phẩm và sẵn sàng tiếp nhận đề xuất cải tiến mới
 - [x] Thiết lập cơ chế kiểm soát chất lượng và cập nhật dữ liệu tự động cho các phiên bản tiếp theo
