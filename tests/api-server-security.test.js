@@ -101,3 +101,23 @@ test('API Gateway 04: Khởi động qua node index.js --serve vẫn tạo khóa
     child.kill();
   }
 });
+
+test('API Gateway 05: Danh mục công cụ công khai không chứa công cụ đã ẩn (rejected)', async () => {
+  const { getAllTools } = await import('../mcp-gateway/smart-router.js');
+  const hiddenIds = new Set(getAllTools().filter(t => t.status === 'rejected').map(t => t.id));
+  assert.ok(hiddenIds.size > 0, 'Dữ liệu kiểm thử cần có công cụ đã ẩn');
+  const server = await startServer();
+  try {
+    const health = await call(server, 'GET', '/api/v1/health');
+    const publishedCount = getAllTools().length - hiddenIds.size;
+    assert.equal(health.json.totalToolsAvailable, publishedCount);
+    for (const q of ['openba', 'vietqr', '']) {
+      const list = await call(server, 'GET', `/api/v1/tools?q=${q}`);
+      for (const tool of list.json.tools) {
+        assert.ok(!hiddenIds.has(tool.id), `/api/v1/tools trả về công cụ đã ẩn: ${tool.id}`);
+      }
+    }
+  } finally {
+    server.close();
+  }
+});

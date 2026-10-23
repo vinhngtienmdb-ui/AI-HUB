@@ -11,7 +11,7 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
-import { routeTask, getAllTools, getPublishedTools } from './smart-router.js';
+import { routeTask, getPublishedTools } from './smart-router.js';
 import { dispatchTask } from './dispatcher.js';
 import { sanitizeInput, authenticateBearerToken } from './security.js';
 import { startApiServer } from './api-server.js';
@@ -135,7 +135,7 @@ server.tool(
   'Báo cáo trạng thái hoạt động của MCP Gateway: số lượng tài nguyên sẵn sàng điều phối, số lượng công cụ Việt Nam và thống kê tiết kiệm Context Window.',
   {},
   async () => {
-    const tools = getAllTools();
+    const tools = getPublishedTools();
     const vnTools = tools.filter(t => t.isVietnamMarket || t.category === 'vietnam');
 
     return {

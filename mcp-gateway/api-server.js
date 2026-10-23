@@ -18,7 +18,7 @@ import {
   loadAllKeyRecords, 
   revokeKeyRecord 
 } from './security.js';
-import { routeTask, getAllTools } from './smart-router.js';
+import { routeTask, getPublishedTools } from './smart-router.js';
 import { dispatchTask } from './dispatcher.js';
 
 const PORT = process.env.AIHUB_API_PORT ? parseInt(process.env.AIHUB_API_PORT, 10) : 4000;
@@ -188,7 +188,7 @@ export const requestHandler = async (req, res) => {
   try {
     // 1. ENDPOINT: Kiểm tra tình trạng sức khỏe hệ thống (Health Check)
     if (req.method === 'GET' && (pathname === '/health' || pathname === '/api/v1/health')) {
-      const allTools = getAllTools();
+      const allTools = getPublishedTools();
       res.statusCode = 200;
       res.end(JSON.stringify({
         status: 'HEALTHY',
@@ -210,7 +210,7 @@ export const requestHandler = async (req, res) => {
     // 2. ENDPOINT: Thống kê hiệu năng hệ thống
     if (req.method === 'GET' && pathname === '/api/v1/stats') {
       const keys = loadAllKeyRecords();
-      const allTools = getAllTools();
+      const allTools = getPublishedTools();
       const totalRequests = keys.reduce((acc, k) => acc + (k.requestsCount || 0), 0);
 
       res.statusCode = 200;
@@ -429,17 +429,19 @@ export const requestHandler = async (req, res) => {
     if (req.method === 'GET' && pathname === '/api/v1/tools') {
       const q = parsedUrl.query.q ? String(parsedUrl.query.q).toLowerCase() : '';
       const category = parsedUrl.query.category ? String(parsedUrl.query.category) : '';
-      let tools = getAllTools();
+      // Chỉ trả về công cụ đang hiển thị; bản ghi bị ẩn (rejected) không thuộc danh mục công khai
+      let tools = getPublishedTools();
 
       if (category) {
         tools = tools.filter(t => t.category === category || (t.categories && t.categories.includes(category)));
       }
 
       if (q) {
-        tools = tools.filter(t => 
-          t.name.toLowerCase().includes(q) || 
-          t.descriptionVi.toLowerCase().includes(q) ||
-          t.tags.some(tag => tag.toLowerCase().includes(q))
+        // Dữ liệu dùng summaryVi; descriptionVi và tags chỉ có ở một số bản ghi cũ
+        tools = tools.filter(t =>
+          t.name.toLowerCase().includes(q) ||
+          String(t.summaryVi || t.descriptionVi || '').toLowerCase().includes(q) ||
+          (t.tags || []).some(tag => String(tag).toLowerCase().includes(q))
         );
       }
 
@@ -452,7 +454,7 @@ export const requestHandler = async (req, res) => {
           category: t.category,
           categoryNameVi: t.categoryNameVi,
           isVietnamMarket: Boolean(t.isVietnamMarket),
-          descriptionVi: t.descriptionVi,
+          descriptionVi: t.summaryVi || t.descriptionVi,
           sourceUrl: t.sourceUrl
         }))
       }, null, 2));
