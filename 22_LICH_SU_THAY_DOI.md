@@ -4,6 +4,12 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.1 (Ngày 23-10-2026)
+- **Loại hình**: Số sao thật (CL-05c).
+- Workflow `.github/workflows/cap-nhat-so-sao.yml`: hằng tuần lấy số sao từ GitHub API bằng `GITHUB_TOKEN` có sẵn, kiểm định lại dữ liệu, mở pull request để duyệt.
+- `validate-data.cjs` chỉ gán số sao cho công cụ trỏ tới gốc repo (83 công cụ); 1.853 thành phần nằm trong repo lớn không hiển thị số sao.
+- `ci.yml` nhận `workflow_dispatch` để chạy CI cho pull request tự động.
+
 ### Phiên Bản 2.1.0 (Ngày 23-10-2026)
 - **Loại hình**: Lưu trữ dùng chung và quyền quản trị phía máy chủ (BM-08), bật bằng `VITE_FIRESTORE_ENABLED=true`.
 - **Firestore**: `firestore.rules` xác minh quản trị viên bằng tài liệu `admins/{uid}`; đóng góp (`contributions`) và điều chỉnh (`toolOverrides`) được kiểm tra quyền, danh tính người gửi, trạng thái, danh sách trường và độ dài.

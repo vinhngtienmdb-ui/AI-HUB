@@ -1,8 +1,8 @@
 # Danh Mục Kiểm Tra Dự Án (Checklist)
 
 ## Tổng Quan Tiến Độ
-- Tổng số nhiệm vụ cốt lõi: 120
-- Đã hoàn thành: 115
+- Tổng số nhiệm vụ cốt lõi: 121
+- Đã hoàn thành: 116
 - Đang thực hiện: 0
 - Chưa bắt đầu: 5
 - Bị nghẽn: 0
@@ -146,7 +146,8 @@
 - [x] CL-05b (B): Viết lại hướng dẫn dạng mẫu bằng nội dung từ tệp thành phần và README gốc
   - Tiêu chí nghiệm thu: 0 công cụ đang hiển thị còn hướng dẫn dạng mẫu; câu lệnh đối chiếu với README; 50/50 kiểm thử đạt
 - [ ] CL-05d: Viết lại tóm tắt, mô tả công dụng, README hiển thị và câu lệnh mẫu của 1.830 thành phần template (đang là nội dung mẫu chung, một số lĩnh vực phân loại sai)
-- [ ] CL-05c: Lấy số sao thật: chạy `GITHUB_TOKEN=... npm run data:validate -- --online --write` trên máy có token GitHub
+- [x] CL-05c: Lấy số sao thật tự động bằng workflow `cap-nhat-so-sao.yml` (GITHUB_TOKEN của repo, mở pull request)
+- [ ] CL-05e: Bật "Allow GitHub Actions to create and approve pull requests", chạy tay workflow lần đầu và hợp nhất pull request kết quả
 - [x] CL-06: Hợp nhất bộ định tuyến ý định phía trình duyệt và máy chủ vào một nguồn dữ liệu chung (`mcp-gateway/core-intents.json`, `mcp-gateway/intent-matcher.js`)
 - [x] CL-07: Chuyển script dùng một lần vào `scripts/archive/` (kèm README giải thích), chỉ giữ `scripts/validate-data.cjs`; bỏ đường dẫn Windows viết cứng
 - [x] CL-08: Đồng bộ bộ tài liệu theo chuẩn VibeCode 2.0 (24 tệp, 13 giai đoạn)

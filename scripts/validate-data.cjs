@@ -256,13 +256,18 @@ async function main() {
     }
 
     if (GITHUB_TOKEN) {
-      const okRepos = repoKeys.filter(k => repoResults.get(k) === 'ok');
+      const rootRepoKeys = new Set(tools.filter(t => !GITHUB_PATH_RE.test(t.sourceUrl || ''))
+        .map(t => parseGithubRepo(t.sourceUrl)).filter(Boolean).map(r => `${r.owner}/${r.repo}`));
+      const okRepos = repoKeys.filter(k => repoResults.get(k) === 'ok' && rootRepoKeys.has(k));
       process.stderr.write(`Lấy số sao thật của ${okRepos.length} repo từ GitHub API...\n`);
       const starResults = await runPool(okRepos, key => {
         const [owner, repo] = key.split('/');
         return githubStars({ owner, repo });
       });
       for (const t of tools) {
+        // Chỉ gán số sao cho công cụ trỏ tới gốc repo. Thành phần nằm trong một repo lớn (ví dụ
+        // claude-code-templates/cli-tool/components/...) không mang số sao của cả repo.
+        if (GITHUB_PATH_RE.test(t.sourceUrl || '')) continue;
         const gh = parseGithubRepo(t.sourceUrl);
         const stars = gh ? starResults.get(`${gh.owner}/${gh.repo}`) : null;
         if (typeof stars === 'number') starsByTool.set(t.id, stars);
@@ -293,7 +298,8 @@ async function main() {
         sourceStatus: status,
         missingPackages: missingPackagesByTool.get(t.id) || [],
         guideIsTemplate: templateGuide.get(t.id),
-        starsVerified: typeof verifiedStars === 'number' || Boolean(t.verification && t.verification.starsVerified)
+        starsVerified: typeof verifiedStars === 'number' ||
+          (!GITHUB_PATH_RE.test(t.sourceUrl || '') && Boolean(t.verification && t.verification.starsVerified))
       };
     }
     fs.writeFileSync(DATA_FILE, JSON.stringify(tools, null, 2), 'utf-8');

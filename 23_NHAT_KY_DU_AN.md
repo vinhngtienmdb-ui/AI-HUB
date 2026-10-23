@@ -89,6 +89,14 @@
 - Bật bằng biến môi trường, mặc định tắt; lý do: quy tắc bảo mật phải được triển khai trước khi ứng dụng ghi dữ liệu.
 - Kiểm tra lại độ mạnh của bộ kiểm thử bằng cách cố ý nới lỏng quy tắc (bỏ điều kiện trạng thái chờ duyệt): bộ kiểm thử phát hiện.
 
+### Phiên làm việc thứ sáu trong ngày: số sao thật (phần D)
+- Phiên làm việc không gọi được GitHub API; chuyển việc lấy số sao sang GitHub Actions dùng `GITHUB_TOKEN` của repo.
+
+#### Quyết định kỹ thuật
+- Không gán số sao của repo cho từng thành phần bên trong repo đó; lý do: số sao của kho template không phản ánh mức phổ biến của từng skill/agent.
+- Kết quả cập nhật đi qua pull request; lý do: nhánh `main` được bảo vệ và thay đổi trạng thái liên kết cần người xem.
+- Phần gọi GitHub API chưa được chạy thử; kiểm chứng ở lần chạy workflow đầu tiên.
+
 ## [2026-10-22]
 ### Mục tiêu trong ngày
 - Tách biệt hoàn toàn khối Sơ đồ trực quan (Diagram) thành một Tab chuyên biệt độc lập trên cả Trang chi tiết (`DetailPage.tsx`) và Modal chi tiết (`ToolDetailModal.tsx`), không nằm trong Tab README; xây dựng thành phần `VisualDiagramViewer.tsx` chuyên biệt.
