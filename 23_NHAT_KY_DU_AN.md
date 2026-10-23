@@ -52,6 +52,23 @@
 - Kết quả: 49/49 kiểm thử đạt; kiểm tra trên trình duyệt: cảnh báo dữ liệu, README tải theo nhu cầu, định tuyến ý định thống nhất.
 - Còn lại: CL-05b, CL-05c, TK-01, BT-01 (chờ quyết định hoặc tài nguyên của con người), BM-08 (bị nghẽn, cần quyết định kiến trúc).
 
+### Phiên làm việc thứ ba trong ngày: xử lý dữ liệu đã gắn nhãn (phần A)
+- Áp dụng 7 quy tắc trong `scripts/migrations/2026-10-23-a-xu-ly-du-lieu-gan-nhan.cjs`; chạy lại nhiều lần cho cùng kết quả.
+
+#### Quyết định kỹ thuật
+- Công cụ có repo thật nhưng câu lệnh bịa: giữ công cụ, thay câu lệnh bằng câu lệnh thật; lý do: công cụ có giá trị, chỉ câu lệnh sai.
+- Công cụ có nguồn là trang chủ và gói cài đặt không tồn tại: ẩn; lý do: MCP server/SDK được mô tả không tồn tại.
+- Trùng lặp xét theo URL đầy đủ; lý do: một repo (claude-code-templates) chứa 1.800+ thành phần riêng biệt.
+- Không sửa tệp cấu hình gốc của kho template khi tệp gốc tham chiếu gói không tồn tại; giữ nguyên và hiển thị cảnh báo.
+
+#### Lỗi phát sinh và giải pháp
+- **Vấn đề:** Lần chạy đầu ẩn nhầm 1.861 bản ghi là trùng lặp.
+- **Nguyên nhân:** So khớp trùng lặp theo repo thay vì theo URL đầy đủ.
+- **Giải pháp:** Khôi phục dữ liệu, so khớp theo URL đầy đủ, chỉ áp dụng cho liên kết repo.
+- **Vấn đề:** Kiểm định trực tuyến báo 1.885 nguồn không tồn tại sau khi thêm kiểm tra đường dẫn.
+- **Nguyên nhân:** Kho template đổi cấu trúc thư mục; dữ liệu trỏ tới đường dẫn cũ.
+- **Giải pháp:** Sửa đường dẫn khi đường dẫn mới có thật trên nhánh mặc định.
+
 ## [2026-10-22]
 ### Mục tiêu trong ngày
 - Tách biệt hoàn toàn khối Sơ đồ trực quan (Diagram) thành một Tab chuyên biệt độc lập trên cả Trang chi tiết (`DetailPage.tsx`) và Modal chi tiết (`ToolDetailModal.tsx`), không nằm trong Tab README; xây dựng thành phần `VisualDiagramViewer.tsx` chuyên biệt.

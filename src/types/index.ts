@@ -14,7 +14,7 @@ export type ToolType =
   | 'setting' 
   | 'web_tool';
 
-export type Platform = 'claude_desktop' | 'antigravity' | 'cursor' | 'windsurf' | 'web';
+export type Platform = 'claude_desktop' | 'claude_code' | 'antigravity' | 'cursor' | 'windsurf' | 'web';
 
 export type Category = 
   // 1. Lập trình & Kỹ thuật phần mềm (chi tiết hóa không gộp)

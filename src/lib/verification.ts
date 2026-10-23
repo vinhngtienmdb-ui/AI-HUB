@@ -9,9 +9,12 @@ export const formatStars = (stars: number): string =>
   stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(stars);
 
 // Cảnh báo chất lượng dữ liệu hiển thị cho người dùng ở trang chi tiết
-export const getVerificationWarnings = (tool: Pick<AITool, 'verification' | 'linkHealth'>): string[] => {
+export const getVerificationWarnings = (tool: Pick<AITool, 'verification' | 'linkHealth' | 'status' | 'reviewNote'>): string[] => {
   const v = tool.verification;
   const warnings: string[] = [];
+  if (tool.status === 'rejected') {
+    warnings.push(`Công cụ này đã bị ẩn khỏi danh sách. ${tool.reviewNote || ''}`.trim());
+  }
   if (tool.linkHealth === 'broken' || v?.sourceStatus === 'missing') {
     warnings.push('Liên kết nguồn không tồn tại tại lần kiểm tra gần nhất. Hãy tự xác minh trước khi sử dụng.');
   }

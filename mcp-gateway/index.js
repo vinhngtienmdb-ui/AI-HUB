@@ -11,7 +11,7 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
-import { routeTask, getAllTools } from './smart-router.js';
+import { routeTask, getAllTools, getPublishedTools } from './smart-router.js';
 import { dispatchTask } from './dispatcher.js';
 import { sanitizeInput, authenticateBearerToken } from './security.js';
 import { startApiServer } from './api-server.js';
@@ -25,7 +25,7 @@ const server = new McpServer({
 // Tool 1: aihub_smart_dispatch — Nhận bài toán và tự động điều phối thực thi
 server.tool(
   'aihub_smart_dispatch',
-  `Tiếp nhận yêu cầu công việc tự nhiên từ người dùng, tự động phân tích ý định và định tuyến đến công cụ AI hoặc máy chủ MCP chuyên trách phù hợp nhất trong kho ${getAllTools().length.toLocaleString('vi-VN')} tài nguyên AI HUB VN.`,
+  `Tiếp nhận yêu cầu công việc tự nhiên từ người dùng, tự động phân tích ý định và định tuyến đến công cụ AI hoặc máy chủ MCP chuyên trách phù hợp nhất trong kho ${getPublishedTools().length.toLocaleString('vi-VN')} tài nguyên AI HUB VN.`,
   {
     task_description: z.string().describe('Mô tả chi tiết bài toán, nghiệp vụ hoặc tính năng cần thực hiện (Ví dụ: "Tạo đơn hàng thanh toán MoMo 100k", "Dịch ngược file nhị phân native", "Viết bản SRS IEEE 830", "Tạo mã VietQR Napas247")'),
     parameters: z.record(z.any()).optional().describe('Các tham số bổ sung tùy chọn cho bài toán')

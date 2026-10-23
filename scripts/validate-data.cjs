@@ -4,8 +4,8 @@
  *
  * Cách dùng:
  *   node scripts/validate-data.cjs             Kiểm tra ngoại tuyến, in báo cáo
- *   node scripts/validate-data.cjs --online    Thêm kiểm tra mạng: repo GitHub tồn tại, gói npm tồn tại,
- *                                              liên kết trang chủ phản hồi
+ *   node scripts/validate-data.cjs --online    Thêm kiểm tra mạng: repo GitHub tồn tại, đường dẫn trong repo tồn tại,
+ *                                              gói npm tồn tại, liên kết trang chủ phản hồi
  *   node scripts/validate-data.cjs --online --write
  *                                              Ghi kết quả vào trường `verification`, cập nhật `linkHealth`
  *   GITHUB_TOKEN=... node scripts/validate-data.cjs --online --write
@@ -15,6 +15,7 @@
  * Báo cáo chi tiết được ghi ra scripts/data-validation-report.json.
  */
 const fs = require('node:fs');
+const os = require('node:os');
 const path = require('node:path');
 const { execFile } = require('node:child_process');
 
@@ -110,6 +111,34 @@ function githubRepoExists({ owner, repo }) {
   });
 }
 
+// Đường dẫn bên trong repo: github.com/<owner>/<repo>/(tree|blob)/<nhánh>/<đường dẫn>
+const GITHUB_PATH_RE = /^https?:\/\/github\.com\/([^/\s]+)\/([^/\s#?]+)\/(?:tree|blob)\/([^/\s]+)\/([^#?\s]+)/i;
+
+function run(cmd, cmdArgs, options = {}) {
+  return new Promise(resolve => {
+    execFile(cmd, cmdArgs, { timeout: 300000, maxBuffer: 256 * 1024 * 1024, env: { ...process.env, GIT_TERMINAL_PROMPT: '0' }, ...options },
+      (err, stdout) => resolve(err ? null : stdout));
+  });
+}
+
+/**
+ * Đọc danh sách tệp và thư mục của nhánh mặc định bằng clone một phần (không tải nội dung tệp).
+ * @returns {Promise<{ branch: string, paths: Set<string> } | null>}
+ */
+async function listRepoTree(owner, repo) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'aihub-tree-'));
+  try {
+    const cloned = await run('git', ['clone', '-q', '--depth', '1', '--filter=blob:none', '--no-checkout', `https://github.com/${owner}/${repo}`, dir]);
+    if (cloned === null) return null;
+    const branch = (await run('git', ['-C', dir, 'rev-parse', '--abbrev-ref', 'HEAD']) || '').trim();
+    const files = await run('git', ['-C', dir, 'ls-tree', '-r', '-t', '--name-only', 'HEAD']);
+    if (files === null) return null;
+    return { branch, paths: new Set(files.split('\n').filter(Boolean)) };
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+}
+
 async function npmPackageExists(name) {
   try {
     const res = await fetch(`https://registry.npmjs.org/${name.replace('/', '%2f')}`, { method: 'GET', signal: AbortSignal.timeout(15000) });
@@ -190,9 +219,29 @@ async function main() {
     process.stderr.write(`Kiểm tra ${otherUrls.length} liên kết không phải GitHub...\n`);
     const urlResults = await runPool(otherUrls, urlReachable);
 
+    // Liên kết trỏ vào thư mục/tệp trong repo: kiểm tra đường dẫn tồn tại trên nhánh mặc định
+    const pathRepos = [...new Set(tools.map(t => GITHUB_PATH_RE.exec(t.sourceUrl || '')).filter(Boolean)
+      .map(m => `${m[1]}/${m[2]}`).filter(k => repoResults.get(k) === 'ok'))];
+    process.stderr.write(`Kiểm tra đường dẫn trong ${pathRepos.length} repo...\n`);
+    const trees = new Map();
+    for (const key of pathRepos) {
+      const [owner, repo] = key.split('/');
+      trees.set(key, await listRepoTree(owner, repo));
+    }
+    const pathStatus = (url) => {
+      const m = GITHUB_PATH_RE.exec(url || '');
+      if (!m) return null;
+      const tree = trees.get(`${m[1]}/${m[2]}`);
+      if (!tree || tree.branch !== m[3]) return 'unknown';
+      const target = decodeURIComponent(m[4]).replace(/\/+$/, '');
+      return tree.paths.has(target) ? 'ok' : 'missing';
+    };
+
     for (const t of tools) {
       const gh = parseGithubRepo(t.sourceUrl);
-      sourceStatus.set(t.id, gh ? repoResults.get(`${gh.owner}/${gh.repo}`) : (t.sourceUrl ? urlResults.get(t.sourceUrl) : 'missing'));
+      let status = gh ? repoResults.get(`${gh.owner}/${gh.repo}`) : (t.sourceUrl ? urlResults.get(t.sourceUrl) : 'missing');
+      if (status === 'ok') status = pathStatus(t.sourceUrl) || status;
+      sourceStatus.set(t.id, status);
       if (sourceStatus.get(t.id) === 'missing') addIssue('sourceMissing', { id: t.id, sourceUrl: t.sourceUrl });
     }
 

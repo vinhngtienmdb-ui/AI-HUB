@@ -13,7 +13,7 @@ test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ Tha
   // 1. Thử nghiệm với VietQR
   const resVietQr = routeTask('Tạo mã thanh toán VietQR chuyển khoản ngân hàng Techcombank 500k');
   assert.equal(resVietQr.success, true);
-  assert.equal(resVietQr.matchedTool.id, 'vietqr-generator-napas247-mcp');
+  assert.equal(resVietQr.matchedTool.id, 'vn-repo-vietqr-emvco-core');
   assert.equal(resVietQr.matchedTool.isVietnamMarket, true);
   assert.ok(resVietQr.confidence >= 0.9);
 
@@ -35,7 +35,7 @@ test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ D�
 test('Kiểm tra Smart MCP Router: Định tuyến chính xác nghiệp vụ Phân tích nghiệp vụ BA (OpenBA-Kit)', () => {
   const resBa = routeTask('Viết bản đặc tả yêu cầu kỹ thuật SRS chuẩn IEEE 830 và bóc tách user story INVEST');
   assert.equal(resBa.success, true);
-  assert.equal(resBa.matchedTool.id, 'spmtitsolution-openba-kit-57-ai-skills');
+  assert.equal(resBa.matchedTool.id, 'agent-1013');
   assert.ok(resBa.confidence >= 0.9);
 });
 
@@ -91,7 +91,7 @@ test('Kiểm tra Smart MCP Dispatcher: Đóng gói phản hồi, kế hoạch th
 
   assert.equal(dispatched.status, 'DISPATCH_SUCCESS');
   assert.equal(dispatched.gateway.name, 'AI HUB VN Smart MCP Gateway');
-  assert.equal(dispatched.dispatchedTool.id, 'vietqr-generator-napas247-mcp');
+  assert.equal(dispatched.dispatchedTool.id, 'vn-repo-vietqr-emvco-core');
   assert.ok(dispatched.executionPlan.quickCliCommand);
   assert.ok(dispatched.executionPlan.sampleJsonConfig);
   assert.equal(dispatched.contextOptimization.status, 'ACTIVE');
@@ -108,18 +108,18 @@ test('Kiểm tra Smart MCP Router: Xử lý ngoại lệ đầu vào rỗng ho�
 });
 
 test('Kiểm tra Smart MCP Router: Từ khóa ngắn chỉ khớp nguyên từ, không khớp chuỗi con', () => {
-  assert.notStrictEqual(routeTask('Thiết kế database cho hệ thống đơn hàng').intentId, 'business_analysis_openba_kit');
+  assert.notStrictEqual(routeTask('Thiết kế database cho hệ thống đơn hàng').intentId, 'business_analysis');
   assert.notStrictEqual(routeTask('Tạo ứng dụng react mới').intentId, 'reverse_engineering_rea');
-  assert.strictEqual(routeTask('Viết user story cho BA').intentId, 'business_analysis_openba_kit');
+  assert.strictEqual(routeTask('Viết user story cho BA').intentId, 'business_analysis');
 });
 
 test('Bảng ý định dùng chung: Mọi ý định trỏ tới công cụ có thật, không trùng mã, từ khóa viết thường', async () => {
   const { readFileSync } = await import('node:fs');
   const intents = JSON.parse(readFileSync(new URL('../mcp-gateway/core-intents.json', import.meta.url), 'utf-8'));
-  const toolIds = new Set(getAllTools().map(t => t.id));
+  const toolIds = new Set(getAllTools().filter(t => t.status === 'published' || !t.status).map(t => t.id));
   const seen = new Set();
   for (const intent of intents) {
-    assert.ok(toolIds.has(intent.targetToolId), `Ý định ${intent.intentId} trỏ tới công cụ không tồn tại: ${intent.targetToolId}`);
+    assert.ok(toolIds.has(intent.targetToolId), `Ý định ${intent.intentId} trỏ tới công cụ không tồn tại hoặc đã bị ẩn: ${intent.targetToolId}`);
     assert.ok(!seen.has(intent.intentId), `Trùng mã ý định ${intent.intentId}`);
     seen.add(intent.intentId);
     for (const kw of intent.keywords) assert.strictEqual(kw, kw.toLowerCase(), `Từ khóa "${kw}" phải viết thường`);

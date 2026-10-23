@@ -5,7 +5,10 @@ import { join } from 'node:path';
 
 // Đọc trực tiếp từ file allTools.json
 const allToolsPath = join(process.cwd(), 'src', 'data', 'allTools.json');
-const toolsData = JSON.parse(readFileSync(allToolsPath, 'utf-8'));
+const allToolsData = JSON.parse(readFileSync(allToolsPath, 'utf-8'));
+// Quy tắc nghiệp vụ về nội dung áp dụng cho công cụ đang hiển thị; bản ghi bị ẩn (rejected) do không xác minh
+// được hoặc trùng lặp vẫn nằm trong tệp để có thể khôi phục.
+const toolsData = allToolsData.filter(t => t.status === 'published' || !t.status);
 
 test('Quy tắc QT-01: Mọi công cụ trong kho dữ liệu bắt buộc phải có đầy đủ 4 khối thông tin', () => {
   assert.ok(toolsData.length >= 1500, `Thư viện phải có toàn bộ công cụ từ 2 nguồn (hiện có: ${toolsData.length})`);
