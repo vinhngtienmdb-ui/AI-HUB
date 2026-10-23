@@ -30,6 +30,28 @@
 - Kết quả: 46/46 kiểm thử đạt, kiểm tra kiểu TypeScript đạt, đóng gói thành công. Đã xác minh trên trình duyệt: terminal chạy `node -v` thành công, lệnh chèn mã bị chặn.
 - Kế hoạch tiếp theo: CL-04 đến CL-08, BM-08 trong `24_DANH_MUC_KIEM_TRA.md`.
 
+### Phiên làm việc thứ hai trong ngày
+- [CL-08]: Đồng bộ bộ tài liệu theo chuẩn 24 tệp, 13 giai đoạn.
+- [CL-05]: Kiểm định toàn bộ 2.222 công cụ trên mạng (repo GitHub qua `git ls-remote`, gói npm qua registry, trang nguồn qua HTTP). Gắn nhãn, không xóa bản ghi.
+- [CL-04]: Tách trường chi tiết khỏi gói JavaScript chính.
+- [CL-06]: Hợp nhất bộ định tuyến ý định.
+- [CL-07]: Lưu trữ script dùng một lần.
+
+#### Quyết định kỹ thuật
+- Dữ liệu không xác minh được chỉ gắn nhãn và cảnh báo, không xóa; lý do: nguyên tắc không xóa dữ liệu khi chưa có yêu cầu rõ ràng, và một số bản ghi có thể sửa được thay vì gỡ.
+- Ẩn toàn bộ số sao chưa xác minh; lý do: số sao trong dữ liệu được sinh bằng `Math.random()`, phiên làm việc không truy cập được GitHub API để lấy số thật.
+- Liên kết không phải GitHub chỉ kết luận "không tồn tại" khi máy chủ trả về 404/410; lỗi mạng hoặc bị chặn được ghi "chưa kiểm tra được".
+- Script phân loại và sinh dữ liệu được lưu trữ thay vì giữ làm quy trình bảo trì; lý do: chạy thử cho thấy chúng thay đổi lĩnh vực của khoảng 2.200 công cụ hoặc ghi đè README mới hơn.
+
+#### Lỗi phát sinh và giải pháp
+- **Vấn đề:** Lần kiểm định đầu báo 51 nguồn không tồn tại, trong đó có trang web của cơ quan nhà nước.
+- **Nguyên nhân:** `fetch` của Node.js không đi qua proxy của môi trường nên không phân giải được tên miền.
+- **Giải pháp:** Dùng `curl` (tôn trọng proxy) và chỉ kết luận khi có mã 404/410; còn 35 nguồn không tồn tại.
+
+#### Kết quả và bước tiếp theo
+- Kết quả: 49/49 kiểm thử đạt; kiểm tra trên trình duyệt: cảnh báo dữ liệu, README tải theo nhu cầu, định tuyến ý định thống nhất.
+- Còn lại: CL-05b, CL-05c, TK-01, BT-01 (chờ quyết định hoặc tài nguyên của con người), BM-08 (bị nghẽn, cần quyết định kiến trúc).
+
 ## [2026-10-22]
 ### Mục tiêu trong ngày
 - Tách biệt hoàn toàn khối Sơ đồ trực quan (Diagram) thành một Tab chuyên biệt độc lập trên cả Trang chi tiết (`DetailPage.tsx`) và Modal chi tiết (`ToolDetailModal.tsx`), không nằm trong Tab README; xây dựng thành phần `VisualDiagramViewer.tsx` chuyên biệt.

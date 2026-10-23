@@ -1,11 +1,11 @@
 # Danh Mục Kiểm Tra Dự Án (Checklist)
 
 ## Tổng Quan Tiến Độ
-- Tổng số nhiệm vụ cốt lõi: 110
-- Đã hoàn thành: 104
+- Tổng số nhiệm vụ cốt lõi: 116
+- Đã hoàn thành: 111
 - Đang thực hiện: 0
-- Chưa bắt đầu: 6
-- Bị nghẽn: 0
+- Chưa bắt đầu: 4
+- Bị nghẽn: 1
 
 ---
 
@@ -129,16 +129,21 @@
 - [x] BM-05: Bỏ `mcp-gateway/data/api-keys.json` khỏi kho mã, bỏ muối HMAC viết cứng, kiểm thử ghi vào thư mục tạm
 - [x] BM-06: Làm sạch HTML của README bằng DOMPurify
 - [x] BM-07: Cập nhật `19_AN_TOAN_BAO_MAT.md` đúng với mã nguồn thực tế
-- [ ] BM-08: Xác minh vai trò quản trị viên phía máy chủ (HC-01 trong `19_AN_TOAN_BAO_MAT.md`)
+- [-] BM-08: Xác minh vai trò quản trị viên phía máy chủ (HC-01 trong `19_AN_TOAN_BAO_MAT.md`)
+  - Bị nghẽn: hệ thống chưa có máy chủ lưu trữ dữ liệu dùng chung; cần quyết định kiến trúc (Firebase Firestore kèm quy tắc bảo mật, hoặc máy chủ riêng) trước khi triển khai.
 
 ### Phân hệ: Chất lượng mã nguồn và vận hành
 - [x] CL-01: Sửa so khớp từ khóa ngắn (`rea`, `ba`, `po`) trong bộ định tuyến ý định
 - [x] CL-02: Thiết lập CI chạy kiểm thử, kiểm tra kiểu và đóng gói (`.github/workflows/ci.yml`)
 - [x] CL-03: Sửa lỗi cầu nối lệnh tự hủy tiến trình ngay sau khi nhận yêu cầu
-- [ ] CL-04: Tách `allTools.json` (19,7 MB trong gói JavaScript) thành chỉ mục nhẹ và dữ liệu chi tiết tải theo nhu cầu
-- [ ] CL-05: Kiểm định dữ liệu: kiểm tra liên kết và gói npm thật, bỏ số sao sinh ngẫu nhiên, gắn nhãn hướng dẫn dạng mẫu, loại trùng lặp
-- [ ] CL-06: Hợp nhất bộ định tuyến ý định phía trình duyệt và máy chủ vào một nguồn dữ liệu chung
-- [ ] CL-07: Gom các script dữ liệu trong `scripts/` thành một quy trình duy nhất, bỏ đường dẫn Windows viết cứng
+- [x] CL-04: Tách `allTools.json` (19,7 MB trong gói JavaScript) thành chỉ mục nhẹ và dữ liệu chi tiết tải theo nhu cầu
+  - Tiêu chí nghiệm thu: Gói chính 5,7 MB (gzip 0,59 MB); README và hướng dẫn hiển thị đúng khi mở trang chi tiết
+- [x] CL-05: Kiểm định dữ liệu: kiểm tra liên kết và gói npm thật, bỏ số sao sinh ngẫu nhiên, gắn nhãn hướng dẫn dạng mẫu
+  - Tiêu chí nghiệm thu: `npm run data:validate`; mọi bản ghi có trường `verification`; giao diện chỉ hiển thị số sao đã xác minh và cảnh báo dữ liệu chưa xác minh (`tests/business-rules.test.js`)
+- [ ] CL-05b: Xử lý 30 liên kết nguồn trùng lặp, 35 nguồn không tồn tại, 376 công cụ trỏ tới gói npm không tồn tại, 1.914 hướng dẫn dạng mẫu (cần con người quyết định sửa hay gỡ từng bản ghi)
+- [ ] CL-05c: Lấy số sao thật: chạy `GITHUB_TOKEN=... npm run data:validate -- --online --write` trên máy có token GitHub
+- [x] CL-06: Hợp nhất bộ định tuyến ý định phía trình duyệt và máy chủ vào một nguồn dữ liệu chung (`mcp-gateway/core-intents.json`, `mcp-gateway/intent-matcher.js`)
+- [x] CL-07: Chuyển script dùng một lần vào `scripts/archive/` (kèm README giải thích), chỉ giữ `scripts/validate-data.cjs`; bỏ đường dẫn Windows viết cứng
 - [x] CL-08: Đồng bộ bộ tài liệu theo chuẩn VibeCode 2.0 (24 tệp, 13 giai đoạn)
   - Tiêu chí nghiệm thu: Đổi tên tệp 20, 21, 22 thành 22, 23, 24; tạo `20_QUY_TRINH_TRIEN_KHAI.md`, `21_KE_HOACH_BAO_TRI.md`; cập nhật `index.md`, README và giao diện
 

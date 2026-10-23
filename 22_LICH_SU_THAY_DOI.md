@@ -4,6 +4,21 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.0.50 (Ngày 23-10-2026)
+- **Loại hình**: Chất lượng dữ liệu, hiệu năng, hợp nhất mã nguồn, đồng bộ tài liệu theo chuẩn VibeCode 2.0.
+- **Dữ liệu**:
+  - Thêm `npm run data:validate` (`scripts/validate-data.cjs`): kiểm tra repo GitHub, gói npm, liên kết nguồn, hướng dẫn dạng mẫu, trùng lặp; ghi kết quả vào trường `verification`.
+  - Kết quả kiểm định: 35 nguồn không tồn tại, 376 công cụ trỏ tới gói npm không tồn tại, 1.914 hướng dẫn dạng mẫu, 30 liên kết nguồn trùng lặp. Không xóa bản ghi nào.
+  - Giao diện chỉ hiển thị số sao đã xác minh; bỏ các số liệu viết cứng (4.8 sao, 12.5k lượt sử dụng, 12.5k đánh giá); hiển thị cảnh báo dữ liệu chưa xác minh trên trang và cửa sổ chi tiết.
+  - Bỏ đường dẫn `C:/Users/...` và khóa API giả khỏi cấu hình mẫu.
+- **Hiệu năng**: Tách README và hướng dẫn chi tiết khỏi gói JavaScript chính, tải theo nhu cầu. Gói chính giảm từ 19,7 MB (gzip 1,02 MB) xuống 5,7 MB (gzip 0,59 MB).
+- **Mã nguồn**:
+  - Hợp nhất bộ định tuyến ý định giữa giao diện web và máy chủ MCP (`mcp-gateway/core-intents.json`, `mcp-gateway/intent-matcher.js`).
+  - Chuyển 56 script dùng một lần vào `scripts/archive/` do chạy lại sẽ ghi đè dữ liệu.
+  - Số lượng công cụ hiển thị lấy từ dữ liệu thực tế.
+- **Tài liệu**: Đổi tên `20`, `21`, `22` thành `22_LICH_SU_THAY_DOI.md`, `23_NHAT_KY_DU_AN.md`, `24_DANH_MUC_KIEM_TRA.md`; tạo `20_QUY_TRINH_TRIEN_KHAI.md`, `21_KE_HOACH_BAO_TRI.md`; bổ sung hiện trạng lưu trữ thực tế vào `13_CO_SO_DU_LIEU.md`; giao diện hiển thị đủ 13 giai đoạn.
+- **Kiểm thử**: 49/49 đạt.
+
 ### Phiên Bản 2.0.49 (Ngày 23-10-2026)
 - **Loại hình**: Sửa lỗi bảo mật nghiêm trọng và lỗi chức năng.
 - **Bảo mật**:

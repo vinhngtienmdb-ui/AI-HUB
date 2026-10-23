@@ -1,7 +1,7 @@
 # AI Hub - Nền Tảng Quản Lý Công Cụ AI, Máy Chủ MCP & Kỹ Năng Tác Tử Chuẩn Hóa
 
 [![Giấy Phép](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Phiên Bản](https://img.shields.io/badge/Phiên_Bản-2.0.49-emerald.svg)](22_LICH_SU_THAY_DOI.md)
+[![Phiên Bản](https://img.shields.io/badge/Phiên_Bản-2.0.50-emerald.svg)](22_LICH_SU_THAY_DOI.md)
 [![Quy Trình VibeCode](https://img.shields.io/badge/Quy_Trình-VibeCode_13_Giai_Đoạn-purple.svg)](index.md)
 [![Tổng Số Công Cụ](https://img.shields.io/badge/Kho_Dữ_Liệu-2.222_Mục-orange.svg)](#)
 [![Khung Làm Việc Mở Rộng](https://img.shields.io/badge/Khung_Làm_Việc-Mở_Rộng_Toàn_Màn_Hình-blueviolet.svg)](#)
@@ -103,6 +103,16 @@ npm run dev
 ```bash
 # Chạy toàn bộ kiểm thử (dữ liệu khóa API được ghi vào thư mục tạm, không ảnh hưởng kho mã)
 npm test
+```
+
+### Kiểm định chất lượng kho dữ liệu
+```bash
+# Kiểm tra ngoại tuyến: trùng lặp, đường dẫn cục bộ, hướng dẫn dạng mẫu
+npm run data:validate
+# Kiểm tra trực tuyến (repo GitHub, gói npm, liên kết nguồn) và ghi nhãn verification vào dữ liệu
+npm run data:validate -- --online --write
+# Lấy thêm số sao thật từ GitHub (giao diện chỉ hiển thị số sao đã xác minh)
+GITHUB_TOKEN=<token> npm run data:validate -- --online --write
 ```
 
 ### Đóng gói bản phát hành
