@@ -36,7 +36,7 @@ Tài liệu này định nghĩa hợp đồng giao tiếp dữ liệu giữa má
 
 ## 3. Danh Sách Các Điểm Cuối (Endpoints)
 
-> **Hiện trạng triển khai**: Cổng REST API (`backend/api-server.js`) đã có `GET /api/v1/tools` và `GET /api/v1/tools/:id` (mục 3.1, 3.2). Khác với đặc tả mục tiêu: trường dữ liệu giữ dạng camelCase như kho dữ liệu (`toolType`, `sourceUrl`...), danh sách trả trong trường `tools` kèm `meta`, mặc định 20 bản ghi mỗi trang (tối đa 100), có thêm bộ lọc `vietnam=1`; công cụ chưa xuất bản luôn trả 404 (chưa có quyền quản trị xem bản ghi ẩn). Các điểm cuối 3.3–3.5 chưa được triển khai. Hướng dẫn sử dụng: `HUONG_DAN_CAI_DAT_VA_SU_DUNG_MCP_API.md`, mục IV.6.
+> **Hiện trạng triển khai**: Cổng REST API (`backend/api-server.js`) đã có `GET /api/v1/tools` và `GET /api/v1/tools/:id` (mục 3.1, 3.2). Khác với đặc tả mục tiêu: trường dữ liệu giữ dạng camelCase như kho dữ liệu (`toolType`, `sourceUrl`...), danh sách trả trong trường `tools` kèm `meta`, mặc định 20 bản ghi mỗi trang (tối đa 100), có thêm bộ lọc `vietnam=1`; công cụ chưa xuất bản luôn trả 404 (chưa có quyền quản trị xem bản ghi ẩn). Các điểm cuối 3.3–3.5 chưa được triển khai. Hướng dẫn sử dụng: `HUONG_DAN_CAI_DAT_VA_SU_DUNG_MCP_API.md`, mục IV.5.
 
 ### 3.1. Điểm cuối `GET /api/v1/tools`
 - **Mục đích**: Lấy danh sách công cụ đã xuất bản kèm tính năng tìm kiếm và lọc.

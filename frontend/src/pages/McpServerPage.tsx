@@ -49,7 +49,7 @@ export const McpServerPage: React.FC<McpServerPageProps> = ({
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   // Tab cấu hình Client
-  const [activeClientTab, setActiveClientTab] = useState<'claude_desktop' | 'cursor' | 'claude_code' | 'antigravity'>('claude_desktop');
+  const [activeClientTab, setActiveClientTab] = useState<'claude_desktop' | 'cursor' | 'claude_code'>('claude_desktop');
 
   // Trình kiểm tra công cụ MCP Inspector
   const [selectedToolName, setSelectedToolName] = useState<string>('aihub_smart_dispatch');
@@ -90,7 +90,7 @@ export const McpServerPage: React.FC<McpServerPageProps> = ({
       "aihub-smart-gateway": {
         command: "node",
         args: [
-          "<DUONG_DAN_TOI_AI-HUB>/mcp-gateway/index.js"
+          "<DUONG_DAN_TOI_AI-HUB>/backend/index.js"
         ],
       }
     }
@@ -100,22 +100,12 @@ export const McpServerPage: React.FC<McpServerPageProps> = ({
     mcpServers: {
       "aihub-smart-gateway": {
         command: "node",
-        args: ["<DUONG_DAN_TOI_AI-HUB>/mcp-gateway/index.js"]
+        args: ["<DUONG_DAN_TOI_AI-HUB>/backend/index.js"]
       }
     }
   }, null, 2);
 
-  const claudeCodeConfig = `claude mcp add aihub-gateway -- node <DUONG_DAN_TOI_AI-HUB>/mcp-gateway/index.js`;
-
-  const antigravityConfig = `// ~/.gemini/config/mcp_config.json (xem HUONG_DAN_CAI_DAT_VA_SU_DUNG_MCP_API.md, mục IV.4):
-{
-  "mcpServers": {
-    "aihub-gateway": {
-      "command": "node",
-      "args": ["<DUONG_DAN_TOI_AI-HUB>/mcp-gateway/index.js"]
-    }
-  }
-}`;
+  const claudeCodeConfig = `claude mcp add aihub-smart-gateway -- node <DUONG_DAN_TOI_AI-HUB>/backend/index.js`;
 
   return (
     <div className="w-full bg-slate-50 dark:bg-slate-950 min-h-screen py-8 transition-colors">
@@ -160,7 +150,7 @@ export const McpServerPage: React.FC<McpServerPageProps> = ({
               </h1>
               <p className="text-sm text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">
                 Máy chủ trung gian thông minh đóng vai trò <strong>Cổng kết nối duy nhất (Single Point of Entry)</strong>. 
-                Bạn chỉ cần kết nối 1 MCP Server duy nhất này là các tác tử AI (Claude Desktop, Cursor, Claude Code, Antigravity) 
+                Bạn chỉ cần kết nối 1 MCP Server duy nhất này là các tác tử AI (Claude Desktop, Cursor, Claude Code) 
                 có thể tra cứu <strong>{TOOL_COUNT_LABEL} công cụ thuộc {CATEGORY_COUNT_LABEL} lĩnh vực</strong>. Gateway chỉ trả về công cụ phù hợp nhất kèm hướng dẫn cài đặt,
                 thay vì nạp toàn bộ kho vào cửa sổ ngữ cảnh; khi không đủ tin cậy, gateway trả danh sách gợi ý thay vì tự chọn.
               </p>
@@ -393,8 +383,7 @@ export const McpServerPage: React.FC<McpServerPageProps> = ({
                 {[
                   { id: 'claude_desktop', label: 'Claude Desktop' },
                   { id: 'cursor', label: 'Cursor IDE' },
-                  { id: 'claude_code', label: 'Claude Code' },
-                  { id: 'antigravity', label: 'Antigravity' }
+                  { id: 'claude_code', label: 'Claude Code' }
                 ].map((tab) => (
                   <button
                     key={tab.id}
@@ -416,7 +405,6 @@ export const McpServerPage: React.FC<McpServerPageProps> = ({
                   {activeClientTab === 'claude_desktop' && claudeDesktopConfig}
                   {activeClientTab === 'cursor' && cursorMcpConfig}
                   {activeClientTab === 'claude_code' && claudeCodeConfig}
-                  {activeClientTab === 'antigravity' && antigravityConfig}
                 </pre>
 
                 <button
@@ -425,9 +413,7 @@ export const McpServerPage: React.FC<McpServerPageProps> = ({
                       ? claudeDesktopConfig
                       : activeClientTab === 'cursor'
                       ? cursorMcpConfig
-                      : activeClientTab === 'claude_code'
-                      ? claudeCodeConfig
-                      : antigravityConfig;
+                      : claudeCodeConfig;
                     handleCopy(text, 'mcp-config');
                   }}
                   className="absolute top-2 right-2 p-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white text-xs flex items-center space-x-1"
@@ -458,17 +444,12 @@ export const McpServerPage: React.FC<McpServerPageProps> = ({
                   <ol className="list-decimal pl-4 space-y-1 text-[11px]">
                     <li>Mở Cursor Settings &gt; Features &gt; MCP Servers &gt; Add New MCP Server.</li>
                     <li>Điền tên <code className="text-indigo-600">aihub-smart-gateway</code>, chọn type: command.</li>
-                    <li>Dán command: <code className="text-indigo-600">node &lt;DUONG_DAN_TOI_AI-HUB&gt;/mcp-gateway/index.js</code>.</li>
+                    <li>Dán command: <code className="text-indigo-600">node &lt;DUONG_DAN_TOI_AI-HUB&gt;/backend/index.js</code>.</li>
                   </ol>
                 )}
                 {activeClientTab === 'claude_code' && (
                   <p className="text-[11px]">
                     Chạy lệnh trên trong terminal; kiểm tra bằng <code className="text-indigo-600">claude mcp list</code>.
-                  </p>
-                )}
-                {activeClientTab === 'antigravity' && (
-                  <p className="text-[11px]">
-                    Thêm cấu hình vào danh mục MCP Servers của Antigravity Agent.
                   </p>
                 )}
               </div>

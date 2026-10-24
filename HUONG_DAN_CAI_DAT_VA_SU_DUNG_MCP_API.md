@@ -11,7 +11,7 @@ Máy chủ MCP và Cổng REST API là hai tiến trình Node.js chạy trên m�
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   CÁC TÁC TỬ TRÍ TUỆ NHÂN TẠO (AI AGENTS)              │
-│       Claude Desktop  •  Cursor IDE  •  Claude Code  •  Antigravity    │
+│              Claude Desktop  •  Cursor IDE  •  Claude Code             │
 └───────────────────┬────────────────────────────────┬───────────────────┘
                     │ (Stdio Transport)              │ (HTTP Bearer Auth)
                     ▼                                ▼
@@ -33,7 +33,7 @@ Máy chủ MCP và Cổng REST API là hai tiến trình Node.js chạy trên m�
 1. **Trang Máy Chủ MCP (`#/mcp` hoặc `#/mcp-server`)**:
    - Quản lý và kiểm thử máy chủ Model Context Protocol (MCP).
    - Kiểm tra trực tiếp 4 công cụ MCP qua trình kiểm tra Stdio Inspector.
-   - Cung cấp cấu hình kết nối 1 chạm cho Claude Desktop, Cursor, Claude Code, Antigravity.
+   - Cung cấp cấu hình kết nối 1 chạm cho Claude Desktop, Cursor, Claude Code.
 2. **Trang Quản Lý API (`#/api` hoặc `#/api-keys`)**: điều khiển Cổng REST API đang chạy (mặc định `http://localhost:4000`) bằng khóa admin.
    - Tạo khóa (khóa thô do máy chủ sinh, chỉ hiển thị một lần) và thu hồi khóa trên máy chủ.
    - Xem số lượt dùng trong ngày so với hạn mức ngày, giới hạn tần suất, ngày hết hạn của từng khóa.
@@ -127,7 +127,7 @@ Thêm khối cấu hình sau vào mục `mcpServers`:
     "aihub-smart-gateway": {
       "command": "node",
       "args": [
-        "C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/backend/index.js"
+        "<DUONG_DAN_TOI_AI-HUB>/backend/index.js"
       ],
       "env": {
         "NODE_ENV": "production"
@@ -158,16 +158,16 @@ Khởi động lại Claude Desktop, biểu tượng công cụ (hình chiếc b
 ---
 
 ### 3. Tích Hợp Vào Claude Code (CLI)
-Cấu hình máy chủ MCP `aihub-smart-gateway` vào tệp cấu hình toàn cục `~/.claude.json` (tại `C:\Users\vinhn\.claude.json`) hoặc chạy lệnh qua CLI:
+Cấu hình máy chủ MCP `aihub-smart-gateway` vào tệp cấu hình toàn cục `~/.claude.json` (trên Windows: `%USERPROFILE%\.claude.json`) hoặc chạy lệnh qua CLI:
 ```bash
-claude mcp add aihub-smart-gateway -- node C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/backend/index.js
+claude mcp add aihub-smart-gateway -- node <DUONG_DAN_TOI_AI-HUB>/backend/index.js
 ```
 Hoặc cấu hình trực tiếp vào mục `"mcpServers"` trong tệp `~/.claude.json`:
 ```json
 "aihub-smart-gateway": {
   "command": "node",
   "args": [
-    "C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/backend/index.js"
+    "<DUONG_DAN_TOI_AI-HUB>/backend/index.js"
   ],
   "env": {
     "NODE_ENV": "production"
@@ -177,36 +177,7 @@ Hoặc cấu hình trực tiếp vào mục `"mcpServers"` trong tệp `~/.claud
 
 ---
 
-### 4. Tích Hợp Vào Google Antigravity
-Google Antigravity hỗ trợ máy chủ MCP toàn cục qua tệp `~/.gemini/config/mcp_config.json` và cơ chế Lazy Tools trong thư mục `~/.gemini/antigravity/mcp/`:
-
-1. **Đăng ký máy chủ trong `mcp_config.json`**:
-```json
-{
-  "mcpServers": {
-    "aihub-smart-gateway": {
-      "command": "node",
-      "args": [
-        "C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/backend/index.js"
-      ],
-      "env": {
-        "NODE_ENV": "production"
-      }
-    }
-  }
-}
-```
-
-2. **Định nghĩa lược đồ công cụ (JSON Schema)** tại thư mục `C:\Users\vinhn\.gemini\antigravity\mcp\aihub-smart-gateway\`:
-- `aihub_smart_dispatch.json`: Tiếp nhận và điều phối công việc tự động.
-- `aihub_resolve_capability.json`: Tra cứu năng lực theo lĩnh vực, nghiệp vụ, công nghệ.
-- `aihub_explain_routing.json`: Minh bạch hóa lý do thuật toán định tuyến.
-- `aihub_get_gateway_status.json`: Trạng thái máy chủ, số công cụ, số lĩnh vực, nhóm ý định.
-- `instructions.md`: Cẩm nang chỉ dẫn AI Agent tương tác tối ưu.
-
----
-
-### 5. Tích Hợp Gọi REST API Qua Mã Nguồn Ứng Dụng
+### 4. Tích Hợp Gọi REST API Qua Mã Nguồn Ứng Dụng
 
 #### Ví dụ bằng cURL (Dòng lệnh):
 ```bash
@@ -264,7 +235,7 @@ response = requests.post(url, json=payload, headers=headers)
 print(response.json())
 ```
 
-### 6. Tra Cứu Danh Mục Công Cụ Qua REST API (Công Khai, Không Cần Khóa)
+### 5. Tra Cứu Danh Mục Công Cụ Qua REST API (Công Khai, Không Cần Khóa)
 
 Hai điểm cuối chỉ đọc, trả về công cụ đang hiển thị (bản ghi bị ẩn không xuất hiện). Mỗi địa chỉ IP được gọi tối đa 120 lần/phút; vượt ngưỡng trả HTTP `429`, mã `RATE_LIMITED`.
 
