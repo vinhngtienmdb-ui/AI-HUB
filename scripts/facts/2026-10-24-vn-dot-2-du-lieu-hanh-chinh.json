@@ -1,0 +1,402 @@
+[
+ {
+  "repo": "beiryu/vn-skills",
+  "license": "MIT License",
+  "authorName": "beiryu (vn-skills contributors)",
+  "websiteUrl": "https://www.npmjs.com/package/@vn-skills/mcp",
+  "toolType": "mcp",
+  "taglineEn": "Teach your AI agent to work with VietQR, e-invoices, the new 34-province addresses and more — with one command.",
+  "summaryVi": "vn-skills là bộ công cụ ngoại tuyến cho logic đặc thù Việt Nam, gồm 3 lớp dùng chung một lõi: Agent Skills (SKILL.md), CLI @vn-skills/cli và máy chủ MCP @vn-skills/mcp, cùng thư viện TypeScript @vn-skills/core. Máy chủ MCP cung cấp 28 công cụ: VietQR, chuyển địa chỉ sang cấu trúc 34 tỉnh, kiểm tra mã số thuế, giải mã CCCD, số điện thoại, ngày nghỉ lễ, đọc số tiền thành chữ, âm lịch, hóa đơn điện tử, tách họ tên và định dạng số.",
+  "purposeVi": "Giúp các agent lập trình (Claude Code, Cursor, Codex) xử lý đúng dữ liệu Việt Nam như mã BIN ngân hàng, địa chỉ sau sáp nhập 01/07/2025, số tiền bằng chữ và lịch âm Việt Nam mà không cần tài khoản hay khóa API.",
+  "featuresVi": [
+   "VietQR: tạo/đọc payload NAPAS 247 (EMVCo), CRC16, xuất PNG/SVG, tra mã BIN ngân hàng",
+   "Địa chỉ: chuẩn hóa và chuyển địa chỉ 63 tỉnh + quận/huyện sang cấu trúc 34 tỉnh, 2 cấp; chuyển hàng loạt từ tệp TXT/CSV",
+   "Mã số thuế và CCCD: kiểm tra MST 10/13 số (chữ số kiểm tra, hậu tố chi nhánh), giải mã CCCD 12 số (tỉnh, giới tính, năm sinh)",
+   "Ngày nghỉ lễ và âm lịch: ngày nghỉ chính thức theo năm, nghỉ bù, cộng N ngày làm việc; chuyển dương ↔ âm, tháng nhuận, can chi, Tết (UTC+7)",
+   "Tiện ích khác: đọc số tiền thành chữ tiếng Việt, chuẩn hóa số điện thoại và nhà mạng, tách họ/tên đệm/tên, định dạng số và ngày kiểu Việt Nam, kiểm tra hóa đơn điện tử"
+  ],
+  "requirementsVi": "Node.js 22 trở lên; không cần tài khoản hay khóa API.",
+  "installStepsVi": [
+   "Thêm máy chủ MCP vào Claude Code: `claude mcp add vn-skills -- npx -y @vn-skills/mcp`",
+   "Hoặc cài plugin Claude Code (toàn bộ skill + máy chủ MCP): `/plugin marketplace add beiryu/vn-skills` rồi `/plugin install vn-skills@vn-skills`",
+   "Cài một skill bằng CLI: `npx -y @vn-skills/cli install vietqr --agent claude`",
+   "Với Claude Desktop/Cursor: thêm khối mcpServers (command npx, args -y @vn-skills/mcp) vào claude_desktop_config.json hoặc .cursor/mcp.json.",
+   "Dùng làm thư viện TypeScript: `npm i @vn-skills/core`"
+  ],
+  "cliCommand": "claude mcp add vn-skills -- npx -y @vn-skills/mcp",
+  "usageStepsVi": [
+   "Sau khi thêm máy chủ, hỏi agent bằng tiếng Việt; agent gọi các công cụ như vn_address_convert, vn_tax_id_validate, vn_lunar_tet.",
+   "Với skill, agent gọi `npx -y @vn-skills/cli` và nhận kết quả JSON.",
+   "Mọi hàm trả về { ok: true, ... } hoặc { ok: false, error } thay vì ném lỗi."
+  ],
+  "samplePromptsVi": [
+   "Chuyển địa chỉ \"12 Nguyễn Huệ, P. Bến Nghé, Q.1, TP.HCM\" sang địa chỉ mới theo 34 tỉnh.",
+   "Tạo QR chuyển 500k vào VCB số tài khoản 0011001234567.",
+   "Kiểm tra mã số thuế 0100233488-001 có hợp lệ không và cho biết đây là mã chi nhánh hay doanh nghiệp.",
+   "Tết Nguyên đán năm 2027 rơi vào ngày dương lịch nào, năm can chi gì?"
+  ],
+  "prosVi": [
+   "Mã nguồn mở MIT; dữ liệu đi kèm lấy từ các bộ dữ liệu cộng đồng giấy phép MIT",
+   "Chạy hoàn toàn ngoại tuyến, không cần tài khoản hay khóa API",
+   "Một lõi dùng chung cho MCP, CLI, Agent Skills và thư viện TypeScript",
+   "Có hướng dẫn cấu hình cho Claude Code, Claude Desktop, Cursor, VS Code và Codex"
+  ],
+  "consVi": [
+   "Dự án mới, phiên bản 0.x",
+   "Chỉ là công cụ kỹ thuật: không phải tư vấn thuế/pháp lý, không xác minh MST đã đăng ký hay địa chỉ được hãng vận chuyển chấp nhận",
+   "Không phải cổng thanh toán: không thu tiền, không xác nhận giao dịch",
+   "Bộ chuyển hóa đơn điện tử MISA/Viettel/VNPT mới ở dạng khung (skeleton)",
+   "Cần Node.js 22+"
+  ],
+  "sourceEvidence": {
+   "claude mcp add vn-skills -- npx -y @vn-skills/mcp": "README.md:82",
+   "/plugin marketplace add beiryu/vn-skills": "README.md:50",
+   "/plugin install vn-skills@vn-skills": "README.md:51",
+   "npx -y @vn-skills/cli install vietqr --agent claude": "README.md:66",
+   "npm i @vn-skills/core": "README.md:16",
+   "claude_desktop jsonConfig": "README.md:117-121",
+   "cursor jsonConfig": "README.md:123-127"
+  },
+  "meta": {
+   "id": "beiryu-vn-skills",
+   "nameVi": "vn-skills — Bộ MCP, CLI và Agent Skills cho dữ liệu đặc thù Việt Nam",
+   "icon": "Wrench",
+   "categories": [
+    "legal_public_service",
+    "backend_api",
+    "e_invoice_tax"
+   ],
+   "platforms": [
+    "claude_code",
+    "claude_desktop",
+    "cursor",
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "pricingText": "Miễn phí, không cần tài khoản hay khóa API",
+   "isVietnamMarket": true,
+   "languages": [
+    "Tiếng Việt",
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "claude_code",
+     "platformName": "Claude Code",
+     "cliCommand": "claude mcp add vn-skills -- npx -y @vn-skills/mcp"
+    },
+    {
+     "platform": "claude_desktop",
+     "platformName": "Claude Desktop",
+     "cliCommand": "npx -y @vn-skills/mcp",
+     "jsonConfig": "{\n  \"mcpServers\": {\n    \"vn-skills\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@vn-skills/mcp\"\n      ]\n    }\n  }\n}"
+    },
+    {
+     "platform": "cursor",
+     "platformName": "Cursor",
+     "cliCommand": "npx -y @vn-skills/mcp",
+     "jsonConfig": "{\n  \"mcpServers\": {\n    \"vn-skills\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@vn-skills/mcp\"\n      ]\n    }\n  }\n}"
+    },
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "npx -y @vn-skills/cli install vietqr --agent claude"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "thanglequoc/vietnamese-provinces-database",
+  "license": "MIT License",
+  "authorName": "Thang Le Quoc (thanglequoc)",
+  "websiteUrl": "",
+  "toolType": "dataset",
+  "taglineEn": "A complete SQL (and also non-SQL) databases of Vietnamese administrative units, includes all 34 Vietnamese provinces and associated districts, wards sub-divisions.",
+  "summaryVi": "Bộ cơ sở dữ liệu đơn vị hành chính Việt Nam gồm 34 tỉnh/thành và 3.321 phường, xã, đặc khu, cập nhật theo các nghị quyết mới nhất (bản v5.2.0 theo 388/NQ-UBTVQH16, hiệu lực 20/09/2026). Dữ liệu có sẵn cho PostgreSQL/PostGIS, MySQL/MariaDB, SQL Server, Oracle, JSON, MongoDB, Redis và Elasticsearch, kèm tiện ích GIS ranh giới hành chính và mã bưu chính.",
+  "purposeVi": "Cung cấp dữ liệu tỉnh/phường/xã chuẩn sau sáp nhập 2025 để nhập thẳng vào cơ sở dữ liệu của ứng dụng (form địa chỉ, giao vận, CRM).",
+  "featuresVi": [
+   "34 tỉnh/thành và 3.321 đơn vị cấp xã, theo dõi từng nghị quyết thay đổi qua các phiên bản phát hành",
+   "Nhiều định dạng: PostgreSQL, MySQL/MariaDB, SQL Server, Oracle, JSON, MongoDB, Redis, Elasticsearch",
+   "Bảng bổ sung: administrative_regions (8 vùng), administrative_units, tên tiếng Anh và code name (slug)",
+   "Tiện ích GIS: ranh giới hành chính dạng GeoJSON, PostGIS, Elasticsearch, MongoDB",
+   "Mã bưu chính và bảng vn_provinces_metadata ghi phiên bản dữ liệu đã cài"
+  ],
+  "requirementsVi": "Một hệ quản trị CSDL được hỗ trợ (PostgreSQL, MySQL/MariaDB, SQL Server, Oracle) hoặc MongoDB/Redis/Elasticsearch/JSON.",
+  "installStepsVi": [
+   "Tải gói dữ liệu cho hệ CSDL của bạn từ bảng Download trong README (hoặc dùng thư mục tương ứng trong repo: postgresql/, mysql/, sqlserver/, oracle/).",
+   "Tạo cơ sở dữ liệu: `CREATE DATABASE vietnamese_administrative_units;`",
+   "Chạy lần lượt `CreateTable_vn_units.sql` (tạo schema) rồi `ImportData_vn_units.sql` (nhập dữ liệu)."
+  ],
+  "cliCommand": "CREATE DATABASE vietnamese_administrative_units;",
+  "usageStepsVi": [
+   "Truy vấn bảng provinces và wards (khóa là mã đơn vị hành chính do nhà nước ban hành).",
+   "Kiểm tra phiên bản dữ liệu đã cài qua bảng vn_provinces_metadata.",
+   "Theo dõi bản phát hành mới khi có nghị quyết điều chỉnh đơn vị hành chính."
+  ],
+  "samplePromptsVi": [
+   "Viết câu SQL lấy danh sách tất cả phường/xã thuộc Thành phố Hồ Chí Minh từ bảng wards.",
+   "Tạo dropdown chọn tỉnh → phường/xã cho form địa chỉ dựa trên dữ liệu JSON của vietnamese-provinces-database."
+  ],
+  "prosVi": [
+   "Giấy phép MIT, dùng được cho dự án thương mại, không cần đăng ký hay trả phí",
+   "Cập nhật theo từng nghị quyết, có bảng lịch sử phiên bản",
+   "Hỗ trợ nhiều hệ CSDL SQL và NoSQL, có dữ liệu GIS và mã bưu chính"
+  ],
+  "consVi": [
+   "Không phải nguồn chính thức: tác giả không liên kết với Tổng cục Thống kê hay cơ quan nhà nước",
+   "Chỉ là dữ liệu, không kèm API hay thư viện phân tích địa chỉ",
+   "Gói tải có dung lượng lớn (khoảng 40–96 MB với bản có GIS)"
+  ],
+  "sourceEvidence": {
+   "CREATE DATABASE vietnamese_administrative_units;": "README.md:94"
+  },
+  "meta": {
+   "id": "thanglequoc-vietnamese-provinces-database",
+   "nameVi": "Vietnamese Provinces Database — CSDL 34 tỉnh và phường/xã Việt Nam sau sáp nhập",
+   "icon": "Database",
+   "categories": [
+    "database",
+    "data_engineering",
+    "legal_public_service"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "pricingText": "Miễn phí, kể cả dùng thương mại",
+   "isVietnamMarket": true,
+   "languages": [
+    "Tiếng Việt",
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "CREATE DATABASE vietnamese_administrative_units;"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "tranngocminhhieu/vietnamadminunits",
+  "license": "MIT License",
+  "authorName": "Tran Ngoc Minh Hieu",
+  "websiteUrl": "https://pypi.org/project/vietnamadminunits",
+  "toolType": "sdk",
+  "taglineEn": "A Python library and open dataset for parsing, converting, and standardizing Vietnam's administrative units — built to support changes such as the 2025 province merger and beyond.",
+  "summaryVi": "vietnamadminunits là thư viện Python kèm bộ dữ liệu mở để phân tích, chuyển đổi và chuẩn hóa đơn vị hành chính Việt Nam. Repo có bộ dữ liệu 63 tỉnh, 34 tỉnh và bảng ánh xạ từ 63 sang 34 tỉnh; thư viện có parse_address(), convert_address() và các hàm cho pandas.",
+  "purposeVi": "Giúp làm sạch và chuyển đổi hàng loạt địa chỉ cũ (63 tỉnh, 3 cấp) sang cấu trúc mới 34 tỉnh, 2 cấp trong các pipeline dữ liệu.",
+  "featuresVi": [
+   "parse_address(): tách địa chỉ thành đối tượng AdminUnit (tỉnh, phường/xã, đường, mã, tọa độ) ở chế độ FROM_2025 hoặc LEGACY",
+   "convert_address(): chuyển địa chỉ định dạng 63 tỉnh sang 34 tỉnh (CONVERT_2025)",
+   "Pandas: standardize_admin_unit_columns() và convert_address_column() chuẩn hóa/chuyển đổi cả cột DataFrame",
+   "Module database: get_data() lấy bảng admin_units (34 tỉnh) hoặc admin_units_legacy (63 tỉnh)",
+   "Bộ dữ liệu mở trong data/processed: 63 tỉnh, 34 tỉnh và ánh xạ 63 → 34"
+  ],
+  "requirementsVi": "Python và pip; pandas khi dùng các hàm xử lý DataFrame.",
+  "installStepsVi": [
+   "Cài từ PyPI: `pip install vietnamadminunits`",
+   "Cập nhật bản mới nhất: `pip install --upgrade vietnamadminunits`"
+  ],
+  "cliCommand": "pip install vietnamadminunits",
+  "usageStepsVi": [
+   "Gọi `parse_address('70 nguyễn sỹ sách, tan son, hcm')` để chuẩn hóa địa chỉ mới.",
+   "Gọi `convert_address(...)` để chuyển địa chỉ cũ có quận/huyện sang địa chỉ mới.",
+   "Dùng `convert_address_column(df, address='address')` để chuyển cả cột địa chỉ trong DataFrame."
+  ],
+  "samplePromptsVi": [
+   "Viết script Python dùng vietnamadminunits chuyển cột địa chỉ khách hàng trong file CSV sang địa chỉ mới theo 34 tỉnh.",
+   "Chuẩn hóa địa chỉ '59 nguyễn sỹ sách, p15, tan binh, hcm' sang cấu trúc hành chính mới."
+  ],
+  "prosVi": [
+   "Giấy phép MIT, cài nhanh qua pip",
+   "Hỗ trợ cả địa chỉ cũ (LEGACY) và mới (FROM_2025), bỏ qua chữ hoa/thường và thường bỏ qua dấu",
+   "Tích hợp pandas để xử lý hàng loạt"
+  ],
+  "consVi": [
+   "Chỉ dành cho Python",
+   "Kết quả phụ thuộc định dạng đầu vào: README khuyến nghị dạng \"(đường), phường, (quận), tỉnh\" có dấu phẩy phân tách",
+   "Chế độ chuyển đổi hiện chỉ hỗ trợ CONVERT_2025"
+  ],
+  "sourceEvidence": {
+   "pip install vietnamadminunits": "README.md:36",
+   "pip install --upgrade vietnamadminunits": "README.md:40"
+  },
+  "meta": {
+   "id": "tranngocminhhieu-vietnamadminunits",
+   "nameVi": "vietnamadminunits — Thư viện Python chuyển địa chỉ 63 tỉnh sang 34 tỉnh",
+   "icon": "Code2",
+   "categories": [
+    "data_engineering",
+    "legal_public_service",
+    "data_science_analytics"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "pricingText": "Miễn phí",
+   "isVietnamMarket": true,
+   "languages": [
+    "Tiếng Việt",
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install vietnamadminunits"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "IoeCmcomc/chiecthuyenngoaixa",
+  "license": "MIT License",
+  "authorName": "IoeCmcomc",
+  "websiteUrl": "https://chiecthuyenngoaixa.readthedocs.io",
+  "toolType": "sdk",
+  "taglineEn": "chiecthuyenngoaixa is a Python library which provides functions and classes for various tasks in processing Vietnamese texts, such as removing diacritics, converting numbers to words, sorting strings, validations and more.",
+  "summaryVi": "chiecthuyenngoaixa (module ctnx) là thư viện Python thuần, không phụ thuộc bên ngoài, cho các tác vụ xử lý văn bản tiếng Việt: bỏ dấu, chuyển số thành chữ, sắp xếp theo thứ tự tiếng Việt, chuẩn hóa văn bản và kiểm tra hợp lệ. Thư viện có hàm kiểm tra và trích xuất thông tin từ số CCCD (giới tính, năm sinh, tỉnh khai sinh).",
+  "purposeVi": "Cung cấp các tiện ích tiếng Việt hay dùng trong ứng dụng hành chính, kế toán như đọc số thành chữ, kiểm tra CCCD và sắp xếp tên địa danh đúng thứ tự tiếng Việt.",
+  "featuresVi": [
+   "num_to_words(): chuyển số (kể cả phần thập phân) thành chữ tiếng Việt",
+   "validation.is_valid_cccd() / parse_cccd(): kiểm tra và giải mã số Căn cước công dân",
+   "vi_sort_key / ViCollator: sắp xếp chuỗi tiếng Việt, tùy chỉnh thứ tự dấu",
+   "Chuẩn hóa văn bản: normalize_text, chuẩn hóa ký tự dễ nhầm, vị trí dấu thanh kiểu cũ/mới, chuẩn hóa i/y",
+   "remove_diacritics() và lớp Syllable để thao tác âm tiết tiếng Việt"
+  ],
+  "requirementsVi": "Python 3.8 trở lên; không có phụ thuộc ngoài.",
+  "installStepsVi": [
+   "Cài từ PyPI: `pip install chiecthuyenngoaixa`",
+   "Hoặc với Poetry: `poetry add chiecthuyenngoaixa`",
+   "Hoặc với uv: `uv add chiecthuyenngoaixa`"
+  ],
+  "cliCommand": "pip install chiecthuyenngoaixa",
+  "usageStepsVi": [
+   "Import module `ctnx`, ví dụ `from ctnx import num_to_words`.",
+   "Gọi `num_to_words(123456789021003.45)` để đọc số thành chữ.",
+   "Gọi `validation.parse_cccd(\"024192123456\")` để lấy giới tính, năm sinh, tỉnh khai sinh."
+  ],
+  "samplePromptsVi": [
+   "Viết hàm Python dùng ctnx đọc số tiền 1250000 thành chữ tiếng Việt để in trên phiếu thu.",
+   "Kiểm tra danh sách số CCCD trong file Excel và trích năm sinh, giới tính bằng chiecthuyenngoaixa."
+  ],
+  "prosVi": [
+   "Giấy phép MIT, Python thuần, không phụ thuộc ngoài",
+   "Có tài liệu trên Read the Docs và README tiếng Việt",
+   "Gộp nhiều tiện ích tiếng Việt trong một gói"
+  ],
+  "consVi": [
+   "Chỉ dành cho Python",
+   "Kiểm tra CCCD chỉ dựa trên cấu trúc số, không tra cứu cơ sở dữ liệu dân cư"
+  ],
+  "sourceEvidence": {
+   "pip install chiecthuyenngoaixa": "README.md:26",
+   "poetry add chiecthuyenngoaixa": "README.md:32",
+   "uv add chiecthuyenngoaixa": "README.md:38"
+  },
+  "meta": {
+   "id": "ioecmcomc-chiecthuyenngoaixa",
+   "nameVi": "chiecthuyenngoaixa — Thư viện Python đọc số thành chữ, kiểm tra CCCD, xử lý văn bản tiếng Việt",
+   "icon": "Code2",
+   "categories": [
+    "nlp_language",
+    "backend_api",
+    "legal_public_service"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "pricingText": "Miễn phí",
+   "isVietnamMarket": true,
+   "languages": [
+    "Tiếng Việt",
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install chiecthuyenngoaixa"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "nguyenanhung/vn-telco-phonenumber",
+  "license": "GNU General Public License v3.0 (GPL-3.0-or-later)",
+  "authorName": "Nguyen An Hung",
+  "websiteUrl": "https://packagist.org/packages/nguyenanhung/vn-telco-phonenumber",
+  "toolType": "sdk",
+  "taglineEn": "Library detect carrier Vietnam telco: Viettel, VinaPhone, MobiFone, Vietnamobile ...",
+  "summaryVi": "vn-telco-phonenumber là thư viện PHP kiểm tra, định dạng số điện thoại Việt Nam và nhận diện nhà mạng (Viettel, VinaPhone, MobiFone, Vietnamobile...). Thư viện dùng libphonenumber của Google (bản PHP của giggsey) và hỗ trợ chuyển đổi giữa số 11 chữ số cũ và 10 chữ số mới.",
+  "purposeVi": "Giúp ứng dụng PHP chuẩn hóa số điện thoại khách hàng, xác định nhà mạng và xử lý việc chuyển đầu số di động.",
+  "featuresVi": [
+   "Kiểm tra hợp lệ: is_valid(), is_possible_number() cho số Việt Nam",
+   "Định dạng: quốc tế (84...), nội địa (0...), dễ đọc, hoặc che số (0163***3760)",
+   "Nhận diện nhà mạng: detect_carrier() trả tên, id hoặc tên ngắn",
+   "Chuyển đầu số: vn_convert_phone_number() và vn_phone_number_old_and_new() đổi giữa số cũ và số mới"
+  ],
+  "requirementsVi": "PHP >= 7.0 cho bản v3.x (v1.x, v2.x hỗ trợ PHP >= 5.6); Composer.",
+  "installStepsVi": [
+   "Cài qua Composer: `composer require nguyenanhung/vn-telco-phonenumber`",
+   "Nạp `vendor/autoload.php` và khởi tạo `new Phone_number()`."
+  ],
+  "cliCommand": "composer require nguyenanhung/vn-telco-phonenumber",
+  "usageStepsVi": [
+   "Gọi `$phone->is_valid($number, 'VN')` để kiểm tra số.",
+   "Gọi `$phone->detect_carrier($number)` để lấy nhà mạng.",
+   "Gọi `$phone->vn_convert_phone_number($number, 'new', 'vn')` để đổi số 11 chữ số sang 10 chữ số."
+  ],
+  "samplePromptsVi": [
+   "Viết đoạn PHP dùng vn-telco-phonenumber chuẩn hóa danh sách số điện thoại khách hàng và gắn nhãn nhà mạng.",
+   "Chuyển số cũ 0163 295 3760 sang đầu số mới và hiển thị dạng che số."
+  ],
+  "prosVi": [
+   "Mã nguồn mở, cài qua Composer/Packagist",
+   "Dựa trên libphonenumber của Google",
+   "Hỗ trợ chuyển đổi đầu số cũ/mới của Việt Nam"
+  ],
+  "consVi": [
+   "Giấy phép GPL-3.0: phần mềm phân phối kèm thư viện phải tuân thủ điều khoản copyleft",
+   "Chỉ dành cho PHP",
+   "Nhận diện nhà mạng theo đầu số, không phản ánh thuê bao đã chuyển mạng giữ số"
+  ],
+  "sourceEvidence": {
+   "composer require nguyenanhung/vn-telco-phonenumber": "README.md:49"
+  },
+  "meta": {
+   "id": "nguyenanhung-vn-telco-phonenumber",
+   "nameVi": "vn-telco-phonenumber — Thư viện PHP kiểm tra số điện thoại và nhận diện nhà mạng Việt Nam",
+   "icon": "Code2",
+   "categories": [
+    "backend_api",
+    "customer_support"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (GPL-3.0, copyleft)",
+   "pricingModel": "free",
+   "pricingText": "Miễn phí",
+   "isVietnamMarket": true,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "composer require nguyenanhung/vn-telco-phonenumber"
+    }
+   ]
+  }
+ }
+]

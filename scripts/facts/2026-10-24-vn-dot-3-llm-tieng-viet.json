@@ -1,0 +1,234 @@
+[
+  {
+    "repo": "ZaloAI-Jaist/VMLU",
+    "license": "MIT License (Copyright (c) 2023 Zalo AI and JAIST)",
+    "authorName": "Zalo AI & JAIST",
+    "websiteUrl": "https://vmlu.ai",
+    "toolType": "dataset",
+    "taglineEn": "VMLU is a human-centric benchmark suite specifically designed to evaluate the general capabilities of foundational models with a focus on the Vietnamese language.",
+    "summaryVi": "VMLU là bộ đánh giá (benchmark) do Zalo AI và JAIST xây dựng để đo năng lực tổng quát của các mô hình ngôn ngữ lớn bằng tiếng Việt. Bộ dữ liệu gồm 10.880 câu hỏi trắc nghiệm thuộc 58 môn học, chia thành bốn nhóm STEM, Khoa học xã hội, Nhân văn và Khác, trải từ cấp tiểu học đến trình độ chuyên môn. Kho mã kèm mã chấm điểm mẫu và bảng xếp hạng các mô hình như Vistral, SeaLLM, PhoGPT, GPT-4.",
+    "purposeVi": "Giúp nhà phát triển theo dõi tiến bộ và phân tích điểm mạnh, điểm yếu của mô hình ngôn ngữ lớn khi xử lý kiến thức và bài toán bằng tiếng Việt.",
+    "featuresVi": [
+      "58 môn học: từ Toán tiểu học, Vật lý THPT đến Luật hành chính, Kế toán thuế, Công chức, Bằng lái xe",
+      "10.880 câu trắc nghiệm: định dạng JSONL, có cả bản LaTeX và không LaTeX",
+      "Bảng xếp hạng: phân tách mô hình huấn luyện từ đầu và mô hình tinh chỉnh, chấm zero-shot",
+      "Mã đánh giá mẫu: thư mục code_benchmark với script test_gpt.py và test_prompt.py",
+      "Nộp kết quả: tải tệp CSV (id, answer) lên vmlu.ai để được chấm điểm"
+    ],
+    "requirementsVi": "Python, các thư viện trong requirements.txt (transformers, torch, openai 0.28...). Tải bộ dữ liệu từ trang vmlu.ai; muốn chạy script mẫu với GPT cần khóa API OpenAI.",
+    "installStepsVi": [
+      "Tải tệp zip dữ liệu VMLU từ trang https://vmlu.ai/#DataSection",
+      "Chuyển vào thư mục mã đánh giá: `cd code_benchmark;`",
+      "Chạy đánh giá mẫu với GPT: `GPTKEY='<YOUR GPT KEY>' python test_gpt.py`"
+    ],
+    "cliCommand": "GPTKEY='<YOUR GPT KEY>' python test_gpt.py",
+    "usageStepsVi": [
+      "Tải và giải nén bộ dữ liệu VMLU (dev/test dạng JSONL)",
+      "Sửa script trong code_benchmark để gọi mô hình của bạn, sinh đáp án A/B/C/D cho từng câu",
+      "Xuất tệp CSV UTF-8 gồm cột id, answer theo mẫu example_submission.csv",
+      "Đăng nhập vmlu.ai và nộp tệp CSV để nhận điểm trên bảng xếp hạng"
+    ],
+    "samplePromptsVi": [
+      "Đánh giá mô hình Vistral-7B-Chat trên VMLU ở chế độ zero-shot và so sánh với bảng xếp hạng",
+      "Tính độ chính xác theo từng nhóm STEM, Khoa học xã hội, Nhân văn cho mô hình của tôi"
+    ],
+    "prosVi": [
+      "Giấy phép MIT cho mã nguồn",
+      "Bộ câu hỏi thuần tiếng Việt, bao phủ 58 môn học nhiều cấp độ",
+      "Có bảng xếp hạng công khai tại vmlu.ai"
+    ],
+    "consVi": [
+      "Dữ liệu phải tải từ trang vmlu.ai, không nằm sẵn trong kho; mục Licenses trong README vẫn ghi TBU",
+      "Nộp kết quả cần đăng nhập tài khoản trên vmlu.ai",
+      "Script mẫu dùng API GPT (cần khóa OpenAI); kho ít cập nhật kể từ tháng 5/2024"
+    ],
+    "sourceEvidence": {
+      "cd code_benchmark;": "README.md:192",
+      "GPTKEY='<YOUR GPT KEY>' python test_gpt.py": "README.md:193"
+    },
+    "meta": {
+      "id": "zaloai-jaist-vmlu",
+      "nameVi": "VMLU — Bộ đánh giá hiểu biết đa nhiệm cho LLM tiếng Việt",
+      "icon": "Search",
+      "categories": [
+        "nlp_llm",
+        "nlp_language",
+        "data_science_analytics"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí; dữ liệu tải tại vmlu.ai",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "GPTKEY='<YOUR GPT KEY>' python test_gpt.py"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "hllj/Vistral-V",
+    "license": "Apache License 2.0",
+    "authorName": "Bùi Văn Hợp (Vietnamese-VLM)",
+    "websiteUrl": "https://huggingface.co/Vi-VLM",
+    "toolType": "model",
+    "taglineEn": "Vistral-V (Vistral-Vision) - Visual Instruction Tuning for Vistral - Vietnamese Large Vision-Language Model.",
+    "summaryVi": "Vistral-V là mô hình thị giác – ngôn ngữ lớn tiếng Việt, được huấn luyện theo phương pháp visual instruction tuning của LLaVA trên nền mô hình Vistral-7B-Chat. Dự án dùng bộ mã hóa ảnh SigLIP đa ngôn ngữ thay cho CLIP vì hiểu tiếng Việt tốt hơn, và công bố đầy đủ quy trình chuẩn bị dữ liệu, tiền huấn luyện, tinh chỉnh LoRA cùng CLI và demo Gradio.",
+    "purposeVi": "Cho phép hỏi đáp, mô tả và suy luận về hình ảnh bằng tiếng Việt, đồng thời cung cấp công thức để tự huấn luyện lại mô hình thị giác – ngôn ngữ tiếng Việt.",
+    "featuresVi": [
+      "Hai giai đoạn huấn luyện: căn chỉnh đặc trưng (pretrain projector) và visual instruction tuning",
+      "SigLIP đa ngôn ngữ: bộ mã hóa ảnh google/siglip-base-patch16-256-multilingual",
+      "Tinh chỉnh LoRA: chạy được trên 1–2 GPU NVIDIA A100 40GB",
+      "CLI suy luận: python -m llava.serve.cli với mô hình Vi-VLM/Vistral-V-7B",
+      "Demo web: controller, model worker và Gradio web server theo kiến trúc LLaVA",
+      "Gộp LoRA và đẩy lên Hugging Face Hub bằng upload_merge_model.py"
+    ],
+    "requirementsVi": "Linux (macOS/Windows xem hướng dẫn của LLaVA), Conda, Python 3.10, GPU NVIDIA; huấn luyện cần flash-attn và GPU cỡ A100 40GB.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/hllj/Vistral-V.git` rồi `cd Vistral-V`",
+      "Tạo môi trường Conda Python 3.10 và cài gói: `pip install -e .`",
+      "Cài thêm phụ thuộc: `pip install -r requirements.txt`"
+    ],
+    "cliCommand": "python -m llava.serve.cli --model-path Vi-VLM/Vistral-V-7B --image-file ./assets/images/example.jpeg",
+    "usageStepsVi": [
+      "Chạy CLI với mô hình Vi-VLM/Vistral-V-7B và một tệp ảnh để hỏi đáp bằng tiếng Việt",
+      "Muốn dùng giao diện web: khởi động controller ở cổng 10000, một model worker ở cổng 40000 rồi chạy Gradio web server",
+      "Muốn tự huấn luyện: chuẩn bị dữ liệu bằng các script trong thư mục data, chạy scripts/vistral_llava/pretrain_v1.sh rồi finetune_lora_v1.sh"
+    ],
+    "samplePromptsVi": [
+      "Mô tả chi tiết bức ảnh này bằng tiếng Việt",
+      "Trong ảnh có bao nhiêu người và họ đang làm gì?"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0 cho mã nguồn",
+      "Công bố đầy đủ công thức huấn luyện, checkpoint pretrain và LoRA trên Hugging Face",
+      "Mô hình thị giác – ngôn ngữ dành riêng cho tiếng Việt"
+    ],
+    "consVi": [
+      "README cho biết mô hình chưa được chạy trên benchmark thị giác – ngôn ngữ nào",
+      "Chỉ hướng dẫn trực tiếp cho Linux; huấn luyện cần GPU lớn (A100 40GB)",
+      "Mới tinh chỉnh bằng LoRA do giới hạn phần cứng; mô hình nền Vistral-7B-Chat có điều khoản riêng trên Hugging Face"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/hllj/Vistral-V.git": "README.md:23",
+      "pip install -e .": "README.md:32",
+      "pip install -r requirements.txt": "README.md:36",
+      "python -m llava.serve.cli --model-path Vi-VLM/Vistral-V-7B --image-file ./assets/images/example.jpeg": "README.md:192",
+      "cd Vistral-V": "README.md:24"
+    },
+    "meta": {
+      "id": "hllj-vistral-v",
+      "nameVi": "Vistral-V — Mô hình thị giác – ngôn ngữ lớn tiếng Việt",
+      "icon": "Brain",
+      "categories": [
+        "nlp_llm",
+        "computer_vision",
+        "nlp_language"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, tự triển khai trên GPU",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "python -m llava.serve.cli --model-path Vi-VLM/Vistral-V-7B --image-file ./assets/images/example.jpeg"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "aisingapore/SEA-HELM",
+    "license": "MIT License (Copyright (c) 2025 AI Singapore)",
+    "authorName": "AI Singapore",
+    "websiteUrl": "https://leaderboard.sea-lion.ai/",
+    "toolType": "cli",
+    "taglineEn": "An open and comprehensive evaluation suite for SEA languages",
+    "summaryVi": "SEA-HELM (SouthEast Asian Holistic Evaluation of Language Models) là bộ đánh giá mở của AI Singapore cho mô hình ngôn ngữ lớn trên các ngôn ngữ Đông Nam Á, trong đó có tiếng Việt. Bộ đánh giá gồm 5 trụ cột: NLP cổ điển, năng lực riêng của LLM, ngôn ngữ học Đông Nam Á, văn hóa Đông Nam Á và an toàn; với tiếng Việt có các tác vụ như UIT-VSFC, XQuAD, FLORES, XL-Sum, XNLI và SEA MT-Bench.",
+    "purposeVi": "Chấm điểm và so sánh LLM một cách toàn diện, lặp lại được trên tiếng Việt và các ngôn ngữ Đông Nam Á khác, phục vụ bảng xếp hạng SEA-HELM.",
+    "featuresVi": [
+      "5 trụ cột đánh giá: NLP Classics, LLM-specifics, SEA Linguistics, SEA Culture, Safety",
+      "Tác vụ tiếng Việt: phân tích cảm xúc UIT-VSFC, hỏi đáp XQuAD, dịch FLORES, tóm tắt XL-Sum, suy luận XNLI",
+      "LLM-as-a-Judge: SEA-MT-Bench dùng gpt-4.1 làm giám khảo qua OpenAI Batch API",
+      "Chạy bằng vLLM, hỗ trợ AWS Bedrock và nhiều kiểu phục vụ (Offline, Online, Batched)",
+      "8 lần chạy độc lập mỗi mô hình, tính khoảng tin cậy bằng bootstrap",
+      "Script cho bộ lập lịch PBS và SLURM; lưu đệm kết quả để chạy tiếp"
+    ],
+    "requirementsVi": "Công cụ uv, GPU chạy vLLM, biến môi trường HF_TOKEN (có quyền với mô hình gated); OPENAI_API_KEY nếu chạy MT-Bench; quyền truy cập MetricX-24 trên Hugging Face cho đánh giá dịch.",
+    "installStepsVi": [
+      "Cài môi trường ảo bằng `uv sync`",
+      "Đặt biến môi trường HF_TOKEN (và OPENAI_API_KEY nếu chạy SEA-MT-Bench)",
+      "Chạy đánh giá bằng script: `bash run_evaluation.sh -m <model_name> -o ./results -t seahelm --run-number 0 --model-type vllm`"
+    ],
+    "cliCommand": "uv run seahelm_evaluation.py --tasks seahelm --output_dir <output_dir> --model_type vllm --model_name <model_name> --model_args \"enable_prefix_caching=True,tensor_parallel_size=auto\"",
+    "usageStepsVi": [
+      "Thay <model_name> bằng mã mô hình trên Hugging Face hoặc thư mục mô hình cục bộ",
+      "Thêm cờ --base_model nếu đánh giá mô hình nền (sẽ tắt MT-Bench)",
+      "Xem kết quả JSON và log trong thư mục output, so sánh với bảng xếp hạng leaderboard.sea-lion.ai"
+    ],
+    "samplePromptsVi": [
+      "Đánh giá mô hình Qwen của tôi trên bộ seahelm và xem điểm riêng phần tiếng Việt",
+      "Chạy 8 lần đánh giá trên cụm SLURM cho mô hình tinh chỉnh tiếng Việt"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, được AI Singapore duy trì và cập nhật thường xuyên",
+      "Bao phủ nhiều tác vụ tiếng Việt cùng các ngôn ngữ Đông Nam Á khác",
+      "Phương pháp nhiều lần chạy, có khoảng tin cậy"
+    ],
+    "consVi": [
+      "Không dành riêng cho tiếng Việt",
+      "MT-Bench cần khóa OpenAI (gpt-4.1 làm giám khảo, phát sinh chi phí API)",
+      "Cần GPU và HF_TOKEN có quyền với mô hình gated; một số bộ dữ liệu có giấy phép phi thương mại (ví dụ XL-Sum CC BY-NC-SA 4.0)"
+    ],
+    "sourceEvidence": {
+      "uv sync": "README.md:116",
+      "bash run_evaluation.sh -m <model_name> -o ./results -t seahelm --run-number 0 --model-type vllm": "README.md:165",
+      "uv run seahelm_evaluation.py --tasks seahelm --output_dir <output_dir> --model_type vllm --model_name <model_name> --model_args \"enable_prefix_caching=True,tensor_parallel_size=auto\"": "README.md:182"
+    },
+    "meta": {
+      "id": "aisingapore-sea-helm",
+      "nameVi": "SEA-HELM — Bộ đánh giá toàn diện LLM cho ngôn ngữ Đông Nam Á (có tiếng Việt)",
+      "icon": "Search",
+      "categories": [
+        "nlp_llm",
+        "nlp_language",
+        "data_science_analytics"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí; MT-Bench phát sinh phí API OpenAI",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "uv run seahelm_evaluation.py --tasks seahelm --output_dir <output_dir> --model_type vllm --model_name <model_name> --model_args \"enable_prefix_caching=True,tensor_parallel_size=auto\""
+        }
+      ]
+    }
+  }
+]
