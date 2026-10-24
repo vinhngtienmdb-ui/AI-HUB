@@ -127,7 +127,7 @@ Thêm khối cấu hình sau vào mục `mcpServers`:
     "aihub-smart-gateway": {
       "command": "node",
       "args": [
-        "C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/mcp-gateway/index.js"
+        "C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/backend/index.js"
       ],
       "env": {
         "NODE_ENV": "production"
@@ -152,7 +152,7 @@ Khởi động lại Claude Desktop, biểu tượng công cụ (hình chiếc b
 3. Điền các trường thông tin:
    - **Name**: `aihub-smart-gateway`
    - **Type**: `command`
-   - **Command**: `node <DUONG_DAN_TOI_AI-HUB>/mcp-gateway/index.js` (đường dẫn tuyệt đối)
+   - **Command**: `node <DUONG_DAN_TOI_AI-HUB>/backend/index.js` (đường dẫn tuyệt đối)
 4. Lưu cấu hình. Cursor Composer và Agent gọi được 4 công cụ của máy chủ trung gian.
 
 ---
@@ -160,14 +160,14 @@ Khởi động lại Claude Desktop, biểu tượng công cụ (hình chiếc b
 ### 3. Tích Hợp Vào Claude Code (CLI)
 Cấu hình máy chủ MCP `aihub-smart-gateway` vào tệp cấu hình toàn cục `~/.claude.json` (tại `C:\Users\vinhn\.claude.json`) hoặc chạy lệnh qua CLI:
 ```bash
-claude mcp add aihub-smart-gateway -- node C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/mcp-gateway/index.js
+claude mcp add aihub-smart-gateway -- node C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/backend/index.js
 ```
 Hoặc cấu hình trực tiếp vào mục `"mcpServers"` trong tệp `~/.claude.json`:
 ```json
 "aihub-smart-gateway": {
   "command": "node",
   "args": [
-    "C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/mcp-gateway/index.js"
+    "C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/backend/index.js"
   ],
   "env": {
     "NODE_ENV": "production"
@@ -187,7 +187,7 @@ Google Antigravity hỗ trợ máy chủ MCP toàn cục qua tệp `~/.gemini/co
     "aihub-smart-gateway": {
       "command": "node",
       "args": [
-        "C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/mcp-gateway/index.js"
+        "C:/Users/vinhn/.gemini/antigravity/scratch/quan-ly-cong-cu-ai/backend/index.js"
       ],
       "env": {
         "NODE_ENV": "production"
