@@ -1,0 +1,548 @@
+[
+  {
+    "repo": "ggml-org/whisper.cpp",
+    "license": "MIT License",
+    "authorName": "ggml-org (The ggml authors)",
+    "websiteUrl": "",
+    "toolType": "software",
+    "taglineEn": "High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model",
+    "summaryVi": "whisper.cpp là bản triển khai bằng C/C++ thuần, không phụ thuộc thư viện ngoài, để chạy mô hình nhận dạng giọng nói Whisper của OpenAI với hiệu năng cao. Công cụ tối ưu cho Apple Silicon (Metal, Core ML), hỗ trợ AVX trên x86, GPU NVIDIA, AMD ROCm, Vulkan, OpenVINO và có thể chạy hoàn toàn trên CPU. Dự án chạy được trên macOS, Linux, Windows, iOS, Android, WebAssembly, Raspberry Pi và Docker.",
+    "purposeVi": "Chuyển giọng nói thành văn bản ngoại tuyến ngay trên máy cá nhân, máy chủ hoặc thiết bị di động mà không cần gửi dữ liệu âm thanh lên đám mây.",
+    "featuresVi": [
+      "C/C++ thuần: toàn bộ mô hình nằm trong whisper.h và whisper.cpp, không cấp phát bộ nhớ khi chạy",
+      "Tăng tốc phần cứng: ARM NEON, Metal, Core ML, AVX, CUDA, ROCm, Vulkan, OpenVINO, NPU Ascend và AMD Ryzen AI",
+      "Lượng tử hóa số nguyên và độ chính xác hỗn hợp F16/F32 để giảm bộ nhớ",
+      "Phát hiện hoạt động giọng nói (VAD) tích hợp",
+      "Ví dụ đi kèm: whisper-cli, whisper-stream (phiên âm thời gian thực từ micro), whisper-server (máy chủ HTTP với API kiểu OpenAI)",
+      "Đa nền tảng: macOS, Linux, Windows, iOS, Android, WebAssembly, Raspberry Pi, Docker; có binding Java"
+    ],
+    "requirementsVi": "Trình biên dịch C/C++ và CMake; tệp mô hình Whisper định dạng ggml (tải bằng script đi kèm); ffmpeg để chuyển âm thanh sang WAV 16-bit.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/ggml-org/whisper.cpp.git` rồi `cd whisper.cpp`",
+      "Tải mô hình ggml, ví dụ base.en: `sh ./models/download-ggml-model.sh base.en`",
+      "Cài đặt bằng cách biên dịch dự án: `cmake -B build` rồi `cmake --build build -j --config Release`",
+      "Chạy thử phiên âm tệp mẫu: `./build/bin/whisper-cli -f samples/jfk.wav`"
+    ],
+    "cliCommand": "./build/bin/whisper-cli -f samples/jfk.wav",
+    "usageStepsVi": [
+      "Chuyển tệp âm thanh sang WAV 16 kHz một kênh: `ffmpeg -i input.mp3 -ar 16000 -ac 1 -c:a pcm_s16le output.wav`",
+      "Phiên âm tệp bằng whisper-cli; xem hướng dẫn tham số bằng tùy chọn -h",
+      "Phiên âm thời gian thực từ micro: `./build/bin/whisper-stream -m ./models/ggml-base.en.bin -t 8 --step 500 --length 5000`",
+      "Dùng whisper-server nếu cần dịch vụ HTTP phiên âm cho ứng dụng khác"
+    ],
+    "samplePromptsVi": [
+      "Biên dịch whisper.cpp với hỗ trợ Metal trên MacBook M2 và phiên âm một tệp ghi âm cuộc họp",
+      "Viết script chuyển hàng loạt tệp MP3 sang WAV 16 kHz rồi phiên âm bằng whisper-cli",
+      "Chạy whisper-stream để phụ đề trực tiếp giọng nói từ micro"
+    ],
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép MIT",
+      "Chạy ngoại tuyến hoàn toàn, kể cả trên iPhone và Raspberry Pi",
+      "Hỗ trợ rất nhiều loại GPU/NPU và có thể chạy chỉ bằng CPU",
+      "Có ảnh Docker chính thức và gói npm, Conan"
+    ],
+    "consVi": [
+      "whisper-cli hiện chỉ nhận tệp WAV 16-bit, cần chuyển đổi trước bằng ffmpeg",
+      "Phải tự biên dịch hoặc dùng Docker; cần tải mô hình ggml riêng",
+      "Mô hình lớn (large) cần nhiều bộ nhớ hơn đáng kể so với tiny/base"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/ggml-org/whisper.cpp.git": "README.md:68",
+      "cd whisper.cpp": "README.md:74",
+      "sh ./models/download-ggml-model.sh base.en": "README.md:80",
+      "cmake -B build": "README.md:87",
+      "cmake --build build -j --config Release": "README.md:88",
+      "./build/bin/whisper-cli -f samples/jfk.wav": "README.md:91",
+      "ffmpeg -i input.mp3 -ar 16000 -ac 1 -c:a pcm_s16le output.wav": "README.md:106",
+      "./build/bin/whisper-stream -m ./models/ggml-base.en.bin -t 8 --step 500 --length 5000": "README.md:663"
+    },
+    "meta": {
+      "id": "ggml-org-whisper-cpp",
+      "nameVi": "whisper.cpp — Nhận dạng giọng nói Whisper hiệu năng cao bằng C/C++",
+      "icon": "Cpu",
+      "categories": [
+        "speech_voice"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "./build/bin/whisper-cli -f samples/jfk.wav"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "SYSTRAN/faster-whisper",
+    "license": "MIT License",
+    "authorName": "SYSTRAN",
+    "websiteUrl": "",
+    "toolType": "sdk",
+    "taglineEn": "faster-whisper is a reimplementation of OpenAI's Whisper model using CTranslate2, which is a fast inference engine for Transformer models.",
+    "summaryVi": "faster-whisper là thư viện Python triển khai lại mô hình Whisper của OpenAI trên CTranslate2. Theo README, thư viện nhanh hơn tới 4 lần so với openai/whisper với cùng độ chính xác và tốn ít bộ nhớ hơn, có thể tăng hiệu quả thêm bằng lượng tử hóa 8-bit trên CPU và GPU. Âm thanh được giải mã bằng PyAV nên không cần cài đặt FFmpeg trên hệ thống.",
+    "purposeVi": "Tích hợp nhận dạng giọng nói Whisper nhanh, tiết kiệm bộ nhớ vào ứng dụng Python để phiên âm, tạo phụ đề và xử lý dữ liệu âm thanh.",
+    "featuresVi": [
+      "Tốc độ cao: nhanh tới 4 lần openai/whisper với cùng độ chính xác",
+      "Lượng tử hóa: chạy FP16, INT8 trên GPU hoặc INT8 trên CPU",
+      "Phiên âm theo lô: BatchedInferencePipeline thay thế trực tiếp WhisperModel.transcribe",
+      "Mốc thời gian theo từng từ (word_timestamps)",
+      "Bộ lọc VAD tích hợp Silero VAD để bỏ đoạn không có tiếng nói",
+      "Tương thích các checkpoint Distil-Whisper như distil-large-v3; tự phát hiện ngôn ngữ"
+    ],
+    "requirementsVi": "Python 3.9 trở lên. Chạy trên GPU cần thư viện NVIDIA cuBLAS cho CUDA 12 và cuDNN 9.",
+    "installStepsVi": [
+      "Cài đặt gói từ PyPI: `pip install faster-whisper`",
+      "Nếu dùng GPU trên Linux, có thể cài đặt thư viện NVIDIA qua pip: `pip install nvidia-cublas-cu12 nvidia-cudnn-cu12==9.*` và đặt LD_LIBRARY_PATH theo hướng dẫn README"
+    ],
+    "cliCommand": "pip install faster-whisper",
+    "usageStepsVi": [
+      "Tạo WhisperModel với kích thước mô hình (ví dụ large-v3), thiết bị cuda hoặc cpu và compute_type phù hợp",
+      "Gọi model.transcribe(\"audio.mp3\", beam_size=5) và duyệt generator segments để lấy văn bản kèm mốc thời gian",
+      "Bật vad_filter=True hoặc word_timestamps=True khi cần lọc khoảng lặng hoặc mốc thời gian theo từ"
+    ],
+    "samplePromptsVi": [
+      "Viết script Python dùng faster-whisper phiên âm thư mục ghi âm phỏng vấn tiếng Việt và xuất phụ đề SRT",
+      "Chạy faster-whisper trên CPU với compute_type int8 để phiên âm podcast dài",
+      "Dùng BatchedInferencePipeline với batch_size=16 để tăng tốc phiên âm trên GPU"
+    ],
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép MIT",
+      "Không cần cài FFmpeg trên hệ thống nhờ PyAV",
+      "Có bảng benchmark công khai so với openai/whisper, whisper.cpp và transformers",
+      "Nhiều dự án cộng đồng tích hợp (README liệt kê)"
+    ],
+    "consVi": [
+      "Bản ctranslate2 mới nhất chỉ hỗ trợ CUDA 12 và cuDNN 9; CUDA 11 phải hạ phiên bản ctranslate2",
+      "Là thư viện Python, không có giao diện dòng lệnh hay giao diện đồ họa riêng"
+    ],
+    "sourceEvidence": {
+      "pip install faster-whisper": "README.md:105",
+      "pip install nvidia-cublas-cu12 nvidia-cudnn-cu12==9.*": "README.md:89"
+    },
+    "meta": {
+      "id": "systran-faster-whisper",
+      "nameVi": "faster-whisper — Thư viện Python nhận dạng giọng nói Whisper nhanh gấp 4 lần",
+      "icon": "Code2",
+      "categories": [
+        "speech_voice"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install faster-whisper"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "m-bain/whisperX",
+    "license": "BSD 2-Clause License",
+    "authorName": "Max Bain",
+    "websiteUrl": "",
+    "toolType": "cli",
+    "taglineEn": "This repository provides fast automatic speech recognition (70x realtime with large-v2) with word-level timestamps and speaker diarization.",
+    "summaryVi": "WhisperX là công cụ nhận dạng giọng nói tự động dựa trên Whisper, phiên âm theo lô nhanh tới 70 lần thời gian thực với large-v2 nhờ backend faster-whisper. Công cụ căn chỉnh âm vị bằng wav2vec2 để có mốc thời gian chính xác theo từng từ và gán nhãn người nói (speaker diarization) bằng pyannote-audio. Có thể dùng qua dòng lệnh hoặc thư viện Python.",
+    "purposeVi": "Tạo bản phiên âm và phụ đề có mốc thời gian theo từ và phân biệt người nói cho ghi âm cuộc họp, phỏng vấn, video.",
+    "featuresVi": [
+      "Phiên âm theo lô: 70x thời gian thực với Whisper large-v2, cần dưới 8GB GPU với beam_size=5",
+      "Mốc thời gian theo từ chính xác nhờ căn chỉnh bằng wav2vec2",
+      "Phân biệt người nói (diarization) bằng pyannote-audio",
+      "Tiền xử lý VAD giúp giảm ảo giác (hallucination) mà không làm tăng WER",
+      "Hỗ trợ nhiều ngôn ngữ qua tham số --language; alignment.py có mô hình căn chỉnh mặc định cho tiếng Việt (nguyenvulebinh/wav2vec2-base-vi-vlsp2020)",
+      "Xuất phụ đề .srt, có thể tô sáng từng từ bằng --highlight_words True"
+    ],
+    "requirementsVi": "Python; bộ công cụ CUDA 12.8 nếu muốn tăng tốc GPU (có thể chạy CPU). Diarization cần Hugging Face access token và chấp nhận điều khoản mô hình pyannote speaker-diarization-community-1. Có thể cần ffmpeg.",
+    "installStepsVi": [
+      "Cài đặt từ PyPI: `pip install whisperx`",
+      "Hoặc chạy trực tiếp bằng uv: `uvx whisperx`",
+      "Tùy chọn cài đặt Numba để tăng tốc căn chỉnh: `pip install \"whisperx[fast]\"`"
+    ],
+    "cliCommand": "pip install whisperx",
+    "usageStepsVi": [
+      "Phiên âm một tệp với tham số mặc định: `whisperx path/to/audio.wav`",
+      "Gán nhãn người nói: `whisperx path/to/audio.wav --model large-v2 --diarize --highlight_words True` (kèm --hf_token)",
+      "Chạy trên CPU hoặc Mac: `whisperx path/to/audio.wav --compute_type int8 --device cpu`",
+      "Với ngôn ngữ khác tiếng Anh, truyền mã ngôn ngữ qua --language và dùng mô hình Whisper large"
+    ],
+    "samplePromptsVi": [
+      "Phiên âm ghi âm cuộc họp tiếng Việt có 3 người nói và xuất phụ đề SRT kèm nhãn người nói",
+      "Tạo phụ đề theo từng từ cho video bài giảng bằng whisperx",
+      "Viết script Python dùng whisperx.load_model, whisperx.align và DiarizationPipeline"
+    ],
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép BSD 2-Clause",
+      "Mốc thời gian theo từ chính xác hơn Whisper gốc",
+      "Kết hợp phiên âm, căn chỉnh và phân biệt người nói trong một công cụ",
+      "Đạt giải nhất Ego4d transcription challenge, được nhận tại INTERSPEECH 2023"
+    ],
+    "consVi": [
+      "Diarization cần tài khoản Hugging Face và chấp nhận điều khoản mô hình pyannote",
+      "Từ không có trong từ điển mô hình căn chỉnh (ví dụ \"2014.\") không có mốc thời gian",
+      "Xử lý lời nói chồng lấn chưa tốt; diarization còn xa mới hoàn hảo",
+      "Mỗi ngôn ngữ cần mô hình wav2vec2 riêng"
+    ],
+    "sourceEvidence": {
+      "pip install whisperx": "README.md:77",
+      "uvx whisperx": "README.md:83",
+      "pip install \"whisperx[fast]\"": "README.md:117",
+      "whisperx path/to/audio.wav": "README.md:133",
+      "whisperx path/to/audio.wav --model large-v2 --diarize --highlight_words True": "README.md:149",
+      "whisperx path/to/audio.wav --compute_type int8 --device cpu": "README.md:157"
+    },
+    "meta": {
+      "id": "m-bain-whisperx",
+      "nameVi": "WhisperX — Phiên âm nhanh với mốc thời gian theo từ và phân biệt người nói",
+      "icon": "Terminal",
+      "categories": [
+        "speech_voice"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (BSD-2-Clause)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install whisperx"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "hexgrad/kokoro",
+    "license": "Apache License 2.0",
+    "authorName": "hexgrad",
+    "websiteUrl": "https://huggingface.co/hexgrad/Kokoro-82M",
+    "toolType": "model",
+    "taglineEn": "Kokoro is an open-weight TTS model with 82 million parameters.",
+    "summaryVi": "kokoro là thư viện suy luận cho Kokoro-82M, mô hình chuyển văn bản thành giọng nói (TTS) trọng số mở với 82 triệu tham số. Theo README, mô hình cho chất lượng tương đương các mô hình lớn hơn nhưng nhanh và tiết kiệm chi phí hơn đáng kể; trọng số theo giấy phép Apache nên có thể triển khai cả trong môi trường production. Thư viện dùng misaki để chuyển chữ sang âm vị (G2P).",
+    "purposeVi": "Tổng hợp giọng nói chất lượng cao, nhẹ và nhanh cho ứng dụng đọc văn bản, trợ lý giọng nói hoặc sản xuất nội dung âm thanh.",
+    "featuresVi": [
+      "Mô hình nhỏ: 82 triệu tham số, trọng số mở theo giấy phép Apache",
+      "Đa ngôn ngữ: tiếng Anh Mỹ/Anh, Tây Ban Nha, Pháp, Hindi, Ý, Nhật, Bồ Đào Nha (Brazil), tiếng Trung",
+      "API KPipeline đơn giản: chọn lang_code, voice (ví dụ af_heart), speed và mẫu tách đoạn",
+      "Có thể nạp tensor giọng nói tùy chỉnh từ tệp .pt",
+      "Tăng tốc GPU Apple Silicon qua PYTORCH_ENABLE_MPS_FALLBACK=1"
+    ],
+    "requirementsVi": "Python và espeak-ng (dùng làm dự phòng cho tiếng Anh và một số ngôn ngữ khác); tiếng Nhật và tiếng Trung cần misaki[ja] hoặc misaki[zh]. README cung cấp tệp môi trường conda với Python 3.9.",
+    "installStepsVi": [
+      "Cài đặt thư viện: `pip install kokoro`",
+      "Cài đặt espeak-ng trên Linux/Colab: `apt-get -qq -y install espeak-ng > /dev/null 2>&1`; trên Windows tải bộ cài .msi từ trang phát hành espeak-ng"
+    ],
+    "cliCommand": "pip install kokoro",
+    "usageStepsVi": [
+      "Khởi tạo KPipeline(lang_code='a') với mã ngôn ngữ khớp giọng đọc",
+      "Gọi pipeline(text, voice='af_heart') và lưu từng đoạn âm thanh 24 kHz bằng soundfile",
+      "Trên Mac Apple Silicon chạy script với `PYTORCH_ENABLE_MPS_FALLBACK=1 python run-your-kokoro-script.py`"
+    ],
+    "samplePromptsVi": [
+      "Viết script Python dùng kokoro đọc một bài blog tiếng Anh thành tệp WAV với giọng af_heart",
+      "Tạo audiobook tiếng Pháp từ tệp văn bản, tách đoạn theo dòng trống",
+      "So sánh tốc độ đọc speed=1 và speed=1.2 cho cùng một đoạn văn"
+    ],
+    "prosVi": [
+      "Cả mã nguồn và trọng số mô hình đều theo giấy phép Apache 2.0, dùng được cho mục đích thương mại",
+      "Mô hình rất nhẹ (82M tham số), nhanh",
+      "Hỗ trợ 8 nhóm ngôn ngữ"
+    ],
+    "consVi": [
+      "Chưa hỗ trợ tiếng Việt theo danh sách ngôn ngữ trong README",
+      "Cần cài đặt espeak-ng riêng; tiếng Nhật/Trung cần gói misaki bổ sung",
+      "Repo ít cập nhật (commit gần nhất tháng 8/2025)"
+    ],
+    "sourceEvidence": {
+      "pip install kokoro": "README.md:3",
+      "apt-get -qq -y install espeak-ng > /dev/null 2>&1": "README.md:11",
+      "PYTORCH_ENABLE_MPS_FALLBACK=1 python run-your-kokoro-script.py": "README.md:103"
+    },
+    "meta": {
+      "id": "hexgrad-kokoro",
+      "nameVi": "Kokoro — Mô hình chuyển văn bản thành giọng nói 82M tham số, trọng số mở",
+      "icon": "Sparkles",
+      "categories": [
+        "speech_voice",
+        "generative_ai_multimedia"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0, kể cả trọng số mô hình)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install kokoro"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "k2-fsa/sherpa-onnx",
+    "license": "Apache License 2.0",
+    "authorName": "k2-fsa (Next-gen Kaldi)",
+    "websiteUrl": "https://k2-fsa.github.io/sherpa/onnx/",
+    "toolType": "sdk",
+    "taglineEn": "This repository supports running the following functions locally",
+    "summaryVi": "sherpa-onnx là bộ công cụ xử lý giọng nói chạy cục bộ dựa trên ONNX Runtime, hỗ trợ nhận dạng giọng nói (streaming và không streaming), tổng hợp giọng nói, phân biệt và xác minh người nói, nhận diện ngôn ngữ, VAD, phát hiện từ khóa, thêm dấu câu, tăng cường và tách nguồn âm thanh. Dự án chạy trên Linux, macOS, Windows, Android, iOS, HarmonyOS, WebAssembly, Raspberry Pi, Jetson và nhiều NPU (RKNN, Qualcomm QNN, Ascend). Có API cho 12 ngôn ngữ lập trình gồm C++, C, Python, JavaScript, Java, C#, Kotlin, Swift, Go, Dart, Rust, Pascal.",
+    "purposeVi": "Nhúng nhận dạng và tổng hợp giọng nói ngoại tuyến vào ứng dụng di động, nhúng, máy tính để bàn hoặc máy chủ mà không cần kết nối Internet.",
+    "featuresVi": [
+      "Nhận dạng giọng nói streaming và không streaming với nhiều mô hình (Zipformer, Paraformer, SenseVoice, Whisper, Moonshine...)",
+      "Tổng hợp giọng nói (TTS), phân biệt người nói, nhận diện và xác minh người nói",
+      "VAD (silero-vad), phát hiện từ khóa, thêm dấu câu, gắn nhãn âm thanh",
+      "Tăng cường giọng nói và tách nguồn âm thanh (spleeter, UVR)",
+      "Đa nền tảng: x86, ARM, RISC-V, NPU; Android, iOS, HarmonyOS, WebAssembly; có ứng dụng Flutter, Tauri và APK dựng sẵn",
+      "Demo trên Hugging Face Spaces chạy ngay trong trình duyệt"
+    ],
+    "requirementsVi": "Tùy ngôn ngữ lập trình; với Python cần Python 3 và pip. Cần tải mô hình tiền huấn luyện tương ứng từ trang tài liệu.",
+    "installStepsVi": [
+      "Cài đặt gói Python (theo hướng dẫn ví dụ máy chủ WebSocket trong python-api-examples/orukeet.md): `python3 -m pip install sherpa-onnx numpy 'websockets<14'`",
+      "Tải mô hình tiền huấn luyện phù hợp theo danh sách ở mục \"Links for pre-trained models\" trong README",
+      "Với di động hoặc máy tính, có thể dùng APK Android, ứng dụng Flutter hoặc Tauri dựng sẵn"
+    ],
+    "cliCommand": "python3 -m pip install sherpa-onnx numpy 'websockets<14'",
+    "usageStepsVi": [
+      "Chọn chức năng (ASR, TTS, VAD, diarization...) và mô hình tương ứng",
+      "Chạy các ví dụ trong thư mục python-api-examples hoặc ví dụ cho ngôn ngữ lập trình bạn dùng",
+      "Thử nhanh không cần cài đặt qua các Hugging Face Spaces liệt kê trong README"
+    ],
+    "samplePromptsVi": [
+      "Tích hợp nhận dạng giọng nói ngoại tuyến vào ứng dụng Android bằng sherpa-onnx",
+      "Dựng máy chủ WebSocket phiên âm bằng sherpa-onnx Python trên Raspberry Pi",
+      "Tạo phụ đề cho video bằng VAD kết hợp mô hình Whisper trong sherpa-onnx"
+    ],
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép Apache 2.0",
+      "Chạy hoàn toàn cục bộ, hỗ trợ rất nhiều nền tảng phần cứng và NPU",
+      "API cho 12 ngôn ngữ lập trình và WebAssembly",
+      "Cộng đồng lớn, README liệt kê nhiều dự án sử dụng"
+    ],
+    "consVi": [
+      "README chính không có lệnh cài đặt; hướng dẫn chi tiết nằm ở trang tài liệu riêng",
+      "Phải tự chọn và tải mô hình; giấy phép từng mô hình tiền huấn luyện có thể khác nhau",
+      "Nhiều mô hình mẫu tập trung vào tiếng Trung và tiếng Anh"
+    ],
+    "sourceEvidence": {
+      "python3 -m pip install sherpa-onnx numpy 'websockets<14'": "python-api-examples/orukeet.md:54"
+    },
+    "meta": {
+      "id": "k2-fsa-sherpa-onnx",
+      "nameVi": "sherpa-onnx — Bộ công cụ nhận dạng và tổng hợp giọng nói ngoại tuyến đa nền tảng",
+      "icon": "Layers",
+      "categories": [
+        "speech_voice"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Trung"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "python3 -m pip install sherpa-onnx numpy 'websockets<14'"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "pipecat-ai/pipecat",
+    "license": "BSD 2-Clause License",
+    "authorName": "Daily",
+    "websiteUrl": "https://docs.pipecat.ai",
+    "toolType": "sdk",
+    "taglineEn": "Pipecat is an open-source Python framework for building real-time voice and multimodal conversational agents.",
+    "summaryVi": "Pipecat là framework Python mã nguồn mở để xây dựng tác tử hội thoại giọng nói và đa phương thức thời gian thực, từ một trợ lý giọng nói đơn lẻ đến hệ đa tác tử có chuyển giao, chạy song song và phối hợp qua bus chung. Framework điều phối âm thanh, video, dịch vụ AI, transport (WebSocket, WebRTC) và pipeline hội thoại. Pipecat tích hợp sẵn nhiều dịch vụ STT, LLM, TTS, speech-to-speech và có SDK client cho JavaScript, React, React Native, Swift, Kotlin, C++.",
+    "purposeVi": "Xây dựng trợ lý giọng nói, tổng đài AI, bot chăm sóc khách hàng và giao diện đa phương thức có độ trễ thấp.",
+    "featuresVi": [
+      "Ưu tiên giọng nói: tích hợp nhận dạng giọng nói, tổng hợp giọng nói và quản lý hội thoại",
+      "Pipeline có thể ghép nối từ các thành phần mô-đun",
+      "Đa tác tử: chuyển giao, chạy song song, sidecar hoặc triển khai phân tán",
+      "Thời gian thực, độ trễ thấp qua WebSocket hoặc WebRTC (Daily, LiveKit, FastAPI WebSocket)",
+      "Nhiều dịch vụ tích hợp: STT, LLM, TTS, speech-to-speech, video avatar, bộ nhớ mem0, Silero VAD, OpenTelemetry",
+      "Pipecat Flows cho hội thoại có cấu trúc; Pipecat CLI để khởi tạo và triển khai dự án; Pipecat Skills cho Claude Code"
+    ],
+    "requirementsVi": "uv (hoặc pip); Python 3.11 trở lên theo mục phát triển của README; khóa API của các dịch vụ AI bên thứ ba bạn chọn (cấu hình trong tệp .env).",
+    "installStepsVi": [
+      "Cài đặt uv: `curl -LsSf https://astral.sh/uv/install.sh | sh`",
+      "Cài đặt Pipecat CLI: `uv tool install \"pipecat-ai[cli]\"` rồi khởi tạo dự án bằng `pipecat init`",
+      "Hoặc thêm thủ công vào dự án: `uv add pipecat-ai` (dùng pip: `pip install pipecat-ai`)",
+      "Sao chép tệp cấu hình môi trường: `cp env.example .env` và điền khóa API",
+      "Tùy chọn cho Claude Code: `claude plugin marketplace add pipecat-ai/skills`"
+    ],
+    "cliCommand": "uv tool install \"pipecat-ai[cli]\"",
+    "usageStepsVi": [
+      "Chạy pipecat init để dựng bot điện thoại hoặc web/mobile theo hướng dẫn tương tác",
+      "Thêm extra cho dịch vụ cần dùng bằng uv add \"pipecat-ai[option,...]\"",
+      "Tham khảo thư mục examples và repo pipecat-examples để ghép pipeline STT → LLM → TTS",
+      "Theo dõi và triển khai tác tử lên production bằng Pipecat CLI"
+    ],
+    "samplePromptsVi": [
+      "Dựng bot tổng đài giọng nói dùng Deepgram STT, Claude và Cartesia TTS qua WebRTC bằng Pipecat",
+      "Tạo trợ lý tiếp nhận khách hàng với Pipecat Flows có các bước hỏi thông tin có cấu trúc",
+      "Thiết kế hệ đa tác tử Pipecat trong đó tác tử lễ tân chuyển giao cho tác tử chuyên môn"
+    ],
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép BSD 2-Clause",
+      "Hệ sinh thái lớn: SDK client đa nền tảng, UI, công cụ gỡ lỗi Whisker, CLI",
+      "Hỗ trợ rất nhiều nhà cung cấp STT/LLM/TTS, dễ thay thế",
+      "Có Skills chính thức cho Claude Code"
+    ],
+    "consVi": [
+      "Phần lớn dịch vụ tích hợp là dịch vụ đám mây trả phí cần tài khoản và khóa API riêng",
+      "Gói lõi tối giản, phải cài thêm extra cho từng dịch vụ",
+      "Một số extra (local, gstreamer) cần thư viện hệ thống"
+    ],
+    "sourceEvidence": {
+      "curl -LsSf https://astral.sh/uv/install.sh | sh": "README.md:112",
+      "uv tool install \"pipecat-ai[cli]\"": "README.md:120",
+      "pipecat init": "README.md:121",
+      "uv add pipecat-ai": "README.md:136",
+      "pip install pipecat-ai": "README.md:154",
+      "cp env.example .env": "README.md:145",
+      "claude plugin marketplace add pipecat-ai/skills": "README.md:65"
+    },
+    "meta": {
+      "id": "pipecat-ai-pipecat",
+      "nameVi": "Pipecat — Framework Python xây dựng tác tử giọng nói thời gian thực",
+      "icon": "MessageSquare",
+      "categories": [
+        "speech_voice",
+        "customer_support"
+      ],
+      "platforms": [
+        "web",
+        "claude_code"
+      ],
+      "licenseShort": "Mã nguồn mở (BSD-2-Clause)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "uv tool install \"pipecat-ai[cli]\""
+        },
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude plugin marketplace add pipecat-ai/skills"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "resemble-ai/chatterbox",
+    "license": "MIT License",
+    "authorName": "Resemble AI",
+    "websiteUrl": "https://resemble-ai.github.io/chatterbox_demopage/",
+    "toolType": "model",
+    "taglineEn": "Chatterbox is a family of state-of-the-art, open-source text-to-speech models by Resemble AI.",
+    "summaryVi": "Chatterbox là họ mô hình chuyển văn bản thành giọng nói mã nguồn mở của Resemble AI, gồm Chatterbox-Turbo (350M, tiếng Anh, độ trễ thấp cho tác tử giọng nói), Chatterbox-Nano (110M, chạy trên CPU), Chatterbox-Multilingual V3 (500M, hơn 23 ngôn ngữ) và các bản tinh chỉnh đơn ngôn ngữ. Mô hình hỗ trợ thẻ cận ngôn ngữ như [laugh], [cough] và nhân bản giọng từ đoạn âm thanh tham chiếu. Mọi tệp âm thanh sinh ra đều được gắn watermark thần kinh Perth để phát hiện nội dung do AI tạo.",
+    "purposeVi": "Tổng hợp giọng nói tự nhiên, biểu cảm cho tác tử giọng nói, lồng tiếng, tường thuật và bản địa hóa nội dung đa ngôn ngữ.",
+    "featuresVi": [
+      "Chatterbox-Turbo 350M: độ trễ thấp, ít VRAM, thẻ cận ngôn ngữ [laugh], [chuckle], [cough]",
+      "Chatterbox-Nano 110M: chạy trên CPU nhanh gấp 3 lần thời gian thực với 8 nhân",
+      "Multilingual V3 500M: 23 ngôn ngữ gồm Ả Rập, Đức, Pháp, Hindi, Nhật, Hàn, Mã Lai, Nga, Trung...",
+      "Single Language Pack: bản tinh chỉnh riêng cho tiếng Trung, Tây Ban Nha, Bồ Đào Nha, Hindi",
+      "Điều chỉnh exaggeration và cfg_weight để tăng biểu cảm hoặc chỉnh nhịp đọc",
+      "Watermark Perth tích hợp, có script kiểm tra watermark"
+    ],
+    "requirementsVi": "Python (được phát triển và kiểm thử trên Python 3.11, Debian 11); GPU CUDA, CPU hoặc MPS; tải trọng số mô hình từ Hugging Face.",
+    "installStepsVi": [
+      "Cài đặt từ PyPI: `pip install chatterbox-tts`",
+      "Hoặc cài đặt từ mã nguồn sau khi clone repo: `pip install -e .`"
+    ],
+    "cliCommand": "pip install chatterbox-tts",
+    "usageStepsVi": [
+      "Nạp mô hình, ví dụ ChatterboxTurboTTS.from_pretrained(device=\"cuda\") hoặc ChatterboxMultilingualTTS.from_pretrained(device=device, t3_model=\"v3\")",
+      "Gọi model.generate(text, language_id=...) và lưu bằng torchaudio",
+      "Truyền audio_prompt_path là đoạn ghi âm tham chiếu khoảng 10 giây của chính bạn (có sự đồng ý) để đổi giọng",
+      "Kiểm tra watermark trong tệp âm thanh bằng thư viện perth"
+    ],
+    "samplePromptsVi": [
+      "Viết script Python dùng Chatterbox-Turbo đọc lời chào tổng đài có thẻ [chuckle]",
+      "Tạo bản đọc tiếng Pháp và tiếng Nhật cho cùng một kịch bản bằng Chatterbox Multilingual V3",
+      "Chạy Chatterbox-Nano trên CPU để sinh giọng đọc cho ứng dụng ngoại tuyến"
+    ],
+    "prosVi": [
+      "Mã nguồn theo giấy phép MIT",
+      "Nhiều kích cỡ mô hình từ 110M (CPU) đến 500M đa ngôn ngữ",
+      "Có watermark Perth giúp nhận diện âm thanh do AI tạo",
+      "Có demo trên Hugging Face Spaces và đánh giá công khai trên Podonos"
+    ],
+    "consVi": [
+      "Danh sách 23 ngôn ngữ chưa có tiếng Việt",
+      "Có khả năng nhân bản giọng: chỉ dùng giọng của chính mình hoặc khi có sự đồng ý; README cảnh báo không dùng vào mục đích xấu",
+      "Turbo và Nano chỉ hỗ trợ tiếng Anh",
+      "Bản dịch vụ trả phí mở rộng do Resemble AI cung cấp riêng"
+    ],
+    "sourceEvidence": {
+      "pip install chatterbox-tts": "README.md:52",
+      "pip install -e .": "README.md:62"
+    },
+    "meta": {
+      "id": "resemble-ai-chatterbox",
+      "nameVi": "Chatterbox — Họ mô hình chuyển văn bản thành giọng nói đa ngôn ngữ của Resemble AI",
+      "icon": "Sparkles",
+      "categories": [
+        "speech_voice",
+        "generative_ai_multimedia"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install chatterbox-tts"
+        }
+      ]
+    }
+  }
+]

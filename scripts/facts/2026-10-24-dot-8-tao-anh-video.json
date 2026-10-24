@@ -1,0 +1,553 @@
+[
+ {
+  "repo": "invoke-ai/InvokeAI",
+  "license": "Apache License 2.0 (mã nguồn); trọng số mô hình như SD1/SD2, SDXL, Flux... theo giấy phép riêng của từng mô hình",
+  "authorName": "Invoke (InvokeAI Contributors)",
+  "websiteUrl": "https://invoke.ai",
+  "toolType": "software",
+  "taglineEn": "Invoke is a leading creative engine built to empower professionals and enthusiasts alike.",
+  "summaryVi": "Invoke (InvokeAI) là công cụ sáng tạo hình ảnh bằng AI chạy cục bộ, gồm máy chủ web và giao diện React với Unified Canvas, quy trình dạng node (workflow) và quản lý thư viện ảnh. Ứng dụng hỗ trợ nhiều dòng mô hình như SD 1.5, SDXL, SD 3.5, Flux.1, Flux.2, Qwen Image và một số mô hình chỉ qua API.",
+  "purposeVi": "Giúp nhà thiết kế, họa sĩ và người làm nội dung tạo, chỉnh sửa (inpaint/outpaint) và lặp lại hình ảnh bằng AI trên máy của mình, đồng thời xây dựng quy trình sinh ảnh tùy biến có thể chia sẻ.",
+  "featuresVi": [
+   "Unified Canvas: vẽ, inpaint/outpaint và cọ vẽ trong một khung làm việc tích hợp",
+   "Workflows & Nodes: kết hợp quy trình dạng node với giao diện dễ dùng, có thể chia sẻ quy trình",
+   "Quản lý Board & Gallery: lưu trữ ảnh kèm siêu dữ liệu để gọi lại prompt và thiết lập",
+   "Hỗ trợ nhiều mô hình: SD 1.5/2.0, SDXL, SD 3.5, Flux.1/Flux.2, Z-Image, Qwen Image, CogView 4...",
+   "Công cụ phóng to ảnh (upscaling), quản lý mô hình, embedding và phân đoạn đối tượng (SAM/SAM2)"
+  ],
+  "requirementsVi": "Máy tính có GPU tương thích; với Docker cần cấu hình Docker truy cập GPU (ảnh CUDA yêu cầu driver NVIDIA dòng R580 trở lên và GPU compute capability 7.5 trở lên). Trên macOS nên dùng launcher vì Docker không truy cập được GPU.",
+  "installStepsVi": [
+   "Cài đặt bằng launcher: tải Invoke Launcher từ trang phát hành github.com/invoke-ai/launcher/releases/latest rồi làm theo hướng dẫn trên màn hình.",
+   "Hoặc cài đặt bằng Docker (Linux/Windows có GPU NVIDIA): `docker run --runtime=nvidia --gpus=all --publish 9090:9090 ghcr.io/invoke-ai/invokeai`",
+   "Sau khi container khởi động, mở http://localhost:9090 trong trình duyệt, cài đặt mô hình và bắt đầu tạo ảnh.",
+   "Tự build bằng Docker Compose trong thư mục docker của repo: `cp .env.sample .env` rồi `docker compose up`"
+  ],
+  "cliCommand": "docker run --runtime=nvidia --gpus=all --publish 9090:9090 ghcr.io/invoke-ai/invokeai",
+  "usageStepsVi": [
+   "Mở giao diện web (mặc định cổng 9090 khi chạy Docker) và cài đặt mô hình qua Model Manager.",
+   "Nhập prompt để tạo ảnh, sau đó dùng Unified Canvas để inpaint/outpaint hoặc chỉnh sửa vùng ảnh.",
+   "Tạo workflow dạng node cho quy trình lặp lại và lưu ảnh vào các board trong gallery."
+  ],
+  "samplePromptsVi": [
+   "Ảnh minh họa một quán cà phê nhỏ ở phố cổ Hà Nội lúc chiều tà, phong cách màu nước",
+   "Mở rộng (outpaint) bức ảnh sản phẩm này sang hai bên để làm banner ngang",
+   "Thay nền ảnh chân dung bằng phông studio màu xám nhạt bằng công cụ inpaint"
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0, README ghi rõ giấy phép thân thiện với thương mại",
+   "Chạy cục bộ, có cả launcher cài đặt sẵn và ảnh Docker chính thức",
+   "Hỗ trợ rất nhiều dòng mô hình ảnh mới, cập nhật liên tục"
+  ],
+  "consVi": [
+   "Cần GPU đủ mạnh; Docker trên macOS không dùng được GPU",
+   "Trọng số mô hình (SDXL, Flux...) có giấy phép riêng, một số mô hình hạn chế dùng thương mại",
+   "Một số mô hình (Nano Banana, GPT Image, Wan) chỉ dùng qua API bên thứ ba"
+  ],
+  "sourceEvidence": {
+   "docker run --runtime=nvidia --gpus=all --publish 9090:9090 ghcr.io/invoke-ai/invokeai": "docs/src/content/docs/configuration/02.docker.mdx:31",
+   "cp .env.sample .env": "docs/src/content/docs/configuration/02.docker.mdx:42",
+   "docker compose up": "docs/src/content/docs/configuration/02.docker.mdx:43",
+   "launcher": "README.md:30",
+   "license": "LICENSE:1-3, README.md:16"
+  },
+  "meta": {
+   "id": "invoke-ai-invokeai",
+   "nameVi": "InvokeAI — Công cụ sáng tạo hình ảnh AI với Canvas và workflow",
+   "icon": "Sparkles",
+   "categories": [
+    "generative_ai_multimedia",
+    "computer_vision"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0); trọng số mô hình theo giấy phép riêng",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "docker run --runtime=nvidia --gpus=all --publish 9090:9090 ghcr.io/invoke-ai/invokeai"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "huggingface/diffusers",
+  "license": "Apache License 2.0 (thư viện); mỗi checkpoint trên Hugging Face Hub có giấy phép riêng",
+  "authorName": "Hugging Face",
+  "websiteUrl": "https://huggingface.co/docs/diffusers",
+  "toolType": "sdk",
+  "taglineEn": "Diffusers is the go-to library for state-of-the-art pretrained diffusion models for generating images, audio, and even 3D structures of molecules.",
+  "summaryVi": "Diffusers là thư viện Python của Hugging Face cho các mô hình khuếch tán (diffusion) tiền huấn luyện để tạo ảnh, âm thanh và cả cấu trúc 3D phân tử. Thư viện gồm ba thành phần: pipeline suy luận chỉ vài dòng mã, bộ lập lịch nhiễu (scheduler) có thể thay thế, và các mô hình tiền huấn luyện làm khối xây dựng.",
+  "purposeVi": "Giúp lập trình viên tích hợp tạo ảnh/video bằng AI vào ứng dụng hoặc tự huấn luyện, tinh chỉnh mô hình khuếch tán với hơn 30.000 checkpoint trên Hugging Face Hub.",
+  "featuresVi": [
+   "Pipeline khuếch tán hiện đại: text-to-image, image-to-image, inpainting, super resolution... chạy trong vài dòng mã",
+   "Scheduler thay thế được để cân bằng tốc độ và chất lượng",
+   "Mô hình tiền huấn luyện làm khối xây dựng (UNet2DModel, ...) để tự lắp hệ thống khuếch tán",
+   "Modular Diffusers, hướng dẫn tối ưu bộ nhớ/tốc độ và hướng dẫn huấn luyện",
+   "Tải trực tiếp checkpoint từ Hugging Face Hub bằng from_pretrained"
+  ],
+  "requirementsVi": "Python và PyTorch (khuyến nghị cài đặt trong môi trường ảo); GPU CUDA để chạy nhanh, có hướng dẫn riêng cho Apple Silicon.",
+  "installStepsVi": [
+   "Cài đặt bằng pip (gói chính thức): `pip install --upgrade diffusers[torch]`",
+   "Hoặc cài đặt bằng conda (cộng đồng duy trì): `conda install -c conda-forge diffusers`",
+   "Xem hướng dẫn PyTorch chính thức nếu cần cài đặt PyTorch phù hợp với GPU."
+  ],
+  "cliCommand": "pip install --upgrade diffusers[torch]",
+  "usageStepsVi": [
+   "Nạp pipeline bằng DiffusionPipeline.from_pretrained với mã checkpoint trên Hub (ví dụ stable-diffusion-v1-5/stable-diffusion-v1-5).",
+   "Chuyển pipeline sang GPU bằng pipeline.to(\"cuda\") và gọi pipeline với prompt để nhận ảnh.",
+   "Tham khảo tài liệu Loading, Optimization và Training để đổi scheduler, giảm bộ nhớ hoặc huấn luyện mô hình."
+  ],
+  "samplePromptsVi": [
+   "Viết đoạn mã Python dùng Diffusers tạo ảnh \"một chú sóc theo phong cách Picasso\" từ checkpoint Stable Diffusion v1.5",
+   "Đổi scheduler của pipeline sang DDPMScheduler và so sánh chất lượng ảnh",
+   "Hướng dẫn tôi tối ưu bộ nhớ khi chạy pipeline Diffusers trên GPU 8GB"
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0, do Hugging Face phát triển và cập nhật thường xuyên",
+   "Truy cập hơn 30.000 checkpoint trên Hugging Face Hub",
+   "Hỗ trợ cả suy luận và huấn luyện, nhiều mô hình ảnh/video mới được tích hợp"
+  ],
+  "consVi": [
+   "Là thư viện lập trình, không có giao diện người dùng sẵn",
+   "Giấy phép của từng checkpoint khác nhau; cần tự kiểm tra trước khi dùng thương mại",
+   "Cần GPU để chạy với tốc độ hợp lý"
+  ],
+  "sourceEvidence": {
+   "pip install --upgrade diffusers[torch]": "README.md:47",
+   "conda install -c conda-forge diffusers": "README.md:53",
+   "DiffusionPipeline.from_pretrained": "README.md:65-70",
+   "30,000+ checkpoints": "README.md:62"
+  },
+  "meta": {
+   "id": "huggingface-diffusers",
+   "nameVi": "Diffusers — Thư viện Python cho mô hình khuếch tán tạo ảnh, video",
+   "icon": "Code2",
+   "categories": [
+    "generative_ai_multimedia",
+    "computer_vision"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0); checkpoint theo giấy phép riêng",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install --upgrade diffusers[torch]"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "Wan-Video/Wan2.2",
+  "license": "Apache License 2.0 (mã nguồn và mô hình, theo README mục License Agreement)",
+  "authorName": "Wan Team (Alibaba)",
+  "websiteUrl": "https://wan.video",
+  "toolType": "model",
+  "taglineEn": "Wan: Open and Advanced Large-Scale Video Generative Models",
+  "summaryVi": "Wan2.2 là bộ mô hình tạo video mã nguồn mở với kiến trúc Mixture-of-Experts (MoE), gồm các mô hình Text-to-Video, Image-to-Video (A14B), mô hình lai TI2V-5B tạo video 720P 24fps, Speech-to-Video (S2V-14B) và Animate-14B. Repo cung cấp mã suy luận, liên kết tải trọng số và đã tích hợp vào ComfyUI và Diffusers.",
+  "purposeVi": "Giúp nhà nghiên cứu và người làm nội dung tạo video chất lượng điện ảnh từ văn bản hoặc hình ảnh trên hạ tầng GPU của mình, kể cả card đồ họa phổ thông như RTX 4090 với mô hình TI2V-5B.",
+  "featuresVi": [
+   "Kiến trúc MoE: hai chuyên gia khử nhiễu (tổng 27B, 14B tham số hoạt động mỗi bước) giữ chi phí tính toán gần như không đổi",
+   "TI2V-5B: tạo video 720P 24fps từ văn bản hoặc ảnh, chạy được trên GPU 24GB như RTX 4090",
+   "Text-to-Video và Image-to-Video A14B hỗ trợ 480P và 720P",
+   "Speech-to-Video (S2V-14B) tạo video theo âm thanh, Animate-14B cho hoạt họa nhân vật",
+   "Suy luận đa GPU với FSDP + DeepSpeed Ulysses, mở rộng prompt qua Dashscope API hoặc mô hình Qwen cục bộ"
+  ],
+  "requirementsVi": "PyTorch 2.4.0 trở lên; GPU tối thiểu 24GB VRAM cho TI2V-5B (có offload), 80GB VRAM cho các lệnh A14B trên một GPU.",
+  "installStepsVi": [
+   "Tải mã nguồn: `git clone https://github.com/Wan-Video/Wan2.2.git` rồi `cd Wan2.2`",
+   "Cài đặt thư viện phụ thuộc: `pip install -r requirements.txt` (nếu flash_attn lỗi, cài đặt các gói khác trước rồi cài flash_attn sau cùng)",
+   "Cài đặt công cụ tải mô hình: `pip install \"huggingface_hub[cli]\"`",
+   "Tải trọng số, ví dụ mô hình T2V-A14B: `huggingface-cli download Wan-AI/Wan2.2-T2V-A14B --local-dir ./Wan2.2-T2V-A14B` (đổi tên mô hình thành Wan2.2-TI2V-5B, I2V-A14B... theo nhu cầu)"
+  ],
+  "cliCommand": "python generate.py --task ti2v-5B --size 1280*704 --ckpt_dir ./Wan2.2-TI2V-5B --offload_model True --convert_model_dtype --t5_cpu --prompt \"Two anthropomorphic cats in comfy boxing gear and bright gloves fight intensely on a spotlighted stage\"",
+  "usageStepsVi": [
+   "Chọn tác vụ bằng --task (t2v-A14B, i2v-A14B, ti2v-5B, s2v-14B...) và độ phân giải bằng --size.",
+   "Với GPU ít bộ nhớ, dùng các tùy chọn --offload_model True, --convert_model_dtype và --t5_cpu.",
+   "Thêm --image để tạo video từ ảnh với TI2V-5B; dùng torchrun để chạy đa GPU."
+  ],
+  "samplePromptsVi": [
+   "Hai chú mèo nhân hóa mặc đồ boxing, đeo găng sáng màu đấu nhau trên sân khấu có đèn rọi",
+   "Tạo video 720P từ ảnh chú mèo trắng đeo kính râm ngồi trên ván lướt sóng ở bãi biển",
+   "Cảnh quay điện ảnh: thuyền rồng trôi trên vịnh Hạ Long lúc bình minh, ánh sáng vàng ấm"
+  ],
+  "prosVi": [
+   "Mã nguồn và mô hình theo Apache 2.0, README nêu không giữ quyền với nội dung tạo ra",
+   "Có mô hình 5B chạy được trên GPU phổ thông 24GB",
+   "Đã tích hợp sẵn vào ComfyUI và Diffusers"
+  ],
+  "consVi": [
+   "Mô hình A14B cần GPU tối thiểu 80GB VRAM khi chạy một GPU",
+   "Mở rộng prompt qua Dashscope cần API key của Alibaba Cloud",
+   "README yêu cầu không dùng để chia sẻ nội dung vi phạm pháp luật, gây hại hoặc phát tán thông tin sai lệch"
+  ],
+  "sourceEvidence": {
+   "git clone https://github.com/Wan-Video/Wan2.2.git": "README.md:93",
+   "cd Wan2.2": "README.md:94",
+   "pip install -r requirements.txt": "README.md:101",
+   "pip install \"huggingface_hub[cli]\"": "README.md:125",
+   "huggingface-cli download Wan-AI/Wan2.2-T2V-A14B --local-dir ./Wan2.2-T2V-A14B": "README.md:126",
+   "python generate.py --task ti2v-5B --size 1280*704 --ckpt_dir ./Wan2.2-TI2V-5B --offload_model True --convert_model_dtype --t5_cpu --prompt \"Two anthropomorphic cats in comfy boxing gear and bright gloves fight intensely on a spotlighted stage\"": "README.md:229",
+   "24GB VRAM": "README.md:234",
+   "license": "README.md:496-497, LICENSE.txt:1"
+  },
+  "meta": {
+   "id": "wan-video-wan2-2",
+   "nameVi": "Wan2.2 — Bộ mô hình tạo video mã nguồn mở từ văn bản và hình ảnh",
+   "icon": "Sparkles",
+   "categories": [
+    "generative_ai_multimedia"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh",
+    "Tiếng Trung"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "python generate.py --task ti2v-5B --size 1280*704 --ckpt_dir ./Wan2.2-TI2V-5B --offload_model True --convert_model_dtype --t5_cpu --prompt \"Two anthropomorphic cats in comfy boxing gear and bright gloves fight intensely on a spotlighted stage\""
+    }
+   ]
+  }
+ },
+ {
+  "repo": "Lightricks/LTX-2",
+  "license": "LTX-2.x Community License Agreement (11/08/2026) và LTX-2 Community License Agreement (05/01/2026) — miễn phí cho tổ chức doanh thu dưới 10 triệu USD/năm; tổ chức từ 10 triệu USD trở lên cần giấy phép thương mại trả phí (trừ mục đích phi thương mại)",
+  "authorName": "Lightricks",
+  "websiteUrl": "https://ltx.io",
+  "toolType": "model",
+  "taglineEn": "LTX-2 is the first DiT-based audio-video foundation model that contains all core capabilities of modern video generation in one model",
+  "summaryVi": "LTX-2 là mô hình nền tảng tạo video kèm âm thanh đồng bộ dựa trên kiến trúc DiT của Lightricks. Repo dạng monorepo gồm ltx-core, ltx-pipelines (text/image-to-video, audio-to-video, video-to-video, HDR...) và ltx-trainer để tinh chỉnh LoRA; mô hình khuyến nghị hiện tại là LTX-2.5.",
+  "purposeVi": "Giúp nhà làm phim, người làm nội dung và nhà phát triển tạo video có âm thanh từ văn bản, ảnh hoặc âm thanh, chỉnh sửa đoạn video có sẵn và tinh chỉnh mô hình cho phong cách riêng.",
+  "featuresVi": [
+   "Tạo video và âm thanh đồng bộ trong một mô hình",
+   "Nhiều pipeline: DistilledPipeline (nhanh), DFR (chất lượng sản xuất, hỗ trợ 4K), TI2Vid hai giai đoạn, A2Vid (audio-to-video), Retake, ICLoRA video-to-video",
+   "Hỗ trợ HDR/EXR với đầu ra BT.2020/HLG",
+   "Lượng tử hóa FP8 (--quantization fp8-cast) và offload CPU/đĩa khi thiếu VRAM",
+   "ltx-trainer: huấn luyện LoRA, tinh chỉnh toàn phần và IC-LoRA; tích hợp ComfyUI qua ComfyUI-LTXVideo"
+  ],
+  "requirementsVi": "Công cụ uv; GPU CUDA (backend natten chỉ cho Linux + CUDA); tài khoản Hugging Face với token Read và chấp nhận điều khoản mô hình; khoảng 66 GiB dung lượng cho bộ trọng số LTX-2.5.",
+  "installStepsVi": [
+   "Tải mã nguồn: `git clone https://github.com/Lightricks/LTX-2.git` rồi `cd LTX-2`",
+   "Cài đặt thư viện phụ thuộc: `uv sync --extra natten`",
+   "Đăng nhập Hugging Face: `hf auth login` (chấp nhận điều khoản mô hình trên Hugging Face nếu gặp lỗi 401/403)",
+   "Tải các tệp mô hình LTX-2.5 (transformer distilled, text encoder, video VAE, audio VAE, spatial upscaler) bằng lệnh hf download như hướng dẫn trong README, tổng khoảng 66 GiB."
+  ],
+  "cliCommand": "uv run python -m ltx_pipelines.distilled",
+  "usageStepsVi": [
+   "Chạy DistilledPipeline với đường dẫn các tệp mô hình, số khung hình (--num-frames), seed, --output-path và --prompt.",
+   "Dùng DFR pipeline (ltx_pipelines.dfr_pipeline) với detailing IC-LoRA khi cần chất lượng sản xuất.",
+   "Khi thiếu bộ nhớ GPU, thêm --quantization fp8-cast --offload cpu hoặc disk."
+  ],
+  "samplePromptsVi": [
+   "Cận cảnh một người đàn ông nhìn thẳng vào máy quay và nói với giọng trầm: 'Thật tuyệt', máy quay đứng yên, hậu cảnh mờ",
+   "Tạo video từ ảnh phong cảnh ruộng bậc thang, máy quay lia chậm từ trái sang phải, có tiếng gió và chim hót",
+   "Tạo lại đoạn từ giây thứ 3 đến giây thứ 5 của video này với ánh sáng hoàng hôn"
+  ],
+  "prosVi": [
+   "Tạo cả video và âm thanh đồng bộ trong một mô hình",
+   "Có pipeline chưng cất nhanh và pipeline chất lượng sản xuất đến 4K",
+   "Kèm bộ công cụ huấn luyện LoRA và tích hợp ComfyUI"
+  ],
+  "consVi": [
+   "Không phải giấy phép OSI: tổ chức có doanh thu từ 10 triệu USD/năm phải mua giấy phép thương mại",
+   "Cần tài khoản Hugging Face và chấp nhận điều khoản mô hình (gated)",
+   "Bộ trọng số khoảng 66 GiB, yêu cầu GPU mạnh; backend natten chỉ hỗ trợ Linux + CUDA"
+  ],
+  "sourceEvidence": {
+   "git clone https://github.com/Lightricks/LTX-2.git": "README.md:20",
+   "cd LTX-2": "README.md:21",
+   "uv sync --extra natten": "README.md:27",
+   "hf auth login": "README.md:33",
+   "uv run python -m ltx_pipelines.distilled": "README.md:50",
+   "66 GiB": "README.md:43",
+   "license": "LICENSE:1-7, LICENSE-2_x:95-110"
+  },
+  "meta": {
+   "id": "lightricks-ltx-2",
+   "nameVi": "LTX-2 — Mô hình tạo video kèm âm thanh đồng bộ của Lightricks",
+   "icon": "Sparkles",
+   "categories": [
+    "generative_ai_multimedia",
+    "speech_voice"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Giấy phép cộng đồng LTX (miễn phí dưới 10 triệu USD doanh thu/năm, trên mức đó cần giấy phép thương mại)",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "uv run python -m ltx_pipelines.distilled"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "leejet/stable-diffusion.cpp",
+  "license": "MIT License (mã nguồn); trọng số mô hình theo giấy phép riêng của từng mô hình",
+  "authorName": "leejet",
+  "websiteUrl": "",
+  "toolType": "cli",
+  "taglineEn": "Diffusion model(SD,Flux,Wan,...) inference in pure C/C++",
+  "summaryVi": "stable-diffusion.cpp là công cụ suy luận mô hình khuếch tán viết thuần C/C++ dựa trên ggml (giống llama.cpp), không phụ thuộc thư viện ngoài. Công cụ chạy nhiều mô hình ảnh (SD1.x, SDXL, SD3.5, FLUX, Qwen Image, Z-Image...), mô hình chỉnh sửa ảnh và mô hình video (Wan2.1/2.2, LTX-2.x, HunyuanVideo 1.5), kèm máy chủ có giao diện web nhúng.",
+  "purposeVi": "Giúp người dùng chạy tạo ảnh/video bằng AI gọn nhẹ trên CPU hoặc nhiều loại GPU (CUDA, Vulkan, Metal, OpenCL, SYCL), kể cả máy cấu hình thấp và Android, với trọng số định dạng GGUF lượng tử hóa.",
+  "featuresVi": [
+   "Thuần C/C++ dựa trên ggml, siêu nhẹ, không phụ thuộc ngoài",
+   "Hỗ trợ mô hình ảnh, chỉnh sửa ảnh (FLUX.1-Kontext, Qwen Image Edit...) và video (Wan2.1/2.2, LTX-2.3/2.5, HunyuanVideo 1.5)",
+   "Nhiều backend: CPU (AVX/AVX2/AVX512), CUDA, Vulkan, Metal, OpenCL, SYCL",
+   "Đọc .ckpt/.safetensors/.gguf, chế độ chuyển đổi sang .gguf, LoRA, ControlNet, PhotoMaker, ESRGAN, TAESD",
+   "sd-server có giao diện web nhúng và API tương thích (/v1, /sdapi/v1)"
+  ],
+  "requirementsVi": "Bản dựng sẵn từ trang Releases hoặc tự build bằng CMake; bản CUDA cần CUDA Toolkit và khuyến nghị tối thiểu 4GB VRAM; có thể build bản chỉ dùng CPU.",
+  "installStepsVi": [
+   "Cách nhanh nhất: tải bản dựng sẵn (sd-cli, sd-server) từ trang Releases của repo.",
+   "Hoặc tự build: `git clone --recursive https://github.com/leejet/stable-diffusion.cpp` rồi `cd stable-diffusion.cpp`",
+   "Cài đặt bản CUDA: `mkdir build && cd build`, `cmake .. -DSD_CUDA=ON`, `cmake --build . --config Release` (bỏ -DSD_CUDA=ON để build bản chỉ dùng CPU)",
+   "Tải trọng số mô hình, ví dụ Stable Diffusion v1.5: `curl -L -O https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors`"
+  ],
+  "cliCommand": "./bin/sd-cli -m ../models/v1-5-pruned-emaonly.safetensors -p \"a lovely cat\"",
+  "usageStepsVi": [
+   "Tạo ảnh bằng một lệnh: chỉ định mô hình với -m và prompt với -p.",
+   "Chạy giao diện web: `sd-server --model-dir ./models`, sau đó mở http://127.0.0.1:1234/ để chọn mô hình và tạo ảnh.",
+   "Xem tài liệu cli và performance để giảm VRAM/RAM, dùng LoRA hoặc lượng tử hóa GGUF."
+  ],
+  "samplePromptsVi": [
+   "a lovely cat",
+   "Tạo ảnh phong cảnh núi Fansipan phủ mây bằng mô hình FLUX ở định dạng GGUF trên máy không có GPU rời",
+   "Tạo video ngắn từ ảnh bằng mô hình Wan2.2 qua sd-cli"
+  ],
+  "prosVi": [
+   "Giấy phép MIT, nhẹ, không phụ thuộc Python",
+   "Chạy được trên CPU và nhiều loại GPU, cả Linux, macOS, Windows, Android (Termux)",
+   "Hỗ trợ mô hình mới rất nhanh (Day-0/Day-1), có máy chủ web và API tương thích"
+  ],
+  "consVi": [
+   "README cảnh báo dự án đang phát triển tích cực, API và tùy chọn dòng lệnh có thể thay đổi thường xuyên",
+   "Trọng số mô hình tải riêng và theo giấy phép của từng nhà phát triển",
+   "Tự build cần CMake và bộ công cụ GPU tương ứng"
+  ],
+  "sourceEvidence": {
+   "git clone --recursive https://github.com/leejet/stable-diffusion.cpp": "docs/build.md:6",
+   "cd stable-diffusion.cpp": "docs/build.md:7",
+   "mkdir build && cd build": "docs/build.md:100",
+   "cmake .. -DSD_CUDA=ON": "docs/build.md:101",
+   "cmake --build . --config Release": "docs/build.md:102",
+   "curl -L -O https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors": "README.md:147",
+   "./bin/sd-cli -m ../models/v1-5-pruned-emaonly.safetensors -p \"a lovely cat\"": "README.md:153",
+   "sd-server --model-dir ./models": "examples/server/README.md:6",
+   "http://127.0.0.1:1234/": "examples/server/README.md:270",
+   "4 GB of VRAM": "docs/build.md:97"
+  },
+  "meta": {
+   "id": "leejet-stable-diffusion-cpp",
+   "nameVi": "stable-diffusion.cpp — Chạy mô hình tạo ảnh, video bằng C/C++ thuần",
+   "icon": "Terminal",
+   "categories": [
+    "generative_ai_multimedia",
+    "computer_vision"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT); trọng số mô hình theo giấy phép riêng",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "./bin/sd-cli -m ../models/v1-5-pruned-emaonly.safetensors -p \"a lovely cat\""
+    }
+   ]
+  }
+ },
+ {
+  "repo": "upscayl/upscayl",
+  "license": "GNU Affero General Public License v3.0 (AGPL-3.0)",
+  "authorName": "Upscayl (Nayam Amarshe và TGS963)",
+  "websiteUrl": "https://upscayl.org",
+  "toolType": "software",
+  "taglineEn": "Free and Open Source AI Image Upscaler",
+  "summaryVi": "Upscayl là ứng dụng máy tính miễn phí, mã nguồn mở để phóng to và làm nét ảnh độ phân giải thấp bằng AI. Ứng dụng dùng Real-ESRGAN và Vulkan (backend upscayl-ncnn), có xử lý hàng loạt và hỗ trợ thêm mô hình tùy chỉnh.",
+  "purposeVi": "Giúp người dùng phổ thông, nhiếp ảnh gia và người làm nội dung tăng độ phân giải ảnh cũ, ảnh nhỏ hoặc bị vỡ hạt mà không cần viết mã.",
+  "featuresVi": [
+   "Phóng to và làm nét ảnh bằng AI dựa trên Real-ESRGAN",
+   "Xử lý hàng loạt (Batch Upscayl) nhiều ảnh",
+   "Nhiều mô hình kèm sẵn (High Fidelity, Remacri, Ultrasharp...) và hỗ trợ mô hình tùy chỉnh",
+   "Chọn GPU theo GPU ID",
+   "Có bản cho Linux, macOS và Windows; công cụ dòng lệnh riêng là upscayl-ncnn"
+  ],
+  "requirementsVi": "GPU tương thích Vulkan (nhiều GPU tích hợp không hoạt động); macOS 12 trở lên hoặc Windows 10 trở lên; Linux qua Flathub, AppImage, AUR, Snap, DEB/RPM.",
+  "installStepsVi": [
+   "Cài đặt trên Windows/macOS/Linux: tải tệp cài đặt (.exe, .dmg, .AppImage...) từ trang Releases hoặc upscayl.org.",
+   "Cài đặt trên macOS bằng Homebrew: `brew install --cask upscayl`",
+   "Chạy từ mã nguồn (dành cho nhà phát triển): `git clone https://github.com/upscayl/upscayl`, `cd upscayl`, `npm install` rồi `npm run start`"
+  ],
+  "cliCommand": "brew install --cask upscayl",
+  "usageStepsVi": [
+   "Mở ứng dụng, chọn ảnh hoặc thư mục ảnh cần phóng to.",
+   "Chọn mô hình AI và tỉ lệ phóng to, rồi bấm Upscayl để xử lý.",
+   "Xem hướng dẫn tại docs.upscayl.org hoặc tải thêm mô hình từ upscayl/custom-models."
+  ],
+  "samplePromptsVi": [
+   "Phóng to ảnh chân dung cũ độ phân giải thấp lên gấp 4 lần",
+   "Phóng to hàng loạt ảnh sản phẩm trong một thư mục để in khổ lớn",
+   "Làm nét ảnh minh họa bị vỡ hạt bằng mô hình Ultrasharp"
+  ],
+  "prosVi": [
+   "Miễn phí, mã nguồn mở, có giao diện đồ họa dễ dùng",
+   "Đa nền tảng với nhiều kênh cài đặt (Flathub, Snap, Homebrew, App Store...)",
+   "Hỗ trợ xử lý hàng loạt và mô hình tùy chỉnh"
+  ],
+  "consVi": [
+   "Bắt buộc GPU hỗ trợ Vulkan; phần lớn GPU tích hợp và CPU không chạy được",
+   "Không khử mờ hoặc chỉnh lấy nét cho ảnh bị mất nét hoàn toàn (theo FAQ)",
+   "Giấy phép AGPL-3.0 yêu cầu công bố mã nguồn khi phân phối hoặc cung cấp bản sửa đổi qua mạng"
+  ],
+  "sourceEvidence": {
+   "brew install --cask upscayl": "README.md:130",
+   "git clone https://github.com/upscayl/upscayl": "README.md:172",
+   "cd upscayl": "README.md:173",
+   "npm install": "README.md:176",
+   "npm run start": "README.md:180",
+   "Vulkan GPU": "README.md:81",
+   "license": "LICENSE:1-2"
+  },
+  "meta": {
+   "id": "upscayl-upscayl",
+   "nameVi": "Upscayl — Ứng dụng phóng to, làm nét ảnh bằng AI miễn phí",
+   "icon": "Sparkles",
+   "categories": [
+    "generative_ai_multimedia",
+    "computer_vision"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (AGPL-3.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "brew install --cask upscayl"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "Tencent-Hunyuan/HunyuanVideo-1.5",
+  "license": "Tencent Hunyuan Community License Agreement — không áp dụng tại Liên minh châu Âu, Vương quốc Anh và Hàn Quốc; dịch vụ trên 100 triệu người dùng hoạt động hằng tháng phải xin giấy phép riêng từ Tencent",
+  "authorName": "Tencent Hunyuan",
+  "websiteUrl": "https://huggingface.co/tencent/HunyuanVideo-1.5",
+  "toolType": "model",
+  "taglineEn": "HunyuanVideo-1.5 is a video generation model that delivers top-tier quality with only 8.3B parameters, significantly lowering the barrier to usage.",
+  "summaryVi": "HunyuanVideo-1.5 là mô hình tạo video của Tencent với 8,3 tỷ tham số (Diffusion Transformer kết hợp 3D causal VAE), hỗ trợ text-to-video và image-to-video ở 480p/720p cùng mạng siêu phân giải nâng lên 1080p. Repo cung cấp mã suy luận, mã huấn luyện, nút ComfyUI và hướng dẫn dùng qua Diffusers.",
+  "purposeVi": "Giúp nhà phát triển và người làm nội dung tạo video chất lượng cao trên GPU phổ thông (tối thiểu 14GB khi bật offload) thay vì phải dùng hạ tầng trung tâm dữ liệu.",
+  "featuresVi": [
+   "Kiến trúc gọn nhẹ: DiT 8,3B tham số, VAE nén 16× không gian và 4× thời gian, cơ chế SSTA tăng tốc video dài",
+   "Text-to-video và image-to-video ở 480p và 720p, có bản chưng cất CFG/step để tăng tốc",
+   "Siêu phân giải video vài bước lên 720p/1080p",
+   "Tăng tốc bằng SageAttention, sparse attention, feature cache (deepcache, teacache, taylorcache)",
+   "Viết lại prompt tự động qua máy chủ vLLM; có mã huấn luyện và tích hợp ComfyUI, Diffusers"
+  ],
+  "requirementsVi": "Linux, Python 3.10 trở lên, GPU NVIDIA hỗ trợ CUDA với tối thiểu 14GB bộ nhớ (khi bật offload); cần tải thêm text encoder Qwen2.5-VL-7B-Instruct và byT5.",
+  "installStepsVi": [
+   "Tải mã nguồn: `git clone https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5.git` rồi `cd HunyuanVideo-1.5`",
+   "Cài đặt thư viện phụ thuộc: `pip install -r requirements.txt`",
+   "Cài đặt công cụ tải mô hình: `pip install -U \"huggingface_hub[cli]\"`",
+   "Tải trọng số: `hf download tencent/HunyuanVideo-1.5 --local-dir ./ckpts`, sau đó tải text encoder theo checkpoints-download.md (ví dụ `hf download Qwen/Qwen2.5-VL-7B-Instruct --local-dir ./ckpts/text_encoder/llm`)",
+   "Tùy chọn: cài đặt thư viện attention (Flash Attention, flex-block-attn, SageAttention) để tăng tốc."
+  ],
+  "cliCommand": "torchrun --nproc_per_node=$N_INFERENCE_GPU generate.py",
+  "usageStepsVi": [
+   "Đặt các biến PROMPT, IMAGE_PATH (none cho text-to-video), RESOLUTION, ASPECT_RATIO, MODEL_PATH theo ví dụ trong README.",
+   "Chạy generate.py qua torchrun với các tùy chọn --cfg_distilled, --enable_step_distill, --sr để cân bằng tốc độ và chất lượng.",
+   "Nếu không cấu hình máy chủ vLLM để viết lại prompt, pipeline vẫn chạy mà không viết lại; có thể tắt bằng --rewrite false."
+  ],
+  "samplePromptsVi": [
+   "Một cô gái cầm tờ giấy có dòng chữ \"Hello, world!\"",
+   "Tạo video 720p từ ảnh chụp phố đèn lồng Hội An, máy quay tiến chậm về phía trước",
+   "Cảnh đồng lúa chín vàng lay động trong gió, góc quay flycam từ trên cao"
+  ],
+  "prosVi": [
+   "Chạy được trên GPU phổ thông từ 14GB khi bật offload",
+   "Có bản chưng cất và nhiều kỹ thuật tăng tốc, siêu phân giải lên 1080p",
+   "Có mã huấn luyện, nút ComfyUI và hỗ trợ Diffusers"
+  ],
+  "consVi": [
+   "Không phải giấy phép mã nguồn mở OSI: cấm sử dụng tại EU, Anh và Hàn Quốc",
+   "Sản phẩm trên 100 triệu người dùng hoạt động hằng tháng phải xin giấy phép riêng từ Tencent",
+   "Chỉ hỗ trợ Linux và GPU NVIDIA; viết lại prompt cần tự triển khai máy chủ vLLM"
+  ],
+  "sourceEvidence": {
+   "git clone https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5.git": "README.md:151",
+   "cd HunyuanVideo-1.5": "README.md:152",
+   "pip install -r requirements.txt": "README.md:158",
+   "pip install -U \"huggingface_hub[cli]\"": "checkpoints-download.md:7",
+   "hf download tencent/HunyuanVideo-1.5 --local-dir ./ckpts": "checkpoints-download.md:14",
+   "hf download Qwen/Qwen2.5-VL-7B-Instruct --local-dir ./ckpts/text_encoder/llm": "checkpoints-download.md:27",
+   "torchrun --nproc_per_node=$N_INFERENCE_GPU generate.py": "README.md:286",
+   "14 GB": "README.md:136",
+   "license": "LICENSE:1-3, LICENSE:17, LICENSE:31"
+  },
+  "meta": {
+   "id": "tencent-hunyuan-hunyuanvideo-1-5",
+   "nameVi": "HunyuanVideo-1.5 — Mô hình tạo video 8,3B tham số của Tencent",
+   "icon": "Sparkles",
+   "categories": [
+    "generative_ai_multimedia"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Giấy phép cộng đồng Tencent Hunyuan (không áp dụng tại EU, Anh, Hàn Quốc; hạn chế trên 100 triệu MAU)",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh",
+    "Tiếng Trung"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "torchrun --nproc_per_node=$N_INFERENCE_GPU generate.py"
+    }
+   ]
+  }
+ }
+]
