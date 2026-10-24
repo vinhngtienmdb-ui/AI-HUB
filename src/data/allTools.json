@@ -154814,5 +154814,1698 @@
       "guideIsTemplate": false,
       "starsVerified": false
     }
+  },
+  {
+    "id": "aider-ai-aider",
+    "slug": "aider-ai-aider",
+    "name": "Aider — Trợ lý lập trình cặp với AI trong terminal",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/Aider-AI/aider",
+    "websiteUrl": "https://aider.chat/",
+    "authorName": "Aider-AI (Paul Gauthier và cộng đồng)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Aider là công cụ lập trình cặp với AI chạy ngay trong terminal, giúp bắt đầu dự án mới hoặc phát triển tiếp trên mã nguồn sẵn có. Aider lập bản đồ toàn bộ codebase, làm việc với hơn 100 ngôn ngữ lập trình và tự động commit thay đổi vào git với thông điệp hợp lý. Công cụ kết nối được với hầu hết các LLM, kể cả mô hình chạy cục bộ.",
+    "purposeVi": "Giúp lập trình viên giao việc viết, sửa, kiểm thử mã cho LLM ngay trong kho git của mình, với khả năng xem lại và hoàn tác thay đổi bằng công cụ git quen thuộc.",
+    "featuresVi": [
+      "LLM đám mây và cục bộ: hoạt động tốt với Claude, DeepSeek, các mô hình OpenAI và kết nối được gần như mọi LLM, kể cả mô hình cục bộ",
+      "Bản đồ codebase: tạo bản đồ toàn bộ mã nguồn để làm việc tốt hơn với dự án lớn",
+      "Hơn 100 ngôn ngữ: Python, JavaScript, Rust, Ruby, Go, C++, PHP, HTML, CSS và nhiều ngôn ngữ khác",
+      "Tích hợp git: tự động commit thay đổi kèm thông điệp hợp lý, dễ diff, quản lý và hoàn tác",
+      "Dùng trong IDE: yêu cầu thay đổi bằng cách thêm chú thích vào mã, Aider sẽ tự xử lý",
+      "Hình ảnh và trang web: đưa ảnh chụp màn hình, tài liệu tham khảo vào cuộc trò chuyện làm ngữ cảnh",
+      "Giọng nói thành mã: nói yêu cầu tính năng, test hoặc sửa lỗi bằng giọng nói",
+      "Lint và test: tự chạy linter, bộ test sau mỗi thay đổi và sửa lỗi phát hiện được",
+      "Sao chép/dán với web chat: làm việc với LLM qua giao diện chat trên trình duyệt"
+    ],
+    "installGuideVi": "Yêu cầu: Python (cài qua pip), git và API key của nhà cung cấp LLM muốn dùng (ví dụ DeepSeek, Anthropic, OpenAI) hoặc một mô hình chạy cục bộ.\nBước 1: Cài trình cài đặt Aider: `python -m pip install aider-install`\nBước 2: Chạy trình cài đặt: `aider-install`\nBước 3: Chuyển vào thư mục mã nguồn của bạn: `cd /to/your/project`",
+    "usageGuideVi": "Bước 1: Khởi chạy Aider với mô hình mong muốn, ví dụ DeepSeek: `aider --model deepseek --api-key deepseek=<key>`\nBước 2: Hoặc dùng Claude 3.7 Sonnet: `aider --model sonnet --api-key anthropic=<key>`\nBước 3: Mô tả tính năng, lỗi cần sửa hoặc test cần viết; Aider chỉnh sửa tệp và tự động commit vào git\nBước 4: Dùng git để xem diff hoặc hoàn tác các thay đổi do AI tạo ra",
+    "samplePromptsVi": [
+      "Thêm endpoint /health vào ứng dụng Flask này và viết test cho nó",
+      "Đọc lỗi từ bộ test hiện tại và sửa cho tất cả test đều chạy qua",
+      "Tái cấu trúc module xử lý thanh toán thành các hàm nhỏ hơn, giữ nguyên hành vi"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "python -m pip install aider-install",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"python -m pip install aider-install\"\n  ],\n  \"nguon\": \"https://github.com/Aider-AI/aider\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, dùng tự do cả cho mục đích thương mại",
+      "Kết nối được gần như mọi LLM, kể cả mô hình chạy cục bộ",
+      "Tự động commit git giúp dễ theo dõi và hoàn tác thay đổi của AI"
+    ],
+    "consVi": [
+      "Cần API key của nhà cung cấp LLM (trả phí theo nhà cung cấp) hoặc tự chạy mô hình cục bộ",
+      "Chủ yếu làm việc trong terminal; tích hợp IDE dựa trên cơ chế chú thích trong mã"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Aider — Trợ lý lập trình cặp với AI trong terminal\n\n> Aider lets you pair program with LLMs to start a new project or build on your existing codebase.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nAider là công cụ lập trình cặp với AI chạy ngay trong terminal, giúp bắt đầu dự án mới hoặc phát triển tiếp trên mã nguồn sẵn có. Aider lập bản đồ toàn bộ codebase, làm việc với hơn 100 ngôn ngữ lập trình và tự động commit thay đổi vào git với thông điệp hợp lý. Công cụ kết nối được với hầu hết các LLM, kể cả mô hình chạy cục bộ.\n\nGiúp lập trình viên giao việc viết, sửa, kiểm thử mã cho LLM ngay trong kho git của mình, với khả năng xem lại và hoàn tác thay đổi bằng công cụ git quen thuộc.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Aider-AI (Paul Gauthier và cộng đồng)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/Aider-AI/aider](https://github.com/Aider-AI/aider)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **LLM đám mây và cục bộ: hoạt động tốt với Claude, DeepSeek, các mô hình OpenAI và kết nối được gần như mọi LLM, kể cả mô hình cục bộ**\n- **Bản đồ codebase: tạo bản đồ toàn bộ mã nguồn để làm việc tốt hơn với dự án lớn**\n- **Hơn 100 ngôn ngữ: Python, JavaScript, Rust, Ruby, Go, C++, PHP, HTML, CSS và nhiều ngôn ngữ khác**\n- **Tích hợp git: tự động commit thay đổi kèm thông điệp hợp lý, dễ diff, quản lý và hoàn tác**\n- **Dùng trong IDE: yêu cầu thay đổi bằng cách thêm chú thích vào mã, Aider sẽ tự xử lý**\n- **Hình ảnh và trang web: đưa ảnh chụp màn hình, tài liệu tham khảo vào cuộc trò chuyện làm ngữ cảnh**\n- **Giọng nói thành mã: nói yêu cầu tính năng, test hoặc sửa lỗi bằng giọng nói**\n- **Lint và test: tự chạy linter, bộ test sau mỗi thay đổi và sửa lỗi phát hiện được**\n- **Sao chép/dán với web chat: làm việc với LLM qua giao diện chat trên trình duyệt**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npython -m pip install aider-install\n```\n\nYêu cầu: Python (cài qua pip), git và API key của nhà cung cấp LLM muốn dùng (ví dụ DeepSeek, Anthropic, OpenAI) hoặc một mô hình chạy cục bộ.\nBước 1: Cài trình cài đặt Aider: `python -m pip install aider-install`\nBước 2: Chạy trình cài đặt: `aider-install`\nBước 3: Chuyển vào thư mục mã nguồn của bạn: `cd /to/your/project`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi chạy Aider với mô hình mong muốn, ví dụ DeepSeek: `aider --model deepseek --api-key deepseek=<key>`\nBước 2: Hoặc dùng Claude 3.7 Sonnet: `aider --model sonnet --api-key anthropic=<key>`\nBước 3: Mô tả tính năng, lỗi cần sửa hoặc test cần viết; Aider chỉnh sửa tệp và tự động commit vào git\nBước 4: Dùng git để xem diff hoặc hoàn tác các thay đổi do AI tạo ra\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Thêm endpoint /health vào ứng dụng Flask này và viết test cho nó\"\n- \"Đọc lỗi từ bộ test hiện tại và sửa cho tất cả test đều chạy qua\"\n- \"Tái cấu trúc module xử lý thanh toán thành các hàm nhỏ hơn, giữ nguyên hành vi\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "anomalyco-opencode",
+    "slug": "anomalyco-opencode",
+    "name": "OpenCode — Tác tử lập trình AI mã nguồn mở trong terminal",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/anomalyco/opencode",
+    "websiteUrl": "https://opencode.ai",
+    "authorName": "opencode (Anomaly)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "OpenCode là tác tử lập trình AI mã nguồn mở với giao diện dòng lệnh dạng TUI, kèm ứng dụng desktop (bản beta) cho macOS, Windows và Linux. Công cụ có sẵn hai tác tử chuyển đổi bằng phím Tab: build (toàn quyền, dùng để phát triển) và plan (chỉ đọc, dùng để phân tích, khám phá mã). Repo trước đây nằm ở sst/opencode, nay chuyển về anomalyco/opencode.",
+    "purposeVi": "Giúp lập trình viên dùng AI để đọc hiểu, lập kế hoạch và chỉnh sửa mã ngay trong terminal hoặc ứng dụng desktop, với nhà cung cấp mô hình tùy chọn.",
+    "featuresVi": [
+      "Tác tử build: tác tử mặc định, toàn quyền cho công việc phát triển",
+      "Tác tử plan: chỉ đọc, mặc định chặn sửa tệp và hỏi trước khi chạy lệnh bash, phù hợp khám phá codebase lạ",
+      "Subagent general: xử lý tìm kiếm phức tạp và tác vụ nhiều bước, gọi bằng @general trong tin nhắn",
+      "Nhiều cách cài đặt: script cài, npm/bun/pnpm/yarn, Homebrew, pacman, AUR, mise, Nix",
+      "Ứng dụng desktop (beta): bản cho macOS (Apple Silicon/Intel), Windows và Linux (.deb, .rpm, .AppImage)",
+      "Chế độ không tương tác: chạy một lệnh với `opencode run` theo tài liệu CLI"
+    ],
+    "installGuideVi": "Yêu cầu: Terminal trên macOS, Linux hoặc Windows; tài khoản/API key của nhà cung cấp mô hình (cấu hình bằng lệnh /connect trong TUI hoặc `opencode auth login`).\nBước 1: Cài nhanh bằng script: `curl -fsSL https://opencode.ai/v2/install | bash`\nBước 2: Hoặc cài qua npm: `npm i -g @opencode/cli@latest`\nBước 3: Hoặc cài qua Homebrew (macOS/Linux): `brew install anomalyco/tap/opencode-v2`\nBước 4: Cấu hình API key cho nhà cung cấp mô hình: `opencode auth login`",
+    "usageGuideVi": "Bước 1: Chuyển vào thư mục dự án: `cd /path/to/project`\nBước 2: Khởi động giao diện TUI: `opencode`\nBước 3: Chạy `/init` để OpenCode phân tích dự án\nBước 4: Nhấn Tab để chuyển giữa tác tử build và plan; gọi subagent bằng @general khi cần\nBước 5: Chạy một yêu cầu không tương tác: `opencode run \"Explain how closures work in JavaScript\"`",
+    "samplePromptsVi": [
+      "Ở chế độ plan: giải thích kiến trúc của dự án này và các module chính",
+      "Thêm tính năng phân trang cho API danh sách sản phẩm và cập nhật test",
+      "@general tìm tất cả chỗ gọi hàm sendEmail và tóm tắt cách dùng"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "curl -fsSL https://opencode.ai/v2/install | bash",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"curl -fsSL https://opencode.ai/v2/install | bash\"\n  ],\n  \"nguon\": \"https://github.com/anomalyco/opencode\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, dùng tự do cả cho mục đích thương mại",
+      "Có tác tử plan chỉ đọc, an toàn khi khám phá codebase lạ",
+      "Nhiều kênh cài đặt và có cả ứng dụng desktop"
+    ],
+    "consVi": [
+      "Ứng dụng desktop vẫn đang ở giai đoạn beta",
+      "Cần tài khoản hoặc API key của nhà cung cấp mô hình",
+      "README khuyên gỡ các phiên bản cũ hơn 0.1.x trước khi cài"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# OpenCode — Tác tử lập trình AI mã nguồn mở trong terminal\n\n> The open source AI coding agent.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nOpenCode là tác tử lập trình AI mã nguồn mở với giao diện dòng lệnh dạng TUI, kèm ứng dụng desktop (bản beta) cho macOS, Windows và Linux. Công cụ có sẵn hai tác tử chuyển đổi bằng phím Tab: build (toàn quyền, dùng để phát triển) và plan (chỉ đọc, dùng để phân tích, khám phá mã). Repo trước đây nằm ở sst/opencode, nay chuyển về anomalyco/opencode.\n\nGiúp lập trình viên dùng AI để đọc hiểu, lập kế hoạch và chỉnh sửa mã ngay trong terminal hoặc ứng dụng desktop, với nhà cung cấp mô hình tùy chọn.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** opencode (Anomaly)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/anomalyco/opencode](https://github.com/anomalyco/opencode)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tác tử build: tác tử mặc định, toàn quyền cho công việc phát triển**\n- **Tác tử plan: chỉ đọc, mặc định chặn sửa tệp và hỏi trước khi chạy lệnh bash, phù hợp khám phá codebase lạ**\n- **Subagent general: xử lý tìm kiếm phức tạp và tác vụ nhiều bước, gọi bằng @general trong tin nhắn**\n- **Nhiều cách cài đặt: script cài, npm/bun/pnpm/yarn, Homebrew, pacman, AUR, mise, Nix**\n- **Ứng dụng desktop (beta): bản cho macOS (Apple Silicon/Intel), Windows và Linux (.deb, .rpm, .AppImage)**\n- **Chế độ không tương tác: chạy một lệnh với `opencode run` theo tài liệu CLI**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ncurl -fsSL https://opencode.ai/v2/install | bash\n```\n\nYêu cầu: Terminal trên macOS, Linux hoặc Windows; tài khoản/API key của nhà cung cấp mô hình (cấu hình bằng lệnh /connect trong TUI hoặc `opencode auth login`).\nBước 1: Cài nhanh bằng script: `curl -fsSL https://opencode.ai/v2/install | bash`\nBước 2: Hoặc cài qua npm: `npm i -g @opencode/cli@latest`\nBước 3: Hoặc cài qua Homebrew (macOS/Linux): `brew install anomalyco/tap/opencode-v2`\nBước 4: Cấu hình API key cho nhà cung cấp mô hình: `opencode auth login`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chuyển vào thư mục dự án: `cd /path/to/project`\nBước 2: Khởi động giao diện TUI: `opencode`\nBước 3: Chạy `/init` để OpenCode phân tích dự án\nBước 4: Nhấn Tab để chuyển giữa tác tử build và plan; gọi subagent bằng @general khi cần\nBước 5: Chạy một yêu cầu không tương tác: `opencode run \"Explain how closures work in JavaScript\"`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Ở chế độ plan: giải thích kiến trúc của dự án này và các module chính\"\n- \"Thêm tính năng phân trang cho API danh sách sản phẩm và cập nhật test\"\n- \"@general tìm tất cả chỗ gọi hàm sendEmail và tóm tắt cách dùng\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "qwenlm-qwen-code",
+    "slug": "qwenlm-qwen-code",
+    "name": "Qwen Code — Tác tử lập trình AI mã nguồn mở đa nền tảng",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/QwenLM/qwen-code",
+    "websiteUrl": "https://qwenlm.github.io/qwen-code-docs/",
+    "authorName": "QwenLM (Alibaba Qwen)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Qwen Code là tác tử lập trình AI mã nguồn mở của nhóm Qwen, dùng được trong terminal, trình soạn thảo, ứng dụng desktop, trình duyệt và ứng dụng chat. Công cụ hỗ trợ nhiều giao thức (OpenAI, Anthropic, Gemini, Qwen) cùng nhà cung cấp bên thứ ba hoặc mô hình cục bộ qua Ollama/vLLM, có SubAgents, Agent Teams, Auto-Memory, Auto-Skills và MCP. Dự án khởi đầu từ Gemini CLI v0.8.2 rồi phát triển độc lập.",
+    "purposeVi": "Cung cấp một tác tử lập trình mã nguồn mở, không phụ thuộc nhà cung cấp, để đọc hiểu kho mã, viết và sửa mã, chạy tự động trong CI/CD hoặc tích hợp qua SDK.",
+    "featuresVi": [
+      "Tác tử sẵn dùng: Auto-Memory, Auto-Skills, SubAgents, Agent Teams và MCP",
+      "Đa giao thức: hỗ trợ API OpenAI, Anthropic, Gemini, Qwen, nhà cung cấp bên thứ ba hoặc mô hình cục bộ (Ollama/vLLM), đổi được khi đang chạy",
+      "Nhiều giao diện: terminal, ứng dụng desktop, Web UI (`qwen serve --open`, thử nghiệm), plugin VS Code, Zed, JetBrains",
+      "Kênh chat: kết nối Telegram, DingTalk, WeChat, Feishu",
+      "Chế độ headless: chạy `qwen -p \"...\"` trong script, CI/CD hoặc tác vụ hàng loạt",
+      "SDK: TypeScript, Python và Java",
+      "Kỹ năng có sẵn: /review, /batch, /loop, /bugfix; Plan Mode, LSP, Sandbox, Git Worktrees"
+    ],
+    "installGuideVi": "Yêu cầu: Linux/macOS hoặc Windows; nếu cài qua NPM cần Node.js 22 trở lên. Cần cấu hình nhà cung cấp mô hình và API key bằng lệnh /auth trong phiên làm việc.\nBước 1: Linux/macOS: `curl -fsSL https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.sh | bash`\nBước 2: Windows (PowerShell): `irm https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.ps1 | iex`\nBước 3: Hoặc cài qua NPM (Node.js 22+): `npm install -g @qwen-code/qwen-code@latest`\nBước 4: Khởi động lại terminal để biến môi trường có hiệu lực",
+    "usageGuideVi": "Bước 1: Chuyển vào thư mục dự án: `cd /path/to/your-project`\nBước 2: Khởi động Qwen Code: `qwen`\nBước 3: Trong phiên làm việc, chạy `/auth` để cấu hình nhà cung cấp và API key\nBước 4: Đặt yêu cầu, ví dụ yêu cầu giải thích kho mã và chỉ chỗ bắt đầu\nBước 5: Dùng `qwen -p \"...\"` cho script hoặc CI/CD",
+    "samplePromptsVi": [
+      "Explain this repository and show me where to start.",
+      "Dùng /review để rà soát các thay đổi chưa commit và chỉ ra lỗi tiềm ẩn",
+      "Lập kế hoạch ở Plan Mode để chuyển module đăng nhập sang dùng JWT"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm install -g @qwen-code/qwen-code@latest",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm install -g @qwen-code/qwen-code@latest\"\n  ],\n  \"nguon\": \"https://github.com/QwenLM/qwen-code\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0; cả framework và mô hình Qwen đều mã nguồn mở",
+      "Hỗ trợ nhiều giao thức và mô hình cục bộ, không bị khóa vào một nhà cung cấp",
+      "Có nhiều giao diện (terminal, desktop, IDE, web, chat) và SDK cho tích hợp"
+    ],
+    "consVi": [
+      "Cài qua NPM yêu cầu Node.js 22 trở lên",
+      "Web UI và chế độ daemon (`qwen serve`) vẫn đang thử nghiệm",
+      "Cần tự cấu hình nhà cung cấp mô hình và API key"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Qwen Code — Tác tử lập trình AI mã nguồn mở đa nền tảng\n\n> The open-source AI coding agent for your terminal, editor, desktop, browser, and chat.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nQwen Code là tác tử lập trình AI mã nguồn mở của nhóm Qwen, dùng được trong terminal, trình soạn thảo, ứng dụng desktop, trình duyệt và ứng dụng chat. Công cụ hỗ trợ nhiều giao thức (OpenAI, Anthropic, Gemini, Qwen) cùng nhà cung cấp bên thứ ba hoặc mô hình cục bộ qua Ollama/vLLM, có SubAgents, Agent Teams, Auto-Memory, Auto-Skills và MCP. Dự án khởi đầu từ Gemini CLI v0.8.2 rồi phát triển độc lập.\n\nCung cấp một tác tử lập trình mã nguồn mở, không phụ thuộc nhà cung cấp, để đọc hiểu kho mã, viết và sửa mã, chạy tự động trong CI/CD hoặc tích hợp qua SDK.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** QwenLM (Alibaba Qwen)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/QwenLM/qwen-code](https://github.com/QwenLM/qwen-code)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tác tử sẵn dùng: Auto-Memory, Auto-Skills, SubAgents, Agent Teams và MCP**\n- **Đa giao thức: hỗ trợ API OpenAI, Anthropic, Gemini, Qwen, nhà cung cấp bên thứ ba hoặc mô hình cục bộ (Ollama/vLLM), đổi được khi đang chạy**\n- **Nhiều giao diện: terminal, ứng dụng desktop, Web UI (`qwen serve --open`, thử nghiệm), plugin VS Code, Zed, JetBrains**\n- **Kênh chat: kết nối Telegram, DingTalk, WeChat, Feishu**\n- **Chế độ headless: chạy `qwen -p \"...\"` trong script, CI/CD hoặc tác vụ hàng loạt**\n- **SDK: TypeScript, Python và Java**\n- **Kỹ năng có sẵn: /review, /batch, /loop, /bugfix; Plan Mode, LSP, Sandbox, Git Worktrees**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm install -g @qwen-code/qwen-code@latest\n```\n\nYêu cầu: Linux/macOS hoặc Windows; nếu cài qua NPM cần Node.js 22 trở lên. Cần cấu hình nhà cung cấp mô hình và API key bằng lệnh /auth trong phiên làm việc.\nBước 1: Linux/macOS: `curl -fsSL https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.sh | bash`\nBước 2: Windows (PowerShell): `irm https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.ps1 | iex`\nBước 3: Hoặc cài qua NPM (Node.js 22+): `npm install -g @qwen-code/qwen-code@latest`\nBước 4: Khởi động lại terminal để biến môi trường có hiệu lực\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chuyển vào thư mục dự án: `cd /path/to/your-project`\nBước 2: Khởi động Qwen Code: `qwen`\nBước 3: Trong phiên làm việc, chạy `/auth` để cấu hình nhà cung cấp và API key\nBước 4: Đặt yêu cầu, ví dụ yêu cầu giải thích kho mã và chỉ chỗ bắt đầu\nBước 5: Dùng `qwen -p \"...\"` cho script hoặc CI/CD\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Explain this repository and show me where to start.\"\n- \"Dùng /review để rà soát các thay đổi chưa commit và chỉ ra lỗi tiềm ẩn\"\n- \"Lập kế hoạch ở Plan Mode để chuyển module đăng nhập sang dùng JWT\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "aaif-goose-goose",
+    "slug": "aaif-goose-goose",
+    "name": "goose — Tác tử AI mã nguồn mở cho lập trình và quy trình công việc",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "rpa_workflow_automation"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Tự động hóa quy trình & RPA (Automation)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/aaif-goose/goose",
+    "websiteUrl": "https://goose-docs.ai/",
+    "authorName": "goose (Agentic AI Foundation, Linux Foundation; trước đây do Block phát triển)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "goose là tác tử AI đa năng chạy trên máy của bạn, không chỉ để viết mã mà còn cho nghiên cứu, viết lách, tự động hóa và phân tích dữ liệu. Dự án có ứng dụng desktop cho macOS, Linux, Windows, một CLI đầy đủ và API để nhúng, được viết bằng Rust. goose hỗ trợ hơn 15 nhà cung cấp mô hình và kết nối hơn 70 tiện ích mở rộng qua Model Context Protocol; repo trước đây là block/goose, nay thuộc Agentic AI Foundation tại Linux Foundation.",
+    "purposeVi": "Cung cấp một tác tử AI chạy cục bộ, dùng mô hình tùy chọn và mở rộng bằng MCP, để thực hiện tác vụ lập trình và quy trình công việc từ desktop, terminal hoặc qua API.",
+    "featuresVi": [
+      "Đa giao diện: ứng dụng desktop (macOS, Linux, Windows), CLI cho terminal và API để nhúng",
+      "Hơn 15 nhà cung cấp: Anthropic, OpenAI, Google, Ollama, OpenRouter, Azure, Bedrock và nhiều hơn",
+      "Dùng gói đăng ký sẵn có: dùng gói Claude, ChatGPT hoặc Gemini hiện có qua ACP",
+      "Mở rộng qua MCP: kết nối hơn 70 tiện ích mở rộng theo chuẩn Model Context Protocol",
+      "Bản phân phối tùy biến: tự đóng gói goose với nhà cung cấp, tiện ích và thương hiệu cấu hình sẵn",
+      "Viết bằng Rust: hướng tới hiệu năng và tính di động"
+    ],
+    "installGuideVi": "Yêu cầu: macOS, Linux hoặc Windows; API key của một nhà cung cấp mô hình được hỗ trợ hoặc gói đăng ký Claude/ChatGPT/Gemini dùng qua ACP, hoặc mô hình cục bộ qua Ollama.\nBước 1: Cài CLI: `curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash`\nBước 2: Hoặc tải ứng dụng desktop tại trang hướng dẫn cài đặt của goose\nBước 3: Cấu hình nhà cung cấp mô hình: `goose configure` rồi chọn Configure Providers",
+    "usageGuideVi": "Bước 1: Tạo một thư mục trống và chuyển vào thư mục đó trong terminal\nBước 2: Bắt đầu phiên làm việc mới: `goose session`\nBước 3: Nhập câu hỏi, tác vụ hoặc hướng dẫn; goose sẽ bắt đầu thực hiện\nBước 4: Bổ sung tiện ích MCP khi cần mở rộng khả năng của tác tử",
+    "samplePromptsVi": [
+      "Tạo một trò chơi tic-tac-toe bằng JavaScript chạy trong trình duyệt",
+      "Phân tích tệp CSV doanh số trong thư mục này và tóm tắt xu hướng theo tháng",
+      "Viết script tự động đổi tên hàng loạt ảnh theo ngày chụp"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash\"\n  ],\n  \"nguon\": \"https://github.com/aaif-goose/goose\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, thuộc Agentic AI Foundation tại Linux Foundation",
+      "Hỗ trợ nhiều nhà cung cấp và hơn 70 tiện ích MCP",
+      "Có cả ứng dụng desktop, CLI và API"
+    ],
+    "consVi": [
+      "Cần API key hoặc gói đăng ký của nhà cung cấp mô hình (hoặc tự chạy mô hình cục bộ)",
+      "README ngắn, phần lớn hướng dẫn chi tiết nằm ở trang tài liệu riêng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# goose — Tác tử AI mã nguồn mở cho lập trình và quy trình công việc\n\n> your native open source AI agent — desktop app, CLI, and API — for code, workflows, and everything in between\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\ngoose là tác tử AI đa năng chạy trên máy của bạn, không chỉ để viết mã mà còn cho nghiên cứu, viết lách, tự động hóa và phân tích dữ liệu. Dự án có ứng dụng desktop cho macOS, Linux, Windows, một CLI đầy đủ và API để nhúng, được viết bằng Rust. goose hỗ trợ hơn 15 nhà cung cấp mô hình và kết nối hơn 70 tiện ích mở rộng qua Model Context Protocol; repo trước đây là block/goose, nay thuộc Agentic AI Foundation tại Linux Foundation.\n\nCung cấp một tác tử AI chạy cục bộ, dùng mô hình tùy chọn và mở rộng bằng MCP, để thực hiện tác vụ lập trình và quy trình công việc từ desktop, terminal hoặc qua API.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** goose (Agentic AI Foundation, Linux Foundation; trước đây do Block phát triển)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/aaif-goose/goose](https://github.com/aaif-goose/goose)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Đa giao diện: ứng dụng desktop (macOS, Linux, Windows), CLI cho terminal và API để nhúng**\n- **Hơn 15 nhà cung cấp: Anthropic, OpenAI, Google, Ollama, OpenRouter, Azure, Bedrock và nhiều hơn**\n- **Dùng gói đăng ký sẵn có: dùng gói Claude, ChatGPT hoặc Gemini hiện có qua ACP**\n- **Mở rộng qua MCP: kết nối hơn 70 tiện ích mở rộng theo chuẩn Model Context Protocol**\n- **Bản phân phối tùy biến: tự đóng gói goose với nhà cung cấp, tiện ích và thương hiệu cấu hình sẵn**\n- **Viết bằng Rust: hướng tới hiệu năng và tính di động**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ncurl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash\n```\n\nYêu cầu: macOS, Linux hoặc Windows; API key của một nhà cung cấp mô hình được hỗ trợ hoặc gói đăng ký Claude/ChatGPT/Gemini dùng qua ACP, hoặc mô hình cục bộ qua Ollama.\nBước 1: Cài CLI: `curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash`\nBước 2: Hoặc tải ứng dụng desktop tại trang hướng dẫn cài đặt của goose\nBước 3: Cấu hình nhà cung cấp mô hình: `goose configure` rồi chọn Configure Providers\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo một thư mục trống và chuyển vào thư mục đó trong terminal\nBước 2: Bắt đầu phiên làm việc mới: `goose session`\nBước 3: Nhập câu hỏi, tác vụ hoặc hướng dẫn; goose sẽ bắt đầu thực hiện\nBước 4: Bổ sung tiện ích MCP khi cần mở rộng khả năng của tác tử\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo một trò chơi tic-tac-toe bằng JavaScript chạy trong trình duyệt\"\n- \"Phân tích tệp CSV doanh số trong thư mục này và tóm tắt xu hướng theo tháng\"\n- \"Viết script tự động đổi tên hàng loạt ảnh theo ngày chụp\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "kilo-org-kilocode",
+    "slug": "kilo-org-kilocode",
+    "name": "Kilo Code — Tác tử lập trình AI cho VS Code, JetBrains và CLI",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/Kilo-Org/kilocode",
+    "websiteUrl": "https://kilo.ai",
+    "authorName": "Kilo Code (Kilo-Org)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Kilo Code là tác tử lập trình AI mã nguồn mở dùng được trong VS Code, JetBrains và dòng lệnh. Người dùng chọn trong hơn 500 mô hình, đổi mô hình ngay giữa tác vụ, và trả theo giá của nhà cung cấp mô hình mà không bị cộng thêm phí. Kilo CLI là bản fork của OpenCode, được mở rộng để làm việc trong nền tảng Kilo.",
+    "purposeVi": "Giúp lập trình viên sinh mã, gỡ lỗi, lập kế hoạch kiến trúc và tự động hóa tác vụ (kể cả trong CI/CD) với mô hình tùy chọn, ngay trong IDE hoặc terminal.",
+    "featuresVi": [
+      "Các tác tử chuyên biệt: Code (mặc định), Plan (thiết kế kiến trúc), Ask (hỏi đáp không sửa tệp), Debug (truy lỗi); có thể tự tạo tác tử riêng",
+      "Sinh mã từ ngôn ngữ tự nhiên: chỉnh sửa trên nhiều tệp",
+      "Gợi ý mã nội tuyến: ghost-text, nhấn Tab để chấp nhận",
+      "Tự kiểm tra: tác tử rà soát và sửa lại kết quả của chính nó",
+      "Điều khiển terminal và trình duyệt: chạy lệnh và tự động hóa web",
+      "Kilo Marketplace: cài thêm tác tử, skill, MCP server và plugin",
+      "Hơn 500 mô hình: đổi mô hình giữa tác vụ để cân bằng độ trễ, chi phí và khả năng suy luận",
+      "Chế độ tự động cho CI/CD: `kilo run --auto` chạy không cần xác nhận"
+    ],
+    "installGuideVi": "Yêu cầu: VS Code, IDE JetBrains hoặc terminal (cài CLI qua npm, pnpm, bun, Homebrew, AUR hoặc script). Cần tạo tài khoản Kilo để dùng các mô hình theo giá nhà cung cấp.\nBước 1: VS Code: cài tiện ích Kilo Code từ VS Code Marketplace\nBước 2: JetBrains: cài plugin Kilo Code từ JetBrains Marketplace\nBước 3: CLI qua npm: `npm install -g @kilocode/cli`\nBước 4: Hoặc CLI qua script: `curl -fsSL https://kilo.ai/cli/install | bash`\nBước 5: Hoặc qua Homebrew (macOS/Linux): `brew install Kilo-Org/tap/kilo`",
+    "usageGuideVi": "Bước 1: Chạy `kilo` trong thư mục dự án bất kỳ để bắt đầu\nBước 2: Chọn tác tử phù hợp (Code, Plan, Ask, Debug) theo nhiệm vụ\nBước 3: Chọn mô hình và có thể đổi mô hình giữa chừng\nBước 4: Trong CI/CD, chạy tự động: `kilo run --auto \"run tests and fix any failures\"`",
+    "samplePromptsVi": [
+      "Ở chế độ Plan: thiết kế kiến trúc cho dịch vụ đặt lịch hẹn và viết kế hoạch triển khai",
+      "Ở chế độ Ask: giải thích luồng xác thực người dùng trong codebase này",
+      "run tests and fix any failures"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm install -g @kilocode/cli",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm install -g @kilocode/cli\"\n  ],\n  \"nguon\": \"https://github.com/Kilo-Org/kilocode\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Phần mềm miễn phí; khi dùng mô hình qua Kilo, trả theo giá của nhà cung cấp mô hình, không cộng thêm phí (theo README).",
+    "prosVi": [
+      "Giấy phép MIT, được dùng cả cho mục đích thương mại",
+      "Dùng được trong VS Code, JetBrains và CLI",
+      "Trả theo giá nhà cung cấp mô hình, không cộng phí; không cần API key để bắt đầu"
+    ],
+    "consVi": [
+      "Cờ `--auto` tự chấp thuận các yêu cầu quyền; README khuyên chỉ dùng trong môi trường tin cậy",
+      "Để dùng các mô hình qua Kilo cần tạo tài khoản và trả phí sử dụng mô hình",
+      "Một số tính năng (Cloud Agent, Code Reviews) là dịch vụ trên app.kilo.ai"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Kilo Code — Tác tử lập trình AI cho VS Code, JetBrains và CLI\n\n> The open source coding agent for building with AI in VS Code, JetBrains, or the CLI.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nKilo Code là tác tử lập trình AI mã nguồn mở dùng được trong VS Code, JetBrains và dòng lệnh. Người dùng chọn trong hơn 500 mô hình, đổi mô hình ngay giữa tác vụ, và trả theo giá của nhà cung cấp mô hình mà không bị cộng thêm phí. Kilo CLI là bản fork của OpenCode, được mở rộng để làm việc trong nền tảng Kilo.\n\nGiúp lập trình viên sinh mã, gỡ lỗi, lập kế hoạch kiến trúc và tự động hóa tác vụ (kể cả trong CI/CD) với mô hình tùy chọn, ngay trong IDE hoặc terminal.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Kilo Code (Kilo-Org)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/Kilo-Org/kilocode](https://github.com/Kilo-Org/kilocode)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Các tác tử chuyên biệt: Code (mặc định), Plan (thiết kế kiến trúc), Ask (hỏi đáp không sửa tệp), Debug (truy lỗi); có thể tự tạo tác tử riêng**\n- **Sinh mã từ ngôn ngữ tự nhiên: chỉnh sửa trên nhiều tệp**\n- **Gợi ý mã nội tuyến: ghost-text, nhấn Tab để chấp nhận**\n- **Tự kiểm tra: tác tử rà soát và sửa lại kết quả của chính nó**\n- **Điều khiển terminal và trình duyệt: chạy lệnh và tự động hóa web**\n- **Kilo Marketplace: cài thêm tác tử, skill, MCP server và plugin**\n- **Hơn 500 mô hình: đổi mô hình giữa tác vụ để cân bằng độ trễ, chi phí và khả năng suy luận**\n- **Chế độ tự động cho CI/CD: `kilo run --auto` chạy không cần xác nhận**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm install -g @kilocode/cli\n```\n\nYêu cầu: VS Code, IDE JetBrains hoặc terminal (cài CLI qua npm, pnpm, bun, Homebrew, AUR hoặc script). Cần tạo tài khoản Kilo để dùng các mô hình theo giá nhà cung cấp.\nBước 1: VS Code: cài tiện ích Kilo Code từ VS Code Marketplace\nBước 2: JetBrains: cài plugin Kilo Code từ JetBrains Marketplace\nBước 3: CLI qua npm: `npm install -g @kilocode/cli`\nBước 4: Hoặc CLI qua script: `curl -fsSL https://kilo.ai/cli/install | bash`\nBước 5: Hoặc qua Homebrew (macOS/Linux): `brew install Kilo-Org/tap/kilo`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy `kilo` trong thư mục dự án bất kỳ để bắt đầu\nBước 2: Chọn tác tử phù hợp (Code, Plan, Ask, Debug) theo nhiệm vụ\nBước 3: Chọn mô hình và có thể đổi mô hình giữa chừng\nBước 4: Trong CI/CD, chạy tự động: `kilo run --auto \"run tests and fix any failures\"`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Ở chế độ Plan: thiết kế kiến trúc cho dịch vụ đặt lịch hẹn và viết kế hoạch triển khai\"\n- \"Ở chế độ Ask: giải thích luồng xác thực người dùng trong codebase này\"\n- \"run tests and fix any failures\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "charmbracelet-crush",
+    "slug": "charmbracelet-crush",
+    "name": "Crush — Tác tử lập trình AI trong terminal của Charm",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/charmbracelet/crush",
+    "websiteUrl": "",
+    "authorName": "Charmbracelet, Inc.",
+    "license": "Nguồn mở có điều kiện (FSL-1.1-MIT, cấm dùng cạnh tranh thương mại; chuyển sang MIT sau 2 năm)",
+    "summaryVi": "Crush là tác tử lập trình AI chạy trong terminal của Charm, kết nối công cụ, mã nguồn và quy trình làm việc với LLM tùy chọn. Crush hỗ trợ nhiều mô hình qua API tương thích OpenAI/Anthropic, đổi mô hình giữa phiên mà vẫn giữ ngữ cảnh, quản lý nhiều phiên theo dự án, dùng LSP để lấy thêm ngữ cảnh và mở rộng bằng MCP (http, stdio, sse).",
+    "purposeVi": "Mang một trợ lý lập trình AI có hiểu biết ngữ cảnh mã (qua LSP) và mở rộng được bằng MCP vào mọi terminal, trên nhiều hệ điều hành.",
+    "featuresVi": [
+      "Đa mô hình: chọn nhiều LLM hoặc thêm mô hình riêng qua API tương thích OpenAI hoặc Anthropic",
+      "Linh hoạt: đổi LLM giữa phiên mà vẫn giữ ngữ cảnh",
+      "Theo phiên: duy trì nhiều phiên làm việc và ngữ cảnh cho mỗi dự án",
+      "Tăng cường bằng LSP: dùng language server để có thêm ngữ cảnh mã",
+      "Mở rộng: thêm khả năng qua MCP (http, stdio, sse), hỗ trợ OAuth cho MCP server",
+      "Chạy mọi nơi: macOS, Linux, Windows (PowerShell và WSL), Android, FreeBSD, OpenBSD, NetBSD",
+      "Mô hình cục bộ: hỗ trợ nhà cung cấp kiểu llamacpp, lmstudio, litellm, ollama",
+      "Agent Skills và Hooks: mở rộng hành vi tác tử"
+    ],
+    "installGuideVi": "Yêu cầu: Terminal trên macOS, Linux, Windows hoặc BSD; API key của nhà cung cấp mô hình (Anthropic, OpenAI, Gemini, OpenRouter...) qua biến môi trường hoặc model picker, gói Charm Hyper, hoặc mô hình cục bộ.\nBước 1: Cài đặt bằng Homebrew: `brew install charmbracelet/tap/crush`\nBước 2: Hoặc NPM (macOS, Linux, Windows): `npm install -g @charmland/crush`\nBước 3: Windows qua Winget: `winget install charmbracelet.crush`\nBước 4: Hoặc cài bằng Go: `go install github.com/charmbracelet/crush@latest`\nBước 5: Đặt API key qua biến môi trường, ví dụ ANTHROPIC_API_KEY hoặc OPENAI_API_KEY",
+    "usageGuideVi": "Bước 1: Chạy lệnh `crush` trong thư mục dự án\nBước 2: Nhấn Ctrl+L để mở model picker, chọn nhà cung cấp và dán API key (hoặc chọn mô hình Hyper)\nBước 3: Giao việc lập trình cho Crush; thêm MCP server, LSP trong cấu hình khi cần\nBước 4: Xem nhật ký khi cần gỡ lỗi: `crush logs`",
+    "samplePromptsVi": [
+      "Đọc package main và giải thích luồng xử lý request chính",
+      "Sửa lỗi kiểm thử đang thất bại trong thư mục internal/api",
+      "Thêm cờ dòng lệnh --verbose và cập nhật tài liệu sử dụng"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm install -g @charmland/crush",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm install -g @charmland/crush\"\n  ],\n  \"nguon\": \"https://github.com/charmbracelet/crush\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "prosVi": [
+      "Hỗ trợ rất nhiều nhà cung cấp và cả mô hình cục bộ",
+      "Chạy trên nhiều hệ điều hành, kể cả Android và các BSD",
+      "Mở rộng tốt qua MCP, LSP, skill và hook"
+    ],
+    "consVi": [
+      "Giấy phép FSL-1.1-MIT không phải mã nguồn mở hoàn toàn: cấm dùng cho sản phẩm thương mại cạnh tranh; mỗi phiên bản chuyển sang MIT sau 2 năm",
+      "Thu thập số liệu sử dụng ẩn danh theo mặc định (tắt bằng CRUSH_DISABLE_METRICS=1 hoặc DO_NOT_TRACK=1)",
+      "Nhà cung cấp chính thức Hyper là dịch vụ trả phí theo gói đăng ký"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Crush — Tác tử lập trình AI trong terminal của Charm\n\n> Your new coding bestie, now available in your favourite terminal.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nCrush là tác tử lập trình AI chạy trong terminal của Charm, kết nối công cụ, mã nguồn và quy trình làm việc với LLM tùy chọn. Crush hỗ trợ nhiều mô hình qua API tương thích OpenAI/Anthropic, đổi mô hình giữa phiên mà vẫn giữ ngữ cảnh, quản lý nhiều phiên theo dự án, dùng LSP để lấy thêm ngữ cảnh và mở rộng bằng MCP (http, stdio, sse).\n\nMang một trợ lý lập trình AI có hiểu biết ngữ cảnh mã (qua LSP) và mở rộng được bằng MCP vào mọi terminal, trên nhiều hệ điều hành.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Charmbracelet, Inc.\n- **Giấy phép bản quyền:** Nguồn mở có điều kiện (FSL-1.1-MIT, cấm dùng cạnh tranh thương mại; chuyển sang MIT sau 2 năm)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/charmbracelet/crush](https://github.com/charmbracelet/crush)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Đa mô hình: chọn nhiều LLM hoặc thêm mô hình riêng qua API tương thích OpenAI hoặc Anthropic**\n- **Linh hoạt: đổi LLM giữa phiên mà vẫn giữ ngữ cảnh**\n- **Theo phiên: duy trì nhiều phiên làm việc và ngữ cảnh cho mỗi dự án**\n- **Tăng cường bằng LSP: dùng language server để có thêm ngữ cảnh mã**\n- **Mở rộng: thêm khả năng qua MCP (http, stdio, sse), hỗ trợ OAuth cho MCP server**\n- **Chạy mọi nơi: macOS, Linux, Windows (PowerShell và WSL), Android, FreeBSD, OpenBSD, NetBSD**\n- **Mô hình cục bộ: hỗ trợ nhà cung cấp kiểu llamacpp, lmstudio, litellm, ollama**\n- **Agent Skills và Hooks: mở rộng hành vi tác tử**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm install -g @charmland/crush\n```\n\nYêu cầu: Terminal trên macOS, Linux, Windows hoặc BSD; API key của nhà cung cấp mô hình (Anthropic, OpenAI, Gemini, OpenRouter...) qua biến môi trường hoặc model picker, gói Charm Hyper, hoặc mô hình cục bộ.\nBước 1: Cài đặt bằng Homebrew: `brew install charmbracelet/tap/crush`\nBước 2: Hoặc NPM (macOS, Linux, Windows): `npm install -g @charmland/crush`\nBước 3: Windows qua Winget: `winget install charmbracelet.crush`\nBước 4: Hoặc cài bằng Go: `go install github.com/charmbracelet/crush@latest`\nBước 5: Đặt API key qua biến môi trường, ví dụ ANTHROPIC_API_KEY hoặc OPENAI_API_KEY\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy lệnh `crush` trong thư mục dự án\nBước 2: Nhấn Ctrl+L để mở model picker, chọn nhà cung cấp và dán API key (hoặc chọn mô hình Hyper)\nBước 3: Giao việc lập trình cho Crush; thêm MCP server, LSP trong cấu hình khi cần\nBước 4: Xem nhật ký khi cần gỡ lỗi: `crush logs`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Đọc package main và giải thích luồng xử lý request chính\"\n- \"Sửa lỗi kiểm thử đang thất bại trong thư mục internal/api\"\n- \"Thêm cờ dòng lệnh --verbose và cập nhật tài liệu sử dụng\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "swe-agent-mini-swe-agent",
+    "slug": "swe-agent-mini-swe-agent",
+    "name": "mini-swe-agent — Tác tử kỹ sư phần mềm AI tối giản",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "qa_testing"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Kiểm thử phần mềm & QA/QC"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/SWE-agent/mini-swe-agent",
+    "websiteUrl": "https://mini-swe-agent.com/latest/",
+    "authorName": "SWE-agent (Đại học Princeton và Stanford)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "mini-swe-agent là tác tử kỹ sư phần mềm AI tối giản do nhóm tác giả SWE-bench và SWE-agent (Princeton, Stanford) xây dựng, với lớp tác tử chỉ khoảng 100 dòng Python. Tác tử chỉ dùng bash, có lịch sử tuyến tính và thực thi mỗi hành động độc lập bằng subprocess.run, đạt trên 74% trên SWE-bench verified. Đây là bản kế nhiệm được nhóm khuyến nghị thay cho SWE-agent.",
+    "purposeVi": "Cung cấp một tác tử lập trình đơn giản, dễ hiểu và dễ mở rộng để dùng hằng ngày qua CLI, chạy đánh giá benchmark hoặc làm nền cho nghiên cứu fine-tuning/RL.",
+    "featuresVi": [
+      "Tối giản: lớp tác tử khoảng 100 dòng Python, không có phụ thuộc phức tạp",
+      "Chỉ dùng bash: không cần giao diện tool-calling nên chạy được với mọi mô hình",
+      "Lịch sử tuyến tính: mỗi bước chỉ nối thêm tin nhắn, thuận tiện gỡ lỗi và fine-tuning",
+      "Nhiều môi trường: cục bộ, docker/podman, singularity/apptainer, bubblewrap, contree",
+      "Tương thích mọi mô hình: qua litellm, openrouter, portkey; hỗ trợ endpoint /completion và /response",
+      "Công cụ đi kèm: CLI `mini`, chạy hàng loạt trên SWE-bench, trình duyệt trajectory, Python bindings"
+    ],
+    "installGuideVi": "Yêu cầu: Python và pip (hoặc uv/pipx); API key của nhà cung cấp mô hình được hỗ trợ qua litellm, openrouter hoặc portkey.\nBước 1: Dùng thử CLI trong môi trường ảo tạm: `pip install uv && uvx mini-swe-agent`\nBước 2: Hoặc cài vào môi trường hiện tại: `pip install mini-swe-agent`\nBước 3: Hoặc cài từ mã nguồn: `git clone https://github.com/SWE-agent/mini-swe-agent.git` rồi `cd mini-swe-agent && pip install -e .`",
+    "usageGuideVi": "Bước 1: Chạy CLI: `mini`\nBước 2: Cấu hình mô hình và API key theo hướng dẫn cấu hình toàn cục trong tài liệu\nBước 3: Mô tả tác vụ; tác tử thực thi các lệnh bash để hoàn thành và ghi lại trajectory\nBước 4: Dùng chế độ batch inference để chạy đánh giá trên SWE-bench",
+    "samplePromptsVi": [
+      "Write a sudoku game",
+      "Tìm và sửa lỗi khiến test test_parser.py thất bại trong kho mã này",
+      "Thêm tùy chọn xuất kết quả ra tệp JSON cho script phân tích log"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install mini-swe-agent",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install mini-swe-agent\"\n  ],\n  \"nguon\": \"https://github.com/SWE-agent/mini-swe-agent\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, mã nguồn rất gọn và dễ hiểu",
+      "Hiệu năng cao trên SWE-bench verified (trên 74% theo README)",
+      "Chạy được trong nhiều loại sandbox và với mọi mô hình"
+    ],
+    "consVi": [
+      "Chỉ dùng bash, không có bộ công cụ chuyên biệt như SWE-agent",
+      "Đây là phiên bản v2; người dùng v1 cần xem hướng dẫn chuyển đổi",
+      "Cần API key của nhà cung cấp mô hình"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# mini-swe-agent — Tác tử kỹ sư phần mềm AI tối giản\n\n> The minimal AI software engineering agent\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nmini-swe-agent là tác tử kỹ sư phần mềm AI tối giản do nhóm tác giả SWE-bench và SWE-agent (Princeton, Stanford) xây dựng, với lớp tác tử chỉ khoảng 100 dòng Python. Tác tử chỉ dùng bash, có lịch sử tuyến tính và thực thi mỗi hành động độc lập bằng subprocess.run, đạt trên 74% trên SWE-bench verified. Đây là bản kế nhiệm được nhóm khuyến nghị thay cho SWE-agent.\n\nCung cấp một tác tử lập trình đơn giản, dễ hiểu và dễ mở rộng để dùng hằng ngày qua CLI, chạy đánh giá benchmark hoặc làm nền cho nghiên cứu fine-tuning/RL.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** SWE-agent (Đại học Princeton và Stanford)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/SWE-agent/mini-swe-agent](https://github.com/SWE-agent/mini-swe-agent)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tối giản: lớp tác tử khoảng 100 dòng Python, không có phụ thuộc phức tạp**\n- **Chỉ dùng bash: không cần giao diện tool-calling nên chạy được với mọi mô hình**\n- **Lịch sử tuyến tính: mỗi bước chỉ nối thêm tin nhắn, thuận tiện gỡ lỗi và fine-tuning**\n- **Nhiều môi trường: cục bộ, docker/podman, singularity/apptainer, bubblewrap, contree**\n- **Tương thích mọi mô hình: qua litellm, openrouter, portkey; hỗ trợ endpoint /completion và /response**\n- **Công cụ đi kèm: CLI `mini`, chạy hàng loạt trên SWE-bench, trình duyệt trajectory, Python bindings**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install mini-swe-agent\n```\n\nYêu cầu: Python và pip (hoặc uv/pipx); API key của nhà cung cấp mô hình được hỗ trợ qua litellm, openrouter hoặc portkey.\nBước 1: Dùng thử CLI trong môi trường ảo tạm: `pip install uv && uvx mini-swe-agent`\nBước 2: Hoặc cài vào môi trường hiện tại: `pip install mini-swe-agent`\nBước 3: Hoặc cài từ mã nguồn: `git clone https://github.com/SWE-agent/mini-swe-agent.git` rồi `cd mini-swe-agent && pip install -e .`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy CLI: `mini`\nBước 2: Cấu hình mô hình và API key theo hướng dẫn cấu hình toàn cục trong tài liệu\nBước 3: Mô tả tác vụ; tác tử thực thi các lệnh bash để hoàn thành và ghi lại trajectory\nBước 4: Dùng chế độ batch inference để chạy đánh giá trên SWE-bench\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Write a sudoku game\"\n- \"Tìm và sửa lỗi khiến test test_parser.py thất bại trong kho mã này\"\n- \"Thêm tùy chọn xuất kết quả ra tệp JSON cho script phân tích log\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "wshobson-agents",
+    "slug": "wshobson-agents",
+    "name": "wshobson/agents — Kho plugin, subagent và skill cho Claude Code",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "backend_api",
+    "categoryNameVi": "Backend & Kiến trúc API",
+    "categories": [
+      "backend_api",
+      "qa_testing",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Backend & Kiến trúc API",
+      "Kiểm thử phần mềm & QA/QC",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/wshobson/agents",
+    "websiteUrl": "",
+    "authorName": "Seth Hobson (wshobson)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Bộ sưu tập plugin, subagent, skill và lệnh dùng chung cho Claude Code và nhiều công cụ lập trình AI khác. Theo README, kho gồm 94 plugin, 202 agent, 185 skill và 105 lệnh, bao phủ phát triển Python/JavaScript, review mã, kiểm thử, hạ tầng và bảo mật. Với Claude Code, kho hoạt động như một plugin marketplace có tên claude-code-workflows.",
+    "purposeVi": "Giúp lập trình viên cài nhanh các nhóm subagent, skill và lệnh chuyên biệt vào Claude Code theo đúng mảng công việc thay vì tự viết từ đầu.",
+    "featuresVi": [
+      "Plugin marketplace cho Claude Code: thêm bằng `/plugin marketplace add wshobson/agents` rồi cài từng plugin",
+      "Nhiều plugin chuyên biệt: python-development, javascript-typescript, developer-essentials, security-scanning…",
+      "Subagent chuyên môn: 202 agent hướng dẫn xử lý các việc được giao theo lĩnh vực",
+      "Skill riêng lẻ: cài từng skill bằng `gh skill` hoặc `npx skills` mà không cần cài cả plugin",
+      "Đa công cụ: hỗ trợ Claude Code, Codex CLI, Cursor, OpenCode, Antigravity CLI, GitHub Copilot và Pi",
+      "Công cụ plugin-eval kiểm tra tĩnh chất lượng skill"
+    ],
+    "installGuideVi": "Yêu cầu: Claude Code có hỗ trợ plugin marketplace. Cài skill riêng lẻ cần GitHub CLI 2.90 trở lên (gh skill) hoặc Node.js và npm (npx skills).\nBước 1: Trong Claude Code, thêm marketplace: `/plugin marketplace add wshobson/agents`\nBước 2: Cài plugin cần dùng, ví dụ plugin Python: `/plugin install python-development@claude-code-workflows`\nBước 3: Hoặc chỉ cài một skill riêng lẻ: `npx skills add wshobson/agents --skill python-testing-patterns`",
+    "usageGuideVi": "Bước 1: Chọn plugin phù hợp trong danh mục plugin (docs/plugins.md) theo mảng công việc\nBước 2: Sau khi cài, yêu cầu Claude dùng các agent của plugin cho nhiệm vụ, hoặc gọi lệnh của plugin, ví dụ `/python-development:python-scaffold Create a FastAPI service with tests`\nBước 3: Cài thêm hoặc gỡ plugin theo nhu cầu để giữ ngữ cảnh gọn",
+    "samplePromptsVi": [
+      "/python-development:python-scaffold Tạo dịch vụ FastAPI kèm bộ kiểm thử",
+      "Dùng agent bảo mật trong plugin security-scanning để rà soát lỗ hổng phụ thuộc của dự án này",
+      "Dùng các agent JavaScript/TypeScript để khởi tạo cấu trúc dự án Node.js mới"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "/plugin marketplace add wshobson/agents",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"/plugin marketplace add wshobson/agents\"\n  ],\n  \"nguon\": \"https://github.com/wshobson/agents\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, dùng tự do kể cả mục đích thương mại",
+      "Kho rất lớn: 94 plugin, 202 agent, 185 skill, 105 lệnh, được cập nhật thường xuyên",
+      "Cài theo từng plugin hoặc từng skill, không phải nạp toàn bộ"
+    ],
+    "consVi": [
+      "Plugin bên ngoài (external) có giấy phép và yêu cầu cài đặt riêng",
+      "Lớp đánh giá LLM judge và Monte Carlo của plugin-eval còn thử nghiệm; khi đặt ANTHROPIC_API_KEY sẽ tính phí vào tài khoản API",
+      "Thành phần khả dụng khác nhau tùy công cụ (harness) và cách cài"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# wshobson/agents — Kho plugin, subagent và skill cho Claude Code\n\n> Use one collection of plugins, agents, skills, and commands across Claude Code, OpenAI Codex CLI, Cursor, OpenCode, Antigravity CLI, GitHub Copilot, and Pi.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nBộ sưu tập plugin, subagent, skill và lệnh dùng chung cho Claude Code và nhiều công cụ lập trình AI khác. Theo README, kho gồm 94 plugin, 202 agent, 185 skill và 105 lệnh, bao phủ phát triển Python/JavaScript, review mã, kiểm thử, hạ tầng và bảo mật. Với Claude Code, kho hoạt động như một plugin marketplace có tên claude-code-workflows.\n\nGiúp lập trình viên cài nhanh các nhóm subagent, skill và lệnh chuyên biệt vào Claude Code theo đúng mảng công việc thay vì tự viết từ đầu.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Backend & Kiến trúc API\n- **Tác giả / Nhà phát triển:** Seth Hobson (wshobson)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/wshobson/agents](https://github.com/wshobson/agents)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Plugin marketplace cho Claude Code: thêm bằng `/plugin marketplace add wshobson/agents` rồi cài từng plugin**\n- **Nhiều plugin chuyên biệt: python-development, javascript-typescript, developer-essentials, security-scanning…**\n- **Subagent chuyên môn: 202 agent hướng dẫn xử lý các việc được giao theo lĩnh vực**\n- **Skill riêng lẻ: cài từng skill bằng `gh skill` hoặc `npx skills` mà không cần cài cả plugin**\n- **Đa công cụ: hỗ trợ Claude Code, Codex CLI, Cursor, OpenCode, Antigravity CLI, GitHub Copilot và Pi**\n- **Công cụ plugin-eval kiểm tra tĩnh chất lượng skill**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n/plugin marketplace add wshobson/agents\n```\n\nYêu cầu: Claude Code có hỗ trợ plugin marketplace. Cài skill riêng lẻ cần GitHub CLI 2.90 trở lên (gh skill) hoặc Node.js và npm (npx skills).\nBước 1: Trong Claude Code, thêm marketplace: `/plugin marketplace add wshobson/agents`\nBước 2: Cài plugin cần dùng, ví dụ plugin Python: `/plugin install python-development@claude-code-workflows`\nBước 3: Hoặc chỉ cài một skill riêng lẻ: `npx skills add wshobson/agents --skill python-testing-patterns`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn plugin phù hợp trong danh mục plugin (docs/plugins.md) theo mảng công việc\nBước 2: Sau khi cài, yêu cầu Claude dùng các agent của plugin cho nhiệm vụ, hoặc gọi lệnh của plugin, ví dụ `/python-development:python-scaffold Create a FastAPI service with tests`\nBước 3: Cài thêm hoặc gỡ plugin theo nhu cầu để giữ ngữ cảnh gọn\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"/python-development:python-scaffold Tạo dịch vụ FastAPI kèm bộ kiểm thử\"\n- \"Dùng agent bảo mật trong plugin security-scanning để rà soát lỗ hổng phụ thuộc của dự án này\"\n- \"Dùng các agent JavaScript/TypeScript để khởi tạo cấu trúc dự án Node.js mới\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "maciek-roboblog-claude-code-usage-monitor",
+    "slug": "maciek-roboblog-claude-code-usage-monitor",
+    "name": "Claude Code Usage Monitor — Theo dõi hạn mức sử dụng Claude Code trên terminal",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "data_science_analytics",
+    "categoryNameVi": "Khoa học dữ liệu & Phân tích kinh doanh",
+    "categories": [
+      "data_science_analytics",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Khoa học dữ liệu & Phân tích kinh doanh",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor",
+    "websiteUrl": "https://pypi.org/project/claude-monitor/",
+    "authorName": "Maciej (Maciek-roboblog)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Công cụ dòng lệnh theo dõi mức sử dụng Claude Code theo thời gian thực trên terminal: token, số tin nhắn và chi phí trong phiên 5 giờ. Bản 4.x bổ sung chế độ statusline để lấy rate_limits chính thức, xuất dữ liệu dạng JSON/CSV, dự báo tốc độ dùng và kho lịch sử sử dụng cục bộ (tùy chọn).",
+    "purposeVi": "Giúp người dùng Claude Code biết mình đang dùng bao nhiêu hạn mức, dự đoán khi nào chạm giới hạn và lưu lịch sử sử dụng để phân tích.",
+    "featuresVi": [
+      "Màn hình theo dõi trực tiếp: giao diện Rich trên terminal với token, tin nhắn và chi phí",
+      "Hạn mức chính thức: `--statusline` lấy rate_limits chính thức của Claude Code",
+      "Xuất dữ liệu cho máy đọc: `--once`, `--compact`, `--write-state` với mã thoát dùng cho tự động hóa",
+      "Kho lịch sử cục bộ (opt-in): lưu dữ liệu vượt quá mốc dọn dẹp 30 ngày của Claude, xuất CSV/JSON",
+      "Nhiều chế độ xem: realtime, daily, monthly, session, burn-rate",
+      "Hỗ trợ các gói pro, max5, max20, team và custom (tự tính giới hạn theo P90)"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.9 trở lên (khuyến nghị 3.11+); khuyến nghị cài bằng uv.\nBước 1: Cài từ PyPI bằng uv: `uv tool install claude-monitor`\nBước 2: Hoặc cài bằng pip: `pip install claude-monitor`\nBước 3: Xem các tham số: `claude-monitor --help`",
+    "usageGuideVi": "Bước 1: Chạy `claude-monitor` (hoặc cmonitor, ccm) để mở màn hình theo dõi trực tiếp\nBước 2: Chọn gói của bạn, ví dụ `claude-monitor --plan pro`; lựa chọn được lưu cho lần chạy sau\nBước 3: Xem thống kê theo ngày: `claude-monitor --view daily`\nBước 4: Cài làm statusline hook để lấy hạn mức chính thức: `claude-monitor --statusline`",
+    "samplePromptsVi": [
+      "claude-monitor --plan max5 --timezone Asia/Ho_Chi_Minh",
+      "claude-monitor --once --output json",
+      "claude-monitor --warehouse --view sessions --output csv"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "uv tool install claude-monitor",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uv tool install claude-monitor\"\n  ],\n  \"nguon\": \"https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, cài nhanh qua PyPI",
+      "Ưu tiên quyền riêng tư: kho lịch sử là tùy chọn và chỉ lưu cục bộ",
+      "Đầu ra JSON/trạng thái giúp tích hợp với status bar, dashboard khác"
+    ],
+    "consVi": [
+      "Khi không có dữ liệu statusline mới, con số là ước tính cục bộ, không phải hạn mức chính thức",
+      "Gói team chỉ là ước tính, chưa được xác minh",
+      "Tùy chọn `--api` dùng API OAuth của Anthropic còn ở mức thử nghiệm"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Claude Code Usage Monitor — Theo dõi hạn mức sử dụng Claude Code trên terminal\n\n> A privacy-first Claude Usage-Ops companion for Claude Code.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nCông cụ dòng lệnh theo dõi mức sử dụng Claude Code theo thời gian thực trên terminal: token, số tin nhắn và chi phí trong phiên 5 giờ. Bản 4.x bổ sung chế độ statusline để lấy rate_limits chính thức, xuất dữ liệu dạng JSON/CSV, dự báo tốc độ dùng và kho lịch sử sử dụng cục bộ (tùy chọn).\n\nGiúp người dùng Claude Code biết mình đang dùng bao nhiêu hạn mức, dự đoán khi nào chạm giới hạn và lưu lịch sử sử dụng để phân tích.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Khoa học dữ liệu & Phân tích kinh doanh\n- **Tác giả / Nhà phát triển:** Maciej (Maciek-roboblog)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor](https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Màn hình theo dõi trực tiếp: giao diện Rich trên terminal với token, tin nhắn và chi phí**\n- **Hạn mức chính thức: `--statusline` lấy rate_limits chính thức của Claude Code**\n- **Xuất dữ liệu cho máy đọc: `--once`, `--compact`, `--write-state` với mã thoát dùng cho tự động hóa**\n- **Kho lịch sử cục bộ (opt-in): lưu dữ liệu vượt quá mốc dọn dẹp 30 ngày của Claude, xuất CSV/JSON**\n- **Nhiều chế độ xem: realtime, daily, monthly, session, burn-rate**\n- **Hỗ trợ các gói pro, max5, max20, team và custom (tự tính giới hạn theo P90)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuv tool install claude-monitor\n```\n\nYêu cầu: Python 3.9 trở lên (khuyến nghị 3.11+); khuyến nghị cài bằng uv.\nBước 1: Cài từ PyPI bằng uv: `uv tool install claude-monitor`\nBước 2: Hoặc cài bằng pip: `pip install claude-monitor`\nBước 3: Xem các tham số: `claude-monitor --help`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy `claude-monitor` (hoặc cmonitor, ccm) để mở màn hình theo dõi trực tiếp\nBước 2: Chọn gói của bạn, ví dụ `claude-monitor --plan pro`; lựa chọn được lưu cho lần chạy sau\nBước 3: Xem thống kê theo ngày: `claude-monitor --view daily`\nBước 4: Cài làm statusline hook để lấy hạn mức chính thức: `claude-monitor --statusline`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"claude-monitor --plan max5 --timezone Asia/Ho_Chi_Minh\"\n- \"claude-monitor --once --output json\"\n- \"claude-monitor --warehouse --view sessions --output csv\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "sirmalloc-ccstatusline",
+    "slug": "sirmalloc-ccstatusline",
+    "name": "ccstatusline — Thanh trạng thái tùy biến cho Claude Code",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "devops_cicd",
+    "categoryNameVi": "DevOps & Tự động hóa CI/CD",
+    "categories": [
+      "devops_cicd",
+      "frontend_ui"
+    ],
+    "categoryNamesVi": [
+      "DevOps & Tự động hóa CI/CD",
+      "Frontend & Giao diện người dùng"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/sirmalloc/ccstatusline",
+    "websiteUrl": "https://www.npmjs.com/package/ccstatusline",
+    "authorName": "Matthew Breedlove (sirmalloc)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Công cụ tạo thanh trạng thái (status line) tùy biến cho Claude Code, hiển thị model, nhánh git, mức dùng token, hạn mức theo tuần, thời gian phiên và nhiều chỉ số khác ngay dưới khung nhập. Đi kèm giao diện cấu hình TUI để thêm, sắp xếp widget, đổi màu và hỗ trợ kiểu Powerline.",
+    "purposeVi": "Giúp người dùng Claude Code nhìn thấy các thông tin quan trọng của phiên làm việc (ngữ cảnh, chi phí, git, hạn mức) mà không phải gõ lệnh kiểm tra.",
+    "featuresVi": [
+      "Chỉ số thời gian thực: model, nhánh git, token, hạn mức tuần, thời lượng phiên, số lần compact",
+      "Tùy biến hoàn toàn: chọn widget và màu cho từng thành phần",
+      "Hỗ trợ Powerline: dấu phân cách mũi tên, caps và font tùy chỉnh",
+      "Nhiều dòng trạng thái độc lập",
+      "TUI cấu hình tương tác (React/Ink), xem trước trực tiếp, tự cài vào settings.json của Claude Code",
+      "Xuất/nhập cấu hình JSON để sao lưu và chia sẻ"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js (dùng npx) hoặc Bun (dùng bunx); Claude Code CLI.\nBước 1: Chạy giao diện cấu hình không cần cài đặt: `npx -y ccstatusline@latest`\nBước 2: Hoặc dùng Bun: `bunx -y ccstatusline@latest`\nBước 3: Trong TUI, chọn cài vào Claude Code (có thể chọn Pinned global install để cố định phiên bản)",
+    "usageGuideVi": "Bước 1: Mở TUI và thêm, xóa, sắp xếp các widget cho dòng trạng thái\nBước 2: Tùy chỉnh màu, dấu phân cách và chế độ Powerline, xem trước ngay trong TUI\nBước 3: Cài vào Claude Code; công cụ ghi đối tượng statusLine vào settings.json và cấu hình được lưu ở ~/.config/ccstatusline/settings.json",
+    "samplePromptsVi": [
+      "Hiển thị model, nhánh git và phần trăm ngữ cảnh đã dùng trên một dòng trạng thái",
+      "Thêm widget hạn mức sử dụng theo tuần và bộ đếm thời gian reset",
+      "Chuyển dòng trạng thái sang kiểu Powerline với hai dòng riêng biệt"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npx -y ccstatusline@latest",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx -y ccstatusline@latest\"\n  ],\n  \"nguon\": \"https://github.com/sirmalloc/ccstatusline\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, chạy ngay bằng npx/bunx không cần cài",
+      "Bảo trì tích cực, phát hành thường xuyên",
+      "Có hướng dẫn riêng cho Windows và WSL"
+    ],
+    "consVi": [
+      "Chỉ dành cho Claude Code CLI",
+      "Claude Code chỉ chạy lệnh status line trong thư mục làm việc đã được tin cậy (trusted workspace)",
+      "Các widget hạn mức cần gọi API sử dụng của Anthropic qua mạng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# ccstatusline — Thanh trạng thái tùy biến cho Claude Code\n\n> A highly customizable status line formatter for Claude Code CLI\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nCông cụ tạo thanh trạng thái (status line) tùy biến cho Claude Code, hiển thị model, nhánh git, mức dùng token, hạn mức theo tuần, thời gian phiên và nhiều chỉ số khác ngay dưới khung nhập. Đi kèm giao diện cấu hình TUI để thêm, sắp xếp widget, đổi màu và hỗ trợ kiểu Powerline.\n\nGiúp người dùng Claude Code nhìn thấy các thông tin quan trọng của phiên làm việc (ngữ cảnh, chi phí, git, hạn mức) mà không phải gõ lệnh kiểm tra.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** DevOps & Tự động hóa CI/CD\n- **Tác giả / Nhà phát triển:** Matthew Breedlove (sirmalloc)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/sirmalloc/ccstatusline](https://github.com/sirmalloc/ccstatusline)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Chỉ số thời gian thực: model, nhánh git, token, hạn mức tuần, thời lượng phiên, số lần compact**\n- **Tùy biến hoàn toàn: chọn widget và màu cho từng thành phần**\n- **Hỗ trợ Powerline: dấu phân cách mũi tên, caps và font tùy chỉnh**\n- **Nhiều dòng trạng thái độc lập**\n- **TUI cấu hình tương tác (React/Ink), xem trước trực tiếp, tự cài vào settings.json của Claude Code**\n- **Xuất/nhập cấu hình JSON để sao lưu và chia sẻ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx -y ccstatusline@latest\n```\n\nYêu cầu: Node.js (dùng npx) hoặc Bun (dùng bunx); Claude Code CLI.\nBước 1: Chạy giao diện cấu hình không cần cài đặt: `npx -y ccstatusline@latest`\nBước 2: Hoặc dùng Bun: `bunx -y ccstatusline@latest`\nBước 3: Trong TUI, chọn cài vào Claude Code (có thể chọn Pinned global install để cố định phiên bản)\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở TUI và thêm, xóa, sắp xếp các widget cho dòng trạng thái\nBước 2: Tùy chỉnh màu, dấu phân cách và chế độ Powerline, xem trước ngay trong TUI\nBước 3: Cài vào Claude Code; công cụ ghi đối tượng statusLine vào settings.json và cấu hình được lưu ở ~/.config/ccstatusline/settings.json\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hiển thị model, nhánh git và phần trăm ngữ cảnh đã dùng trên một dòng trạng thái\"\n- \"Thêm widget hạn mức sử dụng theo tuần và bộ đếm thời gian reset\"\n- \"Chuyển dòng trạng thái sang kiểu Powerline với hai dòng riêng biệt\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "musistudio-claude-code-router",
+    "slug": "musistudio-claude-code-router",
+    "name": "Claude Code Router — Cổng định tuyến model cho Claude Code và tác tử lập trình",
+    "icon": "Workflow",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/musistudio/claude-code-router",
+    "websiteUrl": "https://ccrdesk.top/",
+    "authorName": "musistudio",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Claude Code Router (CCR) là cổng mô hình (model gateway) chạy cục bộ cho các tác tử lập trình như Claude Code, Codex, OpenCode, Kimi CLI… Mọi client dùng chung một endpoint cục bộ, còn nhà cung cấp, model, khóa API, quy tắc định tuyến và công cụ được quản lý tập trung. Có ứng dụng desktop, CLI kèm giao diện web và bản Docker.",
+    "purposeVi": "Giúp chuyển đổi nhà cung cấp hoặc model cho Claude Code và các tác tử khác mà không phải sửa cấu hình từng công cụ, kèm thử lại, dự phòng và nhật ký yêu cầu.",
+    "featuresVi": [
+      "Một endpoint cục bộ: gateway mặc định ở http://127.0.0.1:3456",
+      "Nhiều giao thức và nhà cung cấp: OpenAI, Anthropic Messages, Gemini, OpenRouter, DeepSeek, Moonshot, Mistral, Z.AI và endpoint tương thích tự thêm",
+      "Định tuyến: điều kiện theo header/body, viết lại yêu cầu, thử lại, danh sách model dự phòng",
+      "Quản lý khóa: nhóm khóa (credential pool), xoay vòng khóa, khóa client riêng có hạn mức",
+      "Quan sát: nhật ký yêu cầu, model đã chọn, độ trễ, token và ước tính chi phí",
+      "Mở rộng: web search, công cụ MCP, ToolHub, Fusion vision"
+    ],
+    "installGuideVi": "Yêu cầu: Ứng dụng desktop cho macOS, Windows, Linux; hoặc CLI qua npm cần Node.js 22 trở lên. Cần khóa API của nhà cung cấp model bạn chọn.\nBước 1: Cài CLI: `npm install -g @musistudio/claude-code-router`\nBước 2: Mở giao diện quản lý trên trình duyệt: `ccr ui` (truy cập http://127.0.0.1:3458)\nBước 3: Hoặc tải ứng dụng desktop từ trang Releases của repo",
+    "usageGuideVi": "Bước 1: Vào Providers → Add Provider, chọn preset hoặc endpoint tùy chỉnh, nhập khóa API và chọn model\nBước 2: Vào Server và bấm Start; gateway lắng nghe ở http://127.0.0.1:3456\nBước 3: Vào Agent Config, chọn Claude Code (hoặc tác tử khác), chọn model và áp dụng profile\nBước 4: Dùng tác tử như bình thường và mở Logs để xem nhà cung cấp, model, token, độ trễ của từng yêu cầu",
+    "samplePromptsVi": [
+      "Định tuyến Claude Code sang model DeepSeek cho tác vụ thường và giữ model Claude cho tác vụ suy luận dài",
+      "Thiết lập model dự phòng khi nhà cung cấp chính trả lỗi",
+      "Xem nhật ký để biết yêu cầu vừa rồi dùng model nào và tốn bao nhiêu token"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm install -g @musistudio/claude-code-router",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm install -g @musistudio/claude-code-router\"\n  ],\n  \"nguon\": \"https://github.com/musistudio/claude-code-router\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT",
+      "Hỗ trợ nhiều tác tử lập trình và nhiều nhà cung cấp trong một nơi",
+      "Có cả ứng dụng desktop, CLI và Docker"
+    ],
+    "consVi": [
+      "Cần tự có khóa API hoặc tài khoản của các nhà cung cấp model",
+      "CLI yêu cầu Node.js 22 trở lên",
+      "README khuyến cáo đọc hướng dẫn Docker trước khi mở CCR ra mạng ngoài"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Claude Code Router — Cổng định tuyến model cho Claude Code và tác tử lập trình\n\n> Manage every agent and provider from one place.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nClaude Code Router (CCR) là cổng mô hình (model gateway) chạy cục bộ cho các tác tử lập trình như Claude Code, Codex, OpenCode, Kimi CLI… Mọi client dùng chung một endpoint cục bộ, còn nhà cung cấp, model, khóa API, quy tắc định tuyến và công cụ được quản lý tập trung. Có ứng dụng desktop, CLI kèm giao diện web và bản Docker.\n\nGiúp chuyển đổi nhà cung cấp hoặc model cho Claude Code và các tác tử khác mà không phải sửa cấu hình từng công cụ, kèm thử lại, dự phòng và nhật ký yêu cầu.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** musistudio\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `web`\n- **Kho lưu trữ chính thức:** [https://github.com/musistudio/claude-code-router](https://github.com/musistudio/claude-code-router)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Một endpoint cục bộ: gateway mặc định ở http://127.0.0.1:3456**\n- **Nhiều giao thức và nhà cung cấp: OpenAI, Anthropic Messages, Gemini, OpenRouter, DeepSeek, Moonshot, Mistral, Z.AI và endpoint tương thích tự thêm**\n- **Định tuyến: điều kiện theo header/body, viết lại yêu cầu, thử lại, danh sách model dự phòng**\n- **Quản lý khóa: nhóm khóa (credential pool), xoay vòng khóa, khóa client riêng có hạn mức**\n- **Quan sát: nhật ký yêu cầu, model đã chọn, độ trễ, token và ước tính chi phí**\n- **Mở rộng: web search, công cụ MCP, ToolHub, Fusion vision**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm install -g @musistudio/claude-code-router\n```\n\nYêu cầu: Ứng dụng desktop cho macOS, Windows, Linux; hoặc CLI qua npm cần Node.js 22 trở lên. Cần khóa API của nhà cung cấp model bạn chọn.\nBước 1: Cài CLI: `npm install -g @musistudio/claude-code-router`\nBước 2: Mở giao diện quản lý trên trình duyệt: `ccr ui` (truy cập http://127.0.0.1:3458)\nBước 3: Hoặc tải ứng dụng desktop từ trang Releases của repo\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Vào Providers → Add Provider, chọn preset hoặc endpoint tùy chỉnh, nhập khóa API và chọn model\nBước 2: Vào Server và bấm Start; gateway lắng nghe ở http://127.0.0.1:3456\nBước 3: Vào Agent Config, chọn Claude Code (hoặc tác tử khác), chọn model và áp dụng profile\nBước 4: Dùng tác tử như bình thường và mở Logs để xem nhà cung cấp, model, token, độ trễ của từng yêu cầu\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Định tuyến Claude Code sang model DeepSeek cho tác vụ thường và giữ model Claude cho tác vụ suy luận dài\"\n- \"Thiết lập model dự phòng khi nhà cung cấp chính trả lỗi\"\n- \"Xem nhật ký để biết yêu cầu vừa rồi dùng model nào và tốn bao nhiêu token\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "kbwo-ccmanager",
+    "slug": "kbwo-ccmanager",
+    "name": "CCManager — Quản lý nhiều phiên Claude Code trên Git worktree",
+    "icon": "GitPullRequest",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "devops_cicd",
+    "categoryNameVi": "DevOps & Tự động hóa CI/CD",
+    "categories": [
+      "devops_cicd",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "DevOps & Tự động hóa CI/CD",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/kbwo/ccmanager",
+    "websiteUrl": "https://www.npmjs.com/package/ccmanager",
+    "authorName": "Kodai Kabasawa (kbwo)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Ứng dụng dòng lệnh quản lý nhiều phiên trợ lý lập trình AI (Claude Code, Gemini CLI, Codex CLI, Cursor Agent…) chạy song song trên các Git worktree và dự án khác nhau. Hiển thị trạng thái từng phiên (bận, chờ nhập, rảnh) ngay trong menu và không cần tmux.",
+    "purposeVi": "Giúp chạy và chuyển qua lại giữa nhiều phiên Claude Code song song, mỗi phiên trên một worktree riêng, mà không phải tự quản lý terminal.",
+    "featuresVi": [
+      "Chạy song song nhiều phiên AI trên các Git worktree khác nhau",
+      "Hỗ trợ nhiều dự án git trong một giao diện",
+      "Trạng thái phiên trực quan: Busy, Waiting, Idle",
+      "Tạo, gộp, xóa worktree ngay trong ứng dụng; hỗ trợ .worktreeinclude",
+      "Sao chép dữ liệu phiên Claude Code giữa các worktree để giữ ngữ cảnh",
+      "Khôi phục phiên sau khi khởi động lại; hook khi đổi trạng thái; tích hợp devcontainer",
+      "Không phụ thuộc tmux"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js và npm; đã cài ít nhất một trợ lý lập trình AI (mặc định là lệnh `claude`); dự án là Git repository.\nBước 1: Cài đặt toàn cục: `npm install -g ccmanager`\nBước 2: Hoặc chạy không cần cài: `npx ccmanager`",
+    "usageGuideVi": "Bước 1: Chạy `ccmanager` trong thư mục Git repository\nBước 2: Chọn hoặc tạo worktree trong menu để mở phiên Claude Code tương ứng\nBước 3: Nhấn Ctrl+E để quay lại menu từ phiên đang chạy và chuyển sang phiên khác\nBước 4: Tùy chỉnh phím tắt, preset lệnh trong Global Configuration hoặc tệp .ccmanager.json của dự án",
+    "samplePromptsVi": [
+      "Tạo worktree mới cho nhánh feature/login và mở một phiên Claude Code ở đó",
+      "Xem phiên nào đang chờ tôi xác nhận trong số các phiên đang chạy",
+      "Cấu hình để mỗi phiên Claude Code chạy với tham số --resume"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm install -g ccmanager",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm install -g ccmanager\"\n  ],\n  \"nguon\": \"https://github.com/kbwo/ccmanager\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, cài một lệnh qua npm",
+      "Không cần tmux, hiển thị trạng thái phiên ngay trong menu",
+      "Hỗ trợ nhiều trợ lý AI khác ngoài Claude Code"
+    ],
+    "consVi": [
+      "Tính năng Auto Approval còn thử nghiệm",
+      "Phải tự cài sẵn các CLI trợ lý AI muốn dùng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# CCManager — Quản lý nhiều phiên Claude Code trên Git worktree\n\n> CCManager is a CLI application for managing multiple AI coding assistant sessions (Claude Code, Gemini CLI, Codex CLI, Cursor Agent, Copilot CLI, Cline CLI, OpenCode, Kimi CLI) across Git worktrees and projects.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nỨng dụng dòng lệnh quản lý nhiều phiên trợ lý lập trình AI (Claude Code, Gemini CLI, Codex CLI, Cursor Agent…) chạy song song trên các Git worktree và dự án khác nhau. Hiển thị trạng thái từng phiên (bận, chờ nhập, rảnh) ngay trong menu và không cần tmux.\n\nGiúp chạy và chuyển qua lại giữa nhiều phiên Claude Code song song, mỗi phiên trên một worktree riêng, mà không phải tự quản lý terminal.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** DevOps & Tự động hóa CI/CD\n- **Tác giả / Nhà phát triển:** Kodai Kabasawa (kbwo)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/kbwo/ccmanager](https://github.com/kbwo/ccmanager)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Chạy song song nhiều phiên AI trên các Git worktree khác nhau**\n- **Hỗ trợ nhiều dự án git trong một giao diện**\n- **Trạng thái phiên trực quan: Busy, Waiting, Idle**\n- **Tạo, gộp, xóa worktree ngay trong ứng dụng; hỗ trợ .worktreeinclude**\n- **Sao chép dữ liệu phiên Claude Code giữa các worktree để giữ ngữ cảnh**\n- **Khôi phục phiên sau khi khởi động lại; hook khi đổi trạng thái; tích hợp devcontainer**\n- **Không phụ thuộc tmux**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm install -g ccmanager\n```\n\nYêu cầu: Node.js và npm; đã cài ít nhất một trợ lý lập trình AI (mặc định là lệnh `claude`); dự án là Git repository.\nBước 1: Cài đặt toàn cục: `npm install -g ccmanager`\nBước 2: Hoặc chạy không cần cài: `npx ccmanager`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy `ccmanager` trong thư mục Git repository\nBước 2: Chọn hoặc tạo worktree trong menu để mở phiên Claude Code tương ứng\nBước 3: Nhấn Ctrl+E để quay lại menu từ phiên đang chạy và chuyển sang phiên khác\nBước 4: Tùy chỉnh phím tắt, preset lệnh trong Global Configuration hoặc tệp .ccmanager.json của dự án\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo worktree mới cho nhánh feature/login và mở một phiên Claude Code ở đó\"\n- \"Xem phiên nào đang chờ tôi xác nhận trong số các phiên đang chạy\"\n- \"Cấu hình để mỗi phiên Claude Code chạy với tham số --resume\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "siteboon-claudecodeui",
+    "slug": "siteboon-claudecodeui",
+    "name": "CloudCLI UI (Claude Code UI) — Giao diện web và di động cho Claude Code",
+    "icon": "Globe",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "frontend_ui",
+    "categoryNameVi": "Frontend & Giao diện người dùng",
+    "categories": [
+      "frontend_ui",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Frontend & Giao diện người dùng",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/siteboon/claudecodeui",
+    "websiteUrl": "https://cloudcli.ai",
+    "authorName": "Siteboon (CloudCLI)",
+    "license": "Mã nguồn mở (AGPL-3.0)",
+    "summaryVi": "CloudCLI UI (trước đây là Claude Code UI) là giao diện web cho máy tính và điện thoại để làm việc với Claude Code, Cursor CLI và Codex. Có khung chat, terminal tích hợp, trình duyệt tệp, quản lý Git và quản lý phiên; tự phát hiện mọi phiên trong thư mục ~/.claude. Có thể tự host miễn phí hoặc dùng bản đám mây CloudCLI Cloud trả phí.",
+    "purposeVi": "Giúp theo dõi và điều khiển các dự án, phiên Claude Code từ trình duyệt hoặc điện thoại, kể cả từ xa.",
+    "featuresVi": [
+      "Giao diện đáp ứng: dùng được trên máy tính, máy tính bảng và điện thoại",
+      "Khung chat tương tác và terminal tích hợp",
+      "Trình duyệt tệp có tô sáng cú pháp và chỉnh sửa trực tiếp",
+      "Git explorer: xem, stage, commit, đổi nhánh",
+      "Quản lý phiên: tiếp tục hội thoại, xem lịch sử",
+      "Hệ thống plugin để thêm tab và dịch vụ backend tùy chỉnh",
+      "Đồng bộ cấu hình MCP với ~/.claude"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js v22 trở lên; đã cài Claude Code, Cursor CLI hoặc Codex cùng gói đăng ký AI tương ứng.\nBước 1: Chạy thử ngay bằng npx: `npx @cloudcli-ai/cloudcli`\nBước 2: Hoặc cài toàn cục: `npm install -g @cloudcli-ai/cloudcli` rồi chạy `cloudcli`\nBước 3: Mở http://localhost:3001 trên trình duyệt",
+    "usageGuideVi": "Bước 1: Mở http://localhost:3001; các phiên hiện có được phát hiện tự động\nBước 2: Bấm biểu tượng bánh răng ở thanh bên để bật các công cụ Claude Code cần dùng (mặc định tắt hết)\nBước 3: Chọn dự án, chat với tác tử, dùng terminal, trình duyệt tệp và Git ngay trong giao diện\nBước 4: Truy cập từ điện thoại qua địa chỉ [IP-máy]:cổng trong cùng mạng",
+    "samplePromptsVi": [
+      "Mở lại phiên Claude Code hôm qua của dự án này và tiếp tục sửa lỗi đăng nhập",
+      "Xem các tệp đã thay đổi và commit với thông điệp phù hợp",
+      "Thêm một MCP server mới vào cấu hình Claude Code từ giao diện"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npx @cloudcli-ai/cloudcli",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx @cloudcli-ai/cloudcli\"\n  ],\n  \"nguon\": \"https://github.com/siteboon/claudecodeui\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "freemium",
+    "pricingText": "Tự host miễn phí; CloudCLI Cloud từ €7/tháng",
+    "prosVi": [
+      "Bản tự host miễn phí, mã nguồn mở",
+      "Dùng chung cấu hình, quyền và phiên với Claude Code gốc",
+      "Hỗ trợ nhiều tác tử: Claude Code, Cursor CLI, Codex"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0: nếu sửa đổi và cung cấp dưới dạng dịch vụ mạng phải công bố mã nguồn",
+      "Cần gói đăng ký AI riêng (Claude, Cursor, Codex)",
+      "Bản tự host yêu cầu máy luôn bật; Docker Sandbox còn thử nghiệm"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# CloudCLI UI (Claude Code UI) — Giao diện web và di động cho Claude Code\n\n> A desktop and mobile UI for Claude Code, Cursor CLI, and Codex.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nCloudCLI UI (trước đây là Claude Code UI) là giao diện web cho máy tính và điện thoại để làm việc với Claude Code, Cursor CLI và Codex. Có khung chat, terminal tích hợp, trình duyệt tệp, quản lý Git và quản lý phiên; tự phát hiện mọi phiên trong thư mục ~/.claude. Có thể tự host miễn phí hoặc dùng bản đám mây CloudCLI Cloud trả phí.\n\nGiúp theo dõi và điều khiển các dự án, phiên Claude Code từ trình duyệt hoặc điện thoại, kể cả từ xa.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Frontend & Giao diện người dùng\n- **Tác giả / Nhà phát triển:** Siteboon (CloudCLI)\n- **Giấy phép bản quyền:** Mã nguồn mở (AGPL-3.0)\n- **Nền tảng hỗ trợ:** `web`, `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/siteboon/claudecodeui](https://github.com/siteboon/claudecodeui)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Giao diện đáp ứng: dùng được trên máy tính, máy tính bảng và điện thoại**\n- **Khung chat tương tác và terminal tích hợp**\n- **Trình duyệt tệp có tô sáng cú pháp và chỉnh sửa trực tiếp**\n- **Git explorer: xem, stage, commit, đổi nhánh**\n- **Quản lý phiên: tiếp tục hội thoại, xem lịch sử**\n- **Hệ thống plugin để thêm tab và dịch vụ backend tùy chỉnh**\n- **Đồng bộ cấu hình MCP với ~/.claude**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx @cloudcli-ai/cloudcli\n```\n\nYêu cầu: Node.js v22 trở lên; đã cài Claude Code, Cursor CLI hoặc Codex cùng gói đăng ký AI tương ứng.\nBước 1: Chạy thử ngay bằng npx: `npx @cloudcli-ai/cloudcli`\nBước 2: Hoặc cài toàn cục: `npm install -g @cloudcli-ai/cloudcli` rồi chạy `cloudcli`\nBước 3: Mở http://localhost:3001 trên trình duyệt\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở http://localhost:3001; các phiên hiện có được phát hiện tự động\nBước 2: Bấm biểu tượng bánh răng ở thanh bên để bật các công cụ Claude Code cần dùng (mặc định tắt hết)\nBước 3: Chọn dự án, chat với tác tử, dùng terminal, trình duyệt tệp và Git ngay trong giao diện\nBước 4: Truy cập từ điện thoại qua địa chỉ [IP-máy]:cổng trong cùng mạng\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Mở lại phiên Claude Code hôm qua của dự án này và tiếp tục sửa lỗi đăng nhập\"\n- \"Xem các tệp đã thay đổi và commit với thông điệp phù hợp\"\n- \"Thêm một MCP server mới vào cấu hình Claude Code từ giao diện\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "superclaude-org-superclaude-framework",
+    "slug": "superclaude-org-superclaude-framework",
+    "name": "SuperClaude Framework — Bộ lệnh, agent và chế độ mở rộng cho Claude Code",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "skill",
+    "typeNameVi": "Skill",
+    "category": "backend_api",
+    "categoryNameVi": "Backend & Kiến trúc API",
+    "categories": [
+      "backend_api",
+      "qa_testing"
+    ],
+    "categoryNamesVi": [
+      "Backend & Kiến trúc API",
+      "Kiểm thử phần mềm & QA/QC"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/SuperClaude-Org/SuperClaude_Framework",
+    "websiteUrl": "https://pypi.org/project/superclaude/",
+    "authorName": "SuperClaude Framework Contributors",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "SuperClaude là khung cấu hình (meta-programming configuration framework) biến Claude Code thành nền tảng phát triển có cấu trúc bằng cách bổ sung lệnh, agent và chế độ hành vi. Bản v4.x cung cấp 30 slash command dạng /sc:*, 20 agent chuyên môn, 7 chế độ hành vi và tùy chọn cài 8 MCP server.",
+    "purposeVi": "Giúp chuẩn hóa quy trình làm việc với Claude Code từ brainstorm, nghiên cứu, triển khai đến kiểm thử bằng bộ lệnh dựng sẵn.",
+    "featuresVi": [
+      "30 slash command: /sc:research, /sc:brainstorm, /sc:implement, /sc:test, /sc:pm…",
+      "20 agent chuyên môn: PM, nghiên cứu sâu, kỹ sư bảo mật, kiến trúc frontend…",
+      "7 chế độ hành vi: Brainstorming, Deep Research, Token-Efficiency, Task Management…",
+      "Cài MCP server tùy chọn: Tavily, Context7, Sequential-Thinking, Serena, Playwright…",
+      "Nghiên cứu web sâu với lập kế hoạch thích ứng và suy luận nhiều bước",
+      "Lệnh kiểm tra cài đặt `superclaude doctor`"
+    ],
+    "installGuideVi": "Yêu cầu: Python và pipx; Claude Code. MCP server là tùy chọn (ví dụ Tavily cần khóa API riêng).\nBước 1: Cài từ PyPI: `pipx install superclaude`\nBước 2: Cài 30 slash command vào Claude Code: `superclaude install`\nBước 3: (Tùy chọn) cài MCP server: `superclaude mcp --servers tavily --servers context7`\nBước 4: Kiểm tra cài đặt: `superclaude doctor`",
+    "usageGuideVi": "Bước 1: Khởi động lại Claude Code sau khi cài\nBước 2: Gõ `/sc` để xem toàn bộ 30 lệnh\nBước 3: Dùng lệnh phù hợp, ví dụ /sc:brainstorm để làm rõ yêu cầu, /sc:implement để triển khai, /sc:test để kiểm thử",
+    "samplePromptsVi": [
+      "/sc:brainstorm Ứng dụng đặt lịch khám cho phòng khám nhỏ",
+      "/sc:research Các mẫu quản lý trạng thái phổ biến trong React",
+      "/sc:implement Thêm API đăng ký người dùng kèm kiểm tra đầu vào"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pipx install superclaude",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pipx install superclaude\"\n  ],\n  \"nguon\": \"https://github.com/SuperClaude-Org/SuperClaude_Framework\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT",
+      "Bộ lệnh và agent bao phủ toàn vòng đời phát triển",
+      "Hoạt động đầy đủ không cần MCP; MCP chỉ để tăng hiệu năng"
+    ],
+    "consVi": [
+      "Hệ thống plugin TypeScript (v5.0) chưa phát hành; hiện vẫn cài bằng slash command qua pipx",
+      "Không liên kết hay được Anthropic chứng nhận",
+      "Một số MCP server tùy chọn cần khóa API riêng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# SuperClaude Framework — Bộ lệnh, agent và chế độ mở rộng cho Claude Code\n\n> Transform Claude Code into a Structured Development Platform\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSuperClaude là khung cấu hình (meta-programming configuration framework) biến Claude Code thành nền tảng phát triển có cấu trúc bằng cách bổ sung lệnh, agent và chế độ hành vi. Bản v4.x cung cấp 30 slash command dạng /sc:*, 20 agent chuyên môn, 7 chế độ hành vi và tùy chọn cài 8 MCP server.\n\nGiúp chuẩn hóa quy trình làm việc với Claude Code từ brainstorm, nghiên cứu, triển khai đến kiểm thử bằng bộ lệnh dựng sẵn.\n\n- **Loại hình thành phần:** Skill\n- **Lĩnh vực chuyên môn:** Backend & Kiến trúc API\n- **Tác giả / Nhà phát triển:** SuperClaude Framework Contributors\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/SuperClaude-Org/SuperClaude_Framework](https://github.com/SuperClaude-Org/SuperClaude_Framework)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **30 slash command: /sc:research, /sc:brainstorm, /sc:implement, /sc:test, /sc:pm…**\n- **20 agent chuyên môn: PM, nghiên cứu sâu, kỹ sư bảo mật, kiến trúc frontend…**\n- **7 chế độ hành vi: Brainstorming, Deep Research, Token-Efficiency, Task Management…**\n- **Cài MCP server tùy chọn: Tavily, Context7, Sequential-Thinking, Serena, Playwright…**\n- **Nghiên cứu web sâu với lập kế hoạch thích ứng và suy luận nhiều bước**\n- **Lệnh kiểm tra cài đặt `superclaude doctor`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npipx install superclaude\n```\n\nYêu cầu: Python và pipx; Claude Code. MCP server là tùy chọn (ví dụ Tavily cần khóa API riêng).\nBước 1: Cài từ PyPI: `pipx install superclaude`\nBước 2: Cài 30 slash command vào Claude Code: `superclaude install`\nBước 3: (Tùy chọn) cài MCP server: `superclaude mcp --servers tavily --servers context7`\nBước 4: Kiểm tra cài đặt: `superclaude doctor`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi động lại Claude Code sau khi cài\nBước 2: Gõ `/sc` để xem toàn bộ 30 lệnh\nBước 3: Dùng lệnh phù hợp, ví dụ /sc:brainstorm để làm rõ yêu cầu, /sc:implement để triển khai, /sc:test để kiểm thử\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"/sc:brainstorm Ứng dụng đặt lịch khám cho phòng khám nhỏ\"\n- \"/sc:research Các mẫu quản lý trạng thái phổ biến trong React\"\n- \"/sc:implement Thêm API đăng ký người dùng kèm kiểm tra đầu vào\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "langfuse-langfuse",
+    "slug": "langfuse-langfuse",
+    "name": "Langfuse — Nền tảng mã nguồn mở theo dõi, đánh giá và quản lý prompt cho ứng dụng LLM",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "qa_testing",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Kiểm thử phần mềm & QA/QC",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/langfuse/langfuse",
+    "websiteUrl": "https://langfuse.com",
+    "authorName": "Langfuse (ClickHouse, Inc.)",
+    "license": "Mã nguồn mở hỗn hợp (MIT cho lõi; thư mục ee/ theo giấy phép thương mại)",
+    "summaryVi": "Langfuse là nền tảng kỹ thuật LLM mã nguồn mở giúp các nhóm cùng phát triển, giám sát, đánh giá và gỡ lỗi ứng dụng AI. Nền tảng gom dấu vết (trace) các lời gọi LLM, truy xuất, embedding và hành động của agent, kèm quản lý prompt, bộ dữ liệu, đánh giá và playground. Có thể tự triển khai bằng Docker Compose, Kubernetes (Helm) hoặc dùng bản Langfuse Cloud.",
+    "purposeVi": "Theo dõi và gỡ lỗi ứng dụng LLM trong môi trường thật, quản lý phiên bản prompt và đánh giá chất lượng đầu ra một cách có hệ thống.",
+    "featuresVi": [
+      "Quan sát ứng dụng LLM: ghi trace các lời gọi LLM, truy xuất, embedding, hành động agent; xem phiên người dùng",
+      "Quản lý prompt: quản lý tập trung, kiểm soát phiên bản, có bộ nhớ đệm phía server và client nên không tăng độ trễ",
+      "Đánh giá: LLM-as-a-judge, bộ đánh giá bằng mã, thu thập phản hồi người dùng, gán nhãn thủ công và pipeline tùy chỉnh qua API/SDK",
+      "Bộ dữ liệu (Datasets): tập kiểm thử và benchmark để thử nghiệm trước khi triển khai",
+      "LLM Playground: thử prompt và cấu hình mô hình, nhảy thẳng từ trace lỗi sang playground",
+      "API đầy đủ: OpenAPI spec, Postman collection, SDK có kiểu cho Python và JS/TS",
+      "Tích hợp OpenAI, LangChain, LlamaIndex, Haystack, LiteLLM, Vercel AI SDK, Mastra, Dify, Flowise, CrewAI..."
+    ],
+    "installGuideVi": "Yêu cầu: Docker và Docker Compose để tự triển khai cục bộ (giao diện web chạy ở cổng 3000 theo docker-compose.yml); hoặc tài khoản Langfuse Cloud. Ứng dụng Python cần khóa API LANGFUSE_SECRET_KEY / LANGFUSE_PUBLIC_KEY tạo trong phần cài đặt dự án.\nBước 1: Tải mã nguồn: `git clone --depth=1 https://github.com/langfuse/langfuse.git`\nBước 2: Vào thư mục: `cd langfuse`\nBước 3: Chạy toàn bộ nền tảng bằng Docker Compose: `docker compose up`\nBước 4: Trong ứng dụng Python, cài SDK: `pip install langfuse openai`",
+    "usageGuideVi": "Bước 1: Mở giao diện Langfuse, tạo dự án mới và tạo khóa API trong phần cài đặt dự án\nBước 2: Khai báo LANGFUSE_SECRET_KEY, LANGFUSE_PUBLIC_KEY và LANGFUSE_BASE_URL trong tệp .env\nBước 3: Gắn decorator @observe() vào hàm và dùng tích hợp langfuse.openai để tự ghi lại tham số mô hình\nBước 4: Xem trace, chấm điểm, quản lý prompt và tạo dataset trong giao diện Langfuse",
+    "samplePromptsVi": [
+      "Thêm @observe() của Langfuse vào pipeline RAG để xem từng bước truy xuất và lời gọi LLM",
+      "Chuyển prompt hệ thống của chatbot sang Langfuse Prompt Management để quản lý phiên bản",
+      "Thiết lập LLM-as-a-judge trong Langfuse để chấm điểm độ chính xác câu trả lời trên dataset kiểm thử"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker compose up",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker compose up\"\n  ],\n  \"nguon\": \"https://github.com/langfuse/langfuse\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Phần lõi theo giấy phép MIT, tự triển khai được trên máy cục bộ, VM, Kubernetes hoặc Terraform (AWS, Azure, GCP)",
+      "Gộp tracing, quản lý prompt, đánh giá, dataset và playground trong một nền tảng",
+      "Hệ sinh thái tích hợp rộng với nhiều framework LLM và agent",
+      "Có SDK Python, JS/TS và API mở (OpenAPI)"
+    ],
+    "consVi": [
+      "Giấy phép hỗn hợp (open core): mã trong các thư mục ee/ thuộc giấy phép thương mại Enterprise, không phải MIT",
+      "Bản tự triển khai mặc định gửi thống kê sử dụng cơ bản về PostHog; tắt bằng TELEMETRY_ENABLED=false",
+      "README lưu ý cấu hình xoay vòng log Docker để tránh đầy ổ đĩa",
+      "Cần khóa API của dự án Langfuse để ứng dụng gửi trace"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Langfuse — Nền tảng mã nguồn mở theo dõi, đánh giá và quản lý prompt cho ứng dụng LLM\n\n> Langfuse is an open source LLM engineering platform.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nLangfuse là nền tảng kỹ thuật LLM mã nguồn mở giúp các nhóm cùng phát triển, giám sát, đánh giá và gỡ lỗi ứng dụng AI. Nền tảng gom dấu vết (trace) các lời gọi LLM, truy xuất, embedding và hành động của agent, kèm quản lý prompt, bộ dữ liệu, đánh giá và playground. Có thể tự triển khai bằng Docker Compose, Kubernetes (Helm) hoặc dùng bản Langfuse Cloud.\n\nTheo dõi và gỡ lỗi ứng dụng LLM trong môi trường thật, quản lý phiên bản prompt và đánh giá chất lượng đầu ra một cách có hệ thống.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Langfuse (ClickHouse, Inc.)\n- **Giấy phép bản quyền:** Mã nguồn mở hỗn hợp (MIT cho lõi; thư mục ee/ theo giấy phép thương mại)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/langfuse/langfuse](https://github.com/langfuse/langfuse)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Quan sát ứng dụng LLM: ghi trace các lời gọi LLM, truy xuất, embedding, hành động agent; xem phiên người dùng**\n- **Quản lý prompt: quản lý tập trung, kiểm soát phiên bản, có bộ nhớ đệm phía server và client nên không tăng độ trễ**\n- **Đánh giá: LLM-as-a-judge, bộ đánh giá bằng mã, thu thập phản hồi người dùng, gán nhãn thủ công và pipeline tùy chỉnh qua API/SDK**\n- **Bộ dữ liệu (Datasets): tập kiểm thử và benchmark để thử nghiệm trước khi triển khai**\n- **LLM Playground: thử prompt và cấu hình mô hình, nhảy thẳng từ trace lỗi sang playground**\n- **API đầy đủ: OpenAPI spec, Postman collection, SDK có kiểu cho Python và JS/TS**\n- **Tích hợp OpenAI, LangChain, LlamaIndex, Haystack, LiteLLM, Vercel AI SDK, Mastra, Dify, Flowise, CrewAI...**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker compose up\n```\n\nYêu cầu: Docker và Docker Compose để tự triển khai cục bộ (giao diện web chạy ở cổng 3000 theo docker-compose.yml); hoặc tài khoản Langfuse Cloud. Ứng dụng Python cần khóa API LANGFUSE_SECRET_KEY / LANGFUSE_PUBLIC_KEY tạo trong phần cài đặt dự án.\nBước 1: Tải mã nguồn: `git clone --depth=1 https://github.com/langfuse/langfuse.git`\nBước 2: Vào thư mục: `cd langfuse`\nBước 3: Chạy toàn bộ nền tảng bằng Docker Compose: `docker compose up`\nBước 4: Trong ứng dụng Python, cài SDK: `pip install langfuse openai`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở giao diện Langfuse, tạo dự án mới và tạo khóa API trong phần cài đặt dự án\nBước 2: Khai báo LANGFUSE_SECRET_KEY, LANGFUSE_PUBLIC_KEY và LANGFUSE_BASE_URL trong tệp .env\nBước 3: Gắn decorator @observe() vào hàm và dùng tích hợp langfuse.openai để tự ghi lại tham số mô hình\nBước 4: Xem trace, chấm điểm, quản lý prompt và tạo dataset trong giao diện Langfuse\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Thêm @observe() của Langfuse vào pipeline RAG để xem từng bước truy xuất và lời gọi LLM\"\n- \"Chuyển prompt hệ thống của chatbot sang Langfuse Prompt Management để quản lý phiên bản\"\n- \"Thiết lập LLM-as-a-judge trong Langfuse để chấm điểm độ chính xác câu trả lời trên dataset kiểm thử\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "arize-ai-phoenix",
+    "slug": "arize-ai-phoenix",
+    "name": "Arize Phoenix — Nền tảng quan sát, tracing và đánh giá ứng dụng LLM tự host",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "qa_testing",
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Kiểm thử phần mềm & QA/QC",
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/Arize-ai/phoenix",
+    "websiteUrl": "https://arize.com/docs/phoenix",
+    "authorName": "Arize AI",
+    "license": "Mã nguồn công khai (Elastic License 2.0) — cấm cung cấp dưới dạng dịch vụ hosted",
+    "summaryVi": "Phoenix là nền tảng quan sát AI của Arize dùng để thử nghiệm, đánh giá và xử lý sự cố ứng dụng LLM. Phoenix ghi trace dựa trên OpenTelemetry (OpenInference), hỗ trợ đánh giá bằng LLM, dataset có phiên bản, thí nghiệm, playground và quản lý prompt. Có thể chạy cục bộ bằng pip/uvx, Docker hoặc Kubernetes, kèm CLI, skill và Remote MCP Server cho agent lập trình.",
+    "purposeVi": "Theo dõi, đánh giá và cải thiện ứng dụng LLM/agent bằng trace chuẩn OpenTelemetry, tự host trên hạ tầng của mình.",
+    "featuresVi": [
+      "Tracing: ghi trace thời gian chạy ứng dụng LLM bằng instrumentation dựa trên OpenTelemetry",
+      "Evaluation: dùng LLM để benchmark chất lượng phản hồi và truy xuất",
+      "Datasets và Experiments: dataset có phiên bản, theo dõi thay đổi prompt, LLM và truy xuất",
+      "Playground và Prompt Management: tối ưu prompt, so sánh mô hình, phát lại lời gọi LLM đã trace, quản lý phiên bản và gắn thẻ prompt",
+      "PXI (Phoenix Intelligence): agent kỹ thuật AI tích hợp để gỡ lỗi trace và lặp prompt",
+      "Remote MCP Server: Claude Code, Cursor và các MCP client khác kết nối tới endpoint /mcp để truy vấn trace, dataset, thí nghiệm",
+      "CLI @arizeai/phoenix-cli tự phát hiện framework, cài instrumentation OpenInference và cấu hình xuất trace"
+    ],
+    "installGuideVi": "Yêu cầu: Python với pip hoặc uv (uvx) để chạy cục bộ; hoặc Docker/Kubernetes (image arizephoenix/phoenix, Helm chart). Node.js nếu dùng `npx @arizeai/phoenix-cli`.\nBước 1: Cài Phoenix: `pip install arize-phoenix`\nBước 2: Khởi động máy chủ: `phoenix serve`\nBước 3: Hoặc chạy không cần cài đặt: `uvx arize-phoenix serve`\nBước 4: Trong thư mục dự án, tự cấu hình gửi trace: `npx @arizeai/phoenix-cli setup`",
+    "usageGuideVi": "Bước 1: Khởi động Phoenix cục bộ hoặc triển khai bằng Docker/Helm\nBước 2: Chạy phoenix-cli setup (hoặc tự cấu hình OpenInference) để ứng dụng gửi trace về Phoenix\nBước 3: Xem trace, tạo dataset và chạy đánh giá, thí nghiệm trong giao diện\nBước 4: Tùy chọn: kết nối agent lập trình qua Remote MCP Server tại endpoint /mcp của instance",
+    "samplePromptsVi": [
+      "Dùng Phoenix để tìm các trace có lỗi gọi công cụ trong agent LangGraph của tôi",
+      "Tạo dataset từ các trace gần đây và chạy thí nghiệm so sánh hai phiên bản prompt",
+      "Chạy đánh giá mức liên quan của tài liệu truy xuất trong pipeline RAG"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "uvx arize-phoenix serve",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uvx arize-phoenix serve\"\n  ],\n  \"nguon\": \"https://github.com/Arize-ai/phoenix\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "prosVi": [
+      "Tự host được, chạy nhanh bằng một lệnh uvx",
+      "Dựa trên OpenTelemetry/OpenInference, không phụ thuộc nhà cung cấp, ngôn ngữ hay framework",
+      "Có sẵn CLI, skill và Remote MCP Server cho agent lập trình",
+      "Container image và Helm chart chính thức"
+    ],
+    "consVi": [
+      "Giấy phép Elastic License 2.0 là giấy phép mã nguồn công khai (source-available), không phải giấy phép nguồn mở OSI: cấm cung cấp phần mềm cho bên thứ ba dưới dạng dịch vụ hosted/managed và cấm vô hiệu hóa chức năng license key",
+      "README nêu một phần mã được bảo hộ bằng sáng chế Hoa Kỳ (xem IP_NOTICE)",
+      "Mặc định thu thập phân tích web cơ bản; tắt bằng PHOENIX_TELEMETRY_ENABLED=false",
+      "Bản managed (Arize AX) là sản phẩm thương mại riêng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Arize Phoenix — Nền tảng quan sát, tracing và đánh giá ứng dụng LLM tự host\n\n> Arize Phoenix is Arize's open-source AI observability platform designed for experimentation, evaluation, and troubleshooting.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPhoenix là nền tảng quan sát AI của Arize dùng để thử nghiệm, đánh giá và xử lý sự cố ứng dụng LLM. Phoenix ghi trace dựa trên OpenTelemetry (OpenInference), hỗ trợ đánh giá bằng LLM, dataset có phiên bản, thí nghiệm, playground và quản lý prompt. Có thể chạy cục bộ bằng pip/uvx, Docker hoặc Kubernetes, kèm CLI, skill và Remote MCP Server cho agent lập trình.\n\nTheo dõi, đánh giá và cải thiện ứng dụng LLM/agent bằng trace chuẩn OpenTelemetry, tự host trên hạ tầng của mình.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Arize AI\n- **Giấy phép bản quyền:** Mã nguồn công khai (Elastic License 2.0) — cấm cung cấp dưới dạng dịch vụ hosted\n- **Nền tảng hỗ trợ:** `web`, `claude_code`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/Arize-ai/phoenix](https://github.com/Arize-ai/phoenix)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tracing: ghi trace thời gian chạy ứng dụng LLM bằng instrumentation dựa trên OpenTelemetry**\n- **Evaluation: dùng LLM để benchmark chất lượng phản hồi và truy xuất**\n- **Datasets và Experiments: dataset có phiên bản, theo dõi thay đổi prompt, LLM và truy xuất**\n- **Playground và Prompt Management: tối ưu prompt, so sánh mô hình, phát lại lời gọi LLM đã trace, quản lý phiên bản và gắn thẻ prompt**\n- **PXI (Phoenix Intelligence): agent kỹ thuật AI tích hợp để gỡ lỗi trace và lặp prompt**\n- **Remote MCP Server: Claude Code, Cursor và các MCP client khác kết nối tới endpoint /mcp để truy vấn trace, dataset, thí nghiệm**\n- **CLI @arizeai/phoenix-cli tự phát hiện framework, cài instrumentation OpenInference và cấu hình xuất trace**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuvx arize-phoenix serve\n```\n\nYêu cầu: Python với pip hoặc uv (uvx) để chạy cục bộ; hoặc Docker/Kubernetes (image arizephoenix/phoenix, Helm chart). Node.js nếu dùng `npx @arizeai/phoenix-cli`.\nBước 1: Cài Phoenix: `pip install arize-phoenix`\nBước 2: Khởi động máy chủ: `phoenix serve`\nBước 3: Hoặc chạy không cần cài đặt: `uvx arize-phoenix serve`\nBước 4: Trong thư mục dự án, tự cấu hình gửi trace: `npx @arizeai/phoenix-cli setup`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi động Phoenix cục bộ hoặc triển khai bằng Docker/Helm\nBước 2: Chạy phoenix-cli setup (hoặc tự cấu hình OpenInference) để ứng dụng gửi trace về Phoenix\nBước 3: Xem trace, tạo dataset và chạy đánh giá, thí nghiệm trong giao diện\nBước 4: Tùy chọn: kết nối agent lập trình qua Remote MCP Server tại endpoint /mcp của instance\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Dùng Phoenix để tìm các trace có lỗi gọi công cụ trong agent LangGraph của tôi\"\n- \"Tạo dataset từ các trace gần đây và chạy thí nghiệm so sánh hai phiên bản prompt\"\n- \"Chạy đánh giá mức liên quan của tài liệu truy xuất trong pipeline RAG\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "comet-ml-opik",
+    "slug": "comet-ml-opik",
+    "name": "Opik — Nền tảng mã nguồn mở quan sát, đánh giá và tracing AI agent",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "qa_testing",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Kiểm thử phần mềm & QA/QC",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/comet-ml/opik",
+    "websiteUrl": "https://www.comet.com/docs/opik/",
+    "authorName": "Comet ML, Inc.",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Opik của Comet bao phủ toàn bộ vòng đời ứng dụng LLM, từ trace đầu tiên khi phát triển đến giám sát môi trường thật, dành cho nhóm xây dựng ứng dụng LLM và AI agent. Nền tảng gồm tracing agent, đánh giá với dataset, thí nghiệm và chỉ số LLM-as-a-judge, tối ưu prompt/agent, guardrails và tích hợp PyTest cho CI/CD. Toàn bộ nền tảng (cả backend) theo Apache 2.0 và tự host được.",
+    "purposeVi": "Ghi trace, đánh giá và giám sát ứng dụng LLM và agent ở quy mô lớn, tự host không cần giấy phép thương mại.",
+    "featuresVi": [
+      "Tracing agent: cây trace đầy đủ cho agent nhiều bước, lời gọi công cụ, ghi hội thoại",
+      "Đánh giá LLM: dataset, experiment và chỉ số LLM-as-a-judge cho phát hiện ảo giác, kiểm duyệt, đánh giá RAG",
+      "Tối ưu prompt và agent: Opik Agent Optimizer SDK",
+      "Giám sát production: dashboard, quy tắc đánh giá trực tuyến; README nêu khả năng ghi 40M+ trace/ngày",
+      "Opik Guardrails hỗ trợ AI an toàn và có trách nhiệm",
+      "Đánh giá trong CI/CD qua tích hợp PyTest",
+      "Kết nối agent lập trình (Claude Code, Cursor, VS Code Copilot, Codex, opencode) qua MCP bằng một lệnh"
+    ],
+    "installGuideVi": "Yêu cầu: Git và Docker để tự host bằng script opik.sh (Linux/Mac) hoặc opik.ps1 (Windows), giao diện tại localhost:5173; hoặc tài khoản Comet.com. Python để dùng SDK; uv để cấu hình MCP.\nBước 1: Tải mã nguồn: `git clone https://github.com/comet-ml/opik.git`\nBước 2: Vào thư mục: `cd opik`\nBước 3: Khởi động toàn bộ nền tảng (Linux/Mac): `./opik.sh`\nBước 4: Cài Python SDK: `pip install opik`\nBước 5: Cấu hình SDK trỏ tới server hoặc Comet.com: `opik configure`\nBước 6: Tùy chọn, kết nối agent lập trình qua MCP: `uvx opik mcp configure`",
+    "usageGuideVi": "Bước 1: Khởi động Opik và mở localhost:5173 trên trình duyệt\nBước 2: Chạy opik configure để nhập địa chỉ server tự host hoặc API key và workspace Comet.com\nBước 3: Gắn decorator @track vào hàm hoặc dùng tích hợp framework để ghi trace\nBước 4: Tạo dataset, chạy experiment với chỉ số LLM-as-a-judge và theo dõi dashboard",
+    "samplePromptsVi": [
+      "Đọc các trace Opik gần nhất của agent và chỉ ra bước gọi công cụ bị lỗi",
+      "Chấm điểm ảo giác cho các câu trả lời trong dataset kiểm thử bằng Opik",
+      "Thêm kiểm thử đánh giá LLM bằng PyTest của Opik vào pipeline CI"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "./opik.sh",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"./opik.sh\"\n  ],\n  \"nguon\": \"https://github.com/comet-ml/opik\"\n}"
+      },
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "uvx opik mcp configure",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uvx opik mcp configure\"\n  ],\n  \"nguon\": \"https://github.com/comet-ml/opik\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Toàn bộ nền tảng, gồm backend, theo Apache 2.0 và tự host không cần giấy phép thương mại",
+      "Script opik.sh có tùy chọn chạy hạ tầng, backend, guardrails, kiểm tra và dọn dẹp",
+      "Hỗ trợ SDK Python, TypeScript, REST API và OpenTelemetry",
+      "Cấu hình MCP cho agent lập trình bằng một lệnh"
+    ],
+    "consVi": [
+      "Tự host cần Docker và chạy nhiều container (cơ sở dữ liệu, cache, backend)",
+      "Lệnh `./opik.sh --clean` xóa toàn bộ dữ liệu Opik",
+      "Kubernetes/Helm được khuyến nghị cho production quy mô lớn",
+      "Bản dễ dùng nhất là Comet.com Cloud, cần tạo tài khoản"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Opik — Nền tảng mã nguồn mở quan sát, đánh giá và tracing AI agent\n\n> Opik: Open-Source LLM Observability, Evaluation & AI Agent Tracing\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nOpik của Comet bao phủ toàn bộ vòng đời ứng dụng LLM, từ trace đầu tiên khi phát triển đến giám sát môi trường thật, dành cho nhóm xây dựng ứng dụng LLM và AI agent. Nền tảng gồm tracing agent, đánh giá với dataset, thí nghiệm và chỉ số LLM-as-a-judge, tối ưu prompt/agent, guardrails và tích hợp PyTest cho CI/CD. Toàn bộ nền tảng (cả backend) theo Apache 2.0 và tự host được.\n\nGhi trace, đánh giá và giám sát ứng dụng LLM và agent ở quy mô lớn, tự host không cần giấy phép thương mại.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Comet ML, Inc.\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`, `claude_code`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/comet-ml/opik](https://github.com/comet-ml/opik)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tracing agent: cây trace đầy đủ cho agent nhiều bước, lời gọi công cụ, ghi hội thoại**\n- **Đánh giá LLM: dataset, experiment và chỉ số LLM-as-a-judge cho phát hiện ảo giác, kiểm duyệt, đánh giá RAG**\n- **Tối ưu prompt và agent: Opik Agent Optimizer SDK**\n- **Giám sát production: dashboard, quy tắc đánh giá trực tuyến; README nêu khả năng ghi 40M+ trace/ngày**\n- **Opik Guardrails hỗ trợ AI an toàn và có trách nhiệm**\n- **Đánh giá trong CI/CD qua tích hợp PyTest**\n- **Kết nối agent lập trình (Claude Code, Cursor, VS Code Copilot, Codex, opencode) qua MCP bằng một lệnh**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n./opik.sh\n```\n\nYêu cầu: Git và Docker để tự host bằng script opik.sh (Linux/Mac) hoặc opik.ps1 (Windows), giao diện tại localhost:5173; hoặc tài khoản Comet.com. Python để dùng SDK; uv để cấu hình MCP.\nBước 1: Tải mã nguồn: `git clone https://github.com/comet-ml/opik.git`\nBước 2: Vào thư mục: `cd opik`\nBước 3: Khởi động toàn bộ nền tảng (Linux/Mac): `./opik.sh`\nBước 4: Cài Python SDK: `pip install opik`\nBước 5: Cấu hình SDK trỏ tới server hoặc Comet.com: `opik configure`\nBước 6: Tùy chọn, kết nối agent lập trình qua MCP: `uvx opik mcp configure`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi động Opik và mở localhost:5173 trên trình duyệt\nBước 2: Chạy opik configure để nhập địa chỉ server tự host hoặc API key và workspace Comet.com\nBước 3: Gắn decorator @track vào hàm hoặc dùng tích hợp framework để ghi trace\nBước 4: Tạo dataset, chạy experiment với chỉ số LLM-as-a-judge và theo dõi dashboard\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Đọc các trace Opik gần nhất của agent và chỉ ra bước gọi công cụ bị lỗi\"\n- \"Chấm điểm ảo giác cho các câu trả lời trong dataset kiểm thử bằng Opik\"\n- \"Thêm kiểm thử đánh giá LLM bằng PyTest của Opik vào pipeline CI\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "confident-ai-deepeval",
+    "slug": "confident-ai-deepeval",
+    "name": "DeepEval — Framework kiểm thử và đánh giá ứng dụng LLM kiểu Pytest",
+    "icon": "Wrench",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "qa_testing",
+    "categoryNameVi": "Kiểm thử phần mềm & QA/QC",
+    "categories": [
+      "qa_testing",
+      "nlp_llm",
+      "vector_rag"
+    ],
+    "categoryNamesVi": [
+      "Kiểm thử phần mềm & QA/QC",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/confident-ai/deepeval",
+    "websiteUrl": "https://deepeval.com",
+    "authorName": "Confident AI",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "DeepEval là framework đánh giá LLM mã nguồn mở, tương tự Pytest nhưng chuyên cho kiểm thử đơn vị ứng dụng LLM. Thư viện có nhiều chỉ số sẵn dùng như G-Eval, DAG, chỉ số cho agent, hội thoại nhiều lượt, voice agent, RAG, MCP và đa phương thức, chạy bằng bất kỳ LLM nào hoặc mô hình NLP cục bộ. Hỗ trợ đánh giá end-to-end và theo từng thành phần qua tracing.",
+    "purposeVi": "Viết kiểm thử tự động cho chatbot, agent, pipeline RAG để chọn mô hình, prompt, kiến trúc tối ưu và ngăn suy giảm chất lượng.",
+    "featuresVi": [
+      "Chỉ số đa năng: JevEval, G-Eval (LLM-as-a-judge theo tiêu chí tùy chọn), DAG (bộ dựng judge xác định dạng đồ thị)",
+      "Chỉ số agent: Task Completion, Tool Correctness, Goal Accuracy, Step Efficiency, Plan Adherence...",
+      "Chỉ số RAG: Answer Relevancy, Faithfulness, Contextual Recall/Precision/Relevancy, RAGAS",
+      "Chỉ số hội thoại nhiều lượt, voice agent, MCP và đa phương thức; Hallucination, Bias, Toxicity, JSON Correctness",
+      "Sinh dataset tổng hợp một lượt và nhiều lượt; tối ưu prompt tự động",
+      "Benchmark LLM trên MMLU, HellaSwag, DROP, BIG-Bench Hard, TruthfulQA, HumanEval, GSM8K",
+      "Tích hợp LangChain, LangGraph, Pydantic AI, CrewAI, Anthropic, OpenAI Agents, LlamaIndex và mọi môi trường CI/CD"
+    ],
+    "installGuideVi": "Yêu cầu: Python>=3.9. Các chỉ số LLM-as-a-judge cần khóa OPENAI_API_KEY hoặc mô hình tùy chỉnh của bạn. Tài khoản Confident AI là tùy chọn (README khuyến nghị để có báo cáo chia sẻ trên cloud).\nBước 1: Cài thư viện: `pip install -U deepeval`\nBước 2: Tùy chọn, đăng nhập nền tảng để lưu báo cáo: `deepeval login`\nBước 3: Đặt khóa API cho mô hình đánh giá: `export OPENAI_API_KEY=\"...\"`",
+    "usageGuideVi": "Bước 1: Tạo tệp kiểm thử, ví dụ test_ai_agent.py, khai báo LLMTestCase với input, actual_output, expected_output\nBước 2: Chọn chỉ số như GEval và ngưỡng (threshold), gọi assert_test\nBước 3: Chạy kiểm thử: `deepeval test run test_ai_agent.py`\nBước 4: Dùng @observe và evals_iterator() để đánh giá từng thành phần hoặc toàn bộ quỹ đạo agent",
+    "samplePromptsVi": [
+      "Viết bộ kiểm thử DeepEval với G-Eval để kiểm tra độ chính xác câu trả lời của chatbot chăm sóc khách hàng",
+      "Đo Faithfulness và Contextual Recall cho pipeline RAG của tôi bằng DeepEval",
+      "Đánh giá agent bằng Task Completion và Tool Correctness trên dataset golden"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install -U deepeval",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install -U deepeval\"\n  ],\n  \"nguon\": \"https://github.com/confident-ai/deepeval\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Cách viết kiểm thử quen thuộc như Pytest, tích hợp mọi CI/CD",
+      "Bộ chỉ số rất rộng, có giải thích cho từng điểm số; dùng được LLM bất kỳ hoặc mô hình chạy cục bộ",
+      "Có skill cho agent lập trình (vibe-coder quickstart)"
+    ],
+    "consVi": [
+      "Chỉ số LLM-as-a-judge tốn chi phí gọi API mô hình (mặc định cần OPENAI_API_KEY)",
+      "Khi đăng nhập deepeval login, các test case được tự động ghi lên nền tảng Confident AI (dịch vụ thương mại)",
+      "Chỉ hỗ trợ Python"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# DeepEval — Framework kiểm thử và đánh giá ứng dụng LLM kiểu Pytest\n\n> DeepEval is a simple-to-use, open-source LLM evaluation framework, for evaluating large-language model systems.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nDeepEval là framework đánh giá LLM mã nguồn mở, tương tự Pytest nhưng chuyên cho kiểm thử đơn vị ứng dụng LLM. Thư viện có nhiều chỉ số sẵn dùng như G-Eval, DAG, chỉ số cho agent, hội thoại nhiều lượt, voice agent, RAG, MCP và đa phương thức, chạy bằng bất kỳ LLM nào hoặc mô hình NLP cục bộ. Hỗ trợ đánh giá end-to-end và theo từng thành phần qua tracing.\n\nViết kiểm thử tự động cho chatbot, agent, pipeline RAG để chọn mô hình, prompt, kiến trúc tối ưu và ngăn suy giảm chất lượng.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Kiểm thử phần mềm & QA/QC\n- **Tác giả / Nhà phát triển:** Confident AI\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/confident-ai/deepeval](https://github.com/confident-ai/deepeval)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Chỉ số đa năng: JevEval, G-Eval (LLM-as-a-judge theo tiêu chí tùy chọn), DAG (bộ dựng judge xác định dạng đồ thị)**\n- **Chỉ số agent: Task Completion, Tool Correctness, Goal Accuracy, Step Efficiency, Plan Adherence...**\n- **Chỉ số RAG: Answer Relevancy, Faithfulness, Contextual Recall/Precision/Relevancy, RAGAS**\n- **Chỉ số hội thoại nhiều lượt, voice agent, MCP và đa phương thức; Hallucination, Bias, Toxicity, JSON Correctness**\n- **Sinh dataset tổng hợp một lượt và nhiều lượt; tối ưu prompt tự động**\n- **Benchmark LLM trên MMLU, HellaSwag, DROP, BIG-Bench Hard, TruthfulQA, HumanEval, GSM8K**\n- **Tích hợp LangChain, LangGraph, Pydantic AI, CrewAI, Anthropic, OpenAI Agents, LlamaIndex và mọi môi trường CI/CD**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install -U deepeval\n```\n\nYêu cầu: Python>=3.9. Các chỉ số LLM-as-a-judge cần khóa OPENAI_API_KEY hoặc mô hình tùy chỉnh của bạn. Tài khoản Confident AI là tùy chọn (README khuyến nghị để có báo cáo chia sẻ trên cloud).\nBước 1: Cài thư viện: `pip install -U deepeval`\nBước 2: Tùy chọn, đăng nhập nền tảng để lưu báo cáo: `deepeval login`\nBước 3: Đặt khóa API cho mô hình đánh giá: `export OPENAI_API_KEY=\"...\"`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo tệp kiểm thử, ví dụ test_ai_agent.py, khai báo LLMTestCase với input, actual_output, expected_output\nBước 2: Chọn chỉ số như GEval và ngưỡng (threshold), gọi assert_test\nBước 3: Chạy kiểm thử: `deepeval test run test_ai_agent.py`\nBước 4: Dùng @observe và evals_iterator() để đánh giá từng thành phần hoặc toàn bộ quỹ đạo agent\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết bộ kiểm thử DeepEval với G-Eval để kiểm tra độ chính xác câu trả lời của chatbot chăm sóc khách hàng\"\n- \"Đo Faithfulness và Contextual Recall cho pipeline RAG của tôi bằng DeepEval\"\n- \"Đánh giá agent bằng Task Completion và Tool Correctness trên dataset golden\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "vibrantlabsai-ragas",
+    "slug": "vibrantlabsai-ragas",
+    "name": "Ragas — Bộ công cụ đánh giá ứng dụng LLM và hệ thống RAG bằng chỉ số khách quan",
+    "icon": "Wrench",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "vector_rag",
+    "categoryNameVi": "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+    "categories": [
+      "vector_rag",
+      "qa_testing",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Kiểm thử phần mềm & QA/QC",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/vibrantlabsai/ragas",
+    "websiteUrl": "https://docs.ragas.io",
+    "authorName": "VibrantLabs (trước đây là Exploding Gradients)",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Ragas là bộ công cụ đánh giá và tối ưu ứng dụng LLM bằng chỉ số khách quan thay cho đánh giá chủ quan tốn thời gian. Thư viện cung cấp chỉ số dựa trên LLM và chỉ số truyền thống, sinh tập kiểm thử bám sát dữ liệu thực tế và tích hợp với LangChain cùng các công cụ quan sát phổ biến. Lệnh ragas quickstart tạo nhanh dự án mẫu đánh giá RAG.",
+    "purposeVi": "Đo lường chất lượng ứng dụng LLM, đặc biệt hệ thống RAG, bằng chỉ số định lượng và tập kiểm thử tự sinh.",
+    "featuresVi": [
+      "Chỉ số khách quan: kết hợp chỉ số dựa trên LLM và chỉ số truyền thống",
+      "Sinh dữ liệu kiểm thử: tự tạo tập kiểm thử bao phủ nhiều tình huống",
+      "Tích hợp: làm việc với LangChain và các công cụ quan sát lớn",
+      "Vòng phản hồi: dùng dữ liệu production để cải thiện ứng dụng liên tục",
+      "Chỉ số tùy chỉnh như DiscreteMetric (Aspect Critique) để chấm bất kỳ khía cạnh nào của đầu ra",
+      "Lệnh ragas quickstart với mẫu rag_eval để dựng dự án đánh giá RAG"
+    ],
+    "installGuideVi": "Yêu cầu: Python >= 3.9 (theo pyproject.toml). Ví dụ trong README dùng OpenAI nên cần đặt biến môi trường OPENAI_API_KEY.\nBước 1: Cài từ PyPI: `pip install ragas`\nBước 2: Hoặc cài từ mã nguồn: `pip install git+https://github.com/vibrantlabsai/ragas`\nBước 3: Xem danh sách mẫu dự án: `ragas quickstart`\nBước 4: Tạo dự án đánh giá RAG: `ragas quickstart rag_eval`",
+    "usageGuideVi": "Bước 1: Đặt biến môi trường OPENAI_API_KEY\nBước 2: Tạo LLM đánh giá bằng llm_factory và định nghĩa chỉ số, ví dụ DiscreteMetric với các giá trị cho phép\nBước 3: Gọi metric.ascore() trên đầu ra ứng dụng để nhận điểm và lý do\nBước 4: Hoặc dùng `ragas quickstart rag_eval -o ./my-project` để có dự án mẫu hoàn chỉnh",
+    "samplePromptsVi": [
+      "Tạo dự án ragas quickstart rag_eval và chạy đánh giá cho chatbot hỏi đáp tài liệu nội bộ",
+      "Định nghĩa DiscreteMetric của Ragas để chấm bản tóm tắt là accurate hay inaccurate",
+      "Sinh tập kiểm thử tự động từ tài liệu để đánh giá pipeline RAG"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install ragas",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install ragas\"\n  ],\n  \"nguon\": \"https://github.com/vibrantlabsai/ragas\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Chuyên sâu cho đánh giá RAG, có lệnh quickstart tạo dự án mẫu",
+      "Tự sinh tập kiểm thử khi chưa có dataset",
+      "Mã thu thập dữ liệu phân tích công khai, có thể tắt"
+    ],
+    "consVi": [
+      "Mặc định thu thập dữ liệu sử dụng ẩn danh; tắt bằng RAGAS_DO_NOT_TRACK=true",
+      "Cần khóa API LLM (ví dụ OPENAI_API_KEY) cho chỉ số dựa trên LLM",
+      "Hiện chỉ có mẫu quickstart rag_eval; các mẫu agent_evals, benchmark_llm, prompt_evals, workflow_eval đang ở trạng thái sắp ra mắt",
+      "Kho đã chuyển từ explodinggradients/ragas sang vibrantlabsai/ragas; commit gần nhất trên nhánh chính là ngày 24/02/2026"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Ragas — Bộ công cụ đánh giá ứng dụng LLM và hệ thống RAG bằng chỉ số khách quan\n\n> Objective metrics, intelligent test generation, and data-driven insights for LLM apps\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nRagas là bộ công cụ đánh giá và tối ưu ứng dụng LLM bằng chỉ số khách quan thay cho đánh giá chủ quan tốn thời gian. Thư viện cung cấp chỉ số dựa trên LLM và chỉ số truyền thống, sinh tập kiểm thử bám sát dữ liệu thực tế và tích hợp với LangChain cùng các công cụ quan sát phổ biến. Lệnh ragas quickstart tạo nhanh dự án mẫu đánh giá RAG.\n\nĐo lường chất lượng ứng dụng LLM, đặc biệt hệ thống RAG, bằng chỉ số định lượng và tập kiểm thử tự sinh.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Dữ liệu Vector & Tìm kiếm tri thức (RAG)\n- **Tác giả / Nhà phát triển:** VibrantLabs (trước đây là Exploding Gradients)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/vibrantlabsai/ragas](https://github.com/vibrantlabsai/ragas)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Chỉ số khách quan: kết hợp chỉ số dựa trên LLM và chỉ số truyền thống**\n- **Sinh dữ liệu kiểm thử: tự tạo tập kiểm thử bao phủ nhiều tình huống**\n- **Tích hợp: làm việc với LangChain và các công cụ quan sát lớn**\n- **Vòng phản hồi: dùng dữ liệu production để cải thiện ứng dụng liên tục**\n- **Chỉ số tùy chỉnh như DiscreteMetric (Aspect Critique) để chấm bất kỳ khía cạnh nào của đầu ra**\n- **Lệnh ragas quickstart với mẫu rag_eval để dựng dự án đánh giá RAG**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install ragas\n```\n\nYêu cầu: Python >= 3.9 (theo pyproject.toml). Ví dụ trong README dùng OpenAI nên cần đặt biến môi trường OPENAI_API_KEY.\nBước 1: Cài từ PyPI: `pip install ragas`\nBước 2: Hoặc cài từ mã nguồn: `pip install git+https://github.com/vibrantlabsai/ragas`\nBước 3: Xem danh sách mẫu dự án: `ragas quickstart`\nBước 4: Tạo dự án đánh giá RAG: `ragas quickstart rag_eval`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đặt biến môi trường OPENAI_API_KEY\nBước 2: Tạo LLM đánh giá bằng llm_factory và định nghĩa chỉ số, ví dụ DiscreteMetric với các giá trị cho phép\nBước 3: Gọi metric.ascore() trên đầu ra ứng dụng để nhận điểm và lý do\nBước 4: Hoặc dùng `ragas quickstart rag_eval -o ./my-project` để có dự án mẫu hoàn chỉnh\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo dự án ragas quickstart rag_eval và chạy đánh giá cho chatbot hỏi đáp tài liệu nội bộ\"\n- \"Định nghĩa DiscreteMetric của Ragas để chấm bản tóm tắt là accurate hay inaccurate\"\n- \"Sinh tập kiểm thử tự động từ tài liệu để đánh giá pipeline RAG\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "traceloop-openllmetry",
+    "slug": "traceloop-openllmetry",
+    "name": "OpenLLMetry — Bộ instrumentation OpenTelemetry cho ứng dụng LLM",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "devops_cicd",
+      "cloud_infrastructure"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "DevOps & Tự động hóa CI/CD",
+      "Điện toán đám mây & Hạ tầng số"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/traceloop/openllmetry",
+    "websiteUrl": "https://traceloop.com/docs/openllmetry/getting-started-python",
+    "authorName": "Traceloop",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "OpenLLMetry là bộ mở rộng xây trên OpenTelemetry, giúp quan sát toàn diện ứng dụng LLM và xuất dữ liệu chuẩn OpenTelemetry sang hệ thống giám sát sẵn có như Datadog, Grafana, Honeycomb, New Relic, Sentry, SigNoz. Kho gồm các instrumentation cho nhà cung cấp LLM, vector DB, framework và Traceloop SDK để bắt đầu chỉ với một dòng mã. Quy ước ngữ nghĩa của dự án đã được đưa vào OpenTelemetry.",
+    "purposeVi": "Thêm tracing LLM chuẩn OpenTelemetry vào ứng dụng Python và gửi về công cụ observability mà đội ngũ đang dùng.",
+    "featuresVi": [
+      "Traceloop SDK: khởi tạo tracing bằng Traceloop.init()",
+      "Instrumentation nhà cung cấp LLM: OpenAI/Azure OpenAI, Anthropic, Bedrock, Cohere, Gemini, Groq, Mistral, Ollama, Vertex AI...",
+      "Instrumentation vector DB: Chroma, LanceDB, Milvus, Pinecone, Qdrant, Weaviate, Marqo",
+      "Instrumentation framework: LangChain, LangGraph, LlamaIndex, CrewAI, Haystack, LiteLLM, OpenAI Agents, Agno; giao thức MCP",
+      "Xuất trace tới Traceloop, Datadog, Dynatrace, Grafana, Honeycomb, New Relic, Sentry, SigNoz, Splunk, OpenTelemetry Collector...",
+      "Dùng riêng từng instrumentation nếu đã có OpenTelemetry"
+    ],
+    "installGuideVi": "Yêu cầu: Python >= 3.10 (theo pyproject.toml của traceloop-sdk) và một đích nhận dữ liệu OpenTelemetry. Bản JS/TS nằm ở kho riêng OpenLLMetry-JS.\nBước 1: Cài SDK: `pip install traceloop-sdk`\nBước 2: Thêm vào mã: `from traceloop.sdk import Traceloop` rồi gọi `Traceloop.init()`\nBước 3: Khi chạy cục bộ, tắt gửi theo lô để thấy trace ngay: `Traceloop.init(disable_batch=True)`",
+    "usageGuideVi": "Bước 1: Cài traceloop-sdk và gọi Traceloop.init() khi khởi động ứng dụng\nBước 2: Cấu hình đích xuất (exporter) theo tài liệu tích hợp của từng nền tảng giám sát\nBước 3: Chạy ứng dụng; các lời gọi LLM, vector DB và framework được tự động ghi trace\nBước 4: Xem trace trong công cụ observability đã kết nối",
+    "samplePromptsVi": [
+      "Thêm OpenLLMetry vào ứng dụng FastAPI dùng OpenAI để gửi trace về Grafana",
+      "Ghi trace các truy vấn Qdrant và lời gọi Anthropic trong pipeline RAG bằng OpenLLMetry",
+      "Gắn instrumentation LangChain của OpenLLMetry vào hệ thống OpenTelemetry sẵn có"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install traceloop-sdk",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install traceloop-sdk\"\n  ],\n  \"nguon\": \"https://github.com/traceloop/openllmetry\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Chuẩn OpenTelemetry, không khóa vào một nhà cung cấp; hỗ trợ hơn 20 đích xuất đã kiểm thử",
+      "Bắt đầu chỉ với một dòng Traceloop.init()",
+      "Từ v0.49.2 trở lên SDK không còn thu thập telemetry"
+    ],
+    "consVi": [
+      "Kho này chỉ dành cho Python; JS/TS dùng kho OpenLLMetry-JS riêng",
+      "Không kèm giao diện xem trace; cần một backend observability (Traceloop hoặc nền tảng khác)",
+      "Phiên bản SDK cũ hơn v0.49.2 có thu thập telemetry ẩn danh"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# OpenLLMetry — Bộ instrumentation OpenTelemetry cho ứng dụng LLM\n\n> OpenLLMetry is a set of extensions built on top of OpenTelemetry that gives you complete observability over your LLM application.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nOpenLLMetry là bộ mở rộng xây trên OpenTelemetry, giúp quan sát toàn diện ứng dụng LLM và xuất dữ liệu chuẩn OpenTelemetry sang hệ thống giám sát sẵn có như Datadog, Grafana, Honeycomb, New Relic, Sentry, SigNoz. Kho gồm các instrumentation cho nhà cung cấp LLM, vector DB, framework và Traceloop SDK để bắt đầu chỉ với một dòng mã. Quy ước ngữ nghĩa của dự án đã được đưa vào OpenTelemetry.\n\nThêm tracing LLM chuẩn OpenTelemetry vào ứng dụng Python và gửi về công cụ observability mà đội ngũ đang dùng.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Traceloop\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/traceloop/openllmetry](https://github.com/traceloop/openllmetry)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Traceloop SDK: khởi tạo tracing bằng Traceloop.init()**\n- **Instrumentation nhà cung cấp LLM: OpenAI/Azure OpenAI, Anthropic, Bedrock, Cohere, Gemini, Groq, Mistral, Ollama, Vertex AI...**\n- **Instrumentation vector DB: Chroma, LanceDB, Milvus, Pinecone, Qdrant, Weaviate, Marqo**\n- **Instrumentation framework: LangChain, LangGraph, LlamaIndex, CrewAI, Haystack, LiteLLM, OpenAI Agents, Agno; giao thức MCP**\n- **Xuất trace tới Traceloop, Datadog, Dynatrace, Grafana, Honeycomb, New Relic, Sentry, SigNoz, Splunk, OpenTelemetry Collector...**\n- **Dùng riêng từng instrumentation nếu đã có OpenTelemetry**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install traceloop-sdk\n```\n\nYêu cầu: Python >= 3.10 (theo pyproject.toml của traceloop-sdk) và một đích nhận dữ liệu OpenTelemetry. Bản JS/TS nằm ở kho riêng OpenLLMetry-JS.\nBước 1: Cài SDK: `pip install traceloop-sdk`\nBước 2: Thêm vào mã: `from traceloop.sdk import Traceloop` rồi gọi `Traceloop.init()`\nBước 3: Khi chạy cục bộ, tắt gửi theo lô để thấy trace ngay: `Traceloop.init(disable_batch=True)`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Cài traceloop-sdk và gọi Traceloop.init() khi khởi động ứng dụng\nBước 2: Cấu hình đích xuất (exporter) theo tài liệu tích hợp của từng nền tảng giám sát\nBước 3: Chạy ứng dụng; các lời gọi LLM, vector DB và framework được tự động ghi trace\nBước 4: Xem trace trong công cụ observability đã kết nối\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Thêm OpenLLMetry vào ứng dụng FastAPI dùng OpenAI để gửi trace về Grafana\"\n- \"Ghi trace các truy vấn Qdrant và lời gọi Anthropic trong pipeline RAG bằng OpenLLMetry\"\n- \"Gắn instrumentation LangChain của OpenLLMetry vào hệ thống OpenTelemetry sẵn có\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "eleutherai-lm-evaluation-harness",
+    "slug": "eleutherai-lm-evaluation-harness",
+    "name": "LM Evaluation Harness — Công cụ benchmark mô hình ngôn ngữ trên hàng trăm tác vụ chuẩn",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "qa_testing",
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Kiểm thử phần mềm & QA/QC",
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/EleutherAI/lm-evaluation-harness",
+    "websiteUrl": "",
+    "authorName": "EleutherAI",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "LM Evaluation Harness là framework thống nhất để kiểm tra mô hình ngôn ngữ sinh trên rất nhiều tác vụ đánh giá, với hơn 60 benchmark học thuật chuẩn và hàng trăm tác vụ con. Công cụ hỗ trợ mô hình Hugging Face transformers, vLLM, SGLang, GGUF qua llama.cpp, API thương mại như OpenAI và adapter LoRA. Đây là backend của Open LLM Leaderboard trên Hugging Face.",
+    "purposeVi": "Đo và so sánh năng lực mô hình ngôn ngữ trên các benchmark chuẩn một cách tái lập được.",
+    "featuresVi": [
+      "Hơn 60 benchmark học thuật chuẩn với hàng trăm tác vụ con và biến thể",
+      "Backend mô hình: Hugging Face transformers (kể cả lượng tử hóa GPTQ), vLLM, SGLang, GGUF, NeMo, Megatron, OpenVINO",
+      "Hỗ trợ API thương mại (OpenAI, Anthropic qua extra api) và adapter PEFT/LoRA",
+      "Đánh giá đa GPU với accelerate; tự chọn batch size bằng --batch_size auto",
+      "Tác vụ cấu hình bằng YAML, prompt Jinja2; CLI có lệnh con run, ls, validate và tệp cấu hình --config",
+      "Plugin: đăng ký model backend, filter, metric từ gói riêng mà không cần fork"
+    ],
+    "installGuideVi": "Yêu cầu: Python >= 3.10 (theo pyproject.toml). Gói cơ bản không gồm transformers/torch; phải cài backend riêng như lm_eval[hf], lm_eval[vllm] hoặc lm_eval[api]. Chạy mô hình Hugging Face thường cần GPU CUDA.\nBước 1: Tải mã nguồn: `git clone --depth 1 https://github.com/EleutherAI/lm-evaluation-harness`\nBước 2: Vào thư mục: `cd lm-evaluation-harness`\nBước 3: Cài gói: `pip install -e .`\nBước 4: Cài backend Hugging Face: `pip install \"lm_eval[hf]\"` (hoặc `pip install \"lm_eval[vllm]\"`, `pip install \"lm_eval[api]\"`)\nBước 5: Liệt kê tác vụ có sẵn: `lm-eval ls tasks`",
+    "usageGuideVi": "Bước 1: Chọn backend qua --model (ví dụ hf, vllm, gguf) và truyền tham số mô hình bằng --model_args, ví dụ pretrained=EleutherAI/gpt-j-6B\nBước 2: Chọn tác vụ bằng --tasks (ví dụ hellaswag, lambada_openai), thiết bị bằng --device và --batch_size\nBước 3: Chạy lệnh lm_eval và đọc bảng kết quả chỉ số\nBước 4: Dùng `lm-eval run -h` để xem đầy đủ tùy chọn đánh giá",
+    "samplePromptsVi": [
+      "Chạy lm_eval với backend hf để đánh giá mô hình EleutherAI/pythia-160m trên hellaswag",
+      "Đánh giá mô hình GGUF đang phục vụ qua llama-server bằng lm_eval --model gguf",
+      "So sánh hai checkpoint fine-tune trên nhóm tác vụ leaderboard"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "lm-eval ls tasks",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"lm-eval ls tasks\"\n  ],\n  \"nguon\": \"https://github.com/EleutherAI/lm-evaluation-harness\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT",
+      "Chuẩn đánh giá được dùng trong hàng trăm bài báo và làm backend cho Open LLM Leaderboard",
+      "Hỗ trợ rất nhiều backend suy luận và mô hình cục bộ",
+      "Prompt công khai giúp kết quả tái lập và so sánh được"
+    ],
+    "consVi": [
+      "Tập trung đánh giá mô hình trên benchmark, không phải công cụ tracing/giám sát ứng dụng",
+      "Cần cài backend mô hình riêng; mô hình lớn cần GPU",
+      "Khi đánh giá GGUF mà không cung cấp tokenizer riêng, việc dựng lại tokenizer có thể mất hàng giờ hoặc treo"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# LM Evaluation Harness — Công cụ benchmark mô hình ngôn ngữ trên hàng trăm tác vụ chuẩn\n\n> This project provides a unified framework to test generative language models on a large number of different evaluation tasks.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nLM Evaluation Harness là framework thống nhất để kiểm tra mô hình ngôn ngữ sinh trên rất nhiều tác vụ đánh giá, với hơn 60 benchmark học thuật chuẩn và hàng trăm tác vụ con. Công cụ hỗ trợ mô hình Hugging Face transformers, vLLM, SGLang, GGUF qua llama.cpp, API thương mại như OpenAI và adapter LoRA. Đây là backend của Open LLM Leaderboard trên Hugging Face.\n\nĐo và so sánh năng lực mô hình ngôn ngữ trên các benchmark chuẩn một cách tái lập được.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** EleutherAI\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/EleutherAI/lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Hơn 60 benchmark học thuật chuẩn với hàng trăm tác vụ con và biến thể**\n- **Backend mô hình: Hugging Face transformers (kể cả lượng tử hóa GPTQ), vLLM, SGLang, GGUF, NeMo, Megatron, OpenVINO**\n- **Hỗ trợ API thương mại (OpenAI, Anthropic qua extra api) và adapter PEFT/LoRA**\n- **Đánh giá đa GPU với accelerate; tự chọn batch size bằng --batch_size auto**\n- **Tác vụ cấu hình bằng YAML, prompt Jinja2; CLI có lệnh con run, ls, validate và tệp cấu hình --config**\n- **Plugin: đăng ký model backend, filter, metric từ gói riêng mà không cần fork**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nlm-eval ls tasks\n```\n\nYêu cầu: Python >= 3.10 (theo pyproject.toml). Gói cơ bản không gồm transformers/torch; phải cài backend riêng như lm_eval[hf], lm_eval[vllm] hoặc lm_eval[api]. Chạy mô hình Hugging Face thường cần GPU CUDA.\nBước 1: Tải mã nguồn: `git clone --depth 1 https://github.com/EleutherAI/lm-evaluation-harness`\nBước 2: Vào thư mục: `cd lm-evaluation-harness`\nBước 3: Cài gói: `pip install -e .`\nBước 4: Cài backend Hugging Face: `pip install \"lm_eval[hf]\"` (hoặc `pip install \"lm_eval[vllm]\"`, `pip install \"lm_eval[api]\"`)\nBước 5: Liệt kê tác vụ có sẵn: `lm-eval ls tasks`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn backend qua --model (ví dụ hf, vllm, gguf) và truyền tham số mô hình bằng --model_args, ví dụ pretrained=EleutherAI/gpt-j-6B\nBước 2: Chọn tác vụ bằng --tasks (ví dụ hellaswag, lambada_openai), thiết bị bằng --device và --batch_size\nBước 3: Chạy lệnh lm_eval và đọc bảng kết quả chỉ số\nBước 4: Dùng `lm-eval run -h` để xem đầy đủ tùy chọn đánh giá\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Chạy lm_eval với backend hf để đánh giá mô hình EleutherAI/pythia-160m trên hellaswag\"\n- \"Đánh giá mô hình GGUF đang phục vụ qua llama-server bằng lm_eval --model gguf\"\n- \"So sánh hai checkpoint fine-tune trên nhóm tác vụ leaderboard\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:46:56.812Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]

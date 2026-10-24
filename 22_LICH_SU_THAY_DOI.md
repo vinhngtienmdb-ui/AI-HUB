@@ -4,6 +4,14 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.12 (Ngày 24-10-2026)
+- **Loại hình**: Công cụ lập trình AI, hệ sinh thái Claude Code, quan sát & đánh giá LLM, đợt 5 (21 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-5-*.json`.
+- **Tác tử lập trình**: Aider, opencode, Qwen Code, goose, Kilo Code, Crush (FSL-1.1-MIT, giấy phép hỗn hợp), mini-swe-agent.
+- **Hệ sinh thái Claude Code**: wshobson/agents, Claude Code Usage Monitor, ccstatusline, claude-code-router, CCManager, CloudCLI/claudecodeui (AGPL-3.0, có bản Cloud trả phí), SuperClaude Framework.
+- **Quan sát & đánh giá LLM**: Langfuse (open core: lõi MIT, thư mục ee/ giấy phép thương mại), Phoenix (Elastic License 2.0, không phải mã nguồn mở OSI), Opik, DeepEval, Ragas, OpenLLMetry, lm-evaluation-harness.
+- Không thêm: công cụ đã có trong kho (Codex, Gemini CLI, Cline, OpenHands, ccusage, claude-squad...), dự án README ghi đã ngừng phát triển (Continue, Roo Code, Plandex, SWE-agent được thay bằng mini-swe-agent), claude-mem (README quảng bá token tiền mã hóa).
+- Kho dữ liệu: 2.033 công cụ đang hiển thị, 2.080 cấu hình mẫu.
+
 ### Phiên Bản 2.1.11 (Ngày 24-10-2026)
 - **Loại hình**: Máy chủ MCP chính hãng của nhà cung cấp, đợt 4 (21 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-4-mcp-*.json`.
 - **Đám mây & DevOps**: AWS MCP (awslabs/mcp), Azure MCP Server (microsoft/mcp), MCP Toolbox for Databases (Google), Cloudflare MCP, Grafana MCP, Terraform MCP Server (MPL-2.0), Docker MCP Gateway.

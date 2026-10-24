@@ -1,0 +1,459 @@
+[
+  {
+    "repo": "wshobson/agents",
+    "license": "MIT License",
+    "authorName": "Seth Hobson (wshobson)",
+    "websiteUrl": "",
+    "toolType": "agent",
+    "taglineEn": "Use one collection of plugins, agents, skills, and commands across Claude Code, OpenAI Codex CLI, Cursor, OpenCode, Antigravity CLI, GitHub Copilot, and Pi.",
+    "summaryVi": "Bộ sưu tập plugin, subagent, skill và lệnh dùng chung cho Claude Code và nhiều công cụ lập trình AI khác. Theo README, kho gồm 94 plugin, 202 agent, 185 skill và 105 lệnh, bao phủ phát triển Python/JavaScript, review mã, kiểm thử, hạ tầng và bảo mật. Với Claude Code, kho hoạt động như một plugin marketplace có tên claude-code-workflows.",
+    "purposeVi": "Giúp lập trình viên cài nhanh các nhóm subagent, skill và lệnh chuyên biệt vào Claude Code theo đúng mảng công việc thay vì tự viết từ đầu.",
+    "featuresVi": [
+      "Plugin marketplace cho Claude Code: thêm bằng `/plugin marketplace add wshobson/agents` rồi cài từng plugin",
+      "Nhiều plugin chuyên biệt: python-development, javascript-typescript, developer-essentials, security-scanning…",
+      "Subagent chuyên môn: 202 agent hướng dẫn xử lý các việc được giao theo lĩnh vực",
+      "Skill riêng lẻ: cài từng skill bằng `gh skill` hoặc `npx skills` mà không cần cài cả plugin",
+      "Đa công cụ: hỗ trợ Claude Code, Codex CLI, Cursor, OpenCode, Antigravity CLI, GitHub Copilot và Pi",
+      "Công cụ plugin-eval kiểm tra tĩnh chất lượng skill"
+    ],
+    "requirementsVi": "Claude Code có hỗ trợ plugin marketplace. Cài skill riêng lẻ cần GitHub CLI 2.90 trở lên (gh skill) hoặc Node.js và npm (npx skills).",
+    "installStepsVi": [
+      "Trong Claude Code, thêm marketplace: `/plugin marketplace add wshobson/agents`",
+      "Cài plugin cần dùng, ví dụ plugin Python: `/plugin install python-development@claude-code-workflows`",
+      "Hoặc chỉ cài một skill riêng lẻ: `npx skills add wshobson/agents --skill python-testing-patterns`"
+    ],
+    "cliCommand": "/plugin marketplace add wshobson/agents",
+    "usageStepsVi": [
+      "Chọn plugin phù hợp trong danh mục plugin (docs/plugins.md) theo mảng công việc",
+      "Sau khi cài, yêu cầu Claude dùng các agent của plugin cho nhiệm vụ, hoặc gọi lệnh của plugin, ví dụ `/python-development:python-scaffold Create a FastAPI service with tests`",
+      "Cài thêm hoặc gỡ plugin theo nhu cầu để giữ ngữ cảnh gọn"
+    ],
+    "samplePromptsVi": [
+      "/python-development:python-scaffold Tạo dịch vụ FastAPI kèm bộ kiểm thử",
+      "Dùng agent bảo mật trong plugin security-scanning để rà soát lỗ hổng phụ thuộc của dự án này",
+      "Dùng các agent JavaScript/TypeScript để khởi tạo cấu trúc dự án Node.js mới"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, dùng tự do kể cả mục đích thương mại",
+      "Kho rất lớn: 94 plugin, 202 agent, 185 skill, 105 lệnh, được cập nhật thường xuyên",
+      "Cài theo từng plugin hoặc từng skill, không phải nạp toàn bộ"
+    ],
+    "consVi": [
+      "Plugin bên ngoài (external) có giấy phép và yêu cầu cài đặt riêng",
+      "Lớp đánh giá LLM judge và Monte Carlo của plugin-eval còn thử nghiệm; khi đặt ANTHROPIC_API_KEY sẽ tính phí vào tài khoản API",
+      "Thành phần khả dụng khác nhau tùy công cụ (harness) và cách cài"
+    ],
+    "sourceEvidence": {
+      "/plugin marketplace add wshobson/agents": "README.md:46",
+      "/plugin install python-development@claude-code-workflows": "README.md:47",
+      "npx skills add wshobson/agents --skill python-testing-patterns": "README.md:80",
+      "/python-development:python-scaffold Create a FastAPI service with tests": "README.md:53"
+    },
+    "meta": {
+      "id": "wshobson-agents",
+      "nameVi": "wshobson/agents — Kho plugin, subagent và skill cho Claude Code",
+      "icon": "Layers",
+      "categories": ["backend_api", "qa_testing", "devops_cicd"],
+      "platforms": ["claude_code", "cursor"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "claude_code", "platformName": "Claude Code", "cliCommand": "/plugin marketplace add wshobson/agents" }
+      ]
+    }
+  },
+  {
+    "repo": "Maciek-roboblog/Claude-Code-Usage-Monitor",
+    "license": "MIT License",
+    "authorName": "Maciej (Maciek-roboblog)",
+    "websiteUrl": "https://pypi.org/project/claude-monitor/",
+    "toolType": "cli",
+    "taglineEn": "A privacy-first Claude Usage-Ops companion for Claude Code.",
+    "summaryVi": "Công cụ dòng lệnh theo dõi mức sử dụng Claude Code theo thời gian thực trên terminal: token, số tin nhắn và chi phí trong phiên 5 giờ. Bản 4.x bổ sung chế độ statusline để lấy rate_limits chính thức, xuất dữ liệu dạng JSON/CSV, dự báo tốc độ dùng và kho lịch sử sử dụng cục bộ (tùy chọn).",
+    "purposeVi": "Giúp người dùng Claude Code biết mình đang dùng bao nhiêu hạn mức, dự đoán khi nào chạm giới hạn và lưu lịch sử sử dụng để phân tích.",
+    "featuresVi": [
+      "Màn hình theo dõi trực tiếp: giao diện Rich trên terminal với token, tin nhắn và chi phí",
+      "Hạn mức chính thức: `--statusline` lấy rate_limits chính thức của Claude Code",
+      "Xuất dữ liệu cho máy đọc: `--once`, `--compact`, `--write-state` với mã thoát dùng cho tự động hóa",
+      "Kho lịch sử cục bộ (opt-in): lưu dữ liệu vượt quá mốc dọn dẹp 30 ngày của Claude, xuất CSV/JSON",
+      "Nhiều chế độ xem: realtime, daily, monthly, session, burn-rate",
+      "Hỗ trợ các gói pro, max5, max20, team và custom (tự tính giới hạn theo P90)"
+    ],
+    "requirementsVi": "Python 3.9 trở lên (khuyến nghị 3.11+); khuyến nghị cài bằng uv.",
+    "installStepsVi": [
+      "Cài từ PyPI bằng uv: `uv tool install claude-monitor`",
+      "Hoặc cài bằng pip: `pip install claude-monitor`",
+      "Xem các tham số: `claude-monitor --help`"
+    ],
+    "cliCommand": "uv tool install claude-monitor",
+    "usageStepsVi": [
+      "Chạy `claude-monitor` (hoặc cmonitor, ccm) để mở màn hình theo dõi trực tiếp",
+      "Chọn gói của bạn, ví dụ `claude-monitor --plan pro`; lựa chọn được lưu cho lần chạy sau",
+      "Xem thống kê theo ngày: `claude-monitor --view daily`",
+      "Cài làm statusline hook để lấy hạn mức chính thức: `claude-monitor --statusline`"
+    ],
+    "samplePromptsVi": [
+      "claude-monitor --plan max5 --timezone Asia/Ho_Chi_Minh",
+      "claude-monitor --once --output json",
+      "claude-monitor --warehouse --view sessions --output csv"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, cài nhanh qua PyPI",
+      "Ưu tiên quyền riêng tư: kho lịch sử là tùy chọn và chỉ lưu cục bộ",
+      "Đầu ra JSON/trạng thái giúp tích hợp với status bar, dashboard khác"
+    ],
+    "consVi": [
+      "Khi không có dữ liệu statusline mới, con số là ước tính cục bộ, không phải hạn mức chính thức",
+      "Gói team chỉ là ước tính, chưa được xác minh",
+      "Tùy chọn `--api` dùng API OAuth của Anthropic còn ở mức thử nghiệm"
+    ],
+    "sourceEvidence": {
+      "uv tool install claude-monitor": "README.md:91",
+      "pip install claude-monitor": "README.md:129",
+      "claude-monitor --help": "README.md:178",
+      "claude-monitor --plan pro": "README.md:261",
+      "claude-monitor --view daily": "README.md:372",
+      "claude-monitor --statusline": "README.md:313"
+    },
+    "meta": {
+      "id": "maciek-roboblog-claude-code-usage-monitor",
+      "nameVi": "Claude Code Usage Monitor — Theo dõi hạn mức sử dụng Claude Code trên terminal",
+      "icon": "Terminal",
+      "categories": ["data_science_analytics", "devops_cicd"],
+      "platforms": ["claude_code"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "uv tool install claude-monitor" }
+      ]
+    }
+  },
+  {
+    "repo": "sirmalloc/ccstatusline",
+    "license": "MIT License",
+    "authorName": "Matthew Breedlove (sirmalloc)",
+    "websiteUrl": "https://www.npmjs.com/package/ccstatusline",
+    "toolType": "cli",
+    "taglineEn": "A highly customizable status line formatter for Claude Code CLI",
+    "summaryVi": "Công cụ tạo thanh trạng thái (status line) tùy biến cho Claude Code, hiển thị model, nhánh git, mức dùng token, hạn mức theo tuần, thời gian phiên và nhiều chỉ số khác ngay dưới khung nhập. Đi kèm giao diện cấu hình TUI để thêm, sắp xếp widget, đổi màu và hỗ trợ kiểu Powerline.",
+    "purposeVi": "Giúp người dùng Claude Code nhìn thấy các thông tin quan trọng của phiên làm việc (ngữ cảnh, chi phí, git, hạn mức) mà không phải gõ lệnh kiểm tra.",
+    "featuresVi": [
+      "Chỉ số thời gian thực: model, nhánh git, token, hạn mức tuần, thời lượng phiên, số lần compact",
+      "Tùy biến hoàn toàn: chọn widget và màu cho từng thành phần",
+      "Hỗ trợ Powerline: dấu phân cách mũi tên, caps và font tùy chỉnh",
+      "Nhiều dòng trạng thái độc lập",
+      "TUI cấu hình tương tác (React/Ink), xem trước trực tiếp, tự cài vào settings.json của Claude Code",
+      "Xuất/nhập cấu hình JSON để sao lưu và chia sẻ"
+    ],
+    "requirementsVi": "Node.js (dùng npx) hoặc Bun (dùng bunx); Claude Code CLI.",
+    "installStepsVi": [
+      "Chạy giao diện cấu hình không cần cài đặt: `npx -y ccstatusline@latest`",
+      "Hoặc dùng Bun: `bunx -y ccstatusline@latest`",
+      "Trong TUI, chọn cài vào Claude Code (có thể chọn Pinned global install để cố định phiên bản)"
+    ],
+    "cliCommand": "npx -y ccstatusline@latest",
+    "usageStepsVi": [
+      "Mở TUI và thêm, xóa, sắp xếp các widget cho dòng trạng thái",
+      "Tùy chỉnh màu, dấu phân cách và chế độ Powerline, xem trước ngay trong TUI",
+      "Cài vào Claude Code; công cụ ghi đối tượng statusLine vào settings.json và cấu hình được lưu ở ~/.config/ccstatusline/settings.json"
+    ],
+    "samplePromptsVi": [
+      "Hiển thị model, nhánh git và phần trăm ngữ cảnh đã dùng trên một dòng trạng thái",
+      "Thêm widget hạn mức sử dụng theo tuần và bộ đếm thời gian reset",
+      "Chuyển dòng trạng thái sang kiểu Powerline với hai dòng riêng biệt"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, chạy ngay bằng npx/bunx không cần cài",
+      "Bảo trì tích cực, phát hành thường xuyên",
+      "Có hướng dẫn riêng cho Windows và WSL"
+    ],
+    "consVi": [
+      "Chỉ dành cho Claude Code CLI",
+      "Claude Code chỉ chạy lệnh status line trong thư mục làm việc đã được tin cậy (trusted workspace)",
+      "Các widget hạn mức cần gọi API sử dụng của Anthropic qua mạng"
+    ],
+    "sourceEvidence": {
+      "npx -y ccstatusline@latest": "README.md:347",
+      "bunx -y ccstatusline@latest": "README.md:350"
+    },
+    "meta": {
+      "id": "sirmalloc-ccstatusline",
+      "nameVi": "ccstatusline — Thanh trạng thái tùy biến cho Claude Code",
+      "icon": "Terminal",
+      "categories": ["devops_cicd", "frontend_ui"],
+      "platforms": ["claude_code"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "npx -y ccstatusline@latest" }
+      ]
+    }
+  },
+  {
+    "repo": "musistudio/claude-code-router",
+    "license": "MIT License",
+    "authorName": "musistudio",
+    "websiteUrl": "https://ccrdesk.top/",
+    "toolType": "software",
+    "taglineEn": "Manage every agent and provider from one place.",
+    "summaryVi": "Claude Code Router (CCR) là cổng mô hình (model gateway) chạy cục bộ cho các tác tử lập trình như Claude Code, Codex, OpenCode, Kimi CLI… Mọi client dùng chung một endpoint cục bộ, còn nhà cung cấp, model, khóa API, quy tắc định tuyến và công cụ được quản lý tập trung. Có ứng dụng desktop, CLI kèm giao diện web và bản Docker.",
+    "purposeVi": "Giúp chuyển đổi nhà cung cấp hoặc model cho Claude Code và các tác tử khác mà không phải sửa cấu hình từng công cụ, kèm thử lại, dự phòng và nhật ký yêu cầu.",
+    "featuresVi": [
+      "Một endpoint cục bộ: gateway mặc định ở http://127.0.0.1:3456",
+      "Nhiều giao thức và nhà cung cấp: OpenAI, Anthropic Messages, Gemini, OpenRouter, DeepSeek, Moonshot, Mistral, Z.AI và endpoint tương thích tự thêm",
+      "Định tuyến: điều kiện theo header/body, viết lại yêu cầu, thử lại, danh sách model dự phòng",
+      "Quản lý khóa: nhóm khóa (credential pool), xoay vòng khóa, khóa client riêng có hạn mức",
+      "Quan sát: nhật ký yêu cầu, model đã chọn, độ trễ, token và ước tính chi phí",
+      "Mở rộng: web search, công cụ MCP, ToolHub, Fusion vision"
+    ],
+    "requirementsVi": "Ứng dụng desktop cho macOS, Windows, Linux; hoặc CLI qua npm cần Node.js 22 trở lên. Cần khóa API của nhà cung cấp model bạn chọn.",
+    "installStepsVi": [
+      "Cài CLI: `npm install -g @musistudio/claude-code-router`",
+      "Mở giao diện quản lý trên trình duyệt: `ccr ui` (truy cập http://127.0.0.1:3458)",
+      "Hoặc tải ứng dụng desktop từ trang Releases của repo"
+    ],
+    "cliCommand": "npm install -g @musistudio/claude-code-router",
+    "usageStepsVi": [
+      "Vào Providers → Add Provider, chọn preset hoặc endpoint tùy chỉnh, nhập khóa API và chọn model",
+      "Vào Server và bấm Start; gateway lắng nghe ở http://127.0.0.1:3456",
+      "Vào Agent Config, chọn Claude Code (hoặc tác tử khác), chọn model và áp dụng profile",
+      "Dùng tác tử như bình thường và mở Logs để xem nhà cung cấp, model, token, độ trễ của từng yêu cầu"
+    ],
+    "samplePromptsVi": [
+      "Định tuyến Claude Code sang model DeepSeek cho tác vụ thường và giữ model Claude cho tác vụ suy luận dài",
+      "Thiết lập model dự phòng khi nhà cung cấp chính trả lỗi",
+      "Xem nhật ký để biết yêu cầu vừa rồi dùng model nào và tốn bao nhiêu token"
+    ],
+    "prosVi": [
+      "Giấy phép MIT",
+      "Hỗ trợ nhiều tác tử lập trình và nhiều nhà cung cấp trong một nơi",
+      "Có cả ứng dụng desktop, CLI và Docker"
+    ],
+    "consVi": [
+      "Cần tự có khóa API hoặc tài khoản của các nhà cung cấp model",
+      "CLI yêu cầu Node.js 22 trở lên",
+      "README khuyến cáo đọc hướng dẫn Docker trước khi mở CCR ra mạng ngoài"
+    ],
+    "sourceEvidence": {
+      "npm install -g @musistudio/claude-code-router": "README.md:186",
+      "ccr ui": "README.md:187"
+    },
+    "meta": {
+      "id": "musistudio-claude-code-router",
+      "nameVi": "Claude Code Router — Cổng định tuyến model cho Claude Code và tác tử lập trình",
+      "icon": "Workflow",
+      "categories": ["nlp_llm", "devops_cicd"],
+      "platforms": ["claude_code", "web"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh", "Tiếng Trung"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "npm install -g @musistudio/claude-code-router" }
+      ]
+    }
+  },
+  {
+    "repo": "kbwo/ccmanager",
+    "license": "MIT License",
+    "authorName": "Kodai Kabasawa (kbwo)",
+    "websiteUrl": "https://www.npmjs.com/package/ccmanager",
+    "toolType": "cli",
+    "taglineEn": "CCManager is a CLI application for managing multiple AI coding assistant sessions (Claude Code, Gemini CLI, Codex CLI, Cursor Agent, Copilot CLI, Cline CLI, OpenCode, Kimi CLI) across Git worktrees and projects.",
+    "summaryVi": "Ứng dụng dòng lệnh quản lý nhiều phiên trợ lý lập trình AI (Claude Code, Gemini CLI, Codex CLI, Cursor Agent…) chạy song song trên các Git worktree và dự án khác nhau. Hiển thị trạng thái từng phiên (bận, chờ nhập, rảnh) ngay trong menu và không cần tmux.",
+    "purposeVi": "Giúp chạy và chuyển qua lại giữa nhiều phiên Claude Code song song, mỗi phiên trên một worktree riêng, mà không phải tự quản lý terminal.",
+    "featuresVi": [
+      "Chạy song song nhiều phiên AI trên các Git worktree khác nhau",
+      "Hỗ trợ nhiều dự án git trong một giao diện",
+      "Trạng thái phiên trực quan: Busy, Waiting, Idle",
+      "Tạo, gộp, xóa worktree ngay trong ứng dụng; hỗ trợ .worktreeinclude",
+      "Sao chép dữ liệu phiên Claude Code giữa các worktree để giữ ngữ cảnh",
+      "Khôi phục phiên sau khi khởi động lại; hook khi đổi trạng thái; tích hợp devcontainer",
+      "Không phụ thuộc tmux"
+    ],
+    "requirementsVi": "Node.js và npm; đã cài ít nhất một trợ lý lập trình AI (mặc định là lệnh `claude`); dự án là Git repository.",
+    "installStepsVi": [
+      "Cài đặt toàn cục: `npm install -g ccmanager`",
+      "Hoặc chạy không cần cài: `npx ccmanager`"
+    ],
+    "cliCommand": "npm install -g ccmanager",
+    "usageStepsVi": [
+      "Chạy `ccmanager` trong thư mục Git repository",
+      "Chọn hoặc tạo worktree trong menu để mở phiên Claude Code tương ứng",
+      "Nhấn Ctrl+E để quay lại menu từ phiên đang chạy và chuyển sang phiên khác",
+      "Tùy chỉnh phím tắt, preset lệnh trong Global Configuration hoặc tệp .ccmanager.json của dự án"
+    ],
+    "samplePromptsVi": [
+      "Tạo worktree mới cho nhánh feature/login và mở một phiên Claude Code ở đó",
+      "Xem phiên nào đang chờ tôi xác nhận trong số các phiên đang chạy",
+      "Cấu hình để mỗi phiên Claude Code chạy với tham số --resume"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, cài một lệnh qua npm",
+      "Không cần tmux, hiển thị trạng thái phiên ngay trong menu",
+      "Hỗ trợ nhiều trợ lý AI khác ngoài Claude Code"
+    ],
+    "consVi": [
+      "Tính năng Auto Approval còn thử nghiệm",
+      "Phải tự cài sẵn các CLI trợ lý AI muốn dùng"
+    ],
+    "sourceEvidence": {
+      "npm install -g ccmanager": "README.md:52",
+      "npx ccmanager": "README.md:72",
+      "ccmanager": "README.md:66"
+    },
+    "meta": {
+      "id": "kbwo-ccmanager",
+      "nameVi": "CCManager — Quản lý nhiều phiên Claude Code trên Git worktree",
+      "icon": "GitPullRequest",
+      "categories": ["devops_cicd", "backend_api"],
+      "platforms": ["claude_code"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "npm install -g ccmanager" }
+      ]
+    }
+  },
+  {
+    "repo": "siteboon/claudecodeui",
+    "license": "GNU Affero General Public License v3.0 or later (AGPL-3.0-or-later)",
+    "authorName": "Siteboon (CloudCLI)",
+    "websiteUrl": "https://cloudcli.ai",
+    "toolType": "software",
+    "taglineEn": "A desktop and mobile UI for Claude Code, Cursor CLI, and Codex.",
+    "summaryVi": "CloudCLI UI (trước đây là Claude Code UI) là giao diện web cho máy tính và điện thoại để làm việc với Claude Code, Cursor CLI và Codex. Có khung chat, terminal tích hợp, trình duyệt tệp, quản lý Git và quản lý phiên; tự phát hiện mọi phiên trong thư mục ~/.claude. Có thể tự host miễn phí hoặc dùng bản đám mây CloudCLI Cloud trả phí.",
+    "purposeVi": "Giúp theo dõi và điều khiển các dự án, phiên Claude Code từ trình duyệt hoặc điện thoại, kể cả từ xa.",
+    "featuresVi": [
+      "Giao diện đáp ứng: dùng được trên máy tính, máy tính bảng và điện thoại",
+      "Khung chat tương tác và terminal tích hợp",
+      "Trình duyệt tệp có tô sáng cú pháp và chỉnh sửa trực tiếp",
+      "Git explorer: xem, stage, commit, đổi nhánh",
+      "Quản lý phiên: tiếp tục hội thoại, xem lịch sử",
+      "Hệ thống plugin để thêm tab và dịch vụ backend tùy chỉnh",
+      "Đồng bộ cấu hình MCP với ~/.claude"
+    ],
+    "requirementsVi": "Node.js v22 trở lên; đã cài Claude Code, Cursor CLI hoặc Codex cùng gói đăng ký AI tương ứng.",
+    "installStepsVi": [
+      "Chạy thử ngay bằng npx: `npx @cloudcli-ai/cloudcli`",
+      "Hoặc cài toàn cục: `npm install -g @cloudcli-ai/cloudcli` rồi chạy `cloudcli`",
+      "Mở http://localhost:3001 trên trình duyệt"
+    ],
+    "cliCommand": "npx @cloudcli-ai/cloudcli",
+    "usageStepsVi": [
+      "Mở http://localhost:3001; các phiên hiện có được phát hiện tự động",
+      "Bấm biểu tượng bánh răng ở thanh bên để bật các công cụ Claude Code cần dùng (mặc định tắt hết)",
+      "Chọn dự án, chat với tác tử, dùng terminal, trình duyệt tệp và Git ngay trong giao diện",
+      "Truy cập từ điện thoại qua địa chỉ [IP-máy]:cổng trong cùng mạng"
+    ],
+    "samplePromptsVi": [
+      "Mở lại phiên Claude Code hôm qua của dự án này và tiếp tục sửa lỗi đăng nhập",
+      "Xem các tệp đã thay đổi và commit với thông điệp phù hợp",
+      "Thêm một MCP server mới vào cấu hình Claude Code từ giao diện"
+    ],
+    "prosVi": [
+      "Bản tự host miễn phí, mã nguồn mở",
+      "Dùng chung cấu hình, quyền và phiên với Claude Code gốc",
+      "Hỗ trợ nhiều tác tử: Claude Code, Cursor CLI, Codex"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0: nếu sửa đổi và cung cấp dưới dạng dịch vụ mạng phải công bố mã nguồn",
+      "Cần gói đăng ký AI riêng (Claude, Cursor, Codex)",
+      "Bản tự host yêu cầu máy luôn bật; Docker Sandbox còn thử nghiệm"
+    ],
+    "sourceEvidence": {
+      "npx @cloudcli-ai/cloudcli": "README.md:84",
+      "npm install -g @cloudcli-ai/cloudcli": "README.md:90",
+      "cloudcli": "README.md:91"
+    },
+    "meta": {
+      "id": "siteboon-claudecodeui",
+      "nameVi": "CloudCLI UI (Claude Code UI) — Giao diện web và di động cho Claude Code",
+      "icon": "Globe",
+      "categories": ["frontend_ui", "devops_cicd"],
+      "platforms": ["web", "claude_code"],
+      "licenseShort": "Mã nguồn mở (AGPL-3.0)",
+      "pricingModel": "freemium",
+      "pricingText": "Tự host miễn phí; CloudCLI Cloud từ €7/tháng",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "npx @cloudcli-ai/cloudcli" }
+      ]
+    }
+  },
+  {
+    "repo": "SuperClaude-Org/SuperClaude_Framework",
+    "license": "MIT License",
+    "authorName": "SuperClaude Framework Contributors",
+    "websiteUrl": "https://pypi.org/project/superclaude/",
+    "toolType": "skill",
+    "taglineEn": "Transform Claude Code into a Structured Development Platform",
+    "summaryVi": "SuperClaude là khung cấu hình (meta-programming configuration framework) biến Claude Code thành nền tảng phát triển có cấu trúc bằng cách bổ sung lệnh, agent và chế độ hành vi. Bản v4.x cung cấp 30 slash command dạng /sc:*, 20 agent chuyên môn, 7 chế độ hành vi và tùy chọn cài 8 MCP server.",
+    "purposeVi": "Giúp chuẩn hóa quy trình làm việc với Claude Code từ brainstorm, nghiên cứu, triển khai đến kiểm thử bằng bộ lệnh dựng sẵn.",
+    "featuresVi": [
+      "30 slash command: /sc:research, /sc:brainstorm, /sc:implement, /sc:test, /sc:pm…",
+      "20 agent chuyên môn: PM, nghiên cứu sâu, kỹ sư bảo mật, kiến trúc frontend…",
+      "7 chế độ hành vi: Brainstorming, Deep Research, Token-Efficiency, Task Management…",
+      "Cài MCP server tùy chọn: Tavily, Context7, Sequential-Thinking, Serena, Playwright…",
+      "Nghiên cứu web sâu với lập kế hoạch thích ứng và suy luận nhiều bước",
+      "Lệnh kiểm tra cài đặt `superclaude doctor`"
+    ],
+    "requirementsVi": "Python và pipx; Claude Code. MCP server là tùy chọn (ví dụ Tavily cần khóa API riêng).",
+    "installStepsVi": [
+      "Cài từ PyPI: `pipx install superclaude`",
+      "Cài 30 slash command vào Claude Code: `superclaude install`",
+      "(Tùy chọn) cài MCP server: `superclaude mcp --servers tavily --servers context7`",
+      "Kiểm tra cài đặt: `superclaude doctor`"
+    ],
+    "cliCommand": "pipx install superclaude",
+    "usageStepsVi": [
+      "Khởi động lại Claude Code sau khi cài",
+      "Gõ `/sc` để xem toàn bộ 30 lệnh",
+      "Dùng lệnh phù hợp, ví dụ /sc:brainstorm để làm rõ yêu cầu, /sc:implement để triển khai, /sc:test để kiểm thử"
+    ],
+    "samplePromptsVi": [
+      "/sc:brainstorm Ứng dụng đặt lịch khám cho phòng khám nhỏ",
+      "/sc:research Các mẫu quản lý trạng thái phổ biến trong React",
+      "/sc:implement Thêm API đăng ký người dùng kèm kiểm tra đầu vào"
+    ],
+    "prosVi": [
+      "Giấy phép MIT",
+      "Bộ lệnh và agent bao phủ toàn vòng đời phát triển",
+      "Hoạt động đầy đủ không cần MCP; MCP chỉ để tăng hiệu năng"
+    ],
+    "consVi": [
+      "Hệ thống plugin TypeScript (v5.0) chưa phát hành; hiện vẫn cài bằng slash command qua pipx",
+      "Không liên kết hay được Anthropic chứng nhận",
+      "Một số MCP server tùy chọn cần khóa API riêng"
+    ],
+    "sourceEvidence": {
+      "pipx install superclaude": "README.md:123",
+      "superclaude install": "README.md:126",
+      "superclaude mcp --servers tavily --servers context7": "README.md:131",
+      "superclaude doctor": "README.md:135"
+    },
+    "meta": {
+      "id": "superclaude-org-superclaude-framework",
+      "nameVi": "SuperClaude Framework — Bộ lệnh, agent và chế độ mở rộng cho Claude Code",
+      "icon": "Sparkles",
+      "categories": ["backend_api", "qa_testing"],
+      "platforms": ["claude_code"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "pipx install superclaude" }
+      ]
+    }
+  }
+]
