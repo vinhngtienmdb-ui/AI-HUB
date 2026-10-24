@@ -4,6 +4,14 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.13 (Ngày 24-10-2026)
+- **Loại hình**: Cơ sở dữ liệu vector & RAG, phân tích tài liệu, thu thập web cho LLM, đợt 6 (21 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-6-*.json`.
+- **Vector & RAG**: Qdrant, Chroma, Milvus, pgvector, LanceDB, LightRAG, Weaviate (BSD-3-Clause, riêng thư mục wl/ giấy phép doanh nghiệp).
+- **Phân tích tài liệu**: Unstructured, Marker (mã Apache 2.0; trọng số mô hình giới hạn thương mại), MinerU (Apache 2.0 kèm điều khoản bổ sung), olmOCR, open-parse, OpenDataLoader PDF, Apache Tika.
+- **Thu thập web**: Firecrawl (AGPL-3.0), ScrapeGraphAI, Crawlee, Jina Reader, Skyvern (AGPL-3.0), Lightpanda (AGPL-3.0), Stagehand.
+- Không thêm: công cụ đã có trong kho (RAGFlow, Docling, MarkItDown, Crawl4AI, browser-use), dự án README ghi ở chế độ bảo trì hoặc ngừng hỗ trợ (GraphRAG, LlamaParse), dự án ngừng cập nhật (zerox, MegaParse), công cụ chủ yếu để vượt chống bot (Scrapling).
+- Kho dữ liệu: 2.054 công cụ đang hiển thị, 2.103 cấu hình mẫu.
+
 ### Phiên Bản 2.1.12 (Ngày 24-10-2026)
 - **Loại hình**: Công cụ lập trình AI, hệ sinh thái Claude Code, quan sát & đánh giá LLM, đợt 5 (21 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-5-*.json`.
 - **Tác tử lập trình**: Aider, opencode, Qwen Code, goose, Kilo Code, Crush (FSL-1.1-MIT, giấy phép hỗn hợp), mini-swe-agent.

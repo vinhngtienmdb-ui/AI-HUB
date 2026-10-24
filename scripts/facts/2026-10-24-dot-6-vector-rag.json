@@ -1,0 +1,541 @@
+[
+  {
+    "repo": "qdrant/qdrant",
+    "license": "Apache License 2.0",
+    "authorName": "Qdrant",
+    "websiteUrl": "https://qdrant.tech",
+    "toolType": "software",
+    "taglineEn": "Qdrant (read: quadrant) is a vector similarity search engine and vector database.",
+    "summaryVi": "Qdrant là công cụ tìm kiếm tương đồng vector và cơ sở dữ liệu vector viết bằng Rust, cung cấp dịch vụ sẵn sàng cho môi trường production với API tiện lợi để lưu, tìm kiếm và quản lý các điểm (vector kèm payload). Qdrant hỗ trợ lọc mở rộng trên payload, tìm kiếm lai (hybrid), lượng tử hóa vector và triển khai phân tán. Có thể tự chạy bằng Docker hoặc dùng bản Qdrant Cloud có gói miễn phí.",
+    "purposeVi": "Lưu trữ và truy vấn embedding cho tìm kiếm ngữ nghĩa, gợi ý và hệ thống RAG, kết hợp lọc dữ liệu theo payload.",
+    "featuresVi": [
+      "Tìm kiếm vector dày, thưa và đa vector: hỗ trợ vector thưa cho tìm kiếm toàn văn và mô hình late interaction như ColBERT",
+      "Lọc theo payload: gắn JSON vào vector và lọc bằng từ khóa, toàn văn, khoảng số, vị trí địa lý với mệnh đề should/must/must_not",
+      "Tìm kiếm lai: kết hợp nhiều vector trong một truy vấn, gộp kết quả bằng RRF hoặc DBSF",
+      "Lượng tử hóa và lưu trên đĩa: giảm RAM tới 97% theo README",
+      "Triển khai phân tán: sharding, replication, thay đổi kích thước collection không gián đoạn",
+      "Giao diện Web UI, API REST và gRPC; thư viện client chính thức cho Python, Go, Rust, JS/TS, .NET, Java",
+      "Hỗ trợ GPU (NVIDIA, AMD) cho lập chỉ mục, faceting, recommendation, multitenancy"
+    ],
+    "requirementsVi": "Docker để chạy máy chủ cục bộ (cổng 6333); thư viện client tương ứng với ngôn ngữ lập trình (ví dụ qdrant_client cho Python).",
+    "installStepsVi": [
+      "Cài đặt và khởi chạy máy chủ Qdrant bằng Docker: `docker run -p 6333:6333 qdrant/qdrant`",
+      "Kết nối bằng client, ví dụ Python: QdrantClient(url=\"http://localhost:6333\")",
+      "Đọc hướng dẫn cài đặt và bảo mật trên trang tài liệu trước khi đưa vào production"
+    ],
+    "cliCommand": "docker run -p 6333:6333 qdrant/qdrant",
+    "usageStepsVi": [
+      "Tạo collection và nạp các điểm dữ liệu gồm vector embedding và payload JSON",
+      "Truy vấn tìm kiếm tương đồng, kết hợp bộ lọc payload hoặc tìm kiếm lai",
+      "Dùng Web UI để duyệt collection, quản lý dữ liệu và theo dõi tình trạng triển khai"
+    ],
+    "samplePromptsVi": [
+      "Viết mã Python dùng qdrant_client để tạo collection và nạp embedding của các bài viết kèm payload chuyên mục",
+      "Tìm 10 sản phẩm tương tự nhất với vector truy vấn nhưng chỉ lấy sản phẩm có giá dưới 500.000 đồng",
+      "Thiết lập tìm kiếm lai kết hợp vector dày và vector thưa, gộp kết quả bằng RRF"
+    ],
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép Apache 2.0",
+      "Viết bằng Rust, có benchmark công khai, hỗ trợ GPU và io_uring",
+      "Nhiều thư viện client chính thức và Web UI tích hợp",
+      "Có bản Qdrant Cloud được quản lý với gói miễn phí"
+    ],
+    "consVi": [
+      "Lệnh Docker mặc định khởi chạy bản không xác thực, mở trên mọi giao diện mạng; cần cấu hình bảo mật trước khi dùng thật",
+      "Cần tự tạo embedding bằng mô hình bên ngoài trước khi nạp dữ liệu"
+    ],
+    "sourceEvidence": {
+      "docker run -p 6333:6333 qdrant/qdrant": "README.md:49"
+    },
+    "meta": {
+      "id": "qdrant-qdrant",
+      "nameVi": "Qdrant — Cơ sở dữ liệu vector hiệu năng cao viết bằng Rust",
+      "icon": "Database",
+      "categories": [
+        "vector_rag",
+        "database_sql_nosql"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "docker run -p 6333:6333 qdrant/qdrant"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "chroma-core/chroma",
+    "license": "Apache License 2.0",
+    "authorName": "Chroma",
+    "websiteUrl": "https://www.trychroma.com",
+    "toolType": "software",
+    "taglineEn": "Chroma - the open-source data infrastructure for AI.",
+    "summaryVi": "Chroma là hạ tầng dữ liệu mã nguồn mở cho AI, hoạt động như cơ sở dữ liệu embedding với API lõi chỉ gồm 4 hàm. Chroma tự xử lý tách từ, tạo embedding và lập chỉ mục khi thêm tài liệu, hỗ trợ lọc theo metadata và nội dung. Có client Python và JavaScript, chạy trong bộ nhớ để thử nghiệm hoặc ở chế độ client-server.",
+    "purposeVi": "Xây dựng nhanh kho tài liệu có thể tìm kiếm ngữ nghĩa cho ứng dụng RAG và chatbot mà không cần tự quản lý pipeline embedding.",
+    "featuresVi": [
+      "API tối giản: tạo collection, thêm tài liệu, truy vấn và lấy theo id",
+      "Tự động embedding: Chroma xử lý tách từ, embedding và lập chỉ mục; cũng cho phép đưa embedding riêng",
+      "Lọc metadata và nội dung: tham số where và where_document khi truy vấn",
+      "Chạy trong bộ nhớ để làm mẫu nhanh, có thể bật lưu trữ bền vững",
+      "Chế độ client-server qua lệnh chroma run",
+      "Client Python (chromadb) và JavaScript (npm chromadb)"
+    ],
+    "requirementsVi": "Python với pip (gói chromadb) hoặc Node.js với npm cho client JavaScript.",
+    "installStepsVi": [
+      "Cài đặt client Python: `pip install chromadb`",
+      "Với JavaScript, cài đặt gói chromadb qua npm theo hướng dẫn trong README",
+      "Để chạy chế độ client-server: `chroma run --path /chroma_db_path`"
+    ],
+    "cliCommand": "pip install chromadb",
+    "usageStepsVi": [
+      "Khởi tạo client bằng chromadb.Client() và tạo collection",
+      "Thêm tài liệu kèm metadata và id bằng collection.add()",
+      "Truy vấn các kết quả tương tự nhất bằng collection.query(), có thể lọc theo metadata"
+    ],
+    "samplePromptsVi": [
+      "Tạo collection Chroma chứa các tài liệu hướng dẫn nội bộ và tìm 2 đoạn liên quan nhất tới câu hỏi của nhân viên",
+      "Thêm tài liệu từ Notion và Google Docs vào Chroma với metadata nguồn, rồi chỉ truy vấn tài liệu có source là notion",
+      "Chạy Chroma ở chế độ client-server để nhiều dịch vụ cùng dùng chung kho dữ liệu embedding"
+    ],
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép Apache 2.0",
+      "API rất đơn giản, phù hợp làm mẫu nhanh",
+      "Tự động xử lý embedding và lập chỉ mục",
+      "Phát hành phiên bản mới đều đặn hằng tuần trên pypi và npm"
+    ],
+    "consVi": [
+      "Bản dịch vụ Chroma Cloud là dịch vụ trả phí riêng (có tín dụng dùng thử), không thuộc mã nguồn mở"
+    ],
+    "sourceEvidence": {
+      "pip install chromadb": "README.md:24",
+      "chroma run --path /chroma_db_path": "README.md:26"
+    },
+    "meta": {
+      "id": "chroma-core-chroma",
+      "nameVi": "Chroma — Cơ sở dữ liệu embedding mã nguồn mở cho ứng dụng AI",
+      "icon": "Database",
+      "categories": [
+        "vector_rag",
+        "database_sql_nosql"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install chromadb"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "milvus-io/milvus",
+    "license": "Apache License 2.0",
+    "authorName": "Milvus (LF AI & Data, Zilliz)",
+    "websiteUrl": "https://milvus.io",
+    "toolType": "software",
+    "taglineEn": "Milvus is a high-performance vector database built for scale.",
+    "summaryVi": "Milvus là cơ sở dữ liệu vector hiệu năng cao, viết bằng Go và C++, có kiến trúc phân tán, chạy tốt trên Kubernetes và mở rộng theo chiều ngang tới hàng tỷ vector. Milvus hỗ trợ nhiều loại chỉ mục (HNSW, IVF, FLAT, SCANN, DiskANN), tăng tốc GPU, đa người thuê và tìm kiếm toàn văn BM25. Có chế độ Standalone cho một máy và Milvus Lite chạy cục bộ qua pip.",
+    "purposeVi": "Tổ chức và tìm kiếm khối lượng lớn dữ liệu phi cấu trúc (văn bản, hình ảnh, đa phương thức) cho ứng dụng GenAI và RAG ở quy mô lớn.",
+    "featuresVi": [
+      "Kiến trúc phân tán: tách tính toán và lưu trữ, microservice không trạng thái trên K8s, hỗ trợ replica",
+      "Nhiều loại chỉ mục vector: HNSW, IVF, FLAT, SCANN, DiskANN, biến thể lượng tử hóa và mmap; chỉ mục GPU CAGRA",
+      "Đa người thuê: cô lập ở cấp database, collection, partition hoặc partition key; lưu trữ nóng/lạnh",
+      "Tìm kiếm lai: toàn văn BM25, embedding thưa (SPLADE, BGE-M3) và vector dày trong cùng collection",
+      "Milvus Lite: tạo cơ sở dữ liệu vector cục bộ chỉ với một tệp",
+      "Hệ sinh thái: tích hợp LangChain, LlamaIndex, OpenAI, HuggingFace; giao diện quản trị Attu"
+    ],
+    "requirementsVi": "Python với pip để dùng SDK pymilvus (Milvus Lite chạy cục bộ); hoặc máy chủ Milvus tự triển khai (Docker/Kubernetes) hay Zilliz Cloud.",
+    "installStepsVi": [
+      "Cài đặt SDK Python: `pip install -U pymilvus`",
+      "Để thử nhanh cục bộ, cài đặt thêm Milvus Lite (gói pymilvus[milvus-lite]) và tạo client với tên tệp như milvus_demo.db",
+      "Hoặc kết nối tới máy chủ Milvus tự triển khai/Zilliz Cloud bằng uri và token"
+    ],
+    "cliCommand": "pip install -U pymilvus",
+    "usageStepsVi": [
+      "Tạo client bằng MilvusClient",
+      "Tạo collection với số chiều vector, ví dụ 768",
+      "Nạp dữ liệu bằng client.insert() và tìm kiếm vector bằng client.search() với limit (topK) và output_fields"
+    ],
+    "samplePromptsVi": [
+      "Viết mã Python dùng Milvus Lite tạo collection 768 chiều và nạp embedding của bộ dữ liệu câu hỏi thường gặp",
+      "Thiết lập tìm kiếm lai trong Milvus kết hợp BM25 toàn văn và vector dày cho kho văn bản pháp lý",
+      "Tìm 2 đoạn văn liên quan nhất tới câu hỏi 'Who is Alan Turing?' trong collection demo_collection"
+    ],
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép Apache 2.0",
+      "Mở rộng tới hàng tỷ vector, kiến trúc gốc Kubernetes",
+      "Milvus Lite cho phép bắt đầu chỉ với pip, không cần máy chủ",
+      "Hỗ trợ nhiều loại chỉ mục và tăng tốc GPU"
+    ],
+    "consVi": [
+      "Triển khai phân tán đầy đủ đòi hỏi vận hành Kubernetes",
+      "Bản được quản lý hoàn toàn là dịch vụ Zilliz Cloud bên ngoài"
+    ],
+    "sourceEvidence": {
+      "pip install -U pymilvus": "README.md:34"
+    },
+    "meta": {
+      "id": "milvus-io-milvus",
+      "nameVi": "Milvus — Cơ sở dữ liệu vector phân tán cho quy mô hàng tỷ vector",
+      "icon": "Database",
+      "categories": [
+        "vector_rag",
+        "database_sql_nosql",
+        "cloud_infrastructure"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install -U pymilvus"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "pgvector/pgvector",
+    "license": "PostgreSQL License",
+    "authorName": "pgvector",
+    "websiteUrl": "",
+    "toolType": "software",
+    "taglineEn": "Open-source vector similarity search for Postgres",
+    "summaryVi": "pgvector là phần mở rộng PostgreSQL cho tìm kiếm tương đồng vector, cho phép lưu vector cùng với phần dữ liệu còn lại trong Postgres. Hỗ trợ tìm kiếm láng giềng gần nhất chính xác và xấp xỉ (HNSW, IVFFlat), vector độ chính xác đơn, bán chính xác, nhị phân và thưa. Kế thừa toàn bộ tính năng của Postgres như ACID, khôi phục theo thời điểm và JOIN.",
+    "purposeVi": "Thêm khả năng tìm kiếm vector cho ứng dụng đang dùng PostgreSQL, không cần vận hành cơ sở dữ liệu vector riêng.",
+    "featuresVi": [
+      "Tìm kiếm chính xác và xấp xỉ: chỉ mục HNSW và IVFFlat",
+      "Nhiều kiểu vector: vector, halfvec, bit (nhị phân) và sparsevec",
+      "Nhiều hàm khoảng cách: L2, tích vô hướng, cosine, L1, Hamming, Jaccard",
+      "Lọc, đa người thuê, iterative index scan và tìm kiếm lai cùng full-text search của Postgres",
+      "Lượng tử hóa nhị phân và chỉ mục vector con để mở rộng quy mô",
+      "Dùng được với mọi ngôn ngữ có client Postgres"
+    ],
+    "requirementsVi": "PostgreSQL 13 trở lên; trình biên dịch (make trên Linux/Mac, Visual Studio C++ với nmake trên Windows); hoặc dùng Docker, Homebrew, APT, Yum, conda-forge.",
+    "installStepsVi": [
+      "Vào thư mục tạm: `cd /tmp`",
+      "Tải mã nguồn: `git clone --branch v0.8.7 https://github.com/pgvector/pgvector.git`",
+      "Vào thư mục: `cd pgvector`",
+      "Biên dịch: `make`",
+      "Cài đặt phần mở rộng (có thể cần sudo): `make install`",
+      "Hoặc cài đặt bằng Homebrew: `brew install pgvector`; hoặc dùng Docker: `docker pull pgvector/pgvector:pg18-trixie`",
+      "Bật phần mở rộng trong mỗi cơ sở dữ liệu: `CREATE EXTENSION vector;`"
+    ],
+    "cliCommand": "CREATE EXTENSION vector;",
+    "usageStepsVi": [
+      "Tạo bảng có cột vector, ví dụ embedding vector(3)",
+      "Chèn vector bằng câu lệnh INSERT",
+      "Truy vấn láng giềng gần nhất bằng toán tử <-> (L2), <#> (tích vô hướng), <=> (cosine)",
+      "Tạo chỉ mục HNSW hoặc IVFFlat khi dữ liệu lớn để tăng tốc"
+    ],
+    "samplePromptsVi": [
+      "Viết câu lệnh SQL tạo bảng sản phẩm có cột embedding vector(1536) và chỉ mục HNSW theo cosine",
+      "Tìm 5 tài liệu gần nhất với vector truy vấn trong bảng items và chỉ lấy tài liệu thuộc danh mục 'hợp đồng'",
+      "Hướng dẫn cài đặt pgvector bằng Docker cho Postgres 18 và bật phần mở rộng vector"
+    ],
+    "prosVi": [
+      "Giấy phép PostgreSQL, rất dễ dãi",
+      "Lưu vector cùng dữ liệu nghiệp vụ, hưởng ACID, JOIN và khôi phục theo thời điểm",
+      "Có sẵn trong Postgres.app và nhiều nhà cung cấp Postgres được quản lý",
+      "Nhiều cách cài đặt: mã nguồn, Docker, Homebrew, PGXN, APT, Yum, conda-forge"
+    ],
+    "consVi": [
+      "Phải biên dịch hoặc cài đặt phần mở rộng vào máy chủ Postgres; trên Windows cần Visual Studio C++",
+      "Gói Homebrew chỉ thêm vào các formula postgresql@18 và postgresql@17"
+    ],
+    "sourceEvidence": {
+      "cd /tmp": "README.md:25",
+      "git clone --branch v0.8.7 https://github.com/pgvector/pgvector.git": "README.md:26",
+      "cd pgvector": "README.md:27",
+      "make": "README.md:28",
+      "make install": "README.md:29",
+      "brew install pgvector": "README.md:1196",
+      "docker pull pgvector/pgvector:pg18-trixie": "README.md:1157",
+      "CREATE EXTENSION vector;": "README.md:58"
+    },
+    "meta": {
+      "id": "pgvector-pgvector",
+      "nameVi": "pgvector — Phần mở rộng tìm kiếm vector cho PostgreSQL",
+      "icon": "Database",
+      "categories": [
+        "vector_rag",
+        "database_sql_nosql",
+        "database"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (PostgreSQL License)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "CREATE EXTENSION vector;"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "lancedb/lancedb",
+    "license": "Apache License 2.0",
+    "authorName": "LanceDB",
+    "websiteUrl": "https://lancedb.com",
+    "toolType": "software",
+    "taglineEn": "The ultimate multimodal data platform for AI/ML applications.",
+    "summaryVi": "LanceDB là cơ sở dữ liệu vector nhúng (chạy cục bộ hoặc trên đám mây của bạn) xây dựng trên định dạng cột Lance, dành cho tìm kiếm vector nhanh và có khả năng mở rộng. Hỗ trợ tìm kiếm tương đồng vector, toàn văn và SQL trên dữ liệu đa phương thức (văn bản, hình ảnh, video, đám mây điểm). Có SDK Python, TypeScript, Rust và REST API.",
+    "purposeVi": "Lưu, lập chỉ mục và tìm kiếm dữ liệu đa phương thức cùng vector cho ứng dụng AI/ML mà không cần vận hành máy chủ riêng.",
+    "featuresVi": [
+      "Tìm kiếm vector nhanh: tìm kiếm hàng tỷ vector trong mili giây theo README",
+      "Tìm kiếm toàn diện: tương đồng vector, toàn văn và SQL",
+      "Đa phương thức: lưu, truy vấn, lọc vector, metadata và dữ liệu văn bản, hình ảnh, video, đám mây điểm",
+      "Zero-copy và tự động quản lý phiên bản dữ liệu; hỗ trợ GPU khi xây chỉ mục",
+      "Lưu trữ dạng cột Lance; tích hợp LangChain, LlamaIndex, Apache Arrow, Pandas, Polars, DuckDB",
+      "SDK Python, Node.js/TypeScript, Rust và REST API"
+    ],
+    "requirementsVi": "Python với pip (gói lancedb) hoặc Node.js với npm (gói @lancedb/lancedb). Nếu không có wheel cho nền tảng, cần Rust toolchain và protoc để build từ mã nguồn; CPU x86_64 đời trước Haswell dùng gói lancedb-compat.",
+    "installStepsVi": [
+      "Cài đặt SDK Python: `pip install lancedb`",
+      "Trên CPU x86_64 đời trước Haswell, cài đặt gói tương thích thay thế: `pip install lancedb-compat`",
+      "Với Node.js, cài đặt: `npm install @lancedb/lancedb`"
+    ],
+    "cliCommand": "pip install lancedb",
+    "usageStepsVi": [
+      "Kết nối tới thư mục dữ liệu bằng lancedb.connect('<PATH_TO_LANCEDB_DATASET>')",
+      "Mở bảng bằng db.open_table('my_table')",
+      "Tìm kiếm vector bằng table.search([...]).limit(20).to_list()"
+    ],
+    "samplePromptsVi": [
+      "Viết mã Python tạo bảng LanceDB chứa embedding hình ảnh sản phẩm và tìm 20 ảnh tương tự nhất",
+      "Kết hợp tìm kiếm toàn văn và tìm kiếm vector trong LanceDB cho kho tài liệu hướng dẫn kỹ thuật",
+      "Dùng LanceDB làm vector store cục bộ cho pipeline RAG với LlamaIndex"
+    ],
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép Apache 2.0, chạy cục bộ, không phụ thuộc nhà cung cấp",
+      "Không cần máy chủ: nhúng trực tiếp vào ứng dụng Python/Node.js",
+      "Hỗ trợ dữ liệu đa phương thức và quản lý phiên bản dữ liệu",
+      "Bản ổn định phát hành khoảng 2 tuần một lần"
+    ],
+    "consVi": [
+      "Wheel mặc định yêu cầu CPU hỗ trợ AVX2 (Haswell trở lên); máy cũ phải dùng lancedb-compat",
+      "Build từ mã nguồn cần Rust và protoc, có thể mất nhiều thời gian",
+      "README gốc chủ yếu dẫn tới tài liệu bên ngoài cho phần hướng dẫn chi tiết"
+    ],
+    "sourceEvidence": {
+      "pip install lancedb": "python/README.md:8",
+      "pip install lancedb-compat": "python/README.md:20",
+      "npm install @lancedb/lancedb": "nodejs/README.md:8"
+    },
+    "meta": {
+      "id": "lancedb-lancedb",
+      "nameVi": "LanceDB — Cơ sở dữ liệu vector nhúng cho dữ liệu đa phương thức",
+      "icon": "Database",
+      "categories": [
+        "vector_rag",
+        "database_sql_nosql",
+        "data_engineering"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install lancedb"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "HKUDS/LightRAG",
+    "license": "MIT License",
+    "authorName": "HKUDS (LightRAG Team)",
+    "websiteUrl": "",
+    "toolType": "software",
+    "taglineEn": "LightRAG: Simple and Fast Retrieval-Augmented Generation",
+    "summaryVi": "LightRAG là framework RAG dựa trên đồ thị tri thức gọn nhẹ, thay thế hiệu quả cho Microsoft GraphRAG, quản lý đồng thời đồ thị tri thức và vector embedding. Hỗ trợ cập nhật tăng dần, xóa chọn lọc, nhiều bộ phân tích tài liệu (MinerU, Docling, Native) và xử lý đa phương thức. Đi kèm LightRAG Server có giao diện web và REST API.",
+    "purposeVi": "Xây dựng hệ thống hỏi đáp trên kho tài liệu riêng với chất lượng truy xuất cao nhờ đồ thị tri thức, giảm số lần gọi LLM so với GraphRAG truyền thống.",
+    "featuresVi": [
+      "Kiến trúc hai lớp: đồ thị tri thức kết hợp vector embedding",
+      "Năm chế độ truy vấn: local, global, hybrid, naive và mix (mặc định)",
+      "Cập nhật tăng dần và xóa chọn lọc tài liệu, tái tạo thực thể/quan hệ nhờ bộ đệm LLM",
+      "Nhiều bộ phân tích tài liệu: MinerU, Docling, Native; xử lý hình ảnh, bảng, công thức trong Word và Markdown",
+      "Bốn chiến lược chia đoạn văn bản: Fixed-length, Recursive character, Vector semantic, Paragraph semantic",
+      "Nhiều backend lưu trữ (khuyến nghị PostgreSQL cho production); hỗ trợ reranking",
+      "LightRAG Server: giao diện web và REST API, có route tương thích Ollama"
+    ],
+    "requirementsVi": "Python với uv (khuyến nghị) hoặc pip; hoặc Docker Compose. Cần cấu hình LLM, mô hình embedding (ví dụ BAAI/bge-m3) trong tệp .env; máy chủ Docker mặc định dùng cổng 9621.",
+    "installStepsVi": [
+      "Cài đặt LightRAG Server bằng uv: `uv tool install \"lightrag-hku[api]\"`",
+      "Tạo tệp cấu hình và cập nhật thông tin LLM, embedding: `cp env.example .env`",
+      "Khởi chạy máy chủ: `lightrag-server`",
+      "Hoặc chạy bằng Docker Compose: `git clone https://github.com/HKUDS/LightRAG.git`, `cd LightRAG`, sao chép env.example thành .env rồi `docker compose up`"
+    ],
+    "cliCommand": "uv tool install \"lightrag-hku[api]\"",
+    "usageStepsVi": [
+      "Cấu hình các mô hình theo vai trò (trích xuất, truy vấn, từ khóa, VLM) và mô hình embedding trong .env",
+      "Mở giao diện web của LightRAG Server để tải tài liệu lên và xem đồ thị tri thức",
+      "Đặt câu hỏi với chế độ truy vấn mix hoặc gọi REST API từ ứng dụng"
+    ],
+    "samplePromptsVi": [
+      "Tải bộ văn bản pháp luật lên LightRAG và hỏi mối quan hệ giữa các điều khoản liên quan tới hợp đồng lao động",
+      "Dùng chế độ global để tóm tắt các chủ đề chính xuyên suốt nhiều báo cáo tài chính",
+      "Cấu hình LightRAG dùng PostgreSQL làm backend lưu trữ và bge-m3 làm mô hình embedding"
+    ],
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép MIT",
+      "Giảm số lần gọi LLM so với cách tiếp cận dựa trên community report",
+      "Hỗ trợ cập nhật tăng dần và xóa tài liệu",
+      "Có giao diện web, REST API và ảnh Docker chính thức được ký Cosign"
+    ],
+    "consVi": [
+      "Máy chủ mặc định lắng nghe trên mọi giao diện (0.0.0.0) và không xác thực; cần cấu hình LIGHTRAG_API_KEY hoặc AUTH_ACCOUNTS",
+      "Backend lưu trữ mặc định chỉ phù hợp thử nghiệm quy mô nhỏ, không dùng cho production",
+      "Yêu cầu LLM có năng lực cao cho bước trích xuất thực thể–quan hệ; đổi mô hình embedding phải embed lại toàn bộ"
+    ],
+    "sourceEvidence": {
+      "uv tool install \"lightrag-hku[api]\"": "README.md:110",
+      "cp env.example .env": "README.md:120",
+      "lightrag-server": "README.md:127",
+      "git clone https://github.com/HKUDS/LightRAG.git": "README.md:171",
+      "cd LightRAG": "README.md:172",
+      "docker compose up": "README.md:175"
+    },
+    "meta": {
+      "id": "hkuds-lightrag",
+      "nameVi": "LightRAG — Framework RAG dựa trên đồ thị tri thức, nhanh và gọn nhẹ",
+      "icon": "Brain",
+      "categories": [
+        "vector_rag",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "uv tool install \"lightrag-hku[api]\""
+        }
+      ]
+    }
+  },
+  {
+    "repo": "weaviate/weaviate",
+    "license": "BSD-3-Clause cho mã nguồn ngoài thư mục wl/; mã trong thư mục wl/ thuộc giấy phép doanh nghiệp riêng của Weaviate BV (Weaviate License)",
+    "authorName": "Weaviate B.V.",
+    "websiteUrl": "https://weaviate.io",
+    "toolType": "software",
+    "taglineEn": "Weaviate is a cloud-native vector database that stores both objects and vectors, enabling semantic search at scale.",
+    "summaryVi": "Weaviate là cơ sở dữ liệu vector cloud-native viết bằng Go, lưu cả đối tượng lẫn vector, kết hợp tìm kiếm tương đồng vector với lọc từ khóa, RAG và reranking trong một giao diện truy vấn. Có thể tự động tạo vector khi nhập dữ liệu bằng các mô hình tích hợp (OpenAI, Cohere, HuggingFace...) hoặc nhập embedding có sẵn. Hỗ trợ đa người thuê, replication và phân quyền RBAC cho production.",
+    "purposeVi": "Xây dựng hệ thống RAG, tìm kiếm ngữ nghĩa và hình ảnh, gợi ý và chatbot trên cùng một cơ sở dữ liệu vector.",
+    "featuresVi": [
+      "Tự động vector hóa khi nhập dữ liệu bằng các mô hình tích hợp, hoặc nhập vector tự tạo",
+      "Tìm kiếm lai và hình ảnh: kết hợp tìm kiếm ngữ nghĩa với BM25, tìm kiếm ảnh và bộ lọc nâng cao",
+      "RAG và reranking tích hợp: tìm kiếm sinh (generative search) ngay trong cơ sở dữ liệu",
+      "Sẵn sàng production: mở rộng ngang, đa người thuê, replication, RBAC",
+      "Nén vector và lượng tử hóa giảm bộ nhớ; Object TTL tự xóa dữ liệu cũ",
+      "API REST, gRPC, GraphQL; client Python, JS/TS, Java, Go, C#/.NET"
+    ],
+    "requirementsVi": "Docker và Docker Compose (cổng 8080 và 50051 theo ví dụ docker-compose.yml trong README), hoặc Kubernetes, hoặc Weaviate Cloud; Python với pip cho client.",
+    "installStepsVi": [
+      "Tạo tệp docker-compose.yml gồm dịch vụ weaviate và mô hình embedding text2vec-model2vec theo README",
+      "Cài đặt và khởi động Weaviate cùng dịch vụ embedding: `docker compose up -d`",
+      "Cài đặt client Python: `pip install -U weaviate-client`"
+    ],
+    "cliCommand": "docker compose up -d",
+    "usageStepsVi": [
+      "Kết nối bằng weaviate.connect_to_local()",
+      "Tạo collection với vectorizer (ví dụ text2vec_model2vec) hoặc self_provided cho vector tự tạo",
+      "Nhập dữ liệu bằng insert_many và tìm kiếm ngữ nghĩa bằng query.near_text"
+    ],
+    "samplePromptsVi": [
+      "Tạo collection Article trong Weaviate và tìm bài viết gần nghĩa nhất với câu 'cơ sở dữ liệu vector'",
+      "Thiết lập tìm kiếm lai BM25 kết hợp vector cho kho sản phẩm thương mại điện tử",
+      "Dùng generative search của Weaviate để tóm tắt các tài liệu liên quan tới câu hỏi của khách hàng"
+    ],
+    "prosVi": [
+      "Phần lõi mã nguồn mở theo giấy phép BSD-3-Clause",
+      "Tích hợp sẵn vector hóa, RAG và reranking trong cơ sở dữ liệu",
+      "Nhiều client chính thức và ba loại API (REST, gRPC, GraphQL)",
+      "Có bộ Agent Skills cho Claude Code, Cursor và các agent lập trình khác"
+    ],
+    "consVi": [
+      "Giấy phép hỗn hợp: mã trong thư mục wl/ chỉ dùng theo giấy phép doanh nghiệp, tính năng doanh nghiệp bật bằng license key",
+      "Tự động vector hóa qua nhà cung cấp bên ngoài (OpenAI, Cohere...) cần khóa API của họ"
+    ],
+    "sourceEvidence": {
+      "docker compose up -d": "README.md:52",
+      "pip install -U weaviate-client": "README.md:58"
+    },
+    "meta": {
+      "id": "weaviate-weaviate",
+      "nameVi": "Weaviate — Cơ sở dữ liệu vector cloud-native tích hợp RAG và tìm kiếm lai",
+      "icon": "Database",
+      "categories": [
+        "vector_rag",
+        "database_sql_nosql"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở hỗn hợp (BSD-3-Clause cho lõi; thư mục wl/ theo giấy phép doanh nghiệp)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "docker compose up -d"
+        }
+      ]
+    }
+  }
+]
