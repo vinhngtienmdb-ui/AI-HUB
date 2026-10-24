@@ -2,9 +2,9 @@ import React, { useState, useMemo, useRef, useEffect } from 'react';
 import {
   FileText, Copy, Check, ExternalLink, Code2, Eye, FolderGit2, Languages, RefreshCw
 } from 'lucide-react';
+import { handleMarkdownAnchorClick, useGithubCodeCopy } from './GitHubMarkdownSection';
 import {
   fetchOriginalReadme,
-  HEADING_ID_PREFIX,
   MarkdownBase,
   parseGithubSource,
   renderGithubMarkdown
@@ -68,63 +68,8 @@ export const GitHubReadmeViewer: React.FC<GitHubReadmeViewerProps> = ({
     return renderGithubMarkdown(markdown, { breaks: true });
   }, [contentSource, original, markdown]);
 
-  // Neo trong README (#muc-luc) cuộn tới tiêu đề thay vì đổi đường dẫn hash của ứng dụng
-  const handleContentClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    const link = (event.target as HTMLElement).closest('a');
-    const href = link?.getAttribute('href');
-    if (!href || !href.startsWith('#')) return;
-    event.preventDefault();
-    const target = containerRef.current?.querySelector(`[id="${HEADING_ID_PREFIX}${CSS.escape(decodeURIComponent(href.slice(1)).toLowerCase())}"]`);
-    target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
-  // Tự động gắn nút Copy chuẩn phong cách GitHub cho tất cả các thẻ <pre> code block
-  useEffect(() => {
-    if (!containerRef.current || viewMode !== 'preview') return;
-
-    const preElements = containerRef.current.querySelectorAll('pre');
-    preElements.forEach((pre) => {
-      if (pre.querySelector('.github-code-copy-btn')) return;
-
-      pre.classList.add('relative', 'group');
-
-      const btn = document.createElement('button');
-      btn.className = 'github-code-copy-btn absolute top-2.5 right-2.5 px-2.5 py-1 rounded-lg bg-white/90 dark:bg-slate-800/90 hover:bg-white dark:hover:bg-slate-700 text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white border border-slate-200 dark:border-slate-700 shadow-xs transition-all flex items-center space-x-1 text-xs opacity-85 group-hover:opacity-100 font-sans';
-      btn.title = 'Sao chép đoạn mã (Copy code)';
-      btn.innerHTML = `
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-          <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
-        </svg>
-        <span class="text-[11px] font-medium ml-1">Chép</span>
-      `;
-
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const codeElement = pre.querySelector('code');
-        const textToCopy = codeElement ? codeElement.innerText : pre.innerText;
-        navigator.clipboard.writeText(textToCopy);
-
-        btn.innerHTML = `
-          <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-          <span class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 ml-1">Đã chép!</span>
-        `;
-        setTimeout(() => {
-          btn.innerHTML = `
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
-            </svg>
-            <span class="text-[11px] font-medium ml-1">Chép</span>
-          `;
-        }, 2000);
-      });
-
-      pre.appendChild(btn);
-    });
-  }, [htmlContent, viewMode]);
+  // Nút sao chép giống GitHub cho các khối mã
+  useGithubCodeCopy(containerRef, [htmlContent, viewMode]);
 
   const handleCopyAll = () => {
     if (!activeMarkdown) return;
@@ -272,7 +217,7 @@ export const GitHubReadmeViewer: React.FC<GitHubReadmeViewerProps> = ({
         {(contentSource === 'vi' || original.status === 'ready') && (viewMode === 'preview' ? (
           <div
             ref={containerRef}
-            onClick={handleContentClick}
+            onClick={(event) => handleMarkdownAnchorClick(event, containerRef.current)}
             className="github-markdown-body"
             dangerouslySetInnerHTML={{ __html: htmlContent }}
           />

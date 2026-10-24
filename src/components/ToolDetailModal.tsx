@@ -6,6 +6,9 @@ import {
 } from 'lucide-react';
 import { AITool, ConfigTemplate } from '../types';
 import { GitHubReadmeViewer } from './GitHubReadmeViewer';
+import { GitHubMarkdownSection } from './GitHubMarkdownSection';
+import { buildInstallMarkdown, buildUsageMarkdown } from '../lib/toolGuides';
+import { describeConfigFile } from '../lib/configFiles';
 import { GitHubCodeViewer } from './GitHubCodeViewer';
 import { VisualDiagramViewer } from './VisualDiagramViewer';
 import { getVerifiedStars } from '../lib/verification';
@@ -300,6 +303,7 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool: baseTool
                 toolId={tool.id} 
                 toolName={tool.name} 
                 markdown={tool.readmeVi} 
+                tool={tool}
               />
             </div>
           )}
@@ -307,14 +311,7 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool: baseTool
           {/* TAB 3: CÀI ĐẶT & CẤU HÌNH */}
           {modalTab === 'setup' && (
             <div className="space-y-5 animate-fadeIn">
-              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-800">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
-                  Hướng Dẫn Cài Đặt Môi Trường:
-                </h4>
-                <div className="text-sm text-slate-700 dark:text-slate-300 whitespace-pre-line leading-relaxed">
-                  {tool.installGuideVi}
-                </div>
-              </div>
+              <GitHubMarkdownSection markdown={buildInstallMarkdown({ configs: [], installGuideVi: tool.installGuideVi })} />
 
               {/* Bộ chọn nền tảng cấu hình */}
               <div className="space-y-3">
@@ -335,14 +332,10 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool: baseTool
                 </div>
 
                 {currentConfig && (
-                  <GitHubCodeViewer 
+                  <GitHubCodeViewer
                     code={currentConfig.jsonConfig}
-                    fileName={
-                      currentConfig.platform === 'claude_desktop' ? 'claude_desktop_config.json' :
-                      currentConfig.platform === 'antigravity' ? 'mcp_config.json' :
-                      currentConfig.platform === 'cursor' ? '.cursor/mcp.json' :
-                      currentConfig.platform === 'windsurf' ? 'mcp_config.json' : 'config.json'
-                    }
+                    fileName={describeConfigFile(currentConfig).fileName}
+                    noteVi={describeConfigFile(currentConfig).noteVi}
                     platformName={currentConfig.platformName}
                     cliCommand={currentConfig.cliCommand}
                   />
@@ -354,41 +347,7 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool: baseTool
           {/* TAB 4: CÂU LỆNH & HƯỚNG DẪN */}
           {modalTab === 'usage' && (
             <div className="space-y-5 animate-fadeIn">
-              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-800">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
-                  Hướng Dẫn Thao Tác &amp; Vận Hành:
-                </h4>
-                <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                  {tool.usageGuideVi}
-                </p>
-              </div>
-
-              <div className="space-y-2.5">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                  Câu lệnh (Prompts) gợi ý bằng tiếng Việt:
-                </span>
-                {(tool.samplePromptsVi || []).map((prompt, pIdx) => {
-                  const isCopied = copiedPromptIndex === pIdx;
-                  return (
-                    <div
-                      key={pIdx}
-                      className="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-xs sm:text-sm text-slate-700 dark:text-slate-200"
-                    >
-                      <div className="flex items-start space-x-2.5 pr-3">
-                        <Sparkles className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
-                        <span className="italic">"{prompt}"</span>
-                      </div>
-                      <button
-                        onClick={() => handleCopyPrompt(prompt, pIdx)}
-                        className="shrink-0 flex items-center space-x-1 px-2.5 py-1 rounded-md bg-white dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 border border-slate-200 dark:border-slate-600 text-xs font-semibold text-slate-600 dark:text-slate-200 transition-colors"
-                      >
-                        {isCopied ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
-                        <span>{isCopied ? 'Đã chép' : 'Chép'}</span>
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
+              <GitHubMarkdownSection markdown={buildUsageMarkdown(tool)} />
             </div>
           )}
 
