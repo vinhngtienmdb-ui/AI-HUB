@@ -161496,5 +161496,1683 @@
       "guideIsTemplate": false,
       "starsVerified": false
     }
+  },
+  {
+    "id": "activepieces-activepieces",
+    "slug": "activepieces-activepieces",
+    "name": "Activepieces — Nền tảng tự động hóa quy trình AI mã nguồn mở thay thế Zapier",
+    "icon": "Workflow",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "rpa_workflow_automation",
+    "categoryNameVi": "Tự động hóa quy trình & RPA (Automation)",
+    "categories": [
+      "rpa_workflow_automation"
+    ],
+    "categoryNamesVi": [
+      "Tự động hóa quy trình & RPA (Automation)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/activepieces/activepieces",
+    "websiteUrl": "https://www.activepieces.com",
+    "authorName": "Activepieces Inc.",
+    "license": "Mã nguồn mở (MIT) + tính năng Enterprise thương mại",
+    "summaryVi": "Activepieces là nền tảng tự động hóa quy trình bằng AI, mã nguồn mở, thay thế Zapier, với trình dựng luồng không cần viết mã cho người dùng phổ thông. Các tích hợp (gọi là pieces) được viết bằng TypeScript, phát hành trên npm và tự động khả dụng dưới dạng MCP server cho Claude Desktop, Cursor hoặc Windsurf. Dự án có thể tự lưu trữ, kể cả trong mạng tách biệt.",
+    "purposeVi": "Công cụ giúp doanh nghiệp tự động hóa công việc giữa hơn 200 dịch vụ (Google Sheets, OpenAI, Discord, RSS...) bằng trình dựng luồng trực quan, tự lưu trữ để giữ dữ liệu nội bộ.",
+    "featuresVi": [
+      "Trình dựng luồng: vòng lặp, rẽ nhánh, tự động thử lại, HTTP, bước mã với NPM",
+      "Hơn 200 pieces tích hợp mã nguồn mở, 60% do cộng đồng đóng góp, phát hành trên npmjs.com",
+      "Bộ công cụ MCP: toàn bộ pieces (280+) dùng được như MCP với Claude Desktop, Cursor, Windsurf",
+      "AI-First: pieces AI gốc và AI SDK để tự tạo tác tử ngay trong trình dựng",
+      "Con người trong vòng lặp: trì hoãn thực thi hoặc yêu cầu phê duyệt; giao diện Chat và Form làm trình kích hoạt",
+      "Luồng được quản lý phiên bản đầy đủ, hỗ trợ dịch giao diện và mẫu tùy chỉnh"
+    ],
+    "installGuideVi": "Yêu cầu: Docker (bản Hobby một container); bản tự lưu trữ đầy đủ cần Docker Compose v2, tối thiểu 2 vCPU và 4 GB RAM.\nBước 1: Cài đặt bản Hobby một container (cơ sở dữ liệu nhúng PGLite): `docker run -d --name activepieces -p 8080:80 -v ~/.activepieces:/root/.activepieces -e AP_DB_TYPE=PGLITE -e AP_REDIS_TYPE=MEMORY -e AP_FRONTEND_URL=\"http://localhost:8080\" activepieces/activepieces:latest`\nBước 2: Hoặc cài đặt bản tự lưu trữ với PostgreSQL và Redis bằng một lệnh: `curl -fsSL https://get.activepieces.com | sh`\nBước 3: Kiểm tra trạng thái các container: `docker compose -p activepieces ps`",
+    "usageGuideVi": "Bước 1: Mở http://localhost:8080; tài khoản đầu tiên được tạo sẽ trở thành quản trị viên\nBước 2: Tạo luồng mới, chọn trình kích hoạt (webhook, lịch, Chat, Form...) và thêm các bước pieces\nBước 3: Nếu cần nhận webhook từ bên ngoài trên máy cá nhân, mở đường hầm bằng `ngrok http 8080` rồi đặt AP_FRONTEND_URL theo URL ngrok\nBước 4: Tham khảo hướng dẫn tạo piece riêng bằng TypeScript khi cần tích hợp dịch vụ chưa có sẵn",
+    "samplePromptsVi": [
+      "Tạo luồng: khi có dòng mới trong Google Sheets thì gọi OpenAI tóm tắt và gửi kết quả lên Discord",
+      "Dựng biểu mẫu nhận yêu cầu nội bộ, chờ quản lý phê duyệt rồi mới chạy bước tiếp theo",
+      "Theo dõi một nguồn RSS và lưu bài mới vào bảng dữ liệu"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker run -d --name activepieces -p 8080:80 -v ~/.activepieces:/root/.activepieces -e AP_DB_TYPE=PGLITE -e AP_REDIS_TYPE=MEMORY -e AP_FRONTEND_URL=\"http://localhost:8080\" activepieces/activepieces:latest",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker run -d --name activepieces -p 8080:80 -v ~/.activepieces:/root/.activepieces -e AP_DB_TYPE=PGLITE -e AP_REDIS_TYPE=MEMORY -e AP_FRONTEND_URL=\\\"http://localhost:8080\\\" activepieces/activepieces:latest\"\n  ],\n  \"nguon\": \"https://github.com/activepieces/activepieces\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "freemium",
+    "prosVi": [
+      "Community Edition mã nguồn mở theo giấy phép MIT",
+      "Tự lưu trữ được, kể cả trong mạng tách biệt",
+      "Pieces dùng được như MCP server cho Claude Desktop, Cursor",
+      "Bản Hobby chỉ cần Docker, không phải cài PostgreSQL hay Redis"
+    ],
+    "consVi": [
+      "Tính năng doanh nghiệp nằm dưới giấy phép thương mại riêng, dùng trong sản xuất cần giấy phép Enterprise",
+      "Bản Hobby dùng cơ sở dữ liệu nhúng: không mở rộng được và không nâng cấp lên Enterprise",
+      "Webhook cần địa chỉ công khai (hoặc đường hầm như ngrok)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Activepieces — Nền tảng tự động hóa quy trình AI mã nguồn mở thay thế Zapier\n\n> An open source replacement for Zapier\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nActivepieces là nền tảng tự động hóa quy trình bằng AI, mã nguồn mở, thay thế Zapier, với trình dựng luồng không cần viết mã cho người dùng phổ thông. Các tích hợp (gọi là pieces) được viết bằng TypeScript, phát hành trên npm và tự động khả dụng dưới dạng MCP server cho Claude Desktop, Cursor hoặc Windsurf. Dự án có thể tự lưu trữ, kể cả trong mạng tách biệt.\n\nCông cụ giúp doanh nghiệp tự động hóa công việc giữa hơn 200 dịch vụ (Google Sheets, OpenAI, Discord, RSS...) bằng trình dựng luồng trực quan, tự lưu trữ để giữ dữ liệu nội bộ.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Tự động hóa quy trình & RPA (Automation)\n- **Tác giả / Nhà phát triển:** Activepieces Inc.\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT) + tính năng Enterprise thương mại\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/activepieces/activepieces](https://github.com/activepieces/activepieces)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Trình dựng luồng: vòng lặp, rẽ nhánh, tự động thử lại, HTTP, bước mã với NPM**\n- **Hơn 200 pieces tích hợp mã nguồn mở, 60% do cộng đồng đóng góp, phát hành trên npmjs.com**\n- **Bộ công cụ MCP: toàn bộ pieces (280+) dùng được như MCP với Claude Desktop, Cursor, Windsurf**\n- **AI-First: pieces AI gốc và AI SDK để tự tạo tác tử ngay trong trình dựng**\n- **Con người trong vòng lặp: trì hoãn thực thi hoặc yêu cầu phê duyệt; giao diện Chat và Form làm trình kích hoạt**\n- **Luồng được quản lý phiên bản đầy đủ, hỗ trợ dịch giao diện và mẫu tùy chỉnh**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker run -d --name activepieces -p 8080:80 -v ~/.activepieces:/root/.activepieces -e AP_DB_TYPE=PGLITE -e AP_REDIS_TYPE=MEMORY -e AP_FRONTEND_URL=\"http://localhost:8080\" activepieces/activepieces:latest\n```\n\nYêu cầu: Docker (bản Hobby một container); bản tự lưu trữ đầy đủ cần Docker Compose v2, tối thiểu 2 vCPU và 4 GB RAM.\nBước 1: Cài đặt bản Hobby một container (cơ sở dữ liệu nhúng PGLite): `docker run -d --name activepieces -p 8080:80 -v ~/.activepieces:/root/.activepieces -e AP_DB_TYPE=PGLITE -e AP_REDIS_TYPE=MEMORY -e AP_FRONTEND_URL=\"http://localhost:8080\" activepieces/activepieces:latest`\nBước 2: Hoặc cài đặt bản tự lưu trữ với PostgreSQL và Redis bằng một lệnh: `curl -fsSL https://get.activepieces.com | sh`\nBước 3: Kiểm tra trạng thái các container: `docker compose -p activepieces ps`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở http://localhost:8080; tài khoản đầu tiên được tạo sẽ trở thành quản trị viên\nBước 2: Tạo luồng mới, chọn trình kích hoạt (webhook, lịch, Chat, Form...) và thêm các bước pieces\nBước 3: Nếu cần nhận webhook từ bên ngoài trên máy cá nhân, mở đường hầm bằng `ngrok http 8080` rồi đặt AP_FRONTEND_URL theo URL ngrok\nBước 4: Tham khảo hướng dẫn tạo piece riêng bằng TypeScript khi cần tích hợp dịch vụ chưa có sẵn\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo luồng: khi có dòng mới trong Google Sheets thì gọi OpenAI tóm tắt và gửi kết quả lên Discord\"\n- \"Dựng biểu mẫu nhận yêu cầu nội bộ, chờ quản lý phê duyệt rồi mới chạy bước tiếp theo\"\n- \"Theo dõi một nguồn RSS và lưu bài mới vào bảng dữ liệu\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "windmill-labs-windmill",
+    "slug": "windmill-labs-windmill",
+    "name": "Windmill — Nền tảng chạy script, quy trình và ứng dụng nội bộ tự lưu trữ",
+    "icon": "Workflow",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "rpa_workflow_automation",
+    "categoryNameVi": "Tự động hóa quy trình & RPA (Automation)",
+    "categories": [
+      "rpa_workflow_automation",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Tự động hóa quy trình & RPA (Automation)",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/windmill-labs/windmill",
+    "websiteUrl": "https://www.windmill.dev",
+    "authorName": "Windmill Labs, Inc.",
+    "license": "Mã nguồn mở (AGPLv3/Apache 2.0) + mã Enterprise độc quyền",
+    "summaryVi": "Windmill là nền tảng dành cho lập trình viên để chạy mã nội bộ: API, tác vụ nền, quy trình và giao diện. Script viết bằng Python, TypeScript, Go, Bash, SQL, GraphQL, PowerShell, Rust... được tự động sinh giao diện, ghép thành flow hoặc dựng thành ứng dụng low-code. Dự án tự lưu trữ được, thay thế Retool, Pipedream, Superblocks và một Temporal đơn giản hóa.",
+    "purposeVi": "Biến các script rời rạc thành quy trình tự động, tác vụ định kỳ và công cụ nội bộ có giao diện, chạy trên hạ tầng do doanh nghiệp tự quản lý.",
+    "featuresVi": [
+      "Đa ngôn ngữ: Python, TypeScript, Go, Bash, SQL, GraphQL, PowerShell, Rust, C#, Java, Ansible",
+      "Tự sinh giao diện từ tham số script và trình dựng ứng dụng low-code",
+      "Flow editor ghép script thành quy trình; dùng lại script cộng đồng trên WindmillHub",
+      "Kích hoạt bằng lịch, webhook, HTTP route, Kafka và nhiều nguồn sự kiện",
+      "Phát triển cục bộ qua CLI, tiện ích VS Code, Git Sync và Claude Code",
+      "Cách ly bằng nsjail và PID namespace; độ trễ hàng đợi khoảng 50ms mỗi tác vụ"
+    ],
+    "installGuideVi": "Yêu cầu: Docker và Docker Compose (hoặc Kubernetes với Helm); PostgreSQL đi kèm hoặc dùng cơ sở dữ liệu ngoài qua DATABASE_URL.\nBước 1: Tải tệp cấu hình: `curl https://raw.githubusercontent.com/windmill-labs/windmill/main/docker-compose.yml -o docker-compose.yml`\nBước 2: Tải Caddyfile: `curl https://raw.githubusercontent.com/windmill-labs/windmill/main/Caddyfile -o Caddyfile`\nBước 3: Tải tệp môi trường: `curl https://raw.githubusercontent.com/windmill-labs/windmill/main/.env -o .env`\nBước 4: Cài đặt và khởi chạy: `docker compose up -d`\nBước 5: Hoặc cài đặt trên Kubernetes: `helm repo add windmill https://windmill-labs.github.io/windmill-helm-charts/` rồi `helm install windmill-chart windmill/windmill --namespace=windmill --create-namespace`",
+    "usageGuideVi": "Bước 1: Mở http://localhost và đăng nhập bằng tài khoản mặc định admin@windmill.dev / changeme (nên đổi ngay)\nBước 2: Viết script trong Web IDE; tham số được phân tích để sinh giao diện chạy tự động\nBước 3: Ghép script thành flow, gắn lịch hoặc webhook để tự động hóa\nBước 4: Dựng ứng dụng nội bộ trên script và flow bằng trình dựng UI",
+    "samplePromptsVi": [
+      "Viết script Python đọc dữ liệu từ PostgreSQL và tạo flow chạy mỗi sáng gửi báo cáo lên Slack",
+      "Tạo HTTP route nhận webhook rồi gọi script TypeScript xử lý dữ liệu",
+      "Dựng ứng dụng nội bộ có biểu mẫu kích hoạt flow phê duyệt"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker compose up -d",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker compose up -d\"\n  ],\n  \"nguon\": \"https://github.com/windmill-labs/windmill\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "freemium",
+    "prosVi": [
+      "Mã nguồn có thể biên dịch không kèm tính năng enterprise là mã nguồn mở AGPLv3",
+      "Community Edition dùng miễn phí trong nội bộ tổ chức",
+      "Hỗ trợ rất nhiều ngôn ngữ lập trình và nhiều cách kích hoạt",
+      "Triển khai bằng Docker Compose với 3 tệp hoặc Helm chart"
+    ],
+    "consVi": [
+      "Ảnh Docker Community Edition chứa cả mã độc quyền; không được bán lại, cung cấp dạng dịch vụ quản lý hay đóng gói lại khi chưa có thỏa thuận",
+      "Một số tính năng (ví dụ số liệu Prometheus) chỉ có ở bản Enterprise cần LICENSE_KEY",
+      "Dự án hiện không nhận đóng góp mã lớn từ bên ngoài"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Windmill — Nền tảng chạy script, quy trình và ứng dụng nội bộ tự lưu trữ\n\n> Open-source developer platform for internal code: APIs, background jobs, workflows and UIs.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nWindmill là nền tảng dành cho lập trình viên để chạy mã nội bộ: API, tác vụ nền, quy trình và giao diện. Script viết bằng Python, TypeScript, Go, Bash, SQL, GraphQL, PowerShell, Rust... được tự động sinh giao diện, ghép thành flow hoặc dựng thành ứng dụng low-code. Dự án tự lưu trữ được, thay thế Retool, Pipedream, Superblocks và một Temporal đơn giản hóa.\n\nBiến các script rời rạc thành quy trình tự động, tác vụ định kỳ và công cụ nội bộ có giao diện, chạy trên hạ tầng do doanh nghiệp tự quản lý.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Tự động hóa quy trình & RPA (Automation)\n- **Tác giả / Nhà phát triển:** Windmill Labs, Inc.\n- **Giấy phép bản quyền:** Mã nguồn mở (AGPLv3/Apache 2.0) + mã Enterprise độc quyền\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/windmill-labs/windmill](https://github.com/windmill-labs/windmill)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Đa ngôn ngữ: Python, TypeScript, Go, Bash, SQL, GraphQL, PowerShell, Rust, C#, Java, Ansible**\n- **Tự sinh giao diện từ tham số script và trình dựng ứng dụng low-code**\n- **Flow editor ghép script thành quy trình; dùng lại script cộng đồng trên WindmillHub**\n- **Kích hoạt bằng lịch, webhook, HTTP route, Kafka và nhiều nguồn sự kiện**\n- **Phát triển cục bộ qua CLI, tiện ích VS Code, Git Sync và Claude Code**\n- **Cách ly bằng nsjail và PID namespace; độ trễ hàng đợi khoảng 50ms mỗi tác vụ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker compose up -d\n```\n\nYêu cầu: Docker và Docker Compose (hoặc Kubernetes với Helm); PostgreSQL đi kèm hoặc dùng cơ sở dữ liệu ngoài qua DATABASE_URL.\nBước 1: Tải tệp cấu hình: `curl https://raw.githubusercontent.com/windmill-labs/windmill/main/docker-compose.yml -o docker-compose.yml`\nBước 2: Tải Caddyfile: `curl https://raw.githubusercontent.com/windmill-labs/windmill/main/Caddyfile -o Caddyfile`\nBước 3: Tải tệp môi trường: `curl https://raw.githubusercontent.com/windmill-labs/windmill/main/.env -o .env`\nBước 4: Cài đặt và khởi chạy: `docker compose up -d`\nBước 5: Hoặc cài đặt trên Kubernetes: `helm repo add windmill https://windmill-labs.github.io/windmill-helm-charts/` rồi `helm install windmill-chart windmill/windmill --namespace=windmill --create-namespace`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở http://localhost và đăng nhập bằng tài khoản mặc định admin@windmill.dev / changeme (nên đổi ngay)\nBước 2: Viết script trong Web IDE; tham số được phân tích để sinh giao diện chạy tự động\nBước 3: Ghép script thành flow, gắn lịch hoặc webhook để tự động hóa\nBước 4: Dựng ứng dụng nội bộ trên script và flow bằng trình dựng UI\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết script Python đọc dữ liệu từ PostgreSQL và tạo flow chạy mỗi sáng gửi báo cáo lên Slack\"\n- \"Tạo HTTP route nhận webhook rồi gọi script TypeScript xử lý dữ liệu\"\n- \"Dựng ứng dụng nội bộ có biểu mẫu kích hoạt flow phê duyệt\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "kestra-io-kestra",
+    "slug": "kestra-io-kestra",
+    "name": "Kestra — Nền tảng điều phối quy trình dữ liệu, AI và hạ tầng bằng YAML",
+    "icon": "Workflow",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "rpa_workflow_automation",
+    "categoryNameVi": "Tự động hóa quy trình & RPA (Automation)",
+    "categories": [
+      "rpa_workflow_automation",
+      "data_engineering"
+    ],
+    "categoryNamesVi": [
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Kỹ thuật dữ liệu & Đường ống ETL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/kestra-io/kestra",
+    "websiteUrl": "https://kestra.io",
+    "authorName": "Kestra Technologies",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Kestra là nền tảng điều phối hướng sự kiện, mã nguồn mở, cho quy trình dữ liệu, AI và hạ tầng. Quy trình được khai báo bằng YAML và có thể xây bằng trình soạn YAML, trình soạn No-Code hoặc AI Copilot, cả ba luôn đồng bộ. Kestra có hàng trăm plugin, tác tử AI, quy trình RAG và MCP server tích hợp sẵn.",
+    "purposeVi": "Tự động hóa cả quy trình định kỳ lẫn quy trình theo sự kiện thời gian thực theo cách Infrastructure as Code, có giao diện trực quan và quản lý phiên bản bằng Git.",
+    "featuresVi": [
+      "Ba cách xây cùng một flow: YAML, No-Code editor và AI Copilot (Ask, Edit, Plan)",
+      "Điều phối AI: tác tử AI, quy trình RAG và MCP server cung cấp flow làm công cụ cho tác tử",
+      "Trình kích hoạt theo lịch và sự kiện: Kafka, Redis, Pulsar, AMQP, MQTT, NATS, SQS, Pub/Sub...",
+      "Hàng trăm plugin: cơ sở dữ liệu, lưu trữ đám mây, API, chạy script Python, Node.js, R, Go, Shell",
+      "Khả năng chịu lỗi: subflow, thử lại, timeout, xử lý lỗi, phân nhánh có điều kiện",
+      "Tích hợp Git, CI/CD, Terraform provider, CLI kestractl và SDK Python/JavaScript"
+    ],
+    "installGuideVi": "Yêu cầu: Docker đang chạy; ảnh -slim tải plugin từ Maven Central khi cần.\nBước 1: Cài đặt và khởi chạy Kestra bằng một lệnh Docker: `docker run --pull=always --rm -it -p 8080:8080 --user=root \\\n  --name kestra \\\n  -v kestra_data:/app/storage \\\n  -v kestra_db:/app/data \\\n  -v /var/run/docker.sock:/var/run/docker.sock \\\n  -v /tmp:/tmp \\\n  -e KESTRA_PLUGINS_AUTO_INSTALL_ENABLED=true \\\n  kestra/kestra:latest-slim server local`\nBước 2: Mở giao diện tại http://localhost:8080\nBước 3: Tham khảo hướng dẫn cài đặt chính thức cho Docker Compose, Kubernetes, AWS, GCP, Azure",
+    "usageGuideVi": "Bước 1: Tạo flow mới với id, namespace và danh sách tasks (ví dụ task io.kestra.plugin.core.log.Log)\nBước 2: Chạy flow và xem đầu ra, nhật ký, sơ đồ DAG trong giao diện\nBước 3: Thêm trigger theo lịch hoặc sự kiện để tự động hóa\nBước 4: Đẩy flow lên nhánh Git để quản lý phiên bản và CI/CD",
+    "samplePromptsVi": [
+      "Viết flow Kestra bằng YAML chạy script Python trích xuất dữ liệu mỗi giờ rồi nạp vào BigQuery",
+      "Tạo flow kích hoạt khi có tin nhắn Kafka mới và gửi cảnh báo Slack khi lỗi",
+      "Dựng quy trình RAG nạp tài liệu vào kho vector bằng tác vụ AI của Kestra"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker run --pull=always --rm -it -p 8080:8080 --user=root \\\n  --name kestra \\\n  -v kestra_data:/app/storage \\\n  -v kestra_db:/app/data \\\n  -v /var/run/docker.sock:/var/run/docker.sock \\\n  -v /tmp:/tmp \\\n  -e KESTRA_PLUGINS_AUTO_INSTALL_ENABLED=true \\\n  kestra/kestra:latest-slim server local",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker run --pull=always --rm -it -p 8080:8080 --user=root \\\\\\n  --name kestra \\\\\\n  -v kestra_data:/app/storage \\\\\\n  -v kestra_db:/app/data \\\\\\n  -v /var/run/docker.sock:/var/run/docker.sock \\\\\\n  -v /tmp:/tmp \\\\\\n  -e KESTRA_PLUGINS_AUTO_INSTALL_ENABLED=true \\\\\\n  kestra/kestra:latest-slim server local\"\n  ],\n  \"nguon\": \"https://github.com/kestra-io/kestra\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép Apache 2.0",
+      "Chạy thử chỉ với một lệnh Docker",
+      "Quy trình luôn được lưu dạng mã YAML dù chỉnh từ giao diện hay API",
+      "Có MCP server và Agent Skills cho trợ lý lập trình AI"
+    ],
+    "consVi": [
+      "Một số tính năng quản trị (RBAC theo hành động, Policies, Cases) chỉ có ở Enterprise Edition",
+      "Lệnh chạy nhanh gắn docker.sock và chạy với quyền root, chỉ phù hợp thử nghiệm cục bộ",
+      "Kestra 2.0 có thay đổi phá vỡ tương thích, cần xem hướng dẫn di chuyển khi nâng cấp"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Kestra — Nền tảng điều phối quy trình dữ liệu, AI và hạ tầng bằng YAML\n\n> Open-source orchestration platform for data, AI, and infrastructure workflows\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nKestra là nền tảng điều phối hướng sự kiện, mã nguồn mở, cho quy trình dữ liệu, AI và hạ tầng. Quy trình được khai báo bằng YAML và có thể xây bằng trình soạn YAML, trình soạn No-Code hoặc AI Copilot, cả ba luôn đồng bộ. Kestra có hàng trăm plugin, tác tử AI, quy trình RAG và MCP server tích hợp sẵn.\n\nTự động hóa cả quy trình định kỳ lẫn quy trình theo sự kiện thời gian thực theo cách Infrastructure as Code, có giao diện trực quan và quản lý phiên bản bằng Git.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Tự động hóa quy trình & RPA (Automation)\n- **Tác giả / Nhà phát triển:** Kestra Technologies\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/kestra-io/kestra](https://github.com/kestra-io/kestra)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Ba cách xây cùng một flow: YAML, No-Code editor và AI Copilot (Ask, Edit, Plan)**\n- **Điều phối AI: tác tử AI, quy trình RAG và MCP server cung cấp flow làm công cụ cho tác tử**\n- **Trình kích hoạt theo lịch và sự kiện: Kafka, Redis, Pulsar, AMQP, MQTT, NATS, SQS, Pub/Sub...**\n- **Hàng trăm plugin: cơ sở dữ liệu, lưu trữ đám mây, API, chạy script Python, Node.js, R, Go, Shell**\n- **Khả năng chịu lỗi: subflow, thử lại, timeout, xử lý lỗi, phân nhánh có điều kiện**\n- **Tích hợp Git, CI/CD, Terraform provider, CLI kestractl và SDK Python/JavaScript**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker run --pull=always --rm -it -p 8080:8080 --user=root \\\n  --name kestra \\\n  -v kestra_data:/app/storage \\\n  -v kestra_db:/app/data \\\n  -v /var/run/docker.sock:/var/run/docker.sock \\\n  -v /tmp:/tmp \\\n  -e KESTRA_PLUGINS_AUTO_INSTALL_ENABLED=true \\\n  kestra/kestra:latest-slim server local\n```\n\nYêu cầu: Docker đang chạy; ảnh -slim tải plugin từ Maven Central khi cần.\nBước 1: Cài đặt và khởi chạy Kestra bằng một lệnh Docker: `docker run --pull=always --rm -it -p 8080:8080 --user=root \\\n  --name kestra \\\n  -v kestra_data:/app/storage \\\n  -v kestra_db:/app/data \\\n  -v /var/run/docker.sock:/var/run/docker.sock \\\n  -v /tmp:/tmp \\\n  -e KESTRA_PLUGINS_AUTO_INSTALL_ENABLED=true \\\n  kestra/kestra:latest-slim server local`\nBước 2: Mở giao diện tại http://localhost:8080\nBước 3: Tham khảo hướng dẫn cài đặt chính thức cho Docker Compose, Kubernetes, AWS, GCP, Azure\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo flow mới với id, namespace và danh sách tasks (ví dụ task io.kestra.plugin.core.log.Log)\nBước 2: Chạy flow và xem đầu ra, nhật ký, sơ đồ DAG trong giao diện\nBước 3: Thêm trigger theo lịch hoặc sự kiện để tự động hóa\nBước 4: Đẩy flow lên nhánh Git để quản lý phiên bản và CI/CD\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết flow Kestra bằng YAML chạy script Python trích xuất dữ liệu mỗi giờ rồi nạp vào BigQuery\"\n- \"Tạo flow kích hoạt khi có tin nhắn Kafka mới và gửi cảnh báo Slack khi lỗi\"\n- \"Dựng quy trình RAG nạp tài liệu vào kho vector bằng tác vụ AI của Kestra\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "triggerdotdev-trigger-dev",
+    "slug": "triggerdotdev-trigger-dev",
+    "name": "Trigger.dev — Nền tảng tác vụ nền và quy trình AI bền vững cho TypeScript",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "rpa_workflow_automation",
+    "categoryNameVi": "Tự động hóa quy trình & RPA (Automation)",
+    "categories": [
+      "rpa_workflow_automation",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/triggerdotdev/trigger.dev",
+    "websiteUrl": "https://trigger.dev",
+    "authorName": "Trigger.dev",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Trigger.dev là nền tảng mã nguồn mở để xây dựng quy trình AI và tác vụ nền bằng TypeScript, với tác vụ chạy dài không giới hạn thời gian, thử lại, hàng đợi, khả năng quan sát và tự mở rộng. Tác vụ được viết ngay trong mã nguồn dự án bằng SDK và triển khai lên Trigger.dev Cloud hoặc máy chủ tự lưu trữ (Docker Compose, Kubernetes).",
+    "purposeVi": "Giúp lập trình viên chạy tác tử AI và tác vụ nền bền vững, có hàng đợi và theo dõi, mà không phải tự quản lý hạ tầng.",
+    "featuresVi": [
+      "Tác vụ chạy dài không timeout, khác với AWS Lambda hay Vercel",
+      "Độ bền: thử lại tự động, hàng đợi, idempotency, checkpoint",
+      "Con người trong vòng lặp: tạm dừng tác vụ chờ phê duyệt (waitpoints)",
+      "Realtime và streaming phản hồi LLM tới ứng dụng, có React hooks",
+      "Lịch cron bền vững, batch trigger, nhiều môi trường DEV/PREVIEW/STAGING/PROD",
+      "Theo dõi, nhật ký và trace đầy đủ cho từng lần chạy; cảnh báo lỗi"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js 18.20+ (hoặc Bun), TypeScript 5.0.4+; tài khoản Trigger.dev Cloud hoặc một phiên bản tự lưu trữ.\nBước 1: Tạo tài khoản và dự án trên Trigger.dev Cloud (hoặc tự lưu trữ)\nBước 2: Cài đặt vào dự án hiện có bằng CLI: `npx trigger.dev@latest init`\nBước 3: Hoặc cài đặt thủ công gói SDK: `npm add @trigger.dev/sdk@latest` và `npm add --save-dev @trigger.dev/build@latest`\nBước 4: Với máy chủ tự lưu trữ, đăng nhập CLI: `npx trigger.dev@latest login --api-url https://your-trigger-instance.com`",
+    "usageGuideVi": "Bước 1: Viết tác vụ trong thư mục /trigger bằng hàm task() của @trigger.dev/sdk\nBước 2: Chạy máy chủ phát triển: `npx trigger.dev@latest dev`\nBước 3: Chạy thử tác vụ trên trang test của dashboard và xem trace\nBước 4: Đặt TRIGGER_SECRET_KEY trong .env để kích hoạt tác vụ từ mã ứng dụng",
+    "samplePromptsVi": [
+      "Viết tác vụ Trigger.dev chạy dài để tóm tắt hàng loạt tài liệu bằng LLM, có thử lại khi lỗi",
+      "Tạo lịch cron hằng ngày đồng bộ dữ liệu và gửi cảnh báo khi thất bại",
+      "Thêm bước chờ người duyệt trước khi tác tử AI gửi email cho khách hàng"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npx trigger.dev@latest init",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx trigger.dev@latest init\"\n  ],\n  \"nguon\": \"https://github.com/triggerdotdev/trigger.dev\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép Apache 2.0",
+      "Viết tác vụ ngay trong mã nguồn, quản lý phiên bản như mã thông thường",
+      "Tự lưu trữ được bằng Docker Compose hoặc Helm chart",
+      "Có MCP server và agent skills cho trợ lý AI"
+    ],
+    "consVi": [
+      "Cần tài khoản Trigger.dev Cloud hoặc tự vận hành một phiên bản tự lưu trữ",
+      "Chỉ hỗ trợ viết tác vụ bằng JavaScript/TypeScript",
+      "Hướng dẫn cài đặt chi tiết nằm trong thư mục docs, README chỉ dẫn liên kết"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Trigger.dev — Nền tảng tác vụ nền và quy trình AI bền vững cho TypeScript\n\n> Trigger.dev is the open-source platform for building AI workflows in TypeScript.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nTrigger.dev là nền tảng mã nguồn mở để xây dựng quy trình AI và tác vụ nền bằng TypeScript, với tác vụ chạy dài không giới hạn thời gian, thử lại, hàng đợi, khả năng quan sát và tự mở rộng. Tác vụ được viết ngay trong mã nguồn dự án bằng SDK và triển khai lên Trigger.dev Cloud hoặc máy chủ tự lưu trữ (Docker Compose, Kubernetes).\n\nGiúp lập trình viên chạy tác tử AI và tác vụ nền bền vững, có hàng đợi và theo dõi, mà không phải tự quản lý hạ tầng.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Tự động hóa quy trình & RPA (Automation)\n- **Tác giả / Nhà phát triển:** Trigger.dev\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/triggerdotdev/trigger.dev](https://github.com/triggerdotdev/trigger.dev)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tác vụ chạy dài không timeout, khác với AWS Lambda hay Vercel**\n- **Độ bền: thử lại tự động, hàng đợi, idempotency, checkpoint**\n- **Con người trong vòng lặp: tạm dừng tác vụ chờ phê duyệt (waitpoints)**\n- **Realtime và streaming phản hồi LLM tới ứng dụng, có React hooks**\n- **Lịch cron bền vững, batch trigger, nhiều môi trường DEV/PREVIEW/STAGING/PROD**\n- **Theo dõi, nhật ký và trace đầy đủ cho từng lần chạy; cảnh báo lỗi**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx trigger.dev@latest init\n```\n\nYêu cầu: Node.js 18.20+ (hoặc Bun), TypeScript 5.0.4+; tài khoản Trigger.dev Cloud hoặc một phiên bản tự lưu trữ.\nBước 1: Tạo tài khoản và dự án trên Trigger.dev Cloud (hoặc tự lưu trữ)\nBước 2: Cài đặt vào dự án hiện có bằng CLI: `npx trigger.dev@latest init`\nBước 3: Hoặc cài đặt thủ công gói SDK: `npm add @trigger.dev/sdk@latest` và `npm add --save-dev @trigger.dev/build@latest`\nBước 4: Với máy chủ tự lưu trữ, đăng nhập CLI: `npx trigger.dev@latest login --api-url https://your-trigger-instance.com`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Viết tác vụ trong thư mục /trigger bằng hàm task() của @trigger.dev/sdk\nBước 2: Chạy máy chủ phát triển: `npx trigger.dev@latest dev`\nBước 3: Chạy thử tác vụ trên trang test của dashboard và xem trace\nBước 4: Đặt TRIGGER_SECRET_KEY trong .env để kích hoạt tác vụ từ mã ứng dụng\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết tác vụ Trigger.dev chạy dài để tóm tắt hàng loạt tài liệu bằng LLM, có thử lại khi lỗi\"\n- \"Tạo lịch cron hằng ngày đồng bộ dữ liệu và gửi cảnh báo khi thất bại\"\n- \"Thêm bước chờ người duyệt trước khi tác tử AI gửi email cho khách hàng\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "simstudioai-sim",
+    "slug": "simstudioai-sim",
+    "name": "Sim — Không gian xây dựng và triển khai tác tử AI, quy trình tự động",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "rpa_workflow_automation",
+    "categoryNameVi": "Tự động hóa quy trình & RPA (Automation)",
+    "categories": [
+      "rpa_workflow_automation",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/simstudioai/sim",
+    "websiteUrl": "https://sim.ai",
+    "authorName": "Sim Studio",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Sim là không gian làm việc để xây dựng, triển khai và quản lý tác tử AI và quy trình, có bản đám mây sim.ai, bản tự lưu trữ và ứng dụng macOS. Người dùng xây tác tử trực quan, bằng hội thoại hoặc bằng mã, kết nối hơn 270 tích hợp và mọi LLM lớn. Bảng dữ liệu, tệp và kho tri thức nằm chung trong một không gian làm việc.",
+    "purposeVi": "Công cụ dựng tác tử AI và quy trình tự động kết nối Slack, Notion, HubSpot, Salesforce, cơ sở dữ liệu... với dữ liệu nội bộ, tự lưu trữ được.",
+    "featuresVi": [
+      "Hơn 270 tích hợp (5.400+ hành động, 520+ trình kích hoạt) và mọi LLM lớn",
+      "Xây tác tử trực quan, bằng hội thoại hoặc bằng mã",
+      "Nạp tệp, kho tri thức và bảng dữ liệu có cấu trúc; bảng là cơ sở dữ liệu tích hợp sẵn",
+      "Theo dõi lần chạy, nhật ký, lịch và hoạt động quy trình",
+      "MCP server tại https://mcp.sim.ai/mcp cho Claude, Claude Code, Codex",
+      "Hỗ trợ mô hình cục bộ qua Ollama và vLLM khi tự lưu trữ"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js 20+ và Docker để tự lưu trữ; Chat là dịch vụ do Sim quản lý, cần Chat API key (trình cài đặt tự kết nối).\nBước 1: Cài đặt bản tự lưu trữ bằng trình hướng dẫn tương tác: `npx sim-setup`\nBước 2: Kiểm tra trạng thái các dịch vụ: `npx sim-setup status`\nBước 3: Bổ sung tính năng tùy chọn, ví dụ kho tri thức: `npx sim-setup add knowledge`\nBước 4: Kết nối Claude Code với Sim Cloud qua MCP: `claude mcp add --transport http sim https://mcp.sim.ai/mcp`",
+    "usageGuideVi": "Bước 1: Mở http://localhost:3000 sau khi trình cài đặt hoàn tất\nBước 2: Tạo quy trình hoặc tác tử, thêm tích hợp và chọn mô hình LLM\nBước 3: Nạp tài liệu vào kho tri thức để tác tử tra cứu\nBước 4: Theo dõi nhật ký với `npx sim-setup logs` và chẩn đoán cấu hình bằng `npx sim-setup doctor`",
+    "samplePromptsVi": [
+      "Dựng tác tử đọc tin nhắn Slack, tra kho tri thức nội bộ và trả lời câu hỏi của nhân viên",
+      "Tạo quy trình đồng bộ khách hàng mới từ HubSpot vào bảng dữ liệu của Sim mỗi ngày",
+      "Từ Claude Code, chạy và triển khai một workflow Sim qua MCP server"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npx sim-setup",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx sim-setup\"\n  ],\n  \"nguon\": \"https://github.com/simstudioai/sim\"\n}"
+      },
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add --transport http sim https://mcp.sim.ai/mcp",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add --transport http sim https://mcp.sim.ai/mcp\"\n  ],\n  \"nguon\": \"https://github.com/simstudioai/sim\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép Apache 2.0",
+      "Trình cài đặt npx sim-setup tự tạo cơ sở dữ liệu, bí mật và chạy Docker Compose",
+      "Có MCP server và ứng dụng macOS",
+      "Hỗ trợ mô hình cục bộ qua Ollama, vLLM"
+    ],
+    "consVi": [
+      "Tính năng Chat là dịch vụ do Sim quản lý, cần đăng nhập để lấy Chat API key",
+      "MCP server chính thức trỏ tới Sim Cloud; bản tự lưu trữ cần URL riêng",
+      "Ứng dụng desktop chỉ có cho macOS 12+"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Sim — Không gian xây dựng và triển khai tác tử AI, quy trình tự động\n\n> A workspace to build, deploy and manage AI agents and workflows.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSim là không gian làm việc để xây dựng, triển khai và quản lý tác tử AI và quy trình, có bản đám mây sim.ai, bản tự lưu trữ và ứng dụng macOS. Người dùng xây tác tử trực quan, bằng hội thoại hoặc bằng mã, kết nối hơn 270 tích hợp và mọi LLM lớn. Bảng dữ liệu, tệp và kho tri thức nằm chung trong một không gian làm việc.\n\nCông cụ dựng tác tử AI và quy trình tự động kết nối Slack, Notion, HubSpot, Salesforce, cơ sở dữ liệu... với dữ liệu nội bộ, tự lưu trữ được.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Tự động hóa quy trình & RPA (Automation)\n- **Tác giả / Nhà phát triển:** Sim Studio\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`, `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/simstudioai/sim](https://github.com/simstudioai/sim)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Hơn 270 tích hợp (5.400+ hành động, 520+ trình kích hoạt) và mọi LLM lớn**\n- **Xây tác tử trực quan, bằng hội thoại hoặc bằng mã**\n- **Nạp tệp, kho tri thức và bảng dữ liệu có cấu trúc; bảng là cơ sở dữ liệu tích hợp sẵn**\n- **Theo dõi lần chạy, nhật ký, lịch và hoạt động quy trình**\n- **MCP server tại https://mcp.sim.ai/mcp cho Claude, Claude Code, Codex**\n- **Hỗ trợ mô hình cục bộ qua Ollama và vLLM khi tự lưu trữ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx sim-setup\n```\n\nYêu cầu: Node.js 20+ và Docker để tự lưu trữ; Chat là dịch vụ do Sim quản lý, cần Chat API key (trình cài đặt tự kết nối).\nBước 1: Cài đặt bản tự lưu trữ bằng trình hướng dẫn tương tác: `npx sim-setup`\nBước 2: Kiểm tra trạng thái các dịch vụ: `npx sim-setup status`\nBước 3: Bổ sung tính năng tùy chọn, ví dụ kho tri thức: `npx sim-setup add knowledge`\nBước 4: Kết nối Claude Code với Sim Cloud qua MCP: `claude mcp add --transport http sim https://mcp.sim.ai/mcp`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở http://localhost:3000 sau khi trình cài đặt hoàn tất\nBước 2: Tạo quy trình hoặc tác tử, thêm tích hợp và chọn mô hình LLM\nBước 3: Nạp tài liệu vào kho tri thức để tác tử tra cứu\nBước 4: Theo dõi nhật ký với `npx sim-setup logs` và chẩn đoán cấu hình bằng `npx sim-setup doctor`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Dựng tác tử đọc tin nhắn Slack, tra kho tri thức nội bộ và trả lời câu hỏi của nhân viên\"\n- \"Tạo quy trình đồng bộ khách hàng mới từ HubSpot vào bảng dữ liệu của Sim mỗi ngày\"\n- \"Từ Claude Code, chạy và triển khai một workflow Sim qua MCP server\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "huginn-huginn",
+    "slug": "huginn-huginn",
+    "name": "Huginn — Hệ thống agent tự động hóa tác vụ trực tuyến tự lưu trữ",
+    "icon": "Workflow",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "rpa_workflow_automation",
+    "categoryNameVi": "Tự động hóa quy trình & RPA (Automation)",
+    "categories": [
+      "rpa_workflow_automation",
+      "web_scraping_crawling"
+    ],
+    "categoryNamesVi": [
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Thu thập dữ liệu web & Cào dữ liệu (Scraping)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/huginn/huginn",
+    "websiteUrl": "",
+    "authorName": "Huginn (Andrew Cantino, duy trì bởi Akinori Musha)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Huginn là hệ thống tạo các agent thực hiện tác vụ tự động trên mạng: đọc web, theo dõi sự kiện và hành động thay bạn. Các agent tạo và tiêu thụ sự kiện, truyền theo một đồ thị có hướng — giống phiên bản IFTTT hay Zapier có thể tùy biến, chạy trên máy chủ của chính bạn nên dữ liệu do bạn nắm giữ.",
+    "purposeVi": "Tự động theo dõi trang web, RSS, hộp thư, webhook và gửi thông báo, tóm tắt hoặc chuyển dữ liệu sang dịch vụ khác trên máy chủ tự quản lý.",
+    "featuresVi": [
+      "Thu thập trang web và gửi email khi nội dung thay đổi",
+      "Theo dõi RSS, hộp thư IMAP, webhook và chủ đề MQTT",
+      "Phát hiện đỉnh và khoảng trống trong luồng sự kiện để cảnh báo tức thì",
+      "Gửi tới Slack, Telegram, Pushover, Jabber hoặc SMS/cuộc gọi qua Twilio",
+      "Tóm tắt, phân loại, dịch văn bản và tạo ảnh, giọng nói qua API tương thích OpenAI",
+      "Logic tùy chỉnh bằng JavaScript, Liquid hoặc jq; xuất feed và endpoint JSON riêng"
+    ],
+    "installGuideVi": "Yêu cầu: Docker để chạy thử; triển khai sản xuất cần tiến trình web, worker và MySQL hoặc PostgreSQL.\nBước 1: Cài đặt và chạy thử bằng ảnh Docker chính thức (mọi tiến trình trong một container): `docker run -it -p 3000:3000 ghcr.io/huginn/huginn`\nBước 2: Với môi trường sản xuất, dùng tệp Docker Compose mẫu cho MySQL/PostgreSQL trong thư mục docker/single-process/\nBước 3: Để phát triển cục bộ: sao chép `cp .env.example .env`, cập nhật APP_SECRET_TOKEN rồi chạy `bundle exec rake db:create`, `bundle exec rake db:migrate`, `bundle exec rake db:seed` và `bundle exec foreman start`",
+    "usageGuideVi": "Bước 1: Mở http://localhost:3000 và đăng nhập bằng tài khoản admin với mật khẩu in ra một lần trong nhật ký container\nBước 2: Tạo agent mới (ví dụ WebsiteAgent, RSS, Email) và nối chúng thành chuỗi sự kiện\nBước 3: Xem sơ đồ luồng sự kiện và danh sách sự kiện agent đã tạo\nBước 4: Tham khảo wiki để có ví dụ và hướng dẫn viết agent mới",
+    "samplePromptsVi": [
+      "Tạo agent theo dõi trang khuyến mãi và gửi email khi giá thay đổi",
+      "Gom tin từ nhiều nguồn RSS và gửi email tóm tắt lúc 8 giờ sáng mỗi ngày",
+      "Nhận webhook, dùng API tương thích OpenAI để phân loại nội dung rồi đẩy vào Slack"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker run -it -p 3000:3000 ghcr.io/huginn/huginn",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker run -it -p 3000:3000 ghcr.io/huginn/huginn\"\n  ],\n  \"nguon\": \"https://github.com/huginn/huginn\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép MIT",
+      "Tự lưu trữ hoàn toàn, dữ liệu do bạn nắm giữ",
+      "Có ảnh Docker chính thức trên ghcr.io, chạy thử chỉ với một lệnh",
+      "Mở rộng bằng agent gem bên ngoài qua ADDITIONAL_GEMS"
+    ],
+    "consVi": [
+      "Dự án được duy trì bởi một người trong thời gian rảnh",
+      "Sản xuất cần chạy thêm worker và MySQL/PostgreSQL",
+      "Viết agent mới cần kiến thức Ruby"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Huginn — Hệ thống agent tự động hóa tác vụ trực tuyến tự lưu trữ\n\n> Huginn is a system for building agents that perform automated tasks for you online.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nHuginn là hệ thống tạo các agent thực hiện tác vụ tự động trên mạng: đọc web, theo dõi sự kiện và hành động thay bạn. Các agent tạo và tiêu thụ sự kiện, truyền theo một đồ thị có hướng — giống phiên bản IFTTT hay Zapier có thể tùy biến, chạy trên máy chủ của chính bạn nên dữ liệu do bạn nắm giữ.\n\nTự động theo dõi trang web, RSS, hộp thư, webhook và gửi thông báo, tóm tắt hoặc chuyển dữ liệu sang dịch vụ khác trên máy chủ tự quản lý.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Tự động hóa quy trình & RPA (Automation)\n- **Tác giả / Nhà phát triển:** Huginn (Andrew Cantino, duy trì bởi Akinori Musha)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/huginn/huginn](https://github.com/huginn/huginn)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Thu thập trang web và gửi email khi nội dung thay đổi**\n- **Theo dõi RSS, hộp thư IMAP, webhook và chủ đề MQTT**\n- **Phát hiện đỉnh và khoảng trống trong luồng sự kiện để cảnh báo tức thì**\n- **Gửi tới Slack, Telegram, Pushover, Jabber hoặc SMS/cuộc gọi qua Twilio**\n- **Tóm tắt, phân loại, dịch văn bản và tạo ảnh, giọng nói qua API tương thích OpenAI**\n- **Logic tùy chỉnh bằng JavaScript, Liquid hoặc jq; xuất feed và endpoint JSON riêng**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker run -it -p 3000:3000 ghcr.io/huginn/huginn\n```\n\nYêu cầu: Docker để chạy thử; triển khai sản xuất cần tiến trình web, worker và MySQL hoặc PostgreSQL.\nBước 1: Cài đặt và chạy thử bằng ảnh Docker chính thức (mọi tiến trình trong một container): `docker run -it -p 3000:3000 ghcr.io/huginn/huginn`\nBước 2: Với môi trường sản xuất, dùng tệp Docker Compose mẫu cho MySQL/PostgreSQL trong thư mục docker/single-process/\nBước 3: Để phát triển cục bộ: sao chép `cp .env.example .env`, cập nhật APP_SECRET_TOKEN rồi chạy `bundle exec rake db:create`, `bundle exec rake db:migrate`, `bundle exec rake db:seed` và `bundle exec foreman start`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở http://localhost:3000 và đăng nhập bằng tài khoản admin với mật khẩu in ra một lần trong nhật ký container\nBước 2: Tạo agent mới (ví dụ WebsiteAgent, RSS, Email) và nối chúng thành chuỗi sự kiện\nBước 3: Xem sơ đồ luồng sự kiện và danh sách sự kiện agent đã tạo\nBước 4: Tham khảo wiki để có ví dụ và hướng dẫn viết agent mới\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo agent theo dõi trang khuyến mãi và gửi email khi giá thay đổi\"\n- \"Gom tin từ nhiều nguồn RSS và gửi email tóm tắt lúc 8 giờ sáng mỗi ngày\"\n- \"Nhận webhook, dùng API tương thích OpenAI để phân loại nội dung rồi đẩy vào Slack\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "prefecthq-prefect",
+    "slug": "prefecthq-prefect",
+    "name": "Prefect — Framework điều phối quy trình và đường ống dữ liệu bằng Python",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "rpa_workflow_automation",
+    "categoryNameVi": "Tự động hóa quy trình & RPA (Automation)",
+    "categories": [
+      "rpa_workflow_automation",
+      "data_engineering"
+    ],
+    "categoryNamesVi": [
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Kỹ thuật dữ liệu & Đường ống ETL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/PrefectHQ/prefect",
+    "websiteUrl": "https://www.prefect.io",
+    "authorName": "Prefect Technologies (PrefectHQ)",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Prefect là framework điều phối quy trình để xây dựng đường ống dữ liệu bằng Python, cách đơn giản nhất để nâng một script thành quy trình sản xuất. Chỉ với vài dòng mã, nhóm dữ liệu có thể tự động hóa bằng lập lịch, cache, thử lại và tự động hóa theo sự kiện. Hoạt động được theo dõi qua Prefect server tự lưu trữ hoặc Prefect Cloud.",
+    "purposeVi": "Biến script Python thành quy trình dữ liệu bền vững có lịch chạy, thử lại và giao diện theo dõi.",
+    "featuresVi": [
+      "Decorator flow và task để điều phối, quan sát quy trình Python",
+      "Lập lịch cron qua deployment với hàm serve()",
+      "Thử lại, cache, phụ thuộc và phân nhánh phức tạp",
+      "Tự động hóa theo sự kiện, chạy thủ công từ UI hoặc CLI",
+      "Prefect server tự lưu trữ với giao diện tại cổng 4200",
+      "Kết nối tác tử AI qua plugin hoặc MCP; gói nhẹ prefect-client"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.11 trở lên.\nBước 1: Cài đặt bằng pip: `pip install -U prefect`\nBước 2: Hoặc cài đặt bằng uv: `uv add prefect`\nBước 3: Khởi chạy máy chủ và giao diện tại http://localhost:4200: `prefect server start`",
+    "usageGuideVi": "Bước 1: Viết hàm Python với decorator @task và @flow rồi chạy script\nBước 2: Mở giao diện http://localhost:4200 để xem lần chạy và nhật ký\nBước 3: Gọi .serve() với tham số cron để tạo deployment chạy theo lịch\nBước 4: Chạy deployment thủ công từ UI, CLI hoặc theo sự kiện",
+    "samplePromptsVi": [
+      "Viết flow Prefect lấy dữ liệu từ API mỗi giờ, thử lại 3 lần khi lỗi và lưu vào cơ sở dữ liệu",
+      "Chuyển script ETL Python hiện có thành deployment chạy theo lịch cron",
+      "Tạo flow có cache cho bước tính toán tốn thời gian"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "prefect server start",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"prefect server start\"\n  ],\n  \"nguon\": \"https://github.com/PrefectHQ/prefect\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép Apache 2.0",
+      "Cài đặt đơn giản bằng pip hoặc uv",
+      "Có máy chủ tự lưu trữ kèm giao diện theo dõi",
+      "Thuần Python, dễ áp dụng cho script có sẵn"
+    ],
+    "consVi": [
+      "Yêu cầu Python 3.11+",
+      "Tính năng cộng tác nhóm và quản trị doanh nghiệp gắn với Prefect Cloud",
+      "Chỉ dành cho quy trình viết bằng Python"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Prefect — Framework điều phối quy trình và đường ống dữ liệu bằng Python\n\n> Prefect is a workflow orchestration framework for building data pipelines in Python.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPrefect là framework điều phối quy trình để xây dựng đường ống dữ liệu bằng Python, cách đơn giản nhất để nâng một script thành quy trình sản xuất. Chỉ với vài dòng mã, nhóm dữ liệu có thể tự động hóa bằng lập lịch, cache, thử lại và tự động hóa theo sự kiện. Hoạt động được theo dõi qua Prefect server tự lưu trữ hoặc Prefect Cloud.\n\nBiến script Python thành quy trình dữ liệu bền vững có lịch chạy, thử lại và giao diện theo dõi.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Tự động hóa quy trình & RPA (Automation)\n- **Tác giả / Nhà phát triển:** Prefect Technologies (PrefectHQ)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/PrefectHQ/prefect](https://github.com/PrefectHQ/prefect)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Decorator flow và task để điều phối, quan sát quy trình Python**\n- **Lập lịch cron qua deployment với hàm serve()**\n- **Thử lại, cache, phụ thuộc và phân nhánh phức tạp**\n- **Tự động hóa theo sự kiện, chạy thủ công từ UI hoặc CLI**\n- **Prefect server tự lưu trữ với giao diện tại cổng 4200**\n- **Kết nối tác tử AI qua plugin hoặc MCP; gói nhẹ prefect-client**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nprefect server start\n```\n\nYêu cầu: Python 3.11 trở lên.\nBước 1: Cài đặt bằng pip: `pip install -U prefect`\nBước 2: Hoặc cài đặt bằng uv: `uv add prefect`\nBước 3: Khởi chạy máy chủ và giao diện tại http://localhost:4200: `prefect server start`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Viết hàm Python với decorator @task và @flow rồi chạy script\nBước 2: Mở giao diện http://localhost:4200 để xem lần chạy và nhật ký\nBước 3: Gọi .serve() với tham số cron để tạo deployment chạy theo lịch\nBước 4: Chạy deployment thủ công từ UI, CLI hoặc theo sự kiện\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết flow Prefect lấy dữ liệu từ API mỗi giờ, thử lại 3 lần khi lỗi và lưu vào cơ sở dữ liệu\"\n- \"Chuyển script ETL Python hiện có thành deployment chạy theo lịch cron\"\n- \"Tạo flow có cache cho bước tính toán tốn thời gian\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "huggingface-smolagents",
+    "slug": "huggingface-smolagents",
+    "name": "smolagents — Thư viện tác tử AI viết hành động bằng mã Python",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "rpa_workflow_automation"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Tự động hóa quy trình & RPA (Automation)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/huggingface/smolagents",
+    "websiteUrl": "https://huggingface.co/docs/smolagents",
+    "authorName": "Hugging Face",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "smolagents là thư viện Python của Hugging Face giúp chạy tác tử AI mạnh chỉ với vài dòng mã; phần logic tác tử gói gọn trong khoảng 1.000 dòng. Điểm nổi bật là CodeAgent viết hành động dưới dạng mã Python thay vì JSON, hỗ trợ mọi LLM và công cụ từ MCP, LangChain hoặc Hugging Face Hub.",
+    "purposeVi": "Thư viện giúp lập trình viên dựng nhanh tác tử AI biết dùng công cụ (tìm kiếm web, duyệt web, xử lý dữ liệu) với bất kỳ mô hình ngôn ngữ nào, chạy mã trong môi trường sandbox.",
+    "featuresVi": [
+      "CodeAgent: tác tử viết hành động bằng mã Python, chạy trong sandbox Blaxel, E2B, Modal hoặc Docker",
+      "ToolCallingAgent: tác tử gọi công cụ kiểu JSON/văn bản truyền thống",
+      "Không phụ thuộc mô hình: transformers, Ollama, nhà cung cấp trên Hub, OpenAI, Anthropic và nhiều mô hình khác qua LiteLLM",
+      "Không phụ thuộc công cụ: dùng công cụ từ máy chủ MCP, LangChain hoặc Hub Space",
+      "Chia sẻ công cụ và tác tử lên Hugging Face Hub (push_to_hub / from_hub)",
+      "Dòng lệnh: smolagent (tác tử đa bước tổng quát) và webagent (tác tử duyệt web dùng helium)",
+      "Đa phương thức: đầu vào văn bản, hình ảnh, video và âm thanh"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10 trở lên; khóa API hoặc token của nhà cung cấp mô hình đã chọn (ví dụ Hugging Face Inference Providers, OpenAI, Anthropic).\nBước 1: Cài đặt gói kèm bộ công cụ mặc định: `pip install \"smolagents[toolkit]\"`\nBước 2: Cấu hình khóa API cho nhà cung cấp mô hình (ví dụ biến môi trường ANTHROPIC_API_KEY khi dùng LiteLLMModel).\nBước 3: Chạy công cụ dòng lệnh ở chế độ tương tác (trình hướng dẫn thiết lập): `smolagent`",
+    "usageGuideVi": "Bước 1: Trong Python, tạo mô hình (ví dụ InferenceClientModel) và CodeAgent với danh sách công cụ như WebSearchTool, rồi gọi agent.run(\"...\").\nBước 2: Hoặc dùng dòng lệnh smolagent với câu lệnh trực tiếp và các tùy chọn --model-type, --model-id, --tools.\nBước 3: Dùng webagent khi cần tác tử tự duyệt trang web và trích xuất thông tin.\nBước 4: Luôn chạy mã của tác tử trong sandbox (E2B, Blaxel, Modal hoặc Docker) để bảo đảm an toàn.",
+    "samplePromptsVi": [
+      "Lập kế hoạch du lịch Tokyo, Kyoto và Osaka từ 28/3 đến 7/4, có tìm kiếm thông tin trên web.",
+      "Tìm kiếm web và cho biết một con báo chạy hết tốc lực qua cầu Pont des Arts mất bao nhiêu giây.",
+      "Vào trang sản phẩm của một cửa hàng trực tuyến, mở mục giảm giá và trả về tên, giá của sản phẩm đầu tiên."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install \"smolagents[toolkit]\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install \\\"smolagents[toolkit]\\\"\"\n  ],\n  \"nguon\": \"https://github.com/huggingface/smolagents\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0, do Hugging Face phát triển",
+      "Thư viện gọn, logic tác tử khoảng 1.000 dòng mã, dễ đọc và tùy biến",
+      "Hỗ trợ cả mô hình mở chạy cục bộ lẫn API thương mại",
+      "Có sẵn hai công cụ dòng lệnh smolagent và webagent"
+    ],
+    "consVi": [
+      "LocalPythonExecutor tích hợp không phải sandbox bảo mật; cần E2B, Blaxel, Modal hoặc Docker khi chạy mã không tin cậy",
+      "Cần khóa API hoặc tài nguyên GPU tùy theo mô hình sử dụng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# smolagents — Thư viện tác tử AI viết hành động bằng mã Python\n\n> `smolagents` is a library that enables you to run powerful agents in a few lines of code.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nsmolagents là thư viện Python của Hugging Face giúp chạy tác tử AI mạnh chỉ với vài dòng mã; phần logic tác tử gói gọn trong khoảng 1.000 dòng. Điểm nổi bật là CodeAgent viết hành động dưới dạng mã Python thay vì JSON, hỗ trợ mọi LLM và công cụ từ MCP, LangChain hoặc Hugging Face Hub.\n\nThư viện giúp lập trình viên dựng nhanh tác tử AI biết dùng công cụ (tìm kiếm web, duyệt web, xử lý dữ liệu) với bất kỳ mô hình ngôn ngữ nào, chạy mã trong môi trường sandbox.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Hugging Face\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/huggingface/smolagents](https://github.com/huggingface/smolagents)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **CodeAgent: tác tử viết hành động bằng mã Python, chạy trong sandbox Blaxel, E2B, Modal hoặc Docker**\n- **ToolCallingAgent: tác tử gọi công cụ kiểu JSON/văn bản truyền thống**\n- **Không phụ thuộc mô hình: transformers, Ollama, nhà cung cấp trên Hub, OpenAI, Anthropic và nhiều mô hình khác qua LiteLLM**\n- **Không phụ thuộc công cụ: dùng công cụ từ máy chủ MCP, LangChain hoặc Hub Space**\n- **Chia sẻ công cụ và tác tử lên Hugging Face Hub (push_to_hub / from_hub)**\n- **Dòng lệnh: smolagent (tác tử đa bước tổng quát) và webagent (tác tử duyệt web dùng helium)**\n- **Đa phương thức: đầu vào văn bản, hình ảnh, video và âm thanh**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install \"smolagents[toolkit]\"\n```\n\nYêu cầu: Python 3.10 trở lên; khóa API hoặc token của nhà cung cấp mô hình đã chọn (ví dụ Hugging Face Inference Providers, OpenAI, Anthropic).\nBước 1: Cài đặt gói kèm bộ công cụ mặc định: `pip install \"smolagents[toolkit]\"`\nBước 2: Cấu hình khóa API cho nhà cung cấp mô hình (ví dụ biến môi trường ANTHROPIC_API_KEY khi dùng LiteLLMModel).\nBước 3: Chạy công cụ dòng lệnh ở chế độ tương tác (trình hướng dẫn thiết lập): `smolagent`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trong Python, tạo mô hình (ví dụ InferenceClientModel) và CodeAgent với danh sách công cụ như WebSearchTool, rồi gọi agent.run(\"...\").\nBước 2: Hoặc dùng dòng lệnh smolagent với câu lệnh trực tiếp và các tùy chọn --model-type, --model-id, --tools.\nBước 3: Dùng webagent khi cần tác tử tự duyệt trang web và trích xuất thông tin.\nBước 4: Luôn chạy mã của tác tử trong sandbox (E2B, Blaxel, Modal hoặc Docker) để bảo đảm an toàn.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Lập kế hoạch du lịch Tokyo, Kyoto và Osaka từ 28/3 đến 7/4, có tìm kiếm thông tin trên web.\"\n- \"Tìm kiếm web và cho biết một con báo chạy hết tốc lực qua cầu Pont des Arts mất bao nhiêu giây.\"\n- \"Vào trang sản phẩm của một cửa hàng trực tuyến, mở mục giảm giá và trả về tên, giá của sản phẩm đầu tiên.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "agno-agi-agno",
+    "slug": "agno-agi-agno",
+    "name": "Agno — Framework và runtime xây nền tảng tác tử AI tự vận hành",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "rpa_workflow_automation",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/agno-agi/agno",
+    "websiteUrl": "https://docs.agno.com",
+    "authorName": "Agno (agno-agi)",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Agno là framework và môi trường chạy (AgentOS) cho nền tảng tác tử AI: dựng tác tử bằng Agno SDK, chạy chúng như một dịch vụ và quản lý qua giao diện web AgentOS UI. Bạn tự chủ dữ liệu, bộ nhớ và bảo mật (RBAC dựa trên JWT) trong hạ tầng của mình.",
+    "purposeVi": "Giúp doanh nghiệp tự xây và vận hành nền tảng tác tử AI riêng, có API sản xuất, lưu trữ phiên/bộ nhớ trong cơ sở dữ liệu của mình và hơn 100 tích hợp công cụ.",
+    "featuresVi": [
+      "API sản xuất: hơn 50 endpoint, hỗ trợ SSE và websocket",
+      "Lưu trữ: phiên, bộ nhớ, tri thức và trace trong cơ sở dữ liệu riêng",
+      "Hơn 100 tích hợp: GitHub, Slack, Postgres và nhiều bộ công cụ dựng sẵn",
+      "Phê duyệt của con người: tạm dừng lượt chạy để người dùng xác nhận, chặn công cụ cần quản trị viên duyệt",
+      "Quan sát: tracing OpenTelemetry, lịch sử chạy và nhật ký kiểm toán",
+      "Bảo mật: RBAC dựa trên JWT, cách ly đa người dùng, đa tenant",
+      "Giao diện: đưa tác tử lên Slack, Telegram, WhatsApp, Discord, AG-UI, A2A",
+      "Lập lịch: chạy theo cron và tác vụ nền không cần hạ tầng ngoài"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.9 trở lên; khóa API của nhà cung cấp mô hình (ví dụ GOOGLE_API_KEY cho quickstart dùng Gemini). Mẫu nền tảng AgentOS chạy cục bộ bằng Docker.\nBước 1: Sao chép kho mã agno-agi/agno, từ thư mục gốc tạo môi trường ảo: `uv venv .venvs/quickstart --python 3.12`\nBước 2: Kích hoạt môi trường: `source .venvs/quickstart/bin/activate`\nBước 3: Cài đặt thư viện cho phần quickstart: `uv pip install -r cookbook/00_quickstart/requirements.txt`\nBước 4: Đặt khóa API: `export GOOGLE_API_KEY=your-google-api-key`\nBước 5: Chạy ví dụ đầu tiên: `python cookbook/00_quickstart/agent_with_tools.py`\nBước 6: Hoặc cài đặt trực tiếp vào dự án của bạn (theo hướng dẫn cookbook bộ nhớ): `pip install -U psycopg sqlalchemy openai agno`",
+    "usageGuideVi": "Bước 1: Tạo Agent với mô hình (ví dụ Gemini) và bộ công cụ (ví dụ YFinanceTools), rồi gọi agent.print_response(...).\nBước 2: Lần lượt bổ sung đầu ra có kiểu, phiên, bộ nhớ, tri thức, nhóm tác tử và workflow theo cookbook 00_quickstart.\nBước 3: Để dựng cả nền tảng, đưa cho tác tử lập trình (Claude Code, Cursor, Codex) lời nhắc trong README để nó sao chép mẫu agentos-railway và chạy cục bộ bằng Docker (REST API, Postgres, máy chủ MCP, control plane).\nBước 4: Tắt telemetry bằng biến môi trường AGNO_TELEMETRY=false nếu cần.",
+    "samplePromptsVi": [
+      "Giá cổ phiếu AAPL hiện tại là bao nhiêu?",
+      "Help me set up my agent platform. (lời nhắc README dùng cho tác tử lập trình để dựng nền tảng AgentOS)",
+      "Hãy nhớ rằng tôi thích báo cáo ngắn gọn, rồi tóm tắt tin tức thị trường hôm nay theo phong cách đó."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install -U psycopg sqlalchemy openai agno",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install -U psycopg sqlalchemy openai agno\"\n  ],\n  \"nguon\": \"https://github.com/agno-agi/agno\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0, tự chủ dữ liệu và hạ tầng",
+      "Bộ cookbook phong phú, mỗi ví dụ chạy độc lập",
+      "Có máy chủ MCP tài liệu (docs.agno.com/mcp) để dùng với tác tử lập trình",
+      "Triển khai lên Docker, Railway, AWS, GCP, Azure, Fly, Render, Modal, Helm"
+    ],
+    "consVi": [
+      "Mặc định gửi sự kiện telemetry mỗi lượt chạy (không gồm prompt/đầu ra); tắt bằng AGNO_TELEMETRY=false",
+      "README chính không có lệnh cài đặt; hướng dẫn chi tiết nằm ở docs.agno.com và cookbook",
+      "Cần khóa API của nhà cung cấp mô hình"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Agno — Framework và runtime xây nền tảng tác tử AI tự vận hành\n\n> Agno is a framework and runtime for agent platforms. Build agents, run them as a service, manage your platform using a web UI.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nAgno là framework và môi trường chạy (AgentOS) cho nền tảng tác tử AI: dựng tác tử bằng Agno SDK, chạy chúng như một dịch vụ và quản lý qua giao diện web AgentOS UI. Bạn tự chủ dữ liệu, bộ nhớ và bảo mật (RBAC dựa trên JWT) trong hạ tầng của mình.\n\nGiúp doanh nghiệp tự xây và vận hành nền tảng tác tử AI riêng, có API sản xuất, lưu trữ phiên/bộ nhớ trong cơ sở dữ liệu của mình và hơn 100 tích hợp công cụ.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Agno (agno-agi)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/agno-agi/agno](https://github.com/agno-agi/agno)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **API sản xuất: hơn 50 endpoint, hỗ trợ SSE và websocket**\n- **Lưu trữ: phiên, bộ nhớ, tri thức và trace trong cơ sở dữ liệu riêng**\n- **Hơn 100 tích hợp: GitHub, Slack, Postgres và nhiều bộ công cụ dựng sẵn**\n- **Phê duyệt của con người: tạm dừng lượt chạy để người dùng xác nhận, chặn công cụ cần quản trị viên duyệt**\n- **Quan sát: tracing OpenTelemetry, lịch sử chạy và nhật ký kiểm toán**\n- **Bảo mật: RBAC dựa trên JWT, cách ly đa người dùng, đa tenant**\n- **Giao diện: đưa tác tử lên Slack, Telegram, WhatsApp, Discord, AG-UI, A2A**\n- **Lập lịch: chạy theo cron và tác vụ nền không cần hạ tầng ngoài**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install -U psycopg sqlalchemy openai agno\n```\n\nYêu cầu: Python 3.9 trở lên; khóa API của nhà cung cấp mô hình (ví dụ GOOGLE_API_KEY cho quickstart dùng Gemini). Mẫu nền tảng AgentOS chạy cục bộ bằng Docker.\nBước 1: Sao chép kho mã agno-agi/agno, từ thư mục gốc tạo môi trường ảo: `uv venv .venvs/quickstart --python 3.12`\nBước 2: Kích hoạt môi trường: `source .venvs/quickstart/bin/activate`\nBước 3: Cài đặt thư viện cho phần quickstart: `uv pip install -r cookbook/00_quickstart/requirements.txt`\nBước 4: Đặt khóa API: `export GOOGLE_API_KEY=your-google-api-key`\nBước 5: Chạy ví dụ đầu tiên: `python cookbook/00_quickstart/agent_with_tools.py`\nBước 6: Hoặc cài đặt trực tiếp vào dự án của bạn (theo hướng dẫn cookbook bộ nhớ): `pip install -U psycopg sqlalchemy openai agno`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo Agent với mô hình (ví dụ Gemini) và bộ công cụ (ví dụ YFinanceTools), rồi gọi agent.print_response(...).\nBước 2: Lần lượt bổ sung đầu ra có kiểu, phiên, bộ nhớ, tri thức, nhóm tác tử và workflow theo cookbook 00_quickstart.\nBước 3: Để dựng cả nền tảng, đưa cho tác tử lập trình (Claude Code, Cursor, Codex) lời nhắc trong README để nó sao chép mẫu agentos-railway và chạy cục bộ bằng Docker (REST API, Postgres, máy chủ MCP, control plane).\nBước 4: Tắt telemetry bằng biến môi trường AGNO_TELEMETRY=false nếu cần.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Giá cổ phiếu AAPL hiện tại là bao nhiêu?\"\n- \"Help me set up my agent platform. (lời nhắc README dùng cho tác tử lập trình để dựng nền tảng AgentOS)\"\n- \"Hãy nhớ rằng tôi thích báo cáo ngắn gọn, rồi tóm tắt tin tức thị trường hôm nay theo phong cách đó.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "microsoft-agent-framework",
+    "slug": "microsoft-agent-framework",
+    "name": "Microsoft Agent Framework — Framework tác tử AI đa ngôn ngữ cho Python và .NET",
+    "icon": "Workflow",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "rpa_workflow_automation",
+      "cloud_infrastructure"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Điện toán đám mây & Hạ tầng số"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/microsoft/agent-framework",
+    "websiteUrl": "https://learn.microsoft.com/en-us/agent-framework/",
+    "authorName": "Microsoft",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Microsoft Agent Framework (MAF) là framework mã nguồn mở đa ngôn ngữ của Microsoft để xây dựng tác tử AI và workflow đa tác tử cấp sản xuất bằng Python và .NET (Go có SDK riêng). Đây là hướng chuyển tiếp chính thức từ Semantic Kernel và AutoGen, hỗ trợ Microsoft Foundry, Azure OpenAI, OpenAI và GitHub Copilot SDK.",
+    "purposeVi": "Dành cho đội ngũ đưa tác tử từ nguyên mẫu lên môi trường sản xuất, cần điều phối nhiều tác tử, khả năng phục hồi, quan sát và con người tham gia vào vòng lặp.",
+    "featuresVi": [
+      "Python và C#/.NET: API nhất quán giữa hai ngôn ngữ",
+      "Nhiều nhà cung cấp mô hình: Microsoft Foundry, Azure OpenAI, OpenAI và hơn nữa",
+      "Workflow dạng đồ thị: tuần tự, song song, handoff, cộng tác nhóm; có checkpoint, streaming, human-in-the-loop, time-travel",
+      "Middleware: xử lý yêu cầu/phản hồi, ngoại lệ và pipeline tùy biến",
+      "Quan sát: tích hợp sẵn OpenTelemetry",
+      "Declarative Agents: định nghĩa tác tử bằng YAML",
+      "Foundry Hosted Agents: triển khai tác tử lên hạ tầng Foundry chỉ với 2 dòng mã",
+      "DevUI: giao diện phát triển để thử nghiệm và gỡ lỗi workflow"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10 trở lên hoặc .NET; tài khoản Azure và Azure CLI (az login) cho ví dụ dùng Microsoft Foundry, hoặc khóa API của nhà cung cấp khác.\nBước 1: Cài đặt gói Python: `pip install agent-framework`\nBước 2: Với .NET, cài đặt gói NuGet: `dotnet add package Microsoft.Agents.AI`\nBước 3: Đăng nhập Azure CLI trước khi chạy ví dụ Foundry: `az login`\nBước 4: (Tùy chọn) Cài đặt skill hướng dẫn cho tác tử lập trình: `npx skills add microsoft/agent-framework --skill agent-framework-builder-python`",
+    "usageGuideVi": "Bước 1: Tạo Agent với FoundryChatClient (hoặc client của nhà cung cấp khác), đặt name và instructions.\nBước 2: Gọi await agent.run(\"...\") để nhận phản hồi.\nBước 3: Ghép nhiều tác tử thành workflow đồ thị theo các mẫu trong python/samples/03-workflows.\nBước 4: Tham khảo hướng dẫn di chuyển nếu đang dùng Semantic Kernel hoặc AutoGen.",
+    "samplePromptsVi": [
+      "Viết một bài haiku về Microsoft Agent Framework.",
+      "Xây workflow gồm tác tử nghiên cứu và tác tử biên tập chạy tuần tự để soạn báo cáo thị trường.",
+      "Tạo tác tử hỗ trợ khách hàng có bước chờ con người phê duyệt trước khi hoàn tiền."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install agent-framework",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install agent-framework\"\n  ],\n  \"nguon\": \"https://github.com/microsoft/agent-framework\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở MIT, do Microsoft phát triển và cập nhật thường xuyên",
+      "Hỗ trợ cả Python và .NET với API nhất quán",
+      "Có hướng dẫn di chuyển từ Semantic Kernel và AutoGen",
+      "Có skill cho tác tử lập trình (gh skill / npx skills)"
+    ],
+    "consVi": [
+      "Ví dụ quickstart dựa trên Microsoft Foundry/Azure, cần tài khoản Azure",
+      "Gói agent-framework-lab là thử nghiệm, phải cài riêng",
+      "README lưu ý người dùng tự chịu rủi ro khi kết nối hệ thống bên thứ ba ngoài Azure"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Microsoft Agent Framework — Framework tác tử AI đa ngôn ngữ cho Python và .NET\n\n> Microsoft Agent Framework (MAF) is an open, multi-language framework for building production-grade AI agents and multi-agent workflows in .NET and Python.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMicrosoft Agent Framework (MAF) là framework mã nguồn mở đa ngôn ngữ của Microsoft để xây dựng tác tử AI và workflow đa tác tử cấp sản xuất bằng Python và .NET (Go có SDK riêng). Đây là hướng chuyển tiếp chính thức từ Semantic Kernel và AutoGen, hỗ trợ Microsoft Foundry, Azure OpenAI, OpenAI và GitHub Copilot SDK.\n\nDành cho đội ngũ đưa tác tử từ nguyên mẫu lên môi trường sản xuất, cần điều phối nhiều tác tử, khả năng phục hồi, quan sát và con người tham gia vào vòng lặp.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Microsoft\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/microsoft/agent-framework](https://github.com/microsoft/agent-framework)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Python và C#/.NET: API nhất quán giữa hai ngôn ngữ**\n- **Nhiều nhà cung cấp mô hình: Microsoft Foundry, Azure OpenAI, OpenAI và hơn nữa**\n- **Workflow dạng đồ thị: tuần tự, song song, handoff, cộng tác nhóm; có checkpoint, streaming, human-in-the-loop, time-travel**\n- **Middleware: xử lý yêu cầu/phản hồi, ngoại lệ và pipeline tùy biến**\n- **Quan sát: tích hợp sẵn OpenTelemetry**\n- **Declarative Agents: định nghĩa tác tử bằng YAML**\n- **Foundry Hosted Agents: triển khai tác tử lên hạ tầng Foundry chỉ với 2 dòng mã**\n- **DevUI: giao diện phát triển để thử nghiệm và gỡ lỗi workflow**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install agent-framework\n```\n\nYêu cầu: Python 3.10 trở lên hoặc .NET; tài khoản Azure và Azure CLI (az login) cho ví dụ dùng Microsoft Foundry, hoặc khóa API của nhà cung cấp khác.\nBước 1: Cài đặt gói Python: `pip install agent-framework`\nBước 2: Với .NET, cài đặt gói NuGet: `dotnet add package Microsoft.Agents.AI`\nBước 3: Đăng nhập Azure CLI trước khi chạy ví dụ Foundry: `az login`\nBước 4: (Tùy chọn) Cài đặt skill hướng dẫn cho tác tử lập trình: `npx skills add microsoft/agent-framework --skill agent-framework-builder-python`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo Agent với FoundryChatClient (hoặc client của nhà cung cấp khác), đặt name và instructions.\nBước 2: Gọi await agent.run(\"...\") để nhận phản hồi.\nBước 3: Ghép nhiều tác tử thành workflow đồ thị theo các mẫu trong python/samples/03-workflows.\nBước 4: Tham khảo hướng dẫn di chuyển nếu đang dùng Semantic Kernel hoặc AutoGen.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết một bài haiku về Microsoft Agent Framework.\"\n- \"Xây workflow gồm tác tử nghiên cứu và tác tử biên tập chạy tuần tự để soạn báo cáo thị trường.\"\n- \"Tạo tác tử hỗ trợ khách hàng có bước chờ con người phê duyệt trước khi hoàn tiền.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "google-adk-python",
+    "slug": "google-adk-python",
+    "name": "Google ADK — Bộ công cụ phát triển tác tử AI bằng Python của Google",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "rpa_workflow_automation",
+      "cloud_infrastructure"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Điện toán đám mây & Hạ tầng số"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/google/adk-python",
+    "websiteUrl": "https://adk.dev/",
+    "authorName": "Google",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Agent Development Kit (ADK) là framework Python mã nguồn mở của Google, theo hướng viết mã trước, để xây dựng, đánh giá và triển khai tác tử AI. ADK được tối ưu cho Gemini nhưng không phụ thuộc mô hình hay nơi triển khai, có Workflow Runtime dạng đồ thị và giao diện web phát triển.",
+    "purposeVi": "Giúp lập trình viên áp dụng nguyên tắc phát triển phần mềm vào việc tạo tác tử AI: định nghĩa tác tử, công cụ và điều phối bằng Python, chạy thử, đánh giá rồi triển khai lên Cloud Run hoặc Vertex AI Agent Engine.",
+    "featuresVi": [
+      "Workflow Runtime: engine đồ thị hỗ trợ định tuyến, fan-out/fan-in, vòng lặp, thử lại, quản lý trạng thái, human-in-the-loop",
+      "Task API: ủy quyền có cấu trúc giữa các tác tử",
+      "Hệ đa tác tử dạng mô-đun theo phân cấp",
+      "Hệ sinh thái công cụ: công cụ dựng sẵn, hàm tùy biến, OpenAPI, công cụ MCP",
+      "Agent Config: tạo tác tử không cần viết mã",
+      "Tool Confirmation: xác nhận trước khi thực thi công cụ",
+      "Đánh giá tác tử bằng lệnh adk eval",
+      "Triển khai bằng Docker, Cloud Run hoặc Vertex AI Agent Engine"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.11 trở lên; khóa API Gemini hoặc tài khoản Google Cloud (khi triển khai Cloud Run/Vertex AI).\nBước 1: Cài đặt bản ổn định: `pip install google-adk`\nBước 2: (Tùy chọn) Cài đặt các tích hợp mở rộng: `pip install \"google-adk[extensions]\"`\nBước 3: Tạo thư mục tác tử chứa root_agent (Agent hoặc Workflow) theo ví dụ Quick Start.\nBước 4: Chạy giao diện web phát triển: `adk web path/to/agents_dir`",
+    "usageGuideVi": "Bước 1: Chạy tác tử trong dòng lệnh tương tác: adk run path/to/my_agent.\nBước 2: Dùng adk web để thử nghiệm, đánh giá và gỡ lỗi tác tử trên giao diện web.\nBước 3: Đánh giá tác tử với bộ evalset bằng lệnh adk eval.\nBước 4: Triển khai: adk deploy docker --with_ui <agent-folder> hoặc adk deploy cloud_run --with_ui <agent-folder>.",
+    "samplePromptsVi": [
+      "Xin chào, hãy chào tôi thật nồng nhiệt.",
+      "Cho tôi tên một loại trái cây ngẫu nhiên rồi nêu một lợi ích sức khỏe của nó (workflow hai tác tử).",
+      "Bật đèn phòng khách và chỉnh nhiệt độ về 24 độ (ví dụ tác tử tự động hóa nhà trong bộ đánh giá)."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install google-adk",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install google-adk\"\n  ],\n  \"nguon\": \"https://github.com/google/adk-python\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0, do Google phát triển, phát hành khoảng hai tuần một lần",
+      "Không phụ thuộc mô hình và nơi triển khai dù tối ưu cho Gemini",
+      "Có sẵn giao diện web phát triển và công cụ đánh giá",
+      "Có phiên bản Java, Kotlin, Go và TypeScript"
+    ],
+    "consVi": [
+      "Yêu cầu Python 3.11 trở lên",
+      "Một số tính năng triển khai gắn với Google Cloud (Cloud Run, Vertex AI Agent Engine)",
+      "Bản phát triển từ nhánh main có thể chứa thay đổi thử nghiệm"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Google ADK — Bộ công cụ phát triển tác tử AI bằng Python của Google\n\n> An open-source, code-first Python framework for building, evaluating, and deploying sophisticated AI agents with flexibility and control.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nAgent Development Kit (ADK) là framework Python mã nguồn mở của Google, theo hướng viết mã trước, để xây dựng, đánh giá và triển khai tác tử AI. ADK được tối ưu cho Gemini nhưng không phụ thuộc mô hình hay nơi triển khai, có Workflow Runtime dạng đồ thị và giao diện web phát triển.\n\nGiúp lập trình viên áp dụng nguyên tắc phát triển phần mềm vào việc tạo tác tử AI: định nghĩa tác tử, công cụ và điều phối bằng Python, chạy thử, đánh giá rồi triển khai lên Cloud Run hoặc Vertex AI Agent Engine.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Google\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/google/adk-python](https://github.com/google/adk-python)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Workflow Runtime: engine đồ thị hỗ trợ định tuyến, fan-out/fan-in, vòng lặp, thử lại, quản lý trạng thái, human-in-the-loop**\n- **Task API: ủy quyền có cấu trúc giữa các tác tử**\n- **Hệ đa tác tử dạng mô-đun theo phân cấp**\n- **Hệ sinh thái công cụ: công cụ dựng sẵn, hàm tùy biến, OpenAPI, công cụ MCP**\n- **Agent Config: tạo tác tử không cần viết mã**\n- **Tool Confirmation: xác nhận trước khi thực thi công cụ**\n- **Đánh giá tác tử bằng lệnh adk eval**\n- **Triển khai bằng Docker, Cloud Run hoặc Vertex AI Agent Engine**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install google-adk\n```\n\nYêu cầu: Python 3.11 trở lên; khóa API Gemini hoặc tài khoản Google Cloud (khi triển khai Cloud Run/Vertex AI).\nBước 1: Cài đặt bản ổn định: `pip install google-adk`\nBước 2: (Tùy chọn) Cài đặt các tích hợp mở rộng: `pip install \"google-adk[extensions]\"`\nBước 3: Tạo thư mục tác tử chứa root_agent (Agent hoặc Workflow) theo ví dụ Quick Start.\nBước 4: Chạy giao diện web phát triển: `adk web path/to/agents_dir`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy tác tử trong dòng lệnh tương tác: adk run path/to/my_agent.\nBước 2: Dùng adk web để thử nghiệm, đánh giá và gỡ lỗi tác tử trên giao diện web.\nBước 3: Đánh giá tác tử với bộ evalset bằng lệnh adk eval.\nBước 4: Triển khai: adk deploy docker --with_ui <agent-folder> hoặc adk deploy cloud_run --with_ui <agent-folder>.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Xin chào, hãy chào tôi thật nồng nhiệt.\"\n- \"Cho tôi tên một loại trái cây ngẫu nhiên rồi nêu một lợi ích sức khỏe của nó (workflow hai tác tử).\"\n- \"Bật đèn phòng khách và chỉnh nhiệt độ về 24 độ (ví dụ tác tử tự động hóa nhà trong bộ đánh giá).\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "strands-agents-harness-sdk",
+    "slug": "strands-agents-harness-sdk",
+    "name": "Strands Agents — SDK xây tác tử AI hướng mô hình cho Python và TypeScript",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "rpa_workflow_automation"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Tự động hóa quy trình & RPA (Automation)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/strands-agents/harness-sdk",
+    "websiteUrl": "https://strandsagents.com",
+    "authorName": "Strands Agents",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Strands Agents là SDK mã nguồn mở để xây dựng và chạy tác tử AI bằng Python và TypeScript, chạy ngay trong tiến trình của bạn mà không cần control plane lưu trữ. Monorepo gồm Strands harness (tác tử lắp sẵn), SDK Python/TypeScript, CLI strands và máy chủ MCP hỗ trợ tác tử lập trình.",
+    "purposeVi": "Thay thế việc tự viết vòng lặp tác tử: cung cấp sẵn kiểm soát vòng đời, công cụ, đầu ra có cấu trúc, MCP, đa tác tử, bộ nhớ, phiên, guardrail, tracing và đánh giá.",
+    "featuresVi": [
+      "Strands harness: create_harness() / createHarness() cho tác tử dựng sẵn với cấu hình mặc định đã được đo kiểm",
+      "Kiểm soát vòng đời: giới hạn lượt, ngân sách token, hủy, lý do dừng",
+      "Không phụ thuộc mô hình: Amazon Bedrock, Anthropic, OpenAI, Gemini, Ollama và nhà cung cấp tùy biến",
+      "Hooks: chặn bất kỳ bước nào để ghi log, kiểm tra hoặc điều hướng",
+      "Guardrails và steering handlers giúp tác tử tự sửa lỗi",
+      "Tích hợp sẵn MCP, streaming, đa tác tử và đầu ra có cấu trúc",
+      "Plugin cho Claude Code, Codex, Cursor và máy chủ MCP strands-mcp"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10 trở lên (SDK Python) hoặc Node.js 22 trở lên với dự án ESM (SDK TypeScript); thông tin xác thực AWS khi dùng Amazon Bedrock mặc định, hoặc khóa API nhà cung cấp khác.\nBước 1: Cài đặt Strands harness cho Python: `pip install strands-harness`\nBước 2: Hoặc cài đặt harness cho TypeScript: `npm install @strands-agents/harness`\nBước 3: Khi muốn tự điều khiển vòng lặp, cài đặt SDK Python kèm bộ công cụ: `pip install strands-agents strands-agents-tools`\nBước 4: Hoặc SDK TypeScript: `npm install @strands-agents/sdk`\nBước 5: Cấu hình thông tin xác thực AWS (Bedrock mặc định) hoặc truyền mô hình khác.",
+    "usageGuideVi": "Bước 1: Với harness: agent = create_harness() rồi gọi agent(\"...\").\nBước 2: Với SDK: tạo Agent(tools=[calculator]) và gọi agent(\"...\").\nBước 3: Thêm hooks, guardrails, công cụ MCP và mẫu đa tác tử theo hướng dẫn tại strandsagents.com.",
+    "samplePromptsVi": [
+      "Tìm bài kiểm thử chạy chậm nhất trong kho mã này và giải thích vì sao nó chậm.",
+      "Căn bậc hai của 1764 là bao nhiêu?",
+      "Kết nối máy chủ MCP của hệ thống nội bộ và tổng hợp các ticket mở trong tuần."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install strands-agents strands-agents-tools",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install strands-agents strands-agents-tools\"\n  ],\n  \"nguon\": \"https://github.com/strands-agents/harness-sdk\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0",
+      "Chạy trong tiến trình, không cần control plane lưu trữ",
+      "Hỗ trợ cả Python và TypeScript, có CLI và máy chủ MCP",
+      "Tracing mọi quyết định của vòng lặp tác tử theo mặc định"
+    ],
+    "consVi": [
+      "new Agent() trong TypeScript mặc định dùng Amazon Bedrock nên cần cấu hình AWS hoặc chọn mô hình khác",
+      "Kho mã đã đổi tên từ strands-agents/sdk-python sang strands-agents/harness-sdk (monorepo)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Strands Agents — SDK xây tác tử AI hướng mô hình cho Python và TypeScript\n\n> A model-driven approach to building AI agents in just a few lines of code.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nStrands Agents là SDK mã nguồn mở để xây dựng và chạy tác tử AI bằng Python và TypeScript, chạy ngay trong tiến trình của bạn mà không cần control plane lưu trữ. Monorepo gồm Strands harness (tác tử lắp sẵn), SDK Python/TypeScript, CLI strands và máy chủ MCP hỗ trợ tác tử lập trình.\n\nThay thế việc tự viết vòng lặp tác tử: cung cấp sẵn kiểm soát vòng đời, công cụ, đầu ra có cấu trúc, MCP, đa tác tử, bộ nhớ, phiên, guardrail, tracing và đánh giá.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Strands Agents\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Strands harness: create_harness() / createHarness() cho tác tử dựng sẵn với cấu hình mặc định đã được đo kiểm**\n- **Kiểm soát vòng đời: giới hạn lượt, ngân sách token, hủy, lý do dừng**\n- **Không phụ thuộc mô hình: Amazon Bedrock, Anthropic, OpenAI, Gemini, Ollama và nhà cung cấp tùy biến**\n- **Hooks: chặn bất kỳ bước nào để ghi log, kiểm tra hoặc điều hướng**\n- **Guardrails và steering handlers giúp tác tử tự sửa lỗi**\n- **Tích hợp sẵn MCP, streaming, đa tác tử và đầu ra có cấu trúc**\n- **Plugin cho Claude Code, Codex, Cursor và máy chủ MCP strands-mcp**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install strands-agents strands-agents-tools\n```\n\nYêu cầu: Python 3.10 trở lên (SDK Python) hoặc Node.js 22 trở lên với dự án ESM (SDK TypeScript); thông tin xác thực AWS khi dùng Amazon Bedrock mặc định, hoặc khóa API nhà cung cấp khác.\nBước 1: Cài đặt Strands harness cho Python: `pip install strands-harness`\nBước 2: Hoặc cài đặt harness cho TypeScript: `npm install @strands-agents/harness`\nBước 3: Khi muốn tự điều khiển vòng lặp, cài đặt SDK Python kèm bộ công cụ: `pip install strands-agents strands-agents-tools`\nBước 4: Hoặc SDK TypeScript: `npm install @strands-agents/sdk`\nBước 5: Cấu hình thông tin xác thực AWS (Bedrock mặc định) hoặc truyền mô hình khác.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Với harness: agent = create_harness() rồi gọi agent(\"...\").\nBước 2: Với SDK: tạo Agent(tools=[calculator]) và gọi agent(\"...\").\nBước 3: Thêm hooks, guardrails, công cụ MCP và mẫu đa tác tử theo hướng dẫn tại strandsagents.com.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tìm bài kiểm thử chạy chậm nhất trong kho mã này và giải thích vì sao nó chậm.\"\n- \"Căn bậc hai của 1764 là bao nhiêu?\"\n- \"Kết nối máy chủ MCP của hệ thống nội bộ và tổng hợp các ticket mở trong tuần.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "stanfordnlp-dspy",
+    "slug": "stanfordnlp-dspy",
+    "name": "DSPy — Framework lập trình thay vì viết prompt cho mô hình ngôn ngữ",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "vector_rag"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/stanfordnlp/dspy",
+    "websiteUrl": "https://dspy.ai",
+    "authorName": "Stanford NLP (Stanford Future Data Systems)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "DSPy (Declarative Self-improving Python) là framework để lập trình thay vì viết prompt cho mô hình ngôn ngữ. Bạn viết mã Python dạng mô-đun và dùng các thuật toán của DSPy để tối ưu prompt và trọng số, từ bộ phân loại đơn giản, pipeline RAG đến vòng lặp tác tử.",
+    "purposeVi": "Giúp xây dựng hệ thống AI dạng mô-đun ổn định hơn so với prompt viết tay, đồng thời tự động tối ưu prompt và trọng số mô hình dựa trên dữ liệu.",
+    "featuresVi": [
+      "Lập trình mô-đun: ghép các thành phần Python thay cho prompt rời rạc",
+      "Tối ưu tự động: thuật toán tối ưu prompt và trọng số mô hình",
+      "Phạm vi ứng dụng: bộ phân loại, pipeline RAG, vòng lặp tác tử",
+      "Nền tảng nghiên cứu: dựa trên các bài báo như DSPy (ICLR 2024) và GEPA"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10 trở lên; khóa API hoặc máy chủ của mô hình ngôn ngữ cần dùng.\nBước 1: Cài đặt bản phát hành: `pip install dspy`\nBước 2: Hoặc cài đặt bản mới nhất từ nhánh main: `pip install git+https://github.com/stanfordnlp/dspy.git`",
+    "usageGuideVi": "Bước 1: Đọc hướng dẫn tại dspy.ai để cấu hình mô hình ngôn ngữ.\nBước 2: Định nghĩa chương trình DSPy bằng các mô-đun Python cho bài toán (phân loại, RAG, tác tử).\nBước 3: Chạy bộ tối ưu của DSPy trên dữ liệu mẫu để cải thiện prompt hoặc trọng số.",
+    "samplePromptsVi": [
+      "Xây pipeline RAG trả lời câu hỏi từ kho tài liệu nội bộ và tối ưu prompt bằng bộ dữ liệu hỏi đáp mẫu.",
+      "Tạo bộ phân loại phản hồi khách hàng thành tích cực, tiêu cực, trung tính và tự tối ưu độ chính xác."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install dspy",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install dspy\"\n  ],\n  \"nguon\": \"https://github.com/stanfordnlp/dspy\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở MIT, phát triển bởi nhóm nghiên cứu Stanford",
+      "Có nền tảng nghiên cứu vững với nhiều bài báo khoa học",
+      "Cài đặt đơn giản qua pip"
+    ],
+    "consVi": [
+      "README ngắn gọn; hướng dẫn sử dụng chi tiết nằm trên trang dspy.ai",
+      "Một số phụ thuộc (litellm, gepa) chưa hỗ trợ Python 3.15"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# DSPy — Framework lập trình thay vì viết prompt cho mô hình ngôn ngữ\n\n> DSPy is the framework for programming—rather than prompting—language models.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nDSPy (Declarative Self-improving Python) là framework để lập trình thay vì viết prompt cho mô hình ngôn ngữ. Bạn viết mã Python dạng mô-đun và dùng các thuật toán của DSPy để tối ưu prompt và trọng số, từ bộ phân loại đơn giản, pipeline RAG đến vòng lặp tác tử.\n\nGiúp xây dựng hệ thống AI dạng mô-đun ổn định hơn so với prompt viết tay, đồng thời tự động tối ưu prompt và trọng số mô hình dựa trên dữ liệu.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Stanford NLP (Stanford Future Data Systems)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/stanfordnlp/dspy](https://github.com/stanfordnlp/dspy)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Lập trình mô-đun: ghép các thành phần Python thay cho prompt rời rạc**\n- **Tối ưu tự động: thuật toán tối ưu prompt và trọng số mô hình**\n- **Phạm vi ứng dụng: bộ phân loại, pipeline RAG, vòng lặp tác tử**\n- **Nền tảng nghiên cứu: dựa trên các bài báo như DSPy (ICLR 2024) và GEPA**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install dspy\n```\n\nYêu cầu: Python 3.10 trở lên; khóa API hoặc máy chủ của mô hình ngôn ngữ cần dùng.\nBước 1: Cài đặt bản phát hành: `pip install dspy`\nBước 2: Hoặc cài đặt bản mới nhất từ nhánh main: `pip install git+https://github.com/stanfordnlp/dspy.git`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đọc hướng dẫn tại dspy.ai để cấu hình mô hình ngôn ngữ.\nBước 2: Định nghĩa chương trình DSPy bằng các mô-đun Python cho bài toán (phân loại, RAG, tác tử).\nBước 3: Chạy bộ tối ưu của DSPy trên dữ liệu mẫu để cải thiện prompt hoặc trọng số.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Xây pipeline RAG trả lời câu hỏi từ kho tài liệu nội bộ và tối ưu prompt bằng bộ dữ liệu hỏi đáp mẫu.\"\n- \"Tạo bộ phân loại phản hồi khách hàng thành tích cực, tiêu cực, trung tính và tự tối ưu độ chính xác.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "mastra-ai-mastra",
+    "slug": "mastra-ai-mastra",
+    "name": "Mastra — Framework TypeScript xây ứng dụng và tác tử AI",
+    "icon": "Workflow",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "rpa_workflow_automation",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/mastra-ai/mastra",
+    "websiteUrl": "https://mastra.ai/docs",
+    "authorName": "Mastra (Kepler Software, Inc.)",
+    "license": "Mã nguồn mở (Apache 2.0), riêng thư mục ee/ theo giấy phép doanh nghiệp",
+    "summaryVi": "Mastra là framework TypeScript để xây ứng dụng và tác tử AI, từ nguyên mẫu đến sản phẩm. Mastra tích hợp với React, Next.js, Node hoặc chạy như máy chủ độc lập, kèm Mastra Studio để xây dựng, thử nghiệm và quản lý tác tử, workflow và công cụ.",
+    "purposeVi": "Giúp lập trình viên TypeScript dựng tác tử, workflow đồ thị, RAG và máy chủ MCP trong cùng một framework, có sẵn đánh giá và quan sát cho môi trường sản xuất.",
+    "featuresVi": [
+      "Model routing: kết nối hơn 40 nhà cung cấp (OpenAI, Anthropic, Gemini...) qua một giao diện chuẩn",
+      "Agents: tác tử tự suy luận, chọn công cụ và lặp đến khi có câu trả lời",
+      "Workflows: engine workflow dạng đồ thị với .then(), .branch(), .parallel()",
+      "Human-in-the-loop: tạm dừng tác tử/workflow chờ người dùng phê duyệt rồi tiếp tục",
+      "Quản lý ngữ cảnh: lịch sử hội thoại, truy xuất dữ liệu (RAG), bộ nhớ",
+      "Tạo máy chủ MCP để chia sẻ tác tử và công cụ",
+      "Evals và observability tích hợp sẵn"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js và npm; khóa API của nhà cung cấp mô hình (openai, anthropic, google hoặc xai khi tạo dự án).\nBước 1: Cài đặt và tạo dự án mới bằng lệnh khuyến nghị: `npm create mastra@latest`\nBước 2: Hoặc chỉ định tên dự án và nhà cung cấp: `npm create mastra@latest <project-name> -- --llm <provider>`\nBước 3: Vào thư mục dự án, khởi động máy chủ phát triển rồi mở Mastra Studio tại http://localhost:4111.",
+    "usageGuideVi": "Bước 1: Định nghĩa tác tử với mô hình và công cụ trong dự án Mastra.\nBước 2: Dùng Mastra Studio (cổng 4111) để thử nghiệm và quản lý tác tử, workflow, công cụ.\nBước 3: Nhúng tác tử vào ứng dụng React, Next.js, Node hoặc triển khai thành endpoint độc lập.",
+    "samplePromptsVi": [
+      "Tạo tác tử thời tiết trả lời dự báo cho Hà Nội và gợi ý hoạt động phù hợp.",
+      "Xây workflow nhiều bước tóm tắt tài liệu, chờ người duyệt rồi gửi kết quả."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm create mastra@latest",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm create mastra@latest\"\n  ],\n  \"nguon\": \"https://github.com/mastra-ai/mastra\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Lõi framework mã nguồn mở Apache 2.0",
+      "Thuần TypeScript, tích hợp tốt với React/Next.js/Node",
+      "Lệnh create tự cài skill Mastra cho tác tử lập trình được phát hiện"
+    ],
+    "consVi": [
+      "Giấy phép hỗn hợp: mã trong thư mục ee/ theo Mastra Enterprise License, cần giấy phép doanh nghiệp khi dùng sản xuất (miễn phí cho phát triển và thử nghiệm)",
+      "Pull request chỉ giới hạn cho cộng tác viên; cộng đồng đóng góp qua issue"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Mastra — Framework TypeScript xây ứng dụng và tác tử AI\n\n> Mastra is a framework for building AI-powered applications and agents with a modern TypeScript stack.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMastra là framework TypeScript để xây ứng dụng và tác tử AI, từ nguyên mẫu đến sản phẩm. Mastra tích hợp với React, Next.js, Node hoặc chạy như máy chủ độc lập, kèm Mastra Studio để xây dựng, thử nghiệm và quản lý tác tử, workflow và công cụ.\n\nGiúp lập trình viên TypeScript dựng tác tử, workflow đồ thị, RAG và máy chủ MCP trong cùng một framework, có sẵn đánh giá và quan sát cho môi trường sản xuất.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Mastra (Kepler Software, Inc.)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0), riêng thư mục ee/ theo giấy phép doanh nghiệp\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/mastra-ai/mastra](https://github.com/mastra-ai/mastra)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Model routing: kết nối hơn 40 nhà cung cấp (OpenAI, Anthropic, Gemini...) qua một giao diện chuẩn**\n- **Agents: tác tử tự suy luận, chọn công cụ và lặp đến khi có câu trả lời**\n- **Workflows: engine workflow dạng đồ thị với .then(), .branch(), .parallel()**\n- **Human-in-the-loop: tạm dừng tác tử/workflow chờ người dùng phê duyệt rồi tiếp tục**\n- **Quản lý ngữ cảnh: lịch sử hội thoại, truy xuất dữ liệu (RAG), bộ nhớ**\n- **Tạo máy chủ MCP để chia sẻ tác tử và công cụ**\n- **Evals và observability tích hợp sẵn**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm create mastra@latest\n```\n\nYêu cầu: Node.js và npm; khóa API của nhà cung cấp mô hình (openai, anthropic, google hoặc xai khi tạo dự án).\nBước 1: Cài đặt và tạo dự án mới bằng lệnh khuyến nghị: `npm create mastra@latest`\nBước 2: Hoặc chỉ định tên dự án và nhà cung cấp: `npm create mastra@latest <project-name> -- --llm <provider>`\nBước 3: Vào thư mục dự án, khởi động máy chủ phát triển rồi mở Mastra Studio tại http://localhost:4111.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Định nghĩa tác tử với mô hình và công cụ trong dự án Mastra.\nBước 2: Dùng Mastra Studio (cổng 4111) để thử nghiệm và quản lý tác tử, workflow, công cụ.\nBước 3: Nhúng tác tử vào ứng dụng React, Next.js, Node hoặc triển khai thành endpoint độc lập.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo tác tử thời tiết trả lời dự báo cho Hà Nội và gợi ý hoạt động phù hợp.\"\n- \"Xây workflow nhiều bước tóm tắt tài liệu, chờ người duyệt rồi gửi kết quả.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "modelcontextprotocol-python-sdk",
+    "slug": "modelcontextprotocol-python-sdk",
+    "name": "MCP Python SDK — Bộ công cụ chính thức xây dựng máy chủ và client MCP bằng Python",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "backend_api",
+    "categoryNameVi": "Backend & Kiến trúc API",
+    "categories": [
+      "backend_api",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Backend & Kiến trúc API",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/modelcontextprotocol/python-sdk",
+    "websiteUrl": "https://py.sdk.modelcontextprotocol.io/",
+    "authorName": "Model Context Protocol",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "MCP Python SDK là bộ công cụ chính thức để triển khai Model Context Protocol bằng Python. Thư viện cho phép xây dựng máy chủ MCP cung cấp tools, resources, prompts cho mọi ứng dụng LLM, đồng thời xây dựng client kết nối tới bất kỳ máy chủ MCP nào. SDK hỗ trợ đủ các transport chuẩn: stdio, Streamable HTTP và SSE.",
+    "purposeVi": "Giúp lập trình viên Python tạo máy chủ và client MCP chỉ bằng các hàm có type hint, không cần tự viết JSON Schema hay xử lý giao thức.",
+    "featuresVi": [
+      "Xây dựng máy chủ MCP: khai báo tool, resource, prompt bằng decorator trên hàm Python",
+      "Xây dựng client MCP: lớp Client kết nối máy chủ qua URL (Streamable HTTP) hoặc chạy máy chủ cục bộ qua stdio",
+      "Đủ transport chuẩn: stdio, Streamable HTTP và SSE",
+      "Tự sinh schema: type hint của tham số chính là schema, không cần viết JSON Schema hay mã kiểm tra dữ liệu",
+      "Công cụ dòng lệnh mcp: các lệnh mcp dev, mcp run, mcp install (gói phụ cli)"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.11 trở lên; khuyến nghị dùng uv để quản lý dự án.\nBước 1: Cài đặt SDK kèm công cụ dòng lệnh vào dự án bằng uv: `uv add \"mcp[cli]\"`\nBước 2: Hoặc cài đặt bằng pip: `pip install \"mcp[cli]\"`\nBước 3: Tạo tệp server.py theo ví dụ trong README rồi mở máy chủ trong MCP Inspector để kiểm thử: `uv run mcp dev server.py`\nBước 4: Chạy máy chủ qua Streamable HTTP để client kết nối: `uv run mcp run server.py --transport streamable-http`",
+    "usageGuideVi": "Bước 1: Khởi tạo MCPServer(\"Demo\") và đánh dấu hàm bằng @mcp.tool() hoặc @mcp.resource(...)\nBước 2: Chạy `uv run mcp dev server.py` để mở MCP Inspector, gọi thử tool add với a=1, b=2\nBước 3: Dùng `Client(\"http://localhost:8000/mcp\")` để gọi tool từ mã Python khi máy chủ chạy Streamable HTTP\nBước 4: Tra cứu hướng dẫn chi tiết và tài liệu API tại py.sdk.modelcontextprotocol.io",
+    "samplePromptsVi": [
+      "Viết máy chủ MCP bằng Python SDK có tool tra cứu dữ liệu tồn kho từ tệp CSV",
+      "Hướng dẫn tôi chạy máy chủ MCP Python qua Streamable HTTP và kết nối bằng lớp Client",
+      "Chuyển hàm Python có type hint thành tool MCP và kiểm thử bằng mcp dev"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "uv add \"mcp[cli]\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uv add \\\"mcp[cli]\\\"\"\n  ],\n  \"nguon\": \"https://github.com/modelcontextprotocol/python-sdk\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "SDK chính thức của dự án Model Context Protocol, giấy phép MIT",
+      "Một gói duy nhất dùng được cho cả máy chủ lẫn client",
+      "Hỗ trợ đủ stdio, Streamable HTTP và SSE",
+      "Được bảo trì rất tích cực, có tài liệu và hướng dẫn chuyển đổi lên v2"
+    ],
+    "consVi": [
+      "Yêu cầu Python 3.11 trở lên",
+      "README ngắn; hướng dẫn chi tiết nằm ở trang tài liệu riêng",
+      "Phiên bản v2 có thay đổi API, dự án cũ cần làm theo hướng dẫn chuyển đổi"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# MCP Python SDK — Bộ công cụ chính thức xây dựng máy chủ và client MCP bằng Python\n\n> Python implementation of the Model Context Protocol (MCP)\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP Python SDK là bộ công cụ chính thức để triển khai Model Context Protocol bằng Python. Thư viện cho phép xây dựng máy chủ MCP cung cấp tools, resources, prompts cho mọi ứng dụng LLM, đồng thời xây dựng client kết nối tới bất kỳ máy chủ MCP nào. SDK hỗ trợ đủ các transport chuẩn: stdio, Streamable HTTP và SSE.\n\nGiúp lập trình viên Python tạo máy chủ và client MCP chỉ bằng các hàm có type hint, không cần tự viết JSON Schema hay xử lý giao thức.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Backend & Kiến trúc API\n- **Tác giả / Nhà phát triển:** Model Context Protocol\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/modelcontextprotocol/python-sdk](https://github.com/modelcontextprotocol/python-sdk)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Xây dựng máy chủ MCP: khai báo tool, resource, prompt bằng decorator trên hàm Python**\n- **Xây dựng client MCP: lớp Client kết nối máy chủ qua URL (Streamable HTTP) hoặc chạy máy chủ cục bộ qua stdio**\n- **Đủ transport chuẩn: stdio, Streamable HTTP và SSE**\n- **Tự sinh schema: type hint của tham số chính là schema, không cần viết JSON Schema hay mã kiểm tra dữ liệu**\n- **Công cụ dòng lệnh mcp: các lệnh mcp dev, mcp run, mcp install (gói phụ cli)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuv add \"mcp[cli]\"\n```\n\nYêu cầu: Python 3.11 trở lên; khuyến nghị dùng uv để quản lý dự án.\nBước 1: Cài đặt SDK kèm công cụ dòng lệnh vào dự án bằng uv: `uv add \"mcp[cli]\"`\nBước 2: Hoặc cài đặt bằng pip: `pip install \"mcp[cli]\"`\nBước 3: Tạo tệp server.py theo ví dụ trong README rồi mở máy chủ trong MCP Inspector để kiểm thử: `uv run mcp dev server.py`\nBước 4: Chạy máy chủ qua Streamable HTTP để client kết nối: `uv run mcp run server.py --transport streamable-http`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi tạo MCPServer(\"Demo\") và đánh dấu hàm bằng @mcp.tool() hoặc @mcp.resource(...)\nBước 2: Chạy `uv run mcp dev server.py` để mở MCP Inspector, gọi thử tool add với a=1, b=2\nBước 3: Dùng `Client(\"http://localhost:8000/mcp\")` để gọi tool từ mã Python khi máy chủ chạy Streamable HTTP\nBước 4: Tra cứu hướng dẫn chi tiết và tài liệu API tại py.sdk.modelcontextprotocol.io\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết máy chủ MCP bằng Python SDK có tool tra cứu dữ liệu tồn kho từ tệp CSV\"\n- \"Hướng dẫn tôi chạy máy chủ MCP Python qua Streamable HTTP và kết nối bằng lớp Client\"\n- \"Chuyển hàm Python có type hint thành tool MCP và kiểm thử bằng mcp dev\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "modelcontextprotocol-typescript-sdk",
+    "slug": "modelcontextprotocol-typescript-sdk",
+    "name": "MCP TypeScript SDK — Bộ công cụ chính thức xây dựng máy chủ và client MCP bằng TypeScript",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "backend_api",
+    "categoryNameVi": "Backend & Kiến trúc API",
+    "categories": [
+      "backend_api",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Backend & Kiến trúc API",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/modelcontextprotocol/typescript-sdk",
+    "websiteUrl": "https://ts.sdk.modelcontextprotocol.io/v2/",
+    "authorName": "Model Context Protocol",
+    "license": "Mã nguồn mở (Apache 2.0 / MIT)",
+    "summaryVi": "MCP TypeScript SDK là bộ công cụ chính thức để triển khai đặc tả Model Context Protocol bằng TypeScript, chạy trên Node.js, Bun và Deno. Nhánh main là v2 (gói @modelcontextprotocol/server và @modelcontextprotocol/client) theo đặc tả MCP 2026-07-28. Kèm các gói middleware mỏng cho Express, Fastify, Hono và Node.js HTTP.",
+    "purposeVi": "Xây dựng máy chủ và client MCP bằng TypeScript/JavaScript, hỗ trợ stdio, Streamable HTTP và các tiện ích xác thực OAuth.",
+    "featuresVi": [
+      "Thư viện máy chủ: đăng ký tools, resources, prompts; transport Streamable HTTP, stdio; tiện ích xác thực",
+      "Thư viện client: transport, hàm tiện ích cấp cao, tiện ích OAuth",
+      "Standard Schema: định nghĩa schema bằng Zod v4, Valibot, ArkType hoặc thư viện tương thích",
+      "Middleware tùy chọn: @modelcontextprotocol/node, express, fastify, hono",
+      "Đa runtime: chạy trên Node.js, Bun và Deno",
+      "Ví dụ chạy được: các cặp client/máy chủ trong thư mục examples/"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js, Bun hoặc Deno. Dự án dùng v1 (@modelcontextprotocol/sdk) tiếp tục ở nhánh v1.x.\nBước 1: Cài đặt gói máy chủ: `npm install @modelcontextprotocol/server`\nBước 2: Cài đặt gói client khi cần kết nối máy chủ MCP: `npm install @modelcontextprotocol/client`\nBước 3: (Tùy chọn) Cài đặt middleware cho Express: `npm install @modelcontextprotocol/express express`",
+    "usageGuideVi": "Bước 1: Tạo McpServer({ name, version }) và gọi registerTool với inputSchema viết bằng Zod\nBước 2: Kết nối máy chủ với StdioServerTransport để chạy qua stdio\nBước 3: Làm theo hướng dẫn docs/get-started/first-server.md và first-client.md để dựng ví dụ đầu tiên\nBước 4: Dự án đang dùng v1 thì đọc hướng dẫn chuyển đổi lên v2 trên trang tài liệu",
+    "samplePromptsVi": [
+      "Viết máy chủ MCP bằng TypeScript SDK v2 có tool greet nhận tham số name",
+      "Hướng dẫn tôi gắn máy chủ MCP vào ứng dụng Express bằng @modelcontextprotocol/express",
+      "Chuyển máy chủ MCP từ @modelcontextprotocol/sdk v1 sang v2"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm install @modelcontextprotocol/server",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm install @modelcontextprotocol/server\"\n  ],\n  \"nguon\": \"https://github.com/modelcontextprotocol/typescript-sdk\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "SDK chính thức của dự án Model Context Protocol, hỗ trợ đặc tả 2026-07-28",
+      "Chạy được trên Node.js, Bun và Deno",
+      "Có middleware sẵn cho Express, Fastify, Hono",
+      "v1.x vẫn nhận bản vá lỗi và bảo mật ít nhất sáu tháng sau khi v2 phát hành"
+    ],
+    "consVi": [
+      "Giấy phép hỗn hợp trong giai đoạn chuyển từ MIT sang Apache 2.0",
+      "v2 tách gói và đổi API so với v1, cần chuyển đổi mã cũ",
+      "Người đóng góp không có quyền ghi chỉ được mở một pull request cùng lúc"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# MCP TypeScript SDK — Bộ công cụ chính thức xây dựng máy chủ và client MCP bằng TypeScript\n\n> This repository contains the TypeScript SDK implementation of the MCP specification.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP TypeScript SDK là bộ công cụ chính thức để triển khai đặc tả Model Context Protocol bằng TypeScript, chạy trên Node.js, Bun và Deno. Nhánh main là v2 (gói @modelcontextprotocol/server và @modelcontextprotocol/client) theo đặc tả MCP 2026-07-28. Kèm các gói middleware mỏng cho Express, Fastify, Hono và Node.js HTTP.\n\nXây dựng máy chủ và client MCP bằng TypeScript/JavaScript, hỗ trợ stdio, Streamable HTTP và các tiện ích xác thực OAuth.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Backend & Kiến trúc API\n- **Tác giả / Nhà phát triển:** Model Context Protocol\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0 / MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/modelcontextprotocol/typescript-sdk](https://github.com/modelcontextprotocol/typescript-sdk)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Thư viện máy chủ: đăng ký tools, resources, prompts; transport Streamable HTTP, stdio; tiện ích xác thực**\n- **Thư viện client: transport, hàm tiện ích cấp cao, tiện ích OAuth**\n- **Standard Schema: định nghĩa schema bằng Zod v4, Valibot, ArkType hoặc thư viện tương thích**\n- **Middleware tùy chọn: @modelcontextprotocol/node, express, fastify, hono**\n- **Đa runtime: chạy trên Node.js, Bun và Deno**\n- **Ví dụ chạy được: các cặp client/máy chủ trong thư mục examples/**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm install @modelcontextprotocol/server\n```\n\nYêu cầu: Node.js, Bun hoặc Deno. Dự án dùng v1 (@modelcontextprotocol/sdk) tiếp tục ở nhánh v1.x.\nBước 1: Cài đặt gói máy chủ: `npm install @modelcontextprotocol/server`\nBước 2: Cài đặt gói client khi cần kết nối máy chủ MCP: `npm install @modelcontextprotocol/client`\nBước 3: (Tùy chọn) Cài đặt middleware cho Express: `npm install @modelcontextprotocol/express express`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo McpServer({ name, version }) và gọi registerTool với inputSchema viết bằng Zod\nBước 2: Kết nối máy chủ với StdioServerTransport để chạy qua stdio\nBước 3: Làm theo hướng dẫn docs/get-started/first-server.md và first-client.md để dựng ví dụ đầu tiên\nBước 4: Dự án đang dùng v1 thì đọc hướng dẫn chuyển đổi lên v2 trên trang tài liệu\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết máy chủ MCP bằng TypeScript SDK v2 có tool greet nhận tham số name\"\n- \"Hướng dẫn tôi gắn máy chủ MCP vào ứng dụng Express bằng @modelcontextprotocol/express\"\n- \"Chuyển máy chủ MCP từ @modelcontextprotocol/sdk v1 sang v2\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "modelcontextprotocol-go-sdk",
+    "slug": "modelcontextprotocol-go-sdk",
+    "name": "MCP Go SDK — Bộ công cụ chính thức xây dựng máy chủ và client MCP bằng Go",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "backend_api",
+    "categoryNameVi": "Backend & Kiến trúc API",
+    "categories": [
+      "backend_api",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Backend & Kiến trúc API",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/modelcontextprotocol/go-sdk",
+    "websiteUrl": "https://pkg.go.dev/github.com/modelcontextprotocol/go-sdk",
+    "authorName": "Model Context Protocol",
+    "license": "Mã nguồn mở (Apache 2.0 / MIT)",
+    "summaryVi": "MCP Go SDK là bộ công cụ phát triển chính thức cho Model Context Protocol bằng Go. SDK gồm gói mcp để dựng máy chủ và client, gói jsonrpc cho transport tự viết, cùng các gói auth và oauthex hỗ trợ OAuth. Từ v1.7.0 SDK hỗ trợ đặc tả MCP 2026-07-28 và các phiên bản trước đó.",
+    "purposeVi": "Xây dựng máy chủ và client MCP bằng Go, với tool có kiểu dữ liệu vào/ra rõ ràng và schema sinh từ struct.",
+    "featuresVi": [
+      "Gói mcp: API chính để tạo mcp.Server, mcp.Client, thêm tool và chạy qua transport",
+      "Tool có kiểu: khai báo struct Input/Output kèm thẻ jsonschema",
+      "Transport: StdioTransport cho máy chủ, CommandTransport để client chạy máy chủ con",
+      "Gói jsonrpc: dành cho người tự triển khai transport riêng",
+      "Hỗ trợ OAuth: gói auth và oauthex (ProtectedResourceMetadata)",
+      "Tương thích nhiều phiên bản đặc tả: 2026-07-28, 2025-11-25, 2025-06-18, 2025-03-26, 2024-11-05"
+    ],
+    "installGuideVi": "Yêu cầu: Go phiên bản còn được hỗ trợ theo chính sách phát hành của Go.\nBước 1: Cài đặt gói mcp vào module Go: `go get github.com/modelcontextprotocol/go-sdk/mcp`\nBước 2: Tạo máy chủ bằng mcp.NewServer, thêm tool bằng mcp.AddTool và chạy với mcp.StdioTransport theo ví dụ trong README",
+    "usageGuideVi": "Bước 1: Định nghĩa struct Input/Output và hàm xử lý tool trả về *mcp.CallToolResult\nBước 2: Gọi server.Run(ctx, &mcp.StdioTransport{}) để phục vụ client qua stdin/stdout\nBước 3: Phía client: mcp.NewClient rồi client.Connect với mcp.CommandTransport, sau đó session.CallTool\nBước 4: Xem thêm thư mục examples/ và docs/ để hướng dẫn từng tính năng của đặc tả",
+    "samplePromptsVi": [
+      "Viết máy chủ MCP bằng Go SDK có tool greet nhận tên và trả lời chào",
+      "Viết client Go kết nối máy chủ MCP qua CommandTransport và gọi một tool",
+      "Giải thích phiên bản Go SDK nào hỗ trợ đặc tả MCP 2026-07-28"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "go get github.com/modelcontextprotocol/go-sdk/mcp",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"go get github.com/modelcontextprotocol/go-sdk/mcp\"\n  ],\n  \"nguon\": \"https://github.com/modelcontextprotocol/go-sdk\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "SDK chính thức của dự án Model Context Protocol",
+      "Hỗ trợ đặc tả mới nhất 2026-07-28 và tương thích ngược nhiều phiên bản",
+      "Được bảo trì tích cực, có tài liệu trên pkg.go.dev"
+    ],
+    "consVi": [
+      "Giấy phép hỗn hợp trong giai đoạn chuyển từ MIT sang Apache 2.0",
+      "OAuth phía client còn ở mức thử nghiệm với đặc tả 2025-11-25",
+      "Roots, sampling, logging đã bị đánh dấu ngừng dùng từ đặc tả 2026-07-28"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# MCP Go SDK — Bộ công cụ chính thức xây dựng máy chủ và client MCP bằng Go\n\n> This repository contains an implementation of the official Go software development kit (SDK) for the Model Context Protocol (MCP).\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP Go SDK là bộ công cụ phát triển chính thức cho Model Context Protocol bằng Go. SDK gồm gói mcp để dựng máy chủ và client, gói jsonrpc cho transport tự viết, cùng các gói auth và oauthex hỗ trợ OAuth. Từ v1.7.0 SDK hỗ trợ đặc tả MCP 2026-07-28 và các phiên bản trước đó.\n\nXây dựng máy chủ và client MCP bằng Go, với tool có kiểu dữ liệu vào/ra rõ ràng và schema sinh từ struct.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Backend & Kiến trúc API\n- **Tác giả / Nhà phát triển:** Model Context Protocol\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0 / MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/modelcontextprotocol/go-sdk](https://github.com/modelcontextprotocol/go-sdk)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Gói mcp: API chính để tạo mcp.Server, mcp.Client, thêm tool và chạy qua transport**\n- **Tool có kiểu: khai báo struct Input/Output kèm thẻ jsonschema**\n- **Transport: StdioTransport cho máy chủ, CommandTransport để client chạy máy chủ con**\n- **Gói jsonrpc: dành cho người tự triển khai transport riêng**\n- **Hỗ trợ OAuth: gói auth và oauthex (ProtectedResourceMetadata)**\n- **Tương thích nhiều phiên bản đặc tả: 2026-07-28, 2025-11-25, 2025-06-18, 2025-03-26, 2024-11-05**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ngo get github.com/modelcontextprotocol/go-sdk/mcp\n```\n\nYêu cầu: Go phiên bản còn được hỗ trợ theo chính sách phát hành của Go.\nBước 1: Cài đặt gói mcp vào module Go: `go get github.com/modelcontextprotocol/go-sdk/mcp`\nBước 2: Tạo máy chủ bằng mcp.NewServer, thêm tool bằng mcp.AddTool và chạy với mcp.StdioTransport theo ví dụ trong README\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Định nghĩa struct Input/Output và hàm xử lý tool trả về *mcp.CallToolResult\nBước 2: Gọi server.Run(ctx, &mcp.StdioTransport{}) để phục vụ client qua stdin/stdout\nBước 3: Phía client: mcp.NewClient rồi client.Connect với mcp.CommandTransport, sau đó session.CallTool\nBước 4: Xem thêm thư mục examples/ và docs/ để hướng dẫn từng tính năng của đặc tả\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết máy chủ MCP bằng Go SDK có tool greet nhận tên và trả lời chào\"\n- \"Viết client Go kết nối máy chủ MCP qua CommandTransport và gọi một tool\"\n- \"Giải thích phiên bản Go SDK nào hỗ trợ đặc tả MCP 2026-07-28\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "prefecthq-fastmcp",
+    "slug": "prefecthq-fastmcp",
+    "name": "FastMCP — Framework Python xây dựng máy chủ, client và ứng dụng MCP nhanh chóng",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "backend_api",
+    "categoryNameVi": "Backend & Kiến trúc API",
+    "categories": [
+      "backend_api",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Backend & Kiến trúc API",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/PrefectHQ/fastmcp",
+    "websiteUrl": "https://gofastmcp.com",
+    "authorName": "Prefect",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "FastMCP là framework Python hoàn chỉnh để xây dựng ứng dụng MCP gồm máy chủ, client và ứng dụng có giao diện tương tác. Chỉ cần khai báo hàm Python, FastMCP tự sinh schema, kiểm tra dữ liệu và tài liệu; phía client tự xử lý thương lượng transport, xác thực và vòng đời giao thức. FastMCP 1.0 từng được đưa vào MCP Python SDK chính thức năm 2024.",
+    "purposeVi": "Rút ngắn thời gian xây dựng máy chủ và client MCP bằng Python với các thực hành tốt được tích hợp sẵn.",
+    "featuresVi": [
+      "Servers: biến hàm Python thành tools, resources, prompts chuẩn MCP",
+      "Clients: kết nối tới mọi máy chủ MCP cục bộ hoặc từ xa, bằng mã hoặc dòng lệnh",
+      "Apps: gắn giao diện tương tác cho tool, hiển thị ngay trong cuộc hội thoại",
+      "CLI fastmcp: chạy máy chủ qua stdio hoặc HTTP bằng lệnh fastmcp run",
+      "Tài liệu dạng llms.txt cho trợ lý lập trình"
+    ],
+    "installGuideVi": "Yêu cầu: Python; khuyến nghị dùng uv để cài đặt và quản lý FastMCP.\nBước 1: Cài đặt FastMCP vào dự án bằng uv: `uv add fastmcp`\nBước 2: Hoặc cài đặt bằng pip: `pip install fastmcp`\nBước 3: Kiểm tra cài đặt: `fastmcp version`\nBước 4: Chạy máy chủ đã viết (biến mcp trong my_server.py) qua stdio: `fastmcp run my_server.py:mcp`\nBước 5: Hoặc chạy qua HTTP ở cổng 8000: `fastmcp run my_server.py:mcp --transport http --port 8000`",
+    "usageGuideVi": "Bước 1: Tạo FastMCP(\"Demo\") và đánh dấu hàm bằng @mcp.tool\nBước 2: Gọi mcp.run() hoặc dùng `fastmcp run` để khởi động máy chủ\nBước 3: Kết nối bằng Client(\"http://localhost:8000/mcp\") và gọi call_tool khi máy chủ chạy HTTP\nBước 4: Tra cứu hướng dẫn đầy đủ tại gofastmcp.com",
+    "samplePromptsVi": [
+      "Viết máy chủ FastMCP có tool tính tổng hai số và chạy qua HTTP cổng 8000",
+      "Hướng dẫn tôi dùng FastMCP Client gọi tool greet trên máy chủ từ xa",
+      "Nâng cấp máy chủ từ MCP Python SDK sang FastMCP theo hướng dẫn chính thức"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "uv add fastmcp",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uv add fastmcp\"\n  ],\n  \"nguon\": \"https://github.com/PrefectHQ/fastmcp\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, dùng thương mại được",
+      "API gọn: schema, kiểm tra dữ liệu và tài liệu tự sinh từ hàm Python",
+      "Hỗ trợ cả máy chủ, client và ứng dụng có giao diện",
+      "Được bảo trì rất tích cực, có hướng dẫn nâng cấp từ các phiên bản trước"
+    ],
+    "consVi": [
+      "Tính năng gateway doanh nghiệp (Prefect Horizon) là sản phẩm riêng, không nằm trong mã nguồn mở",
+      "Phụ thuộc Cyclopts v4 kéo theo docutils có giấy phép phức tạp, có thể cần rà soát tuân thủ",
+      "README ngắn; chi tiết nằm ở trang tài liệu gofastmcp.com"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# FastMCP — Framework Python xây dựng máy chủ, client và ứng dụng MCP nhanh chóng\n\n> FastMCP is a full MCP application framework for servers, clients, and interactive apps.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nFastMCP là framework Python hoàn chỉnh để xây dựng ứng dụng MCP gồm máy chủ, client và ứng dụng có giao diện tương tác. Chỉ cần khai báo hàm Python, FastMCP tự sinh schema, kiểm tra dữ liệu và tài liệu; phía client tự xử lý thương lượng transport, xác thực và vòng đời giao thức. FastMCP 1.0 từng được đưa vào MCP Python SDK chính thức năm 2024.\n\nRút ngắn thời gian xây dựng máy chủ và client MCP bằng Python với các thực hành tốt được tích hợp sẵn.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Backend & Kiến trúc API\n- **Tác giả / Nhà phát triển:** Prefect\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Servers: biến hàm Python thành tools, resources, prompts chuẩn MCP**\n- **Clients: kết nối tới mọi máy chủ MCP cục bộ hoặc từ xa, bằng mã hoặc dòng lệnh**\n- **Apps: gắn giao diện tương tác cho tool, hiển thị ngay trong cuộc hội thoại**\n- **CLI fastmcp: chạy máy chủ qua stdio hoặc HTTP bằng lệnh fastmcp run**\n- **Tài liệu dạng llms.txt cho trợ lý lập trình**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuv add fastmcp\n```\n\nYêu cầu: Python; khuyến nghị dùng uv để cài đặt và quản lý FastMCP.\nBước 1: Cài đặt FastMCP vào dự án bằng uv: `uv add fastmcp`\nBước 2: Hoặc cài đặt bằng pip: `pip install fastmcp`\nBước 3: Kiểm tra cài đặt: `fastmcp version`\nBước 4: Chạy máy chủ đã viết (biến mcp trong my_server.py) qua stdio: `fastmcp run my_server.py:mcp`\nBước 5: Hoặc chạy qua HTTP ở cổng 8000: `fastmcp run my_server.py:mcp --transport http --port 8000`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo FastMCP(\"Demo\") và đánh dấu hàm bằng @mcp.tool\nBước 2: Gọi mcp.run() hoặc dùng `fastmcp run` để khởi động máy chủ\nBước 3: Kết nối bằng Client(\"http://localhost:8000/mcp\") và gọi call_tool khi máy chủ chạy HTTP\nBước 4: Tra cứu hướng dẫn đầy đủ tại gofastmcp.com\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết máy chủ FastMCP có tool tính tổng hai số và chạy qua HTTP cổng 8000\"\n- \"Hướng dẫn tôi dùng FastMCP Client gọi tool greet trên máy chủ từ xa\"\n- \"Nâng cấp máy chủ từ MCP Python SDK sang FastMCP theo hướng dẫn chính thức\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "sparfenyuk-mcp-proxy",
+    "slug": "sparfenyuk-mcp-proxy",
+    "name": "mcp-proxy — Công cụ chuyển đổi transport stdio và SSE/Streamable HTTP cho máy chủ MCP",
+    "icon": "Wrench",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "backend_api",
+    "categoryNameVi": "Backend & Kiến trúc API",
+    "categories": [
+      "backend_api",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Backend & Kiến trúc API",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_desktop"
+    ],
+    "sourceUrl": "https://github.com/sparfenyuk/mcp-proxy",
+    "websiteUrl": "https://pypi.org/project/mcp-proxy/",
+    "authorName": "Sergey Parfenyuk",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "mcp-proxy là công cụ dòng lệnh chuyển đổi transport của máy chủ MCP. Chế độ thứ nhất cho client chỉ hỗ trợ stdio (như Claude Desktop) kết nối tới máy chủ MCP từ xa qua SSE hoặc Streamable HTTP. Chế độ thứ hai mở một cổng HTTP để client từ xa dùng máy chủ MCP stdio cục bộ, kể cả nhiều máy chủ có tên cùng lúc.",
+    "purposeVi": "Nối các client và máy chủ MCP dùng transport khác nhau mà không phải sửa mã máy chủ.",
+    "featuresVi": [
+      "stdio sang SSE/Streamable HTTP: Claude Desktop gọi máy chủ MCP từ xa qua proxy",
+      "SSE/HTTP sang stdio: công bố máy chủ stdio cục bộ ra mạng qua một cổng",
+      "Named servers: chạy nhiều máy chủ stdio dưới đường dẫn /servers/<tên>/, khai báo bằng tham số hoặc tệp JSON",
+      "Xác thực: header tùy chỉnh, OAuth2 client credentials, basic/digest",
+      "Tùy chọn CORS, chế độ stateless, truyền biến môi trường cho máy chủ con",
+      "Có image container đa nền tảng linux/amd64 và linux/arm64"
+    ],
+    "installGuideVi": "Yêu cầu: Python với uv hoặc pipx; hoặc Docker để chạy image container.\nBước 1: Cài đặt bằng uv (khuyến nghị): `uv tool install mcp-proxy`\nBước 2: Hoặc cài đặt bằng pipx: `pipx install mcp-proxy`\nBước 3: Hoặc chạy bằng container: `docker run --rm -t ghcr.io/sparfenyuk/mcp-proxy:v0.12.0 --help`\nBước 4: Công bố máy chủ stdio cục bộ qua cổng 8080: `mcp-proxy --port=8080 uvx mcp-server-fetch`",
+    "usageGuideVi": "Bước 1: Để Claude Desktop dùng máy chủ SSE từ xa: thêm cấu hình mcpServers với command mcp-proxy và URL SSE làm tham số\nBước 2: Với máy chủ Streamable HTTP, thêm --transport=streamablehttp\nBước 3: Để chạy nhiều máy chủ, dùng --named-server hoặc --named-server-config trỏ tới tệp JSON\nBước 4: Kiểm tra trạng thái chung tại endpoint /status",
+    "samplePromptsVi": [
+      "Hướng dẫn tôi cấu hình Claude Desktop dùng mcp-proxy để kết nối máy chủ MCP SSE từ xa",
+      "Công bố máy chủ mcp-server-fetch cục bộ ra cổng 8080 bằng mcp-proxy",
+      "Viết tệp JSON named-server-config chạy hai máy chủ MCP sau một proxy"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "mcp-proxy --port=8080 uvx mcp-server-fetch",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"mcp-proxy --port=8080 uvx mcp-server-fetch\"\n  ],\n  \"nguon\": \"https://github.com/sparfenyuk/mcp-proxy\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"mcp-proxy\": {\n      \"command\": \"mcp-proxy\",\n      \"args\": [\n        \"http://example.io/sse\"\n      ],\n      \"env\": {\n        \"API_ACCESS_TOKEN\": \"access-token\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT",
+      "Giải quyết khác biệt transport giữa client và máy chủ mà không sửa mã",
+      "Có gói PyPI và image container chính thức"
+    ],
+    "consVi": [
+      "Chỉ là lớp chuyển tiếp, không tự cung cấp tool nào",
+      "Trường timeout và transportType trong tệp cấu hình named server hiện bị bỏ qua",
+      "Tham số --sse-port và --sse-host đã bị đánh dấu ngừng dùng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# mcp-proxy — Công cụ chuyển đổi transport stdio và SSE/Streamable HTTP cho máy chủ MCP\n\n> The `mcp-proxy` is a tool that lets you switch between server transports.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nmcp-proxy là công cụ dòng lệnh chuyển đổi transport của máy chủ MCP. Chế độ thứ nhất cho client chỉ hỗ trợ stdio (như Claude Desktop) kết nối tới máy chủ MCP từ xa qua SSE hoặc Streamable HTTP. Chế độ thứ hai mở một cổng HTTP để client từ xa dùng máy chủ MCP stdio cục bộ, kể cả nhiều máy chủ có tên cùng lúc.\n\nNối các client và máy chủ MCP dùng transport khác nhau mà không phải sửa mã máy chủ.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Backend & Kiến trúc API\n- **Tác giả / Nhà phát triển:** Sergey Parfenyuk\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`, `claude_desktop`\n- **Kho lưu trữ chính thức:** [https://github.com/sparfenyuk/mcp-proxy](https://github.com/sparfenyuk/mcp-proxy)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **stdio sang SSE/Streamable HTTP: Claude Desktop gọi máy chủ MCP từ xa qua proxy**\n- **SSE/HTTP sang stdio: công bố máy chủ stdio cục bộ ra mạng qua một cổng**\n- **Named servers: chạy nhiều máy chủ stdio dưới đường dẫn /servers/<tên>/, khai báo bằng tham số hoặc tệp JSON**\n- **Xác thực: header tùy chỉnh, OAuth2 client credentials, basic/digest**\n- **Tùy chọn CORS, chế độ stateless, truyền biến môi trường cho máy chủ con**\n- **Có image container đa nền tảng linux/amd64 và linux/arm64**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nmcp-proxy --port=8080 uvx mcp-server-fetch\n```\n\nYêu cầu: Python với uv hoặc pipx; hoặc Docker để chạy image container.\nBước 1: Cài đặt bằng uv (khuyến nghị): `uv tool install mcp-proxy`\nBước 2: Hoặc cài đặt bằng pipx: `pipx install mcp-proxy`\nBước 3: Hoặc chạy bằng container: `docker run --rm -t ghcr.io/sparfenyuk/mcp-proxy:v0.12.0 --help`\nBước 4: Công bố máy chủ stdio cục bộ qua cổng 8080: `mcp-proxy --port=8080 uvx mcp-server-fetch`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Để Claude Desktop dùng máy chủ SSE từ xa: thêm cấu hình mcpServers với command mcp-proxy và URL SSE làm tham số\nBước 2: Với máy chủ Streamable HTTP, thêm --transport=streamablehttp\nBước 3: Để chạy nhiều máy chủ, dùng --named-server hoặc --named-server-config trỏ tới tệp JSON\nBước 4: Kiểm tra trạng thái chung tại endpoint /status\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hướng dẫn tôi cấu hình Claude Desktop dùng mcp-proxy để kết nối máy chủ MCP SSE từ xa\"\n- \"Công bố máy chủ mcp-server-fetch cục bộ ra cổng 8080 bằng mcp-proxy\"\n- \"Viết tệp JSON named-server-config chạy hai máy chủ MCP sau một proxy\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "ibm-mcp-context-forge",
+    "slug": "ibm-mcp-context-forge",
+    "name": "ContextForge — Gateway và registry MCP, A2A, REST/gRPC có quản trị tập trung của IBM",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "backend_api",
+    "categoryNameVi": "Backend & Kiến trúc API",
+    "categories": [
+      "backend_api",
+      "cloud_infrastructure",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Backend & Kiến trúc API",
+      "Điện toán đám mây & Hạ tầng số",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/IBM/mcp-context-forge",
+    "websiteUrl": "https://ibm.github.io/mcp-context-forge/",
+    "authorName": "IBM",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "ContextForge là registry và proxy mã nguồn mở của IBM, gom các máy chủ MCP, agent A2A và API REST/gRPC về một endpoint duy nhất cho client AI. Công cụ cung cấp quản trị tập trung, khám phá dịch vụ, xác thực, giới hạn tần suất và quan sát bằng OpenTelemetry. Bản thân gateway chạy như một máy chủ MCP chuẩn, triển khai qua PyPI, Docker hoặc Kubernetes.",
+    "purposeVi": "Làm cổng MCP (gateway) cho doanh nghiệp: hợp nhất, bảo mật và giám sát nhiều máy chủ MCP và API từ một nơi.",
+    "featuresVi": [
+      "Tools Gateway: MCP, REST, chuyển gRPC sang MCP và nén TOON",
+      "Agent Gateway: giao thức A2A, định tuyến agent tương thích OpenAI và Anthropic",
+      "API Gateway: giới hạn tần suất, xác thực, thử lại và reverse proxy cho dịch vụ REST",
+      "Máy chủ ảo: gói các tool đã đăng ký thành virtual server riêng",
+      "Admin UI: quản lý, cấu hình và xem nhật ký thời gian thực",
+      "Quan sát: tracing OpenTelemetry với Phoenix, Jaeger, Zipkin và backend OTLP khác",
+      "Hơn 40 plugin mở rộng transport, giao thức và tích hợp"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.11 trở lên (hoặc Docker); bắt buộc đặt JWT_SECRET_KEY và AUTH_ENCRYPTION_SECRET ở mọi môi trường. Gateway mặc định trong hướng dẫn chạy ở cổng 4444.\nBước 1: Tạo môi trường Python riêng: `python3 -m venv .venv && source .venv/bin/activate`\nBước 2: Cài đặt gói từ PyPI: `pip install mcp-contextforge-gateway`\nBước 3: Tải tệp cấu hình mẫu: `curl -O https://raw.githubusercontent.com/IBM/mcp-context-forge/main/.env.example`\nBước 4: Sao chép thành .env: `cp .env.example .env`\nBước 5: Sinh khóa bí mật an toàn: `python3 -m mcpgateway.scripts.init_secrets`\nBước 6: Ghi khóa vào .env: `python3 -m mcpgateway.scripts.init_secrets --patch-env .env`\nBước 7: Khởi động gateway ở cổng 4444: `mcpgateway --host 0.0.0.0 --port 4444`",
+    "usageGuideVi": "Bước 1: Tạo bearer token bằng mcpgateway.utils.create_jwt_token rồi gọi http://127.0.0.1:4444/version để kiểm tra\nBước 2: Đăng ký máy chủ MCP (ví dụ qua mcpgateway.translate từ stdio sang SSE) bằng POST /gateways\nBước 3: Xem danh mục tool tại /tools và tạo virtual server bằng POST /servers\nBước 4: Kết nối client MCP tới http://localhost:4444/servers/<UUID>/mcp kèm header Authorization",
+    "samplePromptsVi": [
+      "Hướng dẫn tôi cài đặt ContextForge và đăng ký một máy chủ MCP stdio vào gateway",
+      "Tạo virtual server trong ContextForge gom các tool đã đăng ký cho một nhóm",
+      "Cấu hình tracing OpenTelemetry của ContextForge gửi dữ liệu tới Jaeger"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "mcpgateway --host 0.0.0.0 --port 4444",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"mcpgateway --host 0.0.0.0 --port 4444\"\n  ],\n  \"nguon\": \"https://github.com/IBM/mcp-context-forge\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, do IBM phát triển và bảo trì tích cực",
+      "Hợp nhất MCP, A2A, REST và gRPC sau một endpoint",
+      "Có Admin UI, xác thực, giới hạn tần suất và quan sát tích hợp",
+      "Triển khai linh hoạt: PyPI, Docker, Kubernetes"
+    ],
+    "consVi": [
+      "Bắt buộc cấu hình JWT_SECRET_KEY và AUTH_ENCRYPTION_SECRET trước khi chạy, kể cả môi trường cục bộ",
+      "Hệ thống lớn, nhiều thành phần; triển khai đa cụm cần Redis",
+      "Bước kiểm thử nhanh cần thêm curl và jq"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# ContextForge — Gateway và registry MCP, A2A, REST/gRPC có quản trị tập trung của IBM\n\n> An open source registry and proxy that federates MCP, A2A, and REST/gRPC APIs with centralized governance, discovery, and observability.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nContextForge là registry và proxy mã nguồn mở của IBM, gom các máy chủ MCP, agent A2A và API REST/gRPC về một endpoint duy nhất cho client AI. Công cụ cung cấp quản trị tập trung, khám phá dịch vụ, xác thực, giới hạn tần suất và quan sát bằng OpenTelemetry. Bản thân gateway chạy như một máy chủ MCP chuẩn, triển khai qua PyPI, Docker hoặc Kubernetes.\n\nLàm cổng MCP (gateway) cho doanh nghiệp: hợp nhất, bảo mật và giám sát nhiều máy chủ MCP và API từ một nơi.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Backend & Kiến trúc API\n- **Tác giả / Nhà phát triển:** IBM\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/IBM/mcp-context-forge](https://github.com/IBM/mcp-context-forge)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tools Gateway: MCP, REST, chuyển gRPC sang MCP và nén TOON**\n- **Agent Gateway: giao thức A2A, định tuyến agent tương thích OpenAI và Anthropic**\n- **API Gateway: giới hạn tần suất, xác thực, thử lại và reverse proxy cho dịch vụ REST**\n- **Máy chủ ảo: gói các tool đã đăng ký thành virtual server riêng**\n- **Admin UI: quản lý, cấu hình và xem nhật ký thời gian thực**\n- **Quan sát: tracing OpenTelemetry với Phoenix, Jaeger, Zipkin và backend OTLP khác**\n- **Hơn 40 plugin mở rộng transport, giao thức và tích hợp**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nmcpgateway --host 0.0.0.0 --port 4444\n```\n\nYêu cầu: Python 3.11 trở lên (hoặc Docker); bắt buộc đặt JWT_SECRET_KEY và AUTH_ENCRYPTION_SECRET ở mọi môi trường. Gateway mặc định trong hướng dẫn chạy ở cổng 4444.\nBước 1: Tạo môi trường Python riêng: `python3 -m venv .venv && source .venv/bin/activate`\nBước 2: Cài đặt gói từ PyPI: `pip install mcp-contextforge-gateway`\nBước 3: Tải tệp cấu hình mẫu: `curl -O https://raw.githubusercontent.com/IBM/mcp-context-forge/main/.env.example`\nBước 4: Sao chép thành .env: `cp .env.example .env`\nBước 5: Sinh khóa bí mật an toàn: `python3 -m mcpgateway.scripts.init_secrets`\nBước 6: Ghi khóa vào .env: `python3 -m mcpgateway.scripts.init_secrets --patch-env .env`\nBước 7: Khởi động gateway ở cổng 4444: `mcpgateway --host 0.0.0.0 --port 4444`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo bearer token bằng mcpgateway.utils.create_jwt_token rồi gọi http://127.0.0.1:4444/version để kiểm tra\nBước 2: Đăng ký máy chủ MCP (ví dụ qua mcpgateway.translate từ stdio sang SSE) bằng POST /gateways\nBước 3: Xem danh mục tool tại /tools và tạo virtual server bằng POST /servers\nBước 4: Kết nối client MCP tới http://localhost:4444/servers/<UUID>/mcp kèm header Authorization\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hướng dẫn tôi cài đặt ContextForge và đăng ký một máy chủ MCP stdio vào gateway\"\n- \"Tạo virtual server trong ContextForge gom các tool đã đăng ký cho một nhóm\"\n- \"Cấu hình tracing OpenTelemetry của ContextForge gửi dữ liệu tới Jaeger\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "mcp-use-mcp-use",
+    "slug": "mcp-use-mcp-use",
+    "name": "mcp-use — Framework TypeScript xây dựng, kiểm thử và phát hành máy chủ MCP có giao diện",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "backend_api",
+    "categoryNameVi": "Backend & Kiến trúc API",
+    "categories": [
+      "backend_api",
+      "frontend_ui",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Backend & Kiến trúc API",
+      "Frontend & Giao diện người dùng",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/mcp-use/mcp-use",
+    "websiteUrl": "https://mcp-use.com",
+    "authorName": "mcp-use (Manufact)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "mcp-use là framework TypeScript để xây dựng, kiểm thử và phát hành máy chủ MCP, plugin ChatGPT và connector Claude. Framework dựa trên TypeScript SDK chính thức v2, bổ sung kiểu dữ liệu đầy đủ, React Views gắn trực tiếp với tool, Inspector tích hợp và CLI hướng agent. Hệ sinh thái còn có gói client, agent, inspector, tunnel và phiên bản Python.",
+    "purposeVi": "Rút ngắn vòng phát triển máy chủ và ứng dụng MCP có giao diện, từ tạo khung dự án đến kiểm thử và triển khai.",
+    "featuresVi": [
+      "Kiểu đầy đủ: schema Zod đi xuyên từ tool tới kết quả có cấu trúc, props của View và lời gọi tool",
+      "Native Views: gắn React View vào tool để tạo ứng dụng tương tác",
+      "Inspector tích hợp tại /mcp/inspector khi chạy chế độ phát triển",
+      "CLI không giao diện: kết nối, liệt kê, gọi tool và chụp ảnh View từ terminal",
+      "Tunnel: tạo URL công khai cho máy chủ cục bộ để thử với ChatGPT và Claude",
+      "Công cụ tạo dự án create-mcp-use-app"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js và npm. Máy chủ phát triển mặc định chạy ở http://localhost:3000/mcp.\nBước 1: Cài đặt khung dự án mới: `npx -y create-mcp-use-app@latest`\nBước 2: Trong thư mục dự án vừa tạo, chạy chế độ phát triển: `npm run dev`\nBước 3: Tạo bản build production: `npm run build`",
+    "usageGuideVi": "Bước 1: Mở http://localhost:3000/mcp/inspector để gọi thử tool và xem View\nBước 2: Thay index.ts bằng tool khai báo inputSchema, outputSchema và view\nBước 3: Kiểm thử từ terminal: `npx mcp-use client connect local http://localhost:3000/mcp` rồi `npx mcp-use client local tools list`\nBước 4: Chạy `mcp-use dev --tunnel` để có URL công khai thử với ChatGPT, Claude",
+    "samplePromptsVi": [
+      "Tạo máy chủ MCP bằng mcp-use có tool get-weather kèm React View hiển thị thẻ thời tiết",
+      "Hướng dẫn tôi gọi tool get-weather từ terminal bằng CLI mcp-use",
+      "Chuyển dự án mcp-use v1 sang v2 theo hướng dẫn chuyển đổi"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npx -y create-mcp-use-app@latest",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx -y create-mcp-use-app@latest\"\n  ],\n  \"nguon\": \"https://github.com/mcp-use/mcp-use\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT",
+      "Có Inspector, tunnel và CLI chụp ảnh View tích hợp",
+      "Dựa trên TypeScript SDK chính thức v2, hỗ trợ giao thức MCP 2026",
+      "Được bảo trì tích cực, có cả phiên bản Python"
+    ],
+    "consVi": [
+      "Lệnh npm run deploy triển khai lên nền tảng Manufact; tự vận hành cần làm theo hướng dẫn self-hosting riêng",
+      "Tunnel đi qua relay được quản lý của nhà phát triển",
+      "Dự án v1 cần chuyển đổi sang v2"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# mcp-use — Framework TypeScript xây dựng, kiểm thử và phát hành máy chủ MCP có giao diện\n\n> The TypeScript framework for MCP\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nmcp-use là framework TypeScript để xây dựng, kiểm thử và phát hành máy chủ MCP, plugin ChatGPT và connector Claude. Framework dựa trên TypeScript SDK chính thức v2, bổ sung kiểu dữ liệu đầy đủ, React Views gắn trực tiếp với tool, Inspector tích hợp và CLI hướng agent. Hệ sinh thái còn có gói client, agent, inspector, tunnel và phiên bản Python.\n\nRút ngắn vòng phát triển máy chủ và ứng dụng MCP có giao diện, từ tạo khung dự án đến kiểm thử và triển khai.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Backend & Kiến trúc API\n- **Tác giả / Nhà phát triển:** mcp-use (Manufact)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/mcp-use/mcp-use](https://github.com/mcp-use/mcp-use)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Kiểu đầy đủ: schema Zod đi xuyên từ tool tới kết quả có cấu trúc, props của View và lời gọi tool**\n- **Native Views: gắn React View vào tool để tạo ứng dụng tương tác**\n- **Inspector tích hợp tại /mcp/inspector khi chạy chế độ phát triển**\n- **CLI không giao diện: kết nối, liệt kê, gọi tool và chụp ảnh View từ terminal**\n- **Tunnel: tạo URL công khai cho máy chủ cục bộ để thử với ChatGPT và Claude**\n- **Công cụ tạo dự án create-mcp-use-app**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx -y create-mcp-use-app@latest\n```\n\nYêu cầu: Node.js và npm. Máy chủ phát triển mặc định chạy ở http://localhost:3000/mcp.\nBước 1: Cài đặt khung dự án mới: `npx -y create-mcp-use-app@latest`\nBước 2: Trong thư mục dự án vừa tạo, chạy chế độ phát triển: `npm run dev`\nBước 3: Tạo bản build production: `npm run build`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở http://localhost:3000/mcp/inspector để gọi thử tool và xem View\nBước 2: Thay index.ts bằng tool khai báo inputSchema, outputSchema và view\nBước 3: Kiểm thử từ terminal: `npx mcp-use client connect local http://localhost:3000/mcp` rồi `npx mcp-use client local tools list`\nBước 4: Chạy `mcp-use dev --tunnel` để có URL công khai thử với ChatGPT, Claude\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo máy chủ MCP bằng mcp-use có tool get-weather kèm React View hiển thị thẻ thời tiết\"\n- \"Hướng dẫn tôi gọi tool get-weather từ terminal bằng CLI mcp-use\"\n- \"Chuyển dự án mcp-use v1 sang v2 theo hướng dẫn chuyển đổi\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:05:00.188Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]
