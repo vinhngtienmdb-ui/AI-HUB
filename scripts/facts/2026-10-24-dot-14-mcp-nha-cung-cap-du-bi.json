@@ -1,0 +1,649 @@
+[
+  {
+    "repo": "getsentry/sentry-mcp",
+    "license": "Functional Source License, Version 1.1, Apache 2.0 Future License (FSL-1.1-Apache-2.0)",
+    "authorName": "Sentry (Functional Software, Inc.)",
+    "websiteUrl": "https://mcp.sentry.dev",
+    "toolType": "mcp",
+    "taglineEn": "This remote MCP server acts as middleware to the upstream Sentry API, optimized for coding assistants like Cursor, Claude Code, and similar development tools.",
+    "summaryVi": "MCP server chính thức của Sentry, đóng vai trò trung gian tới Sentry API và được tối ưu cho trợ lý lập trình như Cursor, Claude Code. Dịch vụ remote chạy tại mcp.sentry.dev; ngoài ra có thể chạy cục bộ qua stdio bằng npx, kể cả với Sentry tự host. Repo cũng chứa Sentry CLI và các gói dùng chung.",
+    "purposeVi": "Công cụ giúp lập trình viên tra cứu lỗi, issue, trace và hiệu năng trong Sentry ngay từ trợ lý AI để gỡ lỗi nhanh hơn.",
+    "featuresVi": [
+      "Server remote: dùng ngay tại https://mcp.sentry.dev với OAuth hoặc header Sentry-Bearer",
+      "Plugin Claude Code: cung cấp subagent `sentry-mcp` tự được giao việc khi hỏi về lỗi, issue, trace, hiệu năng",
+      "Transport stdio: chạy bằng `npx @sentry/mcp-server` với User Auth Token, hỗ trợ Sentry tự host qua `--host`",
+      "Tìm kiếm bằng ngôn ngữ tự nhiên: các công cụ search_errors, search_traces, search_logs, search_issues dịch câu hỏi sang cú pháp truy vấn Sentry (cần nhà cung cấp LLM)",
+      "Bật/tắt nhóm kỹ năng (skills) như inspect, seer, project-management để giới hạn công cụ"
+    ],
+    "requirementsVi": "Tài khoản Sentry (sentry.io hoặc tự host); User Auth Token với các scope org:read, project:read, project:write, team:read, team:write, event:write khi chạy stdio; Node.js để dùng npx; khóa OpenAI/Azure OpenAI/Anthropic/OpenRouter nếu muốn dùng công cụ tìm kiếm AI.",
+    "installStepsVi": [
+      "Cài đặt plugin cho Claude Code: `claude plugin marketplace add getsentry/sentry-mcp` rồi `claude plugin install sentry-mcp@sentry-mcp`",
+      "Hoặc cài đặt chạy cục bộ qua stdio: `npx @sentry/mcp-server@latest --access-token=sentry-user-token`",
+      "Với client khác, thêm khối cấu hình `sentry` (SENTRY_ACCESS_TOKEN, EMBEDDED_AGENT_PROVIDER, khóa LLM) vào tệp cấu hình MCP"
+    ],
+    "cliCommand": "npx @sentry/mcp-server@latest --access-token=sentry-user-token",
+    "usageStepsVi": [
+      "Tạo User Auth Token trong Sentry với các scope theo hướng dẫn",
+      "Đặt EMBEDDED_AGENT_PROVIDER và khóa API tương ứng nếu cần công cụ tìm kiếm AI",
+      "Với Sentry tự host, thêm `--host=<hostname>` khi chạy lệnh",
+      "Hỏi trợ lý AI về lỗi, issue hoặc trace của dự án"
+    ],
+    "samplePromptsVi": [
+      "Liệt kê các issue chưa xử lý nhiều sự kiện nhất trong dự án frontend tuần này",
+      "Tìm các lỗi TypeError xuất hiện sau bản phát hành gần nhất",
+      "Xem chi tiết trace chậm nhất của endpoint /api/checkout"
+    ],
+    "prosVi": [
+      "Server chính thức do Sentry duy trì, cập nhật thường xuyên",
+      "Có cả bản remote dùng ngay và bản stdio cho Sentry tự host",
+      "Có thể giới hạn công cụ qua skills để an toàn hơn"
+    ],
+    "consVi": [
+      "Giấy phép FSL-1.1 (source-available, không phải OSI): cấm dùng để cung cấp sản phẩm thương mại cạnh tranh; mỗi phiên bản chỉ chuyển sang Apache 2.0 sau 2 năm",
+      "Cần tài khoản Sentry và token truy cập",
+      "Công cụ tìm kiếm AI cần thêm khóa của nhà cung cấp LLM; transport stdio vẫn đang hoàn thiện"
+    ],
+    "sourceEvidence": {
+      "claude plugin marketplace add getsentry/sentry-mcp": "README.md:30",
+      "claude plugin install sentry-mcp@sentry-mcp": "README.md:31",
+      "npx @sentry/mcp-server@latest --access-token=sentry-user-token": "README.md:62",
+      "jsonConfig mcpServers sentry": "README.md:141",
+      "license FSL-1.1-Apache-2.0": "LICENSE.md:1-5"
+    },
+    "meta": {
+      "id": "getsentry-sentry-mcp",
+      "nameVi": "Sentry MCP — MCP server chính thức của Sentry để gỡ lỗi bằng AI",
+      "icon": "Wrench",
+      "categories": [
+        "devops_cicd",
+        "qa_testing"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Source-available (FSL-1.1, chuyển sang Apache-2.0 sau 2 năm; cấm dùng cạnh tranh thương mại)",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude plugin marketplace add getsentry/sentry-mcp"
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "npx @sentry/mcp-server@latest --access-token=sentry-user-token",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"sentry\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"@sentry/mcp-server\"\n      ],\n      \"env\": {\n        \"SENTRY_ACCESS_TOKEN\": \"your-token\",\n        \"EMBEDDED_AGENT_PROVIDER\": \"openai\",\n        \"OPENAI_API_KEY\": \"sk-...\"\n      }\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "Azure/aks-mcp",
+    "license": "MIT License",
+    "authorName": "Microsoft (Azure)",
+    "websiteUrl": "",
+    "toolType": "mcp",
+    "taglineEn": "The AKS-MCP is a Model Context Protocol (MCP) server that enables AI assistants to interact with Azure Kubernetes Service (AKS) clusters.",
+    "summaryVi": "MCP server chính thức của Microsoft cho Azure Kubernetes Service (AKS), làm cầu nối giữa trợ lý AI và cụm AKS, chuyển yêu cầu ngôn ngữ tự nhiên thành thao tác AKS. Công cụ chạy cục bộ dưới danh tính của người dùng và gọi az, kubectl, helm, cilium, hubble.",
+    "purposeVi": "Giúp kỹ sư vận hành quản lý tài nguyên AKS, mạng, Fleet đa cụm và chẩn đoán sự cố bằng trợ lý AI.",
+    "featuresVi": [
+      "Thao tác CRUD tài nguyên AKS qua công cụ hợp nhất `call_az`",
+      "Truy xuất thông tin mạng của cụm: VNet, Subnet, NSG, Route Table",
+      "Quản lý Azure Fleet cho kịch bản đa cụm",
+      "Công cụ kubectl hợp nhất, Helm, Cilium và Hubble",
+      "Mức truy cập `--access-level` (readonly mặc định, readwrite, admin) và giới hạn namespace bằng `--allow-namespaces`",
+      "Hỗ trợ OpenTelemetry qua `--otlp-endpoint`"
+    ],
+    "requirementsVi": "Azure CLI đã đăng nhập (`az login`); tải binary aks-mcp cho Windows/macOS/Linux; chỉ hỗ trợ chạy cục bộ bởi một người dùng tin cậy.",
+    "installStepsVi": [
+      "Cài đặt Azure CLI và đăng nhập: `az login`",
+      "Tải binary từ trang releases, sau đó cấp quyền chạy: `chmod +x aks-mcp`",
+      "Chạy server trực tiếp: `./aks-mcp`",
+      "Thêm khối cấu hình `aks` trỏ tới đường dẫn binary vào tệp cấu hình MCP (ví dụ Claude Desktop)"
+    ],
+    "cliCommand": "./aks-mcp",
+    "usageStepsVi": [
+      "Chọn mức truy cập phù hợp bằng `--access-level` (mặc định readonly)",
+      "Khởi động lại MCP client để nạp công cụ",
+      "Yêu cầu trợ lý AI liệt kê cụm, kiểm tra mạng hoặc chạy lệnh kubectl"
+    ],
+    "samplePromptsVi": [
+      "Liệt kê các cụm AKS trong resource group myResourceGroup",
+      "Kiểm tra NSG và subnet đang gắn với cụm AKS production",
+      "Xem các pod lỗi trong namespace default của cụm AKS hiện tại"
+    ],
+    "prosVi": [
+      "Dự án chính thức của Microsoft, giấy phép MIT",
+      "Mặc định chỉ đọc, có thể giới hạn thành phần và namespace",
+      "Có binary cho Windows, macOS, Linux (AMD64/ARM64)"
+    ],
+    "consVi": [
+      "Ai gọi được công cụ sẽ có toàn quyền Azure/Kubernetes của danh tính đang chạy server",
+      "Chỉ hỗ trợ mô hình triển khai cục bộ cho một người dùng; triển khai dùng chung không được hỗ trợ",
+      "Cần tài khoản Azure và Azure CLI"
+    ],
+    "sourceEvidence": {
+      "az login": "README.md:493",
+      "chmod +x aks-mcp": "README.md:707",
+      "./aks-mcp": "README.md:696",
+      "jsonConfig mcpServers aks": "README.md:680"
+    },
+    "meta": {
+      "id": "azure-aks-mcp",
+      "nameVi": "AKS-MCP — MCP server chính thức quản lý Azure Kubernetes Service",
+      "icon": "Layers",
+      "categories": [
+        "cloud_infrastructure",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "./aks-mcp",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"aks\": {\n      \"command\": \"<path of binary aks-mcp>\",\n      \"args\": []\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "containers/kubernetes-mcp-server",
+    "license": "Apache License 2.0",
+    "authorName": "containers (Red Hat)",
+    "websiteUrl": "",
+    "toolType": "mcp",
+    "taglineEn": "A powerful and flexible Kubernetes Model Context Protocol (MCP) server implementation with support for Kubernetes and OpenShift.",
+    "summaryVi": "MCP server cho Kubernetes và OpenShift thuộc tổ chức containers, thao tác được với mọi tài nguyên Kubernetes, pod, namespace, sự kiện, Helm, Tekton và nhiều bộ công cụ quan sát. Chạy bằng npx, uvx hoặc binary phát hành sẵn.",
+    "purposeVi": "Giúp kỹ sư DevOps quản lý và chẩn đoán cụm Kubernetes/OpenShift bằng ngôn ngữ tự nhiên trong trợ lý AI.",
+    "featuresVi": [
+      "Cấu hình: tự phát hiện thay đổi kubeconfig, xem và quản lý `.kube/config` hoặc cấu hình in-cluster",
+      "Tài nguyên tổng quát: CRUD với bất kỳ tài nguyên Kubernetes/OpenShift nào",
+      "Pod: liệt kê, xem log, top, exec, chạy image",
+      "Helm: cài đặt, liệt kê, gỡ release",
+      "Tekton: chạy Pipeline/Task, khởi động lại, hủy, xem log PipelineRun",
+      "Bộ công cụ tùy chọn: kiali, kubevirt, kcp, netobserv, Loki, Prometheus, Tempo, OpenTelemetry Collector",
+      "Cấu hình bằng tệp TOML, có chế độ read_only"
+    ],
+    "requirementsVi": "Quyền truy cập một cụm Kubernetes; Node.js (npx) hoặc uv (uvx) hoặc tải binary.",
+    "installStepsVi": [
+      "Cài đặt và chạy bằng npx: `npx kubernetes-mcp-server@latest --help`",
+      "Hoặc chạy bằng uvx: `uvx kubernetes-mcp-server@latest --help`",
+      "Thêm khối cấu hình `kubernetes` vào `claude_desktop_config.json` hoặc theo hướng dẫn riêng cho Claude Code trong thư mục docs"
+    ],
+    "cliCommand": "npx kubernetes-mcp-server@latest --help",
+    "usageStepsVi": [
+      "Đảm bảo kubeconfig trỏ tới cụm cần dùng (nên dùng ServiceAccount chỉ đọc cho môi trường sản xuất)",
+      "Bật thêm toolset cần thiết (helm, tekton, observability...) trong tệp TOML",
+      "Khởi động lại MCP client và yêu cầu trợ lý AI thao tác với cụm"
+    ],
+    "samplePromptsVi": [
+      "Liệt kê các pod đang CrashLoopBackOff trong mọi namespace",
+      "Xem log của pod api-server trong namespace backend",
+      "Liệt kê các Helm release đang cài trong cụm"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, phát triển rất tích cực",
+      "Hỗ trợ cả Kubernetes và OpenShift, nhiều toolset mở rộng",
+      "Nhiều cách chạy: npx, uvx, binary, Helm chart"
+    ],
+    "consVi": [
+      "Cần quyền truy cập cụm; cấu hình quyền rộng có thể gây rủi ro nếu không bật chế độ chỉ đọc",
+      "Một số toolset (kiali, kubevirt, netobserv) cần thành phần tương ứng cài sẵn trong cụm"
+    ],
+    "sourceEvidence": {
+      "npx kubernetes-mcp-server@latest --help": "README.md:178",
+      "uvx kubernetes-mcp-server@latest --help": "README.md:183",
+      "jsonConfig mcpServers kubernetes": "README.md:82"
+    },
+    "meta": {
+      "id": "containers-kubernetes-mcp-server",
+      "nameVi": "Kubernetes MCP Server — MCP server cho Kubernetes và OpenShift",
+      "icon": "Box",
+      "categories": [
+        "cloud_infrastructure",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "npx kubernetes-mcp-server@latest --help",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"kubernetes\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"kubernetes-mcp-server@latest\"\n      ]\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "GoogleCloudPlatform/cloud-run-mcp",
+    "license": "Apache License 2.0",
+    "authorName": "Google Cloud",
+    "websiteUrl": "",
+    "toolType": "mcp",
+    "taglineEn": "Enable MCP-compatible AI agents to deploy apps to Cloud Run.",
+    "summaryVi": "MCP server và tiện ích mở rộng Gemini CLI chính thức của Google Cloud, cho phép tác tử AI triển khai ứng dụng lên Cloud Run. Hỗ trợ triển khai từ CLI, IDE, ứng dụng trợ lý AI và các SDK tác tử.",
+    "purposeVi": "Công cụ giúp lập trình viên triển khai mã nguồn lên Cloud Run, liệt kê dịch vụ và xem log trực tiếp từ trợ lý AI.",
+    "featuresVi": [
+      "deploy-file-contents: triển khai tệp lên Cloud Run bằng nội dung trực tiếp",
+      "deploy-local-folder: triển khai thư mục cục bộ (chỉ khi chạy cục bộ)",
+      "list-services / get-service: liệt kê và xem chi tiết dịch vụ Cloud Run",
+      "get-service-log: lấy log và thông báo lỗi của dịch vụ",
+      "list-projects / create-project: liệt kê và tạo dự án GCP (chỉ khi chạy cục bộ)",
+      "Prompt `deploy` và `logs` làm lối tắt cho thao tác thường gặp"
+    ],
+    "requirementsVi": "Google Cloud SDK đã đăng nhập; Node.js (bản LTS) hoặc Docker; dự án GCP có thanh toán.",
+    "installStepsVi": [
+      "Cài đặt Google Cloud SDK rồi đăng nhập: `gcloud auth login`",
+      "Thiết lập thông tin xác thực ứng dụng: `gcloud auth application-default login`",
+      "Thêm khối cấu hình `cloud-run` (npx -y @google-cloud/cloud-run-mcp) vào tệp cấu hình MCP client",
+      "Hoặc cài đặt dưới dạng tiện ích Gemini CLI: `gemini extensions install https://github.com/GoogleCloudPlatform/cloud-run-mcp`"
+    ],
+    "cliCommand": "npx -y @google-cloud/cloud-run-mcp",
+    "usageStepsVi": [
+      "Tùy chọn đặt GOOGLE_CLOUD_PROJECT, GOOGLE_CLOUD_REGION, DEFAULT_SERVICE_NAME",
+      "Khởi động lại MCP client",
+      "Yêu cầu trợ lý AI triển khai thư mục hiện tại hoặc xem log dịch vụ"
+    ],
+    "samplePromptsVi": [
+      "Triển khai thư mục hiện tại lên Cloud Run với tên dịch vụ my-api",
+      "Liệt kê các dịch vụ Cloud Run trong dự án ở vùng asia-southeast1",
+      "Lấy log lỗi gần nhất của dịch vụ my-api"
+    ],
+    "prosVi": [
+      "Dự án chính thức của Google Cloud, giấy phép Apache 2.0",
+      "Dùng được với Claude, Cursor, VS Code, Gemini CLI và SDK tác tử",
+      "Có thể chạy cục bộ hoặc tự host server trên Cloud Run"
+    ],
+    "consVi": [
+      "Cần tài khoản Google Cloud và dự án có thanh toán",
+      "Một số công cụ (deploy-local-folder, create-project) chỉ có khi chạy cục bộ",
+      "Mặc định SKIP_IAM_CHECK=true khiến dịch vụ được công khai"
+    ],
+    "sourceEvidence": {
+      "gcloud auth login": "README.md:111",
+      "gcloud auth application-default login": "README.md:116",
+      "gemini extensions install https://github.com/GoogleCloudPlatform/cloud-run-mcp": "README.md:71",
+      "npx -y @google-cloud/cloud-run-mcp": "README.md:7-9",
+      "jsonConfig mcpServers cloud-run": "README.md:5-12"
+    },
+    "meta": {
+      "id": "googlecloudplatform-cloud-run-mcp",
+      "nameVi": "Cloud Run MCP — MCP server chính thức triển khai ứng dụng lên Google Cloud Run",
+      "icon": "Globe",
+      "categories": [
+        "cloud_infrastructure",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "npx -y @google-cloud/cloud-run-mcp",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"cloud-run\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@google-cloud/cloud-run-mcp\"\n      ]\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "auth0/auth0-mcp-server",
+    "license": "MIT License",
+    "authorName": "Auth0 (Okta)",
+    "websiteUrl": "https://auth0.com/docs/get-started/mcp",
+    "toolType": "mcp",
+    "taglineEn": "Connect Claude, Cursor, or Windsurf to your Auth0 tenant to create apps, deploy Actions, debug logs, and manage users — all without touching the dashboard.",
+    "summaryVi": "MCP server chính thức của Auth0 cho phép trợ lý AI thực hiện thao tác quản trị Auth0 bằng ngôn ngữ tự nhiên: tạo ứng dụng, triển khai Actions, xem log, quản lý resource server và form. Lệnh `init` tự cấu hình cho Claude Desktop, Claude Code, Cursor, Windsurf, VS Code, Gemini.",
+    "purposeVi": "Giúp lập trình viên quản lý tenant Auth0 và tích hợp xác thực cho dự án mà không cần mở dashboard.",
+    "featuresVi": [
+      "Ứng dụng: liệt kê, xem, tạo, cập nhật ứng dụng Auth0",
+      "Onboarding: công cụ `auth0_onboarding` tạo ứng dụng theo framework và ghi thông tin vào `.env`",
+      "Resource Servers, Application Grants, Actions (tạo và triển khai), Logs, Forms",
+      "Giới hạn công cụ bằng `--tools` với mẫu ký tự đại diện và chế độ `--read-only`",
+      "Xác thực OAuth 2.0 device flow, lưu thông tin trong keychain hệ thống"
+    ],
+    "requirementsVi": "Node.js v18 trở lên; Claude Desktop hoặc MCP client khác; tài khoản Auth0 có quyền phù hợp.",
+    "installStepsVi": [
+      "Cài đặt cho Claude Desktop với mọi công cụ: `npx @auth0/auth0-mcp-server init`",
+      "Cài đặt cho Claude Code: `npx @auth0/auth0-mcp-server init --client claude-code`",
+      "Đăng nhập Auth0 trong trình duyệt theo luồng device authorization và cấp quyền",
+      "Khởi động lại MCP client"
+    ],
+    "cliCommand": "npx @auth0/auth0-mcp-server init",
+    "usageStepsVi": [
+      "Dùng `npx @auth0/auth0-mcp-server run --read-only` nếu chỉ cần thao tác đọc",
+      "Hỏi trợ lý AI để quản lý tenant Auth0",
+      "Yêu cầu onboard dự án (ví dụ Next.js) để tự tạo ứng dụng và tệp .env"
+    ],
+    "samplePromptsVi": [
+      "Tạo ứng dụng Auth0 mới và cho tôi domain cùng client ID",
+      "Tạo và triển khai một Auth0 Action để sinh JWT token",
+      "Kiểm tra log Auth0 các lần đăng nhập từ địa chỉ IP 192.108.92.3"
+    ],
+    "prosVi": [
+      "Server chính thức của Auth0, giấy phép MIT",
+      "Lệnh init tự cấu hình cho nhiều client",
+      "Hỗ trợ chế độ chỉ đọc và lọc công cụ chi tiết"
+    ],
+    "consVi": [
+      "Đang ở giai đoạn beta, cung cấp nguyên trạng, không khuyến nghị cho môi trường sản xuất",
+      "Cần tài khoản Auth0",
+      "Hỗ trợ trong giai đoạn beta còn hạn chế"
+    ],
+    "sourceEvidence": {
+      "npx @auth0/auth0-mcp-server init": "README.md:62",
+      "npx @auth0/auth0-mcp-server init --client claude-code": "README.md:82",
+      "npx @auth0/auth0-mcp-server run --read-only": "README.md:292",
+      "jsonConfig mcpServers auth0": "README.md:181"
+    },
+    "meta": {
+      "id": "auth0-auth0-mcp-server",
+      "nameVi": "Auth0 MCP Server — MCP server chính thức quản trị tenant Auth0",
+      "icon": "Wrench",
+      "categories": [
+        "cybersecurity_security",
+        "backend_api"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "npx @auth0/auth0-mcp-server init --client claude-code"
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "npx @auth0/auth0-mcp-server init",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"auth0\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@auth0/auth0-mcp-server\",\n        \"run\"\n      ],\n      \"capabilities\": [\n        \"tools\"\n      ],\n      \"env\": {\n        \"DEBUG\": \"auth0-mcp\"\n      }\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "mapbox/mcp-server",
+    "license": "MIT License",
+    "authorName": "Mapbox",
+    "websiteUrl": "https://mcp.mapbox.com/mcp",
+    "toolType": "mcp",
+    "taglineEn": "Node.js server implementing Model Context Protocol (MCP) for Mapbox APIs.",
+    "summaryVi": "MCP server chính thức của Mapbox giúp tác tử AI hiểu và suy luận về vị trí: mã hóa địa lý, tìm điểm quan tâm, chỉ đường đa phương thức, ma trận thời gian di chuyển, tối ưu lộ trình, isochrone, bản đồ tĩnh và bản đồ tương tác. Dùng qua endpoint hosted hoặc gói npm @mapbox/mcp-server.",
+    "purposeVi": "Công cụ bổ sung khả năng không gian địa lý cho trợ lý AI, phục vụ du lịch, logistics và gợi ý theo vị trí.",
+    "featuresVi": [
+      "Mã hóa địa lý toàn cầu và mã hóa ngược",
+      "Tìm kiếm điểm quan tâm (POI) theo danh mục",
+      "Chỉ đường lái xe, đi bộ, xe đạp với giao thông thời gian thực; ma trận thời gian di chuyển",
+      "Tối ưu thứ tự ghé nhiều điểm và map matching cho dữ liệu GPS",
+      "Isochrone, bản đồ tĩnh và `render_map_tool` hiển thị bản đồ tương tác trong khung chat",
+      "Tính toán không gian ngoại tuyến (khoảng cách, diện tích, buffer...) không cần gọi API"
+    ],
+    "requirementsVi": "Bắt buộc có Mapbox access token (đăng ký tài khoản Mapbox); Node.js để chạy npx hoặc mcp-remote.",
+    "installStepsVi": [
+      "Đăng ký tài khoản Mapbox và tạo access token",
+      "Cài đặt cho Claude Code với endpoint hosted: `claude mcp add --transport http mapbox-mcp-production https://mcp.mapbox.com/mcp`",
+      "Với Claude Desktop, thêm khối cấu hình `mapbox-mcp` (npx mcp-remote https://mcp.mapbox.com/mcp) hoặc dùng gói `@mapbox/mcp-server` kèm MAPBOX_ACCESS_TOKEN"
+    ],
+    "cliCommand": "claude mcp add --transport http mapbox-mcp-production https://mcp.mapbox.com/mcp",
+    "usageStepsVi": [
+      "Trong Claude Code chạy `/mcp` để khởi tạo kết nối và xác thực",
+      "Gửi tọa độ hoặc địa chỉ để trợ lý tra cứu",
+      "Yêu cầu chỉ đường, isochrone hoặc hiển thị bản đồ"
+    ],
+    "samplePromptsVi": [
+      "Tìm quán cà phê trong bán kính 10 phút đi bộ quanh tọa độ 40.7580, -73.9855",
+      "Từ 37.7749, -122.4194 có thể đi bộ tới đâu trong 15 phút?",
+      "Tối ưu thứ tự ghé 5 địa chỉ giao hàng này và vẽ lộ trình lên bản đồ"
+    ],
+    "prosVi": [
+      "Server chính thức của Mapbox, giấy phép MIT",
+      "Có endpoint hosted dùng ngay, không cần tự chạy server",
+      "Nhiều công cụ tính toán ngoại tuyến không tốn lượt gọi API"
+    ],
+    "consVi": [
+      "Bắt buộc có Mapbox access token",
+      "Claude Desktop cần mcp-remote làm trung gian để kết nối endpoint hosted"
+    ],
+    "sourceEvidence": {
+      "claude mcp add --transport http mapbox-mcp-production https://mcp.mapbox.com/mcp": "docs/hosted-mcp-guide.md:20",
+      "jsonConfig mcpServers mapbox-mcp": "docs/hosted-mcp-guide.md:46-55",
+      "Hosted endpoint https://mcp.mapbox.com/mcp": "README.md:34"
+    },
+    "meta": {
+      "id": "mapbox-mcp-server",
+      "nameVi": "Mapbox MCP Server — MCP server chính thức cho bản đồ, định vị và chỉ đường",
+      "icon": "Globe",
+      "categories": [
+        "backend_api",
+        "data_science_analytics"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude mcp add --transport http mapbox-mcp-production https://mcp.mapbox.com/mcp"
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "npx mcp-remote https://mcp.mapbox.com/mcp",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"mapbox-mcp\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"mcp-remote\",\n        \"https://mcp.mapbox.com/mcp\"\n      ]\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "heroku/heroku-mcp-server",
+    "license": "Apache License 2.0",
+    "authorName": "Heroku (Salesforce)",
+    "websiteUrl": "https://devcenter.heroku.com/articles/heroku-mcp-server",
+    "toolType": "mcp",
+    "taglineEn": "The Heroku Platform MCP Server is a specialized Model Context Protocol (MCP) implementation designed to facilitate seamless interaction between large language models (LLMs) and the Heroku Platform.",
+    "summaryVi": "MCP server chính thức của Heroku cho phép LLM đọc, quản lý và vận hành tài nguyên Heroku: ứng dụng, dyno, add-on, pipeline, log và cơ sở dữ liệu PostgreSQL. Khởi chạy bằng `heroku mcp:start` (dùng phiên Heroku CLI sẵn có) hoặc `npx -y @heroku/mcp-server` với HEROKU_API_KEY.",
+    "purposeVi": "Giúp lập trình viên triển khai và vận hành ứng dụng Heroku, quản lý dữ liệu PostgreSQL bằng ngôn ngữ tự nhiên.",
+    "featuresVi": [
+      "Quản lý ứng dụng: liệt kê, tạo, đổi tên, chuyển quyền sở hữu, triển khai với app.json",
+      "Dyno: liệt kê, scale, khởi động lại; chạy mã trong one-off dyno",
+      "Add-on, chế độ bảo trì và xem log ứng dụng",
+      "Pipeline: tạo, promote, liệt kê, xem thông tin",
+      "PostgreSQL: chạy truy vấn, xem khóa, truy vấn tốn tài nguyên, sao lưu, nâng cấp"
+    ],
+    "requirementsVi": "Heroku CLI cài toàn cục phiên bản 10.8.1 trở lên; tài khoản Heroku; Node.js nếu chạy qua npx.",
+    "installStepsVi": [
+      "Cài đặt Heroku CLI 10.8.1+ và kiểm tra: `heroku --version`",
+      "Thêm khối cấu hình `heroku` với lệnh `heroku mcp:start` vào tệp cấu hình MCP (khuyến nghị, dùng phiên đăng nhập CLI)",
+      "Hoặc tạo token bằng `heroku authorizations:create` và cấu hình `npx -y @heroku/mcp-server` với HEROKU_API_KEY"
+    ],
+    "cliCommand": "heroku mcp:start",
+    "usageStepsVi": [
+      "Khởi động lại MCP client sau khi thêm cấu hình",
+      "Yêu cầu trợ lý AI liệt kê ứng dụng, xem log hoặc scale dyno",
+      "Dùng công cụ pg_* để kiểm tra cơ sở dữ liệu PostgreSQL"
+    ],
+    "samplePromptsVi": [
+      "Liệt kê các ứng dụng Heroku của team tôi",
+      "Xem log gần nhất của ứng dụng my-shop và tìm lỗi",
+      "Kiểm tra các truy vấn tốn tài nguyên nhất trên cơ sở dữ liệu PostgreSQL của my-shop"
+    ],
+    "prosVi": [
+      "Server chính thức của Heroku, giấy phép Apache 2.0",
+      "Dùng phiên Heroku CLI, không cần lộ API key",
+      "Bao phủ cả ứng dụng, pipeline và PostgreSQL"
+    ],
+    "consVi": [
+      "Đang ở giai đoạn phát triển sớm, công cụ có thể thay đổi",
+      "Bắt buộc cài Heroku CLI 10.8.1+ và có tài khoản Heroku"
+    ],
+    "sourceEvidence": {
+      "heroku --version": "README.md:33",
+      "heroku mcp:start": "README.md:58",
+      "heroku authorizations:create": "README.md:161",
+      "npx -y @heroku/mcp-server": "README.md:147",
+      "jsonConfig mcpServers heroku": "README.md:54-62"
+    },
+    "meta": {
+      "id": "heroku-heroku-mcp-server",
+      "nameVi": "Heroku MCP Server — MCP server chính thức vận hành ứng dụng trên Heroku",
+      "icon": "Terminal",
+      "categories": [
+        "cloud_infrastructure",
+        "devops_cicd",
+        "database_sql_nosql"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "heroku mcp:start",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"heroku\": {\n      \"command\": \"heroku mcp:start\"\n    }\n  }\n}"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "cliCommand": "npx -y @heroku/mcp-server",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"heroku\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@heroku/mcp-server\"\n      ],\n      \"env\": {\n        \"HEROKU_API_KEY\": \"<YOUR_HEROKU_AUTH_TOKEN>\"\n      }\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "atlassian/atlassian-mcp-server",
+    "license": "Apache License 2.0",
+    "authorName": "Atlassian",
+    "websiteUrl": "https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/",
+    "toolType": "mcp",
+    "taglineEn": "The official Model Context Protocol (MCP) server for Atlassian: a cloud-hosted bridge that gives your AI tools secure, real-time access to Jira, Confluence, Jira Service Management, Bitbucket, Compass, Loom, and the wider Atlassian platform — powered by your Teamwork Graph.",
+    "summaryVi": "MCP server chính thức của Atlassian (Rovo MCP), lưu trữ trên Atlassian Cloud, cho công cụ AI truy cập an toàn theo thời gian thực vào Jira, Confluence, Jira Service Management, Bitbucket, Compass, Loom, Goals, Projects. Repo chứa tài liệu, plugin và cấu hình kết nối tới endpoint https://mcp.atlassian.com/v2/mcp.",
+    "purposeVi": "Giúp nhóm tìm kiếm, tạo và cập nhật issue Jira, trang Confluence và dữ liệu công việc khác ngay trong trợ lý AI.",
+    "featuresVi": [
+      "Jira: đọc, ghi, tìm kiếm; xóa và quản trị khi admin bật",
+      "Confluence: tóm tắt, tạo và tìm kiếm trang",
+      "Jira Service Management, Bitbucket Cloud, Compass, Loom, Goals, Projects, Teams",
+      "Xác thực OAuth 2.1 hoặc API token (bắt buộc với JSM)",
+      "Khám phá công cụ theo nhu cầu để tiết kiệm ngữ cảnh; tham số `tools=all` cho MCP gateway",
+      "Admin quản lý quyền theo nhóm quyền, theo dõi và thu hồi truy cập"
+    ],
+    "requirementsVi": "Site Atlassian Cloud có Jira, Confluence, JSM, Bitbucket hoặc Compass; trình duyệt để đăng nhập OAuth 2.1 hoặc API token; Node.js 18+ nếu client cần proxy mcp-remote.",
+    "installStepsVi": [
+      "Cài đặt cho Claude Code: `claude mcp add --transport http atlassian https://mcp.atlassian.com/v2/mcp`",
+      "Chạy `/mcp` trong phiên Claude Code để xác thực",
+      "Với client khác, dùng URL https://mcp.atlassian.com/v2/mcp hoặc tệp cấu hình `.mcp.json` trong repo"
+    ],
+    "cliCommand": "claude mcp add --transport http atlassian https://mcp.atlassian.com/v2/mcp",
+    "usageStepsVi": [
+      "Đăng nhập Atlassian qua OAuth 2.1 khi được yêu cầu",
+      "Đặt CloudId, dự án Jira và không gian Confluence mặc định để truy vấn nhanh hơn",
+      "Yêu cầu trợ lý AI tìm kiếm, tóm tắt hoặc tạo nội dung"
+    ],
+    "samplePromptsVi": [
+      "Tìm tất cả bug đang mở trong dự án Project Alpha",
+      "Tóm tắt trang Confluence về kế hoạch quý 2",
+      "Tạo năm issue Jira từ ghi chú cuộc họp này"
+    ],
+    "prosVi": [
+      "Server chính thức của Atlassian, đã phát hành chính thức (GA)",
+      "Hosted trên Atlassian Cloud, không cần tự vận hành",
+      "Quyền truy cập kế thừa phân quyền Atlassian, admin kiểm soát được"
+    ],
+    "consVi": [
+      "Chỉ hỗ trợ Atlassian Cloud, cần site và tài khoản Atlassian",
+      "Một số công cụ (xóa/quản trị Jira, JSM qua API token) cần admin bật",
+      "Repo chủ yếu là tài liệu và cấu hình; mã server chạy trên hạ tầng Atlassian"
+    ],
+    "sourceEvidence": {
+      "claude mcp add --transport http atlassian https://mcp.atlassian.com/v2/mcp": "README.md:115",
+      "jsonConfig mcpServers atlassian": ".mcp.json:1-8"
+    },
+    "meta": {
+      "id": "atlassian-atlassian-mcp-server",
+      "nameVi": "Atlassian MCP Server — MCP server chính thức cho Jira, Confluence và Bitbucket",
+      "icon": "FolderTree",
+      "categories": [
+        "office_digital_docs",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude mcp add --transport http atlassian https://mcp.atlassian.com/v2/mcp",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"atlassian\": {\n      \"type\": \"http\",\n      \"url\": \"https://mcp.atlassian.com/v2/mcp\"\n    }\n  }\n}"
+        }
+      ]
+    }
+  }
+]

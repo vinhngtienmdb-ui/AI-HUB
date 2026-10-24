@@ -170085,5 +170085,2071 @@
       "guideIsTemplate": false,
       "starsVerified": false
     }
+  },
+  {
+    "id": "helicone-helicone",
+    "slug": "helicone-helicone",
+    "name": "Helicone — Cổng AI và nền tảng quan sát, theo dõi chi phí ứng dụng LLM",
+    "icon": "Globe",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "devops_cicd",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "DevOps & Tự động hóa CI/CD",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/Helicone/helicone",
+    "websiteUrl": "https://www.helicone.ai",
+    "authorName": "Helicone",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Helicone là cổng AI (AI Gateway) kiêm nền tảng quan sát LLM mã nguồn mở: truy cập hơn 100 mô hình qua một khóa API theo chuẩn OpenAI, có định tuyến thông minh và tự động chuyển dự phòng. Nền tảng ghi lại trace và phiên làm việc của agent, theo dõi chi phí, độ trễ, chất lượng, kèm playground và quản lý prompt. Có thể dùng bản đám mây hoặc tự triển khai bằng Docker.",
+    "purposeVi": "Ghi nhật ký, gỡ lỗi và theo dõi chi phí các lời gọi LLM, đồng thời gom nhiều nhà cung cấp mô hình về một cổng API duy nhất.",
+    "featuresVi": [
+      "AI Gateway: hơn 100 mô hình qua một khóa API theo giao diện OpenAI, định tuyến thông minh và tự động chuyển dự phòng",
+      "Tích hợp một dòng mã: ghi lại mọi yêu cầu từ OpenAI, Anthropic, LangChain, Gemini, Vercel AI SDK...",
+      "Quan sát: kiểm tra trace và phiên (sessions) của agent, chatbot, pipeline xử lý tài liệu",
+      "Phân tích: theo dõi chi phí, độ trễ, chất lượng; xuất sang PostHog để dựng dashboard",
+      "Playground và quản lý prompt: thử nghiệm, đánh phiên bản prompt bằng dữ liệu thật và triển khai qua gateway không cần sửa mã",
+      "Tinh chỉnh mô hình qua đối tác OpenPipe hoặc Autonomi",
+      "Truy xuất dữ liệu qua API hoặc máy chủ MCP của Helicone"
+    ],
+    "installGuideVi": "Yêu cầu: Docker để tự triển khai (kiến trúc gồm Web NextJS, Worker, Jawn, Supabase, ClickHouse, Minio); hoặc tài khoản Helicone Cloud và HELICONE_API_KEY khi dùng bản đám mây.\nBước 1: Tải mã nguồn: `git clone https://github.com/Helicone/helicone.git`\nBước 2: Vào thư mục docker trong mã nguồn vừa tải: `cd docker`\nBước 3: Tạo tệp cấu hình môi trường: `cp .env.example .env`\nBước 4: Cài đặt và khởi động các dịch vụ: `./helicone-compose.sh helicone up`",
+    "usageGuideVi": "Bước 1: Với bản đám mây: đăng ký tài khoản, lấy khóa API và nạp credits theo hướng dẫn trong README\nBước 2: Đổi baseURL của OpenAI SDK sang https://ai-gateway.helicone.ai và dùng HELICONE_API_KEY làm apiKey\nBước 3: Gọi mô hình như bình thường (gpt-4o-mini, claude-sonnet-4, gemini-2.0-flash...)\nBước 4: Xem nhật ký, chi phí và trace trên dashboard của Helicone",
+    "samplePromptsVi": [
+      "Chuyển ứng dụng chatbot dùng OpenAI SDK sang gọi qua Helicone AI Gateway để ghi lại toàn bộ dữ liệu yêu cầu",
+      "Theo dõi chi phí và độ trễ theo từng phiên của agent xử lý tài liệu trên dashboard Helicone",
+      "Đánh phiên bản prompt hệ thống bằng tính năng Prompt Management và triển khai qua gateway"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "./helicone-compose.sh helicone up",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"./helicone-compose.sh helicone up\"\n  ],\n  \"nguon\": \"https://github.com/Helicone/helicone\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "freemium",
+    "pricingText": "Mã nguồn mở, tự triển khai miễn phí; bản đám mây có gói miễn phí 10.000 yêu cầu/tháng (theo README)",
+    "prosVi": [
+      "Giấy phép Apache 2.0 cho toàn bộ kho mã",
+      "Tự triển khai được bằng Docker Compose",
+      "Kết hợp cổng AI (định tuyến, dự phòng) với quan sát, phân tích chi phí trong một công cụ",
+      "Bản đám mây có gói miễn phí 10.000 yêu cầu/tháng, không cần thẻ tín dụng (theo README)"
+    ],
+    "consVi": [
+      "Kiến trúc tự triển khai gồm nhiều dịch vụ (Supabase, ClickHouse, Minio...)",
+      "Helm chart cho môi trường production chỉ cung cấp khi liên hệ enterprise@helicone.ai",
+      "README không khuyến nghị triển khai thủ công ngoài Docker/Helm",
+      "Dùng bản đám mây cần tài khoản, khóa API và nạp credits"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Helicone — Cổng AI và nền tảng quan sát, theo dõi chi phí ứng dụng LLM\n\n> Helicone is an AI Gateway & LLM Observability Platform for AI Engineers\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nHelicone là cổng AI (AI Gateway) kiêm nền tảng quan sát LLM mã nguồn mở: truy cập hơn 100 mô hình qua một khóa API theo chuẩn OpenAI, có định tuyến thông minh và tự động chuyển dự phòng. Nền tảng ghi lại trace và phiên làm việc của agent, theo dõi chi phí, độ trễ, chất lượng, kèm playground và quản lý prompt. Có thể dùng bản đám mây hoặc tự triển khai bằng Docker.\n\nGhi nhật ký, gỡ lỗi và theo dõi chi phí các lời gọi LLM, đồng thời gom nhiều nhà cung cấp mô hình về một cổng API duy nhất.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Helicone\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/Helicone/helicone](https://github.com/Helicone/helicone)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **AI Gateway: hơn 100 mô hình qua một khóa API theo giao diện OpenAI, định tuyến thông minh và tự động chuyển dự phòng**\n- **Tích hợp một dòng mã: ghi lại mọi yêu cầu từ OpenAI, Anthropic, LangChain, Gemini, Vercel AI SDK...**\n- **Quan sát: kiểm tra trace và phiên (sessions) của agent, chatbot, pipeline xử lý tài liệu**\n- **Phân tích: theo dõi chi phí, độ trễ, chất lượng; xuất sang PostHog để dựng dashboard**\n- **Playground và quản lý prompt: thử nghiệm, đánh phiên bản prompt bằng dữ liệu thật và triển khai qua gateway không cần sửa mã**\n- **Tinh chỉnh mô hình qua đối tác OpenPipe hoặc Autonomi**\n- **Truy xuất dữ liệu qua API hoặc máy chủ MCP của Helicone**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n./helicone-compose.sh helicone up\n```\n\nYêu cầu: Docker để tự triển khai (kiến trúc gồm Web NextJS, Worker, Jawn, Supabase, ClickHouse, Minio); hoặc tài khoản Helicone Cloud và HELICONE_API_KEY khi dùng bản đám mây.\nBước 1: Tải mã nguồn: `git clone https://github.com/Helicone/helicone.git`\nBước 2: Vào thư mục docker trong mã nguồn vừa tải: `cd docker`\nBước 3: Tạo tệp cấu hình môi trường: `cp .env.example .env`\nBước 4: Cài đặt và khởi động các dịch vụ: `./helicone-compose.sh helicone up`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Với bản đám mây: đăng ký tài khoản, lấy khóa API và nạp credits theo hướng dẫn trong README\nBước 2: Đổi baseURL của OpenAI SDK sang https://ai-gateway.helicone.ai và dùng HELICONE_API_KEY làm apiKey\nBước 3: Gọi mô hình như bình thường (gpt-4o-mini, claude-sonnet-4, gemini-2.0-flash...)\nBước 4: Xem nhật ký, chi phí và trace trên dashboard của Helicone\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Chuyển ứng dụng chatbot dùng OpenAI SDK sang gọi qua Helicone AI Gateway để ghi lại toàn bộ dữ liệu yêu cầu\"\n- \"Theo dõi chi phí và độ trễ theo từng phiên của agent xử lý tài liệu trên dashboard Helicone\"\n- \"Đánh phiên bản prompt hệ thống bằng tính năng Prompt Management và triển khai qua gateway\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "wandb-weave",
+    "slug": "wandb-weave",
+    "name": "Weave — Bộ công cụ trace và đánh giá AI agent của Weights & Biases",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "qa_testing",
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Kiểm thử phần mềm & QA/QC",
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/wandb/weave",
+    "websiteUrl": "https://wandb.me/weave",
+    "authorName": "Weights & Biases",
+    "license": "Mã nguồn mở (Apache-2.0); cần tài khoản Weights & Biases",
+    "summaryVi": "Weave là bộ công cụ của Weights & Biases để ghi trace và đánh giá AI agent cũng như ứng dụng LLM. Chỉ cần gọi weave.init() là các SDK như OpenAI Agents SDK, Claude Agent SDK, Google ADK được tự động ghi lại hội thoại, lượt, lời gọi LLM và công cụ. Ngoài ra có decorator @weave.op để trace hàm bất kỳ và API Conversation cho agent tự viết.",
+    "purposeVi": "Quan sát và đánh giá agent/ứng dụng LLM bằng SDK Python, đẩy dữ liệu trace lên dự án Weights & Biases.",
+    "featuresVi": [
+      "Trace agent: hội thoại, lượt, lời gọi LLM và công cụ hiển thị trong tab Agents",
+      "Tự động vá (autopatch) OpenAI Agents SDK, Claude Agent SDK, Google ADK sau weave.init()",
+      "Agent tự viết: dùng start_conversation, start_turn, start_llm, start_tool",
+      "Trace hàm với @weave.op; lời gọi openai thuần cũng được tự động trace vào tab Calls",
+      "Đánh giá (Evaluations) agent và ứng dụng LLM"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10 trở lên; tài khoản Weights & Biases (có gói miễn phí) và khóa WANDB_API_KEY; ví dụ trong README cần thêm OPENAI_API_KEY.\nBước 1: Cài đặt Weave cùng OpenAI Agents SDK cho ví dụ trace agent: `pip install weave openai-agents requests`\nBước 2: Hoặc cài đặt Weave với OpenAI SDK để trace hàm: `pip install weave openai`",
+    "usageGuideVi": "Bước 1: Đặt biến môi trường WANDB_API_KEY (lấy tại wandb.ai/authorize) và OPENAI_API_KEY\nBước 2: Gọi weave.init(\"<your-team>/<your-project-name>\") ở đầu chương trình\nBước 3: Chạy agent hoặc gắn @weave.op vào hàm cần theo dõi\nBước 4: Mở đường dẫn dự án được in ra, xem tab Agents hoặc Calls",
+    "samplePromptsVi": [
+      "Thêm weave.init() vào agent viết bằng OpenAI Agents SDK để xem từng lượt hội thoại và lời gọi công cụ",
+      "Bọc hàm trích xuất dữ liệu JSON bằng @weave.op để theo dõi đầu vào, đầu ra và lời gọi OpenAI",
+      "Ghi trace cho vòng lặp agent tự viết bằng start_conversation, start_turn và start_llm"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install weave openai",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install weave openai\"\n  ],\n  \"nguon\": \"https://github.com/wandb/weave\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "freemium",
+    "pricingText": "SDK miễn phí; cần tài khoản Weights & Biases (có gói miễn phí, theo README)",
+    "prosVi": [
+      "SDK theo giấy phép Apache 2.0",
+      "Tích hợp sẵn với OpenAI Agents SDK, Claude Agent SDK và Google ADK chỉ bằng weave.init()",
+      "Hỗ trợ cả trace agent và đánh giá trong một công cụ"
+    ],
+    "consVi": [
+      "Cần tài khoản Weights & Biases và WANDB_API_KEY; README cho biết trace server được phát triển trong wandb/core, không nằm trong kho này",
+      "Phải luôn truyền provider_name khi dùng start_llm vì Weave không tự suy ra từ tên mô hình",
+      "start_session và Session đã bị đánh dấu deprecated",
+      "Mã “Weave engine” và “Weave boards” trong kho đang tạm dừng phát triển"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Weave — Bộ công cụ trace và đánh giá AI agent của Weights & Biases\n\n> Weave is a toolkit for tracing and evaluating AI agents, built by Weights & Biases.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nWeave là bộ công cụ của Weights & Biases để ghi trace và đánh giá AI agent cũng như ứng dụng LLM. Chỉ cần gọi weave.init() là các SDK như OpenAI Agents SDK, Claude Agent SDK, Google ADK được tự động ghi lại hội thoại, lượt, lời gọi LLM và công cụ. Ngoài ra có decorator @weave.op để trace hàm bất kỳ và API Conversation cho agent tự viết.\n\nQuan sát và đánh giá agent/ứng dụng LLM bằng SDK Python, đẩy dữ liệu trace lên dự án Weights & Biases.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Weights & Biases\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0); cần tài khoản Weights & Biases\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/wandb/weave](https://github.com/wandb/weave)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Trace agent: hội thoại, lượt, lời gọi LLM và công cụ hiển thị trong tab Agents**\n- **Tự động vá (autopatch) OpenAI Agents SDK, Claude Agent SDK, Google ADK sau weave.init()**\n- **Agent tự viết: dùng start_conversation, start_turn, start_llm, start_tool**\n- **Trace hàm với @weave.op; lời gọi openai thuần cũng được tự động trace vào tab Calls**\n- **Đánh giá (Evaluations) agent và ứng dụng LLM**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install weave openai\n```\n\nYêu cầu: Python 3.10 trở lên; tài khoản Weights & Biases (có gói miễn phí) và khóa WANDB_API_KEY; ví dụ trong README cần thêm OPENAI_API_KEY.\nBước 1: Cài đặt Weave cùng OpenAI Agents SDK cho ví dụ trace agent: `pip install weave openai-agents requests`\nBước 2: Hoặc cài đặt Weave với OpenAI SDK để trace hàm: `pip install weave openai`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đặt biến môi trường WANDB_API_KEY (lấy tại wandb.ai/authorize) và OPENAI_API_KEY\nBước 2: Gọi weave.init(\"<your-team>/<your-project-name>\") ở đầu chương trình\nBước 3: Chạy agent hoặc gắn @weave.op vào hàm cần theo dõi\nBước 4: Mở đường dẫn dự án được in ra, xem tab Agents hoặc Calls\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Thêm weave.init() vào agent viết bằng OpenAI Agents SDK để xem từng lượt hội thoại và lời gọi công cụ\"\n- \"Bọc hàm trích xuất dữ liệu JSON bằng @weave.op để theo dõi đầu vào, đầu ra và lời gọi OpenAI\"\n- \"Ghi trace cho vòng lặp agent tự viết bằng start_conversation, start_turn và start_llm\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "pydantic-logfire",
+    "slug": "pydantic-logfire",
+    "name": "Pydantic Logfire SDK — Thư viện quan sát Python dựa trên OpenTelemetry cho ứng dụng và LLM",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "devops_cicd",
+    "categoryNameVi": "DevOps & Tự động hóa CI/CD",
+    "categories": [
+      "devops_cicd",
+      "nlp_llm",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "DevOps & Tự động hóa CI/CD",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/pydantic/logfire",
+    "websiteUrl": "https://pydantic.dev/docs/logfire/",
+    "authorName": "Pydantic Services Inc.",
+    "license": "Hỗn hợp (SDK MIT; nền tảng Logfire mã nguồn đóng)",
+    "summaryVi": "Kho này chứa SDK Python và CLI của Pydantic Logfire, một nền tảng quan sát xây dựng trên OpenTelemetry, hỗ trợ đủ traces, metrics và logs. SDK cho phép ghi log, span thủ công hoặc tích hợp tự động với nhiều thư viện phổ biến như FastAPI, đồng thời dùng được cho ứng dụng LLM và agent. Dữ liệu có thể gửi về nền tảng Logfire hoặc bất kỳ backend tương thích OpenTelemetry nào.",
+    "purposeVi": "Đo đạc (instrument) ứng dụng Python, kể cả ứng dụng LLM và agent, để theo dõi trace, log và metric qua OpenTelemetry.",
+    "featuresVi": [
+      "Ghi log và span thủ công: logfire.info, logfire.span",
+      "Tích hợp sẵn nhiều thư viện, ví dụ logfire.instrument_fastapi",
+      "Bọc OpenTelemetry: hỗ trợ đầy đủ traces, metrics và logs",
+      "Truy vấn dữ liệu bằng SQL chuẩn trên nền tảng Logfire",
+      "Tích hợp Pydantic Validation: phân tích dữ liệu qua các model",
+      "Xuất dữ liệu sang bất kỳ backend tương thích OpenTelemetry"
+    ],
+    "installGuideVi": "Yêu cầu: Python; tài khoản Logfire để xác thực bằng lệnh logfire auth khi gửi dữ liệu lên nền tảng Logfire.\nBước 1: Cài đặt SDK Python kèm Logfire CLI: `pip install logfire`\nBước 2: Chỉ cài đặt SDK (không có CLI): `pip install logfire-sdk`\nBước 3: Xác thực tài khoản: `logfire auth`",
+    "usageGuideVi": "Bước 1: Gọi logfire.configure() trong ứng dụng\nBước 2: Ghi log hoặc mở span bằng logfire.info và logfire.span\nBước 3: Bật tích hợp tự động cho framework, ví dụ logfire.instrument_fastapi(app)\nBước 4: Xem dữ liệu trên dashboard Logfire hoặc backend OpenTelemetry khác",
+    "samplePromptsVi": [
+      "Thêm Logfire vào ứng dụng FastAPI gọi LLM để theo dõi từng request và lời gọi mô hình",
+      "Ghi span thủ công quanh bước truy xuất dữ liệu trong pipeline RAG bằng logfire.span",
+      "Cấu hình SDK Logfire để gửi trace sang một backend OpenTelemetry tự quản lý"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install logfire",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install logfire\"\n  ],\n  \"nguon\": \"https://github.com/pydantic/logfire\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "SDK theo giấy phép MIT, dựa trên OpenTelemetry nên không bị khóa vào nền tảng",
+      "Có SDK cho Python, TypeScript và Rust (theo README)",
+      "Do đội ngũ Pydantic phát triển, tích hợp tốt với Pydantic"
+    ],
+    "consVi": [
+      "Mô hình open-core: chỉ SDK và tài liệu là mã nguồn mở; nền tảng Logfire (UI và backend) là mã nguồn đóng",
+      "Tự triển khai nền tảng Logfire cần mua giấy phép enterprise",
+      "Gửi dữ liệu lên Logfire cần tài khoản và xác thực"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Pydantic Logfire SDK — Thư viện quan sát Python dựa trên OpenTelemetry cho ứng dụng và LLM\n\n> From the team behind Pydantic Validation, **Pydantic Logfire** is an observability platform built on the same belief as our open-source library: that the most powerful tools can be easy to use.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nKho này chứa SDK Python và CLI của Pydantic Logfire, một nền tảng quan sát xây dựng trên OpenTelemetry, hỗ trợ đủ traces, metrics và logs. SDK cho phép ghi log, span thủ công hoặc tích hợp tự động với nhiều thư viện phổ biến như FastAPI, đồng thời dùng được cho ứng dụng LLM và agent. Dữ liệu có thể gửi về nền tảng Logfire hoặc bất kỳ backend tương thích OpenTelemetry nào.\n\nĐo đạc (instrument) ứng dụng Python, kể cả ứng dụng LLM và agent, để theo dõi trace, log và metric qua OpenTelemetry.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** DevOps & Tự động hóa CI/CD\n- **Tác giả / Nhà phát triển:** Pydantic Services Inc.\n- **Giấy phép bản quyền:** Hỗn hợp (SDK MIT; nền tảng Logfire mã nguồn đóng)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/pydantic/logfire](https://github.com/pydantic/logfire)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Ghi log và span thủ công: logfire.info, logfire.span**\n- **Tích hợp sẵn nhiều thư viện, ví dụ logfire.instrument_fastapi**\n- **Bọc OpenTelemetry: hỗ trợ đầy đủ traces, metrics và logs**\n- **Truy vấn dữ liệu bằng SQL chuẩn trên nền tảng Logfire**\n- **Tích hợp Pydantic Validation: phân tích dữ liệu qua các model**\n- **Xuất dữ liệu sang bất kỳ backend tương thích OpenTelemetry**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install logfire\n```\n\nYêu cầu: Python; tài khoản Logfire để xác thực bằng lệnh logfire auth khi gửi dữ liệu lên nền tảng Logfire.\nBước 1: Cài đặt SDK Python kèm Logfire CLI: `pip install logfire`\nBước 2: Chỉ cài đặt SDK (không có CLI): `pip install logfire-sdk`\nBước 3: Xác thực tài khoản: `logfire auth`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Gọi logfire.configure() trong ứng dụng\nBước 2: Ghi log hoặc mở span bằng logfire.info và logfire.span\nBước 3: Bật tích hợp tự động cho framework, ví dụ logfire.instrument_fastapi(app)\nBước 4: Xem dữ liệu trên dashboard Logfire hoặc backend OpenTelemetry khác\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Thêm Logfire vào ứng dụng FastAPI gọi LLM để theo dõi từng request và lời gọi mô hình\"\n- \"Ghi span thủ công quanh bước truy xuất dữ liệu trong pipeline RAG bằng logfire.span\"\n- \"Cấu hình SDK Logfire để gửi trace sang một backend OpenTelemetry tự quản lý\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "langwatch-langwatch",
+    "slug": "langwatch-langwatch",
+    "name": "LangWatch — Nền tảng quan sát, kiểm thử và quản trị LLM, agent và trợ lý lập trình AI",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "qa_testing",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Kiểm thử phần mềm & QA/QC",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/langwatch/langwatch",
+    "websiteUrl": "https://langwatch.ai",
+    "authorName": "LangWatch (Reasoning Engine B.V.)",
+    "license": "Mã nguồn mở hỗn hợp (Apache-2.0 cho lõi; enterprise/ theo giấy phép thương mại; SDK MIT)",
+    "summaryVi": "LangWatch là nền tảng mã nguồn mở cho AI trong môi trường production: ghi trace, kiểm thử, định tuyến và quản trị mọi lời gọi LLM trong doanh nghiệp, từ agent tự xây đến trợ lý lập trình như Claude Code, Codex. Nền tảng gồm bốn mảng: LLM Ops (quan sát, kiểm thử agent, đánh giá, quản lý prompt), Coding Agents, AI Gateway và AI Governance. Có thể dùng LangWatch Cloud hoặc tự triển khai bằng một lệnh npx.",
+    "purposeVi": "Theo dõi, đánh giá và kiểm soát chi phí các ứng dụng LLM, agent và trợ lý lập trình AI trong tổ chức.",
+    "featuresVi": [
+      "LLM Ops: quan sát, kiểm thử agent bằng mô phỏng, đánh giá và quản lý prompt",
+      "Coding Agents: theo dõi phiên, chi phí theo pull request và theo nhóm, kiểm soát quyền riêng tư",
+      "AI Gateway: một endpoint tương thích OpenAI và Anthropic, virtual key, ngân sách, định tuyến",
+      "AI Governance: thống kê mọi công cụ AI trong công ty, người dùng và quy tắc phát hiện bất thường",
+      "Tích hợp Claude Code, Codex, GitHub Copilot, LangChain, LangGraph, Vercel AI SDK, LangFlow, Flowise, n8n..."
+    ],
+    "installGuideVi": "Yêu cầu: Node.js 24 trở lên (macOS hoặc Linux dùng glibc) để tự triển khai; hoặc tài khoản LangWatch Cloud.\nBước 1: Cài đặt và chạy máy chủ LangWatch tự triển khai: `npx @langwatch/server`\nBước 2: Theo dõi trợ lý lập trình (Claude Code, Codex, Copilot, opencode...): `npx langwatch claude`",
+    "usageGuideVi": "Bước 1: Khởi động máy chủ LangWatch hoặc đăng ký LangWatch Cloud\nBước 2: Kết nối ứng dụng qua SDK hoặc tích hợp framework để gửi trace\nBước 3: Tạo bài kiểm thử mô phỏng và đánh giá cho agent\nBước 4: Tạo virtual key có ngân sách qua AI Gateway và theo dõi chi phí trên dashboard",
+    "samplePromptsVi": [
+      "Theo dõi chi phí Claude Code theo từng pull request của nhóm bằng LangWatch",
+      "Tạo bài kiểm thử mô phỏng để đánh giá agent chăm sóc khách hàng trước khi phát hành",
+      "Cấp virtual key có giới hạn ngân sách cho từng nhân viên qua AI Gateway của LangWatch"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npx @langwatch/server",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx @langwatch/server\"\n  ],\n  \"nguon\": \"https://github.com/langwatch/langwatch\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Phần lõi theo Apache 2.0, SDK theo MIT",
+      "Tự triển khai chỉ cần Node.js 24 và một lệnh npx",
+      "Gộp quan sát, kiểm thử, gateway và quản trị AI trong một nền tảng",
+      "README nêu tuân thủ GDPR và chứng nhận ISO 27001"
+    ],
+    "consVi": [
+      "Mô hình open-core: các module trong enterprise/ (SSO, SCIM, audit log, webhook gateway...) cần giấy phép thương mại khi dùng trong production",
+      "Tự triển khai nhanh chỉ hỗ trợ macOS hoặc Linux glibc; production cần làm theo tài liệu self-hosting riêng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# LangWatch — Nền tảng quan sát, kiểm thử và quản trị LLM, agent và trợ lý lập trình AI\n\n> LangWatch is the open-source platform for AI in production: trace, test, route and govern every LLM call in your company, from the agents you build to the coding assistants your engineers use.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nLangWatch là nền tảng mã nguồn mở cho AI trong môi trường production: ghi trace, kiểm thử, định tuyến và quản trị mọi lời gọi LLM trong doanh nghiệp, từ agent tự xây đến trợ lý lập trình như Claude Code, Codex. Nền tảng gồm bốn mảng: LLM Ops (quan sát, kiểm thử agent, đánh giá, quản lý prompt), Coding Agents, AI Gateway và AI Governance. Có thể dùng LangWatch Cloud hoặc tự triển khai bằng một lệnh npx.\n\nTheo dõi, đánh giá và kiểm soát chi phí các ứng dụng LLM, agent và trợ lý lập trình AI trong tổ chức.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** LangWatch (Reasoning Engine B.V.)\n- **Giấy phép bản quyền:** Mã nguồn mở hỗn hợp (Apache-2.0 cho lõi; enterprise/ theo giấy phép thương mại; SDK MIT)\n- **Nền tảng hỗ trợ:** `web`, `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/langwatch/langwatch](https://github.com/langwatch/langwatch)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **LLM Ops: quan sát, kiểm thử agent bằng mô phỏng, đánh giá và quản lý prompt**\n- **Coding Agents: theo dõi phiên, chi phí theo pull request và theo nhóm, kiểm soát quyền riêng tư**\n- **AI Gateway: một endpoint tương thích OpenAI và Anthropic, virtual key, ngân sách, định tuyến**\n- **AI Governance: thống kê mọi công cụ AI trong công ty, người dùng và quy tắc phát hiện bất thường**\n- **Tích hợp Claude Code, Codex, GitHub Copilot, LangChain, LangGraph, Vercel AI SDK, LangFlow, Flowise, n8n...**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx @langwatch/server\n```\n\nYêu cầu: Node.js 24 trở lên (macOS hoặc Linux dùng glibc) để tự triển khai; hoặc tài khoản LangWatch Cloud.\nBước 1: Cài đặt và chạy máy chủ LangWatch tự triển khai: `npx @langwatch/server`\nBước 2: Theo dõi trợ lý lập trình (Claude Code, Codex, Copilot, opencode...): `npx langwatch claude`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi động máy chủ LangWatch hoặc đăng ký LangWatch Cloud\nBước 2: Kết nối ứng dụng qua SDK hoặc tích hợp framework để gửi trace\nBước 3: Tạo bài kiểm thử mô phỏng và đánh giá cho agent\nBước 4: Tạo virtual key có ngân sách qua AI Gateway và theo dõi chi phí trên dashboard\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Theo dõi chi phí Claude Code theo từng pull request của nhóm bằng LangWatch\"\n- \"Tạo bài kiểm thử mô phỏng để đánh giá agent chăm sóc khách hàng trước khi phát hành\"\n- \"Cấp virtual key có giới hạn ngân sách cho từng nhân viên qua AI Gateway của LangWatch\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "mlflow-mlflow",
+    "slug": "mlflow-mlflow",
+    "name": "MLflow — Nền tảng mã nguồn mở theo dõi, đánh giá và quản lý vòng đời agent, LLM và mô hình học máy",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "data_science_analytics",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Khoa học dữ liệu & Phân tích kinh doanh",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/mlflow/mlflow",
+    "websiteUrl": "https://mlflow.org",
+    "authorName": "MLflow (Databricks và cộng đồng)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "MLflow là nền tảng kỹ thuật AI mã nguồn mở cho agent, LLM và mô hình học máy, giúp gỡ lỗi, đánh giá, giám sát và tối ưu ứng dụng AI. Với LLM và agent, MLflow cung cấp tracing dựa trên OpenTelemetry, đánh giá với hơn 50 chỉ số và LLM judge, quản lý và tối ưu prompt, cùng AI Gateway. Với học máy truyền thống, MLflow có theo dõi thí nghiệm, đánh giá mô hình, Model Registry và triển khai.",
+    "purposeVi": "Quản lý toàn bộ vòng đời ứng dụng LLM, agent và mô hình học máy: trace, đánh giá, quản lý prompt và theo dõi thí nghiệm.",
+    "featuresVi": [
+      "Observability: trace đầy đủ ứng dụng LLM và agent dựa trên OpenTelemetry, theo dõi chất lượng, chi phí, an toàn",
+      "Evaluation: hơn 50 chỉ số dựng sẵn và LLM judge, phát hiện hồi quy trước khi lên production",
+      "Prompts & Optimization: quản lý phiên bản prompt và tự động tối ưu prompt",
+      "AI Gateway: API thống nhất tương thích OpenAI, giới hạn tốc độ, dự phòng, guardrails, chia lưu lượng A/B",
+      "Tự động trace một dòng cho hơn 60 framework; hỗ trợ Python, TypeScript/JavaScript, Java",
+      "Huấn luyện mô hình: Experiment Tracking, Model Evaluation, Model Registry, Deployment"
+    ],
+    "installGuideVi": "Yêu cầu: Công cụ uv (lệnh uvx) để chạy máy chủ MLflow; giao diện mặc định tại http://localhost:5000. Ví dụ trong README dùng OpenAI SDK nên cần khóa API OpenAI.\nBước 1: Cài đặt và khởi động máy chủ MLflow: `uvx mlflow server`\nBước 2: Hoặc dùng trình hướng dẫn thiết lập tracing (cần Claude Code, Codex hoặc OpenCode): `curl -LsSf https://mlflow.org/wizard/setup.sh | sh`",
+    "usageGuideVi": "Bước 1: Trong mã Python, gọi mlflow.set_tracking_uri(\"http://localhost:5000\")\nBước 2: Bật tự động ghi log, ví dụ mlflow.openai.autolog()\nBước 3: Chạy ứng dụng gọi LLM như bình thường\nBước 4: Mở giao diện MLflow tại http://localhost:5000 để xem trace và chỉ số",
+    "samplePromptsVi": [
+      "Bật mlflow.openai.autolog() để ghi trace mọi lời gọi OpenAI trong ứng dụng hỏi đáp",
+      "Đánh giá agent trên bộ dữ liệu kiểm thử bằng LLM judge của MLflow và so sánh giữa các phiên bản",
+      "Đăng ký prompt vào MLflow Prompt Registry và theo dõi lịch sử thay đổi"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "uvx mlflow server",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uvx mlflow server\"\n  ],\n  \"nguon\": \"https://github.com/mlflow/mlflow\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, trung lập nhà cung cấp",
+      "Chạy được cục bộ, trên cụm on-premise, cloud hoặc dịch vụ quản lý (Databricks, SageMaker, Azure ML, Nebius, Red Hat OpenShift AI)",
+      "Phủ cả LLMOps lẫn MLOps truyền thống trong một nền tảng",
+      "Hệ sinh thái tích hợp rộng với hơn 60 framework"
+    ],
+    "consVi": [
+      "Phạm vi rất rộng nên nhiều tính năng cần đọc thêm tài liệu",
+      "Trình hướng dẫn setup.sh cần cài sẵn Claude Code, Codex hoặc OpenCode và chạy trong kho Git của dự án"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# MLflow — Nền tảng mã nguồn mở theo dõi, đánh giá và quản lý vòng đời agent, LLM và mô hình học máy\n\n> The Open Source AI Engineering Platform for Agents, LLMs & Models\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMLflow là nền tảng kỹ thuật AI mã nguồn mở cho agent, LLM và mô hình học máy, giúp gỡ lỗi, đánh giá, giám sát và tối ưu ứng dụng AI. Với LLM và agent, MLflow cung cấp tracing dựa trên OpenTelemetry, đánh giá với hơn 50 chỉ số và LLM judge, quản lý và tối ưu prompt, cùng AI Gateway. Với học máy truyền thống, MLflow có theo dõi thí nghiệm, đánh giá mô hình, Model Registry và triển khai.\n\nQuản lý toàn bộ vòng đời ứng dụng LLM, agent và mô hình học máy: trace, đánh giá, quản lý prompt và theo dõi thí nghiệm.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** MLflow (Databricks và cộng đồng)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/mlflow/mlflow](https://github.com/mlflow/mlflow)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Observability: trace đầy đủ ứng dụng LLM và agent dựa trên OpenTelemetry, theo dõi chất lượng, chi phí, an toàn**\n- **Evaluation: hơn 50 chỉ số dựng sẵn và LLM judge, phát hiện hồi quy trước khi lên production**\n- **Prompts & Optimization: quản lý phiên bản prompt và tự động tối ưu prompt**\n- **AI Gateway: API thống nhất tương thích OpenAI, giới hạn tốc độ, dự phòng, guardrails, chia lưu lượng A/B**\n- **Tự động trace một dòng cho hơn 60 framework; hỗ trợ Python, TypeScript/JavaScript, Java**\n- **Huấn luyện mô hình: Experiment Tracking, Model Evaluation, Model Registry, Deployment**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuvx mlflow server\n```\n\nYêu cầu: Công cụ uv (lệnh uvx) để chạy máy chủ MLflow; giao diện mặc định tại http://localhost:5000. Ví dụ trong README dùng OpenAI SDK nên cần khóa API OpenAI.\nBước 1: Cài đặt và khởi động máy chủ MLflow: `uvx mlflow server`\nBước 2: Hoặc dùng trình hướng dẫn thiết lập tracing (cần Claude Code, Codex hoặc OpenCode): `curl -LsSf https://mlflow.org/wizard/setup.sh | sh`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trong mã Python, gọi mlflow.set_tracking_uri(\"http://localhost:5000\")\nBước 2: Bật tự động ghi log, ví dụ mlflow.openai.autolog()\nBước 3: Chạy ứng dụng gọi LLM như bình thường\nBước 4: Mở giao diện MLflow tại http://localhost:5000 để xem trace và chỉ số\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Bật mlflow.openai.autolog() để ghi trace mọi lời gọi OpenAI trong ứng dụng hỏi đáp\"\n- \"Đánh giá agent trên bộ dữ liệu kiểm thử bằng LLM judge của MLflow và so sánh giữa các phiên bản\"\n- \"Đăng ký prompt vào MLflow Prompt Registry và theo dõi lịch sử thay đổi\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "truera-trulens",
+    "slug": "truera-trulens",
+    "name": "TruLens — Thư viện trace và đánh giá ứng dụng LLM, RAG và agent dựa trên OpenTelemetry",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "qa_testing",
+      "vector_rag"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Kiểm thử phần mềm & QA/QC",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/truera/trulens",
+    "websiteUrl": "https://www.trulens.org",
+    "authorName": "TruEra, Inc.",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "TruLens là thư viện mã nguồn mở, dựa trên OpenTelemetry, để trace và đánh giá ứng dụng LLM, RAG và agent. Chỉ cần gắn decorator để ghi lại từng bước (độ trễ, đầu vào, đầu ra, token, chi phí), rồi chấm điểm bằng LLM judge có giải thích và so sánh các phiên bản ứng dụng. Đánh giá chạy được ngay khi trace đổ về hoặc theo lô trên bộ dữ liệu.",
+    "purposeVi": "Tìm điểm lỗi của agent/RAG và cân bằng giữa chất lượng với chi phí khi chọn phiên bản ứng dụng LLM.",
+    "featuresVi": [
+      "Tracing dựa trên OpenTelemetry, xuất được sang Jaeger, Grafana Tempo, Datadog, New Relic hoặc backend OTLP bất kỳ",
+      "Đánh giá agent với 7 bộ đánh giá: LogicalConsistency, ExecutionEfficiency, PlanAdherence, PlanQuality, ToolSelection, ToolCalling, ToolQuality",
+      "RAG Triad và các chỉ số như groundedness, context relevance",
+      "Đánh giá inline khi ứng dụng chạy hoặc theo lô qua Run API",
+      "Hỗ trợ span kiểu MCP để ghi lời gọi công cụ Model Context Protocol",
+      "Bảng xếp hạng so sánh điểm, độ trễ và chi phí giữa các phiên bản"
+    ],
+    "installGuideVi": "Yêu cầu: Python và pip; khóa API của nhà cung cấp LLM dùng làm judge (OpenAI, LiteLLM, Gemini, Bedrock, Snowflake Cortex, HuggingFace...).\nBước 1: Cài đặt gói TruLens: `pip install trulens`\nBước 2: Cài đặt kèm nhà cung cấp LLM để chấm điểm, ví dụ OpenAI: `pip install trulens trulens-providers-openai`\nBước 3: Cài đặt tích hợp framework, ví dụ LangChain / LangGraph: `pip install trulens trulens-apps-langchain`",
+    "usageGuideVi": "Bước 1: Gắn decorator @instrument vào các hàm truy xuất, sinh câu trả lời hoặc gọi công cụ\nBước 2: Định nghĩa Metric (ví dụ Context Relevance) với Selector để chọn dữ liệu cần chấm\nBước 3: Chạy ứng dụng trong tru_recorder hoặc tạo RunConfig để đánh giá theo lô\nBước 4: So sánh điểm, độ trễ và chi phí giữa các phiên bản trên bảng xếp hạng",
+    "samplePromptsVi": [
+      "Gắn TruLens vào pipeline RAG để đo groundedness và context relevance của câu trả lời",
+      "Đánh giá agent bằng ToolSelection và PlanAdherence để tìm bước chọn sai công cụ",
+      "Chạy đánh giá theo lô trên bộ câu hỏi kiểm thử và so sánh hai phiên bản prompt"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install trulens",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install trulens\"\n  ],\n  \"nguon\": \"https://github.com/truera/trulens\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT",
+      "Dựa trên OpenTelemetry nên trace mang sang được backend khác",
+      "Hỗ trợ nhiều nhà cung cấp LLM làm judge qua các gói providers riêng"
+    ],
+    "consVi": [
+      "Chấm điểm bằng LLM judge cần khóa API và phát sinh chi phí gọi mô hình",
+      "Phải cài thêm gói providers/apps riêng cho từng nhà cung cấp và framework"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# TruLens — Thư viện trace và đánh giá ứng dụng LLM, RAG và agent dựa trên OpenTelemetry\n\n> TruLens finds where your agent fails and where you can cut cost without losing quality.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nTruLens là thư viện mã nguồn mở, dựa trên OpenTelemetry, để trace và đánh giá ứng dụng LLM, RAG và agent. Chỉ cần gắn decorator để ghi lại từng bước (độ trễ, đầu vào, đầu ra, token, chi phí), rồi chấm điểm bằng LLM judge có giải thích và so sánh các phiên bản ứng dụng. Đánh giá chạy được ngay khi trace đổ về hoặc theo lô trên bộ dữ liệu.\n\nTìm điểm lỗi của agent/RAG và cân bằng giữa chất lượng với chi phí khi chọn phiên bản ứng dụng LLM.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** TruEra, Inc.\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/truera/trulens](https://github.com/truera/trulens)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tracing dựa trên OpenTelemetry, xuất được sang Jaeger, Grafana Tempo, Datadog, New Relic hoặc backend OTLP bất kỳ**\n- **Đánh giá agent với 7 bộ đánh giá: LogicalConsistency, ExecutionEfficiency, PlanAdherence, PlanQuality, ToolSelection, ToolCalling, ToolQuality**\n- **RAG Triad và các chỉ số như groundedness, context relevance**\n- **Đánh giá inline khi ứng dụng chạy hoặc theo lô qua Run API**\n- **Hỗ trợ span kiểu MCP để ghi lời gọi công cụ Model Context Protocol**\n- **Bảng xếp hạng so sánh điểm, độ trễ và chi phí giữa các phiên bản**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install trulens\n```\n\nYêu cầu: Python và pip; khóa API của nhà cung cấp LLM dùng làm judge (OpenAI, LiteLLM, Gemini, Bedrock, Snowflake Cortex, HuggingFace...).\nBước 1: Cài đặt gói TruLens: `pip install trulens`\nBước 2: Cài đặt kèm nhà cung cấp LLM để chấm điểm, ví dụ OpenAI: `pip install trulens trulens-providers-openai`\nBước 3: Cài đặt tích hợp framework, ví dụ LangChain / LangGraph: `pip install trulens trulens-apps-langchain`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Gắn decorator @instrument vào các hàm truy xuất, sinh câu trả lời hoặc gọi công cụ\nBước 2: Định nghĩa Metric (ví dụ Context Relevance) với Selector để chọn dữ liệu cần chấm\nBước 3: Chạy ứng dụng trong tru_recorder hoặc tạo RunConfig để đánh giá theo lô\nBước 4: So sánh điểm, độ trễ và chi phí giữa các phiên bản trên bảng xếp hạng\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Gắn TruLens vào pipeline RAG để đo groundedness và context relevance của câu trả lời\"\n- \"Đánh giá agent bằng ToolSelection và PlanAdherence để tìm bước chọn sai công cụ\"\n- \"Chạy đánh giá theo lô trên bộ câu hỏi kiểm thử và so sánh hai phiên bản prompt\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "giskard-ai-giskard-oss",
+    "slug": "giskard-ai-giskard-oss",
+    "name": "Giskard — Thư viện đánh giá, red teaming và sinh kiểm thử cho hệ thống agent",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "qa_testing",
+    "categoryNameVi": "Kiểm thử phần mềm & QA/QC",
+    "categories": [
+      "qa_testing",
+      "cybersecurity_security",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Kiểm thử phần mềm & QA/QC",
+      "An toàn thông tin & Bảo mật (Security)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/Giskard-AI/giskard-oss",
+    "websiteUrl": "https://docs.giskard.ai",
+    "authorName": "Giskard AI",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Giskard là thư viện Python mã nguồn mở để kiểm thử và đánh giá hệ thống agent. Phiên bản v3 viết lại theo dạng các gói nhỏ: giskard-checks để tạo eval (từ so khớp chuỗi đến LLM-as-judge) và giskard-scan để red teaming, quét lỗ hổng như prompt injection, jailbreak, nội dung độc hại và đánh giá chất lượng RAG. Bản v2 vẫn có nhưng không còn được bảo trì tích cực.",
+    "purposeVi": "Viết bài kiểm thử, đánh giá chất lượng và quét lỗ hổng bảo mật cho agent và ứng dụng LLM trước khi đưa vào sử dụng.",
+    "featuresVi": [
+      "Giskard Checks: kịch bản (Scenario), kiểm tra dựng sẵn, LLM judge như Groundedness, Conformity, LLMJudge",
+      "Đánh giá agent nhiều lượt hội thoại, phát hiện hồi quy, kiểm tra RAG có bám ngữ cảnh",
+      "Giskard Scan: tự sinh bộ kiểm thử đối kháng theo nhóm rủi ro OWASP LLM Top-10",
+      "Bộ dữ liệu prompt injection dựng sẵn và hỗ trợ bộ sinh kịch bản tùy chỉnh",
+      "quality_scan với KnowledgeBase thay cho RAGET của v2",
+      "Kiến trúc async-first, nhẹ, chỉ kéo phụ thuộc cần thiết"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.12 trở lên; khóa API của nhà cung cấp LLM (mặc định openai/gpt-4o-mini) cho LLM judge và bộ sinh kịch bản.\nBước 1: Cài đặt gói chính (checks, agents, llm, core): `pip install giskard`\nBước 2: Cài đặt thêm bộ quét lỗ hổng và chất lượng: `pip install \"giskard[scan]\"`\nBước 3: Cài đặt SDK nhà cung cấp cho LLM judge: `pip install \"giskard[openai]\"`",
+    "usageGuideVi": "Bước 1: Khai báo target là hàm (đồng bộ hoặc bất đồng bộ) nhận inputs và trả về outputs\nBước 2: Tạo Scenario, thêm interact và check (ví dụ Groundedness) rồi chạy scenario.run()\nBước 3: Chạy vulnerability_scan với mô tả agent bằng ngôn ngữ tự nhiên để red teaming\nBước 4: Đọc báo cáo kết quả và sửa các lỗi phát hiện được",
+    "samplePromptsVi": [
+      "Viết kịch bản Giskard Checks kiểm tra chatbot hỗ trợ khách hàng trả lời bám đúng tài liệu nội bộ",
+      "Chạy vulnerability_scan cho agent thương mại điện tử để tìm lỗ hổng prompt injection và jailbreak",
+      "Tạo bộ kiểm thử hồi quy nhiều lượt hội thoại cho agent trước mỗi lần phát hành"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install giskard",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install giskard\"\n  ],\n  \"nguon\": \"https://github.com/Giskard-AI/giskard-oss\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Kết hợp eval, red teaming và sinh kịch bản kiểm thử trong một thư viện",
+      "Telemetry chỉ gửi thống kê tổng hợp, không gửi prompt hay đầu ra, và tắt được bằng DO_NOT_TRACK=1 hoặc GISKARD_TELEMETRY_DISABLED=1"
+    ],
+    "consVi": [
+      "Yêu cầu Python 3.12 trở lên",
+      "LLM judge và bộ sinh kịch bản cần khóa API nhà cung cấp LLM",
+      "Giskard v2 (scan dữ liệu bảng, RAGET cũ) không còn được bảo trì tích cực; v3 là bản viết lại, khác API"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Giskard — Thư viện đánh giá, red teaming và sinh kiểm thử cho hệ thống agent\n\n> Evals, Red Teaming and Test Generation for Agentic Systems\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nGiskard là thư viện Python mã nguồn mở để kiểm thử và đánh giá hệ thống agent. Phiên bản v3 viết lại theo dạng các gói nhỏ: giskard-checks để tạo eval (từ so khớp chuỗi đến LLM-as-judge) và giskard-scan để red teaming, quét lỗ hổng như prompt injection, jailbreak, nội dung độc hại và đánh giá chất lượng RAG. Bản v2 vẫn có nhưng không còn được bảo trì tích cực.\n\nViết bài kiểm thử, đánh giá chất lượng và quét lỗ hổng bảo mật cho agent và ứng dụng LLM trước khi đưa vào sử dụng.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Kiểm thử phần mềm & QA/QC\n- **Tác giả / Nhà phát triển:** Giskard AI\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/Giskard-AI/giskard-oss](https://github.com/Giskard-AI/giskard-oss)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Giskard Checks: kịch bản (Scenario), kiểm tra dựng sẵn, LLM judge như Groundedness, Conformity, LLMJudge**\n- **Đánh giá agent nhiều lượt hội thoại, phát hiện hồi quy, kiểm tra RAG có bám ngữ cảnh**\n- **Giskard Scan: tự sinh bộ kiểm thử đối kháng theo nhóm rủi ro OWASP LLM Top-10**\n- **Bộ dữ liệu prompt injection dựng sẵn và hỗ trợ bộ sinh kịch bản tùy chỉnh**\n- **quality_scan với KnowledgeBase thay cho RAGET của v2**\n- **Kiến trúc async-first, nhẹ, chỉ kéo phụ thuộc cần thiết**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install giskard\n```\n\nYêu cầu: Python 3.12 trở lên; khóa API của nhà cung cấp LLM (mặc định openai/gpt-4o-mini) cho LLM judge và bộ sinh kịch bản.\nBước 1: Cài đặt gói chính (checks, agents, llm, core): `pip install giskard`\nBước 2: Cài đặt thêm bộ quét lỗ hổng và chất lượng: `pip install \"giskard[scan]\"`\nBước 3: Cài đặt SDK nhà cung cấp cho LLM judge: `pip install \"giskard[openai]\"`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khai báo target là hàm (đồng bộ hoặc bất đồng bộ) nhận inputs và trả về outputs\nBước 2: Tạo Scenario, thêm interact và check (ví dụ Groundedness) rồi chạy scenario.run()\nBước 3: Chạy vulnerability_scan với mô tả agent bằng ngôn ngữ tự nhiên để red teaming\nBước 4: Đọc báo cáo kết quả và sửa các lỗi phát hiện được\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết kịch bản Giskard Checks kiểm tra chatbot hỗ trợ khách hàng trả lời bám đúng tài liệu nội bộ\"\n- \"Chạy vulnerability_scan cho agent thương mại điện tử để tìm lỗ hổng prompt injection và jailbreak\"\n- \"Tạo bộ kiểm thử hồi quy nhiều lượt hội thoại cho agent trước mỗi lần phát hành\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "run-llama-llama-index",
+    "slug": "run-llama-llama-index",
+    "name": "LlamaIndex — Khung dữ liệu xây dựng ứng dụng RAG và tác tử LLM",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "vector_rag",
+    "categoryNameVi": "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+    "categories": [
+      "vector_rag",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/run-llama/llama_index",
+    "websiteUrl": "https://developers.llamaindex.ai/python/framework/",
+    "authorName": "LlamaIndex (Jerry Liu)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "LlamaIndex Framework là khung Python mã nguồn mở để xây dựng ứng dụng LLM và tác tử dựa trên dữ liệu riêng. Thư viện cung cấp bộ kết nối dữ liệu (API, PDF, tài liệu, SQL...), cấu trúc chỉ mục và giao diện truy vấn có tăng cường ngữ cảnh (RAG), với hơn 300 gói tích hợp LLM, embedding và vector store.",
+    "purposeVi": "Giúp lập trình viên nạp, lập chỉ mục và truy vấn dữ liệu riêng bằng LLM để xây dựng công cụ hỏi đáp tài liệu, RAG và tác tử.",
+    "featuresVi": [
+      "Data connectors: nạp dữ liệu từ API, PDF, tài liệu, SQL và nhiều định dạng khác",
+      "Cấu trúc dữ liệu: chỉ mục (indices) và đồ thị để LLM sử dụng dễ dàng",
+      "Giao diện truy xuất/truy vấn nâng cao: trả về ngữ cảnh và câu trả lời có tăng cường tri thức",
+      "Hơn 300 gói tích hợp: chọn LLM, embedding, vector store theo nhu cầu",
+      "API cấp cao (nạp và truy vấn trong khoảng 5 dòng mã) và API cấp thấp để tùy biến retriever, query engine, reranking",
+      "Lưu chỉ mục ra đĩa (./storage) và tải lại khi cần"
+    ],
+    "installGuideVi": "Yêu cầu: Python và pip; khóa API của nhà cung cấp LLM (ví dụ OPENAI_API_KEY) hoặc mô hình cục bộ qua Ollama và embedding HuggingFace.\nBước 1: Cài đặt gói lõi: `pip install llama-index-core`\nBước 2: Cài đặt tích hợp LLM OpenAI: `pip install llama-index-llms-openai`\nBước 3: Hoặc cài đặt tích hợp mô hình cục bộ Ollama: `pip install llama-index-llms-ollama`\nBước 4: Cài đặt embedding HuggingFace: `pip install llama-index-embeddings-huggingface`",
+    "usageGuideVi": "Bước 1: Đọc dữ liệu trong thư mục bằng SimpleDirectoryReader(\"YOUR_DATA_DIRECTORY\").load_data().\nBước 2: Tạo chỉ mục với VectorStoreIndex.from_documents(documents).\nBước 3: Tạo query engine bằng index.as_query_engine() rồi gọi query_engine.query(\"YOUR_QUESTION\").\nBước 4: Lưu chỉ mục bằng index.storage_context.persist() và tải lại bằng load_index_from_storage; xem hướng dẫn chi tiết trong tài liệu chính thức.",
+    "samplePromptsVi": [
+      "Dựa trên các tài liệu PDF trong thư mục hợp đồng, điều khoản thanh toán là gì?",
+      "Tóm tắt nội dung chính của bộ tài liệu nội bộ vừa được lập chỉ mục.",
+      "Dùng Ollama chạy cục bộ để hỏi đáp trên dữ liệu không gửi ra ngoài."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install llama-index-core",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install llama-index-core\"\n  ],\n  \"nguon\": \"https://github.com/run-llama/llama_index\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở MIT",
+      "Hệ sinh thái hơn 300 gói tích hợp LLM, embedding, vector store",
+      "Chạy được với mô hình cục bộ (Ollama, HuggingFace) thay cho OpenAI"
+    ],
+    "consVi": [
+      "README cho biết trọng tâm của công ty đã chuyển sang nền tảng thương mại LlamaParse; khung OSS vẫn được cung cấp",
+      "README không được cập nhật thường xuyên bằng tài liệu trực tuyến",
+      "Ví dụ mặc định cần khóa API OpenAI"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# LlamaIndex — Khung dữ liệu xây dựng ứng dụng RAG và tác tử LLM\n\n> LlamaIndex is a \"data framework\" to help you build LLM apps.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nLlamaIndex Framework là khung Python mã nguồn mở để xây dựng ứng dụng LLM và tác tử dựa trên dữ liệu riêng. Thư viện cung cấp bộ kết nối dữ liệu (API, PDF, tài liệu, SQL...), cấu trúc chỉ mục và giao diện truy vấn có tăng cường ngữ cảnh (RAG), với hơn 300 gói tích hợp LLM, embedding và vector store.\n\nGiúp lập trình viên nạp, lập chỉ mục và truy vấn dữ liệu riêng bằng LLM để xây dựng công cụ hỏi đáp tài liệu, RAG và tác tử.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Dữ liệu Vector & Tìm kiếm tri thức (RAG)\n- **Tác giả / Nhà phát triển:** LlamaIndex (Jerry Liu)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/run-llama/llama_index](https://github.com/run-llama/llama_index)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Data connectors: nạp dữ liệu từ API, PDF, tài liệu, SQL và nhiều định dạng khác**\n- **Cấu trúc dữ liệu: chỉ mục (indices) và đồ thị để LLM sử dụng dễ dàng**\n- **Giao diện truy xuất/truy vấn nâng cao: trả về ngữ cảnh và câu trả lời có tăng cường tri thức**\n- **Hơn 300 gói tích hợp: chọn LLM, embedding, vector store theo nhu cầu**\n- **API cấp cao (nạp và truy vấn trong khoảng 5 dòng mã) và API cấp thấp để tùy biến retriever, query engine, reranking**\n- **Lưu chỉ mục ra đĩa (./storage) và tải lại khi cần**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install llama-index-core\n```\n\nYêu cầu: Python và pip; khóa API của nhà cung cấp LLM (ví dụ OPENAI_API_KEY) hoặc mô hình cục bộ qua Ollama và embedding HuggingFace.\nBước 1: Cài đặt gói lõi: `pip install llama-index-core`\nBước 2: Cài đặt tích hợp LLM OpenAI: `pip install llama-index-llms-openai`\nBước 3: Hoặc cài đặt tích hợp mô hình cục bộ Ollama: `pip install llama-index-llms-ollama`\nBước 4: Cài đặt embedding HuggingFace: `pip install llama-index-embeddings-huggingface`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đọc dữ liệu trong thư mục bằng SimpleDirectoryReader(\"YOUR_DATA_DIRECTORY\").load_data().\nBước 2: Tạo chỉ mục với VectorStoreIndex.from_documents(documents).\nBước 3: Tạo query engine bằng index.as_query_engine() rồi gọi query_engine.query(\"YOUR_QUESTION\").\nBước 4: Lưu chỉ mục bằng index.storage_context.persist() và tải lại bằng load_index_from_storage; xem hướng dẫn chi tiết trong tài liệu chính thức.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Dựa trên các tài liệu PDF trong thư mục hợp đồng, điều khoản thanh toán là gì?\"\n- \"Tóm tắt nội dung chính của bộ tài liệu nội bộ vừa được lập chỉ mục.\"\n- \"Dùng Ollama chạy cục bộ để hỏi đáp trên dữ liệu không gửi ra ngoài.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "deepset-ai-haystack",
+    "slug": "deepset-ai-haystack",
+    "name": "Haystack — Khung điều phối AI cho RAG và tác tử production",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "vector_rag",
+    "categoryNameVi": "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+    "categories": [
+      "vector_rag",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/deepset-ai/haystack",
+    "websiteUrl": "https://haystack.deepset.ai/",
+    "authorName": "deepset",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Haystack là khung điều phối AI mã nguồn mở bằng Python của deepset, dùng để dựng pipeline và workflow tác tử với quyền kiểm soát rõ ràng về truy xuất, định tuyến, bộ nhớ và sinh văn bản. Khung phù hợp cho hệ thống RAG, tìm kiếm ngữ nghĩa, hỏi đáp, ứng dụng đa phương thức và tác tử tự động.",
+    "purposeVi": "Giúp đội ngũ phát triển xây dựng ứng dụng LLM sẵn sàng cho production, kiểm soát cách dữ liệu được truy xuất, xếp hạng và đưa vào mô hình.",
+    "featuresVi": [
+      "Agent cho production: lifecycle hooks (before_llm, before_tool, on_exit), theo dõi step_count, token_usage và lệnh gọi công cụ",
+      "Context engineering: kiểm soát truy xuất, xếp hạng, lọc, kết hợp và định tuyến thông tin trước khi tới mô hình",
+      "Hỗ trợ async gốc: Pipeline chạy đồng bộ hoặc bất đồng bộ, stream từng token; Agent gọi công cụ song song",
+      "Thành phần có sẵn cho truy xuất, lập chỉ mục, gọi công cụ, bộ nhớ, đánh giá; hỗ trợ vòng lặp và rẽ nhánh",
+      "Không phụ thuộc nhà cung cấp: OpenAI, Mistral, Anthropic, Cohere, Hugging Face, Google, Azure OpenAI, AWS Bedrock, mô hình cục bộ",
+      "Hayhooks (dự án đi kèm) để phục vụ pipeline dưới dạng REST API hoặc máy chủ MCP"
+    ],
+    "installGuideVi": "Yêu cầu: Python và pip; khóa API hoặc mô hình cục bộ tùy nhà cung cấp LLM được chọn.\nBước 1: Cài đặt bản ổn định từ PyPI: `pip install haystack-ai`\nBước 2: Tùy chọn cài đặt bản nightly để thử tính năng mới: `pip install --pre haystack-ai`\nBước 3: Làm theo hướng dẫn Get Started và tutorials trên haystack.deepset.ai để dựng ứng dụng đầu tiên",
+    "usageGuideVi": "Bước 1: Ghép các thành phần (retriever, prompt builder, generator...) thành một Pipeline.\nBước 2: Thêm Agent với công cụ và hooks để kiểm soát hành vi, theo dõi token và chi phí.\nBước 3: Chạy pipeline đồng bộ hoặc bất đồng bộ, bật streaming từng token.\nBước 4: Dùng Hayhooks nếu cần đưa pipeline thành REST API hoặc máy chủ MCP.",
+    "samplePromptsVi": [
+      "Xây dựng pipeline RAG trả lời câu hỏi dựa trên kho tài liệu sản phẩm.",
+      "Tạo tác tử có công cụ tìm kiếm web và giới hạn số bước để kiểm soát chi phí.",
+      "Tìm kiếm ngữ nghĩa trong cơ sở dữ liệu bài viết nội bộ."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install haystack-ai",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install haystack-ai\"\n  ],\n  \"nguon\": \"https://github.com/deepset-ai/haystack\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0",
+      "Hỗ trợ nhiều nhà cung cấp LLM và mô hình cục bộ",
+      "Được nhiều tổ chức lớn sử dụng trong production theo README"
+    ],
+    "consVi": [
+      "Thu thập số liệu sử dụng ẩn danh theo mặc định (có thể tắt theo tài liệu)",
+      "Gói hỗ trợ doanh nghiệp và Haystack Enterprise Platform là dịch vụ trả phí riêng, README không nêu giá"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Haystack — Khung điều phối AI cho RAG và tác tử production\n\n> Haystack is an open-source AI orchestration framework for building production-ready LLM applications in Python.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nHaystack là khung điều phối AI mã nguồn mở bằng Python của deepset, dùng để dựng pipeline và workflow tác tử với quyền kiểm soát rõ ràng về truy xuất, định tuyến, bộ nhớ và sinh văn bản. Khung phù hợp cho hệ thống RAG, tìm kiếm ngữ nghĩa, hỏi đáp, ứng dụng đa phương thức và tác tử tự động.\n\nGiúp đội ngũ phát triển xây dựng ứng dụng LLM sẵn sàng cho production, kiểm soát cách dữ liệu được truy xuất, xếp hạng và đưa vào mô hình.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Dữ liệu Vector & Tìm kiếm tri thức (RAG)\n- **Tác giả / Nhà phát triển:** deepset\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/deepset-ai/haystack](https://github.com/deepset-ai/haystack)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Agent cho production: lifecycle hooks (before_llm, before_tool, on_exit), theo dõi step_count, token_usage và lệnh gọi công cụ**\n- **Context engineering: kiểm soát truy xuất, xếp hạng, lọc, kết hợp và định tuyến thông tin trước khi tới mô hình**\n- **Hỗ trợ async gốc: Pipeline chạy đồng bộ hoặc bất đồng bộ, stream từng token; Agent gọi công cụ song song**\n- **Thành phần có sẵn cho truy xuất, lập chỉ mục, gọi công cụ, bộ nhớ, đánh giá; hỗ trợ vòng lặp và rẽ nhánh**\n- **Không phụ thuộc nhà cung cấp: OpenAI, Mistral, Anthropic, Cohere, Hugging Face, Google, Azure OpenAI, AWS Bedrock, mô hình cục bộ**\n- **Hayhooks (dự án đi kèm) để phục vụ pipeline dưới dạng REST API hoặc máy chủ MCP**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install haystack-ai\n```\n\nYêu cầu: Python và pip; khóa API hoặc mô hình cục bộ tùy nhà cung cấp LLM được chọn.\nBước 1: Cài đặt bản ổn định từ PyPI: `pip install haystack-ai`\nBước 2: Tùy chọn cài đặt bản nightly để thử tính năng mới: `pip install --pre haystack-ai`\nBước 3: Làm theo hướng dẫn Get Started và tutorials trên haystack.deepset.ai để dựng ứng dụng đầu tiên\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Ghép các thành phần (retriever, prompt builder, generator...) thành một Pipeline.\nBước 2: Thêm Agent với công cụ và hooks để kiểm soát hành vi, theo dõi token và chi phí.\nBước 3: Chạy pipeline đồng bộ hoặc bất đồng bộ, bật streaming từng token.\nBước 4: Dùng Hayhooks nếu cần đưa pipeline thành REST API hoặc máy chủ MCP.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Xây dựng pipeline RAG trả lời câu hỏi dựa trên kho tài liệu sản phẩm.\"\n- \"Tạo tác tử có công cụ tìm kiếm web và giới hạn số bước để kiểm soát chi phí.\"\n- \"Tìm kiếm ngữ nghĩa trong cơ sở dữ liệu bài viết nội bộ.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "facebookresearch-faiss",
+    "slug": "facebookresearch-faiss",
+    "name": "Faiss — Thư viện tìm kiếm tương đồng và phân cụm vector của Meta",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "vector_rag",
+    "categoryNameVi": "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+    "categories": [
+      "vector_rag",
+      "database"
+    ],
+    "categoryNamesVi": [
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Cơ sở dữ liệu & Quản lý tri thức"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/facebookresearch/faiss",
+    "websiteUrl": "https://faiss.ai/",
+    "authorName": "Meta (Fundamental AI Research)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Faiss là thư viện C++ (có wrapper Python/numpy đầy đủ) của Meta FAIR cho tìm kiếm tương đồng và phân cụm vector dày. Thư viện tìm kiếm trên tập vector mọi kích thước, kể cả không vừa RAM, với nhiều loại chỉ mục cân bằng giữa tốc độ, độ chính xác và bộ nhớ; một số thuật toán chạy trên GPU.",
+    "purposeVi": "Cung cấp công cụ tìm kiếm láng giềng gần nhất và phân cụm vector hiệu năng cao, làm nền cho hệ thống tìm kiếm ngữ nghĩa và RAG trên dữ liệu lớn.",
+    "featuresVi": [
+      "Tìm kiếm theo khoảng cách L2 (Euclid) hoặc tích vô hướng, hỗ trợ cosine similarity",
+      "Chỉ mục nén (mã nhị phân, lượng tử hóa) mở rộng tới hàng tỷ vector trên một máy chủ",
+      "Triển khai GPU (CUDA hoặc AMD ROCm) thay thế trực tiếp chỉ mục CPU, tùy chọn backend NVIDIA cuVS",
+      "Phân cụm k-means và chọn k nhỏ nhất nhanh trên GPU",
+      "Mã hỗ trợ đánh giá và tinh chỉnh tham số",
+      "Gói conda dựng sẵn: faiss-cpu, faiss-gpu, faiss-gpu-cuvs"
+    ],
+    "installGuideVi": "Yêu cầu: Conda (hoặc Pixi); faiss-cpu chạy trên Linux x86-64/aarch64, macOS arm64, Windows x86-64; faiss-gpu chỉ Linux x86-64 với CUDA; dựng từ mã nguồn cần CMake và BLAS.\nBước 1: Cài đặt bản chỉ dùng CPU qua conda: `conda install -c pytorch -c conda-forge faiss-cpu=1.15.1`\nBước 2: Hoặc cài đặt bản GPU (kèm CPU): `conda install -c pytorch -c nvidia -c conda-forge faiss-gpu=1.15.1`\nBước 3: Dựng từ mã nguồn theo hướng dẫn trong INSTALL.md (bắt đầu bằng `cmake -B build .`)",
+    "usageGuideVi": "Bước 1: Chuẩn bị dữ liệu vector dạng mảng numpy float32.\nBước 2: Tạo chỉ mục (ví dụ IndexFlatL2 để tìm kiếm chính xác) và thêm vector bằng add.\nBước 3: Gọi search với vector truy vấn để lấy k láng giềng gần nhất.\nBước 4: Chuyển sang chỉ mục nén hoặc GpuIndexFlatL2 khi dữ liệu lớn; xem wiki Getting started để có hướng dẫn chi tiết.",
+    "samplePromptsVi": [
+      "Tìm 10 đoạn văn bản có embedding gần nhất với câu hỏi người dùng.",
+      "Lập chỉ mục 100 triệu vector ảnh bằng chỉ mục lượng tử hóa để tiết kiệm RAM.",
+      "Phân cụm embedding sản phẩm thành 50 nhóm bằng k-means trên GPU."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "conda install -c pytorch -c conda-forge faiss-cpu=1.15.1",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"conda install -c pytorch -c conda-forge faiss-cpu=1.15.1\"\n  ],\n  \"nguon\": \"https://github.com/facebookresearch/faiss\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở MIT, do Meta FAIR phát triển",
+      "Mở rộng tới hàng tỷ vector, hỗ trợ GPU",
+      "Có gói conda dựng sẵn cho nhiều nền tảng"
+    ],
+    "consVi": [
+      "Là thư viện cấp thấp, không phải cơ sở dữ liệu vector đầy đủ (không có máy chủ, phân quyền)",
+      "Cách cài đặt được hỗ trợ chính thức là conda; bản GPU chỉ có trên Linux x86-64"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Faiss — Thư viện tìm kiếm tương đồng và phân cụm vector của Meta\n\n> Faiss is a library for efficient similarity search and clustering of dense vectors.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nFaiss là thư viện C++ (có wrapper Python/numpy đầy đủ) của Meta FAIR cho tìm kiếm tương đồng và phân cụm vector dày. Thư viện tìm kiếm trên tập vector mọi kích thước, kể cả không vừa RAM, với nhiều loại chỉ mục cân bằng giữa tốc độ, độ chính xác và bộ nhớ; một số thuật toán chạy trên GPU.\n\nCung cấp công cụ tìm kiếm láng giềng gần nhất và phân cụm vector hiệu năng cao, làm nền cho hệ thống tìm kiếm ngữ nghĩa và RAG trên dữ liệu lớn.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Dữ liệu Vector & Tìm kiếm tri thức (RAG)\n- **Tác giả / Nhà phát triển:** Meta (Fundamental AI Research)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/facebookresearch/faiss](https://github.com/facebookresearch/faiss)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tìm kiếm theo khoảng cách L2 (Euclid) hoặc tích vô hướng, hỗ trợ cosine similarity**\n- **Chỉ mục nén (mã nhị phân, lượng tử hóa) mở rộng tới hàng tỷ vector trên một máy chủ**\n- **Triển khai GPU (CUDA hoặc AMD ROCm) thay thế trực tiếp chỉ mục CPU, tùy chọn backend NVIDIA cuVS**\n- **Phân cụm k-means và chọn k nhỏ nhất nhanh trên GPU**\n- **Mã hỗ trợ đánh giá và tinh chỉnh tham số**\n- **Gói conda dựng sẵn: faiss-cpu, faiss-gpu, faiss-gpu-cuvs**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nconda install -c pytorch -c conda-forge faiss-cpu=1.15.1\n```\n\nYêu cầu: Conda (hoặc Pixi); faiss-cpu chạy trên Linux x86-64/aarch64, macOS arm64, Windows x86-64; faiss-gpu chỉ Linux x86-64 với CUDA; dựng từ mã nguồn cần CMake và BLAS.\nBước 1: Cài đặt bản chỉ dùng CPU qua conda: `conda install -c pytorch -c conda-forge faiss-cpu=1.15.1`\nBước 2: Hoặc cài đặt bản GPU (kèm CPU): `conda install -c pytorch -c nvidia -c conda-forge faiss-gpu=1.15.1`\nBước 3: Dựng từ mã nguồn theo hướng dẫn trong INSTALL.md (bắt đầu bằng `cmake -B build .`)\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chuẩn bị dữ liệu vector dạng mảng numpy float32.\nBước 2: Tạo chỉ mục (ví dụ IndexFlatL2 để tìm kiếm chính xác) và thêm vector bằng add.\nBước 3: Gọi search với vector truy vấn để lấy k láng giềng gần nhất.\nBước 4: Chuyển sang chỉ mục nén hoặc GpuIndexFlatL2 khi dữ liệu lớn; xem wiki Getting started để có hướng dẫn chi tiết.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tìm 10 đoạn văn bản có embedding gần nhất với câu hỏi người dùng.\"\n- \"Lập chỉ mục 100 triệu vector ảnh bằng chỉ mục lượng tử hóa để tiết kiệm RAM.\"\n- \"Phân cụm embedding sản phẩm thành 50 nhóm bằng k-means trên GPU.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "neuml-txtai",
+    "slug": "neuml-txtai",
+    "name": "txtai — Khung AI tất cả trong một cho tìm kiếm ngữ nghĩa và RAG",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "vector_rag",
+    "categoryNameVi": "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+    "categories": [
+      "vector_rag",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/neuml/txtai",
+    "websiteUrl": "https://neuml.github.io/txtai",
+    "authorName": "NeuML",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "txtai là khung AI tất cả trong một cho tìm kiếm ngữ nghĩa, điều phối LLM và workflow mô hình ngôn ngữ. Thành phần cốt lõi là cơ sở dữ liệu embeddings kết hợp chỉ mục vector (thưa và dày), mạng đồ thị và cơ sở dữ liệu quan hệ, làm nguồn tri thức cho RAG và tác tử.",
+    "purposeVi": "Giúp xây dựng công cụ tìm kiếm ngữ nghĩa, RAG, tác tử và pipeline xử lý dữ liệu văn bản, âm thanh, hình ảnh chạy cục bộ mà không phải gửi dữ liệu ra dịch vụ bên ngoài.",
+    "featuresVi": [
+      "Tìm kiếm vector kèm SQL, lưu trữ đối tượng, mô hình hóa chủ đề, phân tích đồ thị và lập chỉ mục đa phương thức",
+      "Tạo embeddings cho văn bản, tài liệu, âm thanh, hình ảnh và video",
+      "Pipelines dùng mô hình ngôn ngữ: prompt LLM, hỏi đáp, gán nhãn, phiên âm, dịch, tóm tắt",
+      "Workflows nối các pipeline; Agents dựa trên smolagents kết nối embeddings, pipelines và tác tử khác",
+      "API Web và Model Context Protocol (MCP); binding JavaScript, Java, Rust, Go",
+      "Chạy cục bộ hoặc mở rộng bằng điều phối container"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.11 trở lên; khuyến nghị dùng môi trường ảo Python.\nBước 1: Cài đặt từ PyPI: `pip install txtai`\nBước 2: Tùy chọn chạy API: tạo tệp app.yml khai báo embeddings rồi chạy `CONFIG=app.yml uvicorn \"txtai.api:app\"`\nBước 3: Xem hướng dẫn cài đặt chi tiết về phụ thuộc tùy chọn trên trang tài liệu txtai",
+    "usageGuideVi": "Bước 1: Tạo embeddings = txtai.Embeddings() rồi gọi embeddings.index([...]) với danh sách văn bản.\nBước 2: Tìm kiếm ngữ nghĩa bằng embeddings.search(\"positive\", 1).\nBước 3: Khi chạy API, gửi yêu cầu GET tới http://localhost:8000/search?query=positive.\nBước 4: Tham khảo hơn 70 notebook ví dụ cho RAG, tác tử, phiên âm, dịch và tóm tắt.",
+    "samplePromptsVi": [
+      "Tìm các câu có ý nghĩa tích cực trong tập phản hồi khách hàng.",
+      "Xây dựng RAG trả lời câu hỏi từ kho tài liệu nội bộ bằng mô hình chạy cục bộ.",
+      "Phiên âm tệp âm thanh rồi tóm tắt nội dung cuộc họp."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install txtai",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install txtai\"\n  ],\n  \"nguon\": \"https://github.com/neuml/txtai\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0",
+      "Chạy cục bộ, không cần gửi dữ liệu tới dịch vụ bên ngoài",
+      "Cài đặt gọn, có hơn 70 notebook ví dụ và API MCP"
+    ],
+    "consVi": [
+      "Yêu cầu Python 3.11 trở lên",
+      "Dịch vụ tư vấn và txtai.cloud là sản phẩm thương mại riêng của NeuML, README không nêu giá"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# txtai — Khung AI tất cả trong một cho tìm kiếm ngữ nghĩa và RAG\n\n> txtai is an all-in-one AI framework for semantic search, LLM orchestration and language model workflows.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\ntxtai là khung AI tất cả trong một cho tìm kiếm ngữ nghĩa, điều phối LLM và workflow mô hình ngôn ngữ. Thành phần cốt lõi là cơ sở dữ liệu embeddings kết hợp chỉ mục vector (thưa và dày), mạng đồ thị và cơ sở dữ liệu quan hệ, làm nguồn tri thức cho RAG và tác tử.\n\nGiúp xây dựng công cụ tìm kiếm ngữ nghĩa, RAG, tác tử và pipeline xử lý dữ liệu văn bản, âm thanh, hình ảnh chạy cục bộ mà không phải gửi dữ liệu ra dịch vụ bên ngoài.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Dữ liệu Vector & Tìm kiếm tri thức (RAG)\n- **Tác giả / Nhà phát triển:** NeuML\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/neuml/txtai](https://github.com/neuml/txtai)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tìm kiếm vector kèm SQL, lưu trữ đối tượng, mô hình hóa chủ đề, phân tích đồ thị và lập chỉ mục đa phương thức**\n- **Tạo embeddings cho văn bản, tài liệu, âm thanh, hình ảnh và video**\n- **Pipelines dùng mô hình ngôn ngữ: prompt LLM, hỏi đáp, gán nhãn, phiên âm, dịch, tóm tắt**\n- **Workflows nối các pipeline; Agents dựa trên smolagents kết nối embeddings, pipelines và tác tử khác**\n- **API Web và Model Context Protocol (MCP); binding JavaScript, Java, Rust, Go**\n- **Chạy cục bộ hoặc mở rộng bằng điều phối container**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install txtai\n```\n\nYêu cầu: Python 3.11 trở lên; khuyến nghị dùng môi trường ảo Python.\nBước 1: Cài đặt từ PyPI: `pip install txtai`\nBước 2: Tùy chọn chạy API: tạo tệp app.yml khai báo embeddings rồi chạy `CONFIG=app.yml uvicorn \"txtai.api:app\"`\nBước 3: Xem hướng dẫn cài đặt chi tiết về phụ thuộc tùy chọn trên trang tài liệu txtai\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo embeddings = txtai.Embeddings() rồi gọi embeddings.index([...]) với danh sách văn bản.\nBước 2: Tìm kiếm ngữ nghĩa bằng embeddings.search(\"positive\", 1).\nBước 3: Khi chạy API, gửi yêu cầu GET tới http://localhost:8000/search?query=positive.\nBước 4: Tham khảo hơn 70 notebook ví dụ cho RAG, tác tử, phiên âm, dịch và tóm tắt.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tìm các câu có ý nghĩa tích cực trong tập phản hồi khách hàng.\"\n- \"Xây dựng RAG trả lời câu hỏi từ kho tài liệu nội bộ bằng mô hình chạy cục bộ.\"\n- \"Phiên âm tệp âm thanh rồi tóm tắt nội dung cuộc họp.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "openrlhf-openrlhf",
+    "slug": "openrlhf-openrlhf",
+    "name": "OpenRLHF — Khung huấn luyện RLHF phân tán với Ray và vLLM",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/OpenRLHF/OpenRLHF",
+    "websiteUrl": "https://openrlhf.readthedocs.io/",
+    "authorName": "OpenRLHF",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "OpenRLHF là khung huấn luyện RLHF mã nguồn mở hiệu năng cao, kết hợp kiến trúc phân tán Ray + vLLM + DeepSpeed với mô hình thực thi dựa trên tác tử. Khung hỗ trợ PPO, REINFORCE++, GRPO, RLOO, SFT, DPO, huấn luyện reward model và mở rộng tới mô hình 70B+ tham số.",
+    "purposeVi": "Giúp nhóm nghiên cứu và kỹ sư huấn luyện, căn chỉnh LLM/VLM bằng học tăng cường từ phản hồi, kể cả tác tử nhiều lượt với môi trường tùy chỉnh.",
+    "featuresVi": [
+      "Thuật toán RL: PPO, REINFORCE++, REINFORCE++-baseline, GRPO, Dr. GRPO, RLOO, FlashREINFORCE",
+      "Ray điều phối Actor, Reward, Reference, Critic trên nhiều GPU; vLLM sinh mẫu tốc độ cao",
+      "Chế độ tác tử một lượt (hàm reward tùy chỉnh) và nhiều lượt (reset/step với môi trường)",
+      "Huấn luyện SFT, DPO/IPO/cDPO và reward model",
+      "LoRA/QLoRA, MoE, RingAttention cho ngữ cảnh dài, huấn luyện VLM",
+      "Ghi log Wandb/TensorBoard, khôi phục checkpoint, đa nút qua SLURM"
+    ],
+    "installGuideVi": "Yêu cầu: GPU NVIDIA; khuyến nghị dùng Docker với NVIDIA runtime (image nvcr.io/nvidia/pytorch); vLLM 0.29.0 trở lên để có hiệu năng tốt nhất.\nBước 1: Khởi chạy container (khuyến nghị): `docker run --runtime=nvidia -it --rm --shm-size=\"10g\" --cap-add=SYS_ADMIN \\\n  -v $PWD:/openrlhf nvcr.io/nvidia/pytorch:26.03-py3 bash`\nBước 2: Gỡ các gói xung đột: `sudo pip uninstall xgboost transformer_engine flash_attn pynvml -y`\nBước 3: Cài đặt OpenRLHF kèm vLLM (khuyến nghị): `pip install openrlhf[vllm]`\nBước 4: Khởi động nút chủ Ray trong container: `ray start --head --node-ip-address 0.0.0.0 --num-gpus 8`",
+    "usageGuideVi": "Bước 1: Chuẩn bị bộ dữ liệu prompt/hội thoại theo hướng dẫn Prepare Datasets.\nBước 2: Chạy SFT bằng deepspeed --module openrlhf.cli.train_sft hoặc huấn luyện reward model bằng openrlhf.cli.train_rm.\nBước 3: Gửi job RL qua ray job submit với python3 -m openrlhf.cli.train_ppo_ray, chọn thuật toán bằng --algo.advantage.estimator.\nBước 4: Tùy chọn cung cấp hàm reward hoặc hàm tác tử qua --train.agent_func_path cho bài toán nhiều lượt.",
+    "samplePromptsVi": [
+      "Huấn luyện mô hình suy luận toán bằng REINFORCE++-baseline với hàm reward kiểm tra đáp án.",
+      "Chạy DPO trên bộ dữ liệu so sánh ưu tiên để căn chỉnh mô hình hội thoại.",
+      "Huấn luyện tác tử nhiều lượt tương tác với môi trường tùy chỉnh."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install openrlhf[vllm]",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install openrlhf[vllm]\"\n  ],\n  \"nguon\": \"https://github.com/OpenRLHF/OpenRLHF\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0",
+      "Hỗ trợ nhiều thuật toán RL và mở rộng tới mô hình 70B+ tham số",
+      "Được nhiều dự án nghiên cứu và khóa học sử dụng theo README"
+    ],
+    "consVi": [
+      "Cần cụm GPU NVIDIA; ví dụ mẫu dùng 8 GPU",
+      "Thiết lập phức tạp (Ray, vLLM, DeepSpeed), khuyến nghị dùng Docker"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# OpenRLHF — Khung huấn luyện RLHF phân tán với Ray và vLLM\n\n> OpenRLHF is the first high-performance, production-ready open-source RLHF framework that combines Ray + vLLM distributed architecture with a unified agent-based design paradigm for scalable and extensible reinforcement learning from human feedback.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nOpenRLHF là khung huấn luyện RLHF mã nguồn mở hiệu năng cao, kết hợp kiến trúc phân tán Ray + vLLM + DeepSpeed với mô hình thực thi dựa trên tác tử. Khung hỗ trợ PPO, REINFORCE++, GRPO, RLOO, SFT, DPO, huấn luyện reward model và mở rộng tới mô hình 70B+ tham số.\n\nGiúp nhóm nghiên cứu và kỹ sư huấn luyện, căn chỉnh LLM/VLM bằng học tăng cường từ phản hồi, kể cả tác tử nhiều lượt với môi trường tùy chỉnh.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** OpenRLHF\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/OpenRLHF/OpenRLHF](https://github.com/OpenRLHF/OpenRLHF)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Thuật toán RL: PPO, REINFORCE++, REINFORCE++-baseline, GRPO, Dr. GRPO, RLOO, FlashREINFORCE**\n- **Ray điều phối Actor, Reward, Reference, Critic trên nhiều GPU; vLLM sinh mẫu tốc độ cao**\n- **Chế độ tác tử một lượt (hàm reward tùy chỉnh) và nhiều lượt (reset/step với môi trường)**\n- **Huấn luyện SFT, DPO/IPO/cDPO và reward model**\n- **LoRA/QLoRA, MoE, RingAttention cho ngữ cảnh dài, huấn luyện VLM**\n- **Ghi log Wandb/TensorBoard, khôi phục checkpoint, đa nút qua SLURM**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install openrlhf[vllm]\n```\n\nYêu cầu: GPU NVIDIA; khuyến nghị dùng Docker với NVIDIA runtime (image nvcr.io/nvidia/pytorch); vLLM 0.29.0 trở lên để có hiệu năng tốt nhất.\nBước 1: Khởi chạy container (khuyến nghị): `docker run --runtime=nvidia -it --rm --shm-size=\"10g\" --cap-add=SYS_ADMIN \\\n  -v $PWD:/openrlhf nvcr.io/nvidia/pytorch:26.03-py3 bash`\nBước 2: Gỡ các gói xung đột: `sudo pip uninstall xgboost transformer_engine flash_attn pynvml -y`\nBước 3: Cài đặt OpenRLHF kèm vLLM (khuyến nghị): `pip install openrlhf[vllm]`\nBước 4: Khởi động nút chủ Ray trong container: `ray start --head --node-ip-address 0.0.0.0 --num-gpus 8`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chuẩn bị bộ dữ liệu prompt/hội thoại theo hướng dẫn Prepare Datasets.\nBước 2: Chạy SFT bằng deepspeed --module openrlhf.cli.train_sft hoặc huấn luyện reward model bằng openrlhf.cli.train_rm.\nBước 3: Gửi job RL qua ray job submit với python3 -m openrlhf.cli.train_ppo_ray, chọn thuật toán bằng --algo.advantage.estimator.\nBước 4: Tùy chọn cung cấp hàm reward hoặc hàm tác tử qua --train.agent_func_path cho bài toán nhiều lượt.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Huấn luyện mô hình suy luận toán bằng REINFORCE++-baseline với hàm reward kiểm tra đáp án.\"\n- \"Chạy DPO trên bộ dữ liệu so sánh ưu tiên để căn chỉnh mô hình hội thoại.\"\n- \"Huấn luyện tác tử nhiều lượt tương tác với môi trường tùy chỉnh.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "karpathy-nanochat",
+    "slug": "karpathy-nanochat",
+    "name": "nanochat — Khung tối giản huấn luyện chatbot LLM từ đầu",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/karpathy/nanochat",
+    "websiteUrl": "",
+    "authorName": "Andrej Karpathy",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "nanochat là bộ khung thí nghiệm tối giản để huấn luyện LLM trên một nút GPU, bao trọn các giai đoạn tokenization, pretraining, finetuning, đánh giá và suy luận. Ví dụ, có thể huấn luyện mô hình đạt năng lực GPT-2 với chi phí khoảng 48 USD (khoảng 2 giờ trên nút 8XH100) rồi trò chuyện với nó qua CLI.",
+    "purposeVi": "Công cụ học tập và nghiên cứu giúp hiểu và thử nghiệm toàn bộ quy trình huấn luyện một chatbot LLM nhỏ với mã nguồn ngắn gọn, dễ sửa.",
+    "featuresVi": [
+      "Toàn bộ pipeline: huấn luyện tokenizer, pretraining, SFT, RL, đánh giá và suy luận có KV cache",
+      "Một tham số độ phức tạp duy nhất --depth tự tính các siêu tham số còn lại",
+      "Script runs/speedrun.sh huấn luyện và cho trò chuyện với mô hình cỡ GPT-2",
+      "Chat CLI (scripts.chat_cli) để nói chuyện với mô hình đã huấn luyện",
+      "Bảng xếp hạng \"time to GPT-2\" và script nghiên cứu scaling laws",
+      "Chạy được trên CPU/Apple Silicon (MPS) với mô hình thu nhỏ qua runs/runcpu.sh"
+    ],
+    "installGuideVi": "Yêu cầu: Trình quản lý gói uv; nút 8XH100 (hoặc 8XA100) cho speedrun; một GPU cũng chạy được nhưng chậm hơn khoảng 8 lần; GPU dưới 80GB cần giảm --device-batch-size.\nBước 1: Tải mã nguồn repo về máy (git clone) rồi vào thư mục dự án\nBước 2: Cài đặt phụ thuộc cho CUDA: `uv sync --extra gpu` (hoặc `uv sync --extra cpu` cho CPU/MPS)\nBước 3: Kích hoạt môi trường ảo: `source .venv/bin/activate`",
+    "usageGuideVi": "Bước 1: Chạy toàn bộ pipeline huấn luyện bằng runs/speedrun.sh (khoảng 1,5 giờ trên nút 8XH100), nên chạy trong phiên screen.\nBước 2: Sau khi xong, kích hoạt lại môi trường và trò chuyện với mô hình bằng `python -m scripts.chat_cli`.\nBước 3: Trên CPU hoặc Apple Silicon, dùng runs/runcpu.sh để huấn luyện mô hình rất nhỏ trong vài chục phút.\nBước 4: Thử nghiệm nghiên cứu bằng scripts.base_train với --depth khác nhau và theo dõi val_bpb, CORE trên wandb.",
+    "samplePromptsVi": [
+      "Tại sao bầu trời có màu xanh?",
+      "Viết một bài thơ ngắn về bầu trời.",
+      "Kể cho tôi một câu chuyện ngắn."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "bash runs/speedrun.sh",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"bash runs/speedrun.sh\"\n  ],\n  \"nguon\": \"https://github.com/karpathy/nanochat\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở MIT, mã ngắn gọn dễ đọc và sửa",
+      "Bao trọn quy trình từ tokenizer tới chat CLI",
+      "Chi phí huấn luyện mô hình cỡ GPT-2 dưới 100 USD theo README"
+    ],
+    "consVi": [
+      "Là khung thí nghiệm, không phải framework cấu hình đầy đủ cho production",
+      "Cần GPU mạnh (8XH100) để đạt kết quả tốt; chạy CPU chỉ cho kết quả yếu",
+      "Mô hình nhỏ dễ ảo giác, năng lực hạn chế"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# nanochat — Khung tối giản huấn luyện chatbot LLM từ đầu\n\n> nanochat is the simplest experimental harness for training LLMs.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nnanochat là bộ khung thí nghiệm tối giản để huấn luyện LLM trên một nút GPU, bao trọn các giai đoạn tokenization, pretraining, finetuning, đánh giá và suy luận. Ví dụ, có thể huấn luyện mô hình đạt năng lực GPT-2 với chi phí khoảng 48 USD (khoảng 2 giờ trên nút 8XH100) rồi trò chuyện với nó qua CLI.\n\nCông cụ học tập và nghiên cứu giúp hiểu và thử nghiệm toàn bộ quy trình huấn luyện một chatbot LLM nhỏ với mã nguồn ngắn gọn, dễ sửa.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Andrej Karpathy\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/karpathy/nanochat](https://github.com/karpathy/nanochat)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Toàn bộ pipeline: huấn luyện tokenizer, pretraining, SFT, RL, đánh giá và suy luận có KV cache**\n- **Một tham số độ phức tạp duy nhất --depth tự tính các siêu tham số còn lại**\n- **Script runs/speedrun.sh huấn luyện và cho trò chuyện với mô hình cỡ GPT-2**\n- **Chat CLI (scripts.chat_cli) để nói chuyện với mô hình đã huấn luyện**\n- **Bảng xếp hạng \"time to GPT-2\" và script nghiên cứu scaling laws**\n- **Chạy được trên CPU/Apple Silicon (MPS) với mô hình thu nhỏ qua runs/runcpu.sh**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nbash runs/speedrun.sh\n```\n\nYêu cầu: Trình quản lý gói uv; nút 8XH100 (hoặc 8XA100) cho speedrun; một GPU cũng chạy được nhưng chậm hơn khoảng 8 lần; GPU dưới 80GB cần giảm --device-batch-size.\nBước 1: Tải mã nguồn repo về máy (git clone) rồi vào thư mục dự án\nBước 2: Cài đặt phụ thuộc cho CUDA: `uv sync --extra gpu` (hoặc `uv sync --extra cpu` cho CPU/MPS)\nBước 3: Kích hoạt môi trường ảo: `source .venv/bin/activate`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy toàn bộ pipeline huấn luyện bằng runs/speedrun.sh (khoảng 1,5 giờ trên nút 8XH100), nên chạy trong phiên screen.\nBước 2: Sau khi xong, kích hoạt lại môi trường và trò chuyện với mô hình bằng `python -m scripts.chat_cli`.\nBước 3: Trên CPU hoặc Apple Silicon, dùng runs/runcpu.sh để huấn luyện mô hình rất nhỏ trong vài chục phút.\nBước 4: Thử nghiệm nghiên cứu bằng scripts.base_train với --depth khác nhau và theo dõi val_bpb, CORE trên wandb.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tại sao bầu trời có màu xanh?\"\n- \"Viết một bài thơ ngắn về bầu trời.\"\n- \"Kể cho tôi một câu chuyện ngắn.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "predibase-lorax",
+    "slug": "predibase-lorax",
+    "name": "LoRAX — Máy chủ suy luận phục vụ hàng nghìn adapter LoRA",
+    "icon": "Box",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "cloud_infrastructure"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Điện toán đám mây & Hạ tầng số"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/predibase/lorax",
+    "websiteUrl": "https://predibase.github.io/lorax/",
+    "authorName": "Predibase",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "LoRAX (LoRA eXchange) là máy chủ suy luận cho phép phục vụ hàng nghìn mô hình tinh chỉnh LoRA trên một GPU, giảm mạnh chi phí phục vụ mà không giảm thông lượng hay độ trễ. Adapter được tải động theo từng yêu cầu từ HuggingFace, Predibase hoặc hệ thống tệp, kèm API REST, client Python và API tương thích OpenAI.",
+    "purposeVi": "Giúp đội ngũ triển khai nhiều mô hình tinh chỉnh dùng chung một mô hình nền trên hạ tầng GPU hạn chế.",
+    "featuresVi": [
+      "Tải adapter động: nạp LoRA đúng lúc theo yêu cầu, không chặn yêu cầu đồng thời; gộp adapter theo yêu cầu",
+      "Heterogeneous Continuous Batching: gom yêu cầu của nhiều adapter khác nhau vào cùng batch",
+      "Adapter Exchange Scheduling: nạp trước và giải phóng adapter giữa bộ nhớ GPU và CPU",
+      "Tối ưu suy luận: tensor parallelism, flash-attention, paged attention, SGMV, lượng tử hóa, stream token",
+      "Sẵn sàng production: Docker image, Helm chart, Prometheus, OpenTelemetry, API tương thích OpenAI, JSON mode",
+      "Mô hình nền Llama, Mistral, Qwen... nạp fp16 hoặc lượng tử hóa bitsandbytes, GPT-Q, AWQ"
+    ],
+    "installGuideVi": "Yêu cầu: GPU NVIDIA thế hệ Ampere trở lên; driver tương thích CUDA 11.8 trở lên; Linux; Docker và nvidia-container-toolkit.\nBước 1: Cài đặt nvidia-container-toolkit, sau đó chạy `sudo systemctl daemon-reload` và `sudo systemctl restart docker`\nBước 2: Đặt biến model=mistralai/Mistral-7B-Instruct-v0.1 và volume=$PWD/data, rồi khởi chạy máy chủ: `docker run --gpus all --shm-size 1g -p 8080:80 -v $volume:/data \\\n    ghcr.io/predibase/lorax:main --model-id $model`\nBước 3: Tùy chọn cài đặt client Python: `pip install lorax-client`",
+    "usageGuideVi": "Bước 1: Gửi yêu cầu POST tới http://127.0.0.1:8080/generate với inputs và parameters để gọi mô hình nền.\nBước 2: Thêm adapter_id trong parameters để gọi một adapter LoRA cụ thể.\nBước 3: Hoặc dùng client Python: Client(\"http://127.0.0.1:8080\").generate(prompt, adapter_id=...).\nBước 4: Dùng SDK OpenAI với base_url http://127.0.0.1:8080/v1 và đặt model là tên adapter để chat nhiều lượt.",
+    "samplePromptsVi": [
+      "Natalia bán kẹp tóc cho 48 người bạn trong tháng Tư, tháng Năm bán được một nửa số đó. Tổng cộng bán bao nhiêu?",
+      "Gọi adapter gsm8k để giải bài toán đố bằng mô hình Mistral-7B tinh chỉnh.",
+      "Trò chuyện qua API OpenAI với adapter zephyr-7b-dpo-lora."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker run --gpus all --shm-size 1g -p 8080:80 -v $volume:/data \\\n    ghcr.io/predibase/lorax:main --model-id $model",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker run --gpus all --shm-size 1g -p 8080:80 -v $volume:/data \\\\\\n    ghcr.io/predibase/lorax:main --model-id $model\"\n  ],\n  \"nguon\": \"https://github.com/predibase/lorax\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0, README khẳng định miễn phí cho mục đích thương mại",
+      "Phục vụ nhiều adapter trên một GPU, có API tương thích OpenAI",
+      "Có Docker image dựng sẵn và Helm chart cho Kubernetes"
+    ],
+    "consVi": [
+      "Chỉ hỗ trợ GPU NVIDIA Ampere trở lên trên Linux",
+      "Nhịp phát triển chậm lại: lịch sử commit cho thấy chủ yếu là các bản sửa nhỏ kể từ năm 2025"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# LoRAX — Máy chủ suy luận phục vụ hàng nghìn adapter LoRA\n\n> LoRAX: Multi-LoRA inference server that scales to 1000s of fine-tuned LLMs\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nLoRAX (LoRA eXchange) là máy chủ suy luận cho phép phục vụ hàng nghìn mô hình tinh chỉnh LoRA trên một GPU, giảm mạnh chi phí phục vụ mà không giảm thông lượng hay độ trễ. Adapter được tải động theo từng yêu cầu từ HuggingFace, Predibase hoặc hệ thống tệp, kèm API REST, client Python và API tương thích OpenAI.\n\nGiúp đội ngũ triển khai nhiều mô hình tinh chỉnh dùng chung một mô hình nền trên hạ tầng GPU hạn chế.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Predibase\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/predibase/lorax](https://github.com/predibase/lorax)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tải adapter động: nạp LoRA đúng lúc theo yêu cầu, không chặn yêu cầu đồng thời; gộp adapter theo yêu cầu**\n- **Heterogeneous Continuous Batching: gom yêu cầu của nhiều adapter khác nhau vào cùng batch**\n- **Adapter Exchange Scheduling: nạp trước và giải phóng adapter giữa bộ nhớ GPU và CPU**\n- **Tối ưu suy luận: tensor parallelism, flash-attention, paged attention, SGMV, lượng tử hóa, stream token**\n- **Sẵn sàng production: Docker image, Helm chart, Prometheus, OpenTelemetry, API tương thích OpenAI, JSON mode**\n- **Mô hình nền Llama, Mistral, Qwen... nạp fp16 hoặc lượng tử hóa bitsandbytes, GPT-Q, AWQ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker run --gpus all --shm-size 1g -p 8080:80 -v $volume:/data \\\n    ghcr.io/predibase/lorax:main --model-id $model\n```\n\nYêu cầu: GPU NVIDIA thế hệ Ampere trở lên; driver tương thích CUDA 11.8 trở lên; Linux; Docker và nvidia-container-toolkit.\nBước 1: Cài đặt nvidia-container-toolkit, sau đó chạy `sudo systemctl daemon-reload` và `sudo systemctl restart docker`\nBước 2: Đặt biến model=mistralai/Mistral-7B-Instruct-v0.1 và volume=$PWD/data, rồi khởi chạy máy chủ: `docker run --gpus all --shm-size 1g -p 8080:80 -v $volume:/data \\\n    ghcr.io/predibase/lorax:main --model-id $model`\nBước 3: Tùy chọn cài đặt client Python: `pip install lorax-client`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Gửi yêu cầu POST tới http://127.0.0.1:8080/generate với inputs và parameters để gọi mô hình nền.\nBước 2: Thêm adapter_id trong parameters để gọi một adapter LoRA cụ thể.\nBước 3: Hoặc dùng client Python: Client(\"http://127.0.0.1:8080\").generate(prompt, adapter_id=...).\nBước 4: Dùng SDK OpenAI với base_url http://127.0.0.1:8080/v1 và đặt model là tên adapter để chat nhiều lượt.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Natalia bán kẹp tóc cho 48 người bạn trong tháng Tư, tháng Năm bán được một nửa số đó. Tổng cộng bán bao nhiêu?\"\n- \"Gọi adapter gsm8k để giải bài toán đố bằng mô hình Mistral-7B tinh chỉnh.\"\n- \"Trò chuyện qua API OpenAI với adapter zephyr-7b-dpo-lora.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "nvidia-tensorrt-llm",
+    "slug": "nvidia-tensorrt-llm",
+    "name": "TensorRT LLM — Thư viện tối ưu suy luận LLM trên GPU NVIDIA",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "cloud_infrastructure"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Điện toán đám mây & Hạ tầng số"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/NVIDIA/TensorRT-LLM",
+    "websiteUrl": "https://nvidia.github.io/TensorRT-LLM/",
+    "authorName": "NVIDIA",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "TensorRT LLM là thư viện mã nguồn mở của NVIDIA tối ưu suy luận LLM và mô hình sinh hình ảnh/video trên GPU NVIDIA, với kernel tùy biến (attention, GEMM, MoE), tách prefill-decode, Wide Expert Parallelism và speculative decoding. Thư viện xây trên PyTorch, có LLM API Python và lệnh trtllm-serve để chạy máy chủ tương thích OpenAI.",
+    "purposeVi": "Giúp kỹ sư hạ tầng triển khai LLM với hiệu năng cao nhất trên GPU NVIDIA, từ một GPU tới nhiều nút.",
+    "featuresVi": [
+      "Kernel tối ưu cho attention, GEMM, MoE và các phép toán suy luận phổ biến",
+      "Tối ưu runtime: tách prefill-decode, Wide Expert Parallelism, speculative decoding",
+      "LLM API Python hỗ trợ một GPU, đa GPU và đa nút với nhiều chiến lược song song",
+      "trtllm-serve: máy chủ trực tuyến tương thích OpenAI (v1/chat/completions)",
+      "Kiến trúc PyTorch-native, dễ tùy chỉnh mô hình",
+      "Tích hợp NVIDIA Dynamo và Triton Inference Server; hỗ trợ mô hình lượng tử hóa FP8/FP4"
+    ],
+    "installGuideVi": "Yêu cầu: GPU NVIDIA được hỗ trợ; cài đặt bằng pip cần Linux (thử nghiệm trên Ubuntu 24.04), CUDA Toolkit 13.4, PyTorch phù hợp và libopenmpi-dev; hoặc dùng container NGC.\nBước 1: Cách đơn giản nhất: kéo và chạy container phát hành từ NGC (thay x.y.z bằng phiên bản): `docker run --rm -it --ipc host --gpus all --ulimit memlock=-1 --ulimit stack=67108864 -p 8000:8000 nvcr.io/nvidia/tensorrt-llm/release:x.y.z`\nBước 2: Hoặc cài đặt trên Linux qua pip sau khi cài CUDA Toolkit, PyTorch và `sudo apt-get -y install libopenmpi-dev`: `pip3 install --ignore-installed pip setuptools wheel && pip3 install tensorrt_llm`\nBước 3: Kiểm tra cài đặt: `python3 -c \"import tensorrt_llm\"`",
+    "usageGuideVi": "Bước 1: Khởi chạy máy chủ tương thích OpenAI: `trtllm-serve \"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"`.\nBước 2: Gửi yêu cầu POST tới http://localhost:8000/v1/chat/completions với danh sách messages.\nBước 3: Dùng LLM API Python để chạy suy luận ngoại tuyến hoặc đa GPU.\nBước 4: Tắt thu thập telemetry bằng TRTLLM_NO_USAGE_STATS=1 hoặc cờ --no-telemetry nếu cần.",
+    "samplePromptsVi": [
+      "New York nằm ở đâu? Trả lời trong một câu.",
+      "Triển khai mô hình Qwen3-8B FP8 bằng trtllm-serve trên GPU hỗ trợ FP8.",
+      "Đo thông lượng suy luận bằng trtllm-bench cho mô hình DeepSeek."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip3 install --ignore-installed pip setuptools wheel && pip3 install tensorrt_llm",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip3 install --ignore-installed pip setuptools wheel && pip3 install tensorrt_llm\"\n  ],\n  \"nguon\": \"https://github.com/NVIDIA/TensorRT-LLM\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0, do NVIDIA phát triển tích cực",
+      "Hiệu năng suy luận cao trên GPU NVIDIA, hỗ trợ đa nút",
+      "Có máy chủ tương thích OpenAI và container NGC dựng sẵn"
+    ],
+    "consVi": [
+      "Chỉ chạy trên GPU NVIDIA",
+      "Thu thập telemetry ẩn danh theo mặc định (có thể tắt)",
+      "Cài đặt qua pip đòi hỏi đúng phiên bản CUDA, PyTorch và MPI"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# TensorRT LLM — Thư viện tối ưu suy luận LLM trên GPU NVIDIA\n\n> TensorRT LLM optimizes inference for LLMs and Visual Gen models with specialized kernels for common operations, an efficient runtime, and a pythonic framework that enables you to customize and extend the system.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nTensorRT LLM là thư viện mã nguồn mở của NVIDIA tối ưu suy luận LLM và mô hình sinh hình ảnh/video trên GPU NVIDIA, với kernel tùy biến (attention, GEMM, MoE), tách prefill-decode, Wide Expert Parallelism và speculative decoding. Thư viện xây trên PyTorch, có LLM API Python và lệnh trtllm-serve để chạy máy chủ tương thích OpenAI.\n\nGiúp kỹ sư hạ tầng triển khai LLM với hiệu năng cao nhất trên GPU NVIDIA, từ một GPU tới nhiều nút.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** NVIDIA\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/NVIDIA/TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Kernel tối ưu cho attention, GEMM, MoE và các phép toán suy luận phổ biến**\n- **Tối ưu runtime: tách prefill-decode, Wide Expert Parallelism, speculative decoding**\n- **LLM API Python hỗ trợ một GPU, đa GPU và đa nút với nhiều chiến lược song song**\n- **trtllm-serve: máy chủ trực tuyến tương thích OpenAI (v1/chat/completions)**\n- **Kiến trúc PyTorch-native, dễ tùy chỉnh mô hình**\n- **Tích hợp NVIDIA Dynamo và Triton Inference Server; hỗ trợ mô hình lượng tử hóa FP8/FP4**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip3 install --ignore-installed pip setuptools wheel && pip3 install tensorrt_llm\n```\n\nYêu cầu: GPU NVIDIA được hỗ trợ; cài đặt bằng pip cần Linux (thử nghiệm trên Ubuntu 24.04), CUDA Toolkit 13.4, PyTorch phù hợp và libopenmpi-dev; hoặc dùng container NGC.\nBước 1: Cách đơn giản nhất: kéo và chạy container phát hành từ NGC (thay x.y.z bằng phiên bản): `docker run --rm -it --ipc host --gpus all --ulimit memlock=-1 --ulimit stack=67108864 -p 8000:8000 nvcr.io/nvidia/tensorrt-llm/release:x.y.z`\nBước 2: Hoặc cài đặt trên Linux qua pip sau khi cài CUDA Toolkit, PyTorch và `sudo apt-get -y install libopenmpi-dev`: `pip3 install --ignore-installed pip setuptools wheel && pip3 install tensorrt_llm`\nBước 3: Kiểm tra cài đặt: `python3 -c \"import tensorrt_llm\"`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi chạy máy chủ tương thích OpenAI: `trtllm-serve \"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"`.\nBước 2: Gửi yêu cầu POST tới http://localhost:8000/v1/chat/completions với danh sách messages.\nBước 3: Dùng LLM API Python để chạy suy luận ngoại tuyến hoặc đa GPU.\nBước 4: Tắt thu thập telemetry bằng TRTLLM_NO_USAGE_STATS=1 hoặc cờ --no-telemetry nếu cần.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"New York nằm ở đâu? Trả lời trong một câu.\"\n- \"Triển khai mô hình Qwen3-8B FP8 bằng trtllm-serve trên GPU hỗ trợ FP8.\"\n- \"Đo thông lượng suy luận bằng trtllm-bench cho mô hình DeepSeek.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "mlc-ai-mlc-llm",
+    "slug": "mlc-ai-mlc-llm",
+    "name": "MLC LLM — Động cơ biên dịch và triển khai LLM đa nền tảng",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "mobile_app"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Ứng dụng di động (Mobile App)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/mlc-ai/mlc-llm",
+    "websiteUrl": "https://llm.mlc.ai/docs/",
+    "authorName": "MLC team",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "MLC LLM là trình biên dịch học máy và động cơ triển khai hiệu năng cao cho LLM, chạy mô hình trên GPU AMD, NVIDIA, Apple, Intel, trình duyệt (WebGPU/WASM), iOS và Android. Tất cả dùng chung MLCEngine với API tương thích OpenAI qua REST server, Python, JavaScript, iOS và Android.",
+    "purposeVi": "Giúp lập trình viên biên dịch, tối ưu và triển khai LLM trực tiếp trên mọi nền tảng, từ máy chủ tới điện thoại và trình duyệt.",
+    "featuresVi": [
+      "Hỗ trợ đa nền tảng: Vulkan, CUDA, ROCm, Metal, WebGPU, OpenCL (Adreno, Mali)",
+      "MLCEngine: động cơ suy luận thống nhất cho mọi nền tảng",
+      "API tương thích OpenAI qua REST server, Python, JavaScript, iOS, Android",
+      "Lệnh mlc_llm chat để trò chuyện trên dòng lệnh",
+      "Lệnh mlc_llm serve khởi chạy REST server tại http://127.0.0.1:8000",
+      "Dùng mô hình lượng tử hóa dựng sẵn từ Hugging Face (ví dụ Llama-3-8B-Instruct q4f16_1)"
+    ],
+    "installGuideVi": "Yêu cầu: Python trong môi trường conda (khuyến nghị); khoảng 6GB VRAM trống cho Llama3 8B int4; Windows/Linux cần driver Vulkan mới nhất; có gói wheel cho CPU, CUDA 12.8/13.0, ROCm 6.1/6.2.\nBước 1: Tạo và kích hoạt môi trường conda: `conda activate your-environment`\nBước 2: Cài đặt gói dựng sẵn (bản CPU/Vulkan/Metal): `python -m pip install --pre -U -f https://mlc.ai/wheels mlc-llm-nightly-cpu mlc-ai-nightly-cpu`\nBước 3: Trên Windows/Linux dùng Vulkan, cài đặt thêm: `conda install -c conda-forge gcc libvulkan-loader`",
+    "usageGuideVi": "Bước 1: Trò chuyện trên dòng lệnh: `mlc_llm chat HF://mlc-ai/Llama-3-8B-Instruct-q4f16_1-MLC`.\nBước 2: Khởi chạy REST server: `mlc_llm serve HF://mlc-ai/Llama-3-8B-Instruct-q4f16_1-MLC`, rồi gửi yêu cầu tới http://127.0.0.1:8000/v1/chat/completions.\nBước 3: Trong Python, tạo MLCEngine(model) và gọi engine.chat.completions.create(...) theo kiểu OpenAI.\nBước 4: Xem hướng dẫn triển khai cho iOS, Android và WebLLM trong tài liệu.",
+    "samplePromptsVi": [
+      "What is the meaning of life?",
+      "Hello! Our project is MLC LLM. What is the name of our project?",
+      "Chạy Llama 3 8B lượng tử hóa trên laptop có GPU tích hợp qua Vulkan."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "mlc_llm chat HF://mlc-ai/Llama-3-8B-Instruct-q4f16_1-MLC",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"mlc_llm chat HF://mlc-ai/Llama-3-8B-Instruct-q4f16_1-MLC\"\n  ],\n  \"nguon\": \"https://github.com/mlc-ai/mlc-llm\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0",
+      "Chạy trên nhiều loại GPU, trình duyệt và thiết bị di động",
+      "API tương thích OpenAI"
+    ],
+    "consVi": [
+      "Gói pip là bản nightly (pre-release) phát hành qua kho wheel riêng mlc.ai",
+      "README chỉ dẫn sang tài liệu trực tuyến; cài đặt khác nhau theo GPU và hệ điều hành"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# MLC LLM — Động cơ biên dịch và triển khai LLM đa nền tảng\n\n> MLC LLM is a machine learning compiler and high-performance deployment engine for large language models.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMLC LLM là trình biên dịch học máy và động cơ triển khai hiệu năng cao cho LLM, chạy mô hình trên GPU AMD, NVIDIA, Apple, Intel, trình duyệt (WebGPU/WASM), iOS và Android. Tất cả dùng chung MLCEngine với API tương thích OpenAI qua REST server, Python, JavaScript, iOS và Android.\n\nGiúp lập trình viên biên dịch, tối ưu và triển khai LLM trực tiếp trên mọi nền tảng, từ máy chủ tới điện thoại và trình duyệt.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** MLC team\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/mlc-ai/mlc-llm](https://github.com/mlc-ai/mlc-llm)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Hỗ trợ đa nền tảng: Vulkan, CUDA, ROCm, Metal, WebGPU, OpenCL (Adreno, Mali)**\n- **MLCEngine: động cơ suy luận thống nhất cho mọi nền tảng**\n- **API tương thích OpenAI qua REST server, Python, JavaScript, iOS, Android**\n- **Lệnh mlc_llm chat để trò chuyện trên dòng lệnh**\n- **Lệnh mlc_llm serve khởi chạy REST server tại http://127.0.0.1:8000**\n- **Dùng mô hình lượng tử hóa dựng sẵn từ Hugging Face (ví dụ Llama-3-8B-Instruct q4f16_1)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nmlc_llm chat HF://mlc-ai/Llama-3-8B-Instruct-q4f16_1-MLC\n```\n\nYêu cầu: Python trong môi trường conda (khuyến nghị); khoảng 6GB VRAM trống cho Llama3 8B int4; Windows/Linux cần driver Vulkan mới nhất; có gói wheel cho CPU, CUDA 12.8/13.0, ROCm 6.1/6.2.\nBước 1: Tạo và kích hoạt môi trường conda: `conda activate your-environment`\nBước 2: Cài đặt gói dựng sẵn (bản CPU/Vulkan/Metal): `python -m pip install --pre -U -f https://mlc.ai/wheels mlc-llm-nightly-cpu mlc-ai-nightly-cpu`\nBước 3: Trên Windows/Linux dùng Vulkan, cài đặt thêm: `conda install -c conda-forge gcc libvulkan-loader`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trò chuyện trên dòng lệnh: `mlc_llm chat HF://mlc-ai/Llama-3-8B-Instruct-q4f16_1-MLC`.\nBước 2: Khởi chạy REST server: `mlc_llm serve HF://mlc-ai/Llama-3-8B-Instruct-q4f16_1-MLC`, rồi gửi yêu cầu tới http://127.0.0.1:8000/v1/chat/completions.\nBước 3: Trong Python, tạo MLCEngine(model) và gọi engine.chat.completions.create(...) theo kiểu OpenAI.\nBước 4: Xem hướng dẫn triển khai cho iOS, Android và WebLLM trong tài liệu.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"What is the meaning of life?\"\n- \"Hello! Our project is MLC LLM. What is the name of our project?\"\n- \"Chạy Llama 3 8B lượng tử hóa trên laptop có GPU tích hợp qua Vulkan.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "run-llama-llama-agents",
+    "slug": "run-llama-llama-agents",
+    "name": "LlamaAgents — Khung workflow hướng sự kiện cho tác tử xử lý tài liệu",
+    "icon": "Workflow",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "rpa_workflow_automation",
+    "categoryNameVi": "Tự động hóa quy trình & RPA (Automation)",
+    "categories": [
+      "rpa_workflow_automation",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/run-llama/llama-agents",
+    "websiteUrl": "https://developers.llamaindex.ai/python/llamaagents/workflows/",
+    "authorName": "LlamaIndex Inc.",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "LlamaAgents (trước đây là repo workflows-py) là khung Python mã nguồn mở để xây dựng và triển khai tác tử xử lý tài liệu. Nền tảng là Agent Workflows: thư viện điều phối hướng sự kiện, mỗi bước là hàm async Python phát và nhận sự kiện, hỗ trợ rẽ nhánh, lặp, chạy song song, lưu trạng thái và phục hồi lỗi mà không cần DSL.",
+    "purposeVi": "Giúp đội ngũ dựng pipeline tài liệu (OCR, LLM, trích xuất có cấu trúc, phân loại, kiểm duyệt của con người) chạy bền vững từ notebook tới production.",
+    "featuresVi": [
+      "llama-index-workflows: thư viện workflow hướng sự kiện, ít phụ thuộc, nhúng được vào script, notebook, máy chủ",
+      "Durability có thể cắm thêm: lưu và tiếp tục lần chạy",
+      "llama-agents-server: bọc workflow thành REST API có streaming, lưu trữ và human-in-the-loop, gắn vào ứng dụng Starlette/FastAPI",
+      "llamactl: công cụ dòng lệnh khởi tạo từ template, phát triển cục bộ có hot reload và triển khai",
+      "Triển khai lên LlamaParse, AWS Bedrock AgentCore hoặc hạ tầng riêng; tác tử có thể là dịch vụ headless, máy chủ MCP hoặc ứng dụng có giao diện",
+      "Tích hợp LlamaParse cho OCR, trích xuất có cấu trúc, phân loại và tách tài liệu"
+    ],
+    "installGuideVi": "Yêu cầu: Python; uv để cài đặt llamactl; tài khoản LlamaParse nếu dùng các bước xử lý tài liệu của LlamaParse.\nBước 1: Cài đặt thư viện workflow: `pip install llama-index-workflows`\nBước 2: Hoặc cài đặt công cụ dòng lệnh llamactl: `uv tool install llamactl`\nBước 3: Khởi tạo dự án từ template: `llamactl init`",
+    "usageGuideVi": "Bước 1: Định nghĩa lớp kế thừa Workflow với các bước @step async nhận StartEvent và trả StopEvent.\nBước 2: Chạy workflow bằng await workflow.run(...).\nBước 3: Dùng WorkflowServer().add_workflow(\"greet\", HelloWorkflow()) để phục vụ workflow qua REST API.\nBước 4: Chạy cục bộ bằng `llamactl serve` và triển khai bằng `llamactl deployments create`.",
+    "samplePromptsVi": [
+      "Trích xuất số hóa đơn, ngày và tổng tiền từ một lô hóa đơn PDF.",
+      "Phân loại hợp đồng theo loại và chuyển các trường hợp chưa chắc cho người duyệt.",
+      "Tạo workflow chào hỏi đơn giản và phục vụ nó qua REST API."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "uv tool install llamactl",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uv tool install llamactl\"\n  ],\n  \"nguon\": \"https://github.com/run-llama/llama-agents\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở MIT",
+      "Có thể bắt đầu như thư viện rồi mở rộng thành máy chủ và triển khai",
+      "Có công cụ dòng lệnh llamactl với template dựng sẵn"
+    ],
+    "consVi": [
+      "Các bước xử lý tài liệu nặng dựa vào LlamaParse là nền tảng thương mại cần tài khoản; README không nêu giá",
+      "Repo đã đổi tên từ workflows-py sang llama-agents"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# LlamaAgents — Khung workflow hướng sự kiện cho tác tử xử lý tài liệu\n\n> An open-source framework for building and shipping document-centric agents in Python.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nLlamaAgents (trước đây là repo workflows-py) là khung Python mã nguồn mở để xây dựng và triển khai tác tử xử lý tài liệu. Nền tảng là Agent Workflows: thư viện điều phối hướng sự kiện, mỗi bước là hàm async Python phát và nhận sự kiện, hỗ trợ rẽ nhánh, lặp, chạy song song, lưu trạng thái và phục hồi lỗi mà không cần DSL.\n\nGiúp đội ngũ dựng pipeline tài liệu (OCR, LLM, trích xuất có cấu trúc, phân loại, kiểm duyệt của con người) chạy bền vững từ notebook tới production.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Tự động hóa quy trình & RPA (Automation)\n- **Tác giả / Nhà phát triển:** LlamaIndex Inc.\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/run-llama/llama-agents](https://github.com/run-llama/llama-agents)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **llama-index-workflows: thư viện workflow hướng sự kiện, ít phụ thuộc, nhúng được vào script, notebook, máy chủ**\n- **Durability có thể cắm thêm: lưu và tiếp tục lần chạy**\n- **llama-agents-server: bọc workflow thành REST API có streaming, lưu trữ và human-in-the-loop, gắn vào ứng dụng Starlette/FastAPI**\n- **llamactl: công cụ dòng lệnh khởi tạo từ template, phát triển cục bộ có hot reload và triển khai**\n- **Triển khai lên LlamaParse, AWS Bedrock AgentCore hoặc hạ tầng riêng; tác tử có thể là dịch vụ headless, máy chủ MCP hoặc ứng dụng có giao diện**\n- **Tích hợp LlamaParse cho OCR, trích xuất có cấu trúc, phân loại và tách tài liệu**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuv tool install llamactl\n```\n\nYêu cầu: Python; uv để cài đặt llamactl; tài khoản LlamaParse nếu dùng các bước xử lý tài liệu của LlamaParse.\nBước 1: Cài đặt thư viện workflow: `pip install llama-index-workflows`\nBước 2: Hoặc cài đặt công cụ dòng lệnh llamactl: `uv tool install llamactl`\nBước 3: Khởi tạo dự án từ template: `llamactl init`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Định nghĩa lớp kế thừa Workflow với các bước @step async nhận StartEvent và trả StopEvent.\nBước 2: Chạy workflow bằng await workflow.run(...).\nBước 3: Dùng WorkflowServer().add_workflow(\"greet\", HelloWorkflow()) để phục vụ workflow qua REST API.\nBước 4: Chạy cục bộ bằng `llamactl serve` và triển khai bằng `llamactl deployments create`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Trích xuất số hóa đơn, ngày và tổng tiền từ một lô hóa đơn PDF.\"\n- \"Phân loại hợp đồng theo loại và chuyển các trường hợp chưa chắc cho người duyệt.\"\n- \"Tạo workflow chào hỏi đơn giản và phục vụ nó qua REST API.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "kyegomez-swarms",
+    "slug": "kyegomez-swarms",
+    "name": "Swarms — Khung điều phối đa tác tử cho doanh nghiệp",
+    "icon": "Workflow",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "rpa_workflow_automation"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Tự động hóa quy trình & RPA (Automation)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/kyegomez/swarms",
+    "websiteUrl": "https://docs.swarms.world",
+    "authorName": "Kye Gomez (Swarms Corp)",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Swarms là khung Python điều phối đa tác tử, cung cấp các kiến trúc dựng sẵn như tuần tự, song song, phân cấp, đồ thị và hỗn hợp tác tử. Khung tích hợp MCP (dùng công cụ từ máy chủ MCP và biến tác tử thành máy chủ MCP), skills và nhiều nhà cung cấp LLM.",
+    "purposeVi": "Giúp lập trình viên dựng, triển khai và mở rộng hệ thống nhiều tác tử phối hợp để tự động hóa các tác vụ nhiều bước.",
+    "featuresVi": [
+      "Agent: tác tử dùng LLM + công cụ + bộ nhớ, chế độ max_loops=\"auto\" tự lập kế hoạch và phản tư",
+      "Kiến trúc đa tác tử: SequentialWorkflow, ConcurrentWorkflow, AgentRearrange, GraphWorkflow, MixtureOfAgents, GroupChat, HierarchicalSwarm, HeavySwarm",
+      "SwarmRouter: một giao diện chạy mọi loại swarm; AutoSwarmBuilder tự sinh tác tử và workflow",
+      "Tích hợp MCP: gắn mcp_url để dùng công cụ; MCPDeployer biến tác tử thành máy chủ MCP có xác thực",
+      "Docker image chính thức swarmscorp/swarms cho linux/amd64 và linux/arm64",
+      "Hỗ trợ nhiều nhà cung cấp qua khóa API (OpenAI, Anthropic, Groq...)"
+    ],
+    "installGuideVi": "Yêu cầu: Python và pip (khuyến nghị uv); khóa API của nhà cung cấp mô hình như OPENAI_API_KEY, ANTHROPIC_API_KEY, GROQ_API_KEY.\nBước 1: Cài đặt từ PyPI: `pip3 install -U swarms` (hoặc `uv pip install swarms`)\nBước 2: Tùy chọn cài đặt bản tăng tốc: `pip3 install -U \"swarms[fast]\"`\nBước 3: Cấu hình biến môi trường khóa API (OPENAI_API_KEY, ANTHROPIC_API_KEY...) trong tệp .env\nBước 4: Hoặc chạy bằng Docker: `docker pull swarmscorp/swarms:latest`",
+    "usageGuideVi": "Bước 1: Tạo Agent(model_name=..., max_loops=...) và gọi agent.run(\"nhiệm vụ\").\nBước 2: Ghép nhiều tác tử bằng SequentialWorkflow hoặc ConcurrentWorkflow rồi gọi run với nhiệm vụ.\nBước 3: Gắn mcp_url để tác tử dùng công cụ từ máy chủ MCP, hoặc dùng MCPDeployer để phục vụ tác tử qua MCP.\nBước 4: Xem hướng dẫn và hơn 60 cấu trúc đa tác tử trong tài liệu docs.swarms.world.",
+    "samplePromptsVi": [
+      "Lợi ích chính của việc dùng hệ thống đa tác tử là gì?",
+      "Cho tác tử nghiên cứu tìm thông tin rồi tác tử viết soạn bài blog từ kết quả đó.",
+      "Dùng công cụ MCP DeepWiki để giải thích một repo GitHub làm gì."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip3 install -U swarms",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip3 install -U swarms\"\n  ],\n  \"nguon\": \"https://github.com/kyegomez/swarms\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0",
+      "Nhiều kiến trúc đa tác tử dựng sẵn và hỗ trợ MCP hai chiều",
+      "Có Docker image chính thức"
+    ],
+    "consVi": [
+      "Cần khóa API nhà cung cấp mô hình",
+      "Có biến cấu hình telemetry (SWARMS_TELEMETRY_ON); marketplace và dịch vụ của Swarms Corp là sản phẩm riêng, README không nêu giá"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Swarms — Khung điều phối đa tác tử cho doanh nghiệp\n\n> Swarms, The Enterprise-Grade Production-Ready Multi-Agent Orchestration Framework\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSwarms là khung Python điều phối đa tác tử, cung cấp các kiến trúc dựng sẵn như tuần tự, song song, phân cấp, đồ thị và hỗn hợp tác tử. Khung tích hợp MCP (dùng công cụ từ máy chủ MCP và biến tác tử thành máy chủ MCP), skills và nhiều nhà cung cấp LLM.\n\nGiúp lập trình viên dựng, triển khai và mở rộng hệ thống nhiều tác tử phối hợp để tự động hóa các tác vụ nhiều bước.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Kye Gomez (Swarms Corp)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/kyegomez/swarms](https://github.com/kyegomez/swarms)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Agent: tác tử dùng LLM + công cụ + bộ nhớ, chế độ max_loops=\"auto\" tự lập kế hoạch và phản tư**\n- **Kiến trúc đa tác tử: SequentialWorkflow, ConcurrentWorkflow, AgentRearrange, GraphWorkflow, MixtureOfAgents, GroupChat, HierarchicalSwarm, HeavySwarm**\n- **SwarmRouter: một giao diện chạy mọi loại swarm; AutoSwarmBuilder tự sinh tác tử và workflow**\n- **Tích hợp MCP: gắn mcp_url để dùng công cụ; MCPDeployer biến tác tử thành máy chủ MCP có xác thực**\n- **Docker image chính thức swarmscorp/swarms cho linux/amd64 và linux/arm64**\n- **Hỗ trợ nhiều nhà cung cấp qua khóa API (OpenAI, Anthropic, Groq...)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip3 install -U swarms\n```\n\nYêu cầu: Python và pip (khuyến nghị uv); khóa API của nhà cung cấp mô hình như OPENAI_API_KEY, ANTHROPIC_API_KEY, GROQ_API_KEY.\nBước 1: Cài đặt từ PyPI: `pip3 install -U swarms` (hoặc `uv pip install swarms`)\nBước 2: Tùy chọn cài đặt bản tăng tốc: `pip3 install -U \"swarms[fast]\"`\nBước 3: Cấu hình biến môi trường khóa API (OPENAI_API_KEY, ANTHROPIC_API_KEY...) trong tệp .env\nBước 4: Hoặc chạy bằng Docker: `docker pull swarmscorp/swarms:latest`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo Agent(model_name=..., max_loops=...) và gọi agent.run(\"nhiệm vụ\").\nBước 2: Ghép nhiều tác tử bằng SequentialWorkflow hoặc ConcurrentWorkflow rồi gọi run với nhiệm vụ.\nBước 3: Gắn mcp_url để tác tử dùng công cụ từ máy chủ MCP, hoặc dùng MCPDeployer để phục vụ tác tử qua MCP.\nBước 4: Xem hướng dẫn và hơn 60 cấu trúc đa tác tử trong tài liệu docs.swarms.world.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Lợi ích chính của việc dùng hệ thống đa tác tử là gì?\"\n- \"Cho tác tử nghiên cứu tìm thông tin rồi tác tử viết soạn bài blog từ kết quả đó.\"\n- \"Dùng công cụ MCP DeepWiki để giải thích một repo GitHub làm gì.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "getsentry-sentry-mcp",
+    "slug": "getsentry-sentry-mcp",
+    "name": "Sentry MCP — MCP server chính thức của Sentry để gỡ lỗi bằng AI",
+    "icon": "Wrench",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "devops_cicd",
+    "categoryNameVi": "DevOps & Tự động hóa CI/CD",
+    "categories": [
+      "devops_cicd",
+      "qa_testing"
+    ],
+    "categoryNamesVi": [
+      "DevOps & Tự động hóa CI/CD",
+      "Kiểm thử phần mềm & QA/QC"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/getsentry/sentry-mcp",
+    "websiteUrl": "https://mcp.sentry.dev",
+    "authorName": "Sentry (Functional Software, Inc.)",
+    "license": "Source-available (FSL-1.1, chuyển sang Apache-2.0 sau 2 năm; cấm dùng cạnh tranh thương mại)",
+    "summaryVi": "MCP server chính thức của Sentry, đóng vai trò trung gian tới Sentry API và được tối ưu cho trợ lý lập trình như Cursor, Claude Code. Dịch vụ remote chạy tại mcp.sentry.dev; ngoài ra có thể chạy cục bộ qua stdio bằng npx, kể cả với Sentry tự host. Repo cũng chứa Sentry CLI và các gói dùng chung.",
+    "purposeVi": "Công cụ giúp lập trình viên tra cứu lỗi, issue, trace và hiệu năng trong Sentry ngay từ trợ lý AI để gỡ lỗi nhanh hơn.",
+    "featuresVi": [
+      "Server remote: dùng ngay tại https://mcp.sentry.dev với OAuth hoặc header Sentry-Bearer",
+      "Plugin Claude Code: cung cấp subagent `sentry-mcp` tự được giao việc khi hỏi về lỗi, issue, trace, hiệu năng",
+      "Transport stdio: chạy bằng `npx @sentry/mcp-server` với User Auth Token, hỗ trợ Sentry tự host qua `--host`",
+      "Tìm kiếm bằng ngôn ngữ tự nhiên: các công cụ search_errors, search_traces, search_logs, search_issues dịch câu hỏi sang cú pháp truy vấn Sentry (cần nhà cung cấp LLM)",
+      "Bật/tắt nhóm kỹ năng (skills) như inspect, seer, project-management để giới hạn công cụ"
+    ],
+    "installGuideVi": "Yêu cầu: Tài khoản Sentry (sentry.io hoặc tự host); User Auth Token với các scope org:read, project:read, project:write, team:read, team:write, event:write khi chạy stdio; Node.js để dùng npx; khóa OpenAI/Azure OpenAI/Anthropic/OpenRouter nếu muốn dùng công cụ tìm kiếm AI.\nBước 1: Cài đặt plugin cho Claude Code: `claude plugin marketplace add getsentry/sentry-mcp` rồi `claude plugin install sentry-mcp@sentry-mcp`\nBước 2: Hoặc cài đặt chạy cục bộ qua stdio: `npx @sentry/mcp-server@latest --access-token=sentry-user-token`\nBước 3: Với client khác, thêm khối cấu hình `sentry` (SENTRY_ACCESS_TOKEN, EMBEDDED_AGENT_PROVIDER, khóa LLM) vào tệp cấu hình MCP",
+    "usageGuideVi": "Bước 1: Tạo User Auth Token trong Sentry với các scope theo hướng dẫn\nBước 2: Đặt EMBEDDED_AGENT_PROVIDER và khóa API tương ứng nếu cần công cụ tìm kiếm AI\nBước 3: Với Sentry tự host, thêm `--host=<hostname>` khi chạy lệnh\nBước 4: Hỏi trợ lý AI về lỗi, issue hoặc trace của dự án",
+    "samplePromptsVi": [
+      "Liệt kê các issue chưa xử lý nhiều sự kiện nhất trong dự án frontend tuần này",
+      "Tìm các lỗi TypeError xuất hiện sau bản phát hành gần nhất",
+      "Xem chi tiết trace chậm nhất của endpoint /api/checkout"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude plugin marketplace add getsentry/sentry-mcp",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude plugin marketplace add getsentry/sentry-mcp\"\n  ],\n  \"nguon\": \"https://github.com/getsentry/sentry-mcp\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "npx @sentry/mcp-server@latest --access-token=sentry-user-token",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"sentry\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"@sentry/mcp-server\"\n      ],\n      \"env\": {\n        \"SENTRY_ACCESS_TOKEN\": \"your-token\",\n        \"EMBEDDED_AGENT_PROVIDER\": \"openai\",\n        \"OPENAI_API_KEY\": \"sk-...\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "prosVi": [
+      "Server chính thức do Sentry duy trì, cập nhật thường xuyên",
+      "Có cả bản remote dùng ngay và bản stdio cho Sentry tự host",
+      "Có thể giới hạn công cụ qua skills để an toàn hơn"
+    ],
+    "consVi": [
+      "Giấy phép FSL-1.1 (source-available, không phải OSI): cấm dùng để cung cấp sản phẩm thương mại cạnh tranh; mỗi phiên bản chỉ chuyển sang Apache 2.0 sau 2 năm",
+      "Cần tài khoản Sentry và token truy cập",
+      "Công cụ tìm kiếm AI cần thêm khóa của nhà cung cấp LLM; transport stdio vẫn đang hoàn thiện"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Sentry MCP — MCP server chính thức của Sentry để gỡ lỗi bằng AI\n\n> This remote MCP server acts as middleware to the upstream Sentry API, optimized for coding assistants like Cursor, Claude Code, and similar development tools.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server chính thức của Sentry, đóng vai trò trung gian tới Sentry API và được tối ưu cho trợ lý lập trình như Cursor, Claude Code. Dịch vụ remote chạy tại mcp.sentry.dev; ngoài ra có thể chạy cục bộ qua stdio bằng npx, kể cả với Sentry tự host. Repo cũng chứa Sentry CLI và các gói dùng chung.\n\nCông cụ giúp lập trình viên tra cứu lỗi, issue, trace và hiệu năng trong Sentry ngay từ trợ lý AI để gỡ lỗi nhanh hơn.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** DevOps & Tự động hóa CI/CD\n- **Tác giả / Nhà phát triển:** Sentry (Functional Software, Inc.)\n- **Giấy phép bản quyền:** Source-available (FSL-1.1, chuyển sang Apache-2.0 sau 2 năm; cấm dùng cạnh tranh thương mại)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/getsentry/sentry-mcp](https://github.com/getsentry/sentry-mcp)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Server remote: dùng ngay tại https://mcp.sentry.dev với OAuth hoặc header Sentry-Bearer**\n- **Plugin Claude Code: cung cấp subagent `sentry-mcp` tự được giao việc khi hỏi về lỗi, issue, trace, hiệu năng**\n- **Transport stdio: chạy bằng `npx @sentry/mcp-server` với User Auth Token, hỗ trợ Sentry tự host qua `--host`**\n- **Tìm kiếm bằng ngôn ngữ tự nhiên: các công cụ search_errors, search_traces, search_logs, search_issues dịch câu hỏi sang cú pháp truy vấn Sentry (cần nhà cung cấp LLM)**\n- **Bật/tắt nhóm kỹ năng (skills) như inspect, seer, project-management để giới hạn công cụ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude plugin marketplace add getsentry/sentry-mcp\n```\n\nYêu cầu: Tài khoản Sentry (sentry.io hoặc tự host); User Auth Token với các scope org:read, project:read, project:write, team:read, team:write, event:write khi chạy stdio; Node.js để dùng npx; khóa OpenAI/Azure OpenAI/Anthropic/OpenRouter nếu muốn dùng công cụ tìm kiếm AI.\nBước 1: Cài đặt plugin cho Claude Code: `claude plugin marketplace add getsentry/sentry-mcp` rồi `claude plugin install sentry-mcp@sentry-mcp`\nBước 2: Hoặc cài đặt chạy cục bộ qua stdio: `npx @sentry/mcp-server@latest --access-token=sentry-user-token`\nBước 3: Với client khác, thêm khối cấu hình `sentry` (SENTRY_ACCESS_TOKEN, EMBEDDED_AGENT_PROVIDER, khóa LLM) vào tệp cấu hình MCP\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo User Auth Token trong Sentry với các scope theo hướng dẫn\nBước 2: Đặt EMBEDDED_AGENT_PROVIDER và khóa API tương ứng nếu cần công cụ tìm kiếm AI\nBước 3: Với Sentry tự host, thêm `--host=<hostname>` khi chạy lệnh\nBước 4: Hỏi trợ lý AI về lỗi, issue hoặc trace của dự án\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Liệt kê các issue chưa xử lý nhiều sự kiện nhất trong dự án frontend tuần này\"\n- \"Tìm các lỗi TypeError xuất hiện sau bản phát hành gần nhất\"\n- \"Xem chi tiết trace chậm nhất của endpoint /api/checkout\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "azure-aks-mcp",
+    "slug": "azure-aks-mcp",
+    "name": "AKS-MCP — MCP server chính thức quản lý Azure Kubernetes Service",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "cloud_infrastructure",
+    "categoryNameVi": "Điện toán đám mây & Hạ tầng số",
+    "categories": [
+      "cloud_infrastructure",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Điện toán đám mây & Hạ tầng số",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/Azure/aks-mcp",
+    "websiteUrl": "",
+    "authorName": "Microsoft (Azure)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "MCP server chính thức của Microsoft cho Azure Kubernetes Service (AKS), làm cầu nối giữa trợ lý AI và cụm AKS, chuyển yêu cầu ngôn ngữ tự nhiên thành thao tác AKS. Công cụ chạy cục bộ dưới danh tính của người dùng và gọi az, kubectl, helm, cilium, hubble.",
+    "purposeVi": "Giúp kỹ sư vận hành quản lý tài nguyên AKS, mạng, Fleet đa cụm và chẩn đoán sự cố bằng trợ lý AI.",
+    "featuresVi": [
+      "Thao tác CRUD tài nguyên AKS qua công cụ hợp nhất `call_az`",
+      "Truy xuất thông tin mạng của cụm: VNet, Subnet, NSG, Route Table",
+      "Quản lý Azure Fleet cho kịch bản đa cụm",
+      "Công cụ kubectl hợp nhất, Helm, Cilium và Hubble",
+      "Mức truy cập `--access-level` (readonly mặc định, readwrite, admin) và giới hạn namespace bằng `--allow-namespaces`",
+      "Hỗ trợ OpenTelemetry qua `--otlp-endpoint`"
+    ],
+    "installGuideVi": "Yêu cầu: Azure CLI đã đăng nhập (`az login`); tải binary aks-mcp cho Windows/macOS/Linux; chỉ hỗ trợ chạy cục bộ bởi một người dùng tin cậy.\nBước 1: Cài đặt Azure CLI và đăng nhập: `az login`\nBước 2: Tải binary từ trang releases, sau đó cấp quyền chạy: `chmod +x aks-mcp`\nBước 3: Chạy server trực tiếp: `./aks-mcp`\nBước 4: Thêm khối cấu hình `aks` trỏ tới đường dẫn binary vào tệp cấu hình MCP (ví dụ Claude Desktop)",
+    "usageGuideVi": "Bước 1: Chọn mức truy cập phù hợp bằng `--access-level` (mặc định readonly)\nBước 2: Khởi động lại MCP client để nạp công cụ\nBước 3: Yêu cầu trợ lý AI liệt kê cụm, kiểm tra mạng hoặc chạy lệnh kubectl",
+    "samplePromptsVi": [
+      "Liệt kê các cụm AKS trong resource group myResourceGroup",
+      "Kiểm tra NSG và subnet đang gắn với cụm AKS production",
+      "Xem các pod lỗi trong namespace default của cụm AKS hiện tại"
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "./aks-mcp",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"aks\": {\n      \"command\": \"<path of binary aks-mcp>\",\n      \"args\": []\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Dự án chính thức của Microsoft, giấy phép MIT",
+      "Mặc định chỉ đọc, có thể giới hạn thành phần và namespace",
+      "Có binary cho Windows, macOS, Linux (AMD64/ARM64)"
+    ],
+    "consVi": [
+      "Ai gọi được công cụ sẽ có toàn quyền Azure/Kubernetes của danh tính đang chạy server",
+      "Chỉ hỗ trợ mô hình triển khai cục bộ cho một người dùng; triển khai dùng chung không được hỗ trợ",
+      "Cần tài khoản Azure và Azure CLI"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# AKS-MCP — MCP server chính thức quản lý Azure Kubernetes Service\n\n> The AKS-MCP is a Model Context Protocol (MCP) server that enables AI assistants to interact with Azure Kubernetes Service (AKS) clusters.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server chính thức của Microsoft cho Azure Kubernetes Service (AKS), làm cầu nối giữa trợ lý AI và cụm AKS, chuyển yêu cầu ngôn ngữ tự nhiên thành thao tác AKS. Công cụ chạy cục bộ dưới danh tính của người dùng và gọi az, kubectl, helm, cilium, hubble.\n\nGiúp kỹ sư vận hành quản lý tài nguyên AKS, mạng, Fleet đa cụm và chẩn đoán sự cố bằng trợ lý AI.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Điện toán đám mây & Hạ tầng số\n- **Tác giả / Nhà phát triển:** Microsoft (Azure)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/Azure/aks-mcp](https://github.com/Azure/aks-mcp)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Thao tác CRUD tài nguyên AKS qua công cụ hợp nhất `call_az`**\n- **Truy xuất thông tin mạng của cụm: VNet, Subnet, NSG, Route Table**\n- **Quản lý Azure Fleet cho kịch bản đa cụm**\n- **Công cụ kubectl hợp nhất, Helm, Cilium và Hubble**\n- **Mức truy cập `--access-level` (readonly mặc định, readwrite, admin) và giới hạn namespace bằng `--allow-namespaces`**\n- **Hỗ trợ OpenTelemetry qua `--otlp-endpoint`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n./aks-mcp\n```\n\nYêu cầu: Azure CLI đã đăng nhập (`az login`); tải binary aks-mcp cho Windows/macOS/Linux; chỉ hỗ trợ chạy cục bộ bởi một người dùng tin cậy.\nBước 1: Cài đặt Azure CLI và đăng nhập: `az login`\nBước 2: Tải binary từ trang releases, sau đó cấp quyền chạy: `chmod +x aks-mcp`\nBước 3: Chạy server trực tiếp: `./aks-mcp`\nBước 4: Thêm khối cấu hình `aks` trỏ tới đường dẫn binary vào tệp cấu hình MCP (ví dụ Claude Desktop)\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn mức truy cập phù hợp bằng `--access-level` (mặc định readonly)\nBước 2: Khởi động lại MCP client để nạp công cụ\nBước 3: Yêu cầu trợ lý AI liệt kê cụm, kiểm tra mạng hoặc chạy lệnh kubectl\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Liệt kê các cụm AKS trong resource group myResourceGroup\"\n- \"Kiểm tra NSG và subnet đang gắn với cụm AKS production\"\n- \"Xem các pod lỗi trong namespace default của cụm AKS hiện tại\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "containers-kubernetes-mcp-server",
+    "slug": "containers-kubernetes-mcp-server",
+    "name": "Kubernetes MCP Server — MCP server cho Kubernetes và OpenShift",
+    "icon": "Box",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "cloud_infrastructure",
+    "categoryNameVi": "Điện toán đám mây & Hạ tầng số",
+    "categories": [
+      "cloud_infrastructure",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Điện toán đám mây & Hạ tầng số",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/containers/kubernetes-mcp-server",
+    "websiteUrl": "",
+    "authorName": "containers (Red Hat)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "MCP server cho Kubernetes và OpenShift thuộc tổ chức containers, thao tác được với mọi tài nguyên Kubernetes, pod, namespace, sự kiện, Helm, Tekton và nhiều bộ công cụ quan sát. Chạy bằng npx, uvx hoặc binary phát hành sẵn.",
+    "purposeVi": "Giúp kỹ sư DevOps quản lý và chẩn đoán cụm Kubernetes/OpenShift bằng ngôn ngữ tự nhiên trong trợ lý AI.",
+    "featuresVi": [
+      "Cấu hình: tự phát hiện thay đổi kubeconfig, xem và quản lý `.kube/config` hoặc cấu hình in-cluster",
+      "Tài nguyên tổng quát: CRUD với bất kỳ tài nguyên Kubernetes/OpenShift nào",
+      "Pod: liệt kê, xem log, top, exec, chạy image",
+      "Helm: cài đặt, liệt kê, gỡ release",
+      "Tekton: chạy Pipeline/Task, khởi động lại, hủy, xem log PipelineRun",
+      "Bộ công cụ tùy chọn: kiali, kubevirt, kcp, netobserv, Loki, Prometheus, Tempo, OpenTelemetry Collector",
+      "Cấu hình bằng tệp TOML, có chế độ read_only"
+    ],
+    "installGuideVi": "Yêu cầu: Quyền truy cập một cụm Kubernetes; Node.js (npx) hoặc uv (uvx) hoặc tải binary.\nBước 1: Cài đặt và chạy bằng npx: `npx kubernetes-mcp-server@latest --help`\nBước 2: Hoặc chạy bằng uvx: `uvx kubernetes-mcp-server@latest --help`\nBước 3: Thêm khối cấu hình `kubernetes` vào `claude_desktop_config.json` hoặc theo hướng dẫn riêng cho Claude Code trong thư mục docs",
+    "usageGuideVi": "Bước 1: Đảm bảo kubeconfig trỏ tới cụm cần dùng (nên dùng ServiceAccount chỉ đọc cho môi trường sản xuất)\nBước 2: Bật thêm toolset cần thiết (helm, tekton, observability...) trong tệp TOML\nBước 3: Khởi động lại MCP client và yêu cầu trợ lý AI thao tác với cụm",
+    "samplePromptsVi": [
+      "Liệt kê các pod đang CrashLoopBackOff trong mọi namespace",
+      "Xem log của pod api-server trong namespace backend",
+      "Liệt kê các Helm release đang cài trong cụm"
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "npx kubernetes-mcp-server@latest --help",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"kubernetes\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"kubernetes-mcp-server@latest\"\n      ]\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, phát triển rất tích cực",
+      "Hỗ trợ cả Kubernetes và OpenShift, nhiều toolset mở rộng",
+      "Nhiều cách chạy: npx, uvx, binary, Helm chart"
+    ],
+    "consVi": [
+      "Cần quyền truy cập cụm; cấu hình quyền rộng có thể gây rủi ro nếu không bật chế độ chỉ đọc",
+      "Một số toolset (kiali, kubevirt, netobserv) cần thành phần tương ứng cài sẵn trong cụm"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Kubernetes MCP Server — MCP server cho Kubernetes và OpenShift\n\n> A powerful and flexible Kubernetes Model Context Protocol (MCP) server implementation with support for Kubernetes and OpenShift.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server cho Kubernetes và OpenShift thuộc tổ chức containers, thao tác được với mọi tài nguyên Kubernetes, pod, namespace, sự kiện, Helm, Tekton và nhiều bộ công cụ quan sát. Chạy bằng npx, uvx hoặc binary phát hành sẵn.\n\nGiúp kỹ sư DevOps quản lý và chẩn đoán cụm Kubernetes/OpenShift bằng ngôn ngữ tự nhiên trong trợ lý AI.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Điện toán đám mây & Hạ tầng số\n- **Tác giả / Nhà phát triển:** containers (Red Hat)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/containers/kubernetes-mcp-server](https://github.com/containers/kubernetes-mcp-server)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Cấu hình: tự phát hiện thay đổi kubeconfig, xem và quản lý `.kube/config` hoặc cấu hình in-cluster**\n- **Tài nguyên tổng quát: CRUD với bất kỳ tài nguyên Kubernetes/OpenShift nào**\n- **Pod: liệt kê, xem log, top, exec, chạy image**\n- **Helm: cài đặt, liệt kê, gỡ release**\n- **Tekton: chạy Pipeline/Task, khởi động lại, hủy, xem log PipelineRun**\n- **Bộ công cụ tùy chọn: kiali, kubevirt, kcp, netobserv, Loki, Prometheus, Tempo, OpenTelemetry Collector**\n- **Cấu hình bằng tệp TOML, có chế độ read_only**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx kubernetes-mcp-server@latest --help\n```\n\nYêu cầu: Quyền truy cập một cụm Kubernetes; Node.js (npx) hoặc uv (uvx) hoặc tải binary.\nBước 1: Cài đặt và chạy bằng npx: `npx kubernetes-mcp-server@latest --help`\nBước 2: Hoặc chạy bằng uvx: `uvx kubernetes-mcp-server@latest --help`\nBước 3: Thêm khối cấu hình `kubernetes` vào `claude_desktop_config.json` hoặc theo hướng dẫn riêng cho Claude Code trong thư mục docs\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đảm bảo kubeconfig trỏ tới cụm cần dùng (nên dùng ServiceAccount chỉ đọc cho môi trường sản xuất)\nBước 2: Bật thêm toolset cần thiết (helm, tekton, observability...) trong tệp TOML\nBước 3: Khởi động lại MCP client và yêu cầu trợ lý AI thao tác với cụm\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Liệt kê các pod đang CrashLoopBackOff trong mọi namespace\"\n- \"Xem log của pod api-server trong namespace backend\"\n- \"Liệt kê các Helm release đang cài trong cụm\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "googlecloudplatform-cloud-run-mcp",
+    "slug": "googlecloudplatform-cloud-run-mcp",
+    "name": "Cloud Run MCP — MCP server chính thức triển khai ứng dụng lên Google Cloud Run",
+    "icon": "Globe",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "cloud_infrastructure",
+    "categoryNameVi": "Điện toán đám mây & Hạ tầng số",
+    "categories": [
+      "cloud_infrastructure",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Điện toán đám mây & Hạ tầng số",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/GoogleCloudPlatform/cloud-run-mcp",
+    "websiteUrl": "",
+    "authorName": "Google Cloud",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "MCP server và tiện ích mở rộng Gemini CLI chính thức của Google Cloud, cho phép tác tử AI triển khai ứng dụng lên Cloud Run. Hỗ trợ triển khai từ CLI, IDE, ứng dụng trợ lý AI và các SDK tác tử.",
+    "purposeVi": "Công cụ giúp lập trình viên triển khai mã nguồn lên Cloud Run, liệt kê dịch vụ và xem log trực tiếp từ trợ lý AI.",
+    "featuresVi": [
+      "deploy-file-contents: triển khai tệp lên Cloud Run bằng nội dung trực tiếp",
+      "deploy-local-folder: triển khai thư mục cục bộ (chỉ khi chạy cục bộ)",
+      "list-services / get-service: liệt kê và xem chi tiết dịch vụ Cloud Run",
+      "get-service-log: lấy log và thông báo lỗi của dịch vụ",
+      "list-projects / create-project: liệt kê và tạo dự án GCP (chỉ khi chạy cục bộ)",
+      "Prompt `deploy` và `logs` làm lối tắt cho thao tác thường gặp"
+    ],
+    "installGuideVi": "Yêu cầu: Google Cloud SDK đã đăng nhập; Node.js (bản LTS) hoặc Docker; dự án GCP có thanh toán.\nBước 1: Cài đặt Google Cloud SDK rồi đăng nhập: `gcloud auth login`\nBước 2: Thiết lập thông tin xác thực ứng dụng: `gcloud auth application-default login`\nBước 3: Thêm khối cấu hình `cloud-run` (npx -y @google-cloud/cloud-run-mcp) vào tệp cấu hình MCP client\nBước 4: Hoặc cài đặt dưới dạng tiện ích Gemini CLI: `gemini extensions install https://github.com/GoogleCloudPlatform/cloud-run-mcp`",
+    "usageGuideVi": "Bước 1: Tùy chọn đặt GOOGLE_CLOUD_PROJECT, GOOGLE_CLOUD_REGION, DEFAULT_SERVICE_NAME\nBước 2: Khởi động lại MCP client\nBước 3: Yêu cầu trợ lý AI triển khai thư mục hiện tại hoặc xem log dịch vụ",
+    "samplePromptsVi": [
+      "Triển khai thư mục hiện tại lên Cloud Run với tên dịch vụ my-api",
+      "Liệt kê các dịch vụ Cloud Run trong dự án ở vùng asia-southeast1",
+      "Lấy log lỗi gần nhất của dịch vụ my-api"
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "npx -y @google-cloud/cloud-run-mcp",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"cloud-run\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@google-cloud/cloud-run-mcp\"\n      ]\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Dự án chính thức của Google Cloud, giấy phép Apache 2.0",
+      "Dùng được với Claude, Cursor, VS Code, Gemini CLI và SDK tác tử",
+      "Có thể chạy cục bộ hoặc tự host server trên Cloud Run"
+    ],
+    "consVi": [
+      "Cần tài khoản Google Cloud và dự án có thanh toán",
+      "Một số công cụ (deploy-local-folder, create-project) chỉ có khi chạy cục bộ",
+      "Mặc định SKIP_IAM_CHECK=true khiến dịch vụ được công khai"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Cloud Run MCP — MCP server chính thức triển khai ứng dụng lên Google Cloud Run\n\n> Enable MCP-compatible AI agents to deploy apps to Cloud Run.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server và tiện ích mở rộng Gemini CLI chính thức của Google Cloud, cho phép tác tử AI triển khai ứng dụng lên Cloud Run. Hỗ trợ triển khai từ CLI, IDE, ứng dụng trợ lý AI và các SDK tác tử.\n\nCông cụ giúp lập trình viên triển khai mã nguồn lên Cloud Run, liệt kê dịch vụ và xem log trực tiếp từ trợ lý AI.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Điện toán đám mây & Hạ tầng số\n- **Tác giả / Nhà phát triển:** Google Cloud\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/GoogleCloudPlatform/cloud-run-mcp](https://github.com/GoogleCloudPlatform/cloud-run-mcp)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **deploy-file-contents: triển khai tệp lên Cloud Run bằng nội dung trực tiếp**\n- **deploy-local-folder: triển khai thư mục cục bộ (chỉ khi chạy cục bộ)**\n- **list-services / get-service: liệt kê và xem chi tiết dịch vụ Cloud Run**\n- **get-service-log: lấy log và thông báo lỗi của dịch vụ**\n- **list-projects / create-project: liệt kê và tạo dự án GCP (chỉ khi chạy cục bộ)**\n- **Prompt `deploy` và `logs` làm lối tắt cho thao tác thường gặp**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx -y @google-cloud/cloud-run-mcp\n```\n\nYêu cầu: Google Cloud SDK đã đăng nhập; Node.js (bản LTS) hoặc Docker; dự án GCP có thanh toán.\nBước 1: Cài đặt Google Cloud SDK rồi đăng nhập: `gcloud auth login`\nBước 2: Thiết lập thông tin xác thực ứng dụng: `gcloud auth application-default login`\nBước 3: Thêm khối cấu hình `cloud-run` (npx -y @google-cloud/cloud-run-mcp) vào tệp cấu hình MCP client\nBước 4: Hoặc cài đặt dưới dạng tiện ích Gemini CLI: `gemini extensions install https://github.com/GoogleCloudPlatform/cloud-run-mcp`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tùy chọn đặt GOOGLE_CLOUD_PROJECT, GOOGLE_CLOUD_REGION, DEFAULT_SERVICE_NAME\nBước 2: Khởi động lại MCP client\nBước 3: Yêu cầu trợ lý AI triển khai thư mục hiện tại hoặc xem log dịch vụ\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Triển khai thư mục hiện tại lên Cloud Run với tên dịch vụ my-api\"\n- \"Liệt kê các dịch vụ Cloud Run trong dự án ở vùng asia-southeast1\"\n- \"Lấy log lỗi gần nhất của dịch vụ my-api\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "auth0-auth0-mcp-server",
+    "slug": "auth0-auth0-mcp-server",
+    "name": "Auth0 MCP Server — MCP server chính thức quản trị tenant Auth0",
+    "icon": "Wrench",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/auth0/auth0-mcp-server",
+    "websiteUrl": "https://auth0.com/docs/get-started/mcp",
+    "authorName": "Auth0 (Okta)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "MCP server chính thức của Auth0 cho phép trợ lý AI thực hiện thao tác quản trị Auth0 bằng ngôn ngữ tự nhiên: tạo ứng dụng, triển khai Actions, xem log, quản lý resource server và form. Lệnh `init` tự cấu hình cho Claude Desktop, Claude Code, Cursor, Windsurf, VS Code, Gemini.",
+    "purposeVi": "Giúp lập trình viên quản lý tenant Auth0 và tích hợp xác thực cho dự án mà không cần mở dashboard.",
+    "featuresVi": [
+      "Ứng dụng: liệt kê, xem, tạo, cập nhật ứng dụng Auth0",
+      "Onboarding: công cụ `auth0_onboarding` tạo ứng dụng theo framework và ghi thông tin vào `.env`",
+      "Resource Servers, Application Grants, Actions (tạo và triển khai), Logs, Forms",
+      "Giới hạn công cụ bằng `--tools` với mẫu ký tự đại diện và chế độ `--read-only`",
+      "Xác thực OAuth 2.0 device flow, lưu thông tin trong keychain hệ thống"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js v18 trở lên; Claude Desktop hoặc MCP client khác; tài khoản Auth0 có quyền phù hợp.\nBước 1: Cài đặt cho Claude Desktop với mọi công cụ: `npx @auth0/auth0-mcp-server init`\nBước 2: Cài đặt cho Claude Code: `npx @auth0/auth0-mcp-server init --client claude-code`\nBước 3: Đăng nhập Auth0 trong trình duyệt theo luồng device authorization và cấp quyền\nBước 4: Khởi động lại MCP client",
+    "usageGuideVi": "Bước 1: Dùng `npx @auth0/auth0-mcp-server run --read-only` nếu chỉ cần thao tác đọc\nBước 2: Hỏi trợ lý AI để quản lý tenant Auth0\nBước 3: Yêu cầu onboard dự án (ví dụ Next.js) để tự tạo ứng dụng và tệp .env",
+    "samplePromptsVi": [
+      "Tạo ứng dụng Auth0 mới và cho tôi domain cùng client ID",
+      "Tạo và triển khai một Auth0 Action để sinh JWT token",
+      "Kiểm tra log Auth0 các lần đăng nhập từ địa chỉ IP 192.108.92.3"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "npx @auth0/auth0-mcp-server init --client claude-code",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx @auth0/auth0-mcp-server init --client claude-code\"\n  ],\n  \"nguon\": \"https://github.com/auth0/auth0-mcp-server\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "npx @auth0/auth0-mcp-server init",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"auth0\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@auth0/auth0-mcp-server\",\n        \"run\"\n      ],\n      \"capabilities\": [\n        \"tools\"\n      ],\n      \"env\": {\n        \"DEBUG\": \"auth0-mcp\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Server chính thức của Auth0, giấy phép MIT",
+      "Lệnh init tự cấu hình cho nhiều client",
+      "Hỗ trợ chế độ chỉ đọc và lọc công cụ chi tiết"
+    ],
+    "consVi": [
+      "Đang ở giai đoạn beta, cung cấp nguyên trạng, không khuyến nghị cho môi trường sản xuất",
+      "Cần tài khoản Auth0",
+      "Hỗ trợ trong giai đoạn beta còn hạn chế"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Auth0 MCP Server — MCP server chính thức quản trị tenant Auth0\n\n> Connect Claude, Cursor, or Windsurf to your Auth0 tenant to create apps, deploy Actions, debug logs, and manage users — all without touching the dashboard.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server chính thức của Auth0 cho phép trợ lý AI thực hiện thao tác quản trị Auth0 bằng ngôn ngữ tự nhiên: tạo ứng dụng, triển khai Actions, xem log, quản lý resource server và form. Lệnh `init` tự cấu hình cho Claude Desktop, Claude Code, Cursor, Windsurf, VS Code, Gemini.\n\nGiúp lập trình viên quản lý tenant Auth0 và tích hợp xác thực cho dự án mà không cần mở dashboard.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** Auth0 (Okta)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/auth0/auth0-mcp-server](https://github.com/auth0/auth0-mcp-server)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Ứng dụng: liệt kê, xem, tạo, cập nhật ứng dụng Auth0**\n- **Onboarding: công cụ `auth0_onboarding` tạo ứng dụng theo framework và ghi thông tin vào `.env`**\n- **Resource Servers, Application Grants, Actions (tạo và triển khai), Logs, Forms**\n- **Giới hạn công cụ bằng `--tools` với mẫu ký tự đại diện và chế độ `--read-only`**\n- **Xác thực OAuth 2.0 device flow, lưu thông tin trong keychain hệ thống**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx @auth0/auth0-mcp-server init --client claude-code\n```\n\nYêu cầu: Node.js v18 trở lên; Claude Desktop hoặc MCP client khác; tài khoản Auth0 có quyền phù hợp.\nBước 1: Cài đặt cho Claude Desktop với mọi công cụ: `npx @auth0/auth0-mcp-server init`\nBước 2: Cài đặt cho Claude Code: `npx @auth0/auth0-mcp-server init --client claude-code`\nBước 3: Đăng nhập Auth0 trong trình duyệt theo luồng device authorization và cấp quyền\nBước 4: Khởi động lại MCP client\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Dùng `npx @auth0/auth0-mcp-server run --read-only` nếu chỉ cần thao tác đọc\nBước 2: Hỏi trợ lý AI để quản lý tenant Auth0\nBước 3: Yêu cầu onboard dự án (ví dụ Next.js) để tự tạo ứng dụng và tệp .env\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo ứng dụng Auth0 mới và cho tôi domain cùng client ID\"\n- \"Tạo và triển khai một Auth0 Action để sinh JWT token\"\n- \"Kiểm tra log Auth0 các lần đăng nhập từ địa chỉ IP 192.108.92.3\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "mapbox-mcp-server",
+    "slug": "mapbox-mcp-server",
+    "name": "Mapbox MCP Server — MCP server chính thức cho bản đồ, định vị và chỉ đường",
+    "icon": "Globe",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "backend_api",
+    "categoryNameVi": "Backend & Kiến trúc API",
+    "categories": [
+      "backend_api",
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Backend & Kiến trúc API",
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/mapbox/mcp-server",
+    "websiteUrl": "https://mcp.mapbox.com/mcp",
+    "authorName": "Mapbox",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "MCP server chính thức của Mapbox giúp tác tử AI hiểu và suy luận về vị trí: mã hóa địa lý, tìm điểm quan tâm, chỉ đường đa phương thức, ma trận thời gian di chuyển, tối ưu lộ trình, isochrone, bản đồ tĩnh và bản đồ tương tác. Dùng qua endpoint hosted hoặc gói npm @mapbox/mcp-server.",
+    "purposeVi": "Công cụ bổ sung khả năng không gian địa lý cho trợ lý AI, phục vụ du lịch, logistics và gợi ý theo vị trí.",
+    "featuresVi": [
+      "Mã hóa địa lý toàn cầu và mã hóa ngược",
+      "Tìm kiếm điểm quan tâm (POI) theo danh mục",
+      "Chỉ đường lái xe, đi bộ, xe đạp với giao thông thời gian thực; ma trận thời gian di chuyển",
+      "Tối ưu thứ tự ghé nhiều điểm và map matching cho dữ liệu GPS",
+      "Isochrone, bản đồ tĩnh và `render_map_tool` hiển thị bản đồ tương tác trong khung chat",
+      "Tính toán không gian ngoại tuyến (khoảng cách, diện tích, buffer...) không cần gọi API"
+    ],
+    "installGuideVi": "Yêu cầu: Bắt buộc có Mapbox access token (đăng ký tài khoản Mapbox); Node.js để chạy npx hoặc mcp-remote.\nBước 1: Đăng ký tài khoản Mapbox và tạo access token\nBước 2: Cài đặt cho Claude Code với endpoint hosted: `claude mcp add --transport http mapbox-mcp-production https://mcp.mapbox.com/mcp`\nBước 3: Với Claude Desktop, thêm khối cấu hình `mapbox-mcp` (npx mcp-remote https://mcp.mapbox.com/mcp) hoặc dùng gói `@mapbox/mcp-server` kèm MAPBOX_ACCESS_TOKEN",
+    "usageGuideVi": "Bước 1: Trong Claude Code chạy `/mcp` để khởi tạo kết nối và xác thực\nBước 2: Gửi tọa độ hoặc địa chỉ để trợ lý tra cứu\nBước 3: Yêu cầu chỉ đường, isochrone hoặc hiển thị bản đồ",
+    "samplePromptsVi": [
+      "Tìm quán cà phê trong bán kính 10 phút đi bộ quanh tọa độ 40.7580, -73.9855",
+      "Từ 37.7749, -122.4194 có thể đi bộ tới đâu trong 15 phút?",
+      "Tối ưu thứ tự ghé 5 địa chỉ giao hàng này và vẽ lộ trình lên bản đồ"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add --transport http mapbox-mcp-production https://mcp.mapbox.com/mcp",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add --transport http mapbox-mcp-production https://mcp.mapbox.com/mcp\"\n  ],\n  \"nguon\": \"https://github.com/mapbox/mcp-server\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "npx mcp-remote https://mcp.mapbox.com/mcp",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"mapbox-mcp\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"mcp-remote\",\n        \"https://mcp.mapbox.com/mcp\"\n      ]\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Server chính thức của Mapbox, giấy phép MIT",
+      "Có endpoint hosted dùng ngay, không cần tự chạy server",
+      "Nhiều công cụ tính toán ngoại tuyến không tốn lượt gọi API"
+    ],
+    "consVi": [
+      "Bắt buộc có Mapbox access token",
+      "Claude Desktop cần mcp-remote làm trung gian để kết nối endpoint hosted"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Mapbox MCP Server — MCP server chính thức cho bản đồ, định vị và chỉ đường\n\n> Node.js server implementing Model Context Protocol (MCP) for Mapbox APIs.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server chính thức của Mapbox giúp tác tử AI hiểu và suy luận về vị trí: mã hóa địa lý, tìm điểm quan tâm, chỉ đường đa phương thức, ma trận thời gian di chuyển, tối ưu lộ trình, isochrone, bản đồ tĩnh và bản đồ tương tác. Dùng qua endpoint hosted hoặc gói npm @mapbox/mcp-server.\n\nCông cụ bổ sung khả năng không gian địa lý cho trợ lý AI, phục vụ du lịch, logistics và gợi ý theo vị trí.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Backend & Kiến trúc API\n- **Tác giả / Nhà phát triển:** Mapbox\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/mapbox/mcp-server](https://github.com/mapbox/mcp-server)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Mã hóa địa lý toàn cầu và mã hóa ngược**\n- **Tìm kiếm điểm quan tâm (POI) theo danh mục**\n- **Chỉ đường lái xe, đi bộ, xe đạp với giao thông thời gian thực; ma trận thời gian di chuyển**\n- **Tối ưu thứ tự ghé nhiều điểm và map matching cho dữ liệu GPS**\n- **Isochrone, bản đồ tĩnh và `render_map_tool` hiển thị bản đồ tương tác trong khung chat**\n- **Tính toán không gian ngoại tuyến (khoảng cách, diện tích, buffer...) không cần gọi API**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add --transport http mapbox-mcp-production https://mcp.mapbox.com/mcp\n```\n\nYêu cầu: Bắt buộc có Mapbox access token (đăng ký tài khoản Mapbox); Node.js để chạy npx hoặc mcp-remote.\nBước 1: Đăng ký tài khoản Mapbox và tạo access token\nBước 2: Cài đặt cho Claude Code với endpoint hosted: `claude mcp add --transport http mapbox-mcp-production https://mcp.mapbox.com/mcp`\nBước 3: Với Claude Desktop, thêm khối cấu hình `mapbox-mcp` (npx mcp-remote https://mcp.mapbox.com/mcp) hoặc dùng gói `@mapbox/mcp-server` kèm MAPBOX_ACCESS_TOKEN\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trong Claude Code chạy `/mcp` để khởi tạo kết nối và xác thực\nBước 2: Gửi tọa độ hoặc địa chỉ để trợ lý tra cứu\nBước 3: Yêu cầu chỉ đường, isochrone hoặc hiển thị bản đồ\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tìm quán cà phê trong bán kính 10 phút đi bộ quanh tọa độ 40.7580, -73.9855\"\n- \"Từ 37.7749, -122.4194 có thể đi bộ tới đâu trong 15 phút?\"\n- \"Tối ưu thứ tự ghé 5 địa chỉ giao hàng này và vẽ lộ trình lên bản đồ\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "heroku-heroku-mcp-server",
+    "slug": "heroku-heroku-mcp-server",
+    "name": "Heroku MCP Server — MCP server chính thức vận hành ứng dụng trên Heroku",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "cloud_infrastructure",
+    "categoryNameVi": "Điện toán đám mây & Hạ tầng số",
+    "categories": [
+      "cloud_infrastructure",
+      "devops_cicd",
+      "database_sql_nosql"
+    ],
+    "categoryNamesVi": [
+      "Điện toán đám mây & Hạ tầng số",
+      "DevOps & Tự động hóa CI/CD",
+      "Cơ sở dữ liệu SQL & NoSQL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/heroku/heroku-mcp-server",
+    "websiteUrl": "https://devcenter.heroku.com/articles/heroku-mcp-server",
+    "authorName": "Heroku (Salesforce)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "MCP server chính thức của Heroku cho phép LLM đọc, quản lý và vận hành tài nguyên Heroku: ứng dụng, dyno, add-on, pipeline, log và cơ sở dữ liệu PostgreSQL. Khởi chạy bằng `heroku mcp:start` (dùng phiên Heroku CLI sẵn có) hoặc `npx -y @heroku/mcp-server` với HEROKU_API_KEY.",
+    "purposeVi": "Giúp lập trình viên triển khai và vận hành ứng dụng Heroku, quản lý dữ liệu PostgreSQL bằng ngôn ngữ tự nhiên.",
+    "featuresVi": [
+      "Quản lý ứng dụng: liệt kê, tạo, đổi tên, chuyển quyền sở hữu, triển khai với app.json",
+      "Dyno: liệt kê, scale, khởi động lại; chạy mã trong one-off dyno",
+      "Add-on, chế độ bảo trì và xem log ứng dụng",
+      "Pipeline: tạo, promote, liệt kê, xem thông tin",
+      "PostgreSQL: chạy truy vấn, xem khóa, truy vấn tốn tài nguyên, sao lưu, nâng cấp"
+    ],
+    "installGuideVi": "Yêu cầu: Heroku CLI cài toàn cục phiên bản 10.8.1 trở lên; tài khoản Heroku; Node.js nếu chạy qua npx.\nBước 1: Cài đặt Heroku CLI 10.8.1+ và kiểm tra: `heroku --version`\nBước 2: Thêm khối cấu hình `heroku` với lệnh `heroku mcp:start` vào tệp cấu hình MCP (khuyến nghị, dùng phiên đăng nhập CLI)\nBước 3: Hoặc tạo token bằng `heroku authorizations:create` và cấu hình `npx -y @heroku/mcp-server` với HEROKU_API_KEY",
+    "usageGuideVi": "Bước 1: Khởi động lại MCP client sau khi thêm cấu hình\nBước 2: Yêu cầu trợ lý AI liệt kê ứng dụng, xem log hoặc scale dyno\nBước 3: Dùng công cụ pg_* để kiểm tra cơ sở dữ liệu PostgreSQL",
+    "samplePromptsVi": [
+      "Liệt kê các ứng dụng Heroku của team tôi",
+      "Xem log gần nhất của ứng dụng my-shop và tìm lỗi",
+      "Kiểm tra các truy vấn tốn tài nguyên nhất trên cơ sở dữ liệu PostgreSQL của my-shop"
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "heroku mcp:start",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"heroku\": {\n      \"command\": \"heroku mcp:start\"\n    }\n  }\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "cliCommand": "npx -y @heroku/mcp-server",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"heroku\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@heroku/mcp-server\"\n      ],\n      \"env\": {\n        \"HEROKU_API_KEY\": \"<YOUR_HEROKU_AUTH_TOKEN>\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Server chính thức của Heroku, giấy phép Apache 2.0",
+      "Dùng phiên Heroku CLI, không cần lộ API key",
+      "Bao phủ cả ứng dụng, pipeline và PostgreSQL"
+    ],
+    "consVi": [
+      "Đang ở giai đoạn phát triển sớm, công cụ có thể thay đổi",
+      "Bắt buộc cài Heroku CLI 10.8.1+ và có tài khoản Heroku"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Heroku MCP Server — MCP server chính thức vận hành ứng dụng trên Heroku\n\n> The Heroku Platform MCP Server is a specialized Model Context Protocol (MCP) implementation designed to facilitate seamless interaction between large language models (LLMs) and the Heroku Platform.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server chính thức của Heroku cho phép LLM đọc, quản lý và vận hành tài nguyên Heroku: ứng dụng, dyno, add-on, pipeline, log và cơ sở dữ liệu PostgreSQL. Khởi chạy bằng `heroku mcp:start` (dùng phiên Heroku CLI sẵn có) hoặc `npx -y @heroku/mcp-server` với HEROKU_API_KEY.\n\nGiúp lập trình viên triển khai và vận hành ứng dụng Heroku, quản lý dữ liệu PostgreSQL bằng ngôn ngữ tự nhiên.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Điện toán đám mây & Hạ tầng số\n- **Tác giả / Nhà phát triển:** Heroku (Salesforce)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/heroku/heroku-mcp-server](https://github.com/heroku/heroku-mcp-server)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Quản lý ứng dụng: liệt kê, tạo, đổi tên, chuyển quyền sở hữu, triển khai với app.json**\n- **Dyno: liệt kê, scale, khởi động lại; chạy mã trong one-off dyno**\n- **Add-on, chế độ bảo trì và xem log ứng dụng**\n- **Pipeline: tạo, promote, liệt kê, xem thông tin**\n- **PostgreSQL: chạy truy vấn, xem khóa, truy vấn tốn tài nguyên, sao lưu, nâng cấp**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nheroku mcp:start\n```\n\nYêu cầu: Heroku CLI cài toàn cục phiên bản 10.8.1 trở lên; tài khoản Heroku; Node.js nếu chạy qua npx.\nBước 1: Cài đặt Heroku CLI 10.8.1+ và kiểm tra: `heroku --version`\nBước 2: Thêm khối cấu hình `heroku` với lệnh `heroku mcp:start` vào tệp cấu hình MCP (khuyến nghị, dùng phiên đăng nhập CLI)\nBước 3: Hoặc tạo token bằng `heroku authorizations:create` và cấu hình `npx -y @heroku/mcp-server` với HEROKU_API_KEY\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi động lại MCP client sau khi thêm cấu hình\nBước 2: Yêu cầu trợ lý AI liệt kê ứng dụng, xem log hoặc scale dyno\nBước 3: Dùng công cụ pg_* để kiểm tra cơ sở dữ liệu PostgreSQL\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Liệt kê các ứng dụng Heroku của team tôi\"\n- \"Xem log gần nhất của ứng dụng my-shop và tìm lỗi\"\n- \"Kiểm tra các truy vấn tốn tài nguyên nhất trên cơ sở dữ liệu PostgreSQL của my-shop\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "atlassian-atlassian-mcp-server",
+    "slug": "atlassian-atlassian-mcp-server",
+    "name": "Atlassian MCP Server — MCP server chính thức cho Jira, Confluence và Bitbucket",
+    "icon": "FolderTree",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/atlassian/atlassian-mcp-server",
+    "websiteUrl": "https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/",
+    "authorName": "Atlassian",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "MCP server chính thức của Atlassian (Rovo MCP), lưu trữ trên Atlassian Cloud, cho công cụ AI truy cập an toàn theo thời gian thực vào Jira, Confluence, Jira Service Management, Bitbucket, Compass, Loom, Goals, Projects. Repo chứa tài liệu, plugin và cấu hình kết nối tới endpoint https://mcp.atlassian.com/v2/mcp.",
+    "purposeVi": "Giúp nhóm tìm kiếm, tạo và cập nhật issue Jira, trang Confluence và dữ liệu công việc khác ngay trong trợ lý AI.",
+    "featuresVi": [
+      "Jira: đọc, ghi, tìm kiếm; xóa và quản trị khi admin bật",
+      "Confluence: tóm tắt, tạo và tìm kiếm trang",
+      "Jira Service Management, Bitbucket Cloud, Compass, Loom, Goals, Projects, Teams",
+      "Xác thực OAuth 2.1 hoặc API token (bắt buộc với JSM)",
+      "Khám phá công cụ theo nhu cầu để tiết kiệm ngữ cảnh; tham số `tools=all` cho MCP gateway",
+      "Admin quản lý quyền theo nhóm quyền, theo dõi và thu hồi truy cập"
+    ],
+    "installGuideVi": "Yêu cầu: Site Atlassian Cloud có Jira, Confluence, JSM, Bitbucket hoặc Compass; trình duyệt để đăng nhập OAuth 2.1 hoặc API token; Node.js 18+ nếu client cần proxy mcp-remote.\nBước 1: Cài đặt cho Claude Code: `claude mcp add --transport http atlassian https://mcp.atlassian.com/v2/mcp`\nBước 2: Chạy `/mcp` trong phiên Claude Code để xác thực\nBước 3: Với client khác, dùng URL https://mcp.atlassian.com/v2/mcp hoặc tệp cấu hình `.mcp.json` trong repo",
+    "usageGuideVi": "Bước 1: Đăng nhập Atlassian qua OAuth 2.1 khi được yêu cầu\nBước 2: Đặt CloudId, dự án Jira và không gian Confluence mặc định để truy vấn nhanh hơn\nBước 3: Yêu cầu trợ lý AI tìm kiếm, tóm tắt hoặc tạo nội dung",
+    "samplePromptsVi": [
+      "Tìm tất cả bug đang mở trong dự án Project Alpha",
+      "Tóm tắt trang Confluence về kế hoạch quý 2",
+      "Tạo năm issue Jira từ ghi chú cuộc họp này"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add --transport http atlassian https://mcp.atlassian.com/v2/mcp",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"atlassian\": {\n      \"type\": \"http\",\n      \"url\": \"https://mcp.atlassian.com/v2/mcp\"\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "prosVi": [
+      "Server chính thức của Atlassian, đã phát hành chính thức (GA)",
+      "Hosted trên Atlassian Cloud, không cần tự vận hành",
+      "Quyền truy cập kế thừa phân quyền Atlassian, admin kiểm soát được"
+    ],
+    "consVi": [
+      "Chỉ hỗ trợ Atlassian Cloud, cần site và tài khoản Atlassian",
+      "Một số công cụ (xóa/quản trị Jira, JSM qua API token) cần admin bật",
+      "Repo chủ yếu là tài liệu và cấu hình; mã server chạy trên hạ tầng Atlassian"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Atlassian MCP Server — MCP server chính thức cho Jira, Confluence và Bitbucket\n\n> The official Model Context Protocol (MCP) server for Atlassian: a cloud-hosted bridge that gives your AI tools secure, real-time access to Jira, Confluence, Jira Service Management, Bitbucket, Compass, Loom, and the wider Atlassian platform — powered by your Teamwork Graph.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server chính thức của Atlassian (Rovo MCP), lưu trữ trên Atlassian Cloud, cho công cụ AI truy cập an toàn theo thời gian thực vào Jira, Confluence, Jira Service Management, Bitbucket, Compass, Loom, Goals, Projects. Repo chứa tài liệu, plugin và cấu hình kết nối tới endpoint https://mcp.atlassian.com/v2/mcp.\n\nGiúp nhóm tìm kiếm, tạo và cập nhật issue Jira, trang Confluence và dữ liệu công việc khác ngay trong trợ lý AI.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** Atlassian\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/atlassian/atlassian-mcp-server](https://github.com/atlassian/atlassian-mcp-server)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Jira: đọc, ghi, tìm kiếm; xóa và quản trị khi admin bật**\n- **Confluence: tóm tắt, tạo và tìm kiếm trang**\n- **Jira Service Management, Bitbucket Cloud, Compass, Loom, Goals, Projects, Teams**\n- **Xác thực OAuth 2.1 hoặc API token (bắt buộc với JSM)**\n- **Khám phá công cụ theo nhu cầu để tiết kiệm ngữ cảnh; tham số `tools=all` cho MCP gateway**\n- **Admin quản lý quyền theo nhóm quyền, theo dõi và thu hồi truy cập**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add --transport http atlassian https://mcp.atlassian.com/v2/mcp\n```\n\nYêu cầu: Site Atlassian Cloud có Jira, Confluence, JSM, Bitbucket hoặc Compass; trình duyệt để đăng nhập OAuth 2.1 hoặc API token; Node.js 18+ nếu client cần proxy mcp-remote.\nBước 1: Cài đặt cho Claude Code: `claude mcp add --transport http atlassian https://mcp.atlassian.com/v2/mcp`\nBước 2: Chạy `/mcp` trong phiên Claude Code để xác thực\nBước 3: Với client khác, dùng URL https://mcp.atlassian.com/v2/mcp hoặc tệp cấu hình `.mcp.json` trong repo\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đăng nhập Atlassian qua OAuth 2.1 khi được yêu cầu\nBước 2: Đặt CloudId, dự án Jira và không gian Confluence mặc định để truy vấn nhanh hơn\nBước 3: Yêu cầu trợ lý AI tìm kiếm, tóm tắt hoặc tạo nội dung\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tìm tất cả bug đang mở trong dự án Project Alpha\"\n- \"Tóm tắt trang Confluence về kế hoạch quý 2\"\n- \"Tạo năm issue Jira từ ghi chú cuộc họp này\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:16:00.311Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]

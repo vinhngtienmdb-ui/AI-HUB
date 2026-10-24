@@ -4,6 +4,14 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.21 (Ngày 24-10-2026)
+- **Loại hình**: Tài nguyên dự bị: LLMOps, RAG & huấn luyện, MCP của nhà cung cấp, đợt 14 (26 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-14-*.json`.
+- **LLMOps & đánh giá**: Helicone, Weave (cần tài khoản W&B), Logfire (SDK MIT; giao diện và backend đóng nguồn), LangWatch (open core), MLflow, TruLens, Giskard.
+- **RAG & huấn luyện/suy luận**: LlamaIndex, Haystack, Faiss, txtai, OpenRLHF, nanochat, LoRAX, TensorRT-LLM, MLC LLM, LlamaAgents (llamactl), Swarms.
+- **MCP của nhà cung cấp**: Sentry MCP (FSL-1.1-Apache-2.0, mã nguồn công khai nhưng không phải mã nguồn mở OSI), AKS MCP, Kubernetes MCP Server, Cloud Run MCP, Auth0 MCP (beta), Mapbox MCP, Heroku MCP (giai đoạn đầu), Atlassian MCP (máy chủ từ xa).
+- Không thêm: repo riêng tư hoặc không tồn tại (lunary, linear-mcp, HubSpot), dự án ngừng cập nhật (uptrain, InternVL, twilio mcp), README ghi đã ngừng hỗ trợ (mcp-tinybird), repo không có tệp giấy phép (prisma/mcp, figma), Agenta (đã chuyển hướng sản phẩm).
+- Kho dữ liệu: 2.231 công cụ đang hiển thị, 2.298 cấu hình mẫu.
+
 ### Phiên Bản 2.1.20 (Ngày 24-10-2026)
 - **Loại hình**: Tài nguyên dự bị: nền tảng quy trình & low-code, khung tác tử, công cụ MCP, đợt 13 (30 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-13-*.json`.
 - **Quy trình & low-code**: Temporal, Airflow, Dagster, Appsmith, ToolJet (AGPL-3.0 + bản Enterprise), Budibase (GPLv3/MPL, gói pro theo BSL), NocoDB (Sustainable Use License, fair-code, không phải mã nguồn mở), Automatisch (AGPL-3.0, tệp .ee. theo giấy phép Enterprise), Node-RED, NiFi.

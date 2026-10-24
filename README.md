@@ -1,9 +1,9 @@
 # AI Hub - Nền Tảng Quản Lý Công Cụ AI, Máy Chủ MCP & Kỹ Năng Tác Tử Chuẩn Hóa
 
 [![Giấy Phép](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Phiên Bản](https://img.shields.io/badge/Phiên_Bản-2.1.20-emerald.svg)](22_LICH_SU_THAY_DOI.md)
+[![Phiên Bản](https://img.shields.io/badge/Phiên_Bản-2.1.21-emerald.svg)](22_LICH_SU_THAY_DOI.md)
 [![Quy Trình VibeCode](https://img.shields.io/badge/Quy_Trình-VibeCode_13_Giai_Đoạn-purple.svg)](index.md)
-[![Tổng Số Công Cụ](https://img.shields.io/badge/Kho_Dữ_Liệu-2.205_Mục-orange.svg)](#)
+[![Tổng Số Công Cụ](https://img.shields.io/badge/Kho_Dữ_Liệu-2.231_Mục-orange.svg)](#)
 [![Khung Làm Việc Mở Rộng](https://img.shields.io/badge/Khung_Làm_Việc-Mở_Rộng_Toàn_Màn_Hình-blueviolet.svg)](#)
 [![Giao Diện Linh Hoạt](https://img.shields.io/badge/Giao_Diện-Left_Sidebar_Thu_Gọn-blue.svg)](#)
 
@@ -15,7 +15,7 @@ Dự án được xây dựng tuân thủ nghiêm ngặt **Quy trình VibeCode C
 
 ## 🌟 Tính Năng Nổi Bật
 
-1. **Kho Dữ Liệu Đã Kiểm Định (2.205 Công Cụ Đang Hiển Thị & 2.268 Cấu Hình)**:
+1. **Kho Dữ Liệu Đã Kiểm Định (2.231 Công Cụ Đang Hiển Thị & 2.298 Cấu Hình)**:
    - Tổng hợp từ các nguồn `davila7/claude-code-templates`, `mcpmarket.com`, `awesome-mcp-servers`, GitHub và các dự án Việt Nam.
    - Mọi công cụ đang hiển thị có liên kết nguồn đã kiểm tra tồn tại và câu lệnh cài đặt không dùng gói npm không tồn tại (`npm run data:validate`). 286 bản ghi không xác minh được hoặc trùng lặp được ẩn kèm lý do (trạng thái `rejected`).
    - Phân loại theo nhóm thành phần (số liệu ngày 2026-10-23):

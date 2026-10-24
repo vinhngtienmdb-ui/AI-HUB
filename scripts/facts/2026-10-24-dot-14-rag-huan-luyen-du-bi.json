@@ -1,0 +1,841 @@
+[
+ {
+  "repo": "run-llama/llama_index",
+  "license": "MIT License",
+  "authorName": "LlamaIndex (Jerry Liu)",
+  "websiteUrl": "https://developers.llamaindex.ai/python/framework/",
+  "toolType": "sdk",
+  "taglineEn": "LlamaIndex is a \"data framework\" to help you build LLM apps.",
+  "summaryVi": "LlamaIndex Framework là khung Python mã nguồn mở để xây dựng ứng dụng LLM và tác tử dựa trên dữ liệu riêng. Thư viện cung cấp bộ kết nối dữ liệu (API, PDF, tài liệu, SQL...), cấu trúc chỉ mục và giao diện truy vấn có tăng cường ngữ cảnh (RAG), với hơn 300 gói tích hợp LLM, embedding và vector store.",
+  "purposeVi": "Giúp lập trình viên nạp, lập chỉ mục và truy vấn dữ liệu riêng bằng LLM để xây dựng công cụ hỏi đáp tài liệu, RAG và tác tử.",
+  "featuresVi": [
+   "Data connectors: nạp dữ liệu từ API, PDF, tài liệu, SQL và nhiều định dạng khác",
+   "Cấu trúc dữ liệu: chỉ mục (indices) và đồ thị để LLM sử dụng dễ dàng",
+   "Giao diện truy xuất/truy vấn nâng cao: trả về ngữ cảnh và câu trả lời có tăng cường tri thức",
+   "Hơn 300 gói tích hợp: chọn LLM, embedding, vector store theo nhu cầu",
+   "API cấp cao (nạp và truy vấn trong khoảng 5 dòng mã) và API cấp thấp để tùy biến retriever, query engine, reranking",
+   "Lưu chỉ mục ra đĩa (./storage) và tải lại khi cần"
+  ],
+  "requirementsVi": "Python và pip; khóa API của nhà cung cấp LLM (ví dụ OPENAI_API_KEY) hoặc mô hình cục bộ qua Ollama và embedding HuggingFace.",
+  "installStepsVi": [
+   "Cài đặt gói lõi: `pip install llama-index-core`",
+   "Cài đặt tích hợp LLM OpenAI: `pip install llama-index-llms-openai`",
+   "Hoặc cài đặt tích hợp mô hình cục bộ Ollama: `pip install llama-index-llms-ollama`",
+   "Cài đặt embedding HuggingFace: `pip install llama-index-embeddings-huggingface`"
+  ],
+  "cliCommand": "pip install llama-index-core",
+  "usageStepsVi": [
+   "Đọc dữ liệu trong thư mục bằng SimpleDirectoryReader(\"YOUR_DATA_DIRECTORY\").load_data().",
+   "Tạo chỉ mục với VectorStoreIndex.from_documents(documents).",
+   "Tạo query engine bằng index.as_query_engine() rồi gọi query_engine.query(\"YOUR_QUESTION\").",
+   "Lưu chỉ mục bằng index.storage_context.persist() và tải lại bằng load_index_from_storage; xem hướng dẫn chi tiết trong tài liệu chính thức."
+  ],
+  "samplePromptsVi": [
+   "Dựa trên các tài liệu PDF trong thư mục hợp đồng, điều khoản thanh toán là gì?",
+   "Tóm tắt nội dung chính của bộ tài liệu nội bộ vừa được lập chỉ mục.",
+   "Dùng Ollama chạy cục bộ để hỏi đáp trên dữ liệu không gửi ra ngoài."
+  ],
+  "prosVi": [
+   "Mã nguồn mở MIT",
+   "Hệ sinh thái hơn 300 gói tích hợp LLM, embedding, vector store",
+   "Chạy được với mô hình cục bộ (Ollama, HuggingFace) thay cho OpenAI"
+  ],
+  "consVi": [
+   "README cho biết trọng tâm của công ty đã chuyển sang nền tảng thương mại LlamaParse; khung OSS vẫn được cung cấp",
+   "README không được cập nhật thường xuyên bằng tài liệu trực tuyến",
+   "Ví dụ mặc định cần khóa API OpenAI"
+  ],
+  "sourceEvidence": {
+   "pip install llama-index-core": "README.md:115",
+   "pip install llama-index-llms-openai": "README.md:116",
+   "pip install llama-index-llms-ollama": "README.md:117",
+   "pip install llama-index-embeddings-huggingface": "README.md:118"
+  },
+  "meta": {
+   "id": "run-llama-llama-index",
+   "nameVi": "LlamaIndex — Khung dữ liệu xây dựng ứng dụng RAG và tác tử LLM",
+   "icon": "Database",
+   "categories": [
+    "vector_rag",
+    "nlp_llm"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install llama-index-core"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "deepset-ai/haystack",
+  "license": "Apache License 2.0",
+  "authorName": "deepset",
+  "websiteUrl": "https://haystack.deepset.ai/",
+  "toolType": "sdk",
+  "taglineEn": "Haystack is an open-source AI orchestration framework for building production-ready LLM applications in Python.",
+  "summaryVi": "Haystack là khung điều phối AI mã nguồn mở bằng Python của deepset, dùng để dựng pipeline và workflow tác tử với quyền kiểm soát rõ ràng về truy xuất, định tuyến, bộ nhớ và sinh văn bản. Khung phù hợp cho hệ thống RAG, tìm kiếm ngữ nghĩa, hỏi đáp, ứng dụng đa phương thức và tác tử tự động.",
+  "purposeVi": "Giúp đội ngũ phát triển xây dựng ứng dụng LLM sẵn sàng cho production, kiểm soát cách dữ liệu được truy xuất, xếp hạng và đưa vào mô hình.",
+  "featuresVi": [
+   "Agent cho production: lifecycle hooks (before_llm, before_tool, on_exit), theo dõi step_count, token_usage và lệnh gọi công cụ",
+   "Context engineering: kiểm soát truy xuất, xếp hạng, lọc, kết hợp và định tuyến thông tin trước khi tới mô hình",
+   "Hỗ trợ async gốc: Pipeline chạy đồng bộ hoặc bất đồng bộ, stream từng token; Agent gọi công cụ song song",
+   "Thành phần có sẵn cho truy xuất, lập chỉ mục, gọi công cụ, bộ nhớ, đánh giá; hỗ trợ vòng lặp và rẽ nhánh",
+   "Không phụ thuộc nhà cung cấp: OpenAI, Mistral, Anthropic, Cohere, Hugging Face, Google, Azure OpenAI, AWS Bedrock, mô hình cục bộ",
+   "Hayhooks (dự án đi kèm) để phục vụ pipeline dưới dạng REST API hoặc máy chủ MCP"
+  ],
+  "requirementsVi": "Python và pip; khóa API hoặc mô hình cục bộ tùy nhà cung cấp LLM được chọn.",
+  "installStepsVi": [
+   "Cài đặt bản ổn định từ PyPI: `pip install haystack-ai`",
+   "Tùy chọn cài đặt bản nightly để thử tính năng mới: `pip install --pre haystack-ai`",
+   "Làm theo hướng dẫn Get Started và tutorials trên haystack.deepset.ai để dựng ứng dụng đầu tiên"
+  ],
+  "cliCommand": "pip install haystack-ai",
+  "usageStepsVi": [
+   "Ghép các thành phần (retriever, prompt builder, generator...) thành một Pipeline.",
+   "Thêm Agent với công cụ và hooks để kiểm soát hành vi, theo dõi token và chi phí.",
+   "Chạy pipeline đồng bộ hoặc bất đồng bộ, bật streaming từng token.",
+   "Dùng Hayhooks nếu cần đưa pipeline thành REST API hoặc máy chủ MCP."
+  ],
+  "samplePromptsVi": [
+   "Xây dựng pipeline RAG trả lời câu hỏi dựa trên kho tài liệu sản phẩm.",
+   "Tạo tác tử có công cụ tìm kiếm web và giới hạn số bước để kiểm soát chi phí.",
+   "Tìm kiếm ngữ nghĩa trong cơ sở dữ liệu bài viết nội bộ."
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0",
+   "Hỗ trợ nhiều nhà cung cấp LLM và mô hình cục bộ",
+   "Được nhiều tổ chức lớn sử dụng trong production theo README"
+  ],
+  "consVi": [
+   "Thu thập số liệu sử dụng ẩn danh theo mặc định (có thể tắt theo tài liệu)",
+   "Gói hỗ trợ doanh nghiệp và Haystack Enterprise Platform là dịch vụ trả phí riêng, README không nêu giá"
+  ],
+  "sourceEvidence": {
+   "pip install haystack-ai": "README.md:33",
+   "pip install --pre haystack-ai": "README.md:38"
+  },
+  "meta": {
+   "id": "deepset-ai-haystack",
+   "nameVi": "Haystack — Khung điều phối AI cho RAG và tác tử production",
+   "icon": "Layers",
+   "categories": [
+    "vector_rag",
+    "nlp_llm"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install haystack-ai"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "facebookresearch/faiss",
+  "license": "MIT License",
+  "authorName": "Meta (Fundamental AI Research)",
+  "websiteUrl": "https://faiss.ai/",
+  "toolType": "sdk",
+  "taglineEn": "Faiss is a library for efficient similarity search and clustering of dense vectors.",
+  "summaryVi": "Faiss là thư viện C++ (có wrapper Python/numpy đầy đủ) của Meta FAIR cho tìm kiếm tương đồng và phân cụm vector dày. Thư viện tìm kiếm trên tập vector mọi kích thước, kể cả không vừa RAM, với nhiều loại chỉ mục cân bằng giữa tốc độ, độ chính xác và bộ nhớ; một số thuật toán chạy trên GPU.",
+  "purposeVi": "Cung cấp công cụ tìm kiếm láng giềng gần nhất và phân cụm vector hiệu năng cao, làm nền cho hệ thống tìm kiếm ngữ nghĩa và RAG trên dữ liệu lớn.",
+  "featuresVi": [
+   "Tìm kiếm theo khoảng cách L2 (Euclid) hoặc tích vô hướng, hỗ trợ cosine similarity",
+   "Chỉ mục nén (mã nhị phân, lượng tử hóa) mở rộng tới hàng tỷ vector trên một máy chủ",
+   "Triển khai GPU (CUDA hoặc AMD ROCm) thay thế trực tiếp chỉ mục CPU, tùy chọn backend NVIDIA cuVS",
+   "Phân cụm k-means và chọn k nhỏ nhất nhanh trên GPU",
+   "Mã hỗ trợ đánh giá và tinh chỉnh tham số",
+   "Gói conda dựng sẵn: faiss-cpu, faiss-gpu, faiss-gpu-cuvs"
+  ],
+  "requirementsVi": "Conda (hoặc Pixi); faiss-cpu chạy trên Linux x86-64/aarch64, macOS arm64, Windows x86-64; faiss-gpu chỉ Linux x86-64 với CUDA; dựng từ mã nguồn cần CMake và BLAS.",
+  "installStepsVi": [
+   "Cài đặt bản chỉ dùng CPU qua conda: `conda install -c pytorch -c conda-forge faiss-cpu=1.15.1`",
+   "Hoặc cài đặt bản GPU (kèm CPU): `conda install -c pytorch -c nvidia -c conda-forge faiss-gpu=1.15.1`",
+   "Dựng từ mã nguồn theo hướng dẫn trong INSTALL.md (bắt đầu bằng `cmake -B build .`)"
+  ],
+  "cliCommand": "conda install -c pytorch -c conda-forge faiss-cpu=1.15.1",
+  "usageStepsVi": [
+   "Chuẩn bị dữ liệu vector dạng mảng numpy float32.",
+   "Tạo chỉ mục (ví dụ IndexFlatL2 để tìm kiếm chính xác) và thêm vector bằng add.",
+   "Gọi search với vector truy vấn để lấy k láng giềng gần nhất.",
+   "Chuyển sang chỉ mục nén hoặc GpuIndexFlatL2 khi dữ liệu lớn; xem wiki Getting started để có hướng dẫn chi tiết."
+  ],
+  "samplePromptsVi": [
+   "Tìm 10 đoạn văn bản có embedding gần nhất với câu hỏi người dùng.",
+   "Lập chỉ mục 100 triệu vector ảnh bằng chỉ mục lượng tử hóa để tiết kiệm RAM.",
+   "Phân cụm embedding sản phẩm thành 50 nhóm bằng k-means trên GPU."
+  ],
+  "prosVi": [
+   "Mã nguồn mở MIT, do Meta FAIR phát triển",
+   "Mở rộng tới hàng tỷ vector, hỗ trợ GPU",
+   "Có gói conda dựng sẵn cho nhiều nền tảng"
+  ],
+  "consVi": [
+   "Là thư viện cấp thấp, không phải cơ sở dữ liệu vector đầy đủ (không có máy chủ, phân quyền)",
+   "Cách cài đặt được hỗ trợ chính thức là conda; bản GPU chỉ có trên Linux x86-64"
+  ],
+  "sourceEvidence": {
+   "conda install -c pytorch -c conda-forge faiss-cpu=1.15.1": "INSTALL.md:15",
+   "conda install -c pytorch -c nvidia -c conda-forge faiss-gpu=1.15.1": "INSTALL.md:18",
+   "cmake -B build .": "INSTALL.md:121"
+  },
+  "meta": {
+   "id": "facebookresearch-faiss",
+   "nameVi": "Faiss — Thư viện tìm kiếm tương đồng và phân cụm vector của Meta",
+   "icon": "Search",
+   "categories": [
+    "vector_rag",
+    "database"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "conda install -c pytorch -c conda-forge faiss-cpu=1.15.1"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "neuml/txtai",
+  "license": "Apache License 2.0",
+  "authorName": "NeuML",
+  "websiteUrl": "https://neuml.github.io/txtai",
+  "toolType": "sdk",
+  "taglineEn": "txtai is an all-in-one AI framework for semantic search, LLM orchestration and language model workflows.",
+  "summaryVi": "txtai là khung AI tất cả trong một cho tìm kiếm ngữ nghĩa, điều phối LLM và workflow mô hình ngôn ngữ. Thành phần cốt lõi là cơ sở dữ liệu embeddings kết hợp chỉ mục vector (thưa và dày), mạng đồ thị và cơ sở dữ liệu quan hệ, làm nguồn tri thức cho RAG và tác tử.",
+  "purposeVi": "Giúp xây dựng công cụ tìm kiếm ngữ nghĩa, RAG, tác tử và pipeline xử lý dữ liệu văn bản, âm thanh, hình ảnh chạy cục bộ mà không phải gửi dữ liệu ra dịch vụ bên ngoài.",
+  "featuresVi": [
+   "Tìm kiếm vector kèm SQL, lưu trữ đối tượng, mô hình hóa chủ đề, phân tích đồ thị và lập chỉ mục đa phương thức",
+   "Tạo embeddings cho văn bản, tài liệu, âm thanh, hình ảnh và video",
+   "Pipelines dùng mô hình ngôn ngữ: prompt LLM, hỏi đáp, gán nhãn, phiên âm, dịch, tóm tắt",
+   "Workflows nối các pipeline; Agents dựa trên smolagents kết nối embeddings, pipelines và tác tử khác",
+   "API Web và Model Context Protocol (MCP); binding JavaScript, Java, Rust, Go",
+   "Chạy cục bộ hoặc mở rộng bằng điều phối container"
+  ],
+  "requirementsVi": "Python 3.11 trở lên; khuyến nghị dùng môi trường ảo Python.",
+  "installStepsVi": [
+   "Cài đặt từ PyPI: `pip install txtai`",
+   "Tùy chọn chạy API: tạo tệp app.yml khai báo embeddings rồi chạy `CONFIG=app.yml uvicorn \"txtai.api:app\"`",
+   "Xem hướng dẫn cài đặt chi tiết về phụ thuộc tùy chọn trên trang tài liệu txtai"
+  ],
+  "cliCommand": "pip install txtai",
+  "usageStepsVi": [
+   "Tạo embeddings = txtai.Embeddings() rồi gọi embeddings.index([...]) với danh sách văn bản.",
+   "Tìm kiếm ngữ nghĩa bằng embeddings.search(\"positive\", 1).",
+   "Khi chạy API, gửi yêu cầu GET tới http://localhost:8000/search?query=positive.",
+   "Tham khảo hơn 70 notebook ví dụ cho RAG, tác tử, phiên âm, dịch và tóm tắt."
+  ],
+  "samplePromptsVi": [
+   "Tìm các câu có ý nghĩa tích cực trong tập phản hồi khách hàng.",
+   "Xây dựng RAG trả lời câu hỏi từ kho tài liệu nội bộ bằng mô hình chạy cục bộ.",
+   "Phiên âm tệp âm thanh rồi tóm tắt nội dung cuộc họp."
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0",
+   "Chạy cục bộ, không cần gửi dữ liệu tới dịch vụ bên ngoài",
+   "Cài đặt gọn, có hơn 70 notebook ví dụ và API MCP"
+  ],
+  "consVi": [
+   "Yêu cầu Python 3.11 trở lên",
+   "Dịch vụ tư vấn và txtai.cloud là sản phẩm thương mại riêng của NeuML, README không nêu giá"
+  ],
+  "sourceEvidence": {
+   "pip install txtai": "README.md:190",
+   "CONFIG=app.yml uvicorn \"txtai.api:app\"": "README.md:84"
+  },
+  "meta": {
+   "id": "neuml-txtai",
+   "nameVi": "txtai — Khung AI tất cả trong một cho tìm kiếm ngữ nghĩa và RAG",
+   "icon": "Search",
+   "categories": [
+    "vector_rag",
+    "nlp_llm"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install txtai"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "OpenRLHF/OpenRLHF",
+  "license": "Apache License 2.0",
+  "authorName": "OpenRLHF",
+  "websiteUrl": "https://openrlhf.readthedocs.io/",
+  "toolType": "sdk",
+  "taglineEn": "OpenRLHF is the first high-performance, production-ready open-source RLHF framework that combines Ray + vLLM distributed architecture with a unified agent-based design paradigm for scalable and extensible reinforcement learning from human feedback.",
+  "summaryVi": "OpenRLHF là khung huấn luyện RLHF mã nguồn mở hiệu năng cao, kết hợp kiến trúc phân tán Ray + vLLM + DeepSpeed với mô hình thực thi dựa trên tác tử. Khung hỗ trợ PPO, REINFORCE++, GRPO, RLOO, SFT, DPO, huấn luyện reward model và mở rộng tới mô hình 70B+ tham số.",
+  "purposeVi": "Giúp nhóm nghiên cứu và kỹ sư huấn luyện, căn chỉnh LLM/VLM bằng học tăng cường từ phản hồi, kể cả tác tử nhiều lượt với môi trường tùy chỉnh.",
+  "featuresVi": [
+   "Thuật toán RL: PPO, REINFORCE++, REINFORCE++-baseline, GRPO, Dr. GRPO, RLOO, FlashREINFORCE",
+   "Ray điều phối Actor, Reward, Reference, Critic trên nhiều GPU; vLLM sinh mẫu tốc độ cao",
+   "Chế độ tác tử một lượt (hàm reward tùy chỉnh) và nhiều lượt (reset/step với môi trường)",
+   "Huấn luyện SFT, DPO/IPO/cDPO và reward model",
+   "LoRA/QLoRA, MoE, RingAttention cho ngữ cảnh dài, huấn luyện VLM",
+   "Ghi log Wandb/TensorBoard, khôi phục checkpoint, đa nút qua SLURM"
+  ],
+  "requirementsVi": "GPU NVIDIA; khuyến nghị dùng Docker với NVIDIA runtime (image nvcr.io/nvidia/pytorch); vLLM 0.29.0 trở lên để có hiệu năng tốt nhất.",
+  "installStepsVi": [
+   "Khởi chạy container (khuyến nghị): `docker run --runtime=nvidia -it --rm --shm-size=\"10g\" --cap-add=SYS_ADMIN \\\n  -v $PWD:/openrlhf nvcr.io/nvidia/pytorch:26.03-py3 bash`",
+   "Gỡ các gói xung đột: `sudo pip uninstall xgboost transformer_engine flash_attn pynvml -y`",
+   "Cài đặt OpenRLHF kèm vLLM (khuyến nghị): `pip install openrlhf[vllm]`",
+   "Khởi động nút chủ Ray trong container: `ray start --head --node-ip-address 0.0.0.0 --num-gpus 8`"
+  ],
+  "cliCommand": "pip install openrlhf[vllm]",
+  "usageStepsVi": [
+   "Chuẩn bị bộ dữ liệu prompt/hội thoại theo hướng dẫn Prepare Datasets.",
+   "Chạy SFT bằng deepspeed --module openrlhf.cli.train_sft hoặc huấn luyện reward model bằng openrlhf.cli.train_rm.",
+   "Gửi job RL qua ray job submit với python3 -m openrlhf.cli.train_ppo_ray, chọn thuật toán bằng --algo.advantage.estimator.",
+   "Tùy chọn cung cấp hàm reward hoặc hàm tác tử qua --train.agent_func_path cho bài toán nhiều lượt."
+  ],
+  "samplePromptsVi": [
+   "Huấn luyện mô hình suy luận toán bằng REINFORCE++-baseline với hàm reward kiểm tra đáp án.",
+   "Chạy DPO trên bộ dữ liệu so sánh ưu tiên để căn chỉnh mô hình hội thoại.",
+   "Huấn luyện tác tử nhiều lượt tương tác với môi trường tùy chỉnh."
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0",
+   "Hỗ trợ nhiều thuật toán RL và mở rộng tới mô hình 70B+ tham số",
+   "Được nhiều dự án nghiên cứu và khóa học sử dụng theo README"
+  ],
+  "consVi": [
+   "Cần cụm GPU NVIDIA; ví dụ mẫu dùng 8 GPU",
+   "Thiết lập phức tạp (Ray, vLLM, DeepSpeed), khuyến nghị dùng Docker"
+  ],
+  "sourceEvidence": {
+   "docker run --runtime=nvidia -it --rm --shm-size=\"10g\" --cap-add=SYS_ADMIN \\\n  -v $PWD:/openrlhf nvcr.io/nvidia/pytorch:26.03-py3 bash": "README.md:296-297",
+   "sudo pip uninstall xgboost transformer_engine flash_attn pynvml -y": "README.md:300",
+   "pip install openrlhf[vllm]": "README.md:304",
+   "ray start --head --node-ip-address 0.0.0.0 --num-gpus 8": "README.md:442"
+  },
+  "meta": {
+   "id": "openrlhf-openrlhf",
+   "nameVi": "OpenRLHF — Khung huấn luyện RLHF phân tán với Ray và vLLM",
+   "icon": "Cpu",
+   "categories": [
+    "nlp_llm"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install openrlhf[vllm]"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "karpathy/nanochat",
+  "license": "MIT License",
+  "authorName": "Andrej Karpathy",
+  "websiteUrl": "",
+  "toolType": "software",
+  "taglineEn": "nanochat is the simplest experimental harness for training LLMs.",
+  "summaryVi": "nanochat là bộ khung thí nghiệm tối giản để huấn luyện LLM trên một nút GPU, bao trọn các giai đoạn tokenization, pretraining, finetuning, đánh giá và suy luận. Ví dụ, có thể huấn luyện mô hình đạt năng lực GPT-2 với chi phí khoảng 48 USD (khoảng 2 giờ trên nút 8XH100) rồi trò chuyện với nó qua CLI.",
+  "purposeVi": "Công cụ học tập và nghiên cứu giúp hiểu và thử nghiệm toàn bộ quy trình huấn luyện một chatbot LLM nhỏ với mã nguồn ngắn gọn, dễ sửa.",
+  "featuresVi": [
+   "Toàn bộ pipeline: huấn luyện tokenizer, pretraining, SFT, RL, đánh giá và suy luận có KV cache",
+   "Một tham số độ phức tạp duy nhất --depth tự tính các siêu tham số còn lại",
+   "Script runs/speedrun.sh huấn luyện và cho trò chuyện với mô hình cỡ GPT-2",
+   "Chat CLI (scripts.chat_cli) để nói chuyện với mô hình đã huấn luyện",
+   "Bảng xếp hạng \"time to GPT-2\" và script nghiên cứu scaling laws",
+   "Chạy được trên CPU/Apple Silicon (MPS) với mô hình thu nhỏ qua runs/runcpu.sh"
+  ],
+  "requirementsVi": "Trình quản lý gói uv; nút 8XH100 (hoặc 8XA100) cho speedrun; một GPU cũng chạy được nhưng chậm hơn khoảng 8 lần; GPU dưới 80GB cần giảm --device-batch-size.",
+  "installStepsVi": [
+   "Tải mã nguồn repo về máy (git clone) rồi vào thư mục dự án",
+   "Cài đặt phụ thuộc cho CUDA: `uv sync --extra gpu` (hoặc `uv sync --extra cpu` cho CPU/MPS)",
+   "Kích hoạt môi trường ảo: `source .venv/bin/activate`"
+  ],
+  "cliCommand": "bash runs/speedrun.sh",
+  "usageStepsVi": [
+   "Chạy toàn bộ pipeline huấn luyện bằng runs/speedrun.sh (khoảng 1,5 giờ trên nút 8XH100), nên chạy trong phiên screen.",
+   "Sau khi xong, kích hoạt lại môi trường và trò chuyện với mô hình bằng `python -m scripts.chat_cli`.",
+   "Trên CPU hoặc Apple Silicon, dùng runs/runcpu.sh để huấn luyện mô hình rất nhỏ trong vài chục phút.",
+   "Thử nghiệm nghiên cứu bằng scripts.base_train với --depth khác nhau và theo dõi val_bpb, CORE trên wandb."
+  ],
+  "samplePromptsVi": [
+   "Tại sao bầu trời có màu xanh?",
+   "Viết một bài thơ ngắn về bầu trời.",
+   "Kể cho tôi một câu chuyện ngắn."
+  ],
+  "prosVi": [
+   "Mã nguồn mở MIT, mã ngắn gọn dễ đọc và sửa",
+   "Bao trọn quy trình từ tokenizer tới chat CLI",
+   "Chi phí huấn luyện mô hình cỡ GPT-2 dưới 100 USD theo README"
+  ],
+  "consVi": [
+   "Là khung thí nghiệm, không phải framework cấu hình đầy đủ cho production",
+   "Cần GPU mạnh (8XH100) để đạt kết quả tốt; chạy CPU chỉ cho kết quả yếu",
+   "Mô hình nhỏ dễ ảo giác, năng lực hạn chế"
+  ],
+  "sourceEvidence": {
+   "uv sync --extra gpu": "README.md:35",
+   "uv sync --extra cpu": "README.md:36",
+   "source .venv/bin/activate": "README.md:37",
+   "bash runs/speedrun.sh": "README.md:51",
+   "python -m scripts.chat_cli": "README.md:57"
+  },
+  "meta": {
+   "id": "karpathy-nanochat",
+   "nameVi": "nanochat — Khung tối giản huấn luyện chatbot LLM từ đầu",
+   "icon": "Brain",
+   "categories": [
+    "nlp_llm"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "bash runs/speedrun.sh"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "predibase/lorax",
+  "license": "Apache License 2.0",
+  "authorName": "Predibase",
+  "websiteUrl": "https://predibase.github.io/lorax/",
+  "toolType": "software",
+  "taglineEn": "LoRAX: Multi-LoRA inference server that scales to 1000s of fine-tuned LLMs",
+  "summaryVi": "LoRAX (LoRA eXchange) là máy chủ suy luận cho phép phục vụ hàng nghìn mô hình tinh chỉnh LoRA trên một GPU, giảm mạnh chi phí phục vụ mà không giảm thông lượng hay độ trễ. Adapter được tải động theo từng yêu cầu từ HuggingFace, Predibase hoặc hệ thống tệp, kèm API REST, client Python và API tương thích OpenAI.",
+  "purposeVi": "Giúp đội ngũ triển khai nhiều mô hình tinh chỉnh dùng chung một mô hình nền trên hạ tầng GPU hạn chế.",
+  "featuresVi": [
+   "Tải adapter động: nạp LoRA đúng lúc theo yêu cầu, không chặn yêu cầu đồng thời; gộp adapter theo yêu cầu",
+   "Heterogeneous Continuous Batching: gom yêu cầu của nhiều adapter khác nhau vào cùng batch",
+   "Adapter Exchange Scheduling: nạp trước và giải phóng adapter giữa bộ nhớ GPU và CPU",
+   "Tối ưu suy luận: tensor parallelism, flash-attention, paged attention, SGMV, lượng tử hóa, stream token",
+   "Sẵn sàng production: Docker image, Helm chart, Prometheus, OpenTelemetry, API tương thích OpenAI, JSON mode",
+   "Mô hình nền Llama, Mistral, Qwen... nạp fp16 hoặc lượng tử hóa bitsandbytes, GPT-Q, AWQ"
+  ],
+  "requirementsVi": "GPU NVIDIA thế hệ Ampere trở lên; driver tương thích CUDA 11.8 trở lên; Linux; Docker và nvidia-container-toolkit.",
+  "installStepsVi": [
+   "Cài đặt nvidia-container-toolkit, sau đó chạy `sudo systemctl daemon-reload` và `sudo systemctl restart docker`",
+   "Đặt biến model=mistralai/Mistral-7B-Instruct-v0.1 và volume=$PWD/data, rồi khởi chạy máy chủ: `docker run --gpus all --shm-size 1g -p 8080:80 -v $volume:/data \\\n    ghcr.io/predibase/lorax:main --model-id $model`",
+   "Tùy chọn cài đặt client Python: `pip install lorax-client`"
+  ],
+  "cliCommand": "docker run --gpus all --shm-size 1g -p 8080:80 -v $volume:/data \\\n    ghcr.io/predibase/lorax:main --model-id $model",
+  "usageStepsVi": [
+   "Gửi yêu cầu POST tới http://127.0.0.1:8080/generate với inputs và parameters để gọi mô hình nền.",
+   "Thêm adapter_id trong parameters để gọi một adapter LoRA cụ thể.",
+   "Hoặc dùng client Python: Client(\"http://127.0.0.1:8080\").generate(prompt, adapter_id=...).",
+   "Dùng SDK OpenAI với base_url http://127.0.0.1:8080/v1 và đặt model là tên adapter để chat nhiều lượt."
+  ],
+  "samplePromptsVi": [
+   "Natalia bán kẹp tóc cho 48 người bạn trong tháng Tư, tháng Năm bán được một nửa số đó. Tổng cộng bán bao nhiêu?",
+   "Gọi adapter gsm8k để giải bài toán đố bằng mô hình Mistral-7B tinh chỉnh.",
+   "Trò chuyện qua API OpenAI với adapter zephyr-7b-dpo-lora."
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0, README khẳng định miễn phí cho mục đích thương mại",
+   "Phục vụ nhiều adapter trên một GPU, có API tương thích OpenAI",
+   "Có Docker image dựng sẵn và Helm chart cho Kubernetes"
+  ],
+  "consVi": [
+   "Chỉ hỗ trợ GPU NVIDIA Ampere trở lên trên Linux",
+   "Nhịp phát triển chậm lại: lịch sử commit cho thấy chủ yếu là các bản sửa nhỏ kể từ năm 2025"
+  ],
+  "sourceEvidence": {
+   "sudo systemctl daemon-reload": "README.md:80",
+   "sudo systemctl restart docker": "README.md:81",
+   "docker run --gpus all --shm-size 1g -p 8080:80 -v $volume:/data \\\n    ghcr.io/predibase/lorax:main --model-id $model": "README.md:87-88",
+   "pip install lorax-client": "README.md:131"
+  },
+  "meta": {
+   "id": "predibase-lorax",
+   "nameVi": "LoRAX — Máy chủ suy luận phục vụ hàng nghìn adapter LoRA",
+   "icon": "Box",
+   "categories": [
+    "nlp_llm",
+    "cloud_infrastructure"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "docker run --gpus all --shm-size 1g -p 8080:80 -v $volume:/data \\\n    ghcr.io/predibase/lorax:main --model-id $model"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "NVIDIA/TensorRT-LLM",
+  "license": "Apache License 2.0 (một số thành phần bên thứ ba theo giấy phép riêng, xem LICENSE)",
+  "authorName": "NVIDIA",
+  "websiteUrl": "https://nvidia.github.io/TensorRT-LLM/",
+  "toolType": "sdk",
+  "taglineEn": "TensorRT LLM optimizes inference for LLMs and Visual Gen models with specialized kernels for common operations, an efficient runtime, and a pythonic framework that enables you to customize and extend the system.",
+  "summaryVi": "TensorRT LLM là thư viện mã nguồn mở của NVIDIA tối ưu suy luận LLM và mô hình sinh hình ảnh/video trên GPU NVIDIA, với kernel tùy biến (attention, GEMM, MoE), tách prefill-decode, Wide Expert Parallelism và speculative decoding. Thư viện xây trên PyTorch, có LLM API Python và lệnh trtllm-serve để chạy máy chủ tương thích OpenAI.",
+  "purposeVi": "Giúp kỹ sư hạ tầng triển khai LLM với hiệu năng cao nhất trên GPU NVIDIA, từ một GPU tới nhiều nút.",
+  "featuresVi": [
+   "Kernel tối ưu cho attention, GEMM, MoE và các phép toán suy luận phổ biến",
+   "Tối ưu runtime: tách prefill-decode, Wide Expert Parallelism, speculative decoding",
+   "LLM API Python hỗ trợ một GPU, đa GPU và đa nút với nhiều chiến lược song song",
+   "trtllm-serve: máy chủ trực tuyến tương thích OpenAI (v1/chat/completions)",
+   "Kiến trúc PyTorch-native, dễ tùy chỉnh mô hình",
+   "Tích hợp NVIDIA Dynamo và Triton Inference Server; hỗ trợ mô hình lượng tử hóa FP8/FP4"
+  ],
+  "requirementsVi": "GPU NVIDIA được hỗ trợ; cài đặt bằng pip cần Linux (thử nghiệm trên Ubuntu 24.04), CUDA Toolkit 13.4, PyTorch phù hợp và libopenmpi-dev; hoặc dùng container NGC.",
+  "installStepsVi": [
+   "Cách đơn giản nhất: kéo và chạy container phát hành từ NGC (thay x.y.z bằng phiên bản): `docker run --rm -it --ipc host --gpus all --ulimit memlock=-1 --ulimit stack=67108864 -p 8000:8000 nvcr.io/nvidia/tensorrt-llm/release:x.y.z`",
+   "Hoặc cài đặt trên Linux qua pip sau khi cài CUDA Toolkit, PyTorch và `sudo apt-get -y install libopenmpi-dev`: `pip3 install --ignore-installed pip setuptools wheel && pip3 install tensorrt_llm`",
+   "Kiểm tra cài đặt: `python3 -c \"import tensorrt_llm\"`"
+  ],
+  "cliCommand": "pip3 install --ignore-installed pip setuptools wheel && pip3 install tensorrt_llm",
+  "usageStepsVi": [
+   "Khởi chạy máy chủ tương thích OpenAI: `trtllm-serve \"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"`.",
+   "Gửi yêu cầu POST tới http://localhost:8000/v1/chat/completions với danh sách messages.",
+   "Dùng LLM API Python để chạy suy luận ngoại tuyến hoặc đa GPU.",
+   "Tắt thu thập telemetry bằng TRTLLM_NO_USAGE_STATS=1 hoặc cờ --no-telemetry nếu cần."
+  ],
+  "samplePromptsVi": [
+   "New York nằm ở đâu? Trả lời trong một câu.",
+   "Triển khai mô hình Qwen3-8B FP8 bằng trtllm-serve trên GPU hỗ trợ FP8.",
+   "Đo thông lượng suy luận bằng trtllm-bench cho mô hình DeepSeek."
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0, do NVIDIA phát triển tích cực",
+   "Hiệu năng suy luận cao trên GPU NVIDIA, hỗ trợ đa nút",
+   "Có máy chủ tương thích OpenAI và container NGC dựng sẵn"
+  ],
+  "consVi": [
+   "Chỉ chạy trên GPU NVIDIA",
+   "Thu thập telemetry ẩn danh theo mặc định (có thể tắt)",
+   "Cài đặt qua pip đòi hỏi đúng phiên bản CUDA, PyTorch và MPI"
+  ],
+  "sourceEvidence": {
+   "docker run --rm -it --ipc host --gpus all --ulimit memlock=-1 --ulimit stack=67108864 -p 8000:8000 nvcr.io/nvidia/tensorrt-llm/release:x.y.z": "docs/source/installation/installation-guide.md:23",
+   "sudo apt-get -y install libopenmpi-dev": "docs/source/installation/installation-guide.md:63",
+   "pip3 install --ignore-installed pip setuptools wheel && pip3 install tensorrt_llm": "docs/source/installation/installation-guide.md:89",
+   "python3 -c \"import tensorrt_llm\"": "docs/source/installation/installation-guide.md:37",
+   "trtllm-serve \"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"": "docs/source/quick-start-guide.md:19"
+  },
+  "meta": {
+   "id": "nvidia-tensorrt-llm",
+   "nameVi": "TensorRT LLM — Thư viện tối ưu suy luận LLM trên GPU NVIDIA",
+   "icon": "Cpu",
+   "categories": [
+    "nlp_llm",
+    "cloud_infrastructure"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip3 install --ignore-installed pip setuptools wheel && pip3 install tensorrt_llm"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "mlc-ai/mlc-llm",
+  "license": "Apache License 2.0",
+  "authorName": "MLC team",
+  "websiteUrl": "https://llm.mlc.ai/docs/",
+  "toolType": "software",
+  "taglineEn": "MLC LLM is a machine learning compiler and high-performance deployment engine for large language models.",
+  "summaryVi": "MLC LLM là trình biên dịch học máy và động cơ triển khai hiệu năng cao cho LLM, chạy mô hình trên GPU AMD, NVIDIA, Apple, Intel, trình duyệt (WebGPU/WASM), iOS và Android. Tất cả dùng chung MLCEngine với API tương thích OpenAI qua REST server, Python, JavaScript, iOS và Android.",
+  "purposeVi": "Giúp lập trình viên biên dịch, tối ưu và triển khai LLM trực tiếp trên mọi nền tảng, từ máy chủ tới điện thoại và trình duyệt.",
+  "featuresVi": [
+   "Hỗ trợ đa nền tảng: Vulkan, CUDA, ROCm, Metal, WebGPU, OpenCL (Adreno, Mali)",
+   "MLCEngine: động cơ suy luận thống nhất cho mọi nền tảng",
+   "API tương thích OpenAI qua REST server, Python, JavaScript, iOS, Android",
+   "Lệnh mlc_llm chat để trò chuyện trên dòng lệnh",
+   "Lệnh mlc_llm serve khởi chạy REST server tại http://127.0.0.1:8000",
+   "Dùng mô hình lượng tử hóa dựng sẵn từ Hugging Face (ví dụ Llama-3-8B-Instruct q4f16_1)"
+  ],
+  "requirementsVi": "Python trong môi trường conda (khuyến nghị); khoảng 6GB VRAM trống cho Llama3 8B int4; Windows/Linux cần driver Vulkan mới nhất; có gói wheel cho CPU, CUDA 12.8/13.0, ROCm 6.1/6.2.",
+  "installStepsVi": [
+   "Tạo và kích hoạt môi trường conda: `conda activate your-environment`",
+   "Cài đặt gói dựng sẵn (bản CPU/Vulkan/Metal): `python -m pip install --pre -U -f https://mlc.ai/wheels mlc-llm-nightly-cpu mlc-ai-nightly-cpu`",
+   "Trên Windows/Linux dùng Vulkan, cài đặt thêm: `conda install -c conda-forge gcc libvulkan-loader`"
+  ],
+  "cliCommand": "mlc_llm chat HF://mlc-ai/Llama-3-8B-Instruct-q4f16_1-MLC",
+  "usageStepsVi": [
+   "Trò chuyện trên dòng lệnh: `mlc_llm chat HF://mlc-ai/Llama-3-8B-Instruct-q4f16_1-MLC`.",
+   "Khởi chạy REST server: `mlc_llm serve HF://mlc-ai/Llama-3-8B-Instruct-q4f16_1-MLC`, rồi gửi yêu cầu tới http://127.0.0.1:8000/v1/chat/completions.",
+   "Trong Python, tạo MLCEngine(model) và gọi engine.chat.completions.create(...) theo kiểu OpenAI.",
+   "Xem hướng dẫn triển khai cho iOS, Android và WebLLM trong tài liệu."
+  ],
+  "samplePromptsVi": [
+   "What is the meaning of life?",
+   "Hello! Our project is MLC LLM. What is the name of our project?",
+   "Chạy Llama 3 8B lượng tử hóa trên laptop có GPU tích hợp qua Vulkan."
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0",
+   "Chạy trên nhiều loại GPU, trình duyệt và thiết bị di động",
+   "API tương thích OpenAI"
+  ],
+  "consVi": [
+   "Gói pip là bản nightly (pre-release) phát hành qua kho wheel riêng mlc.ai",
+   "README chỉ dẫn sang tài liệu trực tuyến; cài đặt khác nhau theo GPU và hệ điều hành"
+  ],
+  "sourceEvidence": {
+   "conda activate your-environment": "docs/install/mlc_llm.rst:32",
+   "python -m pip install --pre -U -f https://mlc.ai/wheels mlc-llm-nightly-cpu mlc-ai-nightly-cpu": "docs/install/mlc_llm.rst:33",
+   "conda install -c conda-forge gcc libvulkan-loader": "docs/get_started/quick_start.rst:106",
+   "mlc_llm chat HF://mlc-ai/Llama-3-8B-Instruct-q4f16_1-MLC": "docs/get_started/quick_start.rst:97",
+   "mlc_llm serve HF://mlc-ai/Llama-3-8B-Instruct-q4f16_1-MLC": "docs/get_started/quick_start.rst:60"
+  },
+  "meta": {
+   "id": "mlc-ai-mlc-llm",
+   "nameVi": "MLC LLM — Động cơ biên dịch và triển khai LLM đa nền tảng",
+   "icon": "Cpu",
+   "categories": [
+    "nlp_llm",
+    "mobile_app"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "mlc_llm chat HF://mlc-ai/Llama-3-8B-Instruct-q4f16_1-MLC"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "run-llama/llama-agents",
+  "license": "MIT License",
+  "authorName": "LlamaIndex Inc.",
+  "websiteUrl": "https://developers.llamaindex.ai/python/llamaagents/workflows/",
+  "toolType": "sdk",
+  "taglineEn": "An open-source framework for building and shipping document-centric agents in Python.",
+  "summaryVi": "LlamaAgents (trước đây là repo workflows-py) là khung Python mã nguồn mở để xây dựng và triển khai tác tử xử lý tài liệu. Nền tảng là Agent Workflows: thư viện điều phối hướng sự kiện, mỗi bước là hàm async Python phát và nhận sự kiện, hỗ trợ rẽ nhánh, lặp, chạy song song, lưu trạng thái và phục hồi lỗi mà không cần DSL.",
+  "purposeVi": "Giúp đội ngũ dựng pipeline tài liệu (OCR, LLM, trích xuất có cấu trúc, phân loại, kiểm duyệt của con người) chạy bền vững từ notebook tới production.",
+  "featuresVi": [
+   "llama-index-workflows: thư viện workflow hướng sự kiện, ít phụ thuộc, nhúng được vào script, notebook, máy chủ",
+   "Durability có thể cắm thêm: lưu và tiếp tục lần chạy",
+   "llama-agents-server: bọc workflow thành REST API có streaming, lưu trữ và human-in-the-loop, gắn vào ứng dụng Starlette/FastAPI",
+   "llamactl: công cụ dòng lệnh khởi tạo từ template, phát triển cục bộ có hot reload và triển khai",
+   "Triển khai lên LlamaParse, AWS Bedrock AgentCore hoặc hạ tầng riêng; tác tử có thể là dịch vụ headless, máy chủ MCP hoặc ứng dụng có giao diện",
+   "Tích hợp LlamaParse cho OCR, trích xuất có cấu trúc, phân loại và tách tài liệu"
+  ],
+  "requirementsVi": "Python; uv để cài đặt llamactl; tài khoản LlamaParse nếu dùng các bước xử lý tài liệu của LlamaParse.",
+  "installStepsVi": [
+   "Cài đặt thư viện workflow: `pip install llama-index-workflows`",
+   "Hoặc cài đặt công cụ dòng lệnh llamactl: `uv tool install llamactl`",
+   "Khởi tạo dự án từ template: `llamactl init`"
+  ],
+  "cliCommand": "uv tool install llamactl",
+  "usageStepsVi": [
+   "Định nghĩa lớp kế thừa Workflow với các bước @step async nhận StartEvent và trả StopEvent.",
+   "Chạy workflow bằng await workflow.run(...).",
+   "Dùng WorkflowServer().add_workflow(\"greet\", HelloWorkflow()) để phục vụ workflow qua REST API.",
+   "Chạy cục bộ bằng `llamactl serve` và triển khai bằng `llamactl deployments create`."
+  ],
+  "samplePromptsVi": [
+   "Trích xuất số hóa đơn, ngày và tổng tiền từ một lô hóa đơn PDF.",
+   "Phân loại hợp đồng theo loại và chuyển các trường hợp chưa chắc cho người duyệt.",
+   "Tạo workflow chào hỏi đơn giản và phục vụ nó qua REST API."
+  ],
+  "prosVi": [
+   "Mã nguồn mở MIT",
+   "Có thể bắt đầu như thư viện rồi mở rộng thành máy chủ và triển khai",
+   "Có công cụ dòng lệnh llamactl với template dựng sẵn"
+  ],
+  "consVi": [
+   "Các bước xử lý tài liệu nặng dựa vào LlamaParse là nền tảng thương mại cần tài khoản; README không nêu giá",
+   "Repo đã đổi tên từ workflows-py sang llama-agents"
+  ],
+  "sourceEvidence": {
+   "pip install llama-index-workflows": "README.md:31",
+   "uv tool install llamactl": "README.md:63",
+   "llamactl init": "README.md:64",
+   "llamactl serve": "README.md:65",
+   "llamactl deployments create": "README.md:66"
+  },
+  "meta": {
+   "id": "run-llama-llama-agents",
+   "nameVi": "LlamaAgents — Khung workflow hướng sự kiện cho tác tử xử lý tài liệu",
+   "icon": "Workflow",
+   "categories": [
+    "rpa_workflow_automation",
+    "nlp_llm"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "uv tool install llamactl"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "kyegomez/swarms",
+  "license": "Apache License 2.0",
+  "authorName": "Kye Gomez (Swarms Corp)",
+  "websiteUrl": "https://docs.swarms.world",
+  "toolType": "sdk",
+  "taglineEn": "Swarms, The Enterprise-Grade Production-Ready Multi-Agent Orchestration Framework",
+  "summaryVi": "Swarms là khung Python điều phối đa tác tử, cung cấp các kiến trúc dựng sẵn như tuần tự, song song, phân cấp, đồ thị và hỗn hợp tác tử. Khung tích hợp MCP (dùng công cụ từ máy chủ MCP và biến tác tử thành máy chủ MCP), skills và nhiều nhà cung cấp LLM.",
+  "purposeVi": "Giúp lập trình viên dựng, triển khai và mở rộng hệ thống nhiều tác tử phối hợp để tự động hóa các tác vụ nhiều bước.",
+  "featuresVi": [
+   "Agent: tác tử dùng LLM + công cụ + bộ nhớ, chế độ max_loops=\"auto\" tự lập kế hoạch và phản tư",
+   "Kiến trúc đa tác tử: SequentialWorkflow, ConcurrentWorkflow, AgentRearrange, GraphWorkflow, MixtureOfAgents, GroupChat, HierarchicalSwarm, HeavySwarm",
+   "SwarmRouter: một giao diện chạy mọi loại swarm; AutoSwarmBuilder tự sinh tác tử và workflow",
+   "Tích hợp MCP: gắn mcp_url để dùng công cụ; MCPDeployer biến tác tử thành máy chủ MCP có xác thực",
+   "Docker image chính thức swarmscorp/swarms cho linux/amd64 và linux/arm64",
+   "Hỗ trợ nhiều nhà cung cấp qua khóa API (OpenAI, Anthropic, Groq...)"
+  ],
+  "requirementsVi": "Python và pip (khuyến nghị uv); khóa API của nhà cung cấp mô hình như OPENAI_API_KEY, ANTHROPIC_API_KEY, GROQ_API_KEY.",
+  "installStepsVi": [
+   "Cài đặt từ PyPI: `pip3 install -U swarms` (hoặc `uv pip install swarms`)",
+   "Tùy chọn cài đặt bản tăng tốc: `pip3 install -U \"swarms[fast]\"`",
+   "Cấu hình biến môi trường khóa API (OPENAI_API_KEY, ANTHROPIC_API_KEY...) trong tệp .env",
+   "Hoặc chạy bằng Docker: `docker pull swarmscorp/swarms:latest`"
+  ],
+  "cliCommand": "pip3 install -U swarms",
+  "usageStepsVi": [
+   "Tạo Agent(model_name=..., max_loops=...) và gọi agent.run(\"nhiệm vụ\").",
+   "Ghép nhiều tác tử bằng SequentialWorkflow hoặc ConcurrentWorkflow rồi gọi run với nhiệm vụ.",
+   "Gắn mcp_url để tác tử dùng công cụ từ máy chủ MCP, hoặc dùng MCPDeployer để phục vụ tác tử qua MCP.",
+   "Xem hướng dẫn và hơn 60 cấu trúc đa tác tử trong tài liệu docs.swarms.world."
+  ],
+  "samplePromptsVi": [
+   "Lợi ích chính của việc dùng hệ thống đa tác tử là gì?",
+   "Cho tác tử nghiên cứu tìm thông tin rồi tác tử viết soạn bài blog từ kết quả đó.",
+   "Dùng công cụ MCP DeepWiki để giải thích một repo GitHub làm gì."
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0",
+   "Nhiều kiến trúc đa tác tử dựng sẵn và hỗ trợ MCP hai chiều",
+   "Có Docker image chính thức"
+  ],
+  "consVi": [
+   "Cần khóa API nhà cung cấp mô hình",
+   "Có biến cấu hình telemetry (SWARMS_TELEMETRY_ON); marketplace và dịch vụ của Swarms Corp là sản phẩm riêng, README không nêu giá"
+  ],
+  "sourceEvidence": {
+   "pip3 install -U swarms": "README.md:58",
+   "uv pip install swarms": "README.md:61",
+   "pip3 install -U \"swarms[fast]\"": "README.md:84",
+   "docker pull swarmscorp/swarms:latest": "README.md:94"
+  },
+  "meta": {
+   "id": "kyegomez-swarms",
+   "nameVi": "Swarms — Khung điều phối đa tác tử cho doanh nghiệp",
+   "icon": "Workflow",
+   "categories": [
+    "nlp_llm",
+    "rpa_workflow_automation"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip3 install -U swarms"
+    }
+   ]
+  }
+ }
+]
