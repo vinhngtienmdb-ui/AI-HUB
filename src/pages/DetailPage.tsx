@@ -15,6 +15,7 @@ import { VisualDiagramViewer } from '../components/VisualDiagramViewer';
 import { formatStars, getVerifiedStars } from '../lib/verification';
 import { VerificationNotice } from '../components/VerificationNotice';
 import { useToolDetails } from '../lib/toolDetails';
+import { copyText } from '../lib/clipboard';
 
 interface DetailPageProps {
   tool: AITool;
@@ -79,7 +80,7 @@ export const DetailPage: React.FC<DetailPageProps> = ({
   }, [allTools, tool]);
 
   const handleCopy = (text: string, index: number) => {
-    navigator.clipboard.writeText(text);
+    copyText(text);
     setCopiedConfigIndex(index);
     setTimeout(() => setCopiedConfigIndex(null), 2000);
   };
@@ -211,7 +212,7 @@ export const DetailPage: React.FC<DetailPageProps> = ({
                     onClick={() => {
                       const cmd = (tool.configs || []).find((c) => c.cliCommand)?.cliCommand;
                       if (cmd) {
-                        navigator.clipboard.writeText(cmd);
+                        copyText(cmd);
                         setCopiedConfigIndex(888);
                         setTimeout(() => setCopiedConfigIndex(null), 2000);
                       }

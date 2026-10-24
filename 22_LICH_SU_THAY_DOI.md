@@ -4,6 +4,12 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.7 (Ngày 24-10-2026)
+- **Loại hình**: Nút sao chép cho các lệnh, giống GitHub.
+- Khối mã (lệnh cài, câu lệnh mẫu, khối mã trong README) có nút sao chép luôn hiển thị ở góc phải, đổi thành dấu ✓ khi đã chép; trước đây nút chỉ hiện khi rê chuột.
+- Đoạn mã nội dòng là câu lệnh (ví dụ `npx claude-code-templates@latest ...`, `git clone ...`, `docker compose up -d`, `/mcp`) trong các bước cài đặt, sử dụng và README có thêm nút sao chép nhỏ ngay sau lệnh.
+- Mọi nút sao chép dùng chung `src/lib/clipboard.ts`, có cách dự phòng khi trình duyệt không cho dùng Clipboard API.
+
 ### Phiên Bản 2.1.6 (Ngày 24-10-2026)
 - **Loại hình**: Giao diện GitHub cho tab "Cách sử dụng & Cài đặt", "Cấu hình mẫu JSON"; vẽ lại sơ đồ trực quan.
 - **Cách sử dụng & Cài đặt**: hiển thị như README trên GitHub: lệnh cài là khối mã có nút sao chép, các dòng "Bước N" thành danh sách đánh số, "Yêu cầu" in đậm, mỗi câu lệnh mẫu là một khối có nút sao chép (`src/lib/toolGuides.ts`, `src/components/GitHubMarkdownSection.tsx`). Áp dụng cho trang chi tiết và cửa sổ chi tiết.

@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Copy, Check, FileCode, Info } from 'lucide-react';
 import { GitHubMarkdownSection } from './GitHubMarkdownSection';
+import { copyText } from '../lib/clipboard';
 
 interface GitHubCodeViewerProps {
   code: string;
@@ -49,7 +50,7 @@ export const GitHubCodeViewer: React.FC<GitHubCodeViewerProps> = ({
 
   const handleCopyCode = () => {
     if (!code) return;
-    navigator.clipboard.writeText(code);
+    copyText(code);
     setCopiedCode(true);
     setTimeout(() => setCopiedCode(false), 2000);
   };

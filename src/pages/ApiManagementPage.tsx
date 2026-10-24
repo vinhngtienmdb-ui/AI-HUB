@@ -29,6 +29,7 @@ import {
   normalizeBaseUrl,
   saveApiBaseUrl
 } from '../lib/apiGatewayClient';
+import { copyText } from '../lib/clipboard';
 
 interface ApiManagementPageProps {
   onNavigateHome: () => void;
@@ -98,7 +99,7 @@ export const ApiManagementPage: React.FC<ApiManagementPageProps> = ({
   const isRemotePage = !/^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/.test(pageOrigin);
 
   const handleCopy = (text: string, id: string) => {
-    navigator.clipboard.writeText(text);
+    copyText(text);
     setCopiedId(id);
     setTimeout(() => setCopiedId(null), 2500);
   };
