@@ -1,0 +1,544 @@
+[
+ {
+  "repo": "ggml-org/llama.cpp",
+  "license": "MIT License",
+  "authorName": "The ggml authors (ggml-org)",
+  "websiteUrl": "https://llama.app",
+  "toolType": "software",
+  "taglineEn": "LLM inference in C/C++",
+  "summaryVi": "llama.cpp là bộ suy luận LLM (và VLM) viết bằng C/C++ thuần, không phụ thuộc thư viện ngoài, xây dựng trên thư viện ggml. Công cụ chạy mô hình GGUF trên rất nhiều loại phần cứng, từ CPU x86/ARM/RISC-V tới GPU NVIDIA, AMD, Apple Silicon, Vulkan, SYCL. Đi kèm lệnh `llama cli` để trò chuyện trên terminal và `llama serve` để mở máy chủ API tương thích OpenAI có giao diện web tích hợp.",
+  "purposeVi": "Chạy mô hình ngôn ngữ lớn cục bộ với thiết lập tối thiểu và hiệu năng cao, làm nền tảng cho nhiều công cụ chạy LLM trên máy cá nhân.",
+  "featuresVi": [
+   "C/C++ thuần: không phụ thuộc thư viện ngoài",
+   "Tối ưu Apple Silicon: qua ARM NEON, Accelerate và Metal",
+   "Lượng tử hóa 1.5-bit tới 8-bit: suy luận nhanh hơn và giảm bộ nhớ",
+   "Nhiều backend: CUDA, HIP, Vulkan, SYCL, Metal, MUSA, CANN, OpenCL, WebGPU, RPC...",
+   "Suy luận lai CPU+GPU: tăng tốc một phần cho mô hình lớn hơn dung lượng VRAM",
+   "Máy chủ API tương thích OpenAI: `llama serve` kèm giao diện web tích hợp",
+   "Tải mô hình trực tiếp từ Hugging Face bằng tham số `-hf`"
+  ],
+  "requirementsVi": "Máy tính Windows, macOS hoặc Linux; GPU là tùy chọn. Có thể cài đặt bằng script, Docker, tệp nhị phân dựng sẵn hoặc biên dịch từ mã nguồn.",
+  "installStepsVi": [
+   "Cài đặt trên macOS/Linux bằng script: `curl -LsSf https://llama.app/install.sh | sh`",
+   "Cài đặt trên Windows bằng PowerShell: `irm https://llama.app/install.ps1 | iex`",
+   "Hoặc tải tệp nhị phân dựng sẵn từ trang Releases, chạy bằng Docker, hay biên dịch theo hướng dẫn docs/build.md",
+   "Tải và trò chuyện với mô hình từ Hugging Face: `llama cli -hf ggml-org/Qwen3.5-0.8B-GGUF`",
+   "Khởi chạy máy chủ API tương thích OpenAI: `llama serve -hf ggml-org/Qwen3.5-0.8B-GGUF`"
+  ],
+  "cliCommand": "llama serve -hf ggml-org/Qwen3.5-0.8B-GGUF",
+  "usageStepsVi": [
+   "Chọn một mô hình GGUF trên Hugging Face phù hợp với dung lượng RAM/VRAM của máy",
+   "Dùng `llama cli` để trò chuyện trực tiếp trên terminal, kể cả mô hình thị giác (VLM)",
+   "Dùng `llama serve` rồi mở giao diện web tích hợp hoặc trỏ ứng dụng dùng API OpenAI tới máy chủ cục bộ"
+  ],
+  "samplePromptsVi": [
+   "Tóm tắt nội dung đoạn văn bản tiếng Việt sau thành 3 ý chính",
+   "Mô tả những gì có trong bức ảnh này (khi dùng mô hình VLM)",
+   "Viết hàm Python đọc tệp CSV và tính trung bình một cột dữ liệu"
+  ],
+  "prosVi": [
+   "Mã nguồn mở giấy phép MIT",
+   "Hỗ trợ phần cứng rất rộng, kể cả chạy chỉ bằng CPU",
+   "Có API tương thích OpenAI và giao diện web tích hợp",
+   "Phát triển rất tích cực, có bản nightly"
+  ],
+  "consVi": [
+   "Chỉ chạy mô hình định dạng GGUF; mô hình khác cần chuyển đổi",
+   "Tốc độ và kích thước mô hình chạy được phụ thuộc vào phần cứng của máy"
+  ],
+  "sourceEvidence": {
+   "curl -LsSf https://llama.app/install.sh | sh": "README.md:26",
+   "irm https://llama.app/install.ps1 | iex": "README.md:29",
+   "llama cli -hf ggml-org/Qwen3.5-0.8B-GGUF": "README.md:41",
+   "llama serve -hf ggml-org/Qwen3.5-0.8B-GGUF": "README.md:44"
+  },
+  "meta": {
+   "id": "ggml-org-llama-cpp",
+   "nameVi": "llama.cpp — Bộ suy luận LLM cục bộ bằng C/C++",
+   "icon": "Cpu",
+   "categories": [
+    "nlp_llm"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "llama serve -hf ggml-org/Qwen3.5-0.8B-GGUF"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "mudler/LocalAI",
+  "license": "MIT License",
+  "authorName": "Ettore Di Giacinto và LocalAI team",
+  "websiteUrl": "https://localai.io",
+  "toolType": "software",
+  "taglineEn": "LocalAI is the open-source AI engine. Run any model - LLMs, vision, voice, image, video - on any hardware. No GPU required.",
+  "summaryVi": "LocalAI là công cụ AI mã nguồn mở chạy mọi loại mô hình (LLM, thị giác, giọng nói, hình ảnh, video) trên phần cứng của bạn, không bắt buộc GPU. Lõi nhỏ gọn, mỗi backend (llama.cpp, vLLM, whisper.cpp, stable-diffusion, MLX...) là một image riêng chỉ tải khi mô hình cần. Cung cấp API tương thích OpenAI, Anthropic và ElevenLabs, kèm WebUI, tác tử tích hợp, MCP và chế độ phân tán.",
+  "purposeVi": "Tự vận hành một máy chủ AI thay thế API đám mây, giữ dữ liệu trong hạ tầng của mình và phục vụ nhiều người dùng.",
+  "featuresVi": [
+   "Đa phương thức: LLM, thị giác, giọng nói, tạo ảnh, video sau một API",
+   "API tương thích: OpenAI, Anthropic và ElevenLabs trên mọi backend",
+   "Backend tải theo nhu cầu: hơn 60 backend như llama.cpp, vLLM, SGLang, transformers, whisper.cpp, diffusers, MLX",
+   "Phần cứng đa dạng: NVIDIA, AMD, Intel, Apple Silicon, Vulkan hoặc chỉ CPU",
+   "Đa người dùng: xác thực API key, hạn mức theo người dùng, phân quyền theo vai trò",
+   "Tác tử tích hợp: dùng công cụ, RAG, MCP và skills; có tác tử terminal `local-ai chat`",
+   "Chế độ phân tán và suy luận P2P, embeddings, reranker, nhận dạng giọng nói, WebUI tích hợp"
+  ],
+  "requirementsVi": "Docker/Podman (bản CPU hoặc image GPU tương ứng) hoặc ứng dụng macOS (DMG). GPU là tùy chọn. Cổng mặc định 8080.",
+  "installStepsVi": [
+   "Cài đặt và chạy bằng Docker (chỉ CPU): `docker run -ti --name local-ai -p 8080:8080 localai/localai:latest`",
+   "Với GPU NVIDIA CUDA 12: `docker run -ti --name local-ai -p 8080:8080 --gpus all localai/localai:latest-gpu-nvidia-cuda-12`",
+   "Trên macOS có thể tải LocalAI.dmg từ trang Releases (bản DMG chưa được Apple ký)",
+   "Tải và chạy mô hình từ thư viện: `local-ai run llama-3.2-1b-instruct:q4_k_m`",
+   "Mở tác tử trò chuyện trên terminal khác: `local-ai chat --model llama-3.2-1b-instruct:q4_k_m`"
+  ],
+  "cliCommand": "docker run -ti --name local-ai -p 8080:8080 localai/localai:latest",
+  "usageStepsVi": [
+   "Mở WebUI tại cổng 8080 để duyệt thư viện mô hình và backend",
+   "Cài đặt mô hình từ gallery, Hugging Face, registry Ollama hoặc OCI bằng `local-ai run`",
+   "Trỏ ứng dụng đang dùng API OpenAI/Anthropic sang máy chủ LocalAI cục bộ",
+   "Bật xác thực API key và hạn mức nếu chia sẻ cho nhiều người dùng"
+  ],
+  "samplePromptsVi": [
+   "Chuyển đoạn ghi âm cuộc họp này thành văn bản",
+   "Tạo ảnh minh họa một quán cà phê Hà Nội buổi sáng",
+   "Dựa trên tài liệu nội bộ đã nạp, trả lời câu hỏi về quy trình nghỉ phép"
+  ],
+  "prosVi": [
+   "Mã nguồn mở giấy phép MIT",
+   "Không bắt buộc GPU",
+   "Tương thích API OpenAI, Anthropic và ElevenLabs",
+   "Phát hành thường xuyên (bản 4.11.0 tháng 10/2026)"
+  ],
+  "consVi": [
+   "Bản DMG cho macOS chưa được Apple ký, cần gỡ cờ quarantine thủ công",
+   "Nhiều tính năng (ảnh, video, giọng nói) cần tải thêm backend và mô hình riêng, tốn dung lượng"
+  ],
+  "sourceEvidence": {
+   "docker run -ti --name local-ai -p 8080:8080 localai/localai:latest": "README.md:109",
+   "docker run -ti --name local-ai -p 8080:8080 --gpus all localai/localai:latest-gpu-nvidia-cuda-12": "README.md:119",
+   "local-ai run llama-3.2-1b-instruct:q4_k_m": "README.md:150",
+   "local-ai chat --model llama-3.2-1b-instruct:q4_k_m": "README.md:168"
+  },
+  "meta": {
+   "id": "mudler-localai",
+   "nameVi": "LocalAI — Máy chủ AI tự vận hành thay thế API OpenAI",
+   "icon": "Layers",
+   "categories": [
+    "nlp_llm",
+    "generative_ai_multimedia",
+    "speech_voice"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "docker run -ti --name local-ai -p 8080:8080 localai/localai:latest"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "mozilla-ai/llamafile",
+  "license": "Apache License 2.0 (thay đổi với llama.cpp và whisper.cpp theo MIT)",
+  "authorName": "Mozilla.ai (Mozilla Builders)",
+  "websiteUrl": "https://docs.mozilla.ai/llamafile",
+  "toolType": "software",
+  "taglineEn": "llamafile lets you distribute and run LLMs with a single file.",
+  "summaryVi": "llamafile kết hợp llama.cpp với Cosmopolitan Libc để gói cả mô hình LLM thành một tệp thực thi duy nhất, chạy cục bộ trên hầu hết hệ điều hành và kiến trúc CPU mà không cần cài đặt. Dự án do Mozilla Builders khởi xướng, nay được Mozilla.ai làm mới. Đi kèm whisperfile để chuyển giọng nói thành văn bản theo cùng cách đóng gói.",
+  "purposeVi": "Phân phối và chạy mô hình ngôn ngữ mở chỉ bằng một tệp, giúp người dùng không chuyên dễ dàng thử LLM trên máy cá nhân.",
+  "featuresVi": [
+   "Một tệp duy nhất: mô hình và chương trình gói chung thành tệp thực thi",
+   "Chạy đa nền tảng: macOS, Linux, BSD, Windows trên nhiều kiến trúc CPU",
+   "Không cần cài đặt: tải về, cấp quyền thực thi và chạy",
+   "Whisperfile: chuyển giọng nói thành văn bản và dịch âm thanh dựa trên whisper.cpp",
+   "Dùng được với trọng số GGUF bên ngoài thông qua tệp nhị phân llamafile"
+  ],
+  "requirementsVi": "Máy tính macOS, Linux, BSD hoặc Windows. Trên Windows chỉ chạy được tệp thực thi dưới 4GB; mô hình lớn hơn cần dùng tệp nhị phân llamafile với trọng số GGUF bên ngoài.",
+  "installStepsVi": [
+   "Tải tệp llamafile mẫu (Qwen3.5 0.8B): `curl -LO https://huggingface.co/mozilla-ai/llamafile_0.10/resolve/main/Qwen3.5-0.8B-Q8_0.llamafile`",
+   "Cấp quyền thực thi trên macOS/Linux/BSD: `chmod +x Qwen3.5-0.8B-Q8_0.llamafile`",
+   "Chạy tệp: `./Qwen3.5-0.8B-Q8_0.llamafile` (Windows: đổi tên thêm đuôi .exe trước khi chạy)"
+  ],
+  "cliCommand": "./Qwen3.5-0.8B-Q8_0.llamafile",
+  "usageStepsVi": [
+   "Chọn llamafile dựng sẵn lớn hơn nếu máy có GPU hoặc cấu hình mạnh để có câu trả lời chính xác hơn",
+   "Trò chuyện với mô hình sau khi tệp khởi chạy",
+   "Xem tài liệu tại docs.mozilla.ai/llamafile để tạo llamafile riêng hoặc dùng whisperfile"
+  ],
+  "samplePromptsVi": [
+   "Giải thích ngắn gọn khái niệm học máy cho học sinh cấp 3",
+   "Viết email xin nghỉ phép lịch sự bằng tiếng Việt",
+   "Dịch đoạn văn sau sang tiếng Anh"
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0",
+   "Không cần cài đặt, chỉ một tệp",
+   "Do Mozilla.ai duy trì"
+  ],
+  "consVi": [
+   "Windows giới hạn tệp thực thi dưới 4GB",
+   "Từ bản 0.10 dùng hệ thống build mới nên có thể thiếu một số tính năng của bản cũ"
+  ],
+  "sourceEvidence": {
+   "curl -LO https://huggingface.co/mozilla-ai/llamafile_0.10/resolve/main/Qwen3.5-0.8B-Q8_0.llamafile": "README.md:50",
+   "chmod +x Qwen3.5-0.8B-Q8_0.llamafile": "README.md:53",
+   "./Qwen3.5-0.8B-Q8_0.llamafile": "README.md:56"
+  },
+  "meta": {
+   "id": "mozilla-ai-llamafile",
+   "nameVi": "llamafile — Chạy LLM chỉ bằng một tệp thực thi",
+   "icon": "Box",
+   "categories": [
+    "nlp_llm"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache-2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "./Qwen3.5-0.8B-Q8_0.llamafile"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "janhq/jan",
+  "license": "Apache License 2.0",
+  "authorName": "Menlo Research",
+  "websiteUrl": "https://jan.ai",
+  "toolType": "software",
+  "taglineEn": "Jan is bringing the best of open-source AI in an easy-to-use product. Download and run LLMs with **full control** and **privacy**.",
+  "summaryVi": "Jan là ứng dụng máy tính mã nguồn mở thay thế ChatGPT, cho phép tải và chạy LLM (Llama, Gemma, Qwen, GPT-oss...) từ Hugging Face ngay trên máy với toàn quyền kiểm soát và quyền riêng tư. Ứng dụng cũng kết nối được với mô hình đám mây (OpenAI, Anthropic, Mistral, Groq...), hỗ trợ trợ lý tùy chỉnh, MCP và mở máy chủ API tương thích OpenAI tại localhost:1337.",
+  "purposeVi": "Cung cấp giao diện trò chuyện AI dễ dùng chạy cục bộ trên Windows, macOS và Linux, phù hợp người dùng không chuyên.",
+  "featuresVi": [
+   "Mô hình cục bộ: tải và chạy LLM từ Hugging Face",
+   "Tích hợp đám mây: OpenAI, Anthropic, Mistral, Groq, MiniMax...",
+   "Trợ lý tùy chỉnh: tạo trợ lý AI chuyên biệt cho từng công việc",
+   "API tương thích OpenAI: máy chủ cục bộ tại `localhost:1337`",
+   "Model Context Protocol: tích hợp MCP cho khả năng tác tử",
+   "Ưu tiên quyền riêng tư: mọi thứ chạy cục bộ khi bạn muốn"
+  ],
+  "requirementsVi": "macOS 13.6+ (8GB RAM cho mô hình 3B, 16GB cho 7B, 32GB cho 13B); Windows 10+ có GPU NVIDIA/AMD/Intel Arc; đa số bản phân phối Linux. Build từ mã nguồn cần Node.js ≥ 20, Yarn ≥ 4.5.3, Make ≥ 3.81 và Rust.",
+  "installStepsVi": [
+   "Cài đặt bản dựng sẵn: tải jan.exe (Windows), jan.dmg (macOS), jan.deb hoặc jan.AppImage (Linux) từ jan.ai hoặc GitHub Releases; cũng có trên Microsoft Store và Flathub",
+   "Hoặc build từ mã nguồn: `git clone https://github.com/janhq/jan` rồi vào thư mục jan",
+   "Chạy `make dev` để cài đặt phụ thuộc, build và khởi chạy ứng dụng"
+  ],
+  "cliCommand": "make dev",
+  "usageStepsVi": [
+   "Mở Jan, tìm và tải một mô hình phù hợp cấu hình máy từ Hugging Face",
+   "Trò chuyện hoặc tạo trợ lý tùy chỉnh; có thể thêm API key để dùng mô hình đám mây",
+   "Bật máy chủ cục bộ `localhost:1337` để ứng dụng khác gọi API kiểu OpenAI",
+   "Kết nối máy chủ MCP để mô hình dùng công cụ bên ngoài"
+  ],
+  "samplePromptsVi": [
+   "Lập kế hoạch học tiếng Anh trong 4 tuần cho người mới bắt đầu",
+   "Soạn thông báo nội bộ về lịch nghỉ Tết của công ty",
+   "Giải thích đoạn mã JavaScript này đang làm gì"
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0",
+   "Ứng dụng desktop dễ dùng, có bản cho Windows, macOS, Linux",
+   "Kết hợp được mô hình cục bộ và mô hình đám mây",
+   "Hỗ trợ MCP và API tương thích OpenAI"
+  ],
+  "consVi": [
+   "Mô hình đám mây cần API key của nhà cung cấp tương ứng",
+   "Mô hình lớn đòi hỏi nhiều RAM (32GB cho 13B trên macOS)",
+   "Linux Arm64 chưa có bản dựng sẵn, cần làm theo hướng dẫn riêng"
+  ],
+  "sourceEvidence": {
+   "git clone https://github.com/janhq/jan": "README.md:114",
+   "make dev": "README.md:116"
+  },
+  "meta": {
+   "id": "janhq-jan",
+   "nameVi": "Jan — Ứng dụng trò chuyện AI chạy cục bộ thay thế ChatGPT",
+   "icon": "MessageSquare",
+   "categories": [
+    "nlp_llm"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache-2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "make dev"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "LostRuins/koboldcpp",
+  "license": "GNU Affero General Public License v3.0 (thành phần GGML, llama.cpp, stable-diffusion.cpp theo MIT)",
+  "authorName": "LostRuins (Concedo)",
+  "websiteUrl": "https://koboldcpp.net",
+  "toolType": "software",
+  "taglineEn": "KoboldCpp is free and open-source software for running GGUF large language models (LLMs) on your own computer.",
+  "summaryVi": "KoboldCpp là phần mềm miễn phí, mã nguồn mở để chạy mô hình GGUF trên máy tính cá nhân, dựa trên llama.cpp. Chỉ một tệp thực thi, không cần cài đặt, kèm giao diện web KoboldAI Lite để trò chuyện, viết truyện, nhập vai. Ngoài văn bản còn hỗ trợ tạo ảnh, video, nhận dạng và tổng hợp giọng nói, tạo nhạc, tác tử tích hợp và nhiều API tương thích (OpenAI, Ollama, A1111, ComfyUI...).",
+  "purposeVi": "Chạy LLM và các mô hình sinh nội dung đa phương tiện cục bộ với giao diện web sẵn có, phục vụ viết sáng tạo, trò chuyện và kết nối ứng dụng khác qua API cục bộ.",
+  "featuresVi": [
+   "Sinh văn bản cục bộ: chế độ chat, adventure, instruct, viết truyện; hỗ trợ mô hình thị giác",
+   "Tạo và chỉnh sửa ảnh: Stable Diffusion 1.5, SDXL, SD3, Flux, Qwen Image...",
+   "Tạo video: WAN 2.2, LTX2.3, MiniMax H3",
+   "Giọng nói: nhận dạng bằng Whisper, tổng hợp bằng Qwen3TTS, Kokoro, OuteTTS...",
+   "Tác tử và công cụ: hỗ trợ MCP, gọi công cụ, tìm kiếm web, RAG qua TextDB",
+   "API tương thích: KoboldAI, OpenAI, Anthropic, Ollama, A1111/Forge, ComfyUI, XTTS tại cổng 5001",
+   "Di động: một tệp thực thi cho Windows, Linux, macOS; chạy CPU hoặc GPU"
+  ],
+  "requirementsVi": "Windows, Linux x86-64 hoặc macOS Apple Silicon (Intel Mac cần build từ mã nguồn); tệp mô hình GGUF tải riêng. GPU là tùy chọn.",
+  "installStepsVi": [
+   "Cài đặt nhanh trên Linux: `curl -fLo koboldcpp-linux-x64 https://github.com/LostRuins/koboldcpp/releases/latest/download/koboldcpp-linux-x64 && chmod +x koboldcpp-linux-x64 && ./koboldcpp-linux-x64`",
+   "Cài đặt nhanh trên Windows: `cmd /c \"curl -fLo koboldcpp.exe https://github.com/LostRuins/koboldcpp/releases/latest/download/koboldcpp.exe && koboldcpp.exe\"`",
+   "Tải một mô hình GGUF (ví dụ từ Hugging Face) hoặc chọn mẫu trong mục Get Help → Newbie Templates",
+   "Chạy kèm mô hình từ dòng lệnh: `./koboldcpp-linux-x64 --model /path/to/model.gguf`"
+  ],
+  "cliCommand": "./koboldcpp-linux-x64 --model /path/to/model.gguf",
+  "usageStepsVi": [
+   "Mở trình khởi chạy, chọn tệp mô hình GGUF và cấu hình phần cứng rồi bấm Launch",
+   "Truy cập giao diện web tại http://localhost:5001",
+   "Kết nối ứng dụng khác qua API tương thích OpenAI tại http://localhost:5001/v1",
+   "Chỉ tải bản chính thức từ GitHub Releases hoặc koboldcpp.net (koboldcpp.com là trang giả mạo)"
+  ],
+  "samplePromptsVi": [
+   "Viết tiếp câu chuyện phiêu lưu về một nhóm bạn khám phá hang Sơn Đoòng",
+   "Đóng vai hướng dẫn viên du lịch giới thiệu phố cổ Hội An",
+   "Tạo ảnh phong cảnh ruộng bậc thang mùa lúa chín"
+  ],
+  "prosVi": [
+   "Miễn phí, mã nguồn mở",
+   "Một tệp thực thi, không cần cài đặt",
+   "Nhiều API tương thích và giao diện web tích hợp",
+   "Phát triển tích cực"
+  ],
+  "consVi": [
+   "Giấy phép AGPL v3.0 có nghĩa vụ công bố mã nguồn khi cung cấp dịch vụ qua mạng",
+   "Mô hình phải tải riêng",
+   "Mac Intel phải tự build; image Docker chính thức chỉ dành cho người dùng chuyên sâu"
+  ],
+  "sourceEvidence": {
+   "curl -fLo koboldcpp-linux-x64 https://github.com/LostRuins/koboldcpp/releases/latest/download/koboldcpp-linux-x64 && chmod +x koboldcpp-linux-x64 && ./koboldcpp-linux-x64": "README.md:63",
+   "cmd /c \"curl -fLo koboldcpp.exe https://github.com/LostRuins/koboldcpp/releases/latest/download/koboldcpp.exe && koboldcpp.exe\"": "README.md:53",
+   "./koboldcpp-linux-x64 --model /path/to/model.gguf": "README.md:59"
+  },
+  "meta": {
+   "id": "lostruins-koboldcpp",
+   "nameVi": "KoboldCpp — Chạy LLM GGUF cục bộ kèm giao diện web",
+   "icon": "Cpu",
+   "categories": [
+    "nlp_llm",
+    "generative_ai_multimedia"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (AGPL-3.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "./koboldcpp-linux-x64 --model /path/to/model.gguf"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "ml-explore/mlx-lm",
+  "license": "MIT License",
+  "authorName": "Apple (ml-explore)",
+  "websiteUrl": "",
+  "toolType": "sdk",
+  "taglineEn": "MLX LM is a Python package for generating text and fine-tuning large language models on Apple silicon with MLX.",
+  "summaryVi": "MLX LM là gói Python của Apple để sinh văn bản và tinh chỉnh mô hình ngôn ngữ lớn trên chip Apple silicon bằng framework MLX. Gói tích hợp Hugging Face Hub để dùng hàng nghìn mô hình bằng một lệnh, hỗ trợ lượng tử hóa, tinh chỉnh LoRA và toàn phần, suy luận phân tán và máy chủ HTTP kiểu OpenAI.",
+  "purposeVi": "Chạy, lượng tử hóa và tinh chỉnh LLM hiệu quả trên máy Mac dùng chip Apple silicon.",
+  "featuresVi": [
+   "Tích hợp Hugging Face Hub: dùng hàng nghìn mô hình MLX Community bằng một lệnh",
+   "Lượng tử hóa và tải mô hình lên Hub: `mlx_lm.convert` với `-q` và `--upload-repo`",
+   "Tinh chỉnh LoRA và toàn phần, kể cả trên mô hình đã lượng tử hóa",
+   "Suy luận và tinh chỉnh phân tán với `mx.distributed`",
+   "Máy chủ HTTP tương tự API chat OpenAI tại cổng 8080",
+   "Bộ nhớ đệm KV xoay vòng và cache prompt cho prompt dài"
+  ],
+  "requirementsVi": "Máy Mac chip Apple silicon, Python với pip hoặc conda.",
+  "installStepsVi": [
+   "Cài đặt bằng pip: `pip install mlx-lm`",
+   "Hoặc cài đặt bằng conda: `conda install -c conda-forge mlx-lm`",
+   "Sinh văn bản thử: `mlx_lm.generate --prompt \"How tall is Mt Everest?\"`",
+   "Mở phiên trò chuyện trên terminal: `mlx_lm.chat`"
+  ],
+  "cliCommand": "pip install mlx-lm",
+  "usageStepsVi": [
+   "Chọn mô hình bằng tham số `--model` (mặc định mlx-community/Llama-3.2-3B-Instruct-4bit)",
+   "Lượng tử hóa mô hình: `mlx_lm.convert --model mistralai/Mistral-7B-Instruct-v0.3 -q`",
+   "Khởi chạy máy chủ API: `mlx_lm.server --model mlx-community/Mistral-7B-Instruct-v0.3-4bit` (không khuyến nghị cho production)",
+   "Dùng API Python `load`, `generate`, `stream_generate` trong mã của bạn"
+  ],
+  "samplePromptsVi": [
+   "Viết đoạn giới thiệu ngắn về Vịnh Hạ Long",
+   "Giải thích sự khác nhau giữa lượng tử hóa 4-bit và 8-bit",
+   "Viết mã Python dùng mlx_lm để sinh văn bản theo luồng"
+  ],
+  "prosVi": [
+   "Mã nguồn mở giấy phép MIT, do Apple phát triển",
+   "Tối ưu cho Apple silicon",
+   "Hỗ trợ tinh chỉnh và lượng tử hóa ngay trong cùng gói"
+  ],
+  "consVi": [
+   "Chỉ dành cho máy Mac dùng Apple silicon",
+   "Máy chủ HTTP chỉ có kiểm tra bảo mật cơ bản, không khuyến nghị cho production"
+  ],
+  "sourceEvidence": {
+   "pip install mlx-lm": "README.md:21",
+   "conda install -c conda-forge mlx-lm": "README.md:27",
+   "mlx_lm.generate --prompt \"How tall is Mt Everest?\"": "README.md:35",
+   "mlx_lm.chat": "README.md:41",
+   "mlx_lm.convert --model mistralai/Mistral-7B-Instruct-v0.3 -q": "README.md:173",
+   "mlx_lm.server --model mlx-community/Mistral-7B-Instruct-v0.3-4bit": "mlx_lm/SERVER.md:20"
+  },
+  "meta": {
+   "id": "ml-explore-mlx-lm",
+   "nameVi": "MLX LM — Chạy và tinh chỉnh LLM trên Apple silicon",
+   "icon": "Terminal",
+   "categories": [
+    "nlp_llm"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install mlx-lm"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "oobabooga/textgen",
+  "license": "GNU Affero General Public License v3.0",
+  "authorName": "oobabooga",
+  "websiteUrl": "",
+  "toolType": "software",
+  "taglineEn": "A desktop app for local LLMs. Open source, no telemetry.",
+  "summaryVi": "TextGen (trước đây là text-generation-webui) là ứng dụng mã nguồn mở chạy LLM cục bộ với giao diện và API, không thu thập dữ liệu (telemetry). Hỗ trợ nhiều backend như llama.cpp, ik_llama.cpp, Transformers, ExLlamaV3, TensorRT-LLM, cùng thị giác, đính kèm tệp, gọi công cụ, MCP, huấn luyện LoRA và tạo ảnh.",
+  "purposeVi": "Trò chuyện và sinh văn bản với LLM hoàn toàn ngoại tuyến, đồng thời cung cấp API tương thích OpenAI/Anthropic cho ứng dụng khác.",
+  "featuresVi": [
+   "Chế độ instruct, chat-instruct và chat với nhân vật tùy chỉnh; mẫu prompt Jinja2",
+   "Thị giác và đính kèm tệp: ảnh, văn bản, PDF, .docx",
+   "Nhiều backend: llama.cpp, ik_llama.cpp, Transformers, ExLlamaV3, TensorRT-LLM; đổi mô hình không cần khởi động lại",
+   "API tương thích OpenAI/Anthropic có gọi công cụ",
+   "Gọi công cụ và MCP: tìm kiếm web, đọc trang, tính toán",
+   "Huấn luyện LoRA và tạo ảnh với mô hình diffusers",
+   "100% ngoại tuyến, không telemetry; có tiện ích mở rộng TTS, nhập giọng nói, dịch"
+  ],
+  "requirementsVi": "Bản portable cho Linux, Windows, macOS (CUDA, Vulkan, ROCm, CPU). Cài đặt thủ công cần Python 3.9+; bản đầy đủ cần khoảng 10GB dung lượng và PyTorch.",
+  "installStepsVi": [
+   "Cách nhanh nhất: tải bản portable từ trang Releases, giải nén và mở ứng dụng textgen",
+   "Hoặc cài đặt thủ công: `git clone https://github.com/oobabooga/textgen` rồi vào thư mục textgen",
+   "Tạo môi trường ảo: `python -m venv venv` và kích hoạt bằng `source venv/bin/activate` (macOS/Linux)",
+   "Cài đặt phụ thuộc: `pip install -r requirements/portable/requirements.txt --upgrade`",
+   "Khởi chạy máy chủ: `python server.py --portable --api --auto-launch`"
+  ],
+  "cliCommand": "python server.py --portable --api --auto-launch",
+  "usageStepsVi": [
+   "Tải tệp mô hình GGUF từ Hugging Face và đặt vào thư mục user_data/models",
+   "Chọn mô hình trong giao diện và trò chuyện, đính kèm ảnh hoặc tài liệu khi cần",
+   "Bật `--api` để dùng ứng dụng như máy chủ thay thế API OpenAI/Anthropic",
+   "Bản đầy đủ: mở http://127.0.0.1:7860 sau khi chạy script start_ tương ứng hệ điều hành"
+  ],
+  "samplePromptsVi": [
+   "Tóm tắt nội dung tệp PDF hợp đồng đính kèm",
+   "Tìm kiếm trên web và cho biết tin công nghệ nổi bật hôm nay",
+   "Đóng vai giáo viên toán giải thích phương trình bậc hai"
+  ],
+  "prosVi": [
+   "Mã nguồn mở, không telemetry, chạy hoàn toàn ngoại tuyến",
+   "Hỗ trợ nhiều backend và định dạng mô hình",
+   "Có bản portable không cần cài đặt phụ thuộc"
+  ],
+  "consVi": [
+   "Giấy phép AGPL v3.0 có nghĩa vụ công bố mã nguồn khi cung cấp dịch vụ qua mạng",
+   "Bản portable chỉ hỗ trợ GGUF; backend Transformers/ExLlamaV3 cần bản đầy đủ khoảng 10GB"
+  ],
+  "sourceEvidence": {
+   "git clone https://github.com/oobabooga/textgen": "README.md:86",
+   "python -m venv venv": "README.md:90",
+   "source venv/bin/activate": "README.md:96",
+   "pip install -r requirements/portable/requirements.txt --upgrade": "README.md:99",
+   "python server.py --portable --api --auto-launch": "README.md:102"
+  },
+  "meta": {
+   "id": "oobabooga-textgen",
+   "nameVi": "TextGen — Ứng dụng chạy LLM cục bộ có giao diện và API",
+   "icon": "MessageSquare",
+   "categories": [
+    "nlp_llm"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (AGPL-3.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "python server.py --portable --api --auto-launch"
+    }
+   ]
+  }
+ }
+]

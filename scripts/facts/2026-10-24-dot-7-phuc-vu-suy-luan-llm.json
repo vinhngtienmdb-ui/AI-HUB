@@ -1,0 +1,564 @@
+[
+  {
+    "repo": "sgl-project/sglang",
+    "license": "Apache License 2.0",
+    "authorName": "SGLang (LMSYS)",
+    "websiteUrl": "https://www.sglang.io",
+    "toolType": "software",
+    "taglineEn": "SGLang is an open-source inference framework for large language, vision-language, and diffusion models, optimized for agentic workloads, large-scale serving, and RL rollouts.",
+    "summaryVi": "SGLang là framework suy luận mã nguồn mở cho mô hình ngôn ngữ lớn, mô hình thị giác–ngôn ngữ và mô hình khuếch tán, tối ưu cho tác vụ agent, phục vụ quy mô lớn và sinh rollout cho học tăng cường. Công cụ dựng máy chủ tương thích API OpenAI với RadixAttention, prefix caching và song song đa GPU. Gói sglang còn kèm SGLang Diffusion để sinh ảnh và video.",
+    "purposeVi": "Triển khai máy chủ suy luận LLM độ trễ thấp, thông lượng cao trong môi trường production, phục vụ mô hình Hugging Face qua API tương thích OpenAI.",
+    "featuresVi": [
+      "Hiệu năng cao: RadixAttention, prefix caching và song song đa GPU cho suy luận độ trễ thấp, thông lượng cao",
+      "API tương thích OpenAI: gọi endpoint /v1/chat/completions như với OpenAI",
+      "Hỗ trợ phần cứng rộng: NVIDIA, AMD Instinct, Google TPU, Intel GPU/CPU, Apple Silicon, Huawei Ascend, Moore Threads",
+      "Nhiều họ mô hình: Llama, Qwen, DeepSeek và các mô hình tương thích Hugging Face",
+      "SGLang Diffusion tích hợp sẵn để sinh ảnh và video bằng mô hình khuếch tán",
+      "Hệ sinh thái: tích hợp với Ray Serve, NVIDIA Dynamo, llm-d và các framework RL như verl, slime, AReaL"
+    ],
+    "requirementsVi": "Hướng dẫn nhanh nhắm tới Linux có GPU NVIDIA với driver tương thích CUDA 13; dùng Docker kèm NVIDIA Container Toolkit, hoặc Python 3.11 trở lên với uv. Máy chủ mặc định trong ví dụ chạy ở cổng 30000.",
+    "installStepsVi": [
+      "Cài đặt bằng Docker — tải image có sẵn SGLang và các phụ thuộc: `docker pull lmsysorg/sglang:latest`",
+      "Hoặc cài đặt bằng uv — tạo môi trường Python: `uv venv --python 3.12`",
+      "Kích hoạt môi trường: `source .venv/bin/activate`",
+      "Cài đặt gói SGLang: `uv pip install --prerelease=allow sglang`",
+      "Khởi động máy chủ (thay MODEL_PATH bằng ID mô hình Hugging Face, ví dụ Qwen/Qwen3-0.6B): `sglang serve MODEL_PATH --host 0.0.0.0 --port 30000`"
+    ],
+    "cliCommand": "sglang serve MODEL_PATH --host 0.0.0.0 --port 30000",
+    "usageStepsVi": [
+      "Chờ dòng thông báo \"The server is fired up and ready to roll!\" xuất hiện",
+      "Gửi yêu cầu chat tới http://localhost:30000/v1/chat/completions với trường model là ID mô hình đã nạp",
+      "Đọc câu trả lời tại choices[0].message.content; tra Cookbook để lấy tham số khởi chạy riêng cho từng mô hình và phần cứng"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn tôi chạy SGLang bằng Docker để phục vụ Qwen/Qwen3-0.6B ở cổng 30000",
+      "Viết đoạn mã Python dùng thư viện openai gọi máy chủ SGLang cục bộ tại /v1/chat/completions",
+      "So sánh cách cài đặt SGLang bằng Docker và bằng uv cho máy chủ GPU NVIDIA"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, dùng thương mại được",
+      "API tương thích OpenAI nên dễ thay thế dịch vụ đám mây",
+      "Hỗ trợ nhiều nền tảng phần cứng (NVIDIA, AMD, TPU, Intel, Apple Silicon, Ascend)",
+      "Dự án được bảo trì rất tích cực, có Docker image chính thức"
+    ],
+    "consVi": [
+      "Hướng dẫn nhanh yêu cầu Linux, GPU NVIDIA và driver tương thích CUDA 13",
+      "README gốc ngắn; lệnh khởi chạy chi tiết nằm trong tài liệu docs/ và Cookbook",
+      "Cài đặt qua uv cần cờ --prerelease=allow"
+    ],
+    "sourceEvidence": {
+      "docker pull lmsysorg/sglang:latest": "README.md:35",
+      "uv venv --python 3.12": "docs/docs/get-started/quickstart.mdx:34",
+      "source .venv/bin/activate": "docs/docs/get-started/quickstart.mdx:35",
+      "uv pip install --prerelease=allow sglang": "README.md:41",
+      "sglang serve MODEL_PATH --host 0.0.0.0 --port 30000": "docs/docs/get-started/quickstart.mdx:42"
+    },
+    "meta": {
+      "id": "sgl-project-sglang",
+      "nameVi": "SGLang — Framework suy luận và phục vụ LLM, mô hình đa phương thức hiệu năng cao",
+      "icon": "Cpu",
+      "categories": [
+        "nlp_llm",
+        "cloud_infrastructure",
+        "backend_api"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "sglang serve MODEL_PATH --host 0.0.0.0 --port 30000"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "InternLM/lmdeploy",
+    "license": "Apache License 2.0",
+    "authorName": "InternLM (nhóm MMRazor & MMDeploy)",
+    "websiteUrl": "https://lmdeploy.readthedocs.io",
+    "toolType": "software",
+    "taglineEn": "LMDeploy is a toolkit for compressing, deploying, and serving LLM, developed by the MMRazor and MMDeploy teams.",
+    "summaryVi": "LMDeploy là bộ công cụ nén, triển khai và phục vụ LLM do nhóm MMRazor và MMDeploy phát triển. Dự án có hai engine suy luận: TurboMind tối ưu hiệu năng tối đa và PyTorch engine viết thuần Python dễ mở rộng. Hỗ trợ lượng tử hóa trọng số 4-bit, lượng tử hóa KV cache và máy chủ API tương thích OpenAI cho cả LLM lẫn VLM.",
+    "purposeVi": "Phục vụ LLM/VLM với thông lượng cao và chi phí GPU thấp nhờ lượng tử hóa, triển khai nhiều mô hình trên nhiều máy và nhiều card.",
+    "featuresVi": [
+      "Suy luận hiệu quả: persistent batch (continuous batching), blocked KV cache, dynamic split&fuse, tensor parallelism; README công bố thông lượng yêu cầu cao hơn vLLM tới 1,8 lần",
+      "Lượng tử hóa: weight-only và k/v; suy luận 4-bit nhanh hơn FP16 khoảng 2,4 lần, chất lượng kiểm chứng bằng OpenCompass",
+      "Máy chủ phân phối yêu cầu: triển khai nhiều mô hình trên nhiều máy, nhiều card",
+      "Tương thích: dùng đồng thời KV Cache Quant, AWQ và Automatic Prefix Caching",
+      "Hai engine TurboMind và PyTorch; PyTorch engine hỗ trợ Huawei Ascend",
+      "Pipeline suy luận offline cho LLM và VLM, máy chủ API tương thích OpenAI (mặc định cổng 23333)"
+    ],
+    "requirementsVi": "Python 3.10 – 3.13 (khuyến nghị dùng môi trường conda). Từ v0.13.0 các wheel dựng sẵn trên PyPI biên dịch với CUDA 12.8. Mô hình mặc định tải từ Hugging Face; có thể chuyển sang ModelScope hoặc openMind Hub bằng biến môi trường.",
+    "installStepsVi": [
+      "Tạo môi trường conda: `conda create -n lmdeploy python=3.12 -y`",
+      "Kích hoạt môi trường: `conda activate lmdeploy`",
+      "Cài đặt LMDeploy: `pip install lmdeploy`",
+      "Khởi động máy chủ API tương thích OpenAI: `lmdeploy serve api_server internlm/internlm2_5-7b-chat --server-port 23333`"
+    ],
+    "cliCommand": "lmdeploy serve api_server internlm/internlm2_5-7b-chat --server-port 23333",
+    "usageStepsVi": [
+      "Suy luận offline theo lô bằng Python: lmdeploy.pipeline(\"internlm/internlm3-8b-instruct\") rồi truyền danh sách câu hỏi",
+      "Sau khi chạy api_server, mở http://0.0.0.0:23333 để xem và thử các RESTful API",
+      "Gọi máy chủ bằng thư viện openai với base_url=\"http://0.0.0.0:23333/v1\"",
+      "Dùng các tùy chọn --tp (tensor parallel), --session-len, --cache-max-entry-count để tinh chỉnh; xem thêm bằng `lmdeploy serve api_server -h`"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn tôi cài đặt LMDeploy trong conda và phục vụ internlm2_5-7b-chat qua API tương thích OpenAI",
+      "Viết script Python dùng lmdeploy.pipeline để suy luận theo lô một danh sách câu hỏi",
+      "Giải thích cách bật lượng tử hóa KV cache int8 trong TurboMind để tiết kiệm bộ nhớ GPU"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Hỗ trợ lượng tử hóa 4-bit (AWQ) và KV cache giúp giảm bộ nhớ GPU",
+      "Hỗ trợ cả LLM và mô hình thị giác–ngôn ngữ (VLM), kể cả trên Huawei Ascend",
+      "Cài đặt đơn giản qua pip, có máy chủ API tương thích OpenAI"
+    ],
+    "consVi": [
+      "Wheel dựng sẵn gắn với phiên bản CUDA cụ thể (CUDA 12.8 từ v0.13.0)",
+      "Hai engine hỗ trợ tập mô hình và kiểu dữ liệu khác nhau, cần tra bảng mô hình để chọn engine phù hợp",
+      "Hướng dẫn chi tiết (máy chủ, lượng tử hóa) nằm trong thư mục docs/ thay vì README"
+    ],
+    "sourceEvidence": {
+      "conda create -n lmdeploy python=3.12 -y": "README.md:221",
+      "conda activate lmdeploy": "README.md:222",
+      "pip install lmdeploy": "README.md:223",
+      "lmdeploy serve api_server internlm/internlm2_5-7b-chat --server-port 23333": "docs/en/llm/api_server.md:17"
+    },
+    "meta": {
+      "id": "internlm-lmdeploy",
+      "nameVi": "LMDeploy — Bộ công cụ nén, triển khai và phục vụ LLM với engine TurboMind",
+      "icon": "Cpu",
+      "categories": [
+        "nlp_llm",
+        "cloud_infrastructure",
+        "backend_api"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "lmdeploy serve api_server internlm/internlm2_5-7b-chat --server-port 23333"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "BerriAI/litellm",
+    "license": "MIT cho phần lõi; nội dung trong thư mục enterprise/ theo giấy phép thương mại BerriAI Enterprise (enterprise/LICENSE)",
+    "authorName": "BerriAI",
+    "websiteUrl": "https://docs.litellm.ai",
+    "toolType": "software",
+    "taglineEn": "LiteLLM is an open source AI Gateway that gives you a single, unified interface to call 100+ LLM providers — OpenAI, Anthropic, Gemini, Bedrock, Azure, and more — using the OpenAI format.",
+    "summaryVi": "LiteLLM là cổng AI (AI Gateway) mã nguồn mở cung cấp một giao diện thống nhất để gọi hơn 100 nhà cung cấp LLM như OpenAI, Anthropic, Gemini, Bedrock, Azure theo định dạng OpenAI. Có thể dùng như Python SDK hoặc triển khai Proxy Server tập trung cho cả nhóm với virtual key, theo dõi chi phí, guardrails, cân bằng tải và bảng quản trị. Cổng còn hỗ trợ gọi agent A2A và làm MCP Gateway.",
+    "purposeVi": "Gom mọi lời gọi LLM của tổ chức qua một cổng duy nhất để đổi nhà cung cấp không cần sửa mã, kiểm soát khóa API và chi phí.",
+    "featuresVi": [
+      "API thống nhất: một giao diện cho hơn 100 LLM, tương thích OpenAI (/chat/completions, /responses, /embeddings, /images, /audio, /batches, /rerank, /messages...)",
+      "Cổng production: virtual key, theo dõi chi tiêu, guardrails, cân bằng tải và bảng quản trị",
+      "Hiệu năng: README công bố độ trễ P95 8ms ở 1k RPS",
+      "MCP Gateway: kết nối MCP server với mọi LLM, dùng được từ Cursor qua endpoint /mcp/",
+      "A2A Agent Gateway: gọi agent LangGraph, Vertex AI Agent Engine, Azure AI Foundry, Bedrock AgentCore, Pydantic AI",
+      "Triển khai: Docker (tag -stable đã qua kiểm thử tải 12 giờ), Helm, Terraform cho AWS và GCP"
+    ],
+    "requirementsVi": "Python với uv để cài SDK hoặc proxy; khóa API của các nhà cung cấp LLM (ví dụ OPENAI_API_KEY, ANTHROPIC_API_KEY). Proxy mặc định chạy ở http://0.0.0.0:4000.",
+    "installStepsVi": [
+      "Cài đặt Python SDK: `uv add litellm`",
+      "Cài đặt AI Gateway (Proxy Server): `uv tool install 'litellm[proxy]'`",
+      "Khởi động proxy với một mô hình: `litellm --model gpt-4o`"
+    ],
+    "cliCommand": "litellm --model gpt-4o",
+    "usageStepsVi": [
+      "Đặt biến môi trường khóa API nhà cung cấp, ví dụ OPENAI_API_KEY",
+      "Trỏ client OpenAI tới base_url=\"http://0.0.0.0:4000\" để gọi mô hình qua proxy",
+      "Trong Python SDK, gọi completion(model=\"openai/gpt-4o\", messages=[...]) hoặc đổi sang \"anthropic/...\" mà không sửa mã khác",
+      "Thêm MCP server vào cổng và cấu hình Cursor dùng endpoint http://localhost:4000/mcp/ kèm master key"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn cài đặt LiteLLM Proxy và chuyển ứng dụng đang dùng OpenAI SDK sang gọi qua cổng ở cổng 4000",
+      "Viết mã Python dùng litellm.completion gọi lần lượt GPT-4o và Claude với cùng một prompt",
+      "Cấu hình Cursor dùng LiteLLM làm MCP Gateway với master key"
+    ],
+    "prosVi": [
+      "Phần lõi theo giấy phép MIT, tự triển khai được",
+      "Hỗ trợ rất nhiều nhà cung cấp và endpoint theo chuẩn OpenAI",
+      "Có sẵn tính năng quản trị: virtual key, chi phí, guardrails, cân bằng tải",
+      "Có Helm chart và module Terraform cho AWS/GCP"
+    ],
+    "consVi": [
+      "Giấy phép hỗn hợp: mã trong thư mục enterprise/ chỉ được dùng production khi có giấy phép BerriAI Enterprise",
+      "Một số tính năng (ví dụ SSO) thuộc LiteLLM Commercial License theo README",
+      "Cần khóa API của từng nhà cung cấp LLM muốn gọi"
+    ],
+    "sourceEvidence": {
+      "uv add litellm": "README.md:90",
+      "uv tool install 'litellm[proxy]'": "README.md:130",
+      "litellm --model gpt-4o": "README.md:131"
+    },
+    "meta": {
+      "id": "berriai-litellm",
+      "nameVi": "LiteLLM — Cổng AI mã nguồn mở gọi hơn 100 LLM theo chuẩn OpenAI",
+      "icon": "Layers",
+      "categories": [
+        "nlp_llm",
+        "backend_api",
+        "cloud_infrastructure"
+      ],
+      "platforms": [
+        "web",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở hỗn hợp (MIT cho lõi; thư mục enterprise/ theo giấy phép thương mại)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "litellm --model gpt-4o"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor (MCP Gateway)",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"LiteLLM\": {\n      \"url\": \"http://localhost:4000/mcp/\",\n      \"headers\": {\n        \"x-litellm-api-key\": \"Bearer <your-master-key>\"\n      }\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "Portkey-AI/gateway",
+    "license": "MIT License",
+    "authorName": "Portkey, Inc.",
+    "websiteUrl": "https://portkey.ai",
+    "toolType": "software",
+    "taglineEn": "Route to 250+ LLMs with 1 fast & friendly API",
+    "summaryVi": "Portkey AI Gateway là cổng mã nguồn mở, gọn nhẹ để định tuyến nhanh, ổn định và an toàn tới hơn 1600 mô hình ngôn ngữ, thị giác, âm thanh và hình ảnh qua một API. Cổng hỗ trợ tự động thử lại, fallback, cân bằng tải, định tuyến có điều kiện và guardrails. Chạy cục bộ chỉ với một lệnh npx, kèm Gateway Console xem log.",
+    "purposeVi": "Tăng độ tin cậy cho ứng dụng AI bằng cách đặt một lớp định tuyến giữa ứng dụng và các nhà cung cấp LLM, có thử lại, dự phòng và kiểm soát đầu vào/đầu ra.",
+    "featuresVi": [
+      "Định tuyến tin cậy: fallback sang nhà cung cấp hoặc mô hình khác, tự động thử lại tối đa 5 lần với backoff lũy thừa",
+      "Cân bằng tải theo trọng số giữa nhiều khóa API hoặc nhà cung cấp, đặt timeout cho từng yêu cầu",
+      "Guardrails: hơn 40 bộ kiểm tra dựng sẵn cho đầu vào và đầu ra",
+      "Đa phương thức: gọi mô hình thị giác, âm thanh (TTS, STT) và sinh ảnh theo chữ ký OpenAI; hỗ trợ Realtime API",
+      "Bộ nhớ đệm đơn giản và phân tích sử dụng (caching ngữ nghĩa chỉ có ở bản hosted/enterprise)",
+      "Nhẹ: README công bố độ trễ dưới 1ms, kích thước 122kb; Gateway Console xem log cục bộ"
+    ],
+    "requirementsVi": "Node.js và npm để chạy bằng npx, hoặc Docker. Cổng chạy tại http://localhost:8787/v1, Console tại http://localhost:8787/public/. Cần khóa API của nhà cung cấp LLM.",
+    "installStepsVi": [
+      "Cài đặt và chạy cổng cục bộ bằng Node.js: `npx @portkey-ai/gateway`",
+      "Hoặc chạy bằng Docker: `docker run --rm  -p 8787:8787 portkeyai/gateway:latest`",
+      "Cài đặt SDK Python để gửi yêu cầu: `pip install -qU portkey-ai`"
+    ],
+    "cliCommand": "npx @portkey-ai/gateway",
+    "usageStepsVi": [
+      "Tạo client Portkey với provider (openai, anthropic, bedrock, groq...) và khóa API của nhà cung cấp",
+      "Gọi client.chat.completions.create như với OpenAI SDK; yêu cầu đi qua cổng cục bộ",
+      "Khai báo config (retry, fallback, output_guardrails) và gắn bằng client.with_options(config=config)",
+      "Mở Gateway Console tại http://localhost:8787/public/ để xem log"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn chạy Portkey AI Gateway bằng Docker và gọi GPT-4o-mini qua cổng 8787",
+      "Viết config Portkey thử lại 5 lần và fallback từ OpenAI sang Anthropic khi lỗi",
+      "Thêm guardrail chặn câu trả lời chứa một từ khóa cụ thể bằng output_guardrails"
+    ],
+    "prosVi": [
+      "Giấy phép MIT",
+      "Khởi chạy rất nhanh bằng một lệnh npx, có Docker image chính thức",
+      "Tích hợp với LangChain, LlamaIndex, Autogen, CrewAI và OpenAI SDK"
+    ],
+    "consVi": [
+      "Một số tính năng (caching ngữ nghĩa, tối ưu nhà cung cấp, quản lý prompt) chỉ có ở bản hosted và enterprise",
+      "Bản 2.0 hợp nhất gateway enterprise vào mã nguồn mở đang ở nhánh pre-release",
+      "Cần khóa API của từng nhà cung cấp LLM"
+    ],
+    "sourceEvidence": {
+      "npx @portkey-ai/gateway": "README.md:70",
+      "docker run --rm  -p 8787:8787 portkeyai/gateway:latest": "docs/installation-deployments.md:209",
+      "pip install -qU portkey-ai": "README.md:92"
+    },
+    "meta": {
+      "id": "portkey-ai-gateway",
+      "nameVi": "Portkey AI Gateway — Cổng định tuyến nhẹ tới hơn 250 LLM với fallback và guardrails",
+      "icon": "Workflow",
+      "categories": [
+        "nlp_llm",
+        "backend_api",
+        "cloud_infrastructure"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npx @portkey-ai/gateway"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "xorbitsai/inference",
+    "license": "Apache License 2.0",
+    "authorName": "Xorbits",
+    "websiteUrl": "https://inference.readthedocs.io",
+    "toolType": "software",
+    "taglineEn": "Xorbits Inference(Xinference) is a powerful and versatile library designed to serve language, speech recognition, and multimodal models.",
+    "summaryVi": "Xinference là thư viện phục vụ mô hình ngôn ngữ, nhận dạng giọng nói và đa phương thức, cho phép triển khai mô hình dựng sẵn hoặc tùy chỉnh chỉ bằng một lệnh. Công cụ cung cấp API RESTful tương thích OpenAI (kèm Function Calling), RPC, CLI và WebUI, hỗ trợ nhiều engine như vLLM, GGML và triển khai phân tán. Tích hợp sẵn với LangChain, LlamaIndex, Dify, FastGPT, RAGFlow, MaxKB.",
+    "purposeVi": "Tự host nhiều loại mô hình (LLM, embedding, ảnh, âm thanh, đa phương thức) sau một API thống nhất cho ứng dụng RAG và agent.",
+    "featuresVi": [
+      "Phục vụ mô hình đơn giản: triển khai LLM, nhận dạng giọng nói và mô hình đa phương thức bằng một lệnh",
+      "Mô hình dựng sẵn: thử nhanh các mô hình mã nguồn mở mới nhất",
+      "Tận dụng phần cứng không đồng nhất GPU và CPU qua ggml",
+      "Giao diện linh hoạt: RESTful API tương thích OpenAI (có Function Calling), RPC, CLI và WebUI",
+      "Triển khai phân tán trên nhiều thiết bị hoặc máy; auto batch gộp các yêu cầu đồng thời",
+      "Hỗ trợ text-to-image, embedding, mô hình âm thanh; tích hợp LangChain, LlamaIndex, Dify, RAGFlow"
+    ],
+    "requirementsVi": "Python với pip; hoặc Docker kèm GPU NVIDIA cho image xprobe/xinference; hoặc Kubernetes có hỗ trợ GPU khi dùng Helm. Máy chủ mặc định ở cổng 9997.",
+    "installStepsVi": [
+      "Cài đặt bằng pip: `pip install xinference`",
+      "Khởi động máy chủ cục bộ: `xinference-local`",
+      "Hoặc cài đặt bằng một lệnh trên Linux/macOS: `curl -fsSL https://raw.githubusercontent.com/xorbitsai/inference/main/scripts/install.sh | sh`",
+      "Hoặc chạy bằng Docker với GPU NVIDIA: `docker run --name xinference -d -p 9997:9997 -e XINFERENCE_HOME=/data -v </on/your/host>:/data --gpus all xprobe/xinference:latest xinference-local -H 0.0.0.0`"
+    ],
+    "cliCommand": "xinference-local",
+    "usageStepsVi": [
+      "Mở WebUI hoặc dùng CLI để khởi chạy mô hình dựng sẵn, ví dụ `xinference launch --model-engine vllm -n qwen2.5-instruct -s 0_5 -f pytorch` theo tài liệu",
+      "Gọi mô hình qua API tương thích OpenAI tại cổng 9997",
+      "Kết nối Xinference làm nhà cung cấp mô hình trong Dify, FastGPT, RAGFlow hoặc LangChain"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn cài đặt Xinference bằng Docker có GPU và khởi chạy Qwen2.5-instruct",
+      "Cấu hình Dify dùng mô hình embedding và LLM tự host trên Xinference",
+      "Viết mã Python gọi Xinference qua API tương thích OpenAI có Function Calling"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Một máy chủ phục vụ được nhiều loại mô hình: LLM, embedding, ảnh, âm thanh, đa phương thức",
+      "Có WebUI, Docker image và Helm chart",
+      "Chạy được trên CPU và Metal bên cạnh GPU"
+    ],
+    "consVi": [
+      "Bản Enterprise và Xinference Cloud là sản phẩm thương mại riêng; bản cộng đồng tự host",
+      "Docker image chính thức hướng tới người dùng GPU NVIDIA",
+      "Lệnh khởi chạy mô hình chi tiết nằm trong tài liệu thay vì README"
+    ],
+    "sourceEvidence": {
+      "pip install xinference": "README.md:140",
+      "xinference-local": "README.md:141",
+      "curl -fsSL https://raw.githubusercontent.com/xorbitsai/inference/main/scripts/install.sh | sh": "README.md:149",
+      "docker run --name xinference -d -p 9997:9997 -e XINFERENCE_HOME=/data -v </on/your/host>:/data --gpus all xprobe/xinference:latest xinference-local -H 0.0.0.0": "README.md:165"
+    },
+    "meta": {
+      "id": "xorbitsai-inference",
+      "nameVi": "Xinference — Thư viện phục vụ LLM, mô hình giọng nói và đa phương thức bằng một lệnh",
+      "icon": "Box",
+      "categories": [
+        "nlp_llm",
+        "cloud_infrastructure",
+        "speech_voice"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "xinference-local"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "bentoml/BentoML",
+    "license": "Apache License 2.0",
+    "authorName": "BentoML",
+    "websiteUrl": "https://docs.bentoml.com",
+    "toolType": "sdk",
+    "taglineEn": "BentoML is a Python library for building online serving systems optimized for AI apps and model inference.",
+    "summaryVi": "BentoML là thư viện Python để xây dựng hệ thống phục vụ trực tuyến tối ưu cho ứng dụng AI và suy luận mô hình. Chỉ với vài dòng mã và type hint chuẩn của Python, mọi script suy luận có thể thành máy chủ REST API. BentoML tự sinh Docker image, hỗ trợ dynamic batching, song song mô hình và điều phối nhiều mô hình.",
+    "purposeVi": "Đóng gói mô hình AI/ML (LLM, sinh ảnh, embedding, âm thanh, thị giác máy tính) thành API và container sẵn sàng triển khai production.",
+    "featuresVi": [
+      "Dựng API cho mọi mô hình AI/ML chỉ với vài dòng mã Python và type hint",
+      "Docker đơn giản: quản lý môi trường, phụ thuộc, phiên bản mô hình bằng tệp cấu hình; tự sinh Docker image",
+      "Tối ưu CPU/GPU: dynamic batching, song song mô hình, pipeline nhiều bước, đồ thị suy luận đa mô hình",
+      "Tùy biến hoàn toàn: API riêng, hàng đợi tác vụ, logic nghiệp vụ, hỗ trợ mọi framework ML",
+      "Sẵn sàng production: phát triển, chạy và gỡ lỗi cục bộ rồi triển khai bằng Docker hoặc Kubernetes",
+      "Ví dụ sẵn cho LLM (vLLM), Stable Diffusion, SentenceTransformers, ChatTTS, WhisperX, YOLO"
+    ],
+    "requirementsVi": "Python 3.9 trở lên; Docker để đóng gói container. Dịch vụ mặc định chạy tại http://localhost:3000.",
+    "installStepsVi": [
+      "Cài đặt BentoML: `pip install -U bentoml`",
+      "Cài đặt phụ thuộc cho ví dụ tóm tắt văn bản: `pip install torch transformers`",
+      "Viết lớp dịch vụ trong service.py rồi chạy cục bộ: `bentoml serve`",
+      "Đóng gói thành Bento: `bentoml build`",
+      "Tạo Docker image: `bentoml containerize summarization:latest`",
+      "Chạy container: `docker run --rm -p 3000:3000 summarization:latest`"
+    ],
+    "cliCommand": "bentoml serve",
+    "usageStepsVi": [
+      "Khai báo lớp với decorator @bentoml.service và phương thức @bentoml.api (có thể bật batchable=True)",
+      "Chạy `bentoml serve` và thử API trên trình duyệt tại http://localhost:3000",
+      "Gọi dịch vụ bằng bentoml.SyncHTTPClient('http://localhost:3000') trong Python",
+      "Tắt thu thập dữ liệu sử dụng ẩn danh bằng cờ --do-not-track hoặc BENTOML_DO_NOT_TRACK=True"
+    ],
+    "samplePromptsVi": [
+      "Viết service.py BentoML phục vụ pipeline tóm tắt văn bản của transformers với batching",
+      "Hướng dẫn đóng gói dịch vụ BentoML thành Docker image và chạy ở cổng 3000",
+      "Tạo dịch vụ BentoML kết hợp mô hình embedding và LLM trong một đồ thị suy luận"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Hỗ trợ mọi framework ML và mọi loại dữ liệu (văn bản, ảnh, âm thanh)",
+      "Tự động sinh Docker image, dễ đưa lên Kubernetes"
+    ],
+    "consVi": [
+      "Mặc định thu thập dữ liệu sử dụng ẩn danh (có thể tắt)",
+      "Là framework Python: cần tự viết mã dịch vụ, không phải máy chủ LLM chạy ngay",
+      "Yêu cầu Python 3.9 trở lên"
+    ],
+    "sourceEvidence": {
+      "pip install -U bentoml": "README.md:32",
+      "pip install torch transformers": "README.md:62",
+      "bentoml serve": "README.md:68",
+      "bentoml build": "README.md:93",
+      "bentoml containerize summarization:latest": "README.md:99",
+      "docker run --rm -p 3000:3000 summarization:latest": "README.md:105"
+    },
+    "meta": {
+      "id": "bentoml-bentoml",
+      "nameVi": "BentoML — Framework Python xây dựng API phục vụ mô hình AI và đóng gói container",
+      "icon": "Box",
+      "categories": [
+        "nlp_llm",
+        "backend_api",
+        "cloud_infrastructure"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "bentoml serve"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "triton-inference-server/server",
+    "license": "BSD 3-Clause License (mã nguồn); container NGC theo NVIDIA Deep Learning Container License",
+    "authorName": "NVIDIA",
+    "websiteUrl": "https://developer.nvidia.com/nvidia-triton-inference-server",
+    "toolType": "software",
+    "taglineEn": "Triton Inference Server is an open source inference serving software that streamlines AI inferencing.",
+    "summaryVi": "Triton Inference Server là phần mềm phục vụ suy luận mã nguồn mở của NVIDIA, cho phép triển khai mô hình từ nhiều framework như TensorRT, PyTorch, ONNX, OpenVINO, Python, RAPIDS FIL. Triton chạy trên cloud, trung tâm dữ liệu, biên và thiết bị nhúng với GPU NVIDIA, CPU x86/ARM hoặc AWS Inferentia. Hỗ trợ dynamic batching, chạy đồng thời nhiều mô hình, ensemble và giao thức HTTP/REST, gRPC.",
+    "purposeVi": "Phục vụ nhiều mô hình AI (kể cả LLM qua backend TensorRT-LLM theo tài liệu hướng dẫn LLM) ở quy mô production trên hạ tầng GPU với giám sát hiệu năng đầy đủ.",
+    "featuresVi": [
+      "Đa framework: TensorRT, PyTorch, ONNX, OpenVINO, Python, RAPIDS FIL và các framework máy học",
+      "Chạy đồng thời nhiều mô hình, dynamic batching và sequence batching cho mô hình có trạng thái",
+      "Backend API để thêm backend tùy chỉnh và tiền/hậu xử lý; backend viết bằng Python",
+      "Pipeline mô hình bằng Ensemble hoặc Business Logic Scripting (BLS)",
+      "Giao thức HTTP/REST và gRPC dựa trên KServe; C API và Java API cho dùng trong tiến trình",
+      "Số liệu (metrics) về mức dùng GPU, thông lượng và độ trễ máy chủ"
+    ],
+    "requirementsVi": "Docker và GPU NVIDIA (hướng dẫn nhanh dùng container NGC nvcr.io/nvidia/tritonserver); có hướng dẫn riêng cho hệ thống chỉ có CPU. Cần chuẩn bị model repository chứa mô hình và cấu hình.",
+    "installStepsVi": [
+      "Tải mã nguồn nhánh phát hành: `git clone -b r26.09 https://github.com/triton-inference-server/server.git`",
+      "Vào thư mục ví dụ: `cd server/docs/examples`",
+      "Tạo model repository mẫu: `./fetch_models.sh`",
+      "Khởi động Triton từ container NGC: `docker run --gpus=1 --rm --net=host -v ${PWD}/model_repository:/models nvcr.io/nvidia/tritonserver:26.09-py3 tritonserver --model-repository=/models --model-control-mode explicit --load-model densenet_onnx`"
+    ],
+    "cliCommand": "docker run --gpus=1 --rm --net=host -v ${PWD}/model_repository:/models nvcr.io/nvidia/tritonserver:26.09-py3 tritonserver --model-repository=/models --model-control-mode explicit --load-model densenet_onnx",
+    "usageStepsVi": [
+      "Ở cửa sổ khác, chạy image_client từ container SDK nvcr.io/nvidia/tritonserver:26.09-py3-sdk để gửi ảnh mẫu tới mô hình densenet_onnx",
+      "Đặt mô hình của bạn vào model repository và viết model configuration khi cần",
+      "Theo dõi metrics về GPU, thông lượng, độ trễ; xem tutorials chính thức để triển khai LLM"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn tạo model repository cho mô hình ONNX và phục vụ bằng Triton Inference Server",
+      "Giải thích cách bật dynamic batching trong model configuration của Triton",
+      "Viết pipeline ensemble Triton gồm bước tiền xử lý Python và mô hình TensorRT"
+    ],
+    "prosVi": [
+      "Mã nguồn theo giấy phép BSD 3-Clause",
+      "Hỗ trợ rất nhiều framework và phần cứng, từ cloud tới thiết bị biên",
+      "Có hỗ trợ doanh nghiệp từ NVIDIA qua NVIDIA AI Enterprise"
+    ],
+    "consVi": [
+      "Container NGC dựng sẵn theo NVIDIA Deep Learning Container License, không phải BSD",
+      "Nhánh main là bản đang phát triển; nên dùng nhánh/phiên bản phát hành (hiện 2.73.0 / container 26.09)",
+      "Cấu hình model repository và model configuration phức tạp hơn các máy chủ LLM chuyên dụng"
+    ],
+    "sourceEvidence": {
+      "git clone -b r26.09 https://github.com/triton-inference-server/server.git": "README.md:93",
+      "cd server/docs/examples": "README.md:94",
+      "./fetch_models.sh": "README.md:95",
+      "docker run --gpus=1 --rm --net=host -v ${PWD}/model_repository:/models nvcr.io/nvidia/tritonserver:26.09-py3 tritonserver --model-repository=/models --model-control-mode explicit --load-model densenet_onnx": "README.md:98"
+    },
+    "meta": {
+      "id": "triton-inference-server-server",
+      "nameVi": "Triton Inference Server — Máy chủ suy luận đa framework của NVIDIA cho production",
+      "icon": "Cpu",
+      "categories": [
+        "cloud_infrastructure",
+        "nlp_llm",
+        "computer_vision"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (BSD 3-Clause); container NGC theo giấy phép NVIDIA",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "docker run --gpus=1 --rm --net=host -v ${PWD}/model_repository:/models nvcr.io/nvidia/tritonserver:26.09-py3 tritonserver --model-repository=/models --model-control-mode explicit --load-model densenet_onnx"
+        }
+      ]
+    }
+  }
+]
