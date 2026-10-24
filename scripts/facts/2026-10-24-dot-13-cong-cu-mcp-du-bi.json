@@ -1,0 +1,1005 @@
+[
+  {
+    "repo": "modelcontextprotocol/java-sdk",
+    "license": "MIT License",
+    "authorName": "Model Context Protocol",
+    "websiteUrl": "https://java.sdk.modelcontextprotocol.io",
+    "toolType": "sdk",
+    "taglineEn": "A set of projects that provide Java SDK integration for the Model Context Protocol.",
+    "summaryVi": "MCP Java SDK là bộ công cụ phát triển chính thức cho Model Context Protocol trên Java, hỗ trợ cả giao tiếp đồng bộ và bất đồng bộ. SDK chia thành các module mcp-core, mcp-json-jackson2, mcp-json-jackson3 và gói tiện lợi mcp, kèm transport STDIO, SSE và Streamable HTTP. Tích hợp Spring Boot được cung cấp qua Spring AI MCP.",
+    "purposeVi": "Xây dựng client và máy chủ MCP bằng Java để ứng dụng kết nối mô hình AI với công cụ và dữ liệu qua giao diện chuẩn.",
+    "featuresVi": [
+      "Client và Server: McpClient và McpServer dùng McpSession cho thao tác đồng bộ hoặc bất đồng bộ",
+      "Transport có sẵn: StdioTransport, HTTP SSE và Streamable HTTP không cần web framework ngoài",
+      "Module tách rời: mcp-core cùng lựa chọn JSON Jackson 2.x hoặc Jackson 3.x",
+      "Tích hợp Spring: transport WebFlux/WebMVC và starter Spring Boot nằm trong Spring AI 2.0+",
+      "Kiểm thử tương thích: máy chủ đạt 40/40 bài kiểm tra MCP conformance theo README"
+    ],
+    "requirementsVi": "Java 17 trở lên; Maven hoặc Gradle. Chạy bộ kiểm thử cần cài đặt Docker và npx.",
+    "installStepsVi": [
+      "Cài đặt phụ thuộc bằng Gradle: thêm dòng `implementation \"io.modelcontextprotocol.sdk:mcp\"` vào khối dependencies (hoặc artifact io.modelcontextprotocol.sdk:mcp với Maven)",
+      "Hoặc build từ mã nguồn: `./mvnw clean install -DskipTests`",
+      "Dùng mcp-core kèm mcp-json-jackson2 nếu dự án vẫn dùng Jackson 2.x, theo hướng dẫn quickstart"
+    ],
+    "cliCommand": "./mvnw clean install -DskipTests",
+    "usageStepsVi": [
+      "Tạo McpClient để kết nối máy chủ MCP qua STDIO hoặc HTTP, sau đó liệt kê và gọi công cụ",
+      "Tạo McpServer để khai báo tools, resources, prompts cho client AI",
+      "Với dự án Spring Boot, dùng các starter MCP của Spring AI để cấu hình client/server",
+      "Xem tài liệu client.md và server.md trong thư mục docs để biết chi tiết từng tính năng"
+    ],
+    "samplePromptsVi": [
+      "Viết máy chủ MCP bằng Java SDK có một công cụ tra cứu đơn hàng qua STDIO",
+      "Hướng dẫn chuyển dự án từ Jackson 2.x sang module mcp mặc định dùng Jackson 3",
+      "Tạo client Java kết nối máy chủ MCP qua Streamable HTTP và gọi công cụ"
+    ],
+    "prosVi": [
+      "SDK chính thức của dự án Model Context Protocol, giấy phép MIT",
+      "Hỗ trợ cả lập trình đồng bộ và bất đồng bộ",
+      "Có tích hợp Spring AI cho hệ sinh thái Spring Boot"
+    ],
+    "consVi": [
+      "Transport Spring WebFlux/WebMVC đã chuyển sang Spring AI 2.0, phải đổi groupId khi nâng cấp",
+      "Bài kiểm thử conformance phía client và auth chưa đạt 100% theo README"
+    ],
+    "sourceEvidence": {
+      "implementation \"io.modelcontextprotocol.sdk:mcp\"": "docs/quickstart.md:72",
+      "./mvnw clean install -DskipTests": "README.md:33"
+    },
+    "meta": {
+      "id": "modelcontextprotocol-java-sdk",
+      "nameVi": "MCP Java SDK — Bộ công cụ chính thức xây dựng client và máy chủ MCP bằng Java",
+      "icon": "Code2",
+      "categories": [
+        "backend_api",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "./mvnw clean install -DskipTests"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "modelcontextprotocol/csharp-sdk",
+    "license": "Apache License 2.0 (mã và đóng góp mới) và MIT License (mã cũ chưa chuyển giấy phép); tài liệu CC-BY-4.0",
+    "authorName": "Model Context Protocol",
+    "websiteUrl": "https://csharp.sdk.modelcontextprotocol.io",
+    "toolType": "sdk",
+    "taglineEn": "The official C# SDK for the Model Context Protocol, enabling .NET applications, services, and libraries to implement and interact with MCP clients and servers.",
+    "summaryVi": "MCP C# SDK là bộ công cụ chính thức cho .NET để triển khai client và máy chủ MCP. SDK gồm các gói NuGet ModelContextProtocol.Core, ModelContextProtocol (hosting, dependency injection) và ModelContextProtocol.AspNetCore cho máy chủ HTTP, cùng các phần mở rộng Apps, Skills và Tasks.",
+    "purposeVi": "Xây dựng máy chủ MCP chạy qua stdio hoặc HTTP trên ASP.NET Core, và client MCP trong ứng dụng .NET.",
+    "featuresVi": [
+      "Gói Core: API client và máy chủ mức thấp, ít phụ thuộc nhất",
+      "Gói ModelContextProtocol: tích hợp hosting và dependency injection, phù hợp đa số dự án",
+      "Gói AspNetCore: máy chủ MCP qua HTTP với app.MapMcp()",
+      "Thuộc tính khai báo: [McpServerToolType], [McpServerTool] và WithToolsFromAssembly để tự đăng ký công cụ",
+      "Mở rộng: Apps (giao diện tương tác trong host), Skills (Agent Skills), Tasks (gọi công cụ chạy lâu)",
+      "Hỗ trợ luồng Identity Assertion Authorization Grant (Cross-Application Access)"
+    ],
+    "requirementsVi": ".NET SDK có lệnh dotnet; chọn gói NuGet phù hợp theo hướng dẫn Getting Started.",
+    "installStepsVi": [
+      "Tạo ứng dụng console: `dotnet new console`",
+      "Cài đặt gói SDK: `dotnet add package ModelContextProtocol`",
+      "Cài đặt gói hosting: `dotnet add package Microsoft.Extensions.Hosting`",
+      "Với máy chủ HTTP, cài đặt thêm: `dotnet add package ModelContextProtocol.AspNetCore`"
+    ],
+    "cliCommand": "dotnet add package ModelContextProtocol",
+    "usageStepsVi": [
+      "Thay Program.cs bằng mã mẫu: AddMcpServer().WithStdioServerTransport().WithToolsFromAssembly()",
+      "Đánh dấu lớp công cụ bằng [McpServerToolType] và phương thức bằng [McpServerTool]",
+      "Với ASP.NET Core, dùng WithHttpTransport và app.MapMcp(), cấu hình AllowedHosts theo hướng dẫn bảo mật",
+      "Phía client, dùng StdioClientTransport để kết nối máy chủ và gọi công cụ"
+    ],
+    "samplePromptsVi": [
+      "Viết máy chủ MCP bằng C# có công cụ Echo chạy qua stdio",
+      "Chuyển máy chủ MCP C# sang Streamable HTTP trên ASP.NET Core ở chế độ stateless",
+      "Tạo client .NET kết nối máy chủ MCP everything và liệt kê công cụ"
+    ],
+    "prosVi": [
+      "SDK chính thức, phát hành qua NuGet với nhiều gói tách theo nhu cầu",
+      "Tích hợp tự nhiên với hosting, DI và ASP.NET Core",
+      "Tài liệu có hướng dẫn bảo mật host name và CORS cho máy chủ HTTP"
+    ],
+    "consVi": [
+      "Giấy phép hỗn hợp trong giai đoạn chuyển từ MIT sang Apache 2.0",
+      "README ngắn, hướng dẫn chi tiết nằm ở trang tài liệu riêng"
+    ],
+    "sourceEvidence": {
+      "dotnet new console": "docs/concepts/getting-started.md:35",
+      "dotnet add package ModelContextProtocol": "docs/concepts/getting-started.md:36",
+      "dotnet add package Microsoft.Extensions.Hosting": "docs/concepts/getting-started.md:37",
+      "dotnet add package ModelContextProtocol.AspNetCore": "docs/concepts/getting-started.md:75"
+    },
+    "meta": {
+      "id": "modelcontextprotocol-csharp-sdk",
+      "nameVi": "MCP C# SDK — Bộ công cụ chính thức xây dựng client và máy chủ MCP trên .NET",
+      "icon": "Code2",
+      "categories": [
+        "backend_api",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0 / MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "dotnet add package ModelContextProtocol"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "modelcontextprotocol/rust-sdk",
+    "license": "Apache License 2.0 (mã và đóng góp mới) và MIT License (mã cũ chưa chuyển giấy phép); tài liệu CC-BY-4.0",
+    "authorName": "Model Context Protocol",
+    "websiteUrl": "https://docs.rs/rmcp/latest/rmcp",
+    "toolType": "sdk",
+    "taglineEn": "An official Rust Model Context Protocol SDK implementation with tokio async runtime.",
+    "summaryVi": "RMCP là SDK chính thức cho Model Context Protocol bằng Rust, chạy trên tokio. Kho gồm crate rmcp (triển khai giao thức) và rmcp-macros (macro sinh mã công cụ). SDK hỗ trợ đặc tả MCP 2026-07-28 và tương thích với 2025-11-25 cùng các phiên bản trước.",
+    "purposeVi": "Xây dựng client và máy chủ MCP hiệu năng cao bằng Rust với macro khai báo công cụ, prompt và tài nguyên.",
+    "featuresVi": [
+      "Macro tool_router, tool_handler, prompt_router để khai báo công cụ và prompt",
+      "Đầy đủ tính năng giao thức: tools, resources, prompts, sampling, elicitation, roots, logging, completions",
+      "Tính năng đặc tả 2026-07-28: subscriptions, tác vụ chạy lâu, caching, multi-round-trip requests",
+      "Transport stdio và Streamable HTTP (kể cả chế độ stateless)",
+      "Sinh JSON Schema 2020-12 qua schemars; hỗ trợ OAuth"
+    ],
+    "requirementsVi": "Rust và cargo; dự án dùng tokio, serde và schemars.",
+    "installStepsVi": [
+      "Cài đặt crate bản phát hành mới nhất: `cargo add rmcp --features server`",
+      "Hoặc dùng kênh phát triển: `cargo add rmcp --features server --git https://github.com/modelcontextprotocol/rust-sdk --branch main`",
+      "Thêm các phụ thuộc tokio, serde và schemars theo hướng dẫn README"
+    ],
+    "cliCommand": "cargo add rmcp --features server",
+    "usageStepsVi": [
+      "Định nghĩa struct tham số derive JsonSchema và đánh dấu hàm bằng #[tool]",
+      "Gắn #[tool_router(server_handler)] để tạo máy chủ, chạy qua transport stdio",
+      "Phía client, kết nối máy chủ rồi gọi list_tools và call_tool",
+      "Xem thư mục examples trong kho để có hướng dẫn chi tiết từng tính năng"
+    ],
+    "samplePromptsVi": [
+      "Viết máy chủ MCP bằng rmcp có công cụ calculator cộng hai số",
+      "Giải thích cách bật Streamable HTTP stateless trong rmcp",
+      "Viết client Rust kết nối máy chủ MCP qua stdio và gọi một công cụ"
+    ],
+    "prosVi": [
+      "SDK chính thức, phát hành trên crates.io với tài liệu docs.rs",
+      "Hỗ trợ đặc tả mới nhất 2026-07-28 và tương thích ngược",
+      "README rất chi tiết với ví dụ cho từng tính năng"
+    ],
+    "consVi": [
+      "Bản 3.x có thay đổi phá vỡ tương thích, cần đọc hướng dẫn di chuyển",
+      "Giấy phép hỗn hợp trong giai đoạn chuyển từ MIT sang Apache 2.0"
+    ],
+    "sourceEvidence": {
+      "cargo add rmcp --features server": "README.md:59",
+      "cargo add rmcp --features server --git https://github.com/modelcontextprotocol/rust-sdk --branch main": "README.md:65"
+    },
+    "meta": {
+      "id": "modelcontextprotocol-rust-sdk",
+      "nameVi": "MCP Rust SDK (RMCP) — Bộ công cụ chính thức xây dựng client và máy chủ MCP bằng Rust",
+      "icon": "Code2",
+      "categories": [
+        "backend_api",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0 / MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "cargo add rmcp --features server"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "modelcontextprotocol/kotlin-sdk",
+    "license": "Apache License 2.0 (mã và đóng góp mới) và MIT License (mã cũ chưa chuyển giấy phép); tài liệu CC-BY-4.0",
+    "authorName": "Model Context Protocol",
+    "websiteUrl": "https://central.sonatype.com/artifact/io.modelcontextprotocol/kotlin-sdk",
+    "toolType": "sdk",
+    "taglineEn": "Kotlin Multiplatform SDK for the Model Context Protocol.",
+    "summaryVi": "MCP Kotlin SDK là bộ công cụ Kotlin Multiplatform chính thức cho Model Context Protocol, cho phép ứng dụng nhắm JVM, Native, JS và Wasm triển khai client và máy chủ MCP. SDK dùng Ktor và API thân thiện với coroutine.",
+    "purposeVi": "Xây dựng client và máy chủ MCP bằng Kotlin từ một mã nguồn chung cho nhiều nền tảng.",
+    "featuresVi": [
+      "Artifact tách rời: kotlin-sdk (đầy đủ), kotlin-sdk-client, kotlin-sdk-server",
+      "Đa nền tảng: JVM, Native, JS và Wasm",
+      "Transport: stdio, SSE, Streamable HTTP, WebSocket và ChannelTransport để kiểm thử",
+      "Tính năng máy chủ: prompts, resources, tools, completion, logging, pagination",
+      "Tính năng client: roots và sampling"
+    ],
+    "requirementsVi": "Kotlin 2.2+, JVM 11+ (với đích JVM); cần tự khai báo engine Ktor client/server.",
+    "installStepsVi": [
+      "Cài đặt phụ thuộc Gradle: thêm mavenCentral() và dòng `implementation(\"io.modelcontextprotocol:kotlin-sdk:$mcpVersion\")`",
+      "Dùng kotlin-sdk-client hoặc kotlin-sdk-server nếu chỉ cần một phía",
+      "Khai báo thêm phụ thuộc Ktor (ví dụ ktor-client-cio, ktor-server-netty) theo hướng dẫn README"
+    ],
+    "cliCommand": "implementation(\"io.modelcontextprotocol:kotlin-sdk:$mcpVersion\")",
+    "usageStepsVi": [
+      "Tạo Client, kết nối qua transport phù hợp rồi liệt kê và gọi công cụ",
+      "Tạo Server, khai báo capabilities và thêm tools, prompts, resources",
+      "Chạy máy chủ qua stdio hoặc Streamable HTTP và kết nối từ client MCP",
+      "Xem thư mục examples để có dự án mẫu"
+    ],
+    "samplePromptsVi": [
+      "Viết máy chủ MCP bằng Kotlin SDK chạy qua stdio có một công cụ thời tiết",
+      "Cấu hình Ktor server cho máy chủ MCP Kotlin dùng Streamable HTTP",
+      "Dùng kotlin-sdk trong commonMain của dự án Kotlin Multiplatform"
+    ],
+    "prosVi": [
+      "SDK chính thức, phát hành trên Maven Central",
+      "Một mã nguồn chạy trên JVM, Native, JS và Wasm",
+      "Hỗ trợ nhiều transport gồm cả WebSocket"
+    ],
+    "consVi": [
+      "Không kéo theo engine Ktor, phải tự khai báo phụ thuộc",
+      "Giấy phép hỗn hợp trong giai đoạn chuyển từ MIT sang Apache 2.0"
+    ],
+    "sourceEvidence": {
+      "implementation(\"io.modelcontextprotocol:kotlin-sdk:$mcpVersion\")": "README.md:89"
+    },
+    "meta": {
+      "id": "modelcontextprotocol-kotlin-sdk",
+      "nameVi": "MCP Kotlin SDK — Bộ công cụ Kotlin Multiplatform chính thức cho client và máy chủ MCP",
+      "icon": "Code2",
+      "categories": [
+        "backend_api",
+        "mobile_app"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0 / MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "implementation(\"io.modelcontextprotocol:kotlin-sdk:$mcpVersion\")"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "modelcontextprotocol/swift-sdk",
+    "license": "Apache License 2.0 (mã và đóng góp mới) và MIT License (mã cũ chưa chuyển giấy phép); tài liệu CC-BY-4.0",
+    "authorName": "Model Context Protocol",
+    "websiteUrl": "https://modelcontextprotocol.io",
+    "toolType": "sdk",
+    "taglineEn": "Official Swift SDK for the Model Context Protocol (MCP).",
+    "summaryVi": "MCP Swift SDK là bộ công cụ chính thức để triển khai client và máy chủ MCP bằng Swift theo đặc tả 2025-11-25. SDK chạy trên macOS, iOS, watchOS, tvOS, visionOS và Linux, có nhiều transport và hỗ trợ xác thực OAuth.",
+    "purposeVi": "Tích hợp MCP vào ứng dụng Apple và dịch vụ Swift trên Linux, cả phía client lẫn máy chủ.",
+    "featuresVi": [
+      "Client: tools, resources, prompts, completions, sampling, elicitation, roots, logging, theo dõi tiến độ",
+      "Server: khai báo tools, resources, prompts, initialize hook, tắt máy an toàn",
+      "Transport: Stdio, HTTPClient, StatelessHTTPServer, StatefulHTTPServer, InMemory, Network",
+      "Xác thực: client credentials, authorization code, private_key_jwt, kiểm tra bearer token phía máy chủ"
+    ],
+    "requirementsVi": "Swift 6.0+ (Xcode 16+); macOS 13+, iOS 16+, watchOS 9+, tvOS 16+, visionOS 1+ hoặc Linux glibc/musl.",
+    "installStepsVi": [
+      "Cài đặt qua Swift Package Manager: thêm `.package(url: \"https://github.com/modelcontextprotocol/swift-sdk.git\", from: \"0.11.0\")` vào dependencies trong Package.swift",
+      "Thêm sản phẩm MCP vào target của bạn theo hướng dẫn README"
+    ],
+    "cliCommand": ".package(url: \"https://github.com/modelcontextprotocol/swift-sdk.git\", from: \"0.11.0\")",
+    "usageStepsVi": [
+      "import MCP rồi tạo Client và kết nối qua transport (ví dụ StdioTransport hoặc HTTPClientTransport)",
+      "Gọi listTools và callTool để dùng công cụ của máy chủ",
+      "Tạo Server, đăng ký handler cho ListTools/CallTool và chạy trên transport đã chọn",
+      "Bật logging bằng swift-log để gỡ lỗi"
+    ],
+    "samplePromptsVi": [
+      "Viết client MCP bằng Swift kết nối máy chủ qua Streamable HTTP trong ứng dụng iOS",
+      "Tạo máy chủ MCP Swift chạy stdio trên Linux có một công cụ",
+      "Hướng dẫn cấu hình OAuth client credentials cho client MCP Swift"
+    ],
+    "prosVi": [
+      "SDK chính thức, hỗ trợ đầy đủ hệ sinh thái Apple và Linux",
+      "Nhiều transport, bao gồm máy chủ HTTP stateless và stateful",
+      "README chi tiết cho cả client, server và xác thực"
+    ],
+    "consVi": [
+      "Một số transport chỉ có trên nền tảng Apple (NetworkTransport) hoặc Linux glibc (Stdio)",
+      "Giấy phép hỗn hợp trong giai đoạn chuyển từ MIT sang Apache 2.0"
+    ],
+    "sourceEvidence": {
+      ".package(url: \"https://github.com/modelcontextprotocol/swift-sdk.git\", from: \"0.11.0\")": "README.md:77"
+    },
+    "meta": {
+      "id": "modelcontextprotocol-swift-sdk",
+      "nameVi": "MCP Swift SDK — Bộ công cụ chính thức xây dựng client và máy chủ MCP bằng Swift",
+      "icon": "Code2",
+      "categories": [
+        "mobile_app",
+        "backend_api"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0 / MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": ".package(url: \"https://github.com/modelcontextprotocol/swift-sdk.git\", from: \"0.11.0\")"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "modelcontextprotocol/ruby-sdk",
+    "license": "Apache License 2.0 (mã và đóng góp mới) và MIT License (mã cũ chưa chuyển giấy phép); tài liệu CC-BY-4.0",
+    "authorName": "Model Context Protocol",
+    "websiteUrl": "https://ruby.sdk.modelcontextprotocol.io",
+    "toolType": "sdk",
+    "taglineEn": "The official Ruby SDK for Model Context Protocol servers and clients.",
+    "summaryVi": "MCP Ruby SDK là bộ công cụ chính thức để xây dựng máy chủ và client MCP bằng Ruby, phát hành dưới dạng gem mcp. SDK hỗ trợ transport stdio và Streamable HTTP (kể cả SSE), có tích hợp Rails và bảo vệ OAuth 2.1.",
+    "purposeVi": "Cung cấp công cụ, prompt và tài nguyên từ ứng dụng Ruby/Rails cho các host MCP, hoặc kết nối tới máy chủ MCP khác.",
+    "featuresVi": [
+      "Máy chủ MCP: tools, prompts, resources, bảo vệ OAuth 2.1 resource-server",
+      "Client MCP: tự động đàm phán vòng đời giao thức và ủy quyền OAuth 2.1",
+      "Transport stdio và Streamable HTTP, tích hợp Rails",
+      "Bao phủ giao thức: notifications, progress, logging, cancellation, completions, pagination"
+    ],
+    "requirementsVi": "Ruby và Bundler; có thể cần thêm phụ thuộc tùy tính năng sử dụng.",
+    "installStepsVi": [
+      "Cài đặt bằng Gemfile: thêm `gem \"mcp\"` rồi chạy `bundle install`",
+      "Hoặc cài đặt trực tiếp: `gem install mcp`"
+    ],
+    "cliCommand": "gem install mcp",
+    "usageStepsVi": [
+      "Tạo lớp kế thừa MCP::Tool với description và input_schema",
+      "Khởi tạo MCP::Server với danh sách tools và mở MCP::Server::Transports::StdioTransport",
+      "Chạy `ruby server.rb` và gửi yêu cầu JSON-RPC qua stdin để thử",
+      "Phía client, dùng MCP::Client::Stdio hoặc MCP::Client::HTTP để kết nối và gọi công cụ"
+    ],
+    "samplePromptsVi": [
+      "Viết máy chủ MCP bằng Ruby có công cụ echo tin nhắn",
+      "Gắn máy chủ MCP vào ứng dụng Rails qua Streamable HTTP",
+      "Viết client Ruby khởi chạy máy chủ stdio và gọi công cụ đầu tiên"
+    ],
+    "prosVi": [
+      "SDK chính thức, phát hành trên RubyGems",
+      "Có tích hợp Rails và ví dụ ứng dụng Rails hoàn chỉnh",
+      "Hỗ trợ OAuth 2.1 cho cả client và máy chủ"
+    ],
+    "consVi": [
+      "Giấy phép hỗn hợp: Apache 2.0 cho đóng góp mới, mã cũ vẫn theo MIT"
+    ],
+    "sourceEvidence": {
+      "gem \"mcp\"": "README.md:19",
+      "bundle install": "README.md:25",
+      "gem install mcp": "README.md:31",
+      "ruby server.rb": "README.md:82"
+    },
+    "meta": {
+      "id": "modelcontextprotocol-ruby-sdk",
+      "nameVi": "MCP Ruby SDK — Bộ công cụ chính thức xây dựng máy chủ và client MCP bằng Ruby",
+      "icon": "Code2",
+      "categories": [
+        "backend_api",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0 / MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "gem install mcp"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "modelcontextprotocol/php-sdk",
+    "license": "Apache License 2.0 (mã và đóng góp mới) và MIT License (mã cũ chưa chuyển giấy phép); tài liệu CC-BY-4.0",
+    "authorName": "Model Context Protocol, PHP Foundation và Symfony",
+    "websiteUrl": "https://php.sdk.modelcontextprotocol.io",
+    "toolType": "sdk",
+    "taglineEn": "The official PHP SDK for the Model Context Protocol (MCP).",
+    "summaryVi": "MCP PHP SDK là bộ công cụ chính thức, độc lập framework, để triển khai máy chủ và client MCP bằng PHP. Dự án là hợp tác giữa PHP Foundation và Symfony, hỗ trợ tools, resources, prompts, transport STDIO và HTTP, phiên và ủy quyền, cả cơ chế initialize lẫn bản đặc tả stateless 2026-07-28.",
+    "purposeVi": "Biến lớp PHP thành máy chủ MCP bằng thuộc tính #[McpTool], #[McpResource], hoặc kết nối tới máy chủ MCP từ ứng dụng PHP.",
+    "featuresVi": [
+      "Khai báo bằng thuộc tính: #[McpTool], #[McpResource] và tự phát hiện qua setDiscovery()",
+      "Transport STDIO và HTTP, quản lý phiên và ủy quyền",
+      "Client PHP: kết nối, listTools, callTool",
+      "Hỗ trợ hai thời kỳ giao thức: handshake initialize và bản stateless 2026-07-28",
+      "Được đo tương thích hàng tuần với MCP Conformance Test Framework"
+    ],
+    "requirementsVi": "PHP và Composer; setDiscovery() cần thêm gói symfony/finder.",
+    "installStepsVi": [
+      "Cài đặt SDK: `composer require mcp/sdk`",
+      "Cài đặt symfony/finder để dùng tự phát hiện công cụ: `composer require symfony/finder`"
+    ],
+    "cliCommand": "composer require mcp/sdk",
+    "usageStepsVi": [
+      "Viết lớp PHP với phương thức gắn #[McpTool] và #[McpResource]",
+      "Dựng máy chủ bằng Server::builder()->setServerInfo()->setDiscovery()->build()->run(new StdioTransport())",
+      "Thử máy chủ bằng MCP Inspector theo hướng dẫn trong docs",
+      "Phía client, dùng Client::builder() rồi connect, listTools và callTool"
+    ],
+    "samplePromptsVi": [
+      "Viết máy chủ MCP bằng PHP có công cụ cộng hai số và một resource cấu hình",
+      "Tạo client PHP kết nối máy chủ MCP qua STDIO và gọi công cụ add",
+      "Hướng dẫn tích hợp MCP PHP SDK vào dự án Symfony"
+    ],
+    "prosVi": [
+      "SDK chính thức, độc lập framework, theo chuẩn mã nguồn của Symfony",
+      "Hỗ trợ cả client và máy chủ, có trang tài liệu riêng",
+      "Nhiều thư viện PHP (Symfony, Drupal, API Platform) đã dùng SDK"
+    ],
+    "consVi": [
+      "README ghi rõ SDK còn ở trạng thái thử nghiệm cho đến bản phát hành chính đầu tiên",
+      "Giấy phép hỗn hợp trong giai đoạn chuyển từ MIT sang Apache 2.0"
+    ],
+    "sourceEvidence": {
+      "composer require mcp/sdk": "README.md:33",
+      "composer require symfony/finder": "README.md:74"
+    },
+    "meta": {
+      "id": "modelcontextprotocol-php-sdk",
+      "nameVi": "MCP PHP SDK — Bộ công cụ chính thức xây dựng máy chủ và client MCP bằng PHP",
+      "icon": "Code2",
+      "categories": [
+        "backend_api",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0 / MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "composer require mcp/sdk"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "modelcontextprotocol/registry",
+    "license": "Apache License 2.0 (mã và đóng góp mới) và MIT License (mã cũ chưa chuyển giấy phép); tài liệu CC-BY-4.0",
+    "authorName": "Model Context Protocol (Registry Working Group)",
+    "websiteUrl": "https://registry.modelcontextprotocol.io/docs",
+    "toolType": "software",
+    "taglineEn": "The MCP registry provides MCP clients with a list of MCP servers, like an app store for MCP servers.",
+    "summaryVi": "MCP Registry là dịch vụ danh bạ chính thức cung cấp cho client MCP danh sách các máy chủ MCP, giống một kho ứng dụng. Kho chứa mã nguồn Registry API (Go, PostgreSQL) và công cụ dòng lệnh mcp-publisher để công bố máy chủ MCP. API đã đóng băng ở bản v0.1 để các bên tích hợp ổn định.",
+    "purposeVi": "Công bố máy chủ MCP của bạn lên registry chính thức bằng mcp-publisher, hoặc tự chạy registry để phục vụ danh sách máy chủ MCP.",
+    "featuresVi": [
+      "Registry API: liệt kê máy chủ MCP cho client, có tài liệu API trực tuyến",
+      "CLI mcp-publisher: init sinh tệp server.json, login và publish",
+      "Xác minh namespace: GitHub OAuth, GitHub OIDC (GitHub Actions), xác minh DNS hoặc HTTP cho tên miền",
+      "Tự triển khai: image Docker trên GHCR, cần PostgreSQL riêng",
+      "Môi trường phát triển: make dev-compose chạy registry tại localhost:8080"
+    ],
+    "requirementsVi": "Để công bố: tài khoản GitHub hoặc quyền sở hữu tên miền. Để phát triển: Docker, Go, ko và golangci-lint.",
+    "installStepsVi": [
+      "Cài đặt công cụ công bố bằng Homebrew: `brew install mcp-publisher`",
+      "Trong thư mục dự án máy chủ, tạo tệp server.json: `mcp-publisher init`",
+      "Đăng nhập xác thực namespace: `mcp-publisher login github`",
+      "Công bố máy chủ: `mcp-publisher publish`",
+      "Hoặc tự chạy registry để phát triển: `make dev-compose`"
+    ],
+    "cliCommand": "brew install mcp-publisher",
+    "usageStepsVi": [
+      "Chỉnh server.json do mcp-publisher init sinh ra (packages hoặc remotes cho máy chủ chỉ chạy từ xa)",
+      "Đăng nhập GitHub hoặc xác minh tên miền để chứng minh quyền sở hữu namespace",
+      "Chạy mcp-publisher publish; không gửi pull request vào kho này vì sẽ không được liệt kê",
+      "Tra cứu máy chủ đã công bố qua Registry API"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn công bố máy chủ MCP npm của tôi lên MCP Registry bằng mcp-publisher",
+      "Giải thích cách xác minh namespace bằng DNS để công bố dưới tên miền riêng",
+      "Chạy registry cục bộ bằng make dev-compose để thử nghiệm"
+    ],
+    "prosVi": [
+      "Registry chính thức của dự án Model Context Protocol",
+      "API v0.1 đã đóng băng, ổn định cho bên tích hợp",
+      "Nhiều cách xác thực namespace, hỗ trợ công bố từ GitHub Actions"
+    ],
+    "consVi": [
+      "README ghi registry vẫn ở giai đoạn preview, có thể có thay đổi phá vỡ hoặc reset dữ liệu",
+      "Image Docker không kèm PostgreSQL, phải tự chạy cơ sở dữ liệu",
+      "Giấy phép hỗn hợp trong giai đoạn chuyển từ MIT sang Apache 2.0"
+    ],
+    "sourceEvidence": {
+      "brew install mcp-publisher": "docs/modelcontextprotocol-io/quickstart.mdx:139",
+      "mcp-publisher init": "docs/modelcontextprotocol-io/quickstart.mdx:178",
+      "mcp-publisher login github": "docs/modelcontextprotocol-io/quickstart.mdx:263",
+      "mcp-publisher publish": "docs/modelcontextprotocol-io/quickstart.mdx:290",
+      "make dev-compose": "README.md:43"
+    },
+    "meta": {
+      "id": "modelcontextprotocol-registry",
+      "nameVi": "MCP Registry — Danh bạ chính thức và công cụ công bố máy chủ MCP",
+      "icon": "Database",
+      "categories": [
+        "backend_api",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0 / MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "brew install mcp-publisher"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "lastmile-ai/mcp-agent",
+    "license": "Apache License 2.0",
+    "authorName": "LastMile AI",
+    "websiteUrl": "https://docs.mcp-agent.com",
+    "toolType": "sdk",
+    "taglineEn": "Build effective agents with Model Context Protocol using simple, composable patterns.",
+    "summaryVi": "mcp-agent là framework Python đơn giản, có thể kết hợp, để xây dựng tác tử AI dựa trên Model Context Protocol. Framework quản lý vòng đời kết nối máy chủ MCP, triển khai các mẫu trong bài Building Effective Agents của Anthropic và có thể chạy bền vững trên Temporal. Tác tử có thể được đóng gói thành máy chủ MCP.",
+    "purposeVi": "Xây dựng tác tử kết nối LLM với các máy chủ MCP theo mẫu router, orchestrator, map-reduce, evaluator-optimizer và triển khai thành máy chủ MCP.",
+    "featuresVi": [
+      "Hỗ trợ MCP đầy đủ: tools, resources, prompts, notifications, OAuth, sampling, elicitation, roots",
+      "Mẫu tác tử: parallel (map-reduce), router, intent classifier, orchestrator-workers, deep research, evaluator-optimizer, swarm",
+      "Thực thi bền vững với Temporal: tạm dừng, tiếp tục, thử lại mà không đổi mã",
+      "Agent server: biến MCPApp thành máy chủ MCP cho Claude Desktop, Cursor",
+      "CLI uvx mcp-agent: khởi tạo dự án, quản lý bí mật, triển khai lên mcp-agent Cloud (beta)"
+    ],
+    "requirementsVi": "Python 3.10+, khuyến nghị dùng uv; khóa API của nhà cung cấp LLM (OpenAI, Anthropic, Google, Azure, Bedrock).",
+    "installStepsVi": [
+      "Cài đặt bằng uv: `uv add \"mcp-agent\"`",
+      "Hoặc cài đặt bằng pip: `pip install mcp-agent`",
+      "Khởi tạo dự án mẫu: `uvx mcp-agent init`",
+      "Thêm khóa API vào mcp_agent.secrets.yaml hoặc biến môi trường"
+    ],
+    "cliCommand": "uvx mcp-agent init",
+    "usageStepsVi": [
+      "Tạo MCPApp và Agent với danh sách server_names (ví dụ filesystem, fetch)",
+      "Gắn LLM bằng agent.attach_llm và gọi generate_str để tác tử dùng công cụ MCP",
+      "Kết hợp các mẫu như create_router_llm, create_orchestrator cho quy trình phức tạp",
+      "Triển khai lên cloud: `uvx mcp-agent login` rồi `uvx mcp-agent deploy my-agent`"
+    ],
+    "samplePromptsVi": [
+      "Viết tác tử mcp-agent dùng máy chủ filesystem và fetch để tóm tắt README.md",
+      "Tạo quy trình evaluator-optimizer cải thiện bản nháp đến khi đạt yêu cầu",
+      "Đóng gói tác tử thành máy chủ MCP để dùng trong Claude Desktop"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, phát hành trên PyPI",
+      "Triển khai sẵn nhiều mẫu tác tử có thể kết hợp",
+      "Mở rộng lên Temporal mà không đổi API"
+    ],
+    "consVi": [
+      "Cần khóa API của nhà cung cấp LLM",
+      "Tính năng triển khai mcp-agent Cloud đang ở giai đoạn beta và cần đăng nhập"
+    ],
+    "sourceEvidence": {
+      "uv add \"mcp-agent\"": "README.md:193",
+      "pip install mcp-agent": "README.md:199",
+      "uvx mcp-agent init": "README.md:181",
+      "uvx mcp-agent login": "README.md:671",
+      "uvx mcp-agent deploy my-agent": "README.md:672"
+    },
+    "meta": {
+      "id": "lastmile-ai-mcp-agent",
+      "nameVi": "mcp-agent — Framework Python xây dựng tác tử AI dựa trên MCP",
+      "icon": "Workflow",
+      "categories": [
+        "nlp_llm",
+        "rpa_workflow_automation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "uvx mcp-agent init"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "metatool-ai/metamcp",
+    "license": "MIT License (bản quyền 2024 MetaMCP, James Zhang)",
+    "authorName": "MetaMCP (James Zhang)",
+    "websiteUrl": "https://docs.metamcp.com",
+    "toolType": "mcp",
+    "taglineEn": "MetaMCP is a MCP proxy that lets you dynamically aggregate MCP servers into a unified MCP server, and apply middlewares.",
+    "summaryVi": "MetaMCP là proxy MCP gộp động nhiều máy chủ MCP thành một máy chủ MCP thống nhất và áp dụng middleware, đóng gói trong một bộ Docker. Bản thân MetaMCP là máy chủ MCP nên cắm được vào bất kỳ client MCP nào. Công cụ có giao diện quản lý namespace, endpoint, inspector và xác thực bằng API key hoặc OAuth.",
+    "purposeVi": "Gom các máy chủ MCP thành namespace, công khai qua endpoint SSE/Streamable HTTP/OpenAPI có xác thực, và chỉ chọn những công cụ cần dùng.",
+    "featuresVi": [
+      "Namespace: nhóm máy chủ MCP, bật/tắt theo máy chủ hoặc từng công cụ",
+      "Endpoint: công khai qua SSE, Streamable HTTP và OpenAPI (cho Open WebUI), xác thực API key hoặc OAuth",
+      "Middleware: ví dụ lọc công cụ không hoạt động để tối ưu ngữ cảnh LLM",
+      "Inspector: như MCP inspector chính thức nhưng lưu sẵn cấu hình máy chủ",
+      "Ghi đè tên, mô tả công cụ và annotations theo namespace",
+      "Đa người dùng, OIDC, giới hạn tốc độ MCP và kiểm soát đăng ký"
+    ],
+    "requirementsVi": "Docker và Docker Compose; PostgreSQL chạy kèm trong docker compose. Phát triển cục bộ cần pnpm.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/metatool-ai/metamcp.git` rồi `cd metamcp`",
+      "Chuẩn bị cấu hình: `cp example.env .env`",
+      "Khởi chạy bằng Docker Compose: `docker compose up -d`",
+      "Phát triển cục bộ (tùy chọn): cài đặt phụ thuộc bằng `pnpm install` rồi chạy `pnpm dev`"
+    ],
+    "cliCommand": "docker compose up -d",
+    "usageStepsVi": [
+      "Mở giao diện web, thêm cấu hình máy chủ MCP (STDIO, SSE hoặc Streamable HTTP)",
+      "Tạo namespace gồm các máy chủ cần dùng và tạo endpoint gán namespace đó",
+      "Kết nối Cursor bằng mcp.json trỏ tới http://localhost:12008/metamcp/<YOUR_ENDPOINT_NAME>/sse",
+      "Với Claude Desktop (chỉ hỗ trợ stdio), dùng uvx mcp-proxy kèm API_ACCESS_TOKEN theo cấu hình mẫu"
+    ],
+    "samplePromptsVi": [
+      "Liệt kê các công cụ đang có trong namespace MetaMCP của tôi",
+      "Dùng công cụ HackerNews qua MetaMCP để lấy các bài viết nổi bật hôm nay",
+      "Gọi công cụ tìm kiếm từ máy chủ đã gộp trong endpoint MetaMCP"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, tự lưu trữ bằng một bộ Docker",
+      "Gộp nhiều máy chủ MCP sau một endpoint có xác thực",
+      "Hỗ trợ cả client stdio qua mcp-proxy và client HTTP"
+    ],
+    "consVi": [
+      "Tác giả thông báo có chậm trễ bảo trì; nhánh mặc định ai-dev chứa thay đổi do AI hỗ trợ, cần kiểm thử trước khi build",
+      "Endpoint chỉ chạy từ xa, Claude Desktop cần proxy cục bộ",
+      "Máy chủ cần phụ thuộc ngoài uvx/npx phải tự tùy biến Dockerfile"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/metatool-ai/metamcp.git": "README.md:161",
+      "cd metamcp": "README.md:162",
+      "cp example.env .env": "README.md:163",
+      "docker compose up -d": "README.md:164",
+      "pnpm install": "README.md:207",
+      "pnpm dev": "README.md:208"
+    },
+    "meta": {
+      "id": "metatool-ai-metamcp",
+      "nameVi": "MetaMCP — Proxy gộp, điều phối và cổng kết nối nhiều máy chủ MCP",
+      "icon": "Layers",
+      "categories": [
+        "backend_api",
+        "cloud_infrastructure"
+      ],
+      "platforms": [
+        "web",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Trung"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "docker compose up -d"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"MetaMCP\": {\n      \"url\": \"http://localhost:12008/metamcp/<YOUR_ENDPOINT_NAME>/sse\"\n    }\n  }\n}"
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"MetaMCP\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"mcp-proxy\",\n        \"--transport\",\n        \"streamablehttp\",\n        \"http://localhost:12008/metamcp/<YOUR_ENDPOINT_NAME>/mcp\"\n      ],\n      \"env\": {\n        \"API_ACCESS_TOKEN\": \"<YOUR_API_KEY_HERE>\"\n      }\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "snyk/agent-scan",
+    "license": "Apache License 2.0 (sử dụng còn theo điều khoản TERMS.md của Snyk)",
+    "authorName": "Snyk (trước đây là mcp-scan của Invariant Labs)",
+    "websiteUrl": "https://pypi.python.org/pypi/snyk-agent-scan",
+    "toolType": "cli",
+    "taglineEn": "Discover and scan agent components on your machine for prompt injections and vulnerabilities (including agents, MCP servers, skills).",
+    "summaryVi": "Snyk Agent Scan (tiền thân là mcp-scan của Invariant Labs) là công cụ dòng lệnh tự phát hiện các tác tử, máy chủ MCP và skill cài trên máy, rồi quét các mối đe dọa như prompt injection, tool poisoning, xử lý dữ liệu nhạy cảm hay mã độc ẩn trong ngôn ngữ tự nhiên. Công cụ gửi thông tin thành phần lên Agent Scan API của Snyk để phân tích, nên cần tài khoản và token Snyk.",
+    "purposeVi": "Kiểm tra an ninh chuỗi cung ứng tác tử AI: rà soát cấu hình MCP và skill của Claude, Cursor, VS Code, Gemini CLI, Windsurf trước khi tin dùng.",
+    "featuresVi": [
+      "Tự phát hiện cấu hình của Claude Code/Desktop, Cursor, VS Code, GitHub Copilot, Windsurf, Gemini CLI, Kiro, Codex và nhiều tác tử khác",
+      "Bản v0.6+: 14 chỉ báo rủi ro có chấm điểm cho máy chủ MCP và skill",
+      "Phát hiện prompt injection, nội dung không tin cậy, dữ liệu riêng tư, khả năng phá hủy, mã độc, lộ bí mật",
+      "Chế độ inspect: xem thành phần mà không phân tích an ninh",
+      "Xin đồng ý từng máy chủ trước khi khởi chạy hoặc kết nối; chế độ CI",
+      "Chế độ nền (MDM) báo cáo về Snyk Evo cho đội bảo mật"
+    ],
+    "requirementsVi": "Tài khoản Snyk và API token (SNYK_TOKEN); uv để chạy bằng uvx, hoặc tải binary độc lập từ GitHub Releases.",
+    "installStepsVi": [
+      "Đăng ký tài khoản Snyk, lấy API token rồi đặt biến môi trường: `export SNYK_TOKEN=your-api-token-here`",
+      "Cài đặt uv rồi quét toàn bộ máy: `uvx snyk-agent-scan@latest`",
+      "Hoặc tải binary độc lập cho hệ điều hành từ trang GitHub Releases và kiểm tra checksum"
+    ],
+    "cliCommand": "uvx snyk-agent-scan@latest",
+    "usageStepsVi": [
+      "Quét một tệp cấu hình MCP cụ thể: `uvx snyk-agent-scan@latest ~/.vscode/mcp.json`",
+      "Quét tất cả Claude skills: `uvx snyk-agent-scan@latest ~/.claude/skills`",
+      "Xem thành phần mà không phân tích: `snyk-agent-scan inspect`",
+      "Xem kỹ lệnh/URL trong lời nhắc đồng ý trước khi cho phép kết nối từng máy chủ; quét cấu hình lạ trong sandbox"
+    ],
+    "samplePromptsVi": [
+      "Quét cấu hình MCP của Cursor trên máy tôi để tìm tool poisoning",
+      "Kiểm tra thư mục ~/.claude/skills có skill nào chứa prompt injection hoặc tải tệp đáng ngờ",
+      "Giải thích các chỉ báo rủi ro trong báo cáo Agent Scan v0.6"
+    ],
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0, chạy nhanh bằng uvx hoặc binary có SBOM và checksum ký",
+      "Hỗ trợ rất nhiều tác tử và phạm vi cấu hình (hệ thống, người dùng, dự án, extension)",
+      "Che giấu bí mật trước khi gửi phân tích; không lưu dữ liệu sử dụng công cụ MCP"
+    ],
+    "consVi": [
+      "Bắt buộc có tài khoản và API token Snyk; dữ liệu thành phần được gửi lên Agent Scan API",
+      "Quét cấu hình có thể thực thi lệnh stdio hoặc gửi yêu cầu mạng, nên chạy trong sandbox",
+      "Định dạng đầu ra CLI còn thử nghiệm; dòng v0.5.x sắp ngừng hỗ trợ",
+      "Không nhận đóng góp mã từ bên ngoài"
+    ],
+    "sourceEvidence": {
+      "export SNYK_TOKEN=your-api-token-here": "README.md:80",
+      "uvx snyk-agent-scan@latest": "README.md:112",
+      "uvx snyk-agent-scan@latest ~/.vscode/mcp.json": "README.md:115",
+      "uvx snyk-agent-scan@latest ~/.claude/skills": "README.md:121",
+      "snyk-agent-scan inspect": "README.md:364"
+    },
+    "meta": {
+      "id": "snyk-agent-scan",
+      "nameVi": "Snyk Agent Scan — Công cụ quét bảo mật máy chủ MCP, skill và tác tử AI",
+      "icon": "Search",
+      "categories": [
+        "cybersecurity_security",
+        "qa_testing"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0), cần tài khoản Snyk",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "uvx snyk-agent-scan@latest"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "mcpjungle/MCPJungle",
+    "license": "Mozilla Public License 2.0",
+    "authorName": "MCPJungle",
+    "websiteUrl": "https://docs.mcpjungle.com",
+    "toolType": "mcp",
+    "taglineEn": "Run all your MCP servers behind one endpoint",
+    "summaryVi": "MCPJungle là cổng MCP (gateway) tự lưu trữ giúp nhà phát triển và đội nhóm quản lý nhiều máy chủ MCP sau một endpoint duy nhất, tránh cấu hình rời rạc ở từng client. Đăng ký máy chủ một lần rồi để Claude, Cursor, Codex hay tác tử riêng kết nối vào một endpoint MCP. Chế độ enterprise bổ sung xác thực, ACL và OpenTelemetry.",
+    "purposeVi": "Gom các máy chủ MCP cá nhân hoặc của đội nhóm về một cổng có khám phá tập trung, kiểm soát truy cập và quan sát.",
+    "featuresVi": [
+      "Một endpoint MCP (Streamable HTTP tại http://localhost:8080/mcp) cho Claude, Cursor, Copilot và tác tử tùy biến",
+      "CLI mcpjungle: register, list tools, invoke, bật/tắt công cụ và prompt",
+      "Đăng ký máy chủ Streamable HTTP và STDIO (image tag stdio hỗ trợ npx/uvx)",
+      "Tool Groups: chỉ công khai tập công cụ mà mỗi client được thấy",
+      "Chế độ enterprise: xác thực, ACL theo client, OpenTelemetry",
+      "Lưu trữ bằng SQLite hoặc PostgreSQL"
+    ],
+    "requirementsVi": "Docker và Docker Compose để chạy máy chủ; CLI mcpjungle cài đặt qua Homebrew hoặc tải từ Releases (macOS bắt buộc dùng Homebrew vì binary chưa notarize).",
+    "installStepsVi": [
+      "Tải tệp compose: `curl -O https://raw.githubusercontent.com/mcpjungle/MCPJungle/refs/heads/main/docker-compose.yaml`",
+      "Khởi chạy máy chủ: `docker compose up -d`",
+      "Cài đặt CLI: `brew install mcpjungle/mcpjungle/mcpjungle`",
+      "Đăng ký máy chủ MCP đầu tiên: `mcpjungle register --name context7 --url https://mcp.context7.com/mcp`"
+    ],
+    "cliCommand": "docker compose up -d",
+    "usageStepsVi": [
+      "Thêm cấu hình mcpjungle (npx mcp-remote http://localhost:8080/mcp --allow-http) vào Claude Desktop",
+      "Với Cursor, trỏ url tới http://localhost:8080/mcp",
+      "Xem công cụ đã gộp bằng `mcpjungle list tools`; công cụ có tên dạng <máy chủ>__<công cụ>",
+      "Dùng docker-compose.prod.yaml để chạy chế độ enterprise cho đội nhóm"
+    ],
+    "samplePromptsVi": [
+      "Use context7 to get the documentation for `/lodash/lodash`",
+      "Dùng công cụ context7 qua MCPJungle để lấy tài liệu thư viện React",
+      "Liệt kê các công cụ mà MCPJungle đang cung cấp cho tôi"
+    ],
+    "prosVi": [
+      "Mã nguồn mở MPL 2.0, tự lưu trữ",
+      "Một endpoint thay cho cấu hình máy chủ rải rác ở từng client",
+      "Có Tool Groups, ACL và OpenTelemetry cho triển khai đội nhóm"
+    ],
+    "consVi": [
+      "Giấy phép MPL 2.0 là copyleft theo tệp khi sửa đổi mã nguồn",
+      "Máy chủ STDIO cần công cụ khác ngoài npx/uvx phải tự build image",
+      "Trên macOS phải cài đặt CLI qua Homebrew vì binary chưa được notarize"
+    ],
+    "sourceEvidence": {
+      "curl -O https://raw.githubusercontent.com/mcpjungle/MCPJungle/refs/heads/main/docker-compose.yaml": "README.md:70",
+      "docker compose up -d": "README.md:71",
+      "brew install mcpjungle/mcpjungle/mcpjungle": "README.md:79",
+      "mcpjungle register --name context7 --url https://mcp.context7.com/mcp": "README.md:84",
+      "mcpjungle list tools": "README.md:352"
+    },
+    "meta": {
+      "id": "mcpjungle-mcpjungle",
+      "nameVi": "MCPJungle — Cổng MCP tự lưu trữ gộp mọi máy chủ MCP sau một endpoint",
+      "icon": "Layers",
+      "categories": [
+        "backend_api",
+        "cloud_infrastructure"
+      ],
+      "platforms": [
+        "web",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (MPL 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "docker compose up -d"
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"mcpjungle\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"mcp-remote\",\n        \"http://localhost:8080/mcp\",\n        \"--allow-http\"\n      ]\n    }\n  }\n}"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"mcpjungle\": {\n      \"url\": \"http://localhost:8080/mcp\"\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "cloudflare/agents",
+    "license": "MIT License",
+    "authorName": "Cloudflare",
+    "websiteUrl": "https://developers.cloudflare.com/agents/",
+    "toolType": "sdk",
+    "taglineEn": "Agents are persistent, stateful execution environments for agentic workloads, powered by Cloudflare Durable Objects.",
+    "summaryVi": "Cloudflare Agents là SDK xây dựng tác tử AI có trạng thái bền vững chạy trên Cloudflare Durable Objects. Mỗi tác tử có trạng thái, lưu trữ và vòng đời riêng, ngủ khi rảnh và thức dậy khi cần, hỗ trợ sẵn giao tiếp thời gian thực, lập lịch, gọi mô hình AI, MCP và workflow.",
+    "purposeVi": "Xây dựng tác tử AI, máy chủ hoặc client MCP chạy trên hạ tầng Cloudflare Workers với trạng thái đồng bộ tới giao diện React.",
+    "featuresVi": [
+      "Trạng thái bền vững đồng bộ tới mọi client kết nối, RPC có kiểu qua @callable()",
+      "MCP: đóng vai máy chủ MCP hoặc kết nối làm client (HTTP, SSE, RPC, elicitation); WebMCP cho tác tử trình duyệt",
+      "Lập lịch một lần, định kỳ, cron; WebSockets; workflow có duyệt bởi con người",
+      "AI Chat: lưu tin nhắn, streaming tiếp tục được; Code Mode cho LLM viết TypeScript thực thi",
+      "Voice (STT, TTS), Email, thanh toán x402, quan sát (tracing, metrics, log)",
+      "React hooks useAgent, useAgentChat và client JS thuần"
+    ],
+    "requirementsVi": "Tài khoản Cloudflare để triển khai Workers/Durable Objects; Node.js và npm. Phát triển trong kho cần Node 24+ và pnpm.",
+    "installStepsVi": [
+      "Tạo dự án mới từ template: `npm create cloudflare@latest -- --template cloudflare/agents-starter`",
+      "Hoặc cài đặt vào dự án có sẵn: `npm install agents`",
+      "Khai báo binding Durable Object và migration SQLite trong wrangler.jsonc theo ví dụ README"
+    ],
+    "cliCommand": "npm install agents",
+    "usageStepsVi": [
+      "Tạo lớp kế thừa Agent với initialState và các phương thức @callable()",
+      "Định tuyến yêu cầu bằng routeAgentRequest trong fetch handler của Worker",
+      "Phía giao diện, dùng useAgent từ agents/react để đồng bộ trạng thái và gọi phương thức",
+      "Chạy thử ví dụ: vào examples/playground và chạy npm start"
+    ],
+    "samplePromptsVi": [
+      "Viết tác tử Cloudflare Agents đếm số lượt có trạng thái đồng bộ với React",
+      "Tạo máy chủ MCP trên Cloudflare Workers bằng Agents SDK",
+      "Lập lịch tác tử gửi email báo cáo hằng ngày bằng cron"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, SDK chính thức của Cloudflare với hơn 30 ví dụ",
+      "Tác tử ngủ khi rảnh nên có thể chạy số lượng rất lớn",
+      "Tích hợp sẵn MCP, workflow, voice, email và React"
+    ],
+    "consVi": [
+      "Gắn với nền tảng Cloudflare Workers và Durable Objects",
+      "Không nhận pull request từ bên ngoài; một số gói (shell, voice) đã ngừng dùng",
+      "Thư mục experimental không có cam kết ổn định"
+    ],
+    "sourceEvidence": {
+      "npm create cloudflare@latest -- --template cloudflare/agents-starter": "README.md:13",
+      "npm install agents": "README.md:19"
+    },
+    "meta": {
+      "id": "cloudflare-agents",
+      "nameVi": "Cloudflare Agents — SDK tác tử AI có trạng thái chạy trên Durable Objects",
+      "icon": "Brain",
+      "categories": [
+        "cloud_infrastructure",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npm install agents"
+        }
+      ]
+    }
+  }
+]
