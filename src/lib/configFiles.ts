@@ -29,6 +29,9 @@ export function describeConfigFile(config: ConfigTemplate): ConfigFileInfo {
     const fileName = MCP_FILES[config.platform as string] || 'mcp.json';
     return { fileName, noteVi: `Khai báo máy chủ MCP, đặt trong mục "mcpServers" của tệp ${fileName}.` };
   }
+  if ('servers' in parsed) {
+    return { fileName: '.vscode/mcp.json', noteVi: 'Khai báo máy chủ MCP cho VS Code, đặt trong mục "servers" của tệp .vscode/mcp.json.' };
+  }
   if ('caiDat' in parsed) {
     const target = typeof parsed.tepDich === 'string' ? ` Lệnh cài sẽ tạo tệp ${parsed.tepDich}.` : '';
     return {
