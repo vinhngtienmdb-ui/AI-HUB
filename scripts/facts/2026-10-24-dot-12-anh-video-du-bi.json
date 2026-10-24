@@ -1,0 +1,555 @@
+[
+  {
+    "repo": "hpcaitech/Open-Sora",
+    "license": "Apache License 2.0",
+    "authorName": "HPC-AI Tech (hpcaitech)",
+    "websiteUrl": "https://hpcaitech.github.io/Open-Sora/",
+    "toolType": "model",
+    "taglineEn": "Open-Sora: Democratizing Efficient Video Production for All",
+    "summaryVi": "Open-Sora là dự án mã nguồn mở của HPC-AI Tech nhằm tạo video chất lượng cao một cách hiệu quả, công bố cả mô hình, công cụ và chi tiết huấn luyện. Phiên bản Open-Sora 2.0 (11B) hỗ trợ tạo video từ văn bản (T2V) và từ ảnh (I2V) trong cùng một mô hình ở độ phân giải 256px và 768px, kèm mã huấn luyện đầy đủ.",
+    "purposeVi": "Giúp nhà nghiên cứu và nhà phát triển tự chạy hoặc tự huấn luyện mô hình tạo video từ văn bản và hình ảnh trên GPU của mình, thay vì phụ thuộc dịch vụ đóng.",
+    "featuresVi": [
+      "Text-to-Video và Image-to-Video: một mô hình 11B hỗ trợ cả hai chế độ ở 256px và 768px",
+      "Pipeline văn bản → ảnh → video: dùng mô hình Flux tạo ảnh đầu rồi sinh video để tăng chất lượng",
+      "Tùy chỉnh khung hình: chọn tỉ lệ 16:9, 9:16, 1:1, 2.39:1 và số khung hình (4k+1, dưới 129)",
+      "Motion score: điều chỉnh mức chuyển động của video (mặc định 4) hoặc đánh giá động qua OpenAI API",
+      "Chạy đa GPU: song song hóa chuỗi với ColossalAI; tùy chọn --offload để tiết kiệm bộ nhớ",
+      "Mã huấn luyện mở: có hướng dẫn huấn luyện/tinh chỉnh mô hình và autoencoder video"
+    ],
+    "requirementsVi": "Python 3.10, PyTorch >= 2.4.0, GPU NVIDIA có CUDA (README đo hiệu năng trên H100/H800); xformers và flash-attn; tải checkpoint Open-Sora-v2 từ Hugging Face hoặc ModelScope.",
+    "installStepsVi": [
+      "Tạo môi trường conda Python 3.10 rồi tải mã nguồn: `git clone https://github.com/hpcaitech/Open-Sora`",
+      "Cài đặt gói (yêu cầu torch >= 2.4.0): `pip install -v .`",
+      "Cài đặt flash attention: `pip install flash-attn --no-build-isolation`",
+      "Cài đặt công cụ tải mô hình: `pip install \"huggingface_hub[cli]\"`",
+      "Tải trọng số mô hình 11B vào thư mục ckpts: `huggingface-cli download hpcai-tech/Open-Sora-v2 --local-dir ./ckpts`"
+    ],
+    "cliCommand": "torchrun --nproc_per_node 1 --standalone scripts/diffusion/inference.py configs/diffusion/inference/t2i2v_256px.py --save-dir samples --prompt \"raining, sea\"",
+    "usageStepsVi": [
+      "Chạy lệnh torchrun với cấu hình t2i2v_256px.py và tham số --prompt để tạo video 256px trên 1 GPU",
+      "Thêm --offload True để tiết kiệm bộ nhớ GPU, hoặc dùng --dataset.data-path với tệp CSV để tạo hàng loạt",
+      "Dùng cấu hình t2i2v_768px.py với --nproc_per_node 8 để tạo video 768px trên nhiều GPU",
+      "Thêm --cond_type i2v_head để tạo video từ ảnh tham chiếu; đặt --sampling_option.seed và --seed để tái lập kết quả"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn chạy Open-Sora 2.0 tạo video 256px từ câu mô tả \"raining, sea\" trên một GPU",
+      "Viết tệp CSV chứa 10 câu mô tả để Open-Sora tạo video hàng loạt",
+      "Giải thích cách chỉnh motion score và tỉ lệ khung hình 9:16 khi tạo video bằng Open-Sora"
+    ],
+    "prosVi": [
+      "Mã nguồn giấy phép Apache-2.0, công bố cả checkpoint và mã huấn luyện",
+      "Một mô hình hỗ trợ cả tạo video từ văn bản và từ ảnh",
+      "Hỗ trợ chạy nhiều GPU và offload để giảm bộ nhớ"
+    ],
+    "consVi": [
+      "Yêu cầu GPU mạnh: tạo video 768px trên 1 GPU H100/H800 mất khoảng 1656 giây theo bảng hiệu năng trong README",
+      "Tính năng đánh giá motion score động và tinh chỉnh prompt cần OpenAI API key",
+      "Điều khoản sử dụng trọng số mô hình cần xem trên trang Hugging Face/ModelScope; tệp LICENSE trong repo áp dụng cho mã nguồn"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/hpcaitech/Open-Sora": "README.md:156",
+      "pip install -v .": "README.md:160",
+      "pip install flash-attn --no-build-isolation": "README.md:162",
+      "pip install \"huggingface_hub[cli]\"": "README.md:180",
+      "huggingface-cli download hpcai-tech/Open-Sora-v2 --local-dir ./ckpts": "README.md:181",
+      "torchrun --nproc_per_node 1 --standalone scripts/diffusion/inference.py configs/diffusion/inference/t2i2v_256px.py --save-dir samples --prompt \"raining, sea\"": "README.md:197"
+    },
+    "meta": {
+      "id": "hpcaitech-open-sora",
+      "nameVi": "Open-Sora — Mô hình mã nguồn mở tạo video từ văn bản và hình ảnh",
+      "icon": "Sparkles",
+      "categories": [
+        "generative_ai_multimedia"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "torchrun --nproc_per_node 1 --standalone scripts/diffusion/inference.py configs/diffusion/inference/t2i2v_256px.py --save-dir samples --prompt \"raining, sea\""
+        }
+      ]
+    }
+  },
+  {
+    "repo": "black-forest-labs/flux",
+    "license": "Apache License 2.0 (mã suy luận); trọng số FLUX.1 [schnell] Apache-2.0, các mô hình FLUX.1 [dev] (Fill, Canny, Depth, Redux, Kontext, Krea) theo FLUX.1 [dev] Non-Commercial License v1.1.1",
+    "authorName": "Black Forest Labs",
+    "websiteUrl": "https://bfl.ai",
+    "toolType": "model",
+    "taglineEn": "This repo contains minimal inference code to run image generation & editing with our Flux open-weight models.",
+    "summaryVi": "FLUX là repo chính thức của Black Forest Labs chứa mã suy luận tối giản để chạy các mô hình tạo và chỉnh sửa ảnh trọng số mở FLUX.1. Bộ mô hình gồm FLUX.1 [schnell], FLUX.1 [dev], các biến thể Fill (inpaint/outpaint), Canny/Depth (điều khiển cấu trúc), Redux (biến thể ảnh), Kontext (chỉnh sửa ảnh) và Krea.",
+    "purposeVi": "Cho phép nhà phát triển tự chạy mô hình tạo ảnh từ văn bản và chỉnh sửa ảnh FLUX.1 trên máy của mình qua dòng lệnh hoặc giao diện demo Streamlit/Gradio.",
+    "featuresVi": [
+      "Tạo ảnh từ văn bản: chạy flux-schnell hoặc flux-dev qua lệnh python -m flux t2i",
+      "Chỉnh sửa ảnh: FLUX.1 Kontext [dev] chỉnh ảnh theo câu lệnh văn bản",
+      "Inpainting/Outpainting: FLUX.1 Fill [dev]",
+      "Điều khiển cấu trúc: FLUX.1 Canny/Depth [dev] và bản LoRA",
+      "Tăng tốc TensorRT: xuất BF16, FP8, FP4 khi cài đặt bản hỗ trợ TensorRT",
+      "Demo giao diện: Streamlit (demo_st.py) và Gradio (demo_gr.py)",
+      "Theo dõi lượng dùng: tùy chọn --track_usage báo cáo qua BFL API cho giấy phép thương mại"
+    ],
+    "requirementsVi": "Python 3.10, GPU (mặc định cuda, có thể chạy cpu); trọng số tự tải từ Hugging Face vào checkpoints/; dùng thương mại các mô hình [dev] cần mua giấy phép và BFL_API_KEY để theo dõi lượng dùng.",
+    "installStepsVi": [
+      "Tải mã nguồn: `cd $HOME && git clone https://github.com/black-forest-labs/flux`",
+      "Tạo môi trường ảo Python 3.10 trong thư mục flux rồi cài đặt gói đầy đủ: `pip install -e \".[all]\"`",
+      "Trọng số sẽ tự tải về thư mục checkpoints/ khi chạy demo lần đầu"
+    ],
+    "cliCommand": "python -m flux t2i --name <name> --loop",
+    "usageStepsVi": [
+      "Chạy `python -m flux t2i --name <name> --loop` với name là flux-dev hoặc flux-schnell để tạo ảnh tương tác",
+      "Chạy demo Gradio: `python demo_gr.py --name flux-schnell --device cuda`",
+      "Chỉnh sửa ảnh với Kontext kèm theo dõi lượng dùng thương mại: `python -m flux kontext --track_usage --loop` (cần BFL_API_KEY)"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn cài đặt FLUX.1 [schnell] và tạo ảnh 1024x768 từ câu mô tả tiếng Anh",
+      "Viết lệnh dùng FLUX.1 Kontext [dev] để thay logo trong ảnh bằng dòng chữ mới",
+      "So sánh giấy phép giữa FLUX.1 [schnell] và FLUX.1 [dev] trước khi dùng cho sản phẩm thương mại"
+    ],
+    "prosVi": [
+      "Mã suy luận chính thức từ Black Forest Labs, giấy phép Apache-2.0",
+      "FLUX.1 [schnell] và trọng số autoencoder dùng giấy phép Apache-2.0",
+      "Nhiều biến thể cho tạo ảnh, inpaint, điều khiển cấu trúc và chỉnh sửa ảnh"
+    ],
+    "consVi": [
+      "Các mô hình FLUX.1 [dev] chỉ được dùng phi thương mại; dùng thương mại phải mua giấy phép tại bfl.ai/pricing/licensing",
+      "Mô hình Pro không có trọng số mở, chỉ dùng qua BFL API",
+      "Repo chỉ chứa mã suy luận tối giản; lần cập nhật gần nhất tháng 7/2025"
+    ],
+    "sourceEvidence": {
+      "cd $HOME && git clone https://github.com/black-forest-labs/flux": "README.md:13",
+      "pip install -e \".[all]\"": "README.md:17",
+      "python -m flux t2i --name <name> --loop": "docs/text-to-image.md:22",
+      "python demo_gr.py --name flux-schnell --device cuda": "docs/text-to-image.md:53",
+      "python -m flux kontext --track_usage --loop": "README.md:75"
+    },
+    "meta": {
+      "id": "black-forest-labs-flux",
+      "nameVi": "FLUX — Mã suy luận chính thức cho mô hình tạo và chỉnh sửa ảnh FLUX.1",
+      "icon": "Sparkles",
+      "categories": [
+        "generative_ai_multimedia",
+        "computer_vision"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Hỗn hợp: mã Apache-2.0; FLUX.1 [schnell] Apache-2.0; FLUX.1 [dev] phi thương mại",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "python -m flux t2i --name <name> --loop"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "mcmonkeyprojects/SwarmUI",
+    "license": "MIT License",
+    "authorName": "Alex \"mcmonkey\" Goodwin (mcmonkeyprojects)",
+    "websiteUrl": "https://swarmui.net/",
+    "toolType": "software",
+    "taglineEn": "A Modular AI Image Generation Web-User-Interface, with an emphasis on making powertools easily accessible, high performance, and extensibility.",
+    "summaryVi": "SwarmUI (trước đây là StableSwarmUI) là giao diện web dạng mô-đun để tạo ảnh bằng AI, hỗ trợ mô hình ảnh như Stable Diffusion, Flux, mô hình video như Wan, LTX-2 và một số mô hình âm thanh. Ứng dụng có tab Generate thân thiện cho người mới và tab Comfy Workflow để chỉnh đồ thị ComfyUI trực tiếp.",
+    "purposeVi": "Cung cấp công cụ tạo ảnh và video AI chạy cục bộ, dễ dùng cho người mới nhưng vẫn đủ mạnh cho người dùng nâng cao, có thể dùng nhiều GPU cùng lúc.",
+    "featuresVi": [
+      "Tab Generate: giao diện tạo ảnh dễ dùng với trình chỉnh sửa ảnh và tự động sinh workflow",
+      "Tab Comfy Workflow: truy cập đồ thị ComfyUI thô không giới hạn",
+      "Đa mô hình: hỗ trợ mô hình ảnh (Stable Diffusion, Flux...), video (Wan, LTX-2...) và âm thanh (ACE-Step...)",
+      "Swarm GPU: cho nhiều GPU cùng tạo ảnh cho một người dùng (ví dụ lưới ảnh lớn)",
+      "Tự cài đặt backend: có thể tự cài ComfyUI làm backend",
+      "Đa nền tảng: Windows, Linux, Mac Apple Silicon, Docker, Google Colab"
+    ],
+    "requirementsVi": "git, .NET 8 SDK (và .NET 10 SDK cho phiên bản tương lai), Python 3.10-3.12 (không dùng 3.14 trở lên); Mac chỉ hỗ trợ chip Apple M-series. Giao diện chạy tại http://localhost:7801.",
+    "installStepsVi": [
+      "Cài đặt git và python3 (kèm pip, venv) bằng trình quản lý gói của hệ điều hành",
+      "Tải mã nguồn: `git clone https://github.com/mcmonkeyprojects/SwarmUI`",
+      "Vào thư mục SwarmUI và cài đặt .NET: `./launchtools/linux-dotnet-install.sh`",
+      "Khởi chạy: `./launch-linux.sh` rồi mở http://localhost:7801/Install và làm theo hướng dẫn cài đặt trên trang",
+      "Trên Windows có thể tải tệp install-windows.bat từ trang Releases và chạy để tự cài đặt"
+    ],
+    "cliCommand": "./launch-linux.sh",
+    "usageStepsVi": [
+      "Mở http://localhost:7801 trong trình duyệt sau khi khởi chạy",
+      "Dùng tab Generate để nhập prompt, chọn mô hình và tạo ảnh/video",
+      "Dùng tab Comfy Workflow khi cần chỉnh workflow ComfyUI chi tiết",
+      "Trên máy chủ không màn hình: `./launch-linux.sh --launch_mode none --host 0.0.0.0`",
+      "Xem Basic Usage Guide trong thư mục docs để biết thêm hướng dẫn"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn cài đặt SwarmUI trên Ubuntu và mở giao diện ở cổng 7801",
+      "Cách chạy SwarmUI trên máy chủ GPU không màn hình và truy cập từ xa",
+      "Giải thích khác biệt giữa tab Generate và tab Comfy Workflow trong SwarmUI"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, tác giả cam kết miễn phí, không paywall, không quảng cáo",
+      "Cập nhật rất tích cực (commit tháng 10/2026)",
+      "Hỗ trợ cả ảnh, video và một số mô hình âm thanh trong một giao diện"
+    ],
+    "consVi": [
+      "Vẫn ở trạng thái Beta (v0.9.8, \"Almost-Release\")",
+      "Một số thành phần kết nối dùng giấy phép GPL/AGPL (ComfyUI, ultralytics) có thể ảnh hưởng điều kiện sử dụng; mô hình có giấy phép riêng",
+      "Cần cài đặt .NET SDK và Python; Mac chỉ hỗ trợ chip Apple Silicon"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/mcmonkeyprojects/SwarmUI": "README.md:101",
+      "./launchtools/linux-dotnet-install.sh": "README.md:104",
+      "./launch-linux.sh": "README.md:108",
+      "./launch-linux.sh --launch_mode none --host 0.0.0.0": "README.md:109"
+    },
+    "meta": {
+      "id": "mcmonkeyprojects-swarmui",
+      "nameVi": "SwarmUI — Giao diện web mô-đun tạo ảnh và video AI chạy cục bộ",
+      "icon": "Layers",
+      "categories": [
+        "generative_ai_multimedia"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "./launch-linux.sh"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "chaiNNer-org/chaiNNer",
+    "license": "GNU General Public License v3.0",
+    "authorName": "chaiNNer-org",
+    "websiteUrl": "",
+    "toolType": "software",
+    "taglineEn": "A node-based image processing GUI aimed at making chaining image processing tasks easy and customizable.",
+    "summaryVi": "chaiNNer là ứng dụng xử lý ảnh dạng nút (node) với giao diện đồ họa, ban đầu dùng để phóng to ảnh bằng AI (upscaling) và nay trở thành công cụ xử lý ảnh lập trình được rất linh hoạt. Ứng dụng chạy trên Windows, macOS, Linux và hỗ trợ PyTorch, NCNN, ONNX, TensorRT.",
+    "purposeVi": "Giúp người dùng xây dựng chuỗi xử lý ảnh/video (upscale bằng AI, xóa nền, xử lý hàng loạt) bằng cách kéo thả và nối các nút, không cần viết mã.",
+    "featuresVi": [
+      "Trình soạn thảo dạng nút: kéo thả, nối nút với kiểm tra kiểu dữ liệu theo màu",
+      "Upscale bằng AI: hỗ trợ kiến trúc PyTorch qua thư viện Spandrel, ESRGAN, Waifu2x qua NCNN/ONNX",
+      "Xóa nền: mô hình u2net, isnet qua ONNX",
+      "Xử lý hàng loạt: nút Load Images cho thư mục ảnh và Load Video cho video",
+      "Quản lý phụ thuộc: tự tải Python tích hợp và cài đặt framework qua Dependency Manager",
+      "Hỗ trợ GPU đa dạng: NVIDIA (CUDA, TensorRT), AMD (ROCm trên Linux, NCNN), Apple Silicon (MPS), Intel (NCNN)"
+    ],
+    "requirementsVi": "Windows 10 trở lên, macOS 11 trở lên hoặc Linux; không bắt buộc cài Python (ứng dụng tự tải Python tích hợp); nếu dùng Python hệ thống cần Python 3.10 trở lên. Tự build cần npm v7 trở lên.",
+    "installStepsVi": [
+      "Tải bản cài đặt mới nhất từ trang GitHub Releases và chạy trình cài đặt phù hợp hệ điều hành",
+      "Mở Dependency Manager (góc trên bên phải) để cài đặt framework mạng nơ-ron (PyTorch, NCNN, ONNX hoặc TensorRT)",
+      "Nếu muốn tự build: cài đặt phụ thuộc Node.js bằng `npm install` rồi đóng gói bằng `npm run make`"
+    ],
+    "cliCommand": "npm run make",
+    "usageStepsVi": [
+      "Kéo thả hoặc nhấp đúp tên nút trong bảng chọn để đưa vào trình soạn thảo",
+      "Nối các nút (ví dụ Load Image → Upscale → Save Image) để tạo chuỗi xử lý",
+      "Bấm nút Run màu xanh để chạy; dùng Stop/Pause để dừng",
+      "Dùng nút Load Images hoặc Load Video để xử lý hàng loạt"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn tạo chuỗi chaiNNer phóng to cả thư mục ảnh gấp 4 lần bằng mô hình ESRGAN",
+      "Cách xóa nền ảnh sản phẩm hàng loạt bằng nút u2net trong chaiNNer",
+      "Nên chọn PyTorch hay NCNN trong chaiNNer khi dùng GPU AMD trên Windows?"
+    ],
+    "prosVi": [
+      "Giấy phép GPL-3.0, có bản cài đặt sẵn cho Windows, macOS, Linux",
+      "Đang phát triển tích cực (commit tháng 10/2026)",
+      "Không cần cấu hình Python thủ công nhờ Python tích hợp"
+    ],
+    "consVi": [
+      "Chỉ hỗ trợ một số kiến trúc mạng nơ-ron nhất định",
+      "NCNN có thể cho ảnh đen trên một số GPU không phải NVIDIA khi thiếu bộ nhớ",
+      "Không hỗ trợ macOS 10.x và Windows 8.1 trở xuống; ONNX trên Apple Silicon chỉ chạy CPU"
+    ],
+    "sourceEvidence": {
+      "npm install": "README.md:140",
+      "npm run make": "README.md:140"
+    },
+    "meta": {
+      "id": "chainner-org-chainner",
+      "nameVi": "chaiNNer — Công cụ xử lý ảnh dạng nút, phóng to ảnh bằng AI",
+      "icon": "Workflow",
+      "categories": [
+        "generative_ai_multimedia",
+        "computer_vision"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (GPL-3.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npm run make"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "deepbeepmeep/Wan2GP",
+    "license": "WanGP Community License 2.0 (giấy phép riêng, không phải OSI)",
+    "authorName": "DeepBeepMeep",
+    "websiteUrl": "https://wangp.ai/",
+    "toolType": "software",
+    "taglineEn": "WanGP is a one-stop super app for the best open source generative models across video, image, audio, and text-to-speech.",
+    "summaryVi": "WanGP (Wan2GP) là ứng dụng web chạy cục bộ gom các mô hình sinh nội dung mã nguồn mở về video (Wan 2.1/2.2, LTX-2, Hunyuan Video...), ảnh (Qwen Image, Flux, Z-Image...) và âm thanh/TTS. Điểm nổi bật là tối ưu VRAM để chạy một số mô hình với GPU chỉ 6 GB, kèm hàng đợi, chế độ headless và API.",
+    "purposeVi": "Giúp người có GPU phổ thông (kể cả GTX 10XX, RTX 20XX, GPU AMD) tạo video, ảnh và âm thanh bằng các mô hình mở mới nhất trên máy tính của mình.",
+    "featuresVi": [
+      "Yêu cầu VRAM thấp: chạy một số mô hình với 6 GB VRAM, hỗ trợ GPU NVIDIA cũ và AMD RDNA 2-4",
+      "Đa mô hình: video (Wan, LTX-2, Hunyuan Video), ảnh (Qwen Image, Flux, Z-Image), âm thanh/TTS (Qwen3 TTS, Ace Step...)",
+      "Giao diện web đầy đủ: thư viện video/ảnh/âm thanh, tái sử dụng thiết lập",
+      "LoRA và finetune: thêm LoRA, checkpoint từ Hugging Face hoặc CivitAI; hỗ trợ int8, fp8, gguf, NV FP4",
+      "Hàng đợi và chế độ headless: xếp lịch tác vụ và xử lý hàng đợi từ dòng lệnh",
+      "Công cụ chuẩn bị đầu vào: trình sửa mask, xóa nền, trích xuất pose/depth, upsampling RIFE/FlashVSR"
+    ],
+    "requirementsVi": "GPU NVIDIA (GTX 10XX đến RTX 50XX) hoặc AMD; conda với Python 3.11 (RTX 20XX-50XX) hoặc 3.10.9 (GTX 10XX); PyTorch theo hướng dẫn; trên Windows cần Triton tương ứng.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/deepbeepmeep/Wan2GP.git`",
+      "Tạo môi trường: `conda create -n wan2gp python=3.11.14` rồi `conda activate wan2gp`",
+      "Cài đặt PyTorch (RTX 20XX-50XX): `pip install torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cu130`",
+      "Cài đặt các thư viện còn lại: `pip install -r requirements.txt`",
+      "Hoặc dùng bộ cài tự động scripts/install.sh (Linux/macOS) hay scripts\\install.bat (Windows)"
+    ],
+    "cliCommand": "python wgp.py",
+    "usageStepsVi": [
+      "Khởi chạy giao diện web bằng `python wgp.py`",
+      "Lần đầu dùng, xem tab Guides để chọn mô hình được khuyến nghị",
+      "Tạo hàng đợi trong giao diện, lưu bằng Save Queue rồi xử lý không giao diện: `python wgp.py --process my_queue.zip`",
+      "Xem docs/CLI.md để biết đầy đủ tham số dòng lệnh"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn cài đặt WanGP trên máy RTX 3060 12 GB để tạo video từ văn bản",
+      "Cách lưu hàng đợi tác vụ trong WanGP và chạy qua đêm bằng chế độ headless",
+      "Nên chọn mô hình video nào trong WanGP khi GPU chỉ có 8 GB VRAM?"
+    ],
+    "prosVi": [
+      "Miễn phí khi chạy cục bộ, được dùng trong công ty và được bán sản phẩm đầu ra theo giấy phép",
+      "Tối ưu VRAM, hỗ trợ nhiều thế hệ GPU NVIDIA và AMD",
+      "Cập nhật rất thường xuyên (phiên bản v18.21 tháng 10/2026)"
+    ],
+    "consVi": [
+      "Giấy phép WanGP Community License 2.0 cấm bán lại, white-label, nhúng vào sản phẩm trả phí hoặc cung cấp API/SaaS trả phí nếu không có giấy phép thương mại riêng",
+      "Khi bán trực tiếp sản phẩm đầu ra cần ghi công WanGP; mô hình và trọng số bên thứ ba giữ giấy phép riêng",
+      "Cài đặt thủ công cần chọn đúng phiên bản PyTorch, Triton, SageAttention theo GPU"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/deepbeepmeep/Wan2GP.git": "README.md:395",
+      "conda create -n wan2gp python=3.11.14": "README.md:397",
+      "conda activate wan2gp": "README.md:398",
+      "pip install torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cu130": "README.md:399",
+      "pip install -r requirements.txt": "README.md:400",
+      "python wgp.py": "README.md:429",
+      "python wgp.py --process my_queue.zip": "README.md:496"
+    },
+    "meta": {
+      "id": "deepbeepmeep-wan2gp",
+      "nameVi": "WanGP — Ứng dụng tạo video, ảnh, âm thanh bằng mô hình mở cho GPU ít VRAM",
+      "icon": "Sparkles",
+      "categories": [
+        "generative_ai_multimedia",
+        "speech_voice"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Giấy phép cộng đồng WanGP 2.0 (miễn phí dùng cục bộ, hạn chế thương mại hóa phần mềm)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "python wgp.py"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "modelscope/DiffSynth-Studio",
+    "license": "Apache License 2.0",
+    "authorName": "ModelScope Community",
+    "websiteUrl": "https://diffsynth-studio-doc.readthedocs.io/en/latest/README.html",
+    "toolType": "sdk",
+    "taglineEn": "DiffSynth-Studio is an open-source Diffusion model engine developed and maintained by the ModelScope Community team.",
+    "summaryVi": "DiffSynth-Studio là engine mã nguồn mở cho mô hình Diffusion do cộng đồng ModelScope phát triển, tích hợp các mô hình tạo ảnh (FLUX, Qwen-Image, Z-Image...), tạo video (Wan, LTX-2...) và tạo âm thanh. Framework thiết kế lại pipeline suy luận và huấn luyện, có quản lý VRAM, lượng tử hóa và huấn luyện LoRA.",
+    "purposeVi": "Cung cấp thư viện Python thống nhất để suy luận và huấn luyện (toàn phần hoặc LoRA) nhiều mô hình Diffusion trên GPU phổ thông.",
+    "featuresVi": [
+      "Hỗ trợ nhiều mô hình: ảnh (FLUX, Qwen-Image, Z-Image, Stable Diffusion...), video (Wan, LTX-2...), âm thanh (ACE-Step...)",
+      "Quản lý VRAM: điều phối tham số giữa ổ đĩa, RAM và VRAM để chạy mô hình lớn trên GPU ít VRAM",
+      "Lượng tử hóa: NF4, INT8 để giảm VRAM khi suy luận và huấn luyện LoRA",
+      "Huấn luyện tùy ý: huấn luyện toàn phần, LoRA hoặc Adapter cho hầu hết mô hình hỗ trợ",
+      "Split Training: chia quá trình huấn luyện thành hai giai đoạn để tăng hiệu quả",
+      "Ví dụ sẵn có: mã suy luận, suy luận VRAM thấp và huấn luyện cho từng mô hình trong thư mục examples/"
+    ],
+    "requirementsVi": "Python và PyTorch; GPU NVIDIA (có hướng dẫn riêng cho GPU AMD và NPU); mô hình tải từ ModelScope (mặc định) hoặc Hugging Face.",
+    "installStepsVi": [
+      "Tải mã nguồn (khuyến nghị): `git clone https://github.com/modelscope/DiffSynth-Studio.git`",
+      "Vào thư mục DiffSynth-Studio và cài đặt: `pip install -e .`",
+      "Hoặc cài đặt từ PyPI: `pip install diffsynth`",
+      "Người dùng ngoài Trung Quốc có thể đặt nguồn tải: `export MODELSCOPE_ENDPOINT=https://modelscope.ai`"
+    ],
+    "cliCommand": "pip install diffsynth",
+    "usageStepsVi": [
+      "Chọn mô hình trong bảng Supported Models và mở mã ví dụ tương ứng trong thư mục examples/",
+      "Tạo pipeline bằng from_pretrained với các ModelConfig (ví dụ ZImagePipeline cho Z-Image-Turbo) rồi gọi pipe(prompt=...)",
+      "Dùng bản ví dụ model_inference_low_vram khi GPU ít VRAM",
+      "Dùng script trong model_training để huấn luyện toàn phần hoặc LoRA"
+    ],
+    "samplePromptsVi": [
+      "Viết mã Python dùng DiffSynth-Studio tạo ảnh bằng Z-Image-Turbo",
+      "Hướng dẫn huấn luyện LoRA cho Qwen-Image bằng DiffSynth-Studio trên GPU 24 GB",
+      "Cách cấu hình DiffSynth-Studio tải mô hình từ Hugging Face thay vì ModelScope"
+    ],
+    "prosVi": [
+      "Giấy phép Apache-2.0, cập nhật rất tích cực (commit tháng 10/2026)",
+      "Một framework cho cả suy luận và huấn luyện nhiều mô hình ảnh, video, âm thanh",
+      "Có tài liệu tiếng Anh và tiếng Trung"
+    ],
+    "consVi": [
+      "README cho biết nhân lực phát triển hạn chế nên tốc độ phát triển tính năng mới và phản hồi issue có thể chậm",
+      "Phiên bản lớn mới bỏ một số tính năng cũ, cần chuyển về phiên bản lịch sử nếu muốn dùng",
+      "Mỗi mô hình tích hợp có giấy phép trọng số riêng"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/modelscope/DiffSynth-Studio.git": "README.md:300",
+      "pip install -e .": "README.md:302",
+      "pip install diffsynth": "docs/en/Pipeline_Usage/Setup.md:14",
+      "export MODELSCOPE_ENDPOINT=https://modelscope.ai": "README.md:315"
+    },
+    "meta": {
+      "id": "modelscope-diffsynth-studio",
+      "nameVi": "DiffSynth-Studio — Engine suy luận và huấn luyện mô hình Diffusion tạo ảnh, video, âm thanh",
+      "icon": "Code2",
+      "categories": [
+        "generative_ai_multimedia"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Trung"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install diffsynth"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "Tencent-Hunyuan/HunyuanImage-2.1",
+    "license": "Tencent Hunyuan Community License Agreement (HunyuanImage 2.1)",
+    "authorName": "Tencent Hunyuan",
+    "websiteUrl": "https://huggingface.co/tencent/HunyuanImage-2.1",
+    "toolType": "model",
+    "taglineEn": "HunyuanImage-2.1: An Efficient Diffusion Model for High-Resolution (2K) Text-to-Image Generation",
+    "summaryVi": "HunyuanImage-2.1 là mô hình tạo ảnh từ văn bản 17B của Tencent, tạo ảnh độ phân giải 2K (2048 × 2048). Kiến trúc hai giai đoạn gồm mô hình tạo ảnh cơ sở dùng hai bộ mã hóa văn bản (MLLM và bộ mã hóa nhận biết ký tự) và mô hình refiner nâng chất lượng ảnh. Repo chứa định nghĩa mô hình PyTorch, trọng số và mã suy luận.",
+    "purposeVi": "Giúp nhà phát triển tự chạy mô hình tạo ảnh 2K chất lượng cao, hiển thị chữ tốt, hỗ trợ prompt tiếng Trung và tiếng Anh trên GPU của mình.",
+    "featuresVi": [
+      "Ảnh 2K: tạo ảnh độ phân giải cao (2048x2048, 2560x1536...) với bố cục điện ảnh",
+      "Đa ngôn ngữ: hỗ trợ sẵn prompt tiếng Trung và tiếng Anh",
+      "Hiển thị chữ: dùng ByT5 để vẽ chữ trong ảnh chính xác hơn",
+      "Nhiều tỉ lệ khung hình: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3",
+      "Mô hình chưng cất: bản distilled chạy 8 bước để suy luận nhanh",
+      "Tăng cường prompt và refiner: tự viết lại prompt và tinh chỉnh ảnh đầu ra"
+    ],
+    "requirementsVi": "Linux, GPU NVIDIA có CUDA với tối thiểu 24 GB VRAM để tạo ảnh 2048x2048 (khi bật CPU offload và lượng tử hóa FP8); flash-attn 2.7.3.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/Tencent-Hunyuan/HunyuanImage-2.1.git`",
+      "Cài đặt thư viện: `pip install -r requirements.txt`",
+      "Cài đặt flash attention: `pip install flash-attn==2.7.3 --no-build-isolation`",
+      "Tải trọng số mô hình: `hf download tencent/HunyuanImage-2.1 --local-dir ./ckpts`",
+      "Tải các bộ mã hóa văn bản theo hướng dẫn trong ckpts/checkpoints-download.md: `hf download Qwen/Qwen2.5-VL-7B-Instruct --local-dir ./ckpts/text_encoder/llm` và `hf download google/byt5-small --local-dir ./ckpts/text_encoder/byt5-small`"
+    ],
+    "cliCommand": "hf download tencent/HunyuanImage-2.1 --local-dir ./ckpts",
+    "usageStepsVi": [
+      "Tạo pipeline bằng HunyuanImagePipeline.from_pretrained(model_name=\"hunyuanimage-v2.1\", use_fp8=True) và chuyển sang cuda",
+      "Gọi pipe(prompt=..., width=2048, height=2048, use_refiner=True, num_inference_steps=50) rồi lưu ảnh",
+      "Dùng bản hunyuanimage-v2.1-distilled với 8 bước để tạo nhanh hơn",
+      "Chỉ tạo ảnh 2K; ảnh 1K sẽ bị lỗi hình"
+    ],
+    "samplePromptsVi": [
+      "Viết mã Python dùng HunyuanImage-2.1 tạo poster 16:9 có dòng chữ tiêu đề rõ nét",
+      "Hướng dẫn chạy HunyuanImage-2.1 bản distilled trên GPU 24 GB với FP8",
+      "Giải thích các điều kiện của Tencent Hunyuan Community License khi dùng HunyuanImage-2.1 cho sản phẩm"
+    ],
+    "prosVi": [
+      "Mô hình mở tạo ảnh 2K, README cho biết đạt Top1 bảng xếp hạng Arena cho mô hình text-to-image mã nguồn mở (09/2025)",
+      "Có bản FP8 và bản chưng cất 8 bước",
+      "Hỗ trợ prompt tiếng Trung và tiếng Anh, hiển thị chữ tốt"
+    ],
+    "consVi": [
+      "Giấy phép Tencent Hunyuan Community License không áp dụng tại EU, Vương quốc Anh và Hàn Quốc; dịch vụ trên 100 triệu người dùng hoạt động hằng tháng phải xin giấy phép riêng",
+      "Chỉ hỗ trợ Linux và GPU NVIDIA tối thiểu 24 GB VRAM",
+      "Chỉ tạo tốt ở độ phân giải 2K; lần cập nhật gần nhất tháng 10/2025"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/Tencent-Hunyuan/HunyuanImage-2.1.git": "README.md:89",
+      "pip install -r requirements.txt": "README.md:95",
+      "pip install flash-attn==2.7.3 --no-build-isolation": "README.md:96",
+      "hf download tencent/HunyuanImage-2.1 --local-dir ./ckpts": "ckpts/checkpoints-download.md:14",
+      "hf download Qwen/Qwen2.5-VL-7B-Instruct --local-dir ./ckpts/text_encoder/llm": "ckpts/checkpoints-download.md:27",
+      "hf download google/byt5-small --local-dir ./ckpts/text_encoder/byt5-small": "ckpts/checkpoints-download.md:35"
+    },
+    "meta": {
+      "id": "tencent-hunyuan-hunyuanimage-2-1",
+      "nameVi": "HunyuanImage-2.1 — Mô hình 17B tạo ảnh 2K từ văn bản của Tencent",
+      "icon": "Sparkles",
+      "categories": [
+        "generative_ai_multimedia"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Giấy phép cộng đồng Tencent Hunyuan (giới hạn lãnh thổ, trên 100 triệu MAU cần xin phép)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Trung"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "hf download tencent/HunyuanImage-2.1 --local-dir ./ckpts"
+        }
+      ]
+    }
+  }
+]
