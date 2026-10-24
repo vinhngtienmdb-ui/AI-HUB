@@ -164831,5 +164831,1295 @@
       "guideIsTemplate": false,
       "starsVerified": false
     }
+  },
+  {
+    "id": "ssi-securities-inc-ssi-sdk-python",
+    "slug": "ssi-securities-inc-ssi-sdk-python",
+    "name": "SSI Python SDK — Thư viện Python chính thức kết nối API chứng khoán SSI",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "investment_securities",
+    "categoryNameVi": "Đầu tư, Chứng khoán & FinTech",
+    "categories": [
+      "investment_securities",
+      "fintech_banking"
+    ],
+    "categoryNamesVi": [
+      "Đầu tư, Chứng khoán & FinTech",
+      "Công nghệ tài chính & Ngân hàng"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/SSI-Securities-Inc/ssi-sdk-python",
+    "websiteUrl": "https://developers.ssi.com.vn",
+    "authorName": "SSI Securities Inc.",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "SDK Python chính thức của Chứng khoán SSI cho nền tảng FastConnect, hỗ trợ REST API và WebSocket streaming ở cả chế độ đồng bộ lẫn bất đồng bộ. Thư viện gồm bốn client chuyên biệt: Auth, Data, Trading và Stream để lấy dữ liệu thị trường, quản lý danh mục và đặt lệnh.",
+    "purposeVi": "Giúp lập trình viên Việt Nam xây dựng công cụ phân tích dữ liệu chứng khoán HOSE/HNX/UPCoM hoặc hệ thống giao dịch tự động bằng Python thông qua API chính thức của SSI.",
+    "featuresVi": [
+      "Xác thực: quản lý token, OTP/Smart OTP và tự làm mới token",
+      "Dữ liệu thị trường: nến OHLC trong ngày và lịch sử, chỉ số, thông tin và tổng hợp chứng khoán, giá trần/sàn/tham chiếu, sự kiện quyền",
+      "Giao dịch: đặt/sửa/hủy lệnh, sức mua/bán, thông tin tài khoản",
+      "Danh mục đầu tư: số dư, vị thế, sổ lệnh",
+      "Streaming realtime qua WebSocket với tự kết nối lại",
+      "Cấu hình retry, timeout và giới hạn request/giây",
+      "Hỗ trợ cả client đồng bộ và bất đồng bộ (async, khuyến nghị)"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10 trở lên; tài khoản SSI và bộ thông tin xác thực FastConnect (client_id, api_key, api_secret, private_key).\nBước 1: Cài đặt gói từ PyPI: `pip install ssi-sdk`\nBước 2: Tạo đối tượng `Config` với client_id, api_key, api_secret, private_key theo hướng dẫn trong README",
+    "usageGuideVi": "Bước 1: Khởi tạo `Auth`/`AsyncAuth` và gọi `authenticate()` (dữ liệu thị trường không cần OTP)\nBước 2: Dùng `Data` để lấy dữ liệu nến, ví dụ `data.market_data.get_ohlc_1minute(\"SSI\")`\nBước 3: Dùng `Trading` cho tài khoản, danh mục và đặt lệnh (cần OTP)\nBước 4: Dùng `Stream` để subscribe dữ liệu realtime qua WebSocket",
+    "samplePromptsVi": [
+      "Viết script Python dùng ssi-sdk lấy nến ngày của mã FPT trong 3 tháng gần nhất và lưu ra CSV.",
+      "Dùng ssi-sdk lấy giá trần/sàn/tham chiếu của tất cả mã hôm nay.",
+      "Viết ví dụ async subscribe dữ liệu khớp lệnh realtime của mã SSI."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install ssi-sdk",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install ssi-sdk\"\n  ],\n  \"nguon\": \"https://github.com/SSI-Securities-Inc/ssi-sdk-python\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Do SSI (Công ty Chứng khoán SSI) phát hành và bảo trì chính thức",
+      "Tài liệu README bằng tiếng Việt, đầy đủ ví dụ",
+      "Giấy phép MIT",
+      "Hỗ trợ async/sync, retry và rate limit tích hợp"
+    ],
+    "consVi": [
+      "Cần tài khoản SSI và thông tin xác thực FastConnect (client_id, api_key, api_secret, private_key)",
+      "Giao dịch và streaming yêu cầu OTP",
+      "Yêu cầu Python 3.10+"
+    ],
+    "languages": [
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# SSI Python SDK — Thư viện Python chính thức kết nối API chứng khoán SSI\n\n> Python SDK cho nền tảng giao dịch chứng khoán SSI. Hỗ trợ REST API và WebSocket streaming, cả đồng bộ (sync) và bất đồng bộ (async).\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSDK Python chính thức của Chứng khoán SSI cho nền tảng FastConnect, hỗ trợ REST API và WebSocket streaming ở cả chế độ đồng bộ lẫn bất đồng bộ. Thư viện gồm bốn client chuyên biệt: Auth, Data, Trading và Stream để lấy dữ liệu thị trường, quản lý danh mục và đặt lệnh.\n\nGiúp lập trình viên Việt Nam xây dựng công cụ phân tích dữ liệu chứng khoán HOSE/HNX/UPCoM hoặc hệ thống giao dịch tự động bằng Python thông qua API chính thức của SSI.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Đầu tư, Chứng khoán & FinTech\n- **Tác giả / Nhà phát triển:** SSI Securities Inc.\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/SSI-Securities-Inc/ssi-sdk-python](https://github.com/SSI-Securities-Inc/ssi-sdk-python)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Xác thực: quản lý token, OTP/Smart OTP và tự làm mới token**\n- **Dữ liệu thị trường: nến OHLC trong ngày và lịch sử, chỉ số, thông tin và tổng hợp chứng khoán, giá trần/sàn/tham chiếu, sự kiện quyền**\n- **Giao dịch: đặt/sửa/hủy lệnh, sức mua/bán, thông tin tài khoản**\n- **Danh mục đầu tư: số dư, vị thế, sổ lệnh**\n- **Streaming realtime qua WebSocket với tự kết nối lại**\n- **Cấu hình retry, timeout và giới hạn request/giây**\n- **Hỗ trợ cả client đồng bộ và bất đồng bộ (async, khuyến nghị)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install ssi-sdk\n```\n\nYêu cầu: Python 3.10 trở lên; tài khoản SSI và bộ thông tin xác thực FastConnect (client_id, api_key, api_secret, private_key).\nBước 1: Cài đặt gói từ PyPI: `pip install ssi-sdk`\nBước 2: Tạo đối tượng `Config` với client_id, api_key, api_secret, private_key theo hướng dẫn trong README\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi tạo `Auth`/`AsyncAuth` và gọi `authenticate()` (dữ liệu thị trường không cần OTP)\nBước 2: Dùng `Data` để lấy dữ liệu nến, ví dụ `data.market_data.get_ohlc_1minute(\"SSI\")`\nBước 3: Dùng `Trading` cho tài khoản, danh mục và đặt lệnh (cần OTP)\nBước 4: Dùng `Stream` để subscribe dữ liệu realtime qua WebSocket\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết script Python dùng ssi-sdk lấy nến ngày của mã FPT trong 3 tháng gần nhất và lưu ra CSV.\"\n- \"Dùng ssi-sdk lấy giá trần/sàn/tham chiếu của tất cả mã hôm nay.\"\n- \"Viết ví dụ async subscribe dữ liệu khớp lệnh realtime của mã SSI.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:13:05.951Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "ssi-securities-inc-ssi-sdk-node",
+    "slug": "ssi-securities-inc-ssi-sdk-node",
+    "name": "SSI Node.js SDK — Thư viện TypeScript chính thức kết nối API chứng khoán SSI",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "investment_securities",
+    "categoryNameVi": "Đầu tư, Chứng khoán & FinTech",
+    "categories": [
+      "investment_securities",
+      "fintech_banking"
+    ],
+    "categoryNamesVi": [
+      "Đầu tư, Chứng khoán & FinTech",
+      "Công nghệ tài chính & Ngân hàng"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/SSI-Securities-Inc/ssi-sdk-node",
+    "websiteUrl": "https://developers.ssi.com.vn",
+    "authorName": "SSI Securities Inc.",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "SDK Node.js/TypeScript chính thức của Chứng khoán SSI, phát hành trên npm với tên `@ssi.developer/ssi-sdk`. Thư viện cung cấp các client xác thực, dữ liệu thị trường, giao dịch, danh mục và streaming realtime, kèm Trading WebSocket để đặt lệnh.",
+    "purposeVi": "Giúp lập trình viên JavaScript/TypeScript tích hợp dữ liệu chứng khoán Việt Nam và chức năng giao dịch SSI vào ứng dụng web, bot hoặc dịch vụ backend.",
+    "featuresVi": [
+      "Xác thực: quản lý token, OTP/Smart OTP và tự làm mới token",
+      "Dữ liệu thị trường: nến OHLC trong ngày và lịch sử, chỉ số, thông tin và tổng hợp chứng khoán, giá trần/sàn/tham chiếu, sự kiện quyền",
+      "Giao dịch: đặt/sửa/hủy lệnh, sức mua/bán, thông tin tài khoản",
+      "Danh mục đầu tư: số dư, vị thế, sổ lệnh",
+      "Streaming realtime qua WebSocket với tự kết nối lại",
+      "Cấu hình retry, timeout và giới hạn request/giây",
+      "Trading WebSocket để đặt lệnh, hỗ trợ đặt/hủy lệnh theo lô (batch)",
+      "Hỗ trợ proxy HTTP"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js 18 trở lên; tài khoản SSI và bộ thông tin xác thực FastConnect (clientId, apiKey, apiSecret, privateKey).\nBước 1: Cài đặt gói từ npm: `npm install @ssi.developer/ssi-sdk`\nBước 2: Hoặc cài đặt bằng yarn: `yarn add @ssi.developer/ssi-sdk`\nBước 3: Tạo đối tượng `Config` với clientId, apiKey, apiSecret, privateKey theo hướng dẫn trong README",
+    "usageGuideVi": "Bước 1: Khởi tạo client `Auth` và xác thực (giao dịch/streaming cần OTP)\nBước 2: Dùng client dữ liệu để lấy nến OHLC, chỉ số, thông tin chứng khoán\nBước 3: Dùng client giao dịch để quản lý tài khoản, danh mục và đặt lệnh\nBước 4: Dùng streaming để nhận dữ liệu realtime qua WebSocket",
+    "samplePromptsVi": [
+      "Viết đoạn TypeScript dùng @ssi.developer/ssi-sdk lấy danh sách chỉ số trên sàn HOSE.",
+      "Tạo service Node.js subscribe dữ liệu realtime của các mã VN30 bằng SSI SDK.",
+      "Hướng dẫn cấu hình retry và rate limit cho SSI Node.js SDK."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm install @ssi.developer/ssi-sdk",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm install @ssi.developer/ssi-sdk\"\n  ],\n  \"nguon\": \"https://github.com/SSI-Securities-Inc/ssi-sdk-node\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Do SSI (Công ty Chứng khoán SSI) phát hành và bảo trì chính thức",
+      "Tài liệu README bằng tiếng Việt, đầy đủ ví dụ",
+      "Giấy phép MIT",
+      "Hỗ trợ TypeScript"
+    ],
+    "consVi": [
+      "Cần tài khoản SSI và thông tin xác thực FastConnect (client_id, api_key, api_secret, private_key)",
+      "Giao dịch và streaming yêu cầu OTP",
+      "Proxy không áp dụng cho kết nối WebSocket (theo README)"
+    ],
+    "languages": [
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# SSI Node.js SDK — Thư viện TypeScript chính thức kết nối API chứng khoán SSI\n\n> Node.js/TypeScript SDK cho nền tảng giao dịch chứng khoán SSI. Hỗ trợ REST API và WebSocket streaming.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSDK Node.js/TypeScript chính thức của Chứng khoán SSI, phát hành trên npm với tên `@ssi.developer/ssi-sdk`. Thư viện cung cấp các client xác thực, dữ liệu thị trường, giao dịch, danh mục và streaming realtime, kèm Trading WebSocket để đặt lệnh.\n\nGiúp lập trình viên JavaScript/TypeScript tích hợp dữ liệu chứng khoán Việt Nam và chức năng giao dịch SSI vào ứng dụng web, bot hoặc dịch vụ backend.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Đầu tư, Chứng khoán & FinTech\n- **Tác giả / Nhà phát triển:** SSI Securities Inc.\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/SSI-Securities-Inc/ssi-sdk-node](https://github.com/SSI-Securities-Inc/ssi-sdk-node)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Xác thực: quản lý token, OTP/Smart OTP và tự làm mới token**\n- **Dữ liệu thị trường: nến OHLC trong ngày và lịch sử, chỉ số, thông tin và tổng hợp chứng khoán, giá trần/sàn/tham chiếu, sự kiện quyền**\n- **Giao dịch: đặt/sửa/hủy lệnh, sức mua/bán, thông tin tài khoản**\n- **Danh mục đầu tư: số dư, vị thế, sổ lệnh**\n- **Streaming realtime qua WebSocket với tự kết nối lại**\n- **Cấu hình retry, timeout và giới hạn request/giây**\n- **Trading WebSocket để đặt lệnh, hỗ trợ đặt/hủy lệnh theo lô (batch)**\n- **Hỗ trợ proxy HTTP**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm install @ssi.developer/ssi-sdk\n```\n\nYêu cầu: Node.js 18 trở lên; tài khoản SSI và bộ thông tin xác thực FastConnect (clientId, apiKey, apiSecret, privateKey).\nBước 1: Cài đặt gói từ npm: `npm install @ssi.developer/ssi-sdk`\nBước 2: Hoặc cài đặt bằng yarn: `yarn add @ssi.developer/ssi-sdk`\nBước 3: Tạo đối tượng `Config` với clientId, apiKey, apiSecret, privateKey theo hướng dẫn trong README\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi tạo client `Auth` và xác thực (giao dịch/streaming cần OTP)\nBước 2: Dùng client dữ liệu để lấy nến OHLC, chỉ số, thông tin chứng khoán\nBước 3: Dùng client giao dịch để quản lý tài khoản, danh mục và đặt lệnh\nBước 4: Dùng streaming để nhận dữ liệu realtime qua WebSocket\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết đoạn TypeScript dùng @ssi.developer/ssi-sdk lấy danh sách chỉ số trên sàn HOSE.\"\n- \"Tạo service Node.js subscribe dữ liệu realtime của các mã VN30 bằng SSI SDK.\"\n- \"Hướng dẫn cấu hình retry và rate limit cho SSI Node.js SDK.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:13:05.951Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "ssi-securities-inc-ssi-sdk-dotnet",
+    "slug": "ssi-securities-inc-ssi-sdk-dotnet",
+    "name": "SSI .NET SDK — Thư viện C# chính thức kết nối API chứng khoán SSI FastConnect",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "investment_securities",
+    "categoryNameVi": "Đầu tư, Chứng khoán & FinTech",
+    "categories": [
+      "investment_securities",
+      "fintech_banking"
+    ],
+    "categoryNamesVi": [
+      "Đầu tư, Chứng khoán & FinTech",
+      "Công nghệ tài chính & Ngân hàng"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/SSI-Securities-Inc/ssi-sdk-dotnet",
+    "websiteUrl": "https://developers.ssi.com.vn/docs/sdk/csharp/overview",
+    "authorName": "SSI Securities Inc.",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "SDK .NET chính thức của Chứng khoán SSI cho nền tảng FastConnect, phát hành trên NuGet với tên `SSIDeveloper.FastConnect.Sdk`. Thư viện hỗ trợ REST API và WebSocket streaming bất đồng bộ cho dữ liệu thị trường, danh mục và giao dịch.",
+    "purposeVi": "Giúp lập trình viên C#/.NET xây dựng ứng dụng phân tích dữ liệu và giao dịch chứng khoán Việt Nam trên nền tảng SSI FastConnect.",
+    "featuresVi": [
+      "Xác thực: quản lý token, OTP/Smart OTP và tự làm mới token",
+      "Dữ liệu thị trường: nến OHLC trong ngày và lịch sử, chỉ số, thông tin và tổng hợp chứng khoán, giá trần/sàn/tham chiếu, sự kiện quyền",
+      "Giao dịch: đặt/sửa/hủy lệnh, sức mua/bán, thông tin tài khoản",
+      "Danh mục đầu tư: số dư, vị thế, sổ lệnh",
+      "Streaming realtime qua WebSocket với tự kết nối lại",
+      "Cấu hình retry, timeout và giới hạn request/giây",
+      "Trading WebSocket để đặt lệnh",
+      "Lập trình bất đồng bộ (async) hiệu năng cao"
+    ],
+    "installGuideVi": "Yêu cầu: .NET 8.0 trở lên; tài khoản SSI và bộ thông tin xác thực FastConnect (ClientId, ApiKey, ApiSecret, PrivateKey).\nBước 1: Cài đặt gói qua dotnet CLI: `dotnet add package SSIDeveloper.FastConnect.Sdk`\nBước 2: Hoặc cài đặt qua Package Manager Console: `Install-Package SSIDeveloper.FastConnect.Sdk`\nBước 3: Khởi tạo đối tượng `Config` với ClientId, ApiKey, ApiSecret, PrivateKey theo hướng dẫn trong README",
+    "usageGuideVi": "Bước 1: Khởi tạo client xác thực và đăng nhập (giao dịch/streaming cần OTP)\nBước 2: Gọi các dịch vụ dữ liệu thị trường, tài khoản, danh mục, giao dịch\nBước 3: Kết nối WebSocket để nhận dữ liệu realtime hoặc đặt lệnh",
+    "samplePromptsVi": [
+      "Viết ví dụ C# dùng SSIDeveloper.FastConnect.Sdk lấy nến ngày của mã VNM.",
+      "Tạo worker .NET nhận dữ liệu realtime nhóm VN30 qua SSI SDK.",
+      "Giải thích các thay đổi lớn ở phiên bản 3.3.0 của SSI .NET SDK."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "dotnet add package SSIDeveloper.FastConnect.Sdk",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"dotnet add package SSIDeveloper.FastConnect.Sdk\"\n  ],\n  \"nguon\": \"https://github.com/SSI-Securities-Inc/ssi-sdk-dotnet\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Do SSI (Công ty Chứng khoán SSI) phát hành và bảo trì chính thức",
+      "Tài liệu README bằng tiếng Việt, đầy đủ ví dụ",
+      "Giấy phép MIT",
+      "Phát hành qua NuGet"
+    ],
+    "consVi": [
+      "Cần tài khoản SSI và thông tin xác thực FastConnect (client_id, api_key, api_secret, private_key)",
+      "Giao dịch và streaming yêu cầu OTP",
+      "Yêu cầu .NET 8.0+"
+    ],
+    "languages": [
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# SSI .NET SDK — Thư viện C# chính thức kết nối API chứng khoán SSI FastConnect\n\n> .NET SDK cho nền tảng giao dịch chứng khoán SSI FastConnect. Hỗ trợ đầy đủ REST API và WebSocket streaming bất đồng bộ (async) với hiệu năng cao.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSDK .NET chính thức của Chứng khoán SSI cho nền tảng FastConnect, phát hành trên NuGet với tên `SSIDeveloper.FastConnect.Sdk`. Thư viện hỗ trợ REST API và WebSocket streaming bất đồng bộ cho dữ liệu thị trường, danh mục và giao dịch.\n\nGiúp lập trình viên C#/.NET xây dựng ứng dụng phân tích dữ liệu và giao dịch chứng khoán Việt Nam trên nền tảng SSI FastConnect.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Đầu tư, Chứng khoán & FinTech\n- **Tác giả / Nhà phát triển:** SSI Securities Inc.\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/SSI-Securities-Inc/ssi-sdk-dotnet](https://github.com/SSI-Securities-Inc/ssi-sdk-dotnet)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Xác thực: quản lý token, OTP/Smart OTP và tự làm mới token**\n- **Dữ liệu thị trường: nến OHLC trong ngày và lịch sử, chỉ số, thông tin và tổng hợp chứng khoán, giá trần/sàn/tham chiếu, sự kiện quyền**\n- **Giao dịch: đặt/sửa/hủy lệnh, sức mua/bán, thông tin tài khoản**\n- **Danh mục đầu tư: số dư, vị thế, sổ lệnh**\n- **Streaming realtime qua WebSocket với tự kết nối lại**\n- **Cấu hình retry, timeout và giới hạn request/giây**\n- **Trading WebSocket để đặt lệnh**\n- **Lập trình bất đồng bộ (async) hiệu năng cao**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndotnet add package SSIDeveloper.FastConnect.Sdk\n```\n\nYêu cầu: .NET 8.0 trở lên; tài khoản SSI và bộ thông tin xác thực FastConnect (ClientId, ApiKey, ApiSecret, PrivateKey).\nBước 1: Cài đặt gói qua dotnet CLI: `dotnet add package SSIDeveloper.FastConnect.Sdk`\nBước 2: Hoặc cài đặt qua Package Manager Console: `Install-Package SSIDeveloper.FastConnect.Sdk`\nBước 3: Khởi tạo đối tượng `Config` với ClientId, ApiKey, ApiSecret, PrivateKey theo hướng dẫn trong README\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi tạo client xác thực và đăng nhập (giao dịch/streaming cần OTP)\nBước 2: Gọi các dịch vụ dữ liệu thị trường, tài khoản, danh mục, giao dịch\nBước 3: Kết nối WebSocket để nhận dữ liệu realtime hoặc đặt lệnh\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết ví dụ C# dùng SSIDeveloper.FastConnect.Sdk lấy nến ngày của mã VNM.\"\n- \"Tạo worker .NET nhận dữ liệu realtime nhóm VN30 qua SSI SDK.\"\n- \"Giải thích các thay đổi lớn ở phiên bản 3.3.0 của SSI .NET SDK.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:13:05.951Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "vietnh-vnstock-mcp-server",
+    "slug": "vietnh-vnstock-mcp-server",
+    "name": "Vnstock MCP Server (NPX) — Dữ liệu chứng khoán Việt Nam cho Claude Desktop",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "investment_securities",
+    "categoryNameVi": "Đầu tư, Chứng khoán & FinTech",
+    "categories": [
+      "investment_securities",
+      "fintech_banking"
+    ],
+    "categoryNamesVi": [
+      "Đầu tư, Chứng khoán & FinTech",
+      "Công nghệ tài chính & Ngân hàng"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "claude_desktop"
+    ],
+    "sourceUrl": "https://github.com/vietnh/vnstock-mcp-server",
+    "websiteUrl": "",
+    "authorName": "Viet Nguyen",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "MCP server chạy qua NPX, dùng thư viện vnstock để cung cấp dữ liệu chứng khoán Việt Nam cho Claude Desktop. Máy chủ có 8 công cụ: giá hiện tại, lịch sử giá, tổng quan doanh nghiệp, báo cáo tài chính, chỉ số thị trường, danh sách công ty niêm yết, giao dịch khối ngoại và tìm kiếm mã.",
+    "purposeVi": "Giúp người dùng tra cứu giá, báo cáo tài chính và chỉ số VNINDEX/VN30/HNX30/UPCoM bằng ngôn ngữ tự nhiên trong Claude Desktop.",
+    "featuresVi": [
+      "Giá cổ phiếu hiện tại kèm OHLC và khối lượng",
+      "Dữ liệu lịch sử theo ngày/tuần/tháng (1D, 1W, 1M)",
+      "Tổng quan doanh nghiệp và chỉ số tài chính",
+      "Báo cáo tài chính: bảng cân đối, kết quả kinh doanh, lưu chuyển tiền tệ theo quý/năm",
+      "Theo dõi chỉ số VNINDEX, HNX30, VN30, UPCOM",
+      "Danh sách công ty theo sàn HOSE/HNX/UPCOM, dữ liệu khối ngoại và tìm kiếm mã"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js 14 trở lên, Python 3.8 trở lên, Claude Desktop và kết nối Internet.\nBước 1: Chạy trực tiếp bằng NPX: `npx vnstock-mcp-server`\nBước 2: Kiểm tra yêu cầu hệ thống: `npx vnstock-mcp-server --test`\nBước 3: Cài đặt thư viện Python phụ thuộc nếu cần: `npx vnstock-mcp-server --install-deps`\nBước 4: Hoặc cài đặt toàn cục: `npm install -g vnstock-mcp-server`\nBước 5: Thêm cấu hình mcpServers vào claude_desktop_config.json (xem jsonConfig)",
+    "usageGuideVi": "Bước 1: Khởi động lại Claude Desktop sau khi cấu hình\nBước 2: Hỏi giá, lịch sử giá, báo cáo tài chính hoặc chỉ số bằng ngôn ngữ tự nhiên\nBước 3: Nếu máy chủ báo offline, chạy lệnh `--test` để kiểm tra",
+    "samplePromptsVi": [
+      "Giá hiện tại của cổ phiếu VIC là bao nhiêu?",
+      "Lấy dữ liệu lịch sử 30 ngày của TCB.",
+      "Liệt kê các ngân hàng niêm yết trên HOSE."
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "npx vnstock-mcp-server",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"vnstock\": {\n      \"command\": \"npx\",\n      \"args\": [\"vnstock-mcp-server\"]\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT",
+      "Chạy nhanh bằng NPX, không cần cài đặt cục bộ",
+      "Không yêu cầu khóa API trong README"
+    ],
+    "consVi": [
+      "Cần cả Node.js và Python",
+      "Phụ thuộc thư viện vnstock (dự án độc lập, giấy phép riêng)",
+      "Commit gần nhất tháng 6/2025; README chỉ ghi cấu hình cho Claude Desktop",
+      "Chỉ dành cho mục đích nghiên cứu, giáo dục (theo phần tuyên bố miễn trừ)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Vnstock MCP Server (NPX) — Dữ liệu chứng khoán Việt Nam cho Claude Desktop\n\n> A comprehensive Model Context Protocol (MCP) server that provides seamless access to Vietnamese stock market data through the vnstock library.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server chạy qua NPX, dùng thư viện vnstock để cung cấp dữ liệu chứng khoán Việt Nam cho Claude Desktop. Máy chủ có 8 công cụ: giá hiện tại, lịch sử giá, tổng quan doanh nghiệp, báo cáo tài chính, chỉ số thị trường, danh sách công ty niêm yết, giao dịch khối ngoại và tìm kiếm mã.\n\nGiúp người dùng tra cứu giá, báo cáo tài chính và chỉ số VNINDEX/VN30/HNX30/UPCoM bằng ngôn ngữ tự nhiên trong Claude Desktop.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Đầu tư, Chứng khoán & FinTech\n- **Tác giả / Nhà phát triển:** Viet Nguyen\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_desktop`\n- **Kho lưu trữ chính thức:** [https://github.com/vietnh/vnstock-mcp-server](https://github.com/vietnh/vnstock-mcp-server)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Giá cổ phiếu hiện tại kèm OHLC và khối lượng**\n- **Dữ liệu lịch sử theo ngày/tuần/tháng (1D, 1W, 1M)**\n- **Tổng quan doanh nghiệp và chỉ số tài chính**\n- **Báo cáo tài chính: bảng cân đối, kết quả kinh doanh, lưu chuyển tiền tệ theo quý/năm**\n- **Theo dõi chỉ số VNINDEX, HNX30, VN30, UPCOM**\n- **Danh sách công ty theo sàn HOSE/HNX/UPCOM, dữ liệu khối ngoại và tìm kiếm mã**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx vnstock-mcp-server\n```\n\nYêu cầu: Node.js 14 trở lên, Python 3.8 trở lên, Claude Desktop và kết nối Internet.\nBước 1: Chạy trực tiếp bằng NPX: `npx vnstock-mcp-server`\nBước 2: Kiểm tra yêu cầu hệ thống: `npx vnstock-mcp-server --test`\nBước 3: Cài đặt thư viện Python phụ thuộc nếu cần: `npx vnstock-mcp-server --install-deps`\nBước 4: Hoặc cài đặt toàn cục: `npm install -g vnstock-mcp-server`\nBước 5: Thêm cấu hình mcpServers vào claude_desktop_config.json (xem jsonConfig)\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi động lại Claude Desktop sau khi cấu hình\nBước 2: Hỏi giá, lịch sử giá, báo cáo tài chính hoặc chỉ số bằng ngôn ngữ tự nhiên\nBước 3: Nếu máy chủ báo offline, chạy lệnh `--test` để kiểm tra\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Giá hiện tại của cổ phiếu VIC là bao nhiêu?\"\n- \"Lấy dữ liệu lịch sử 30 ngày của TCB.\"\n- \"Liệt kê các ngân hàng niêm yết trên HOSE.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:13:05.951Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "maobui2907-vnstock-mcp-server",
+    "slug": "maobui2907-vnstock-mcp-server",
+    "name": "VNStock MCP Server (Python) — Cổ phiếu, quỹ, giá vàng và tỷ giá Việt Nam cho AI",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "investment_securities",
+    "categoryNameVi": "Đầu tư, Chứng khoán & FinTech",
+    "categories": [
+      "investment_securities",
+      "fintech_banking"
+    ],
+    "categoryNamesVi": [
+      "Đầu tư, Chứng khoán & FinTech",
+      "Công nghệ tài chính & Ngân hàng"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/MaoBui2907/vnstock-mcp-server",
+    "websiteUrl": "https://pypi.org/project/vnstock-mcp-server/",
+    "authorName": "Mao Bui",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "MCP server Python (không chính thức) bọc thư viện vnstock, cung cấp công cụ truy cập dữ liệu chứng khoán Việt Nam cho trợ lý AI. Ngoài giá và báo cáo tài chính, máy chủ còn hỗ trợ dữ liệu quỹ mở (NAV, danh mục nắm giữ), giá vàng SJC/BTMC và tỷ giá; hỗ trợ ba giao thức stdio, SSE và streamable-http.",
+    "purposeVi": "Giúp nhà phát triển và nhà đầu tư tra cứu dữ liệu cổ phiếu, quỹ, giá vàng và tỷ giá Việt Nam qua Claude, Cursor hoặc Cline.",
+    "featuresVi": [
+      "Thông tin doanh nghiệp: tổng quan, tin tức, sự kiện, cổ đông, ban lãnh đạo, công ty con, giao dịch nội bộ",
+      "Dữ liệu tài chính: kết quả kinh doanh, bảng cân đối, lưu chuyển tiền tệ, chỉ số tài chính theo quý/năm",
+      "Dữ liệu thị trường: báo giá, lịch sử giá, khớp lệnh trong ngày, độ sâu giá, bảng giá nhiều mã",
+      "Quỹ mở: danh sách quỹ, báo cáo NAV, danh mục nắm giữ, phân bổ ngành và tài sản",
+      "Giá vàng SJC, BTMC và tỷ giá ngoại tệ",
+      "Ba giao thức: stdio (mặc định), SSE và streamable-http (cổng mặc định 8000)"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.12 trở lên; uv (khi chạy qua uvx hoặc từ mã nguồn).\nBước 1: Cài đặt từ PyPI: `pip install vnstock-mcp-server`\nBước 2: Hoặc thêm cấu hình mcpServers dùng `uvx` (xem jsonConfig)\nBước 3: Hoặc cài đặt từ mã nguồn: `git clone https://github.com/maobui/vnstock-mcp-server.git` rồi `uv sync`",
+    "usageGuideVi": "Bước 1: Chạy máy chủ ở chế độ stdio: `vnstock-mcp-server`\nBước 2: Chạy chế độ SSE cho ứng dụng web: `vnstock-mcp-server --transport sse`\nBước 3: Khởi động lại MCP client để nạp công cụ, rồi đặt câu hỏi về cổ phiếu, quỹ hoặc giá vàng",
+    "samplePromptsVi": [
+      "Cho tôi báo cáo kết quả kinh doanh theo quý của VNM.",
+      "Liệt kê các quỹ mở và NAV gần nhất.",
+      "Giá vàng SJC và tỷ giá USD hôm nay là bao nhiêu?"
+    ],
+    "configs": [
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "cliCommand": "pip install vnstock-mcp-server",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"vnstock\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"vnstock-mcp-server\"\n      ]\n    }\n  }\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "vnstock-mcp-server",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"vnstock-mcp-server\"\n  ],\n  \"nguon\": \"https://github.com/MaoBui2907/vnstock-mcp-server\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, phát hành trên PyPI",
+      "Hỗ trợ nhiều giao thức (stdio, SSE, streamable-http)",
+      "Bao phủ cả cổ phiếu, quỹ mở, giá vàng và tỷ giá"
+    ],
+    "consVi": [
+      "Dự án không chính thức, không liên kết với nhóm phát triển vnstock",
+      "Phụ thuộc thư viện vnstock cho toàn bộ dữ liệu",
+      "Yêu cầu Python 3.12+"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# VNStock MCP Server (Python) — Cổ phiếu, quỹ, giá vàng và tỷ giá Việt Nam cho AI\n\n> An unofficial MCP (Model Context Protocol) server that provides tools to access Vietnam stock market data.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server Python (không chính thức) bọc thư viện vnstock, cung cấp công cụ truy cập dữ liệu chứng khoán Việt Nam cho trợ lý AI. Ngoài giá và báo cáo tài chính, máy chủ còn hỗ trợ dữ liệu quỹ mở (NAV, danh mục nắm giữ), giá vàng SJC/BTMC và tỷ giá; hỗ trợ ba giao thức stdio, SSE và streamable-http.\n\nGiúp nhà phát triển và nhà đầu tư tra cứu dữ liệu cổ phiếu, quỹ, giá vàng và tỷ giá Việt Nam qua Claude, Cursor hoặc Cline.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Đầu tư, Chứng khoán & FinTech\n- **Tác giả / Nhà phát triển:** Mao Bui\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/MaoBui2907/vnstock-mcp-server](https://github.com/MaoBui2907/vnstock-mcp-server)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Thông tin doanh nghiệp: tổng quan, tin tức, sự kiện, cổ đông, ban lãnh đạo, công ty con, giao dịch nội bộ**\n- **Dữ liệu tài chính: kết quả kinh doanh, bảng cân đối, lưu chuyển tiền tệ, chỉ số tài chính theo quý/năm**\n- **Dữ liệu thị trường: báo giá, lịch sử giá, khớp lệnh trong ngày, độ sâu giá, bảng giá nhiều mã**\n- **Quỹ mở: danh sách quỹ, báo cáo NAV, danh mục nắm giữ, phân bổ ngành và tài sản**\n- **Giá vàng SJC, BTMC và tỷ giá ngoại tệ**\n- **Ba giao thức: stdio (mặc định), SSE và streamable-http (cổng mặc định 8000)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install vnstock-mcp-server\n```\n\nYêu cầu: Python 3.12 trở lên; uv (khi chạy qua uvx hoặc từ mã nguồn).\nBước 1: Cài đặt từ PyPI: `pip install vnstock-mcp-server`\nBước 2: Hoặc thêm cấu hình mcpServers dùng `uvx` (xem jsonConfig)\nBước 3: Hoặc cài đặt từ mã nguồn: `git clone https://github.com/maobui/vnstock-mcp-server.git` rồi `uv sync`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy máy chủ ở chế độ stdio: `vnstock-mcp-server`\nBước 2: Chạy chế độ SSE cho ứng dụng web: `vnstock-mcp-server --transport sse`\nBước 3: Khởi động lại MCP client để nạp công cụ, rồi đặt câu hỏi về cổ phiếu, quỹ hoặc giá vàng\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Cho tôi báo cáo kết quả kinh doanh theo quý của VNM.\"\n- \"Liệt kê các quỹ mở và NAV gần nhất.\"\n- \"Giá vàng SJC và tỷ giá USD hôm nay là bao nhiêu?\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:13:05.951Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "tndvnn-tncn",
+    "slug": "tndvnn-tncn",
+    "name": "tncn — Skill AI tính thuế thu nhập cá nhân Việt Nam 2026, quyết toán và giảm trừ gia cảnh",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "skill",
+    "typeNameVi": "Skill",
+    "category": "e_invoice_tax",
+    "categoryNameVi": "Hóa đơn điện tử, Thuế & Chữ ký số (e-Tax)",
+    "categories": [
+      "e_invoice_tax",
+      "accounting_finance",
+      "legal_public_service"
+    ],
+    "categoryNamesVi": [
+      "Hóa đơn điện tử, Thuế & Chữ ký số (e-Tax)",
+      "Kế toán doanh nghiệp & Báo cáo tài chính",
+      "Pháp luật & Dịch vụ công số"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "claude_code",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/tndvnn/tncn",
+    "websiteUrl": "",
+    "authorName": "tndvnn",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "tncn là skill AI (chuẩn mở Agent Skills: SKILL.md + thư mục references/) giúp Claude, Claude Code, Codex, Gemini CLI, Cursor trả lời câu hỏi về thuế thu nhập cá nhân Việt Nam kỳ tính thuế 2026. Mọi câu trả lời kèm số điều khoản của Luật 109/2025/QH15, Nghị định 253/2026, Thông tư 87/2026 để người dùng tự đối chiếu. Skill bắt AI tra nguồn chính chủ (vbpl.vn, chinhphu.vn, mof.gov.vn, gdt.gov.vn) và kiểm tra bản cập nhật mỗi ngày trước khi trả lời.",
+    "purposeVi": "Công cụ tra cứu, tính thuế TNCN từ tiền lương, quyết toán, giảm trừ gia cảnh, thuế hộ kinh doanh và thuế người nước ngoài cho người Việt Nam và người nước ngoài sống, làm việc tại Việt Nam.",
+    "featuresVi": [
+      "Tính thuế TNCN từ tiền lương 2026: biểu lũy tiến 5 bậc (5% đến 35%), giảm trừ gia cảnh 15,5 triệu/tháng, 6,2 triệu/tháng mỗi người phụ thuộc, giảm trừ y tế và giáo dục",
+      "Quyết toán, hoàn thuế: ai được ủy quyền cho công ty, ai tự quyết toán, hạn nộp, mẫu 02/QTT-TNCN",
+      "Thuế hộ kinh doanh, bán hàng online, freelancer, KOL, thu nhập YouTube/AdSense, Upwork, affiliate",
+      "Thuế chứng khoán, bất động sản, tài sản số, vàng, thừa kế, quà tặng",
+      "Thuế người nước ngoài: cư trú 183 ngày, thu nhập toàn cầu, hiệp định tránh đánh thuế hai lần",
+      "Nhắc hạn nộp: mỗi câu trả lời nêu hạn đã quá và hạn sắp tới trong 60 ngày kèm mức phạt chậm nộp",
+      "Tự kiểm tra cập nhật mỗi ngày bằng `scripts/kiem-tra-cap-nhat.sh`; có agent quét luật mới trong thư mục `agent/`"
+    ],
+    "installGuideVi": "Yêu cầu: Công cụ AI hỗ trợ Agent Skills (Claude Code, claude.ai gói Pro/Max, Codex CLI, Gemini CLI, OpenClaw, Hermes Agent, Cursor...). Với ChatGPT cần tạo Project/Custom GPT và tải tài liệu lên; nên bật web search để AI kiểm tra luật mới.\nBước 1: Tải mã nguồn skill: `git clone https://github.com/tndvnn/tncn.git`\nBước 2: Cài đặt cho Claude Code: đặt thư mục `tncn/` vào `.claude/skills/tncn/` (theo dự án) hoặc `~/.claude/skills/tncn/` (mọi dự án), rồi khởi động lại công cụ\nBước 3: Cài đặt cho OpenClaw: `openclaw skills install git:tndvnn/tncn`\nBước 4: Cài đặt cho claude.ai: nén thư mục thành zip (hoặc tải zip có sẵn ở mục Releases), tải lên tại Settings → Capabilities → Skills\nBước 5: Kiểm tra bản mới thủ công bất cứ lúc nào: `bash scripts/kiem-tra-cap-nhat.sh --force`",
+    "usageGuideVi": "Bước 1: Trong Claude Code, skill tự kích hoạt khi câu hỏi liên quan thuế TNCN; có thể gọi thủ công bằng `/tncn`.\nBước 2: Đặt câu hỏi kèm dữ liệu cụ thể (mức lương, số người phụ thuộc, loại thu nhập) để AI tính thuế và trích điều khoản.\nBước 3: Đối chiếu điều khoản được trích tại gdt.gov.vn hoặc cơ quan thuế quản lý trước khi kê khai.",
+    "samplePromptsVi": [
+      "Lương 30 triệu, 1 người phụ thuộc, thuế thu nhập cá nhân 2026 bao nhiêu?",
+      "Tôi bán hàng Shopee doanh thu 1,5 tỷ thì nộp thuế thế nào?",
+      "Người Hàn Quốc làm ở khu công nghiệp có lương remote từ Hàn thì khai thuế ra sao?"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "git clone https://github.com/tndvnn/tncn.git",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"git clone https://github.com/tndvnn/tncn.git\"\n  ],\n  \"nguon\": \"https://github.com/tndvnn/tncn\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, dùng được cho mục đích thương mại",
+      "Mỗi câu trả lời kèm số điều khoản văn bản pháp luật để tự đối chiếu",
+      "Chạy trên nhiều nền tảng AI: Claude, Claude Code, Codex, Gemini CLI, Cursor, OpenClaw, Hermes Agent",
+      "Được cập nhật liên tục theo văn bản mới, có cơ chế tự kiểm tra phiên bản mỗi ngày"
+    ],
+    "consVi": [
+      "Chỉ là thông tin tham khảo, không thay thế tư vấn thuế chuyên nghiệp",
+      "Không bao gồm thuế TNDN, thuế xuất nhập khẩu, BHXH rút một lần, trợ cấp thất nghiệp",
+      "claude.ai cần gói Pro/Max để tải skill; bản zip tải lên không tự cập nhật được"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# tncn — Skill AI tính thuế thu nhập cá nhân Việt Nam 2026, quyết toán và giảm trừ gia cảnh\n\n> tncn is a skill for Claude, Claude Code, Antigravity and any AI platform that reads SKILL.md. It answers questions on Vietnam personal income tax (PIT) for tax year 2026\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\ntncn là skill AI (chuẩn mở Agent Skills: SKILL.md + thư mục references/) giúp Claude, Claude Code, Codex, Gemini CLI, Cursor trả lời câu hỏi về thuế thu nhập cá nhân Việt Nam kỳ tính thuế 2026. Mọi câu trả lời kèm số điều khoản của Luật 109/2025/QH15, Nghị định 253/2026, Thông tư 87/2026 để người dùng tự đối chiếu. Skill bắt AI tra nguồn chính chủ (vbpl.vn, chinhphu.vn, mof.gov.vn, gdt.gov.vn) và kiểm tra bản cập nhật mỗi ngày trước khi trả lời.\n\nCông cụ tra cứu, tính thuế TNCN từ tiền lương, quyết toán, giảm trừ gia cảnh, thuế hộ kinh doanh và thuế người nước ngoài cho người Việt Nam và người nước ngoài sống, làm việc tại Việt Nam.\n\n- **Loại hình thành phần:** Skill\n- **Lĩnh vực chuyên môn:** Hóa đơn điện tử, Thuế & Chữ ký số (e-Tax)\n- **Tác giả / Nhà phát triển:** tndvnn\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `web`\n- **Kho lưu trữ chính thức:** [https://github.com/tndvnn/tncn](https://github.com/tndvnn/tncn)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tính thuế TNCN từ tiền lương 2026: biểu lũy tiến 5 bậc (5% đến 35%), giảm trừ gia cảnh 15,5 triệu/tháng, 6,2 triệu/tháng mỗi người phụ thuộc, giảm trừ y tế và giáo dục**\n- **Quyết toán, hoàn thuế: ai được ủy quyền cho công ty, ai tự quyết toán, hạn nộp, mẫu 02/QTT-TNCN**\n- **Thuế hộ kinh doanh, bán hàng online, freelancer, KOL, thu nhập YouTube/AdSense, Upwork, affiliate**\n- **Thuế chứng khoán, bất động sản, tài sản số, vàng, thừa kế, quà tặng**\n- **Thuế người nước ngoài: cư trú 183 ngày, thu nhập toàn cầu, hiệp định tránh đánh thuế hai lần**\n- **Nhắc hạn nộp: mỗi câu trả lời nêu hạn đã quá và hạn sắp tới trong 60 ngày kèm mức phạt chậm nộp**\n- **Tự kiểm tra cập nhật mỗi ngày bằng `scripts/kiem-tra-cap-nhat.sh`; có agent quét luật mới trong thư mục `agent/`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ngit clone https://github.com/tndvnn/tncn.git\n```\n\nYêu cầu: Công cụ AI hỗ trợ Agent Skills (Claude Code, claude.ai gói Pro/Max, Codex CLI, Gemini CLI, OpenClaw, Hermes Agent, Cursor...). Với ChatGPT cần tạo Project/Custom GPT và tải tài liệu lên; nên bật web search để AI kiểm tra luật mới.\nBước 1: Tải mã nguồn skill: `git clone https://github.com/tndvnn/tncn.git`\nBước 2: Cài đặt cho Claude Code: đặt thư mục `tncn/` vào `.claude/skills/tncn/` (theo dự án) hoặc `~/.claude/skills/tncn/` (mọi dự án), rồi khởi động lại công cụ\nBước 3: Cài đặt cho OpenClaw: `openclaw skills install git:tndvnn/tncn`\nBước 4: Cài đặt cho claude.ai: nén thư mục thành zip (hoặc tải zip có sẵn ở mục Releases), tải lên tại Settings → Capabilities → Skills\nBước 5: Kiểm tra bản mới thủ công bất cứ lúc nào: `bash scripts/kiem-tra-cap-nhat.sh --force`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trong Claude Code, skill tự kích hoạt khi câu hỏi liên quan thuế TNCN; có thể gọi thủ công bằng `/tncn`.\nBước 2: Đặt câu hỏi kèm dữ liệu cụ thể (mức lương, số người phụ thuộc, loại thu nhập) để AI tính thuế và trích điều khoản.\nBước 3: Đối chiếu điều khoản được trích tại gdt.gov.vn hoặc cơ quan thuế quản lý trước khi kê khai.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Lương 30 triệu, 1 người phụ thuộc, thuế thu nhập cá nhân 2026 bao nhiêu?\"\n- \"Tôi bán hàng Shopee doanh thu 1,5 tỷ thì nộp thuế thế nào?\"\n- \"Người Hàn Quốc làm ở khu công nghiệp có lương remote từ Hàn thì khai thuế ra sao?\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:13:05.951Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "googlesky-thue-2026",
+    "slug": "googlesky-thue-2026",
+    "name": "Thuế TNCN 2026 — Ứng dụng web tính thuế thu nhập cá nhân, GROSS-NET và bảo hiểm Việt Nam",
+    "icon": "CreditCard",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "e_invoice_tax",
+    "categoryNameVi": "Hóa đơn điện tử, Thuế & Chữ ký số (e-Tax)",
+    "categories": [
+      "e_invoice_tax",
+      "accounting_finance",
+      "hr_recruitment"
+    ],
+    "categoryNamesVi": [
+      "Hóa đơn điện tử, Thuế & Chữ ký số (e-Tax)",
+      "Kế toán doanh nghiệp & Báo cáo tài chính",
+      "Quản trị nhân sự & Tuyển dụng (HRM)"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/googlesky/thue-2026",
+    "websiteUrl": "https://thue.1devops.io",
+    "authorName": "1DevOps",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Thuế TNCN 2026 là ứng dụng web (Next.js, TypeScript) giúp người lao động Việt Nam tính toán, so sánh và tối ưu thuế thu nhập cá nhân theo Luật 109/2025/QH15, NĐ 253/2026/NĐ-CP và TT 87/2026/TT-BTC. Ứng dụng có hơn 20 công cụ: quy đổi GROSS ⇄ NET, quyết toán năm, thưởng Tết, ESOP, thuế hộ kinh doanh, chuyển nhượng bất động sản, chứng khoán, người nước ngoài, chi tiết bảo hiểm BHXH/BHYT/BHTN. Có thể chạy cục bộ hoặc xuất tĩnh lên GitHub Pages.",
+    "purposeVi": "Công cụ tự cài đặt để tính lương GROSS/NET, thuế TNCN và bảo hiểm bắt buộc, so sánh biểu thuế 7 bậc cũ với 5 bậc mới từ kỳ tính thuế 2026.",
+    "featuresVi": [
+      "Tính thuế TNCN: so sánh thuế theo biểu 7 bậc (đến 2025) và 5 bậc (từ 2026), hiển thị số tiền tiết kiệm",
+      "GROSS ⇄ NET: quy đổi lương 2 chiều bằng thuật toán binary search, sai số dưới 1 đồng",
+      "Quyết toán thuế: tổng hợp thu nhập cả năm, tính thuế phải nộp hoặc được hoàn",
+      "Công cụ 2026: thuế hộ kinh doanh, chuyển nhượng BĐS, cho thuê tài sản, chứng khoán, kiểm tra miễn thuế, người nước ngoài",
+      "So sánh offers, Freelancer vs Fulltime, chi phí nhà tuyển dụng",
+      "Chi tiết bảo hiểm BHXH/BHYT/BHTN theo 4 vùng lương và mức trần; dự tính lương hưu",
+      "Tạo phiếu lương PDF, chia sẻ kết quả qua URL hoặc QR code"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js 18 trở lên; npm, pnpm hoặc yarn.\nBước 1: Tải mã nguồn: `git clone https://github.com/googlesky/thue-2026.git`\nBước 2: Vào thư mục dự án: `cd thue-2026`\nBước 3: Cài đặt thư viện phụ thuộc: `npm install`\nBước 4: Chạy máy chủ phát triển: `npm run dev`, rồi mở http://localhost:3000",
+    "usageGuideVi": "Bước 1: Mở http://localhost:3000, chọn trang tính thuế với hơn 20 tab công cụ.\nBước 2: Nhập lương GROSS hoặc NET, số người phụ thuộc, vùng lương để xem chi tiết bảo hiểm, giảm trừ và thuế theo bậc.\nBước 3: Build bản tĩnh bằng `npm run build` (đầu ra ở thư mục out/) để triển khai lên GitHub Pages.\nBước 4: Chạy kiểm thử golden cho engine thuế: `npm run test:golden`.",
+    "samplePromptsVi": [
+      "Hướng dẫn cài đặt thue-2026 và tính lương NET từ GROSS 40 triệu, 2 người phụ thuộc, vùng I",
+      "Dùng công cụ so sánh offers để so sánh offer 28 triệu NET với 32 triệu GROSS",
+      "Triển khai thue-2026 lên GitHub Pages với tên miền riêng"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm run dev",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm run dev\"\n  ],\n  \"nguon\": \"https://github.com/googlesky/thue-2026\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, dùng được cho mục đích thương mại",
+      "Cập nhật theo luật thuế TNCN 2026 và các mốc từ 01/07/2026, có so sánh với biểu thuế cũ",
+      "Hơn 20 công cụ trong một ứng dụng, xuất tĩnh lên GitHub Pages không cần máy chủ",
+      "Có golden test cho engine thuế, CI chạy trước khi triển khai"
+    ],
+    "consVi": [
+      "Là ứng dụng web cho người dùng cuối, không đóng gói thành thư viện để tích hợp",
+      "Kết quả phụ thuộc vào việc cập nhật dữ liệu luật thuế trong mã nguồn"
+    ],
+    "languages": [
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Thuế TNCN 2026 — Ứng dụng web tính thuế thu nhập cá nhân, GROSS-NET và bảo hiểm Việt Nam\n\n> Công cụ tính thuế thu nhập cá nhân Việt Nam toàn diện nhất\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nThuế TNCN 2026 là ứng dụng web (Next.js, TypeScript) giúp người lao động Việt Nam tính toán, so sánh và tối ưu thuế thu nhập cá nhân theo Luật 109/2025/QH15, NĐ 253/2026/NĐ-CP và TT 87/2026/TT-BTC. Ứng dụng có hơn 20 công cụ: quy đổi GROSS ⇄ NET, quyết toán năm, thưởng Tết, ESOP, thuế hộ kinh doanh, chuyển nhượng bất động sản, chứng khoán, người nước ngoài, chi tiết bảo hiểm BHXH/BHYT/BHTN. Có thể chạy cục bộ hoặc xuất tĩnh lên GitHub Pages.\n\nCông cụ tự cài đặt để tính lương GROSS/NET, thuế TNCN và bảo hiểm bắt buộc, so sánh biểu thuế 7 bậc cũ với 5 bậc mới từ kỳ tính thuế 2026.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Hóa đơn điện tử, Thuế & Chữ ký số (e-Tax)\n- **Tác giả / Nhà phát triển:** 1DevOps\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/googlesky/thue-2026](https://github.com/googlesky/thue-2026)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tính thuế TNCN: so sánh thuế theo biểu 7 bậc (đến 2025) và 5 bậc (từ 2026), hiển thị số tiền tiết kiệm**\n- **GROSS ⇄ NET: quy đổi lương 2 chiều bằng thuật toán binary search, sai số dưới 1 đồng**\n- **Quyết toán thuế: tổng hợp thu nhập cả năm, tính thuế phải nộp hoặc được hoàn**\n- **Công cụ 2026: thuế hộ kinh doanh, chuyển nhượng BĐS, cho thuê tài sản, chứng khoán, kiểm tra miễn thuế, người nước ngoài**\n- **So sánh offers, Freelancer vs Fulltime, chi phí nhà tuyển dụng**\n- **Chi tiết bảo hiểm BHXH/BHYT/BHTN theo 4 vùng lương và mức trần; dự tính lương hưu**\n- **Tạo phiếu lương PDF, chia sẻ kết quả qua URL hoặc QR code**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm run dev\n```\n\nYêu cầu: Node.js 18 trở lên; npm, pnpm hoặc yarn.\nBước 1: Tải mã nguồn: `git clone https://github.com/googlesky/thue-2026.git`\nBước 2: Vào thư mục dự án: `cd thue-2026`\nBước 3: Cài đặt thư viện phụ thuộc: `npm install`\nBước 4: Chạy máy chủ phát triển: `npm run dev`, rồi mở http://localhost:3000\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở http://localhost:3000, chọn trang tính thuế với hơn 20 tab công cụ.\nBước 2: Nhập lương GROSS hoặc NET, số người phụ thuộc, vùng lương để xem chi tiết bảo hiểm, giảm trừ và thuế theo bậc.\nBước 3: Build bản tĩnh bằng `npm run build` (đầu ra ở thư mục out/) để triển khai lên GitHub Pages.\nBước 4: Chạy kiểm thử golden cho engine thuế: `npm run test:golden`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hướng dẫn cài đặt thue-2026 và tính lương NET từ GROSS 40 triệu, 2 người phụ thuộc, vùng I\"\n- \"Dùng công cụ so sánh offers để so sánh offer 28 triệu NET với 32 triệu GROSS\"\n- \"Triển khai thue-2026 lên GitHub Pages với tên miền riêng\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:13:05.951Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "huynhnhatkhanh-vnsalary",
+    "slug": "huynhnhatkhanh-vnsalary",
+    "name": "vnsalary — Thư viện Go và CLI quy đổi lương Gross/Net, tính thuế TNCN và BHXH Việt Nam",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "accounting_finance",
+    "categoryNameVi": "Kế toán doanh nghiệp & Báo cáo tài chính",
+    "categories": [
+      "accounting_finance",
+      "e_invoice_tax",
+      "hr_recruitment"
+    ],
+    "categoryNamesVi": [
+      "Kế toán doanh nghiệp & Báo cáo tài chính",
+      "Hóa đơn điện tử, Thuế & Chữ ký số (e-Tax)",
+      "Quản trị nhân sự & Tuyển dụng (HRM)"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/HuynhNhatKhanh/vnsalary",
+    "websiteUrl": "https://pkg.go.dev/github.com/HuynhNhatKhanh/vnsalary",
+    "authorName": "Huynh Nhat Khanh",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "vnsalary là thư viện Go (kèm công cụ dòng lệnh) quy đổi lương Gross ↔ Net và tính thuế TNCN Việt Nam, chính xác đến từng đồng bằng số nguyên int64, không phụ thuộc thư viện ngoài. Thư viện tự chọn chính sách theo ngày chi trả lương (mốc 01/07/2024, 01/01/2026, 01/07/2026), tính BHXH/BHYT/BHTN phần người lao động và doanh nghiệp, quyết toán thuế năm, khấu trừ 10% và trường hợp người nước ngoài, không cư trú.",
+    "purposeVi": "Tích hợp tính lương, bảo hiểm và thuế TNCN theo quy định Việt Nam vào phần mềm tính lương, HR hoặc dùng trực tiếp từ dòng lệnh.",
+    "featuresVi": [
+      "Gross → Net và Net → Gross chính xác: nghịch đảo giải tích, đảm bảo tính nhất quán hai chiều",
+      "Số học nguyên int64 VND, làm tròn half-up từng khoản bảo hiểm và từng bậc thuế",
+      "Chính sách theo thời kỳ: lương cơ sở, lương tối thiểu vùng, biểu 7 bậc và 5 bậc, giảm trừ gia cảnh, có căn cứ pháp lý",
+      "Chi phí doanh nghiệp: BHXH 17,5%, BHYT 3%, BHTN 1%, tùy chọn bảo hiểm tai nạn và kinh phí công đoàn 2%",
+      "Quyết toán thuế năm (`Annual`): nhiều nơi trả lương, tháng thưởng, giảm trừ y tế và giáo dục từ 2026",
+      "Khấu trừ 10% (`FlatWithholding`), người nước ngoài (không BHTN), người không cư trú (20%)",
+      "CLI tiếng Việt/tiếng Anh, so sánh chính sách (`diff`), xuất `--json`"
+    ],
+    "installGuideVi": "Yêu cầu: Go 1.22 trở lên (hoặc Homebrew/Scoop, hoặc tải tệp nhị phân dựng sẵn cho Linux, macOS, Windows).\nBước 1: Cài đặt thư viện vào dự án Go: `go get github.com/HuynhNhatKhanh/vnsalary`\nBước 2: Cài đặt công cụ dòng lệnh: `go install github.com/HuynhNhatKhanh/vnsalary/cmd/vnsalary@latest`\nBước 3: Hoặc cài đặt qua Homebrew (macOS, Linux): `brew install HuynhNhatKhanh/tap/vnsalary`",
+    "usageGuideVi": "Bước 1: Tính Gross → Net: `vnsalary gross 35000000 -d 1 -r 1 --date 2026-01-15` (1 người phụ thuộc, vùng I).\nBước 2: Tính Net → Gross: `vnsalary net 30843750 -d 1 -r 1 --date 2026-01-15`.\nBước 3: Quyết toán thuế năm từ tệp dữ liệu JSON: `vnsalary annual payments.json`.\nBước 4: Xuất kết quả JSON để tích hợp: `vnsalary gross 35000000 --json`; trong Go gọi `vnsalary.GrossToNet`, `vnsalary.NetToGross`, `vnsalary.Annual`.",
+    "samplePromptsVi": [
+      "Viết hàm Go dùng vnsalary.GrossToNet tính lương NET cho danh sách nhân viên vùng I tháng 8/2026",
+      "Dùng vnsalary annual để quyết toán thuế năm 2026 cho nhân viên đổi công ty giữa năm",
+      "So sánh lương NET 60 triệu giữa chính sách 30/06/2026 và 01/07/2026 bằng lệnh vnsalary diff"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "go install github.com/HuynhNhatKhanh/vnsalary/cmd/vnsalary@latest",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"go install github.com/HuynhNhatKhanh/vnsalary/cmd/vnsalary@latest\"\n  ],\n  \"nguon\": \"https://github.com/HuynhNhatKhanh/vnsalary\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, dùng được cho mục đích thương mại",
+      "Không phụ thuộc thư viện ngoài, chính xác đến từng đồng, có căn cứ pháp lý cho từng tham số",
+      "Kiểm thử kỹ: bộ golden 40 trường hợp, fuzz test, độ phủ mã thư viện 97,7%",
+      "Có cả thư viện Go và CLI, hỗ trợ xuất JSON"
+    ],
+    "consVi": [
+      "Chỉ dành cho hệ sinh thái Go (CLI dùng được độc lập)",
+      "Không kiểm tra giới hạn các khoản miễn thuế (làm thêm giờ, phụ cấp) — người gọi tự chịu trách nhiệm",
+      "Chưa mô hình hóa miễn BHXH cho người nước ngoài và việc chia thu nhập theo số ngày ở Việt Nam",
+      "Dự án mới (phiên bản v0.6.1), API có thể còn thay đổi"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# vnsalary — Thư viện Go và CLI quy đổi lương Gross/Net, tính thuế TNCN và BHXH Việt Nam\n\n> Vietnam Gross ↔ Net Salary & PIT Calculator in pure Go.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nvnsalary là thư viện Go (kèm công cụ dòng lệnh) quy đổi lương Gross ↔ Net và tính thuế TNCN Việt Nam, chính xác đến từng đồng bằng số nguyên int64, không phụ thuộc thư viện ngoài. Thư viện tự chọn chính sách theo ngày chi trả lương (mốc 01/07/2024, 01/01/2026, 01/07/2026), tính BHXH/BHYT/BHTN phần người lao động và doanh nghiệp, quyết toán thuế năm, khấu trừ 10% và trường hợp người nước ngoài, không cư trú.\n\nTích hợp tính lương, bảo hiểm và thuế TNCN theo quy định Việt Nam vào phần mềm tính lương, HR hoặc dùng trực tiếp từ dòng lệnh.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Kế toán doanh nghiệp & Báo cáo tài chính\n- **Tác giả / Nhà phát triển:** Huynh Nhat Khanh\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/HuynhNhatKhanh/vnsalary](https://github.com/HuynhNhatKhanh/vnsalary)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Gross → Net và Net → Gross chính xác: nghịch đảo giải tích, đảm bảo tính nhất quán hai chiều**\n- **Số học nguyên int64 VND, làm tròn half-up từng khoản bảo hiểm và từng bậc thuế**\n- **Chính sách theo thời kỳ: lương cơ sở, lương tối thiểu vùng, biểu 7 bậc và 5 bậc, giảm trừ gia cảnh, có căn cứ pháp lý**\n- **Chi phí doanh nghiệp: BHXH 17,5%, BHYT 3%, BHTN 1%, tùy chọn bảo hiểm tai nạn và kinh phí công đoàn 2%**\n- **Quyết toán thuế năm (`Annual`): nhiều nơi trả lương, tháng thưởng, giảm trừ y tế và giáo dục từ 2026**\n- **Khấu trừ 10% (`FlatWithholding`), người nước ngoài (không BHTN), người không cư trú (20%)**\n- **CLI tiếng Việt/tiếng Anh, so sánh chính sách (`diff`), xuất `--json`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ngo install github.com/HuynhNhatKhanh/vnsalary/cmd/vnsalary@latest\n```\n\nYêu cầu: Go 1.22 trở lên (hoặc Homebrew/Scoop, hoặc tải tệp nhị phân dựng sẵn cho Linux, macOS, Windows).\nBước 1: Cài đặt thư viện vào dự án Go: `go get github.com/HuynhNhatKhanh/vnsalary`\nBước 2: Cài đặt công cụ dòng lệnh: `go install github.com/HuynhNhatKhanh/vnsalary/cmd/vnsalary@latest`\nBước 3: Hoặc cài đặt qua Homebrew (macOS, Linux): `brew install HuynhNhatKhanh/tap/vnsalary`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tính Gross → Net: `vnsalary gross 35000000 -d 1 -r 1 --date 2026-01-15` (1 người phụ thuộc, vùng I).\nBước 2: Tính Net → Gross: `vnsalary net 30843750 -d 1 -r 1 --date 2026-01-15`.\nBước 3: Quyết toán thuế năm từ tệp dữ liệu JSON: `vnsalary annual payments.json`.\nBước 4: Xuất kết quả JSON để tích hợp: `vnsalary gross 35000000 --json`; trong Go gọi `vnsalary.GrossToNet`, `vnsalary.NetToGross`, `vnsalary.Annual`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết hàm Go dùng vnsalary.GrossToNet tính lương NET cho danh sách nhân viên vùng I tháng 8/2026\"\n- \"Dùng vnsalary annual để quyết toán thuế năm 2026 cho nhân viên đổi công ty giữa năm\"\n- \"So sánh lương NET 60 triệu giữa chính sách 30/06/2026 và 01/07/2026 bằng lệnh vnsalary diff\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:13:05.951Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "thuyetbao-einvoice-lens",
+    "slug": "thuyetbao-einvoice-lens",
+    "name": "einvoice-lens — Thư viện Python trích xuất dữ liệu từ PDF hóa đơn điện tử Việt Nam",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "e_invoice_tax",
+    "categoryNameVi": "Hóa đơn điện tử, Thuế & Chữ ký số (e-Tax)",
+    "categories": [
+      "e_invoice_tax",
+      "accounting_finance",
+      "office_digital_docs"
+    ],
+    "categoryNamesVi": [
+      "Hóa đơn điện tử, Thuế & Chữ ký số (e-Tax)",
+      "Kế toán doanh nghiệp & Báo cáo tài chính",
+      "Văn phòng số & Quản lý văn bản điện tử"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/thuyetbao/einvoice-lens",
+    "websiteUrl": "https://pypi.org/project/einvoice-lens/",
+    "authorName": "Thuyết Bảo",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "einvoice-lens là gói Python dùng OCR và phân tích theo luật (rule-based) để chuyển hóa đơn điện tử Việt Nam (tệp PDF) thành dữ liệu có cấu trúc. Gói phát hành trên PyPI, có hàm `parse_commerical_invoice` và giao diện dòng lệnh để tích hợp vào script shell và quy trình tự động hóa.",
+    "purposeVi": "Trích xuất dữ liệu hóa đơn bán hàng từ PDF hóa đơn điện tử Việt Nam phục vụ nhập liệu kế toán và đối soát.",
+    "featuresVi": [
+      "Trích xuất dữ liệu có cấu trúc từ hóa đơn bán hàng",
+      "Hàm Python `parse_commerical_invoice(path=...)` nhận đường dẫn tệp PDF",
+      "Giao diện dòng lệnh để tích hợp với script shell và quy trình tự động hóa",
+      "Phát hành trên PyPI, dùng pdfplumber và polars"
+    ],
+    "installGuideVi": "Yêu cầu: Python >= 3.12.\nBước 1: Cài đặt gói từ PyPI: `pip install einvoice-lens`",
+    "usageGuideVi": "Bước 1: Trong Python: `from einvoice_lens import parse_commerical_invoice` rồi gọi `parse_commerical_invoice(path=\"path/to/document.pdf\")`.\nBước 2: Từ dòng lệnh: `python -m einvoice_lens.cli --path path/to/document.pdf`.",
+    "samplePromptsVi": [
+      "Viết script Python dùng einvoice-lens đọc toàn bộ PDF hóa đơn trong thư mục và xuất dữ liệu ra CSV",
+      "Tích hợp lệnh python -m einvoice_lens.cli vào quy trình nhập liệu kế toán hằng ngày"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install einvoice-lens",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install einvoice-lens\"\n  ],\n  \"nguon\": \"https://github.com/thuyetbao/einvoice-lens\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, dùng được cho mục đích thương mại",
+      "Cài đặt đơn giản qua PyPI, có cả API Python và CLI",
+      "Chuyên cho định dạng hóa đơn điện tử Việt Nam"
+    ],
+    "consVi": [
+      "README ngắn, chưa mô tả đầy đủ các trường dữ liệu đầu ra và các mẫu hóa đơn được hỗ trợ",
+      "TODO.md còn ghi vấn đề về mã hóa ký tự và tham số CLI chưa hoàn thiện",
+      "Yêu cầu Python 3.12 trở lên; dự án nhỏ, ít người đóng góp"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# einvoice-lens — Thư viện Python trích xuất dữ liệu từ PDF hóa đơn điện tử Việt Nam\n\n> einvoice-lens is a package that uses OCR and rule-based parsing to transform Vietnam's electronic invoices into structured data.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\neinvoice-lens là gói Python dùng OCR và phân tích theo luật (rule-based) để chuyển hóa đơn điện tử Việt Nam (tệp PDF) thành dữ liệu có cấu trúc. Gói phát hành trên PyPI, có hàm `parse_commerical_invoice` và giao diện dòng lệnh để tích hợp vào script shell và quy trình tự động hóa.\n\nTrích xuất dữ liệu hóa đơn bán hàng từ PDF hóa đơn điện tử Việt Nam phục vụ nhập liệu kế toán và đối soát.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Hóa đơn điện tử, Thuế & Chữ ký số (e-Tax)\n- **Tác giả / Nhà phát triển:** Thuyết Bảo\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/thuyetbao/einvoice-lens](https://github.com/thuyetbao/einvoice-lens)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Trích xuất dữ liệu có cấu trúc từ hóa đơn bán hàng**\n- **Hàm Python `parse_commerical_invoice(path=...)` nhận đường dẫn tệp PDF**\n- **Giao diện dòng lệnh để tích hợp với script shell và quy trình tự động hóa**\n- **Phát hành trên PyPI, dùng pdfplumber và polars**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install einvoice-lens\n```\n\nYêu cầu: Python >= 3.12.\nBước 1: Cài đặt gói từ PyPI: `pip install einvoice-lens`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trong Python: `from einvoice_lens import parse_commerical_invoice` rồi gọi `parse_commerical_invoice(path=\"path/to/document.pdf\")`.\nBước 2: Từ dòng lệnh: `python -m einvoice_lens.cli --path path/to/document.pdf`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết script Python dùng einvoice-lens đọc toàn bộ PDF hóa đơn trong thư mục và xuất dữ liệu ra CSV\"\n- \"Tích hợp lệnh python -m einvoice_lens.cli vào quy trình nhập liệu kế toán hằng ngày\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:13:05.951Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "payoshq-payos-lib-python",
+    "slug": "payoshq-payos-lib-python",
+    "name": "payOS Python SDK — Thư viện chính thức tích hợp cổng thanh toán payOS cho Python",
+    "icon": "CreditCard",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "payment_gateway",
+    "categoryNameVi": "Cổng thanh toán & Ví điện tử (Payments)",
+    "categories": [
+      "payment_gateway",
+      "fintech_banking",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Cổng thanh toán & Ví điện tử (Payments)",
+      "Công nghệ tài chính & Ngân hàng",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/payOSHQ/payos-lib-python",
+    "websiteUrl": "https://payos.vn/docs",
+    "authorName": "payOS",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "payOS Python SDK là thư viện chính thức của payOS để gọi payOS Merchant API từ ứng dụng Python. Thư viện có định nghĩa kiểu cho mọi tham số và phản hồi, cung cấp cả client đồng bộ (PayOS) lẫn bất đồng bộ (AsyncPayOS) dựa trên httpx.",
+    "purposeVi": "Giúp lập trình viên Python tại Việt Nam tạo link thanh toán chuyển khoản qua payOS, nhận và xác thực webhook kết quả thanh toán mà không phải tự ký dữ liệu.",
+    "featuresVi": [
+      "Tạo link thanh toán: gọi API payment requests với mã đơn hàng, số tiền, mô tả, returnUrl và cancelUrl",
+      "Xác thực webhook: đăng ký URL nhận webhook (confirm) và kiểm tra chữ ký dữ liệu thanh toán gửi về (verify)",
+      "Xử lý lỗi thống nhất: ném ngoại lệ APIError khi mã HTTP 4xx/5xx hoặc mã kết quả khác '00'",
+      "Phân trang tự động: duyệt danh sách (ví dụ danh sách lệnh chi payouts) qua các trang",
+      "Client bất đồng bộ: dùng AsyncPayOS với await cho từng lời gọi API"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.9 trở lên; tài khoản payOS với Client ID, API Key, Checksum Key (đặt qua biến môi trường PAYOS_CLIENT_ID, PAYOS_API_KEY, PAYOS_CHECKSUM_KEY).\nBước 1: Cài đặt thư viện từ PyPI: `pip install payos`\nBước 2: Nếu nâng cấp từ phiên bản v0, đọc hướng dẫn chuyển đổi trong MIGRATION.md\nBước 3: Khởi tạo PayOS với client_id, api_key, checksum_key lấy từ biến môi trường",
+    "usageGuideVi": "Bước 1: Gọi client.payment_requests.create() với CreatePaymentLinkRequest (order_code, amount, description, cancel_url, return_url) để tạo link thanh toán\nBước 2: Đăng ký URL webhook bằng client.webhooks.confirm(...) rồi dùng client.webhooks.verify(data) trong endpoint để xác thực dữ liệu\nBước 3: Bắt ngoại lệ APIError để đọc error_code, error_desc, status_code\nBước 4: Xem thêm ví dụ trong thư mục examples/ và tài liệu hướng dẫn tại payos.vn/docs",
+    "samplePromptsVi": [
+      "Viết endpoint Flask tạo link thanh toán payOS 50.000 đồng cho đơn hàng bằng thư viện payos",
+      "Hướng dẫn xác thực webhook payOS trong Python bằng client.webhooks.verify",
+      "Chuyển đoạn mã tạo link thanh toán payOS sang dùng AsyncPayOS"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install payos",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install payos\"\n  ],\n  \"nguon\": \"https://github.com/payOSHQ/payos-lib-python\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "SDK chính thức do payOS phát hành, giấy phép MIT",
+      "Có định nghĩa kiểu đầy đủ, hỗ trợ cả đồng bộ và bất đồng bộ",
+      "Được bảo trì tích cực (cập nhật năm 2026)"
+    ],
+    "consVi": [
+      "Cần tài khoản payOS và bộ khóa Client ID, API Key, Checksum Key của kênh thanh toán",
+      "Chỉ là thư viện gọi payOS Merchant API; tài liệu API chi tiết nằm ở trang payos.vn/docs",
+      "Phiên bản v1 có thay đổi API so với v0, dự án cũ cần làm theo MIGRATION.md"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# payOS Python SDK — Thư viện chính thức tích hợp cổng thanh toán payOS cho Python\n\n> The payOS Python library provides convenient access to the payOS Merchant API from applications written in Python.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\npayOS Python SDK là thư viện chính thức của payOS để gọi payOS Merchant API từ ứng dụng Python. Thư viện có định nghĩa kiểu cho mọi tham số và phản hồi, cung cấp cả client đồng bộ (PayOS) lẫn bất đồng bộ (AsyncPayOS) dựa trên httpx.\n\nGiúp lập trình viên Python tại Việt Nam tạo link thanh toán chuyển khoản qua payOS, nhận và xác thực webhook kết quả thanh toán mà không phải tự ký dữ liệu.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Cổng thanh toán & Ví điện tử (Payments)\n- **Tác giả / Nhà phát triển:** payOS\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/payOSHQ/payos-lib-python](https://github.com/payOSHQ/payos-lib-python)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tạo link thanh toán: gọi API payment requests với mã đơn hàng, số tiền, mô tả, returnUrl và cancelUrl**\n- **Xác thực webhook: đăng ký URL nhận webhook (confirm) và kiểm tra chữ ký dữ liệu thanh toán gửi về (verify)**\n- **Xử lý lỗi thống nhất: ném ngoại lệ APIError khi mã HTTP 4xx/5xx hoặc mã kết quả khác '00'**\n- **Phân trang tự động: duyệt danh sách (ví dụ danh sách lệnh chi payouts) qua các trang**\n- **Client bất đồng bộ: dùng AsyncPayOS với await cho từng lời gọi API**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install payos\n```\n\nYêu cầu: Python 3.9 trở lên; tài khoản payOS với Client ID, API Key, Checksum Key (đặt qua biến môi trường PAYOS_CLIENT_ID, PAYOS_API_KEY, PAYOS_CHECKSUM_KEY).\nBước 1: Cài đặt thư viện từ PyPI: `pip install payos`\nBước 2: Nếu nâng cấp từ phiên bản v0, đọc hướng dẫn chuyển đổi trong MIGRATION.md\nBước 3: Khởi tạo PayOS với client_id, api_key, checksum_key lấy từ biến môi trường\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Gọi client.payment_requests.create() với CreatePaymentLinkRequest (order_code, amount, description, cancel_url, return_url) để tạo link thanh toán\nBước 2: Đăng ký URL webhook bằng client.webhooks.confirm(...) rồi dùng client.webhooks.verify(data) trong endpoint để xác thực dữ liệu\nBước 3: Bắt ngoại lệ APIError để đọc error_code, error_desc, status_code\nBước 4: Xem thêm ví dụ trong thư mục examples/ và tài liệu hướng dẫn tại payos.vn/docs\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết endpoint Flask tạo link thanh toán payOS 50.000 đồng cho đơn hàng bằng thư viện payos\"\n- \"Hướng dẫn xác thực webhook payOS trong Python bằng client.webhooks.verify\"\n- \"Chuyển đoạn mã tạo link thanh toán payOS sang dùng AsyncPayOS\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:13:05.951Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "payoshq-payos-lib-php",
+    "slug": "payoshq-payos-lib-php",
+    "name": "payOS PHP Library — Thư viện chính thức tích hợp cổng thanh toán payOS cho PHP",
+    "icon": "CreditCard",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "payment_gateway",
+    "categoryNameVi": "Cổng thanh toán & Ví điện tử (Payments)",
+    "categories": [
+      "payment_gateway",
+      "fintech_banking",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Cổng thanh toán & Ví điện tử (Payments)",
+      "Công nghệ tài chính & Ngân hàng",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/payOSHQ/payos-lib-php",
+    "websiteUrl": "https://payos.vn/docs",
+    "authorName": "payOS",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "payOS PHP Library là thư viện chính thức của payOS để gọi payOS Merchant API từ ứng dụng PHP, phát hành trên Packagist với tên payos/payos. Thư viện cung cấp các resource như paymentRequests, webhooks, payouts kèm model dữ liệu cho từng yêu cầu.",
+    "purposeVi": "Giúp website và hệ thống PHP tại Việt Nam tạo link thanh toán payOS, xác thực webhook và quản lý lệnh chi bằng công cụ chính chủ.",
+    "featuresVi": [
+      "Tạo link thanh toán: gọi API payment requests với mã đơn hàng, số tiền, mô tả, returnUrl và cancelUrl",
+      "Xác thực webhook: đăng ký URL nhận webhook (confirm) và kiểm tra chữ ký dữ liệu thanh toán gửi về (verify)",
+      "Xử lý lỗi thống nhất: ném ngoại lệ APIError khi mã HTTP 4xx/5xx hoặc mã kết quả khác '00'",
+      "Phân trang tự động: duyệt danh sách (ví dụ danh sách lệnh chi payouts) qua các trang",
+      "Tương thích kết quả kiểu mảng: truyền tùy chọn asArray để nhận dữ liệu dạng mảng như phiên bản cũ"
+    ],
+    "installGuideVi": "Yêu cầu: PHP 8.2 trở lên, Composer và một PSR-18 HTTP client (ví dụ Guzzle); tài khoản payOS với Client ID, API Key, Checksum Key.\nBước 1: Cài đặt thư viện bằng Composer: `composer require payos/payos`\nBước 2: Nếu dự án chưa có PSR-18 HTTP client, cài đặt thêm Guzzle: `composer require guzzlehttp/guzzle`\nBước 3: Khởi tạo đối tượng PayOS với clientId, apiKey, checksumKey lấy từ biến môi trường",
+    "usageGuideVi": "Bước 1: Tạo CreatePaymentLinkRequest (orderCode, amount, description, returnUrl, cancelUrl) và gọi $payOS->paymentRequests->create(...)\nBước 2: Dùng $result->checkoutUrl để chuyển khách hàng tới trang thanh toán\nBước 3: Đăng ký webhook bằng $payOS->webhooks->confirm(...) và xác thực dữ liệu nhận được bằng $payOS->webhooks->verify(...)\nBước 4: Bắt \\PayOS\\Exceptions\\APIException để xử lý lỗi; xem ví dụ trong thư mục examples/",
+    "samplePromptsVi": [
+      "Viết controller Laravel tạo link thanh toán payOS bằng thư viện payos/payos",
+      "Hướng dẫn xác thực webhook payOS trong PHP và cập nhật trạng thái đơn hàng",
+      "Liệt kê các lệnh chi payouts bằng payOS PHP SDK có phân trang"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "composer require payos/payos",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"composer require payos/payos\"\n  ],\n  \"nguon\": \"https://github.com/payOSHQ/payos-lib-php\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "SDK chính thức do payOS phát hành, giấy phép MIT",
+      "Phát hành trên Packagist, cài đặt nhanh bằng Composer",
+      "Được bảo trì tích cực (cập nhật năm 2025)"
+    ],
+    "consVi": [
+      "Cần tài khoản payOS và bộ khóa Client ID, API Key, Checksum Key của kênh thanh toán",
+      "Chỉ là thư viện gọi payOS Merchant API; tài liệu API chi tiết nằm ở trang payos.vn/docs",
+      "Yêu cầu PHP 8.2 trở lên và một PSR-18 HTTP client"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# payOS PHP Library — Thư viện chính thức tích hợp cổng thanh toán payOS cho PHP\n\n> The payOS PHP library provides convenient access to the payOS Merchant API from applications written in PHP.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\npayOS PHP Library là thư viện chính thức của payOS để gọi payOS Merchant API từ ứng dụng PHP, phát hành trên Packagist với tên payos/payos. Thư viện cung cấp các resource như paymentRequests, webhooks, payouts kèm model dữ liệu cho từng yêu cầu.\n\nGiúp website và hệ thống PHP tại Việt Nam tạo link thanh toán payOS, xác thực webhook và quản lý lệnh chi bằng công cụ chính chủ.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Cổng thanh toán & Ví điện tử (Payments)\n- **Tác giả / Nhà phát triển:** payOS\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/payOSHQ/payos-lib-php](https://github.com/payOSHQ/payos-lib-php)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tạo link thanh toán: gọi API payment requests với mã đơn hàng, số tiền, mô tả, returnUrl và cancelUrl**\n- **Xác thực webhook: đăng ký URL nhận webhook (confirm) và kiểm tra chữ ký dữ liệu thanh toán gửi về (verify)**\n- **Xử lý lỗi thống nhất: ném ngoại lệ APIError khi mã HTTP 4xx/5xx hoặc mã kết quả khác '00'**\n- **Phân trang tự động: duyệt danh sách (ví dụ danh sách lệnh chi payouts) qua các trang**\n- **Tương thích kết quả kiểu mảng: truyền tùy chọn asArray để nhận dữ liệu dạng mảng như phiên bản cũ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ncomposer require payos/payos\n```\n\nYêu cầu: PHP 8.2 trở lên, Composer và một PSR-18 HTTP client (ví dụ Guzzle); tài khoản payOS với Client ID, API Key, Checksum Key.\nBước 1: Cài đặt thư viện bằng Composer: `composer require payos/payos`\nBước 2: Nếu dự án chưa có PSR-18 HTTP client, cài đặt thêm Guzzle: `composer require guzzlehttp/guzzle`\nBước 3: Khởi tạo đối tượng PayOS với clientId, apiKey, checksumKey lấy từ biến môi trường\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo CreatePaymentLinkRequest (orderCode, amount, description, returnUrl, cancelUrl) và gọi $payOS->paymentRequests->create(...)\nBước 2: Dùng $result->checkoutUrl để chuyển khách hàng tới trang thanh toán\nBước 3: Đăng ký webhook bằng $payOS->webhooks->confirm(...) và xác thực dữ liệu nhận được bằng $payOS->webhooks->verify(...)\nBước 4: Bắt \\PayOS\\Exceptions\\APIException để xử lý lỗi; xem ví dụ trong thư mục examples/\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết controller Laravel tạo link thanh toán payOS bằng thư viện payos/payos\"\n- \"Hướng dẫn xác thực webhook payOS trong PHP và cập nhật trạng thái đơn hàng\"\n- \"Liệt kê các lệnh chi payouts bằng payOS PHP SDK có phân trang\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:13:05.951Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "payoshq-payos-lib-java",
+    "slug": "payoshq-payos-lib-java",
+    "name": "payOS Java Library — Thư viện chính thức tích hợp cổng thanh toán payOS cho Java",
+    "icon": "CreditCard",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "payment_gateway",
+    "categoryNameVi": "Cổng thanh toán & Ví điện tử (Payments)",
+    "categories": [
+      "payment_gateway",
+      "fintech_banking",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Cổng thanh toán & Ví điện tử (Payments)",
+      "Công nghệ tài chính & Ngân hàng",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/payOSHQ/payos-lib-java",
+    "websiteUrl": "https://payos.vn/docs",
+    "authorName": "payOS",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "payOS Java Library là thư viện chính thức của payOS để gọi payOS Merchant API từ ứng dụng Java, phát hành trên Maven Central với mã vn.payos:payos-java. Thư viện hỗ trợ tạo link thanh toán, xác thực webhook và có Javadoc trên javadoc.io.",
+    "purposeVi": "Giúp hệ thống backend Java (Spring, Android server…) tại Việt Nam tích hợp thanh toán chuyển khoản qua payOS bằng công cụ chính chủ.",
+    "featuresVi": [
+      "Tạo link thanh toán: gọi API payment requests với mã đơn hàng, số tiền, mô tả, returnUrl và cancelUrl",
+      "Xác thực webhook: đăng ký URL nhận webhook (confirm) và kiểm tra chữ ký dữ liệu thanh toán gửi về (verify)",
+      "Xử lý lỗi thống nhất: ném ngoại lệ APIError khi mã HTTP 4xx/5xx hoặc mã kết quả khác '00'",
+      "Phân trang tự động: duyệt danh sách (ví dụ danh sách lệnh chi payouts) qua các trang",
+      "Khởi tạo từ biến môi trường: PayOS.fromEnv() đọc PAYOS_CLIENT_ID, PAYOS_API_KEY, PAYOS_CHECKSUM_KEY"
+    ],
+    "installGuideVi": "Yêu cầu: Java 8 trở lên, Gradle hoặc Maven; tài khoản payOS với Client ID, API Key, Checksum Key.\nBước 1: Cài đặt bằng Gradle, thêm dòng phụ thuộc: `implementation 'vn.payos:payos-java:2.0.1'`\nBước 2: Hoặc cài đặt bằng Maven: thêm dependency groupId vn.payos, artifactId payos-java, version 2.0.1 vào pom.xml\nBước 3: Đặt các biến môi trường PAYOS_CLIENT_ID, PAYOS_API_KEY, PAYOS_CHECKSUM_KEY rồi khởi tạo client bằng PayOS.fromEnv()",
+    "usageGuideVi": "Bước 1: Dựng CreatePaymentLinkRequest bằng builder (orderCode, amount, description, returnUrl, cancelUrl) và gọi client.paymentRequests().create(...)\nBước 2: Đăng ký webhook bằng client.webhooks().confirm(...) và xác thực dữ liệu bằng client.webhooks().verify(body)\nBước 3: Bắt PayOSException/APIException để xử lý lỗi\nBước 4: Xem ví dụ trong src/main/java/vn/payos/examples và Javadoc trên javadoc.io",
+    "samplePromptsVi": [
+      "Viết REST controller Spring Boot tạo link thanh toán payOS bằng thư viện payos-java",
+      "Hướng dẫn xác thực webhook payOS trong Java",
+      "Thêm payos-java vào dự án Maven và tạo đơn thanh toán thử 2.000 đồng"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Gradle",
+        "cliCommand": "implementation 'vn.payos:payos-java:2.0.1'",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"implementation 'vn.payos:payos-java:2.0.1'\"\n  ],\n  \"nguon\": \"https://github.com/payOSHQ/payos-lib-java\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "SDK chính thức do payOS phát hành, giấy phép MIT",
+      "Hỗ trợ từ Java 8, có Javadoc",
+      "Được bảo trì tích cực (cập nhật năm 2025)"
+    ],
+    "consVi": [
+      "Cần tài khoản payOS và bộ khóa Client ID, API Key, Checksum Key của kênh thanh toán",
+      "Chỉ là thư viện gọi payOS Merchant API; tài liệu API chi tiết nằm ở trang payos.vn/docs"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# payOS Java Library — Thư viện chính thức tích hợp cổng thanh toán payOS cho Java\n\n> The payOS Java library provides convenient access to the payOS Merchant API from applications written in Java.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\npayOS Java Library là thư viện chính thức của payOS để gọi payOS Merchant API từ ứng dụng Java, phát hành trên Maven Central với mã vn.payos:payos-java. Thư viện hỗ trợ tạo link thanh toán, xác thực webhook và có Javadoc trên javadoc.io.\n\nGiúp hệ thống backend Java (Spring, Android server…) tại Việt Nam tích hợp thanh toán chuyển khoản qua payOS bằng công cụ chính chủ.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Cổng thanh toán & Ví điện tử (Payments)\n- **Tác giả / Nhà phát triển:** payOS\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/payOSHQ/payos-lib-java](https://github.com/payOSHQ/payos-lib-java)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tạo link thanh toán: gọi API payment requests với mã đơn hàng, số tiền, mô tả, returnUrl và cancelUrl**\n- **Xác thực webhook: đăng ký URL nhận webhook (confirm) và kiểm tra chữ ký dữ liệu thanh toán gửi về (verify)**\n- **Xử lý lỗi thống nhất: ném ngoại lệ APIError khi mã HTTP 4xx/5xx hoặc mã kết quả khác '00'**\n- **Phân trang tự động: duyệt danh sách (ví dụ danh sách lệnh chi payouts) qua các trang**\n- **Khởi tạo từ biến môi trường: PayOS.fromEnv() đọc PAYOS_CLIENT_ID, PAYOS_API_KEY, PAYOS_CHECKSUM_KEY**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nimplementation 'vn.payos:payos-java:2.0.1'\n```\n\nYêu cầu: Java 8 trở lên, Gradle hoặc Maven; tài khoản payOS với Client ID, API Key, Checksum Key.\nBước 1: Cài đặt bằng Gradle, thêm dòng phụ thuộc: `implementation 'vn.payos:payos-java:2.0.1'`\nBước 2: Hoặc cài đặt bằng Maven: thêm dependency groupId vn.payos, artifactId payos-java, version 2.0.1 vào pom.xml\nBước 3: Đặt các biến môi trường PAYOS_CLIENT_ID, PAYOS_API_KEY, PAYOS_CHECKSUM_KEY rồi khởi tạo client bằng PayOS.fromEnv()\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Dựng CreatePaymentLinkRequest bằng builder (orderCode, amount, description, returnUrl, cancelUrl) và gọi client.paymentRequests().create(...)\nBước 2: Đăng ký webhook bằng client.webhooks().confirm(...) và xác thực dữ liệu bằng client.webhooks().verify(body)\nBước 3: Bắt PayOSException/APIException để xử lý lỗi\nBước 4: Xem ví dụ trong src/main/java/vn/payos/examples và Javadoc trên javadoc.io\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết REST controller Spring Boot tạo link thanh toán payOS bằng thư viện payos-java\"\n- \"Hướng dẫn xác thực webhook payOS trong Java\"\n- \"Thêm payos-java vào dự án Maven và tạo đơn thanh toán thử 2.000 đồng\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:13:05.951Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "payoshq-payos-lib-golang",
+    "slug": "payoshq-payos-lib-golang",
+    "name": "payOS Go Library — Thư viện chính thức tích hợp cổng thanh toán payOS cho Go",
+    "icon": "CreditCard",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "payment_gateway",
+    "categoryNameVi": "Cổng thanh toán & Ví điện tử (Payments)",
+    "categories": [
+      "payment_gateway",
+      "fintech_banking",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Cổng thanh toán & Ví điện tử (Payments)",
+      "Công nghệ tài chính & Ngân hàng",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/payOSHQ/payos-lib-golang",
+    "websiteUrl": "https://payos.vn/docs",
+    "authorName": "payOS",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "payOS Go Library là thư viện chính thức của payOS để gọi payOS Merchant API từ ứng dụng Go (module github.com/payOSHQ/payos-lib-golang/v2). Thư viện hỗ trợ tạo link thanh toán, đăng ký và xác thực webhook, xử lý lỗi theo mã phản hồi.",
+    "purposeVi": "Giúp dịch vụ backend viết bằng Go tại Việt Nam tích hợp thanh toán chuyển khoản qua payOS bằng công cụ chính chủ.",
+    "featuresVi": [
+      "Tạo link thanh toán: gọi API payment requests với mã đơn hàng, số tiền, mô tả, returnUrl và cancelUrl",
+      "Xác thực webhook: đăng ký URL nhận webhook (Webhooks.Confirm) và kiểm tra dữ liệu thanh toán gửi về (Webhooks.VerifyData)",
+      "Xử lý lỗi thống nhất: ném ngoại lệ APIError khi mã HTTP 4xx/5xx hoặc mã kết quả khác '00'"
+    ],
+    "installGuideVi": "Yêu cầu: Go 1.21 trở lên; tài khoản payOS với Client ID, API Key, Checksum Key.\nBước 1: Cài đặt module: `go get github.com/payOSHQ/payos-lib-golang/v2`\nBước 2: Nếu nâng cấp từ v1, đọc hướng dẫn chuyển đổi trong MIGRATION.md\nBước 3: Khởi tạo client bằng payos.NewPayOS với ClientId, ApiKey, ChecksumKey",
+    "usageGuideVi": "Bước 1: Gọi client.PaymentRequests.Create(ctx, payos.CreatePaymentLinkRequest{...}) để tạo link thanh toán\nBước 2: Đăng ký webhook bằng client.Webhooks.Confirm(ctx, url)\nBước 3: Xác thực dữ liệu webhook nhận được bằng client.Webhooks.VerifyData(...)\nBước 4: Xem thêm ví dụ trong thư mục examples/",
+    "samplePromptsVi": [
+      "Viết handler Go (net/http) tạo link thanh toán payOS bằng payos-lib-golang v2",
+      "Hướng dẫn xác thực webhook payOS trong Go",
+      "Chuyển mã tích hợp payOS Go từ v1 sang v2"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "go get github.com/payOSHQ/payos-lib-golang/v2",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"go get github.com/payOSHQ/payos-lib-golang/v2\"\n  ],\n  \"nguon\": \"https://github.com/payOSHQ/payos-lib-golang\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "SDK chính thức do payOS phát hành, giấy phép MIT",
+      "Có tài liệu trên pkg.go.dev",
+      "Được bảo trì tích cực (cập nhật năm 2025)"
+    ],
+    "consVi": [
+      "Cần tài khoản payOS và bộ khóa Client ID, API Key, Checksum Key của kênh thanh toán",
+      "Chỉ là thư viện gọi payOS Merchant API; tài liệu API chi tiết nằm ở trang payos.vn/docs",
+      "Phiên bản v2 thay đổi API so với v1, cần làm theo MIGRATION.md"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# payOS Go Library — Thư viện chính thức tích hợp cổng thanh toán payOS cho Go\n\n> The payOS Go library provides convenient access to the payOS Merchant API from applications written in Go.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\npayOS Go Library là thư viện chính thức của payOS để gọi payOS Merchant API từ ứng dụng Go (module github.com/payOSHQ/payos-lib-golang/v2). Thư viện hỗ trợ tạo link thanh toán, đăng ký và xác thực webhook, xử lý lỗi theo mã phản hồi.\n\nGiúp dịch vụ backend viết bằng Go tại Việt Nam tích hợp thanh toán chuyển khoản qua payOS bằng công cụ chính chủ.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Cổng thanh toán & Ví điện tử (Payments)\n- **Tác giả / Nhà phát triển:** payOS\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/payOSHQ/payos-lib-golang](https://github.com/payOSHQ/payos-lib-golang)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tạo link thanh toán: gọi API payment requests với mã đơn hàng, số tiền, mô tả, returnUrl và cancelUrl**\n- **Xác thực webhook: đăng ký URL nhận webhook (Webhooks.Confirm) và kiểm tra dữ liệu thanh toán gửi về (Webhooks.VerifyData)**\n- **Xử lý lỗi thống nhất: ném ngoại lệ APIError khi mã HTTP 4xx/5xx hoặc mã kết quả khác '00'**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ngo get github.com/payOSHQ/payos-lib-golang/v2\n```\n\nYêu cầu: Go 1.21 trở lên; tài khoản payOS với Client ID, API Key, Checksum Key.\nBước 1: Cài đặt module: `go get github.com/payOSHQ/payos-lib-golang/v2`\nBước 2: Nếu nâng cấp từ v1, đọc hướng dẫn chuyển đổi trong MIGRATION.md\nBước 3: Khởi tạo client bằng payos.NewPayOS với ClientId, ApiKey, ChecksumKey\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Gọi client.PaymentRequests.Create(ctx, payos.CreatePaymentLinkRequest{...}) để tạo link thanh toán\nBước 2: Đăng ký webhook bằng client.Webhooks.Confirm(ctx, url)\nBước 3: Xác thực dữ liệu webhook nhận được bằng client.Webhooks.VerifyData(...)\nBước 4: Xem thêm ví dụ trong thư mục examples/\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết handler Go (net/http) tạo link thanh toán payOS bằng payos-lib-golang v2\"\n- \"Hướng dẫn xác thực webhook payOS trong Go\"\n- \"Chuyển mã tích hợp payOS Go từ v1 sang v2\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:13:05.951Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "shinxz12-napas-qr-python",
+    "slug": "shinxz12-napas-qr-python",
+    "name": "Napas QR Python — Thư viện tạo và giải mã mã VietQR chuẩn NAPAS247",
+    "icon": "CreditCard",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "payment_gateway",
+    "categoryNameVi": "Cổng thanh toán & Ví điện tử (Payments)",
+    "categories": [
+      "payment_gateway",
+      "fintech_banking"
+    ],
+    "categoryNamesVi": [
+      "Cổng thanh toán & Ví điện tử (Payments)",
+      "Công nghệ tài chính & Ngân hàng"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/shinxz12/napas-qr-python",
+    "websiteUrl": "https://shinxz12.github.io/napas-qr-python",
+    "authorName": "shinxz12",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Napas QR Python là thư viện Python tạo và giải mã mã VietQR theo đặc tả NAPAS247 (bản tiếng Việt và tiếng Anh). Thư viện hỗ trợ đầy đủ các trường gốc và trường mẫu của chuẩn, kiểm tra CRC khi giải mã, dùng segno để xuất ảnh QR và có công cụ dòng lệnh napas_qr.",
+    "purposeVi": "Giúp lập trình viên tạo chuỗi và ảnh mã QR chuyển khoản liên ngân hàng VietQR (theo mã BIN ngân hàng và số tài khoản/thẻ) hoặc đọc lại dữ liệu từ mã QR có sẵn.",
+    "featuresVi": [
+      "Mã hóa VietQR: tạo payload theo mã BIN, số tài khoản/thẻ, số tiền, nội dung chuyển khoản",
+      "Giải mã VietQR: phân tích payload thành các trường dữ liệu, kiểm tra CRC mặc định",
+      "Tạo ảnh QR: dùng segno, tùy chỉnh kích thước và màu",
+      "Hỗ trợ nhiều dịch vụ: ACCOUNT, CARD, PAYMENT, CASH_WITHDRAWL; QR tĩnh hoặc động",
+      "Công cụ dòng lệnh napas_qr với lệnh encode và decode"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.8.2 trở lên (theo pyproject.toml).\nBước 1: Cài đặt thư viện từ PyPI: `pip install napas-qr-python`\nBước 2: Kiểm tra công cụ dòng lệnh bằng cách mã hóa thử một payload: `napas_qr encode --bin 970436 --consumer 1031933430 --amount 50000 --purpose \"Thanh toan\"`",
+    "usageGuideVi": "Bước 1: Trong Python: `from qr_pay import QRPay`, tạo QRPay('970436', '1031933430', purpose_of_transaction=...) rồi đọc thuộc tính code\nBước 2: Gọi qr_pay.generate_qr_pay() để xuất ảnh QR; truyền dist và styles để tùy chỉnh\nBước 3: Giải mã payload bằng decode(code) hoặc QRPay.decode(code); thêm verify_crc=False để bỏ qua kiểm tra CRC\nBước 4: Dùng dòng lệnh `napas_qr decode \"<payload>\"` để xuất dữ liệu dạng JSON",
+    "samplePromptsVi": [
+      "Tạo mã VietQR chuyển khoản 50.000 đồng tới tài khoản Vietcombank (BIN 970436) với nội dung thanh toán hóa đơn",
+      "Viết hàm Python đọc payload VietQR và trả về số tài khoản, mã ngân hàng, số tiền",
+      "Xuất ảnh QR màu xanh đậm cho mã VietQR bằng napas-qr-python"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install napas-qr-python",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install napas-qr-python\"\n  ],\n  \"nguon\": \"https://github.com/shinxz12/napas-qr-python\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, có tài liệu hướng dẫn riêng",
+      "Hỗ trợ cả mã hóa lẫn giải mã có kiểm tra CRC",
+      "Hoạt động offline, không cần khóa API",
+      "Được bảo trì (cập nhật năm 2026)"
+    ],
+    "consVi": [
+      "Dự án cá nhân, không phải thư viện chính thức của NAPAS",
+      "Chỉ tạo/giải mã chuỗi QR, không xác nhận giao dịch hay tra cứu ngân hàng"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Napas QR Python — Thư viện tạo và giải mã mã VietQR chuẩn NAPAS247\n\n> Generate VietQR for python following VietQR Vi Version and En Version\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nNapas QR Python là thư viện Python tạo và giải mã mã VietQR theo đặc tả NAPAS247 (bản tiếng Việt và tiếng Anh). Thư viện hỗ trợ đầy đủ các trường gốc và trường mẫu của chuẩn, kiểm tra CRC khi giải mã, dùng segno để xuất ảnh QR và có công cụ dòng lệnh napas_qr.\n\nGiúp lập trình viên tạo chuỗi và ảnh mã QR chuyển khoản liên ngân hàng VietQR (theo mã BIN ngân hàng và số tài khoản/thẻ) hoặc đọc lại dữ liệu từ mã QR có sẵn.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Cổng thanh toán & Ví điện tử (Payments)\n- **Tác giả / Nhà phát triển:** shinxz12\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/shinxz12/napas-qr-python](https://github.com/shinxz12/napas-qr-python)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Mã hóa VietQR: tạo payload theo mã BIN, số tài khoản/thẻ, số tiền, nội dung chuyển khoản**\n- **Giải mã VietQR: phân tích payload thành các trường dữ liệu, kiểm tra CRC mặc định**\n- **Tạo ảnh QR: dùng segno, tùy chỉnh kích thước và màu**\n- **Hỗ trợ nhiều dịch vụ: ACCOUNT, CARD, PAYMENT, CASH_WITHDRAWL; QR tĩnh hoặc động**\n- **Công cụ dòng lệnh napas_qr với lệnh encode và decode**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install napas-qr-python\n```\n\nYêu cầu: Python 3.8.2 trở lên (theo pyproject.toml).\nBước 1: Cài đặt thư viện từ PyPI: `pip install napas-qr-python`\nBước 2: Kiểm tra công cụ dòng lệnh bằng cách mã hóa thử một payload: `napas_qr encode --bin 970436 --consumer 1031933430 --amount 50000 --purpose \"Thanh toan\"`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trong Python: `from qr_pay import QRPay`, tạo QRPay('970436', '1031933430', purpose_of_transaction=...) rồi đọc thuộc tính code\nBước 2: Gọi qr_pay.generate_qr_pay() để xuất ảnh QR; truyền dist và styles để tùy chỉnh\nBước 3: Giải mã payload bằng decode(code) hoặc QRPay.decode(code); thêm verify_crc=False để bỏ qua kiểm tra CRC\nBước 4: Dùng dòng lệnh `napas_qr decode \"<payload>\"` để xuất dữ liệu dạng JSON\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo mã VietQR chuyển khoản 50.000 đồng tới tài khoản Vietcombank (BIN 970436) với nội dung thanh toán hóa đơn\"\n- \"Viết hàm Python đọc payload VietQR và trả về số tài khoản, mã ngân hàng, số tiền\"\n- \"Xuất ảnh QR màu xanh đậm cho mã VietQR bằng napas-qr-python\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:13:05.951Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "ducnpdev-vietqr",
+    "slug": "ducnpdev-vietqr",
+    "name": "VietQR Go — Thư viện Go sinh mã QR thanh toán chuẩn NAPAS VietQR",
+    "icon": "CreditCard",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "payment_gateway",
+    "categoryNameVi": "Cổng thanh toán & Ví điện tử (Payments)",
+    "categories": [
+      "payment_gateway",
+      "fintech_banking"
+    ],
+    "categoryNamesVi": [
+      "Cổng thanh toán & Ví điện tử (Payments)",
+      "Công nghệ tài chính & Ngân hàng"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/ducnpdev/vietqr",
+    "websiteUrl": "",
+    "authorName": "ducnpdev",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "VietQR - Golang là thư viện Go giúp tạo nội dung mã QR thanh toán tuân theo chuẩn NAPAS VietQR. Thư viện cung cấp API đơn giản để điền thông tin tài khoản thụ hưởng, số tiền, nội dung, MCC, tên người nhận và sinh chuỗi QR.",
+    "purposeVi": "Giúp dịch vụ backend Go tại Việt Nam sinh mã QR chuyển khoản theo chuẩn NAPAS VietQR cho đơn hàng, hóa đơn.",
+    "featuresVi": [
+      "Sinh chuỗi VietQR: hàm GenerateViQR từ cấu trúc RequestGenerateViQR",
+      "Hỗ trợ các trường NAPAS VietQR: tài khoản thụ hưởng, số tiền, nội dung, MCC, tên người nhận",
+      "Kiểm tra dữ liệu: kiểm tra trường đầu vào, phân tích và kiểm tra mã QR"
+    ],
+    "installGuideVi": "Yêu cầu: Go 1.16 trở lên.\nBước 1: Cài đặt thư viện: `go get github.com/ducnpdev/vietqr`",
+    "usageGuideVi": "Bước 1: Tạo vietqr.RequestGenerateViQR với MerchantAccountInformation.AccountNo, TransactionAmount, mô tả, Mcc, ReceiverName\nBước 2: Gọi vietqr.GenerateViQR(qrRequest) để nhận chuỗi nội dung QR\nBước 3: Dùng thư viện vẽ QR bất kỳ để chuyển chuỗi thành ảnh; tham khảo cấu trúc trường trong README và tài liệu NAPAS",
+    "samplePromptsVi": [
+      "Viết hàm Go sinh mã VietQR 505.000 đồng cho đơn hàng với nội dung thanh toán dịch vụ",
+      "Giải thích cấu trúc các tag 38, 54, 62 trong chuỗi VietQR do thư viện ducnpdev/vietqr sinh ra"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "go get github.com/ducnpdev/vietqr",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"go get github.com/ducnpdev/vietqr\"\n  ],\n  \"nguon\": \"https://github.com/ducnpdev/vietqr\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, không cần khóa API",
+      "Thư viện Go thuần, API gọn"
+    ],
+    "consVi": [
+      "Dự án cá nhân, không phải thư viện chính thức của NAPAS",
+      "Chỉ sinh chuỗi nội dung QR, không kèm chức năng xuất ảnh trong ví dụ README",
+      "Cập nhật gần nhất tháng 6/2025"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# VietQR Go — Thư viện Go sinh mã QR thanh toán chuẩn NAPAS VietQR\n\n> A powerful Golang library for generating VietQR codes for NAPAS payment integration\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nVietQR - Golang là thư viện Go giúp tạo nội dung mã QR thanh toán tuân theo chuẩn NAPAS VietQR. Thư viện cung cấp API đơn giản để điền thông tin tài khoản thụ hưởng, số tiền, nội dung, MCC, tên người nhận và sinh chuỗi QR.\n\nGiúp dịch vụ backend Go tại Việt Nam sinh mã QR chuyển khoản theo chuẩn NAPAS VietQR cho đơn hàng, hóa đơn.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Cổng thanh toán & Ví điện tử (Payments)\n- **Tác giả / Nhà phát triển:** ducnpdev\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/ducnpdev/vietqr](https://github.com/ducnpdev/vietqr)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Sinh chuỗi VietQR: hàm GenerateViQR từ cấu trúc RequestGenerateViQR**\n- **Hỗ trợ các trường NAPAS VietQR: tài khoản thụ hưởng, số tiền, nội dung, MCC, tên người nhận**\n- **Kiểm tra dữ liệu: kiểm tra trường đầu vào, phân tích và kiểm tra mã QR**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ngo get github.com/ducnpdev/vietqr\n```\n\nYêu cầu: Go 1.16 trở lên.\nBước 1: Cài đặt thư viện: `go get github.com/ducnpdev/vietqr`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo vietqr.RequestGenerateViQR với MerchantAccountInformation.AccountNo, TransactionAmount, mô tả, Mcc, ReceiverName\nBước 2: Gọi vietqr.GenerateViQR(qrRequest) để nhận chuỗi nội dung QR\nBước 3: Dùng thư viện vẽ QR bất kỳ để chuyển chuỗi thành ảnh; tham khảo cấu trúc trường trong README và tài liệu NAPAS\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết hàm Go sinh mã VietQR 505.000 đồng cho đơn hàng với nội dung thanh toán dịch vụ\"\n- \"Giải thích cấu trúc các tag 38, 54, 62 trong chuỗi VietQR do thư viện ducnpdev/vietqr sinh ra\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:13:05.951Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "doxuta-amlich",
+    "slug": "doxuta-amlich",
+    "name": "amlich — Thư viện, CLI và máy chủ MCP tính âm lịch Việt Nam bằng thiên văn",
+    "icon": "Wrench",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "backend_api",
+    "categoryNameVi": "Backend & Kiến trúc API",
+    "categories": [
+      "backend_api",
+      "office_digital_docs"
+    ],
+    "categoryNamesVi": [
+      "Backend & Kiến trúc API",
+      "Văn phòng số & Quản lý văn bản điện tử"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "claude_code",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/doxuta/amlich",
+    "websiteUrl": "https://pkg.go.dev/github.com/doxuta/amlich",
+    "authorName": "Xuan Tai Doan",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "amlich là thư viện Go thuần (không phụ thuộc) tính âm lịch Việt Nam và Hàn Quốc bằng thiên văn — điểm sóc và kinh độ mặt trời — thay vì bảng tra, kèm công cụ dòng lệnh và máy chủ MCP cho tác tử AI. Thư viện đổi ngày dương ↔ âm, liệt kê ngày lễ âm lịch (Tết, Giỗ tổ, Trung thu), tính can chi và chỉ ra những năm Tết Việt Nam lệch Seollal Hàn Quốc một ngày.",
+    "purposeVi": "Giúp ứng dụng và tác tử AI tính chính xác ngày âm lịch, ngày lễ Việt Nam thay vì đoán, hoạt động offline và không cần khóa API.",
+    "featuresVi": [
+      "Đổi ngày: SolarToLunar, LunarToSolar cho múi giờ Việt Nam (UTC+7) và Hàn Quốc (UTC+9)",
+      "Ngày lễ âm lịch: Holidays liệt kê Tết, Giỗ tổ, Trung thu… theo năm",
+      "Can chi: tên năm theo cách đọc tiếng Việt và tiếng Hàn",
+      "Máy chủ MCP amlich-mcp với các tool convert_date, lunar_today, holidays_in_year, vn_kr_divergence",
+      "Công cụ dòng lệnh amlich: today, convert, holidays, canchi, divergence",
+      "Phạm vi hỗ trợ 1200–3000; được đối chứng 59.810 phép đổi và kiểm thử fuzz"
+    ],
+    "installGuideVi": "Yêu cầu: Go (để cài đặt bằng go get/go install); Claude Code nếu dùng máy chủ MCP.\nBước 1: Cài đặt máy chủ MCP: `go install github.com/doxuta/amlich/cmd/amlich-mcp@latest`\nBước 2: Thêm máy chủ vào Claude Code: `claude mcp add amlich -- amlich-mcp`\nBước 3: Cài đặt công cụ dòng lệnh (tùy chọn): `go install github.com/doxuta/amlich/cmd/amlich@latest`\nBước 4: Dùng làm thư viện trong dự án Go: `go get github.com/doxuta/amlich`",
+    "usageGuideVi": "Bước 1: Hỏi tác tử AI về ngày âm lịch; tác tử gọi tool convert_date, lunar_today hoặc holidays_in_year\nBước 2: Trên terminal: `amlich today` để xem hôm nay âm lịch, `amlich convert 2026-02-17` để đổi ngày\nBước 3: `amlich holidays 2027` để liệt kê ngày lễ âm lịch; `amlich canchi 2027` để xem can chi\nBước 4: Trong mã Go: gọi amlich.SolarToLunar(2026, 2, 17, amlich.Vietnam)",
+    "samplePromptsVi": [
+      "Hôm nay là ngày bao nhiêu âm lịch?",
+      "Tết Nguyên Đán năm 2027 rơi vào ngày dương lịch nào?",
+      "Liệt kê các ngày lễ âm lịch Việt Nam năm 2028",
+      "Những năm nào từ 2026 đến 2031 Tết Việt Nam và Seollal Hàn Quốc lệch nhau?"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add amlich -- amlich-mcp",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add amlich -- amlich-mcp\"\n  ],\n  \"nguon\": \"https://github.com/doxuta/amlich\"\n}"
+      },
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "go install github.com/doxuta/amlich/cmd/amlich@latest",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"go install github.com/doxuta/amlich/cmd/amlich@latest\"\n  ],\n  \"nguon\": \"https://github.com/doxuta/amlich\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, không phụ thuộc thư viện ngoài",
+      "Hoạt động offline, không cần khóa API",
+      "Có sẵn máy chủ MCP và lệnh claude mcp add trong README",
+      "README có tóm tắt tiếng Việt"
+    ],
+    "consVi": [
+      "Dự án rất mới (2026), một tác giả; README nêu phần chuyển mã được thực hiện với tác tử AI dưới sự rà soát của con người",
+      "Chỉ hỗ trợ khoảng năm 1200–3000",
+      "Cần cài Go để cài đặt"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# amlich — Thư viện, CLI và máy chủ MCP tính âm lịch Việt Nam bằng thiên văn\n\n> Astronomical Vietnamese & Korean lunisolar calendar engine in pure Go — with an MCP server so AI agents stop guessing when Tết is.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\namlich là thư viện Go thuần (không phụ thuộc) tính âm lịch Việt Nam và Hàn Quốc bằng thiên văn — điểm sóc và kinh độ mặt trời — thay vì bảng tra, kèm công cụ dòng lệnh và máy chủ MCP cho tác tử AI. Thư viện đổi ngày dương ↔ âm, liệt kê ngày lễ âm lịch (Tết, Giỗ tổ, Trung thu), tính can chi và chỉ ra những năm Tết Việt Nam lệch Seollal Hàn Quốc một ngày.\n\nGiúp ứng dụng và tác tử AI tính chính xác ngày âm lịch, ngày lễ Việt Nam thay vì đoán, hoạt động offline và không cần khóa API.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Backend & Kiến trúc API\n- **Tác giả / Nhà phát triển:** Xuan Tai Doan\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `web`\n- **Kho lưu trữ chính thức:** [https://github.com/doxuta/amlich](https://github.com/doxuta/amlich)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Đổi ngày: SolarToLunar, LunarToSolar cho múi giờ Việt Nam (UTC+7) và Hàn Quốc (UTC+9)**\n- **Ngày lễ âm lịch: Holidays liệt kê Tết, Giỗ tổ, Trung thu… theo năm**\n- **Can chi: tên năm theo cách đọc tiếng Việt và tiếng Hàn**\n- **Máy chủ MCP amlich-mcp với các tool convert_date, lunar_today, holidays_in_year, vn_kr_divergence**\n- **Công cụ dòng lệnh amlich: today, convert, holidays, canchi, divergence**\n- **Phạm vi hỗ trợ 1200–3000; được đối chứng 59.810 phép đổi và kiểm thử fuzz**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add amlich -- amlich-mcp\n```\n\nYêu cầu: Go (để cài đặt bằng go get/go install); Claude Code nếu dùng máy chủ MCP.\nBước 1: Cài đặt máy chủ MCP: `go install github.com/doxuta/amlich/cmd/amlich-mcp@latest`\nBước 2: Thêm máy chủ vào Claude Code: `claude mcp add amlich -- amlich-mcp`\nBước 3: Cài đặt công cụ dòng lệnh (tùy chọn): `go install github.com/doxuta/amlich/cmd/amlich@latest`\nBước 4: Dùng làm thư viện trong dự án Go: `go get github.com/doxuta/amlich`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Hỏi tác tử AI về ngày âm lịch; tác tử gọi tool convert_date, lunar_today hoặc holidays_in_year\nBước 2: Trên terminal: `amlich today` để xem hôm nay âm lịch, `amlich convert 2026-02-17` để đổi ngày\nBước 3: `amlich holidays 2027` để liệt kê ngày lễ âm lịch; `amlich canchi 2027` để xem can chi\nBước 4: Trong mã Go: gọi amlich.SolarToLunar(2026, 2, 17, amlich.Vietnam)\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hôm nay là ngày bao nhiêu âm lịch?\"\n- \"Tết Nguyên Đán năm 2027 rơi vào ngày dương lịch nào?\"\n- \"Liệt kê các ngày lễ âm lịch Việt Nam năm 2028\"\n- \"Những năm nào từ 2026 đến 2031 Tết Việt Nam và Seollal Hàn Quốc lệch nhau?\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:13:05.951Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]

@@ -4,6 +4,14 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.18 (Ngày 24-10-2026)
+- **Loại hình**: Tài nguyên thị trường Việt Nam: chứng khoán, kế toán/thuế, thanh toán, đợt 11 (16 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-vn-dot-11-*.json`.
+- **Chứng khoán**: SSI FastConnect SDK chính thức (Python, Node.js, .NET), vnstock MCP server (bản npm của vietnh, bản PyPI của MaoBui2907; đều phụ thuộc thư viện vnstock có giấy phép riêng).
+- **Thuế, lương, hóa đơn điện tử**: tncn (kỹ năng tính thuế TNCN), thue-2026, vnsalary, einvoice-lens.
+- **Thanh toán & tiện ích**: payOS SDK chính thức (Python, PHP, Java, Go), napas-qr-python, vietqr (Go), amlich (MCP âm lịch).
+- Không thêm: repo không có tệp giấy phép, dự án ngừng cập nhật, module Odoo trả phí (OPL-1), công cụ tự động thu thập dữ liệu cổng hóa đơn điện tử bằng tài khoản người dùng, gói npm không tồn tại, dự án chỉ một commit chưa phát hành gói (SePay-Einvoice), ứng dụng cá nhân nhỏ (KSalaryInsights), VIMO MCP (lệnh cài trong README không hợp lệ, chủ yếu gợi ý mã cổ phiếu).
+- Kho dữ liệu: 2.154 công cụ đang hiển thị, 2.213 cấu hình mẫu.
+
 ### Phiên Bản 2.1.17 (Ngày 24-10-2026)
 - **Loại hình**: An toàn AI, phân tích dữ liệu bằng AI, kiểm thử phần mềm với AI, đợt 10 (21 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-10-*.json`.
 - **An toàn AI (công cụ kiểm thử, bảo vệ hệ thống của chính mình)**: garak, promptfoo, NeMo Guardrails, PyRIT, Presidio, Guardrails AI, Cisco MCP Scanner.
