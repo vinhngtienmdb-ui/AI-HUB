@@ -1,0 +1,465 @@
+[
+  {
+    "repo": "the-pr-agent/pr-agent",
+    "license": "MIT License",
+    "authorName": "PR-Agent community (khởi tạo bởi Qodo)",
+    "websiteUrl": "https://docs.pr-agent.ai/",
+    "toolType": "agent",
+    "taglineEn": "PR-Agent is an open-source, AI-powered code review agent and a community-maintained legacy project of Qodo.",
+    "summaryVi": "PR-Agent là agent review mã nguồn mở dùng AI, do Qodo khởi tạo và nay được cộng đồng duy trì trong tổ chức PR-Agent trên GitHub. Công cụ tự động mô tả, review, đề xuất cải tiến và trả lời câu hỏi về pull request, chạy qua GitHub Action, CLI, Docker hoặc webhook.",
+    "purposeVi": "Giúp đội phát triển tự động hóa khâu review pull request bằng LLM, giảm tải cho người review và phát hiện vấn đề sớm trước khi merge.",
+    "featuresVi": [
+      "Các lệnh trên PR: /describe, /review, /improve, /ask để mô tả, review, gợi ý sửa và hỏi đáp về thay đổi",
+      "Lệnh theo issue: /similar_issue tìm issue tương tự trong kho mã",
+      "Nhanh và rẻ: mỗi công cụ chỉ dùng một lần gọi LLM (khoảng 30 giây)",
+      "Chiến lược nén PR giúp xử lý cả PR nhỏ lẫn PR lớn",
+      "Đa nền tảng Git: GitHub, GitLab, BitBucket, Azure DevOps, Gitea",
+      "Đa mô hình: OpenAI GPT, Anthropic Claude, Google Gemini, DeepSeek, Mistral và mọi mô hình qua LiteLLM (kể cả Ollama)",
+      "Tùy biến prompt và hạng mục review qua tệp cấu hình configuration.toml"
+    ],
+    "requirementsVi": "Khóa API của nhà cung cấp LLM (ví dụ OPENAI_KEY) và token của nền tảng Git (ví dụ GITHUB_TOKEN); Python/pip khi chạy CLI cục bộ.",
+    "installStepsVi": [
+      "Cách khuyến nghị: tạo tệp .github/workflows/pr-agent.yml dùng action `the-pr-agent/pr-agent@main` với biến OPENAI_KEY và GITHUB_TOKEN từ secrets.",
+      "Hoặc cài đặt CLI qua pip: `pip install \"pr-agent[github]\"`",
+      "Đặt khóa API cho LLM: `export OPENAI_KEY=your_key_here`",
+      "Với GitLab, BitBucket, Azure DevOps: làm theo hướng dẫn cài đặt webhook/app trong tài liệu docs.pr-agent.ai."
+    ],
+    "cliCommand": "pr-agent --pr_url https://github.com/owner/repo/pull/123 review",
+    "usageStepsVi": [
+      "Chạy review một PR từ dòng lệnh: `pr-agent --pr_url https://github.com/owner/repo/pull/123 review`",
+      "Hoặc bình luận /describe, /review, /improve, /ask \"...\" trực tiếp trên PR để công cụ trả lời.",
+      "Dùng `pr-agent --issue_url <ISSUE_URL> similar_issue` để tìm issue tương tự."
+    ],
+    "samplePromptsVi": [
+      "/ask \"PR này thay đổi những gì và có rủi ro gì với phần xác thực?\"",
+      "/review để nhận đánh giá tổng quan, các vấn đề tiềm ẩn và mức độ dễ review của PR",
+      "/improve để nhận gợi ý sửa mã cụ thể cho các tệp đã thay đổi"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, dự án do cộng đồng sở hữu",
+      "Hỗ trợ nhiều nền tảng Git và nhiều nhà cung cấp LLM qua LiteLLM",
+      "Tự host được: toàn quyền kiểm soát dữ liệu và hạ tầng"
+    ],
+    "consVi": [
+      "Cần khóa API LLM riêng; chi phí gọi mô hình do người dùng chi trả",
+      "Lệnh /help_docs tạm thời bị tắt từ v0.36.1 do lỗi lộ thông tin xác thực đang chờ sửa",
+      "Image Docker đã chuyển sang namespace pragent/pr-agent từ bản 0.34.2, cần cập nhật tham chiếu cũ codiumai/pr-agent"
+    ],
+    "sourceEvidence": {
+      "the-pr-agent/pr-agent@main": "README.md:81",
+      "pip install \"pr-agent[github]\"": "README.md:93",
+      "export OPENAI_KEY=your_key_here": "README.md:94",
+      "pr-agent --pr_url https://github.com/owner/repo/pull/123 review": "README.md:95",
+      "pr-agent --issue_url <ISSUE_URL> similar_issue": "README.md:191"
+    },
+    "meta": {
+      "id": "the-pr-agent-pr-agent",
+      "nameVi": "PR-Agent — Agent AI mã nguồn mở tự động review pull request",
+      "icon": "GitPullRequest",
+      "categories": ["qa_testing", "devops_cicd"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "pr-agent --pr_url https://github.com/owner/repo/pull/123 review" }
+      ]
+    }
+  },
+  {
+    "repo": "keploy/keploy",
+    "license": "Apache License 2.0",
+    "authorName": "Keploy",
+    "websiteUrl": "https://keploy.io",
+    "toolType": "cli",
+    "taglineEn": "API tests faster than unit tests, from user traffic",
+    "summaryVi": "Keploy là công cụ kiểm thử API và tích hợp hướng tới lập trình viên, tự động sinh test và mock dữ liệu từ lưu lượng thật. Keploy ghi lại các lời gọi API, truy vấn cơ sở dữ liệu và sự kiện streaming rồi phát lại thành test, dùng eBPF ở tầng mạng nên không cần sửa mã hay thêm SDK.",
+    "purposeVi": "Giúp tạo bộ test API/tích hợp nhanh từ luồng thực tế và chạy lại mà không cần dựng lại hạ tầng phụ thuộc.",
+    "featuresVi": [
+      "Không cần sửa mã: chạy ứng dụng với keploy record để tự ghi test và mock",
+      "Ghi và phát lại các luồng API phân tán phức tạp dưới dạng mock/stub",
+      "Ảo hóa hạ tầng: ghi cả Postgres, MySQL, MongoDB, Kafka, RabbitMQ và API bên ngoài",
+      "Đo độ bao phủ kết hợp: statement/branch cho dev, schema API và use-case cho QA",
+      "Mở rộng độ bao phủ API bằng AI dựa trên bản ghi và Swagger/OpenAPI (giá trị biên, sai kiểu, thiếu trường...)",
+      "Tích hợp CI/CD (Jenkins, GitHub Actions), cố định thời gian khi phát lại, báo cáo hợp nhất"
+    ],
+    "requirementsVi": "Máy chạy được script cài đặt Keploy (curl); ứng dụng cần kiểm thử chạy được bằng một lệnh; Keploy dùng eBPF để bắt lưu lượng ở tầng mạng.",
+    "installStepsVi": [
+      "Cài đặt Keploy Agent: `curl --silent -O -L https://keploy.io/install.sh && source install.sh`",
+      "Ghi test case bằng cách chạy ứng dụng dưới Keploy: `keploy record -c \"CMD_TO_RUN_APP\"` (ví dụ Python: `keploy record -c \"python main.py\"`)"
+    ],
+    "cliCommand": "keploy test -c \"CMD_TO_RUN_APP\" --delay 10",
+    "usageStepsVi": [
+      "Gửi các request thật tới ứng dụng trong lúc keploy record đang chạy để công cụ ghi lại test và mock dữ liệu.",
+      "Chạy lại test offline không cần phụ thuộc bên ngoài: `keploy test -c \"CMD_TO_RUN_APP\" --delay 10`",
+      "Đưa lệnh keploy test vào pipeline CI để kiểm thử hồi quy mỗi lần đẩy mã."
+    ],
+    "samplePromptsVi": [
+      "Ghi lại luồng đăng ký – đăng nhập của API Python rồi phát lại thành test hồi quy không cần cơ sở dữ liệu thật.",
+      "Tạo mock cho các truy vấn Postgres và Kafka để chạy test tích hợp trong CI.",
+      "Dùng tệp OpenAPI để tìm thêm ca kiểm thử giá trị biên và trường thiếu cho API."
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, dự án hoạt động tích cực",
+      "Không cần SDK hay sửa mã, độc lập ngôn ngữ và framework",
+      "Mock được cả cơ sở dữ liệu và hàng đợi, không chỉ HTTP"
+    ],
+    "consVi": [
+      "README ghi chú một số phụ thuộc không phải mã nguồn mở do giao thức/parser không công khai",
+      "Một số tính năng (mở rộng coverage bằng AI, Mock Registry, Time Freezing) dẫn tới tài liệu Keploy Cloud/app.keploy.io",
+      "Cài đặt qua script tải từ keploy.io"
+    ],
+    "sourceEvidence": {
+      "curl --silent -O -L https://keploy.io/install.sh && source install.sh": "README.md:109",
+      "keploy record -c \"CMD_TO_RUN_APP\"": "README.md:117",
+      "keploy record -c \"python main.py\"": "README.md:123",
+      "keploy test -c \"CMD_TO_RUN_APP\" --delay 10": "README.md:131"
+    },
+    "meta": {
+      "id": "keploy-keploy",
+      "nameVi": "Keploy — Tự sinh test API và mock dữ liệu từ lưu lượng thật",
+      "icon": "Terminal",
+      "categories": ["qa_testing", "backend_api"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "keploy test -c \"CMD_TO_RUN_APP\" --delay 10" }
+      ]
+    }
+  },
+  {
+    "repo": "schemathesis/schemathesis",
+    "license": "MIT License",
+    "authorName": "Schemathesis",
+    "websiteUrl": "https://schemathesis.readthedocs.io/en/stable/",
+    "toolType": "cli",
+    "taglineEn": "Schemathesis tests OpenAPI and GraphQL APIs by generating inputs from your schema, adapting to server responses, and chaining operations into realistic workflows.",
+    "summaryVi": "Schemathesis là công cụ kiểm thử API tự động cho OpenAPI và GraphQL, sinh dữ liệu đầu vào từ schema, thích ứng theo phản hồi của máy chủ và nối các thao tác thành luồng thực tế. Công cụ xây dựng trên thư viện property-based testing Hypothesis, chạy được qua CLI, pytest hoặc GitHub Action.",
+    "purposeVi": "Phát hiện lỗi 500, sai lệch schema, bỏ qua kiểm tra dữ liệu và lỗi phân quyền đối tượng trước khi người dùng gặp phải.",
+    "featuresVi": [
+      "Sinh dữ liệu kiểm thử từ schema OpenAPI/GraphQL, gồm ca biên và dữ liệu không hợp lệ",
+      "Kiểm thử có trạng thái: tự suy ra liên kết thao tác (tạo → lấy → xóa) từ schema",
+      "Kiểm thử thích ứng: học ràng buộc, id và xác thực từ phản hồi trong lúc chạy",
+      "Fuzz dictionary: trộn id thật, wordlist hoặc payload do LLM sinh vào dữ liệu",
+      "Báo cáo HTML offline kèm lệnh curl, JUnit, VCR, HAR, NDJSON, JSON, Allure",
+      "Báo cáo độ bao phủ schema, phát lại lỗi cũ và baseline chỉ fail CI với lỗi mới"
+    ],
+    "requirementsVi": "Python với công cụ uv (uvx/uv tool); một API có schema OpenAPI hoặc GraphQL chạy ở môi trường dev/staging.",
+    "installStepsVi": [
+      "Thử nhanh không cần cài đặt: `uvx schemathesis run https://example.schemathesis.io/openapi.json`",
+      "Cài đặt CLI: `uv tool install schemathesis`",
+      "Hoặc thêm vào dự án Python để dùng với pytest: `uv add --dev schemathesis`"
+    ],
+    "cliCommand": "schemathesis run https://your-api.com/openapi.json",
+    "usageStepsVi": [
+      "Chạy kiểm thử với API của bạn: `schemathesis run https://your-api.com/openapi.json`",
+      "Cấu hình xác thực, giới hạn tốc độ và số mẫu trong tệp schemathesis.toml (không cần viết Python).",
+      "Trong CI, dùng GitHub Action schemathesis/action@v3 với tham số schema."
+    ],
+    "samplePromptsVi": [
+      "Fuzz toàn bộ endpoint trong openapi.json của môi trường staging và xuất báo cáo HTML.",
+      "Kiểm thử luồng tạo người dùng → lấy người dùng → xóa người dùng theo kiểu có trạng thái.",
+      "Kiểm tra xem người dùng A có đọc được đối tượng của người dùng B hay không."
+    ],
+    "prosVi": [
+      "Giấy phép MIT, dự án hoạt động tích cực",
+      "Không cần viết test thủ công, chỉ cần schema",
+      "Được dùng bởi các đội tại Spotify, WordPress, JetBrains, Red Hat (theo README)"
+    ],
+    "consVi": [
+      "Gửi request thật có thể tạo, sửa, xóa dữ liệu — README khuyên chỉ chạy ở dev/staging, không chạy trên production",
+      "Chỉ hỗ trợ API mô tả bằng OpenAPI hoặc GraphQL"
+    ],
+    "sourceEvidence": {
+      "uvx schemathesis run https://example.schemathesis.io/openapi.json": "README.md:44",
+      "uv tool install schemathesis": "README.md:79",
+      "schemathesis run https://your-api.com/openapi.json": "README.md:80",
+      "uv add --dev schemathesis": "README.md:92"
+    },
+    "meta": {
+      "id": "schemathesis-schemathesis",
+      "nameVi": "Schemathesis — Kiểm thử fuzz tự động cho API OpenAPI và GraphQL",
+      "icon": "Search",
+      "categories": ["qa_testing", "backend_api"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "uvx schemathesis run https://example.schemathesis.io/openapi.json" }
+      ]
+    }
+  },
+  {
+    "repo": "test-zeus-ai/testzeus-hercules",
+    "license": "GNU Affero General Public License v3.0",
+    "authorName": "TestZeus",
+    "websiteUrl": "https://www.testzeus.com",
+    "toolType": "agent",
+    "taglineEn": "Hercules is the world's first open-source testing agent, built to handle the toughest testing tasks so you don't have to.",
+    "summaryVi": "Hercules là agent kiểm thử mã nguồn mở của TestZeus, biến các bước Gherkin viết bằng ngôn ngữ tự nhiên thành bài kiểm thử end-to-end tự động mà không cần viết mã. Agent dùng LangGraph với planner và các trợ lý điều hướng cho trình duyệt (Playwright), API, bảo mật, SQL và MCP, xuất kết quả JUnit XML, báo cáo HTML kèm video, ảnh chụp và log mạng.",
+    "purposeVi": "Giúp đội QA tự động hóa kiểm thử end-to-end ứng dụng web phức tạp từ kịch bản BDD mà không cần kỹ năng lập trình.",
+    "featuresVi": [
+      "Kiểm thử từ Gherkin: viết kịch bản bằng tiếng Anh tự nhiên, agent tự thực thi",
+      "Nhiều trợ lý điều hướng: trình duyệt, API, bảo mật, SQL, MCP, executor",
+      "Kiểm tra trực quan bằng khả năng vision và kiểm thử nội dung đa ngôn ngữ",
+      "Python sandbox: chạy script Python tùy chỉnh với toàn quyền Playwright API từ bước Gherkin",
+      "Bằng chứng thực thi: video, ảnh chụp từng sự kiện, log mạng; kết quả JUnit XML và HTML",
+      "Hỗ trợ OpenAI, Anthropic, Gemini qua LiteLLM, Groq, Mistral, Ollama, DeepSeek, Bedrock, Azure (cần hỗ trợ tool calling)"
+    ],
+    "requirementsVi": "Python và pip (hoặc Docker); trình duyệt Playwright; khóa API của mô hình LLM có hỗ trợ gọi công cụ (tool calling).",
+    "installStepsVi": [
+      "Cài đặt gói từ PyPI: `pip install testzeus-hercules`",
+      "Cài đặt Playwright và các phụ thuộc trình duyệt: `playwright install --with-deps`",
+      "Hoặc dùng Docker: `docker pull testzeus/hercules:latest`",
+      "Đặt biến môi trường LLM_MODEL_NAME, LLM_MODEL_API_KEY, LLM_MODEL_BASE_URL (hoặc dùng tệp agents_llm_config.json)."
+    ],
+    "cliCommand": "testzeus-hercules --input-file opt/input/test.feature --output-path opt/output --test-data-path opt/test_data",
+    "usageStepsVi": [
+      "Viết tệp .feature theo cú pháp Gherkin và đặt dữ liệu kiểm thử vào thư mục test_data.",
+      "Chạy: `testzeus-hercules --input-file opt/input/test.feature --output-path opt/output --test-data-path opt/test_data`",
+      "Mở báo cáo HTML/JUnit XML trong thư mục output và xem video, ảnh chụp trong thư mục proofs."
+    ],
+    "samplePromptsVi": [
+      "Given I am on the demo store home page / When I enter \"wireless headphones\" in the search field / Then I should see the product details page",
+      "Kiểm thử luồng tạo lead trên CRM doanh nghiệp bằng kịch bản Gherkin không cần mã.",
+      "Kiểm tra endpoint API trả về đúng mã trạng thái trong cùng một kịch bản end-to-end."
+    ],
+    "prosVi": [
+      "Mã nguồn mở, có cả gói PyPI và image Docker",
+      "Không cần viết mã, dùng kịch bản BDD quen thuộc",
+      "Hỗ trợ nhiều nhà cung cấp LLM, kể cả mô hình chạy cục bộ qua Ollama"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0: cung cấp dịch vụ qua mạng dựa trên bản sửa đổi phải công bố mã nguồn",
+      "Cần mô hình LLM hỗ trợ tool calling tốt; planner cần mạnh về suy luận JSON có cấu trúc",
+      "Tốn chi phí gọi LLM cho mỗi lần chạy kiểm thử"
+    ],
+    "sourceEvidence": {
+      "pip install testzeus-hercules": "README.md:132",
+      "playwright install --with-deps": "README.md:138",
+      "docker pull testzeus/hercules:latest": "README.md:338",
+      "testzeus-hercules --input-file opt/input/test.feature --output-path opt/output --test-data-path opt/test_data": "README.md:250"
+    },
+    "meta": {
+      "id": "test-zeus-ai-testzeus-hercules",
+      "nameVi": "TestZeus Hercules — Agent AI kiểm thử end-to-end từ kịch bản Gherkin",
+      "icon": "Brain",
+      "categories": ["qa_testing"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (AGPL-3.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "testzeus-hercules --input-file opt/input/test.feature --output-path opt/output --test-data-path opt/test_data" }
+      ]
+    }
+  },
+  {
+    "repo": "web-infra-dev/midscene",
+    "license": "MIT License",
+    "authorName": "Bytedance (web-infra-dev)",
+    "websiteUrl": "https://midscenejs.com",
+    "toolType": "sdk",
+    "taglineEn": "See interfaces like a human. E2E testing in natural language.",
+    "summaryVi": "Midscene.js đưa thị giác AI vào kiểm thử end-to-end: mô tả bước thao tác và kết quả mong đợi bằng ngôn ngữ tự nhiên, GUI Agent sẽ nhìn ảnh chụp màn hình để thực hiện và xác minh. Công cụ có Midscene Test (test case YAML) và Agent API tích hợp với Playwright, Puppeteer, hỗ trợ web, Android, iOS, HarmonyOS và desktop.",
+    "purposeVi": "Giúp viết test E2E không phụ thuộc selector, xác minh đúng những gì người dùng nhìn thấy trên giao diện web, di động và máy tính.",
+    "featuresVi": [
+      "API ngôn ngữ tự nhiên: aiAct, aiTap, aiInput, aiAssert, aiWaitFor, aiQuery",
+      "Định vị phần tử theo hình ảnh: nút chỉ có icon, canvas, iframe khác nguồn mà không cần selector",
+      "Midscene Test: viết test case bằng YAML, mở rộng bằng TypeScript Node dùng chung",
+      "Một API cho nhiều nền tảng: Web (Playwright/Puppeteer/Chrome), Android (ADB), iOS (WebDriverAgent), HarmonyOS, desktop",
+      "Báo cáo HTML tương tác với ảnh chụp, vị trí phần tử và quá trình ra quyết định của AI",
+      "Hỗ trợ nhiều mô hình: Qwen3.x, Doubao-Seed-2.1, DeepSeek V4 Flash, GLM-4.6V, Gemini, UI-TARS (có lựa chọn tự host)"
+    ],
+    "requirementsVi": "Node.js ^20.19.0 || ^22.12.0 || >=24.0.0 và pnpm; một dịch vụ mô hình thị giác (cấu hình base URL, API key, tên mô hình trong .env).",
+    "installStepsVi": [
+      "Tạo dự án Midscene Test cho web và cài đặt phụ thuộc: `pnpm dlx @midscene/test create my-tests --platform web --package-manager pnpm`",
+      "Sao chép .env.example thành .env, điền tên mô hình, URL dịch vụ và API key, rồi kiểm tra kết nối: `pnpm exec midscene-test model verify`",
+      "Cài đặt trình duyệt Chromium cho web: `pnpm exec playwright install chromium`"
+    ],
+    "cliCommand": "pnpm test",
+    "usageStepsVi": [
+      "Chạy ví dụ mẫu đã được sinh: `pnpm test`",
+      "Viết test case YAML với các bước aiAct, aiWaitFor, aiAssert mô tả bằng ngôn ngữ tự nhiên.",
+      "Hoặc dùng PlaywrightAgent trong test Playwright có sẵn, sau đó mở báo cáo HTML để xem ảnh chụp và kết quả xác minh."
+    ],
+    "samplePromptsVi": [
+      "aiAct: Search for headphones and filter the results to prices under $100",
+      "aiAssert: The selected plan has a blue border and a checkmark",
+      "aiAssert: The error message is visible below the email field"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, phát triển tích cực bởi Bytedance",
+      "Không cần duy trì selector, kiểm tra được cả nội dung vẽ trên canvas và ứng dụng native",
+      "Hỗ trợ mô hình mã nguồn mở tự host, chi phí mô hình thấp theo benchmark công bố"
+    ],
+    "consVi": [
+      "Cần cấu hình và trả phí dịch vụ mô hình thị giác (hoặc tự host mô hình)",
+      "Hướng dẫn cài đặt chi tiết nằm trong tài liệu trang midscenejs.com, README chỉ có ví dụ ngắn",
+      "Mỗi nền tảng di động/desktop cần thiết lập môi trường riêng (ADB, WebDriverAgent, HDC)"
+    ],
+    "sourceEvidence": {
+      "pnpm dlx @midscene/test create my-tests --platform web --package-manager pnpm": "apps/site/docs/en/midscene-test/use.mdx:20",
+      "pnpm exec midscene-test model verify": "apps/site/docs/en/midscene-test/use.mdx:78",
+      "pnpm exec playwright install chromium": "apps/site/docs/en/midscene-test/use.mdx:87",
+      "pnpm test": "apps/site/docs/en/midscene-test/use.mdx:102",
+      "Node.js requirement": "apps/site/docs/en/midscene-test/use.mdx:11"
+    },
+    "meta": {
+      "id": "web-infra-dev-midscene",
+      "nameVi": "Midscene.js — Kiểm thử E2E bằng ngôn ngữ tự nhiên với thị giác AI",
+      "icon": "Sparkles",
+      "categories": ["qa_testing", "computer_vision"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh", "Tiếng Trung"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "pnpm dlx @midscene/test create my-tests --platform web --package-manager pnpm" }
+      ]
+    }
+  },
+  {
+    "repo": "kodustech/kodus-ai",
+    "license": "Dual license: GNU Affero General Public License v3.0 (open-source code) + Kodus Enterprise Code License (files with .ee. or in ee/ directories)",
+    "authorName": "Kodus",
+    "websiteUrl": "https://kodus.io",
+    "toolType": "software",
+    "taglineEn": "Kodus reviews pull requests on GitHub, GitLab, Bitbucket, Azure DevOps, and Forgejo.",
+    "summaryVi": "Kodus là nền tảng review mã bằng AI với agent Kody, tự động review pull request trên GitHub, GitLab, Bitbucket, Azure DevOps và Forgejo. Có thể tự host bằng Docker hoặc dùng Kodus Cloud, kèm CLI để review ngay trên máy và trong pipeline CI/CD.",
+    "purposeVi": "Giúp đội phát triển áp dụng quy tắc review riêng bằng ngôn ngữ tự nhiên và phát hiện rủi ro (bảo mật, kiến trúc) trước khi merge, với chi phí LLM trả trực tiếp cho nhà cung cấp.",
+    "featuresVi": [
+      "Không phụ thuộc mô hình: Claude, GPT-5, Gemini, Llama, GLM, Kimi hoặc endpoint tương thích OpenAI (BYOK)",
+      "Kody Rules: định nghĩa quy tắc review bằng ngôn ngữ tự nhiên theo tổ chức, repo, đường dẫn",
+      "Kody Issues: theo dõi gợi ý chưa được xử lý từ PR đã đóng",
+      "CLI: kodus review cho working tree, staged, theo nhánh, tự sửa với --fix, xuất cho AI agent với --prompt-only",
+      "Skill cho Claude Code, Cursor, Windsurf để agent tự review thay đổi",
+      "Theo dõi token, Cockpit đo hiệu quả review và chỉ số giao hàng (bản Teams trở lên)"
+    ],
+    "requirementsVi": "CLI: Yarn (hoặc script cài đặt). Tự host: Docker trên máy ảo tối thiểu 2 CPU, 8 GB RAM, 60 GB đĩa trống; khóa API của nhà cung cấp LLM.",
+    "installStepsVi": [
+      "Cài đặt CLI: `yarn global add @kodus/cli`",
+      "Hoặc cài đặt CLI kèm skill cho các agent lập trình: `curl -fsSL https://raw.githubusercontent.com/kodustech/cli/main/install.sh | bash`",
+      "Xác thực (hoặc bỏ qua để dùng chế độ dùng thử): `kodus auth login`",
+      "Tự host nền tảng: làm theo hướng dẫn Self-Host Guide tại docs.kodus.io."
+    ],
+    "cliCommand": "kodus review",
+    "usageStepsVi": [
+      "Review thay đổi trong thư mục làm việc: `kodus review` (hoặc `kodus review --staged` chỉ với tệp đã stage).",
+      "Tự áp dụng mọi bản sửa được với `kodus review --fix`.",
+      "Kết nối repo trên GitHub/GitLab/Bitbucket/Azure DevOps/Forgejo để Kody tự review từng pull request."
+    ],
+    "samplePromptsVi": [
+      "Review các thay đổi đã stage và chỉ ra rủi ro bảo mật theo mức độ nghiêm trọng.",
+      "Tạo Kody Rule: mọi endpoint mới phải kiểm tra organizationId của người dùng hiện tại.",
+      "So sánh nhánh hiện tại với main và tự sửa các lỗi có thể sửa tự động."
+    ],
+    "prosVi": [
+      "Có thể tự host, dùng khóa LLM riêng không bị cộng phí (zero markup)",
+      "Hỗ trợ 5 nền tảng Git, kể cả GitLab và Forgejo tự quản",
+      "Bản Community miễn phí, không giới hạn người dùng và PR khi dùng khóa riêng"
+    ],
+    "consVi": [
+      "Giấy phép hỗn hợp: phần lõi AGPL-3.0, mã Enterprise (.ee., ee/) theo giấy phép riêng, không được sửa",
+      "Bản Community giới hạn 10 Kody Rules và 3 plugin; Cockpit, SSO, RBAC chỉ có ở bản trả phí",
+      "Bản tự host gửi một heartbeat ẩn danh mỗi ngày (tắt bằng KODUS_TELEMETRY_DISABLED=true)"
+    ],
+    "sourceEvidence": {
+      "yarn global add @kodus/cli": "apps/cli/README.md:35",
+      "curl -fsSL https://raw.githubusercontent.com/kodustech/cli/main/install.sh | bash": "apps/cli/README.md:222",
+      "kodus auth login": "apps/cli/README.md:38",
+      "kodus review": "apps/cli/README.md:41",
+      "kodus review --staged / --fix": "apps/cli/README.md:56-58",
+      "pricing table": "README.md:249-267",
+      "license": "license.md:1-6"
+    },
+    "meta": {
+      "id": "kodustech-kodus-ai",
+      "nameVi": "Kodus — Nền tảng AI review mã nguồn tự host với quy tắc tùy chỉnh",
+      "icon": "GitPullRequest",
+      "categories": ["qa_testing", "devops_cicd"],
+      "platforms": ["web", "claude_code", "cursor"],
+      "licenseShort": "Mã nguồn mở hỗn hợp (AGPL-3.0 cho lõi; mã Enterprise theo giấy phép riêng)",
+      "pricingModel": "freemium",
+      "pricingText": "Community miễn phí (tự host hoặc Kodus host, dùng khóa API riêng); Teams $10/dev/tháng hoặc $8/dev trả năm (+ token); Enterprise giá tùy chỉnh",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "yarn global add @kodus/cli" }
+      ]
+    }
+  },
+  {
+    "repo": "microsoft/playwright-cli",
+    "license": "Apache License 2.0",
+    "authorName": "Microsoft",
+    "websiteUrl": "https://playwright.dev/agent-cli/introduction",
+    "toolType": "cli",
+    "taglineEn": "Playwright CLI with SKILLS",
+    "summaryVi": "Playwright CLI là giao diện dòng lệnh của Playwright dành cho agent lập trình (Claude Code, GitHub Copilot...), kèm skill hướng dẫn agent điều khiển trình duyệt. So với Playwright MCP, CLI tiết kiệm token hơn vì không nạp schema công cụ lớn và cây accessibility vào ngữ cảnh mô hình.",
+    "purposeVi": "Giúp agent AI kiểm thử giao diện web, chạy và gỡ lỗi test Playwright, sinh test từ đặc tả bằng các lệnh ngắn gọn.",
+    "featuresVi": [
+      "Lệnh điều khiển trình duyệt: open, goto, click, fill, type, press, check, snapshot, screenshot, pdf",
+      "Skill cài sẵn cho agent: chạy/gỡ lỗi test Playwright, mock request, sinh test (plan / generate / heal)",
+      "Quản lý phiên trình duyệt riêng theo dự án (-s=), lưu hồ sơ bền vững với --persistent",
+      "Bảng điều khiển playwright-cli show xem trực tiếp và điều khiển các phiên đang chạy",
+      "Ghi trace, quay video có chú thích thao tác, mock mạng bằng route",
+      "Tiết kiệm token: không ép dữ liệu trang vào LLM"
+    ],
+    "requirementsVi": "Node.js 18 trở lên; Claude Code, GitHub Copilot hoặc agent lập trình khác.",
+    "installStepsVi": [
+      "Cài đặt CLI toàn cục: `npm install -g @playwright/cli@latest`",
+      "Cài đặt skill cho các agent lập trình (Claude Code, Copilot...): `playwright-cli install --skills`"
+    ],
+    "cliCommand": "npm install -g @playwright/cli@latest",
+    "usageStepsVi": [
+      "Giao nhiệm vụ cho agent, ví dụ kiểm thử luồng \"add todo\" trên demo TodoMVC bằng playwright-cli.",
+      "Hoặc tự chạy lệnh: `playwright-cli open https://demo.playwright.dev/todomvc/ --headed` rồi type, press, screenshot.",
+      "Theo dõi các phiên agent đang chạy bằng `playwright-cli show`."
+    ],
+    "samplePromptsVi": [
+      "Test the \"add todo\" flow on https://demo.playwright.dev/todomvc using playwright-cli. Take screenshots for all successful and failing scenarios.",
+      "Dùng playwright-cli sinh bộ test Playwright cho trang đăng nhập từ đặc tả này rồi chạy thử.",
+      "Chạy bộ test Playwright hiện có, gỡ lỗi các test thất bại và đính kèm ảnh chụp vào pull request."
+    ],
+    "prosVi": [
+      "Dự án chính thức của Microsoft, giấy phép Apache 2.0",
+      "Tiết kiệm token hơn MCP, phù hợp agent lập trình làm việc với codebase lớn",
+      "Có skill sẵn cho kiểm thử, sinh test và gỡ lỗi"
+    ],
+    "consVi": [
+      "Chỉ là công cụ điều khiển trình duyệt; phần suy luận do agent lập trình bên ngoài đảm nhận",
+      "Phiên headless tự tắt sau một giờ không có lệnh (chỉnh bằng --idle-timeout)",
+      "Với vòng lặp agent cần trạng thái liên tục, README khuyến nghị dùng Playwright MCP"
+    ],
+    "sourceEvidence": {
+      "npm install -g @playwright/cli@latest": "README.md:26",
+      "playwright-cli install --skills": "README.md:35",
+      "playwright-cli open https://demo.playwright.dev/todomvc/ --headed": "README.md:57",
+      "playwright-cli show": "README.md:117"
+    },
+    "meta": {
+      "id": "microsoft-playwright-cli",
+      "nameVi": "Playwright CLI — Công cụ dòng lệnh Playwright kèm skill cho agent lập trình",
+      "icon": "Terminal",
+      "categories": ["qa_testing", "frontend_ui"],
+      "platforms": ["web", "claude_code"],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "npm install -g @playwright/cli@latest" },
+        { "platform": "claude_code", "platformName": "Claude Code", "cliCommand": "playwright-cli install --skills" }
+      ]
+    }
+  }
+]

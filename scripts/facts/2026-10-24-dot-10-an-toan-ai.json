@@ -1,0 +1,534 @@
+[
+  {
+    "repo": "NVIDIA/garak",
+    "license": "Apache License 2.0",
+    "authorName": "NVIDIA",
+    "websiteUrl": "https://garak.ai/",
+    "toolType": "cli",
+    "taglineEn": "`garak` checks if an LLM-backed application can be made to fail in a way we don't want.",
+    "summaryVi": "garak (Generative AI Red-teaming & Assessment Kit) là công cụ dòng lệnh quét lỗ hổng cho mô hình ngôn ngữ lớn, do NVIDIA phát triển. Công cụ dò các điểm yếu như ảo giác, rò rỉ dữ liệu, prompt injection, thông tin sai lệch, sinh nội dung độc hại và jailbreak — tương tự nmap hay Metasploit nhưng dành cho LLM.",
+    "purposeVi": "Giúp đội bảo mật và nhà phát triển kiểm thử red team chính hệ thống LLM của mình trước khi triển khai, phát hiện các cách khiến mô hình hoạt động sai ngoài mong muốn.",
+    "featuresVi": [
+      "Bộ probe đa dạng: prompt injection, jailbreak (DAN), mã hóa (encoding), nội dung độc hại, rò rỉ dữ liệu, ảo giác",
+      "Kết hợp probe tĩnh, động và thích ứng; mỗi probe đi kèm detector đánh giá kết quả PASS/FAIL và tỷ lệ lỗi",
+      "Hỗ trợ nhiều generator: Hugging Face (cục bộ, Inference API, Endpoint), OpenAI, Replicate, AWS Bedrock, LiteLLM, REST, mô hình gguf qua llama.cpp",
+      "Chọn phạm vi quét bằng `--spec` theo họ plugin hoặc plugin cụ thể",
+      "Ghi log chi tiết dạng `.jsonl` và có script phân tích `analyse/analyse_log.py`"
+    ],
+    "requirementsVi": "Python (môi trường conda mẫu dùng python>=3.11,<=3.14); phát triển trên Linux và macOS. Một số generator cần khóa API (ví dụ OPENAI_API_KEY, REPLICATE_API_TOKEN, HF_INFERENCE_TOKEN).",
+    "installStepsVi": [
+      "Cài đặt từ PyPI: `python -m pip install -U garak`",
+      "Hoặc cài đặt bản phát triển mới nhất từ GitHub: `python -m pip install -U git+https://github.com/NVIDIA/garak.git@main`",
+      "Kiểm tra danh sách probe có sẵn: `garak --list_probes`"
+    ],
+    "cliCommand": "python -m pip install -U garak",
+    "usageStepsVi": [
+      "Chọn mô hình cần kiểm thử bằng `--target_type` (ví dụ huggingface, openai) và `--target_name`",
+      "Đặt khóa API qua biến môi trường nếu generator yêu cầu, ví dụ `export OPENAI_API_KEY=...`",
+      "Chạy thử với một nhóm probe, ví dụ: `python3 -m garak --target_type huggingface --target_name gpt2 --spec probes.dan.Dan_11_0`",
+      "Đọc bảng kết quả theo từng detector; hướng dẫn chi tiết lỗi nằm trong `garak.log` và tệp `.jsonl` của lần chạy"
+    ],
+    "samplePromptsVi": [
+      "Quét mô hình chatbot nội bộ của tôi bằng các probe prompt injection dựa trên mã hóa và tóm tắt tỷ lệ FAIL.",
+      "Kiểm tra xem mô hình Hugging Face gpt2 có bị jailbreak bằng DAN 11.0 không.",
+      "Liệt kê các probe của garak liên quan đến rò rỉ dữ liệu để đưa vào quy trình kiểm thử."
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, miễn phí",
+      "Do NVIDIA phát triển, cập nhật thường xuyên",
+      "Hỗ trợ rất nhiều loại mô hình và nhà cung cấp"
+    ],
+    "consVi": [
+      "README ghi công cụ được phát triển trên Linux và macOS",
+      "Quét mô hình thương mại tốn chi phí API do mỗi prompt sinh nhiều lần (mặc định 10)"
+    ],
+    "sourceEvidence": {
+      "python -m pip install -U garak": "README.md:55",
+      "python -m pip install -U git+https://github.com/NVIDIA/garak.git@main": "README.md:63",
+      "garak --list_probes": "README.md:95",
+      "python3 -m garak --target_type huggingface --target_name gpt2 --spec probes.dan.Dan_11_0": "README.md:115"
+    },
+    "meta": {
+      "id": "nvidia-garak",
+      "nameVi": "garak — Quét lỗ hổng bảo mật cho mô hình ngôn ngữ lớn",
+      "icon": "Search",
+      "categories": [
+        "cybersecurity_security",
+        "nlp_llm",
+        "qa_testing"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "python -m pip install -U garak"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "promptfoo/promptfoo",
+    "license": "MIT License",
+    "authorName": "Promptfoo",
+    "websiteUrl": "https://www.promptfoo.dev",
+    "toolType": "cli",
+    "taglineEn": "`promptfoo` is a CLI and library for evaluating and red-teaming LLM-based apps.",
+    "summaryVi": "promptfoo là công cụ dòng lệnh và thư viện để đánh giá (eval) và red team các ứng dụng dựa trên LLM. Công cụ cho phép kiểm thử prompt và mô hình tự động, quét lỗ hổng bảo mật, so sánh mô hình song song và tích hợp vào CI/CD. README cho biết Promptfoo nay thuộc OpenAI nhưng vẫn là mã nguồn mở theo giấy phép MIT.",
+    "purposeVi": "Giúp đội phát triển kiểm thử chất lượng và độ an toàn của ứng dụng LLM, agent của chính mình bằng số liệu thay vì thử-sai thủ công.",
+    "featuresVi": [
+      "Đánh giá tự động: kiểm thử prompt và mô hình với bộ test case",
+      "Red team và quét lỗ hổng: sinh báo cáo lỗ hổng bảo mật cho ứng dụng LLM",
+      "So sánh mô hình song song: OpenAI, Anthropic, Azure, Bedrock, Ollama và nhiều nhà cung cấp khác",
+      "Tích hợp CI/CD và quét mã trong pull request để tìm vấn đề bảo mật, tuân thủ liên quan đến LLM",
+      "Giao diện web xem kết quả (`promptfoo view`); eval chạy 100% cục bộ"
+    ],
+    "requirementsVi": "Node.js (package.json yêu cầu node >=22.22.0) hoặc cài đặt qua brew/pip; khóa API của nhà cung cấp LLM cần kiểm thử (ví dụ OPENAI_API_KEY).",
+    "installStepsVi": [
+      "Cài đặt toàn cục bằng npm: `npm install -g promptfoo`",
+      "Hoặc dùng `brew install promptfoo` / `pip install promptfoo`, hoặc chạy không cần cài đặt với `npx promptfoo@latest`",
+      "Khởi tạo dự án mẫu: `promptfoo init --example getting-started`"
+    ],
+    "cliCommand": "npm install -g promptfoo",
+    "usageStepsVi": [
+      "Đặt khóa API của nhà cung cấp, ví dụ `export OPENAI_API_KEY=sk-abc123`",
+      "Vào thư mục dự án mẫu (`cd getting-started`) và chạy đánh giá: `promptfoo eval`",
+      "Mở giao diện web xem kết quả: `promptfoo view`",
+      "Xem hướng dẫn Red Teaming trên trang tài liệu để quét lỗ hổng ứng dụng"
+    ],
+    "samplePromptsVi": [
+      "Tạo cấu hình promptfoo so sánh hai mô hình trên bộ câu hỏi chăm sóc khách hàng của tôi.",
+      "Thiết lập bước promptfoo eval trong pipeline CI để chặn merge khi điểm đánh giá giảm.",
+      "Chạy red team cho chatbot nội bộ và tổng hợp báo cáo lỗ hổng."
+    ],
+    "prosVi": [
+      "Giấy phép MIT, mã nguồn mở",
+      "Eval chạy cục bộ, prompt không rời khỏi máy",
+      "Nhiều cách cài đặt: npm, brew, pip, npx"
+    ],
+    "consVi": [
+      "Hầu hết nhà cung cấp LLM cần khóa API",
+      "Yêu cầu Node.js phiên bản mới (>=22.22.0)"
+    ],
+    "sourceEvidence": {
+      "npm install -g promptfoo": "README.md:28",
+      "promptfoo init --example getting-started": "README.md:29",
+      "brew install promptfoo": "README.md:32",
+      "pip install promptfoo": "README.md:32",
+      "npx promptfoo@latest": "README.md:32",
+      "export OPENAI_API_KEY=sk-abc123": "README.md:37",
+      "promptfoo eval": "README.md:44",
+      "promptfoo view": "README.md:45"
+    },
+    "meta": {
+      "id": "promptfoo-promptfoo",
+      "nameVi": "promptfoo — Đánh giá và red team ứng dụng LLM",
+      "icon": "Terminal",
+      "categories": [
+        "cybersecurity_security",
+        "qa_testing",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npm install -g promptfoo"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "NVIDIA-NeMo/Guardrails",
+    "license": "Apache License 2.0",
+    "authorName": "NVIDIA",
+    "websiteUrl": "https://docs.nvidia.com/nemo/guardrails",
+    "toolType": "sdk",
+    "taglineEn": "NVIDIA NeMo Guardrails library is an open-source toolkit for easily adding *programmable guardrails* to LLM-based conversational applications.",
+    "summaryVi": "NeMo Guardrails là bộ công cụ mã nguồn mở của NVIDIA để thêm “rào chắn có thể lập trình” (guardrails) vào ứng dụng hội thoại dùng LLM. Thư viện hỗ trợ năm loại rail (input, dialog, retrieval, execution, output) và ngôn ngữ Colang để mô hình hóa luồng hội thoại, giúp chống jailbreak, prompt injection và kiểm soát nội dung đầu ra.",
+    "purposeVi": "Giúp nhà phát triển chatbot, ứng dụng RAG và endpoint LLM giữ hội thoại đúng chủ đề, che dữ liệu nhạy cảm và chặn nội dung không mong muốn.",
+    "featuresVi": [
+      "Năm loại rail: input, dialog, retrieval, execution và output",
+      "Colang 1.0 và 2.0: ngôn ngữ mô hình hóa luồng hội thoại",
+      "Thư viện guardrail dựng sẵn: tự kiểm tra (moderation, fact-checking, phát hiện ảo giác), mô hình an toàn của NVIDIA, phát hiện jailbreak và injection",
+      "CLI với các lệnh `chat`, `server`, `actions-server`, `evaluate`",
+      "Guardrails server cung cấp HTTP API `/v1/chat/completions`; có Dockerfile để đóng gói",
+      "Tích hợp tùy chọn với LangChain"
+    ],
+    "requirementsVi": "Python 3.10, 3.11, 3.12 hoặc 3.13; mô hình LLM (ví dụ OpenAI) cấu hình trong `config.yml`.",
+    "installStepsVi": [
+      "Cài đặt bằng pip: `pip install nemoguardrails`",
+      "Tạo thư mục cấu hình gồm `config.yml`, các tệp Colang `.co` và tùy chọn `actions.py`/`config.py` theo hướng dẫn trong README"
+    ],
+    "cliCommand": "pip install nemoguardrails",
+    "usageStepsVi": [
+      "Trong Python: nạp cấu hình bằng `RailsConfig.from_path(...)`, tạo `LLMRails` và gọi `generate`/`generate_async`",
+      "Hoặc khởi động server: `nemoguardrails server [--config PATH/TO/CONFIGS] [--port PORT]` rồi gọi `POST /v1/chat/completions` với `config_id`",
+      "Dùng `nemoguardrails evaluate` để đánh giá topical rails, fact-checking, moderation và ảo giác"
+    ],
+    "samplePromptsVi": [
+      "Viết config.yml cho NeMo Guardrails bật input rail kiểm tra jailbreak và che PERSON, EMAIL_ADDRESS.",
+      "Tạo luồng Colang để chatbot từ chối bàn về chính trị và quay về chủ đề hỗ trợ khách hàng.",
+      "Thêm output rail kiểm tra ảo giác cho ứng dụng RAG của tôi."
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, do NVIDIA phát triển",
+      "Hỗ trợ cả Python API lẫn server HTTP",
+      "Có công cụ đánh giá tích hợp"
+    ],
+    "consVi": [
+      "README lưu ý guardrail dựng sẵn có thể không phù hợp mọi trường hợp sản xuất, cần tự kiểm chứng",
+      "Cần học cú pháp Colang để xây dựng dialog rail"
+    ],
+    "sourceEvidence": {
+      "pip install nemoguardrails": "README.md:37",
+      "nemoguardrails server [--config PATH/TO/CONFIGS] [--port PORT]": "README.md:254",
+      "nemoguardrails evaluate": "README.md:291"
+    },
+    "meta": {
+      "id": "nvidia-nemo-guardrails",
+      "nameVi": "NeMo Guardrails — Rào chắn lập trình được cho chatbot LLM",
+      "icon": "Layers",
+      "categories": [
+        "cybersecurity_security",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install nemoguardrails"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "microsoft/PyRIT",
+    "license": "MIT License",
+    "authorName": "Microsoft",
+    "websiteUrl": "https://microsoft.github.io/PyRIT/",
+    "toolType": "sdk",
+    "taglineEn": "The Python Risk Identification Tool for generative AI (PyRIT) is an open source framework built to empower security professionals and engineers to proactively identify risks in generative AI systems.",
+    "summaryVi": "PyRIT (Python Risk Identification Tool) là framework mã nguồn mở của Microsoft giúp chuyên gia bảo mật và kỹ sư chủ động nhận diện rủi ro trong hệ thống AI tạo sinh. Framework hỗ trợ red team tự động và do con người dẫn dắt, với các chiến lược tấn công nhiều lượt, kịch bản đánh giá chuẩn hóa và bộ nhớ lưu kết quả.",
+    "purposeVi": "Giúp đội bảo mật đánh giá độ an toàn của mô hình và ứng dụng AI tạo sinh của tổ chức mình ở quy mô lớn, có thể lặp lại.",
+    "featuresVi": [
+      "Red team tự động: chiến lược tấn công một lượt và nhiều lượt như Crescendo, TAP, Skeleton Key",
+      "Scenario Framework: kịch bản đánh giá chuẩn hóa về nội dung có hại, rủi ro tâm lý xã hội, rò rỉ dữ liệu",
+      "CoPyRIT: giao diện web cho red team do con người dẫn dắt",
+      "Nhiều target: OpenAI, Azure, Anthropic, Google, HuggingFace, endpoint HTTP/WebSocket tùy chỉnh, web app qua Playwright",
+      "Bộ nhớ tích hợp: lưu hội thoại, điểm và kết quả tấn công bằng SQLite hoặc Azure SQL",
+      "CLI `pyrit_scan` cho đánh giá tự động"
+    ],
+    "requirementsVi": "Python 3.11, 3.12, 3.13 hoặc 3.14; endpoint và khóa API của hệ thống AI cần kiểm thử (ví dụ OPENAI_CHAT_ENDPOINT, OPENAI_CHAT_KEY, OPENAI_CHAT_MODEL).",
+    "installStepsVi": [
+      "Cài đặt bằng pip: `pip install pyrit`",
+      "Hoặc cài đặt bằng uv: `uv pip install pyrit`",
+      "Cấu hình endpoint AI qua biến môi trường hoặc tệp `~/.pyrit/.pyrit_conf` theo hướng dẫn Configure PyRIT"
+    ],
+    "cliCommand": "pip install pyrit",
+    "usageStepsVi": [
+      "Khởi tạo framework trong Python bằng `initialize_pyrit_async` với các initializer target và scorer",
+      "Liệt kê kịch bản đánh giá: `pyrit_scan --config-file ./.pyrit_conf list-scenarios`",
+      "Chạy một kịch bản, ví dụ: `pyrit_scan run airt.scam --config-file ./my_project_config.yaml`",
+      "Xem và xuất kết quả lưu trong bộ nhớ (SQLite/Azure SQL) để phân tích"
+    ],
+    "samplePromptsVi": [
+      "Thiết lập PyRIT để chạy tấn công nhiều lượt Crescendo vào endpoint chatbot nội bộ của tôi.",
+      "Liệt kê các kịch bản pyrit_scan có sẵn và chạy kịch bản phù hợp để kiểm tra rò rỉ dữ liệu.",
+      "Tổng hợp kết quả chấm điểm từ bộ nhớ PyRIT thành báo cáo cho đội bảo mật."
+    ],
+    "prosVi": [
+      "Giấy phép MIT, do Microsoft phát triển",
+      "Hỗ trợ cả red team tự động và thủ công qua giao diện web",
+      "Kết nối nhiều loại target khác nhau"
+    ],
+    "consVi": [
+      "Cần cấu hình endpoint và khóa API trước khi dùng",
+      "Notebook mẫu phải khớp phiên bản PyRIT đã cài đặt"
+    ],
+    "sourceEvidence": {
+      "pip install pyrit": "doc/getting_started/install_local.md:12",
+      "uv pip install pyrit": "doc/getting_started/install_local.md:18",
+      "pyrit_scan --config-file ./.pyrit_conf list-scenarios": "doc/getting_started/pyrit_conf.md:348",
+      "pyrit_scan run airt.scam --config-file ./my_project_config.yaml": "doc/getting_started/pyrit_conf.md:391"
+    },
+    "meta": {
+      "id": "microsoft-pyrit",
+      "nameVi": "PyRIT — Framework red team cho hệ thống AI tạo sinh",
+      "icon": "Wrench",
+      "categories": [
+        "cybersecurity_security",
+        "nlp_llm",
+        "qa_testing"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install pyrit"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "data-privacy-stack/presidio",
+    "license": "MIT License",
+    "authorName": "Presidio Contributors (data-privacy-stack)",
+    "websiteUrl": "https://data-privacy-stack.github.io/presidio",
+    "toolType": "sdk",
+    "taglineEn": "Context aware, pluggable and customizable PII de-identification service for text and images.",
+    "summaryVi": "Presidio là SDK nhận diện và ẩn danh hóa dữ liệu cá nhân (PII) trong văn bản và hình ảnh, ví dụ số thẻ tín dụng, tên, địa điểm, số an sinh xã hội, ví bitcoin, số điện thoại Mỹ. Dự án vốn do Microsoft khởi xướng và nay đã chuyển sang tổ chức data-privacy-stack.",
+    "purposeVi": "Giúp tổ chức phát hiện và che dữ liệu nhạy cảm trước khi đưa vào LLM, lưu trữ hay chia sẻ, phục vụ quản trị dữ liệu và quyền riêng tư.",
+    "featuresVi": [
+      "Recognizer PII dựng sẵn hoặc tùy chỉnh dựa trên NER, biểu thức chính quy, luật và checksum, hỗ trợ nhiều ngôn ngữ",
+      "Kết nối mô hình phát hiện PII bên ngoài; chọn NLP engine spaCy, transformers hoặc stanza",
+      "Nhiều cách triển khai: Python, PySpark, Docker, Kubernetes",
+      "Module che PII trong ảnh (ảnh thường và ảnh y tế DICOM)",
+      "Gói Presidio Structured cho dữ liệu có cấu trúc"
+    ],
+    "requirementsVi": "Python 3.10–3.14; mô hình NLP (ví dụ spaCy `en_core_web_lg`); hoặc Docker để chạy dạng dịch vụ.",
+    "installStepsVi": [
+      "Cài đặt gói phân tích: `pip install presidio_analyzer`",
+      "Cài đặt gói ẩn danh hóa: `pip install presidio_anonymizer`",
+      "Tải mô hình spaCy: `python -m spacy download en_core_web_lg`",
+      "Hoặc chạy bằng Docker: `docker run -d -p 5002:3000 ghcr.io/data-privacy-stack/presidio-analyzer:latest` và `docker run -d -p 5001:3000 ghcr.io/data-privacy-stack/presidio-anonymizer:latest`"
+    ],
+    "cliCommand": "pip install presidio_analyzer",
+    "usageStepsVi": [
+      "Dùng Analyzer để phát hiện thực thể PII trong văn bản",
+      "Dùng Anonymizer để thay thế, che hoặc mã hóa các thực thể đã phát hiện",
+      "Với Docker: gọi dịch vụ analyzer ở cổng 5002 và anonymizer ở cổng 5001",
+      "Xem hướng dẫn PII de-identification trong tài liệu để tùy chỉnh recognizer"
+    ],
+    "samplePromptsVi": [
+      "Viết đoạn Python dùng Presidio phát hiện và che email, số điện thoại trong log chat trước khi gửi cho LLM.",
+      "Thêm recognizer tùy chỉnh bằng regex để nhận diện mã nhân viên nội bộ.",
+      "Triển khai Presidio analyzer và anonymizer bằng Docker cho pipeline dữ liệu."
+    ],
+    "prosVi": [
+      "Giấy phép MIT",
+      "Có cả gói Python lẫn image Docker",
+      "Hỗ trợ cả văn bản, dữ liệu có cấu trúc và hình ảnh"
+    ],
+    "consVi": [
+      "README cảnh báo không đảm bảo phát hiện toàn bộ thông tin nhạy cảm, cần thêm biện pháp bảo vệ khác"
+    ],
+    "sourceEvidence": {
+      "pip install presidio_analyzer": "docs/installation.md:34",
+      "pip install presidio_anonymizer": "docs/installation.md:35",
+      "python -m spacy download en_core_web_lg": "docs/installation.md:36",
+      "docker run -d -p 5002:3000 ghcr.io/data-privacy-stack/presidio-analyzer:latest": "docs/installation.md:115",
+      "docker run -d -p 5001:3000 ghcr.io/data-privacy-stack/presidio-anonymizer:latest": "docs/installation.md:117"
+    },
+    "meta": {
+      "id": "data-privacy-stack-presidio",
+      "nameVi": "Presidio — Phát hiện và ẩn danh hóa dữ liệu cá nhân (PII)",
+      "icon": "Search",
+      "categories": [
+        "cybersecurity_security",
+        "nlp_language",
+        "data_engineering"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install presidio_analyzer"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "guardrails-ai/guardrails",
+    "license": "Apache License 2.0",
+    "authorName": "Guardrails AI",
+    "websiteUrl": "https://guardrailsai.com/guardrails/docs",
+    "toolType": "sdk",
+    "taglineEn": "Guardrails is a Python framework that helps build reliable AI applications by performing two key functions:",
+    "summaryVi": "Guardrails là framework Python giúp xây dựng ứng dụng AI đáng tin cậy với hai chức năng chính: chạy Input/Output Guard để phát hiện, định lượng và giảm thiểu rủi ro, và sinh dữ liệu có cấu trúc từ LLM. Các validator từ Guardrails Hub (ví dụ kiểm tra regex, đối thủ cạnh tranh, ngôn từ độc hại) có thể kết hợp thành một Guard.",
+    "purposeVi": "Giúp nhà phát triển kiểm soát đầu vào/đầu ra của LLM trong ứng dụng của mình và ép đầu ra theo schema Pydantic.",
+    "featuresVi": [
+      "Input/Output Guard: chặn hoặc báo lỗi khi đầu vào/đầu ra vi phạm validator",
+      "Guardrails Hub: bộ validator dựng sẵn, cài đặt như gói PyPI (ví dụ `guardrails-ai-regex-match`)",
+      "Sinh dữ liệu có cấu trúc từ LLM theo mô hình Pydantic (function calling hoặc tối ưu prompt)",
+      "Guardrails Server: chạy dạng dịch vụ REST (Flask) bằng `guardrails start`, tương thích OpenAI SDK"
+    ],
+    "requirementsVi": "Python >=3.10,<3.14 (theo pyproject.toml); khóa API LLM khi dùng chức năng gọi mô hình.",
+    "installStepsVi": [
+      "Cài đặt thư viện: `pip install guardrails-ai`",
+      "Cấu hình CLI Guardrails Hub: `guardrails configure`",
+      "Cài đặt validator cần dùng, ví dụ: `pip install guardrails-ai-regex-match`"
+    ],
+    "cliCommand": "pip install guardrails-ai",
+    "usageStepsVi": [
+      "Tạo `Guard().use(...)` với các validator đã cài đặt và gọi `guard.validate(...)`",
+      "Dùng `Guard.for_pydantic(...)` để sinh đầu ra có cấu trúc từ LLM",
+      "Chạy server: `guardrails create --validators=hub://guardrails/two_words --guard-name=two-word-guard` rồi `guardrails start --config=./config.py`"
+    ],
+    "samplePromptsVi": [
+      "Tạo Guard kiểm tra đầu ra chatbot không nhắc tên đối thủ và không có ngôn từ độc hại.",
+      "Dùng Guardrails ép LLM trả về JSON theo mô hình Pydantic cho đơn hàng.",
+      "Triển khai Guardrails Server và gọi guard qua OpenAI SDK."
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Validator cài đặt như gói pip thông thường",
+      "Vừa kiểm soát rủi ro vừa hỗ trợ đầu ra có cấu trúc"
+    ],
+    "consVi": [
+      "README thông báo dừng dịch vụ suy luận từ xa (hosted remote inferencing) với mốc dự kiến 25/8/2026; người dùng cũ cần làm theo hướng dẫn di chuyển",
+      "Một số validator/chức năng cần gọi LLM bên ngoài"
+    ],
+    "sourceEvidence": {
+      "pip install guardrails-ai": "README.md:62",
+      "guardrails configure": "README.md:63",
+      "pip install guardrails-ai-regex-match": "README.md:68",
+      "guardrails create --validators=hub://guardrails/two_words --guard-name=two-word-guard": "README.md:179",
+      "guardrails start --config=./config.py": "README.md:180"
+    },
+    "meta": {
+      "id": "guardrails-ai-guardrails",
+      "nameVi": "Guardrails AI — Kiểm soát đầu vào, đầu ra của LLM",
+      "icon": "Layers",
+      "categories": [
+        "cybersecurity_security",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install guardrails-ai"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "cisco-ai-defense/mcp-scanner",
+    "license": "Apache License 2.0",
+    "authorName": "Cisco AI Defense",
+    "websiteUrl": "",
+    "toolType": "cli",
+    "taglineEn": "A Python tool for scanning MCP (Model Context Protocol) servers and tools for potential security findings.",
+    "summaryVi": "MCP Scanner là công cụ Python của Cisco AI Defense để quét MCP server và công cụ nhằm tìm vấn đề bảo mật tiềm ẩn. Công cụ kết hợp ba engine — luật YARA, phân tích bằng LLM và Cisco AI Defense inspect API — có thể dùng riêng hoặc cùng nhau, chạy dạng CLI hoặc REST API server.",
+    "purposeVi": "Giúp nhà phát triển và đội bảo mật kiểm tra MCP server mình cài đặt hoặc phát triển để phát hiện công cụ độc hại, prompt injection trước khi dùng với agent AI.",
+    "featuresVi": [
+      "Ba engine phân tích: YARA (không cần khóa API), LLM và Cisco AI Defense API",
+      "Quét tools, prompts, resources và server instructions; quét cấu hình MCP có sẵn trên máy (`--scan-known-configs`)",
+      "Quét mã nguồn theo hành vi, quét gói Python có lỗ hổng qua pip-audit, quét tệp nhị phân qua VirusTotal (tùy chọn)",
+      "Quét tĩnh/ngoại tuyến từ tệp JSON cho CI/CD và môi trường cách ly",
+      "Chạy dạng REST API server (`mcp-scanner-api`); hỗ trợ OAuth cho SSE và streamable HTTP"
+    ],
+    "requirementsVi": "Python 3.11+ và uv; khóa Cisco AI Defense API, khóa LLM, khóa VirusTotal đều là tùy chọn tùy engine sử dụng.",
+    "installStepsVi": [
+      "Cài đặt dạng công cụ CLI: `uv tool install --python 3.13 cisco-ai-mcp-scanner`",
+      "Hoặc cài đặt từ mã nguồn: `uv tool install --python 3.13 --from git+https://github.com/cisco-ai-defense/mcp-scanner cisco-ai-mcp-scanner`",
+      "Đặt biến môi trường như MCP_SCANNER_API_KEY hoặc MCP_SCANNER_LLM_API_KEY nếu dùng engine API/LLM"
+    ],
+    "cliCommand": "uv tool install --python 3.13 cisco-ai-mcp-scanner",
+    "usageStepsVi": [
+      "Quét các cấu hình MCP đã biết trên máy bằng YARA: `mcp-scanner --scan-known-configs --analyzers yara --format summary`",
+      "Quét một MCP server từ xa: `mcp-scanner --server-url https://mcp.deepwiki.com/mcp --analyzers yara --format summary`",
+      "Chạy dạng REST API: `mcp-scanner-api --host 0.0.0.0 --port 8080`"
+    ],
+    "samplePromptsVi": [
+      "Quét tất cả MCP server trong cấu hình Claude Desktop và Cursor của tôi bằng engine YARA và tóm tắt kết quả.",
+      "Kiểm tra MCP server nội bộ tại http://127.0.0.1:8000/mcp bằng phân tích LLM cho phần prompts.",
+      "Thêm bước quét tĩnh mcp-scanner vào pipeline CI cho MCP server chúng tôi phát triển."
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Engine YARA hoạt động không cần khóa API",
+      "Hỗ trợ quét ngoại tuyến cho CI/CD"
+    ],
+    "consVi": [
+      "Engine Cisco AI Defense cần khóa API của Cisco; engine LLM cần khóa nhà cung cấp LLM",
+      "Quét MCP server stdio sẽ khởi chạy tiến trình server trên máy"
+    ],
+    "sourceEvidence": {
+      "uv tool install --python 3.13 cisco-ai-mcp-scanner": "README.md:56",
+      "uv tool install --python 3.13 --from git+https://github.com/cisco-ai-defense/mcp-scanner cisco-ai-mcp-scanner": "README.md:62",
+      "mcp-scanner --scan-known-configs --analyzers yara --format summary": "README.md:228",
+      "mcp-scanner --server-url https://mcp.deepwiki.com/mcp --analyzers yara --format summary": "README.md:234",
+      "mcp-scanner-api --host 0.0.0.0 --port 8080": "README.md:240"
+    },
+    "meta": {
+      "id": "cisco-ai-defense-mcp-scanner",
+      "nameVi": "Cisco MCP Scanner — Quét bảo mật MCP server và công cụ",
+      "icon": "Search",
+      "categories": [
+        "cybersecurity_security",
+        "qa_testing"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "uv tool install --python 3.13 cisco-ai-mcp-scanner"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,564 @@
+[
+  {
+    "repo": "vanna-ai/vanna",
+    "license": "MIT License",
+    "authorName": "Vanna.AI",
+    "websiteUrl": "https://vanna.ai",
+    "toolType": "sdk",
+    "taglineEn": "Natural language → SQL → Answers. Now with enterprise security and user-aware permissions.",
+    "summaryVi": "Vanna 2.0 là thư viện Python mã nguồn mở biến câu hỏi bằng ngôn ngữ tự nhiên thành câu lệnh SQL, chạy trên cơ sở dữ liệu của bạn và trả về bảng dữ liệu, biểu đồ Plotly cùng phần tóm tắt. Phiên bản 2.0 viết lại theo mô hình Agent, nhận biết người dùng ở mọi tầng (lọc theo quyền, bảo mật mức dòng, nhật ký kiểm toán) và kèm sẵn thành phần web <vanna-chat> để nhúng vào trang có sẵn.",
+    "purposeVi": "Giúp đội ngũ phát triển xây dựng giao diện hỏi đáp dữ liệu bằng ngôn ngữ tự nhiên (text-to-SQL) cho ứng dụng phân tích, có phân quyền theo người dùng và tích hợp với hệ thống xác thực sẵn có.",
+    "featuresVi": [
+      "Text-to-SQL: hỏi bằng ngôn ngữ tự nhiên, nhận câu SQL, bảng dữ liệu tương tác, biểu đồ Plotly và tóm tắt",
+      "Nhận biết người dùng: danh tính đi qua system prompt, công cụ và bộ lọc SQL; hỗ trợ bảo mật mức dòng, nhật ký kiểm toán, giới hạn tần suất",
+      "Thành phần web <vanna-chat>: nhúng vào React, Vue hoặc HTML thuần, phản hồi dạng streaming",
+      "Nhiều LLM: OpenAI, Anthropic, Ollama, Azure, Google Gemini, AWS Bedrock, Mistral",
+      "Nhiều cơ sở dữ liệu: PostgreSQL, MySQL, Snowflake, BigQuery, Redshift, SQLite, Oracle, SQL Server, DuckDB, ClickHouse",
+      "Mở rộng: tự viết công cụ kế thừa lớp Tool, lifecycle hooks, LLM middleware, tích hợp FastAPI/Flask"
+    ],
+    "requirementsVi": "Python 3.9 trở lên (theo pyproject.toml); khóa API của nhà cung cấp LLM (ví dụ Anthropic, OpenAI) hoặc mô hình cục bộ qua Ollama; một cơ sở dữ liệu SQL để truy vấn.",
+    "installStepsVi": [
+      "Cài đặt Vanna 2.0 kèm tích hợp Flask và Anthropic: `pip install 'vanna[flask,anthropic]'`",
+      "Tạo Agent với dịch vụ LLM (ví dụ AnthropicLlmService), đăng ký RunSqlTool trỏ tới cơ sở dữ liệu và khai báo UserResolver theo hệ thống xác thực của bạn",
+      "Gắn các route chat vào ứng dụng FastAPI bằng register_chat_routes, sau đó nhúng thẻ <vanna-chat sse-endpoint=\"/api/vanna/v2/chat_sse\"> vào giao diện"
+    ],
+    "cliCommand": "pip install 'vanna[flask,anthropic]'",
+    "usageStepsVi": [
+      "Người dùng đặt câu hỏi về dữ liệu trong khung <vanna-chat>",
+      "Agent sinh câu SQL, chạy qua công cụ SQL có kiểm tra quyền và áp dụng bảo mật mức dòng",
+      "Kết quả được stream về giao diện: tiến trình, câu SQL (mặc định chỉ hiện cho nhóm admin), bảng, biểu đồ và tóm tắt",
+      "Dự án dùng Vanna 0.x có thể bọc bằng LegacyVannaAdapter theo hướng dẫn chuyển đổi MIGRATION_GUIDE.md"
+    ],
+    "samplePromptsVi": [
+      "Cho tôi xem doanh số quý 4 theo từng khu vực",
+      "Top 10 khách hàng có giá trị đơn hàng cao nhất năm nay là ai?",
+      "Vẽ biểu đồ số lượng đơn hàng theo tháng trong 12 tháng gần nhất"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, dùng tự do cho mục đích thương mại",
+      "Có sẵn giao diện chat dạng web component, không cần tự xây dựng",
+      "Hỗ trợ nhiều LLM và nhiều loại cơ sở dữ liệu phổ biến",
+      "Tính năng phân quyền theo người dùng, bảo mật mức dòng và nhật ký kiểm toán phục vụ môi trường doanh nghiệp"
+    ],
+    "consVi": [
+      "README không có lệnh cài đặt trực tiếp; hướng dẫn chi tiết nằm ở trang tài liệu vanna.ai và MIGRATION_GUIDE.md",
+      "Phiên bản 2.0 là bản viết lại hoàn toàn, mã dùng VannaBase 0.x cần chuyển đổi",
+      "Cần khóa API của nhà cung cấp LLM hoặc tự chạy mô hình cục bộ"
+    ],
+    "sourceEvidence": {
+      "pip install 'vanna[flask,anthropic]'": "MIGRATION_GUIDE.md:89"
+    },
+    "meta": {
+      "id": "vanna-ai-vanna",
+      "nameVi": "Vanna — Thư viện Python hỏi đáp dữ liệu bằng ngôn ngữ tự nhiên, chuyển câu hỏi thành SQL",
+      "icon": "Database",
+      "categories": [
+        "data_science_analytics",
+        "database_sql_nosql"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install 'vanna[flask,anthropic]'"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "Canner/WrenAI",
+    "license": "Apache License 2.0 (mã nguồn core/, sdk/, skills/, examples/); tài liệu docs/ theo CC BY 4.0",
+    "authorName": "Canner",
+    "websiteUrl": "https://getwren.ai",
+    "toolType": "cli",
+    "taglineEn": "Open-source GenBI for AI agents",
+    "summaryVi": "WrenAI là bộ máy GenBI (BI tạo sinh) mã nguồn mở, cung cấp lớp ngữ nghĩa có quản trị (MDL) và lớp ngữ cảnh AI cho các tác tử như Claude Code, Cursor, Cline, Codex hay client MCP. Nhờ đó tác tử sinh SQL đúng định nghĩa nghiệp vụ, truy vấn trên hơn 22 nguồn dữ liệu và triển khai dashboard; mọi định nghĩa được lưu dưới dạng YAML/Markdown trong Git.",
+    "purposeVi": "Giúp tác tử AI trả lời câu hỏi kinh doanh bằng SQL có kiểm soát và dựng dashboard từ dữ liệu doanh nghiệp, với định nghĩa chỉ số được quản lý và review như mã nguồn.",
+    "featuresVi": [
+      "Lớp ngữ nghĩa MDL: mô hình, cột, quan hệ, view, cube và metric được định nghĩa một lần, dùng thống nhất",
+      "Text-to-SQL có quản trị: truy xuất theo schema, lập kế hoạch MDL, kiểm tra dry-plan, giới hạn số dòng, lỗi có gợi ý",
+      "Engine Apache DataFusion: BigQuery, Snowflake, PostgreSQL, ClickHouse, Redshift, Databricks, DuckDB và hơn 22 nguồn",
+      "Dashboard GenBI: tác tử dựng ứng dụng chạy phía trình duyệt (wren-core-wasm), triển khai lên Vercel hoặc Cloudflare Pages",
+      "Tri thức và bộ nhớ: instructions.md, queries.yml quản lý phiên bản cùng chỉ mục bộ nhớ LanceDB cục bộ",
+      "SDK cho tác tử: wren-langchain (LangChain/LangGraph), wren-pydantic"
+    ],
+    "requirementsVi": "Python và pip; Node.js (npx) để cài đặt skill cho tác tử; một tác tử AI như Claude Code, Cursor, Cline hoặc Codex; cơ sở dữ liệu cần kết nối (có thể dùng mẫu jaffle_shop đi kèm).",
+    "installStepsVi": [
+      "Cài đặt công cụ dòng lệnh: `pip install wrenai`",
+      "Thêm connector khi cần, ví dụ: `pip install \"wrenai[postgres,memory]\"`",
+      "Cài đặt skill hướng dẫn cho tác tử của bạn: `npx skills add Canner/WrenAI`",
+      "Mở tác tử trong thư mục dự án và yêu cầu: \"Use Wren to set up my Postgres database.\""
+    ],
+    "cliCommand": "pip install wrenai",
+    "usageStepsVi": [
+      "Lấy hướng dẫn quy trình khởi tạo dự án và truy vấn đầu tiên: `wren skills get onboarding`",
+      "Bổ sung ngữ cảnh nghiệp vụ (định nghĩa, ví dụ) bằng quy trình `wren skills get enrich-context`",
+      "Truy vấn qua lớp ngữ nghĩa MDL: `wren query --sql '...'`",
+      "Dựng và triển khai dashboard bằng quy trình `wren skills get genbi`"
+    ],
+    "samplePromptsVi": [
+      "Use Wren to set up my Postgres database",
+      "Ai là 10 khách hàng có doanh số cao nhất quý này?",
+      "Biến kết quả đó thành dashboard có bộ lọc để chia sẻ, triển khai lên Vercel"
+    ],
+    "prosVi": [
+      "Lõi engine, SDK và skill theo giấy phép Apache-2.0, tự host được",
+      "Làm việc qua các tác tử sẵn có (Claude Code, Cursor, client MCP), không bắt buộc dùng giao diện riêng",
+      "Định nghĩa chỉ số lưu trong Git, review được qua pull request",
+      "Hỗ trợ hơn 22 nguồn dữ liệu trên một engine",
+      "Được bảo trì rất tích cực"
+    ],
+    "consVi": [
+      "Mô hình open core: bảo mật mức dòng/cột, giao diện GenBI, dashboard nhúng và API là tính năng thương mại (Wren AI Cloud / Enterprise Plus)",
+      "Ứng dụng GenBI dạng Docker trước đây đã chuyển sang nhánh legacy/v1 (Wren GenBI Classic)",
+      "Cần có tác tử AI và tài khoản LLM tương ứng để dùng hiệu quả"
+    ],
+    "sourceEvidence": {
+      "pip install wrenai": "README.md:50",
+      "pip install \"wrenai[postgres,memory]\"": "README.md:53",
+      "npx skills add Canner/WrenAI": "README.md:58",
+      "wren skills get onboarding": "README.md:180",
+      "wren query --sql '...'": "README.md:184"
+    },
+    "meta": {
+      "id": "canner-wrenai",
+      "nameVi": "WrenAI — Công cụ GenBI mã nguồn mở: lớp ngữ nghĩa và text-to-SQL có quản trị cho tác tử AI",
+      "icon": "Database",
+      "categories": [
+        "data_science_analytics",
+        "database_sql_nosql"
+      ],
+      "platforms": [
+        "web",
+        "claude_code",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0), mô hình open core",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install wrenai"
+        },
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "npx skills add Canner/WrenAI"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "sinaptik-ai/pandas-ai",
+    "license": "MIT Expat License (trừ thư mục pandasai/ee theo giấy phép riêng)",
+    "authorName": "Sinaptik GmbH",
+    "websiteUrl": "https://docs.pandas-ai.com/",
+    "toolType": "sdk",
+    "taglineEn": "PandasAI is a Python library that makes it easy to ask questions to your data in natural language.",
+    "summaryVi": "PandasAI là thư viện Python cho phép đặt câu hỏi về dữ liệu (CSV, DataFrame) bằng ngôn ngữ tự nhiên và nhận câu trả lời hoặc biểu đồ. Thư viện hỗ trợ hỏi trên nhiều DataFrame cùng lúc, kết nối LLM qua gói pandasai-litellm và có thể chạy mã trong sandbox Docker để tăng an toàn.",
+    "purposeVi": "Giúp người không chuyên kỹ thuật tương tác với dữ liệu tự nhiên hơn, đồng thời giúp người làm dữ liệu tiết kiệm thời gian khi phân tích bằng pandas.",
+    "featuresVi": [
+      "Hỏi đáp dữ liệu: gọi df.chat(\"...\") để hỏi bằng ngôn ngữ tự nhiên trên DataFrame",
+      "Vẽ biểu đồ: yêu cầu tạo histogram, biểu đồ cột... trực tiếp bằng câu lệnh tự nhiên",
+      "Nhiều DataFrame: hỏi câu hỏi liên kết nhiều bảng bằng pai.chat(...)",
+      "Kết nối LLM qua LiteLLM (pandasai-litellm), ví dụ mô hình OpenAI",
+      "Sandbox Docker (pandasai-docker): chạy mã sinh ra trong môi trường cô lập"
+    ],
+    "requirementsVi": "Python 3.8 đến 3.11; khóa API của nhà cung cấp LLM (ví dụ OpenAI) dùng qua LiteLLM; Docker nếu dùng sandbox.",
+    "installStepsVi": [
+      "Cài đặt thư viện chính: `pip install pandasai`",
+      "Cài đặt bộ kết nối LLM: `pip install pandasai-litellm`",
+      "Hoặc cài đặt bằng poetry: `poetry add pandasai`",
+      "(Tùy chọn) Cài đặt sandbox Docker để chạy mã an toàn: `pip install \"pandasai-docker\"`"
+    ],
+    "cliCommand": "pip install pandasai",
+    "usageStepsVi": [
+      "Khởi tạo LiteLLM(model=\"gpt-4.1-mini\", api_key=...) và cấu hình bằng pai.config.set({\"llm\": llm})",
+      "Nạp dữ liệu: df = pai.read_csv(\"data/companies.csv\")",
+      "Đặt câu hỏi: df.chat(\"What is the average revenue by region?\")",
+      "Với dữ liệu nhạy cảm, khởi tạo DockerSandbox() và truyền sandbox=sandbox vào pai.chat"
+    ],
+    "samplePromptsVi": [
+      "Doanh thu trung bình theo từng khu vực là bao nhiêu?",
+      "Tổng doanh số của 3 quốc gia bán chạy nhất là bao nhiêu?",
+      "Vẽ histogram GDP theo quốc gia, mỗi cột một màu"
+    ],
+    "prosVi": [
+      "Phần lõi theo giấy phép MIT",
+      "API đơn giản, tích hợp trực tiếp với quy trình pandas",
+      "Có sandbox Docker để cô lập mã do LLM sinh ra",
+      "Kết nối được nhiều LLM qua LiteLLM"
+    ],
+    "consVi": [
+      "Thư mục pandasai/ee theo giấy phép riêng, không phải MIT",
+      "Chỉ hỗ trợ Python 3.8 đến 3.11",
+      "Cần khóa API LLM",
+      "Commit gần nhất trên nhánh chính là 28/10/2025, nhịp cập nhật chậm hơn các dự án khác"
+    ],
+    "sourceEvidence": {
+      "pip install pandasai": "README.md:31",
+      "pip install pandasai-litellm": "README.md:32",
+      "poetry add pandasai": "README.md:38",
+      "pip install \"pandasai-docker\"": "README.md:136"
+    },
+    "meta": {
+      "id": "sinaptik-ai-pandas-ai",
+      "nameVi": "PandasAI — Thư viện Python hỏi đáp và vẽ biểu đồ dữ liệu bằng ngôn ngữ tự nhiên",
+      "icon": "Brain",
+      "categories": [
+        "data_science_analytics"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT, trừ thư mục ee)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install pandasai"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "apache/superset",
+    "license": "Apache License 2.0",
+    "authorName": "Apache Software Foundation",
+    "websiteUrl": "https://superset.apache.org",
+    "toolType": "software",
+    "taglineEn": "A modern, enterprise-ready business intelligence web application.",
+    "summaryVi": "Apache Superset là nền tảng khám phá và trực quan hóa dữ liệu (BI) trên web, có trình tạo biểu đồ không cần viết mã, trình soạn SQL mạnh mẽ và lớp ngữ nghĩa gọn nhẹ. Superset kết nối hầu hết cơ sở dữ liệu nói SQL có driver DB-API và dialect SQLAlchemy, và đi kèm dịch vụ MCP để tác tử AI như Claude Desktop truy vấn dữ liệu, tạo biểu đồ, quản lý dashboard.",
+    "purposeVi": "Thay thế hoặc bổ sung cho công cụ BI thương mại: xây dựng dashboard, phân tích dữ liệu bằng SQL và cho phép tác tử AI thao tác với dữ liệu qua MCP.",
+    "featuresVi": [
+      "Trình tạo biểu đồ không cần viết mã cùng thư viện trực quan hóa phong phú, đến cả biểu đồ địa lý",
+      "SQL Lab: trình soạn SQL trên web cho truy vấn nâng cao",
+      "Lớp ngữ nghĩa gọn nhẹ để định nghĩa chiều và chỉ số tùy chỉnh",
+      "Kết nối hầu hết cơ sở dữ liệu SQL (Presto, Trino, Athena...) qua SQLAlchemy",
+      "Phân quyền, xác thực mở rộng được, lớp cache và REST API",
+      "Dịch vụ MCP: cho phép tác tử AI truy vấn dữ liệu, tạo biểu đồ và quản lý dashboard bằng ngôn ngữ tự nhiên"
+    ],
+    "requirementsVi": "Docker, Docker Compose và Git cho cách chạy nhanh; Python 3.11 hoặc 3.12 nếu cài đặt thủ công. Môi trường sản xuất nên triển khai trên Kubernetes.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/apache/superset`",
+      "Vào thư mục superset và chuyển sang bản phát hành chính thức: `git checkout tags/6.0.0`",
+      "Cài đặt và khởi động bằng Docker Compose: `docker compose -f docker-compose-image-tag.yml up`",
+      "Mở http://localhost:8088 và đăng nhập bằng tài khoản mặc định admin/admin",
+      "(Tùy chọn) Chạy dịch vụ MCP khi cài đặt thủ công: `superset mcp run --port 5008 --debug`"
+    ],
+    "cliCommand": "docker compose -f docker-compose-image-tag.yml up",
+    "usageStepsVi": [
+      "Kết nối cơ sở dữ liệu trong giao diện, tạo dataset",
+      "Dùng trình tạo biểu đồ hoặc SQL Lab để khám phá dữ liệu, rồi ghép thành dashboard",
+      "Để dùng với Claude Desktop, khai báo máy chủ MCP trong claude_desktop_config.json theo hướng dẫn superset/mcp_service/README.md",
+      "Dừng môi trường bằng docker compose down khi không dùng"
+    ],
+    "samplePromptsVi": [
+      "Liệt kê các dashboard hiện có trên Superset",
+      "Tạo biểu đồ cột doanh thu theo tháng từ dataset sales",
+      "Truy vấn 10 sản phẩm bán chạy nhất trong dataset orders"
+    ],
+    "prosVi": [
+      "Dự án Apache, giấy phép Apache-2.0",
+      "Hỗ trợ gần như mọi cơ sở dữ liệu SQL",
+      "Có dịch vụ MCP tích hợp sẵn cho tác tử AI",
+      "Cộng đồng lớn, được bảo trì rất tích cực"
+    ],
+    "consVi": [
+      "README không chứa lệnh cài đặt; cần xem trang quickstart trong thư mục docs",
+      "Cấu hình Docker Compose dùng để thử nghiệm, không khuyến nghị cho môi trường sản xuất",
+      "Dịch vụ MCP yêu cầu Superset đang chạy và cấu hình thêm (proxy cho Claude Desktop)"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/apache/superset": "docs/docs/quickstart.mdx:25",
+      "git checkout tags/6.0.0": "docs/docs/quickstart.mdx:35",
+      "docker compose -f docker-compose-image-tag.yml up": "docs/docs/quickstart.mdx:38",
+      "superset mcp run --port 5008 --debug": "superset/mcp_service/README.md:145"
+    },
+    "meta": {
+      "id": "apache-superset",
+      "nameVi": "Apache Superset — Nền tảng BI mã nguồn mở trực quan hóa dữ liệu, có dịch vụ MCP cho tác tử AI",
+      "icon": "Layers",
+      "categories": [
+        "data_science_analytics",
+        "database_sql_nosql"
+      ],
+      "platforms": [
+        "web",
+        "claude_desktop"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "docker compose -f docker-compose-image-tag.yml up"
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "superset mcp run --port 5008 --debug",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"Superset MCP Proxy\": {\n      \"command\": \"/<superset folder>/superset/mcp_service/run_proxy.sh\",\n      \"args\": [],\n      \"env\": {}\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "marimo-team/marimo",
+    "license": "Apache License 2.0",
+    "authorName": "marimo",
+    "websiteUrl": "https://marimo.io",
+    "toolType": "software",
+    "taglineEn": "A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps.",
+    "summaryVi": "marimo là notebook Python phản ứng (reactive): chạy một ô hoặc tương tác với phần tử giao diện thì các ô phụ thuộc tự chạy lại, giữ mã và kết quả luôn nhất quán. Notebook lưu dưới dạng tệp .py thuần, hỗ trợ SQL, chạy như script hoặc triển khai thành ứng dụng web, kèm trợ lý AI hiểu dữ liệu trong bộ nhớ và khả năng cộng tác với tác tử như Claude Code.",
+    "purposeVi": "Thay thế Jupyter, Streamlit và các công cụ liên quan cho công việc phân tích dữ liệu: notebook tái lập được, thân thiện với Git và chia sẻ được dưới dạng ứng dụng.",
+    "featuresVi": [
+      "Phản ứng tự động: chạy lại các ô phụ thuộc hoặc đánh dấu stale, không còn trạng thái ẩn",
+      "Tương tác: gắn slider, bảng, biểu đồ vào Python mà không cần callback",
+      "Thiết kế cho dữ liệu: truy vấn DataFrame, cơ sở dữ liệu, kho dữ liệu bằng ô SQL; lọc và tìm kiếm DataFrame",
+      "AI tích hợp: sinh ô mã với trợ lý hiểu biến trong bộ nhớ, dùng khóa API riêng hoặc mô hình cục bộ; cộng tác với Claude Code qua marimo pair",
+      "Lưu dạng .py, chạy như script, triển khai thành ứng dụng web, slide hoặc chạy trong trình duyệt qua WASM",
+      "Chuyển đổi notebook Jupyter sang marimo bằng CLI"
+    ],
+    "requirementsVi": "Python 3.11 trở lên (theo pyproject.toml); pip hoặc conda.",
+    "installStepsVi": [
+      "Cài đặt marimo và mở hướng dẫn: `pip install marimo && marimo tutorial intro`",
+      "Cài đặt kèm phụ thuộc mở khóa ô SQL, AI completion: `pip install \"marimo[recommended]\"`",
+      "Tạo hoặc sửa notebook: `marimo edit`"
+    ],
+    "cliCommand": "pip install marimo && marimo tutorial intro",
+    "usageStepsVi": [
+      "Mở trình soạn bằng `marimo edit`, viết ô Python hoặc ô SQL để khám phá dữ liệu",
+      "Dùng trợ lý AI trong trình soạn để sinh mã phân tích dựa trên biến hiện có",
+      "Chạy notebook dưới dạng ứng dụng web ẩn mã: `marimo run your_notebook.py`",
+      "Chuyển notebook Jupyter cũ: `marimo convert your_notebook.ipynb > your_notebook.py`"
+    ],
+    "samplePromptsVi": [
+      "Viết ô SQL truy vấn DataFrame doanh số và lọc theo giá trị của slider",
+      "Sinh mã vẽ biểu đồ phân phối cột price từ DataFrame df đang có trong bộ nhớ",
+      "Tạo ứng dụng dashboard từ notebook phân tích này"
+    ],
+    "prosVi": [
+      "Giấy phép Apache-2.0",
+      "Notebook là tệp Python thuần, dễ quản lý bằng Git và chạy như script",
+      "Trợ lý AI chuyên cho dữ liệu, hỗ trợ khóa API riêng hoặc mô hình cục bộ",
+      "Được bảo trì rất tích cực, có tiện ích VS Code/Cursor và PyCharm"
+    ],
+    "consVi": [
+      "Mô hình phản ứng khác Jupyter, cần làm quen với cách tổ chức ô",
+      "Tính năng AI cần khóa API của nhà cung cấp hoặc mô hình cục bộ"
+    ],
+    "sourceEvidence": {
+      "pip install marimo && marimo tutorial intro": "README.md:60",
+      "pip install \"marimo[recommended]\"": "README.md:165",
+      "marimo edit": "README.md:173",
+      "marimo run your_notebook.py": "README.md:180",
+      "marimo convert your_notebook.ipynb > your_notebook.py": "README.md:196"
+    },
+    "meta": {
+      "id": "marimo-team-marimo",
+      "nameVi": "marimo — Notebook Python phản ứng cho phân tích dữ liệu, có SQL và trợ lý AI tích hợp",
+      "icon": "Code2",
+      "categories": [
+        "data_science_analytics"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install marimo && marimo tutorial intro"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "microsoft/data-formulator",
+    "license": "MIT License",
+    "authorName": "Microsoft",
+    "websiteUrl": "https://data-formulator.ai",
+    "toolType": "software",
+    "taglineEn": "Explore data with visualizations, powered by AI agents.",
+    "summaryVi": "Data Formulator là dự án của Microsoft Research giúp khám phá dữ liệu bằng biểu đồ với sự hỗ trợ của tác tử AI. Công cụ kết hợp thao tác giao diện với ngôn ngữ tự nhiên, cho phép tải dữ liệu từ tệp, ảnh chụp màn hình, văn bản hoặc cơ sở dữ liệu, rồi phân nhánh phân tích trong Data Thread và tổng hợp thành báo cáo.",
+    "purposeVi": "Giúp nhà phân tích nhanh chóng đi từ dữ liệu thô đến biểu đồ và báo cáo bằng cách mô tả ý định bằng lời, đồng thời giữ được lịch sử và các nhánh phân tích.",
+    "featuresVi": [
+      "Kết nối dữ liệu: CSV, TSV, Excel, JSON, ảnh chụp màn hình, văn bản, cơ sở dữ liệu và nền tảng như Databricks",
+      "Data Thread: đặt câu hỏi, xem giải thích, bảng và biểu đồ trong một lịch sử, phân nhánh từ bất kỳ bước nào",
+      "Tác tử phân tích: tìm và đề xuất kế hoạch nạp dữ liệu, cho phép xem lại trước khi đưa vào không gian làm việc",
+      "Hơn 30 loại biểu đồ dựa trên ngôn ngữ trực quan hóa Flint, có gợi ý và tùy chỉnh giao diện",
+      "Hỗ trợ mô hình OpenAI, Azure, Ollama, Anthropic qua LiteLLM",
+      "Soạn kết quả thành báo cáo để chia sẻ"
+    ],
+    "requirementsVi": "Python 3.11 trở lên (theo pyproject.toml) hoặc uv; Docker nếu chạy bằng container; khóa API của nhà cung cấp LLM hoặc Ollama.",
+    "installStepsVi": [
+      "Cài đặt và chạy ngay bằng uv (khuyến nghị): `uvx data_formulator`",
+      "Hoặc cài đặt bằng pip: `pip install data_formulator`, rồi chạy: `python -m data_formulator`",
+      "Hoặc chạy bằng Docker: `docker compose up --build`",
+      "Mở trình duyệt tại http://localhost:5567"
+    ],
+    "cliCommand": "uvx data_formulator",
+    "usageStepsVi": [
+      "Tải lên tệp dữ liệu hoặc kết nối cơ sở dữ liệu, hoặc nhờ tác tử tìm dữ liệu cần thiết",
+      "Đặt câu hỏi bằng ngôn ngữ tự nhiên trong Data Thread và xem biểu đồ, bảng, giải thích",
+      "Chỉnh sửa biểu đồ trực tiếp hoặc phân nhánh từ bước trước để thử hướng khác",
+      "Tổng hợp kết quả thành báo cáo để chia sẻ"
+    ],
+    "samplePromptsVi": [
+      "So sánh doanh thu theo vùng giữa hai năm gần nhất bằng biểu đồ cột",
+      "Trích xuất bảng dữ liệu từ ảnh chụp màn hình này và vẽ biểu đồ xu hướng",
+      "Tìm 5 sản phẩm tăng trưởng nhanh nhất và giải thích nguyên nhân có thể"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, dự án của Microsoft Research",
+      "Cài đặt nhanh bằng một lệnh uvx, có cả Docker và bản desktop thử nghiệm",
+      "Hỗ trợ nhiều nguồn dữ liệu và nhiều nhà cung cấp LLM qua LiteLLM",
+      "Đang được phát triển tích cực (bản 0.8 beta tháng 8/2026)"
+    ],
+    "consVi": [
+      "Bản desktop là bản dựng thử nghiệm chưa ký số, hệ điều hành sẽ cảnh báo khi mở",
+      "Cần khóa API LLM hoặc mô hình cục bộ qua Ollama",
+      "Là dự án nghiên cứu, giao diện và tính năng thay đổi nhanh giữa các phiên bản"
+    ],
+    "sourceEvidence": {
+      "uvx data_formulator": "README.md:125",
+      "pip install data_formulator": "README.md:135",
+      "python -m data_formulator": "README.md:136",
+      "docker compose up --build": "README.md:144"
+    },
+    "meta": {
+      "id": "microsoft-data-formulator",
+      "nameVi": "Data Formulator — Công cụ khám phá và trực quan hóa dữ liệu bằng tác tử AI của Microsoft",
+      "icon": "Sparkles",
+      "categories": [
+        "data_science_analytics"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "uvx data_formulator"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "jupyterlab/jupyter-ai",
+    "license": "BSD 3-Clause License",
+    "authorName": "Project Jupyter (JupyterLab)",
+    "websiteUrl": "https://jupyter-ai.readthedocs.io",
+    "toolType": "software",
+    "taglineEn": "An open source extension that connects AI agents to computational notebooks in JupyterLab.",
+    "summaryVi": "Jupyter AI là tiện ích mở rộng mã nguồn mở đưa AI dạng tác tử vào JupyterLab. Tiện ích cung cấp giao diện chat gốc để cộng tác với các tác tử như Claude, Codex, GitHub Copilot, Gemini, Goose, Kiro, Mistral Vibe, OpenCode thông qua Agent Client Protocol (ACP); tác tử đọc ghi tệp, chạy lệnh và thao tác notebook qua máy chủ MCP Jupyter tích hợp.",
+    "purposeVi": "Giúp nhà khoa học dữ liệu làm việc cùng tác tử AI ngay trong JupyterLab để phân tích dữ liệu và chỉnh sửa notebook, có cơ chế xin phép trước khi tác tử ghi tệp hay chạy lệnh.",
+    "featuresVi": [
+      "Chat gốc trong JupyterLab với nhiều tác tử qua Agent Client Protocol (ACP)",
+      "Tự phát hiện tác tử đã cài đặt trong môi trường",
+      "Máy chủ MCP Jupyter tích hợp: tác tử đọc ghi tệp, chạy lệnh terminal, tương tác với notebook",
+      "Hệ thống phân quyền: tác tử xin phép trước khi ghi tệp hoặc thực thi lệnh",
+      "Nhiều cuộc chat đồng thời, kéo thả tệp hoặc ô notebook làm ngữ cảnh, cộng tác thời gian thực",
+      "Thêm máy chủ MCP tùy chỉnh và tự xây dựng AI persona qua entry points API"
+    ],
+    "requirementsVi": "Python 3.9 trở lên (theo pyproject.toml) và JupyterLab; cài đặt thêm ít nhất một tác tử (ví dụ Claude Code, Codex CLI) cùng gói adapter ACP nếu cần; Node.js cho adapter dạng npm.",
+    "installStepsVi": [
+      "Cài đặt Jupyter AI: `pip install jupyter-ai` (hoặc `uv pip install jupyter-ai`)",
+      "Cài đặt tác tử theo tài liệu chính thức của tác tử đó (ví dụ Claude Code)",
+      "Với Claude Code, cài đặt thêm adapter ACP: `npm install -g @agentclientprotocol/claude-agent-acp`",
+      "Khởi động JupyterLab: `jupyter lab`"
+    ],
+    "cliCommand": "pip install jupyter-ai",
+    "usageStepsVi": [
+      "Tạo chat bằng thẻ Chat trên trang launcher hoặc nút + trong thanh chat",
+      "Chọn AI persona (tác tử) trong menu của thanh nhập liệu",
+      "Gõ yêu cầu; tác tử có thể đọc ghi tệp, chạy lệnh và chỉnh notebook qua Jupyter MCP Server, kèm yêu cầu phê duyệt",
+      "Điều chỉnh mô hình, chế độ phân quyền và mức nỗ lực trong menu do từng tác tử cung cấp"
+    ],
+    "samplePromptsVi": [
+      "Đọc tệp sales.csv, làm sạch dữ liệu và thêm ô vẽ biểu đồ doanh thu theo tháng vào notebook này",
+      "Giải thích lỗi ở ô đang chọn và đề xuất cách sửa",
+      "Tạo notebook mới phân tích phân phối giá trong tệp dữ liệu products.csv"
+    ],
+    "prosVi": [
+      "Giấy phép BSD 3-Clause, thuộc tổ chức JupyterLab",
+      "Không khóa nhà cung cấp: dựa trên chuẩn mở ACP và MCP",
+      "Có cơ chế phê duyệt trước khi tác tử ghi tệp hoặc chạy lệnh",
+      "Được bảo trì tích cực"
+    ],
+    "consVi": [
+      "Không đi kèm tác tử nào; người dùng phải tự cài đặt và đăng nhập tác tử",
+      "README ngắn; hướng dẫn cài đặt nằm trong tài liệu docs",
+      "Dự án đang trong giai đoạn ươm tạo (incubation) của tổ chức JupyterLab"
+    ],
+    "sourceEvidence": {
+      "pip install jupyter-ai": "docs/source/getting-started.md:19",
+      "uv pip install jupyter-ai": "docs/source/getting-started.md:25",
+      "npm install -g @agentclientprotocol/claude-agent-acp": "docs/source/getting-started.md:81",
+      "jupyter lab": "docs/source/getting-started.md:161"
+    },
+    "meta": {
+      "id": "jupyterlab-jupyter-ai",
+      "nameVi": "Jupyter AI — Tiện ích đưa tác tử AI vào JupyterLab để phân tích dữ liệu trên notebook",
+      "icon": "Brain",
+      "categories": [
+        "data_science_analytics",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (BSD-3-Clause)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install jupyter-ai"
+        }
+      ]
+    }
+  }
+]
