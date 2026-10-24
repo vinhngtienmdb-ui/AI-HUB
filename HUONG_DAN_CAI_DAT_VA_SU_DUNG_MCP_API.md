@@ -59,7 +59,7 @@ npm -v
 
 ## III. Hướng Dẫn Khởi Chạy Hệ Thống
 
-Toàn bộ mã nguồn dịch vụ nằm tại thư mục `mcp-gateway/` bên trong dự án. Máy chủ đọc kho dữ liệu `src/data/allTools.json`, nên cần tải toàn bộ kho mã và cài gói ở thư mục gốc:
+Toàn bộ mã nguồn dịch vụ nằm tại thư mục `backend/` bên trong dự án. Máy chủ đọc kho dữ liệu `database/data/allTools.json`, nên cần tải toàn bộ kho mã và cài gói ở thư mục gốc:
 
 ```bash
 git clone https://github.com/vinhngtienmdb-ui/AI-HUB.git
@@ -68,9 +68,9 @@ npm install
 ```
 
 ### Cách Máy Chủ Chọn Công Cụ
-Mã nguồn: `mcp-gateway/gateway-core.js` (dùng chung cho máy chủ MCP, Cổng REST API và trang "Máy chủ MCP" trên web, nên cùng một câu hỏi cho cùng một kết quả).
+Mã nguồn: `shared/gateway-core.js` (dùng chung cho máy chủ MCP, Cổng REST API và trang "Máy chủ MCP" trên web, nên cùng một câu hỏi cho cùng một kết quả).
 
-1. **Bảng ý định chuyên biệt** (`mcp-gateway/core-intents.json`): câu hỏi chứa từ khóa của một nhóm được chuyển thẳng tới công cụ gán cho nhóm đó (`DIRECT_INTENT_MATCH`).
+1. **Bảng ý định chuyên biệt** (`shared/core-intents.json`): câu hỏi chứa từ khóa của một nhóm được chuyển thẳng tới công cụ gán cho nhóm đó (`DIRECT_INTENT_MATCH`).
 2. **Chấm điểm từ khóa** trên tên, nhãn, mô tả của toàn bộ công cụ đã kiểm duyệt: khớp nguyên từ, cụm từ tiếng Việt ("thiết kế", "tài liệu") khớp nguyên cụm, từ càng hiếm càng nặng. Chỉ chọn khi các từ khớp chiếm ít nhất 50% "lượng thông tin" của câu hỏi và có từ khớp ở tên hoặc nhãn công cụ (`KEYWORD_MATCH`, độ tin cậy tối đa 85%).
 3. **Không đủ tin cậy**: trả `NO_CONFIDENT_MATCH`, không tự chọn công cụ, kèm danh sách gợi ý gần nhất và trợ lý làm rõ yêu cầu (`agent-1013`).
 
@@ -84,7 +84,7 @@ Chế độ Stdio (Standard Input/Output) cho phép các ứng dụng tác tử 
 npm run mcp:stdio
 
 # Hoặc thực thi trực tiếp bằng Node.js:
-node mcp-gateway/index.js
+node backend/index.js
 ```
 
 ### 2. Khởi Chạy Cổng REST API Gateway Độc Lập (Cổng 4000)
@@ -95,7 +95,7 @@ Chế độ REST API phục vụ các ứng dụng backend, di động hoặc m�
 npm run mcp:api
 
 # Hoặc thực thi trực tiếp với tùy chọn cổng:
-node mcp-gateway/api-server.js
+node backend/api-server.js
 # Máy chủ sẽ lắng nghe tại: http://localhost:4000
 ```
 
@@ -108,7 +108,7 @@ curl http://localhost:4000/api/v1/health
 ```bash
 npm run mcp:test
 # Hoặc truyền câu hỏi nghiệp vụ bất kỳ:
-node mcp-gateway/index.js --test "Tạo mã thanh toán VietQR chuyển khoản ngân hàng Techcombank 500k"
+node backend/index.js --test "Tạo mã thanh toán VietQR chuyển khoản ngân hàng Techcombank 500k"
 ```
 
 ---
@@ -136,7 +136,7 @@ Thêm khối cấu hình sau vào mục `mcpServers`:
   }
 }
 ```
-*Lưu ý: Thay đổi đường dẫn tuyệt đối đến tệp `mcp-gateway/index.js` phù hợp với máy của bạn.*
+*Lưu ý: Thay đổi đường dẫn tuyệt đối đến tệp `backend/index.js` phù hợp với máy của bạn.*
 
 Khởi động lại Claude Desktop, biểu tượng công cụ (hình chiếc búa) sẽ xuất hiện 4 công cụ của AI HUB VN:
 - `aihub_smart_dispatch`: Tự động phân tích yêu cầu và điều phối đến công cụ phù hợp nhất.
@@ -291,7 +291,7 @@ Hệ thống được thiết kế theo nguyên tắc "Bảo mật ngay từ thi
    - Máy chủ mặc định chỉ lắng nghe trên `127.0.0.1`. Chỉ đặt `AIHUB_API_HOST=0.0.0.0` khi triển khai sau reverse proxy HTTPS.
    - Trình duyệt chỉ được gọi API từ trang chạy trên `localhost`; bổ sung nguồn khác qua `AIHUB_ALLOWED_ORIGINS` (phân tách bằng dấu phẩy). Ví dụ dùng trang Quản lý API trên bản triển khai Vercel với máy chủ cục bộ: `AIHUB_ALLOWED_ORIGINS=https://<tên-miền-vercel> npm run mcp:api`. Máy chủ trả lời yêu cầu "Private Network Access" của trình duyệt Chromium cho các nguồn được phép.
    - Tiêu đề `X-Forwarded-For` chỉ được tin cậy khi đặt `AIHUB_TRUST_PROXY=1`.
-   - Muối HMAC lấy từ `AIHUB_SECURITY_SALT`; nếu không đặt, hệ thống tự sinh ngẫu nhiên và lưu tại `mcp-gateway/data/.security-salt`. Thư mục `mcp-gateway/data/` không được đưa lên kho mã.
+   - Muối HMAC lấy từ `AIHUB_SECURITY_SALT`; nếu không đặt, hệ thống tự sinh ngẫu nhiên và lưu tại `backend/data/.security-salt`. Thư mục `backend/data/` không được đưa lên kho mã.
 
 5. **Nhật Ký Kiểm Toán An Ninh (Security Audit Logs)**:
    - Ghi lại: thời điểm, địa chỉ IP, mã định danh khóa, điểm cuối, mã trạng thái, độ trễ và kết quả định tuyến. Không ghi nội dung câu hỏi (có thể chứa dữ liệu cá nhân).

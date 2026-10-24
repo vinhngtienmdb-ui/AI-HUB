@@ -21,12 +21,12 @@ jobs:
           cache: npm
       - name: Cài đặt gói phụ thuộc
         run: npm ci
-      - name: Kiểm thử tự động
+      - name: Kiểm thử tự động (database, backend, frontend)
         run: npm test
-      - name: Kiểm tra kiểu TypeScript
-        run: npx tsc --noEmit
-      - name: Đóng gói bản phát hành
-        run: npx vite build
+      - name: Kiểm tra kiểu TypeScript (frontend)
+        run: npm run typecheck
+      - name: Đóng gói bản phát hành (frontend)
+        run: npm run build
 
   quy-tac-firestore:
     runs-on: ubuntu-latest

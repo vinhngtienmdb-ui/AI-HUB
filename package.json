@@ -3,39 +3,22 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "workspaces": [
+    "shared",
+    "database",
+    "backend",
+    "frontend"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "test": "node --import ./tests/setup.js --test tests/*.test.js",
-    "mcp:stdio": "node mcp-gateway/index.js",
-    "mcp:api": "node mcp-gateway/api-server.js",
-    "mcp:test": "node mcp-gateway/index.js --test",
-    "data:validate": "node scripts/validate-data.cjs",
-    "test:rules": "firebase emulators:exec --project aihub-rules-test --only firestore \"node --test tests/rules/*.test.js\""
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.32.1",
-    "clsx": "^2.1.1",
-    "dompurify": "^3.4.17",
-    "firebase": "^13.0.0",
-    "lucide-react": "^1.16.0",
-    "marked": "^18.1.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tailwind-merge": "^3.0.2",
-    "zod": "^4.6.7"
-  },
-  "devDependencies": {
-    "@firebase/rules-unit-testing": "^6.0.0",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "@vitejs/plugin-react": "^4.3.4",
-    "autoprefixer": "^10.4.20",
-    "firebase-tools": "^15.32.1",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.3",
-    "vite": "^6.2.0"
+    "dev": "npm run dev -w @aihub/frontend",
+    "build": "npm run build -w @aihub/frontend",
+    "preview": "npm run preview -w @aihub/frontend",
+    "typecheck": "npm run typecheck -w @aihub/frontend",
+    "test": "npm test --workspaces --if-present",
+    "mcp:stdio": "npm start -w @aihub/backend",
+    "mcp:api": "npm run api -w @aihub/backend",
+    "mcp:test": "npm run selftest -w @aihub/backend",
+    "data:validate": "npm run validate -w @aihub/database --",
+    "test:rules": "npm run test:rules -w @aihub/database"
   }
 }

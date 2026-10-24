@@ -11,10 +11,11 @@ Tài liệu này quy định cách đóng gói, kiểm tra, cấu hình môi tr�
 
 | Thành phần | Mã nguồn | Lệnh chạy | Đầu ra / Cổng |
 |---|---|---|---|
-| Giao diện web (trang tĩnh) | `src/`, `public/`, `index.html` | `npm run build` | Thư mục `dist/` (HTML, CSS, JavaScript tĩnh, `tool-details/*.json`), triển khai trên Vercel (dự án `ai-hub`) |
-| Máy chủ MCP (stdio) | `mcp-gateway/index.js` | `npm run mcp:stdio` | Chạy dưới dạng tiến trình con của Claude Desktop, Cursor, Claude Code |
-| Cổng REST API | `mcp-gateway/api-server.js` | `npm run mcp:api` | `http://127.0.0.1:4000` (mặc định) |
-| Cầu nối lệnh cục bộ | `server/commandBridge.js` | Tự gắn vào `npm run dev` | Chỉ có trong máy chủ phát triển, **không** có trong `dist/` |
+| Giao diện web (trang tĩnh) | `frontend/` (`src/`, `public/`, `index.html`) | `npm run build` | Thư mục `frontend/dist/` (HTML, CSS, JavaScript tĩnh, `tool-details/*.json`), triển khai trên Vercel (dự án `ai-hub`, cấu hình trong `vercel.json`) |
+| Máy chủ MCP (stdio) | `backend/index.js` | `npm run mcp:stdio` | Chạy dưới dạng tiến trình con của Claude Desktop, Cursor, Claude Code |
+| Cổng REST API | `backend/api-server.js` | `npm run mcp:api` | `http://127.0.0.1:4000` (mặc định) |
+| Cầu nối lệnh cục bộ | `frontend/dev-server/commandBridge.js` | Tự gắn vào `npm run dev` | Chỉ có trong máy chủ phát triển, **không** có trong `frontend/dist/` |
+| Tầng dữ liệu | `database/` (`data/allTools.json`, `firestore.rules`, `scripts/`) | `npm run data:validate`, `npm run test:rules` | Kho dữ liệu được frontend đóng gói lúc build và backend đọc lúc chạy qua `@aihub/database`; quy tắc Firestore triển khai bằng Firebase CLI |
 
 ---
 
@@ -23,9 +24,9 @@ Tài liệu này quy định cách đóng gói, kiểm tra, cấu hình môi tr�
 Mọi thay đổi phải vượt qua quy trình kiểm tra liên tục `.github/workflows/ci.yml`, chạy tự động khi mở pull request và khi đẩy lên nhánh `main`:
 
 1. `npm ci`: cài đặt đúng phiên bản trong `package-lock.json`.
-2. `npm test`: toàn bộ kiểm thử tự động đạt (dữ liệu khóa API được ghi vào thư mục tạm).
-3. `npx tsc --noEmit`: không có lỗi kiểu TypeScript.
-4. `npx vite build`: đóng gói thành công.
+2. `npm test`: toàn bộ kiểm thử tự động của `database`, `backend`, `frontend` đạt (dữ liệu khóa API được ghi vào thư mục tạm).
+3. `npm run typecheck`: không có lỗi kiểu TypeScript ở frontend.
+4. `npm run build`: đóng gói frontend thành công.
 5. `npm run test:rules`: kiểm thử quy tắc bảo mật Firestore trên emulator (job riêng, cần Java).
 
 Không hợp nhất (merge) vào `main` khi CI chưa đạt. Thay đổi liên quan bảo mật phải cập nhật `19_AN_TOAN_BAO_MAT.md` và có kiểm thử tương ứng.
@@ -34,9 +35,9 @@ Không hợp nhất (merge) vào `main` khi CI chưa đạt. Thay đổi liên q
 
 ## 4. Cấu Hình Môi Trường
 
-- Giao diện web: biến `VITE_FIREBASE_*`, `VITE_ADMIN_EMAIL` (xem `.env.example`). Các biến `VITE_*` được nhúng vào JavaScript tĩnh nên **không** được chứa bí mật.
-- Cổng REST API: `AIHUB_API_HOST`, `AIHUB_API_PORT`, `AIHUB_SECURITY_SALT`, `AIHUB_ALLOWED_ORIGINS`, `AIHUB_TRUST_PROXY` (xem `.env.example` và `19_AN_TOAN_BAO_MAT.md`).
-- Tệp `.env` không được đưa lên kho mã. Thư mục `mcp-gateway/data/` (khóa API, salt) là dữ liệu vận hành, không được đưa lên kho mã.
+- Giao diện web: biến `VITE_FIREBASE_*`, `VITE_ADMIN_EMAIL`, `VITE_FIRESTORE_ENABLED` (xem `frontend/.env.example`; khi chạy cục bộ đặt trong `frontend/.env`). Các biến `VITE_*` được nhúng vào JavaScript tĩnh nên **không** được chứa bí mật.
+- Cổng REST API: `AIHUB_API_HOST`, `AIHUB_API_PORT`, `AIHUB_SECURITY_SALT`, `AIHUB_ALLOWED_ORIGINS`, `AIHUB_TRUST_PROXY`, `AIHUB_TOOLS_FILE` (xem `backend/.env.example` và `19_AN_TOAN_BAO_MAT.md`; backend không tự đọc tệp `.env`, đặt trong môi trường của tiến trình).
+- Tệp `.env` không được đưa lên kho mã. Thư mục `backend/data/` (khóa API, salt) là dữ liệu vận hành, không được đưa lên kho mã.
 
 ---
 
@@ -45,7 +46,7 @@ Không hợp nhất (merge) vào `main` khi CI chưa đạt. Thay đổi liên q
 ### 5.1. Giao diện web (Vercel)
 Kho mã được kết nối với Vercel qua ứng dụng GitHub:
 - Mỗi pull request có một bản xem trước (Preview) riêng; đường dẫn được Vercel đăng trong bình luận của pull request.
-- Hợp nhất vào `main` sẽ tự động đóng gói (`npm run build`) và triển khai bản chính thức (Production).
+- Hợp nhất vào `main` sẽ tự động đóng gói và triển khai bản chính thức (Production). Lệnh cài đặt, lệnh build (`npm run build -w @aihub/frontend`) và thư mục đầu ra (`frontend/dist`) được khai báo trong `vercel.json` ở thư mục gốc.
 
 Các bước:
 1. Mở pull request, chờ CI đạt và kiểm tra bản xem trước của Vercel.
@@ -62,7 +63,7 @@ Các bước:
 ### 5.3. Lưu trữ dùng chung trên Firestore (tùy chọn)
 Mặc định đóng góp và phê duyệt chỉ lưu trong trình duyệt. Để dùng chung và xác minh quyền quản trị phía máy chủ:
 1. Trong Firebase Console của dự án đang dùng cho đăng nhập: tạo cơ sở dữ liệu **Cloud Firestore**.
-2. Triển khai quy tắc bảo mật: `npx firebase deploy --only firestore:rules --project <mã-dự-án>` (cần đăng nhập `npx firebase login`).
+2. Triển khai quy tắc bảo mật từ thư mục `database/` (nơi có `firebase.json` và `firestore.rules`): `cd database && npx firebase deploy --only firestore:rules --project <mã-dự-án>` (cần đăng nhập `npx firebase login`).
 3. Đăng nhập AI Hub bằng tài khoản Google của quản trị viên một lần, lấy **UID** tại Firebase Console → Authentication → Users.
 4. Firestore → tạo collection `admins`, tài liệu có mã đúng bằng UID đó (nội dung tùy ý, ví dụ trường `email`).
 5. Trên Vercel (Settings → Environment Variables) thêm `VITE_FIRESTORE_ENABLED=true` cho môi trường Production, rồi triển khai lại.
@@ -87,10 +88,10 @@ Người dùng cập nhật bằng `git pull` và khởi động lại ứng d�
 | Thành phần | Cách quay lui |
 |---|---|
 | Giao diện web | Trên bảng điều khiển Vercel, chọn bản triển khai chính thức trước đó và dùng chức năng quay lui tức thì (Instant Rollback / Promote to Production). Sau đó `git revert` commit lỗi trên `main`. |
-| Cổng REST API | `git checkout <commit trước>`, `npm ci`, khởi động lại tiến trình. Dữ liệu `mcp-gateway/data/` không bị ảnh hưởng vì nằm ngoài kho mã. |
+| Cổng REST API | `git checkout <commit trước>`, `npm ci`, khởi động lại tiến trình. Dữ liệu `backend/data/` không bị ảnh hưởng vì nằm ngoài kho mã. |
 | Mã nguồn | `git revert <commit lỗi>` trên `main`, đi qua CI như thay đổi thông thường. Không viết lại lịch sử nhánh `main`. |
 
-Trước khi nâng cấp Cổng REST API, sao lưu thư mục `mcp-gateway/data/` (xem `21_KE_HOACH_BAO_TRI.md`).
+Trước khi nâng cấp Cổng REST API, sao lưu thư mục `backend/data/` (xem `21_KE_HOACH_BAO_TRI.md`).
 
 ---
 

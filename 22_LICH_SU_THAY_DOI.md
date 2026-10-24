@@ -4,6 +4,19 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.2.0 (Ngày 24-10-2026)
+- **Loại hình**: Tái cấu trúc kho mã: tách frontend, backend, database (npm workspaces), không thay đổi chức năng.
+- **frontend/** (`@aihub/frontend`): giao diện React + Vite (`src/`, `public/`, `index.html`), plugin Vite trong `dev-server/` (trước là `server/`), kiểm thử giao diện và cầu nối lệnh.
+- **backend/** (`@aihub/backend`): máy chủ MCP và Cổng REST API (trước là `mcp-gateway/`); đọc dữ liệu qua `@aihub/database` thay vì ghép đường dẫn tới `src/data`. Thư mục dữ liệu vận hành chuyển từ `mcp-gateway/data/` sang `backend/data/` (sao chép thư mục cũ nếu đang chạy Cổng REST API).
+- **database/** (`@aihub/database`): kho dữ liệu `data/allTools.json` (trước là `src/data/allTools.json`), `index.js` cung cấp `TOOLS_FILE` và `loadTools()` (ghi đè đường dẫn bằng `AIHUB_TOOLS_FILE`), `firestore.rules`, `firebase.json`, `scripts/`, kiểm thử dữ liệu và quy tắc Firestore.
+- **shared/** (`@aihub/shared`): `gateway-core.js`, `intent-matcher.js`, `core-intents.json` dùng chung frontend và backend; frontend import `@aihub/shared/...` thay vì `../../mcp-gateway/...`.
+- Mỗi phần có `package.json`, gói phụ thuộc và kiểm thử riêng; lệnh ở thư mục gốc (`npm run dev`, `build`, `test`, `mcp:stdio`, `mcp:api`, `data:validate`, `test:rules`) giữ nguyên tên và chuyển tiếp vào từng phần.
+- `vercel.json` khai báo lệnh build `npm run build -w @aihub/frontend` và thư mục đầu ra `frontend/dist`. CI chạy `npm run typecheck` và `npm run build` thay cho `npx tsc`, `npx vite build`.
+- Biến môi trường tách thành `frontend/.env.example` (`VITE_*`, Vite đọc `frontend/.env`) và `backend/.env.example` (`AIHUB_*`).
+- Cấu hình MCP của người dùng cần đổi đường dẫn `<kho>/mcp-gateway/index.js` thành `<kho>/backend/index.js`.
+- Cập nhật tài liệu: README (mục Cấu trúc kho mã), `09_KIEN_TRUC_HE_THONG.md` (mục Hiện trạng triển khai), `16`, `19`, `20`, `21`, `13`, `24`, hướng dẫn MCP/API.
+- Kho dữ liệu: 2.231 công cụ đang hiển thị, 2.298 cấu hình mẫu.
+
 ### Phiên Bản 2.1.21 (Ngày 24-10-2026)
 - **Loại hình**: Tài nguyên dự bị: LLMOps, RAG & huấn luyện, MCP của nhà cung cấp, đợt 14 (26 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-14-*.json`.
 - **LLMOps & đánh giá**: Helicone, Weave (cần tài khoản W&B), Logfire (SDK MIT; giao diện và backend đóng nguồn), LangWatch (open core), MLflow, TruLens, Giskard.

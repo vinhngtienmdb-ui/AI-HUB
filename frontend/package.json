@@ -1,0 +1,37 @@
+{
+  "name": "@aihub/frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Giao diện web AI HUB VN (React + Vite + Tailwind). Đọc dữ liệu công cụ lúc build qua @aihub/database, dùng thuật toán định tuyến chung trong @aihub/shared, lưu trữ người dùng qua Firebase.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "@aihub/shared": "*",
+    "clsx": "^2.1.1",
+    "dompurify": "^3.4.17",
+    "firebase": "^13.0.0",
+    "lucide-react": "^1.16.0",
+    "marked": "^18.1.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.2"
+  },
+  "devDependencies": {
+    "@aihub/database": "*",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3",
+    "vite": "^6.2.0"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@aihub/database",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tầng dữ liệu của AI HUB VN: kho dữ liệu công cụ (data/allTools.json), quy tắc bảo mật Firestore, script kiểm định và nhập dữ liệu.",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "test:rules": "firebase emulators:exec --project aihub-rules-test --only firestore \"node --test tests/rules/*.test.js\"",
+    "validate": "node scripts/validate-data.cjs",
+    "import:facts": "node scripts/add-tools-from-facts.cjs"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^6.0.0",
+    "firebase": "^13.0.0",
+    "firebase-tools": "^15.32.1"
+  },
+  "license": "MIT"
+}

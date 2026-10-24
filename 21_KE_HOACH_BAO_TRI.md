@@ -30,8 +30,8 @@ Tài liệu này quy định việc giám sát, ghi nhật ký, sao lưu, xử l
 
 | Dữ liệu | Vị trí | Sao lưu | Phục hồi |
 |---|---|---|---|
-| Mã nguồn, tài liệu, kho dữ liệu công cụ (`src/data/allTools.json`) | Kho GitHub | Lịch sử git là bản sao lưu. | `git checkout` / `git revert`. |
-| Khóa API và salt của Cổng REST API | `mcp-gateway/data/` (ngoài kho mã) | Sao chép thư mục trước mỗi lần nâng cấp và định kỳ hằng tuần. Tệp `.security-salt` phải được sao lưu cùng `api-keys.json`, thiếu salt thì toàn bộ khóa mất hiệu lực. | Chép lại thư mục, khởi động lại tiến trình. |
+| Mã nguồn, tài liệu, kho dữ liệu công cụ (`database/data/allTools.json`) | Kho GitHub | Lịch sử git là bản sao lưu. | `git checkout` / `git revert`. |
+| Khóa API và salt của Cổng REST API | `backend/data/` (ngoài kho mã) | Sao chép thư mục trước mỗi lần nâng cấp và định kỳ hằng tuần. Tệp `.security-salt` phải được sao lưu cùng `api-keys.json`, thiếu salt thì toàn bộ khóa mất hiệu lực. | Chép lại thư mục, khởi động lại tiến trình. |
 | Dữ liệu người dùng trên giao diện web (đóng góp, đánh dấu, hồ sơ) | `localStorage` của trình duyệt từng người dùng | Không có sao lưu phía máy chủ. | Không phục hồi được khi người dùng xóa dữ liệu trình duyệt. |
 
 ---
@@ -54,7 +54,7 @@ Sự cố bảo mật (ví dụ lộ khóa API): thu hồi khóa qua `POST /api/
 |---|---|
 | Mỗi pull request | CI: kiểm thử, kiểm tra kiểu, đóng gói. |
 | Hằng tuần (tự động) | Workflow `.github/workflows/cap-nhat-so-sao.yml` (thứ Hai 02:17 UTC): kiểm định trực tuyến, lấy số sao thật từ GitHub API, mở pull request `tu-dong/cap-nhat-so-sao` khi dữ liệu thay đổi; quản trị viên xem các công cụ chuyển sang `broken` rồi hợp nhất. |
-| Hằng tuần | Sao lưu `mcp-gateway/data/`. Chạy `npm audit --omit=dev`, ghi nhận lỗ hổng mới vào `19_AN_TOAN_BAO_MAT.md`. |
+| Hằng tuần | Sao lưu `backend/data/`. Chạy `npm audit --omit=dev`, ghi nhận lỗ hổng mới vào `19_AN_TOAN_BAO_MAT.md`. |
 | Hằng tháng | Cập nhật gói phụ thuộc (`npm outdated`), chạy lại CI. Chạy `npm run data:validate` để kiểm tra chất lượng kho dữ liệu công cụ. |
 | Hằng quý | Rà soát khóa API không sử dụng hoặc sắp hết hạn, thu hồi khóa thừa. Rà soát lại `19_AN_TOAN_BAO_MAT.md`. |
 

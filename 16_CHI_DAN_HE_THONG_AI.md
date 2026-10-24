@@ -37,16 +37,24 @@ quan-ly-cong-cu-ai/
 ├── 23_NHAT_KY_DU_AN.md           # Tệp quản lý nhật ký theo ngày
 ├── 24_DANH_MUC_KIEM_TRA.md       # Tệp quản lý tiến độ kiểm tra
 ├── .github/workflows/ci.yml      # Kiểm tra liên tục (CI)
-├── server/                       # Cầu nối thực thi lệnh cục bộ (gắn vào máy chủ phát triển Vite)
-├── mcp-gateway/                  # Máy chủ MCP (stdio) và cổng REST API
-├── scripts/                      # Kịch bản xử lý dữ liệu
-├── src/                          # Mã nguồn giao diện React + Vite
-│   ├── components/               # Các thành phần giao diện tái sử dụng
-│   ├── pages/                    # Các trang màn hình
-│   ├── lib/                      # Các hàm tiện ích, định tuyến ý định, Firebase
-│   ├── data/                     # Kho dữ liệu công cụ (allTools.json)
-│   └── types/                    # Định nghĩa kiểu dữ liệu TypeScript
-└── tests/                        # Các tệp kịch bản kiểm thử tự động (node --test)
+├── vercel.json                   # Cấu hình build Vercel cho frontend
+├── frontend/                     # @aihub/frontend: giao diện React + Vite
+│   ├── src/
+│   │   ├── components/           # Các thành phần giao diện tái sử dụng
+│   │   ├── pages/                # Các trang màn hình
+│   │   ├── lib/                  # Tiện ích, định tuyến ý định phía trình duyệt, Firebase client
+│   │   ├── data/                 # Danh mục, phân loại, chỉ mục công cụ (sinh lúc build)
+│   │   └── types/                # Định nghĩa kiểu dữ liệu TypeScript
+│   ├── dev-server/               # Plugin Vite: tách dữ liệu công cụ, cầu nối lệnh cục bộ (chỉ npm run dev)
+│   └── tests/
+├── backend/                      # @aihub/backend: máy chủ MCP (stdio) và cổng REST API
+│   └── tests/
+├── database/                     # @aihub/database: tầng dữ liệu
+│   ├── data/allTools.json        # Kho dữ liệu công cụ (nguồn dữ liệu duy nhất)
+│   ├── firestore.rules           # Quy tắc bảo mật Firestore
+│   ├── scripts/                  # Kiểm định, nhập dữ liệu, migration
+│   └── tests/
+└── shared/                       # @aihub/shared: thuật toán định tuyến dùng chung frontend và backend
 ```
 
 ---
