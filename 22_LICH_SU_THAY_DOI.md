@@ -4,6 +4,14 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.2.2 (Ngày 24-10-2026)
+- **Loại hình**: An ninh mạng, SEO & nội dung, nhân sự / pháp lý / văn phòng, đợt 15 (21 tài nguyên), tệp dữ kiện `database/scripts/facts/2026-10-24-dot-15-*.json`.
+- **An ninh mạng (chỉ dùng cho hệ thống của mình hoặc được phép kiểm thử)**: Trivy MCP, GhidraMCP, PentestGPT (chỉ cho giáo dục và kiểm thử được cấp phép), Nuclei, ModelScan, TruffleHog (AGPL-3.0), Gitleaks.
+- **SEO & nội dung**: Google Analytics MCP (thử nghiệm), mcp-gsc (Google Search Console), DataForSEO MCP (cần tài khoản DataForSEO trả phí), GPT Researcher, Umami, listmonk (AGPL-3.0), Mautic (GPL-3.0).
+- **Nhân sự, pháp lý, văn phòng**: Resume-Matcher, Reactive Resume, OpenContracts, eyecite, Excel MCP Server, Office Word MCP Server, Google Workspace MCP.
+- Không thêm: semgrep/mcp (README ghi đã chuyển vào repo chính), mcp-server-gsc của ahonn (không có tệp giấy phép), LexNLP (ngừng cập nhật), docassemble (README không có lệnh cài đặt), công cụ không có tính năng AI (Frappe HR, OpenCATS, OSV-Scanner).
+- Kho dữ liệu: 2.252 công cụ đang hiển thị, 2.331 cấu hình mẫu.
+
 ### Phiên Bản 2.2.1 (Ngày 24-10-2026)
 - **Loại hình**: Cổng REST API: tra cứu danh mục công cụ có lọc, phân trang và xem chi tiết.
 - `GET /api/v1/tools`: thêm phân trang (`page`, `limit` 1–100, mặc định 20, trước đây cố định 50 bản ghi), bộ lọc `tool_type`, `platform`, `vietnam=1`, trường `meta` và `detailUrl`; vẫn giữ `total`, `tools` để tương thích.
