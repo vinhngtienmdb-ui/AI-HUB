@@ -172459,5 +172459,1717 @@
       "starsVerified": true
     },
     "stars": 1120
+  },
+  {
+    "id": "aquasecurity-trivy-mcp",
+    "slug": "aquasecurity-trivy-mcp",
+    "name": "Trivy MCP — Quét lỗ hổng và cấu hình sai bằng ngôn ngữ tự nhiên",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "cursor",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/aquasecurity/trivy-mcp",
+    "websiteUrl": "",
+    "authorName": "Aqua Security",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Trivy MCP là plugin chính hãng của Aqua Security, khởi chạy một MCP server đưa khả năng quét bảo mật của Trivy vào VS Code, Cursor, JetBrains IDE và Claude Desktop. Người dùng có thể hỏi bằng ngôn ngữ tự nhiên để quét lỗ hổng, cấu hình sai trong dự án cục bộ, image container và repository từ xa.",
+    "purposeVi": "Giúp lập trình viên và đội bảo mật phát hiện lỗ hổng, cấu hình sai và tạo SBOM ngay trong trợ lý AI mà không phải nhớ cú pháp dòng lệnh của Trivy.",
+    "featuresVi": [
+      "Quét bằng ngôn ngữ tự nhiên: đặt câu hỏi về vấn đề bảo mật bằng lời",
+      "Nhiều kiểu quét: hệ thống tệp của dự án cục bộ, image container và repository từ xa",
+      "Tích hợp Aqua Platform (tùy chọn) để tăng cường khả năng quét và kiểm tra tuân thủ chính sách",
+      "Nhiều giao thức truyền: stdio (mặc định), streamable HTTP và SSE",
+      "Tích hợp IDE: VS Code, Cursor, JetBrains IDE và Claude Desktop"
+    ],
+    "installGuideVi": "Yêu cầu: Đã cài đặt Trivy trên máy; VS Code (v1.99.0 trở lên), Cursor, JetBrains IDE hoặc Claude Desktop để dùng MCP.\nBước 1: Cài đặt plugin MCP qua trình quản lý plugin của Trivy: `trivy plugin install mcp`\nBước 2: Kiểm tra plugin đã được cài đặt: `trivy plugin list`\nBước 3: Thêm khối `mcpServers` (lệnh `trivy`, tham số `mcp`) vào tệp claude_desktop_config.json rồi khởi động lại Claude Desktop",
+    "usageGuideVi": "Bước 1: Khởi chạy MCP server (mặc định dùng stdio): `trivy mcp`\nBước 2: Chạy với giao thức streamable HTTP: `trivy mcp --transport streamable-http --host localhost --port 8080`\nBước 3: Trong VS Code/Cursor, dùng cửa sổ chat ở chế độ Agent (không phải Ask) rồi đặt câu hỏi về bảo mật dự án",
+    "samplePromptsVi": [
+      "Dự án này có lỗ hổng hoặc cấu hình sai nào không?",
+      "Tìm tất cả lỗ hổng mức HIGH trong mã nguồn này.",
+      "Image python:3.12 có lỗ hổng nào không? Tạo SBOM CycloneDX cho dự án này."
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "trivy plugin install mcp",
+        "jsonConfig": "{\n   \"mcpServers\": {\n      \"trivy\": {\n         \"command\": \"trivy\",\n         \"args\": [\n            \"mcp\"\n         ]\n      }\n   }\n}"
+      },
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "trivy mcp",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"trivy mcp\"\n  ],\n  \"nguon\": \"https://github.com/aquasecurity/trivy-mcp\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, plugin chính hãng của Aqua Security",
+      "Hỗ trợ nhiều IDE và cả ba giao thức stdio, streamable HTTP, SSE",
+      "Không bắt buộc tài khoản; Aqua Platform chỉ là tùy chọn"
+    ],
+    "consVi": [
+      "Cần cài đặt Trivy trước khi dùng plugin",
+      "Tích hợp Aqua Platform cần khóa và secret của tài khoản Aqua",
+      "Mở cổng mạng trên 0.0.0.0 cho phép kết nối từ xa, cần cân nhắc bảo mật"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Trivy MCP — Quét lỗ hổng và cấu hình sai bằng ngôn ngữ tự nhiên\n\n> This plugin starts a Model Context Protocol (MCP) server that integrates Trivy's security scanning capabilities with VS Code and other MCP-enabled tools.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nTrivy MCP là plugin chính hãng của Aqua Security, khởi chạy một MCP server đưa khả năng quét bảo mật của Trivy vào VS Code, Cursor, JetBrains IDE và Claude Desktop. Người dùng có thể hỏi bằng ngôn ngữ tự nhiên để quét lỗ hổng, cấu hình sai trong dự án cục bộ, image container và repository từ xa.\n\nGiúp lập trình viên và đội bảo mật phát hiện lỗ hổng, cấu hình sai và tạo SBOM ngay trong trợ lý AI mà không phải nhớ cú pháp dòng lệnh của Trivy.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** Aqua Security\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `cursor`, `web`\n- **Kho lưu trữ chính thức:** [https://github.com/aquasecurity/trivy-mcp](https://github.com/aquasecurity/trivy-mcp)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Quét bằng ngôn ngữ tự nhiên: đặt câu hỏi về vấn đề bảo mật bằng lời**\n- **Nhiều kiểu quét: hệ thống tệp của dự án cục bộ, image container và repository từ xa**\n- **Tích hợp Aqua Platform (tùy chọn) để tăng cường khả năng quét và kiểm tra tuân thủ chính sách**\n- **Nhiều giao thức truyền: stdio (mặc định), streamable HTTP và SSE**\n- **Tích hợp IDE: VS Code, Cursor, JetBrains IDE và Claude Desktop**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ntrivy plugin install mcp\n```\n\nYêu cầu: Đã cài đặt Trivy trên máy; VS Code (v1.99.0 trở lên), Cursor, JetBrains IDE hoặc Claude Desktop để dùng MCP.\nBước 1: Cài đặt plugin MCP qua trình quản lý plugin của Trivy: `trivy plugin install mcp`\nBước 2: Kiểm tra plugin đã được cài đặt: `trivy plugin list`\nBước 3: Thêm khối `mcpServers` (lệnh `trivy`, tham số `mcp`) vào tệp claude_desktop_config.json rồi khởi động lại Claude Desktop\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi chạy MCP server (mặc định dùng stdio): `trivy mcp`\nBước 2: Chạy với giao thức streamable HTTP: `trivy mcp --transport streamable-http --host localhost --port 8080`\nBước 3: Trong VS Code/Cursor, dùng cửa sổ chat ở chế độ Agent (không phải Ask) rồi đặt câu hỏi về bảo mật dự án\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Dự án này có lỗ hổng hoặc cấu hình sai nào không?\"\n- \"Tìm tất cả lỗ hổng mức HIGH trong mã nguồn này.\"\n- \"Image python:3.12 có lỗ hổng nào không? Tạo SBOM CycloneDX cho dự án này.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "lauriewired-ghidramcp",
+    "slug": "lauriewired-ghidramcp",
+    "name": "GhidraMCP — Dịch ngược tệp nhị phân với Ghidra qua MCP",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/LaurieWired/GhidraMCP",
+    "websiteUrl": "",
+    "authorName": "LaurieWired",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "GhidraMCP gồm một plugin Ghidra và một MCP server Python, đưa các chức năng cốt lõi của công cụ dịch ngược Ghidra tới các MCP client. LLM có thể tự dịch ngược mã (decompile), phân tích tệp nhị phân, đổi tên hàm và dữ liệu, liệt kê lớp, import và export; có cả chế độ headless không cần giao diện Ghidra.",
+    "purposeVi": "Hỗ trợ nhà phân tích bảo mật và nghiên cứu viên dùng trợ lý AI để tăng tốc dịch ngược, phân tích tệp nhị phân (ví dụ phân tích mẫu nghi ngờ hoặc kiểm tra phần mềm mình được phép phân tích).",
+    "featuresVi": [
+      "Dịch ngược và phân tích tệp nhị phân trong Ghidra",
+      "Tự động đổi tên phương thức và dữ liệu",
+      "Liệt kê phương thức, lớp, import và export",
+      "Hỗ trợ stdio và streamable HTTP; địa chỉ, cổng Ghidra server cấu hình được (mặc định localhost:8080)",
+      "Chế độ headless dùng PyGhidra, không cần mở giao diện Ghidra"
+    ],
+    "installGuideVi": "Yêu cầu: Ghidra 12.1.4 và uv (hoặc Python 3.10+); chế độ headless cần Python 3.10–3.13 và biến GHIDRA_INSTALL_DIR.\nBước 1: Tải bản phát hành mới nhất trên trang Releases của repo, sau đó trong Ghidra chọn File -> Install Extensions, bấm + và chọn tệp zip GhidraMCP, rồi khởi động lại Ghidra\nBước 2: Bật GhidraMCPPlugin trong File -> Configure -> Developer\nBước 3: Cài đặt cho Claude Code: `claude mcp add ghidra -- uvx --from git+https://github.com/LaurieWired/GhidraMCP ghidra-mcp --ghidra-server http://127.0.0.1:8080/`\nBước 4: Hoặc cài đặt bằng pip: `pip install git+https://github.com/LaurieWired/GhidraMCP` rồi dùng lệnh `ghidra-mcp`",
+    "usageGuideVi": "Bước 1: Mở Ghidra với chương trình cần phân tích (plugin chạy HTTP server tại cổng 8080 mặc định)\nBước 2: Với client kết nối qua URL, chạy server: `uvx --from git+https://github.com/LaurieWired/GhidraMCP ghidra-mcp --transport streamable-http --mcp-host 127.0.0.1 --mcp-port 8081 --ghidra-server http://127.0.0.1:8080/` rồi thêm http://127.0.0.1:8081/mcp\nBước 3: Chế độ headless: `uvx --python 3.13 --from \"ghidra-mcp[headless] @ git+https://github.com/LaurieWired/GhidraMCP\" ghidra-mcp --headless --binary /path/to/target`",
+    "samplePromptsVi": [
+      "Liệt kê các hàm import và export của tệp nhị phân đang mở trong Ghidra.",
+      "Dịch ngược hàm main và giải thích nó làm gì, sau đó đổi tên các hàm phụ cho dễ hiểu.",
+      "Liệt kê các lớp và phương thức trong chương trình này và tóm tắt cấu trúc."
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add ghidra -- uvx --from git+https://github.com/LaurieWired/GhidraMCP ghidra-mcp --ghidra-server http://127.0.0.1:8080/",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add ghidra -- uvx --from git+https://github.com/LaurieWired/GhidraMCP ghidra-mcp --ghidra-server http://127.0.0.1:8080/\"\n  ],\n  \"nguon\": \"https://github.com/LaurieWired/GhidraMCP\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"ghidra\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"--from\",\n        \"git+https://github.com/LaurieWired/GhidraMCP\",\n        \"ghidra-mcp\",\n        \"--ghidra-server\",\n        \"http://127.0.0.1:8080/\"\n      ]\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Có lệnh `claude mcp add` sẵn và cấu hình JSON chung cho MCP client",
+      "Hỗ trợ chế độ headless không cần giao diện Ghidra"
+    ],
+    "consVi": [
+      "Cần cài đặt Ghidra đúng phiên bản 12.1.4 và extension tương ứng",
+      "Build từ mã nguồn cần Java 21 và Gradle; trên macOS chế độ headless cần build decompiler của Ghidra một lần"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# GhidraMCP — Dịch ngược tệp nhị phân với Ghidra qua MCP\n\n> ghidraMCP is an Model Context Protocol server for allowing LLMs to autonomously reverse engineer applications.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nGhidraMCP gồm một plugin Ghidra và một MCP server Python, đưa các chức năng cốt lõi của công cụ dịch ngược Ghidra tới các MCP client. LLM có thể tự dịch ngược mã (decompile), phân tích tệp nhị phân, đổi tên hàm và dữ liệu, liệt kê lớp, import và export; có cả chế độ headless không cần giao diện Ghidra.\n\nHỗ trợ nhà phân tích bảo mật và nghiên cứu viên dùng trợ lý AI để tăng tốc dịch ngược, phân tích tệp nhị phân (ví dụ phân tích mẫu nghi ngờ hoặc kiểm tra phần mềm mình được phép phân tích).\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** LaurieWired\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/LaurieWired/GhidraMCP](https://github.com/LaurieWired/GhidraMCP)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Dịch ngược và phân tích tệp nhị phân trong Ghidra**\n- **Tự động đổi tên phương thức và dữ liệu**\n- **Liệt kê phương thức, lớp, import và export**\n- **Hỗ trợ stdio và streamable HTTP; địa chỉ, cổng Ghidra server cấu hình được (mặc định localhost:8080)**\n- **Chế độ headless dùng PyGhidra, không cần mở giao diện Ghidra**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add ghidra -- uvx --from git+https://github.com/LaurieWired/GhidraMCP ghidra-mcp --ghidra-server http://127.0.0.1:8080/\n```\n\nYêu cầu: Ghidra 12.1.4 và uv (hoặc Python 3.10+); chế độ headless cần Python 3.10–3.13 và biến GHIDRA_INSTALL_DIR.\nBước 1: Tải bản phát hành mới nhất trên trang Releases của repo, sau đó trong Ghidra chọn File -> Install Extensions, bấm + và chọn tệp zip GhidraMCP, rồi khởi động lại Ghidra\nBước 2: Bật GhidraMCPPlugin trong File -> Configure -> Developer\nBước 3: Cài đặt cho Claude Code: `claude mcp add ghidra -- uvx --from git+https://github.com/LaurieWired/GhidraMCP ghidra-mcp --ghidra-server http://127.0.0.1:8080/`\nBước 4: Hoặc cài đặt bằng pip: `pip install git+https://github.com/LaurieWired/GhidraMCP` rồi dùng lệnh `ghidra-mcp`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở Ghidra với chương trình cần phân tích (plugin chạy HTTP server tại cổng 8080 mặc định)\nBước 2: Với client kết nối qua URL, chạy server: `uvx --from git+https://github.com/LaurieWired/GhidraMCP ghidra-mcp --transport streamable-http --mcp-host 127.0.0.1 --mcp-port 8081 --ghidra-server http://127.0.0.1:8080/` rồi thêm http://127.0.0.1:8081/mcp\nBước 3: Chế độ headless: `uvx --python 3.13 --from \"ghidra-mcp[headless] @ git+https://github.com/LaurieWired/GhidraMCP\" ghidra-mcp --headless --binary /path/to/target`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Liệt kê các hàm import và export của tệp nhị phân đang mở trong Ghidra.\"\n- \"Dịch ngược hàm main và giải thích nó làm gì, sau đó đổi tên các hàm phụ cho dễ hiểu.\"\n- \"Liệt kê các lớp và phương thức trong chương trình này và tóm tắt cấu trúc.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "greydgl-pentestgpt",
+    "slug": "greydgl-pentestgpt",
+    "name": "PentestGPT — Tác tử AI kiểm thử xâm nhập (chỉ dùng khi được cấp phép)",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security",
+      "qa_testing"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)",
+      "Kiểm thử phần mềm & QA/QC"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/GreyDGL/PentestGPT",
+    "websiteUrl": "https://pentestgpt.com",
+    "authorName": "Gelei Deng (GreyDGL)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "PentestGPT là tác tử AI kiểm thử xâm nhập tự động, công bố tại USENIX Security 2024, CHỈ dành cho mục đích giáo dục và kiểm thử bảo mật đã được cấp phép. Phiên bản 1.0 điều khiển Claude Code hoặc Codex chạy công cụ theo quy trình nhiều giai đoạn (khám phá tài sản → xác định lỗ hổng → báo cáo), lưu và tiếp tục phiên; chế độ legacy tương tác hỗ trợ nhiều nhà cung cấp LLM và Ollama cục bộ.",
+    "purposeVi": "Hỗ trợ pentester và người học CTF thực hiện kiểm thử xâm nhập trên hệ thống mình sở hữu hoặc được ủy quyền bằng văn bản, kèm báo cáo lỗ hổng; README nêu rõ công cụ chỉ dành cho kiểm thử được cấp phép.",
+    "featuresVi": [
+      "Quy trình nhiều giai đoạn: recon → exploit → walkthrough cho CTF; khám phá tài sản → xác định lỗ hổng → báo cáo cho pentest",
+      "Tác tử tự động: điều khiển Claude Code hoặc Codex để chạy công cụ và suy luận",
+      "Lưu và tiếp tục phiên kiểm thử",
+      "Hỗ trợ nhiều loại thử thách: Web, Crypto, Reversing, Forensics, PWN, leo thang đặc quyền",
+      "Chế độ legacy tương tác dùng OpenAI, Anthropic, Gemini, DeepSeek, xAI, Qwen, Moonshot và Ollama cục bộ"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.12+, uv; Claude Code CLI hoặc Codex CLI đã cài đặt và đăng nhập (bản Docker đóng gói sẵn cả hai); chế độ legacy cần khóa API của nhà cung cấp LLM hoặc Ollama. Chỉ dùng trên mục tiêu được cấp phép.\nBước 1: Tải mã nguồn: `git clone https://github.com/GreyDGL/PentestGPT.git` rồi `cd PentestGPT`\nBước 2: Cài đặt phụ thuộc (chạy uv sync): `make install`\nBước 3: Hoặc cài đặt bằng Docker: `make docker-build` rồi đăng nhập một lần bằng `make docker-login`",
+    "usageGuideVi": "Bước 1: Chỉ chạy với mục tiêu bạn sở hữu hoặc có ủy quyền kiểm thử (ví dụ máy lab, CTF)\nBước 2: Chế độ pentest: `pentestgpt --target 10.10.11.234 --mode pentest`\nBước 3: Liệt kê các phiên đã lưu: `pentestgpt --list-sessions`\nBước 4: Tắt telemetry ẩn danh: `pentestgpt --target 10.10.11.234 --no-telemetry`\nBước 5: Chế độ tương tác đa LLM: `pentestgpt-legacy`",
+    "samplePromptsVi": [
+      "Kiểm thử máy lab CTF tại 10.10.11.50 (được cấp phép), đây là site WordPress, tập trung vào lỗ hổng plugin.",
+      "Chạy chế độ pentest trên máy chủ thử nghiệm nội bộ đã được ủy quyền và xuất báo cáo lỗ hổng.",
+      "Dùng pentestgpt-legacy với mô hình Ollama cục bộ để hướng dẫn tôi từng bước giải bài CTF."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "make install",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"make install\"\n  ],\n  \"nguon\": \"https://github.com/GreyDGL/PentestGPT\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT; dự án nghiên cứu công bố tại USENIX Security 2024",
+      "Hỗ trợ nhiều nhà cung cấp LLM và mô hình cục bộ qua Ollama",
+      "Có Docker đóng gói sẵn Claude Code và Codex CLI"
+    ],
+    "consVi": [
+      "Chỉ dành cho giáo dục và kiểm thử bảo mật được cấp phép; dùng trái phép là vi phạm pháp luật",
+      "Cần tài khoản Claude Code/Codex hoặc khóa API LLM",
+      "Mặc định thu thập dữ liệu sử dụng ẩn danh (Langfuse), cần tắt bằng --no-telemetry hoặc LANGFUSE_ENABLED=false"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# PentestGPT — Tác tử AI kiểm thử xâm nhập (chỉ dùng khi được cấp phép)\n\n> AI-Powered Autonomous Penetration Testing Agent\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPentestGPT là tác tử AI kiểm thử xâm nhập tự động, công bố tại USENIX Security 2024, CHỈ dành cho mục đích giáo dục và kiểm thử bảo mật đã được cấp phép. Phiên bản 1.0 điều khiển Claude Code hoặc Codex chạy công cụ theo quy trình nhiều giai đoạn (khám phá tài sản → xác định lỗ hổng → báo cáo), lưu và tiếp tục phiên; chế độ legacy tương tác hỗ trợ nhiều nhà cung cấp LLM và Ollama cục bộ.\n\nHỗ trợ pentester và người học CTF thực hiện kiểm thử xâm nhập trên hệ thống mình sở hữu hoặc được ủy quyền bằng văn bản, kèm báo cáo lỗ hổng; README nêu rõ công cụ chỉ dành cho kiểm thử được cấp phép.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** Gelei Deng (GreyDGL)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`, `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/GreyDGL/PentestGPT](https://github.com/GreyDGL/PentestGPT)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Quy trình nhiều giai đoạn: recon → exploit → walkthrough cho CTF; khám phá tài sản → xác định lỗ hổng → báo cáo cho pentest**\n- **Tác tử tự động: điều khiển Claude Code hoặc Codex để chạy công cụ và suy luận**\n- **Lưu và tiếp tục phiên kiểm thử**\n- **Hỗ trợ nhiều loại thử thách: Web, Crypto, Reversing, Forensics, PWN, leo thang đặc quyền**\n- **Chế độ legacy tương tác dùng OpenAI, Anthropic, Gemini, DeepSeek, xAI, Qwen, Moonshot và Ollama cục bộ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nmake install\n```\n\nYêu cầu: Python 3.12+, uv; Claude Code CLI hoặc Codex CLI đã cài đặt và đăng nhập (bản Docker đóng gói sẵn cả hai); chế độ legacy cần khóa API của nhà cung cấp LLM hoặc Ollama. Chỉ dùng trên mục tiêu được cấp phép.\nBước 1: Tải mã nguồn: `git clone https://github.com/GreyDGL/PentestGPT.git` rồi `cd PentestGPT`\nBước 2: Cài đặt phụ thuộc (chạy uv sync): `make install`\nBước 3: Hoặc cài đặt bằng Docker: `make docker-build` rồi đăng nhập một lần bằng `make docker-login`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chỉ chạy với mục tiêu bạn sở hữu hoặc có ủy quyền kiểm thử (ví dụ máy lab, CTF)\nBước 2: Chế độ pentest: `pentestgpt --target 10.10.11.234 --mode pentest`\nBước 3: Liệt kê các phiên đã lưu: `pentestgpt --list-sessions`\nBước 4: Tắt telemetry ẩn danh: `pentestgpt --target 10.10.11.234 --no-telemetry`\nBước 5: Chế độ tương tác đa LLM: `pentestgpt-legacy`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Kiểm thử máy lab CTF tại 10.10.11.50 (được cấp phép), đây là site WordPress, tập trung vào lỗ hổng plugin.\"\n- \"Chạy chế độ pentest trên máy chủ thử nghiệm nội bộ đã được ủy quyền và xuất báo cáo lỗ hổng.\"\n- \"Dùng pentestgpt-legacy với mô hình Ollama cục bộ để hướng dẫn tôi từng bước giải bài CTF.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "projectdiscovery-nuclei",
+    "slug": "projectdiscovery-nuclei",
+    "name": "Nuclei — Quét lỗ hổng bằng template YAML, hỗ trợ AI",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/projectdiscovery/nuclei",
+    "websiteUrl": "https://docs.projectdiscovery.io/tools/nuclei/overview",
+    "authorName": "ProjectDiscovery",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Nuclei là công cụ quét lỗ hổng hiệu năng cao dựa trên template YAML do hàng nghìn chuyên gia bảo mật đóng góp, hỗ trợ TCP, DNS, HTTP, SSL, WHOIS, JavaScript và nhiều giao thức khác. Công cụ có tùy chọn `-ai` để sinh và chạy template từ prompt AI, cùng bộ matcher/extractor dùng LLM (semantic matching) với OpenAI, Ollama, vLLM và các nhà cung cấp khác.",
+    "purposeVi": "Giúp đội bảo mật quét định kỳ ứng dụng web, mạng và hạ tầng thuộc quyền quản lý của mình (hoặc được ủy quyền) để phát hiện CVE, cấu hình sai, và tích hợp vào CI/CD.",
+    "featuresVi": [
+      "Template YAML: dễ tạo và tùy chỉnh kịch bản phát hiện lỗ hổng",
+      "Giảm dương tính giả bằng cách mô phỏng các bước xác minh thực tế",
+      "Quét song song tốc độ cao, gom nhóm request",
+      "Sinh template bằng AI (`-ai, -prompt`) và matcher/extractor ngữ nghĩa dùng LLM (`-llm`)",
+      "Tích hợp CI/CD, Jira, Splunk, GitHub, Elastic, GitLab"
+    ],
+    "installGuideVi": "Yêu cầu: Go >= 1.27.3 để cài đặt từ mã nguồn; tính năng LLM cần nhà cung cấp LLM (OpenAI mặc định, hoặc Ollama/llama.cpp/vLLM cục bộ). Chỉ quét mục tiêu bạn sở hữu hoặc được cấp phép.\nBước 1: Cài đặt bằng Go: `go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest`\nBước 2: Xem hướng dẫn cài đặt khác tại https://docs.projectdiscovery.io/tools/nuclei/install",
+    "usageGuideVi": "Bước 1: Quét một ứng dụng web (được cấp phép): `nuclei -target https://example.com`\nBước 2: Quét nhiều mục tiêu từ tệp: `nuclei -list urls.txt`\nBước 3: Quét với template tự viết: `nuclei -u https://example.com -t /path/to/your-template.yaml`\nBước 4: Tải kết quả lên ProjectDiscovery để phân tích (miễn phí): `nuclei -target https://example.com -dashboard`",
+    "samplePromptsVi": [
+      "Viết template Nuclei kiểm tra trang quản trị Jenkins không xác thực trên máy chủ nội bộ của công ty.",
+      "Thêm bước quét Nuclei vào pipeline CI để phát hiện CVE trên môi trường staging của chúng tôi.",
+      "Giải thích kết quả quét Nuclei này và đề xuất cách khắc phục cấu hình SSL/TLS yếu."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest\"\n  ],\n  \"nguon\": \"https://github.com/projectdiscovery/nuclei\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, cộng đồng template rất lớn",
+      "Hỗ trợ LLM cục bộ (Ollama, llama.cpp, vLLM, LM Studio) cho matcher ngữ nghĩa",
+      "Tính năng tải kết quả lên dashboard ProjectDiscovery miễn phí"
+    ],
+    "consVi": [
+      "Dự án đang phát triển tích cực, có thể có thay đổi phá vỡ tương thích giữa các phiên bản",
+      "Chạy Nuclei dạng dịch vụ có thể gây rủi ro bảo mật theo cảnh báo trong README",
+      "Phiên bản Pro/Enterprise là dịch vụ trả phí; chỉ được quét hệ thống có ủy quyền"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Nuclei — Quét lỗ hổng bằng template YAML, hỗ trợ AI\n\n> Nuclei is a modern, high-performance vulnerability scanner that leverages simple YAML-based templates.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nNuclei là công cụ quét lỗ hổng hiệu năng cao dựa trên template YAML do hàng nghìn chuyên gia bảo mật đóng góp, hỗ trợ TCP, DNS, HTTP, SSL, WHOIS, JavaScript và nhiều giao thức khác. Công cụ có tùy chọn `-ai` để sinh và chạy template từ prompt AI, cùng bộ matcher/extractor dùng LLM (semantic matching) với OpenAI, Ollama, vLLM và các nhà cung cấp khác.\n\nGiúp đội bảo mật quét định kỳ ứng dụng web, mạng và hạ tầng thuộc quyền quản lý của mình (hoặc được ủy quyền) để phát hiện CVE, cấu hình sai, và tích hợp vào CI/CD.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** ProjectDiscovery\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/projectdiscovery/nuclei](https://github.com/projectdiscovery/nuclei)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Template YAML: dễ tạo và tùy chỉnh kịch bản phát hiện lỗ hổng**\n- **Giảm dương tính giả bằng cách mô phỏng các bước xác minh thực tế**\n- **Quét song song tốc độ cao, gom nhóm request**\n- **Sinh template bằng AI (`-ai, -prompt`) và matcher/extractor ngữ nghĩa dùng LLM (`-llm`)**\n- **Tích hợp CI/CD, Jira, Splunk, GitHub, Elastic, GitLab**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ngo install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest\n```\n\nYêu cầu: Go >= 1.27.3 để cài đặt từ mã nguồn; tính năng LLM cần nhà cung cấp LLM (OpenAI mặc định, hoặc Ollama/llama.cpp/vLLM cục bộ). Chỉ quét mục tiêu bạn sở hữu hoặc được cấp phép.\nBước 1: Cài đặt bằng Go: `go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest`\nBước 2: Xem hướng dẫn cài đặt khác tại https://docs.projectdiscovery.io/tools/nuclei/install\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Quét một ứng dụng web (được cấp phép): `nuclei -target https://example.com`\nBước 2: Quét nhiều mục tiêu từ tệp: `nuclei -list urls.txt`\nBước 3: Quét với template tự viết: `nuclei -u https://example.com -t /path/to/your-template.yaml`\nBước 4: Tải kết quả lên ProjectDiscovery để phân tích (miễn phí): `nuclei -target https://example.com -dashboard`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết template Nuclei kiểm tra trang quản trị Jenkins không xác thực trên máy chủ nội bộ của công ty.\"\n- \"Thêm bước quét Nuclei vào pipeline CI để phát hiện CVE trên môi trường staging của chúng tôi.\"\n- \"Giải thích kết quả quét Nuclei này và đề xuất cách khắc phục cấu hình SSL/TLS yếu.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "protectai-modelscan",
+    "slug": "protectai-modelscan",
+    "name": "ModelScan — Quét mã độc trong tệp mô hình học máy",
+    "icon": "Box",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/protectai/modelscan",
+    "websiteUrl": "",
+    "authorName": "Protect AI",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "ModelScan của Protect AI quét các tệp mô hình học máy để phát hiện mã không an toàn chèn vào khi tuần tự hóa (Model Serialization Attack). Công cụ đọc nội dung tệp từng byte mà không tải mô hình, hỗ trợ H5, Pickle, SavedModel cho PyTorch, TensorFlow, Keras, Sklearn, XGBoost và xếp hạng mức độ CRITICAL/HIGH/MEDIUM/LOW.",
+    "purposeVi": "Giúp đội dữ liệu và bảo mật kiểm tra mô hình tải từ Internet hoặc từ nhóm khác trước khi sử dụng, tránh bị đánh cắp thông tin xác thực hoặc dữ liệu khi tải mô hình độc hại.",
+    "featuresVi": [
+      "Quét không tải mô hình: đọc tệp như chuỗi byte để tìm chữ ký mã nguy hiểm",
+      "Hỗ trợ nhiều định dạng: Pickle, Cloudpickle, Dill, Joblib, H5, Keras V3, SavedModel",
+      "Xếp hạng mức độ: CRITICAL, HIGH, MEDIUM, LOW",
+      "Báo cáo dạng console, JSON hoặc tùy chỉnh; mã thoát rõ ràng cho CI",
+      "Dùng được qua CLI hoặc tích hợp trong mã Python"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.9 đến 3.12; trình quét TensorFlow/H5 cần cài đặt thêm extras.\nBước 1: Cài đặt gói Python: `pip install modelscan`\nBước 2: Cài đặt kèm trình quét TensorFlow và H5: `pip install 'modelscan[ tensorflow, h5py ]'`",
+    "usageGuideVi": "Bước 1: Quét một tệp mô hình: `modelscan -p /path/to/model_file.pkl`\nBước 2: Tạo tệp cấu hình tùy chỉnh: `modelscan create-settings-file`\nBước 3: Kiểm tra mã thoát trong CI: 0 là không có lỗ hổng, 1 là phát hiện lỗ hổng",
+    "samplePromptsVi": [
+      "Quét thư mục mô hình PyTorch vừa tải từ Hugging Face và cho biết có mã độc hại không.",
+      "Thêm bước modelscan vào pipeline CI để chặn mô hình có lỗ hổng mức CRITICAL.",
+      "Giải thích kết quả quét modelscan mức HIGH cho tệp pickle này."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install modelscan",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install modelscan\"\n  ],\n  \"nguon\": \"https://github.com/protectai/modelscan\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Quét nhanh, không thực thi mã trong mô hình",
+      "Không cần khóa API hay tài khoản"
+    ],
+    "consVi": [
+      "Chỉ hỗ trợ Python 3.9 đến 3.12",
+      "Các tính năng nâng cao (quét rộng hơn, tự nhận diện định dạng) thuộc sản phẩm thương mại Guardian"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# ModelScan — Quét mã độc trong tệp mô hình học máy\n\n> ModelScan is an open source project from Protect AI that scans models to determine if they contain unsafe code.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nModelScan của Protect AI quét các tệp mô hình học máy để phát hiện mã không an toàn chèn vào khi tuần tự hóa (Model Serialization Attack). Công cụ đọc nội dung tệp từng byte mà không tải mô hình, hỗ trợ H5, Pickle, SavedModel cho PyTorch, TensorFlow, Keras, Sklearn, XGBoost và xếp hạng mức độ CRITICAL/HIGH/MEDIUM/LOW.\n\nGiúp đội dữ liệu và bảo mật kiểm tra mô hình tải từ Internet hoặc từ nhóm khác trước khi sử dụng, tránh bị đánh cắp thông tin xác thực hoặc dữ liệu khi tải mô hình độc hại.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** Protect AI\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/protectai/modelscan](https://github.com/protectai/modelscan)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Quét không tải mô hình: đọc tệp như chuỗi byte để tìm chữ ký mã nguy hiểm**\n- **Hỗ trợ nhiều định dạng: Pickle, Cloudpickle, Dill, Joblib, H5, Keras V3, SavedModel**\n- **Xếp hạng mức độ: CRITICAL, HIGH, MEDIUM, LOW**\n- **Báo cáo dạng console, JSON hoặc tùy chỉnh; mã thoát rõ ràng cho CI**\n- **Dùng được qua CLI hoặc tích hợp trong mã Python**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install modelscan\n```\n\nYêu cầu: Python 3.9 đến 3.12; trình quét TensorFlow/H5 cần cài đặt thêm extras.\nBước 1: Cài đặt gói Python: `pip install modelscan`\nBước 2: Cài đặt kèm trình quét TensorFlow và H5: `pip install 'modelscan[ tensorflow, h5py ]'`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Quét một tệp mô hình: `modelscan -p /path/to/model_file.pkl`\nBước 2: Tạo tệp cấu hình tùy chỉnh: `modelscan create-settings-file`\nBước 3: Kiểm tra mã thoát trong CI: 0 là không có lỗ hổng, 1 là phát hiện lỗ hổng\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Quét thư mục mô hình PyTorch vừa tải từ Hugging Face và cho biết có mã độc hại không.\"\n- \"Thêm bước modelscan vào pipeline CI để chặn mô hình có lỗ hổng mức CRITICAL.\"\n- \"Giải thích kết quả quét modelscan mức HIGH cho tệp pickle này.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "trufflesecurity-trufflehog",
+    "slug": "trufflesecurity-trufflehog",
+    "name": "TruffleHog — Phát hiện và xác minh bí mật bị lộ",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/trufflesecurity/trufflehog",
+    "websiteUrl": "",
+    "authorName": "Truffle Security",
+    "license": "Mã nguồn mở (AGPL-3.0)",
+    "summaryVi": "TruffleHog là công cụ phát hiện, phân loại, xác minh và phân tích bí mật (khóa API, mật khẩu cơ sở dữ liệu, khóa riêng...) bị lộ trong Git, chat, wiki, log, object store, hệ thống tệp và image Docker. Công cụ phân loại hơn 800 loại bí mật và có thể kiểm tra bí mật còn hiệu lực hay không.",
+    "purposeVi": "Giúp đội bảo mật và DevOps tìm và xử lý thông tin xác thực bị lộ trong mã nguồn, CI và kho lưu trữ của tổ chức trước khi kẻ xấu lợi dụng.",
+    "featuresVi": [
+      "Khám phá: quét Git, GitHub (cả issue và PR), S3, GCS, Docker image, hệ thống tệp, Postman và nhiều nguồn khác",
+      "Phân loại: hơn 800 loại bí mật, gắn với danh tính sở hữu",
+      "Xác minh: kiểm tra bí mật còn hoạt động hay không (`--results=verified`)",
+      "Phân tích sâu quyền hạn của khoảng 20 loại thông tin xác thực phổ biến",
+      "Chạy trong CI với `--fail` để chặn commit lộ bí mật"
+    ],
+    "installGuideVi": "Yêu cầu: macOS (Homebrew), Docker, tệp nhị phân phát hành hoặc script cài đặt cho Linux/macOS.\nBước 1: Cài đặt trên macOS: `brew install trufflehog`\nBước 2: Cài đặt bằng script: `curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b /usr/local/bin`\nBước 3: Hoặc chạy bằng Docker: `docker run --rm -it -v \"$PWD:/pwd\" trufflesecurity/trufflehog:latest github --repo https://github.com/trufflesecurity/test_keys`",
+    "usageGuideVi": "Bước 1: Quét một repo, chỉ lấy bí mật đã xác minh: `trufflehog git https://github.com/trufflesecurity/test_keys --results=verified`\nBước 2: Quét tệp hoặc thư mục: `trufflehog filesystem path/to/file1.txt path/to/file2.txt path/to/dir`\nBước 3: Quét trong CI: `trufflehog git file://. --since-commit main --branch feature-1 --results=verified,unknown --fail`",
+    "samplePromptsVi": [
+      "Quét repo nội bộ của chúng tôi bằng TruffleHog và liệt kê các bí mật đã xác minh còn hoạt động.",
+      "Thêm bước TruffleHog vào GitHub Actions để chặn pull request có khóa API bị lộ.",
+      "Quét image Docker trước khi phát hành để tìm thông tin xác thực bị nhúng."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "brew install trufflehog",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"brew install trufflehog\"\n  ],\n  \"nguon\": \"https://github.com/trufflesecurity/trufflehog\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở, hỗ trợ rất nhiều nguồn dữ liệu",
+      "Xác minh bí mật còn hiệu lực giúp giảm báo động giả",
+      "Có Docker image và script cài đặt kèm xác minh chữ ký (cosign)"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0: cần lưu ý nghĩa vụ công bố mã nguồn khi phân phối hoặc cung cấp dạng dịch vụ có sửa đổi",
+      "Giám sát liên tục Jira, Slack, Confluence... thuộc bản Enterprise thương mại"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# TruffleHog — Phát hiện và xác minh bí mật bị lộ\n\n> TruffleHog is the most powerful secrets Discovery, Classification, Validation, and Analysis tool.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nTruffleHog là công cụ phát hiện, phân loại, xác minh và phân tích bí mật (khóa API, mật khẩu cơ sở dữ liệu, khóa riêng...) bị lộ trong Git, chat, wiki, log, object store, hệ thống tệp và image Docker. Công cụ phân loại hơn 800 loại bí mật và có thể kiểm tra bí mật còn hiệu lực hay không.\n\nGiúp đội bảo mật và DevOps tìm và xử lý thông tin xác thực bị lộ trong mã nguồn, CI và kho lưu trữ của tổ chức trước khi kẻ xấu lợi dụng.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** Truffle Security\n- **Giấy phép bản quyền:** Mã nguồn mở (AGPL-3.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/trufflesecurity/trufflehog](https://github.com/trufflesecurity/trufflehog)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Khám phá: quét Git, GitHub (cả issue và PR), S3, GCS, Docker image, hệ thống tệp, Postman và nhiều nguồn khác**\n- **Phân loại: hơn 800 loại bí mật, gắn với danh tính sở hữu**\n- **Xác minh: kiểm tra bí mật còn hoạt động hay không (`--results=verified`)**\n- **Phân tích sâu quyền hạn của khoảng 20 loại thông tin xác thực phổ biến**\n- **Chạy trong CI với `--fail` để chặn commit lộ bí mật**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nbrew install trufflehog\n```\n\nYêu cầu: macOS (Homebrew), Docker, tệp nhị phân phát hành hoặc script cài đặt cho Linux/macOS.\nBước 1: Cài đặt trên macOS: `brew install trufflehog`\nBước 2: Cài đặt bằng script: `curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b /usr/local/bin`\nBước 3: Hoặc chạy bằng Docker: `docker run --rm -it -v \"$PWD:/pwd\" trufflesecurity/trufflehog:latest github --repo https://github.com/trufflesecurity/test_keys`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Quét một repo, chỉ lấy bí mật đã xác minh: `trufflehog git https://github.com/trufflesecurity/test_keys --results=verified`\nBước 2: Quét tệp hoặc thư mục: `trufflehog filesystem path/to/file1.txt path/to/file2.txt path/to/dir`\nBước 3: Quét trong CI: `trufflehog git file://. --since-commit main --branch feature-1 --results=verified,unknown --fail`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Quét repo nội bộ của chúng tôi bằng TruffleHog và liệt kê các bí mật đã xác minh còn hoạt động.\"\n- \"Thêm bước TruffleHog vào GitHub Actions để chặn pull request có khóa API bị lộ.\"\n- \"Quét image Docker trước khi phát hành để tìm thông tin xác thực bị nhúng.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "gitleaks-gitleaks",
+    "slug": "gitleaks-gitleaks",
+    "name": "Gitleaks — Phát hiện bí mật bị lộ trong Git và tệp",
+    "icon": "GitPullRequest",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/gitleaks/gitleaks",
+    "websiteUrl": "",
+    "authorName": "Zachary Rice (Gitleaks)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Gitleaks là công cụ phát hiện bí mật như mật khẩu, khóa API và token trong repo Git, tệp và dữ liệu đưa vào qua stdin. Công cụ có thể chạy dạng pre-commit hook, GitHub Action, Docker, hỗ trợ cấu hình luật tùy chỉnh, baseline và báo cáo JSON, CSV, JUnit, SARIF.",
+    "purposeVi": "Giúp lập trình viên và đội DevSecOps ngăn bí mật bị commit vào mã nguồn và rà soát lịch sử Git của dự án.",
+    "featuresVi": [
+      "Ba chế độ quét: `git`, `dir` và `stdin`",
+      "Pre-commit hook và GitHub Action (Gitleaks-Action)",
+      "Luật phát hiện tùy chỉnh qua tệp cấu hình TOML, có thể mở rộng cấu hình mặc định",
+      "Baseline để bỏ qua các phát hiện cũ",
+      "Báo cáo json, csv, junit, sarif hoặc template; tùy chọn che (redact) bí mật trong log"
+    ],
+    "installGuideVi": "Yêu cầu: Homebrew, Docker hoặc Go (khi build từ mã nguồn); có tệp nhị phân cho nhiều nền tảng trên trang Releases.\nBước 1: Cài đặt trên macOS: `brew install gitleaks`\nBước 2: Hoặc cài đặt bằng Docker: `docker pull ghcr.io/gitleaks/gitleaks:latest`\nBước 3: Hoặc build từ mã nguồn (cần Go): `git clone https://github.com/gitleaks/gitleaks.git`, `cd gitleaks`, `make build`\nBước 4: Cài đặt pre-commit hook: thêm cấu hình gitleaks vào `.pre-commit-config.yaml` rồi chạy `pre-commit install`",
+    "usageGuideVi": "Bước 1: Quét repo Git hiện tại: `gitleaks git -v`\nBước 2: Quét thư mục hoặc tệp: `gitleaks dir -v path_to_directory_or_file`\nBước 3: Lưu báo cáo: `gitleaks git --report-path gitleaks-report.json`\nBước 4: Chỉ báo phát hiện mới so với baseline: `gitleaks git --baseline-path gitleaks-report.json --report-path findings.json`",
+    "samplePromptsVi": [
+      "Quét toàn bộ lịch sử Git của dự án bằng gitleaks và tóm tắt các bí mật tìm thấy.",
+      "Thiết lập pre-commit hook gitleaks cho repo này để chặn commit chứa khóa API.",
+      "Tạo baseline gitleaks cho repo cũ và chỉ cảnh báo các bí mật mới xuất hiện."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "brew install gitleaks",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"brew install gitleaks\"\n  ],\n  \"nguon\": \"https://github.com/gitleaks/gitleaks\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT",
+      "Nhẹ, dễ tích hợp pre-commit và CI; xuất SARIF",
+      "Không cần tài khoản hay khóa API"
+    ],
+    "consVi": [
+      "Phát hiện chủ yếu dựa trên regex, không xác minh bí mật còn hiệu lực",
+      "Lệnh `detect` và `protect` đã bị thay thế từ v8.19.0, cần đổi sang `git`/`dir`"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Gitleaks — Phát hiện bí mật bị lộ trong Git và tệp\n\n> Gitleaks is a tool for detecting secrets like passwords, API keys, and tokens in git repos, files, and whatever else you wanna throw at it via stdin.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nGitleaks là công cụ phát hiện bí mật như mật khẩu, khóa API và token trong repo Git, tệp và dữ liệu đưa vào qua stdin. Công cụ có thể chạy dạng pre-commit hook, GitHub Action, Docker, hỗ trợ cấu hình luật tùy chỉnh, baseline và báo cáo JSON, CSV, JUnit, SARIF.\n\nGiúp lập trình viên và đội DevSecOps ngăn bí mật bị commit vào mã nguồn và rà soát lịch sử Git của dự án.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** Zachary Rice (Gitleaks)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/gitleaks/gitleaks](https://github.com/gitleaks/gitleaks)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Ba chế độ quét: `git`, `dir` và `stdin`**\n- **Pre-commit hook và GitHub Action (Gitleaks-Action)**\n- **Luật phát hiện tùy chỉnh qua tệp cấu hình TOML, có thể mở rộng cấu hình mặc định**\n- **Baseline để bỏ qua các phát hiện cũ**\n- **Báo cáo json, csv, junit, sarif hoặc template; tùy chọn che (redact) bí mật trong log**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nbrew install gitleaks\n```\n\nYêu cầu: Homebrew, Docker hoặc Go (khi build từ mã nguồn); có tệp nhị phân cho nhiều nền tảng trên trang Releases.\nBước 1: Cài đặt trên macOS: `brew install gitleaks`\nBước 2: Hoặc cài đặt bằng Docker: `docker pull ghcr.io/gitleaks/gitleaks:latest`\nBước 3: Hoặc build từ mã nguồn (cần Go): `git clone https://github.com/gitleaks/gitleaks.git`, `cd gitleaks`, `make build`\nBước 4: Cài đặt pre-commit hook: thêm cấu hình gitleaks vào `.pre-commit-config.yaml` rồi chạy `pre-commit install`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Quét repo Git hiện tại: `gitleaks git -v`\nBước 2: Quét thư mục hoặc tệp: `gitleaks dir -v path_to_directory_or_file`\nBước 3: Lưu báo cáo: `gitleaks git --report-path gitleaks-report.json`\nBước 4: Chỉ báo phát hiện mới so với baseline: `gitleaks git --baseline-path gitleaks-report.json --report-path findings.json`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Quét toàn bộ lịch sử Git của dự án bằng gitleaks và tóm tắt các bí mật tìm thấy.\"\n- \"Thiết lập pre-commit hook gitleaks cho repo này để chặn commit chứa khóa API.\"\n- \"Tạo baseline gitleaks cho repo cũ và chỉ cảnh báo các bí mật mới xuất hiện.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "googleanalytics-google-analytics-mcp",
+    "slug": "googleanalytics-google-analytics-mcp",
+    "name": "Google Analytics MCP — MCP server chính thức để phân tích dữ liệu GA4 bằng AI",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "seo_growth",
+    "categoryNameVi": "Tối ưu hóa công cụ tìm kiếm SEO",
+    "categories": [
+      "seo_growth",
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Tối ưu hóa công cụ tìm kiếm SEO",
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/googleanalytics/google-analytics-mcp",
+    "websiteUrl": "https://pypi.org/project/analytics-mcp/",
+    "authorName": "Google Analytics",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "MCP server chính thức (đang ở giai đoạn thử nghiệm) của Google Analytics, chạy cục bộ và kết nối trợ lý AI với Google Analytics Admin API và Data API. Trợ lý có thể đọc thông tin tài khoản, thuộc tính, chạy báo cáo, báo cáo phễu và báo cáo thời gian thực của GA4. Gói được phát hành trên PyPI với tên analytics-mcp và chạy qua pipx.",
+    "purposeVi": "Công cụ giúp người làm marketing và SEO hỏi đáp, phân tích dữ liệu Google Analytics bằng ngôn ngữ tự nhiên trong Claude Code, Gemini CLI hoặc Gemini Code Assist.",
+    "featuresVi": [
+      "Thông tin tài khoản: get_account_summaries, get_property_details, list_google_ads_links, list_property_annotations",
+      "Báo cáo cốt lõi: run_report và run_funnel_report qua Google Analytics Data API",
+      "Báo cáo thời gian thực: run_realtime_report",
+      "Chiều và chỉ số tùy chỉnh: get_custom_dimensions_and_metrics",
+      "Công cụ ghi (tùy chọn): create_property_annotation khi bật cờ `--allow-write` và scope analytics.edit"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10+ và pipx; dự án Google Cloud đã bật Google Analytics Admin API và Data API; Application Default Credentials (ADC) có scope analytics.readonly của người dùng có quyền truy cập thuộc tính GA.\nBước 1: Cài đặt pipx theo hướng dẫn tại pipx.pypa.io\nBước 2: Bật Google Analytics Admin API và Google Analytics Data API trong dự án Google Cloud\nBước 3: Cấu hình ADC, ví dụ: `gcloud auth application-default login --scopes https://www.googleapis.com/auth/analytics.readonly,https://www.googleapis.com/auth/cloud-platform --client-id-file=YOUR_CLIENT_JSON_FILE` rồi ghi lại đường dẫn tệp thông tin xác thực\nBước 4: Cài đặt vào Claude Code: `claude mcp add analytics-mcp \\   --scope user \\   -e \"GOOGLE_APPLICATION_CREDENTIALS=PATH_TO_CREDENTIALS_JSON\" \\   -e \"GOOGLE_PROJECT_ID=YOUR_PROJECT_ID\" \\   -- pipx run analytics-mcp`\nBước 5: Với Gemini CLI, thêm khối `analytics-mcp` (lệnh `pipx run analytics-mcp`) vào `mcpServers` trong ~/.gemini/settings.json",
+    "usageGuideVi": "Bước 1: Thay PATH_TO_CREDENTIALS_JSON và YOUR_PROJECT_ID bằng giá trị thực\nBước 2: Mở trợ lý AI, gõ `/mcp` để kiểm tra analytics-mcp đã được nạp\nBước 3: Đặt câu hỏi về thuộc tính, sự kiện, người dùng trong Google Analytics",
+    "samplePromptsVi": [
+      "Máy chủ analytics-mcp có thể làm được những gì?",
+      "Những sự kiện phổ biến nhất trong thuộc tính Google Analytics của tôi trong 180 ngày qua là gì?",
+      "Trong 6 tháng qua, phần lớn người dùng có đăng nhập không?",
+      "Liệt kê các chiều và chỉ số tùy chỉnh trong thuộc tính của tôi"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add analytics-mcp \\\n  --scope user \\\n  -e \"GOOGLE_APPLICATION_CREDENTIALS=PATH_TO_CREDENTIALS_JSON\" \\\n  -e \"GOOGLE_PROJECT_ID=YOUR_PROJECT_ID\" \\\n  -- pipx run analytics-mcp",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"analytics-mcp\": {\n      \"command\": \"pipx\",\n      \"args\": [\n        \"run\",\n        \"analytics-mcp\"\n      ],\n      \"env\": {\n        \"GOOGLE_APPLICATION_CREDENTIALS\": \"PATH_TO_CREDENTIALS_JSON\",\n        \"GOOGLE_PROJECT_ID\": \"YOUR_PROJECT_ID\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Do tổ chức Google Analytics phát hành, giấy phép Apache 2.0",
+      "Mặc định chỉ đọc dữ liệu; công cụ ghi phải bật rõ ràng bằng `--allow-write`",
+      "Có lệnh `claude mcp add` sẵn cho Claude Code"
+    ],
+    "consVi": [
+      "README ghi rõ dự án đang ở trạng thái thử nghiệm (Experimental)",
+      "Cần thiết lập dự án Google Cloud, bật API và cấu hình OAuth/ADC khá nhiều bước",
+      "Chỉ làm việc với dữ liệu Google Analytics mà tài khoản có quyền truy cập"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Google Analytics MCP — MCP server chính thức để phân tích dữ liệu GA4 bằng AI\n\n> This repo contains the source code for running a local MCP server that interacts with APIs for Google Analytics.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server chính thức (đang ở giai đoạn thử nghiệm) của Google Analytics, chạy cục bộ và kết nối trợ lý AI với Google Analytics Admin API và Data API. Trợ lý có thể đọc thông tin tài khoản, thuộc tính, chạy báo cáo, báo cáo phễu và báo cáo thời gian thực của GA4. Gói được phát hành trên PyPI với tên analytics-mcp và chạy qua pipx.\n\nCông cụ giúp người làm marketing và SEO hỏi đáp, phân tích dữ liệu Google Analytics bằng ngôn ngữ tự nhiên trong Claude Code, Gemini CLI hoặc Gemini Code Assist.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Tối ưu hóa công cụ tìm kiếm SEO\n- **Tác giả / Nhà phát triển:** Google Analytics\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_code`, `web`\n- **Kho lưu trữ chính thức:** [https://github.com/googleanalytics/google-analytics-mcp](https://github.com/googleanalytics/google-analytics-mcp)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Thông tin tài khoản: get_account_summaries, get_property_details, list_google_ads_links, list_property_annotations**\n- **Báo cáo cốt lõi: run_report và run_funnel_report qua Google Analytics Data API**\n- **Báo cáo thời gian thực: run_realtime_report**\n- **Chiều và chỉ số tùy chỉnh: get_custom_dimensions_and_metrics**\n- **Công cụ ghi (tùy chọn): create_property_annotation khi bật cờ `--allow-write` và scope analytics.edit**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add analytics-mcp \\\n  --scope user \\\n  -e \"GOOGLE_APPLICATION_CREDENTIALS=PATH_TO_CREDENTIALS_JSON\" \\\n  -e \"GOOGLE_PROJECT_ID=YOUR_PROJECT_ID\" \\\n  -- pipx run analytics-mcp\n```\n\nYêu cầu: Python 3.10+ và pipx; dự án Google Cloud đã bật Google Analytics Admin API và Data API; Application Default Credentials (ADC) có scope analytics.readonly của người dùng có quyền truy cập thuộc tính GA.\nBước 1: Cài đặt pipx theo hướng dẫn tại pipx.pypa.io\nBước 2: Bật Google Analytics Admin API và Google Analytics Data API trong dự án Google Cloud\nBước 3: Cấu hình ADC, ví dụ: `gcloud auth application-default login --scopes https://www.googleapis.com/auth/analytics.readonly,https://www.googleapis.com/auth/cloud-platform --client-id-file=YOUR_CLIENT_JSON_FILE` rồi ghi lại đường dẫn tệp thông tin xác thực\nBước 4: Cài đặt vào Claude Code: `claude mcp add analytics-mcp \\   --scope user \\   -e \"GOOGLE_APPLICATION_CREDENTIALS=PATH_TO_CREDENTIALS_JSON\" \\   -e \"GOOGLE_PROJECT_ID=YOUR_PROJECT_ID\" \\   -- pipx run analytics-mcp`\nBước 5: Với Gemini CLI, thêm khối `analytics-mcp` (lệnh `pipx run analytics-mcp`) vào `mcpServers` trong ~/.gemini/settings.json\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Thay PATH_TO_CREDENTIALS_JSON và YOUR_PROJECT_ID bằng giá trị thực\nBước 2: Mở trợ lý AI, gõ `/mcp` để kiểm tra analytics-mcp đã được nạp\nBước 3: Đặt câu hỏi về thuộc tính, sự kiện, người dùng trong Google Analytics\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Máy chủ analytics-mcp có thể làm được những gì?\"\n- \"Những sự kiện phổ biến nhất trong thuộc tính Google Analytics của tôi trong 180 ngày qua là gì?\"\n- \"Trong 6 tháng qua, phần lớn người dùng có đăng nhập không?\"\n- \"Liệt kê các chiều và chỉ số tùy chỉnh trong thuộc tính của tôi\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "aminforou-mcp-gsc",
+    "slug": "aminforou-mcp-gsc",
+    "name": "MCP GSC — Kết nối Google Search Console với trợ lý AI cho SEO",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "seo_growth",
+    "categoryNameVi": "Tối ưu hóa công cụ tìm kiếm SEO",
+    "categories": [
+      "seo_growth"
+    ],
+    "categoryNamesVi": [
+      "Tối ưu hóa công cụ tìm kiếm SEO"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/AminForou/mcp-gsc",
+    "websiteUrl": "",
+    "authorName": "Amin Foroutan",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "MCP server kết nối Google Search Console với trợ lý AI như Claude Desktop, Cursor, Codex CLI, Gemini CLI để phân tích dữ liệu SEO bằng ngôn ngữ tự nhiên. Hỗ trợ báo cáo truy vấn, so sánh giai đoạn, kiểm tra lập chỉ mục URL và quản lý sitemap. Cài đặt nhanh qua uvx với gói mcp-search-console.",
+    "purposeVi": "Công cụ giúp người làm SEO tra cứu hiệu suất tìm kiếm, phát hiện vấn đề lập chỉ mục và cơ hội nội dung trực tiếp trong trợ lý AI.",
+    "featuresVi": [
+      "Quản lý thuộc tính: liệt kê, xem chi tiết, thêm hoặc xóa thuộc tính GSC",
+      "Phân tích tìm kiếm: truy vấn, trang, lượt nhấp, lượt hiển thị, CTR, vị trí; so sánh hai giai đoạn",
+      "Kiểm tra URL: inspect_url_enhanced, batch_url_inspection (tối đa 10 URL), check_indexing_issues",
+      "Sitemap: xem, gửi hoặc xóa sitemap, kiểm tra lỗi và cảnh báo",
+      "Prompt dựng sẵn: seo-weekly-report, cannibalization-check, indexing-audit, content-opportunities"
+    ],
+    "installGuideVi": "Yêu cầu: Dự án Google Cloud đã bật Search Console API; OAuth client (Desktop app) hoặc Service Account được thêm vào thuộc tính GSC; công cụ uv/uvx (hoặc Python khi cài từ mã nguồn).\nBước 1: Tạo thông tin xác thực Google (OAuth client ID dạng Desktop app hoặc Service Account) và bật Search Console API\nBước 2: Cài đặt uv: `curl -LsSf https://astral.sh/uv/install.sh | sh`\nBước 3: Thêm khối `gscServer` dùng `uvx` với tham số `mcp-search-console` vào tệp cấu hình Claude Desktop hoặc Cursor (dùng đường dẫn đầy đủ tới uvx)\nBước 4: Thoát hẳn ứng dụng rồi mở lại; lần đầu dùng OAuth sẽ mở trình duyệt để đăng nhập",
+    "usageGuideVi": "Bước 1: Hỏi trợ lý \"List my GSC properties\" để kiểm tra kết nối\nBước 2: Nếu lỗi, yêu cầu gọi get_capabilities để xem trạng thái xác thực\nBước 3: Đặt GSC_ALLOW_DESTRUCTIVE=true nếu cần công cụ thêm/xóa thuộc tính hoặc sitemap",
+    "samplePromptsVi": [
+      "Hiển thị 20 truy vấn hàng đầu của mywebsite.com trong 30 ngày qua, đánh dấu truy vấn có CTR dưới 2% và gợi ý cải thiện tiêu đề",
+      "So sánh hiệu suất trang web giữa tháng 1 và tháng 2, truy vấn nào cải thiện nhiều nhất?",
+      "Kiểm tra keyword cannibalization trên example.com",
+      "Kiểm tra vấn đề lập chỉ mục cho các trang mywebsite.com/product, mywebsite.com/services"
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "uvx mcp-search-console",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"gscServer\": {\n      \"command\": \"/FULL/PATH/TO/uvx\",\n      \"args\": [\n        \"mcp-search-console\"\n      ],\n      \"env\": {\n        \"GSC_OAUTH_CLIENT_SECRETS_FILE\": \"/full/path/to/client_secrets.json\"\n      }\n    }\n  }\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "cliCommand": "uvx mcp-search-console",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"gscServer\": {\n      \"command\": \"/FULL/PATH/TO/uvx\",\n      \"args\": [\n        \"mcp-search-console\"\n      ],\n      \"env\": {\n        \"GSC_OAUTH_CLIENT_SECRETS_FILE\": \"/full/path/to/client_secrets.json\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, cài đặt nhanh qua uvx không cần clone",
+      "Hướng dẫn cấu hình cho nhiều client MCP và có video hướng dẫn",
+      "Công cụ phá hủy dữ liệu bị tắt mặc định"
+    ],
+    "consVi": [
+      "Cần tự thiết lập dự án Google Cloud và thông tin xác thực",
+      "Dự án cá nhân; README quảng bá thêm bản hosted trả phí với tính năng nâng cao (GA4)",
+      "Client GUI cần đường dẫn đầy đủ tới uvx"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# MCP GSC — Kết nối Google Search Console với trợ lý AI cho SEO\n\n> A Model Context Protocol (MCP) server that connects Google Search Console (GSC) to AI assistants, allowing you to analyze your SEO data through natural language conversations.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server kết nối Google Search Console với trợ lý AI như Claude Desktop, Cursor, Codex CLI, Gemini CLI để phân tích dữ liệu SEO bằng ngôn ngữ tự nhiên. Hỗ trợ báo cáo truy vấn, so sánh giai đoạn, kiểm tra lập chỉ mục URL và quản lý sitemap. Cài đặt nhanh qua uvx với gói mcp-search-console.\n\nCông cụ giúp người làm SEO tra cứu hiệu suất tìm kiếm, phát hiện vấn đề lập chỉ mục và cơ hội nội dung trực tiếp trong trợ lý AI.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Tối ưu hóa công cụ tìm kiếm SEO\n- **Tác giả / Nhà phát triển:** Amin Foroutan\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/AminForou/mcp-gsc](https://github.com/AminForou/mcp-gsc)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Quản lý thuộc tính: liệt kê, xem chi tiết, thêm hoặc xóa thuộc tính GSC**\n- **Phân tích tìm kiếm: truy vấn, trang, lượt nhấp, lượt hiển thị, CTR, vị trí; so sánh hai giai đoạn**\n- **Kiểm tra URL: inspect_url_enhanced, batch_url_inspection (tối đa 10 URL), check_indexing_issues**\n- **Sitemap: xem, gửi hoặc xóa sitemap, kiểm tra lỗi và cảnh báo**\n- **Prompt dựng sẵn: seo-weekly-report, cannibalization-check, indexing-audit, content-opportunities**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuvx mcp-search-console\n```\n\nYêu cầu: Dự án Google Cloud đã bật Search Console API; OAuth client (Desktop app) hoặc Service Account được thêm vào thuộc tính GSC; công cụ uv/uvx (hoặc Python khi cài từ mã nguồn).\nBước 1: Tạo thông tin xác thực Google (OAuth client ID dạng Desktop app hoặc Service Account) và bật Search Console API\nBước 2: Cài đặt uv: `curl -LsSf https://astral.sh/uv/install.sh | sh`\nBước 3: Thêm khối `gscServer` dùng `uvx` với tham số `mcp-search-console` vào tệp cấu hình Claude Desktop hoặc Cursor (dùng đường dẫn đầy đủ tới uvx)\nBước 4: Thoát hẳn ứng dụng rồi mở lại; lần đầu dùng OAuth sẽ mở trình duyệt để đăng nhập\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Hỏi trợ lý \"List my GSC properties\" để kiểm tra kết nối\nBước 2: Nếu lỗi, yêu cầu gọi get_capabilities để xem trạng thái xác thực\nBước 3: Đặt GSC_ALLOW_DESTRUCTIVE=true nếu cần công cụ thêm/xóa thuộc tính hoặc sitemap\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hiển thị 20 truy vấn hàng đầu của mywebsite.com trong 30 ngày qua, đánh dấu truy vấn có CTR dưới 2% và gợi ý cải thiện tiêu đề\"\n- \"So sánh hiệu suất trang web giữa tháng 1 và tháng 2, truy vấn nào cải thiện nhiều nhất?\"\n- \"Kiểm tra keyword cannibalization trên example.com\"\n- \"Kiểm tra vấn đề lập chỉ mục cho các trang mywebsite.com/product, mywebsite.com/services\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "dataforseo-mcp-server-typescript",
+    "slug": "dataforseo-mcp-server-typescript",
+    "name": "DataForSEO MCP — MCP server chính thức truy vấn dữ liệu SEO DataForSEO",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "seo_growth",
+    "categoryNameVi": "Tối ưu hóa công cụ tìm kiếm SEO",
+    "categories": [
+      "seo_growth",
+      "web_scraping_crawling"
+    ],
+    "categoryNamesVi": [
+      "Tối ưu hóa công cụ tìm kiếm SEO",
+      "Thu thập dữ liệu web & Cào dữ liệu (Scraping)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "cursor",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/dataforseo/mcp-server-typescript",
+    "websiteUrl": "https://mcp.dataforseo.com/v3/mcp",
+    "authorName": "DataForSEO",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "MCP server và CLI chính thức (bản v3) của DataForSEO, cho phép tác tử AI duyệt tài liệu DataForSEO API và gửi yêu cầu API đã xác thực (SERP, backlink, on-page...). Chạy mặc định qua stdio, hỗ trợ HTTP trên cổng 3000 và có server remote công khai dùng OAuth 2.0.",
+    "purposeVi": "Công cụ giúp người làm SEO lấy dữ liệu SERP, từ khóa, backlink từ DataForSEO ngay trong trợ lý AI để nghiên cứu và phân tích.",
+    "featuresVi": [
+      "Công cụ tài liệu: docs_index, docs_list_sections, docs_search (bộ nhớ đệm 24 giờ)",
+      "api_request: gửi yêu cầu API DataForSEO đã xác thực, mặc định dùng đường dẫn `.ai`",
+      "Ba chế độ: MCP stdio (mặc định), MCP HTTP (`--mode http`, cổng 3000), CLI (`docs`, `request`)",
+      "Server remote công khai https://mcp.dataforseo.com/v3/mcp với OAuth 2.0",
+      "Cấu hình trường: giới hạn trường trả về theo endpoint qua `--configuration`"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js (dùng npx); tài khoản DataForSEO API với DATAFORSEO_LOGIN/DATAFORSEO_PASSWORD (bắt buộc cho stdio và CLI), hoặc OAuth khi dùng HTTP/remote.\nBước 1: Đặt biến môi trường: `export DATAFORSEO_LOGIN=\"your_api_login\"` và `export DATAFORSEO_PASSWORD=\"your_api_password\"`\nBước 2: Cài đặt và chạy MCP server qua stdio: `npx dataforseo-mcp-server@latest`\nBước 3: Hoặc chạy HTTP (cổng 3000): `npx dataforseo-mcp-server@latest --mode http`\nBước 4: Hoặc thêm URL server remote https://mcp.dataforseo.com/v3/mcp vào cấu hình `mcpServers` của client",
+    "usageGuideVi": "Bước 1: Kết nối client MCP (Cursor, Claude Desktop...) với server\nBước 2: Yêu cầu trợ lý tra cứu tài liệu endpoint rồi gọi api_request\nBước 3: Dùng CLI để thử nhanh: `npx dataforseo-mcp-server docs index`",
+    "samplePromptsVi": [
+      "Liệt kê các endpoint trong mục SERP API của DataForSEO",
+      "Lấy kết quả tìm kiếm Google tự nhiên trực tiếp cho từ khóa \"dataforseo\" tại Mỹ, tiếng Anh",
+      "Xem tóm tắt backlink và số tên miền giới thiệu của example.com"
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "npx dataforseo-mcp-server@latest",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"dataforseo\": {\n      \"url\": \"https://mcp.dataforseo.com/v3/mcp\"\n    }\n  }\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "cliCommand": "npx dataforseo-mcp-server@latest --mode http",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"dataforseo\": {\n      \"url\": \"http://localhost:3000/mcp\"\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Do DataForSEO phát hành chính thức, giấy phép Apache 2.0",
+      "Có server remote dùng ngay với OAuth, không cần cài đặt",
+      "Một tệp nhị phân phục vụ cả MCP và CLI"
+    ],
+    "consVi": [
+      "Cần tài khoản DataForSEO API (dịch vụ bên thứ ba) để gửi yêu cầu",
+      "Bản v3 thay thế bản v2 cũ; cấu hình theo tên công cụ của bản cũ không còn dùng được"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# DataForSEO MCP — MCP server chính thức truy vấn dữ liệu SEO DataForSEO\n\n> MCP server and CLI for LLM agents to browse DataForSEO API documentation and make authenticated API requests.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server và CLI chính thức (bản v3) của DataForSEO, cho phép tác tử AI duyệt tài liệu DataForSEO API và gửi yêu cầu API đã xác thực (SERP, backlink, on-page...). Chạy mặc định qua stdio, hỗ trợ HTTP trên cổng 3000 và có server remote công khai dùng OAuth 2.0.\n\nCông cụ giúp người làm SEO lấy dữ liệu SERP, từ khóa, backlink từ DataForSEO ngay trong trợ lý AI để nghiên cứu và phân tích.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Tối ưu hóa công cụ tìm kiếm SEO\n- **Tác giả / Nhà phát triển:** DataForSEO\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `cursor`, `web`\n- **Kho lưu trữ chính thức:** [https://github.com/dataforseo/mcp-server-typescript](https://github.com/dataforseo/mcp-server-typescript)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Công cụ tài liệu: docs_index, docs_list_sections, docs_search (bộ nhớ đệm 24 giờ)**\n- **api_request: gửi yêu cầu API DataForSEO đã xác thực, mặc định dùng đường dẫn `.ai`**\n- **Ba chế độ: MCP stdio (mặc định), MCP HTTP (`--mode http`, cổng 3000), CLI (`docs`, `request`)**\n- **Server remote công khai https://mcp.dataforseo.com/v3/mcp với OAuth 2.0**\n- **Cấu hình trường: giới hạn trường trả về theo endpoint qua `--configuration`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx dataforseo-mcp-server@latest\n```\n\nYêu cầu: Node.js (dùng npx); tài khoản DataForSEO API với DATAFORSEO_LOGIN/DATAFORSEO_PASSWORD (bắt buộc cho stdio và CLI), hoặc OAuth khi dùng HTTP/remote.\nBước 1: Đặt biến môi trường: `export DATAFORSEO_LOGIN=\"your_api_login\"` và `export DATAFORSEO_PASSWORD=\"your_api_password\"`\nBước 2: Cài đặt và chạy MCP server qua stdio: `npx dataforseo-mcp-server@latest`\nBước 3: Hoặc chạy HTTP (cổng 3000): `npx dataforseo-mcp-server@latest --mode http`\nBước 4: Hoặc thêm URL server remote https://mcp.dataforseo.com/v3/mcp vào cấu hình `mcpServers` của client\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Kết nối client MCP (Cursor, Claude Desktop...) với server\nBước 2: Yêu cầu trợ lý tra cứu tài liệu endpoint rồi gọi api_request\nBước 3: Dùng CLI để thử nhanh: `npx dataforseo-mcp-server docs index`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Liệt kê các endpoint trong mục SERP API của DataForSEO\"\n- \"Lấy kết quả tìm kiếm Google tự nhiên trực tiếp cho từ khóa \"dataforseo\" tại Mỹ, tiếng Anh\"\n- \"Xem tóm tắt backlink và số tên miền giới thiệu của example.com\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "assafelovic-gpt-researcher",
+    "slug": "assafelovic-gpt-researcher",
+    "name": "GPT Researcher — Tác tử nghiên cứu sâu tạo báo cáo có trích dẫn",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "content_writing",
+    "categoryNameVi": "Sáng tạo nội dung & Biên tập",
+    "categories": [
+      "content_writing",
+      "seo_growth"
+    ],
+    "categoryNamesVi": [
+      "Sáng tạo nội dung & Biên tập",
+      "Tối ưu hóa công cụ tìm kiếm SEO"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/assafelovic/gpt-researcher",
+    "websiteUrl": "https://gptr.dev",
+    "authorName": "Assaf Elovic",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Tác tử nghiên cứu sâu mã nguồn mở, tạo báo cáo nghiên cứu chi tiết có trích dẫn từ web và tài liệu cục bộ. Dùng mô hình tác tử lập kế hoạch và thực thi, tổng hợp từ hơn 20 nguồn, có thể tạo báo cáo trên 2.000 từ và xuất ra PDF, Word. Có giao diện web, gói PIP, Docker và có thể cài đặt làm Claude Skill.",
+    "purposeVi": "Công cụ giúp người viết nội dung, marketer và nhà nghiên cứu tự động thu thập dữ liệu, tổng hợp và viết báo cáo nghiên cứu dài có nguồn dẫn.",
+    "featuresVi": [
+      "Báo cáo nghiên cứu: tạo báo cáo chi tiết từ web và tài liệu cục bộ, trên 2.000 từ, tổng hợp hơn 20 nguồn",
+      "Deep Research: khám phá đệ quy dạng cây với độ sâu và độ rộng tùy chỉnh",
+      "Lọc ngữ cảnh: dùng Jev khi có TYPESAFE_API_KEY, nếu không thì xếp hạng từ khóa BM25 cục bộ",
+      "MCP client: kết hợp tìm kiếm web với nguồn dữ liệu MCP (RETRIEVER=tavily,mcp)",
+      "Ảnh minh họa AI tùy chọn bằng Google Gemini; xuất báo cáo sang PDF, Word"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.12 trở lên; OPENAI_API_KEY và TAVILY_API_KEY (hoặc API tương thích OpenAI qua OPENAI_BASE_URL); Docker nếu chạy bằng docker-compose.\nBước 1: Cài đặt làm Claude Skill: `npx skills add assafelovic/gpt-researcher`\nBước 2: Hoặc cài đặt thư viện Python: `pip install gpt-researcher`\nBước 3: Hoặc chạy giao diện web: `git clone https://github.com/assafelovic/gpt-researcher.git`, đặt OPENAI_API_KEY và TAVILY_API_KEY, rồi `pip install -r requirements.txt` và `python -m uvicorn main:app --reload` (mở http://localhost:8000)\nBước 4: Hoặc chạy bằng Docker sau khi tạo tệp .env: `docker-compose up --build`",
+    "usageGuideVi": "Bước 1: Thiết lập khóa API trong biến môi trường hoặc tệp .env\nBước 2: Trong Python, tạo GPTResearcher(query=...) rồi gọi conduct_research() và write_report()\nBước 3: Hoặc nhập câu hỏi nghiên cứu trên giao diện web tại http://localhost:8000",
+    "samplePromptsVi": [
+      "Nghiên cứu xu hướng tiếp thị nội dung năm nay và viết báo cáo có trích dẫn nguồn",
+      "Vì sao cổ phiếu Nvidia tăng? Tổng hợp thành báo cáo chi tiết",
+      "Những tác tử nghiên cứu web mã nguồn mở hàng đầu hiện nay là gì?"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install gpt-researcher",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install gpt-researcher\"\n  ],\n  \"nguon\": \"https://github.com/assafelovic/gpt-researcher\"\n}"
+      },
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "npx skills add assafelovic/gpt-researcher",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx skills add assafelovic/gpt-researcher\"\n  ],\n  \"nguon\": \"https://github.com/assafelovic/gpt-researcher\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, nhiều cách triển khai: PIP, web, Docker, Claude Skill",
+      "Báo cáo có trích dẫn nguồn, hỗ trợ nghiên cứu cả web và tài liệu cục bộ",
+      "Hỗ trợ API tương thích OpenAI, kể cả mô hình cục bộ"
+    ],
+    "consVi": [
+      "Cần khóa API của nhà cung cấp LLM và công cụ tìm kiếm (mặc định OpenAI và Tavily), phát sinh chi phí sử dụng",
+      "Deep Research mất khoảng 5 phút mỗi lần (theo README)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# GPT Researcher — Tác tử nghiên cứu sâu tạo báo cáo có trích dẫn\n\n> GPT Researcher the first open deep research agent designed for both web and local research on any given task.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nTác tử nghiên cứu sâu mã nguồn mở, tạo báo cáo nghiên cứu chi tiết có trích dẫn từ web và tài liệu cục bộ. Dùng mô hình tác tử lập kế hoạch và thực thi, tổng hợp từ hơn 20 nguồn, có thể tạo báo cáo trên 2.000 từ và xuất ra PDF, Word. Có giao diện web, gói PIP, Docker và có thể cài đặt làm Claude Skill.\n\nCông cụ giúp người viết nội dung, marketer và nhà nghiên cứu tự động thu thập dữ liệu, tổng hợp và viết báo cáo nghiên cứu dài có nguồn dẫn.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Sáng tạo nội dung & Biên tập\n- **Tác giả / Nhà phát triển:** Assaf Elovic\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`, `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/assafelovic/gpt-researcher](https://github.com/assafelovic/gpt-researcher)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Báo cáo nghiên cứu: tạo báo cáo chi tiết từ web và tài liệu cục bộ, trên 2.000 từ, tổng hợp hơn 20 nguồn**\n- **Deep Research: khám phá đệ quy dạng cây với độ sâu và độ rộng tùy chỉnh**\n- **Lọc ngữ cảnh: dùng Jev khi có TYPESAFE_API_KEY, nếu không thì xếp hạng từ khóa BM25 cục bộ**\n- **MCP client: kết hợp tìm kiếm web với nguồn dữ liệu MCP (RETRIEVER=tavily,mcp)**\n- **Ảnh minh họa AI tùy chọn bằng Google Gemini; xuất báo cáo sang PDF, Word**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install gpt-researcher\n```\n\nYêu cầu: Python 3.12 trở lên; OPENAI_API_KEY và TAVILY_API_KEY (hoặc API tương thích OpenAI qua OPENAI_BASE_URL); Docker nếu chạy bằng docker-compose.\nBước 1: Cài đặt làm Claude Skill: `npx skills add assafelovic/gpt-researcher`\nBước 2: Hoặc cài đặt thư viện Python: `pip install gpt-researcher`\nBước 3: Hoặc chạy giao diện web: `git clone https://github.com/assafelovic/gpt-researcher.git`, đặt OPENAI_API_KEY và TAVILY_API_KEY, rồi `pip install -r requirements.txt` và `python -m uvicorn main:app --reload` (mở http://localhost:8000)\nBước 4: Hoặc chạy bằng Docker sau khi tạo tệp .env: `docker-compose up --build`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Thiết lập khóa API trong biến môi trường hoặc tệp .env\nBước 2: Trong Python, tạo GPTResearcher(query=...) rồi gọi conduct_research() và write_report()\nBước 3: Hoặc nhập câu hỏi nghiên cứu trên giao diện web tại http://localhost:8000\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Nghiên cứu xu hướng tiếp thị nội dung năm nay và viết báo cáo có trích dẫn nguồn\"\n- \"Vì sao cổ phiếu Nvidia tăng? Tổng hợp thành báo cáo chi tiết\"\n- \"Những tác tử nghiên cứu web mã nguồn mở hàng đầu hiện nay là gì?\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "umami-software-umami",
+    "slug": "umami-software-umami",
+    "name": "Umami — Phân tích website tự host, ưu tiên quyền riêng tư, có MCP",
+    "icon": "Globe",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "seo_growth",
+    "categoryNameVi": "Tối ưu hóa công cụ tìm kiếm SEO",
+    "categories": [
+      "seo_growth",
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Tối ưu hóa công cụ tìm kiếm SEO",
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/umami-software/umami",
+    "websiteUrl": "https://umami.is",
+    "authorName": "Umami Software, Inc.",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Nền tảng phân tích website ưu tiên quyền riêng tư, không dùng cookie, tự host hoặc dùng trên cloud. Theo dõi lưu lượng, chiến dịch, hành vi, chuyển đổi và doanh thu tại một nơi. Có endpoint MCP tùy chọn (`/mcp`) để trợ lý AI truy vấn dữ liệu phân tích bằng API key.",
+    "purposeVi": "Công cụ thay thế Google Analytics tự host cho đội marketing/SEO, giữ quyền sở hữu dữ liệu và có thể kết nối với trợ lý AI qua MCP.",
+    "featuresVi": [
+      "Phân tích không cookie: lưu lượng, chiến dịch, hành vi, chuyển đổi, doanh thu",
+      "Tự host bằng Node.js + PostgreSQL hoặc Docker Compose",
+      "Endpoint MCP: bật bằng `MCP_ENABLED=1`, xác thực bằng API key tạo trong Settings → API keys",
+      "Xác thực hai lớp khi đặt TWO_FACTOR_ENCRYPTION_KEY"
+    ],
+    "installGuideVi": "Yêu cầu: Máy chủ có Node.js 18.18+ và PostgreSQL 12.14+ (khi cài từ mã nguồn), hoặc Docker và Docker Compose.\nBước 1: Tải mã nguồn: `git clone https://github.com/umami-software/umami.git` rồi `cd umami` và cài đặt gói bằng `pnpm install`\nBước 2: Tạo tệp .env với DATABASE_URL trỏ tới PostgreSQL\nBước 3: Cài đặt và build: `pnpm run build` (tạo bảng dữ liệu và tài khoản admin/umami)\nBước 4: Khởi chạy: `pnpm run start` (mặc định http://localhost:3000)\nBước 5: Hoặc cài đặt bằng Docker Compose (kèm PostgreSQL): `docker compose up -d`",
+    "usageGuideVi": "Bước 1: Đăng nhập bằng tài khoản mặc định admin / umami và đổi mật khẩu\nBước 2: Thêm website và gắn mã theo dõi theo hướng dẫn tại umami.is/docs\nBước 3: Đặt MCP_ENABLED=1 và tạo API key nếu muốn trợ lý AI truy vấn dữ liệu qua `/mcp`",
+    "samplePromptsVi": [
+      "Tuần này website của tôi có bao nhiêu lượt truy cập và nguồn giới thiệu nào nhiều nhất?",
+      "Chiến dịch nào mang lại nhiều chuyển đổi nhất trong tháng qua?"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker compose up -d",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker compose up -d\"\n  ],\n  \"nguon\": \"https://github.com/umami-software/umami\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, tự host miễn phí và sở hữu dữ liệu",
+      "Không dùng cookie, ưu tiên quyền riêng tư",
+      "Có endpoint MCP tích hợp sẵn cho trợ lý AI"
+    ],
+    "consVi": [
+      "Cần tự vận hành máy chủ và cơ sở dữ liệu PostgreSQL",
+      "MCP tắt mặc định, phải bật và tạo API key",
+      "Cần reverse proxy hoặc đổi cổng để phục vụ công khai"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Umami — Phân tích website tự host, ưu tiên quyền riêng tư, có MCP\n\n> Umami is a privacy-first analytics platform. Traffic, campaigns, behavior, conversions, and revenue in one place — no cookies, no surveillance, self-hosted or in the cloud.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nNền tảng phân tích website ưu tiên quyền riêng tư, không dùng cookie, tự host hoặc dùng trên cloud. Theo dõi lưu lượng, chiến dịch, hành vi, chuyển đổi và doanh thu tại một nơi. Có endpoint MCP tùy chọn (`/mcp`) để trợ lý AI truy vấn dữ liệu phân tích bằng API key.\n\nCông cụ thay thế Google Analytics tự host cho đội marketing/SEO, giữ quyền sở hữu dữ liệu và có thể kết nối với trợ lý AI qua MCP.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Tối ưu hóa công cụ tìm kiếm SEO\n- **Tác giả / Nhà phát triển:** Umami Software, Inc.\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/umami-software/umami](https://github.com/umami-software/umami)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Phân tích không cookie: lưu lượng, chiến dịch, hành vi, chuyển đổi, doanh thu**\n- **Tự host bằng Node.js + PostgreSQL hoặc Docker Compose**\n- **Endpoint MCP: bật bằng `MCP_ENABLED=1`, xác thực bằng API key tạo trong Settings → API keys**\n- **Xác thực hai lớp khi đặt TWO_FACTOR_ENCRYPTION_KEY**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker compose up -d\n```\n\nYêu cầu: Máy chủ có Node.js 18.18+ và PostgreSQL 12.14+ (khi cài từ mã nguồn), hoặc Docker và Docker Compose.\nBước 1: Tải mã nguồn: `git clone https://github.com/umami-software/umami.git` rồi `cd umami` và cài đặt gói bằng `pnpm install`\nBước 2: Tạo tệp .env với DATABASE_URL trỏ tới PostgreSQL\nBước 3: Cài đặt và build: `pnpm run build` (tạo bảng dữ liệu và tài khoản admin/umami)\nBước 4: Khởi chạy: `pnpm run start` (mặc định http://localhost:3000)\nBước 5: Hoặc cài đặt bằng Docker Compose (kèm PostgreSQL): `docker compose up -d`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đăng nhập bằng tài khoản mặc định admin / umami và đổi mật khẩu\nBước 2: Thêm website và gắn mã theo dõi theo hướng dẫn tại umami.is/docs\nBước 3: Đặt MCP_ENABLED=1 và tạo API key nếu muốn trợ lý AI truy vấn dữ liệu qua `/mcp`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tuần này website của tôi có bao nhiêu lượt truy cập và nguồn giới thiệu nào nhiều nhất?\"\n- \"Chiến dịch nào mang lại nhiều chuyển đổi nhất trong tháng qua?\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "knadh-listmonk",
+    "slug": "knadh-listmonk",
+    "name": "listmonk — Quản lý bản tin và danh sách email tự host",
+    "icon": "MessageSquare",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "seo_growth",
+    "categoryNameVi": "Tối ưu hóa công cụ tìm kiếm SEO",
+    "categories": [
+      "seo_growth",
+      "content_writing"
+    ],
+    "categoryNamesVi": [
+      "Tối ưu hóa công cụ tìm kiếm SEO",
+      "Sáng tạo nội dung & Biên tập"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/knadh/listmonk",
+    "websiteUrl": "https://listmonk.app",
+    "authorName": "Kailash Nadh (Zerodha)",
+    "license": "Mã nguồn mở (AGPL-3.0)",
+    "summaryVi": "Phần mềm quản lý bản tin (newsletter) và danh sách email tự host, nhanh, nhiều tính năng và đóng gói trong một tệp nhị phân duy nhất. Dùng PostgreSQL để lưu dữ liệu; backend viết bằng Go, giao diện Vue.",
+    "purposeVi": "Công cụ email marketing tự host giúp doanh nghiệp gửi bản tin, quản lý người đăng ký mà không phụ thuộc dịch vụ SaaS.",
+    "featuresVi": [
+      "Quản lý danh sách và người đăng ký, gửi chiến dịch bản tin",
+      "Một tệp nhị phân duy nhất, dữ liệu lưu trong PostgreSQL",
+      "Triển khai bằng Docker Compose hoặc tệp nhị phân",
+      "Lệnh nâng cấp cơ sở dữ liệu idempotent (`--upgrade`)"
+    ],
+    "installGuideVi": "Yêu cầu: Docker và Docker Compose, hoặc tệp nhị phân listmonk kèm cơ sở dữ liệu PostgreSQL.\nBước 1: Tải tệp compose: `curl -LO https://github.com/knadh/listmonk/raw/master/docker-compose.yml`\nBước 2: Cài đặt và chạy nền: `docker compose up -d`, rồi mở http://localhost:9000\nBước 3: Hoặc dùng tệp nhị phân: `./listmonk --new-config` để tạo config.toml, `./listmonk --install` để thiết lập PostgreSQL, rồi chạy `./listmonk`",
+    "usageGuideVi": "Bước 1: Truy cập http://localhost:9000 và hoàn tất thiết lập quản trị\nBước 2: Tạo danh sách, nhập người đăng ký và soạn chiến dịch\nBước 3: Xem hướng dẫn cài đặt chi tiết tại listmonk.app/docs/installation",
+    "samplePromptsVi": [
+      "Tạo chiến dịch bản tin hàng tháng gửi tới danh sách khách hàng đã đăng ký",
+      "Nhập danh sách người đăng ký từ tệp CSV vào listmonk"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker compose up -d",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker compose up -d\"\n  ],\n  \"nguon\": \"https://github.com/knadh/listmonk\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Tự host, gọn nhẹ trong một tệp nhị phân",
+      "Có bản demo trực tuyến tại demo.listmonk.app",
+      "Được Zerodha duy trì, cập nhật thường xuyên"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0: sửa đổi và cung cấp qua mạng phải công khai mã nguồn",
+      "Không có tính năng AI tích hợp; cần tự cấu hình máy chủ SMTP để gửi email",
+      "Cần vận hành PostgreSQL"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# listmonk — Quản lý bản tin và danh sách email tự host\n\n> listmonk is a standalone, self-hosted, newsletter and mailing list manager. It is fast, feature-rich, and packed into a single binary. It uses a PostgreSQL database as its data store.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPhần mềm quản lý bản tin (newsletter) và danh sách email tự host, nhanh, nhiều tính năng và đóng gói trong một tệp nhị phân duy nhất. Dùng PostgreSQL để lưu dữ liệu; backend viết bằng Go, giao diện Vue.\n\nCông cụ email marketing tự host giúp doanh nghiệp gửi bản tin, quản lý người đăng ký mà không phụ thuộc dịch vụ SaaS.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Tối ưu hóa công cụ tìm kiếm SEO\n- **Tác giả / Nhà phát triển:** Kailash Nadh (Zerodha)\n- **Giấy phép bản quyền:** Mã nguồn mở (AGPL-3.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/knadh/listmonk](https://github.com/knadh/listmonk)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Quản lý danh sách và người đăng ký, gửi chiến dịch bản tin**\n- **Một tệp nhị phân duy nhất, dữ liệu lưu trong PostgreSQL**\n- **Triển khai bằng Docker Compose hoặc tệp nhị phân**\n- **Lệnh nâng cấp cơ sở dữ liệu idempotent (`--upgrade`)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker compose up -d\n```\n\nYêu cầu: Docker và Docker Compose, hoặc tệp nhị phân listmonk kèm cơ sở dữ liệu PostgreSQL.\nBước 1: Tải tệp compose: `curl -LO https://github.com/knadh/listmonk/raw/master/docker-compose.yml`\nBước 2: Cài đặt và chạy nền: `docker compose up -d`, rồi mở http://localhost:9000\nBước 3: Hoặc dùng tệp nhị phân: `./listmonk --new-config` để tạo config.toml, `./listmonk --install` để thiết lập PostgreSQL, rồi chạy `./listmonk`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Truy cập http://localhost:9000 và hoàn tất thiết lập quản trị\nBước 2: Tạo danh sách, nhập người đăng ký và soạn chiến dịch\nBước 3: Xem hướng dẫn cài đặt chi tiết tại listmonk.app/docs/installation\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo chiến dịch bản tin hàng tháng gửi tới danh sách khách hàng đã đăng ký\"\n- \"Nhập danh sách người đăng ký từ tệp CSV vào listmonk\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "mautic-mautic",
+    "slug": "mautic-mautic",
+    "name": "Mautic — Nền tảng tự động hóa marketing mã nguồn mở",
+    "icon": "Workflow",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "seo_growth",
+    "categoryNameVi": "Tối ưu hóa công cụ tìm kiếm SEO",
+    "categories": [
+      "seo_growth",
+      "rpa_workflow_automation"
+    ],
+    "categoryNamesVi": [
+      "Tối ưu hóa công cụ tìm kiếm SEO",
+      "Tự động hóa quy trình & RPA (Automation)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/mautic/mautic",
+    "websiteUrl": "https://mautic.org",
+    "authorName": "Mautic Community",
+    "license": "Mã nguồn mở (GPL-3.0)",
+    "summaryVi": "Dự án tự động hóa marketing mã nguồn mở lớn nhất thế giới, giúp doanh nghiệp triển khai chiến dịch marketing đa kênh tích hợp, phân khúc và tự động hóa không giới hạn. Tự host miễn phí, dùng cơ sở dữ liệu riêng, tùy biến được cả frontend và backend; được công nhận là Digital Public Good.",
+    "purposeVi": "Công cụ thay thế các nền tảng marketing automation SaaS, giúp tổ chức quản lý chiến dịch, phân khúc khách hàng và giữ quyền sở hữu dữ liệu.",
+    "featuresVi": [
+      "Chiến dịch đa kênh: xây dựng chiến dịch marketing tích hợp không tốn thêm chi phí",
+      "Phân khúc và tự động hóa không giới hạn",
+      "Tự host, dùng cơ sở dữ liệu riêng, không phụ thuộc nhà cung cấp",
+      "Tùy biến 100% frontend và backend, tạo tích hợp theo nhu cầu"
+    ],
+    "installGuideVi": "Yêu cầu: Máy chủ PHP đáp ứng yêu cầu cài đặt của Mautic; Composer để tải thư viện (hoặc DDEV cho môi trường phát triển).\nBước 1: Tải mã nguồn (zip hoặc qua Composer) và giải nén vào thư mục web root\nBước 2: Cài đặt thư viện: `composer install`\nBước 3: Mở trình duyệt và hoàn tất cài đặt qua trình cài đặt web\nBước 4: Hoặc với DDEV: chạy `ddev start` để tự cài đặt phụ thuộc và cấu hình",
+    "usageGuideVi": "Bước 1: Với môi trường production, dùng gói đóng sẵn tại mautic.org/download hoặc cài đặt bằng Composer theo hướng dẫn\nBước 2: Tạo liên hệ, phân khúc và chiến dịch trong giao diện quản trị\nBước 3: Tham khảo tài liệu người dùng tại docs.mautic.org",
+    "samplePromptsVi": [
+      "Tạo chiến dịch email chào mừng tự động cho người mới đăng ký",
+      "Phân khúc liên hệ đã truy cập trang bảng giá trong 30 ngày qua"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "composer install",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"composer install\"\n  ],\n  \"nguon\": \"https://github.com/mautic/mautic\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép GPL-3.0, tự host miễn phí vĩnh viễn",
+      "Cộng đồng lớn, tài liệu người dùng và nhà phát triển đầy đủ",
+      "Tập trung vào quyền riêng tư và khả năng mở rộng"
+    ],
+    "consVi": [
+      "README cảnh báo bản từ GitHub ngoài bản phát hành được gắn tag chỉ là alpha, không nên dùng production",
+      "Cài đặt đòi hỏi kiến thức dòng lệnh và Composer",
+      "Không phải công cụ AI chuyên biệt"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Mautic — Nền tảng tự động hóa marketing mã nguồn mở\n\n> Mautic is the world’s largest open source marketing automation project.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nDự án tự động hóa marketing mã nguồn mở lớn nhất thế giới, giúp doanh nghiệp triển khai chiến dịch marketing đa kênh tích hợp, phân khúc và tự động hóa không giới hạn. Tự host miễn phí, dùng cơ sở dữ liệu riêng, tùy biến được cả frontend và backend; được công nhận là Digital Public Good.\n\nCông cụ thay thế các nền tảng marketing automation SaaS, giúp tổ chức quản lý chiến dịch, phân khúc khách hàng và giữ quyền sở hữu dữ liệu.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Tối ưu hóa công cụ tìm kiếm SEO\n- **Tác giả / Nhà phát triển:** Mautic Community\n- **Giấy phép bản quyền:** Mã nguồn mở (GPL-3.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/mautic/mautic](https://github.com/mautic/mautic)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Chiến dịch đa kênh: xây dựng chiến dịch marketing tích hợp không tốn thêm chi phí**\n- **Phân khúc và tự động hóa không giới hạn**\n- **Tự host, dùng cơ sở dữ liệu riêng, không phụ thuộc nhà cung cấp**\n- **Tùy biến 100% frontend và backend, tạo tích hợp theo nhu cầu**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ncomposer install\n```\n\nYêu cầu: Máy chủ PHP đáp ứng yêu cầu cài đặt của Mautic; Composer để tải thư viện (hoặc DDEV cho môi trường phát triển).\nBước 1: Tải mã nguồn (zip hoặc qua Composer) và giải nén vào thư mục web root\nBước 2: Cài đặt thư viện: `composer install`\nBước 3: Mở trình duyệt và hoàn tất cài đặt qua trình cài đặt web\nBước 4: Hoặc với DDEV: chạy `ddev start` để tự cài đặt phụ thuộc và cấu hình\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Với môi trường production, dùng gói đóng sẵn tại mautic.org/download hoặc cài đặt bằng Composer theo hướng dẫn\nBước 2: Tạo liên hệ, phân khúc và chiến dịch trong giao diện quản trị\nBước 3: Tham khảo tài liệu người dùng tại docs.mautic.org\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo chiến dịch email chào mừng tự động cho người mới đăng ký\"\n- \"Phân khúc liên hệ đã truy cập trang bảng giá trong 30 ngày qua\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "srbhr-resume-matcher",
+    "slug": "srbhr-resume-matcher",
+    "name": "Resume Matcher — Tùy chỉnh CV theo tin tuyển dụng bằng AI, tự host",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "hr_recruitment",
+    "categoryNameVi": "Quản trị nhân sự & Tuyển dụng (HRM)",
+    "categories": [
+      "hr_recruitment",
+      "office_digital_docs"
+    ],
+    "categoryNamesVi": [
+      "Quản trị nhân sự & Tuyển dụng (HRM)",
+      "Văn phòng số & Quản lý văn bản điện tử"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/srbhr/Resume-Matcher",
+    "websiteUrl": "https://resumematcher.fyi",
+    "authorName": "Saurabh Rai (srbhr)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Resume Matcher là công cụ tạo CV mã nguồn mở, tự host, dùng LLM để điều chỉnh CV gốc cho từng mô tả công việc, kèm thư xin việc và chuẩn bị phỏng vấn. Ứng dụng gồm backend FastAPI, frontend Next.js và cơ sở dữ liệu SQLite chạy trên máy của bạn; có thể dùng OpenAI, Anthropic, Gemini, DeepSeek, OpenRouter, Groq hoặc mô hình cục bộ qua Ollama. Dự án còn có MCP server để Claude Code, Claude Desktop, Cursor hoặc Codex điều khiển trực tiếp.",
+    "purposeVi": "Giúp ứng viên tùy chỉnh CV theo từng tin tuyển dụng, kiểm tra điểm ATS và xuất PDF chuyên nghiệp mà dữ liệu vẫn nằm trên máy cá nhân.",
+    "featuresVi": [
+      "CV gốc (Master Resume): tạo một CV đầy đủ để làm nguồn cho mọi bản tùy chỉnh",
+      "Tùy chỉnh theo tin tuyển dụng: dán mô tả công việc để AI đề xuất nội dung phù hợp, không thêm kỹ năng hay kinh nghiệm không có trong CV gốc",
+      "Thư xin việc và chuẩn bị phỏng vấn: sinh thư 200–300 từ và nội dung luyện phỏng vấn dựa trên CV",
+      "Điểm ATS và ATS Check: chấm điểm trên 100 (từ khóa, kỹ năng, chức danh, bố cục, ngày tháng) và đọc lại PDF như hệ thống ATS, chạy bằng mã thuần không gọi LLM",
+      "Hàng đợi tùy chỉnh: xử lý lần lượt nhiều mô tả công việc ở chế độ nền",
+      "Mẫu PDF: nhiều mẫu như Single Column, Two Column, LaTeX, Deedy; xuất A4 hoặc US Letter",
+      "MCP server: cho Claude Code, Claude Desktop, Cursor, Codex lưu, kiểm tra và xuất CV mà không cần khóa LLM"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.13+, Node.js 24.22.1 (ghim trong .nvmrc), uv; hoặc Docker. Cần khóa API của một nhà cung cấp LLM, hoặc Ollama chạy cục bộ, hoặc một coding agent.\nBước 1: Tải mã nguồn: `git clone https://github.com/srbhr/Resume-Matcher.git`\nBước 2: Cài đặt backend: vào `apps/backend`, sao chép `.env.example` thành `.env`, chạy `uv sync` rồi `uv run app`\nBước 3: Cài đặt frontend: vào `apps/frontend`, chạy `npm install` rồi `npm run dev`\nBước 4: Hoặc cài đặt bằng Docker: `docker run --name resume-matcher -p 3000:3000 -v resume-data:/app/backend/data ghcr.io/srbhr/resume-matcher:latest`\nBước 5: Cài đặt MCP cho Claude Code (cần bản cài cục bộ, không Docker): `claude mcp add resume-matcher -- uv run --directory /abs/path/to/Resume-Matcher/apps/backend resume-matcher-mcp`",
+    "usageGuideVi": "Bước 1: Mở http://localhost:3000 và chọn nhà cung cấp AI trong Settings\nBước 2: Tải lên CV gốc dạng PDF hoặc DOCX\nBước 3: Dán mô tả công việc, xem và chỉnh các đề xuất do AI tạo\nBước 4: Xem điểm ATS trong tab JD Match, tạo thư xin việc rồi xuất PDF",
+    "samplePromptsVi": [
+      "Tùy chỉnh CV gốc của tôi cho tin tuyển dụng Backend Engineer này và cho biết các từ khóa còn thiếu",
+      "Viết thư xin việc dựa trên CV đã tùy chỉnh cho vị trí Data Analyst",
+      "Chấm điểm ATS cho CV của tôi và xuất bản PDF theo mẫu Two Column"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker run --name resume-matcher -p 3000:3000 -v resume-data:/app/backend/data ghcr.io/srbhr/resume-matcher:latest",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker run --name resume-matcher -p 3000:3000 -v resume-data:/app/backend/data ghcr.io/srbhr/resume-matcher:latest\"\n  ],\n  \"nguon\": \"https://github.com/srbhr/Resume-Matcher\"\n}"
+      },
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add resume-matcher -- uv run --directory /abs/path/to/Resume-Matcher/apps/backend resume-matcher-mcp",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add resume-matcher -- uv run --directory /abs/path/to/Resume-Matcher/apps/backend resume-matcher-mcp\"\n  ],\n  \"nguon\": \"https://github.com/srbhr/Resume-Matcher\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"resume-matcher\": {\n      \"command\": \"/absolute/path/to/uv\",\n      \"args\": [\n        \"run\",\n        \"--directory\",\n        \"/abs/path/to/Resume-Matcher/apps/backend\",\n        \"resume-matcher-mcp\"\n      ]\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, tự host, không cần tạo tài khoản; dữ liệu CV lưu trong cơ sở dữ liệu của bạn",
+      "Hỗ trợ nhiều nhà cung cấp LLM và mô hình cục bộ qua Ollama",
+      "Có MCP server dùng được với Claude Code/Claude Desktop mà không cần khóa LLM",
+      "Giao diện đa ngôn ngữ, cập nhật thường xuyên"
+    ],
+    "consVi": [
+      "Cần cài đặt qua dòng lệnh (Python 3.13+, Node.js, uv) hoặc Docker",
+      "Cần khóa API của nhà cung cấp LLM hoặc chạy Ollama cục bộ",
+      "MCP server chưa hỗ trợ bản cài Docker; xuất PDF và một số công cụ cần frontend đang chạy",
+      "Giao diện chưa có tiếng Việt (có tiếng Anh, Tây Ban Nha, Trung, Nhật, Bồ Đào Nha, Pháp, Hàn)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Resume Matcher — Tùy chỉnh CV theo tin tuyển dụng bằng AI, tự host\n\n> Free, open-source resume builder that tailors your resume (CV) to each job description.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nResume Matcher là công cụ tạo CV mã nguồn mở, tự host, dùng LLM để điều chỉnh CV gốc cho từng mô tả công việc, kèm thư xin việc và chuẩn bị phỏng vấn. Ứng dụng gồm backend FastAPI, frontend Next.js và cơ sở dữ liệu SQLite chạy trên máy của bạn; có thể dùng OpenAI, Anthropic, Gemini, DeepSeek, OpenRouter, Groq hoặc mô hình cục bộ qua Ollama. Dự án còn có MCP server để Claude Code, Claude Desktop, Cursor hoặc Codex điều khiển trực tiếp.\n\nGiúp ứng viên tùy chỉnh CV theo từng tin tuyển dụng, kiểm tra điểm ATS và xuất PDF chuyên nghiệp mà dữ liệu vẫn nằm trên máy cá nhân.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Quản trị nhân sự & Tuyển dụng (HRM)\n- **Tác giả / Nhà phát triển:** Saurabh Rai (srbhr)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`, `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/srbhr/Resume-Matcher](https://github.com/srbhr/Resume-Matcher)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **CV gốc (Master Resume): tạo một CV đầy đủ để làm nguồn cho mọi bản tùy chỉnh**\n- **Tùy chỉnh theo tin tuyển dụng: dán mô tả công việc để AI đề xuất nội dung phù hợp, không thêm kỹ năng hay kinh nghiệm không có trong CV gốc**\n- **Thư xin việc và chuẩn bị phỏng vấn: sinh thư 200–300 từ và nội dung luyện phỏng vấn dựa trên CV**\n- **Điểm ATS và ATS Check: chấm điểm trên 100 (từ khóa, kỹ năng, chức danh, bố cục, ngày tháng) và đọc lại PDF như hệ thống ATS, chạy bằng mã thuần không gọi LLM**\n- **Hàng đợi tùy chỉnh: xử lý lần lượt nhiều mô tả công việc ở chế độ nền**\n- **Mẫu PDF: nhiều mẫu như Single Column, Two Column, LaTeX, Deedy; xuất A4 hoặc US Letter**\n- **MCP server: cho Claude Code, Claude Desktop, Cursor, Codex lưu, kiểm tra và xuất CV mà không cần khóa LLM**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker run --name resume-matcher -p 3000:3000 -v resume-data:/app/backend/data ghcr.io/srbhr/resume-matcher:latest\n```\n\nYêu cầu: Python 3.13+, Node.js 24.22.1 (ghim trong .nvmrc), uv; hoặc Docker. Cần khóa API của một nhà cung cấp LLM, hoặc Ollama chạy cục bộ, hoặc một coding agent.\nBước 1: Tải mã nguồn: `git clone https://github.com/srbhr/Resume-Matcher.git`\nBước 2: Cài đặt backend: vào `apps/backend`, sao chép `.env.example` thành `.env`, chạy `uv sync` rồi `uv run app`\nBước 3: Cài đặt frontend: vào `apps/frontend`, chạy `npm install` rồi `npm run dev`\nBước 4: Hoặc cài đặt bằng Docker: `docker run --name resume-matcher -p 3000:3000 -v resume-data:/app/backend/data ghcr.io/srbhr/resume-matcher:latest`\nBước 5: Cài đặt MCP cho Claude Code (cần bản cài cục bộ, không Docker): `claude mcp add resume-matcher -- uv run --directory /abs/path/to/Resume-Matcher/apps/backend resume-matcher-mcp`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở http://localhost:3000 và chọn nhà cung cấp AI trong Settings\nBước 2: Tải lên CV gốc dạng PDF hoặc DOCX\nBước 3: Dán mô tả công việc, xem và chỉnh các đề xuất do AI tạo\nBước 4: Xem điểm ATS trong tab JD Match, tạo thư xin việc rồi xuất PDF\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tùy chỉnh CV gốc của tôi cho tin tuyển dụng Backend Engineer này và cho biết các từ khóa còn thiếu\"\n- \"Viết thư xin việc dựa trên CV đã tùy chỉnh cho vị trí Data Analyst\"\n- \"Chấm điểm ATS cho CV của tôi và xuất bản PDF theo mẫu Two Column\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "reactive-resume-reactive-resume",
+    "slug": "reactive-resume-reactive-resume",
+    "name": "Reactive Resume — Trình tạo CV, thư xin việc và theo dõi ứng tuyển có trợ lý AI",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "hr_recruitment",
+    "categoryNameVi": "Quản trị nhân sự & Tuyển dụng (HRM)",
+    "categories": [
+      "hr_recruitment",
+      "office_digital_docs"
+    ],
+    "categoryNamesVi": [
+      "Quản trị nhân sự & Tuyển dụng (HRM)",
+      "Văn phòng số & Quản lý văn bản điện tử"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/reactive-resume/reactive-resume",
+    "websiteUrl": "https://rxresu.me",
+    "authorName": "Amruth Pillai",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Reactive Resume là ứng dụng tạo CV và thư xin việc mã nguồn mở với trình soạn thảo xem trước PDF trực tiếp, 18 mẫu và các công cụ kiểm tra CV. Ứng dụng có trợ lý AI tùy chọn (OpenAI, Anthropic, Gemini, OpenRouter, Ollama...) đề xuất chỉnh sửa, cùng REST API và MCP server để trợ lý AI bên ngoài quản lý tài liệu. Có thể dùng bản host tại rxresu.me hoặc tự host bằng Docker, Vercel, Cloudflare Workers.",
+    "purposeVi": "Công cụ giúp ứng viên viết, kiểm tra CV theo tin tuyển dụng và theo dõi quá trình ứng tuyển, với dữ liệu thuộc quyền sở hữu của người dùng.",
+    "featuresVi": [
+      "Trình soạn thảo Write/Design/Check: xem trước PDF trực tiếp, tự lưu, khôi phục bản nháp, 200 bước hoàn tác",
+      "18 mẫu CV: lọc mẫu một cột, hai cột và an toàn với ATS; tùy chỉnh font, màu, khổ A4/Letter",
+      "Kiểm tra CV: kiểm tra độ dễ đọc, so khớp từ khóa với tin tuyển dụng, xem văn bản mà phần mềm tuyển dụng đọc được",
+      "Thư xin việc: trình soạn riêng, lịch sử phiên bản, liên kết với CV",
+      "Theo dõi ứng tuyển: dạng danh sách, bảng, thống kê, lịch; lưu tin từ URL; nhập/xuất CSV",
+      "Trợ lý AI: đề xuất chỉnh sửa có giải thích, chấp nhận hoặc từ chối từng gợi ý",
+      "Nhập/xuất: nhập JSON Resume, bản xuất dữ liệu LinkedIn, PDF, Word; xuất PDF, DOCX, Markdown, JSON",
+      "REST API và MCP server: quản lý tài liệu, nhập/xuất, kiểm tra và quy trình ứng tuyển từ client AI"
+    ],
+    "installGuideVi": "Yêu cầu: Dùng bản host cần tài khoản Reactive Resume. Tự host cần Docker và Docker Compose (PostgreSQL, lưu trữ tệp tải lên; Redis và SMTP tùy chọn). Tính năng AI cần kết nối một nhà cung cấp LLM.\nBước 1: Tải mã nguồn: `git clone --depth=1 https://github.com/reactive-resume/reactive-resume.git reactive-resume`\nBước 2: Tạo cấu hình: `cp .env.example .env`, đặt AUTH_SECRET và ENCRYPTION_SECRET (tạo bằng `openssl rand -hex 32`)\nBước 3: Cài đặt và khởi chạy: `docker compose up -d --build` rồi mở http://localhost:3000\nBước 4: Hoặc cài đặt bằng ảnh Docker có sẵn: `docker pull amruthpillai/reactive-resume:latest`\nBước 5: Kết nối trợ lý AI qua MCP: `npx add-mcp https://rxresu.me/mcp --name reactive-resume`",
+    "usageGuideVi": "Bước 1: Tạo tài khoản, nhập CV có sẵn hoặc bắt đầu từ đầu\nBước 2: Chọn mẫu, chỉnh sửa nội dung và xem trước PDF\nBước 3: Dùng chế độ Check để so khớp từ khóa với tin tuyển dụng\nBước 4: Kết nối nhà cung cấp AI để nhận gợi ý chỉnh sửa, rồi tải PDF/Word hoặc chia sẻ liên kết công khai",
+    "samplePromptsVi": [
+      "Cải thiện phần mô tả kinh nghiệm trong CV của tôi cho ngắn gọn và rõ ràng hơn",
+      "Soạn thư xin việc từ CV này và tin tuyển dụng đã lưu",
+      "Liệt kê các đơn ứng tuyển đang ở giai đoạn phỏng vấn trong Reactive Resume"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker compose up -d --build",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker compose up -d --build\"\n  ],\n  \"nguon\": \"https://github.com/reactive-resume/reactive-resume\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "npx add-mcp https://rxresu.me/mcp --name reactive-resume",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"reactive-resume\": {\n      \"url\": \"https://rxresu.me/mcp\",\n      \"headers\": {\n        \"x-api-key\": \"YOUR_API_KEY\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, không có gói trả phí; chi phí hosting và nhà cung cấp AI (nếu dùng) do người dùng tự chịu.",
+    "prosVi": [
+      "Giấy phép MIT, không theo dõi, không quảng cáo, không có gói trả phí",
+      "Có bản host miễn phí và nhiều lựa chọn tự host",
+      "Có REST API và MCP server cho trợ lý AI",
+      "Phát triển tích cực, tài liệu đầy đủ"
+    ],
+    "consVi": [
+      "Tính năng AI cần kết nối nhà cung cấp riêng; chi phí hosting và nhà cung cấp do người dùng chịu",
+      "Tự host cần PostgreSQL và lưu trữ tệp; triển khai Cloudflare cần gói Workers Paid",
+      "Nhập tệp Word cần kết nối nhà cung cấp AI",
+      "Repo đã chuyển từ AmruthPillai/Reactive-Resume sang reactive-resume/reactive-resume"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Reactive Resume — Trình tạo CV, thư xin việc và theo dõi ứng tuyển có trợ lý AI\n\n> Reactive Resume is a free and open-source resume builder for writing resumes and cover letters, checking your work, and tracking job applications.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nReactive Resume là ứng dụng tạo CV và thư xin việc mã nguồn mở với trình soạn thảo xem trước PDF trực tiếp, 18 mẫu và các công cụ kiểm tra CV. Ứng dụng có trợ lý AI tùy chọn (OpenAI, Anthropic, Gemini, OpenRouter, Ollama...) đề xuất chỉnh sửa, cùng REST API và MCP server để trợ lý AI bên ngoài quản lý tài liệu. Có thể dùng bản host tại rxresu.me hoặc tự host bằng Docker, Vercel, Cloudflare Workers.\n\nCông cụ giúp ứng viên viết, kiểm tra CV theo tin tuyển dụng và theo dõi quá trình ứng tuyển, với dữ liệu thuộc quyền sở hữu của người dùng.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Quản trị nhân sự & Tuyển dụng (HRM)\n- **Tác giả / Nhà phát triển:** Amruth Pillai\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`, `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/reactive-resume/reactive-resume](https://github.com/reactive-resume/reactive-resume)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Trình soạn thảo Write/Design/Check: xem trước PDF trực tiếp, tự lưu, khôi phục bản nháp, 200 bước hoàn tác**\n- **18 mẫu CV: lọc mẫu một cột, hai cột và an toàn với ATS; tùy chỉnh font, màu, khổ A4/Letter**\n- **Kiểm tra CV: kiểm tra độ dễ đọc, so khớp từ khóa với tin tuyển dụng, xem văn bản mà phần mềm tuyển dụng đọc được**\n- **Thư xin việc: trình soạn riêng, lịch sử phiên bản, liên kết với CV**\n- **Theo dõi ứng tuyển: dạng danh sách, bảng, thống kê, lịch; lưu tin từ URL; nhập/xuất CSV**\n- **Trợ lý AI: đề xuất chỉnh sửa có giải thích, chấp nhận hoặc từ chối từng gợi ý**\n- **Nhập/xuất: nhập JSON Resume, bản xuất dữ liệu LinkedIn, PDF, Word; xuất PDF, DOCX, Markdown, JSON**\n- **REST API và MCP server: quản lý tài liệu, nhập/xuất, kiểm tra và quy trình ứng tuyển từ client AI**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker compose up -d --build\n```\n\nYêu cầu: Dùng bản host cần tài khoản Reactive Resume. Tự host cần Docker và Docker Compose (PostgreSQL, lưu trữ tệp tải lên; Redis và SMTP tùy chọn). Tính năng AI cần kết nối một nhà cung cấp LLM.\nBước 1: Tải mã nguồn: `git clone --depth=1 https://github.com/reactive-resume/reactive-resume.git reactive-resume`\nBước 2: Tạo cấu hình: `cp .env.example .env`, đặt AUTH_SECRET và ENCRYPTION_SECRET (tạo bằng `openssl rand -hex 32`)\nBước 3: Cài đặt và khởi chạy: `docker compose up -d --build` rồi mở http://localhost:3000\nBước 4: Hoặc cài đặt bằng ảnh Docker có sẵn: `docker pull amruthpillai/reactive-resume:latest`\nBước 5: Kết nối trợ lý AI qua MCP: `npx add-mcp https://rxresu.me/mcp --name reactive-resume`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo tài khoản, nhập CV có sẵn hoặc bắt đầu từ đầu\nBước 2: Chọn mẫu, chỉnh sửa nội dung và xem trước PDF\nBước 3: Dùng chế độ Check để so khớp từ khóa với tin tuyển dụng\nBước 4: Kết nối nhà cung cấp AI để nhận gợi ý chỉnh sửa, rồi tải PDF/Word hoặc chia sẻ liên kết công khai\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Cải thiện phần mô tả kinh nghiệm trong CV của tôi cho ngắn gọn và rõ ràng hơn\"\n- \"Soạn thư xin việc từ CV này và tin tuyển dụng đã lưu\"\n- \"Liệt kê các đơn ứng tuyển đang ở giai đoạn phỏng vấn trong Reactive Resume\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "open-source-legal-opencontracts",
+    "slug": "open-source-legal-opencontracts",
+    "name": "OpenContracts — Phân tích hợp đồng và tài liệu pháp lý bằng AI, có MCP server",
+    "icon": "FolderTree",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "legal_public_service",
+    "categoryNameVi": "Pháp luật & Dịch vụ công số",
+    "categories": [
+      "legal_public_service",
+      "office_digital_docs",
+      "vector_rag"
+    ],
+    "categoryNamesVi": [
+      "Pháp luật & Dịch vụ công số",
+      "Văn phòng số & Quản lý văn bản điện tử",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_desktop"
+    ],
+    "sourceUrl": "https://github.com/Open-Source-Legal/OpenContracts",
+    "websiteUrl": "https://contracts.opensource.legal",
+    "authorName": "Open Source Legal (John Scrudato IV)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "OpenContracts là nền tảng phân tích tài liệu tự host, biến kho văn bản (hợp đồng, hồ sơ SEC, văn bản luật) thành đồ thị trích dẫn có thể lập trình: chú thích thủ công, trích xuất dữ liệu có cấu trúc, tác tử AI và MCP server tích hợp sẵn. Mọi thao tác trên giao diện React đều gọi được qua GraphQL/REST API và Model Context Protocol. Dự án dùng PydanticAI cho tác tử và hỗ trợ tìm kiếm vector lẫn toàn văn.",
+    "purposeVi": "Công cụ giúp nhóm pháp lý và nghiên cứu chú thích, so sánh điều khoản hợp đồng và trích xuất dữ liệu từ hàng trăm tài liệu với câu trả lời AI có dẫn nguồn.",
+    "featuresVi": [
+      "Đồ thị trích dẫn: tự phát hiện và liên kết các trích dẫn luật, điều khoản giữa các tài liệu",
+      "Tác tử AI: tác tử theo tài liệu hoặc theo bộ sưu tập, trả lời có dẫn nguồn, gọi được từ Python",
+      "MCP server: endpoint /mcp/ và /mcp/me/ với các công cụ search_corpus, list_documents, get_document_text, list_annotations...",
+      "Trích xuất có cấu trúc: định nghĩa fieldset bằng câu hỏi ngôn ngữ tự nhiên, chạy trên hàng trăm tài liệu, duyệt từng ô",
+      "Chú thích PDF giữ nguyên bố cục: chọn vùng nhiều trang, nhãn tùy chỉnh, quan hệ giữa khái niệm",
+      "Cộng tác: thảo luận theo luồng, @mention tác tử AI, phiên bản hóa bộ sưu tập",
+      "Pipeline mở rộng: thay thế parser, embedder, thumbnailer"
+    ],
+    "installGuideVi": "Yêu cầu: Docker và Docker Compose; tác tử AI và trích xuất cần cấu hình nhà cung cấp LLM. GPU/NPU tùy chọn để tăng tốc embedding.\nBước 1: Tải mã nguồn: `git clone https://github.com/Open-Source-Legal/OpenContracts.git`\nBước 2: Tạo thư mục cấu hình `mkdir -p .envs/.local` và sao chép các tệp mẫu từ `docs/sample_env_files`\nBước 3: Cài đặt và build: `docker compose -f local.yml build`\nBước 4: Khởi chạy toàn bộ dịch vụ: `docker compose -f local.yml --profile fullstack up`, rồi mở http://localhost:3000\nBước 5: Triển khai production: `docker compose -f production.yml --profile migrate up migrate` rồi `docker compose -f production.yml up -d`",
+    "usageGuideVi": "Bước 1: Đăng nhập, tạo corpus (bộ sưu tập) và tải tài liệu lên\nBước 2: Nhấn Set up để cài gói phân tích: tác tử tóm tắt tài liệu và dựng đồ thị trích dẫn\nBước 3: Dùng thanh hỏi đáp để đặt câu hỏi, nhận câu trả lời có dẫn nguồn\nBước 4: Kết nối Claude Desktop qua MCP để tìm kiếm và đọc tài liệu trong corpus",
+    "samplePromptsVi": [
+      "Tóm tắt các điều khoản bồi thường (indemnification) trong hợp đồng này",
+      "So sánh điều khoản chấm dứt hợp đồng giữa các tài liệu trong corpus",
+      "Liệt kê các văn bản luật mà hồ sơ này trích dẫn"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker compose -f local.yml --profile fullstack up",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker compose -f local.yml --profile fullstack up\"\n  ],\n  \"nguon\": \"https://github.com/Open-Source-Legal/OpenContracts\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"opencontracts\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"mcp-remote\",\n        \"https://your-instance.com/mcp/\"\n      ]\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, tự host toàn bộ",
+      "Có sẵn MCP server, GraphQL và REST API",
+      "Chú thích của con người là dữ liệu gốc, AI trả lời có dẫn nguồn",
+      "Được bảo trì tích cực, tài liệu chi tiết trong repo"
+    ],
+    "consVi": [
+      "Triển khai khá nặng (nhiều dịch vụ Docker, Celery, PostgreSQL)",
+      "MCP server chỉ đọc; tài nguyên riêng tư cần xác thực qua /mcp/me/",
+      "Tác tử AI cần cấu hình nhà cung cấp LLM; ví dụ trong README tập trung vào văn bản pháp luật Hoa Kỳ"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# OpenContracts — Phân tích hợp đồng và tài liệu pháp lý bằng AI, có MCP server\n\n> Open-source document intelligence you can build on.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nOpenContracts là nền tảng phân tích tài liệu tự host, biến kho văn bản (hợp đồng, hồ sơ SEC, văn bản luật) thành đồ thị trích dẫn có thể lập trình: chú thích thủ công, trích xuất dữ liệu có cấu trúc, tác tử AI và MCP server tích hợp sẵn. Mọi thao tác trên giao diện React đều gọi được qua GraphQL/REST API và Model Context Protocol. Dự án dùng PydanticAI cho tác tử và hỗ trợ tìm kiếm vector lẫn toàn văn.\n\nCông cụ giúp nhóm pháp lý và nghiên cứu chú thích, so sánh điều khoản hợp đồng và trích xuất dữ liệu từ hàng trăm tài liệu với câu trả lời AI có dẫn nguồn.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Pháp luật & Dịch vụ công số\n- **Tác giả / Nhà phát triển:** Open Source Legal (John Scrudato IV)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`, `claude_desktop`\n- **Kho lưu trữ chính thức:** [https://github.com/Open-Source-Legal/OpenContracts](https://github.com/Open-Source-Legal/OpenContracts)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Đồ thị trích dẫn: tự phát hiện và liên kết các trích dẫn luật, điều khoản giữa các tài liệu**\n- **Tác tử AI: tác tử theo tài liệu hoặc theo bộ sưu tập, trả lời có dẫn nguồn, gọi được từ Python**\n- **MCP server: endpoint /mcp/ và /mcp/me/ với các công cụ search_corpus, list_documents, get_document_text, list_annotations...**\n- **Trích xuất có cấu trúc: định nghĩa fieldset bằng câu hỏi ngôn ngữ tự nhiên, chạy trên hàng trăm tài liệu, duyệt từng ô**\n- **Chú thích PDF giữ nguyên bố cục: chọn vùng nhiều trang, nhãn tùy chỉnh, quan hệ giữa khái niệm**\n- **Cộng tác: thảo luận theo luồng, @mention tác tử AI, phiên bản hóa bộ sưu tập**\n- **Pipeline mở rộng: thay thế parser, embedder, thumbnailer**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker compose -f local.yml --profile fullstack up\n```\n\nYêu cầu: Docker và Docker Compose; tác tử AI và trích xuất cần cấu hình nhà cung cấp LLM. GPU/NPU tùy chọn để tăng tốc embedding.\nBước 1: Tải mã nguồn: `git clone https://github.com/Open-Source-Legal/OpenContracts.git`\nBước 2: Tạo thư mục cấu hình `mkdir -p .envs/.local` và sao chép các tệp mẫu từ `docs/sample_env_files`\nBước 3: Cài đặt và build: `docker compose -f local.yml build`\nBước 4: Khởi chạy toàn bộ dịch vụ: `docker compose -f local.yml --profile fullstack up`, rồi mở http://localhost:3000\nBước 5: Triển khai production: `docker compose -f production.yml --profile migrate up migrate` rồi `docker compose -f production.yml up -d`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đăng nhập, tạo corpus (bộ sưu tập) và tải tài liệu lên\nBước 2: Nhấn Set up để cài gói phân tích: tác tử tóm tắt tài liệu và dựng đồ thị trích dẫn\nBước 3: Dùng thanh hỏi đáp để đặt câu hỏi, nhận câu trả lời có dẫn nguồn\nBước 4: Kết nối Claude Desktop qua MCP để tìm kiếm và đọc tài liệu trong corpus\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tóm tắt các điều khoản bồi thường (indemnification) trong hợp đồng này\"\n- \"So sánh điều khoản chấm dứt hợp đồng giữa các tài liệu trong corpus\"\n- \"Liệt kê các văn bản luật mà hồ sơ này trích dẫn\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "freelawproject-eyecite",
+    "slug": "freelawproject-eyecite",
+    "name": "eyecite — Thư viện trích xuất trích dẫn pháp lý từ văn bản",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "legal_public_service",
+    "categoryNameVi": "Pháp luật & Dịch vụ công số",
+    "categories": [
+      "legal_public_service",
+      "nlp_language"
+    ],
+    "categoryNamesVi": [
+      "Pháp luật & Dịch vụ công số",
+      "Xử lý ngôn ngữ tự nhiên NLP"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/freelawproject/eyecite",
+    "websiteUrl": "https://freelawproject.github.io/eyecite/",
+    "authorName": "Free Law Project",
+    "license": "Mã nguồn mở (BSD-2-Clause)",
+    "summaryVi": "eyecite là thư viện Python trích xuất trích dẫn pháp lý từ văn bản, được dùng để xử lý hàng triệu văn bản trong CourtListener và Caselaw Access Project của Harvard. Thư viện nhận diện nhiều dạng trích dẫn trong án lệ Hoa Kỳ: án đầy đủ, rút gọn, luật thành văn, tạp chí luật, supra, id. Mẫu nhận diện dựa trên cơ sở dữ liệu được xây dựng từ hơn 55 triệu trích dẫn.",
+    "purposeVi": "Công cụ giúp lập trình viên và nhà nghiên cứu pháp lý tự động trích xuất, gom nhóm và đánh dấu trích dẫn trong văn bản luật để làm dữ liệu cho tìm kiếm hoặc AI.",
+    "featuresVi": [
+      "Trích xuất: nhận diện trích dẫn và siêu dữ liệu (reporter, trang, năm, tòa án, đương sự) bằng `get_citations()`",
+      "Gom nhóm: liên kết các trích dẫn supra và id. với trích dẫn gốc",
+      "Chú thích: chèn markup tùy chỉnh quanh từng trích dẫn bằng thuật toán diff nhanh",
+      "Làm sạch: tiền xử lý văn bản trước khi trích xuất",
+      "Hỗ trợ văn bản có markup HTML/XML để nhận diện tên vụ án tốt hơn"
+    ],
+    "installGuideVi": "Yêu cầu: Python và pip.\nBước 1: Cài đặt thư viện: `pip install eyecite`\nBước 2: Nhập hàm `from eyecite import get_citations` trong mã Python",
+    "usageGuideVi": "Bước 1: Gọi `get_citations(text)` với văn bản cần phân tích\nBước 2: Dùng các hàm resolve để gom nhóm trích dẫn supra/id.\nBước 3: Dùng hàm annotate để chèn liên kết hoặc thẻ HTML quanh trích dẫn\nBước 4: Xem hướng dẫn chi tiết trong TUTORIAL.ipynb và tài liệu API",
+    "samplePromptsVi": [
+      "Viết đoạn Python dùng eyecite trích xuất mọi trích dẫn án lệ trong tệp bản án này",
+      "Dùng eyecite đánh dấu các trích dẫn trong văn bản bằng thẻ liên kết HTML"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install eyecite",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install eyecite\"\n  ],\n  \"nguon\": \"https://github.com/freelawproject/eyecite\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép BSD 2-Clause, dùng thương mại thoải mái",
+      "Đã được kiểm chứng trên hàng triệu văn bản của CourtListener và Caselaw Access Project",
+      "Có bài báo khoa học (JOSS 2021) và tài liệu API tự sinh"
+    ],
+    "consVi": [
+      "Tập trung vào định dạng trích dẫn pháp lý Hoa Kỳ, không hỗ trợ văn bản luật Việt Nam",
+      "Là thư viện cho lập trình viên, không có giao diện người dùng",
+      "Đóng góp mã cần ký thỏa thuận cấp phép người đóng góp (CLA)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# eyecite — Thư viện trích xuất trích dẫn pháp lý từ văn bản\n\n> eyecite is an open source tool for extracting legal citations from text.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\neyecite là thư viện Python trích xuất trích dẫn pháp lý từ văn bản, được dùng để xử lý hàng triệu văn bản trong CourtListener và Caselaw Access Project của Harvard. Thư viện nhận diện nhiều dạng trích dẫn trong án lệ Hoa Kỳ: án đầy đủ, rút gọn, luật thành văn, tạp chí luật, supra, id. Mẫu nhận diện dựa trên cơ sở dữ liệu được xây dựng từ hơn 55 triệu trích dẫn.\n\nCông cụ giúp lập trình viên và nhà nghiên cứu pháp lý tự động trích xuất, gom nhóm và đánh dấu trích dẫn trong văn bản luật để làm dữ liệu cho tìm kiếm hoặc AI.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Pháp luật & Dịch vụ công số\n- **Tác giả / Nhà phát triển:** Free Law Project\n- **Giấy phép bản quyền:** Mã nguồn mở (BSD-2-Clause)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/freelawproject/eyecite](https://github.com/freelawproject/eyecite)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Trích xuất: nhận diện trích dẫn và siêu dữ liệu (reporter, trang, năm, tòa án, đương sự) bằng `get_citations()`**\n- **Gom nhóm: liên kết các trích dẫn supra và id. với trích dẫn gốc**\n- **Chú thích: chèn markup tùy chỉnh quanh từng trích dẫn bằng thuật toán diff nhanh**\n- **Làm sạch: tiền xử lý văn bản trước khi trích xuất**\n- **Hỗ trợ văn bản có markup HTML/XML để nhận diện tên vụ án tốt hơn**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install eyecite\n```\n\nYêu cầu: Python và pip.\nBước 1: Cài đặt thư viện: `pip install eyecite`\nBước 2: Nhập hàm `from eyecite import get_citations` trong mã Python\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Gọi `get_citations(text)` với văn bản cần phân tích\nBước 2: Dùng các hàm resolve để gom nhóm trích dẫn supra/id.\nBước 3: Dùng hàm annotate để chèn liên kết hoặc thẻ HTML quanh trích dẫn\nBước 4: Xem hướng dẫn chi tiết trong TUTORIAL.ipynb và tài liệu API\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết đoạn Python dùng eyecite trích xuất mọi trích dẫn án lệ trong tệp bản án này\"\n- \"Dùng eyecite đánh dấu các trích dẫn trong văn bản bằng thẻ liên kết HTML\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "haris-musa-excel-mcp-server",
+    "slug": "haris-musa-excel-mcp-server",
+    "name": "Excel MCP Server — Cho trợ lý AI tạo, đọc và chỉnh sửa tệp Excel",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs",
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử",
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/haris-musa/excel-mcp-server",
+    "websiteUrl": "https://excelmcpserver.com",
+    "authorName": "Haris Musa",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Excel MCP Server cho phép Claude, Cursor, VS Code Copilot, Codex và các client AI khác tạo, đọc và chỉnh sửa tệp Excel: biểu đồ, PivotTable, công thức, bảng và nhiều hơn nữa. Server dựa trên openpyxl, không cần cài Microsoft Excel và chạy trên Windows, macOS, Linux. Có bộ máy tính công thức tích hợp (khoảng 260 hàm) nên đọc được giá trị của tệp chưa từng mở trong Excel.",
+    "purposeVi": "Công cụ giúp trợ lý AI xử lý bảng tính Excel trong công việc văn phòng: nhập dữ liệu, định dạng, lập biểu đồ, PivotTable và truy vết công thức sai.",
+    "featuresVi": [
+      "Biểu đồ và PivotTable: cột, đường, tròn, waterfall, treemap...; PivotTable thật kèm slicer và timeline",
+      "Công thức: tính toán không cần Excel, mảng động FILTER/SORT/UNIQUE, truy vết precedents/dependents, Goal Seek",
+      "Dữ liệu và bảng: định dạng có điều kiện, data validation, sắp xếp, lọc, tìm và thay thế, xóa trùng",
+      "Tệp lớn: đọc theo trang, chỉnh sửa trang tính 200.000 dòng trong vài giây",
+      "CSV: nhập/xuất CSV, TSV với nhận diện kiểu dữ liệu như Excel",
+      "An toàn: giới hạn thư mục bằng --allow-dir, chế độ chỉ đọc, HTTP chỉ localhost mặc định, ghi VBA tắt mặc định",
+      "Chọn nhóm công cụ bằng --tools để tiết kiệm ngữ cảnh"
+    ],
+    "installGuideVi": "Yêu cầu: Cần cài đặt uv (để chạy uvx). Không cần Microsoft Excel. Hỗ trợ tệp .xlsx, .xlsm, .xltx, .xltm.\nBước 1: Cài đặt cho Claude Code: `claude mcp add excel --scope user -- uvx excel-mcp-server stdio --allow-dir /path/to/workbooks`\nBước 2: Cài đặt cho Cursor hoặc Claude Desktop: thêm khối `mcpServers` với lệnh `uvx excel-mcp-server stdio --allow-dir /path/to/workbooks` vào tệp cấu hình\nBước 3: Chạy từ xa qua HTTP: `uvx excel-mcp-server streamable-http --allow-dir /srv/workbooks` (client kết nối http://127.0.0.1:8017/mcp)\nBước 4: Hoặc cài đặt bằng Docker: `docker build -t excel-mcp-server .` rồi `docker run -p 8017:8017 -v \"$PWD/workbooks:/data\" -e EXCEL_MCP_AUTH_TOKEN=change-me excel-mcp-server`",
+    "usageGuideVi": "Bước 1: Thay /path/to/workbooks bằng thư mục chứa tệp Excel mà server được phép dùng\nBước 2: Khởi động lại client AI để nạp MCP server\nBước 3: Yêu cầu trợ lý đọc, chỉnh sửa hoặc tạo biểu đồ trong tệp Excel\nBước 4: Dùng --read-only khi chỉ cần đọc dữ liệu",
+    "samplePromptsVi": [
+      "Tạo PivotTable tổng hợp doanh thu theo khu vực từ sheet Sales trong bao-cao-q1.xlsx",
+      "Vẽ biểu đồ cột so sánh chi phí từng tháng và thêm đường xu hướng",
+      "Tìm vì sao ô F12 cho kết quả sai bằng cách truy vết công thức"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add excel --scope user -- uvx excel-mcp-server stdio --allow-dir /path/to/workbooks",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add excel --scope user -- uvx excel-mcp-server stdio --allow-dir /path/to/workbooks\"\n  ],\n  \"nguon\": \"https://github.com/haris-musa/excel-mcp-server\"\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"excel\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"excel-mcp-server\",\n        \"stdio\",\n        \"--allow-dir\",\n        \"/path/to/workbooks\"\n      ]\n    }\n  }\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"excel\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"excel-mcp-server\",\n        \"stdio\",\n        \"--allow-dir\",\n        \"/path/to/workbooks\"\n      ]\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, không cần Microsoft Excel, chạy đa nền tảng",
+      "Có lệnh `claude mcp add` và gói .mcpb cho Claude Desktop",
+      "Nhiều cơ chế an toàn: giới hạn thư mục, chỉ đọc, không chạy macro",
+      "Phát triển tích cực, có trên PyPI"
+    ],
+    "consVi": [
+      "Ứng dụng desktop thường không tìm thấy `uvx` trong PATH, cần dùng đường dẫn đầy đủ",
+      "PivotTable rất lớn có thể tốn khoảng 2 GB bộ nhớ",
+      "Ghi VBA phải bật thủ công bằng --allow-vba-write; chế độ HTTP ra ngoài localhost cần token và reverse proxy TLS"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Excel MCP Server — Cho trợ lý AI tạo, đọc và chỉnh sửa tệp Excel\n\n> An open-source Model Context Protocol (MCP) server that lets Claude, Cursor, VS Code Copilot, Codex and other AI clients create, read and edit Excel files: charts, PivotTables, formulas, tables and more.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nExcel MCP Server cho phép Claude, Cursor, VS Code Copilot, Codex và các client AI khác tạo, đọc và chỉnh sửa tệp Excel: biểu đồ, PivotTable, công thức, bảng và nhiều hơn nữa. Server dựa trên openpyxl, không cần cài Microsoft Excel và chạy trên Windows, macOS, Linux. Có bộ máy tính công thức tích hợp (khoảng 260 hàm) nên đọc được giá trị của tệp chưa từng mở trong Excel.\n\nCông cụ giúp trợ lý AI xử lý bảng tính Excel trong công việc văn phòng: nhập dữ liệu, định dạng, lập biểu đồ, PivotTable và truy vết công thức sai.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** Haris Musa\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/haris-musa/excel-mcp-server](https://github.com/haris-musa/excel-mcp-server)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Biểu đồ và PivotTable: cột, đường, tròn, waterfall, treemap...; PivotTable thật kèm slicer và timeline**\n- **Công thức: tính toán không cần Excel, mảng động FILTER/SORT/UNIQUE, truy vết precedents/dependents, Goal Seek**\n- **Dữ liệu và bảng: định dạng có điều kiện, data validation, sắp xếp, lọc, tìm và thay thế, xóa trùng**\n- **Tệp lớn: đọc theo trang, chỉnh sửa trang tính 200.000 dòng trong vài giây**\n- **CSV: nhập/xuất CSV, TSV với nhận diện kiểu dữ liệu như Excel**\n- **An toàn: giới hạn thư mục bằng --allow-dir, chế độ chỉ đọc, HTTP chỉ localhost mặc định, ghi VBA tắt mặc định**\n- **Chọn nhóm công cụ bằng --tools để tiết kiệm ngữ cảnh**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add excel --scope user -- uvx excel-mcp-server stdio --allow-dir /path/to/workbooks\n```\n\nYêu cầu: Cần cài đặt uv (để chạy uvx). Không cần Microsoft Excel. Hỗ trợ tệp .xlsx, .xlsm, .xltx, .xltm.\nBước 1: Cài đặt cho Claude Code: `claude mcp add excel --scope user -- uvx excel-mcp-server stdio --allow-dir /path/to/workbooks`\nBước 2: Cài đặt cho Cursor hoặc Claude Desktop: thêm khối `mcpServers` với lệnh `uvx excel-mcp-server stdio --allow-dir /path/to/workbooks` vào tệp cấu hình\nBước 3: Chạy từ xa qua HTTP: `uvx excel-mcp-server streamable-http --allow-dir /srv/workbooks` (client kết nối http://127.0.0.1:8017/mcp)\nBước 4: Hoặc cài đặt bằng Docker: `docker build -t excel-mcp-server .` rồi `docker run -p 8017:8017 -v \"$PWD/workbooks:/data\" -e EXCEL_MCP_AUTH_TOKEN=change-me excel-mcp-server`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Thay /path/to/workbooks bằng thư mục chứa tệp Excel mà server được phép dùng\nBước 2: Khởi động lại client AI để nạp MCP server\nBước 3: Yêu cầu trợ lý đọc, chỉnh sửa hoặc tạo biểu đồ trong tệp Excel\nBước 4: Dùng --read-only khi chỉ cần đọc dữ liệu\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo PivotTable tổng hợp doanh thu theo khu vực từ sheet Sales trong bao-cao-q1.xlsx\"\n- \"Vẽ biểu đồ cột so sánh chi phí từng tháng và thêm đường xu hướng\"\n- \"Tìm vì sao ô F12 cho kết quả sai bằng cách truy vết công thức\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "gongrzhe-office-word-mcp-server",
+    "slug": "gongrzhe-office-word-mcp-server",
+    "name": "Office Word MCP Server — Cho trợ lý AI soạn thảo và định dạng tài liệu Word",
+    "icon": "FolderTree",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs",
+      "content_writing"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử",
+      "Sáng tạo nội dung & Biên tập"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop"
+    ],
+    "sourceUrl": "https://github.com/GongRzhe/Office-Word-MCP-Server",
+    "websiteUrl": "",
+    "authorName": "GongRzhe",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Office-Word-MCP-Server là MCP server giúp trợ lý AI tạo, đọc và chỉnh sửa tài liệu Microsoft Word (.docx) qua giao diện chuẩn. Server hỗ trợ thêm tiêu đề, đoạn văn, bảng, hình ảnh, danh sách, chú thích cuối trang, định dạng văn bản và bảng chi tiết, cùng trích xuất bình luận và bảo vệ tài liệu. Có thể cài qua Smithery, pip từ mã nguồn hoặc chạy trực tiếp bằng uvx.",
+    "purposeVi": "Công cụ giúp tự động soạn thảo và định dạng văn bản Word như báo cáo, tài liệu kỹ thuật bằng câu lệnh ngôn ngữ tự nhiên.",
+    "featuresVi": [
+      "Quản lý tài liệu: tạo mới, sao chép, gộp nhiều tài liệu, chuyển sang PDF, xem thuộc tính và cấu trúc",
+      "Tạo nội dung: tiêu đề, đoạn văn, bảng, hình ảnh, ngắt trang, danh sách đánh số/gạch đầu dòng, footnote và endnote",
+      "Định dạng văn bản: in đậm, nghiêng, gạch chân, màu, font, tìm và thay thế, style tùy chỉnh",
+      "Định dạng bảng: viền, tô màu ô, gộp ô, căn lề, độ rộng cột, màu hàng xen kẽ",
+      "Bảo vệ tài liệu: đặt mật khẩu, giới hạn chỉnh sửa, chữ ký số",
+      "Trích xuất bình luận: lọc theo tác giả hoặc theo đoạn văn"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.8 trở lên và pip; hoặc uv để chạy bằng uvx; hoặc Node.js để cài qua Smithery.\nBước 1: Cài đặt tự động cho Claude Desktop qua Smithery: `npx -y @smithery/cli install @GongRzhe/Office-Word-MCP-Server --client claude`\nBước 2: Hoặc cài đặt từ mã nguồn: `git clone https://github.com/GongRzhe/Office-Word-MCP-Server.git` rồi `pip install -r requirements.txt`\nBước 3: Hoặc dùng tập lệnh thiết lập: `python setup_mcp.py`\nBước 4: Thêm khối `mcpServers` (dùng uvx với gói office-word-mcp-server) vào claude_desktop_config.json rồi khởi động lại Claude Desktop",
+    "usageGuideVi": "Bước 1: Sau khi cấu hình, khởi động lại Claude Desktop\nBước 2: Yêu cầu Claude tạo hoặc mở tài liệu .docx\nBước 3: Ra lệnh thêm nội dung, bảng, định dạng hoặc trích xuất bình luận",
+    "samplePromptsVi": [
+      "Tạo tài liệu report.docx có trang tiêu đề và mục Tóm tắt",
+      "Chèn bảng 4x4 dữ liệu doanh số và tô màu hàng tiêu đề",
+      "Trích xuất tất cả bình luận của John Doe trong tài liệu này"
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "npx -y @smithery/cli install @GongRzhe/Office-Word-MCP-Server --client claude",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"word-document-server\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"--from\",\n        \"office-word-mcp-server\",\n        \"word_mcp_server\"\n      ]\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT",
+      "Nhiều công cụ định dạng chi tiết cho văn bản và bảng",
+      "Chạy được không cần cài đặt cục bộ qua uvx"
+    ],
+    "consVi": [
+      "Cập nhật gần nhất vào 31/12/2025, nhịp phát triển chậm hơn các dự án khác",
+      "Hướng dẫn chủ yếu cho Claude Desktop; không có lệnh `claude mcp add` trong README",
+      "Cài qua Smithery phụ thuộc dịch vụ bên thứ ba"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Office Word MCP Server — Cho trợ lý AI soạn thảo và định dạng tài liệu Word\n\n> A Model Context Protocol (MCP) server for creating, reading, and manipulating Microsoft Word documents.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nOffice-Word-MCP-Server là MCP server giúp trợ lý AI tạo, đọc và chỉnh sửa tài liệu Microsoft Word (.docx) qua giao diện chuẩn. Server hỗ trợ thêm tiêu đề, đoạn văn, bảng, hình ảnh, danh sách, chú thích cuối trang, định dạng văn bản và bảng chi tiết, cùng trích xuất bình luận và bảo vệ tài liệu. Có thể cài qua Smithery, pip từ mã nguồn hoặc chạy trực tiếp bằng uvx.\n\nCông cụ giúp tự động soạn thảo và định dạng văn bản Word như báo cáo, tài liệu kỹ thuật bằng câu lệnh ngôn ngữ tự nhiên.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** GongRzhe\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_desktop`\n- **Kho lưu trữ chính thức:** [https://github.com/GongRzhe/Office-Word-MCP-Server](https://github.com/GongRzhe/Office-Word-MCP-Server)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Quản lý tài liệu: tạo mới, sao chép, gộp nhiều tài liệu, chuyển sang PDF, xem thuộc tính và cấu trúc**\n- **Tạo nội dung: tiêu đề, đoạn văn, bảng, hình ảnh, ngắt trang, danh sách đánh số/gạch đầu dòng, footnote và endnote**\n- **Định dạng văn bản: in đậm, nghiêng, gạch chân, màu, font, tìm và thay thế, style tùy chỉnh**\n- **Định dạng bảng: viền, tô màu ô, gộp ô, căn lề, độ rộng cột, màu hàng xen kẽ**\n- **Bảo vệ tài liệu: đặt mật khẩu, giới hạn chỉnh sửa, chữ ký số**\n- **Trích xuất bình luận: lọc theo tác giả hoặc theo đoạn văn**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx -y @smithery/cli install @GongRzhe/Office-Word-MCP-Server --client claude\n```\n\nYêu cầu: Python 3.8 trở lên và pip; hoặc uv để chạy bằng uvx; hoặc Node.js để cài qua Smithery.\nBước 1: Cài đặt tự động cho Claude Desktop qua Smithery: `npx -y @smithery/cli install @GongRzhe/Office-Word-MCP-Server --client claude`\nBước 2: Hoặc cài đặt từ mã nguồn: `git clone https://github.com/GongRzhe/Office-Word-MCP-Server.git` rồi `pip install -r requirements.txt`\nBước 3: Hoặc dùng tập lệnh thiết lập: `python setup_mcp.py`\nBước 4: Thêm khối `mcpServers` (dùng uvx với gói office-word-mcp-server) vào claude_desktop_config.json rồi khởi động lại Claude Desktop\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Sau khi cấu hình, khởi động lại Claude Desktop\nBước 2: Yêu cầu Claude tạo hoặc mở tài liệu .docx\nBước 3: Ra lệnh thêm nội dung, bảng, định dạng hoặc trích xuất bình luận\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo tài liệu report.docx có trang tiêu đề và mục Tóm tắt\"\n- \"Chèn bảng 4x4 dữ liệu doanh số và tô màu hàng tiêu đề\"\n- \"Trích xuất tất cả bình luận của John Doe trong tài liệu này\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "taylorwilsdon-google-workspace-mcp",
+    "slug": "taylorwilsdon-google-workspace-mcp",
+    "name": "Google Workspace MCP — Điều khiển Gmail, Drive, Docs, Sheets, Calendar bằng AI",
+    "icon": "Globe",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs",
+      "rpa_workflow_automation"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử",
+      "Tự động hóa quy trình & RPA (Automation)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/taylorwilsdon/google_workspace_mcp",
+    "websiteUrl": "https://workspacemcp.com",
+    "authorName": "Taylor Wilsdon",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Workspace MCP kết nối trợ lý AI với 12 dịch vụ Google Workspace (Gmail, Drive, Calendar, Docs, Sheets, Slides, Forms, Tasks, Contacts, Chat, Custom Search, Apps Script) qua hơn 120 công cụ trong một MCP server. Server hỗ trợ xác thực đa người dùng OAuth 2.1, ba cấp công cụ, chế độ chỉ đọc, CLI và triển khai container không trạng thái. Chạy cục bộ qua stdio hoặc từ xa qua streamable HTTP, dùng OAuth client trong dự án Google Cloud của chính bạn.",
+    "purposeVi": "Công cụ giúp trợ lý AI xử lý email, lịch, tài liệu, bảng tính và biểu mẫu Google trong công việc văn phòng bằng ngôn ngữ tự nhiên.",
+    "featuresVi": [
+      "Gmail: tìm kiếm, gửi, soạn nháp, nhãn, bộ lọc, tệp đính kèm",
+      "Drive, Docs, Sheets, Slides: tìm, tạo, chia sẻ, nhập tệp Office, chỉnh sửa và định dạng chi tiết",
+      "Calendar, Tasks, Contacts, Forms, Chat: quản lý sự kiện, công việc, danh bạ, biểu mẫu và tin nhắn",
+      "Apps Script: viết, triển khai, chạy và gỡ lỗi script",
+      "Cấp công cụ core/extended/complete, chế độ chỉ đọc, chọn dịch vụ bằng --tools",
+      "OAuth 2.1 đa người dùng, chế độ không trạng thái, tài khoản dịch vụ, không gửi telemetry",
+      "CLI workspace-cli và skill đi kèm cho Claude Code"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10+, uv; OAuth client tạo trong Google Cloud Console với các Google API cần dùng đã được bật. Google Chat cần tài khoản Workspace và cấu hình Chat app.\nBước 1: Tạo OAuth client trong Google Cloud Console và đặt biến môi trường GOOGLE_OAUTH_CLIENT_ID, GOOGLE_OAUTH_CLIENT_SECRET\nBước 2: Cài đặt và khởi chạy server: `uvx workspace-mcp --tool-tier core`\nBước 3: Cho OAuth 2.1 qua HTTP: `uvx workspace-mcp --transport streamable-http --tool-tier core`\nBước 4: Kết nối Claude Code khi server chạy ở chế độ HTTP: `claude mcp add --transport http workspace-mcp http://localhost:8000/mcp`",
+    "usageGuideVi": "Bước 1: Chọn cấp công cụ (core, extended, complete) hoặc chỉ định dịch vụ bằng `--tools gmail drive calendar`\nBước 2: Với Claude Desktop/web, chạy server ở chế độ HTTP và thêm làm Custom Connector\nBước 3: Đăng nhập tài khoản Google khi được yêu cầu\nBước 4: Yêu cầu trợ lý đọc email, tạo sự kiện hoặc chỉnh sửa tài liệu",
+    "samplePromptsVi": [
+      "Tìm các email chưa đọc từ phòng nhân sự trong tuần này và tóm tắt",
+      "Tạo cuộc họp thứ Năm lúc 14 giờ và mời nhóm dự án",
+      "Thêm bảng tổng hợp chi phí vào Google Sheet báo cáo tháng"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add --transport http workspace-mcp http://localhost:8000/mcp",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add --transport http workspace-mcp http://localhost:8000/mcp\"\n  ],\n  \"nguon\": \"https://github.com/taylorwilsdon/google_workspace_mcp\"\n}"
+      },
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "uvx workspace-mcp --tool-tier core",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uvx workspace-mcp --tool-tier core\"\n  ],\n  \"nguon\": \"https://github.com/taylorwilsdon/google_workspace_mcp\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, không CLA, không telemetry mặc định",
+      "Phủ rộng 12 dịch vụ Google Workspace với hơn 120 công cụ",
+      "Hỗ trợ OAuth 2.1 đa người dùng, triển khai tập trung cho tổ chức",
+      "Được cập nhật thường xuyên"
+    ],
+    "consVi": [
+      "Cần tự tạo OAuth client và bật API trong Google Cloud Console",
+      "README cảnh báo rủi ro prompt injection từ email và tài liệu; nên hạn chế công cụ ghi",
+      "Không dùng `uvx workspace-cli` vì tên gói trên PyPI đã bị chiếm; Google Chat cần tài khoản Workspace"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Google Workspace MCP — Điều khiển Gmail, Drive, Docs, Sheets, Calendar bằng AI\n\n> Full natural language control over Google Calendar, Drive, Gmail, Docs, Sheets, Slides, Forms, Tasks, Contacts, and Chat through all MCP clients, AI assistants and developer tools.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nWorkspace MCP kết nối trợ lý AI với 12 dịch vụ Google Workspace (Gmail, Drive, Calendar, Docs, Sheets, Slides, Forms, Tasks, Contacts, Chat, Custom Search, Apps Script) qua hơn 120 công cụ trong một MCP server. Server hỗ trợ xác thực đa người dùng OAuth 2.1, ba cấp công cụ, chế độ chỉ đọc, CLI và triển khai container không trạng thái. Chạy cục bộ qua stdio hoặc từ xa qua streamable HTTP, dùng OAuth client trong dự án Google Cloud của chính bạn.\n\nCông cụ giúp trợ lý AI xử lý email, lịch, tài liệu, bảng tính và biểu mẫu Google trong công việc văn phòng bằng ngôn ngữ tự nhiên.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** Taylor Wilsdon\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/taylorwilsdon/google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Gmail: tìm kiếm, gửi, soạn nháp, nhãn, bộ lọc, tệp đính kèm**\n- **Drive, Docs, Sheets, Slides: tìm, tạo, chia sẻ, nhập tệp Office, chỉnh sửa và định dạng chi tiết**\n- **Calendar, Tasks, Contacts, Forms, Chat: quản lý sự kiện, công việc, danh bạ, biểu mẫu và tin nhắn**\n- **Apps Script: viết, triển khai, chạy và gỡ lỗi script**\n- **Cấp công cụ core/extended/complete, chế độ chỉ đọc, chọn dịch vụ bằng --tools**\n- **OAuth 2.1 đa người dùng, chế độ không trạng thái, tài khoản dịch vụ, không gửi telemetry**\n- **CLI workspace-cli và skill đi kèm cho Claude Code**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add --transport http workspace-mcp http://localhost:8000/mcp\n```\n\nYêu cầu: Python 3.10+, uv; OAuth client tạo trong Google Cloud Console với các Google API cần dùng đã được bật. Google Chat cần tài khoản Workspace và cấu hình Chat app.\nBước 1: Tạo OAuth client trong Google Cloud Console và đặt biến môi trường GOOGLE_OAUTH_CLIENT_ID, GOOGLE_OAUTH_CLIENT_SECRET\nBước 2: Cài đặt và khởi chạy server: `uvx workspace-mcp --tool-tier core`\nBước 3: Cho OAuth 2.1 qua HTTP: `uvx workspace-mcp --transport streamable-http --tool-tier core`\nBước 4: Kết nối Claude Code khi server chạy ở chế độ HTTP: `claude mcp add --transport http workspace-mcp http://localhost:8000/mcp`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn cấp công cụ (core, extended, complete) hoặc chỉ định dịch vụ bằng `--tools gmail drive calendar`\nBước 2: Với Claude Desktop/web, chạy server ở chế độ HTTP và thêm làm Custom Connector\nBước 3: Đăng nhập tài khoản Google khi được yêu cầu\nBước 4: Yêu cầu trợ lý đọc email, tạo sự kiện hoặc chỉnh sửa tài liệu\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tìm các email chưa đọc từ phòng nhân sự trong tuần này và tóm tắt\"\n- \"Tạo cuộc họp thứ Năm lúc 14 giờ và mời nhóm dự án\"\n- \"Thêm bảng tổng hợp chi phí vào Google Sheet báo cáo tháng\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:50:58.462Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]

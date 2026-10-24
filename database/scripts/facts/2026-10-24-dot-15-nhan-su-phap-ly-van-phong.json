@@ -1,0 +1,629 @@
+[
+ {
+  "repo": "srbhr/Resume-Matcher",
+  "license": "Apache License 2.0",
+  "authorName": "Saurabh Rai (srbhr)",
+  "websiteUrl": "https://resumematcher.fyi",
+  "toolType": "software",
+  "taglineEn": "Free, open-source resume builder that tailors your resume (CV) to each job description.",
+  "summaryVi": "Resume Matcher là công cụ tạo CV mã nguồn mở, tự host, dùng LLM để điều chỉnh CV gốc cho từng mô tả công việc, kèm thư xin việc và chuẩn bị phỏng vấn. Ứng dụng gồm backend FastAPI, frontend Next.js và cơ sở dữ liệu SQLite chạy trên máy của bạn; có thể dùng OpenAI, Anthropic, Gemini, DeepSeek, OpenRouter, Groq hoặc mô hình cục bộ qua Ollama. Dự án còn có MCP server để Claude Code, Claude Desktop, Cursor hoặc Codex điều khiển trực tiếp.",
+  "purposeVi": "Giúp ứng viên tùy chỉnh CV theo từng tin tuyển dụng, kiểm tra điểm ATS và xuất PDF chuyên nghiệp mà dữ liệu vẫn nằm trên máy cá nhân.",
+  "featuresVi": [
+   "CV gốc (Master Resume): tạo một CV đầy đủ để làm nguồn cho mọi bản tùy chỉnh",
+   "Tùy chỉnh theo tin tuyển dụng: dán mô tả công việc để AI đề xuất nội dung phù hợp, không thêm kỹ năng hay kinh nghiệm không có trong CV gốc",
+   "Thư xin việc và chuẩn bị phỏng vấn: sinh thư 200–300 từ và nội dung luyện phỏng vấn dựa trên CV",
+   "Điểm ATS và ATS Check: chấm điểm trên 100 (từ khóa, kỹ năng, chức danh, bố cục, ngày tháng) và đọc lại PDF như hệ thống ATS, chạy bằng mã thuần không gọi LLM",
+   "Hàng đợi tùy chỉnh: xử lý lần lượt nhiều mô tả công việc ở chế độ nền",
+   "Mẫu PDF: nhiều mẫu như Single Column, Two Column, LaTeX, Deedy; xuất A4 hoặc US Letter",
+   "MCP server: cho Claude Code, Claude Desktop, Cursor, Codex lưu, kiểm tra và xuất CV mà không cần khóa LLM"
+  ],
+  "requirementsVi": "Python 3.13+, Node.js 24.22.1 (ghim trong .nvmrc), uv; hoặc Docker. Cần khóa API của một nhà cung cấp LLM, hoặc Ollama chạy cục bộ, hoặc một coding agent.",
+  "installStepsVi": [
+   "Tải mã nguồn: `git clone https://github.com/srbhr/Resume-Matcher.git`",
+   "Cài đặt backend: vào `apps/backend`, sao chép `.env.example` thành `.env`, chạy `uv sync` rồi `uv run app`",
+   "Cài đặt frontend: vào `apps/frontend`, chạy `npm install` rồi `npm run dev`",
+   "Hoặc cài đặt bằng Docker: `docker run --name resume-matcher -p 3000:3000 -v resume-data:/app/backend/data ghcr.io/srbhr/resume-matcher:latest`",
+   "Cài đặt MCP cho Claude Code (cần bản cài cục bộ, không Docker): `claude mcp add resume-matcher -- uv run --directory /abs/path/to/Resume-Matcher/apps/backend resume-matcher-mcp`"
+  ],
+  "cliCommand": "docker run --name resume-matcher -p 3000:3000 -v resume-data:/app/backend/data ghcr.io/srbhr/resume-matcher:latest",
+  "usageStepsVi": [
+   "Mở http://localhost:3000 và chọn nhà cung cấp AI trong Settings",
+   "Tải lên CV gốc dạng PDF hoặc DOCX",
+   "Dán mô tả công việc, xem và chỉnh các đề xuất do AI tạo",
+   "Xem điểm ATS trong tab JD Match, tạo thư xin việc rồi xuất PDF"
+  ],
+  "samplePromptsVi": [
+   "Tùy chỉnh CV gốc của tôi cho tin tuyển dụng Backend Engineer này và cho biết các từ khóa còn thiếu",
+   "Viết thư xin việc dựa trên CV đã tùy chỉnh cho vị trí Data Analyst",
+   "Chấm điểm ATS cho CV của tôi và xuất bản PDF theo mẫu Two Column"
+  ],
+  "prosVi": [
+   "Giấy phép Apache 2.0, tự host, không cần tạo tài khoản; dữ liệu CV lưu trong cơ sở dữ liệu của bạn",
+   "Hỗ trợ nhiều nhà cung cấp LLM và mô hình cục bộ qua Ollama",
+   "Có MCP server dùng được với Claude Code/Claude Desktop mà không cần khóa LLM",
+   "Giao diện đa ngôn ngữ, cập nhật thường xuyên"
+  ],
+  "consVi": [
+   "Cần cài đặt qua dòng lệnh (Python 3.13+, Node.js, uv) hoặc Docker",
+   "Cần khóa API của nhà cung cấp LLM hoặc chạy Ollama cục bộ",
+   "MCP server chưa hỗ trợ bản cài Docker; xuất PDF và một số công cụ cần frontend đang chạy",
+   "Giao diện chưa có tiếng Việt (có tiếng Anh, Tây Ban Nha, Trung, Nhật, Bồ Đào Nha, Pháp, Hàn)"
+  ],
+  "sourceEvidence": {
+   "git clone https://github.com/srbhr/Resume-Matcher.git": "README.md:250",
+   "uv sync": "README.md:256",
+   "uv run app": "README.md:257",
+   "cp .env.example .env": "README.md:255",
+   "npm install": "README.md:261",
+   "npm run dev": "README.md:262",
+   "docker run --name resume-matcher -p 3000:3000 -v resume-data:/app/backend/data ghcr.io/srbhr/resume-matcher:latest": "README.md:294",
+   "claude mcp add resume-matcher -- uv run --directory /abs/path/to/Resume-Matcher/apps/backend resume-matcher-mcp": "SETUP.md:593",
+   "jsonConfig mcpServers resume-matcher": "SETUP.md:602",
+   "license Apache-2.0": "LICENSE:1"
+  },
+  "meta": {
+   "id": "srbhr-resume-matcher",
+   "nameVi": "Resume Matcher — Tùy chỉnh CV theo tin tuyển dụng bằng AI, tự host",
+   "icon": "Sparkles",
+   "categories": [
+    "hr_recruitment",
+    "office_digital_docs"
+   ],
+   "platforms": [
+    "web",
+    "claude_code",
+    "claude_desktop",
+    "cursor"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache-2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "docker run --name resume-matcher -p 3000:3000 -v resume-data:/app/backend/data ghcr.io/srbhr/resume-matcher:latest"
+    },
+    {
+     "platform": "claude_code",
+     "platformName": "Claude Code",
+     "cliCommand": "claude mcp add resume-matcher -- uv run --directory /abs/path/to/Resume-Matcher/apps/backend resume-matcher-mcp"
+    },
+    {
+     "platform": "claude_desktop",
+     "platformName": "Claude Desktop",
+     "jsonConfig": "{\n  \"mcpServers\": {\n    \"resume-matcher\": {\n      \"command\": \"/absolute/path/to/uv\",\n      \"args\": [\n        \"run\",\n        \"--directory\",\n        \"/abs/path/to/Resume-Matcher/apps/backend\",\n        \"resume-matcher-mcp\"\n      ]\n    }\n  }\n}"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "reactive-resume/reactive-resume",
+  "license": "MIT License",
+  "authorName": "Amruth Pillai",
+  "websiteUrl": "https://rxresu.me",
+  "toolType": "software",
+  "taglineEn": "Reactive Resume is a free and open-source resume builder for writing resumes and cover letters, checking your work, and tracking job applications.",
+  "summaryVi": "Reactive Resume là ứng dụng tạo CV và thư xin việc mã nguồn mở với trình soạn thảo xem trước PDF trực tiếp, 18 mẫu và các công cụ kiểm tra CV. Ứng dụng có trợ lý AI tùy chọn (OpenAI, Anthropic, Gemini, OpenRouter, Ollama...) đề xuất chỉnh sửa, cùng REST API và MCP server để trợ lý AI bên ngoài quản lý tài liệu. Có thể dùng bản host tại rxresu.me hoặc tự host bằng Docker, Vercel, Cloudflare Workers.",
+  "purposeVi": "Công cụ giúp ứng viên viết, kiểm tra CV theo tin tuyển dụng và theo dõi quá trình ứng tuyển, với dữ liệu thuộc quyền sở hữu của người dùng.",
+  "featuresVi": [
+   "Trình soạn thảo Write/Design/Check: xem trước PDF trực tiếp, tự lưu, khôi phục bản nháp, 200 bước hoàn tác",
+   "18 mẫu CV: lọc mẫu một cột, hai cột và an toàn với ATS; tùy chỉnh font, màu, khổ A4/Letter",
+   "Kiểm tra CV: kiểm tra độ dễ đọc, so khớp từ khóa với tin tuyển dụng, xem văn bản mà phần mềm tuyển dụng đọc được",
+   "Thư xin việc: trình soạn riêng, lịch sử phiên bản, liên kết với CV",
+   "Theo dõi ứng tuyển: dạng danh sách, bảng, thống kê, lịch; lưu tin từ URL; nhập/xuất CSV",
+   "Trợ lý AI: đề xuất chỉnh sửa có giải thích, chấp nhận hoặc từ chối từng gợi ý",
+   "Nhập/xuất: nhập JSON Resume, bản xuất dữ liệu LinkedIn, PDF, Word; xuất PDF, DOCX, Markdown, JSON",
+   "REST API và MCP server: quản lý tài liệu, nhập/xuất, kiểm tra và quy trình ứng tuyển từ client AI"
+  ],
+  "requirementsVi": "Dùng bản host cần tài khoản Reactive Resume. Tự host cần Docker và Docker Compose (PostgreSQL, lưu trữ tệp tải lên; Redis và SMTP tùy chọn). Tính năng AI cần kết nối một nhà cung cấp LLM.",
+  "installStepsVi": [
+   "Tải mã nguồn: `git clone --depth=1 https://github.com/reactive-resume/reactive-resume.git reactive-resume`",
+   "Tạo cấu hình: `cp .env.example .env`, đặt AUTH_SECRET và ENCRYPTION_SECRET (tạo bằng `openssl rand -hex 32`)",
+   "Cài đặt và khởi chạy: `docker compose up -d --build` rồi mở http://localhost:3000",
+   "Hoặc cài đặt bằng ảnh Docker có sẵn: `docker pull amruthpillai/reactive-resume:latest`",
+   "Kết nối trợ lý AI qua MCP: `npx add-mcp https://rxresu.me/mcp --name reactive-resume`"
+  ],
+  "cliCommand": "docker compose up -d --build",
+  "usageStepsVi": [
+   "Tạo tài khoản, nhập CV có sẵn hoặc bắt đầu từ đầu",
+   "Chọn mẫu, chỉnh sửa nội dung và xem trước PDF",
+   "Dùng chế độ Check để so khớp từ khóa với tin tuyển dụng",
+   "Kết nối nhà cung cấp AI để nhận gợi ý chỉnh sửa, rồi tải PDF/Word hoặc chia sẻ liên kết công khai"
+  ],
+  "samplePromptsVi": [
+   "Cải thiện phần mô tả kinh nghiệm trong CV của tôi cho ngắn gọn và rõ ràng hơn",
+   "Soạn thư xin việc từ CV này và tin tuyển dụng đã lưu",
+   "Liệt kê các đơn ứng tuyển đang ở giai đoạn phỏng vấn trong Reactive Resume"
+  ],
+  "prosVi": [
+   "Giấy phép MIT, không theo dõi, không quảng cáo, không có gói trả phí",
+   "Có bản host miễn phí và nhiều lựa chọn tự host",
+   "Có REST API và MCP server cho trợ lý AI",
+   "Phát triển tích cực, tài liệu đầy đủ"
+  ],
+  "consVi": [
+   "Tính năng AI cần kết nối nhà cung cấp riêng; chi phí hosting và nhà cung cấp do người dùng chịu",
+   "Tự host cần PostgreSQL và lưu trữ tệp; triển khai Cloudflare cần gói Workers Paid",
+   "Nhập tệp Word cần kết nối nhà cung cấp AI",
+   "Repo đã chuyển từ AmruthPillai/Reactive-Resume sang reactive-resume/reactive-resume"
+  ],
+  "sourceEvidence": {
+   "git clone --depth=1 https://github.com/reactive-resume/reactive-resume.git reactive-resume": "README.md:234",
+   "cp .env.example .env": "README.md:238",
+   "openssl rand -hex 32": "README.md:240",
+   "docker compose up -d --build": "README.md:243",
+   "docker pull amruthpillai/reactive-resume:latest": "README.md:333",
+   "npx add-mcp https://rxresu.me/mcp --name reactive-resume": "docs/guides/using-the-mcp-server.mdx:34",
+   "jsonConfig mcpServers reactive-resume": "docs/guides/using-the-mcp-server.mdx:68",
+   "license MIT": "LICENSE:1",
+   "no paid tier": "README.md:65"
+  },
+  "meta": {
+   "id": "reactive-resume-reactive-resume",
+   "nameVi": "Reactive Resume — Trình tạo CV, thư xin việc và theo dõi ứng tuyển có trợ lý AI",
+   "icon": "Layers",
+   "categories": [
+    "hr_recruitment",
+    "office_digital_docs"
+   ],
+   "platforms": [
+    "web",
+    "claude_code",
+    "claude_desktop",
+    "cursor"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "pricingText": "Miễn phí, không có gói trả phí; chi phí hosting và nhà cung cấp AI (nếu dùng) do người dùng tự chịu.",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "docker compose up -d --build"
+    },
+    {
+     "platform": "claude_desktop",
+     "platformName": "Claude Desktop",
+     "cliCommand": "npx add-mcp https://rxresu.me/mcp --name reactive-resume",
+     "jsonConfig": "{\n  \"mcpServers\": {\n    \"reactive-resume\": {\n      \"url\": \"https://rxresu.me/mcp\",\n      \"headers\": {\n        \"x-api-key\": \"YOUR_API_KEY\"\n      }\n    }\n  }\n}"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "Open-Source-Legal/OpenContracts",
+  "license": "MIT License",
+  "authorName": "Open Source Legal (John Scrudato IV)",
+  "websiteUrl": "https://contracts.opensource.legal",
+  "toolType": "software",
+  "taglineEn": "Open-source document intelligence you can build on.",
+  "summaryVi": "OpenContracts là nền tảng phân tích tài liệu tự host, biến kho văn bản (hợp đồng, hồ sơ SEC, văn bản luật) thành đồ thị trích dẫn có thể lập trình: chú thích thủ công, trích xuất dữ liệu có cấu trúc, tác tử AI và MCP server tích hợp sẵn. Mọi thao tác trên giao diện React đều gọi được qua GraphQL/REST API và Model Context Protocol. Dự án dùng PydanticAI cho tác tử và hỗ trợ tìm kiếm vector lẫn toàn văn.",
+  "purposeVi": "Công cụ giúp nhóm pháp lý và nghiên cứu chú thích, so sánh điều khoản hợp đồng và trích xuất dữ liệu từ hàng trăm tài liệu với câu trả lời AI có dẫn nguồn.",
+  "featuresVi": [
+   "Đồ thị trích dẫn: tự phát hiện và liên kết các trích dẫn luật, điều khoản giữa các tài liệu",
+   "Tác tử AI: tác tử theo tài liệu hoặc theo bộ sưu tập, trả lời có dẫn nguồn, gọi được từ Python",
+   "MCP server: endpoint /mcp/ và /mcp/me/ với các công cụ search_corpus, list_documents, get_document_text, list_annotations...",
+   "Trích xuất có cấu trúc: định nghĩa fieldset bằng câu hỏi ngôn ngữ tự nhiên, chạy trên hàng trăm tài liệu, duyệt từng ô",
+   "Chú thích PDF giữ nguyên bố cục: chọn vùng nhiều trang, nhãn tùy chỉnh, quan hệ giữa khái niệm",
+   "Cộng tác: thảo luận theo luồng, @mention tác tử AI, phiên bản hóa bộ sưu tập",
+   "Pipeline mở rộng: thay thế parser, embedder, thumbnailer"
+  ],
+  "requirementsVi": "Docker và Docker Compose; tác tử AI và trích xuất cần cấu hình nhà cung cấp LLM. GPU/NPU tùy chọn để tăng tốc embedding.",
+  "installStepsVi": [
+   "Tải mã nguồn: `git clone https://github.com/Open-Source-Legal/OpenContracts.git`",
+   "Tạo thư mục cấu hình `mkdir -p .envs/.local` và sao chép các tệp mẫu từ `docs/sample_env_files`",
+   "Cài đặt và build: `docker compose -f local.yml build`",
+   "Khởi chạy toàn bộ dịch vụ: `docker compose -f local.yml --profile fullstack up`, rồi mở http://localhost:3000",
+   "Triển khai production: `docker compose -f production.yml --profile migrate up migrate` rồi `docker compose -f production.yml up -d`"
+  ],
+  "cliCommand": "docker compose -f local.yml --profile fullstack up",
+  "usageStepsVi": [
+   "Đăng nhập, tạo corpus (bộ sưu tập) và tải tài liệu lên",
+   "Nhấn Set up để cài gói phân tích: tác tử tóm tắt tài liệu và dựng đồ thị trích dẫn",
+   "Dùng thanh hỏi đáp để đặt câu hỏi, nhận câu trả lời có dẫn nguồn",
+   "Kết nối Claude Desktop qua MCP để tìm kiếm và đọc tài liệu trong corpus"
+  ],
+  "samplePromptsVi": [
+   "Tóm tắt các điều khoản bồi thường (indemnification) trong hợp đồng này",
+   "So sánh điều khoản chấm dứt hợp đồng giữa các tài liệu trong corpus",
+   "Liệt kê các văn bản luật mà hồ sơ này trích dẫn"
+  ],
+  "prosVi": [
+   "Giấy phép MIT, tự host toàn bộ",
+   "Có sẵn MCP server, GraphQL và REST API",
+   "Chú thích của con người là dữ liệu gốc, AI trả lời có dẫn nguồn",
+   "Được bảo trì tích cực, tài liệu chi tiết trong repo"
+  ],
+  "consVi": [
+   "Triển khai khá nặng (nhiều dịch vụ Docker, Celery, PostgreSQL)",
+   "MCP server chỉ đọc; tài nguyên riêng tư cần xác thực qua /mcp/me/",
+   "Tác tử AI cần cấu hình nhà cung cấp LLM; ví dụ trong README tập trung vào văn bản pháp luật Hoa Kỳ"
+  ],
+  "sourceEvidence": {
+   "git clone https://github.com/Open-Source-Legal/OpenContracts.git": "README.md:226",
+   "mkdir -p .envs/.local": "README.md:230",
+   "docker compose -f local.yml build": "README.md:236",
+   "docker compose -f local.yml --profile fullstack up": "README.md:237",
+   "docker compose -f production.yml --profile migrate up migrate": "README.md:248",
+   "docker compose -f production.yml up -d": "README.md:251",
+   "jsonConfig mcpServers opencontracts": "docs/mcp/README.md:31",
+   "license MIT": "LICENSE:1"
+  },
+  "meta": {
+   "id": "open-source-legal-opencontracts",
+   "nameVi": "OpenContracts — Phân tích hợp đồng và tài liệu pháp lý bằng AI, có MCP server",
+   "icon": "FolderTree",
+   "categories": [
+    "legal_public_service",
+    "office_digital_docs",
+    "vector_rag"
+   ],
+   "platforms": [
+    "web",
+    "claude_desktop"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "docker compose -f local.yml --profile fullstack up"
+    },
+    {
+     "platform": "claude_desktop",
+     "platformName": "Claude Desktop",
+     "jsonConfig": "{\n  \"mcpServers\": {\n    \"opencontracts\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"mcp-remote\",\n        \"https://your-instance.com/mcp/\"\n      ]\n    }\n  }\n}"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "freelawproject/eyecite",
+  "license": "BSD 2-Clause License",
+  "authorName": "Free Law Project",
+  "websiteUrl": "https://freelawproject.github.io/eyecite/",
+  "toolType": "sdk",
+  "taglineEn": "eyecite is an open source tool for extracting legal citations from text.",
+  "summaryVi": "eyecite là thư viện Python trích xuất trích dẫn pháp lý từ văn bản, được dùng để xử lý hàng triệu văn bản trong CourtListener và Caselaw Access Project của Harvard. Thư viện nhận diện nhiều dạng trích dẫn trong án lệ Hoa Kỳ: án đầy đủ, rút gọn, luật thành văn, tạp chí luật, supra, id. Mẫu nhận diện dựa trên cơ sở dữ liệu được xây dựng từ hơn 55 triệu trích dẫn.",
+  "purposeVi": "Công cụ giúp lập trình viên và nhà nghiên cứu pháp lý tự động trích xuất, gom nhóm và đánh dấu trích dẫn trong văn bản luật để làm dữ liệu cho tìm kiếm hoặc AI.",
+  "featuresVi": [
+   "Trích xuất: nhận diện trích dẫn và siêu dữ liệu (reporter, trang, năm, tòa án, đương sự) bằng `get_citations()`",
+   "Gom nhóm: liên kết các trích dẫn supra và id. với trích dẫn gốc",
+   "Chú thích: chèn markup tùy chỉnh quanh từng trích dẫn bằng thuật toán diff nhanh",
+   "Làm sạch: tiền xử lý văn bản trước khi trích xuất",
+   "Hỗ trợ văn bản có markup HTML/XML để nhận diện tên vụ án tốt hơn"
+  ],
+  "requirementsVi": "Python và pip.",
+  "installStepsVi": [
+   "Cài đặt thư viện: `pip install eyecite`",
+   "Nhập hàm `from eyecite import get_citations` trong mã Python"
+  ],
+  "cliCommand": "pip install eyecite",
+  "usageStepsVi": [
+   "Gọi `get_citations(text)` với văn bản cần phân tích",
+   "Dùng các hàm resolve để gom nhóm trích dẫn supra/id.",
+   "Dùng hàm annotate để chèn liên kết hoặc thẻ HTML quanh trích dẫn",
+   "Xem hướng dẫn chi tiết trong TUTORIAL.ipynb và tài liệu API"
+  ],
+  "samplePromptsVi": [
+   "Viết đoạn Python dùng eyecite trích xuất mọi trích dẫn án lệ trong tệp bản án này",
+   "Dùng eyecite đánh dấu các trích dẫn trong văn bản bằng thẻ liên kết HTML"
+  ],
+  "prosVi": [
+   "Giấy phép BSD 2-Clause, dùng thương mại thoải mái",
+   "Đã được kiểm chứng trên hàng triệu văn bản của CourtListener và Caselaw Access Project",
+   "Có bài báo khoa học (JOSS 2021) và tài liệu API tự sinh"
+  ],
+  "consVi": [
+   "Tập trung vào định dạng trích dẫn pháp lý Hoa Kỳ, không hỗ trợ văn bản luật Việt Nam",
+   "Là thư viện cho lập trình viên, không có giao diện người dùng",
+   "Đóng góp mã cần ký thỏa thuận cấp phép người đóng góp (CLA)"
+  ],
+  "sourceEvidence": {
+   "pip install eyecite": "README.rst:64",
+   "from eyecite import get_citations": "README.rst:69",
+   "license BSD-2-Clause": "LICENSE:1"
+  },
+  "meta": {
+   "id": "freelawproject-eyecite",
+   "nameVi": "eyecite — Thư viện trích xuất trích dẫn pháp lý từ văn bản",
+   "icon": "Search",
+   "categories": [
+    "legal_public_service",
+    "nlp_language"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (BSD-2-Clause)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install eyecite"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "haris-musa/excel-mcp-server",
+  "license": "MIT License",
+  "authorName": "Haris Musa",
+  "websiteUrl": "https://excelmcpserver.com",
+  "toolType": "mcp",
+  "taglineEn": "An open-source Model Context Protocol (MCP) server that lets Claude, Cursor, VS Code Copilot, Codex and other AI clients create, read and edit Excel files: charts, PivotTables, formulas, tables and more.",
+  "summaryVi": "Excel MCP Server cho phép Claude, Cursor, VS Code Copilot, Codex và các client AI khác tạo, đọc và chỉnh sửa tệp Excel: biểu đồ, PivotTable, công thức, bảng và nhiều hơn nữa. Server dựa trên openpyxl, không cần cài Microsoft Excel và chạy trên Windows, macOS, Linux. Có bộ máy tính công thức tích hợp (khoảng 260 hàm) nên đọc được giá trị của tệp chưa từng mở trong Excel.",
+  "purposeVi": "Công cụ giúp trợ lý AI xử lý bảng tính Excel trong công việc văn phòng: nhập dữ liệu, định dạng, lập biểu đồ, PivotTable và truy vết công thức sai.",
+  "featuresVi": [
+   "Biểu đồ và PivotTable: cột, đường, tròn, waterfall, treemap...; PivotTable thật kèm slicer và timeline",
+   "Công thức: tính toán không cần Excel, mảng động FILTER/SORT/UNIQUE, truy vết precedents/dependents, Goal Seek",
+   "Dữ liệu và bảng: định dạng có điều kiện, data validation, sắp xếp, lọc, tìm và thay thế, xóa trùng",
+   "Tệp lớn: đọc theo trang, chỉnh sửa trang tính 200.000 dòng trong vài giây",
+   "CSV: nhập/xuất CSV, TSV với nhận diện kiểu dữ liệu như Excel",
+   "An toàn: giới hạn thư mục bằng --allow-dir, chế độ chỉ đọc, HTTP chỉ localhost mặc định, ghi VBA tắt mặc định",
+   "Chọn nhóm công cụ bằng --tools để tiết kiệm ngữ cảnh"
+  ],
+  "requirementsVi": "Cần cài đặt uv (để chạy uvx). Không cần Microsoft Excel. Hỗ trợ tệp .xlsx, .xlsm, .xltx, .xltm.",
+  "installStepsVi": [
+   "Cài đặt cho Claude Code: `claude mcp add excel --scope user -- uvx excel-mcp-server stdio --allow-dir /path/to/workbooks`",
+   "Cài đặt cho Cursor hoặc Claude Desktop: thêm khối `mcpServers` với lệnh `uvx excel-mcp-server stdio --allow-dir /path/to/workbooks` vào tệp cấu hình",
+   "Chạy từ xa qua HTTP: `uvx excel-mcp-server streamable-http --allow-dir /srv/workbooks` (client kết nối http://127.0.0.1:8017/mcp)",
+   "Hoặc cài đặt bằng Docker: `docker build -t excel-mcp-server .` rồi `docker run -p 8017:8017 -v \"$PWD/workbooks:/data\" -e EXCEL_MCP_AUTH_TOKEN=change-me excel-mcp-server`"
+  ],
+  "cliCommand": "claude mcp add excel --scope user -- uvx excel-mcp-server stdio --allow-dir /path/to/workbooks",
+  "usageStepsVi": [
+   "Thay /path/to/workbooks bằng thư mục chứa tệp Excel mà server được phép dùng",
+   "Khởi động lại client AI để nạp MCP server",
+   "Yêu cầu trợ lý đọc, chỉnh sửa hoặc tạo biểu đồ trong tệp Excel",
+   "Dùng --read-only khi chỉ cần đọc dữ liệu"
+  ],
+  "samplePromptsVi": [
+   "Tạo PivotTable tổng hợp doanh thu theo khu vực từ sheet Sales trong bao-cao-q1.xlsx",
+   "Vẽ biểu đồ cột so sánh chi phí từng tháng và thêm đường xu hướng",
+   "Tìm vì sao ô F12 cho kết quả sai bằng cách truy vết công thức"
+  ],
+  "prosVi": [
+   "Giấy phép MIT, không cần Microsoft Excel, chạy đa nền tảng",
+   "Có lệnh `claude mcp add` và gói .mcpb cho Claude Desktop",
+   "Nhiều cơ chế an toàn: giới hạn thư mục, chỉ đọc, không chạy macro",
+   "Phát triển tích cực, có trên PyPI"
+  ],
+  "consVi": [
+   "Ứng dụng desktop thường không tìm thấy `uvx` trong PATH, cần dùng đường dẫn đầy đủ",
+   "PivotTable rất lớn có thể tốn khoảng 2 GB bộ nhớ",
+   "Ghi VBA phải bật thủ công bằng --allow-vba-write; chế độ HTTP ra ngoài localhost cần token và reverse proxy TLS"
+  ],
+  "sourceEvidence": {
+   "claude mcp add excel --scope user -- uvx excel-mcp-server stdio --allow-dir /path/to/workbooks": "README.md:95",
+   "uvx excel-mcp-server stdio --allow-dir /path/to/workbooks": "README.md:95",
+   "uvx excel-mcp-server streamable-http --allow-dir /srv/workbooks": "README.md:167",
+   "docker build -t excel-mcp-server .": "README.md:186",
+   "docker run -p 8017:8017 -v \"$PWD/workbooks:/data\" -e EXCEL_MCP_AUTH_TOKEN=change-me excel-mcp-server": "README.md:187",
+   "jsonConfig mcpServers excel": "README.md:102",
+   "license MIT": "LICENSE:1"
+  },
+  "meta": {
+   "id": "haris-musa-excel-mcp-server",
+   "nameVi": "Excel MCP Server — Cho trợ lý AI tạo, đọc và chỉnh sửa tệp Excel",
+   "icon": "Database",
+   "categories": [
+    "office_digital_docs",
+    "data_science_analytics"
+   ],
+   "platforms": [
+    "claude_code",
+    "claude_desktop",
+    "cursor"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "claude_code",
+     "platformName": "Claude Code",
+     "cliCommand": "claude mcp add excel --scope user -- uvx excel-mcp-server stdio --allow-dir /path/to/workbooks"
+    },
+    {
+     "platform": "cursor",
+     "platformName": "Cursor",
+     "jsonConfig": "{\n  \"mcpServers\": {\n    \"excel\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"excel-mcp-server\",\n        \"stdio\",\n        \"--allow-dir\",\n        \"/path/to/workbooks\"\n      ]\n    }\n  }\n}"
+    },
+    {
+     "platform": "claude_desktop",
+     "platformName": "Claude Desktop",
+     "jsonConfig": "{\n  \"mcpServers\": {\n    \"excel\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"excel-mcp-server\",\n        \"stdio\",\n        \"--allow-dir\",\n        \"/path/to/workbooks\"\n      ]\n    }\n  }\n}"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "GongRzhe/Office-Word-MCP-Server",
+  "license": "MIT License",
+  "authorName": "GongRzhe",
+  "websiteUrl": "",
+  "toolType": "mcp",
+  "taglineEn": "A Model Context Protocol (MCP) server for creating, reading, and manipulating Microsoft Word documents.",
+  "summaryVi": "Office-Word-MCP-Server là MCP server giúp trợ lý AI tạo, đọc và chỉnh sửa tài liệu Microsoft Word (.docx) qua giao diện chuẩn. Server hỗ trợ thêm tiêu đề, đoạn văn, bảng, hình ảnh, danh sách, chú thích cuối trang, định dạng văn bản và bảng chi tiết, cùng trích xuất bình luận và bảo vệ tài liệu. Có thể cài qua Smithery, pip từ mã nguồn hoặc chạy trực tiếp bằng uvx.",
+  "purposeVi": "Công cụ giúp tự động soạn thảo và định dạng văn bản Word như báo cáo, tài liệu kỹ thuật bằng câu lệnh ngôn ngữ tự nhiên.",
+  "featuresVi": [
+   "Quản lý tài liệu: tạo mới, sao chép, gộp nhiều tài liệu, chuyển sang PDF, xem thuộc tính và cấu trúc",
+   "Tạo nội dung: tiêu đề, đoạn văn, bảng, hình ảnh, ngắt trang, danh sách đánh số/gạch đầu dòng, footnote và endnote",
+   "Định dạng văn bản: in đậm, nghiêng, gạch chân, màu, font, tìm và thay thế, style tùy chỉnh",
+   "Định dạng bảng: viền, tô màu ô, gộp ô, căn lề, độ rộng cột, màu hàng xen kẽ",
+   "Bảo vệ tài liệu: đặt mật khẩu, giới hạn chỉnh sửa, chữ ký số",
+   "Trích xuất bình luận: lọc theo tác giả hoặc theo đoạn văn"
+  ],
+  "requirementsVi": "Python 3.8 trở lên và pip; hoặc uv để chạy bằng uvx; hoặc Node.js để cài qua Smithery.",
+  "installStepsVi": [
+   "Cài đặt tự động cho Claude Desktop qua Smithery: `npx -y @smithery/cli install @GongRzhe/Office-Word-MCP-Server --client claude`",
+   "Hoặc cài đặt từ mã nguồn: `git clone https://github.com/GongRzhe/Office-Word-MCP-Server.git` rồi `pip install -r requirements.txt`",
+   "Hoặc dùng tập lệnh thiết lập: `python setup_mcp.py`",
+   "Thêm khối `mcpServers` (dùng uvx với gói office-word-mcp-server) vào claude_desktop_config.json rồi khởi động lại Claude Desktop"
+  ],
+  "cliCommand": "npx -y @smithery/cli install @GongRzhe/Office-Word-MCP-Server --client claude",
+  "usageStepsVi": [
+   "Sau khi cấu hình, khởi động lại Claude Desktop",
+   "Yêu cầu Claude tạo hoặc mở tài liệu .docx",
+   "Ra lệnh thêm nội dung, bảng, định dạng hoặc trích xuất bình luận"
+  ],
+  "samplePromptsVi": [
+   "Tạo tài liệu report.docx có trang tiêu đề và mục Tóm tắt",
+   "Chèn bảng 4x4 dữ liệu doanh số và tô màu hàng tiêu đề",
+   "Trích xuất tất cả bình luận của John Doe trong tài liệu này"
+  ],
+  "prosVi": [
+   "Giấy phép MIT",
+   "Nhiều công cụ định dạng chi tiết cho văn bản và bảng",
+   "Chạy được không cần cài đặt cục bộ qua uvx"
+  ],
+  "consVi": [
+   "Cập nhật gần nhất vào 31/12/2025, nhịp phát triển chậm hơn các dự án khác",
+   "Hướng dẫn chủ yếu cho Claude Desktop; không có lệnh `claude mcp add` trong README",
+   "Cài qua Smithery phụ thuộc dịch vụ bên thứ ba"
+  ],
+  "sourceEvidence": {
+   "npx -y @smithery/cli install @GongRzhe/Office-Word-MCP-Server --client claude": "README.md:121",
+   "git clone https://github.com/GongRzhe/Office-Word-MCP-Server.git": "README.md:133",
+   "pip install -r requirements.txt": "README.md:137",
+   "python setup_mcp.py": "README.md:150",
+   "jsonConfig mcpServers word-document-server uvx": "README.md:181",
+   "license MIT": "LICENSE:1"
+  },
+  "meta": {
+   "id": "gongrzhe-office-word-mcp-server",
+   "nameVi": "Office Word MCP Server — Cho trợ lý AI soạn thảo và định dạng tài liệu Word",
+   "icon": "FolderTree",
+   "categories": [
+    "office_digital_docs",
+    "content_writing"
+   ],
+   "platforms": [
+    "claude_desktop"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "claude_desktop",
+     "platformName": "Claude Desktop",
+     "cliCommand": "npx -y @smithery/cli install @GongRzhe/Office-Word-MCP-Server --client claude",
+     "jsonConfig": "{\n  \"mcpServers\": {\n    \"word-document-server\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"--from\",\n        \"office-word-mcp-server\",\n        \"word_mcp_server\"\n      ]\n    }\n  }\n}"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "taylorwilsdon/google_workspace_mcp",
+  "license": "MIT License",
+  "authorName": "Taylor Wilsdon",
+  "websiteUrl": "https://workspacemcp.com",
+  "toolType": "mcp",
+  "taglineEn": "Full natural language control over Google Calendar, Drive, Gmail, Docs, Sheets, Slides, Forms, Tasks, Contacts, and Chat through all MCP clients, AI assistants and developer tools.",
+  "summaryVi": "Workspace MCP kết nối trợ lý AI với 12 dịch vụ Google Workspace (Gmail, Drive, Calendar, Docs, Sheets, Slides, Forms, Tasks, Contacts, Chat, Custom Search, Apps Script) qua hơn 120 công cụ trong một MCP server. Server hỗ trợ xác thực đa người dùng OAuth 2.1, ba cấp công cụ, chế độ chỉ đọc, CLI và triển khai container không trạng thái. Chạy cục bộ qua stdio hoặc từ xa qua streamable HTTP, dùng OAuth client trong dự án Google Cloud của chính bạn.",
+  "purposeVi": "Công cụ giúp trợ lý AI xử lý email, lịch, tài liệu, bảng tính và biểu mẫu Google trong công việc văn phòng bằng ngôn ngữ tự nhiên.",
+  "featuresVi": [
+   "Gmail: tìm kiếm, gửi, soạn nháp, nhãn, bộ lọc, tệp đính kèm",
+   "Drive, Docs, Sheets, Slides: tìm, tạo, chia sẻ, nhập tệp Office, chỉnh sửa và định dạng chi tiết",
+   "Calendar, Tasks, Contacts, Forms, Chat: quản lý sự kiện, công việc, danh bạ, biểu mẫu và tin nhắn",
+   "Apps Script: viết, triển khai, chạy và gỡ lỗi script",
+   "Cấp công cụ core/extended/complete, chế độ chỉ đọc, chọn dịch vụ bằng --tools",
+   "OAuth 2.1 đa người dùng, chế độ không trạng thái, tài khoản dịch vụ, không gửi telemetry",
+   "CLI workspace-cli và skill đi kèm cho Claude Code"
+  ],
+  "requirementsVi": "Python 3.10+, uv; OAuth client tạo trong Google Cloud Console với các Google API cần dùng đã được bật. Google Chat cần tài khoản Workspace và cấu hình Chat app.",
+  "installStepsVi": [
+   "Tạo OAuth client trong Google Cloud Console và đặt biến môi trường GOOGLE_OAUTH_CLIENT_ID, GOOGLE_OAUTH_CLIENT_SECRET",
+   "Cài đặt và khởi chạy server: `uvx workspace-mcp --tool-tier core`",
+   "Cho OAuth 2.1 qua HTTP: `uvx workspace-mcp --transport streamable-http --tool-tier core`",
+   "Kết nối Claude Code khi server chạy ở chế độ HTTP: `claude mcp add --transport http workspace-mcp http://localhost:8000/mcp`"
+  ],
+  "cliCommand": "uvx workspace-mcp --tool-tier core",
+  "usageStepsVi": [
+   "Chọn cấp công cụ (core, extended, complete) hoặc chỉ định dịch vụ bằng `--tools gmail drive calendar`",
+   "Với Claude Desktop/web, chạy server ở chế độ HTTP và thêm làm Custom Connector",
+   "Đăng nhập tài khoản Google khi được yêu cầu",
+   "Yêu cầu trợ lý đọc email, tạo sự kiện hoặc chỉnh sửa tài liệu"
+  ],
+  "samplePromptsVi": [
+   "Tìm các email chưa đọc từ phòng nhân sự trong tuần này và tóm tắt",
+   "Tạo cuộc họp thứ Năm lúc 14 giờ và mời nhóm dự án",
+   "Thêm bảng tổng hợp chi phí vào Google Sheet báo cáo tháng"
+  ],
+  "prosVi": [
+   "Giấy phép MIT, không CLA, không telemetry mặc định",
+   "Phủ rộng 12 dịch vụ Google Workspace với hơn 120 công cụ",
+   "Hỗ trợ OAuth 2.1 đa người dùng, triển khai tập trung cho tổ chức",
+   "Được cập nhật thường xuyên"
+  ],
+  "consVi": [
+   "Cần tự tạo OAuth client và bật API trong Google Cloud Console",
+   "README cảnh báo rủi ro prompt injection từ email và tài liệu; nên hạn chế công cụ ghi",
+   "Không dùng `uvx workspace-cli` vì tên gói trên PyPI đã bị chiếm; Google Chat cần tài khoản Workspace"
+  ],
+  "sourceEvidence": {
+   "uvx workspace-mcp --tool-tier core": "README.md:180",
+   "uvx workspace-mcp --transport streamable-http --tool-tier core": "README.md:206",
+   "claude mcp add --transport http workspace-mcp http://localhost:8000/mcp": "README.md:223",
+   "--tools gmail drive calendar": "README.md:185",
+   "license MIT": "LICENSE:1"
+  },
+  "meta": {
+   "id": "taylorwilsdon-google-workspace-mcp",
+   "nameVi": "Google Workspace MCP — Điều khiển Gmail, Drive, Docs, Sheets, Calendar bằng AI",
+   "icon": "Globe",
+   "categories": [
+    "office_digital_docs",
+    "rpa_workflow_automation"
+   ],
+   "platforms": [
+    "claude_code",
+    "claude_desktop",
+    "cursor"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "claude_code",
+     "platformName": "Claude Code",
+     "cliCommand": "claude mcp add --transport http workspace-mcp http://localhost:8000/mcp"
+    },
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "uvx workspace-mcp --tool-tier core"
+    }
+   ]
+  }
+ }
+]

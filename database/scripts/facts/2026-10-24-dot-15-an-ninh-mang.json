@@ -1,0 +1,562 @@
+[
+  {
+    "repo": "aquasecurity/trivy-mcp",
+    "license": "MIT License",
+    "authorName": "Aqua Security",
+    "websiteUrl": "",
+    "toolType": "mcp",
+    "taglineEn": "This plugin starts a Model Context Protocol (MCP) server that integrates Trivy's security scanning capabilities with VS Code and other MCP-enabled tools.",
+    "summaryVi": "Trivy MCP là plugin chính hãng của Aqua Security, khởi chạy một MCP server đưa khả năng quét bảo mật của Trivy vào VS Code, Cursor, JetBrains IDE và Claude Desktop. Người dùng có thể hỏi bằng ngôn ngữ tự nhiên để quét lỗ hổng, cấu hình sai trong dự án cục bộ, image container và repository từ xa.",
+    "purposeVi": "Giúp lập trình viên và đội bảo mật phát hiện lỗ hổng, cấu hình sai và tạo SBOM ngay trong trợ lý AI mà không phải nhớ cú pháp dòng lệnh của Trivy.",
+    "featuresVi": [
+      "Quét bằng ngôn ngữ tự nhiên: đặt câu hỏi về vấn đề bảo mật bằng lời",
+      "Nhiều kiểu quét: hệ thống tệp của dự án cục bộ, image container và repository từ xa",
+      "Tích hợp Aqua Platform (tùy chọn) để tăng cường khả năng quét và kiểm tra tuân thủ chính sách",
+      "Nhiều giao thức truyền: stdio (mặc định), streamable HTTP và SSE",
+      "Tích hợp IDE: VS Code, Cursor, JetBrains IDE và Claude Desktop"
+    ],
+    "requirementsVi": "Đã cài đặt Trivy trên máy; VS Code (v1.99.0 trở lên), Cursor, JetBrains IDE hoặc Claude Desktop để dùng MCP.",
+    "installStepsVi": [
+      "Cài đặt plugin MCP qua trình quản lý plugin của Trivy: `trivy plugin install mcp`",
+      "Kiểm tra plugin đã được cài đặt: `trivy plugin list`",
+      "Thêm khối `mcpServers` (lệnh `trivy`, tham số `mcp`) vào tệp claude_desktop_config.json rồi khởi động lại Claude Desktop"
+    ],
+    "cliCommand": "trivy plugin install mcp",
+    "usageStepsVi": [
+      "Khởi chạy MCP server (mặc định dùng stdio): `trivy mcp`",
+      "Chạy với giao thức streamable HTTP: `trivy mcp --transport streamable-http --host localhost --port 8080`",
+      "Trong VS Code/Cursor, dùng cửa sổ chat ở chế độ Agent (không phải Ask) rồi đặt câu hỏi về bảo mật dự án"
+    ],
+    "samplePromptsVi": [
+      "Dự án này có lỗ hổng hoặc cấu hình sai nào không?",
+      "Tìm tất cả lỗ hổng mức HIGH trong mã nguồn này.",
+      "Image python:3.12 có lỗ hổng nào không? Tạo SBOM CycloneDX cho dự án này."
+    ],
+    "prosVi": [
+      "Giấy phép MIT, plugin chính hãng của Aqua Security",
+      "Hỗ trợ nhiều IDE và cả ba giao thức stdio, streamable HTTP, SSE",
+      "Không bắt buộc tài khoản; Aqua Platform chỉ là tùy chọn"
+    ],
+    "consVi": [
+      "Cần cài đặt Trivy trước khi dùng plugin",
+      "Tích hợp Aqua Platform cần khóa và secret của tài khoản Aqua",
+      "Mở cổng mạng trên 0.0.0.0 cho phép kết nối từ xa, cần cân nhắc bảo mật"
+    ],
+    "sourceEvidence": {
+      "trivy plugin install mcp": "README.md:25",
+      "trivy plugin list": "docs/installation.md:25",
+      "trivy mcp": "README.md:31",
+      "trivy mcp --transport streamable-http --host localhost --port 8080": "docs/quickstart.md:42",
+      "mcpServers (claude_desktop_config.json)": "docs/ide/claude.md:16-27"
+    },
+    "meta": {
+      "id": "aquasecurity-trivy-mcp",
+      "nameVi": "Trivy MCP — Quét lỗ hổng và cấu hình sai bằng ngôn ngữ tự nhiên",
+      "icon": "Search",
+      "categories": [
+        "cybersecurity_security",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "cursor",
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "trivy plugin install mcp",
+          "jsonConfig": "{\n   \"mcpServers\": {\n      \"trivy\": {\n         \"command\": \"trivy\",\n         \"args\": [\n            \"mcp\"\n         ]\n      }\n   }\n}"
+        },
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "trivy mcp"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "LaurieWired/GhidraMCP",
+    "license": "Apache License 2.0",
+    "authorName": "LaurieWired",
+    "websiteUrl": "",
+    "toolType": "mcp",
+    "taglineEn": "ghidraMCP is an Model Context Protocol server for allowing LLMs to autonomously reverse engineer applications.",
+    "summaryVi": "GhidraMCP gồm một plugin Ghidra và một MCP server Python, đưa các chức năng cốt lõi của công cụ dịch ngược Ghidra tới các MCP client. LLM có thể tự dịch ngược mã (decompile), phân tích tệp nhị phân, đổi tên hàm và dữ liệu, liệt kê lớp, import và export; có cả chế độ headless không cần giao diện Ghidra.",
+    "purposeVi": "Hỗ trợ nhà phân tích bảo mật và nghiên cứu viên dùng trợ lý AI để tăng tốc dịch ngược, phân tích tệp nhị phân (ví dụ phân tích mẫu nghi ngờ hoặc kiểm tra phần mềm mình được phép phân tích).",
+    "featuresVi": [
+      "Dịch ngược và phân tích tệp nhị phân trong Ghidra",
+      "Tự động đổi tên phương thức và dữ liệu",
+      "Liệt kê phương thức, lớp, import và export",
+      "Hỗ trợ stdio và streamable HTTP; địa chỉ, cổng Ghidra server cấu hình được (mặc định localhost:8080)",
+      "Chế độ headless dùng PyGhidra, không cần mở giao diện Ghidra"
+    ],
+    "requirementsVi": "Ghidra 12.1.4 và uv (hoặc Python 3.10+); chế độ headless cần Python 3.10–3.13 và biến GHIDRA_INSTALL_DIR.",
+    "installStepsVi": [
+      "Tải bản phát hành mới nhất trên trang Releases của repo, sau đó trong Ghidra chọn File -> Install Extensions, bấm + và chọn tệp zip GhidraMCP, rồi khởi động lại Ghidra",
+      "Bật GhidraMCPPlugin trong File -> Configure -> Developer",
+      "Cài đặt cho Claude Code: `claude mcp add ghidra -- uvx --from git+https://github.com/LaurieWired/GhidraMCP ghidra-mcp --ghidra-server http://127.0.0.1:8080/`",
+      "Hoặc cài đặt bằng pip: `pip install git+https://github.com/LaurieWired/GhidraMCP` rồi dùng lệnh `ghidra-mcp`"
+    ],
+    "cliCommand": "claude mcp add ghidra -- uvx --from git+https://github.com/LaurieWired/GhidraMCP ghidra-mcp --ghidra-server http://127.0.0.1:8080/",
+    "usageStepsVi": [
+      "Mở Ghidra với chương trình cần phân tích (plugin chạy HTTP server tại cổng 8080 mặc định)",
+      "Với client kết nối qua URL, chạy server: `uvx --from git+https://github.com/LaurieWired/GhidraMCP ghidra-mcp --transport streamable-http --mcp-host 127.0.0.1 --mcp-port 8081 --ghidra-server http://127.0.0.1:8080/` rồi thêm http://127.0.0.1:8081/mcp",
+      "Chế độ headless: `uvx --python 3.13 --from \"ghidra-mcp[headless] @ git+https://github.com/LaurieWired/GhidraMCP\" ghidra-mcp --headless --binary /path/to/target`"
+    ],
+    "samplePromptsVi": [
+      "Liệt kê các hàm import và export của tệp nhị phân đang mở trong Ghidra.",
+      "Dịch ngược hàm main và giải thích nó làm gì, sau đó đổi tên các hàm phụ cho dễ hiểu.",
+      "Liệt kê các lớp và phương thức trong chương trình này và tóm tắt cấu trúc."
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Có lệnh `claude mcp add` sẵn và cấu hình JSON chung cho MCP client",
+      "Hỗ trợ chế độ headless không cần giao diện Ghidra"
+    ],
+    "consVi": [
+      "Cần cài đặt Ghidra đúng phiên bản 12.1.4 và extension tương ứng",
+      "Build từ mã nguồn cần Java 21 và Gradle; trên macOS chế độ headless cần build decompiler của Ghidra một lần"
+    ],
+    "sourceEvidence": {
+      "claude mcp add ghidra -- uvx --from git+https://github.com/LaurieWired/GhidraMCP ghidra-mcp --ghidra-server http://127.0.0.1:8080/": "README.md:104",
+      "pip install git+https://github.com/LaurieWired/GhidraMCP": "README.md:28",
+      "uvx --from git+https://github.com/LaurieWired/GhidraMCP ghidra-mcp --transport streamable-http --mcp-host 127.0.0.1 --mcp-port 8081 --ghidra-server http://127.0.0.1:8080/": "README.md:74",
+      "uvx --python 3.13 --from \"ghidra-mcp[headless] @ git+https://github.com/LaurieWired/GhidraMCP\" ghidra-mcp --headless --binary /path/to/target": "README.md:111",
+      "mcpServers": "README.md:52-67",
+      "File -> Install Extensions": "README.md:31-38"
+    },
+    "meta": {
+      "id": "lauriewired-ghidramcp",
+      "nameVi": "GhidraMCP — Dịch ngược tệp nhị phân với Ghidra qua MCP",
+      "icon": "Cpu",
+      "categories": [
+        "cybersecurity_security"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude mcp add ghidra -- uvx --from git+https://github.com/LaurieWired/GhidraMCP ghidra-mcp --ghidra-server http://127.0.0.1:8080/"
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"ghidra\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"--from\",\n        \"git+https://github.com/LaurieWired/GhidraMCP\",\n        \"ghidra-mcp\",\n        \"--ghidra-server\",\n        \"http://127.0.0.1:8080/\"\n      ]\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "GreyDGL/PentestGPT",
+    "license": "MIT License",
+    "authorName": "Gelei Deng (GreyDGL)",
+    "websiteUrl": "https://pentestgpt.com",
+    "toolType": "agent",
+    "taglineEn": "AI-Powered Autonomous Penetration Testing Agent",
+    "summaryVi": "PentestGPT là tác tử AI kiểm thử xâm nhập tự động, công bố tại USENIX Security 2024, CHỈ dành cho mục đích giáo dục và kiểm thử bảo mật đã được cấp phép. Phiên bản 1.0 điều khiển Claude Code hoặc Codex chạy công cụ theo quy trình nhiều giai đoạn (khám phá tài sản → xác định lỗ hổng → báo cáo), lưu và tiếp tục phiên; chế độ legacy tương tác hỗ trợ nhiều nhà cung cấp LLM và Ollama cục bộ.",
+    "purposeVi": "Hỗ trợ pentester và người học CTF thực hiện kiểm thử xâm nhập trên hệ thống mình sở hữu hoặc được ủy quyền bằng văn bản, kèm báo cáo lỗ hổng; README nêu rõ công cụ chỉ dành cho kiểm thử được cấp phép.",
+    "featuresVi": [
+      "Quy trình nhiều giai đoạn: recon → exploit → walkthrough cho CTF; khám phá tài sản → xác định lỗ hổng → báo cáo cho pentest",
+      "Tác tử tự động: điều khiển Claude Code hoặc Codex để chạy công cụ và suy luận",
+      "Lưu và tiếp tục phiên kiểm thử",
+      "Hỗ trợ nhiều loại thử thách: Web, Crypto, Reversing, Forensics, PWN, leo thang đặc quyền",
+      "Chế độ legacy tương tác dùng OpenAI, Anthropic, Gemini, DeepSeek, xAI, Qwen, Moonshot và Ollama cục bộ"
+    ],
+    "requirementsVi": "Python 3.12+, uv; Claude Code CLI hoặc Codex CLI đã cài đặt và đăng nhập (bản Docker đóng gói sẵn cả hai); chế độ legacy cần khóa API của nhà cung cấp LLM hoặc Ollama. Chỉ dùng trên mục tiêu được cấp phép.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/GreyDGL/PentestGPT.git` rồi `cd PentestGPT`",
+      "Cài đặt phụ thuộc (chạy uv sync): `make install`",
+      "Hoặc cài đặt bằng Docker: `make docker-build` rồi đăng nhập một lần bằng `make docker-login`"
+    ],
+    "cliCommand": "make install",
+    "usageStepsVi": [
+      "Chỉ chạy với mục tiêu bạn sở hữu hoặc có ủy quyền kiểm thử (ví dụ máy lab, CTF)",
+      "Chế độ pentest: `pentestgpt --target 10.10.11.234 --mode pentest`",
+      "Liệt kê các phiên đã lưu: `pentestgpt --list-sessions`",
+      "Tắt telemetry ẩn danh: `pentestgpt --target 10.10.11.234 --no-telemetry`",
+      "Chế độ tương tác đa LLM: `pentestgpt-legacy`"
+    ],
+    "samplePromptsVi": [
+      "Kiểm thử máy lab CTF tại 10.10.11.50 (được cấp phép), đây là site WordPress, tập trung vào lỗ hổng plugin.",
+      "Chạy chế độ pentest trên máy chủ thử nghiệm nội bộ đã được ủy quyền và xuất báo cáo lỗ hổng.",
+      "Dùng pentestgpt-legacy với mô hình Ollama cục bộ để hướng dẫn tôi từng bước giải bài CTF."
+    ],
+    "prosVi": [
+      "Giấy phép MIT; dự án nghiên cứu công bố tại USENIX Security 2024",
+      "Hỗ trợ nhiều nhà cung cấp LLM và mô hình cục bộ qua Ollama",
+      "Có Docker đóng gói sẵn Claude Code và Codex CLI"
+    ],
+    "consVi": [
+      "Chỉ dành cho giáo dục và kiểm thử bảo mật được cấp phép; dùng trái phép là vi phạm pháp luật",
+      "Cần tài khoản Claude Code/Codex hoặc khóa API LLM",
+      "Mặc định thu thập dữ liệu sử dụng ẩn danh (Langfuse), cần tắt bằng --no-telemetry hoặc LANGFUSE_ENABLED=false"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/GreyDGL/PentestGPT.git": "README.md:89",
+      "make install": "README.md:91",
+      "make docker-build": "README.md:129",
+      "make docker-login": "README.md:130",
+      "pentestgpt --target 10.10.11.234 --mode pentest": "README.md:115",
+      "pentestgpt --list-sessions": "README.md:118",
+      "pentestgpt --target 10.10.11.234 --no-telemetry": "README.md:218",
+      "pentestgpt-legacy": "README.md:169",
+      "authorized security testing only": "README.md:264",
+      "cd PentestGPT": "README.md:90"
+    },
+    "meta": {
+      "id": "greydgl-pentestgpt",
+      "nameVi": "PentestGPT — Tác tử AI kiểm thử xâm nhập (chỉ dùng khi được cấp phép)",
+      "icon": "Terminal",
+      "categories": [
+        "cybersecurity_security",
+        "qa_testing"
+      ],
+      "platforms": [
+        "web",
+        "claude_code"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "make install"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "projectdiscovery/nuclei",
+    "license": "MIT License",
+    "authorName": "ProjectDiscovery",
+    "websiteUrl": "https://docs.projectdiscovery.io/tools/nuclei/overview",
+    "toolType": "cli",
+    "taglineEn": "Nuclei is a modern, high-performance vulnerability scanner that leverages simple YAML-based templates.",
+    "summaryVi": "Nuclei là công cụ quét lỗ hổng hiệu năng cao dựa trên template YAML do hàng nghìn chuyên gia bảo mật đóng góp, hỗ trợ TCP, DNS, HTTP, SSL, WHOIS, JavaScript và nhiều giao thức khác. Công cụ có tùy chọn `-ai` để sinh và chạy template từ prompt AI, cùng bộ matcher/extractor dùng LLM (semantic matching) với OpenAI, Ollama, vLLM và các nhà cung cấp khác.",
+    "purposeVi": "Giúp đội bảo mật quét định kỳ ứng dụng web, mạng và hạ tầng thuộc quyền quản lý của mình (hoặc được ủy quyền) để phát hiện CVE, cấu hình sai, và tích hợp vào CI/CD.",
+    "featuresVi": [
+      "Template YAML: dễ tạo và tùy chỉnh kịch bản phát hiện lỗ hổng",
+      "Giảm dương tính giả bằng cách mô phỏng các bước xác minh thực tế",
+      "Quét song song tốc độ cao, gom nhóm request",
+      "Sinh template bằng AI (`-ai, -prompt`) và matcher/extractor ngữ nghĩa dùng LLM (`-llm`)",
+      "Tích hợp CI/CD, Jira, Splunk, GitHub, Elastic, GitLab"
+    ],
+    "requirementsVi": "Go >= 1.27.3 để cài đặt từ mã nguồn; tính năng LLM cần nhà cung cấp LLM (OpenAI mặc định, hoặc Ollama/llama.cpp/vLLM cục bộ). Chỉ quét mục tiêu bạn sở hữu hoặc được cấp phép.",
+    "installStepsVi": [
+      "Cài đặt bằng Go: `go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest`",
+      "Xem hướng dẫn cài đặt khác tại https://docs.projectdiscovery.io/tools/nuclei/install"
+    ],
+    "cliCommand": "go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest",
+    "usageStepsVi": [
+      "Quét một ứng dụng web (được cấp phép): `nuclei -target https://example.com`",
+      "Quét nhiều mục tiêu từ tệp: `nuclei -list urls.txt`",
+      "Quét với template tự viết: `nuclei -u https://example.com -t /path/to/your-template.yaml`",
+      "Tải kết quả lên ProjectDiscovery để phân tích (miễn phí): `nuclei -target https://example.com -dashboard`"
+    ],
+    "samplePromptsVi": [
+      "Viết template Nuclei kiểm tra trang quản trị Jenkins không xác thực trên máy chủ nội bộ của công ty.",
+      "Thêm bước quét Nuclei vào pipeline CI để phát hiện CVE trên môi trường staging của chúng tôi.",
+      "Giải thích kết quả quét Nuclei này và đề xuất cách khắc phục cấu hình SSL/TLS yếu."
+    ],
+    "prosVi": [
+      "Giấy phép MIT, cộng đồng template rất lớn",
+      "Hỗ trợ LLM cục bộ (Ollama, llama.cpp, vLLM, LM Studio) cho matcher ngữ nghĩa",
+      "Tính năng tải kết quả lên dashboard ProjectDiscovery miễn phí"
+    ],
+    "consVi": [
+      "Dự án đang phát triển tích cực, có thể có thay đổi phá vỡ tương thích giữa các phiên bản",
+      "Chạy Nuclei dạng dịch vụ có thể gây rủi ro bảo mật theo cảnh báo trong README",
+      "Phiên bản Pro/Enterprise là dịch vụ trả phí; chỉ được quét hệ thống có ủy quyền"
+    ],
+    "sourceEvidence": {
+      "go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest": "README.md:116",
+      "nuclei -target https://example.com": "README.md:419",
+      "nuclei -list urls.txt": "README.md:427",
+      "nuclei -u https://example.com -t /path/to/your-template.yaml": "README.md:443",
+      "nuclei -target https://example.com -dashboard": "README.md:451",
+      "-ai, -prompt": "README.md:164",
+      "-llm": "README.md:178"
+    },
+    "meta": {
+      "id": "projectdiscovery-nuclei",
+      "nameVi": "Nuclei — Quét lỗ hổng bằng template YAML, hỗ trợ AI",
+      "icon": "Search",
+      "categories": [
+        "cybersecurity_security",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "protectai/modelscan",
+    "license": "Apache License 2.0",
+    "authorName": "Protect AI",
+    "websiteUrl": "",
+    "toolType": "cli",
+    "taglineEn": "ModelScan is an open source project from Protect AI that scans models to determine if they contain unsafe code.",
+    "summaryVi": "ModelScan của Protect AI quét các tệp mô hình học máy để phát hiện mã không an toàn chèn vào khi tuần tự hóa (Model Serialization Attack). Công cụ đọc nội dung tệp từng byte mà không tải mô hình, hỗ trợ H5, Pickle, SavedModel cho PyTorch, TensorFlow, Keras, Sklearn, XGBoost và xếp hạng mức độ CRITICAL/HIGH/MEDIUM/LOW.",
+    "purposeVi": "Giúp đội dữ liệu và bảo mật kiểm tra mô hình tải từ Internet hoặc từ nhóm khác trước khi sử dụng, tránh bị đánh cắp thông tin xác thực hoặc dữ liệu khi tải mô hình độc hại.",
+    "featuresVi": [
+      "Quét không tải mô hình: đọc tệp như chuỗi byte để tìm chữ ký mã nguy hiểm",
+      "Hỗ trợ nhiều định dạng: Pickle, Cloudpickle, Dill, Joblib, H5, Keras V3, SavedModel",
+      "Xếp hạng mức độ: CRITICAL, HIGH, MEDIUM, LOW",
+      "Báo cáo dạng console, JSON hoặc tùy chỉnh; mã thoát rõ ràng cho CI",
+      "Dùng được qua CLI hoặc tích hợp trong mã Python"
+    ],
+    "requirementsVi": "Python 3.9 đến 3.12; trình quét TensorFlow/H5 cần cài đặt thêm extras.",
+    "installStepsVi": [
+      "Cài đặt gói Python: `pip install modelscan`",
+      "Cài đặt kèm trình quét TensorFlow và H5: `pip install 'modelscan[ tensorflow, h5py ]'`"
+    ],
+    "cliCommand": "pip install modelscan",
+    "usageStepsVi": [
+      "Quét một tệp mô hình: `modelscan -p /path/to/model_file.pkl`",
+      "Tạo tệp cấu hình tùy chỉnh: `modelscan create-settings-file`",
+      "Kiểm tra mã thoát trong CI: 0 là không có lỗ hổng, 1 là phát hiện lỗ hổng"
+    ],
+    "samplePromptsVi": [
+      "Quét thư mục mô hình PyTorch vừa tải từ Hugging Face và cho biết có mã độc hại không.",
+      "Thêm bước modelscan vào pipeline CI để chặn mô hình có lỗ hổng mức CRITICAL.",
+      "Giải thích kết quả quét modelscan mức HIGH cho tệp pickle này."
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Quét nhanh, không thực thi mã trong mô hình",
+      "Không cần khóa API hay tài khoản"
+    ],
+    "consVi": [
+      "Chỉ hỗ trợ Python 3.9 đến 3.12",
+      "Các tính năng nâng cao (quét rộng hơn, tự nhận diện định dạng) thuộc sản phẩm thương mại Guardian"
+    ],
+    "sourceEvidence": {
+      "pip install modelscan": "README.md:31",
+      "pip install 'modelscan[ tensorflow, h5py ]'": "README.md:128",
+      "modelscan -p /path/to/model_file.pkl": "README.md:37",
+      "modelscan create-settings-file": "README.md:141"
+    },
+    "meta": {
+      "id": "protectai-modelscan",
+      "nameVi": "ModelScan — Quét mã độc trong tệp mô hình học máy",
+      "icon": "Box",
+      "categories": [
+        "cybersecurity_security",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install modelscan"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "trufflesecurity/trufflehog",
+    "license": "GNU Affero General Public License v3.0",
+    "authorName": "Truffle Security",
+    "websiteUrl": "",
+    "toolType": "cli",
+    "taglineEn": "TruffleHog is the most powerful secrets Discovery, Classification, Validation, and Analysis tool.",
+    "summaryVi": "TruffleHog là công cụ phát hiện, phân loại, xác minh và phân tích bí mật (khóa API, mật khẩu cơ sở dữ liệu, khóa riêng...) bị lộ trong Git, chat, wiki, log, object store, hệ thống tệp và image Docker. Công cụ phân loại hơn 800 loại bí mật và có thể kiểm tra bí mật còn hiệu lực hay không.",
+    "purposeVi": "Giúp đội bảo mật và DevOps tìm và xử lý thông tin xác thực bị lộ trong mã nguồn, CI và kho lưu trữ của tổ chức trước khi kẻ xấu lợi dụng.",
+    "featuresVi": [
+      "Khám phá: quét Git, GitHub (cả issue và PR), S3, GCS, Docker image, hệ thống tệp, Postman và nhiều nguồn khác",
+      "Phân loại: hơn 800 loại bí mật, gắn với danh tính sở hữu",
+      "Xác minh: kiểm tra bí mật còn hoạt động hay không (`--results=verified`)",
+      "Phân tích sâu quyền hạn của khoảng 20 loại thông tin xác thực phổ biến",
+      "Chạy trong CI với `--fail` để chặn commit lộ bí mật"
+    ],
+    "requirementsVi": "macOS (Homebrew), Docker, tệp nhị phân phát hành hoặc script cài đặt cho Linux/macOS.",
+    "installStepsVi": [
+      "Cài đặt trên macOS: `brew install trufflehog`",
+      "Cài đặt bằng script: `curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b /usr/local/bin`",
+      "Hoặc chạy bằng Docker: `docker run --rm -it -v \"$PWD:/pwd\" trufflesecurity/trufflehog:latest github --repo https://github.com/trufflesecurity/test_keys`"
+    ],
+    "cliCommand": "brew install trufflehog",
+    "usageStepsVi": [
+      "Quét một repo, chỉ lấy bí mật đã xác minh: `trufflehog git https://github.com/trufflesecurity/test_keys --results=verified`",
+      "Quét tệp hoặc thư mục: `trufflehog filesystem path/to/file1.txt path/to/file2.txt path/to/dir`",
+      "Quét trong CI: `trufflehog git file://. --since-commit main --branch feature-1 --results=verified,unknown --fail`"
+    ],
+    "samplePromptsVi": [
+      "Quét repo nội bộ của chúng tôi bằng TruffleHog và liệt kê các bí mật đã xác minh còn hoạt động.",
+      "Thêm bước TruffleHog vào GitHub Actions để chặn pull request có khóa API bị lộ.",
+      "Quét image Docker trước khi phát hành để tìm thông tin xác thực bị nhúng."
+    ],
+    "prosVi": [
+      "Mã nguồn mở, hỗ trợ rất nhiều nguồn dữ liệu",
+      "Xác minh bí mật còn hiệu lực giúp giảm báo động giả",
+      "Có Docker image và script cài đặt kèm xác minh chữ ký (cosign)"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0: cần lưu ý nghĩa vụ công bố mã nguồn khi phân phối hoặc cung cấp dạng dịch vụ có sửa đổi",
+      "Giám sát liên tục Jira, Slack, Confluence... thuộc bản Enterprise thương mại"
+    ],
+    "sourceEvidence": {
+      "brew install trufflehog": "README.md:82",
+      "curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b /usr/local/bin": "README.md:129",
+      "docker run --rm -it -v \"$PWD:/pwd\" trufflesecurity/trufflehog:latest github --repo https://github.com/trufflesecurity/test_keys": "README.md:92",
+      "trufflehog git https://github.com/trufflesecurity/test_keys --results=verified": "README.md:188",
+      "trufflehog filesystem path/to/file1.txt path/to/file2.txt path/to/dir": "README.md:265",
+      "trufflehog git file://. --since-commit main --branch feature-1 --results=verified,unknown --fail": "README.md:308"
+    },
+    "meta": {
+      "id": "trufflesecurity-trufflehog",
+      "nameVi": "TruffleHog — Phát hiện và xác minh bí mật bị lộ",
+      "icon": "Search",
+      "categories": [
+        "cybersecurity_security",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (AGPL-3.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "brew install trufflehog"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "gitleaks/gitleaks",
+    "license": "MIT License",
+    "authorName": "Zachary Rice (Gitleaks)",
+    "websiteUrl": "",
+    "toolType": "cli",
+    "taglineEn": "Gitleaks is a tool for detecting secrets like passwords, API keys, and tokens in git repos, files, and whatever else you wanna throw at it via stdin.",
+    "summaryVi": "Gitleaks là công cụ phát hiện bí mật như mật khẩu, khóa API và token trong repo Git, tệp và dữ liệu đưa vào qua stdin. Công cụ có thể chạy dạng pre-commit hook, GitHub Action, Docker, hỗ trợ cấu hình luật tùy chỉnh, baseline và báo cáo JSON, CSV, JUnit, SARIF.",
+    "purposeVi": "Giúp lập trình viên và đội DevSecOps ngăn bí mật bị commit vào mã nguồn và rà soát lịch sử Git của dự án.",
+    "featuresVi": [
+      "Ba chế độ quét: `git`, `dir` và `stdin`",
+      "Pre-commit hook và GitHub Action (Gitleaks-Action)",
+      "Luật phát hiện tùy chỉnh qua tệp cấu hình TOML, có thể mở rộng cấu hình mặc định",
+      "Baseline để bỏ qua các phát hiện cũ",
+      "Báo cáo json, csv, junit, sarif hoặc template; tùy chọn che (redact) bí mật trong log"
+    ],
+    "requirementsVi": "Homebrew, Docker hoặc Go (khi build từ mã nguồn); có tệp nhị phân cho nhiều nền tảng trên trang Releases.",
+    "installStepsVi": [
+      "Cài đặt trên macOS: `brew install gitleaks`",
+      "Hoặc cài đặt bằng Docker: `docker pull ghcr.io/gitleaks/gitleaks:latest`",
+      "Hoặc build từ mã nguồn (cần Go): `git clone https://github.com/gitleaks/gitleaks.git`, `cd gitleaks`, `make build`",
+      "Cài đặt pre-commit hook: thêm cấu hình gitleaks vào `.pre-commit-config.yaml` rồi chạy `pre-commit install`"
+    ],
+    "cliCommand": "brew install gitleaks",
+    "usageStepsVi": [
+      "Quét repo Git hiện tại: `gitleaks git -v`",
+      "Quét thư mục hoặc tệp: `gitleaks dir -v path_to_directory_or_file`",
+      "Lưu báo cáo: `gitleaks git --report-path gitleaks-report.json`",
+      "Chỉ báo phát hiện mới so với baseline: `gitleaks git --baseline-path gitleaks-report.json --report-path findings.json`"
+    ],
+    "samplePromptsVi": [
+      "Quét toàn bộ lịch sử Git của dự án bằng gitleaks và tóm tắt các bí mật tìm thấy.",
+      "Thiết lập pre-commit hook gitleaks cho repo này để chặn commit chứa khóa API.",
+      "Tạo baseline gitleaks cho repo cũ và chỉ cảnh báo các bí mật mới xuất hiện."
+    ],
+    "prosVi": [
+      "Giấy phép MIT",
+      "Nhẹ, dễ tích hợp pre-commit và CI; xuất SARIF",
+      "Không cần tài khoản hay khóa API"
+    ],
+    "consVi": [
+      "Phát hiện chủ yếu dựa trên regex, không xác minh bí mật còn hiệu lực",
+      "Lệnh `detect` và `protect` đã bị thay thế từ v8.19.0, cần đổi sang `git`/`dir`"
+    ],
+    "sourceEvidence": {
+      "brew install gitleaks": "README.md:69",
+      "docker pull ghcr.io/gitleaks/gitleaks:latest": "README.md:76",
+      "git clone https://github.com/gitleaks/gitleaks.git": "README.md:80",
+      "make build": "README.md:82",
+      "pre-commit install": "README.md:101",
+      "gitleaks git -v": "README.md:38",
+      "gitleaks dir -v path_to_directory_or_file": "README.md:184",
+      "gitleaks git --report-path gitleaks-report.json": "README.md:197",
+      "gitleaks git --baseline-path gitleaks-report.json --report-path findings.json": "README.md:203",
+      "cd gitleaks": "README.md:81"
+    },
+    "meta": {
+      "id": "gitleaks-gitleaks",
+      "nameVi": "Gitleaks — Phát hiện bí mật bị lộ trong Git và tệp",
+      "icon": "GitPullRequest",
+      "categories": [
+        "cybersecurity_security",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "brew install gitleaks"
+        }
+      ]
+    }
+  }
+]
