@@ -1,0 +1,580 @@
+[
+  {
+    "repo": "mongodb-js/mongodb-mcp-server",
+    "license": "Apache License 2.0",
+    "authorName": "MongoDB",
+    "websiteUrl": "https://www.mongodb.com/docs/mcp-server/get-started/",
+    "toolType": "mcp",
+    "taglineEn": "A Model Context Protocol server for interacting with MongoDB Databases and MongoDB Atlas.",
+    "summaryVi": "MCP server chính hãng của MongoDB, cho phép trợ lý AI làm việc với cơ sở dữ liệu MongoDB và nền tảng MongoDB Atlas. Máy chủ cung cấp công cụ truy vấn, tổng hợp (aggregation), quản lý collection/index và nhóm công cụ quản trị Atlas (cụm, người dùng, danh sách IP, Performance Advisor).",
+    "purposeVi": "Giúp lập trình viên hỏi đáp, khám phá schema và thao tác dữ liệu MongoDB bằng ngôn ngữ tự nhiên ngay trong Claude, Cursor hay VS Code.",
+    "featuresVi": [
+      "Công cụ cơ sở dữ liệu: find, aggregate, count, explain, insert-many, update-many, delete-many, quản lý collection và index",
+      "Công cụ Atlas: tạo/kiểm tra cụm, tạo cụm miễn phí, quản lý người dùng DB, danh sách truy cập IP, cảnh báo và Performance Advisor",
+      "Atlas Local: tạo, kết nối, liệt kê và xóa deployment Atlas cục bộ",
+      "MongoDB Assistant: tìm kiếm trong kho tri thức tài liệu chính thức của MongoDB",
+      "Chế độ chỉ đọc qua cờ `--readOnly` (mặc định trong mọi ví dụ của README)",
+      "Chạy bằng npx hoặc Docker image `mongodb/mongodb-mcp-server`"
+    ],
+    "requirementsVi": "Node.js v22.13.0 trở lên; chuỗi kết nối MongoDB hoặc thông tin Service Account của Atlas API (bắt buộc để dùng công cụ Atlas).",
+    "installStepsVi": [
+      "Chạy trình cài đặt tương tác: `npx -y mongodb-mcp-server@latest setup`",
+      "Hoặc thêm cấu hình mcpServers (xem jsonConfig) với biến môi trường MDB_MCP_CONNECTION_STRING; có thể chạy độc lập: `npx -y mongodb-mcp-server@latest --readOnly`",
+      "Hoặc chạy bằng Docker image mongodb/mongodb-mcp-server:latest (xem mục Option 5: Using Docker trong README)"
+    ],
+    "cliCommand": "npx -y mongodb-mcp-server@latest setup",
+    "usageStepsVi": [
+      "Cung cấp chuỗi kết nối qua `MDB_MCP_CONNECTION_STRING` hoặc `MDB_MCP_API_CLIENT_ID`/`MDB_MCP_API_CLIENT_SECRET`",
+      "Khởi động lại MCP client để nạp máy chủ",
+      "Bỏ cờ `--readOnly` nếu cần thao tác ghi dữ liệu"
+    ],
+    "samplePromptsVi": [
+      "Liệt kê các collection trong database `shop` và mô tả schema của collection `orders`.",
+      "Đếm số đơn hàng có trạng thái `pending` và giải thích kế hoạch thực thi truy vấn.",
+      "Liệt kê các cụm Atlas trong project của tôi và gợi ý index từ Performance Advisor."
+    ],
+    "prosVi": [
+      "Do MongoDB phát triển và bảo trì chính thức",
+      "Bộ công cụ rộng: cả dữ liệu lẫn quản trị Atlas",
+      "Ví dụ cấu hình mặc định ở chế độ chỉ đọc"
+    ],
+    "consVi": [
+      "Cần Node.js 22.13+ (Node 20 đã bị đánh dấu ngừng hỗ trợ)",
+      "Công cụ Atlas chỉ khả dụng khi cấu hình Service Account credentials"
+    ],
+    "sourceEvidence": {
+      "npx -y mongodb-mcp-server@latest setup": "README.md:37",
+      "npx -y mongodb-mcp-server@latest --readOnly": "README.md:188",
+      "jsonConfig": "README.md:115-127"
+    },
+    "meta": {
+      "id": "mongodb-js-mongodb-mcp-server",
+      "nameVi": "MongoDB MCP Server — Kết nối AI với MongoDB và Atlas",
+      "icon": "Database",
+      "categories": [
+        "database_sql_nosql",
+        "database"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "claude_code",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "npx -y mongodb-mcp-server@latest setup",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"MongoDB\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"mongodb-mcp-server@latest\",\n        \"--readOnly\"\n      ],\n      \"env\": {\n        \"MDB_MCP_CONNECTION_STRING\": \"mongodb://localhost:27017/myDatabase\"\n      }\n    }\n  }\n}"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"MongoDB\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"mongodb-mcp-server@latest\",\n        \"--readOnly\"\n      ],\n      \"env\": {\n        \"MDB_MCP_CONNECTION_STRING\": \"mongodb://localhost:27017/myDatabase\"\n      }\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "neondatabase/mcp-server-neon",
+    "license": "MIT License",
+    "authorName": "Neon Inc.",
+    "websiteUrl": "https://neon.com/docs/ai/neon-mcp-server",
+    "toolType": "mcp",
+    "taglineEn": "Neon MCP Server is an open-source tool that lets you interact with your Lakebase Postgres databases on Neon in natural language.",
+    "summaryVi": "MCP server chính hãng của Neon, cầu nối giữa yêu cầu bằng ngôn ngữ tự nhiên và Neon API. Máy chủ được Neon vận hành từ xa tại `mcp.neon.tech`, hỗ trợ xác thực OAuth hoặc API key, giúp tạo dự án, nhánh (branch), chạy SQL và di chuyển schema Postgres.",
+    "purposeVi": "Quản lý cơ sở dữ liệu Postgres trên Neon (tạo dự án, nhánh, migration, truy vấn) bằng hội thoại trong Claude Code, Cursor hoặc VS Code.",
+    "featuresVi": [
+      "Tương tác ngôn ngữ tự nhiên: quản lý database Neon bằng câu lệnh hội thoại",
+      "Hỗ trợ migration: dùng tính năng branching của Neon để thay đổi schema an toàn",
+      "Chế độ chỉ đọc: tham số `readonly=true`, `run_sql` chạy trong giao dịch READ ONLY",
+      "Kiểm soát truy cập qua URL: lọc `category`, giới hạn `projectId`, ghim role Postgres `roleName`",
+      "Công cụ phân tích: `list_slow_queries`, `explain_sql_statement`, so sánh schema",
+      "Máy chủ từ xa, xác thực OAuth hoặc API key"
+    ],
+    "requirementsVi": "Tài khoản Neon; Node.js >= v18.0.0; một MCP client (Claude Code, Cursor, VS Code…).",
+    "installStepsVi": [
+      "Thiết lập nhanh (OAuth, tự tạo API key và cấu hình editor): `npx neon@latest init`",
+      "Hoặc thêm máy chủ từ xa cho mọi agent/editor phát hiện được: `npx add-mcp https://mcp.neon.tech/mcp`",
+      "Khởi động lại MCP client và cấp quyền OAuth trong trình duyệt"
+    ],
+    "cliCommand": "npx neon@latest init",
+    "usageStepsVi": [
+      "Mở MCP client sau khi cấp quyền OAuth",
+      "Yêu cầu tạo dự án, nhánh hoặc chạy migration bằng ngôn ngữ tự nhiên",
+      "Xem lại và phê duyệt từng hành động mà LLM đề xuất trước khi thực thi"
+    ],
+    "samplePromptsVi": [
+      "Tạo một database Postgres mới tên \"my-database\" rồi tạo bảng users gồm các cột id, name, email, password.",
+      "Chạy migration trên dự án \"my-project\" để thêm cột created_at vào bảng users.",
+      "Tóm tắt tất cả dự án Neon của tôi và dữ liệu trong từng dự án."
+    ],
+    "prosVi": [
+      "Do Neon phát triển chính thức, giấy phép MIT",
+      "Không cần cài đặt cục bộ khi dùng máy chủ từ xa với OAuth",
+      "Có chế độ chỉ đọc và giới hạn quyền theo dự án/role"
+    ],
+    "consVi": [
+      "Cần tài khoản Neon",
+      "README khuyến nghị chỉ dùng cho phát triển cục bộ và IDE, không dùng trong môi trường production"
+    ],
+    "sourceEvidence": {
+      "npx neon@latest init": "README.md:65",
+      "npx add-mcp https://mcp.neon.tech/mcp": "README.md:83",
+      "jsonConfig": "README.md:91-98"
+    },
+    "meta": {
+      "id": "neondatabase-mcp-server-neon",
+      "nameVi": "Neon MCP Server — Quản lý Postgres trên Neon bằng ngôn ngữ tự nhiên",
+      "icon": "Database",
+      "categories": [
+        "database_sql_nosql",
+        "database"
+      ],
+      "platforms": [
+        "claude_code",
+        "cursor",
+        "claude_desktop"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "npx neon@latest init",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"Neon\": {\n      \"type\": \"http\",\n      \"url\": \"https://mcp.neon.tech/mcp?category=projects&category=branches&category=endpoints&category=querying&category=schema\"\n    }\n  }\n}"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"Neon\": {\n      \"type\": \"http\",\n      \"url\": \"https://mcp.neon.tech/mcp?category=projects&category=branches&category=endpoints&category=querying&category=schema\"\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "redis/mcp-redis",
+    "license": "MIT License",
+    "authorName": "Redis, Inc.",
+    "websiteUrl": "https://pypi.org/project/redis-mcp-server/",
+    "toolType": "mcp",
+    "taglineEn": "The Redis MCP Server is a natural language interface designed for agentic applications to efficiently manage and search data in Redis.",
+    "summaryVi": "MCP server chính hãng của Redis, cung cấp giao diện ngôn ngữ tự nhiên để agent AI quản lý và tìm kiếm dữ liệu trong Redis. Hỗ trợ đầy đủ các kiểu dữ liệu string, hash, list, set, sorted set, stream, JSON, pub/sub cùng công cụ tạo chỉ mục và tìm kiếm vector.",
+    "purposeVi": "Cho phép trợ lý AI lưu cache, phiên làm việc, hàng đợi, luồng sự kiện và tìm kiếm vector trên Redis thông qua giao thức MCP.",
+    "featuresVi": [
+      "Hỗ trợ đầy đủ cấu trúc dữ liệu: string, hash, list, set, sorted set, stream, JSON",
+      "Pub/sub: xuất bản thông điệp và đăng ký kênh",
+      "Query engine: quản lý chỉ mục vector và tìm kiếm vector",
+      "Công cụ docs: tìm kiếm tài liệu Redis bằng câu hỏi tự nhiên",
+      "Xác thực EntraID cho Azure Managed Redis",
+      "Phân phối qua PyPI (`redis-mcp-server`) và Docker image `mcp/redis`"
+    ],
+    "requirementsVi": "uv/uvx (README ghi Python 3.14 cho môi trường phát triển); một máy chủ Redis truy cập được qua URL redis:// hoặc rediss://.",
+    "installStepsVi": [
+      "Thêm cấu hình JSON mcpServers (chạy gói redis-mcp-server qua uvx, xem jsonConfig) vào MCP client",
+      "Hoặc cài gói: `pip install redis-mcp-server`",
+      "Xem toàn bộ tùy chọn: `uvx --from redis-mcp-server@latest redis-mcp-server --help`",
+      "Hoặc tự build Docker image: `docker build -t mcp-redis .`"
+    ],
+    "cliCommand": "uvx --from redis-mcp-server@latest redis-mcp-server --help",
+    "usageStepsVi": [
+      "Chỉ định kết nối Redis qua `--url` hoặc `--host`/`--port`/`--password` (hoặc biến môi trường REDIS_*)",
+      "Có thể tạo user ACL chỉ đọc để giới hạn quyền",
+      "Khởi động lại MCP client rồi yêu cầu thao tác dữ liệu bằng ngôn ngữ tự nhiên"
+    ],
+    "samplePromptsVi": [
+      "Lưu toàn bộ cuộc hội thoại này vào một Redis stream.",
+      "Lưu phiên đăng nhập của người dùng với thời gian hết hạn 30 phút.",
+      "Tạo chỉ mục vector và tìm các mục tương tự với vector này."
+    ],
+    "prosVi": [
+      "Do Redis, Inc. phát triển, giấy phép MIT",
+      "Bao phủ hầu hết cấu trúc dữ liệu Redis và tìm kiếm vector",
+      "Có Docker image chính thức"
+    ],
+    "consVi": [
+      "README ghi chỉ hỗ trợ transport stdio; streamable-http sẽ được bổ sung sau",
+      "Nhánh main đang phát triển tích cực, README khuyên dùng bản phát hành có tag"
+    ],
+    "sourceEvidence": {
+      "uvx --from redis-mcp-server@latest redis-mcp-server --help": "README.md:321",
+      "pip install redis-mcp-server": "README.md:151",
+      "docker build -t mcp-redis .": "README.md:259",
+      "jsonConfig": "README.md:94-107"
+    },
+    "meta": {
+      "id": "redis-mcp-redis",
+      "nameVi": "Redis MCP Server — Quản lý và tìm kiếm dữ liệu Redis bằng AI",
+      "icon": "Database",
+      "categories": [
+        "database_sql_nosql",
+        "database",
+        "vector_rag"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "claude_code",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "uvx --from redis-mcp-server@latest redis-mcp-server --help",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"RedisMCPServer\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"--from\",\n        \"redis-mcp-server@latest\",\n        \"redis-mcp-server\",\n        \"--url\",\n        \"\\\"redis://localhost:6379/0\\\"\"\n      ]\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "ClickHouse/mcp-clickhouse",
+    "license": "Apache License 2.0",
+    "authorName": "ClickHouse",
+    "websiteUrl": "https://pypi.org/project/mcp-clickhouse",
+    "toolType": "mcp",
+    "taglineEn": "An MCP server for ClickHouse.",
+    "summaryVi": "MCP server chính hãng của ClickHouse, cho phép trợ lý AI chạy truy vấn SQL, liệt kê database và bảng trên cụm ClickHouse. Tùy chọn hỗ trợ chDB (engine ClickHouse nhúng) để truy vấn trực tiếp tệp, URL và nguồn dữ liệu khác mà không cần ETL.",
+    "purposeVi": "Phân tích dữ liệu lớn trên ClickHouse bằng câu hỏi tự nhiên trong Claude Desktop hoặc các MCP client khác.",
+    "featuresVi": [
+      "`run_query`: chạy SQL trên cụm ClickHouse, hỗ trợ tham số `{name:Type}`",
+      "`list_databases` và `list_tables` có phân trang, lọc LIKE",
+      "Mặc định chỉ đọc (`CLICKHOUSE_ALLOW_WRITE_ACCESS=false`), chặn thao tác phá hủy kể cả khi bật ghi",
+      "chDB: `run_chdb_select_query` với engine ClickHouse nhúng",
+      "Health check `/health` khi chạy HTTP/SSE, hỗ trợ xác thực và OAuth/OIDC",
+      "Dùng thử ngay với ClickHouse SQL Playground công khai"
+    ],
+    "requirementsVi": "Python 3.10–3.14 (khuyến nghị 3.12) và uv; thông tin kết nối một dịch vụ ClickHouse.",
+    "installStepsVi": [
+      "Thêm cấu hình mcpServers của mcp-clickhouse (chạy qua uv, xem jsonConfig) vào tệp claude_desktop_config.json",
+      "Hoặc cài bằng Python hệ thống: `python3 -m pip install mcp-clickhouse`",
+      "Bật chDB (tùy chọn): `python3 -m pip install 'mcp-clickhouse[chdb]'`",
+      "Thay lệnh uv bằng đường dẫn tuyệt đối của uv (tìm bằng which uv) và khởi động lại Claude Desktop"
+    ],
+    "cliCommand": "python3 -m pip install mcp-clickhouse",
+    "usageStepsVi": [
+      "Đặt các biến CLICKHOUSE_HOST, CLICKHOUSE_PORT, CLICKHOUSE_USER, CLICKHOUSE_PASSWORD",
+      "Đặt `CLICKHOUSE_ALLOW_WRITE_ACCESS=true` nếu cần DDL/INSERT",
+      "Hỏi trợ lý về dữ liệu; máy chủ sẽ liệt kê bảng và chạy truy vấn"
+    ],
+    "samplePromptsVi": [
+      "Liệt kê các database trên cụm ClickHouse và các bảng trong database `default`.",
+      "Viết và chạy truy vấn đếm số sự kiện theo ngày trong 7 ngày gần nhất.",
+      "Dùng EXPLAIN ESTIMATE để ước tính số dòng truy vấn này sẽ đọc."
+    ],
+    "prosVi": [
+      "Do ClickHouse phát triển chính thức, giấy phép Apache-2.0",
+      "An toàn mặc định: chỉ đọc, chặn lệnh DROP",
+      "Có cấu hình demo dùng SQL Playground công khai"
+    ],
+    "consVi": [
+      "Cần cài uv và Python",
+      "Ranh giới bảo mật thực sự là quyền của user ClickHouse; README khuyên dùng user riêng"
+    ],
+    "sourceEvidence": {
+      "python3 -m pip install mcp-clickhouse": "README.md:468",
+      "python3 -m pip install 'mcp-clickhouse[chdb]'": "README.md:473",
+      "jsonConfig": "README.md:345-366"
+    },
+    "meta": {
+      "id": "clickhouse-mcp-clickhouse",
+      "nameVi": "ClickHouse MCP Server — Truy vấn và phân tích dữ liệu ClickHouse bằng AI",
+      "icon": "Database",
+      "categories": [
+        "database_sql_nosql",
+        "data_science_analytics",
+        "database"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "claude_code",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "python3 -m pip install mcp-clickhouse",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"mcp-clickhouse\": {\n      \"command\": \"uv\",\n      \"args\": [\n        \"run\",\n        \"--with\",\n        \"mcp-clickhouse\",\n        \"--python\",\n        \"3.12\",\n        \"mcp-clickhouse\"\n      ],\n      \"env\": {\n        \"CLICKHOUSE_HOST\": \"sql-clickhouse.clickhouse.com\",\n        \"CLICKHOUSE_PORT\": \"8443\",\n        \"CLICKHOUSE_USER\": \"demo\",\n        \"CLICKHOUSE_PASSWORD\": \"\",\n        \"CLICKHOUSE_SECURE\": \"true\",\n        \"CLICKHOUSE_VERIFY\": \"true\",\n        \"CLICKHOUSE_CONNECT_TIMEOUT\": \"30\"\n      }\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "qdrant/mcp-server-qdrant",
+    "license": "Apache License 2.0",
+    "authorName": "Qdrant",
+    "websiteUrl": "https://qdrant.tech/",
+    "toolType": "mcp",
+    "taglineEn": "An official Model Context Protocol server for keeping and retrieving memories in the Qdrant vector search engine.",
+    "summaryVi": "MCP server chính thức của Qdrant, đóng vai trò lớp bộ nhớ ngữ nghĩa trên cơ sở dữ liệu vector Qdrant. Máy chủ có hai công cụ lưu (`qdrant-store`) và tìm (`qdrant-find`), tự nhúng văn bản bằng mô hình FastEmbed.",
+    "purposeVi": "Cho trợ lý AI ghi nhớ và truy xuất thông tin theo ngữ nghĩa, ví dụ biến Claude Code thành công cụ tìm kiếm đoạn mã theo mô tả.",
+    "featuresVi": [
+      "`qdrant-store`: lưu thông tin kèm metadata vào collection",
+      "`qdrant-find`: tìm thông tin liên quan theo truy vấn ngữ nghĩa",
+      "Nhúng bằng FastEmbed, mặc định `sentence-transformers/all-MiniLM-L6-v2`",
+      "Hỗ trợ Qdrant từ xa (`QDRANT_URL`) hoặc cục bộ (`QDRANT_LOCAL_PATH`)",
+      "Transport stdio, sse, streamable-http; chế độ chỉ đọc `QDRANT_READ_ONLY`",
+      "Tùy biến mô tả công cụ để làm công cụ tìm kiếm mã"
+    ],
+    "requirementsVi": "uv/uvx; một máy chủ Qdrant (hoặc thư mục Qdrant cục bộ).",
+    "installStepsVi": [
+      "Thêm vào Claude Code bằng lệnh claude mcp add cấu hình sẵn cho tìm kiếm mã (nguyên văn ở trường cliCommand)",
+      "Kiểm tra máy chủ đã được thêm: `claude mcp list`",
+      "Hoặc cài cho Claude Desktop qua Smithery: `npx @smithery/cli install mcp-server-qdrant --client claude`"
+    ],
+    "cliCommand": "claude mcp add code-search \\\n-e QDRANT_URL=\"http://localhost:6333\" \\\n-e COLLECTION_NAME=\"code-repository\" \\\n-e EMBEDDING_MODEL=\"sentence-transformers/all-MiniLM-L6-v2\" \\\n-e TOOL_STORE_DESCRIPTION=\"Store code snippets with descriptions. The 'information' parameter should contain a natural language description of what the code does, while the actual code should be included in the 'metadata' parameter as a 'code' property.\" \\\n-e TOOL_FIND_DESCRIPTION=\"Search for relevant code snippets using natural language. The 'query' parameter should describe the functionality you're looking for.\" \\\n-- uvx mcp-server-qdrant",
+    "usageStepsVi": [
+      "Đặt QDRANT_URL, COLLECTION_NAME (collection sẽ tự tạo nếu chưa có)",
+      "Yêu cầu trợ lý lưu thông tin hoặc đoạn mã kèm mô tả",
+      "Truy vấn lại bằng ngôn ngữ tự nhiên để tìm nội dung liên quan"
+    ],
+    "samplePromptsVi": [
+      "Hãy ghi nhớ rằng dự án này dùng PostgreSQL 16 và triển khai trên Kubernetes.",
+      "Lưu đoạn mã hàm xác thực JWT này kèm mô tả để dùng lại sau.",
+      "Tìm các đoạn mã đã lưu liên quan đến phân trang kết quả API."
+    ],
+    "prosVi": [
+      "Do Qdrant phát hành chính thức, giấy phép Apache-2.0",
+      "Thiết lập đơn giản bằng uvx, có lệnh `claude mcp add` mẫu",
+      "Chạy được với Qdrant cục bộ, không bắt buộc dịch vụ đám mây"
+    ],
+    "consVi": [
+      "Chỉ hỗ trợ nhà cung cấp nhúng FastEmbed",
+      "Chỉ có hai công cụ lưu/tìm, không phải công cụ quản trị Qdrant đầy đủ"
+    ],
+    "sourceEvidence": {
+      "claude mcp add code-search \\\n-e QDRANT_URL=\"http://localhost:6333\" \\\n-e COLLECTION_NAME=\"code-repository\" \\\n-e EMBEDDING_MODEL=\"sentence-transformers/all-MiniLM-L6-v2\" \\\n-e TOOL_STORE_DESCRIPTION=\"Store code snippets with descriptions. The 'information' parameter should contain a natural language description of what the code does, while the actual code should be included in the 'metadata' parameter as a 'code' property.\" \\\n-e TOOL_FIND_DESCRIPTION=\"Search for relevant code snippets using natural language. The 'query' parameter should describe the functionality you're looking for.\" \\\n-- uvx mcp-server-qdrant": "README.md:257-263",
+      "claude mcp list": "README.md:269",
+      "npx @smithery/cli install mcp-server-qdrant --client claude": "README.md:143",
+      "jsonConfig": "README.md:152-164 (khối nằm trong mục mcpServers theo README dòng 148-149)"
+    },
+    "meta": {
+      "id": "qdrant-mcp-server-qdrant",
+      "nameVi": "Qdrant MCP Server — Bộ nhớ ngữ nghĩa trên cơ sở dữ liệu vector Qdrant",
+      "icon": "Search",
+      "categories": [
+        "vector_rag",
+        "database"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude mcp add code-search \\\n-e QDRANT_URL=\"http://localhost:6333\" \\\n-e COLLECTION_NAME=\"code-repository\" \\\n-e EMBEDDING_MODEL=\"sentence-transformers/all-MiniLM-L6-v2\" \\\n-e TOOL_STORE_DESCRIPTION=\"Store code snippets with descriptions. The 'information' parameter should contain a natural language description of what the code does, while the actual code should be included in the 'metadata' parameter as a 'code' property.\" \\\n-e TOOL_FIND_DESCRIPTION=\"Search for relevant code snippets using natural language. The 'query' parameter should describe the functionality you're looking for.\" \\\n-- uvx mcp-server-qdrant"
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "npx @smithery/cli install mcp-server-qdrant --client claude",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"qdrant\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"mcp-server-qdrant\"\n      ],\n      \"env\": {\n        \"QDRANT_URL\": \"https://xyz-example.eu-central.aws.cloud.qdrant.io:6333\",\n        \"QDRANT_API_KEY\": \"your_api_key\",\n        \"COLLECTION_NAME\": \"your-collection-name\",\n        \"EMBEDDING_MODEL\": \"sentence-transformers/all-MiniLM-L6-v2\"\n      }\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "motherduckdb/mcp-server-motherduck",
+    "license": "MIT License",
+    "authorName": "MotherDuck",
+    "websiteUrl": "https://motherduck.com/docs/sql-reference/mcp/",
+    "toolType": "mcp",
+    "taglineEn": "SQL analytics and data engineering for AI Assistants and IDEs.",
+    "summaryVi": "MCP server cục bộ chính hãng của MotherDuck, kết nối trợ lý AI với engine SQL phân tích DuckDB. Hỗ trợ tệp DuckDB cục bộ, database trong bộ nhớ, database trên S3 và MotherDuck, cho phép truy vấn đọc/ghi và duyệt catalog.",
+    "purposeVi": "Phân tích dữ liệu và kỹ thuật dữ liệu bằng SQL DuckDB ngay trong Claude, Cursor, VS Code, kể cả nạp/xuất dữ liệu từ hệ thống tệp cục bộ.",
+    "featuresVi": [
+      "`execute_query`: chạy SQL theo cú pháp DuckDB",
+      "`list_databases`, `list_tables`, `list_columns`: duyệt catalog",
+      "`switch_database_connection`: chuyển database khi chạy (bật bằng `--allow-switch-databases`)",
+      "Mặc định chỉ đọc; bật ghi bằng `--read-write`",
+      "Kết nối tệp cục bộ, `:memory:`, `s3://` hoặc MotherDuck (`md:`)",
+      "Giới hạn `--max-rows`, `--max-chars`, `--query-timeout`; transport stdio hoặc http"
+    ],
+    "requirementsVi": "uv (cài bằng `pip install uv` hoặc `brew install uv`); token MotherDuck nếu kết nối MotherDuck; thông tin AWS nếu dùng S3.",
+    "installStepsVi": [
+      "Cài uv: `pip install uv`",
+      "Thêm vào Claude Code (DuckDB cục bộ, chỉ đọc): `claude mcp add --scope user duckdb --transport stdio -- uvx mcp-server-motherduck --db-path /absolute/path/to/db.duckdb`",
+      "Hoặc kết nối MotherDuck chế độ đọc-ghi: `claude mcp add --scope user motherduck --transport stdio --env motherduck_token=YOUR_TOKEN -- uvx mcp-server-motherduck --db-path md: --read-write`"
+    ],
+    "cliCommand": "claude mcp add --scope user duckdb --transport stdio -- uvx mcp-server-motherduck --db-path /absolute/path/to/db.duckdb",
+    "usageStepsVi": [
+      "Chọn nguồn dữ liệu qua `--db-path`",
+      "Khởi động lại client để nạp máy chủ",
+      "Đặt câu hỏi phân tích; trợ lý sẽ duyệt bảng và chạy SQL DuckDB"
+    ],
+    "samplePromptsVi": [
+      "Liệt kê các bảng trong database DuckDB và mô tả cột của bảng `sales`.",
+      "Tính tổng doanh thu theo tháng từ bảng `sales` và sắp xếp giảm dần.",
+      "Đọc tệp CSV cục bộ này và tạo bảng mới từ nó."
+    ],
+    "prosVi": [
+      "Do MotherDuck phát triển, giấy phép MIT",
+      "Chạy hoàn toàn cục bộ với DuckDB, không cần tài khoản đám mây",
+      "Có lệnh `claude mcp add` sẵn và gói .mcpb cho Claude Desktop"
+    ],
+    "consVi": [
+      "Kết nối MotherDuck cần tài khoản và token",
+      "Bản cục bộ cần tự cài đặt; bản remote quản lý hoàn toàn nằm ở dịch vụ MotherDuck riêng"
+    ],
+    "sourceEvidence": {
+      "claude mcp add --scope user duckdb --transport stdio -- uvx mcp-server-motherduck --db-path /absolute/path/to/db.duckdb": "README.md:102",
+      "pip install uv": "README.md:28",
+      "claude mcp add --scope user motherduck --transport stdio --env motherduck_token=YOUR_TOKEN -- uvx mcp-server-motherduck --db-path md: --read-write": "README.md:107",
+      "jsonConfig": "README.md:48-55"
+    },
+    "meta": {
+      "id": "motherduckdb-mcp-server-motherduck",
+      "nameVi": "MotherDuck MCP Server — Phân tích SQL với DuckDB và MotherDuck cho AI",
+      "icon": "Database",
+      "categories": [
+        "database_sql_nosql",
+        "data_science_analytics",
+        "data_engineering"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude mcp add --scope user duckdb --transport stdio -- uvx mcp-server-motherduck --db-path /absolute/path/to/db.duckdb"
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"DuckDB (read-only)\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"mcp-server-motherduck\",\n        \"--db-path\",\n        \"/absolute/path/to/your.duckdb\"\n      ]\n    }\n  }\n}"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"DuckDB (read-only)\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"mcp-server-motherduck\",\n        \"--db-path\",\n        \"/absolute/path/to/your.duckdb\"\n      ]\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "couchbase/mcp-server-couchbase",
+    "license": "Apache License 2.0",
+    "authorName": "Couchbase",
+    "websiteUrl": "https://docs.couchbase.com/mcp-server/get-started/overview.html",
+    "toolType": "mcp",
+    "taglineEn": "An agent can inspect your cluster, explore schemas, run SQL++, full-text and vector queries, read and write documents, and diagnose query and cluster performance in natural language.",
+    "summaryVi": "MCP server tự lưu trữ chính hãng của Couchbase, kết nối trợ lý AI với cụm Couchbase Server (Capella hoặc tự quản lý) và cụm Operational Insights. Gói gồm hai máy chủ: operational (52 công cụ) và operational-insights (13 công cụ), mặc định ở chế độ chỉ đọc.",
+    "purposeVi": "Cho phép agent kiểm tra sức khỏe cụm, khám phá schema, chạy SQL++, tìm kiếm toàn văn/vector và chẩn đoán hiệu năng truy vấn Couchbase bằng ngôn ngữ tự nhiên.",
+    "featuresVi": [
+      "Sức khỏe cụm: trạng thái dịch vụ, metrics, tác vụ, sự kiện hệ thống",
+      "Khám phá dữ liệu: bucket, scope, collection, suy luận schema",
+      "Thao tác tài liệu KV và sub-document (ghi chỉ khi tắt read-only)",
+      "SQL++: chạy, EXPLAIN, Index Advisor, quản lý index GSI",
+      "Tìm kiếm toàn văn (FTS) và tìm kiếm vector",
+      "Phân tích hiệu năng: truy vấn chậm, thiếu covering index; transport stdio/HTTP với OAuth 2.1"
+    ],
+    "requirementsVi": "uv và Python 3.10+ (hoặc Docker); một cụm Couchbase (Capella free tier hoặc tự quản lý) cùng tài khoản truy cập.",
+    "installStepsVi": [
+      "Thêm cấu hình mcpServers (chạy gói couchbase-mcp-server qua uvx với máy chủ operational, xem jsonConfig) kèm CB_CONNECTION_STRING, CB_USERNAME, CB_PASSWORD",
+      "Kiểm tra phiên bản: `uvx couchbase-mcp-server --version`",
+      "Hoặc chạy chế độ HTTP để chia sẻ cho nhiều client (lệnh ở cliCommand)",
+      "Hoặc cài từ mã nguồn: `git clone https://github.com/couchbase/mcp-server-couchbase.git`"
+    ],
+    "cliCommand": "uvx couchbase-mcp-server operational \\\n  --connection-string='<couchbase_connection_string>' \\\n  --username='<database_username>' \\\n  --password='<database_password>' \\\n  --transport=http",
+    "usageStepsVi": [
+      "Chọn máy chủ `operational` (Capella/Couchbase Server) hoặc `operational-insights`",
+      "Đặt `CB_MCP_READ_ONLY_MODE=false` nếu cần công cụ ghi",
+      "Khởi động lại client và đặt câu hỏi về cụm, dữ liệu hoặc hiệu năng"
+    ],
+    "samplePromptsVi": [
+      "Tôi có những bucket, scope và collection nào, schema của collection `orders` ra sao?",
+      "Tìm 10 tài liệu mới nhất trong `users` có `status = 'active'`.",
+      "5 truy vấn chậm nhất trong giờ qua là gì, có truy vấn nào thiếu covering index không?"
+    ],
+    "prosVi": [
+      "Do Couchbase phát triển, giấy phép Apache-2.0",
+      "An toàn mặc định: không nạp công cụ ghi khi read-only",
+      "Hỗ trợ cả Capella và Couchbase Server tự quản lý, có Docker image chính thức"
+    ],
+    "consVi": [
+      "Một số công cụ quản trị (🖥️) không khả dụng trên Capella",
+      "Endpoint HTTP không có xác thực nếu chưa cấu hình OAuth"
+    ],
+    "sourceEvidence": {
+      "uvx couchbase-mcp-server operational \\\n  --connection-string='<couchbase_connection_string>' \\\n  --username='<database_username>' \\\n  --password='<database_password>' \\\n  --transport=http": "README.md:557-561",
+      "uvx couchbase-mcp-server --version": "README.md:75",
+      "git clone https://github.com/couchbase/mcp-server-couchbase.git": "README.md:126",
+      "jsonConfig": "README.md:89-101"
+    },
+    "meta": {
+      "id": "couchbase-mcp-server-couchbase",
+      "nameVi": "Couchbase MCP Server — Kết nối AI với cụm Couchbase và Capella",
+      "icon": "Database",
+      "categories": [
+        "database_sql_nosql",
+        "database",
+        "vector_rag"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "claude_code",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"couchbase\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"couchbase-mcp-server\",\n        \"operational\"\n      ],\n      \"env\": {\n        \"CB_CONNECTION_STRING\": \"couchbases://connection-string\",\n        \"CB_USERNAME\": \"username\",\n        \"CB_PASSWORD\": \"password\"\n      }\n    }\n  }\n}"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"couchbase\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"couchbase-mcp-server\",\n        \"operational\"\n      ],\n      \"env\": {\n        \"CB_CONNECTION_STRING\": \"couchbases://connection-string\",\n        \"CB_USERNAME\": \"username\",\n        \"CB_PASSWORD\": \"password\"\n      }\n    }\n  }\n}"
+        }
+      ]
+    }
+  }
+]

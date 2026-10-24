@@ -4,6 +4,16 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.11 (Ngày 24-10-2026)
+- **Loại hình**: Máy chủ MCP chính hãng của nhà cung cấp, đợt 4 (21 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-4-mcp-*.json`.
+- **Đám mây & DevOps**: AWS MCP (awslabs/mcp), Azure MCP Server (microsoft/mcp), MCP Toolbox for Databases (Google), Cloudflare MCP, Grafana MCP, Terraform MCP Server (MPL-2.0), Docker MCP Gateway.
+- **Cơ sở dữ liệu**: MongoDB, Neon, Redis, ClickHouse, Qdrant, MotherDuck/DuckDB, Couchbase.
+- **Tìm kiếm, web & SaaS**: Brave Search, Apify, Bright Data, Perplexity, Stripe, PayPal Agent Toolkit, Plane.
+- Chỉ nhận repo do chính nhà cung cấp phát hành; cấu hình `mcpServers` lấy nguyên văn từ README.
+- Không thêm: máy chủ đã có trong kho (Supabase, GitHub, Exa, Tavily, Firecrawl, Browserbase, Playwright), repo README ghi đã ngừng hỗ trợ (Elasticsearch, Snowflake-Labs/mcp, Notion), repo không có tệp giấy phép (Netlify), repo ngừng cập nhật hơn một năm (chroma-mcp).
+- Bỏ phần giá do agent tự suy luận; chỉ giữ thông tin giá có trong README.
+- Kho dữ liệu: 2.012 công cụ đang hiển thị, 2.058 cấu hình mẫu.
+
 ### Phiên Bản 2.1.10 (Ngày 24-10-2026)
 - **Loại hình**: Tài nguyên thị trường Việt Nam, đợt 2–3 (27 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-vn-dot-2-*.json` và `vn-dot-3-*.json`.
 - **Thương mại điện tử & vận chuyển**: Sapo-MCP, shopee-sdk, shopee-php, tiktokshop-php, lazada-php, kiotviet-client-sdk, giaohangnhanh (đều là dự án cộng đồng, không phải SDK chính thức của sàn).

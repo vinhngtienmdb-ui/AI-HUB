@@ -153035,5 +153035,1784 @@
       "guideIsTemplate": false,
       "starsVerified": false
     }
+  },
+  {
+    "id": "awslabs-mcp",
+    "slug": "awslabs-mcp",
+    "name": "AWS MCP Servers — Bộ MCP server chính thức của AWS",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "cloud_infrastructure",
+    "categoryNameVi": "Điện toán đám mây & Hạ tầng số",
+    "categories": [
+      "cloud_infrastructure",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Điện toán đám mây & Hạ tầng số",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/awslabs/mcp",
+    "websiteUrl": "https://awslabs.github.io/mcp/",
+    "authorName": "AWS Labs (Amazon Web Services)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Bộ sưu tập các MCP server mã nguồn mở chính thức của AWS, mỗi server chuyên cho một mảng: tài liệu AWS, gọi AWS API, hạ tầng dưới dạng mã (CDK, Terraform), Bedrock Knowledge Base, cơ sở dữ liệu, chi phí và vận hành. Các server chạy cục bộ qua stdio và được phát hành dưới dạng gói Python, khởi chạy bằng uvx.",
+    "purposeVi": "Giúp trợ lý AI có ngữ cảnh chính xác, cập nhật về dịch vụ AWS và thực hiện các tác vụ hạ tầng, dữ liệu, chi phí trên tài khoản AWS của bạn.",
+    "featuresVi": [
+      "Tài liệu AWS thời gian thực: AWS Documentation MCP Server lấy tài liệu và API reference mới nhất",
+      "AWS API: gọi các API AWS từ trợ lý AI qua aws-api-mcp-server",
+      "Hạ tầng dưới dạng mã: server cho CDK, Terraform và CloudFormation (aws-iac-mcp-server)",
+      "AI/ML: truy vấn Amazon Bedrock Knowledge Base (bedrock-kb-retrieval-mcp-server)",
+      "Dữ liệu và phân tích: server cho Aurora DSQL, Valkey, xử lý dữ liệu và nhiều cơ sở dữ liệu SQL/NoSQL",
+      "Chi phí và vận hành: tra cứu giá AWS (aws-pricing-mcp-server), AWS Support",
+      "Có hướng dẫn cấu hình cho Kiro, Cline, Cursor, Windsurf, VS Code và Claude Code"
+    ],
+    "installGuideVi": "Yêu cầu: Cài uv của Astral, Python 3.10 (qua `uv python install 3.10`) và thông tin xác thực AWS có quyền với các dịch vụ cần dùng.\nBước 1: Cài uv theo hướng dẫn của Astral, sau đó cài Python: `uv python install 3.10`\nBước 2: Cấu hình thông tin xác thực AWS (AWS credentials) có quyền với các dịch vụ cần dùng\nBước 3: Thêm server tài liệu AWS vào Claude Code: `claude mcp add aws-docs uvx awslabs.aws-documentation-mcp-server@latest`\nBước 4: Thêm server gọi AWS API: `claude mcp add aws-api uvx awslabs.aws-api-mcp-server@latest`\nBước 5: Kiểm tra danh sách server đã cài: `claude mcp list`",
+    "usageGuideVi": "Bước 1: Chọn server phù hợp trong bảng danh mục của README (tài liệu, IaC, dữ liệu, chi phí...)\nBước 2: Thêm server bằng lệnh `claude mcp add` hoặc khai báo trong tệp `.mcp.json` ở thư mục dự án\nBước 3: Đặt câu hỏi hoặc giao việc liên quan đến AWS cho trợ lý AI; server sẽ cung cấp tài liệu hoặc thao tác tương ứng",
+    "samplePromptsVi": [
+      "Tra tài liệu AWS mới nhất và giải thích cách cấu hình vòng đời (lifecycle) cho bucket S3",
+      "Viết stack CDK tạo hàm Lambda kèm API Gateway theo thực hành tốt của AWS",
+      "Ước tính chi phí hằng tháng khi chạy 2 instance EC2 m7g.large ở region ap-southeast-1"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add aws-docs uvx awslabs.aws-documentation-mcp-server@latest",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"awslabs.aws-iac-mcp-server\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"awslabs.aws-iac-mcp-server@latest\"\n      ],\n      \"env\": {\n        \"FASTMCP_LOG_LEVEL\": \"ERROR\"\n      }\n    },\n    \"awslabs.aws-documentation-mcp-server\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"awslabs.aws-documentation-mcp-server@latest\"\n      ],\n      \"env\": {\n        \"FASTMCP_LOG_LEVEL\": \"ERROR\",\n        \"AWS_DOCUMENTATION_PARTITION\": \"aws\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Do AWS Labs phát hành và duy trì, cập nhật thường xuyên",
+      "Giấy phép Apache 2.0, dùng tự do cả cho mục đích thương mại",
+      "Nhiều server chuyên biệt, có hướng dẫn cho nhiều MCP client kể cả Claude Code"
+    ],
+    "consVi": [
+      "Các server trong repo chỉ hỗ trợ stdio; hỗ trợ SSE đã bị gỡ từ ngày 26/5/2025",
+      "Cần tài khoản AWS và thông tin xác thực; một số thao tác có thể phát sinh chi phí AWS",
+      "README khuyến nghị Agent Toolkit for AWS cho môi trường sản xuất; các dự án hữu ích sẽ dần chuyển sang đó"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# AWS MCP Servers — Bộ MCP server chính thức của AWS\n\n> A suite of specialized MCP servers that help you get the most out of AWS, wherever you use MCP.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nBộ sưu tập các MCP server mã nguồn mở chính thức của AWS, mỗi server chuyên cho một mảng: tài liệu AWS, gọi AWS API, hạ tầng dưới dạng mã (CDK, Terraform), Bedrock Knowledge Base, cơ sở dữ liệu, chi phí và vận hành. Các server chạy cục bộ qua stdio và được phát hành dưới dạng gói Python, khởi chạy bằng uvx.\n\nGiúp trợ lý AI có ngữ cảnh chính xác, cập nhật về dịch vụ AWS và thực hiện các tác vụ hạ tầng, dữ liệu, chi phí trên tài khoản AWS của bạn.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Điện toán đám mây & Hạ tầng số\n- **Tác giả / Nhà phát triển:** AWS Labs (Amazon Web Services)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/awslabs/mcp](https://github.com/awslabs/mcp)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tài liệu AWS thời gian thực: AWS Documentation MCP Server lấy tài liệu và API reference mới nhất**\n- **AWS API: gọi các API AWS từ trợ lý AI qua aws-api-mcp-server**\n- **Hạ tầng dưới dạng mã: server cho CDK, Terraform và CloudFormation (aws-iac-mcp-server)**\n- **AI/ML: truy vấn Amazon Bedrock Knowledge Base (bedrock-kb-retrieval-mcp-server)**\n- **Dữ liệu và phân tích: server cho Aurora DSQL, Valkey, xử lý dữ liệu và nhiều cơ sở dữ liệu SQL/NoSQL**\n- **Chi phí và vận hành: tra cứu giá AWS (aws-pricing-mcp-server), AWS Support**\n- **Có hướng dẫn cấu hình cho Kiro, Cline, Cursor, Windsurf, VS Code và Claude Code**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add aws-docs uvx awslabs.aws-documentation-mcp-server@latest\n```\n\nYêu cầu: Cài uv của Astral, Python 3.10 (qua `uv python install 3.10`) và thông tin xác thực AWS có quyền với các dịch vụ cần dùng.\nBước 1: Cài uv theo hướng dẫn của Astral, sau đó cài Python: `uv python install 3.10`\nBước 2: Cấu hình thông tin xác thực AWS (AWS credentials) có quyền với các dịch vụ cần dùng\nBước 3: Thêm server tài liệu AWS vào Claude Code: `claude mcp add aws-docs uvx awslabs.aws-documentation-mcp-server@latest`\nBước 4: Thêm server gọi AWS API: `claude mcp add aws-api uvx awslabs.aws-api-mcp-server@latest`\nBước 5: Kiểm tra danh sách server đã cài: `claude mcp list`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn server phù hợp trong bảng danh mục của README (tài liệu, IaC, dữ liệu, chi phí...)\nBước 2: Thêm server bằng lệnh `claude mcp add` hoặc khai báo trong tệp `.mcp.json` ở thư mục dự án\nBước 3: Đặt câu hỏi hoặc giao việc liên quan đến AWS cho trợ lý AI; server sẽ cung cấp tài liệu hoặc thao tác tương ứng\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tra tài liệu AWS mới nhất và giải thích cách cấu hình vòng đời (lifecycle) cho bucket S3\"\n- \"Viết stack CDK tạo hàm Lambda kèm API Gateway theo thực hành tốt của AWS\"\n- \"Ước tính chi phí hằng tháng khi chạy 2 instance EC2 m7g.large ở region ap-southeast-1\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "microsoft-mcp",
+    "slug": "microsoft-mcp",
+    "name": "Azure MCP Server — MCP server chính thức của Microsoft cho Azure",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "cloud_infrastructure",
+    "categoryNameVi": "Điện toán đám mây & Hạ tầng số",
+    "categories": [
+      "cloud_infrastructure",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Điện toán đám mây & Hạ tầng số",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/microsoft/mcp",
+    "websiteUrl": "https://learn.microsoft.com/azure/developer/azure-mcp-server/",
+    "authorName": "Microsoft",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Kho chính thức của Microsoft chứa mã nguồn Azure MCP Server và Microsoft Fabric MCP Server. Azure MCP Server gom toàn bộ công cụ Azure vào một server, cho phép trợ lý AI làm việc với Storage, Cosmos DB, Key Vault, AKS, Azure Monitor, Microsoft Foundry và nhiều dịch vụ khác.",
+    "purposeVi": "Kết nối tác tử AI với tài nguyên Azure của bạn để truy vấn, quản lý và triển khai bằng ngôn ngữ tự nhiên.",
+    "featuresVi": [
+      "Một server cho mọi công cụ Azure: Storage, Cosmos DB, Key Vault, AKS, Container Apps, Event Hubs, Azure Monitor...",
+      "Microsoft Foundry: liệt kê, triển khai mô hình và tạo, đánh giá agent",
+      "Nhiều cách cài: plugin Claude Code, .NET (dnx), Node.js (npx), Python (uvx), Docker, MCPB",
+      "Hỗ trợ đám mây chủ quyền: Azure China Cloud, Azure US Government qua tùy chọn --cloud",
+      "Có thể tự host dạng remote trên Azure Container Apps bằng mẫu azd"
+    ],
+    "installGuideVi": "Yêu cầu: Đã đăng nhập Azure trước khi chạy server (ví dụ `az login`); Node.js LTS nếu dùng npx, hoặc .NET 10 SDK nếu dùng dnx.\nBước 1: Đăng nhập Azure, ví dụ bằng Azure CLI: `az login`\nBước 2: Claude Code: cài plugin Azure từ marketplace chính thức bằng lệnh `/plugin install azure@claude-plugins-official`\nBước 3: Hoặc chạy server trực tiếp bằng Node.js: `npx -y @azure/mcp@latest server start`\nBước 4: Xem danh sách công cụ có sẵn: `npx -y @azure/mcp@latest tools list`",
+    "usageGuideVi": "Bước 1: Thêm khối cấu hình `azure-mcp-server` vào tệp mcp.json của MCP client\nBước 2: Khởi động lại client và làm mới danh sách công cụ để thấy Azure MCP Server\nBước 3: Gõ yêu cầu liên quan đến Azure, ví dụ liệt kê container trong Azure Storage",
+    "samplePromptsVi": [
+      "List my Azure Storage containers",
+      "Liệt kê các khuyến nghị Azure Advisor cho subscription của tôi",
+      "Liệt kê các model deployment trong Microsoft Foundry"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "/plugin install azure@claude-plugins-official",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"/plugin install azure@claude-plugins-official\"\n  ],\n  \"nguon\": \"https://github.com/microsoft/mcp\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "npx -y @azure/mcp@latest server start",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"azure-mcp-server\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@azure/mcp@latest\",\n        \"server\",\n        \"start\"\n      ]\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Server chính thức của Microsoft, giấy phép MIT",
+      "Bao phủ rất nhiều dịch vụ Azure trong một server duy nhất",
+      "Có plugin cài một lệnh cho Claude Code và nhiều gói cài đặt (npm, NuGet, PyPI, Docker)"
+    ],
+    "consVi": [
+      "Bắt buộc xác thực Azure; thao tác trên tài nguyên có thể phát sinh chi phí",
+      "README chính của kho chỉ là trang tổng quan; hướng dẫn chi tiết nằm ở servers/Azure.Mcp.Server/README.md"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Azure MCP Server — MCP server chính thức của Microsoft cho Azure\n\n> Azure MCP Server supercharges your agents with Azure context across numerous Azure services.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nKho chính thức của Microsoft chứa mã nguồn Azure MCP Server và Microsoft Fabric MCP Server. Azure MCP Server gom toàn bộ công cụ Azure vào một server, cho phép trợ lý AI làm việc với Storage, Cosmos DB, Key Vault, AKS, Azure Monitor, Microsoft Foundry và nhiều dịch vụ khác.\n\nKết nối tác tử AI với tài nguyên Azure của bạn để truy vấn, quản lý và triển khai bằng ngôn ngữ tự nhiên.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Điện toán đám mây & Hạ tầng số\n- **Tác giả / Nhà phát triển:** Microsoft\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/microsoft/mcp](https://github.com/microsoft/mcp)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Một server cho mọi công cụ Azure: Storage, Cosmos DB, Key Vault, AKS, Container Apps, Event Hubs, Azure Monitor...**\n- **Microsoft Foundry: liệt kê, triển khai mô hình và tạo, đánh giá agent**\n- **Nhiều cách cài: plugin Claude Code, .NET (dnx), Node.js (npx), Python (uvx), Docker, MCPB**\n- **Hỗ trợ đám mây chủ quyền: Azure China Cloud, Azure US Government qua tùy chọn --cloud**\n- **Có thể tự host dạng remote trên Azure Container Apps bằng mẫu azd**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n/plugin install azure@claude-plugins-official\n```\n\nYêu cầu: Đã đăng nhập Azure trước khi chạy server (ví dụ `az login`); Node.js LTS nếu dùng npx, hoặc .NET 10 SDK nếu dùng dnx.\nBước 1: Đăng nhập Azure, ví dụ bằng Azure CLI: `az login`\nBước 2: Claude Code: cài plugin Azure từ marketplace chính thức bằng lệnh `/plugin install azure@claude-plugins-official`\nBước 3: Hoặc chạy server trực tiếp bằng Node.js: `npx -y @azure/mcp@latest server start`\nBước 4: Xem danh sách công cụ có sẵn: `npx -y @azure/mcp@latest tools list`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Thêm khối cấu hình `azure-mcp-server` vào tệp mcp.json của MCP client\nBước 2: Khởi động lại client và làm mới danh sách công cụ để thấy Azure MCP Server\nBước 3: Gõ yêu cầu liên quan đến Azure, ví dụ liệt kê container trong Azure Storage\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"List my Azure Storage containers\"\n- \"Liệt kê các khuyến nghị Azure Advisor cho subscription của tôi\"\n- \"Liệt kê các model deployment trong Microsoft Foundry\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "googleapis-mcp-toolbox",
+    "slug": "googleapis-mcp-toolbox",
+    "name": "MCP Toolbox for Databases — MCP server cơ sở dữ liệu của Google",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "database_sql_nosql",
+    "categoryNameVi": "Cơ sở dữ liệu SQL & NoSQL",
+    "categories": [
+      "database_sql_nosql",
+      "cloud_infrastructure"
+    ],
+    "categoryNamesVi": [
+      "Cơ sở dữ liệu SQL & NoSQL",
+      "Điện toán đám mây & Hạ tầng số"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/googleapis/mcp-toolbox",
+    "websiteUrl": "https://mcp-toolbox.dev/",
+    "authorName": "Google (googleapis)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "MCP Toolbox for Databases (trước đây là genai-toolbox) là MCP server mã nguồn mở của Google kết nối tác tử AI và IDE với cơ sở dữ liệu doanh nghiệp. Có bộ công cụ dựng sẵn (prebuilt) cho AlloyDB, BigQuery, Cloud SQL, Spanner, PostgreSQL, MySQL, MongoDB, Redis... và framework định nghĩa công cụ tùy biến bằng tệp tools.yaml.",
+    "purposeVi": "Cho phép hỏi dữ liệu bằng ngôn ngữ tự nhiên, khám phá lược đồ và xây công cụ truy vấn an toàn cho tác tử AI chạy thực tế.",
+    "featuresVi": [
+      "Công cụ dựng sẵn: chạy với cờ `--prebuilt=<database>` để có ngay list_tables, execute_sql...",
+      "Hỗ trợ Google Cloud: AlloyDB, BigQuery, Cloud SQL, Spanner, Firestore, Knowledge Catalog",
+      "Hỗ trợ CSDL khác: PostgreSQL, MySQL, SQL Server, Oracle, MongoDB, Redis, Elasticsearch, Neo4j, Snowflake...",
+      "Framework công cụ tùy biến: khai báo sources, tools, toolsets, prompts trong tools.yaml",
+      "Connection pooling, xác thực tích hợp (IAM) và quan sát qua OpenTelemetry",
+      "SDK cho Python, JS/TS, Go, Java để tích hợp vào ADK, LangChain, LlamaIndex"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js (để chạy npx) hoặc tải binary/ảnh container; thông tin kết nối tới cơ sở dữ liệu cần dùng qua biến môi trường.\nBước 1: Thêm cấu hình MCP dùng gói `@toolbox-sdk/server` với cờ `--prebuilt=postgres --stdio` vào mcp.json hoặc claude_desktop_config.json\nBước 2: Đặt biến môi trường kết nối cơ sở dữ liệu theo Prebuilt Tools Reference\nBước 3: Hoặc cài bằng Homebrew: `brew install mcp-toolbox`\nBước 4: Với công cụ tùy biến, chạy server bằng tệp cấu hình: `npx @toolbox-sdk/server --config tools.yaml`",
+    "usageGuideVi": "Bước 1: Chọn cơ sở dữ liệu và bộ công cụ dựng sẵn bằng `--prebuilt=<database>` hoặc `--prebuilt=<database>/<toolset>`\nBước 2: Khởi động lại MCP client để nạp các công cụ\nBước 3: Hỏi dữ liệu, khám phá lược đồ hoặc sinh mã truy vấn bằng ngôn ngữ tự nhiên",
+    "samplePromptsVi": [
+      "Liệt kê các bảng trong cơ sở dữ liệu PostgreSQL và mô tả cột của bảng orders",
+      "Viết và chạy truy vấn SQL đếm số đơn hàng theo tháng trong năm nay",
+      "Tạo tools.yaml định nghĩa công cụ tìm khách hàng theo email với truy vấn có tham số"
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"toolbox-postgres\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@toolbox-sdk/server\",\n        \"--prebuilt=postgres\",\n        \"--stdio\"\n      ]\n    }\n  }\n}"
+      },
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npx @toolbox-sdk/server --config tools.yaml",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx @toolbox-sdk/server --config tools.yaml\"\n  ],\n  \"nguon\": \"https://github.com/googleapis/mcp-toolbox\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Dự án chính thức của Google, giấy phép Apache 2.0",
+      "Hỗ trợ rất nhiều cơ sở dữ liệu, cả Google Cloud lẫn bên ngoài",
+      "Vừa dùng ngay trong IDE vừa làm framework công cụ cho tác tử chạy thực tế"
+    ],
+    "consVi": [
+      "Kho đã đổi tên từ genai-toolbox sang mcp-toolbox, tài liệu cũ có thể còn dùng tên cũ",
+      "README lưu ý cách chạy bằng npx ưu tiên tiện lợi hơn hiệu năng; nên dùng binary hoặc container cho môi trường ổn định",
+      "Cần tự cấu hình thông tin kết nối và quyền truy cập cơ sở dữ liệu"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# MCP Toolbox for Databases — MCP server cơ sở dữ liệu của Google\n\n> MCP Toolbox for Databases is an open source Model Context Protocol (MCP) server that connects your AI agents, IDEs, and applications directly to your enterprise databases.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP Toolbox for Databases (trước đây là genai-toolbox) là MCP server mã nguồn mở của Google kết nối tác tử AI và IDE với cơ sở dữ liệu doanh nghiệp. Có bộ công cụ dựng sẵn (prebuilt) cho AlloyDB, BigQuery, Cloud SQL, Spanner, PostgreSQL, MySQL, MongoDB, Redis... và framework định nghĩa công cụ tùy biến bằng tệp tools.yaml.\n\nCho phép hỏi dữ liệu bằng ngôn ngữ tự nhiên, khám phá lược đồ và xây công cụ truy vấn an toàn cho tác tử AI chạy thực tế.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Cơ sở dữ liệu SQL & NoSQL\n- **Tác giả / Nhà phát triển:** Google (googleapis)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/googleapis/mcp-toolbox](https://github.com/googleapis/mcp-toolbox)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Công cụ dựng sẵn: chạy với cờ `--prebuilt=<database>` để có ngay list_tables, execute_sql...**\n- **Hỗ trợ Google Cloud: AlloyDB, BigQuery, Cloud SQL, Spanner, Firestore, Knowledge Catalog**\n- **Hỗ trợ CSDL khác: PostgreSQL, MySQL, SQL Server, Oracle, MongoDB, Redis, Elasticsearch, Neo4j, Snowflake...**\n- **Framework công cụ tùy biến: khai báo sources, tools, toolsets, prompts trong tools.yaml**\n- **Connection pooling, xác thực tích hợp (IAM) và quan sát qua OpenTelemetry**\n- **SDK cho Python, JS/TS, Go, Java để tích hợp vào ADK, LangChain, LlamaIndex**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx @toolbox-sdk/server --config tools.yaml\n```\n\nYêu cầu: Node.js (để chạy npx) hoặc tải binary/ảnh container; thông tin kết nối tới cơ sở dữ liệu cần dùng qua biến môi trường.\nBước 1: Thêm cấu hình MCP dùng gói `@toolbox-sdk/server` với cờ `--prebuilt=postgres --stdio` vào mcp.json hoặc claude_desktop_config.json\nBước 2: Đặt biến môi trường kết nối cơ sở dữ liệu theo Prebuilt Tools Reference\nBước 3: Hoặc cài bằng Homebrew: `brew install mcp-toolbox`\nBước 4: Với công cụ tùy biến, chạy server bằng tệp cấu hình: `npx @toolbox-sdk/server --config tools.yaml`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn cơ sở dữ liệu và bộ công cụ dựng sẵn bằng `--prebuilt=<database>` hoặc `--prebuilt=<database>/<toolset>`\nBước 2: Khởi động lại MCP client để nạp các công cụ\nBước 3: Hỏi dữ liệu, khám phá lược đồ hoặc sinh mã truy vấn bằng ngôn ngữ tự nhiên\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Liệt kê các bảng trong cơ sở dữ liệu PostgreSQL và mô tả cột của bảng orders\"\n- \"Viết và chạy truy vấn SQL đếm số đơn hàng theo tháng trong năm nay\"\n- \"Tạo tools.yaml định nghĩa công cụ tìm khách hàng theo email với truy vấn có tham số\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "cloudflare-mcp",
+    "slug": "cloudflare-mcp",
+    "name": "Cloudflare API MCP Server — MCP chính thức cho toàn bộ Cloudflare API",
+    "icon": "Globe",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "cloud_infrastructure",
+    "categoryNameVi": "Điện toán đám mây & Hạ tầng số",
+    "categories": [
+      "cloud_infrastructure",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Điện toán đám mây & Hạ tầng số",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/cloudflare/mcp",
+    "websiteUrl": "https://mcp.cloudflare.com/mcp",
+    "authorName": "Cloudflare",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "MCP server chính thức của Cloudflare (dạng remote) phủ toàn bộ Cloudflare API khoảng 2.500 endpoint nhưng chỉ tốn khoảng 1.000 token ngữ cảnh nhờ mô hình Code Mode: tác tử viết JavaScript để tìm endpoint trong đặc tả OpenAPI và gọi API ngay trên server. Server còn có công cụ tra tài liệu Cloudflare và phục vụ bộ Cloudflare skills.",
+    "purposeVi": "Quản lý Workers, KV, R2, D1, DNS, Firewall và các dịch vụ Cloudflare khác bằng ngôn ngữ tự nhiên mà không làm tràn ngữ cảnh mô hình.",
+    "featuresVi": [
+      "Code Mode: 4 công cụ docs, search, execute, whoami thay cho hàng nghìn công cụ riêng lẻ",
+      "Phủ toàn bộ Cloudflare API: Workers, KV, R2, D1, Pages, DNS, Firewall, Load Balancers, AI Gateway, Vectorize...",
+      "Xác thực OAuth (khuyến nghị) hoặc API token dạng Bearer cho CI/CD",
+      "Tùy chọn `?codemode=false` để đăng ký mỗi endpoint thành một công cụ riêng",
+      "Giới hạn kết quả mỗi lần gọi khoảng 6.000 token, có thể tắt bằng `?truncateToolResult=false`",
+      "Hỗ trợ GraphQL Analytics API qua cùng công cụ execute"
+    ],
+    "installGuideVi": "Yêu cầu: Tài khoản Cloudflare; MCP client hỗ trợ remote server (HTTP). Nếu dùng API token thì token không được bật lọc địa chỉ IP.\nBước 1: Thêm server remote với URL `https://mcp.cloudflare.com/mcp` vào cấu hình MCP client (khối `cloudflare-api`, type http)\nBước 2: Kết nối lần đầu sẽ chuyển sang Cloudflare để ủy quyền OAuth và chọn quyền\nBước 3: Hoặc tạo Cloudflare API token và cấu hình làm Bearer Token cho client",
+    "usageGuideVi": "Bước 1: Sau khi kết nối, yêu cầu trợ lý AI làm việc với tài khoản Cloudflare\nBước 2: Tác tử dùng công cụ search để tìm endpoint, rồi execute để gọi API\nBước 3: Dùng công cụ docs để tra tài liệu Cloudflare khi cần",
+    "samplePromptsVi": [
+      "List all my Workers",
+      "Create a KV namespace called 'my-cache'",
+      "Thêm bản ghi A cho api.example.com trỏ tới 192.0.2.1"
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"cloudflare-api\": {\n      \"type\": \"http\",\n      \"url\": \"https://mcp.cloudflare.com/mcp\"\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Server chính thức của Cloudflare, giấy phép Apache 2.0",
+      "Tiết kiệm ngữ cảnh rất lớn so với MCP thông thường (khoảng 1.100 token so với hơn 244.000)",
+      "Không cần cài đặt cục bộ, chỉ cần URL remote và OAuth"
+    ],
+    "consVi": [
+      "Cần tài khoản Cloudflare; một số tính năng yêu cầu gói Workers trả phí",
+      "API token có bật lọc địa chỉ IP (Client IP Address Filtering) hiện chưa được hỗ trợ",
+      "Tắt Code Mode làm chi phí token tăng mạnh (khoảng 244k token)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Cloudflare API MCP Server — MCP chính thức cho toàn bộ Cloudflare API\n\n> A token-efficient MCP server for the entire Cloudflare API. 2500 endpoints in 1k tokens, powered by Code Mode.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server chính thức của Cloudflare (dạng remote) phủ toàn bộ Cloudflare API khoảng 2.500 endpoint nhưng chỉ tốn khoảng 1.000 token ngữ cảnh nhờ mô hình Code Mode: tác tử viết JavaScript để tìm endpoint trong đặc tả OpenAPI và gọi API ngay trên server. Server còn có công cụ tra tài liệu Cloudflare và phục vụ bộ Cloudflare skills.\n\nQuản lý Workers, KV, R2, D1, DNS, Firewall và các dịch vụ Cloudflare khác bằng ngôn ngữ tự nhiên mà không làm tràn ngữ cảnh mô hình.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Điện toán đám mây & Hạ tầng số\n- **Tác giả / Nhà phát triển:** Cloudflare\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/cloudflare/mcp](https://github.com/cloudflare/mcp)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Code Mode: 4 công cụ docs, search, execute, whoami thay cho hàng nghìn công cụ riêng lẻ**\n- **Phủ toàn bộ Cloudflare API: Workers, KV, R2, D1, Pages, DNS, Firewall, Load Balancers, AI Gateway, Vectorize...**\n- **Xác thực OAuth (khuyến nghị) hoặc API token dạng Bearer cho CI/CD**\n- **Tùy chọn `?codemode=false` để đăng ký mỗi endpoint thành một công cụ riêng**\n- **Giới hạn kết quả mỗi lần gọi khoảng 6.000 token, có thể tắt bằng `?truncateToolResult=false`**\n- **Hỗ trợ GraphQL Analytics API qua cùng công cụ execute**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\nYêu cầu: Tài khoản Cloudflare; MCP client hỗ trợ remote server (HTTP). Nếu dùng API token thì token không được bật lọc địa chỉ IP.\nBước 1: Thêm server remote với URL `https://mcp.cloudflare.com/mcp` vào cấu hình MCP client (khối `cloudflare-api`, type http)\nBước 2: Kết nối lần đầu sẽ chuyển sang Cloudflare để ủy quyền OAuth và chọn quyền\nBước 3: Hoặc tạo Cloudflare API token và cấu hình làm Bearer Token cho client\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Sau khi kết nối, yêu cầu trợ lý AI làm việc với tài khoản Cloudflare\nBước 2: Tác tử dùng công cụ search để tìm endpoint, rồi execute để gọi API\nBước 3: Dùng công cụ docs để tra tài liệu Cloudflare khi cần\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"List all my Workers\"\n- \"Create a KV namespace called 'my-cache'\"\n- \"Thêm bản ghi A cho api.example.com trỏ tới 192.0.2.1\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "grafana-mcp-grafana",
+    "slug": "grafana-mcp-grafana",
+    "name": "Grafana MCP — MCP server chính thức cho Grafana và giám sát",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "devops_cicd",
+    "categoryNameVi": "DevOps & Tự động hóa CI/CD",
+    "categories": [
+      "devops_cicd",
+      "cloud_infrastructure",
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "DevOps & Tự động hóa CI/CD",
+      "Điện toán đám mây & Hạ tầng số",
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/grafana/mcp-grafana",
+    "websiteUrl": "",
+    "authorName": "Grafana Labs",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "MCP server chính thức của Grafana Labs cho phép trợ lý AI truy cập phiên bản Grafana (tự host hoặc Grafana Cloud) và hệ sinh thái xung quanh: dashboard, datasource, Prometheus, Loki, cảnh báo, sự cố, OnCall. Viết bằng Go, chạy bằng uvx, Docker hoặc binary.",
+    "purposeVi": "Giúp kỹ sư vận hành tra cứu dashboard, truy vấn số liệu và log, xử lý cảnh báo và sự cố ngay trong trợ lý AI.",
+    "featuresVi": [
+      "Dashboard: tìm kiếm, xem tóm tắt, trích thuộc tính bằng JSONPath, tạo/sửa và vá (patch) dashboard",
+      "Truy vấn Prometheus, Loki, InfluxDB, SQL, CloudWatch, Elasticsearch/OpenSearch, Graphite...",
+      "Cảnh báo (Alerting), Sự cố (Incidents) và Grafana OnCall",
+      "Annotations, snapshots, render ảnh panel và provisioning",
+      "Chế độ chỉ đọc với cờ `--disable-write` cho môi trường sản xuất",
+      "Hỗ trợ nhiều tổ chức, header HTTP tùy chỉnh, SOCKS5 proxy, TLS và transport streamable-http"
+    ],
+    "installGuideVi": "Yêu cầu: Grafana 9.0 trở lên; service account token có đủ quyền; uv (nếu chạy bằng uvx) hoặc Docker.\nBước 1: Tạo service account trong Grafana và sinh service account token\nBước 2: Chạy bằng uvx (khuyến nghị): `uvx mcp-grafana`\nBước 3: Hoặc chạy bằng Docker (stdio): `docker run --rm -i -e GRAFANA_URL=http://localhost:3000 -e GRAFANA_SERVICE_ACCOUNT_TOKEN=<your service account token> grafana/mcp-grafana -t stdio`\nBước 4: Hoặc cài binary bằng Go: `GOBIN=\"$HOME/go/bin\" go install github.com/grafana/mcp-grafana/v2/cmd/mcp-grafana@latest`\nBước 5: Thêm khối cấu hình `grafana` (GRAFANA_URL, GRAFANA_SERVICE_ACCOUNT_TOKEN) vào MCP client",
+    "usageGuideVi": "Bước 1: Đặt GRAFANA_URL là địa chỉ Grafana của bạn (với Grafana Cloud dùng URL instance)\nBước 2: Khởi động lại MCP client để nạp công cụ\nBước 3: Yêu cầu trợ lý AI tìm dashboard, chạy truy vấn hoặc xem cảnh báo",
+    "samplePromptsVi": [
+      "Tìm dashboard có tag \"production\" và tóm tắt các panel trong đó",
+      "Truy vấn Prometheus tỷ lệ lỗi HTTP 5xx của dịch vụ checkout trong 1 giờ qua",
+      "Liệt kê các quy tắc cảnh báo đang ở trạng thái firing"
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "uvx mcp-grafana",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"grafana\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"mcp-grafana\"\n      ],\n      \"env\": {\n        \"GRAFANA_URL\": \"http://localhost:3000\",\n        \"GRAFANA_SERVICE_ACCOUNT_TOKEN\": \"<your service account token>\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Server chính thức của Grafana Labs, giấy phép Apache 2.0",
+      "Hỗ trợ rất nhiều loại datasource và cả Grafana Cloud",
+      "Có chế độ chỉ đọc và lọc công cụ để giới hạn quyền"
+    ],
+    "consVi": [
+      "Cần Grafana 9.0 trở lên; một số thao tác datasource không chạy trên bản cũ",
+      "Cần service account token; dùng vai trò Editor tiện nhưng cấp quyền rộng",
+      "Dashboard lớn có thể tốn nhiều ngữ cảnh mô hình"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Grafana MCP — MCP server chính thức cho Grafana và giám sát\n\n> A Model Context Protocol (MCP) server for Grafana.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server chính thức của Grafana Labs cho phép trợ lý AI truy cập phiên bản Grafana (tự host hoặc Grafana Cloud) và hệ sinh thái xung quanh: dashboard, datasource, Prometheus, Loki, cảnh báo, sự cố, OnCall. Viết bằng Go, chạy bằng uvx, Docker hoặc binary.\n\nGiúp kỹ sư vận hành tra cứu dashboard, truy vấn số liệu và log, xử lý cảnh báo và sự cố ngay trong trợ lý AI.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** DevOps & Tự động hóa CI/CD\n- **Tác giả / Nhà phát triển:** Grafana Labs\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/grafana/mcp-grafana](https://github.com/grafana/mcp-grafana)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Dashboard: tìm kiếm, xem tóm tắt, trích thuộc tính bằng JSONPath, tạo/sửa và vá (patch) dashboard**\n- **Truy vấn Prometheus, Loki, InfluxDB, SQL, CloudWatch, Elasticsearch/OpenSearch, Graphite...**\n- **Cảnh báo (Alerting), Sự cố (Incidents) và Grafana OnCall**\n- **Annotations, snapshots, render ảnh panel và provisioning**\n- **Chế độ chỉ đọc với cờ `--disable-write` cho môi trường sản xuất**\n- **Hỗ trợ nhiều tổ chức, header HTTP tùy chỉnh, SOCKS5 proxy, TLS và transport streamable-http**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuvx mcp-grafana\n```\n\nYêu cầu: Grafana 9.0 trở lên; service account token có đủ quyền; uv (nếu chạy bằng uvx) hoặc Docker.\nBước 1: Tạo service account trong Grafana và sinh service account token\nBước 2: Chạy bằng uvx (khuyến nghị): `uvx mcp-grafana`\nBước 3: Hoặc chạy bằng Docker (stdio): `docker run --rm -i -e GRAFANA_URL=http://localhost:3000 -e GRAFANA_SERVICE_ACCOUNT_TOKEN=<your service account token> grafana/mcp-grafana -t stdio`\nBước 4: Hoặc cài binary bằng Go: `GOBIN=\"$HOME/go/bin\" go install github.com/grafana/mcp-grafana/v2/cmd/mcp-grafana@latest`\nBước 5: Thêm khối cấu hình `grafana` (GRAFANA_URL, GRAFANA_SERVICE_ACCOUNT_TOKEN) vào MCP client\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đặt GRAFANA_URL là địa chỉ Grafana của bạn (với Grafana Cloud dùng URL instance)\nBước 2: Khởi động lại MCP client để nạp công cụ\nBước 3: Yêu cầu trợ lý AI tìm dashboard, chạy truy vấn hoặc xem cảnh báo\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tìm dashboard có tag \"production\" và tóm tắt các panel trong đó\"\n- \"Truy vấn Prometheus tỷ lệ lỗi HTTP 5xx của dịch vụ checkout trong 1 giờ qua\"\n- \"Liệt kê các quy tắc cảnh báo đang ở trạng thái firing\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "hashicorp-terraform-mcp-server",
+    "slug": "hashicorp-terraform-mcp-server",
+    "name": "Terraform MCP Server — MCP chính thức của HashiCorp cho Terraform",
+    "icon": "Box",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "cloud_infrastructure",
+    "categoryNameVi": "Điện toán đám mây & Hạ tầng số",
+    "categories": [
+      "cloud_infrastructure",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Điện toán đám mây & Hạ tầng số",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/hashicorp/terraform-mcp-server",
+    "websiteUrl": "https://developer.hashicorp.com/terraform/docs/tools/mcp-server",
+    "authorName": "HashiCorp (IBM)",
+    "license": "Mã nguồn mở (MPL-2.0)",
+    "summaryVi": "MCP server chính thức của HashiCorp tích hợp Terraform Registry và HCP Terraform/Terraform Enterprise API. Trợ lý AI có thể tra tài liệu provider, module, policy và quản lý workspace, biến, tag, run. Hỗ trợ cả transport stdio và streamable HTTP, phát hành dạng ảnh Docker.",
+    "purposeVi": "Giúp viết mã Terraform chính xác hơn nhờ tài liệu Registry cập nhật và thao tác HCP Terraform từ trợ lý AI.",
+    "featuresVi": [
+      "Tích hợp Terraform Registry công khai: provider, module, policy",
+      "HCP Terraform và Terraform Enterprise: quản lý workspace, liệt kê tổ chức/dự án, private registry",
+      "Thao tác workspace: tạo, sửa, xóa, biến, tag và quản lý run",
+      "Hai transport stdio và streamable HTTP, có giới hạn tốc độ, CORS, TLS",
+      "Lọc công cụ theo nhóm `--toolsets` (registry, registry-private, terraform) hoặc từng công cụ `--tools`",
+      "Số liệu OpenTelemetry cho lượt gọi, độ trễ và lỗi công cụ"
+    ],
+    "installGuideVi": "Yêu cầu: Docker đã cài và đang chạy; MCP client hỗ trợ MCP. TFE_TOKEN và TFE_ADDRESS khi dùng HCP Terraform/Terraform Enterprise.\nBước 1: Cài và chạy Docker\nBước 2: Thêm vào Claude Code (stdio): `claude mcp add terraform -s user -t stdio -- docker run -i --rm hashicorp/terraform-mcp-server`\nBước 3: Hoặc cài từ mã nguồn: `go install github.com/hashicorp/terraform-mcp-server/cmd/terraform-mcp-server@latest`\nBước 4: Với HCP Terraform/TFE, truyền biến TFE_ADDRESS và TFE_TOKEN vào container",
+    "usageGuideVi": "Bước 1: Mặc định chỉ bật nhóm công cụ registry; bật thêm nhóm terraform để thao tác workspace\nBước 2: Hỏi trợ lý AI về provider/module hoặc yêu cầu thao tác trên HCP Terraform\nBước 3: Rà soát kỹ mọi đề xuất trước khi áp dụng theo khuyến cáo của README",
+    "samplePromptsVi": [
+      "Tra tài liệu provider AWS mới nhất và viết resource aws_s3_bucket có bật versioning",
+      "Tìm module Terraform Registry để tạo VPC trên Google Cloud và giải thích các biến đầu vào",
+      "Liệt kê các workspace trong tổ chức HCP Terraform của tôi"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add terraform -s user -t stdio -- docker run -i --rm hashicorp/terraform-mcp-server",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add terraform -s user -t stdio -- docker run -i --rm hashicorp/terraform-mcp-server\"\n  ],\n  \"nguon\": \"https://github.com/hashicorp/terraform-mcp-server\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"terraform\": {\n      \"command\": \"docker\",\n      \"args\": [\n        \"run\",\n        \"-i\",\n        \"--rm\",\n        \"-e\",\n        \"TFE_ADDRESS=<<PASTE_TFE_ADDRESS_HERE>>\",\n        \"-e\",\n        \"TFE_TOKEN=<<PASTE_TFE_TOKEN_HERE>>\",\n        \"hashicorp/terraform-mcp-server:1.4.1\"\n      ]\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Server chính thức của HashiCorp, cập nhật thường xuyên",
+      "Giấy phép MPL 2.0, mã nguồn mở",
+      "Có hướng dẫn cho VS Code, Cursor, Claude Desktop, Claude Code, Codex, Gemini"
+    ],
+    "consVi": [
+      "Cần Docker để chạy theo cách khuyến nghị",
+      "README cảnh báo server có thể đưa dữ liệu Terraform tới MCP client và LLM; không dùng với client không tin cậy",
+      "Các công cụ cần phê duyệt chỉ bật khi đặt ENABLE_TF_OPERATIONS"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Terraform MCP Server — MCP chính thức của HashiCorp cho Terraform\n\n> The Terraform MCP Server is a Model Context Protocol (MCP) server that integrates seamlessly with Terraform Registry and HCP Terraform APIs, enabling advanced automation and interaction capabilities for Infrastructure as Code (IaC) development.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server chính thức của HashiCorp tích hợp Terraform Registry và HCP Terraform/Terraform Enterprise API. Trợ lý AI có thể tra tài liệu provider, module, policy và quản lý workspace, biến, tag, run. Hỗ trợ cả transport stdio và streamable HTTP, phát hành dạng ảnh Docker.\n\nGiúp viết mã Terraform chính xác hơn nhờ tài liệu Registry cập nhật và thao tác HCP Terraform từ trợ lý AI.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Điện toán đám mây & Hạ tầng số\n- **Tác giả / Nhà phát triển:** HashiCorp (IBM)\n- **Giấy phép bản quyền:** Mã nguồn mở (MPL-2.0)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/hashicorp/terraform-mcp-server](https://github.com/hashicorp/terraform-mcp-server)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tích hợp Terraform Registry công khai: provider, module, policy**\n- **HCP Terraform và Terraform Enterprise: quản lý workspace, liệt kê tổ chức/dự án, private registry**\n- **Thao tác workspace: tạo, sửa, xóa, biến, tag và quản lý run**\n- **Hai transport stdio và streamable HTTP, có giới hạn tốc độ, CORS, TLS**\n- **Lọc công cụ theo nhóm `--toolsets` (registry, registry-private, terraform) hoặc từng công cụ `--tools`**\n- **Số liệu OpenTelemetry cho lượt gọi, độ trễ và lỗi công cụ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add terraform -s user -t stdio -- docker run -i --rm hashicorp/terraform-mcp-server\n```\n\nYêu cầu: Docker đã cài và đang chạy; MCP client hỗ trợ MCP. TFE_TOKEN và TFE_ADDRESS khi dùng HCP Terraform/Terraform Enterprise.\nBước 1: Cài và chạy Docker\nBước 2: Thêm vào Claude Code (stdio): `claude mcp add terraform -s user -t stdio -- docker run -i --rm hashicorp/terraform-mcp-server`\nBước 3: Hoặc cài từ mã nguồn: `go install github.com/hashicorp/terraform-mcp-server/cmd/terraform-mcp-server@latest`\nBước 4: Với HCP Terraform/TFE, truyền biến TFE_ADDRESS và TFE_TOKEN vào container\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mặc định chỉ bật nhóm công cụ registry; bật thêm nhóm terraform để thao tác workspace\nBước 2: Hỏi trợ lý AI về provider/module hoặc yêu cầu thao tác trên HCP Terraform\nBước 3: Rà soát kỹ mọi đề xuất trước khi áp dụng theo khuyến cáo của README\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tra tài liệu provider AWS mới nhất và viết resource aws_s3_bucket có bật versioning\"\n- \"Tìm module Terraform Registry để tạo VPC trên Google Cloud và giải thích các biến đầu vào\"\n- \"Liệt kê các workspace trong tổ chức HCP Terraform của tôi\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "docker-mcp-gateway",
+    "slug": "docker-mcp-gateway",
+    "name": "Docker MCP Gateway — Cổng chạy MCP server trong container của Docker",
+    "icon": "Box",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "devops_cicd",
+    "categoryNameVi": "DevOps & Tự động hóa CI/CD",
+    "categories": [
+      "devops_cicd",
+      "cloud_infrastructure"
+    ],
+    "categoryNamesVi": [
+      "DevOps & Tự động hóa CI/CD",
+      "Điện toán đám mây & Hạ tầng số"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/docker/mcp-gateway",
+    "websiteUrl": "https://docs.docker.com/ai/mcp-catalog-and-toolkit/toolkit/",
+    "authorName": "Docker",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Mã nguồn plugin Docker CLI `docker-mcp`, nền tảng của MCP Toolkit trong Docker Desktop. Docker MCP Gateway chạy mỗi MCP server trong container cách ly, gom chúng sau một cổng duy nhất và quản lý bí mật, OAuth, catalog và profile cho nhiều MCP client.",
+    "purposeVi": "Chạy và triển khai MCP server một cách an toàn, nhất quán cho mọi client như Claude Code, Cursor, VS Code từ một cấu hình chung.",
+    "featuresVi": [
+      "Server chạy trong container: mỗi MCP server được cách ly trong Docker container",
+      "Cổng thống nhất: các client kết nối chung một Gateway",
+      "Quản lý bí mật qua Docker Desktop và luồng OAuth tích hợp",
+      "Catalog OCI: dùng Docker MCP Catalog, tự tạo catalog hoặc nhập từ MCP Registry cộng đồng",
+      "Profile: nhóm server, cấu hình, danh sách công cụ cho phép; xuất/nhập và đẩy lên OCI registry",
+      "Ghi log và truy vết lời gọi công cụ"
+    ],
+    "installGuideVi": "Yêu cầu: Docker Desktop 4.59+ có bật MCP Toolkit; Go 1.24+ nếu tự build plugin.\nBước 1: Dùng Docker Desktop bản mới (plugin đã cài sẵn) hoặc tự build: `make docker-mcp`\nBước 2: Tải catalog mặc định: `docker mcp catalog pull mcp/docker-mcp-catalog`\nBước 3: Tạo profile với server mong muốn rồi kết nối Claude Code: `docker mcp client connect claude-code --profile dev-tools --global`\nBước 4: Chạy gateway: `docker mcp gateway run`",
+    "usageGuideVi": "Bước 1: Tạo profile chứa các server từ catalog bằng lệnh `docker mcp profile create` (ví dụ profile dev-tools với server GitHub)\nBước 2: Bật/tắt công cụ cụ thể trong profile bằng `docker mcp profile tools`\nBước 3: Kết nối client vào profile, sau đó dùng công cụ MCP như bình thường trong client",
+    "samplePromptsVi": [
+      "Dùng server GitHub qua Docker MCP Gateway để liệt kê issue đang mở của repo của tôi",
+      "Kiểm tra các công cụ MCP đang được bật trong profile dev-tools",
+      "Tạo issue mới trên GitHub với tiêu đề và mô tả lỗi tôi vừa gặp"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker mcp gateway run",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker mcp gateway run\"\n  ],\n  \"nguon\": \"https://github.com/docker/mcp-gateway\"\n}"
+      },
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "docker mcp client connect claude-code --profile dev-tools --global",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker mcp client connect claude-code --profile dev-tools --global\"\n  ],\n  \"nguon\": \"https://github.com/docker/mcp-gateway\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Dự án chính thức của Docker, giấy phép MIT",
+      "Cách ly MCP server trong container, giữ bí mật ngoài biến môi trường",
+      "Một cấu hình dùng chung cho nhiều MCP client"
+    ],
+    "consVi": [
+      "Cần Docker Desktop 4.59+ có bật MCP Toolkit; ngoài Desktop phải bật feature profiles thủ công",
+      "Đây là công cụ dòng lệnh/cổng, không tự cung cấp công cụ nghiệp vụ; cần chọn server từ catalog"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Docker MCP Gateway — Cổng chạy MCP server trong container của Docker\n\n> The main feature of this CLI is the Docker MCP Gateway which allows easy and secure running and deployment of MCP servers.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMã nguồn plugin Docker CLI `docker-mcp`, nền tảng của MCP Toolkit trong Docker Desktop. Docker MCP Gateway chạy mỗi MCP server trong container cách ly, gom chúng sau một cổng duy nhất và quản lý bí mật, OAuth, catalog và profile cho nhiều MCP client.\n\nChạy và triển khai MCP server một cách an toàn, nhất quán cho mọi client như Claude Code, Cursor, VS Code từ một cấu hình chung.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** DevOps & Tự động hóa CI/CD\n- **Tác giả / Nhà phát triển:** Docker\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/docker/mcp-gateway](https://github.com/docker/mcp-gateway)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Server chạy trong container: mỗi MCP server được cách ly trong Docker container**\n- **Cổng thống nhất: các client kết nối chung một Gateway**\n- **Quản lý bí mật qua Docker Desktop và luồng OAuth tích hợp**\n- **Catalog OCI: dùng Docker MCP Catalog, tự tạo catalog hoặc nhập từ MCP Registry cộng đồng**\n- **Profile: nhóm server, cấu hình, danh sách công cụ cho phép; xuất/nhập và đẩy lên OCI registry**\n- **Ghi log và truy vết lời gọi công cụ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker mcp gateway run\n```\n\nYêu cầu: Docker Desktop 4.59+ có bật MCP Toolkit; Go 1.24+ nếu tự build plugin.\nBước 1: Dùng Docker Desktop bản mới (plugin đã cài sẵn) hoặc tự build: `make docker-mcp`\nBước 2: Tải catalog mặc định: `docker mcp catalog pull mcp/docker-mcp-catalog`\nBước 3: Tạo profile với server mong muốn rồi kết nối Claude Code: `docker mcp client connect claude-code --profile dev-tools --global`\nBước 4: Chạy gateway: `docker mcp gateway run`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo profile chứa các server từ catalog bằng lệnh `docker mcp profile create` (ví dụ profile dev-tools với server GitHub)\nBước 2: Bật/tắt công cụ cụ thể trong profile bằng `docker mcp profile tools`\nBước 3: Kết nối client vào profile, sau đó dùng công cụ MCP như bình thường trong client\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Dùng server GitHub qua Docker MCP Gateway để liệt kê issue đang mở của repo của tôi\"\n- \"Kiểm tra các công cụ MCP đang được bật trong profile dev-tools\"\n- \"Tạo issue mới trên GitHub với tiêu đề và mô tả lỗi tôi vừa gặp\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "mongodb-js-mongodb-mcp-server",
+    "slug": "mongodb-js-mongodb-mcp-server",
+    "name": "MongoDB MCP Server — Kết nối AI với MongoDB và Atlas",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "database_sql_nosql",
+    "categoryNameVi": "Cơ sở dữ liệu SQL & NoSQL",
+    "categories": [
+      "database_sql_nosql",
+      "database"
+    ],
+    "categoryNamesVi": [
+      "Cơ sở dữ liệu SQL & NoSQL",
+      "Cơ sở dữ liệu & Quản lý tri thức"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "claude_code",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/mongodb-js/mongodb-mcp-server",
+    "websiteUrl": "https://www.mongodb.com/docs/mcp-server/get-started/",
+    "authorName": "MongoDB",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "MCP server chính hãng của MongoDB, cho phép trợ lý AI làm việc với cơ sở dữ liệu MongoDB và nền tảng MongoDB Atlas. Máy chủ cung cấp công cụ truy vấn, tổng hợp (aggregation), quản lý collection/index và nhóm công cụ quản trị Atlas (cụm, người dùng, danh sách IP, Performance Advisor).",
+    "purposeVi": "Giúp lập trình viên hỏi đáp, khám phá schema và thao tác dữ liệu MongoDB bằng ngôn ngữ tự nhiên ngay trong Claude, Cursor hay VS Code.",
+    "featuresVi": [
+      "Công cụ cơ sở dữ liệu: find, aggregate, count, explain, insert-many, update-many, delete-many, quản lý collection và index",
+      "Công cụ Atlas: tạo/kiểm tra cụm, tạo cụm miễn phí, quản lý người dùng DB, danh sách truy cập IP, cảnh báo và Performance Advisor",
+      "Atlas Local: tạo, kết nối, liệt kê và xóa deployment Atlas cục bộ",
+      "MongoDB Assistant: tìm kiếm trong kho tri thức tài liệu chính thức của MongoDB",
+      "Chế độ chỉ đọc qua cờ `--readOnly` (mặc định trong mọi ví dụ của README)",
+      "Chạy bằng npx hoặc Docker image `mongodb/mongodb-mcp-server`"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js v22.13.0 trở lên; chuỗi kết nối MongoDB hoặc thông tin Service Account của Atlas API (bắt buộc để dùng công cụ Atlas).\nBước 1: Chạy trình cài đặt tương tác: `npx -y mongodb-mcp-server@latest setup`\nBước 2: Hoặc thêm cấu hình mcpServers (xem jsonConfig) với biến môi trường MDB_MCP_CONNECTION_STRING; có thể chạy độc lập: `npx -y mongodb-mcp-server@latest --readOnly`\nBước 3: Hoặc chạy bằng Docker image mongodb/mongodb-mcp-server:latest (xem mục Option 5: Using Docker trong README)",
+    "usageGuideVi": "Bước 1: Cung cấp chuỗi kết nối qua `MDB_MCP_CONNECTION_STRING` hoặc `MDB_MCP_API_CLIENT_ID`/`MDB_MCP_API_CLIENT_SECRET`\nBước 2: Khởi động lại MCP client để nạp máy chủ\nBước 3: Bỏ cờ `--readOnly` nếu cần thao tác ghi dữ liệu",
+    "samplePromptsVi": [
+      "Liệt kê các collection trong database `shop` và mô tả schema của collection `orders`.",
+      "Đếm số đơn hàng có trạng thái `pending` và giải thích kế hoạch thực thi truy vấn.",
+      "Liệt kê các cụm Atlas trong project của tôi và gợi ý index từ Performance Advisor."
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "npx -y mongodb-mcp-server@latest setup",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"MongoDB\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"mongodb-mcp-server@latest\",\n        \"--readOnly\"\n      ],\n      \"env\": {\n        \"MDB_MCP_CONNECTION_STRING\": \"mongodb://localhost:27017/myDatabase\"\n      }\n    }\n  }\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"MongoDB\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"mongodb-mcp-server@latest\",\n        \"--readOnly\"\n      ],\n      \"env\": {\n        \"MDB_MCP_CONNECTION_STRING\": \"mongodb://localhost:27017/myDatabase\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Do MongoDB phát triển và bảo trì chính thức",
+      "Bộ công cụ rộng: cả dữ liệu lẫn quản trị Atlas",
+      "Ví dụ cấu hình mặc định ở chế độ chỉ đọc"
+    ],
+    "consVi": [
+      "Cần Node.js 22.13+ (Node 20 đã bị đánh dấu ngừng hỗ trợ)",
+      "Công cụ Atlas chỉ khả dụng khi cấu hình Service Account credentials"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# MongoDB MCP Server — Kết nối AI với MongoDB và Atlas\n\n> A Model Context Protocol server for interacting with MongoDB Databases and MongoDB Atlas.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server chính hãng của MongoDB, cho phép trợ lý AI làm việc với cơ sở dữ liệu MongoDB và nền tảng MongoDB Atlas. Máy chủ cung cấp công cụ truy vấn, tổng hợp (aggregation), quản lý collection/index và nhóm công cụ quản trị Atlas (cụm, người dùng, danh sách IP, Performance Advisor).\n\nGiúp lập trình viên hỏi đáp, khám phá schema và thao tác dữ liệu MongoDB bằng ngôn ngữ tự nhiên ngay trong Claude, Cursor hay VS Code.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Cơ sở dữ liệu SQL & NoSQL\n- **Tác giả / Nhà phát triển:** MongoDB\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `claude_code`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/mongodb-js/mongodb-mcp-server](https://github.com/mongodb-js/mongodb-mcp-server)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Công cụ cơ sở dữ liệu: find, aggregate, count, explain, insert-many, update-many, delete-many, quản lý collection và index**\n- **Công cụ Atlas: tạo/kiểm tra cụm, tạo cụm miễn phí, quản lý người dùng DB, danh sách truy cập IP, cảnh báo và Performance Advisor**\n- **Atlas Local: tạo, kết nối, liệt kê và xóa deployment Atlas cục bộ**\n- **MongoDB Assistant: tìm kiếm trong kho tri thức tài liệu chính thức của MongoDB**\n- **Chế độ chỉ đọc qua cờ `--readOnly` (mặc định trong mọi ví dụ của README)**\n- **Chạy bằng npx hoặc Docker image `mongodb/mongodb-mcp-server`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx -y mongodb-mcp-server@latest setup\n```\n\nYêu cầu: Node.js v22.13.0 trở lên; chuỗi kết nối MongoDB hoặc thông tin Service Account của Atlas API (bắt buộc để dùng công cụ Atlas).\nBước 1: Chạy trình cài đặt tương tác: `npx -y mongodb-mcp-server@latest setup`\nBước 2: Hoặc thêm cấu hình mcpServers (xem jsonConfig) với biến môi trường MDB_MCP_CONNECTION_STRING; có thể chạy độc lập: `npx -y mongodb-mcp-server@latest --readOnly`\nBước 3: Hoặc chạy bằng Docker image mongodb/mongodb-mcp-server:latest (xem mục Option 5: Using Docker trong README)\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Cung cấp chuỗi kết nối qua `MDB_MCP_CONNECTION_STRING` hoặc `MDB_MCP_API_CLIENT_ID`/`MDB_MCP_API_CLIENT_SECRET`\nBước 2: Khởi động lại MCP client để nạp máy chủ\nBước 3: Bỏ cờ `--readOnly` nếu cần thao tác ghi dữ liệu\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Liệt kê các collection trong database `shop` và mô tả schema của collection `orders`.\"\n- \"Đếm số đơn hàng có trạng thái `pending` và giải thích kế hoạch thực thi truy vấn.\"\n- \"Liệt kê các cụm Atlas trong project của tôi và gợi ý index từ Performance Advisor.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "neondatabase-mcp-server-neon",
+    "slug": "neondatabase-mcp-server-neon",
+    "name": "Neon MCP Server — Quản lý Postgres trên Neon bằng ngôn ngữ tự nhiên",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "database_sql_nosql",
+    "categoryNameVi": "Cơ sở dữ liệu SQL & NoSQL",
+    "categories": [
+      "database_sql_nosql",
+      "database"
+    ],
+    "categoryNamesVi": [
+      "Cơ sở dữ liệu SQL & NoSQL",
+      "Cơ sở dữ liệu & Quản lý tri thức"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "cursor",
+      "claude_desktop"
+    ],
+    "sourceUrl": "https://github.com/neondatabase/mcp-server-neon",
+    "websiteUrl": "https://neon.com/docs/ai/neon-mcp-server",
+    "authorName": "Neon Inc.",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "MCP server chính hãng của Neon, cầu nối giữa yêu cầu bằng ngôn ngữ tự nhiên và Neon API. Máy chủ được Neon vận hành từ xa tại `mcp.neon.tech`, hỗ trợ xác thực OAuth hoặc API key, giúp tạo dự án, nhánh (branch), chạy SQL và di chuyển schema Postgres.",
+    "purposeVi": "Quản lý cơ sở dữ liệu Postgres trên Neon (tạo dự án, nhánh, migration, truy vấn) bằng hội thoại trong Claude Code, Cursor hoặc VS Code.",
+    "featuresVi": [
+      "Tương tác ngôn ngữ tự nhiên: quản lý database Neon bằng câu lệnh hội thoại",
+      "Hỗ trợ migration: dùng tính năng branching của Neon để thay đổi schema an toàn",
+      "Chế độ chỉ đọc: tham số `readonly=true`, `run_sql` chạy trong giao dịch READ ONLY",
+      "Kiểm soát truy cập qua URL: lọc `category`, giới hạn `projectId`, ghim role Postgres `roleName`",
+      "Công cụ phân tích: `list_slow_queries`, `explain_sql_statement`, so sánh schema",
+      "Máy chủ từ xa, xác thực OAuth hoặc API key"
+    ],
+    "installGuideVi": "Yêu cầu: Tài khoản Neon; Node.js >= v18.0.0; một MCP client (Claude Code, Cursor, VS Code…).\nBước 1: Thiết lập nhanh (OAuth, tự tạo API key và cấu hình editor): `npx neon@latest init`\nBước 2: Hoặc thêm máy chủ từ xa cho mọi agent/editor phát hiện được: `npx add-mcp https://mcp.neon.tech/mcp`\nBước 3: Khởi động lại MCP client và cấp quyền OAuth trong trình duyệt",
+    "usageGuideVi": "Bước 1: Mở MCP client sau khi cấp quyền OAuth\nBước 2: Yêu cầu tạo dự án, nhánh hoặc chạy migration bằng ngôn ngữ tự nhiên\nBước 3: Xem lại và phê duyệt từng hành động mà LLM đề xuất trước khi thực thi",
+    "samplePromptsVi": [
+      "Tạo một database Postgres mới tên \"my-database\" rồi tạo bảng users gồm các cột id, name, email, password.",
+      "Chạy migration trên dự án \"my-project\" để thêm cột created_at vào bảng users.",
+      "Tóm tắt tất cả dự án Neon của tôi và dữ liệu trong từng dự án."
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "npx neon@latest init",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"Neon\": {\n      \"type\": \"http\",\n      \"url\": \"https://mcp.neon.tech/mcp?category=projects&category=branches&category=endpoints&category=querying&category=schema\"\n    }\n  }\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"Neon\": {\n      \"type\": \"http\",\n      \"url\": \"https://mcp.neon.tech/mcp?category=projects&category=branches&category=endpoints&category=querying&category=schema\"\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Do Neon phát triển chính thức, giấy phép MIT",
+      "Không cần cài đặt cục bộ khi dùng máy chủ từ xa với OAuth",
+      "Có chế độ chỉ đọc và giới hạn quyền theo dự án/role"
+    ],
+    "consVi": [
+      "Cần tài khoản Neon",
+      "README khuyến nghị chỉ dùng cho phát triển cục bộ và IDE, không dùng trong môi trường production"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Neon MCP Server — Quản lý Postgres trên Neon bằng ngôn ngữ tự nhiên\n\n> Neon MCP Server is an open-source tool that lets you interact with your Lakebase Postgres databases on Neon in natural language.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server chính hãng của Neon, cầu nối giữa yêu cầu bằng ngôn ngữ tự nhiên và Neon API. Máy chủ được Neon vận hành từ xa tại `mcp.neon.tech`, hỗ trợ xác thực OAuth hoặc API key, giúp tạo dự án, nhánh (branch), chạy SQL và di chuyển schema Postgres.\n\nQuản lý cơ sở dữ liệu Postgres trên Neon (tạo dự án, nhánh, migration, truy vấn) bằng hội thoại trong Claude Code, Cursor hoặc VS Code.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Cơ sở dữ liệu SQL & NoSQL\n- **Tác giả / Nhà phát triển:** Neon Inc.\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `cursor`, `claude_desktop`\n- **Kho lưu trữ chính thức:** [https://github.com/neondatabase/mcp-server-neon](https://github.com/neondatabase/mcp-server-neon)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tương tác ngôn ngữ tự nhiên: quản lý database Neon bằng câu lệnh hội thoại**\n- **Hỗ trợ migration: dùng tính năng branching của Neon để thay đổi schema an toàn**\n- **Chế độ chỉ đọc: tham số `readonly=true`, `run_sql` chạy trong giao dịch READ ONLY**\n- **Kiểm soát truy cập qua URL: lọc `category`, giới hạn `projectId`, ghim role Postgres `roleName`**\n- **Công cụ phân tích: `list_slow_queries`, `explain_sql_statement`, so sánh schema**\n- **Máy chủ từ xa, xác thực OAuth hoặc API key**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx neon@latest init\n```\n\nYêu cầu: Tài khoản Neon; Node.js >= v18.0.0; một MCP client (Claude Code, Cursor, VS Code…).\nBước 1: Thiết lập nhanh (OAuth, tự tạo API key và cấu hình editor): `npx neon@latest init`\nBước 2: Hoặc thêm máy chủ từ xa cho mọi agent/editor phát hiện được: `npx add-mcp https://mcp.neon.tech/mcp`\nBước 3: Khởi động lại MCP client và cấp quyền OAuth trong trình duyệt\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở MCP client sau khi cấp quyền OAuth\nBước 2: Yêu cầu tạo dự án, nhánh hoặc chạy migration bằng ngôn ngữ tự nhiên\nBước 3: Xem lại và phê duyệt từng hành động mà LLM đề xuất trước khi thực thi\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo một database Postgres mới tên \"my-database\" rồi tạo bảng users gồm các cột id, name, email, password.\"\n- \"Chạy migration trên dự án \"my-project\" để thêm cột created_at vào bảng users.\"\n- \"Tóm tắt tất cả dự án Neon của tôi và dữ liệu trong từng dự án.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "redis-mcp-redis",
+    "slug": "redis-mcp-redis",
+    "name": "Redis MCP Server — Quản lý và tìm kiếm dữ liệu Redis bằng AI",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "database_sql_nosql",
+    "categoryNameVi": "Cơ sở dữ liệu SQL & NoSQL",
+    "categories": [
+      "database_sql_nosql",
+      "database",
+      "vector_rag"
+    ],
+    "categoryNamesVi": [
+      "Cơ sở dữ liệu SQL & NoSQL",
+      "Cơ sở dữ liệu & Quản lý tri thức",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "claude_code",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/redis/mcp-redis",
+    "websiteUrl": "https://pypi.org/project/redis-mcp-server/",
+    "authorName": "Redis, Inc.",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "MCP server chính hãng của Redis, cung cấp giao diện ngôn ngữ tự nhiên để agent AI quản lý và tìm kiếm dữ liệu trong Redis. Hỗ trợ đầy đủ các kiểu dữ liệu string, hash, list, set, sorted set, stream, JSON, pub/sub cùng công cụ tạo chỉ mục và tìm kiếm vector.",
+    "purposeVi": "Cho phép trợ lý AI lưu cache, phiên làm việc, hàng đợi, luồng sự kiện và tìm kiếm vector trên Redis thông qua giao thức MCP.",
+    "featuresVi": [
+      "Hỗ trợ đầy đủ cấu trúc dữ liệu: string, hash, list, set, sorted set, stream, JSON",
+      "Pub/sub: xuất bản thông điệp và đăng ký kênh",
+      "Query engine: quản lý chỉ mục vector và tìm kiếm vector",
+      "Công cụ docs: tìm kiếm tài liệu Redis bằng câu hỏi tự nhiên",
+      "Xác thực EntraID cho Azure Managed Redis",
+      "Phân phối qua PyPI (`redis-mcp-server`) và Docker image `mcp/redis`"
+    ],
+    "installGuideVi": "Yêu cầu: uv/uvx (README ghi Python 3.14 cho môi trường phát triển); một máy chủ Redis truy cập được qua URL redis:// hoặc rediss://.\nBước 1: Thêm cấu hình JSON mcpServers (chạy gói redis-mcp-server qua uvx, xem jsonConfig) vào MCP client\nBước 2: Hoặc cài gói: `pip install redis-mcp-server`\nBước 3: Xem toàn bộ tùy chọn: `uvx --from redis-mcp-server@latest redis-mcp-server --help`\nBước 4: Hoặc tự build Docker image: `docker build -t mcp-redis .`",
+    "usageGuideVi": "Bước 1: Chỉ định kết nối Redis qua `--url` hoặc `--host`/`--port`/`--password` (hoặc biến môi trường REDIS_*)\nBước 2: Có thể tạo user ACL chỉ đọc để giới hạn quyền\nBước 3: Khởi động lại MCP client rồi yêu cầu thao tác dữ liệu bằng ngôn ngữ tự nhiên",
+    "samplePromptsVi": [
+      "Lưu toàn bộ cuộc hội thoại này vào một Redis stream.",
+      "Lưu phiên đăng nhập của người dùng với thời gian hết hạn 30 phút.",
+      "Tạo chỉ mục vector và tìm các mục tương tự với vector này."
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "uvx --from redis-mcp-server@latest redis-mcp-server --help",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"RedisMCPServer\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"--from\",\n        \"redis-mcp-server@latest\",\n        \"redis-mcp-server\",\n        \"--url\",\n        \"\\\"redis://localhost:6379/0\\\"\"\n      ]\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Do Redis, Inc. phát triển, giấy phép MIT",
+      "Bao phủ hầu hết cấu trúc dữ liệu Redis và tìm kiếm vector",
+      "Có Docker image chính thức"
+    ],
+    "consVi": [
+      "README ghi chỉ hỗ trợ transport stdio; streamable-http sẽ được bổ sung sau",
+      "Nhánh main đang phát triển tích cực, README khuyên dùng bản phát hành có tag"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Redis MCP Server — Quản lý và tìm kiếm dữ liệu Redis bằng AI\n\n> The Redis MCP Server is a natural language interface designed for agentic applications to efficiently manage and search data in Redis.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server chính hãng của Redis, cung cấp giao diện ngôn ngữ tự nhiên để agent AI quản lý và tìm kiếm dữ liệu trong Redis. Hỗ trợ đầy đủ các kiểu dữ liệu string, hash, list, set, sorted set, stream, JSON, pub/sub cùng công cụ tạo chỉ mục và tìm kiếm vector.\n\nCho phép trợ lý AI lưu cache, phiên làm việc, hàng đợi, luồng sự kiện và tìm kiếm vector trên Redis thông qua giao thức MCP.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Cơ sở dữ liệu SQL & NoSQL\n- **Tác giả / Nhà phát triển:** Redis, Inc.\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `claude_code`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/redis/mcp-redis](https://github.com/redis/mcp-redis)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Hỗ trợ đầy đủ cấu trúc dữ liệu: string, hash, list, set, sorted set, stream, JSON**\n- **Pub/sub: xuất bản thông điệp và đăng ký kênh**\n- **Query engine: quản lý chỉ mục vector và tìm kiếm vector**\n- **Công cụ docs: tìm kiếm tài liệu Redis bằng câu hỏi tự nhiên**\n- **Xác thực EntraID cho Azure Managed Redis**\n- **Phân phối qua PyPI (`redis-mcp-server`) và Docker image `mcp/redis`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuvx --from redis-mcp-server@latest redis-mcp-server --help\n```\n\nYêu cầu: uv/uvx (README ghi Python 3.14 cho môi trường phát triển); một máy chủ Redis truy cập được qua URL redis:// hoặc rediss://.\nBước 1: Thêm cấu hình JSON mcpServers (chạy gói redis-mcp-server qua uvx, xem jsonConfig) vào MCP client\nBước 2: Hoặc cài gói: `pip install redis-mcp-server`\nBước 3: Xem toàn bộ tùy chọn: `uvx --from redis-mcp-server@latest redis-mcp-server --help`\nBước 4: Hoặc tự build Docker image: `docker build -t mcp-redis .`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chỉ định kết nối Redis qua `--url` hoặc `--host`/`--port`/`--password` (hoặc biến môi trường REDIS_*)\nBước 2: Có thể tạo user ACL chỉ đọc để giới hạn quyền\nBước 3: Khởi động lại MCP client rồi yêu cầu thao tác dữ liệu bằng ngôn ngữ tự nhiên\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Lưu toàn bộ cuộc hội thoại này vào một Redis stream.\"\n- \"Lưu phiên đăng nhập của người dùng với thời gian hết hạn 30 phút.\"\n- \"Tạo chỉ mục vector và tìm các mục tương tự với vector này.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "clickhouse-mcp-clickhouse",
+    "slug": "clickhouse-mcp-clickhouse",
+    "name": "ClickHouse MCP Server — Truy vấn và phân tích dữ liệu ClickHouse bằng AI",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "database_sql_nosql",
+    "categoryNameVi": "Cơ sở dữ liệu SQL & NoSQL",
+    "categories": [
+      "database_sql_nosql",
+      "data_science_analytics",
+      "database"
+    ],
+    "categoryNamesVi": [
+      "Cơ sở dữ liệu SQL & NoSQL",
+      "Khoa học dữ liệu & Phân tích kinh doanh",
+      "Cơ sở dữ liệu & Quản lý tri thức"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "claude_code",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/ClickHouse/mcp-clickhouse",
+    "websiteUrl": "https://pypi.org/project/mcp-clickhouse",
+    "authorName": "ClickHouse",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "MCP server chính hãng của ClickHouse, cho phép trợ lý AI chạy truy vấn SQL, liệt kê database và bảng trên cụm ClickHouse. Tùy chọn hỗ trợ chDB (engine ClickHouse nhúng) để truy vấn trực tiếp tệp, URL và nguồn dữ liệu khác mà không cần ETL.",
+    "purposeVi": "Phân tích dữ liệu lớn trên ClickHouse bằng câu hỏi tự nhiên trong Claude Desktop hoặc các MCP client khác.",
+    "featuresVi": [
+      "`run_query`: chạy SQL trên cụm ClickHouse, hỗ trợ tham số `{name:Type}`",
+      "`list_databases` và `list_tables` có phân trang, lọc LIKE",
+      "Mặc định chỉ đọc (`CLICKHOUSE_ALLOW_WRITE_ACCESS=false`), chặn thao tác phá hủy kể cả khi bật ghi",
+      "chDB: `run_chdb_select_query` với engine ClickHouse nhúng",
+      "Health check `/health` khi chạy HTTP/SSE, hỗ trợ xác thực và OAuth/OIDC",
+      "Dùng thử ngay với ClickHouse SQL Playground công khai"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10–3.14 (khuyến nghị 3.12) và uv; thông tin kết nối một dịch vụ ClickHouse.\nBước 1: Thêm cấu hình mcpServers của mcp-clickhouse (chạy qua uv, xem jsonConfig) vào tệp claude_desktop_config.json\nBước 2: Hoặc cài bằng Python hệ thống: `python3 -m pip install mcp-clickhouse`\nBước 3: Bật chDB (tùy chọn): `python3 -m pip install 'mcp-clickhouse[chdb]'`\nBước 4: Thay lệnh uv bằng đường dẫn tuyệt đối của uv (tìm bằng which uv) và khởi động lại Claude Desktop",
+    "usageGuideVi": "Bước 1: Đặt các biến CLICKHOUSE_HOST, CLICKHOUSE_PORT, CLICKHOUSE_USER, CLICKHOUSE_PASSWORD\nBước 2: Đặt `CLICKHOUSE_ALLOW_WRITE_ACCESS=true` nếu cần DDL/INSERT\nBước 3: Hỏi trợ lý về dữ liệu; máy chủ sẽ liệt kê bảng và chạy truy vấn",
+    "samplePromptsVi": [
+      "Liệt kê các database trên cụm ClickHouse và các bảng trong database `default`.",
+      "Viết và chạy truy vấn đếm số sự kiện theo ngày trong 7 ngày gần nhất.",
+      "Dùng EXPLAIN ESTIMATE để ước tính số dòng truy vấn này sẽ đọc."
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "python3 -m pip install mcp-clickhouse",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"mcp-clickhouse\": {\n      \"command\": \"uv\",\n      \"args\": [\n        \"run\",\n        \"--with\",\n        \"mcp-clickhouse\",\n        \"--python\",\n        \"3.12\",\n        \"mcp-clickhouse\"\n      ],\n      \"env\": {\n        \"CLICKHOUSE_HOST\": \"sql-clickhouse.clickhouse.com\",\n        \"CLICKHOUSE_PORT\": \"8443\",\n        \"CLICKHOUSE_USER\": \"demo\",\n        \"CLICKHOUSE_PASSWORD\": \"\",\n        \"CLICKHOUSE_SECURE\": \"true\",\n        \"CLICKHOUSE_VERIFY\": \"true\",\n        \"CLICKHOUSE_CONNECT_TIMEOUT\": \"30\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Do ClickHouse phát triển chính thức, giấy phép Apache-2.0",
+      "An toàn mặc định: chỉ đọc, chặn lệnh DROP",
+      "Có cấu hình demo dùng SQL Playground công khai"
+    ],
+    "consVi": [
+      "Cần cài uv và Python",
+      "Ranh giới bảo mật thực sự là quyền của user ClickHouse; README khuyên dùng user riêng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# ClickHouse MCP Server — Truy vấn và phân tích dữ liệu ClickHouse bằng AI\n\n> An MCP server for ClickHouse.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server chính hãng của ClickHouse, cho phép trợ lý AI chạy truy vấn SQL, liệt kê database và bảng trên cụm ClickHouse. Tùy chọn hỗ trợ chDB (engine ClickHouse nhúng) để truy vấn trực tiếp tệp, URL và nguồn dữ liệu khác mà không cần ETL.\n\nPhân tích dữ liệu lớn trên ClickHouse bằng câu hỏi tự nhiên trong Claude Desktop hoặc các MCP client khác.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Cơ sở dữ liệu SQL & NoSQL\n- **Tác giả / Nhà phát triển:** ClickHouse\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `claude_code`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/ClickHouse/mcp-clickhouse](https://github.com/ClickHouse/mcp-clickhouse)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **`run_query`: chạy SQL trên cụm ClickHouse, hỗ trợ tham số `{name:Type}`**\n- **`list_databases` và `list_tables` có phân trang, lọc LIKE**\n- **Mặc định chỉ đọc (`CLICKHOUSE_ALLOW_WRITE_ACCESS=false`), chặn thao tác phá hủy kể cả khi bật ghi**\n- **chDB: `run_chdb_select_query` với engine ClickHouse nhúng**\n- **Health check `/health` khi chạy HTTP/SSE, hỗ trợ xác thực và OAuth/OIDC**\n- **Dùng thử ngay với ClickHouse SQL Playground công khai**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npython3 -m pip install mcp-clickhouse\n```\n\nYêu cầu: Python 3.10–3.14 (khuyến nghị 3.12) và uv; thông tin kết nối một dịch vụ ClickHouse.\nBước 1: Thêm cấu hình mcpServers của mcp-clickhouse (chạy qua uv, xem jsonConfig) vào tệp claude_desktop_config.json\nBước 2: Hoặc cài bằng Python hệ thống: `python3 -m pip install mcp-clickhouse`\nBước 3: Bật chDB (tùy chọn): `python3 -m pip install 'mcp-clickhouse[chdb]'`\nBước 4: Thay lệnh uv bằng đường dẫn tuyệt đối của uv (tìm bằng which uv) và khởi động lại Claude Desktop\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đặt các biến CLICKHOUSE_HOST, CLICKHOUSE_PORT, CLICKHOUSE_USER, CLICKHOUSE_PASSWORD\nBước 2: Đặt `CLICKHOUSE_ALLOW_WRITE_ACCESS=true` nếu cần DDL/INSERT\nBước 3: Hỏi trợ lý về dữ liệu; máy chủ sẽ liệt kê bảng và chạy truy vấn\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Liệt kê các database trên cụm ClickHouse và các bảng trong database `default`.\"\n- \"Viết và chạy truy vấn đếm số sự kiện theo ngày trong 7 ngày gần nhất.\"\n- \"Dùng EXPLAIN ESTIMATE để ước tính số dòng truy vấn này sẽ đọc.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "qdrant-mcp-server-qdrant",
+    "slug": "qdrant-mcp-server-qdrant",
+    "name": "Qdrant MCP Server — Bộ nhớ ngữ nghĩa trên cơ sở dữ liệu vector Qdrant",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "vector_rag",
+    "categoryNameVi": "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+    "categories": [
+      "vector_rag",
+      "database"
+    ],
+    "categoryNamesVi": [
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Cơ sở dữ liệu & Quản lý tri thức"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/qdrant/mcp-server-qdrant",
+    "websiteUrl": "https://qdrant.tech/",
+    "authorName": "Qdrant",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "MCP server chính thức của Qdrant, đóng vai trò lớp bộ nhớ ngữ nghĩa trên cơ sở dữ liệu vector Qdrant. Máy chủ có hai công cụ lưu (`qdrant-store`) và tìm (`qdrant-find`), tự nhúng văn bản bằng mô hình FastEmbed.",
+    "purposeVi": "Cho trợ lý AI ghi nhớ và truy xuất thông tin theo ngữ nghĩa, ví dụ biến Claude Code thành công cụ tìm kiếm đoạn mã theo mô tả.",
+    "featuresVi": [
+      "`qdrant-store`: lưu thông tin kèm metadata vào collection",
+      "`qdrant-find`: tìm thông tin liên quan theo truy vấn ngữ nghĩa",
+      "Nhúng bằng FastEmbed, mặc định `sentence-transformers/all-MiniLM-L6-v2`",
+      "Hỗ trợ Qdrant từ xa (`QDRANT_URL`) hoặc cục bộ (`QDRANT_LOCAL_PATH`)",
+      "Transport stdio, sse, streamable-http; chế độ chỉ đọc `QDRANT_READ_ONLY`",
+      "Tùy biến mô tả công cụ để làm công cụ tìm kiếm mã"
+    ],
+    "installGuideVi": "Yêu cầu: uv/uvx; một máy chủ Qdrant (hoặc thư mục Qdrant cục bộ).\nBước 1: Thêm vào Claude Code bằng lệnh claude mcp add cấu hình sẵn cho tìm kiếm mã (nguyên văn ở trường cliCommand)\nBước 2: Kiểm tra máy chủ đã được thêm: `claude mcp list`\nBước 3: Hoặc cài cho Claude Desktop qua Smithery: `npx @smithery/cli install mcp-server-qdrant --client claude`",
+    "usageGuideVi": "Bước 1: Đặt QDRANT_URL, COLLECTION_NAME (collection sẽ tự tạo nếu chưa có)\nBước 2: Yêu cầu trợ lý lưu thông tin hoặc đoạn mã kèm mô tả\nBước 3: Truy vấn lại bằng ngôn ngữ tự nhiên để tìm nội dung liên quan",
+    "samplePromptsVi": [
+      "Hãy ghi nhớ rằng dự án này dùng PostgreSQL 16 và triển khai trên Kubernetes.",
+      "Lưu đoạn mã hàm xác thực JWT này kèm mô tả để dùng lại sau.",
+      "Tìm các đoạn mã đã lưu liên quan đến phân trang kết quả API."
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add code-search \\\n-e QDRANT_URL=\"http://localhost:6333\" \\\n-e COLLECTION_NAME=\"code-repository\" \\\n-e EMBEDDING_MODEL=\"sentence-transformers/all-MiniLM-L6-v2\" \\\n-e TOOL_STORE_DESCRIPTION=\"Store code snippets with descriptions. The 'information' parameter should contain a natural language description of what the code does, while the actual code should be included in the 'metadata' parameter as a 'code' property.\" \\\n-e TOOL_FIND_DESCRIPTION=\"Search for relevant code snippets using natural language. The 'query' parameter should describe the functionality you're looking for.\" \\\n-- uvx mcp-server-qdrant",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add code-search \\\\\\n-e QDRANT_URL=\\\"http://localhost:6333\\\" \\\\\\n-e COLLECTION_NAME=\\\"code-repository\\\" \\\\\\n-e EMBEDDING_MODEL=\\\"sentence-transformers/all-MiniLM-L6-v2\\\" \\\\\\n-e TOOL_STORE_DESCRIPTION=\\\"Store code snippets with descriptions. The 'information' parameter should contain a natural language description of what the code does, while the actual code should be included in the 'metadata' parameter as a 'code' property.\\\" \\\\\\n-e TOOL_FIND_DESCRIPTION=\\\"Search for relevant code snippets using natural language. The 'query' parameter should describe the functionality you're looking for.\\\" \\\\\\n-- uvx mcp-server-qdrant\"\n  ],\n  \"nguon\": \"https://github.com/qdrant/mcp-server-qdrant\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "npx @smithery/cli install mcp-server-qdrant --client claude",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"qdrant\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"mcp-server-qdrant\"\n      ],\n      \"env\": {\n        \"QDRANT_URL\": \"https://xyz-example.eu-central.aws.cloud.qdrant.io:6333\",\n        \"QDRANT_API_KEY\": \"your_api_key\",\n        \"COLLECTION_NAME\": \"your-collection-name\",\n        \"EMBEDDING_MODEL\": \"sentence-transformers/all-MiniLM-L6-v2\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Do Qdrant phát hành chính thức, giấy phép Apache-2.0",
+      "Thiết lập đơn giản bằng uvx, có lệnh `claude mcp add` mẫu",
+      "Chạy được với Qdrant cục bộ, không bắt buộc dịch vụ đám mây"
+    ],
+    "consVi": [
+      "Chỉ hỗ trợ nhà cung cấp nhúng FastEmbed",
+      "Chỉ có hai công cụ lưu/tìm, không phải công cụ quản trị Qdrant đầy đủ"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Qdrant MCP Server — Bộ nhớ ngữ nghĩa trên cơ sở dữ liệu vector Qdrant\n\n> An official Model Context Protocol server for keeping and retrieving memories in the Qdrant vector search engine.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server chính thức của Qdrant, đóng vai trò lớp bộ nhớ ngữ nghĩa trên cơ sở dữ liệu vector Qdrant. Máy chủ có hai công cụ lưu (`qdrant-store`) và tìm (`qdrant-find`), tự nhúng văn bản bằng mô hình FastEmbed.\n\nCho trợ lý AI ghi nhớ và truy xuất thông tin theo ngữ nghĩa, ví dụ biến Claude Code thành công cụ tìm kiếm đoạn mã theo mô tả.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Dữ liệu Vector & Tìm kiếm tri thức (RAG)\n- **Tác giả / Nhà phát triển:** Qdrant\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/qdrant/mcp-server-qdrant](https://github.com/qdrant/mcp-server-qdrant)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **`qdrant-store`: lưu thông tin kèm metadata vào collection**\n- **`qdrant-find`: tìm thông tin liên quan theo truy vấn ngữ nghĩa**\n- **Nhúng bằng FastEmbed, mặc định `sentence-transformers/all-MiniLM-L6-v2`**\n- **Hỗ trợ Qdrant từ xa (`QDRANT_URL`) hoặc cục bộ (`QDRANT_LOCAL_PATH`)**\n- **Transport stdio, sse, streamable-http; chế độ chỉ đọc `QDRANT_READ_ONLY`**\n- **Tùy biến mô tả công cụ để làm công cụ tìm kiếm mã**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add code-search \\\n-e QDRANT_URL=\"http://localhost:6333\" \\\n-e COLLECTION_NAME=\"code-repository\" \\\n-e EMBEDDING_MODEL=\"sentence-transformers/all-MiniLM-L6-v2\" \\\n-e TOOL_STORE_DESCRIPTION=\"Store code snippets with descriptions. The 'information' parameter should contain a natural language description of what the code does, while the actual code should be included in the 'metadata' parameter as a 'code' property.\" \\\n-e TOOL_FIND_DESCRIPTION=\"Search for relevant code snippets using natural language. The 'query' parameter should describe the functionality you're looking for.\" \\\n-- uvx mcp-server-qdrant\n```\n\nYêu cầu: uv/uvx; một máy chủ Qdrant (hoặc thư mục Qdrant cục bộ).\nBước 1: Thêm vào Claude Code bằng lệnh claude mcp add cấu hình sẵn cho tìm kiếm mã (nguyên văn ở trường cliCommand)\nBước 2: Kiểm tra máy chủ đã được thêm: `claude mcp list`\nBước 3: Hoặc cài cho Claude Desktop qua Smithery: `npx @smithery/cli install mcp-server-qdrant --client claude`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đặt QDRANT_URL, COLLECTION_NAME (collection sẽ tự tạo nếu chưa có)\nBước 2: Yêu cầu trợ lý lưu thông tin hoặc đoạn mã kèm mô tả\nBước 3: Truy vấn lại bằng ngôn ngữ tự nhiên để tìm nội dung liên quan\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hãy ghi nhớ rằng dự án này dùng PostgreSQL 16 và triển khai trên Kubernetes.\"\n- \"Lưu đoạn mã hàm xác thực JWT này kèm mô tả để dùng lại sau.\"\n- \"Tìm các đoạn mã đã lưu liên quan đến phân trang kết quả API.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "motherduckdb-mcp-server-motherduck",
+    "slug": "motherduckdb-mcp-server-motherduck",
+    "name": "MotherDuck MCP Server — Phân tích SQL với DuckDB và MotherDuck cho AI",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "database_sql_nosql",
+    "categoryNameVi": "Cơ sở dữ liệu SQL & NoSQL",
+    "categories": [
+      "database_sql_nosql",
+      "data_science_analytics",
+      "data_engineering"
+    ],
+    "categoryNamesVi": [
+      "Cơ sở dữ liệu SQL & NoSQL",
+      "Khoa học dữ liệu & Phân tích kinh doanh",
+      "Kỹ thuật dữ liệu & Đường ống ETL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/motherduckdb/mcp-server-motherduck",
+    "websiteUrl": "https://motherduck.com/docs/sql-reference/mcp/",
+    "authorName": "MotherDuck",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "MCP server cục bộ chính hãng của MotherDuck, kết nối trợ lý AI với engine SQL phân tích DuckDB. Hỗ trợ tệp DuckDB cục bộ, database trong bộ nhớ, database trên S3 và MotherDuck, cho phép truy vấn đọc/ghi và duyệt catalog.",
+    "purposeVi": "Phân tích dữ liệu và kỹ thuật dữ liệu bằng SQL DuckDB ngay trong Claude, Cursor, VS Code, kể cả nạp/xuất dữ liệu từ hệ thống tệp cục bộ.",
+    "featuresVi": [
+      "`execute_query`: chạy SQL theo cú pháp DuckDB",
+      "`list_databases`, `list_tables`, `list_columns`: duyệt catalog",
+      "`switch_database_connection`: chuyển database khi chạy (bật bằng `--allow-switch-databases`)",
+      "Mặc định chỉ đọc; bật ghi bằng `--read-write`",
+      "Kết nối tệp cục bộ, `:memory:`, `s3://` hoặc MotherDuck (`md:`)",
+      "Giới hạn `--max-rows`, `--max-chars`, `--query-timeout`; transport stdio hoặc http"
+    ],
+    "installGuideVi": "Yêu cầu: uv (cài bằng `pip install uv` hoặc `brew install uv`); token MotherDuck nếu kết nối MotherDuck; thông tin AWS nếu dùng S3.\nBước 1: Cài uv: `pip install uv`\nBước 2: Thêm vào Claude Code (DuckDB cục bộ, chỉ đọc): `claude mcp add --scope user duckdb --transport stdio -- uvx mcp-server-motherduck --db-path /absolute/path/to/db.duckdb`\nBước 3: Hoặc kết nối MotherDuck chế độ đọc-ghi: `claude mcp add --scope user motherduck --transport stdio --env motherduck_token=YOUR_TOKEN -- uvx mcp-server-motherduck --db-path md: --read-write`",
+    "usageGuideVi": "Bước 1: Chọn nguồn dữ liệu qua `--db-path`\nBước 2: Khởi động lại client để nạp máy chủ\nBước 3: Đặt câu hỏi phân tích; trợ lý sẽ duyệt bảng và chạy SQL DuckDB",
+    "samplePromptsVi": [
+      "Liệt kê các bảng trong database DuckDB và mô tả cột của bảng `sales`.",
+      "Tính tổng doanh thu theo tháng từ bảng `sales` và sắp xếp giảm dần.",
+      "Đọc tệp CSV cục bộ này và tạo bảng mới từ nó."
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add --scope user duckdb --transport stdio -- uvx mcp-server-motherduck --db-path /absolute/path/to/db.duckdb",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add --scope user duckdb --transport stdio -- uvx mcp-server-motherduck --db-path /absolute/path/to/db.duckdb\"\n  ],\n  \"nguon\": \"https://github.com/motherduckdb/mcp-server-motherduck\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"DuckDB (read-only)\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"mcp-server-motherduck\",\n        \"--db-path\",\n        \"/absolute/path/to/your.duckdb\"\n      ]\n    }\n  }\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"DuckDB (read-only)\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"mcp-server-motherduck\",\n        \"--db-path\",\n        \"/absolute/path/to/your.duckdb\"\n      ]\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Do MotherDuck phát triển, giấy phép MIT",
+      "Chạy hoàn toàn cục bộ với DuckDB, không cần tài khoản đám mây",
+      "Có lệnh `claude mcp add` sẵn và gói .mcpb cho Claude Desktop"
+    ],
+    "consVi": [
+      "Kết nối MotherDuck cần tài khoản và token",
+      "Bản cục bộ cần tự cài đặt; bản remote quản lý hoàn toàn nằm ở dịch vụ MotherDuck riêng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# MotherDuck MCP Server — Phân tích SQL với DuckDB và MotherDuck cho AI\n\n> SQL analytics and data engineering for AI Assistants and IDEs.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server cục bộ chính hãng của MotherDuck, kết nối trợ lý AI với engine SQL phân tích DuckDB. Hỗ trợ tệp DuckDB cục bộ, database trong bộ nhớ, database trên S3 và MotherDuck, cho phép truy vấn đọc/ghi và duyệt catalog.\n\nPhân tích dữ liệu và kỹ thuật dữ liệu bằng SQL DuckDB ngay trong Claude, Cursor, VS Code, kể cả nạp/xuất dữ liệu từ hệ thống tệp cục bộ.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Cơ sở dữ liệu SQL & NoSQL\n- **Tác giả / Nhà phát triển:** MotherDuck\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/motherduckdb/mcp-server-motherduck](https://github.com/motherduckdb/mcp-server-motherduck)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **`execute_query`: chạy SQL theo cú pháp DuckDB**\n- **`list_databases`, `list_tables`, `list_columns`: duyệt catalog**\n- **`switch_database_connection`: chuyển database khi chạy (bật bằng `--allow-switch-databases`)**\n- **Mặc định chỉ đọc; bật ghi bằng `--read-write`**\n- **Kết nối tệp cục bộ, `:memory:`, `s3://` hoặc MotherDuck (`md:`)**\n- **Giới hạn `--max-rows`, `--max-chars`, `--query-timeout`; transport stdio hoặc http**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add --scope user duckdb --transport stdio -- uvx mcp-server-motherduck --db-path /absolute/path/to/db.duckdb\n```\n\nYêu cầu: uv (cài bằng `pip install uv` hoặc `brew install uv`); token MotherDuck nếu kết nối MotherDuck; thông tin AWS nếu dùng S3.\nBước 1: Cài uv: `pip install uv`\nBước 2: Thêm vào Claude Code (DuckDB cục bộ, chỉ đọc): `claude mcp add --scope user duckdb --transport stdio -- uvx mcp-server-motherduck --db-path /absolute/path/to/db.duckdb`\nBước 3: Hoặc kết nối MotherDuck chế độ đọc-ghi: `claude mcp add --scope user motherduck --transport stdio --env motherduck_token=YOUR_TOKEN -- uvx mcp-server-motherduck --db-path md: --read-write`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn nguồn dữ liệu qua `--db-path`\nBước 2: Khởi động lại client để nạp máy chủ\nBước 3: Đặt câu hỏi phân tích; trợ lý sẽ duyệt bảng và chạy SQL DuckDB\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Liệt kê các bảng trong database DuckDB và mô tả cột của bảng `sales`.\"\n- \"Tính tổng doanh thu theo tháng từ bảng `sales` và sắp xếp giảm dần.\"\n- \"Đọc tệp CSV cục bộ này và tạo bảng mới từ nó.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "couchbase-mcp-server-couchbase",
+    "slug": "couchbase-mcp-server-couchbase",
+    "name": "Couchbase MCP Server — Kết nối AI với cụm Couchbase và Capella",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "database_sql_nosql",
+    "categoryNameVi": "Cơ sở dữ liệu SQL & NoSQL",
+    "categories": [
+      "database_sql_nosql",
+      "database",
+      "vector_rag"
+    ],
+    "categoryNamesVi": [
+      "Cơ sở dữ liệu SQL & NoSQL",
+      "Cơ sở dữ liệu & Quản lý tri thức",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "claude_code",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/couchbase/mcp-server-couchbase",
+    "websiteUrl": "https://docs.couchbase.com/mcp-server/get-started/overview.html",
+    "authorName": "Couchbase",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "MCP server tự lưu trữ chính hãng của Couchbase, kết nối trợ lý AI với cụm Couchbase Server (Capella hoặc tự quản lý) và cụm Operational Insights. Gói gồm hai máy chủ: operational (52 công cụ) và operational-insights (13 công cụ), mặc định ở chế độ chỉ đọc.",
+    "purposeVi": "Cho phép agent kiểm tra sức khỏe cụm, khám phá schema, chạy SQL++, tìm kiếm toàn văn/vector và chẩn đoán hiệu năng truy vấn Couchbase bằng ngôn ngữ tự nhiên.",
+    "featuresVi": [
+      "Sức khỏe cụm: trạng thái dịch vụ, metrics, tác vụ, sự kiện hệ thống",
+      "Khám phá dữ liệu: bucket, scope, collection, suy luận schema",
+      "Thao tác tài liệu KV và sub-document (ghi chỉ khi tắt read-only)",
+      "SQL++: chạy, EXPLAIN, Index Advisor, quản lý index GSI",
+      "Tìm kiếm toàn văn (FTS) và tìm kiếm vector",
+      "Phân tích hiệu năng: truy vấn chậm, thiếu covering index; transport stdio/HTTP với OAuth 2.1"
+    ],
+    "installGuideVi": "Yêu cầu: uv và Python 3.10+ (hoặc Docker); một cụm Couchbase (Capella free tier hoặc tự quản lý) cùng tài khoản truy cập.\nBước 1: Thêm cấu hình mcpServers (chạy gói couchbase-mcp-server qua uvx với máy chủ operational, xem jsonConfig) kèm CB_CONNECTION_STRING, CB_USERNAME, CB_PASSWORD\nBước 2: Kiểm tra phiên bản: `uvx couchbase-mcp-server --version`\nBước 3: Hoặc chạy chế độ HTTP để chia sẻ cho nhiều client (lệnh ở cliCommand)\nBước 4: Hoặc cài từ mã nguồn: `git clone https://github.com/couchbase/mcp-server-couchbase.git`",
+    "usageGuideVi": "Bước 1: Chọn máy chủ `operational` (Capella/Couchbase Server) hoặc `operational-insights`\nBước 2: Đặt `CB_MCP_READ_ONLY_MODE=false` nếu cần công cụ ghi\nBước 3: Khởi động lại client và đặt câu hỏi về cụm, dữ liệu hoặc hiệu năng",
+    "samplePromptsVi": [
+      "Tôi có những bucket, scope và collection nào, schema của collection `orders` ra sao?",
+      "Tìm 10 tài liệu mới nhất trong `users` có `status = 'active'`.",
+      "5 truy vấn chậm nhất trong giờ qua là gì, có truy vấn nào thiếu covering index không?"
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"couchbase\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"couchbase-mcp-server\",\n        \"operational\"\n      ],\n      \"env\": {\n        \"CB_CONNECTION_STRING\": \"couchbases://connection-string\",\n        \"CB_USERNAME\": \"username\",\n        \"CB_PASSWORD\": \"password\"\n      }\n    }\n  }\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"couchbase\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"couchbase-mcp-server\",\n        \"operational\"\n      ],\n      \"env\": {\n        \"CB_CONNECTION_STRING\": \"couchbases://connection-string\",\n        \"CB_USERNAME\": \"username\",\n        \"CB_PASSWORD\": \"password\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Do Couchbase phát triển, giấy phép Apache-2.0",
+      "An toàn mặc định: không nạp công cụ ghi khi read-only",
+      "Hỗ trợ cả Capella và Couchbase Server tự quản lý, có Docker image chính thức"
+    ],
+    "consVi": [
+      "Một số công cụ quản trị (🖥️) không khả dụng trên Capella",
+      "Endpoint HTTP không có xác thực nếu chưa cấu hình OAuth"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Couchbase MCP Server — Kết nối AI với cụm Couchbase và Capella\n\n> An agent can inspect your cluster, explore schemas, run SQL++, full-text and vector queries, read and write documents, and diagnose query and cluster performance in natural language.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP server tự lưu trữ chính hãng của Couchbase, kết nối trợ lý AI với cụm Couchbase Server (Capella hoặc tự quản lý) và cụm Operational Insights. Gói gồm hai máy chủ: operational (52 công cụ) và operational-insights (13 công cụ), mặc định ở chế độ chỉ đọc.\n\nCho phép agent kiểm tra sức khỏe cụm, khám phá schema, chạy SQL++, tìm kiếm toàn văn/vector và chẩn đoán hiệu năng truy vấn Couchbase bằng ngôn ngữ tự nhiên.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Cơ sở dữ liệu SQL & NoSQL\n- **Tác giả / Nhà phát triển:** Couchbase\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `claude_code`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/couchbase/mcp-server-couchbase](https://github.com/couchbase/mcp-server-couchbase)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Sức khỏe cụm: trạng thái dịch vụ, metrics, tác vụ, sự kiện hệ thống**\n- **Khám phá dữ liệu: bucket, scope, collection, suy luận schema**\n- **Thao tác tài liệu KV và sub-document (ghi chỉ khi tắt read-only)**\n- **SQL++: chạy, EXPLAIN, Index Advisor, quản lý index GSI**\n- **Tìm kiếm toàn văn (FTS) và tìm kiếm vector**\n- **Phân tích hiệu năng: truy vấn chậm, thiếu covering index; transport stdio/HTTP với OAuth 2.1**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\nYêu cầu: uv và Python 3.10+ (hoặc Docker); một cụm Couchbase (Capella free tier hoặc tự quản lý) cùng tài khoản truy cập.\nBước 1: Thêm cấu hình mcpServers (chạy gói couchbase-mcp-server qua uvx với máy chủ operational, xem jsonConfig) kèm CB_CONNECTION_STRING, CB_USERNAME, CB_PASSWORD\nBước 2: Kiểm tra phiên bản: `uvx couchbase-mcp-server --version`\nBước 3: Hoặc chạy chế độ HTTP để chia sẻ cho nhiều client (lệnh ở cliCommand)\nBước 4: Hoặc cài từ mã nguồn: `git clone https://github.com/couchbase/mcp-server-couchbase.git`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn máy chủ `operational` (Capella/Couchbase Server) hoặc `operational-insights`\nBước 2: Đặt `CB_MCP_READ_ONLY_MODE=false` nếu cần công cụ ghi\nBước 3: Khởi động lại client và đặt câu hỏi về cụm, dữ liệu hoặc hiệu năng\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tôi có những bucket, scope và collection nào, schema của collection `orders` ra sao?\"\n- \"Tìm 10 tài liệu mới nhất trong `users` có `status = 'active'`.\"\n- \"5 truy vấn chậm nhất trong giờ qua là gì, có truy vấn nào thiếu covering index không?\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "brave-brave-search-mcp-server",
+    "slug": "brave-brave-search-mcp-server",
+    "name": "Brave Search MCP — Máy chủ MCP tìm kiếm web chính thức của Brave",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "web_scraping_crawling",
+    "categoryNameVi": "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+    "categories": [
+      "web_scraping_crawling",
+      "vector_rag"
+    ],
+    "categoryNamesVi": [
+      "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/brave/brave-search-mcp-server",
+    "websiteUrl": "https://brave.com/search/api/",
+    "authorName": "Brave Software",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Brave Search MCP Server là máy chủ MCP chính thức của Brave, kết nối trợ lý AI với Brave Search API để tìm kiếm web, tin tức, hình ảnh, video, địa điểm và doanh nghiệp địa phương. Máy chủ hỗ trợ hai kiểu truyền tải STDIO (mặc định) và HTTP, chạy qua npx hoặc Docker.",
+    "purposeVi": "Giúp agent AI tra cứu thông tin thời gian thực trên web và lấy nội dung đã trích xuất sẵn để làm ngữ cảnh cho LLM/RAG.",
+    "featuresVi": [
+      "Tìm kiếm web (brave_web_search): lọc theo quốc gia, ngôn ngữ, độ mới, safesearch, goggles tùy chỉnh xếp hạng",
+      "Tìm kiếm chuyên biệt: tin tức, hình ảnh, video, doanh nghiệp địa phương và điểm đến (brave_place_search)",
+      "LLM Context (brave_llm_context): trả về nội dung web đã trích xuất, tối ưu cho grounding và pipeline RAG",
+      "Tóm tắt bằng AI (brave_summarizer): tạo bản tóm tắt từ kết quả tìm kiếm có bật summary",
+      "Hai kiểu truyền tải STDIO/HTTP, bật/tắt công cụ qua BRAVE_MCP_ENABLED_TOOLS và BRAVE_MCP_DISABLED_TOOLS"
+    ],
+    "installGuideVi": "Yêu cầu: Khóa Brave Search API (đăng ký tại brave.com/search/api); Node.js 22 trở lên khi build từ mã nguồn, hoặc Docker.\nBước 1: Đăng ký tài khoản Brave Search API, chọn gói và tạo API key trong developer dashboard.\nBước 2: Thêm cấu hình mcpServers (Docker image mcp/brave-search hoặc npx @brave/brave-search-mcp-server) kèm biến BRAVE_API_KEY vào claude_desktop_config.json.\nBước 3: Build từ mã nguồn: `npm install` rồi `npm run build`\nBước 4: Hoặc build image Docker: `docker build -t mcp/brave-search:latest .`\nBước 5: Chạy cục bộ bằng Docker Compose (đặt BRAVE_API_KEY trong shell hoặc tệp .env): `docker-compose up --build`",
+    "usageGuideVi": "Bước 1: Khởi động lại Claude Desktop sau khi thêm cấu hình; các công cụ brave_* sẽ xuất hiện.\nBước 2: Đặt câu hỏi cần thông tin mới; với tóm tắt AI, tìm kiếm web với summary: true rồi dùng brave_summarizer với khóa trả về.\nBước 3: Muốn dùng HTTP, đặt BRAVE_MCP_TRANSPORT=http (cổng mặc định 8080, chỉ bind 127.0.0.1).",
+    "samplePromptsVi": [
+      "Tìm các tin tức mới nhất trong 24 giờ qua về quy định AI của EU và tóm tắt lại.",
+      "Tìm 5 quán cà phê được đánh giá cao gần trung tâm Tokyo, kèm giờ mở cửa.",
+      "Lấy ngữ cảnh web về \"Model Context Protocol\" để tôi viết bài giới thiệu ngắn."
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"brave-search\": {\n      \"command\": \"docker\",\n      \"args\": [\"run\", \"-i\", \"--rm\", \"-e\", \"BRAVE_API_KEY\", \"docker.io/mcp/brave-search\"],\n      \"env\": {\n        \"BRAVE_API_KEY\": \"YOUR_API_KEY_HERE\"\n      }\n    }\n  }\n}"
+      },
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker-compose up --build",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker-compose up --build\"\n  ],\n  \"nguon\": \"https://github.com/brave/brave-search-mcp-server\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Máy chủ chính thức do Brave phát hành, giấy phép MIT",
+      "Bao quát nhiều loại tìm kiếm: web, tin tức, ảnh, video, địa điểm, LLM context",
+      "Có sẵn Docker image và gói npm, hỗ trợ cả STDIO và HTTP"
+    ],
+    "consVi": [
+      "Cần tài khoản và API key Brave Search (gói trả phí theo kế hoạch)",
+      "Một số tính năng như extra_snippets và tìm kiếm địa phương đầy đủ yêu cầu gói Pro",
+      "Endpoint HTTP không có xác thực, chỉ nên mở ra ngoài trên mạng tin cậy"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Brave Search MCP — Máy chủ MCP tìm kiếm web chính thức của Brave\n\n> An MCP server implementation that integrates the Brave Search API, providing comprehensive search capabilities including web search, local business search, place search, image search, video search, news search, LLM context, and AI-powered summarization.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nBrave Search MCP Server là máy chủ MCP chính thức của Brave, kết nối trợ lý AI với Brave Search API để tìm kiếm web, tin tức, hình ảnh, video, địa điểm và doanh nghiệp địa phương. Máy chủ hỗ trợ hai kiểu truyền tải STDIO (mặc định) và HTTP, chạy qua npx hoặc Docker.\n\nGiúp agent AI tra cứu thông tin thời gian thực trên web và lấy nội dung đã trích xuất sẵn để làm ngữ cảnh cho LLM/RAG.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Thu thập dữ liệu web & Cào dữ liệu (Scraping)\n- **Tác giả / Nhà phát triển:** Brave Software\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `web`\n- **Kho lưu trữ chính thức:** [https://github.com/brave/brave-search-mcp-server](https://github.com/brave/brave-search-mcp-server)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tìm kiếm web (brave_web_search): lọc theo quốc gia, ngôn ngữ, độ mới, safesearch, goggles tùy chỉnh xếp hạng**\n- **Tìm kiếm chuyên biệt: tin tức, hình ảnh, video, doanh nghiệp địa phương và điểm đến (brave_place_search)**\n- **LLM Context (brave_llm_context): trả về nội dung web đã trích xuất, tối ưu cho grounding và pipeline RAG**\n- **Tóm tắt bằng AI (brave_summarizer): tạo bản tóm tắt từ kết quả tìm kiếm có bật summary**\n- **Hai kiểu truyền tải STDIO/HTTP, bật/tắt công cụ qua BRAVE_MCP_ENABLED_TOOLS và BRAVE_MCP_DISABLED_TOOLS**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker-compose up --build\n```\n\nYêu cầu: Khóa Brave Search API (đăng ký tại brave.com/search/api); Node.js 22 trở lên khi build từ mã nguồn, hoặc Docker.\nBước 1: Đăng ký tài khoản Brave Search API, chọn gói và tạo API key trong developer dashboard.\nBước 2: Thêm cấu hình mcpServers (Docker image mcp/brave-search hoặc npx @brave/brave-search-mcp-server) kèm biến BRAVE_API_KEY vào claude_desktop_config.json.\nBước 3: Build từ mã nguồn: `npm install` rồi `npm run build`\nBước 4: Hoặc build image Docker: `docker build -t mcp/brave-search:latest .`\nBước 5: Chạy cục bộ bằng Docker Compose (đặt BRAVE_API_KEY trong shell hoặc tệp .env): `docker-compose up --build`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi động lại Claude Desktop sau khi thêm cấu hình; các công cụ brave_* sẽ xuất hiện.\nBước 2: Đặt câu hỏi cần thông tin mới; với tóm tắt AI, tìm kiếm web với summary: true rồi dùng brave_summarizer với khóa trả về.\nBước 3: Muốn dùng HTTP, đặt BRAVE_MCP_TRANSPORT=http (cổng mặc định 8080, chỉ bind 127.0.0.1).\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tìm các tin tức mới nhất trong 24 giờ qua về quy định AI của EU và tóm tắt lại.\"\n- \"Tìm 5 quán cà phê được đánh giá cao gần trung tâm Tokyo, kèm giờ mở cửa.\"\n- \"Lấy ngữ cảnh web về \"Model Context Protocol\" để tôi viết bài giới thiệu ngắn.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "apify-apify-mcp-server",
+    "slug": "apify-apify-mcp-server",
+    "name": "Apify MCP Server — Máy chủ MCP chạy hàng nghìn scraper Apify cho agent AI",
+    "icon": "Globe",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "web_scraping_crawling",
+    "categoryNameVi": "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+    "categories": [
+      "web_scraping_crawling",
+      "rpa_workflow_automation"
+    ],
+    "categoryNamesVi": [
+      "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+      "Tự động hóa quy trình & RPA (Automation)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "claude_code",
+      "cursor",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/apify/apify-mcp-server",
+    "websiteUrl": "https://mcp.apify.com",
+    "authorName": "Apify",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Apify MCP Server là máy chủ MCP chính thức của Apify, cho phép agent AI dùng hàng nghìn Actor (scraper, crawler, công cụ tự động hóa) trên Apify Store để trích xuất dữ liệu từ mạng xã hội, công cụ tìm kiếm, bản đồ, sàn thương mại điện tử và mọi website. Có bản hosted tại mcp.apify.com (OAuth, Streamable HTTP) và bản chạy cục bộ qua stdio bằng npx.",
+    "purposeVi": "Giúp agent tự tìm và chạy Actor phù hợp để thu thập dữ liệu web, rồi đọc kết quả từ dataset và key-value store của Apify.",
+    "featuresVi": [
+      "Khám phá công cụ động: search-actors, fetch-actor-details, call-actor để tìm và chạy Actor bất kỳ",
+      "Actor mặc định: apify/rag-web-browser (tìm và đọc top kết quả web) và apify/web-fetch (lấy nội dung URL dạng Markdown/HTML)",
+      "Quản lý Apify: lần chạy, log, dataset, key-value store, task, lịch chạy, build và phiên bản Actor",
+      "Tra cứu tài liệu Apify và Apify API (search-apify-docs, apify-api-search, apify-api-read/write)",
+      "Thanh toán agentic không cần token: AGI, x402 (USDC trên Base) hoặc Skyfire"
+    ],
+    "installGuideVi": "Yêu cầu: Tài khoản Apify và APIFY_TOKEN (hoặc OAuth khi dùng bản hosted); Node.js để chạy npx cục bộ (v22 trở lên khi phát triển).\nBước 1: Cách khuyến nghị: thêm URL https://mcp.apify.com vào ứng dụng MCP (Claude.ai, VS Code...) và đăng nhập qua OAuth.\nBước 2: Chạy cục bộ qua stdio: đặt biến môi trường APIFY_TOKEN rồi dùng lệnh `npx @apify/actors-mcp-server`\nBước 3: Chỉ định rõ bộ công cụ cho môi trường production: `npx @apify/actors-mcp-server --tools actors,docs,apify/rag-web-browser,apify/web-fetch`\nBước 4: Tắt telemetry nếu cần: `npx @apify/actors-mcp-server --telemetry-enabled=false`",
+    "usageGuideVi": "Bước 1: Yêu cầu trợ lý tìm Actor phù hợp với nguồn dữ liệu cần lấy (ví dụ Google Maps, Instagram).\nBước 2: Trợ lý xem input schema bằng fetch-actor-details rồi chạy bằng call-actor.\nBước 3: Lấy kết quả bằng get-dataset-items với datasetId trả về, có thể phân trang.",
+    "samplePromptsVi": [
+      "Tìm tin tức mới nhất về AI agent tự động và tóm tắt các diễn biến chính.",
+      "Lấy 10 nhà hàng hàng đầu ở Prague trên Google Maps kèm thông tin liên hệ.",
+      "Cho tôi xem 10 kết quả tiếp theo của lần chạy scraping vừa rồi."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npx @apify/actors-mcp-server --tools actors,docs,apify/rag-web-browser,apify/web-fetch",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx @apify/actors-mcp-server --tools actors,docs,apify/rag-web-browser,apify/web-fetch\"\n  ],\n  \"nguon\": \"https://github.com/apify/apify-mcp-server\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Máy chủ chính thức của Apify, giấy phép MIT",
+      "Truy cập hàng nghìn Actor dựng sẵn trên Apify Store",
+      "Có bản hosted hỗ trợ OAuth, không cần cài đặt"
+    ],
+    "consVi": [
+      "Cần tài khoản Apify; chạy Actor tính phí theo Apify (hoặc thanh toán agentic)",
+      "Bản stdio cục bộ thiếu một số tính năng của bản hosted (ví dụ suy luận output schema, Actor cho thuê)",
+      "Telemetry bật mặc định, phải tắt thủ công"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Apify MCP Server — Máy chủ MCP chạy hàng nghìn scraper Apify cho agent AI\n\n> The Apify MCP Server allows an AI assistant to use any Apify Actor as a tool to perform a specific task.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nApify MCP Server là máy chủ MCP chính thức của Apify, cho phép agent AI dùng hàng nghìn Actor (scraper, crawler, công cụ tự động hóa) trên Apify Store để trích xuất dữ liệu từ mạng xã hội, công cụ tìm kiếm, bản đồ, sàn thương mại điện tử và mọi website. Có bản hosted tại mcp.apify.com (OAuth, Streamable HTTP) và bản chạy cục bộ qua stdio bằng npx.\n\nGiúp agent tự tìm và chạy Actor phù hợp để thu thập dữ liệu web, rồi đọc kết quả từ dataset và key-value store của Apify.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Thu thập dữ liệu web & Cào dữ liệu (Scraping)\n- **Tác giả / Nhà phát triển:** Apify\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `claude_code`, `cursor`, `web`\n- **Kho lưu trữ chính thức:** [https://github.com/apify/apify-mcp-server](https://github.com/apify/apify-mcp-server)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Khám phá công cụ động: search-actors, fetch-actor-details, call-actor để tìm và chạy Actor bất kỳ**\n- **Actor mặc định: apify/rag-web-browser (tìm và đọc top kết quả web) và apify/web-fetch (lấy nội dung URL dạng Markdown/HTML)**\n- **Quản lý Apify: lần chạy, log, dataset, key-value store, task, lịch chạy, build và phiên bản Actor**\n- **Tra cứu tài liệu Apify và Apify API (search-apify-docs, apify-api-search, apify-api-read/write)**\n- **Thanh toán agentic không cần token: AGI, x402 (USDC trên Base) hoặc Skyfire**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx @apify/actors-mcp-server --tools actors,docs,apify/rag-web-browser,apify/web-fetch\n```\n\nYêu cầu: Tài khoản Apify và APIFY_TOKEN (hoặc OAuth khi dùng bản hosted); Node.js để chạy npx cục bộ (v22 trở lên khi phát triển).\nBước 1: Cách khuyến nghị: thêm URL https://mcp.apify.com vào ứng dụng MCP (Claude.ai, VS Code...) và đăng nhập qua OAuth.\nBước 2: Chạy cục bộ qua stdio: đặt biến môi trường APIFY_TOKEN rồi dùng lệnh `npx @apify/actors-mcp-server`\nBước 3: Chỉ định rõ bộ công cụ cho môi trường production: `npx @apify/actors-mcp-server --tools actors,docs,apify/rag-web-browser,apify/web-fetch`\nBước 4: Tắt telemetry nếu cần: `npx @apify/actors-mcp-server --telemetry-enabled=false`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Yêu cầu trợ lý tìm Actor phù hợp với nguồn dữ liệu cần lấy (ví dụ Google Maps, Instagram).\nBước 2: Trợ lý xem input schema bằng fetch-actor-details rồi chạy bằng call-actor.\nBước 3: Lấy kết quả bằng get-dataset-items với datasetId trả về, có thể phân trang.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tìm tin tức mới nhất về AI agent tự động và tóm tắt các diễn biến chính.\"\n- \"Lấy 10 nhà hàng hàng đầu ở Prague trên Google Maps kèm thông tin liên hệ.\"\n- \"Cho tôi xem 10 kết quả tiếp theo của lần chạy scraping vừa rồi.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "brightdata-brightdata-mcp",
+    "slug": "brightdata-brightdata-mcp",
+    "name": "Bright Data MCP — Máy chủ MCP truy cập dữ liệu web thời gian thực",
+    "icon": "Globe",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "web_scraping_crawling",
+    "categoryNameVi": "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+    "categories": [
+      "web_scraping_crawling",
+      "data_engineering"
+    ],
+    "categoryNamesVi": [
+      "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+      "Kỹ thuật dữ liệu & Đường ống ETL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/brightdata/brightdata-mcp",
+    "websiteUrl": "https://brightdata.com/pricing/mcp-server",
+    "authorName": "Bright Data",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Bright Data MCP là máy chủ MCP chính thức của Bright Data với 32 công cụ: tìm kiếm Google/Bing/Yandex, lấy trang web dạng Markdown/HTML, chạy hơn 1.200 scraper dựng sẵn trả JSON, tự động hóa trình duyệt từ xa và thu thập câu trả lời của ChatGPT/Perplexity. Mọi yêu cầu đi qua hạ tầng vượt chặn (CAPTCHA, phát hiện bot, giới hạn địa lý) của Bright Data.",
+    "purposeVi": "Cho agent AI truy cập dữ liệu web công khai theo thời gian thực mà không phải tự lo proxy, trình duyệt headless hay logic thử lại.",
+    "featuresVi": [
+      "Tìm kiếm và scraping: search_engine, scrape_as_markdown, scrape_as_html, chạy lô tới 10 truy vấn/URL",
+      "Web Scraper API: search_scrapers → get_scraper_details → run_scraper với 1.200+ scraper (Amazon, LinkedIn, TikTok, npm, PyPI...)",
+      "Tự động hóa trình duyệt: 14 công cụ scraping_browser_* (điều hướng, click, gõ, chụp màn hình)",
+      "GEO: chatgpt_ai_insights và perplexity_ai_insights thu câu trả lời của LLM",
+      "Lọc nhóm công cụ qua GROUPS/TOOLS; content gate hỏi người dùng khi nội dung trang trông như lệnh đổi cấu hình MCP"
+    ],
+    "installGuideVi": "Yêu cầu: Tài khoản và API token Bright Data; Node.js khi chạy cục bộ bằng npx.\nBước 1: Lấy API token trong phần account settings của Bright Data (tài khoản mới có 5.000 yêu cầu miễn phí mỗi tháng).\nBước 2: Claude Code (bản hosted): `claude mcp add --transport http brightdata \"https://mcp.brightdata.com/mcp?token=YOUR_API_TOKEN\"`\nBước 3: Hoặc chạy cục bộ: thêm cấu hình mcpServers với command npx, args @brightdata/mcp và biến API_TOKEN vào claude_desktop_config.json.\nBước 4: Tùy chọn: đặt GROUPS (ví dụ scrapers,browser) hoặc TOOLS để giới hạn số công cụ nạp vào.",
+    "usageGuideVi": "Bước 1: Dùng search_engine để tìm thông tin, scrape_as_markdown để đọc một URL cụ thể.\nBước 2: Với nền tảng phổ biến, tìm scraper bằng search_scrapers rồi chạy run_scraper để nhận JSON có cấu trúc.\nBước 3: Với trang cần tương tác (đăng nhập, cuộn vô hạn), dùng nhóm công cụ browser.",
+    "samplePromptsVi": [
+      "So sánh giá chiếc laptop này trên Amazon, Walmart và Best Buy.",
+      "Phiên bản mới nhất của express trên npm là gì?",
+      "Phân tích Notion như một đối thủ: giá, gọi vốn, trọng tâm tuyển dụng và khách hàng phàn nàn điều gì."
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add --transport http brightdata \"https://mcp.brightdata.com/mcp?token=YOUR_API_TOKEN\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add --transport http brightdata \\\"https://mcp.brightdata.com/mcp?token=YOUR_API_TOKEN\\\"\"\n  ],\n  \"nguon\": \"https://github.com/brightdata/brightdata-mcp\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "npx @brightdata/mcp",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"Bright Data\": {\n      \"command\": \"npx\",\n      \"args\": [\"@brightdata/mcp\"],\n      \"env\": {\n        \"API_TOKEN\": \"<your-api-token-here>\"\n      }\n    }\n  }\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"brightdata\": {\n      \"url\": \"https://mcp.brightdata.com/mcp?token=YOUR_API_TOKEN\"\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "5.000 yêu cầu miễn phí/tháng; sau đó trả theo mức dùng",
+    "prosVi": [
+      "Máy chủ chính thức của Bright Data, giấy phép MIT",
+      "Có gói miễn phí 5.000 yêu cầu/tháng, không cần thẻ tín dụng",
+      "Có cả bản hosted (một URL) và bản cục bộ qua npx"
+    ],
+    "consVi": [
+      "Cần tài khoản Bright Data; vượt gói miễn phí tính phí theo mức dùng ($1.50/1K kết quả, $8/GB duyệt trình duyệt)",
+      "Kết quả scraper có thể rất lớn, cần giới hạn limit_per_input",
+      "Ứng dụng không hỗ trợ MCP elicitation sẽ bị giữ lại nội dung bị content gate đánh dấu"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Bright Data MCP — Máy chủ MCP truy cập dữ liệu web thời gian thực\n\n> The Bright Data MCP server gives AI agents real-time access to public web data.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nBright Data MCP là máy chủ MCP chính thức của Bright Data với 32 công cụ: tìm kiếm Google/Bing/Yandex, lấy trang web dạng Markdown/HTML, chạy hơn 1.200 scraper dựng sẵn trả JSON, tự động hóa trình duyệt từ xa và thu thập câu trả lời của ChatGPT/Perplexity. Mọi yêu cầu đi qua hạ tầng vượt chặn (CAPTCHA, phát hiện bot, giới hạn địa lý) của Bright Data.\n\nCho agent AI truy cập dữ liệu web công khai theo thời gian thực mà không phải tự lo proxy, trình duyệt headless hay logic thử lại.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Thu thập dữ liệu web & Cào dữ liệu (Scraping)\n- **Tác giả / Nhà phát triển:** Bright Data\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/brightdata/brightdata-mcp](https://github.com/brightdata/brightdata-mcp)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tìm kiếm và scraping: search_engine, scrape_as_markdown, scrape_as_html, chạy lô tới 10 truy vấn/URL**\n- **Web Scraper API: search_scrapers → get_scraper_details → run_scraper với 1.200+ scraper (Amazon, LinkedIn, TikTok, npm, PyPI...)**\n- **Tự động hóa trình duyệt: 14 công cụ scraping_browser_* (điều hướng, click, gõ, chụp màn hình)**\n- **GEO: chatgpt_ai_insights và perplexity_ai_insights thu câu trả lời của LLM**\n- **Lọc nhóm công cụ qua GROUPS/TOOLS; content gate hỏi người dùng khi nội dung trang trông như lệnh đổi cấu hình MCP**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add --transport http brightdata \"https://mcp.brightdata.com/mcp?token=YOUR_API_TOKEN\"\n```\n\nYêu cầu: Tài khoản và API token Bright Data; Node.js khi chạy cục bộ bằng npx.\nBước 1: Lấy API token trong phần account settings của Bright Data (tài khoản mới có 5.000 yêu cầu miễn phí mỗi tháng).\nBước 2: Claude Code (bản hosted): `claude mcp add --transport http brightdata \"https://mcp.brightdata.com/mcp?token=YOUR_API_TOKEN\"`\nBước 3: Hoặc chạy cục bộ: thêm cấu hình mcpServers với command npx, args @brightdata/mcp và biến API_TOKEN vào claude_desktop_config.json.\nBước 4: Tùy chọn: đặt GROUPS (ví dụ scrapers,browser) hoặc TOOLS để giới hạn số công cụ nạp vào.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Dùng search_engine để tìm thông tin, scrape_as_markdown để đọc một URL cụ thể.\nBước 2: Với nền tảng phổ biến, tìm scraper bằng search_scrapers rồi chạy run_scraper để nhận JSON có cấu trúc.\nBước 3: Với trang cần tương tác (đăng nhập, cuộn vô hạn), dùng nhóm công cụ browser.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"So sánh giá chiếc laptop này trên Amazon, Walmart và Best Buy.\"\n- \"Phiên bản mới nhất của express trên npm là gì?\"\n- \"Phân tích Notion như một đối thủ: giá, gọi vốn, trọng tâm tuyển dụng và khách hàng phàn nàn điều gì.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "perplexityai-modelcontextprotocol",
+    "slug": "perplexityai-modelcontextprotocol",
+    "name": "Perplexity MCP — Máy chủ MCP tìm kiếm và nghiên cứu web chính thức của Perplexity",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "web_scraping_crawling"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Thu thập dữ liệu web & Cào dữ liệu (Scraping)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/perplexityai/modelcontextprotocol",
+    "websiteUrl": "https://docs.perplexity.ai/docs/getting-started/integrations/mcp-server",
+    "authorName": "Perplexity AI",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Đây là máy chủ MCP chính thức cho nền tảng Perplexity API, cung cấp cho trợ lý AI khả năng tìm kiếm web thời gian thực, suy luận và nghiên cứu chuyên sâu qua Agent API và Search API. Có bản remote do Perplexity host tại api.perplexity.ai/mcp và bản cục bộ chạy bằng npx, Docker hoặc chế độ HTTP tự host.",
+    "purposeVi": "Giúp agent lấy kết quả tìm kiếm web có xếp hạng và nhận câu trả lời, báo cáo nghiên cứu có nguồn từ Perplexity ngay trong Claude, Cursor, VS Code.",
+    "featuresVi": [
+      "perplexity_search: tìm kiếm web trực tiếp qua Search API, lọc theo độ mới và tên miền, hỗ trợ Fast Search",
+      "perplexity_ask: hỏi đáp có tìm kiếm web, dùng preset fast của Agent API",
+      "perplexity_research: nghiên cứu chuyên sâu (preset high), có báo cáo tiến độ cho lần chạy dài",
+      "perplexity_reason: suy luận và giải quyết vấn đề phức tạp (preset medium)",
+      "Hỗ trợ proxy doanh nghiệp (PERPLEXITY_PROXY) và chế độ HTTP tự host qua Docker/Node.js"
+    ],
+    "installGuideVi": "Yêu cầu: API key Perplexity (lấy tại console.perplexity.ai); Node.js để chạy npx, hoặc Docker cho chế độ HTTP.\nBước 1: Lấy API key tại API Portal console.perplexity.ai.\nBước 2: Claude Code (bản cục bộ): `claude mcp add perplexity --env PERPLEXITY_API_KEY=\"your_key_here\" -- npx -y @perplexity-ai/mcp-server`\nBước 3: Hoặc dùng bản remote: `claude mcp add --transport http perplexity https://api.perplexity.ai/mcp --header \"Authorization: Bearer YOUR_API_KEY\"`\nBước 4: Với Cursor, Claude Desktop, Windsurf: thêm cấu hình mcpServers (npx -y @perplexity-ai/mcp-server, biến PERPLEXITY_API_KEY).\nBước 5: Tự host HTTP bằng Docker: `docker build -t perplexity-mcp-server .` rồi `docker run -p 8080:8080 -e PERPLEXITY_API_KEY=your_key_here perplexity-mcp-server`",
+    "usageGuideVi": "Bước 1: Dùng perplexity_search khi cần danh sách kết quả, perplexity_ask cho câu hỏi nhanh.\nBước 2: Dùng perplexity_research cho báo cáo chi tiết; với truy vấn dài, tăng PERPLEXITY_TIMEOUT_MS.\nBước 3: Nếu ứng dụng MCP báo lỗi EOF khi khởi tạo, dùng npx -yq thay cho npx -y.",
+    "samplePromptsVi": [
+      "Tìm các bài viết trong tuần qua về chip AI mới, chỉ lấy từ các trang tin công nghệ lớn.",
+      "Nghiên cứu chuyên sâu về xu hướng thanh toán số ở Đông Nam Á và viết báo cáo có trích nguồn.",
+      "Phân tích ưu nhược điểm của việc chuyển hệ thống từ REST sang GraphQL."
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add perplexity --env PERPLEXITY_API_KEY=\"your_key_here\" -- npx -y @perplexity-ai/mcp-server",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add perplexity --env PERPLEXITY_API_KEY=\\\"your_key_here\\\" -- npx -y @perplexity-ai/mcp-server\"\n  ],\n  \"nguon\": \"https://github.com/perplexityai/modelcontextprotocol\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"perplexity\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@perplexity-ai/mcp-server\"],\n      \"env\": {\n        \"PERPLEXITY_API_KEY\": \"your_key_here\"\n      }\n    }\n  }\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"perplexity\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@perplexity-ai/mcp-server\"],\n      \"env\": {\n        \"PERPLEXITY_API_KEY\": \"your_key_here\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Máy chủ chính thức của Perplexity, giấy phép MIT",
+      "Có bản remote không cần cài đặt và bản cục bộ qua npx",
+      "Có lệnh claude mcp add và plugin Claude Code sẵn"
+    ],
+    "consVi": [
+      "Cần API key Perplexity; dùng API tính phí theo Perplexity",
+      "Nghiên cứu chuyên sâu có thể mất vài phút mỗi lần chạy",
+      "Một số ứng dụng MCP nghiêm ngặt lỗi khởi tạo do npx in thông báo ra stdout"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Perplexity MCP — Máy chủ MCP tìm kiếm và nghiên cứu web chính thức của Perplexity\n\n> The official MCP server implementation for the Perplexity API Platform, providing AI assistants with real-time web search, reasoning, and research capabilities through the Agent API and the Search API.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nĐây là máy chủ MCP chính thức cho nền tảng Perplexity API, cung cấp cho trợ lý AI khả năng tìm kiếm web thời gian thực, suy luận và nghiên cứu chuyên sâu qua Agent API và Search API. Có bản remote do Perplexity host tại api.perplexity.ai/mcp và bản cục bộ chạy bằng npx, Docker hoặc chế độ HTTP tự host.\n\nGiúp agent lấy kết quả tìm kiếm web có xếp hạng và nhận câu trả lời, báo cáo nghiên cứu có nguồn từ Perplexity ngay trong Claude, Cursor, VS Code.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Perplexity AI\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/perplexityai/modelcontextprotocol](https://github.com/perplexityai/modelcontextprotocol)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **perplexity_search: tìm kiếm web trực tiếp qua Search API, lọc theo độ mới và tên miền, hỗ trợ Fast Search**\n- **perplexity_ask: hỏi đáp có tìm kiếm web, dùng preset fast của Agent API**\n- **perplexity_research: nghiên cứu chuyên sâu (preset high), có báo cáo tiến độ cho lần chạy dài**\n- **perplexity_reason: suy luận và giải quyết vấn đề phức tạp (preset medium)**\n- **Hỗ trợ proxy doanh nghiệp (PERPLEXITY_PROXY) và chế độ HTTP tự host qua Docker/Node.js**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add perplexity --env PERPLEXITY_API_KEY=\"your_key_here\" -- npx -y @perplexity-ai/mcp-server\n```\n\nYêu cầu: API key Perplexity (lấy tại console.perplexity.ai); Node.js để chạy npx, hoặc Docker cho chế độ HTTP.\nBước 1: Lấy API key tại API Portal console.perplexity.ai.\nBước 2: Claude Code (bản cục bộ): `claude mcp add perplexity --env PERPLEXITY_API_KEY=\"your_key_here\" -- npx -y @perplexity-ai/mcp-server`\nBước 3: Hoặc dùng bản remote: `claude mcp add --transport http perplexity https://api.perplexity.ai/mcp --header \"Authorization: Bearer YOUR_API_KEY\"`\nBước 4: Với Cursor, Claude Desktop, Windsurf: thêm cấu hình mcpServers (npx -y @perplexity-ai/mcp-server, biến PERPLEXITY_API_KEY).\nBước 5: Tự host HTTP bằng Docker: `docker build -t perplexity-mcp-server .` rồi `docker run -p 8080:8080 -e PERPLEXITY_API_KEY=your_key_here perplexity-mcp-server`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Dùng perplexity_search khi cần danh sách kết quả, perplexity_ask cho câu hỏi nhanh.\nBước 2: Dùng perplexity_research cho báo cáo chi tiết; với truy vấn dài, tăng PERPLEXITY_TIMEOUT_MS.\nBước 3: Nếu ứng dụng MCP báo lỗi EOF khi khởi tạo, dùng npx -yq thay cho npx -y.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tìm các bài viết trong tuần qua về chip AI mới, chỉ lấy từ các trang tin công nghệ lớn.\"\n- \"Nghiên cứu chuyên sâu về xu hướng thanh toán số ở Đông Nam Á và viết báo cáo có trích nguồn.\"\n- \"Phân tích ưu nhược điểm của việc chuyển hệ thống từ REST sang GraphQL.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "stripe-ai",
+    "slug": "stripe-ai",
+    "name": "Stripe AI — Máy chủ MCP và Agent Toolkit chính thức của Stripe",
+    "icon": "CreditCard",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "payment_gateway",
+    "categoryNameVi": "Cổng thanh toán & Ví điện tử (Payments)",
+    "categories": [
+      "payment_gateway",
+      "fintech_banking"
+    ],
+    "categoryNamesVi": [
+      "Cổng thanh toán & Ví điện tử (Payments)",
+      "Công nghệ tài chính & Ngân hàng"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "claude_code",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/stripe/ai",
+    "websiteUrl": "https://docs.stripe.com/mcp",
+    "authorName": "Stripe",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Stripe AI là kho chính thức của Stripe gom máy chủ MCP Stripe (@stripe/mcp), Agent Toolkit cho Python/TypeScript, các SDK tính phí theo token (@stripe/ai-sdk, @stripe/token-meter) và bộ agent skill. Máy chủ MCP cho phép agent gọi Stripe API qua function calling; Stripe cũng host bản remote tại mcp.stripe.com với OAuth.",
+    "purposeVi": "Giúp lập trình viên cho agent AI thao tác với Stripe (khách hàng, sản phẩm, thanh toán...) và áp dụng best practice khi tích hợp Stripe.",
+    "featuresVi": [
+      "Máy chủ MCP cục bộ @stripe/mcp chạy bằng npx hoặc Docker, hỗ trợ tài khoản Connect (--stripe-account)",
+      "Máy chủ MCP remote tại https://mcp.stripe.com với OAuth",
+      "Agent Toolkit cho OpenAI Agent SDK, LangChain, CrewAI, Vercel AI SDK (Python và TypeScript)",
+      "Quyền công cụ được kiểm soát bằng Restricted API Key (RAK)",
+      "Agent skill và plugin chính thức cho Claude Code, Codex, Cursor"
+    ],
+    "installGuideVi": "Yêu cầu: Tài khoản Stripe và secret key (khuyến nghị Restricted API Key); Node.js 18 trở lên cho @stripe/mcp; Python 3.11+ cho bản Python của Agent Toolkit.\nBước 1: Tạo Restricted API Key với quyền mong muốn tại dashboard.stripe.com/apikeys.\nBước 2: Chạy MCP cục bộ: `npx -y @stripe/mcp --api-key=YOUR_STRIPE_SECRET_KEY`\nBước 3: Hoặc thêm cấu hình mcpServers (npx -y @stripe/mcp --api-key=...) vào claude_desktop_config.json.\nBước 4: Cài plugin Stripe cho Claude Code: `claude plugin install stripe@claude-plugins-official`\nBước 5: Dùng Agent Toolkit trong mã: `pip install stripe-agent-toolkit` hoặc `npm install @stripe/agent-toolkit`",
+    "usageGuideVi": "Bước 1: Khởi động lại Claude Desktop sau khi thêm cấu hình; các công cụ Stripe xuất hiện theo quyền của khóa.\nBước 2: Yêu cầu trợ lý tạo hoặc tra cứu đối tượng Stripe bằng ngôn ngữ tự nhiên.\nBước 3: Dùng khóa test (rk_test_...) khi thử nghiệm để tránh thao tác trên dữ liệu thật.",
+    "samplePromptsVi": [
+      "Tạo một sản phẩm \"Gói Pro\" giá 20 USD/tháng trong tài khoản Stripe test của tôi.",
+      "Liệt kê các khách hàng mới tạo gần đây trong Stripe.",
+      "Tạo payment link cho sản phẩm vừa tạo."
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "npx -y @stripe/mcp --api-key=YOUR_STRIPE_SECRET_KEY",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"stripe\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@stripe/mcp\", \"--api-key=STRIPE_SECRET_KEY\"]\n    }\n  }\n}"
+      },
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude plugin install stripe@claude-plugins-official",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude plugin install stripe@claude-plugins-official\"\n  ],\n  \"nguon\": \"https://github.com/stripe/ai\"\n}"
+      },
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npx -y @stripe/mcp --api-key=YOUR_STRIPE_SECRET_KEY",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx -y @stripe/mcp --api-key=YOUR_STRIPE_SECRET_KEY\"\n  ],\n  \"nguon\": \"https://github.com/stripe/ai\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Kho chính thức của Stripe, giấy phép MIT",
+      "Có cả MCP remote (OAuth) và cục bộ (npx/Docker)",
+      "Phân quyền chi tiết qua Restricted API Key"
+    ],
+    "consVi": [
+      "Cần tài khoản Stripe và secret key",
+      "Danh sách công cụ không được liệt kê trong README, phải xem tài liệu Stripe MCP",
+      "Agent Toolkit không bao phủ toàn bộ Stripe API"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Stripe AI — Máy chủ MCP và Agent Toolkit chính thức của Stripe\n\n> This repo is the one-stop shop for building AI-powered products and businesses on top of Stripe.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nStripe AI là kho chính thức của Stripe gom máy chủ MCP Stripe (@stripe/mcp), Agent Toolkit cho Python/TypeScript, các SDK tính phí theo token (@stripe/ai-sdk, @stripe/token-meter) và bộ agent skill. Máy chủ MCP cho phép agent gọi Stripe API qua function calling; Stripe cũng host bản remote tại mcp.stripe.com với OAuth.\n\nGiúp lập trình viên cho agent AI thao tác với Stripe (khách hàng, sản phẩm, thanh toán...) và áp dụng best practice khi tích hợp Stripe.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Cổng thanh toán & Ví điện tử (Payments)\n- **Tác giả / Nhà phát triển:** Stripe\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `claude_code`, `web`\n- **Kho lưu trữ chính thức:** [https://github.com/stripe/ai](https://github.com/stripe/ai)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Máy chủ MCP cục bộ @stripe/mcp chạy bằng npx hoặc Docker, hỗ trợ tài khoản Connect (--stripe-account)**\n- **Máy chủ MCP remote tại https://mcp.stripe.com với OAuth**\n- **Agent Toolkit cho OpenAI Agent SDK, LangChain, CrewAI, Vercel AI SDK (Python và TypeScript)**\n- **Quyền công cụ được kiểm soát bằng Restricted API Key (RAK)**\n- **Agent skill và plugin chính thức cho Claude Code, Codex, Cursor**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx -y @stripe/mcp --api-key=YOUR_STRIPE_SECRET_KEY\n```\n\nYêu cầu: Tài khoản Stripe và secret key (khuyến nghị Restricted API Key); Node.js 18 trở lên cho @stripe/mcp; Python 3.11+ cho bản Python của Agent Toolkit.\nBước 1: Tạo Restricted API Key với quyền mong muốn tại dashboard.stripe.com/apikeys.\nBước 2: Chạy MCP cục bộ: `npx -y @stripe/mcp --api-key=YOUR_STRIPE_SECRET_KEY`\nBước 3: Hoặc thêm cấu hình mcpServers (npx -y @stripe/mcp --api-key=...) vào claude_desktop_config.json.\nBước 4: Cài plugin Stripe cho Claude Code: `claude plugin install stripe@claude-plugins-official`\nBước 5: Dùng Agent Toolkit trong mã: `pip install stripe-agent-toolkit` hoặc `npm install @stripe/agent-toolkit`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi động lại Claude Desktop sau khi thêm cấu hình; các công cụ Stripe xuất hiện theo quyền của khóa.\nBước 2: Yêu cầu trợ lý tạo hoặc tra cứu đối tượng Stripe bằng ngôn ngữ tự nhiên.\nBước 3: Dùng khóa test (rk_test_...) khi thử nghiệm để tránh thao tác trên dữ liệu thật.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo một sản phẩm \"Gói Pro\" giá 20 USD/tháng trong tài khoản Stripe test của tôi.\"\n- \"Liệt kê các khách hàng mới tạo gần đây trong Stripe.\"\n- \"Tạo payment link cho sản phẩm vừa tạo.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "paypal-agent-toolkit",
+    "slug": "paypal-agent-toolkit",
+    "name": "PayPal Agent Toolkit — Bộ công cụ agent và máy chủ MCP chính thức của PayPal",
+    "icon": "CreditCard",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "payment_gateway",
+    "categoryNameVi": "Cổng thanh toán & Ví điện tử (Payments)",
+    "categories": [
+      "payment_gateway",
+      "accounting_finance"
+    ],
+    "categoryNamesVi": [
+      "Cổng thanh toán & Ví điện tử (Payments)",
+      "Kế toán doanh nghiệp & Báo cáo tài chính"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "cursor",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/paypal/agent-toolkit",
+    "websiteUrl": "https://developer.paypal.com/dashboard/",
+    "authorName": "PayPal",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "PayPal Agent Toolkit là bộ công cụ chính thức của PayPal giúp các framework agent (OpenAI Agent SDK, LangChain, Vercel AI SDK, MCP) gọi PayPal API qua function calling. Bộ công cụ có bản TypeScript và Python, kèm máy chủ MCP @paypal/mcp dùng được với Claude Desktop, Cursor, Cline.",
+    "purposeVi": "Cho agent AI thực hiện nghiệp vụ PayPal như tạo hóa đơn, đơn hàng, hoàn tiền, quản lý tranh chấp, gói đăng ký và báo cáo giao dịch.",
+    "featuresVi": [
+      "Hóa đơn: tạo, gửi, nhắc, hủy, tạo mã QR, chuỗi hóa đơn định kỳ, ghi nhận thanh toán/hoàn tiền",
+      "Thanh toán: tạo và lấy đơn hàng, thanh toán đơn đã ủy quyền, hoàn tiền",
+      "Tranh chấp và vận chuyển: liệt kê/chấp nhận tranh chấp, tạo và cập nhật mã theo dõi vận đơn",
+      "Danh mục sản phẩm và gói đăng ký: tạo sản phẩm, gói, đăng ký, hủy đăng ký",
+      "Báo cáo: liệt kê giao dịch và chỉ số kinh doanh của merchant; hỗ trợ chế độ SANDBOX/PRODUCTION"
+    ],
+    "installGuideVi": "Yêu cầu: Tài khoản PayPal Developer (sandbox) hoặc Business (production), Client ID/Secret để tạo access token; Node 18+ (TypeScript) hoặc Python 3.11+.\nBước 1: Tạo app trong PayPal Developer Dashboard để lấy Client ID và Client Secret, rồi tạo access token.\nBước 2: Cài đặt thư viện TypeScript: `npm install @paypal/agent-toolkit`\nBước 3: Hoặc cài đặt thư viện Python: `pip install paypal-agent-toolkit`\nBước 4: Chạy máy chủ MCP: `npx -y @paypal/mcp --tools=all PAYPAL_ACCESS_TOKEN=\"YOUR_ACCESS_TOKEN\" PAYPAL_ENVIRONMENT=\"SANDBOX\"`\nBước 5: Với Claude Desktop: thêm cấu hình mcpServers (npx -y @paypal/mcp --tools=all, biến PAYPAL_ACCESS_TOKEN và PAYPAL_ENVIRONMENT) rồi khởi động lại ứng dụng.",
+    "usageGuideVi": "Bước 1: Đặt PAYPAL_ENVIRONMENT=SANDBOX khi thử nghiệm, PRODUCTION khi dùng thật.\nBước 2: Hỏi trợ lý thực hiện tác vụ PayPal, ví dụ liệt kê hóa đơn.\nBước 3: Làm mới access token trước khi hết hạn (sandbox 3-8 giờ, production 8 giờ).",
+    "samplePromptsVi": [
+      "Liệt kê các hóa đơn PayPal của tôi.",
+      "Tạo đơn hàng 50 USD cho một sản phẩm thủ công và lấy link thanh toán.",
+      "Liệt kê các tranh chấp đang mở và cho tôi xem chi tiết tranh chấp mới nhất."
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n   \"mcpServers\": {\n     \"paypal\": {\n       \"command\": \"npx\",\n       \"args\": [\n         \"-y\",\n         \"@paypal/mcp\",\n         \"--tools=all\"\n       ],\n       \"env\": {\n         \"PAYPAL_ACCESS_TOKEN\": \"YOUR_PAYPAL_ACCESS_TOKEN\",\n         \"PAYPAL_ENVIRONMENT\": \"SANDBOX\"\n       }\n     }\n   }\n}"
+      },
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npx -y @paypal/mcp --tools=all PAYPAL_ACCESS_TOKEN=\"YOUR_ACCESS_TOKEN\" PAYPAL_ENVIRONMENT=\"SANDBOX\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx -y @paypal/mcp --tools=all PAYPAL_ACCESS_TOKEN=\\\"YOUR_ACCESS_TOKEN\\\" PAYPAL_ENVIRONMENT=\\\"SANDBOX\\\"\"\n  ],\n  \"nguon\": \"https://github.com/paypal/agent-toolkit\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Bộ công cụ chính thức của PayPal, giấy phép Apache 2.0",
+      "Hỗ trợ nhiều framework agent và cả MCP",
+      "Có chế độ sandbox để thử nghiệm an toàn"
+    ],
+    "consVi": [
+      "Cần tài khoản PayPal Developer/Business và access token",
+      "Access token hết hạn sau vài giờ, phải tự làm mới",
+      "PayPal lưu ý nội dung do AI tạo có thể không chính xác, người dùng tự chịu trách nhiệm kiểm tra"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# PayPal Agent Toolkit — Bộ công cụ agent và máy chủ MCP chính thức của PayPal\n\n> The PayPal Agent Toolkit enables popular agent frameworks including OpenAI's Agent SDK, LangChain, Vercel's AI SDK, and Model Context Protocol (MCP) to integrate with PayPal APIs through function calling.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPayPal Agent Toolkit là bộ công cụ chính thức của PayPal giúp các framework agent (OpenAI Agent SDK, LangChain, Vercel AI SDK, MCP) gọi PayPal API qua function calling. Bộ công cụ có bản TypeScript và Python, kèm máy chủ MCP @paypal/mcp dùng được với Claude Desktop, Cursor, Cline.\n\nCho agent AI thực hiện nghiệp vụ PayPal như tạo hóa đơn, đơn hàng, hoàn tiền, quản lý tranh chấp, gói đăng ký và báo cáo giao dịch.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Cổng thanh toán & Ví điện tử (Payments)\n- **Tác giả / Nhà phát triển:** PayPal\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `cursor`, `web`\n- **Kho lưu trữ chính thức:** [https://github.com/paypal/agent-toolkit](https://github.com/paypal/agent-toolkit)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Hóa đơn: tạo, gửi, nhắc, hủy, tạo mã QR, chuỗi hóa đơn định kỳ, ghi nhận thanh toán/hoàn tiền**\n- **Thanh toán: tạo và lấy đơn hàng, thanh toán đơn đã ủy quyền, hoàn tiền**\n- **Tranh chấp và vận chuyển: liệt kê/chấp nhận tranh chấp, tạo và cập nhật mã theo dõi vận đơn**\n- **Danh mục sản phẩm và gói đăng ký: tạo sản phẩm, gói, đăng ký, hủy đăng ký**\n- **Báo cáo: liệt kê giao dịch và chỉ số kinh doanh của merchant; hỗ trợ chế độ SANDBOX/PRODUCTION**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx -y @paypal/mcp --tools=all PAYPAL_ACCESS_TOKEN=\"YOUR_ACCESS_TOKEN\" PAYPAL_ENVIRONMENT=\"SANDBOX\"\n```\n\nYêu cầu: Tài khoản PayPal Developer (sandbox) hoặc Business (production), Client ID/Secret để tạo access token; Node 18+ (TypeScript) hoặc Python 3.11+.\nBước 1: Tạo app trong PayPal Developer Dashboard để lấy Client ID và Client Secret, rồi tạo access token.\nBước 2: Cài đặt thư viện TypeScript: `npm install @paypal/agent-toolkit`\nBước 3: Hoặc cài đặt thư viện Python: `pip install paypal-agent-toolkit`\nBước 4: Chạy máy chủ MCP: `npx -y @paypal/mcp --tools=all PAYPAL_ACCESS_TOKEN=\"YOUR_ACCESS_TOKEN\" PAYPAL_ENVIRONMENT=\"SANDBOX\"`\nBước 5: Với Claude Desktop: thêm cấu hình mcpServers (npx -y @paypal/mcp --tools=all, biến PAYPAL_ACCESS_TOKEN và PAYPAL_ENVIRONMENT) rồi khởi động lại ứng dụng.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đặt PAYPAL_ENVIRONMENT=SANDBOX khi thử nghiệm, PRODUCTION khi dùng thật.\nBước 2: Hỏi trợ lý thực hiện tác vụ PayPal, ví dụ liệt kê hóa đơn.\nBước 3: Làm mới access token trước khi hết hạn (sandbox 3-8 giờ, production 8 giờ).\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Liệt kê các hóa đơn PayPal của tôi.\"\n- \"Tạo đơn hàng 50 USD cho một sản phẩm thủ công và lấy link thanh toán.\"\n- \"Liệt kê các tranh chấp đang mở và cho tôi xem chi tiết tranh chấp mới nhất.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "makeplane-plane-mcp-server",
+    "slug": "makeplane-plane-mcp-server",
+    "name": "Plane MCP Server — Máy chủ MCP quản lý dự án Plane cho agent AI",
+    "icon": "Workflow",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "erp_enterprise",
+    "categoryNameVi": "Quản trị tổng thể doanh nghiệp (ERP)",
+    "categories": [
+      "erp_enterprise",
+      "office_digital_docs"
+    ],
+    "categoryNamesVi": [
+      "Quản trị tổng thể doanh nghiệp (ERP)",
+      "Văn phòng số & Quản lý văn bản điện tử"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "cursor",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/makeplane/plane-mcp-server",
+    "websiteUrl": "https://plane.so",
+    "authorName": "Plane",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Plane MCP Server là máy chủ MCP chính thức của Plane (công cụ quản lý dự án mã nguồn mở), viết bằng Python trên FastMCP và plane-sdk. Máy chủ có 30 công cụ, mỗi công cụ ứng với một tài nguyên Plane, bao phủ 207 thao tác; chạy cục bộ qua stdio hoặc dùng bản hosted qua HTTP với OAuth hay personal access token.",
+    "purposeVi": "Giúp agent AI đọc và quản lý dự án, work item, cycle, module, release trong Plane bằng ngôn ngữ tự nhiên.",
+    "featuresVi": [
+      "30 công cụ theo tài nguyên (workitem, cycle, module...), chọn thao tác bằng tham số action",
+      "Truy vấn work item bằng PQL (ngôn ngữ truy vấn của Plane), có get_pql_reference",
+      "Ba kiểu kết nối: stdio cục bộ, HTTP hosted với OAuth, HTTP hosted với personal access token",
+      "Hỗ trợ Plane tự host qua PLANE_BASE_URL",
+      "Tương thích ngược: 169/177 tên công cụ cũ vẫn hoạt động"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10+ và uvx (chế độ stdio); API key và workspace slug của Plane; Node.js 22+ nếu dùng mcp-remote cho bản hosted.\nBước 1: Lấy API key trong Plane: Workspace Settings → API tokens.\nBước 2: Thêm cấu hình mcpServers (command uvx, args plane-mcp-server stdio, biến PLANE_API_KEY và PLANE_WORKSPACE_SLUG) vào ứng dụng MCP.\nBước 3: Hoặc chạy trực tiếp: `PLANE_API_KEY=... PLANE_WORKSPACE_SLUG=... uvx plane-mcp-server stdio`\nBước 4: Phát triển từ mã nguồn: `git clone https://github.com/makeplane/plane-mcp-server`, `cd plane-mcp-server`, `uv pip install -e \".[dev]\"`",
+    "usageGuideVi": "Bước 1: Với Plane tự host, thêm biến PLANE_BASE_URL trỏ tới máy chủ của bạn.\nBước 2: Yêu cầu trợ lý tạo, liệt kê hoặc lọc work item; có thể dùng PQL để lọc theo trạng thái, độ ưu tiên.\nBước 3: Muốn không lưu khóa trong cấu hình, dùng bản hosted https://mcp.plane.so/http/mcp với OAuth.",
+    "samplePromptsVi": [
+      "Liệt kê các work item đang ở trạng thái started và có độ ưu tiên urgent trong dự án Web.",
+      "Tạo work item \"Sửa lỗi đăng nhập\" trong dự án hiện tại.",
+      "Đếm số work item được giao cho từng thành viên, nhóm theo trạng thái."
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"plane\": {\n      \"command\": \"uvx\",\n      \"args\": [\"plane-mcp-server\", \"stdio\"],\n      \"env\": {\n        \"PLANE_API_KEY\": \"<your-api-key>\",\n        \"PLANE_WORKSPACE_SLUG\": \"<your-workspace-slug>\"\n      }\n    }\n  }\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"plane\": {\n      \"command\": \"uvx\",\n      \"args\": [\"plane-mcp-server\", \"stdio\"],\n      \"env\": {\n        \"PLANE_API_KEY\": \"<your-api-key>\",\n        \"PLANE_WORKSPACE_SLUG\": \"<your-workspace-slug>\"\n      }\n    }\n  }\n}"
+      },
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "PLANE_API_KEY=... PLANE_WORKSPACE_SLUG=... uvx plane-mcp-server stdio",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"PLANE_API_KEY=... PLANE_WORKSPACE_SLUG=... uvx plane-mcp-server stdio\"\n  ],\n  \"nguon\": \"https://github.com/makeplane/plane-mcp-server\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Máy chủ chính thức của Plane, giấy phép MIT",
+      "Chạy bằng uvx không cần bước cài đặt",
+      "Hỗ trợ cả Plane Cloud và Plane tự host"
+    ],
+    "consVi": [
+      "Cần tài khoản/workspace Plane và API key",
+      "Bản Node.js cũ @makeplane/plane-mcp-server đã ngừng bảo trì, phải chuyển sang bản Python",
+      "Transport SSE đã bị đánh dấu lỗi thời"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Plane MCP Server — Máy chủ MCP quản lý dự án Plane cho agent AI\n\n> A Model Context Protocol server for Plane. Gives an AI agent tools to read and manage projects, work items, cycles, modules, releases, customers and more.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPlane MCP Server là máy chủ MCP chính thức của Plane (công cụ quản lý dự án mã nguồn mở), viết bằng Python trên FastMCP và plane-sdk. Máy chủ có 30 công cụ, mỗi công cụ ứng với một tài nguyên Plane, bao phủ 207 thao tác; chạy cục bộ qua stdio hoặc dùng bản hosted qua HTTP với OAuth hay personal access token.\n\nGiúp agent AI đọc và quản lý dự án, work item, cycle, module, release trong Plane bằng ngôn ngữ tự nhiên.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Quản trị tổng thể doanh nghiệp (ERP)\n- **Tác giả / Nhà phát triển:** Plane\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `cursor`, `web`\n- **Kho lưu trữ chính thức:** [https://github.com/makeplane/plane-mcp-server](https://github.com/makeplane/plane-mcp-server)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **30 công cụ theo tài nguyên (workitem, cycle, module...), chọn thao tác bằng tham số action**\n- **Truy vấn work item bằng PQL (ngôn ngữ truy vấn của Plane), có get_pql_reference**\n- **Ba kiểu kết nối: stdio cục bộ, HTTP hosted với OAuth, HTTP hosted với personal access token**\n- **Hỗ trợ Plane tự host qua PLANE_BASE_URL**\n- **Tương thích ngược: 169/177 tên công cụ cũ vẫn hoạt động**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nPLANE_API_KEY=... PLANE_WORKSPACE_SLUG=... uvx plane-mcp-server stdio\n```\n\nYêu cầu: Python 3.10+ và uvx (chế độ stdio); API key và workspace slug của Plane; Node.js 22+ nếu dùng mcp-remote cho bản hosted.\nBước 1: Lấy API key trong Plane: Workspace Settings → API tokens.\nBước 2: Thêm cấu hình mcpServers (command uvx, args plane-mcp-server stdio, biến PLANE_API_KEY và PLANE_WORKSPACE_SLUG) vào ứng dụng MCP.\nBước 3: Hoặc chạy trực tiếp: `PLANE_API_KEY=... PLANE_WORKSPACE_SLUG=... uvx plane-mcp-server stdio`\nBước 4: Phát triển từ mã nguồn: `git clone https://github.com/makeplane/plane-mcp-server`, `cd plane-mcp-server`, `uv pip install -e \".[dev]\"`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Với Plane tự host, thêm biến PLANE_BASE_URL trỏ tới máy chủ của bạn.\nBước 2: Yêu cầu trợ lý tạo, liệt kê hoặc lọc work item; có thể dùng PQL để lọc theo trạng thái, độ ưu tiên.\nBước 3: Muốn không lưu khóa trong cấu hình, dùng bản hosted https://mcp.plane.so/http/mcp với OAuth.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Liệt kê các work item đang ở trạng thái started và có độ ưu tiên urgent trong dự án Web.\"\n- \"Tạo work item \"Sửa lỗi đăng nhập\" trong dự án hiện tại.\"\n- \"Đếm số work item được giao cho từng thành viên, nhóm theo trạng thái.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:42:01.629Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]
