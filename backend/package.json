@@ -1,0 +1,36 @@
+{
+  "name": "@aihub/backend",
+  "version": "2.1.0",
+  "private": true,
+  "description": "Backend của AI HUB VN: Máy Chủ MCP Trung Gian (Smart MCP Gateway & Router, stdio) và Cổng REST API có xác thực khóa. Đọc dữ liệu qua @aihub/database, dùng thuật toán định tuyến chung trong @aihub/shared. Cài đặt bằng npm install ở thư mục gốc kho mã (npm workspaces).",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "aihub-mcp": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "api": "node api-server.js",
+    "serve": "node index.js --serve",
+    "selftest": "node index.js --test",
+    "test": "node --import ./tests/setup.js --test tests/*.test.js"
+  },
+  "dependencies": {
+    "@aihub/database": "*",
+    "@aihub/shared": "*",
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^4.6.7"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "gateway",
+    "smart-router",
+    "claude-code",
+    "antigravity",
+    "cursor",
+    "vietnam"
+  ],
+  "author": "AI HUB VN",
+  "license": "MIT"
+}

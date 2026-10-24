@@ -1,7 +1,7 @@
 # AI Hub - Nền Tảng Quản Lý Công Cụ AI, Máy Chủ MCP & Kỹ Năng Tác Tử Chuẩn Hóa
 
 [![Giấy Phép](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Phiên Bản](https://img.shields.io/badge/Phiên_Bản-2.1.21-emerald.svg)](22_LICH_SU_THAY_DOI.md)
+[![Phiên Bản](https://img.shields.io/badge/Phiên_Bản-2.2.0-emerald.svg)](22_LICH_SU_THAY_DOI.md)
 [![Quy Trình VibeCode](https://img.shields.io/badge/Quy_Trình-VibeCode_13_Giai_Đoạn-purple.svg)](index.md)
 [![Tổng Số Công Cụ](https://img.shields.io/badge/Kho_Dữ_Liệu-2.231_Mục-orange.svg)](#)
 [![Khung Làm Việc Mở Rộng](https://img.shields.io/badge/Khung_Làm_Việc-Mở_Rộng_Toàn_Màn_Hình-blueviolet.svg)](#)
@@ -61,7 +61,7 @@ Dự án được xây dựng tuân thủ nghiêm ngặt **Quy trình VibeCode C
    - **Đời sống & Tiện ích**: Giá xăng dầu Petrolimex, Lịch Vạn Niên & Âm Lịch, Chất lượng không khí AQI & Thời tiết, Bản đồ hành chính 63 tỉnh thành.
 
 5. **Thiết Bị Đầu Cuối Cục Bộ (Interactive Local Terminal)**:
-   - Cho phép **chạy lệnh dòng lệnh (CLI) từ giao diện trang web** lên máy tính qua cầu nối cục bộ (`server/commandBridge.js`), chỉ khi chạy `npm run dev`.
+   - Cho phép **chạy lệnh dòng lệnh (CLI) từ giao diện trang web** lên máy tính qua cầu nối cục bộ (`frontend/dev-server/commandBridge.js`), chỉ khi chạy `npm run dev`.
    - Chỉ chấp nhận yêu cầu từ chính trang AI Hub trên máy cục bộ (kiểm tra Host, Origin và mã phiên), chặn trang web khác gọi vào.
    - Mỗi lần chạy một lệnh đơn, không qua shell. Chương trình được phép: `npx`, `npm`, `claude`, `agy`, `git` (giới hạn lệnh con), `uv`, `uvx`, `node -v`, `python --version`, `echo`, `dir`, `ls`, `where`. Chi tiết tại `19_AN_TOAN_BAO_MAT.md`.
    - Cơ chế truyền luồng dữ liệu thời gian thực (Server-Sent Events) hiển thị kết quả trực quan.
@@ -77,11 +77,47 @@ Dự án được xây dựng tuân thủ nghiêm ngặt **Quy trình VibeCode C
 
 ---
 
+## 🧱 Cấu Trúc Kho Mã: Frontend, Backend, Database
+
+Kho mã chia thành bốn phần độc lập (npm workspaces). Mỗi phần có `package.json`, gói phụ thuộc và kiểm thử riêng; các phần chỉ phụ thuộc nhau qua tên gói `@aihub/*`, không import chéo bằng đường dẫn tương đối.
+
+```text
+AI-HUB/
+├── frontend/   @aihub/frontend  Giao diện web React + Vite + Tailwind (triển khai tĩnh trên Vercel)
+│   ├── src/                  Trang, thành phần giao diện, thư viện phía trình duyệt (Firebase Auth/Firestore client)
+│   ├── public/  index.html   Tài nguyên tĩnh
+│   ├── dev-server/           Plugin Vite: tách dữ liệu công cụ lúc build, cầu nối lệnh cục bộ (chỉ khi npm run dev)
+│   └── tests/
+├── backend/    @aihub/backend   Máy chủ MCP (stdio) và Cổng REST API có xác thực khóa
+│   ├── index.js  api-server.js  smart-router.js  dispatcher.js  security.js
+│   ├── data/                 Khóa API và salt sinh khi chạy (không đưa lên kho mã)
+│   └── tests/
+├── database/   @aihub/database  Tầng dữ liệu
+│   ├── data/allTools.json    Kho dữ liệu công cụ (nguồn dữ liệu duy nhất)
+│   ├── index.js              TOOLS_FILE, loadTools(): điểm truy cập dữ liệu cho backend và bước build frontend
+│   ├── firestore.rules  firebase.json   Quy tắc bảo mật Firestore (dữ liệu người dùng, đóng góp, phê duyệt)
+│   ├── scripts/              Kiểm định dữ liệu, nhập tài nguyên từ tệp dữ kiện, migration
+│   └── tests/                Quy tắc nghiệp vụ dữ liệu, kiểm thử quy tắc Firestore trên emulator
+├── shared/     @aihub/shared    Thuật toán định tuyến và bảng ý định dùng chung cho frontend và backend
+└── vercel.json                  Cấu hình build Vercel (npm run build -w @aihub/frontend, đầu ra frontend/dist)
+```
+
+Hướng phụ thuộc: `frontend → shared` (lúc chạy) và `frontend → database` (chỉ lúc build, để đóng gói dữ liệu công cụ thành tệp tĩnh); `backend → shared, database`; `database` và `shared` không phụ thuộc phần nào khác. Frontend không gọi backend lúc chạy, trừ trang Quản lý API khi người dùng tự kết nối tới Cổng REST API.
+
+| Lệnh ở thư mục gốc | Chạy trong phần |
+|---|---|
+| `npm run dev`, `npm run build`, `npm run typecheck` | frontend |
+| `npm run mcp:stdio`, `npm run mcp:api`, `npm run mcp:test` | backend |
+| `npm run data:validate`, `npm run test:rules` | database |
+| `npm test` | cả ba phần |
+
+---
+
 ## 🚀 Hướng Dẫn Cài Đặt & Khởi Chạy
 
 ### Điều kiện tiên quyết
-- Node.js phiên bản 18 trở lên (Khuyến nghị Node.js v20+).
-- Trình quản lý gói `npm` hoặc `pnpm`.
+- Node.js 20 trở lên (CI dùng Node.js 22).
+- `npm` 7 trở lên (kho mã dùng npm workspaces; chạy `npm install` một lần ở thư mục gốc để cài cho mọi phần).
 
 ### Các bước thực hiện
 ```bash
@@ -89,20 +125,26 @@ Dự án được xây dựng tuân thủ nghiêm ngặt **Quy trình VibeCode C
 git clone https://github.com/vinhngtienmdb-ui/AI-HUB.git
 cd AI-HUB
 
-# 2. Cài đặt các gói phụ thuộc
+# 2. Cài đặt các gói phụ thuộc cho mọi phần (frontend, backend, database, shared)
 npm install
 
-# 3. Khởi chạy máy chủ phát triển cục bộ
+# 3. (Tùy chọn) Cấu hình Firebase cho giao diện: sao chép frontend/.env.example thành frontend/.env
+
+# 4. Khởi chạy giao diện ở chế độ phát triển
 npm run dev
 
-# 4. Mở trình duyệt và truy cập
+# 5. Mở trình duyệt và truy cập
 # http://localhost:3000/
 ```
 
 ### Chạy kiểm thử tự động
 ```bash
-# Chạy toàn bộ kiểm thử (dữ liệu khóa API được ghi vào thư mục tạm, không ảnh hưởng kho mã)
+# Chạy toàn bộ kiểm thử của database, backend, frontend (dữ liệu khóa API được ghi vào thư mục tạm)
 npm test
+# Chạy kiểm thử của riêng một phần
+npm test -w @aihub/backend
+# Kiểm thử quy tắc bảo mật Firestore trên emulator (cần Java)
+npm run test:rules
 ```
 
 ### Kiểm định chất lượng kho dữ liệu

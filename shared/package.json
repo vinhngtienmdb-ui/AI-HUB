@@ -1,0 +1,19 @@
+{
+  "name": "@aihub/shared",
+  "version": "2.1.0",
+  "private": true,
+  "description": "Mã dùng chung giữa frontend và backend: thuật toán định tuyến (gateway-core), bộ so khớp ý định và bảng ý định chuyên biệt. Không phụ thuộc Node hay trình duyệt.",
+  "type": "module",
+  "exports": {
+    "./gateway-core.js": {
+      "types": "./gateway-core.d.ts",
+      "default": "./gateway-core.js"
+    },
+    "./intent-matcher.js": {
+      "types": "./intent-matcher.d.ts",
+      "default": "./intent-matcher.js"
+    },
+    "./core-intents.json": "./core-intents.json"
+  },
+  "license": "MIT"
+}

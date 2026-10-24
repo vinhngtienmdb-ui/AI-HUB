@@ -40,14 +40,14 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if git diff --quiet -- src/data/allTools.json; then
+          if git diff --quiet -- database/data/allTools.json; then
             echo "Dữ liệu không thay đổi."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -B "$BRANCH"
-          git add src/data/allTools.json
+          git add database/data/allTools.json
           git commit -m "chore(data): cập nhật số sao thật và kết quả kiểm định ($(date -u +%F))"
           git push --force origin "$BRANCH"
           if [ -z "$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')" ]; then

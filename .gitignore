@@ -29,15 +29,15 @@ lerna-debug.log*
 .DS_Store
 
 # Tệp cào dữ liệu trung gian
-scripts/*.html
-scripts/*_rsc.txt
-scripts/pdg_text.txt
+database/scripts/*.html
+database/scripts/*_rsc.txt
+database/scripts/pdg_text.txt
 
 # Dữ liệu khóa API và salt sinh ra khi chạy MCP Gateway (trạng thái cục bộ, không đưa lên kho mã)
-mcp-gateway/data/
+backend/data/
 
 # Báo cáo kiểm định dữ liệu sinh bởi npm run data:validate
-scripts/data-validation-report.json
+database/scripts/data-validation-report.json
 
 # Nhật ký Firebase Emulator
 firebase-debug.log
