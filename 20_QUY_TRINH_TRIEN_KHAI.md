@@ -79,7 +79,8 @@ Người dùng cập nhật bằng `git pull` và khởi động lại ứng d�
 - Workflow `.github/workflows/cap-nhat-so-sao.yml` chạy hằng tuần hoặc chạy tay (tab Actions → "Cập nhật số sao và kiểm định dữ liệu" → Run workflow).
 - Số sao chỉ gán cho công cụ trỏ tới gốc repo GitHub; thành phần nằm trong một repo lớn không mang số sao của cả repo.
 - Điều kiện một lần: Settings → Actions → General → Workflow permissions → bật **Allow GitHub Actions to create and approve pull requests**.
-- Pull request do workflow tạo được kích hoạt CI bằng `workflow_dispatch` để đáp ứng kiểm tra bắt buộc `kiem-tra` của nhánh `main`.
+- Nên tạo secret `AIHUB_BOT_TOKEN` (fine-grained Personal Access Token chỉ cho kho AI-HUB, quyền **Contents** và **Pull requests**: Read and write) tại Settings → Secrets and variables → Actions. Khi có secret này, workflow đẩy nhánh và mở pull request bằng token đó nên CI chạy tự động như pull request thường.
+- Khi chưa có secret, workflow dùng `GITHUB_TOKEN` và kích hoạt CI bằng `workflow_dispatch`; ruleset của `main` không nhận kết quả này là kiểm tra `kiem-tra` của pull request (lỗi "Required status check \"kiem-tra\" is expected"). Khi đó mở một pull request mới từ nhánh khác trỏ tới cùng commit để CI chạy theo sự kiện pull request, hợp nhất pull request đó rồi đóng pull request tự động.
 
 ---
 

@@ -24,6 +24,9 @@ jobs:
       BRANCH: tu-dong/cap-nhat-so-sao
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Đẩy nhánh bằng token riêng (nếu có) để pull request kích hoạt CI như pull request thường
+          token: ${{ secrets.AIHUB_BOT_TOKEN || secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -38,7 +41,11 @@ jobs:
         run: npm test
       - name: Mở pull request khi dữ liệu thay đổi
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Ưu tiên secret AIHUB_BOT_TOKEN (fine-grained PAT: Contents + Pull requests, Read and write).
+          # Pull request tạo bằng GITHUB_TOKEN không tự kích hoạt CI và ruleset của main không nhận
+          # kết quả CI chạy bằng workflow_dispatch, nên khi thiếu token riêng phải mở lại pull request thủ công.
+          GH_TOKEN: ${{ secrets.AIHUB_BOT_TOKEN || secrets.GITHUB_TOKEN }}
+          HAS_BOT_TOKEN: ${{ secrets.AIHUB_BOT_TOKEN != '' }}
         run: |
           if git diff --quiet -- database/data/allTools.json; then
             echo "Dữ liệu không thay đổi."
@@ -55,5 +62,9 @@ jobs:
               --title "Cập nhật số sao thật và kết quả kiểm định dữ liệu" \
               --body "Tạo tự động bởi workflow \`cap-nhat-so-sao.yml\`: số sao lấy từ GitHub API cho công cụ trỏ tới gốc repo, cập nhật \`linkHealth\` và trường \`verification\`. Kiểm tra các công cụ chuyển sang \`broken\` trước khi hợp nhất."
           fi
-          # Pull request do GITHUB_TOKEN tạo không tự kích hoạt CI; chạy CI bằng workflow_dispatch trên nhánh này
-          gh workflow run ci.yml --ref "$BRANCH"
+          if [ "$HAS_BOT_TOKEN" = "true" ]; then
+            echo "Dùng AIHUB_BOT_TOKEN: CI chạy tự động theo sự kiện pull request."
+          else
+            echo "::warning::Chưa có secret AIHUB_BOT_TOKEN. Ruleset của main có thể không nhận kết quả CI chạy bằng workflow_dispatch; khi đó mở lại pull request từ một nhánh khác để hợp nhất."
+            gh workflow run ci.yml --ref "$BRANCH"
+          fi
