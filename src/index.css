@@ -211,3 +211,132 @@
 .github-markdown-body .markdown-alert-warning .markdown-alert-title { color: var(--md-warning); }
 .github-markdown-body .markdown-alert-caution { border-left-color: var(--md-caution); }
 .github-markdown-body .markdown-alert-caution .markdown-alert-title { color: var(--md-caution); }
+
+/* Nút sao chép khối mã giống GitHub: hiện khi rê chuột vào khối mã */
+.github-markdown-body pre { position: relative; }
+.github-markdown-body .github-code-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--md-muted);
+  background-color: var(--md-canvas-subtle);
+  border: 1px solid var(--md-border);
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s;
+}
+.github-markdown-body pre:hover .github-code-copy-btn,
+.github-markdown-body .github-code-copy-btn:focus-visible { opacity: 1; }
+.github-markdown-body .github-code-copy-btn:hover { color: var(--md-fg); }
+.github-markdown-body .github-code-copy-btn.copied { color: var(--md-tip); opacity: 1; }
+@media (hover: none) {
+  .github-markdown-body .github-code-copy-btn { opacity: 1; }
+}
+
+/* Khung xem tệp giống trang xem tệp (blob) của GitHub, dùng cho cấu hình mẫu JSON */
+.gh-blob {
+  --gh-fg: #1f2328;
+  --gh-muted: #59636e;
+  --gh-border: #d1d9e0;
+  --gh-subtle: #f6f8fa;
+  --gh-bg: #ffffff;
+  --gh-key: #0550ae;
+  --gh-string: #0a3069;
+  --gh-number: #0550ae;
+  --gh-literal: #0550ae;
+  --gh-success: #1a7f37;
+  --gh-label-bg: #ddf4ff;
+  --gh-label-fg: #0969da;
+  color: var(--gh-fg);
+  background: var(--gh-bg);
+  border: 1px solid var(--gh-border);
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 14px;
+}
+.dark .gh-blob {
+  --gh-fg: #f0f6fc;
+  --gh-muted: #9198a1;
+  --gh-border: #3d444d;
+  --gh-subtle: #151b23;
+  --gh-bg: #0d1117;
+  --gh-key: #79c0ff;
+  --gh-string: #a5d6ff;
+  --gh-number: #79c0ff;
+  --gh-literal: #79c0ff;
+  --gh-success: #3fb950;
+  --gh-label-bg: #388bfd26;
+  --gh-label-fg: #4493f8;
+}
+.gh-blob-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 8px 8px 16px;
+  background: var(--gh-subtle);
+  border-bottom: 1px solid var(--gh-border);
+  font-size: 12px;
+}
+.gh-blob-muted { color: var(--gh-muted); }
+.gh-blob-success { color: var(--gh-success); }
+.gh-blob-label {
+  padding: 0 7px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--gh-label-fg);
+  background: var(--gh-label-bg);
+  border-radius: 2em;
+}
+.gh-blob-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--gh-muted);
+  background: var(--gh-bg);
+  border: 1px solid var(--gh-border);
+  border-radius: 6px;
+}
+.gh-blob-button:hover { color: var(--gh-fg); background: var(--gh-subtle); }
+.gh-blob-body { overflow-x: auto; padding: 8px 0; }
+.gh-blob-body table { border-collapse: collapse; width: 100%; }
+.gh-blob-num,
+.gh-blob-code {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  font-size: 12px;
+  line-height: 20px;
+  vertical-align: top;
+}
+.gh-blob-num {
+  width: 1%;
+  min-width: 50px;
+  padding: 0 10px 0 16px;
+  text-align: right;
+  color: var(--gh-muted);
+  user-select: none;
+  white-space: nowrap;
+}
+.gh-blob-num::before { content: attr(data-line); }
+.gh-blob-code { padding: 0 16px 0 10px; white-space: pre; }
+.gh-tok-key { color: var(--gh-key); }
+.gh-tok-string { color: var(--gh-string); }
+.gh-tok-number { color: var(--gh-number); }
+.gh-tok-literal { color: var(--gh-literal); }
+.gh-blob-footer {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 12px;
+  color: var(--gh-muted);
+  background: var(--gh-subtle);
+  border-top: 1px solid var(--gh-border);
+}

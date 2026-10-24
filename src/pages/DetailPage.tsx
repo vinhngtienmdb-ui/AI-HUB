@@ -8,6 +8,9 @@ import {
 import { AITool } from '../types';
 import { GitHubReadmeViewer } from '../components/GitHubReadmeViewer';
 import { GitHubCodeViewer } from '../components/GitHubCodeViewer';
+import { GitHubMarkdownSection } from '../components/GitHubMarkdownSection';
+import { buildInstallMarkdown, buildUsageMarkdown } from '../lib/toolGuides';
+import { describeConfigFile } from '../lib/configFiles';
 import { VisualDiagramViewer } from '../components/VisualDiagramViewer';
 import { formatStars, getVerifiedStars } from '../lib/verification';
 import { VerificationNotice } from '../components/VerificationNotice';
@@ -601,124 +604,34 @@ export const DetailPage: React.FC<DetailPageProps> = ({
               toolId={tool.id} 
               toolName={tool.name} 
               markdown={tool.readmeVi} 
+              tool={tool}
             />
           </div>
         )}
 
-        {/* TAB 3: CÁCH SỬ DỤNG VÀ HƯỚNG DẪN CÀI ĐẶT 4 BƯỚC */}
+        {/* TAB 3: CÁCH SỬ DỤNG VÀ HƯỚNG DẪN CÀI ĐẶT, HIỂN THỊ NHƯ README TRÊN GITHUB */}
         {activeTab === 'usage' && (
           <div className="space-y-6 animate-fadeIn">
-            
-            {/* Hướng dẫn cài đặt 4 bước */}
-            <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm space-y-4">
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center space-x-2">
-                <Terminal className="w-5 h-5 text-indigo-600" />
-                <span>Quy trình cài đặt chuẩn hóa</span>
-              </h2>
-
-              {/* Khối lệnh CLI cài đặt chuẩn phong cách GitHub (nếu có) */}
-              {(tool.configs || []).some((c) => c.cliCommand) && (
-                <div className="space-y-2">
-                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300 block">
-                    Câu lệnh cài đặt (Terminal / CLI):
-                  </span>
-                  {(tool.configs || []).filter((c) => c.cliCommand).map((cfg, cIdx) => (
-                    <div key={cIdx} className="rounded-xl overflow-hidden bg-slate-50/80 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-xs">
-                      <div className="flex items-center justify-between px-3.5 py-2 bg-slate-100/90 dark:bg-slate-750 border-b border-slate-200 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-300 font-medium">
-                        <span className="font-semibold">{cfg.platformName}</span>
-                        <button
-                          type="button"
-                          onClick={() => handleCopy(cfg.cliCommand!, 300 + cIdx)}
-                          className="flex items-center space-x-1 px-2.5 py-1 rounded-md bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 text-[11px] font-semibold transition-all border border-slate-200 dark:border-slate-600 shadow-xs"
-                          title="Sao chép câu lệnh dòng lệnh"
-                        >
-                          {copiedConfigIndex === 300 + cIdx ? (
-                            <>
-                              <CheckCheck className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
-                              <span className="text-emerald-600 dark:text-emerald-400 font-bold">Đã sao chép!</span>
-                            </>
-                          ) : (
-                            <>
-                              <Copy className="w-3 h-3" />
-                              <span>Sao chép lệnh</span>
-                            </>
-                          )}
-                        </button>
-                      </div>
-                      <div className="p-3.5 font-mono text-xs text-slate-800 dark:text-slate-100 overflow-x-auto leading-relaxed">
-                        <span className="text-indigo-600 dark:text-indigo-400 select-none mr-2 font-bold">$</span>
-                        <span>{cfg.cliCommand}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-700 dark:text-slate-300 whitespace-pre-line leading-relaxed font-sans">
-                {tool.installGuideVi}
-              </div>
+            <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+              <GitHubMarkdownSection markdown={buildInstallMarkdown(tool)} />
             </div>
-
-            {/* Kịch bản sử dụng thực tế */}
-            <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm space-y-4">
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center space-x-2">
-                <MessageSquare className="w-5 h-5 text-indigo-600" />
-                <span>Kịch bản sử dụng & Câu lệnh mẫu (Prompt)</span>
-              </h2>
-              <div className="p-4 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40 text-xs sm:text-sm text-slate-700 dark:text-slate-300 whitespace-pre-line leading-relaxed">
-                {tool.usageGuideVi}
-              </div>
-
-              {tool.samplePromptsVi && tool.samplePromptsVi.length > 0 && (
-                <div className="space-y-2 pt-2">
-                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300 block">
-                    Câu lệnh mẫu tham khảo:
-                  </span>
-                  {tool.samplePromptsVi.map((prompt, idx) => (
-                    <div key={idx} className="flex items-start justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs">
-                      <span className="italic text-slate-600 dark:text-slate-300">"{prompt}"</span>
-                      <button
-                        onClick={() => handleCopy(prompt, 999 + idx)}
-                        className="text-indigo-600 hover:text-indigo-700 shrink-0 ml-2"
-                        title="Sao chép câu lệnh"
-                      >
-                        {copiedConfigIndex === 999 + idx ? <CheckCheck className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              )}
+            <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+              <GitHubMarkdownSection markdown={buildUsageMarkdown(tool)} />
             </div>
-
           </div>
         )}
 
-        {/* TAB 3: CẤU HÌNH MẪU JSON VÀ LỆNH CLI */}
+        {/* TAB 4: CẤU HÌNH MẪU JSON, HIỂN THỊ NHƯ TRANG XEM TỆP CỦA GITHUB */}
         {activeTab === 'config' && (
           <div className="space-y-6 animate-fadeIn">
             {tool.configs.map((config, idx) => {
-              const platformFileName = 
-                config.platform === 'claude_desktop' ? 'claude_desktop_config.json' :
-                config.platform === 'antigravity' ? 'mcp_config.json' :
-                config.platform === 'cursor' ? '.cursor/mcp.json' :
-                config.platform === 'windsurf' ? 'mcp_config.json' : 'config.json';
-
+              const file = describeConfigFile(config);
               return (
-                <div key={idx} className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm space-y-4">
-                  <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
-                    <div className="flex items-center space-x-2">
-                      <span className="font-bold text-sm text-slate-900 dark:text-white">
-                        Cấu hình cho {config.platformName}
-                      </span>
-                      <span className="text-xs px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-mono">
-                        {config.platform}
-                      </span>
-                    </div>
-                  </div>
-
-                  <GitHubCodeViewer 
+                <div key={idx} className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+                  <GitHubCodeViewer
                     code={config.jsonConfig}
-                    fileName={platformFileName}
+                    fileName={file.fileName}
+                    noteVi={file.noteVi}
                     platformName={config.platformName}
                     cliCommand={config.cliCommand}
                   />

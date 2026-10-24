@@ -4,17 +4,22 @@ import {
   Brain, Rocket, Boxes, Server, Workflow, CheckCircle2, ArrowRight
 } from 'lucide-react';
 import { MermaidDiagramSvgViewer } from './MermaidDiagramSvgViewer';
+import { ToolFlowDiagram } from './ToolFlowDiagram';
+import { AITool } from '../types';
 
 export interface VisualDiagramViewerProps {
   toolId?: string;
   toolName?: string;
   markdown?: string;
+  /** Dữ liệu công cụ để sinh sơ đồ luồng hoàn chỉnh. */
+  tool?: Pick<AITool, 'name' | 'typeNameVi' | 'authorName' | 'configs' | 'installGuideVi' | 'usageGuideVi' | 'featuresVi'>;
 }
 
 export const VisualDiagramViewer: React.FC<VisualDiagramViewerProps> = ({
   toolId = '',
   toolName = '',
-  markdown = ''
+  markdown = '',
+  tool
 }) => {
   // Tab chuyển đổi riêng cho VibeCoding (13 giai đoạn vs Mô hình quản trị)
   const [vibeDiagramTab, setVibeDiagramTab] = useState<'stages' | 'governance'>('stages');
@@ -22,42 +27,37 @@ export const VisualDiagramViewer: React.FC<VisualDiagramViewerProps> = ({
   // Chế độ xem sơ đồ chung (SVG chuẩn Mermaid vs Dạng thẻ Card Grid)
   const [diagramViewMode, setDiagramViewMode] = useState<'svg' | 'cards'>('svg');
 
-  // Nhận diện tài nguyên đặc thù
-  const isVibeCoding = useMemo(() => {
-    return toolId === 'vibecoding-skill-dev-lifecycle' || 
-      (markdown.includes('01. Xác định ý tưởng') && markdown.includes('13. Vận hành'));
-  }, [toolId, markdown]);
-
-  const isHindsight = useMemo(() => {
-    return toolId === 'vectorize-io-hindsight' || 
-      markdown.includes('Hindsight') || 
-      markdown.includes('Agent Memory That Learns');
-  }, [toolId, markdown]);
-
-  const isJobSearch = useMemo(() => {
-    return toolId === 'mads-lorentzen-ai-job-search' || 
-      (markdown.includes('/setup') && markdown.includes('/scrape') && markdown.includes('/apply'));
-  }, [toolId, markdown]);
-
-  const isPaperclip = useMemo(() => {
-    return toolId === 'paperclipai-paperclip' || 
-      (markdown.includes('Paperclip') && markdown.includes('Control Plane'));
-  }, [toolId, markdown]);
-
-  const isSmartGateway = useMemo(() => {
-    return toolId === 'aihub-vn-smart-mcp-gateway' || 
-      markdown.includes('Smart MCP Gateway') || 
-      markdown.includes('mcp-gateway');
-  }, [toolId, markdown]);
-
-  const isFindSkills = useMemo(() => {
-    return toolId === 'vercel-labs-find-skills' || 
-      markdown.includes('Find Skills') || 
-      markdown.includes('find-skills');
-  }, [toolId, markdown]);
+  // Tài nguyên có sơ đồ chuyên sâu vẽ tay (public/*.svg): nhận diện đúng theo mã công cụ.
+  // Trước đây nhận diện thêm theo chuỗi trong README nên công cụ khác có nhắc tới tên (ví dụ "Hindsight") cũng hiện nhầm sơ đồ.
+  const isVibeCoding = toolId === 'vibecoding-skill-dev-lifecycle';
+  const isHindsight = toolId === 'vectorize-io-hindsight';
+  const isJobSearch = toolId === 'mads-lorentzen-ai-job-search';
+  const isPaperclip = toolId === 'paperclipai-paperclip';
+  const isSmartGateway = toolId === 'aihub-vn-smart-mcp-gateway';
+  const isFindSkills = toolId === 'vercel-labs-find-skills';
 
   return (
     <div className="space-y-6">
+
+      {/* SƠ ĐỒ LUỒNG HOÀN CHỈNH SINH TỪ DỮ LIỆU THẬT CỦA CÔNG CỤ (MỌI CÔNG CỤ) */}
+      {tool && (
+        <div className="p-6 sm:p-7 rounded-3xl bg-slate-50/80 dark:bg-slate-850/60 border border-slate-200 dark:border-slate-800 shadow-xs space-y-4">
+          <div className="flex items-center space-x-2.5 pb-4 border-b border-slate-200 dark:border-slate-800">
+            <div className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+              <GitBranch className="w-4 h-4" />
+            </div>
+            <div>
+              <h3 className="font-extrabold text-sm sm:text-base text-slate-900 dark:text-white">
+                Sơ Đồ Luồng Cài Đặt &amp; Sử Dụng: {toolName}
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Từ yêu cầu, các bước cài đặt, tệp cấu hình đến năng lực và các bước sử dụng của công cụ
+              </p>
+            </div>
+          </div>
+          <ToolFlowDiagram tool={tool} />
+        </div>
+      )}
       
       {/* 1. SƠ ĐỒ TRỰC QUAN CHO VIBECODING SKILL (13 GIAI ĐOẠN & CỔNG CHẤT LƯỢNG) */}
       {isVibeCoding && (
@@ -586,67 +586,6 @@ export const VisualDiagramViewer: React.FC<VisualDiagramViewerProps> = ({
               </div>
             </div>
           )}
-        </div>
-      )}
-
-      {/* 7. SƠ ĐỒ MẶC ĐỊNH CHO TẤT CẢ CÁC TÀI NGUYÊN KHÁC (LUỒNG VẬN HÀNH CHUẨN CỦA CÔNG CỤ) */}
-      {!isVibeCoding && !isHindsight && !isJobSearch && !isPaperclip && !isSmartGateway && !isFindSkills && (
-        <div className="p-6 sm:p-7 rounded-3xl bg-slate-50/80 dark:bg-slate-850/60 border border-slate-200 dark:border-slate-800 shadow-xs space-y-6">
-          <div className="flex items-center space-x-2.5 pb-4 border-b border-slate-200 dark:border-slate-800">
-            <div className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
-              <GitBranch className="w-4 h-4" />
-            </div>
-            <div>
-              <h3 className="font-extrabold text-sm sm:text-base text-slate-900 dark:text-white">
-                Sơ Đồ Luồng Tương Tác &amp; Tích Hợp Tác Tử: {toolName}
-              </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
-                Chu trình tích hợp 4 bước chuẩn giao thức Model Context Protocol và hệ sinh thái tác tử AI
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-            <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs space-y-2">
-              <span className="w-6 h-6 rounded-lg bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 flex items-center justify-center font-black">
-                1
-              </span>
-              <h4 className="font-bold text-slate-900 dark:text-white text-sm">Cấu hình kết nối</h4>
-              <p className="text-slate-500 leading-relaxed">
-                Nạp khai báo JSON vào môi trường phát triển (Claude Desktop, Antigravity, Cursor, Windsurf).
-              </p>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs space-y-2">
-              <span className="w-6 h-6 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 flex items-center justify-center font-black">
-                2
-              </span>
-              <h4 className="font-bold text-slate-900 dark:text-white text-sm">Bắt tay &amp; Khám phá</h4>
-              <p className="text-slate-500 leading-relaxed">
-                Tác tử khởi tạo kết nối giao thức MCP, nhận diện danh sách công cụ và tham số đầu vào.
-              </p>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-slate-800 shadow-xs space-y-2">
-              <span className="w-6 h-6 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 flex items-center justify-center font-black">
-                3
-              </span>
-              <h4 className="font-bold text-slate-900 dark:text-white text-sm">Thực thi an toàn</h4>
-              <p className="text-slate-500 leading-relaxed">
-                Thực thi lệnh trong môi trường kiểm soát, phòng chống rò rỉ dữ liệu và kiểm tra quyền hạn.
-              </p>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs space-y-2">
-              <span className="w-6 h-6 rounded-lg bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 flex items-center justify-center font-black">
-                4
-              </span>
-              <h4 className="font-bold text-slate-900 dark:text-white text-sm">Phản hồi &amp; Tối ưu</h4>
-              <p className="text-slate-500 leading-relaxed">
-                Trả kết quả chuẩn hóa cho mô hình AI, tiếp tục hoàn thành chu trình giải quyết bài toán.
-              </p>
-            </div>
-          </div>
         </div>
       )}
 

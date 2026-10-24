@@ -4,6 +4,12 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.6 (Ngày 24-10-2026)
+- **Loại hình**: Giao diện GitHub cho tab "Cách sử dụng & Cài đặt", "Cấu hình mẫu JSON"; vẽ lại sơ đồ trực quan.
+- **Cách sử dụng & Cài đặt**: hiển thị như README trên GitHub: lệnh cài là khối mã có nút sao chép, các dòng "Bước N" thành danh sách đánh số, "Yêu cầu" in đậm, mỗi câu lệnh mẫu là một khối có nút sao chép (`src/lib/toolGuides.ts`, `src/components/GitHubMarkdownSection.tsx`). Áp dụng cho trang chi tiết và cửa sổ chi tiết.
+- **Cấu hình mẫu JSON**: khung xem tệp như trang xem tệp của GitHub (tên tệp, số dòng, kích thước, cột số dòng, tô màu JSON theo bảng màu GitHub). Tên tệp xác định theo nội dung thật (`src/lib/configFiles.ts`): khai báo `mcpServers` hiện `.mcp.json` (Claude Code), `claude_desktop_config.json`, `.cursor/mcp.json`...; tệp mẫu hook/setting hiện `.claude/settings.json`; bản tóm tắt cài đặt do AI HUB tổng hợp hiện `cai-dat.json` kèm ghi chú "không phải tệp cấu hình của công cụ". Trước đây mọi cấu hình Claude Code đều hiện `config.json` kèm dòng "Định dạng theo chuẩn JSON Schema của ...".
+- **Sơ đồ trực quan**: sơ đồ luồng hoàn chỉnh dạng SVG cho mọi công cụ, sinh từ dữ liệu thật: người dùng → yêu cầu → các bước cài đặt (đánh số, có mũi tên) → tệp cấu hình → công cụ → năng lực → các bước sử dụng; lớp nào không có dữ liệu thì không vẽ. Có phóng to/thu nhỏ, tải SVG, chế độ sáng/tối (`src/components/ToolFlowDiagram.tsx`). Thay sơ đồ mặc định 4 thẻ cố định trước đây (mô tả quy trình MCP cho cả những công cụ không phải MCP). 6 sơ đồ chuyên sâu vẽ tay vẫn giữ và nay chỉ hiện đúng công cụ của nó (trước đây nhận diện theo chữ trong README nên công cụ khác có nhắc tên "Hindsight", "Paperclip"... hiện nhầm sơ đồ).
+
 ### Phiên Bản 2.1.5 (Ngày 24-10-2026)
 - **Loại hình**: Hiển thị README giống GitHub.
 - **Chế độ "Bản gốc GitHub"** trong tab README: đọc README gốc của repo (hoặc README của thư mục / tệp Markdown khi liên kết nguồn trỏ vào trong repo) qua GitHub API và hiển thị như trên github.com: giữ ảnh, căn giữa (`align="center"`), bảng, khối `<picture>`; ảnh và liên kết tương đối trỏ về repo; neo mục lục (`#office`) cuộn tới tiêu đề; hộp cảnh báo `> [!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, `[!CAUTION]`. Khi hết lượt GitHub API (60 lần/giờ không đăng nhập), thử đọc trực tiếp `README.md`.
