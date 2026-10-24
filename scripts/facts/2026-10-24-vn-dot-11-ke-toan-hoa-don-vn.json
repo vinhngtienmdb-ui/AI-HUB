@@ -1,0 +1,321 @@
+[
+  {
+    "repo": "tndvnn/tncn",
+    "license": "MIT License — Copyright (c) 2026 tndvnn",
+    "authorName": "tndvnn",
+    "websiteUrl": "",
+    "toolType": "skill",
+    "taglineEn": "tncn is a skill for Claude, Claude Code, Antigravity and any AI platform that reads SKILL.md. It answers questions on Vietnam personal income tax (PIT) for tax year 2026",
+    "summaryVi": "tncn là skill AI (chuẩn mở Agent Skills: SKILL.md + thư mục references/) giúp Claude, Claude Code, Codex, Gemini CLI, Cursor trả lời câu hỏi về thuế thu nhập cá nhân Việt Nam kỳ tính thuế 2026. Mọi câu trả lời kèm số điều khoản của Luật 109/2025/QH15, Nghị định 253/2026, Thông tư 87/2026 để người dùng tự đối chiếu. Skill bắt AI tra nguồn chính chủ (vbpl.vn, chinhphu.vn, mof.gov.vn, gdt.gov.vn) và kiểm tra bản cập nhật mỗi ngày trước khi trả lời.",
+    "purposeVi": "Công cụ tra cứu, tính thuế TNCN từ tiền lương, quyết toán, giảm trừ gia cảnh, thuế hộ kinh doanh và thuế người nước ngoài cho người Việt Nam và người nước ngoài sống, làm việc tại Việt Nam.",
+    "featuresVi": [
+      "Tính thuế TNCN từ tiền lương 2026: biểu lũy tiến 5 bậc (5% đến 35%), giảm trừ gia cảnh 15,5 triệu/tháng, 6,2 triệu/tháng mỗi người phụ thuộc, giảm trừ y tế và giáo dục",
+      "Quyết toán, hoàn thuế: ai được ủy quyền cho công ty, ai tự quyết toán, hạn nộp, mẫu 02/QTT-TNCN",
+      "Thuế hộ kinh doanh, bán hàng online, freelancer, KOL, thu nhập YouTube/AdSense, Upwork, affiliate",
+      "Thuế chứng khoán, bất động sản, tài sản số, vàng, thừa kế, quà tặng",
+      "Thuế người nước ngoài: cư trú 183 ngày, thu nhập toàn cầu, hiệp định tránh đánh thuế hai lần",
+      "Nhắc hạn nộp: mỗi câu trả lời nêu hạn đã quá và hạn sắp tới trong 60 ngày kèm mức phạt chậm nộp",
+      "Tự kiểm tra cập nhật mỗi ngày bằng `scripts/kiem-tra-cap-nhat.sh`; có agent quét luật mới trong thư mục `agent/`"
+    ],
+    "requirementsVi": "Công cụ AI hỗ trợ Agent Skills (Claude Code, claude.ai gói Pro/Max, Codex CLI, Gemini CLI, OpenClaw, Hermes Agent, Cursor...). Với ChatGPT cần tạo Project/Custom GPT và tải tài liệu lên; nên bật web search để AI kiểm tra luật mới.",
+    "installStepsVi": [
+      "Tải mã nguồn skill: `git clone https://github.com/tndvnn/tncn.git`",
+      "Cài đặt cho Claude Code: đặt thư mục `tncn/` vào `.claude/skills/tncn/` (theo dự án) hoặc `~/.claude/skills/tncn/` (mọi dự án), rồi khởi động lại công cụ",
+      "Cài đặt cho OpenClaw: `openclaw skills install git:tndvnn/tncn`",
+      "Cài đặt cho claude.ai: nén thư mục thành zip (hoặc tải zip có sẵn ở mục Releases), tải lên tại Settings → Capabilities → Skills",
+      "Kiểm tra bản mới thủ công bất cứ lúc nào: `bash scripts/kiem-tra-cap-nhat.sh --force`"
+    ],
+    "cliCommand": "git clone https://github.com/tndvnn/tncn.git",
+    "usageStepsVi": [
+      "Trong Claude Code, skill tự kích hoạt khi câu hỏi liên quan thuế TNCN; có thể gọi thủ công bằng `/tncn`.",
+      "Đặt câu hỏi kèm dữ liệu cụ thể (mức lương, số người phụ thuộc, loại thu nhập) để AI tính thuế và trích điều khoản.",
+      "Đối chiếu điều khoản được trích tại gdt.gov.vn hoặc cơ quan thuế quản lý trước khi kê khai."
+    ],
+    "samplePromptsVi": [
+      "Lương 30 triệu, 1 người phụ thuộc, thuế thu nhập cá nhân 2026 bao nhiêu?",
+      "Tôi bán hàng Shopee doanh thu 1,5 tỷ thì nộp thuế thế nào?",
+      "Người Hàn Quốc làm ở khu công nghiệp có lương remote từ Hàn thì khai thuế ra sao?"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, dùng được cho mục đích thương mại",
+      "Mỗi câu trả lời kèm số điều khoản văn bản pháp luật để tự đối chiếu",
+      "Chạy trên nhiều nền tảng AI: Claude, Claude Code, Codex, Gemini CLI, Cursor, OpenClaw, Hermes Agent",
+      "Được cập nhật liên tục theo văn bản mới, có cơ chế tự kiểm tra phiên bản mỗi ngày"
+    ],
+    "consVi": [
+      "Chỉ là thông tin tham khảo, không thay thế tư vấn thuế chuyên nghiệp",
+      "Không bao gồm thuế TNDN, thuế xuất nhập khẩu, BHXH rút một lần, trợ cấp thất nghiệp",
+      "claude.ai cần gói Pro/Max để tải skill; bản zip tải lên không tự cập nhật được"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/tndvnn/tncn.git": "README.md:39",
+      "openclaw skills install git:tndvnn/tncn": "README.md:48",
+      "bash scripts/kiem-tra-cap-nhat.sh --force": "README.md:56"
+    },
+    "meta": {
+      "id": "tndvnn-tncn",
+      "nameVi": "tncn — Skill AI tính thuế thu nhập cá nhân Việt Nam 2026, quyết toán và giảm trừ gia cảnh",
+      "icon": "Sparkles",
+      "categories": [
+        "e_invoice_tax",
+        "accounting_finance",
+        "legal_public_service"
+      ],
+      "platforms": [
+        "claude_code",
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "git clone https://github.com/tndvnn/tncn.git"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "googlesky/thue-2026",
+    "license": "MIT License — Copyright (c) 2025 1DevOps",
+    "authorName": "1DevOps",
+    "websiteUrl": "https://thue.1devops.io",
+    "toolType": "software",
+    "taglineEn": "Công cụ tính thuế thu nhập cá nhân Việt Nam toàn diện nhất",
+    "summaryVi": "Thuế TNCN 2026 là ứng dụng web (Next.js, TypeScript) giúp người lao động Việt Nam tính toán, so sánh và tối ưu thuế thu nhập cá nhân theo Luật 109/2025/QH15, NĐ 253/2026/NĐ-CP và TT 87/2026/TT-BTC. Ứng dụng có hơn 20 công cụ: quy đổi GROSS ⇄ NET, quyết toán năm, thưởng Tết, ESOP, thuế hộ kinh doanh, chuyển nhượng bất động sản, chứng khoán, người nước ngoài, chi tiết bảo hiểm BHXH/BHYT/BHTN. Có thể chạy cục bộ hoặc xuất tĩnh lên GitHub Pages.",
+    "purposeVi": "Công cụ tự cài đặt để tính lương GROSS/NET, thuế TNCN và bảo hiểm bắt buộc, so sánh biểu thuế 7 bậc cũ với 5 bậc mới từ kỳ tính thuế 2026.",
+    "featuresVi": [
+      "Tính thuế TNCN: so sánh thuế theo biểu 7 bậc (đến 2025) và 5 bậc (từ 2026), hiển thị số tiền tiết kiệm",
+      "GROSS ⇄ NET: quy đổi lương 2 chiều bằng thuật toán binary search, sai số dưới 1 đồng",
+      "Quyết toán thuế: tổng hợp thu nhập cả năm, tính thuế phải nộp hoặc được hoàn",
+      "Công cụ 2026: thuế hộ kinh doanh, chuyển nhượng BĐS, cho thuê tài sản, chứng khoán, kiểm tra miễn thuế, người nước ngoài",
+      "So sánh offers, Freelancer vs Fulltime, chi phí nhà tuyển dụng",
+      "Chi tiết bảo hiểm BHXH/BHYT/BHTN theo 4 vùng lương và mức trần; dự tính lương hưu",
+      "Tạo phiếu lương PDF, chia sẻ kết quả qua URL hoặc QR code"
+    ],
+    "requirementsVi": "Node.js 18 trở lên; npm, pnpm hoặc yarn.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/googlesky/thue-2026.git`",
+      "Vào thư mục dự án: `cd thue-2026`",
+      "Cài đặt thư viện phụ thuộc: `npm install`",
+      "Chạy máy chủ phát triển: `npm run dev`, rồi mở http://localhost:3000"
+    ],
+    "cliCommand": "npm run dev",
+    "usageStepsVi": [
+      "Mở http://localhost:3000, chọn trang tính thuế với hơn 20 tab công cụ.",
+      "Nhập lương GROSS hoặc NET, số người phụ thuộc, vùng lương để xem chi tiết bảo hiểm, giảm trừ và thuế theo bậc.",
+      "Build bản tĩnh bằng `npm run build` (đầu ra ở thư mục out/) để triển khai lên GitHub Pages.",
+      "Chạy kiểm thử golden cho engine thuế: `npm run test:golden`."
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn cài đặt thue-2026 và tính lương NET từ GROSS 40 triệu, 2 người phụ thuộc, vùng I",
+      "Dùng công cụ so sánh offers để so sánh offer 28 triệu NET với 32 triệu GROSS",
+      "Triển khai thue-2026 lên GitHub Pages với tên miền riêng"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, dùng được cho mục đích thương mại",
+      "Cập nhật theo luật thuế TNCN 2026 và các mốc từ 01/07/2026, có so sánh với biểu thuế cũ",
+      "Hơn 20 công cụ trong một ứng dụng, xuất tĩnh lên GitHub Pages không cần máy chủ",
+      "Có golden test cho engine thuế, CI chạy trước khi triển khai"
+    ],
+    "consVi": [
+      "Là ứng dụng web cho người dùng cuối, không đóng gói thành thư viện để tích hợp",
+      "Kết quả phụ thuộc vào việc cập nhật dữ liệu luật thuế trong mã nguồn"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/googlesky/thue-2026.git": "README.md:201",
+      "cd thue-2026": "README.md:202",
+      "npm install": "README.md:205",
+      "npm run dev": "README.md:208",
+      "npm run build": "README.md:321",
+      "npm run test:golden": "README.md:221"
+    },
+    "meta": {
+      "id": "googlesky-thue-2026",
+      "nameVi": "Thuế TNCN 2026 — Ứng dụng web tính thuế thu nhập cá nhân, GROSS-NET và bảo hiểm Việt Nam",
+      "icon": "CreditCard",
+      "categories": [
+        "e_invoice_tax",
+        "accounting_finance",
+        "hr_recruitment"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npm run dev"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "HuynhNhatKhanh/vnsalary",
+    "license": "MIT License — Copyright (c) 2026 Huynh Nhat Khanh",
+    "authorName": "Huynh Nhat Khanh",
+    "websiteUrl": "https://pkg.go.dev/github.com/HuynhNhatKhanh/vnsalary",
+    "toolType": "sdk",
+    "taglineEn": "Vietnam Gross ↔ Net Salary & PIT Calculator in pure Go.",
+    "summaryVi": "vnsalary là thư viện Go (kèm công cụ dòng lệnh) quy đổi lương Gross ↔ Net và tính thuế TNCN Việt Nam, chính xác đến từng đồng bằng số nguyên int64, không phụ thuộc thư viện ngoài. Thư viện tự chọn chính sách theo ngày chi trả lương (mốc 01/07/2024, 01/01/2026, 01/07/2026), tính BHXH/BHYT/BHTN phần người lao động và doanh nghiệp, quyết toán thuế năm, khấu trừ 10% và trường hợp người nước ngoài, không cư trú.",
+    "purposeVi": "Tích hợp tính lương, bảo hiểm và thuế TNCN theo quy định Việt Nam vào phần mềm tính lương, HR hoặc dùng trực tiếp từ dòng lệnh.",
+    "featuresVi": [
+      "Gross → Net và Net → Gross chính xác: nghịch đảo giải tích, đảm bảo tính nhất quán hai chiều",
+      "Số học nguyên int64 VND, làm tròn half-up từng khoản bảo hiểm và từng bậc thuế",
+      "Chính sách theo thời kỳ: lương cơ sở, lương tối thiểu vùng, biểu 7 bậc và 5 bậc, giảm trừ gia cảnh, có căn cứ pháp lý",
+      "Chi phí doanh nghiệp: BHXH 17,5%, BHYT 3%, BHTN 1%, tùy chọn bảo hiểm tai nạn và kinh phí công đoàn 2%",
+      "Quyết toán thuế năm (`Annual`): nhiều nơi trả lương, tháng thưởng, giảm trừ y tế và giáo dục từ 2026",
+      "Khấu trừ 10% (`FlatWithholding`), người nước ngoài (không BHTN), người không cư trú (20%)",
+      "CLI tiếng Việt/tiếng Anh, so sánh chính sách (`diff`), xuất `--json`"
+    ],
+    "requirementsVi": "Go 1.22 trở lên (hoặc Homebrew/Scoop, hoặc tải tệp nhị phân dựng sẵn cho Linux, macOS, Windows).",
+    "installStepsVi": [
+      "Cài đặt thư viện vào dự án Go: `go get github.com/HuynhNhatKhanh/vnsalary`",
+      "Cài đặt công cụ dòng lệnh: `go install github.com/HuynhNhatKhanh/vnsalary/cmd/vnsalary@latest`",
+      "Hoặc cài đặt qua Homebrew (macOS, Linux): `brew install HuynhNhatKhanh/tap/vnsalary`"
+    ],
+    "cliCommand": "go install github.com/HuynhNhatKhanh/vnsalary/cmd/vnsalary@latest",
+    "usageStepsVi": [
+      "Tính Gross → Net: `vnsalary gross 35000000 -d 1 -r 1 --date 2026-01-15` (1 người phụ thuộc, vùng I).",
+      "Tính Net → Gross: `vnsalary net 30843750 -d 1 -r 1 --date 2026-01-15`.",
+      "Quyết toán thuế năm từ tệp dữ liệu JSON: `vnsalary annual payments.json`.",
+      "Xuất kết quả JSON để tích hợp: `vnsalary gross 35000000 --json`; trong Go gọi `vnsalary.GrossToNet`, `vnsalary.NetToGross`, `vnsalary.Annual`."
+    ],
+    "samplePromptsVi": [
+      "Viết hàm Go dùng vnsalary.GrossToNet tính lương NET cho danh sách nhân viên vùng I tháng 8/2026",
+      "Dùng vnsalary annual để quyết toán thuế năm 2026 cho nhân viên đổi công ty giữa năm",
+      "So sánh lương NET 60 triệu giữa chính sách 30/06/2026 và 01/07/2026 bằng lệnh vnsalary diff"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, dùng được cho mục đích thương mại",
+      "Không phụ thuộc thư viện ngoài, chính xác đến từng đồng, có căn cứ pháp lý cho từng tham số",
+      "Kiểm thử kỹ: bộ golden 40 trường hợp, fuzz test, độ phủ mã thư viện 97,7%",
+      "Có cả thư viện Go và CLI, hỗ trợ xuất JSON"
+    ],
+    "consVi": [
+      "Chỉ dành cho hệ sinh thái Go (CLI dùng được độc lập)",
+      "Không kiểm tra giới hạn các khoản miễn thuế (làm thêm giờ, phụ cấp) — người gọi tự chịu trách nhiệm",
+      "Chưa mô hình hóa miễn BHXH cho người nước ngoài và việc chia thu nhập theo số ngày ở Việt Nam",
+      "Dự án mới (phiên bản v0.6.1), API có thể còn thay đổi"
+    ],
+    "sourceEvidence": {
+      "go get github.com/HuynhNhatKhanh/vnsalary": "README.md:33",
+      "go install github.com/HuynhNhatKhanh/vnsalary/cmd/vnsalary@latest": "README.md:277",
+      "brew install HuynhNhatKhanh/tap/vnsalary": "README.md:283",
+      "vnsalary gross 35000000 -d 1 -r 1 --date 2026-01-15": "README.md:296",
+      "vnsalary net 30843750 -d 1 -r 1 --date 2026-01-15": "README.md:303",
+      "vnsalary annual payments.json": "README.md:346",
+      "vnsalary gross 35000000 --json": "README.md:359"
+    },
+    "meta": {
+      "id": "huynhnhatkhanh-vnsalary",
+      "nameVi": "vnsalary — Thư viện Go và CLI quy đổi lương Gross/Net, tính thuế TNCN và BHXH Việt Nam",
+      "icon": "Code2",
+      "categories": [
+        "accounting_finance",
+        "e_invoice_tax",
+        "hr_recruitment"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "go install github.com/HuynhNhatKhanh/vnsalary/cmd/vnsalary@latest"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "thuyetbao/einvoice-lens",
+    "license": "MIT License — Copyright (c) 2025 Thuyết Bảo",
+    "authorName": "Thuyết Bảo",
+    "websiteUrl": "https://pypi.org/project/einvoice-lens/",
+    "toolType": "sdk",
+    "taglineEn": "einvoice-lens is a package that uses OCR and rule-based parsing to transform Vietnam's electronic invoices into structured data.",
+    "summaryVi": "einvoice-lens là gói Python dùng OCR và phân tích theo luật (rule-based) để chuyển hóa đơn điện tử Việt Nam (tệp PDF) thành dữ liệu có cấu trúc. Gói phát hành trên PyPI, có hàm `parse_commerical_invoice` và giao diện dòng lệnh để tích hợp vào script shell và quy trình tự động hóa.",
+    "purposeVi": "Trích xuất dữ liệu hóa đơn bán hàng từ PDF hóa đơn điện tử Việt Nam phục vụ nhập liệu kế toán và đối soát.",
+    "featuresVi": [
+      "Trích xuất dữ liệu có cấu trúc từ hóa đơn bán hàng",
+      "Hàm Python `parse_commerical_invoice(path=...)` nhận đường dẫn tệp PDF",
+      "Giao diện dòng lệnh để tích hợp với script shell và quy trình tự động hóa",
+      "Phát hành trên PyPI, dùng pdfplumber và polars"
+    ],
+    "requirementsVi": "Python >= 3.12.",
+    "installStepsVi": [
+      "Cài đặt gói từ PyPI: `pip install einvoice-lens`"
+    ],
+    "cliCommand": "pip install einvoice-lens",
+    "usageStepsVi": [
+      "Trong Python: `from einvoice_lens import parse_commerical_invoice` rồi gọi `parse_commerical_invoice(path=\"path/to/document.pdf\")`.",
+      "Từ dòng lệnh: `python -m einvoice_lens.cli --path path/to/document.pdf`."
+    ],
+    "samplePromptsVi": [
+      "Viết script Python dùng einvoice-lens đọc toàn bộ PDF hóa đơn trong thư mục và xuất dữ liệu ra CSV",
+      "Tích hợp lệnh python -m einvoice_lens.cli vào quy trình nhập liệu kế toán hằng ngày"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, dùng được cho mục đích thương mại",
+      "Cài đặt đơn giản qua PyPI, có cả API Python và CLI",
+      "Chuyên cho định dạng hóa đơn điện tử Việt Nam"
+    ],
+    "consVi": [
+      "README ngắn, chưa mô tả đầy đủ các trường dữ liệu đầu ra và các mẫu hóa đơn được hỗ trợ",
+      "TODO.md còn ghi vấn đề về mã hóa ký tự và tham số CLI chưa hoàn thiện",
+      "Yêu cầu Python 3.12 trở lên; dự án nhỏ, ít người đóng góp"
+    ],
+    "sourceEvidence": {
+      "pip install einvoice-lens": "README.md:52",
+      "python -m einvoice_lens.cli --path path/to/document.pdf": "README.md:64"
+    },
+    "meta": {
+      "id": "thuyetbao-einvoice-lens",
+      "nameVi": "einvoice-lens — Thư viện Python trích xuất dữ liệu từ PDF hóa đơn điện tử Việt Nam",
+      "icon": "Search",
+      "categories": [
+        "e_invoice_tax",
+        "accounting_finance",
+        "office_digital_docs"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install einvoice-lens"
+        }
+      ]
+    }
+  }
+]

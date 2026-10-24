@@ -1,0 +1,402 @@
+[
+  {
+    "repo": "SSI-Securities-Inc/ssi-sdk-python",
+    "license": "MIT License",
+    "authorName": "SSI Securities Inc.",
+    "websiteUrl": "https://developers.ssi.com.vn",
+    "toolType": "sdk",
+    "taglineEn": "Python SDK cho nền tảng giao dịch chứng khoán SSI. Hỗ trợ REST API và WebSocket streaming, cả đồng bộ (sync) và bất đồng bộ (async).",
+    "summaryVi": "SDK Python chính thức của Chứng khoán SSI cho nền tảng FastConnect, hỗ trợ REST API và WebSocket streaming ở cả chế độ đồng bộ lẫn bất đồng bộ. Thư viện gồm bốn client chuyên biệt: Auth, Data, Trading và Stream để lấy dữ liệu thị trường, quản lý danh mục và đặt lệnh.",
+    "purposeVi": "Giúp lập trình viên Việt Nam xây dựng công cụ phân tích dữ liệu chứng khoán HOSE/HNX/UPCoM hoặc hệ thống giao dịch tự động bằng Python thông qua API chính thức của SSI.",
+    "featuresVi": [
+      "Xác thực: quản lý token, OTP/Smart OTP và tự làm mới token",
+      "Dữ liệu thị trường: nến OHLC trong ngày và lịch sử, chỉ số, thông tin và tổng hợp chứng khoán, giá trần/sàn/tham chiếu, sự kiện quyền",
+      "Giao dịch: đặt/sửa/hủy lệnh, sức mua/bán, thông tin tài khoản",
+      "Danh mục đầu tư: số dư, vị thế, sổ lệnh",
+      "Streaming realtime qua WebSocket với tự kết nối lại",
+      "Cấu hình retry, timeout và giới hạn request/giây",
+      "Hỗ trợ cả client đồng bộ và bất đồng bộ (async, khuyến nghị)"
+    ],
+    "requirementsVi": "Python 3.10 trở lên; tài khoản SSI và bộ thông tin xác thực FastConnect (client_id, api_key, api_secret, private_key).",
+    "installStepsVi": [
+      "Cài đặt gói từ PyPI: `pip install ssi-sdk`",
+      "Tạo đối tượng `Config` với client_id, api_key, api_secret, private_key theo hướng dẫn trong README"
+    ],
+    "cliCommand": "pip install ssi-sdk",
+    "usageStepsVi": [
+      "Khởi tạo `Auth`/`AsyncAuth` và gọi `authenticate()` (dữ liệu thị trường không cần OTP)",
+      "Dùng `Data` để lấy dữ liệu nến, ví dụ `data.market_data.get_ohlc_1minute(\"SSI\")`",
+      "Dùng `Trading` cho tài khoản, danh mục và đặt lệnh (cần OTP)",
+      "Dùng `Stream` để subscribe dữ liệu realtime qua WebSocket"
+    ],
+    "samplePromptsVi": [
+      "Viết script Python dùng ssi-sdk lấy nến ngày của mã FPT trong 3 tháng gần nhất và lưu ra CSV.",
+      "Dùng ssi-sdk lấy giá trần/sàn/tham chiếu của tất cả mã hôm nay.",
+      "Viết ví dụ async subscribe dữ liệu khớp lệnh realtime của mã SSI."
+    ],
+    "prosVi": [
+      "Do SSI (Công ty Chứng khoán SSI) phát hành và bảo trì chính thức",
+      "Tài liệu README bằng tiếng Việt, đầy đủ ví dụ",
+      "Giấy phép MIT",
+      "Hỗ trợ async/sync, retry và rate limit tích hợp"
+    ],
+    "consVi": [
+      "Cần tài khoản SSI và thông tin xác thực FastConnect (client_id, api_key, api_secret, private_key)",
+      "Giao dịch và streaming yêu cầu OTP",
+      "Yêu cầu Python 3.10+"
+    ],
+    "sourceEvidence": {
+      "pip install ssi-sdk": "README.md:31",
+      "requires-python >=3.10": "pyproject.toml:11"
+    },
+    "meta": {
+      "id": "ssi-securities-inc-ssi-sdk-python",
+      "nameVi": "SSI Python SDK — Thư viện Python chính thức kết nối API chứng khoán SSI",
+      "icon": "Code2",
+      "categories": [
+        "investment_securities",
+        "fintech_banking"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install ssi-sdk"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "SSI-Securities-Inc/ssi-sdk-node",
+    "license": "MIT License",
+    "authorName": "SSI Securities Inc.",
+    "websiteUrl": "https://developers.ssi.com.vn",
+    "toolType": "sdk",
+    "taglineEn": "Node.js/TypeScript SDK cho nền tảng giao dịch chứng khoán SSI. Hỗ trợ REST API và WebSocket streaming.",
+    "summaryVi": "SDK Node.js/TypeScript chính thức của Chứng khoán SSI, phát hành trên npm với tên `@ssi.developer/ssi-sdk`. Thư viện cung cấp các client xác thực, dữ liệu thị trường, giao dịch, danh mục và streaming realtime, kèm Trading WebSocket để đặt lệnh.",
+    "purposeVi": "Giúp lập trình viên JavaScript/TypeScript tích hợp dữ liệu chứng khoán Việt Nam và chức năng giao dịch SSI vào ứng dụng web, bot hoặc dịch vụ backend.",
+    "featuresVi": [
+      "Xác thực: quản lý token, OTP/Smart OTP và tự làm mới token",
+      "Dữ liệu thị trường: nến OHLC trong ngày và lịch sử, chỉ số, thông tin và tổng hợp chứng khoán, giá trần/sàn/tham chiếu, sự kiện quyền",
+      "Giao dịch: đặt/sửa/hủy lệnh, sức mua/bán, thông tin tài khoản",
+      "Danh mục đầu tư: số dư, vị thế, sổ lệnh",
+      "Streaming realtime qua WebSocket với tự kết nối lại",
+      "Cấu hình retry, timeout và giới hạn request/giây",
+      "Trading WebSocket để đặt lệnh, hỗ trợ đặt/hủy lệnh theo lô (batch)",
+      "Hỗ trợ proxy HTTP"
+    ],
+    "requirementsVi": "Node.js 18 trở lên; tài khoản SSI và bộ thông tin xác thực FastConnect (clientId, apiKey, apiSecret, privateKey).",
+    "installStepsVi": [
+      "Cài đặt gói từ npm: `npm install @ssi.developer/ssi-sdk`",
+      "Hoặc cài đặt bằng yarn: `yarn add @ssi.developer/ssi-sdk`",
+      "Tạo đối tượng `Config` với clientId, apiKey, apiSecret, privateKey theo hướng dẫn trong README"
+    ],
+    "cliCommand": "npm install @ssi.developer/ssi-sdk",
+    "usageStepsVi": [
+      "Khởi tạo client `Auth` và xác thực (giao dịch/streaming cần OTP)",
+      "Dùng client dữ liệu để lấy nến OHLC, chỉ số, thông tin chứng khoán",
+      "Dùng client giao dịch để quản lý tài khoản, danh mục và đặt lệnh",
+      "Dùng streaming để nhận dữ liệu realtime qua WebSocket"
+    ],
+    "samplePromptsVi": [
+      "Viết đoạn TypeScript dùng @ssi.developer/ssi-sdk lấy danh sách chỉ số trên sàn HOSE.",
+      "Tạo service Node.js subscribe dữ liệu realtime của các mã VN30 bằng SSI SDK.",
+      "Hướng dẫn cấu hình retry và rate limit cho SSI Node.js SDK."
+    ],
+    "prosVi": [
+      "Do SSI (Công ty Chứng khoán SSI) phát hành và bảo trì chính thức",
+      "Tài liệu README bằng tiếng Việt, đầy đủ ví dụ",
+      "Giấy phép MIT",
+      "Hỗ trợ TypeScript"
+    ],
+    "consVi": [
+      "Cần tài khoản SSI và thông tin xác thực FastConnect (client_id, api_key, api_secret, private_key)",
+      "Giao dịch và streaming yêu cầu OTP",
+      "Proxy không áp dụng cho kết nối WebSocket (theo README)"
+    ],
+    "sourceEvidence": {
+      "npm install @ssi.developer/ssi-sdk": "README.md:32",
+      "yarn add @ssi.developer/ssi-sdk": "README.md:34",
+      "node >=18.0.0": "package.json:45"
+    },
+    "meta": {
+      "id": "ssi-securities-inc-ssi-sdk-node",
+      "nameVi": "SSI Node.js SDK — Thư viện TypeScript chính thức kết nối API chứng khoán SSI",
+      "icon": "Code2",
+      "categories": [
+        "investment_securities",
+        "fintech_banking"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npm install @ssi.developer/ssi-sdk"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "SSI-Securities-Inc/ssi-sdk-dotnet",
+    "license": "MIT License",
+    "authorName": "SSI Securities Inc.",
+    "websiteUrl": "https://developers.ssi.com.vn/docs/sdk/csharp/overview",
+    "toolType": "sdk",
+    "taglineEn": ".NET SDK cho nền tảng giao dịch chứng khoán SSI FastConnect. Hỗ trợ đầy đủ REST API và WebSocket streaming bất đồng bộ (async) với hiệu năng cao.",
+    "summaryVi": "SDK .NET chính thức của Chứng khoán SSI cho nền tảng FastConnect, phát hành trên NuGet với tên `SSIDeveloper.FastConnect.Sdk`. Thư viện hỗ trợ REST API và WebSocket streaming bất đồng bộ cho dữ liệu thị trường, danh mục và giao dịch.",
+    "purposeVi": "Giúp lập trình viên C#/.NET xây dựng ứng dụng phân tích dữ liệu và giao dịch chứng khoán Việt Nam trên nền tảng SSI FastConnect.",
+    "featuresVi": [
+      "Xác thực: quản lý token, OTP/Smart OTP và tự làm mới token",
+      "Dữ liệu thị trường: nến OHLC trong ngày và lịch sử, chỉ số, thông tin và tổng hợp chứng khoán, giá trần/sàn/tham chiếu, sự kiện quyền",
+      "Giao dịch: đặt/sửa/hủy lệnh, sức mua/bán, thông tin tài khoản",
+      "Danh mục đầu tư: số dư, vị thế, sổ lệnh",
+      "Streaming realtime qua WebSocket với tự kết nối lại",
+      "Cấu hình retry, timeout và giới hạn request/giây",
+      "Trading WebSocket để đặt lệnh",
+      "Lập trình bất đồng bộ (async) hiệu năng cao"
+    ],
+    "requirementsVi": ".NET 8.0 trở lên; tài khoản SSI và bộ thông tin xác thực FastConnect (ClientId, ApiKey, ApiSecret, PrivateKey).",
+    "installStepsVi": [
+      "Cài đặt gói qua dotnet CLI: `dotnet add package SSIDeveloper.FastConnect.Sdk`",
+      "Hoặc cài đặt qua Package Manager Console: `Install-Package SSIDeveloper.FastConnect.Sdk`",
+      "Khởi tạo đối tượng `Config` với ClientId, ApiKey, ApiSecret, PrivateKey theo hướng dẫn trong README"
+    ],
+    "cliCommand": "dotnet add package SSIDeveloper.FastConnect.Sdk",
+    "usageStepsVi": [
+      "Khởi tạo client xác thực và đăng nhập (giao dịch/streaming cần OTP)",
+      "Gọi các dịch vụ dữ liệu thị trường, tài khoản, danh mục, giao dịch",
+      "Kết nối WebSocket để nhận dữ liệu realtime hoặc đặt lệnh"
+    ],
+    "samplePromptsVi": [
+      "Viết ví dụ C# dùng SSIDeveloper.FastConnect.Sdk lấy nến ngày của mã VNM.",
+      "Tạo worker .NET nhận dữ liệu realtime nhóm VN30 qua SSI SDK.",
+      "Giải thích các thay đổi lớn ở phiên bản 3.3.0 của SSI .NET SDK."
+    ],
+    "prosVi": [
+      "Do SSI (Công ty Chứng khoán SSI) phát hành và bảo trì chính thức",
+      "Tài liệu README bằng tiếng Việt, đầy đủ ví dụ",
+      "Giấy phép MIT",
+      "Phát hành qua NuGet"
+    ],
+    "consVi": [
+      "Cần tài khoản SSI và thông tin xác thực FastConnect (client_id, api_key, api_secret, private_key)",
+      "Giao dịch và streaming yêu cầu OTP",
+      "Yêu cầu .NET 8.0+"
+    ],
+    "sourceEvidence": {
+      "dotnet add package SSIDeveloper.FastConnect.Sdk": "README.md:38",
+      "Install-Package SSIDeveloper.FastConnect.Sdk": "README.md:43",
+      ".NET 8.0+": "README.md:7"
+    },
+    "meta": {
+      "id": "ssi-securities-inc-ssi-sdk-dotnet",
+      "nameVi": "SSI .NET SDK — Thư viện C# chính thức kết nối API chứng khoán SSI FastConnect",
+      "icon": "Code2",
+      "categories": [
+        "investment_securities",
+        "fintech_banking"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "dotnet add package SSIDeveloper.FastConnect.Sdk"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "vietnh/vnstock-mcp-server",
+    "license": "MIT License",
+    "authorName": "Viet Nguyen",
+    "websiteUrl": "",
+    "toolType": "mcp",
+    "taglineEn": "A comprehensive Model Context Protocol (MCP) server that provides seamless access to Vietnamese stock market data through the vnstock library.",
+    "summaryVi": "MCP server chạy qua NPX, dùng thư viện vnstock để cung cấp dữ liệu chứng khoán Việt Nam cho Claude Desktop. Máy chủ có 8 công cụ: giá hiện tại, lịch sử giá, tổng quan doanh nghiệp, báo cáo tài chính, chỉ số thị trường, danh sách công ty niêm yết, giao dịch khối ngoại và tìm kiếm mã.",
+    "purposeVi": "Giúp người dùng tra cứu giá, báo cáo tài chính và chỉ số VNINDEX/VN30/HNX30/UPCoM bằng ngôn ngữ tự nhiên trong Claude Desktop.",
+    "featuresVi": [
+      "Giá cổ phiếu hiện tại kèm OHLC và khối lượng",
+      "Dữ liệu lịch sử theo ngày/tuần/tháng (1D, 1W, 1M)",
+      "Tổng quan doanh nghiệp và chỉ số tài chính",
+      "Báo cáo tài chính: bảng cân đối, kết quả kinh doanh, lưu chuyển tiền tệ theo quý/năm",
+      "Theo dõi chỉ số VNINDEX, HNX30, VN30, UPCOM",
+      "Danh sách công ty theo sàn HOSE/HNX/UPCOM, dữ liệu khối ngoại và tìm kiếm mã"
+    ],
+    "requirementsVi": "Node.js 14 trở lên, Python 3.8 trở lên, Claude Desktop và kết nối Internet.",
+    "installStepsVi": [
+      "Chạy trực tiếp bằng NPX: `npx vnstock-mcp-server`",
+      "Kiểm tra yêu cầu hệ thống: `npx vnstock-mcp-server --test`",
+      "Cài đặt thư viện Python phụ thuộc nếu cần: `npx vnstock-mcp-server --install-deps`",
+      "Hoặc cài đặt toàn cục: `npm install -g vnstock-mcp-server`",
+      "Thêm cấu hình mcpServers vào claude_desktop_config.json (xem jsonConfig)"
+    ],
+    "cliCommand": "npx vnstock-mcp-server",
+    "usageStepsVi": [
+      "Khởi động lại Claude Desktop sau khi cấu hình",
+      "Hỏi giá, lịch sử giá, báo cáo tài chính hoặc chỉ số bằng ngôn ngữ tự nhiên",
+      "Nếu máy chủ báo offline, chạy lệnh `--test` để kiểm tra"
+    ],
+    "samplePromptsVi": [
+      "Giá hiện tại của cổ phiếu VIC là bao nhiêu?",
+      "Lấy dữ liệu lịch sử 30 ngày của TCB.",
+      "Liệt kê các ngân hàng niêm yết trên HOSE."
+    ],
+    "prosVi": [
+      "Giấy phép MIT",
+      "Chạy nhanh bằng NPX, không cần cài đặt cục bộ",
+      "Không yêu cầu khóa API trong README"
+    ],
+    "consVi": [
+      "Cần cả Node.js và Python",
+      "Phụ thuộc thư viện vnstock (dự án độc lập, giấy phép riêng)",
+      "Commit gần nhất tháng 6/2025; README chỉ ghi cấu hình cho Claude Desktop",
+      "Chỉ dành cho mục đích nghiên cứu, giáo dục (theo phần tuyên bố miễn trừ)"
+    ],
+    "sourceEvidence": {
+      "npx vnstock-mcp-server": "README.md:21",
+      "npx vnstock-mcp-server --test": "README.md:24",
+      "npx vnstock-mcp-server --install-deps": "README.md:30",
+      "npm install -g vnstock-mcp-server": "README.md:39",
+      "jsonConfig": "README.md:64-73"
+    },
+    "meta": {
+      "id": "vietnh-vnstock-mcp-server",
+      "nameVi": "Vnstock MCP Server (NPX) — Dữ liệu chứng khoán Việt Nam cho Claude Desktop",
+      "icon": "Database",
+      "categories": [
+        "investment_securities",
+        "fintech_banking"
+      ],
+      "platforms": [
+        "claude_desktop"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "npx vnstock-mcp-server",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"vnstock\": {\n      \"command\": \"npx\",\n      \"args\": [\"vnstock-mcp-server\"]\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "MaoBui2907/vnstock-mcp-server",
+    "license": "MIT License",
+    "authorName": "Mao Bui",
+    "websiteUrl": "https://pypi.org/project/vnstock-mcp-server/",
+    "toolType": "mcp",
+    "taglineEn": "An unofficial MCP (Model Context Protocol) server that provides tools to access Vietnam stock market data.",
+    "summaryVi": "MCP server Python (không chính thức) bọc thư viện vnstock, cung cấp công cụ truy cập dữ liệu chứng khoán Việt Nam cho trợ lý AI. Ngoài giá và báo cáo tài chính, máy chủ còn hỗ trợ dữ liệu quỹ mở (NAV, danh mục nắm giữ), giá vàng SJC/BTMC và tỷ giá; hỗ trợ ba giao thức stdio, SSE và streamable-http.",
+    "purposeVi": "Giúp nhà phát triển và nhà đầu tư tra cứu dữ liệu cổ phiếu, quỹ, giá vàng và tỷ giá Việt Nam qua Claude, Cursor hoặc Cline.",
+    "featuresVi": [
+      "Thông tin doanh nghiệp: tổng quan, tin tức, sự kiện, cổ đông, ban lãnh đạo, công ty con, giao dịch nội bộ",
+      "Dữ liệu tài chính: kết quả kinh doanh, bảng cân đối, lưu chuyển tiền tệ, chỉ số tài chính theo quý/năm",
+      "Dữ liệu thị trường: báo giá, lịch sử giá, khớp lệnh trong ngày, độ sâu giá, bảng giá nhiều mã",
+      "Quỹ mở: danh sách quỹ, báo cáo NAV, danh mục nắm giữ, phân bổ ngành và tài sản",
+      "Giá vàng SJC, BTMC và tỷ giá ngoại tệ",
+      "Ba giao thức: stdio (mặc định), SSE và streamable-http (cổng mặc định 8000)"
+    ],
+    "requirementsVi": "Python 3.12 trở lên; uv (khi chạy qua uvx hoặc từ mã nguồn).",
+    "installStepsVi": [
+      "Cài đặt từ PyPI: `pip install vnstock-mcp-server`",
+      "Hoặc thêm cấu hình mcpServers dùng `uvx` (xem jsonConfig)",
+      "Hoặc cài đặt từ mã nguồn: `git clone https://github.com/maobui/vnstock-mcp-server.git` rồi `uv sync`"
+    ],
+    "cliCommand": "pip install vnstock-mcp-server",
+    "usageStepsVi": [
+      "Chạy máy chủ ở chế độ stdio: `vnstock-mcp-server`",
+      "Chạy chế độ SSE cho ứng dụng web: `vnstock-mcp-server --transport sse`",
+      "Khởi động lại MCP client để nạp công cụ, rồi đặt câu hỏi về cổ phiếu, quỹ hoặc giá vàng"
+    ],
+    "samplePromptsVi": [
+      "Cho tôi báo cáo kết quả kinh doanh theo quý của VNM.",
+      "Liệt kê các quỹ mở và NAV gần nhất.",
+      "Giá vàng SJC và tỷ giá USD hôm nay là bao nhiêu?"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, phát hành trên PyPI",
+      "Hỗ trợ nhiều giao thức (stdio, SSE, streamable-http)",
+      "Bao phủ cả cổ phiếu, quỹ mở, giá vàng và tỷ giá"
+    ],
+    "consVi": [
+      "Dự án không chính thức, không liên kết với nhóm phát triển vnstock",
+      "Phụ thuộc thư viện vnstock cho toàn bộ dữ liệu",
+      "Yêu cầu Python 3.12+"
+    ],
+    "sourceEvidence": {
+      "pip install vnstock-mcp-server": "README.md:40",
+      "git clone https://github.com/maobui/vnstock-mcp-server.git": "README.md:45",
+      "uv sync": "README.md:47",
+      "vnstock-mcp-server": "README.md:61",
+      "vnstock-mcp-server --transport sse": "README.md:73",
+      "jsonConfig": "README.md:135-145"
+    },
+    "meta": {
+      "id": "maobui2907-vnstock-mcp-server",
+      "nameVi": "VNStock MCP Server (Python) — Cổ phiếu, quỹ, giá vàng và tỷ giá Việt Nam cho AI",
+      "icon": "Database",
+      "categories": [
+        "investment_securities",
+        "fintech_banking"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "cliCommand": "pip install vnstock-mcp-server",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"vnstock\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"vnstock-mcp-server\"\n      ]\n    }\n  }\n}"
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "vnstock-mcp-server"
+        }
+      ]
+    }
+  }
+]
