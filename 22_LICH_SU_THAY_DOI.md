@@ -4,6 +4,14 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.14 (Ngày 24-10-2026)
+- **Loại hình**: Chạy LLM cục bộ, phục vụ suy luận, tinh chỉnh mô hình, đợt 7 (21 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-7-*.json`.
+- **Chạy LLM cục bộ**: llama.cpp, LocalAI, llamafile, Jan, KoboldCpp (AGPL-3.0), mlx-lm, textgen (trước đây là text-generation-webui, AGPL-3.0).
+- **Phục vụ suy luận & cổng API**: SGLang, LMDeploy, LiteLLM (lõi MIT, thư mục enterprise/ giấy phép thương mại), Portkey Gateway, Xinference, BentoML, Triton Inference Server (mã BSD-3-Clause; container NGC theo giấy phép riêng của NVIDIA).
+- **Tinh chỉnh & huấn luyện**: Unsloth (lõi Apache-2.0, Unsloth Studio AGPL-3.0), Axolotl, LlamaFactory, TRL, PEFT, verl, ms-swift.
+- Không thêm: công cụ đã có trong kho (Ollama, exo, Open WebUI, vLLM), dự án README ghi ở chế độ bảo trì (Text Generation Inference), dự án ngừng cập nhật (GPT4All, torchtune).
+- Kho dữ liệu: 2.075 công cụ đang hiển thị, 2.125 cấu hình mẫu.
+
 ### Phiên Bản 2.1.13 (Ngày 24-10-2026)
 - **Loại hình**: Cơ sở dữ liệu vector & RAG, phân tích tài liệu, thu thập web cho LLM, đợt 6 (21 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-6-*.json`.
 - **Vector & RAG**: Qdrant, Chroma, Milvus, pgvector, LanceDB, LightRAG, Weaviate (BSD-3-Clause, riêng thư mục wl/ giấy phép doanh nghiệp).

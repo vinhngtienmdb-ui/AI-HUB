@@ -158202,5 +158202,1670 @@
       "guideIsTemplate": false,
       "starsVerified": false
     }
+  },
+  {
+    "id": "ggml-org-llama-cpp",
+    "slug": "ggml-org-llama-cpp",
+    "name": "llama.cpp — Bộ suy luận LLM cục bộ bằng C/C++",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/ggml-org/llama.cpp",
+    "websiteUrl": "https://llama.app",
+    "authorName": "The ggml authors (ggml-org)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "llama.cpp là bộ suy luận LLM (và VLM) viết bằng C/C++ thuần, không phụ thuộc thư viện ngoài, xây dựng trên thư viện ggml. Công cụ chạy mô hình GGUF trên rất nhiều loại phần cứng, từ CPU x86/ARM/RISC-V tới GPU NVIDIA, AMD, Apple Silicon, Vulkan, SYCL. Đi kèm lệnh `llama cli` để trò chuyện trên terminal và `llama serve` để mở máy chủ API tương thích OpenAI có giao diện web tích hợp.",
+    "purposeVi": "Chạy mô hình ngôn ngữ lớn cục bộ với thiết lập tối thiểu và hiệu năng cao, làm nền tảng cho nhiều công cụ chạy LLM trên máy cá nhân.",
+    "featuresVi": [
+      "C/C++ thuần: không phụ thuộc thư viện ngoài",
+      "Tối ưu Apple Silicon: qua ARM NEON, Accelerate và Metal",
+      "Lượng tử hóa 1.5-bit tới 8-bit: suy luận nhanh hơn và giảm bộ nhớ",
+      "Nhiều backend: CUDA, HIP, Vulkan, SYCL, Metal, MUSA, CANN, OpenCL, WebGPU, RPC...",
+      "Suy luận lai CPU+GPU: tăng tốc một phần cho mô hình lớn hơn dung lượng VRAM",
+      "Máy chủ API tương thích OpenAI: `llama serve` kèm giao diện web tích hợp",
+      "Tải mô hình trực tiếp từ Hugging Face bằng tham số `-hf`"
+    ],
+    "installGuideVi": "Yêu cầu: Máy tính Windows, macOS hoặc Linux; GPU là tùy chọn. Có thể cài đặt bằng script, Docker, tệp nhị phân dựng sẵn hoặc biên dịch từ mã nguồn.\nBước 1: Cài đặt trên macOS/Linux bằng script: `curl -LsSf https://llama.app/install.sh | sh`\nBước 2: Cài đặt trên Windows bằng PowerShell: `irm https://llama.app/install.ps1 | iex`\nBước 3: Hoặc tải tệp nhị phân dựng sẵn từ trang Releases, chạy bằng Docker, hay biên dịch theo hướng dẫn docs/build.md\nBước 4: Tải và trò chuyện với mô hình từ Hugging Face: `llama cli -hf ggml-org/Qwen3.5-0.8B-GGUF`\nBước 5: Khởi chạy máy chủ API tương thích OpenAI: `llama serve -hf ggml-org/Qwen3.5-0.8B-GGUF`",
+    "usageGuideVi": "Bước 1: Chọn một mô hình GGUF trên Hugging Face phù hợp với dung lượng RAM/VRAM của máy\nBước 2: Dùng `llama cli` để trò chuyện trực tiếp trên terminal, kể cả mô hình thị giác (VLM)\nBước 3: Dùng `llama serve` rồi mở giao diện web tích hợp hoặc trỏ ứng dụng dùng API OpenAI tới máy chủ cục bộ",
+    "samplePromptsVi": [
+      "Tóm tắt nội dung đoạn văn bản tiếng Việt sau thành 3 ý chính",
+      "Mô tả những gì có trong bức ảnh này (khi dùng mô hình VLM)",
+      "Viết hàm Python đọc tệp CSV và tính trung bình một cột dữ liệu"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "llama serve -hf ggml-org/Qwen3.5-0.8B-GGUF",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"llama serve -hf ggml-org/Qwen3.5-0.8B-GGUF\"\n  ],\n  \"nguon\": \"https://github.com/ggml-org/llama.cpp\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở giấy phép MIT",
+      "Hỗ trợ phần cứng rất rộng, kể cả chạy chỉ bằng CPU",
+      "Có API tương thích OpenAI và giao diện web tích hợp",
+      "Phát triển rất tích cực, có bản nightly"
+    ],
+    "consVi": [
+      "Chỉ chạy mô hình định dạng GGUF; mô hình khác cần chuyển đổi",
+      "Tốc độ và kích thước mô hình chạy được phụ thuộc vào phần cứng của máy"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# llama.cpp — Bộ suy luận LLM cục bộ bằng C/C++\n\n> LLM inference in C/C++\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nllama.cpp là bộ suy luận LLM (và VLM) viết bằng C/C++ thuần, không phụ thuộc thư viện ngoài, xây dựng trên thư viện ggml. Công cụ chạy mô hình GGUF trên rất nhiều loại phần cứng, từ CPU x86/ARM/RISC-V tới GPU NVIDIA, AMD, Apple Silicon, Vulkan, SYCL. Đi kèm lệnh `llama cli` để trò chuyện trên terminal và `llama serve` để mở máy chủ API tương thích OpenAI có giao diện web tích hợp.\n\nChạy mô hình ngôn ngữ lớn cục bộ với thiết lập tối thiểu và hiệu năng cao, làm nền tảng cho nhiều công cụ chạy LLM trên máy cá nhân.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** The ggml authors (ggml-org)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **C/C++ thuần: không phụ thuộc thư viện ngoài**\n- **Tối ưu Apple Silicon: qua ARM NEON, Accelerate và Metal**\n- **Lượng tử hóa 1.5-bit tới 8-bit: suy luận nhanh hơn và giảm bộ nhớ**\n- **Nhiều backend: CUDA, HIP, Vulkan, SYCL, Metal, MUSA, CANN, OpenCL, WebGPU, RPC...**\n- **Suy luận lai CPU+GPU: tăng tốc một phần cho mô hình lớn hơn dung lượng VRAM**\n- **Máy chủ API tương thích OpenAI: `llama serve` kèm giao diện web tích hợp**\n- **Tải mô hình trực tiếp từ Hugging Face bằng tham số `-hf`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nllama serve -hf ggml-org/Qwen3.5-0.8B-GGUF\n```\n\nYêu cầu: Máy tính Windows, macOS hoặc Linux; GPU là tùy chọn. Có thể cài đặt bằng script, Docker, tệp nhị phân dựng sẵn hoặc biên dịch từ mã nguồn.\nBước 1: Cài đặt trên macOS/Linux bằng script: `curl -LsSf https://llama.app/install.sh | sh`\nBước 2: Cài đặt trên Windows bằng PowerShell: `irm https://llama.app/install.ps1 | iex`\nBước 3: Hoặc tải tệp nhị phân dựng sẵn từ trang Releases, chạy bằng Docker, hay biên dịch theo hướng dẫn docs/build.md\nBước 4: Tải và trò chuyện với mô hình từ Hugging Face: `llama cli -hf ggml-org/Qwen3.5-0.8B-GGUF`\nBước 5: Khởi chạy máy chủ API tương thích OpenAI: `llama serve -hf ggml-org/Qwen3.5-0.8B-GGUF`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn một mô hình GGUF trên Hugging Face phù hợp với dung lượng RAM/VRAM của máy\nBước 2: Dùng `llama cli` để trò chuyện trực tiếp trên terminal, kể cả mô hình thị giác (VLM)\nBước 3: Dùng `llama serve` rồi mở giao diện web tích hợp hoặc trỏ ứng dụng dùng API OpenAI tới máy chủ cục bộ\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tóm tắt nội dung đoạn văn bản tiếng Việt sau thành 3 ý chính\"\n- \"Mô tả những gì có trong bức ảnh này (khi dùng mô hình VLM)\"\n- \"Viết hàm Python đọc tệp CSV và tính trung bình một cột dữ liệu\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "mudler-localai",
+    "slug": "mudler-localai",
+    "name": "LocalAI — Máy chủ AI tự vận hành thay thế API OpenAI",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "generative_ai_multimedia",
+      "speech_voice"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Sinh nội dung & Đa phương tiện (Generative AI)",
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/mudler/LocalAI",
+    "websiteUrl": "https://localai.io",
+    "authorName": "Ettore Di Giacinto và LocalAI team",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "LocalAI là công cụ AI mã nguồn mở chạy mọi loại mô hình (LLM, thị giác, giọng nói, hình ảnh, video) trên phần cứng của bạn, không bắt buộc GPU. Lõi nhỏ gọn, mỗi backend (llama.cpp, vLLM, whisper.cpp, stable-diffusion, MLX...) là một image riêng chỉ tải khi mô hình cần. Cung cấp API tương thích OpenAI, Anthropic và ElevenLabs, kèm WebUI, tác tử tích hợp, MCP và chế độ phân tán.",
+    "purposeVi": "Tự vận hành một máy chủ AI thay thế API đám mây, giữ dữ liệu trong hạ tầng của mình và phục vụ nhiều người dùng.",
+    "featuresVi": [
+      "Đa phương thức: LLM, thị giác, giọng nói, tạo ảnh, video sau một API",
+      "API tương thích: OpenAI, Anthropic và ElevenLabs trên mọi backend",
+      "Backend tải theo nhu cầu: hơn 60 backend như llama.cpp, vLLM, SGLang, transformers, whisper.cpp, diffusers, MLX",
+      "Phần cứng đa dạng: NVIDIA, AMD, Intel, Apple Silicon, Vulkan hoặc chỉ CPU",
+      "Đa người dùng: xác thực API key, hạn mức theo người dùng, phân quyền theo vai trò",
+      "Tác tử tích hợp: dùng công cụ, RAG, MCP và skills; có tác tử terminal `local-ai chat`",
+      "Chế độ phân tán và suy luận P2P, embeddings, reranker, nhận dạng giọng nói, WebUI tích hợp"
+    ],
+    "installGuideVi": "Yêu cầu: Docker/Podman (bản CPU hoặc image GPU tương ứng) hoặc ứng dụng macOS (DMG). GPU là tùy chọn. Cổng mặc định 8080.\nBước 1: Cài đặt và chạy bằng Docker (chỉ CPU): `docker run -ti --name local-ai -p 8080:8080 localai/localai:latest`\nBước 2: Với GPU NVIDIA CUDA 12: `docker run -ti --name local-ai -p 8080:8080 --gpus all localai/localai:latest-gpu-nvidia-cuda-12`\nBước 3: Trên macOS có thể tải LocalAI.dmg từ trang Releases (bản DMG chưa được Apple ký)\nBước 4: Tải và chạy mô hình từ thư viện: `local-ai run llama-3.2-1b-instruct:q4_k_m`\nBước 5: Mở tác tử trò chuyện trên terminal khác: `local-ai chat --model llama-3.2-1b-instruct:q4_k_m`",
+    "usageGuideVi": "Bước 1: Mở WebUI tại cổng 8080 để duyệt thư viện mô hình và backend\nBước 2: Cài đặt mô hình từ gallery, Hugging Face, registry Ollama hoặc OCI bằng `local-ai run`\nBước 3: Trỏ ứng dụng đang dùng API OpenAI/Anthropic sang máy chủ LocalAI cục bộ\nBước 4: Bật xác thực API key và hạn mức nếu chia sẻ cho nhiều người dùng",
+    "samplePromptsVi": [
+      "Chuyển đoạn ghi âm cuộc họp này thành văn bản",
+      "Tạo ảnh minh họa một quán cà phê Hà Nội buổi sáng",
+      "Dựa trên tài liệu nội bộ đã nạp, trả lời câu hỏi về quy trình nghỉ phép"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker run -ti --name local-ai -p 8080:8080 localai/localai:latest",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker run -ti --name local-ai -p 8080:8080 localai/localai:latest\"\n  ],\n  \"nguon\": \"https://github.com/mudler/LocalAI\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở giấy phép MIT",
+      "Không bắt buộc GPU",
+      "Tương thích API OpenAI, Anthropic và ElevenLabs",
+      "Phát hành thường xuyên (bản 4.11.0 tháng 10/2026)"
+    ],
+    "consVi": [
+      "Bản DMG cho macOS chưa được Apple ký, cần gỡ cờ quarantine thủ công",
+      "Nhiều tính năng (ảnh, video, giọng nói) cần tải thêm backend và mô hình riêng, tốn dung lượng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# LocalAI — Máy chủ AI tự vận hành thay thế API OpenAI\n\n> LocalAI is the open-source AI engine. Run any model - LLMs, vision, voice, image, video - on any hardware. No GPU required.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nLocalAI là công cụ AI mã nguồn mở chạy mọi loại mô hình (LLM, thị giác, giọng nói, hình ảnh, video) trên phần cứng của bạn, không bắt buộc GPU. Lõi nhỏ gọn, mỗi backend (llama.cpp, vLLM, whisper.cpp, stable-diffusion, MLX...) là một image riêng chỉ tải khi mô hình cần. Cung cấp API tương thích OpenAI, Anthropic và ElevenLabs, kèm WebUI, tác tử tích hợp, MCP và chế độ phân tán.\n\nTự vận hành một máy chủ AI thay thế API đám mây, giữ dữ liệu trong hạ tầng của mình và phục vụ nhiều người dùng.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Ettore Di Giacinto và LocalAI team\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/mudler/LocalAI](https://github.com/mudler/LocalAI)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Đa phương thức: LLM, thị giác, giọng nói, tạo ảnh, video sau một API**\n- **API tương thích: OpenAI, Anthropic và ElevenLabs trên mọi backend**\n- **Backend tải theo nhu cầu: hơn 60 backend như llama.cpp, vLLM, SGLang, transformers, whisper.cpp, diffusers, MLX**\n- **Phần cứng đa dạng: NVIDIA, AMD, Intel, Apple Silicon, Vulkan hoặc chỉ CPU**\n- **Đa người dùng: xác thực API key, hạn mức theo người dùng, phân quyền theo vai trò**\n- **Tác tử tích hợp: dùng công cụ, RAG, MCP và skills; có tác tử terminal `local-ai chat`**\n- **Chế độ phân tán và suy luận P2P, embeddings, reranker, nhận dạng giọng nói, WebUI tích hợp**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker run -ti --name local-ai -p 8080:8080 localai/localai:latest\n```\n\nYêu cầu: Docker/Podman (bản CPU hoặc image GPU tương ứng) hoặc ứng dụng macOS (DMG). GPU là tùy chọn. Cổng mặc định 8080.\nBước 1: Cài đặt và chạy bằng Docker (chỉ CPU): `docker run -ti --name local-ai -p 8080:8080 localai/localai:latest`\nBước 2: Với GPU NVIDIA CUDA 12: `docker run -ti --name local-ai -p 8080:8080 --gpus all localai/localai:latest-gpu-nvidia-cuda-12`\nBước 3: Trên macOS có thể tải LocalAI.dmg từ trang Releases (bản DMG chưa được Apple ký)\nBước 4: Tải và chạy mô hình từ thư viện: `local-ai run llama-3.2-1b-instruct:q4_k_m`\nBước 5: Mở tác tử trò chuyện trên terminal khác: `local-ai chat --model llama-3.2-1b-instruct:q4_k_m`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở WebUI tại cổng 8080 để duyệt thư viện mô hình và backend\nBước 2: Cài đặt mô hình từ gallery, Hugging Face, registry Ollama hoặc OCI bằng `local-ai run`\nBước 3: Trỏ ứng dụng đang dùng API OpenAI/Anthropic sang máy chủ LocalAI cục bộ\nBước 4: Bật xác thực API key và hạn mức nếu chia sẻ cho nhiều người dùng\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Chuyển đoạn ghi âm cuộc họp này thành văn bản\"\n- \"Tạo ảnh minh họa một quán cà phê Hà Nội buổi sáng\"\n- \"Dựa trên tài liệu nội bộ đã nạp, trả lời câu hỏi về quy trình nghỉ phép\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "mozilla-ai-llamafile",
+    "slug": "mozilla-ai-llamafile",
+    "name": "llamafile — Chạy LLM chỉ bằng một tệp thực thi",
+    "icon": "Box",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/mozilla-ai/llamafile",
+    "websiteUrl": "https://docs.mozilla.ai/llamafile",
+    "authorName": "Mozilla.ai (Mozilla Builders)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "llamafile kết hợp llama.cpp với Cosmopolitan Libc để gói cả mô hình LLM thành một tệp thực thi duy nhất, chạy cục bộ trên hầu hết hệ điều hành và kiến trúc CPU mà không cần cài đặt. Dự án do Mozilla Builders khởi xướng, nay được Mozilla.ai làm mới. Đi kèm whisperfile để chuyển giọng nói thành văn bản theo cùng cách đóng gói.",
+    "purposeVi": "Phân phối và chạy mô hình ngôn ngữ mở chỉ bằng một tệp, giúp người dùng không chuyên dễ dàng thử LLM trên máy cá nhân.",
+    "featuresVi": [
+      "Một tệp duy nhất: mô hình và chương trình gói chung thành tệp thực thi",
+      "Chạy đa nền tảng: macOS, Linux, BSD, Windows trên nhiều kiến trúc CPU",
+      "Không cần cài đặt: tải về, cấp quyền thực thi và chạy",
+      "Whisperfile: chuyển giọng nói thành văn bản và dịch âm thanh dựa trên whisper.cpp",
+      "Dùng được với trọng số GGUF bên ngoài thông qua tệp nhị phân llamafile"
+    ],
+    "installGuideVi": "Yêu cầu: Máy tính macOS, Linux, BSD hoặc Windows. Trên Windows chỉ chạy được tệp thực thi dưới 4GB; mô hình lớn hơn cần dùng tệp nhị phân llamafile với trọng số GGUF bên ngoài.\nBước 1: Tải tệp llamafile mẫu (Qwen3.5 0.8B): `curl -LO https://huggingface.co/mozilla-ai/llamafile_0.10/resolve/main/Qwen3.5-0.8B-Q8_0.llamafile`\nBước 2: Cấp quyền thực thi trên macOS/Linux/BSD: `chmod +x Qwen3.5-0.8B-Q8_0.llamafile`\nBước 3: Chạy tệp: `./Qwen3.5-0.8B-Q8_0.llamafile` (Windows: đổi tên thêm đuôi .exe trước khi chạy)",
+    "usageGuideVi": "Bước 1: Chọn llamafile dựng sẵn lớn hơn nếu máy có GPU hoặc cấu hình mạnh để có câu trả lời chính xác hơn\nBước 2: Trò chuyện với mô hình sau khi tệp khởi chạy\nBước 3: Xem tài liệu tại docs.mozilla.ai/llamafile để tạo llamafile riêng hoặc dùng whisperfile",
+    "samplePromptsVi": [
+      "Giải thích ngắn gọn khái niệm học máy cho học sinh cấp 3",
+      "Viết email xin nghỉ phép lịch sự bằng tiếng Việt",
+      "Dịch đoạn văn sau sang tiếng Anh"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "./Qwen3.5-0.8B-Q8_0.llamafile",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"./Qwen3.5-0.8B-Q8_0.llamafile\"\n  ],\n  \"nguon\": \"https://github.com/mozilla-ai/llamafile\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0",
+      "Không cần cài đặt, chỉ một tệp",
+      "Do Mozilla.ai duy trì"
+    ],
+    "consVi": [
+      "Windows giới hạn tệp thực thi dưới 4GB",
+      "Từ bản 0.10 dùng hệ thống build mới nên có thể thiếu một số tính năng của bản cũ"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# llamafile — Chạy LLM chỉ bằng một tệp thực thi\n\n> llamafile lets you distribute and run LLMs with a single file.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nllamafile kết hợp llama.cpp với Cosmopolitan Libc để gói cả mô hình LLM thành một tệp thực thi duy nhất, chạy cục bộ trên hầu hết hệ điều hành và kiến trúc CPU mà không cần cài đặt. Dự án do Mozilla Builders khởi xướng, nay được Mozilla.ai làm mới. Đi kèm whisperfile để chuyển giọng nói thành văn bản theo cùng cách đóng gói.\n\nPhân phối và chạy mô hình ngôn ngữ mở chỉ bằng một tệp, giúp người dùng không chuyên dễ dàng thử LLM trên máy cá nhân.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Mozilla.ai (Mozilla Builders)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/mozilla-ai/llamafile](https://github.com/mozilla-ai/llamafile)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Một tệp duy nhất: mô hình và chương trình gói chung thành tệp thực thi**\n- **Chạy đa nền tảng: macOS, Linux, BSD, Windows trên nhiều kiến trúc CPU**\n- **Không cần cài đặt: tải về, cấp quyền thực thi và chạy**\n- **Whisperfile: chuyển giọng nói thành văn bản và dịch âm thanh dựa trên whisper.cpp**\n- **Dùng được với trọng số GGUF bên ngoài thông qua tệp nhị phân llamafile**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n./Qwen3.5-0.8B-Q8_0.llamafile\n```\n\nYêu cầu: Máy tính macOS, Linux, BSD hoặc Windows. Trên Windows chỉ chạy được tệp thực thi dưới 4GB; mô hình lớn hơn cần dùng tệp nhị phân llamafile với trọng số GGUF bên ngoài.\nBước 1: Tải tệp llamafile mẫu (Qwen3.5 0.8B): `curl -LO https://huggingface.co/mozilla-ai/llamafile_0.10/resolve/main/Qwen3.5-0.8B-Q8_0.llamafile`\nBước 2: Cấp quyền thực thi trên macOS/Linux/BSD: `chmod +x Qwen3.5-0.8B-Q8_0.llamafile`\nBước 3: Chạy tệp: `./Qwen3.5-0.8B-Q8_0.llamafile` (Windows: đổi tên thêm đuôi .exe trước khi chạy)\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn llamafile dựng sẵn lớn hơn nếu máy có GPU hoặc cấu hình mạnh để có câu trả lời chính xác hơn\nBước 2: Trò chuyện với mô hình sau khi tệp khởi chạy\nBước 3: Xem tài liệu tại docs.mozilla.ai/llamafile để tạo llamafile riêng hoặc dùng whisperfile\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Giải thích ngắn gọn khái niệm học máy cho học sinh cấp 3\"\n- \"Viết email xin nghỉ phép lịch sự bằng tiếng Việt\"\n- \"Dịch đoạn văn sau sang tiếng Anh\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "janhq-jan",
+    "slug": "janhq-jan",
+    "name": "Jan — Ứng dụng trò chuyện AI chạy cục bộ thay thế ChatGPT",
+    "icon": "MessageSquare",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/janhq/jan",
+    "websiteUrl": "https://jan.ai",
+    "authorName": "Menlo Research",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Jan là ứng dụng máy tính mã nguồn mở thay thế ChatGPT, cho phép tải và chạy LLM (Llama, Gemma, Qwen, GPT-oss...) từ Hugging Face ngay trên máy với toàn quyền kiểm soát và quyền riêng tư. Ứng dụng cũng kết nối được với mô hình đám mây (OpenAI, Anthropic, Mistral, Groq...), hỗ trợ trợ lý tùy chỉnh, MCP và mở máy chủ API tương thích OpenAI tại localhost:1337.",
+    "purposeVi": "Cung cấp giao diện trò chuyện AI dễ dùng chạy cục bộ trên Windows, macOS và Linux, phù hợp người dùng không chuyên.",
+    "featuresVi": [
+      "Mô hình cục bộ: tải và chạy LLM từ Hugging Face",
+      "Tích hợp đám mây: OpenAI, Anthropic, Mistral, Groq, MiniMax...",
+      "Trợ lý tùy chỉnh: tạo trợ lý AI chuyên biệt cho từng công việc",
+      "API tương thích OpenAI: máy chủ cục bộ tại `localhost:1337`",
+      "Model Context Protocol: tích hợp MCP cho khả năng tác tử",
+      "Ưu tiên quyền riêng tư: mọi thứ chạy cục bộ khi bạn muốn"
+    ],
+    "installGuideVi": "Yêu cầu: macOS 13.6+ (8GB RAM cho mô hình 3B, 16GB cho 7B, 32GB cho 13B); Windows 10+ có GPU NVIDIA/AMD/Intel Arc; đa số bản phân phối Linux. Build từ mã nguồn cần Node.js ≥ 20, Yarn ≥ 4.5.3, Make ≥ 3.81 và Rust.\nBước 1: Cài đặt bản dựng sẵn: tải jan.exe (Windows), jan.dmg (macOS), jan.deb hoặc jan.AppImage (Linux) từ jan.ai hoặc GitHub Releases; cũng có trên Microsoft Store và Flathub\nBước 2: Hoặc build từ mã nguồn: `git clone https://github.com/janhq/jan` rồi vào thư mục jan\nBước 3: Chạy `make dev` để cài đặt phụ thuộc, build và khởi chạy ứng dụng",
+    "usageGuideVi": "Bước 1: Mở Jan, tìm và tải một mô hình phù hợp cấu hình máy từ Hugging Face\nBước 2: Trò chuyện hoặc tạo trợ lý tùy chỉnh; có thể thêm API key để dùng mô hình đám mây\nBước 3: Bật máy chủ cục bộ `localhost:1337` để ứng dụng khác gọi API kiểu OpenAI\nBước 4: Kết nối máy chủ MCP để mô hình dùng công cụ bên ngoài",
+    "samplePromptsVi": [
+      "Lập kế hoạch học tiếng Anh trong 4 tuần cho người mới bắt đầu",
+      "Soạn thông báo nội bộ về lịch nghỉ Tết của công ty",
+      "Giải thích đoạn mã JavaScript này đang làm gì"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "make dev",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"make dev\"\n  ],\n  \"nguon\": \"https://github.com/janhq/jan\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0",
+      "Ứng dụng desktop dễ dùng, có bản cho Windows, macOS, Linux",
+      "Kết hợp được mô hình cục bộ và mô hình đám mây",
+      "Hỗ trợ MCP và API tương thích OpenAI"
+    ],
+    "consVi": [
+      "Mô hình đám mây cần API key của nhà cung cấp tương ứng",
+      "Mô hình lớn đòi hỏi nhiều RAM (32GB cho 13B trên macOS)",
+      "Linux Arm64 chưa có bản dựng sẵn, cần làm theo hướng dẫn riêng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Jan — Ứng dụng trò chuyện AI chạy cục bộ thay thế ChatGPT\n\n> Jan is bringing the best of open-source AI in an easy-to-use product. Download and run LLMs with **full control** and **privacy**.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nJan là ứng dụng máy tính mã nguồn mở thay thế ChatGPT, cho phép tải và chạy LLM (Llama, Gemma, Qwen, GPT-oss...) từ Hugging Face ngay trên máy với toàn quyền kiểm soát và quyền riêng tư. Ứng dụng cũng kết nối được với mô hình đám mây (OpenAI, Anthropic, Mistral, Groq...), hỗ trợ trợ lý tùy chỉnh, MCP và mở máy chủ API tương thích OpenAI tại localhost:1337.\n\nCung cấp giao diện trò chuyện AI dễ dùng chạy cục bộ trên Windows, macOS và Linux, phù hợp người dùng không chuyên.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Menlo Research\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/janhq/jan](https://github.com/janhq/jan)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Mô hình cục bộ: tải và chạy LLM từ Hugging Face**\n- **Tích hợp đám mây: OpenAI, Anthropic, Mistral, Groq, MiniMax...**\n- **Trợ lý tùy chỉnh: tạo trợ lý AI chuyên biệt cho từng công việc**\n- **API tương thích OpenAI: máy chủ cục bộ tại `localhost:1337`**\n- **Model Context Protocol: tích hợp MCP cho khả năng tác tử**\n- **Ưu tiên quyền riêng tư: mọi thứ chạy cục bộ khi bạn muốn**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nmake dev\n```\n\nYêu cầu: macOS 13.6+ (8GB RAM cho mô hình 3B, 16GB cho 7B, 32GB cho 13B); Windows 10+ có GPU NVIDIA/AMD/Intel Arc; đa số bản phân phối Linux. Build từ mã nguồn cần Node.js ≥ 20, Yarn ≥ 4.5.3, Make ≥ 3.81 và Rust.\nBước 1: Cài đặt bản dựng sẵn: tải jan.exe (Windows), jan.dmg (macOS), jan.deb hoặc jan.AppImage (Linux) từ jan.ai hoặc GitHub Releases; cũng có trên Microsoft Store và Flathub\nBước 2: Hoặc build từ mã nguồn: `git clone https://github.com/janhq/jan` rồi vào thư mục jan\nBước 3: Chạy `make dev` để cài đặt phụ thuộc, build và khởi chạy ứng dụng\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở Jan, tìm và tải một mô hình phù hợp cấu hình máy từ Hugging Face\nBước 2: Trò chuyện hoặc tạo trợ lý tùy chỉnh; có thể thêm API key để dùng mô hình đám mây\nBước 3: Bật máy chủ cục bộ `localhost:1337` để ứng dụng khác gọi API kiểu OpenAI\nBước 4: Kết nối máy chủ MCP để mô hình dùng công cụ bên ngoài\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Lập kế hoạch học tiếng Anh trong 4 tuần cho người mới bắt đầu\"\n- \"Soạn thông báo nội bộ về lịch nghỉ Tết của công ty\"\n- \"Giải thích đoạn mã JavaScript này đang làm gì\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "lostruins-koboldcpp",
+    "slug": "lostruins-koboldcpp",
+    "name": "KoboldCpp — Chạy LLM GGUF cục bộ kèm giao diện web",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/LostRuins/koboldcpp",
+    "websiteUrl": "https://koboldcpp.net",
+    "authorName": "LostRuins (Concedo)",
+    "license": "Mã nguồn mở (AGPL-3.0)",
+    "summaryVi": "KoboldCpp là phần mềm miễn phí, mã nguồn mở để chạy mô hình GGUF trên máy tính cá nhân, dựa trên llama.cpp. Chỉ một tệp thực thi, không cần cài đặt, kèm giao diện web KoboldAI Lite để trò chuyện, viết truyện, nhập vai. Ngoài văn bản còn hỗ trợ tạo ảnh, video, nhận dạng và tổng hợp giọng nói, tạo nhạc, tác tử tích hợp và nhiều API tương thích (OpenAI, Ollama, A1111, ComfyUI...).",
+    "purposeVi": "Chạy LLM và các mô hình sinh nội dung đa phương tiện cục bộ với giao diện web sẵn có, phục vụ viết sáng tạo, trò chuyện và kết nối ứng dụng khác qua API cục bộ.",
+    "featuresVi": [
+      "Sinh văn bản cục bộ: chế độ chat, adventure, instruct, viết truyện; hỗ trợ mô hình thị giác",
+      "Tạo và chỉnh sửa ảnh: Stable Diffusion 1.5, SDXL, SD3, Flux, Qwen Image...",
+      "Tạo video: WAN 2.2, LTX2.3, MiniMax H3",
+      "Giọng nói: nhận dạng bằng Whisper, tổng hợp bằng Qwen3TTS, Kokoro, OuteTTS...",
+      "Tác tử và công cụ: hỗ trợ MCP, gọi công cụ, tìm kiếm web, RAG qua TextDB",
+      "API tương thích: KoboldAI, OpenAI, Anthropic, Ollama, A1111/Forge, ComfyUI, XTTS tại cổng 5001",
+      "Di động: một tệp thực thi cho Windows, Linux, macOS; chạy CPU hoặc GPU"
+    ],
+    "installGuideVi": "Yêu cầu: Windows, Linux x86-64 hoặc macOS Apple Silicon (Intel Mac cần build từ mã nguồn); tệp mô hình GGUF tải riêng. GPU là tùy chọn.\nBước 1: Cài đặt nhanh trên Linux: `curl -fLo koboldcpp-linux-x64 https://github.com/LostRuins/koboldcpp/releases/latest/download/koboldcpp-linux-x64 && chmod +x koboldcpp-linux-x64 && ./koboldcpp-linux-x64`\nBước 2: Cài đặt nhanh trên Windows: `cmd /c \"curl -fLo koboldcpp.exe https://github.com/LostRuins/koboldcpp/releases/latest/download/koboldcpp.exe && koboldcpp.exe\"`\nBước 3: Tải một mô hình GGUF (ví dụ từ Hugging Face) hoặc chọn mẫu trong mục Get Help → Newbie Templates\nBước 4: Chạy kèm mô hình từ dòng lệnh: `./koboldcpp-linux-x64 --model /path/to/model.gguf`",
+    "usageGuideVi": "Bước 1: Mở trình khởi chạy, chọn tệp mô hình GGUF và cấu hình phần cứng rồi bấm Launch\nBước 2: Truy cập giao diện web tại http://localhost:5001\nBước 3: Kết nối ứng dụng khác qua API tương thích OpenAI tại http://localhost:5001/v1\nBước 4: Chỉ tải bản chính thức từ GitHub Releases hoặc koboldcpp.net (koboldcpp.com là trang giả mạo)",
+    "samplePromptsVi": [
+      "Viết tiếp câu chuyện phiêu lưu về một nhóm bạn khám phá hang Sơn Đoòng",
+      "Đóng vai hướng dẫn viên du lịch giới thiệu phố cổ Hội An",
+      "Tạo ảnh phong cảnh ruộng bậc thang mùa lúa chín"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "./koboldcpp-linux-x64 --model /path/to/model.gguf",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"./koboldcpp-linux-x64 --model /path/to/model.gguf\"\n  ],\n  \"nguon\": \"https://github.com/LostRuins/koboldcpp\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Miễn phí, mã nguồn mở",
+      "Một tệp thực thi, không cần cài đặt",
+      "Nhiều API tương thích và giao diện web tích hợp",
+      "Phát triển tích cực"
+    ],
+    "consVi": [
+      "Giấy phép AGPL v3.0 có nghĩa vụ công bố mã nguồn khi cung cấp dịch vụ qua mạng",
+      "Mô hình phải tải riêng",
+      "Mac Intel phải tự build; image Docker chính thức chỉ dành cho người dùng chuyên sâu"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# KoboldCpp — Chạy LLM GGUF cục bộ kèm giao diện web\n\n> KoboldCpp is free and open-source software for running GGUF large language models (LLMs) on your own computer.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nKoboldCpp là phần mềm miễn phí, mã nguồn mở để chạy mô hình GGUF trên máy tính cá nhân, dựa trên llama.cpp. Chỉ một tệp thực thi, không cần cài đặt, kèm giao diện web KoboldAI Lite để trò chuyện, viết truyện, nhập vai. Ngoài văn bản còn hỗ trợ tạo ảnh, video, nhận dạng và tổng hợp giọng nói, tạo nhạc, tác tử tích hợp và nhiều API tương thích (OpenAI, Ollama, A1111, ComfyUI...).\n\nChạy LLM và các mô hình sinh nội dung đa phương tiện cục bộ với giao diện web sẵn có, phục vụ viết sáng tạo, trò chuyện và kết nối ứng dụng khác qua API cục bộ.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** LostRuins (Concedo)\n- **Giấy phép bản quyền:** Mã nguồn mở (AGPL-3.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/LostRuins/koboldcpp](https://github.com/LostRuins/koboldcpp)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Sinh văn bản cục bộ: chế độ chat, adventure, instruct, viết truyện; hỗ trợ mô hình thị giác**\n- **Tạo và chỉnh sửa ảnh: Stable Diffusion 1.5, SDXL, SD3, Flux, Qwen Image...**\n- **Tạo video: WAN 2.2, LTX2.3, MiniMax H3**\n- **Giọng nói: nhận dạng bằng Whisper, tổng hợp bằng Qwen3TTS, Kokoro, OuteTTS...**\n- **Tác tử và công cụ: hỗ trợ MCP, gọi công cụ, tìm kiếm web, RAG qua TextDB**\n- **API tương thích: KoboldAI, OpenAI, Anthropic, Ollama, A1111/Forge, ComfyUI, XTTS tại cổng 5001**\n- **Di động: một tệp thực thi cho Windows, Linux, macOS; chạy CPU hoặc GPU**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n./koboldcpp-linux-x64 --model /path/to/model.gguf\n```\n\nYêu cầu: Windows, Linux x86-64 hoặc macOS Apple Silicon (Intel Mac cần build từ mã nguồn); tệp mô hình GGUF tải riêng. GPU là tùy chọn.\nBước 1: Cài đặt nhanh trên Linux: `curl -fLo koboldcpp-linux-x64 https://github.com/LostRuins/koboldcpp/releases/latest/download/koboldcpp-linux-x64 && chmod +x koboldcpp-linux-x64 && ./koboldcpp-linux-x64`\nBước 2: Cài đặt nhanh trên Windows: `cmd /c \"curl -fLo koboldcpp.exe https://github.com/LostRuins/koboldcpp/releases/latest/download/koboldcpp.exe && koboldcpp.exe\"`\nBước 3: Tải một mô hình GGUF (ví dụ từ Hugging Face) hoặc chọn mẫu trong mục Get Help → Newbie Templates\nBước 4: Chạy kèm mô hình từ dòng lệnh: `./koboldcpp-linux-x64 --model /path/to/model.gguf`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở trình khởi chạy, chọn tệp mô hình GGUF và cấu hình phần cứng rồi bấm Launch\nBước 2: Truy cập giao diện web tại http://localhost:5001\nBước 3: Kết nối ứng dụng khác qua API tương thích OpenAI tại http://localhost:5001/v1\nBước 4: Chỉ tải bản chính thức từ GitHub Releases hoặc koboldcpp.net (koboldcpp.com là trang giả mạo)\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết tiếp câu chuyện phiêu lưu về một nhóm bạn khám phá hang Sơn Đoòng\"\n- \"Đóng vai hướng dẫn viên du lịch giới thiệu phố cổ Hội An\"\n- \"Tạo ảnh phong cảnh ruộng bậc thang mùa lúa chín\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "ml-explore-mlx-lm",
+    "slug": "ml-explore-mlx-lm",
+    "name": "MLX LM — Chạy và tinh chỉnh LLM trên Apple silicon",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/ml-explore/mlx-lm",
+    "websiteUrl": "",
+    "authorName": "Apple (ml-explore)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "MLX LM là gói Python của Apple để sinh văn bản và tinh chỉnh mô hình ngôn ngữ lớn trên chip Apple silicon bằng framework MLX. Gói tích hợp Hugging Face Hub để dùng hàng nghìn mô hình bằng một lệnh, hỗ trợ lượng tử hóa, tinh chỉnh LoRA và toàn phần, suy luận phân tán và máy chủ HTTP kiểu OpenAI.",
+    "purposeVi": "Chạy, lượng tử hóa và tinh chỉnh LLM hiệu quả trên máy Mac dùng chip Apple silicon.",
+    "featuresVi": [
+      "Tích hợp Hugging Face Hub: dùng hàng nghìn mô hình MLX Community bằng một lệnh",
+      "Lượng tử hóa và tải mô hình lên Hub: `mlx_lm.convert` với `-q` và `--upload-repo`",
+      "Tinh chỉnh LoRA và toàn phần, kể cả trên mô hình đã lượng tử hóa",
+      "Suy luận và tinh chỉnh phân tán với `mx.distributed`",
+      "Máy chủ HTTP tương tự API chat OpenAI tại cổng 8080",
+      "Bộ nhớ đệm KV xoay vòng và cache prompt cho prompt dài"
+    ],
+    "installGuideVi": "Yêu cầu: Máy Mac chip Apple silicon, Python với pip hoặc conda.\nBước 1: Cài đặt bằng pip: `pip install mlx-lm`\nBước 2: Hoặc cài đặt bằng conda: `conda install -c conda-forge mlx-lm`\nBước 3: Sinh văn bản thử: `mlx_lm.generate --prompt \"How tall is Mt Everest?\"`\nBước 4: Mở phiên trò chuyện trên terminal: `mlx_lm.chat`",
+    "usageGuideVi": "Bước 1: Chọn mô hình bằng tham số `--model` (mặc định mlx-community/Llama-3.2-3B-Instruct-4bit)\nBước 2: Lượng tử hóa mô hình: `mlx_lm.convert --model mistralai/Mistral-7B-Instruct-v0.3 -q`\nBước 3: Khởi chạy máy chủ API: `mlx_lm.server --model mlx-community/Mistral-7B-Instruct-v0.3-4bit` (không khuyến nghị cho production)\nBước 4: Dùng API Python `load`, `generate`, `stream_generate` trong mã của bạn",
+    "samplePromptsVi": [
+      "Viết đoạn giới thiệu ngắn về Vịnh Hạ Long",
+      "Giải thích sự khác nhau giữa lượng tử hóa 4-bit và 8-bit",
+      "Viết mã Python dùng mlx_lm để sinh văn bản theo luồng"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install mlx-lm",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install mlx-lm\"\n  ],\n  \"nguon\": \"https://github.com/ml-explore/mlx-lm\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở giấy phép MIT, do Apple phát triển",
+      "Tối ưu cho Apple silicon",
+      "Hỗ trợ tinh chỉnh và lượng tử hóa ngay trong cùng gói"
+    ],
+    "consVi": [
+      "Chỉ dành cho máy Mac dùng Apple silicon",
+      "Máy chủ HTTP chỉ có kiểm tra bảo mật cơ bản, không khuyến nghị cho production"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# MLX LM — Chạy và tinh chỉnh LLM trên Apple silicon\n\n> MLX LM is a Python package for generating text and fine-tuning large language models on Apple silicon with MLX.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMLX LM là gói Python của Apple để sinh văn bản và tinh chỉnh mô hình ngôn ngữ lớn trên chip Apple silicon bằng framework MLX. Gói tích hợp Hugging Face Hub để dùng hàng nghìn mô hình bằng một lệnh, hỗ trợ lượng tử hóa, tinh chỉnh LoRA và toàn phần, suy luận phân tán và máy chủ HTTP kiểu OpenAI.\n\nChạy, lượng tử hóa và tinh chỉnh LLM hiệu quả trên máy Mac dùng chip Apple silicon.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Apple (ml-explore)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/ml-explore/mlx-lm](https://github.com/ml-explore/mlx-lm)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tích hợp Hugging Face Hub: dùng hàng nghìn mô hình MLX Community bằng một lệnh**\n- **Lượng tử hóa và tải mô hình lên Hub: `mlx_lm.convert` với `-q` và `--upload-repo`**\n- **Tinh chỉnh LoRA và toàn phần, kể cả trên mô hình đã lượng tử hóa**\n- **Suy luận và tinh chỉnh phân tán với `mx.distributed`**\n- **Máy chủ HTTP tương tự API chat OpenAI tại cổng 8080**\n- **Bộ nhớ đệm KV xoay vòng và cache prompt cho prompt dài**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install mlx-lm\n```\n\nYêu cầu: Máy Mac chip Apple silicon, Python với pip hoặc conda.\nBước 1: Cài đặt bằng pip: `pip install mlx-lm`\nBước 2: Hoặc cài đặt bằng conda: `conda install -c conda-forge mlx-lm`\nBước 3: Sinh văn bản thử: `mlx_lm.generate --prompt \"How tall is Mt Everest?\"`\nBước 4: Mở phiên trò chuyện trên terminal: `mlx_lm.chat`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn mô hình bằng tham số `--model` (mặc định mlx-community/Llama-3.2-3B-Instruct-4bit)\nBước 2: Lượng tử hóa mô hình: `mlx_lm.convert --model mistralai/Mistral-7B-Instruct-v0.3 -q`\nBước 3: Khởi chạy máy chủ API: `mlx_lm.server --model mlx-community/Mistral-7B-Instruct-v0.3-4bit` (không khuyến nghị cho production)\nBước 4: Dùng API Python `load`, `generate`, `stream_generate` trong mã của bạn\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết đoạn giới thiệu ngắn về Vịnh Hạ Long\"\n- \"Giải thích sự khác nhau giữa lượng tử hóa 4-bit và 8-bit\"\n- \"Viết mã Python dùng mlx_lm để sinh văn bản theo luồng\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "oobabooga-textgen",
+    "slug": "oobabooga-textgen",
+    "name": "TextGen — Ứng dụng chạy LLM cục bộ có giao diện và API",
+    "icon": "MessageSquare",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/oobabooga/textgen",
+    "websiteUrl": "",
+    "authorName": "oobabooga",
+    "license": "Mã nguồn mở (AGPL-3.0)",
+    "summaryVi": "TextGen (trước đây là text-generation-webui) là ứng dụng mã nguồn mở chạy LLM cục bộ với giao diện và API, không thu thập dữ liệu (telemetry). Hỗ trợ nhiều backend như llama.cpp, ik_llama.cpp, Transformers, ExLlamaV3, TensorRT-LLM, cùng thị giác, đính kèm tệp, gọi công cụ, MCP, huấn luyện LoRA và tạo ảnh.",
+    "purposeVi": "Trò chuyện và sinh văn bản với LLM hoàn toàn ngoại tuyến, đồng thời cung cấp API tương thích OpenAI/Anthropic cho ứng dụng khác.",
+    "featuresVi": [
+      "Chế độ instruct, chat-instruct và chat với nhân vật tùy chỉnh; mẫu prompt Jinja2",
+      "Thị giác và đính kèm tệp: ảnh, văn bản, PDF, .docx",
+      "Nhiều backend: llama.cpp, ik_llama.cpp, Transformers, ExLlamaV3, TensorRT-LLM; đổi mô hình không cần khởi động lại",
+      "API tương thích OpenAI/Anthropic có gọi công cụ",
+      "Gọi công cụ và MCP: tìm kiếm web, đọc trang, tính toán",
+      "Huấn luyện LoRA và tạo ảnh với mô hình diffusers",
+      "100% ngoại tuyến, không telemetry; có tiện ích mở rộng TTS, nhập giọng nói, dịch"
+    ],
+    "installGuideVi": "Yêu cầu: Bản portable cho Linux, Windows, macOS (CUDA, Vulkan, ROCm, CPU). Cài đặt thủ công cần Python 3.9+; bản đầy đủ cần khoảng 10GB dung lượng và PyTorch.\nBước 1: Cách nhanh nhất: tải bản portable từ trang Releases, giải nén và mở ứng dụng textgen\nBước 2: Hoặc cài đặt thủ công: `git clone https://github.com/oobabooga/textgen` rồi vào thư mục textgen\nBước 3: Tạo môi trường ảo: `python -m venv venv` và kích hoạt bằng `source venv/bin/activate` (macOS/Linux)\nBước 4: Cài đặt phụ thuộc: `pip install -r requirements/portable/requirements.txt --upgrade`\nBước 5: Khởi chạy máy chủ: `python server.py --portable --api --auto-launch`",
+    "usageGuideVi": "Bước 1: Tải tệp mô hình GGUF từ Hugging Face và đặt vào thư mục user_data/models\nBước 2: Chọn mô hình trong giao diện và trò chuyện, đính kèm ảnh hoặc tài liệu khi cần\nBước 3: Bật `--api` để dùng ứng dụng như máy chủ thay thế API OpenAI/Anthropic\nBước 4: Bản đầy đủ: mở http://127.0.0.1:7860 sau khi chạy script start_ tương ứng hệ điều hành",
+    "samplePromptsVi": [
+      "Tóm tắt nội dung tệp PDF hợp đồng đính kèm",
+      "Tìm kiếm trên web và cho biết tin công nghệ nổi bật hôm nay",
+      "Đóng vai giáo viên toán giải thích phương trình bậc hai"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "python server.py --portable --api --auto-launch",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"python server.py --portable --api --auto-launch\"\n  ],\n  \"nguon\": \"https://github.com/oobabooga/textgen\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở, không telemetry, chạy hoàn toàn ngoại tuyến",
+      "Hỗ trợ nhiều backend và định dạng mô hình",
+      "Có bản portable không cần cài đặt phụ thuộc"
+    ],
+    "consVi": [
+      "Giấy phép AGPL v3.0 có nghĩa vụ công bố mã nguồn khi cung cấp dịch vụ qua mạng",
+      "Bản portable chỉ hỗ trợ GGUF; backend Transformers/ExLlamaV3 cần bản đầy đủ khoảng 10GB"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# TextGen — Ứng dụng chạy LLM cục bộ có giao diện và API\n\n> A desktop app for local LLMs. Open source, no telemetry.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nTextGen (trước đây là text-generation-webui) là ứng dụng mã nguồn mở chạy LLM cục bộ với giao diện và API, không thu thập dữ liệu (telemetry). Hỗ trợ nhiều backend như llama.cpp, ik_llama.cpp, Transformers, ExLlamaV3, TensorRT-LLM, cùng thị giác, đính kèm tệp, gọi công cụ, MCP, huấn luyện LoRA và tạo ảnh.\n\nTrò chuyện và sinh văn bản với LLM hoàn toàn ngoại tuyến, đồng thời cung cấp API tương thích OpenAI/Anthropic cho ứng dụng khác.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** oobabooga\n- **Giấy phép bản quyền:** Mã nguồn mở (AGPL-3.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/oobabooga/textgen](https://github.com/oobabooga/textgen)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Chế độ instruct, chat-instruct và chat với nhân vật tùy chỉnh; mẫu prompt Jinja2**\n- **Thị giác và đính kèm tệp: ảnh, văn bản, PDF, .docx**\n- **Nhiều backend: llama.cpp, ik_llama.cpp, Transformers, ExLlamaV3, TensorRT-LLM; đổi mô hình không cần khởi động lại**\n- **API tương thích OpenAI/Anthropic có gọi công cụ**\n- **Gọi công cụ và MCP: tìm kiếm web, đọc trang, tính toán**\n- **Huấn luyện LoRA và tạo ảnh với mô hình diffusers**\n- **100% ngoại tuyến, không telemetry; có tiện ích mở rộng TTS, nhập giọng nói, dịch**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npython server.py --portable --api --auto-launch\n```\n\nYêu cầu: Bản portable cho Linux, Windows, macOS (CUDA, Vulkan, ROCm, CPU). Cài đặt thủ công cần Python 3.9+; bản đầy đủ cần khoảng 10GB dung lượng và PyTorch.\nBước 1: Cách nhanh nhất: tải bản portable từ trang Releases, giải nén và mở ứng dụng textgen\nBước 2: Hoặc cài đặt thủ công: `git clone https://github.com/oobabooga/textgen` rồi vào thư mục textgen\nBước 3: Tạo môi trường ảo: `python -m venv venv` và kích hoạt bằng `source venv/bin/activate` (macOS/Linux)\nBước 4: Cài đặt phụ thuộc: `pip install -r requirements/portable/requirements.txt --upgrade`\nBước 5: Khởi chạy máy chủ: `python server.py --portable --api --auto-launch`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tải tệp mô hình GGUF từ Hugging Face và đặt vào thư mục user_data/models\nBước 2: Chọn mô hình trong giao diện và trò chuyện, đính kèm ảnh hoặc tài liệu khi cần\nBước 3: Bật `--api` để dùng ứng dụng như máy chủ thay thế API OpenAI/Anthropic\nBước 4: Bản đầy đủ: mở http://127.0.0.1:7860 sau khi chạy script start_ tương ứng hệ điều hành\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tóm tắt nội dung tệp PDF hợp đồng đính kèm\"\n- \"Tìm kiếm trên web và cho biết tin công nghệ nổi bật hôm nay\"\n- \"Đóng vai giáo viên toán giải thích phương trình bậc hai\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "sgl-project-sglang",
+    "slug": "sgl-project-sglang",
+    "name": "SGLang — Framework suy luận và phục vụ LLM, mô hình đa phương thức hiệu năng cao",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "cloud_infrastructure",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Điện toán đám mây & Hạ tầng số",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/sgl-project/sglang",
+    "websiteUrl": "https://www.sglang.io",
+    "authorName": "SGLang (LMSYS)",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "SGLang là framework suy luận mã nguồn mở cho mô hình ngôn ngữ lớn, mô hình thị giác–ngôn ngữ và mô hình khuếch tán, tối ưu cho tác vụ agent, phục vụ quy mô lớn và sinh rollout cho học tăng cường. Công cụ dựng máy chủ tương thích API OpenAI với RadixAttention, prefix caching và song song đa GPU. Gói sglang còn kèm SGLang Diffusion để sinh ảnh và video.",
+    "purposeVi": "Triển khai máy chủ suy luận LLM độ trễ thấp, thông lượng cao trong môi trường production, phục vụ mô hình Hugging Face qua API tương thích OpenAI.",
+    "featuresVi": [
+      "Hiệu năng cao: RadixAttention, prefix caching và song song đa GPU cho suy luận độ trễ thấp, thông lượng cao",
+      "API tương thích OpenAI: gọi endpoint /v1/chat/completions như với OpenAI",
+      "Hỗ trợ phần cứng rộng: NVIDIA, AMD Instinct, Google TPU, Intel GPU/CPU, Apple Silicon, Huawei Ascend, Moore Threads",
+      "Nhiều họ mô hình: Llama, Qwen, DeepSeek và các mô hình tương thích Hugging Face",
+      "SGLang Diffusion tích hợp sẵn để sinh ảnh và video bằng mô hình khuếch tán",
+      "Hệ sinh thái: tích hợp với Ray Serve, NVIDIA Dynamo, llm-d và các framework RL như verl, slime, AReaL"
+    ],
+    "installGuideVi": "Yêu cầu: Hướng dẫn nhanh nhắm tới Linux có GPU NVIDIA với driver tương thích CUDA 13; dùng Docker kèm NVIDIA Container Toolkit, hoặc Python 3.11 trở lên với uv. Máy chủ mặc định trong ví dụ chạy ở cổng 30000.\nBước 1: Cài đặt bằng Docker — tải image có sẵn SGLang và các phụ thuộc: `docker pull lmsysorg/sglang:latest`\nBước 2: Hoặc cài đặt bằng uv — tạo môi trường Python: `uv venv --python 3.12`\nBước 3: Kích hoạt môi trường: `source .venv/bin/activate`\nBước 4: Cài đặt gói SGLang: `uv pip install --prerelease=allow sglang`\nBước 5: Khởi động máy chủ (thay MODEL_PATH bằng ID mô hình Hugging Face, ví dụ Qwen/Qwen3-0.6B): `sglang serve MODEL_PATH --host 0.0.0.0 --port 30000`",
+    "usageGuideVi": "Bước 1: Chờ dòng thông báo \"The server is fired up and ready to roll!\" xuất hiện\nBước 2: Gửi yêu cầu chat tới http://localhost:30000/v1/chat/completions với trường model là ID mô hình đã nạp\nBước 3: Đọc câu trả lời tại choices[0].message.content; tra Cookbook để lấy tham số khởi chạy riêng cho từng mô hình và phần cứng",
+    "samplePromptsVi": [
+      "Hướng dẫn tôi chạy SGLang bằng Docker để phục vụ Qwen/Qwen3-0.6B ở cổng 30000",
+      "Viết đoạn mã Python dùng thư viện openai gọi máy chủ SGLang cục bộ tại /v1/chat/completions",
+      "So sánh cách cài đặt SGLang bằng Docker và bằng uv cho máy chủ GPU NVIDIA"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "sglang serve MODEL_PATH --host 0.0.0.0 --port 30000",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"sglang serve MODEL_PATH --host 0.0.0.0 --port 30000\"\n  ],\n  \"nguon\": \"https://github.com/sgl-project/sglang\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, dùng thương mại được",
+      "API tương thích OpenAI nên dễ thay thế dịch vụ đám mây",
+      "Hỗ trợ nhiều nền tảng phần cứng (NVIDIA, AMD, TPU, Intel, Apple Silicon, Ascend)",
+      "Dự án được bảo trì rất tích cực, có Docker image chính thức"
+    ],
+    "consVi": [
+      "Hướng dẫn nhanh yêu cầu Linux, GPU NVIDIA và driver tương thích CUDA 13",
+      "README gốc ngắn; lệnh khởi chạy chi tiết nằm trong tài liệu docs/ và Cookbook",
+      "Cài đặt qua uv cần cờ --prerelease=allow"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# SGLang — Framework suy luận và phục vụ LLM, mô hình đa phương thức hiệu năng cao\n\n> SGLang is an open-source inference framework for large language, vision-language, and diffusion models, optimized for agentic workloads, large-scale serving, and RL rollouts.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSGLang là framework suy luận mã nguồn mở cho mô hình ngôn ngữ lớn, mô hình thị giác–ngôn ngữ và mô hình khuếch tán, tối ưu cho tác vụ agent, phục vụ quy mô lớn và sinh rollout cho học tăng cường. Công cụ dựng máy chủ tương thích API OpenAI với RadixAttention, prefix caching và song song đa GPU. Gói sglang còn kèm SGLang Diffusion để sinh ảnh và video.\n\nTriển khai máy chủ suy luận LLM độ trễ thấp, thông lượng cao trong môi trường production, phục vụ mô hình Hugging Face qua API tương thích OpenAI.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** SGLang (LMSYS)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/sgl-project/sglang](https://github.com/sgl-project/sglang)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Hiệu năng cao: RadixAttention, prefix caching và song song đa GPU cho suy luận độ trễ thấp, thông lượng cao**\n- **API tương thích OpenAI: gọi endpoint /v1/chat/completions như với OpenAI**\n- **Hỗ trợ phần cứng rộng: NVIDIA, AMD Instinct, Google TPU, Intel GPU/CPU, Apple Silicon, Huawei Ascend, Moore Threads**\n- **Nhiều họ mô hình: Llama, Qwen, DeepSeek và các mô hình tương thích Hugging Face**\n- **SGLang Diffusion tích hợp sẵn để sinh ảnh và video bằng mô hình khuếch tán**\n- **Hệ sinh thái: tích hợp với Ray Serve, NVIDIA Dynamo, llm-d và các framework RL như verl, slime, AReaL**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nsglang serve MODEL_PATH --host 0.0.0.0 --port 30000\n```\n\nYêu cầu: Hướng dẫn nhanh nhắm tới Linux có GPU NVIDIA với driver tương thích CUDA 13; dùng Docker kèm NVIDIA Container Toolkit, hoặc Python 3.11 trở lên với uv. Máy chủ mặc định trong ví dụ chạy ở cổng 30000.\nBước 1: Cài đặt bằng Docker — tải image có sẵn SGLang và các phụ thuộc: `docker pull lmsysorg/sglang:latest`\nBước 2: Hoặc cài đặt bằng uv — tạo môi trường Python: `uv venv --python 3.12`\nBước 3: Kích hoạt môi trường: `source .venv/bin/activate`\nBước 4: Cài đặt gói SGLang: `uv pip install --prerelease=allow sglang`\nBước 5: Khởi động máy chủ (thay MODEL_PATH bằng ID mô hình Hugging Face, ví dụ Qwen/Qwen3-0.6B): `sglang serve MODEL_PATH --host 0.0.0.0 --port 30000`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chờ dòng thông báo \"The server is fired up and ready to roll!\" xuất hiện\nBước 2: Gửi yêu cầu chat tới http://localhost:30000/v1/chat/completions với trường model là ID mô hình đã nạp\nBước 3: Đọc câu trả lời tại choices[0].message.content; tra Cookbook để lấy tham số khởi chạy riêng cho từng mô hình và phần cứng\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hướng dẫn tôi chạy SGLang bằng Docker để phục vụ Qwen/Qwen3-0.6B ở cổng 30000\"\n- \"Viết đoạn mã Python dùng thư viện openai gọi máy chủ SGLang cục bộ tại /v1/chat/completions\"\n- \"So sánh cách cài đặt SGLang bằng Docker và bằng uv cho máy chủ GPU NVIDIA\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "internlm-lmdeploy",
+    "slug": "internlm-lmdeploy",
+    "name": "LMDeploy — Bộ công cụ nén, triển khai và phục vụ LLM với engine TurboMind",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "cloud_infrastructure",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Điện toán đám mây & Hạ tầng số",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/InternLM/lmdeploy",
+    "websiteUrl": "https://lmdeploy.readthedocs.io",
+    "authorName": "InternLM (nhóm MMRazor & MMDeploy)",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "LMDeploy là bộ công cụ nén, triển khai và phục vụ LLM do nhóm MMRazor và MMDeploy phát triển. Dự án có hai engine suy luận: TurboMind tối ưu hiệu năng tối đa và PyTorch engine viết thuần Python dễ mở rộng. Hỗ trợ lượng tử hóa trọng số 4-bit, lượng tử hóa KV cache và máy chủ API tương thích OpenAI cho cả LLM lẫn VLM.",
+    "purposeVi": "Phục vụ LLM/VLM với thông lượng cao và chi phí GPU thấp nhờ lượng tử hóa, triển khai nhiều mô hình trên nhiều máy và nhiều card.",
+    "featuresVi": [
+      "Suy luận hiệu quả: persistent batch (continuous batching), blocked KV cache, dynamic split&fuse, tensor parallelism; README công bố thông lượng yêu cầu cao hơn vLLM tới 1,8 lần",
+      "Lượng tử hóa: weight-only và k/v; suy luận 4-bit nhanh hơn FP16 khoảng 2,4 lần, chất lượng kiểm chứng bằng OpenCompass",
+      "Máy chủ phân phối yêu cầu: triển khai nhiều mô hình trên nhiều máy, nhiều card",
+      "Tương thích: dùng đồng thời KV Cache Quant, AWQ và Automatic Prefix Caching",
+      "Hai engine TurboMind và PyTorch; PyTorch engine hỗ trợ Huawei Ascend",
+      "Pipeline suy luận offline cho LLM và VLM, máy chủ API tương thích OpenAI (mặc định cổng 23333)"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10 – 3.13 (khuyến nghị dùng môi trường conda). Từ v0.13.0 các wheel dựng sẵn trên PyPI biên dịch với CUDA 12.8. Mô hình mặc định tải từ Hugging Face; có thể chuyển sang ModelScope hoặc openMind Hub bằng biến môi trường.\nBước 1: Tạo môi trường conda: `conda create -n lmdeploy python=3.12 -y`\nBước 2: Kích hoạt môi trường: `conda activate lmdeploy`\nBước 3: Cài đặt LMDeploy: `pip install lmdeploy`\nBước 4: Khởi động máy chủ API tương thích OpenAI: `lmdeploy serve api_server internlm/internlm2_5-7b-chat --server-port 23333`",
+    "usageGuideVi": "Bước 1: Suy luận offline theo lô bằng Python: lmdeploy.pipeline(\"internlm/internlm3-8b-instruct\") rồi truyền danh sách câu hỏi\nBước 2: Sau khi chạy api_server, mở http://0.0.0.0:23333 để xem và thử các RESTful API\nBước 3: Gọi máy chủ bằng thư viện openai với base_url=\"http://0.0.0.0:23333/v1\"\nBước 4: Dùng các tùy chọn --tp (tensor parallel), --session-len, --cache-max-entry-count để tinh chỉnh; xem thêm bằng `lmdeploy serve api_server -h`",
+    "samplePromptsVi": [
+      "Hướng dẫn tôi cài đặt LMDeploy trong conda và phục vụ internlm2_5-7b-chat qua API tương thích OpenAI",
+      "Viết script Python dùng lmdeploy.pipeline để suy luận theo lô một danh sách câu hỏi",
+      "Giải thích cách bật lượng tử hóa KV cache int8 trong TurboMind để tiết kiệm bộ nhớ GPU"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "lmdeploy serve api_server internlm/internlm2_5-7b-chat --server-port 23333",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"lmdeploy serve api_server internlm/internlm2_5-7b-chat --server-port 23333\"\n  ],\n  \"nguon\": \"https://github.com/InternLM/lmdeploy\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Hỗ trợ lượng tử hóa 4-bit (AWQ) và KV cache giúp giảm bộ nhớ GPU",
+      "Hỗ trợ cả LLM và mô hình thị giác–ngôn ngữ (VLM), kể cả trên Huawei Ascend",
+      "Cài đặt đơn giản qua pip, có máy chủ API tương thích OpenAI"
+    ],
+    "consVi": [
+      "Wheel dựng sẵn gắn với phiên bản CUDA cụ thể (CUDA 12.8 từ v0.13.0)",
+      "Hai engine hỗ trợ tập mô hình và kiểu dữ liệu khác nhau, cần tra bảng mô hình để chọn engine phù hợp",
+      "Hướng dẫn chi tiết (máy chủ, lượng tử hóa) nằm trong thư mục docs/ thay vì README"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# LMDeploy — Bộ công cụ nén, triển khai và phục vụ LLM với engine TurboMind\n\n> LMDeploy is a toolkit for compressing, deploying, and serving LLM, developed by the MMRazor and MMDeploy teams.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nLMDeploy là bộ công cụ nén, triển khai và phục vụ LLM do nhóm MMRazor và MMDeploy phát triển. Dự án có hai engine suy luận: TurboMind tối ưu hiệu năng tối đa và PyTorch engine viết thuần Python dễ mở rộng. Hỗ trợ lượng tử hóa trọng số 4-bit, lượng tử hóa KV cache và máy chủ API tương thích OpenAI cho cả LLM lẫn VLM.\n\nPhục vụ LLM/VLM với thông lượng cao và chi phí GPU thấp nhờ lượng tử hóa, triển khai nhiều mô hình trên nhiều máy và nhiều card.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** InternLM (nhóm MMRazor & MMDeploy)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/InternLM/lmdeploy](https://github.com/InternLM/lmdeploy)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Suy luận hiệu quả: persistent batch (continuous batching), blocked KV cache, dynamic split&fuse, tensor parallelism; README công bố thông lượng yêu cầu cao hơn vLLM tới 1,8 lần**\n- **Lượng tử hóa: weight-only và k/v; suy luận 4-bit nhanh hơn FP16 khoảng 2,4 lần, chất lượng kiểm chứng bằng OpenCompass**\n- **Máy chủ phân phối yêu cầu: triển khai nhiều mô hình trên nhiều máy, nhiều card**\n- **Tương thích: dùng đồng thời KV Cache Quant, AWQ và Automatic Prefix Caching**\n- **Hai engine TurboMind và PyTorch; PyTorch engine hỗ trợ Huawei Ascend**\n- **Pipeline suy luận offline cho LLM và VLM, máy chủ API tương thích OpenAI (mặc định cổng 23333)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nlmdeploy serve api_server internlm/internlm2_5-7b-chat --server-port 23333\n```\n\nYêu cầu: Python 3.10 – 3.13 (khuyến nghị dùng môi trường conda). Từ v0.13.0 các wheel dựng sẵn trên PyPI biên dịch với CUDA 12.8. Mô hình mặc định tải từ Hugging Face; có thể chuyển sang ModelScope hoặc openMind Hub bằng biến môi trường.\nBước 1: Tạo môi trường conda: `conda create -n lmdeploy python=3.12 -y`\nBước 2: Kích hoạt môi trường: `conda activate lmdeploy`\nBước 3: Cài đặt LMDeploy: `pip install lmdeploy`\nBước 4: Khởi động máy chủ API tương thích OpenAI: `lmdeploy serve api_server internlm/internlm2_5-7b-chat --server-port 23333`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Suy luận offline theo lô bằng Python: lmdeploy.pipeline(\"internlm/internlm3-8b-instruct\") rồi truyền danh sách câu hỏi\nBước 2: Sau khi chạy api_server, mở http://0.0.0.0:23333 để xem và thử các RESTful API\nBước 3: Gọi máy chủ bằng thư viện openai với base_url=\"http://0.0.0.0:23333/v1\"\nBước 4: Dùng các tùy chọn --tp (tensor parallel), --session-len, --cache-max-entry-count để tinh chỉnh; xem thêm bằng `lmdeploy serve api_server -h`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hướng dẫn tôi cài đặt LMDeploy trong conda và phục vụ internlm2_5-7b-chat qua API tương thích OpenAI\"\n- \"Viết script Python dùng lmdeploy.pipeline để suy luận theo lô một danh sách câu hỏi\"\n- \"Giải thích cách bật lượng tử hóa KV cache int8 trong TurboMind để tiết kiệm bộ nhớ GPU\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "berriai-litellm",
+    "slug": "berriai-litellm",
+    "name": "LiteLLM — Cổng AI mã nguồn mở gọi hơn 100 LLM theo chuẩn OpenAI",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "backend_api",
+      "cloud_infrastructure"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Backend & Kiến trúc API",
+      "Điện toán đám mây & Hạ tầng số"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/BerriAI/litellm",
+    "websiteUrl": "https://docs.litellm.ai",
+    "authorName": "BerriAI",
+    "license": "Mã nguồn mở hỗn hợp (MIT cho lõi; thư mục enterprise/ theo giấy phép thương mại)",
+    "summaryVi": "LiteLLM là cổng AI (AI Gateway) mã nguồn mở cung cấp một giao diện thống nhất để gọi hơn 100 nhà cung cấp LLM như OpenAI, Anthropic, Gemini, Bedrock, Azure theo định dạng OpenAI. Có thể dùng như Python SDK hoặc triển khai Proxy Server tập trung cho cả nhóm với virtual key, theo dõi chi phí, guardrails, cân bằng tải và bảng quản trị. Cổng còn hỗ trợ gọi agent A2A và làm MCP Gateway.",
+    "purposeVi": "Gom mọi lời gọi LLM của tổ chức qua một cổng duy nhất để đổi nhà cung cấp không cần sửa mã, kiểm soát khóa API và chi phí.",
+    "featuresVi": [
+      "API thống nhất: một giao diện cho hơn 100 LLM, tương thích OpenAI (/chat/completions, /responses, /embeddings, /images, /audio, /batches, /rerank, /messages...)",
+      "Cổng production: virtual key, theo dõi chi tiêu, guardrails, cân bằng tải và bảng quản trị",
+      "Hiệu năng: README công bố độ trễ P95 8ms ở 1k RPS",
+      "MCP Gateway: kết nối MCP server với mọi LLM, dùng được từ Cursor qua endpoint /mcp/",
+      "A2A Agent Gateway: gọi agent LangGraph, Vertex AI Agent Engine, Azure AI Foundry, Bedrock AgentCore, Pydantic AI",
+      "Triển khai: Docker (tag -stable đã qua kiểm thử tải 12 giờ), Helm, Terraform cho AWS và GCP"
+    ],
+    "installGuideVi": "Yêu cầu: Python với uv để cài SDK hoặc proxy; khóa API của các nhà cung cấp LLM (ví dụ OPENAI_API_KEY, ANTHROPIC_API_KEY). Proxy mặc định chạy ở http://0.0.0.0:4000.\nBước 1: Cài đặt Python SDK: `uv add litellm`\nBước 2: Cài đặt AI Gateway (Proxy Server): `uv tool install 'litellm[proxy]'`\nBước 3: Khởi động proxy với một mô hình: `litellm --model gpt-4o`",
+    "usageGuideVi": "Bước 1: Đặt biến môi trường khóa API nhà cung cấp, ví dụ OPENAI_API_KEY\nBước 2: Trỏ client OpenAI tới base_url=\"http://0.0.0.0:4000\" để gọi mô hình qua proxy\nBước 3: Trong Python SDK, gọi completion(model=\"openai/gpt-4o\", messages=[...]) hoặc đổi sang \"anthropic/...\" mà không sửa mã khác\nBước 4: Thêm MCP server vào cổng và cấu hình Cursor dùng endpoint http://localhost:4000/mcp/ kèm master key",
+    "samplePromptsVi": [
+      "Hướng dẫn cài đặt LiteLLM Proxy và chuyển ứng dụng đang dùng OpenAI SDK sang gọi qua cổng ở cổng 4000",
+      "Viết mã Python dùng litellm.completion gọi lần lượt GPT-4o và Claude với cùng một prompt",
+      "Cấu hình Cursor dùng LiteLLM làm MCP Gateway với master key"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "litellm --model gpt-4o",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"litellm --model gpt-4o\"\n  ],\n  \"nguon\": \"https://github.com/BerriAI/litellm\"\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor (MCP Gateway)",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"LiteLLM\": {\n      \"url\": \"http://localhost:4000/mcp/\",\n      \"headers\": {\n        \"x-litellm-api-key\": \"Bearer <your-master-key>\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Phần lõi theo giấy phép MIT, tự triển khai được",
+      "Hỗ trợ rất nhiều nhà cung cấp và endpoint theo chuẩn OpenAI",
+      "Có sẵn tính năng quản trị: virtual key, chi phí, guardrails, cân bằng tải",
+      "Có Helm chart và module Terraform cho AWS/GCP"
+    ],
+    "consVi": [
+      "Giấy phép hỗn hợp: mã trong thư mục enterprise/ chỉ được dùng production khi có giấy phép BerriAI Enterprise",
+      "Một số tính năng (ví dụ SSO) thuộc LiteLLM Commercial License theo README",
+      "Cần khóa API của từng nhà cung cấp LLM muốn gọi"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# LiteLLM — Cổng AI mã nguồn mở gọi hơn 100 LLM theo chuẩn OpenAI\n\n> LiteLLM is an open source AI Gateway that gives you a single, unified interface to call 100+ LLM providers — OpenAI, Anthropic, Gemini, Bedrock, Azure, and more — using the OpenAI format.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nLiteLLM là cổng AI (AI Gateway) mã nguồn mở cung cấp một giao diện thống nhất để gọi hơn 100 nhà cung cấp LLM như OpenAI, Anthropic, Gemini, Bedrock, Azure theo định dạng OpenAI. Có thể dùng như Python SDK hoặc triển khai Proxy Server tập trung cho cả nhóm với virtual key, theo dõi chi phí, guardrails, cân bằng tải và bảng quản trị. Cổng còn hỗ trợ gọi agent A2A và làm MCP Gateway.\n\nGom mọi lời gọi LLM của tổ chức qua một cổng duy nhất để đổi nhà cung cấp không cần sửa mã, kiểm soát khóa API và chi phí.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** BerriAI\n- **Giấy phép bản quyền:** Mã nguồn mở hỗn hợp (MIT cho lõi; thư mục enterprise/ theo giấy phép thương mại)\n- **Nền tảng hỗ trợ:** `web`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/BerriAI/litellm](https://github.com/BerriAI/litellm)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **API thống nhất: một giao diện cho hơn 100 LLM, tương thích OpenAI (/chat/completions, /responses, /embeddings, /images, /audio, /batches, /rerank, /messages...)**\n- **Cổng production: virtual key, theo dõi chi tiêu, guardrails, cân bằng tải và bảng quản trị**\n- **Hiệu năng: README công bố độ trễ P95 8ms ở 1k RPS**\n- **MCP Gateway: kết nối MCP server với mọi LLM, dùng được từ Cursor qua endpoint /mcp/**\n- **A2A Agent Gateway: gọi agent LangGraph, Vertex AI Agent Engine, Azure AI Foundry, Bedrock AgentCore, Pydantic AI**\n- **Triển khai: Docker (tag -stable đã qua kiểm thử tải 12 giờ), Helm, Terraform cho AWS và GCP**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nlitellm --model gpt-4o\n```\n\nYêu cầu: Python với uv để cài SDK hoặc proxy; khóa API của các nhà cung cấp LLM (ví dụ OPENAI_API_KEY, ANTHROPIC_API_KEY). Proxy mặc định chạy ở http://0.0.0.0:4000.\nBước 1: Cài đặt Python SDK: `uv add litellm`\nBước 2: Cài đặt AI Gateway (Proxy Server): `uv tool install 'litellm[proxy]'`\nBước 3: Khởi động proxy với một mô hình: `litellm --model gpt-4o`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đặt biến môi trường khóa API nhà cung cấp, ví dụ OPENAI_API_KEY\nBước 2: Trỏ client OpenAI tới base_url=\"http://0.0.0.0:4000\" để gọi mô hình qua proxy\nBước 3: Trong Python SDK, gọi completion(model=\"openai/gpt-4o\", messages=[...]) hoặc đổi sang \"anthropic/...\" mà không sửa mã khác\nBước 4: Thêm MCP server vào cổng và cấu hình Cursor dùng endpoint http://localhost:4000/mcp/ kèm master key\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hướng dẫn cài đặt LiteLLM Proxy và chuyển ứng dụng đang dùng OpenAI SDK sang gọi qua cổng ở cổng 4000\"\n- \"Viết mã Python dùng litellm.completion gọi lần lượt GPT-4o và Claude với cùng một prompt\"\n- \"Cấu hình Cursor dùng LiteLLM làm MCP Gateway với master key\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "portkey-ai-gateway",
+    "slug": "portkey-ai-gateway",
+    "name": "Portkey AI Gateway — Cổng định tuyến nhẹ tới hơn 250 LLM với fallback và guardrails",
+    "icon": "Workflow",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "backend_api",
+      "cloud_infrastructure"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Backend & Kiến trúc API",
+      "Điện toán đám mây & Hạ tầng số"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/Portkey-AI/gateway",
+    "websiteUrl": "https://portkey.ai",
+    "authorName": "Portkey, Inc.",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Portkey AI Gateway là cổng mã nguồn mở, gọn nhẹ để định tuyến nhanh, ổn định và an toàn tới hơn 1600 mô hình ngôn ngữ, thị giác, âm thanh và hình ảnh qua một API. Cổng hỗ trợ tự động thử lại, fallback, cân bằng tải, định tuyến có điều kiện và guardrails. Chạy cục bộ chỉ với một lệnh npx, kèm Gateway Console xem log.",
+    "purposeVi": "Tăng độ tin cậy cho ứng dụng AI bằng cách đặt một lớp định tuyến giữa ứng dụng và các nhà cung cấp LLM, có thử lại, dự phòng và kiểm soát đầu vào/đầu ra.",
+    "featuresVi": [
+      "Định tuyến tin cậy: fallback sang nhà cung cấp hoặc mô hình khác, tự động thử lại tối đa 5 lần với backoff lũy thừa",
+      "Cân bằng tải theo trọng số giữa nhiều khóa API hoặc nhà cung cấp, đặt timeout cho từng yêu cầu",
+      "Guardrails: hơn 40 bộ kiểm tra dựng sẵn cho đầu vào và đầu ra",
+      "Đa phương thức: gọi mô hình thị giác, âm thanh (TTS, STT) và sinh ảnh theo chữ ký OpenAI; hỗ trợ Realtime API",
+      "Bộ nhớ đệm đơn giản và phân tích sử dụng (caching ngữ nghĩa chỉ có ở bản hosted/enterprise)",
+      "Nhẹ: README công bố độ trễ dưới 1ms, kích thước 122kb; Gateway Console xem log cục bộ"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js và npm để chạy bằng npx, hoặc Docker. Cổng chạy tại http://localhost:8787/v1, Console tại http://localhost:8787/public/. Cần khóa API của nhà cung cấp LLM.\nBước 1: Cài đặt và chạy cổng cục bộ bằng Node.js: `npx @portkey-ai/gateway`\nBước 2: Hoặc chạy bằng Docker: `docker run --rm  -p 8787:8787 portkeyai/gateway:latest`\nBước 3: Cài đặt SDK Python để gửi yêu cầu: `pip install -qU portkey-ai`",
+    "usageGuideVi": "Bước 1: Tạo client Portkey với provider (openai, anthropic, bedrock, groq...) và khóa API của nhà cung cấp\nBước 2: Gọi client.chat.completions.create như với OpenAI SDK; yêu cầu đi qua cổng cục bộ\nBước 3: Khai báo config (retry, fallback, output_guardrails) và gắn bằng client.with_options(config=config)\nBước 4: Mở Gateway Console tại http://localhost:8787/public/ để xem log",
+    "samplePromptsVi": [
+      "Hướng dẫn chạy Portkey AI Gateway bằng Docker và gọi GPT-4o-mini qua cổng 8787",
+      "Viết config Portkey thử lại 5 lần và fallback từ OpenAI sang Anthropic khi lỗi",
+      "Thêm guardrail chặn câu trả lời chứa một từ khóa cụ thể bằng output_guardrails"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npx @portkey-ai/gateway",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx @portkey-ai/gateway\"\n  ],\n  \"nguon\": \"https://github.com/Portkey-AI/gateway\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT",
+      "Khởi chạy rất nhanh bằng một lệnh npx, có Docker image chính thức",
+      "Tích hợp với LangChain, LlamaIndex, Autogen, CrewAI và OpenAI SDK"
+    ],
+    "consVi": [
+      "Một số tính năng (caching ngữ nghĩa, tối ưu nhà cung cấp, quản lý prompt) chỉ có ở bản hosted và enterprise",
+      "Bản 2.0 hợp nhất gateway enterprise vào mã nguồn mở đang ở nhánh pre-release",
+      "Cần khóa API của từng nhà cung cấp LLM"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Portkey AI Gateway — Cổng định tuyến nhẹ tới hơn 250 LLM với fallback và guardrails\n\n> Route to 250+ LLMs with 1 fast & friendly API\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPortkey AI Gateway là cổng mã nguồn mở, gọn nhẹ để định tuyến nhanh, ổn định và an toàn tới hơn 1600 mô hình ngôn ngữ, thị giác, âm thanh và hình ảnh qua một API. Cổng hỗ trợ tự động thử lại, fallback, cân bằng tải, định tuyến có điều kiện và guardrails. Chạy cục bộ chỉ với một lệnh npx, kèm Gateway Console xem log.\n\nTăng độ tin cậy cho ứng dụng AI bằng cách đặt một lớp định tuyến giữa ứng dụng và các nhà cung cấp LLM, có thử lại, dự phòng và kiểm soát đầu vào/đầu ra.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Portkey, Inc.\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/Portkey-AI/gateway](https://github.com/Portkey-AI/gateway)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Định tuyến tin cậy: fallback sang nhà cung cấp hoặc mô hình khác, tự động thử lại tối đa 5 lần với backoff lũy thừa**\n- **Cân bằng tải theo trọng số giữa nhiều khóa API hoặc nhà cung cấp, đặt timeout cho từng yêu cầu**\n- **Guardrails: hơn 40 bộ kiểm tra dựng sẵn cho đầu vào và đầu ra**\n- **Đa phương thức: gọi mô hình thị giác, âm thanh (TTS, STT) và sinh ảnh theo chữ ký OpenAI; hỗ trợ Realtime API**\n- **Bộ nhớ đệm đơn giản và phân tích sử dụng (caching ngữ nghĩa chỉ có ở bản hosted/enterprise)**\n- **Nhẹ: README công bố độ trễ dưới 1ms, kích thước 122kb; Gateway Console xem log cục bộ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx @portkey-ai/gateway\n```\n\nYêu cầu: Node.js và npm để chạy bằng npx, hoặc Docker. Cổng chạy tại http://localhost:8787/v1, Console tại http://localhost:8787/public/. Cần khóa API của nhà cung cấp LLM.\nBước 1: Cài đặt và chạy cổng cục bộ bằng Node.js: `npx @portkey-ai/gateway`\nBước 2: Hoặc chạy bằng Docker: `docker run --rm  -p 8787:8787 portkeyai/gateway:latest`\nBước 3: Cài đặt SDK Python để gửi yêu cầu: `pip install -qU portkey-ai`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo client Portkey với provider (openai, anthropic, bedrock, groq...) và khóa API của nhà cung cấp\nBước 2: Gọi client.chat.completions.create như với OpenAI SDK; yêu cầu đi qua cổng cục bộ\nBước 3: Khai báo config (retry, fallback, output_guardrails) và gắn bằng client.with_options(config=config)\nBước 4: Mở Gateway Console tại http://localhost:8787/public/ để xem log\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hướng dẫn chạy Portkey AI Gateway bằng Docker và gọi GPT-4o-mini qua cổng 8787\"\n- \"Viết config Portkey thử lại 5 lần và fallback từ OpenAI sang Anthropic khi lỗi\"\n- \"Thêm guardrail chặn câu trả lời chứa một từ khóa cụ thể bằng output_guardrails\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "xorbitsai-inference",
+    "slug": "xorbitsai-inference",
+    "name": "Xinference — Thư viện phục vụ LLM, mô hình giọng nói và đa phương thức bằng một lệnh",
+    "icon": "Box",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "cloud_infrastructure",
+      "speech_voice"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Điện toán đám mây & Hạ tầng số",
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/xorbitsai/inference",
+    "websiteUrl": "https://inference.readthedocs.io",
+    "authorName": "Xorbits",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Xinference là thư viện phục vụ mô hình ngôn ngữ, nhận dạng giọng nói và đa phương thức, cho phép triển khai mô hình dựng sẵn hoặc tùy chỉnh chỉ bằng một lệnh. Công cụ cung cấp API RESTful tương thích OpenAI (kèm Function Calling), RPC, CLI và WebUI, hỗ trợ nhiều engine như vLLM, GGML và triển khai phân tán. Tích hợp sẵn với LangChain, LlamaIndex, Dify, FastGPT, RAGFlow, MaxKB.",
+    "purposeVi": "Tự host nhiều loại mô hình (LLM, embedding, ảnh, âm thanh, đa phương thức) sau một API thống nhất cho ứng dụng RAG và agent.",
+    "featuresVi": [
+      "Phục vụ mô hình đơn giản: triển khai LLM, nhận dạng giọng nói và mô hình đa phương thức bằng một lệnh",
+      "Mô hình dựng sẵn: thử nhanh các mô hình mã nguồn mở mới nhất",
+      "Tận dụng phần cứng không đồng nhất GPU và CPU qua ggml",
+      "Giao diện linh hoạt: RESTful API tương thích OpenAI (có Function Calling), RPC, CLI và WebUI",
+      "Triển khai phân tán trên nhiều thiết bị hoặc máy; auto batch gộp các yêu cầu đồng thời",
+      "Hỗ trợ text-to-image, embedding, mô hình âm thanh; tích hợp LangChain, LlamaIndex, Dify, RAGFlow"
+    ],
+    "installGuideVi": "Yêu cầu: Python với pip; hoặc Docker kèm GPU NVIDIA cho image xprobe/xinference; hoặc Kubernetes có hỗ trợ GPU khi dùng Helm. Máy chủ mặc định ở cổng 9997.\nBước 1: Cài đặt bằng pip: `pip install xinference`\nBước 2: Khởi động máy chủ cục bộ: `xinference-local`\nBước 3: Hoặc cài đặt bằng một lệnh trên Linux/macOS: `curl -fsSL https://raw.githubusercontent.com/xorbitsai/inference/main/scripts/install.sh | sh`\nBước 4: Hoặc chạy bằng Docker với GPU NVIDIA: `docker run --name xinference -d -p 9997:9997 -e XINFERENCE_HOME=/data -v </on/your/host>:/data --gpus all xprobe/xinference:latest xinference-local -H 0.0.0.0`",
+    "usageGuideVi": "Bước 1: Mở WebUI hoặc dùng CLI để khởi chạy mô hình dựng sẵn, ví dụ `xinference launch --model-engine vllm -n qwen2.5-instruct -s 0_5 -f pytorch` theo tài liệu\nBước 2: Gọi mô hình qua API tương thích OpenAI tại cổng 9997\nBước 3: Kết nối Xinference làm nhà cung cấp mô hình trong Dify, FastGPT, RAGFlow hoặc LangChain",
+    "samplePromptsVi": [
+      "Hướng dẫn cài đặt Xinference bằng Docker có GPU và khởi chạy Qwen2.5-instruct",
+      "Cấu hình Dify dùng mô hình embedding và LLM tự host trên Xinference",
+      "Viết mã Python gọi Xinference qua API tương thích OpenAI có Function Calling"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "xinference-local",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"xinference-local\"\n  ],\n  \"nguon\": \"https://github.com/xorbitsai/inference\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Một máy chủ phục vụ được nhiều loại mô hình: LLM, embedding, ảnh, âm thanh, đa phương thức",
+      "Có WebUI, Docker image và Helm chart",
+      "Chạy được trên CPU và Metal bên cạnh GPU"
+    ],
+    "consVi": [
+      "Bản Enterprise và Xinference Cloud là sản phẩm thương mại riêng; bản cộng đồng tự host",
+      "Docker image chính thức hướng tới người dùng GPU NVIDIA",
+      "Lệnh khởi chạy mô hình chi tiết nằm trong tài liệu thay vì README"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Xinference — Thư viện phục vụ LLM, mô hình giọng nói và đa phương thức bằng một lệnh\n\n> Xorbits Inference(Xinference) is a powerful and versatile library designed to serve language, speech recognition, and multimodal models.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nXinference là thư viện phục vụ mô hình ngôn ngữ, nhận dạng giọng nói và đa phương thức, cho phép triển khai mô hình dựng sẵn hoặc tùy chỉnh chỉ bằng một lệnh. Công cụ cung cấp API RESTful tương thích OpenAI (kèm Function Calling), RPC, CLI và WebUI, hỗ trợ nhiều engine như vLLM, GGML và triển khai phân tán. Tích hợp sẵn với LangChain, LlamaIndex, Dify, FastGPT, RAGFlow, MaxKB.\n\nTự host nhiều loại mô hình (LLM, embedding, ảnh, âm thanh, đa phương thức) sau một API thống nhất cho ứng dụng RAG và agent.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Xorbits\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/xorbitsai/inference](https://github.com/xorbitsai/inference)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Phục vụ mô hình đơn giản: triển khai LLM, nhận dạng giọng nói và mô hình đa phương thức bằng một lệnh**\n- **Mô hình dựng sẵn: thử nhanh các mô hình mã nguồn mở mới nhất**\n- **Tận dụng phần cứng không đồng nhất GPU và CPU qua ggml**\n- **Giao diện linh hoạt: RESTful API tương thích OpenAI (có Function Calling), RPC, CLI và WebUI**\n- **Triển khai phân tán trên nhiều thiết bị hoặc máy; auto batch gộp các yêu cầu đồng thời**\n- **Hỗ trợ text-to-image, embedding, mô hình âm thanh; tích hợp LangChain, LlamaIndex, Dify, RAGFlow**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nxinference-local\n```\n\nYêu cầu: Python với pip; hoặc Docker kèm GPU NVIDIA cho image xprobe/xinference; hoặc Kubernetes có hỗ trợ GPU khi dùng Helm. Máy chủ mặc định ở cổng 9997.\nBước 1: Cài đặt bằng pip: `pip install xinference`\nBước 2: Khởi động máy chủ cục bộ: `xinference-local`\nBước 3: Hoặc cài đặt bằng một lệnh trên Linux/macOS: `curl -fsSL https://raw.githubusercontent.com/xorbitsai/inference/main/scripts/install.sh | sh`\nBước 4: Hoặc chạy bằng Docker với GPU NVIDIA: `docker run --name xinference -d -p 9997:9997 -e XINFERENCE_HOME=/data -v </on/your/host>:/data --gpus all xprobe/xinference:latest xinference-local -H 0.0.0.0`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở WebUI hoặc dùng CLI để khởi chạy mô hình dựng sẵn, ví dụ `xinference launch --model-engine vllm -n qwen2.5-instruct -s 0_5 -f pytorch` theo tài liệu\nBước 2: Gọi mô hình qua API tương thích OpenAI tại cổng 9997\nBước 3: Kết nối Xinference làm nhà cung cấp mô hình trong Dify, FastGPT, RAGFlow hoặc LangChain\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hướng dẫn cài đặt Xinference bằng Docker có GPU và khởi chạy Qwen2.5-instruct\"\n- \"Cấu hình Dify dùng mô hình embedding và LLM tự host trên Xinference\"\n- \"Viết mã Python gọi Xinference qua API tương thích OpenAI có Function Calling\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "bentoml-bentoml",
+    "slug": "bentoml-bentoml",
+    "name": "BentoML — Framework Python xây dựng API phục vụ mô hình AI và đóng gói container",
+    "icon": "Box",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "backend_api",
+      "cloud_infrastructure"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Backend & Kiến trúc API",
+      "Điện toán đám mây & Hạ tầng số"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/bentoml/BentoML",
+    "websiteUrl": "https://docs.bentoml.com",
+    "authorName": "BentoML",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "BentoML là thư viện Python để xây dựng hệ thống phục vụ trực tuyến tối ưu cho ứng dụng AI và suy luận mô hình. Chỉ với vài dòng mã và type hint chuẩn của Python, mọi script suy luận có thể thành máy chủ REST API. BentoML tự sinh Docker image, hỗ trợ dynamic batching, song song mô hình và điều phối nhiều mô hình.",
+    "purposeVi": "Đóng gói mô hình AI/ML (LLM, sinh ảnh, embedding, âm thanh, thị giác máy tính) thành API và container sẵn sàng triển khai production.",
+    "featuresVi": [
+      "Dựng API cho mọi mô hình AI/ML chỉ với vài dòng mã Python và type hint",
+      "Docker đơn giản: quản lý môi trường, phụ thuộc, phiên bản mô hình bằng tệp cấu hình; tự sinh Docker image",
+      "Tối ưu CPU/GPU: dynamic batching, song song mô hình, pipeline nhiều bước, đồ thị suy luận đa mô hình",
+      "Tùy biến hoàn toàn: API riêng, hàng đợi tác vụ, logic nghiệp vụ, hỗ trợ mọi framework ML",
+      "Sẵn sàng production: phát triển, chạy và gỡ lỗi cục bộ rồi triển khai bằng Docker hoặc Kubernetes",
+      "Ví dụ sẵn cho LLM (vLLM), Stable Diffusion, SentenceTransformers, ChatTTS, WhisperX, YOLO"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.9 trở lên; Docker để đóng gói container. Dịch vụ mặc định chạy tại http://localhost:3000.\nBước 1: Cài đặt BentoML: `pip install -U bentoml`\nBước 2: Cài đặt phụ thuộc cho ví dụ tóm tắt văn bản: `pip install torch transformers`\nBước 3: Viết lớp dịch vụ trong service.py rồi chạy cục bộ: `bentoml serve`\nBước 4: Đóng gói thành Bento: `bentoml build`\nBước 5: Tạo Docker image: `bentoml containerize summarization:latest`\nBước 6: Chạy container: `docker run --rm -p 3000:3000 summarization:latest`",
+    "usageGuideVi": "Bước 1: Khai báo lớp với decorator @bentoml.service và phương thức @bentoml.api (có thể bật batchable=True)\nBước 2: Chạy `bentoml serve` và thử API trên trình duyệt tại http://localhost:3000\nBước 3: Gọi dịch vụ bằng bentoml.SyncHTTPClient('http://localhost:3000') trong Python\nBước 4: Tắt thu thập dữ liệu sử dụng ẩn danh bằng cờ --do-not-track hoặc BENTOML_DO_NOT_TRACK=True",
+    "samplePromptsVi": [
+      "Viết service.py BentoML phục vụ pipeline tóm tắt văn bản của transformers với batching",
+      "Hướng dẫn đóng gói dịch vụ BentoML thành Docker image và chạy ở cổng 3000",
+      "Tạo dịch vụ BentoML kết hợp mô hình embedding và LLM trong một đồ thị suy luận"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "bentoml serve",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"bentoml serve\"\n  ],\n  \"nguon\": \"https://github.com/bentoml/BentoML\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Hỗ trợ mọi framework ML và mọi loại dữ liệu (văn bản, ảnh, âm thanh)",
+      "Tự động sinh Docker image, dễ đưa lên Kubernetes"
+    ],
+    "consVi": [
+      "Mặc định thu thập dữ liệu sử dụng ẩn danh (có thể tắt)",
+      "Là framework Python: cần tự viết mã dịch vụ, không phải máy chủ LLM chạy ngay",
+      "Yêu cầu Python 3.9 trở lên"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# BentoML — Framework Python xây dựng API phục vụ mô hình AI và đóng gói container\n\n> BentoML is a Python library for building online serving systems optimized for AI apps and model inference.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nBentoML là thư viện Python để xây dựng hệ thống phục vụ trực tuyến tối ưu cho ứng dụng AI và suy luận mô hình. Chỉ với vài dòng mã và type hint chuẩn của Python, mọi script suy luận có thể thành máy chủ REST API. BentoML tự sinh Docker image, hỗ trợ dynamic batching, song song mô hình và điều phối nhiều mô hình.\n\nĐóng gói mô hình AI/ML (LLM, sinh ảnh, embedding, âm thanh, thị giác máy tính) thành API và container sẵn sàng triển khai production.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** BentoML\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/bentoml/BentoML](https://github.com/bentoml/BentoML)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Dựng API cho mọi mô hình AI/ML chỉ với vài dòng mã Python và type hint**\n- **Docker đơn giản: quản lý môi trường, phụ thuộc, phiên bản mô hình bằng tệp cấu hình; tự sinh Docker image**\n- **Tối ưu CPU/GPU: dynamic batching, song song mô hình, pipeline nhiều bước, đồ thị suy luận đa mô hình**\n- **Tùy biến hoàn toàn: API riêng, hàng đợi tác vụ, logic nghiệp vụ, hỗ trợ mọi framework ML**\n- **Sẵn sàng production: phát triển, chạy và gỡ lỗi cục bộ rồi triển khai bằng Docker hoặc Kubernetes**\n- **Ví dụ sẵn cho LLM (vLLM), Stable Diffusion, SentenceTransformers, ChatTTS, WhisperX, YOLO**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nbentoml serve\n```\n\nYêu cầu: Python 3.9 trở lên; Docker để đóng gói container. Dịch vụ mặc định chạy tại http://localhost:3000.\nBước 1: Cài đặt BentoML: `pip install -U bentoml`\nBước 2: Cài đặt phụ thuộc cho ví dụ tóm tắt văn bản: `pip install torch transformers`\nBước 3: Viết lớp dịch vụ trong service.py rồi chạy cục bộ: `bentoml serve`\nBước 4: Đóng gói thành Bento: `bentoml build`\nBước 5: Tạo Docker image: `bentoml containerize summarization:latest`\nBước 6: Chạy container: `docker run --rm -p 3000:3000 summarization:latest`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khai báo lớp với decorator @bentoml.service và phương thức @bentoml.api (có thể bật batchable=True)\nBước 2: Chạy `bentoml serve` và thử API trên trình duyệt tại http://localhost:3000\nBước 3: Gọi dịch vụ bằng bentoml.SyncHTTPClient('http://localhost:3000') trong Python\nBước 4: Tắt thu thập dữ liệu sử dụng ẩn danh bằng cờ --do-not-track hoặc BENTOML_DO_NOT_TRACK=True\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết service.py BentoML phục vụ pipeline tóm tắt văn bản của transformers với batching\"\n- \"Hướng dẫn đóng gói dịch vụ BentoML thành Docker image và chạy ở cổng 3000\"\n- \"Tạo dịch vụ BentoML kết hợp mô hình embedding và LLM trong một đồ thị suy luận\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "triton-inference-server-server",
+    "slug": "triton-inference-server-server",
+    "name": "Triton Inference Server — Máy chủ suy luận đa framework của NVIDIA cho production",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "cloud_infrastructure",
+    "categoryNameVi": "Điện toán đám mây & Hạ tầng số",
+    "categories": [
+      "cloud_infrastructure",
+      "nlp_llm",
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Điện toán đám mây & Hạ tầng số",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/triton-inference-server/server",
+    "websiteUrl": "https://developer.nvidia.com/nvidia-triton-inference-server",
+    "authorName": "NVIDIA",
+    "license": "Mã nguồn mở (BSD 3-Clause); container NGC theo giấy phép NVIDIA",
+    "summaryVi": "Triton Inference Server là phần mềm phục vụ suy luận mã nguồn mở của NVIDIA, cho phép triển khai mô hình từ nhiều framework như TensorRT, PyTorch, ONNX, OpenVINO, Python, RAPIDS FIL. Triton chạy trên cloud, trung tâm dữ liệu, biên và thiết bị nhúng với GPU NVIDIA, CPU x86/ARM hoặc AWS Inferentia. Hỗ trợ dynamic batching, chạy đồng thời nhiều mô hình, ensemble và giao thức HTTP/REST, gRPC.",
+    "purposeVi": "Phục vụ nhiều mô hình AI (kể cả LLM qua backend TensorRT-LLM theo tài liệu hướng dẫn LLM) ở quy mô production trên hạ tầng GPU với giám sát hiệu năng đầy đủ.",
+    "featuresVi": [
+      "Đa framework: TensorRT, PyTorch, ONNX, OpenVINO, Python, RAPIDS FIL và các framework máy học",
+      "Chạy đồng thời nhiều mô hình, dynamic batching và sequence batching cho mô hình có trạng thái",
+      "Backend API để thêm backend tùy chỉnh và tiền/hậu xử lý; backend viết bằng Python",
+      "Pipeline mô hình bằng Ensemble hoặc Business Logic Scripting (BLS)",
+      "Giao thức HTTP/REST và gRPC dựa trên KServe; C API và Java API cho dùng trong tiến trình",
+      "Số liệu (metrics) về mức dùng GPU, thông lượng và độ trễ máy chủ"
+    ],
+    "installGuideVi": "Yêu cầu: Docker và GPU NVIDIA (hướng dẫn nhanh dùng container NGC nvcr.io/nvidia/tritonserver); có hướng dẫn riêng cho hệ thống chỉ có CPU. Cần chuẩn bị model repository chứa mô hình và cấu hình.\nBước 1: Tải mã nguồn nhánh phát hành: `git clone -b r26.09 https://github.com/triton-inference-server/server.git`\nBước 2: Vào thư mục ví dụ: `cd server/docs/examples`\nBước 3: Tạo model repository mẫu: `./fetch_models.sh`\nBước 4: Khởi động Triton từ container NGC: `docker run --gpus=1 --rm --net=host -v ${PWD}/model_repository:/models nvcr.io/nvidia/tritonserver:26.09-py3 tritonserver --model-repository=/models --model-control-mode explicit --load-model densenet_onnx`",
+    "usageGuideVi": "Bước 1: Ở cửa sổ khác, chạy image_client từ container SDK nvcr.io/nvidia/tritonserver:26.09-py3-sdk để gửi ảnh mẫu tới mô hình densenet_onnx\nBước 2: Đặt mô hình của bạn vào model repository và viết model configuration khi cần\nBước 3: Theo dõi metrics về GPU, thông lượng, độ trễ; xem tutorials chính thức để triển khai LLM",
+    "samplePromptsVi": [
+      "Hướng dẫn tạo model repository cho mô hình ONNX và phục vụ bằng Triton Inference Server",
+      "Giải thích cách bật dynamic batching trong model configuration của Triton",
+      "Viết pipeline ensemble Triton gồm bước tiền xử lý Python và mô hình TensorRT"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker run --gpus=1 --rm --net=host -v ${PWD}/model_repository:/models nvcr.io/nvidia/tritonserver:26.09-py3 tritonserver --model-repository=/models --model-control-mode explicit --load-model densenet_onnx",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker run --gpus=1 --rm --net=host -v ${PWD}/model_repository:/models nvcr.io/nvidia/tritonserver:26.09-py3 tritonserver --model-repository=/models --model-control-mode explicit --load-model densenet_onnx\"\n  ],\n  \"nguon\": \"https://github.com/triton-inference-server/server\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn theo giấy phép BSD 3-Clause",
+      "Hỗ trợ rất nhiều framework và phần cứng, từ cloud tới thiết bị biên",
+      "Có hỗ trợ doanh nghiệp từ NVIDIA qua NVIDIA AI Enterprise"
+    ],
+    "consVi": [
+      "Container NGC dựng sẵn theo NVIDIA Deep Learning Container License, không phải BSD",
+      "Nhánh main là bản đang phát triển; nên dùng nhánh/phiên bản phát hành (hiện 2.73.0 / container 26.09)",
+      "Cấu hình model repository và model configuration phức tạp hơn các máy chủ LLM chuyên dụng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Triton Inference Server — Máy chủ suy luận đa framework của NVIDIA cho production\n\n> Triton Inference Server is an open source inference serving software that streamlines AI inferencing.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nTriton Inference Server là phần mềm phục vụ suy luận mã nguồn mở của NVIDIA, cho phép triển khai mô hình từ nhiều framework như TensorRT, PyTorch, ONNX, OpenVINO, Python, RAPIDS FIL. Triton chạy trên cloud, trung tâm dữ liệu, biên và thiết bị nhúng với GPU NVIDIA, CPU x86/ARM hoặc AWS Inferentia. Hỗ trợ dynamic batching, chạy đồng thời nhiều mô hình, ensemble và giao thức HTTP/REST, gRPC.\n\nPhục vụ nhiều mô hình AI (kể cả LLM qua backend TensorRT-LLM theo tài liệu hướng dẫn LLM) ở quy mô production trên hạ tầng GPU với giám sát hiệu năng đầy đủ.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Điện toán đám mây & Hạ tầng số\n- **Tác giả / Nhà phát triển:** NVIDIA\n- **Giấy phép bản quyền:** Mã nguồn mở (BSD 3-Clause); container NGC theo giấy phép NVIDIA\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/triton-inference-server/server](https://github.com/triton-inference-server/server)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Đa framework: TensorRT, PyTorch, ONNX, OpenVINO, Python, RAPIDS FIL và các framework máy học**\n- **Chạy đồng thời nhiều mô hình, dynamic batching và sequence batching cho mô hình có trạng thái**\n- **Backend API để thêm backend tùy chỉnh và tiền/hậu xử lý; backend viết bằng Python**\n- **Pipeline mô hình bằng Ensemble hoặc Business Logic Scripting (BLS)**\n- **Giao thức HTTP/REST và gRPC dựa trên KServe; C API và Java API cho dùng trong tiến trình**\n- **Số liệu (metrics) về mức dùng GPU, thông lượng và độ trễ máy chủ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker run --gpus=1 --rm --net=host -v ${PWD}/model_repository:/models nvcr.io/nvidia/tritonserver:26.09-py3 tritonserver --model-repository=/models --model-control-mode explicit --load-model densenet_onnx\n```\n\nYêu cầu: Docker và GPU NVIDIA (hướng dẫn nhanh dùng container NGC nvcr.io/nvidia/tritonserver); có hướng dẫn riêng cho hệ thống chỉ có CPU. Cần chuẩn bị model repository chứa mô hình và cấu hình.\nBước 1: Tải mã nguồn nhánh phát hành: `git clone -b r26.09 https://github.com/triton-inference-server/server.git`\nBước 2: Vào thư mục ví dụ: `cd server/docs/examples`\nBước 3: Tạo model repository mẫu: `./fetch_models.sh`\nBước 4: Khởi động Triton từ container NGC: `docker run --gpus=1 --rm --net=host -v ${PWD}/model_repository:/models nvcr.io/nvidia/tritonserver:26.09-py3 tritonserver --model-repository=/models --model-control-mode explicit --load-model densenet_onnx`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Ở cửa sổ khác, chạy image_client từ container SDK nvcr.io/nvidia/tritonserver:26.09-py3-sdk để gửi ảnh mẫu tới mô hình densenet_onnx\nBước 2: Đặt mô hình của bạn vào model repository và viết model configuration khi cần\nBước 3: Theo dõi metrics về GPU, thông lượng, độ trễ; xem tutorials chính thức để triển khai LLM\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hướng dẫn tạo model repository cho mô hình ONNX và phục vụ bằng Triton Inference Server\"\n- \"Giải thích cách bật dynamic batching trong model configuration của Triton\"\n- \"Viết pipeline ensemble Triton gồm bước tiền xử lý Python và mô hình TensorRT\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "unslothai-unsloth",
+    "slug": "unslothai-unsloth",
+    "name": "Unsloth — Ứng dụng tinh chỉnh và chạy LLM cục bộ nhanh, tiết kiệm VRAM",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/unslothai/unsloth",
+    "websiteUrl": "https://unsloth.ai",
+    "authorName": "Unsloth AI (Daniel Han, Michael Han và nhóm Unsloth)",
+    "license": "Mã nguồn mở (Apache-2.0 cho lõi; Studio UI theo AGPL-3.0)",
+    "summaryVi": "Unsloth là ứng dụng và thư viện mã nguồn mở để chạy và tinh chỉnh (fine-tuning) mô hình ngôn ngữ lớn ngay trên máy cá nhân. Dự án có ba cách dùng: Unsloth Desktop (ứng dụng máy tính), Unsloth Studio (giao diện web) và Unsloth Core (thư viện Python). README cho biết Unsloth huấn luyện LLM, mô hình diffusion, TTS và embedding nhanh hơn khoảng 2 lần, dùng ít hơn 70% VRAM mà không giảm độ chính xác.",
+    "purposeVi": "Giúp cá nhân và nhóm nhỏ tinh chỉnh LLM (LoRA, QLoRA, full fine-tuning, GRPO, DPO) trên GPU phổ thông, rồi xuất mô hình sang GGUF để chạy cục bộ.",
+    "featuresVi": [
+      "Tinh chỉnh nhanh, tiết kiệm bộ nhớ: huấn luyện LLM, diffusion, TTS, embedding nhanh hơn 2 lần, ít hơn 70% VRAM",
+      "Hỗ trợ đầy đủ phương pháp: LoRA, QLoRA, full fine-tuning, pretraining, học tăng cường (RL, GRPO), DPO và FP8",
+      "Xuất và triển khai: xuất mô hình sang GGUF, NVFP4, FP8 và các định dạng khác",
+      "Data Recipes: tạo bộ dữ liệu huấn luyện từ PDF, CSV, DOCX và nhiều nguồn khác",
+      "Chạy mô hình cục bộ: hỗ trợ tool calling, MCP, tìm kiếm web, RAG và API tương thích OpenAI",
+      "Unsloth Start: kết nối Claude Code, Codex, OpenCode và các agent khác với mô hình cục bộ bằng một lệnh",
+      "Đa nền tảng: Windows, Linux, WSL, macOS; GPU NVIDIA, AMD, Intel, CPU và Vulkan; nhiều GPU",
+      "Sổ tay Colab/Kaggle miễn phí cho Qwen, Gemma, gpt-oss, Llama, Orpheus-TTS..."
+    ],
+    "installGuideVi": "Yêu cầu: Windows, Linux, WSL hoặc macOS. Bản Unsloth Core cần Python 3.13 và công cụ uv theo hướng dẫn trong README; GPU NVIDIA/AMD/Intel được hỗ trợ (AMD, Intel, Blackwell, DGX Spark có hướng dẫn riêng). Có thể dùng sổ tay Colab miễn phí nếu không có GPU.\nBước 1: Cài đặt Unsloth Studio trên macOS, Linux, WSL: `curl -fsSL https://unsloth.ai/install.sh | sh`\nBước 2: Cài đặt trên Windows (PowerShell): `irm https://unsloth.ai/install.ps1 | iex`\nBước 3: Hoặc cài đặt qua Homebrew: `brew install --cask unsloth`\nBước 4: Khởi chạy giao diện web: `unsloth studio`\nBước 5: Cài đặt Unsloth Core (thư viện Python) trên Linux/WSL: tạo môi trường `uv venv unsloth_env --python 3.13`, kích hoạt `source unsloth_env/bin/activate`, rồi chạy `uv pip install unsloth --torch-backend=auto`",
+    "usageGuideVi": "Bước 1: Mở Unsloth Desktop hoặc Unsloth Studio, chọn mô hình gốc (ví dụ Qwen, Gemma, Llama) và tải lên bộ dữ liệu\nBước 2: Chọn phương pháp huấn luyện (LoRA, QLoRA, full fine-tuning, GRPO...) rồi bắt đầu huấn luyện\nBước 3: Sau khi huấn luyện, xuất mô hình sang GGUF hoặc định dạng khác để triển khai\nBước 4: Khi mở Studio ra mạng (--secure hoặc -H 0.0.0.0), đặt mật khẩu quản trị; có thể dùng --disable-tools để tắt công cụ phía máy chủ",
+    "samplePromptsVi": [
+      "Tinh chỉnh Qwen3.5 4B bằng QLoRA trên bộ dữ liệu hỏi đáp chăm sóc khách hàng tiếng Việt, rồi xuất sang GGUF",
+      "Tạo bộ dữ liệu huấn luyện từ các tệp PDF quy trình nội bộ bằng Data Recipes",
+      "Huấn luyện GRPO cho mô hình nhỏ để cải thiện khả năng giải toán từng bước"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "curl -fsSL https://unsloth.ai/install.sh | sh",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"curl -fsSL https://unsloth.ai/install.sh | sh\"\n  ],\n  \"nguon\": \"https://github.com/unslothai/unsloth\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Gói lõi theo Apache 2.0, dùng miễn phí cả cho mục đích thương mại",
+      "Giảm mạnh yêu cầu VRAM nên tinh chỉnh được trên GPU phổ thông",
+      "Có ứng dụng máy tính và giao diện web, không bắt buộc viết mã",
+      "Nhiều sổ tay Colab/Kaggle miễn phí để bắt đầu nhanh"
+    ],
+    "consVi": [
+      "Giấy phép kép: Unsloth Studio UI theo AGPL-3.0, cần lưu ý nếu tích hợp vào sản phẩm đóng",
+      "README cảnh báo công cụ phía máy chủ bật mặc định, phải cẩn thận khi mở Studio ra mạng",
+      "Cài đặt trên Windows cần cài torchao trước, nếu không có thể cài nhầm phiên bản Unsloth cũ"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Unsloth — Ứng dụng tinh chỉnh và chạy LLM cục bộ nhanh, tiết kiệm VRAM\n\n> Unsloth is the first desktop app to run and train models.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nUnsloth là ứng dụng và thư viện mã nguồn mở để chạy và tinh chỉnh (fine-tuning) mô hình ngôn ngữ lớn ngay trên máy cá nhân. Dự án có ba cách dùng: Unsloth Desktop (ứng dụng máy tính), Unsloth Studio (giao diện web) và Unsloth Core (thư viện Python). README cho biết Unsloth huấn luyện LLM, mô hình diffusion, TTS và embedding nhanh hơn khoảng 2 lần, dùng ít hơn 70% VRAM mà không giảm độ chính xác.\n\nGiúp cá nhân và nhóm nhỏ tinh chỉnh LLM (LoRA, QLoRA, full fine-tuning, GRPO, DPO) trên GPU phổ thông, rồi xuất mô hình sang GGUF để chạy cục bộ.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Unsloth AI (Daniel Han, Michael Han và nhóm Unsloth)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0 cho lõi; Studio UI theo AGPL-3.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/unslothai/unsloth](https://github.com/unslothai/unsloth)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tinh chỉnh nhanh, tiết kiệm bộ nhớ: huấn luyện LLM, diffusion, TTS, embedding nhanh hơn 2 lần, ít hơn 70% VRAM**\n- **Hỗ trợ đầy đủ phương pháp: LoRA, QLoRA, full fine-tuning, pretraining, học tăng cường (RL, GRPO), DPO và FP8**\n- **Xuất và triển khai: xuất mô hình sang GGUF, NVFP4, FP8 và các định dạng khác**\n- **Data Recipes: tạo bộ dữ liệu huấn luyện từ PDF, CSV, DOCX và nhiều nguồn khác**\n- **Chạy mô hình cục bộ: hỗ trợ tool calling, MCP, tìm kiếm web, RAG và API tương thích OpenAI**\n- **Unsloth Start: kết nối Claude Code, Codex, OpenCode và các agent khác với mô hình cục bộ bằng một lệnh**\n- **Đa nền tảng: Windows, Linux, WSL, macOS; GPU NVIDIA, AMD, Intel, CPU và Vulkan; nhiều GPU**\n- **Sổ tay Colab/Kaggle miễn phí cho Qwen, Gemma, gpt-oss, Llama, Orpheus-TTS...**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ncurl -fsSL https://unsloth.ai/install.sh | sh\n```\n\nYêu cầu: Windows, Linux, WSL hoặc macOS. Bản Unsloth Core cần Python 3.13 và công cụ uv theo hướng dẫn trong README; GPU NVIDIA/AMD/Intel được hỗ trợ (AMD, Intel, Blackwell, DGX Spark có hướng dẫn riêng). Có thể dùng sổ tay Colab miễn phí nếu không có GPU.\nBước 1: Cài đặt Unsloth Studio trên macOS, Linux, WSL: `curl -fsSL https://unsloth.ai/install.sh | sh`\nBước 2: Cài đặt trên Windows (PowerShell): `irm https://unsloth.ai/install.ps1 | iex`\nBước 3: Hoặc cài đặt qua Homebrew: `brew install --cask unsloth`\nBước 4: Khởi chạy giao diện web: `unsloth studio`\nBước 5: Cài đặt Unsloth Core (thư viện Python) trên Linux/WSL: tạo môi trường `uv venv unsloth_env --python 3.13`, kích hoạt `source unsloth_env/bin/activate`, rồi chạy `uv pip install unsloth --torch-backend=auto`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở Unsloth Desktop hoặc Unsloth Studio, chọn mô hình gốc (ví dụ Qwen, Gemma, Llama) và tải lên bộ dữ liệu\nBước 2: Chọn phương pháp huấn luyện (LoRA, QLoRA, full fine-tuning, GRPO...) rồi bắt đầu huấn luyện\nBước 3: Sau khi huấn luyện, xuất mô hình sang GGUF hoặc định dạng khác để triển khai\nBước 4: Khi mở Studio ra mạng (--secure hoặc -H 0.0.0.0), đặt mật khẩu quản trị; có thể dùng --disable-tools để tắt công cụ phía máy chủ\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tinh chỉnh Qwen3.5 4B bằng QLoRA trên bộ dữ liệu hỏi đáp chăm sóc khách hàng tiếng Việt, rồi xuất sang GGUF\"\n- \"Tạo bộ dữ liệu huấn luyện từ các tệp PDF quy trình nội bộ bằng Data Recipes\"\n- \"Huấn luyện GRPO cho mô hình nhỏ để cải thiện khả năng giải toán từng bước\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "axolotl-ai-cloud-axolotl",
+    "slug": "axolotl-ai-cloud-axolotl",
+    "name": "Axolotl — Framework tinh chỉnh và hậu huấn luyện LLM bằng cấu hình YAML",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/axolotl-ai-cloud/axolotl",
+    "websiteUrl": "https://docs.axolotl.ai",
+    "authorName": "Axolotl AI",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Axolotl là công cụ mã nguồn mở giúp đơn giản hóa hậu huấn luyện (post-training) và tinh chỉnh các mô hình ngôn ngữ lớn mới nhất. Toàn bộ quy trình — tiền xử lý dữ liệu, huấn luyện, đánh giá, lượng tử hóa và suy luận — được cấu hình bằng một tệp YAML duy nhất. Hỗ trợ GPT-OSS, LLaMA, Mistral, Qwen, mô hình đa phương thức và nhiều mô hình trên Hugging Face Hub.",
+    "purposeVi": "Tinh chỉnh LLM bằng LoRA/QLoRA/full fine-tuning, DPO, GRPO trên một hoặc nhiều GPU/nhiều node chỉ bằng tệp cấu hình YAML.",
+    "featuresVi": [
+      "Nhiều mô hình: GPT-OSS, LLaMA, Mistral, Mixtral, Pythia và các mô hình trên Hugging Face Hub",
+      "Huấn luyện đa phương thức: mô hình thị giác-ngôn ngữ (Qwen2-VL, LLaVA, Pixtral...) và âm thanh (Voxtral)",
+      "Phương pháp huấn luyện: full fine-tuning, LoRA, QLoRA, GPTQ, QAT, FP8, DPO, IPO, KTO, ORPO, GRPO, Reward Modelling",
+      "Cấu hình YAML: dùng lại một tệp cho tiền xử lý dữ liệu, huấn luyện, đánh giá, lượng tử hóa và suy luận",
+      "Tối ưu hiệu năng: Multipacking, Flash Attention 2/3/4, Xformers, song song hóa đa GPU và đa node",
+      "Dữ liệu linh hoạt: nạp bộ dữ liệu từ máy cục bộ, Hugging Face và đám mây (S3, Azure, GCP, OCI)",
+      "Xuất GGUF qua `axolotl export` để chạy với llama.cpp và Ollama",
+      "Tài liệu tích hợp cho agent lập trình (Claude Code, Cursor...) qua lệnh `axolotl agent-docs`"
+    ],
+    "installGuideVi": "Yêu cầu: GPU NVIDIA (Ampere trở lên cho bf16 và Flash Attention) hoặc GPU AMD; Python >= 3.12; PyTorch >= 2.13.0. Có thể dùng ảnh Docker axolotlai/axolotl hoặc Google Colab.\nBước 1: Cài đặt uv: `curl -LsSf https://astral.sh/uv/install.sh | sh`\nBước 2: Tạo môi trường ảo: `uv venv --python 3.12` rồi `source .venv/bin/activate`\nBước 3: Cài đặt PyTorch: `uv pip install torch==2.14.0 torchvision`\nBước 4: Cài đặt Axolotl: `uv pip install --no-build-isolation axolotl[deepspeed]`\nBước 5: Tải cấu hình mẫu: `axolotl fetch examples`\nBước 6: Hoặc chạy bằng Docker: `docker run --gpus '\"all\"' --ipc=host --rm -it axolotlai/axolotl:main-latest`",
+    "usageGuideVi": "Bước 1: Chọn một tệp YAML mẫu trong thư mục examples và chỉnh mô hình gốc, bộ dữ liệu, tham số LoRA\nBước 2: Chạy huấn luyện bằng lệnh axolotl train kèm đường dẫn tệp cấu hình\nBước 3: Xem hướng dẫn theo chủ đề (sft, grpo, preference_tuning...) bằng axolotl agent-docs\nBước 4: Đặt AXOLOTL_DO_NOT_TRACK=1 nếu muốn tắt telemetry",
+    "samplePromptsVi": [
+      "Viết tệp cấu hình Axolotl để tinh chỉnh LoRA mô hình Llama 3 1B trên bộ dữ liệu hỏi đáp tiếng Việt",
+      "Thiết lập huấn luyện DPO với Axolotl trên bộ dữ liệu so sánh câu trả lời",
+      "Cấu hình Axolotl huấn luyện QLoRA trên 2 GPU với DeepSpeed"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "axolotl train examples/llama-3/lora-1b.yml",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"axolotl train examples/llama-3/lora-1b.yml\"\n  ],\n  \"nguon\": \"https://github.com/axolotl-ai-cloud/axolotl\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, miễn phí",
+      "Một tệp YAML điều khiển toàn bộ quy trình, dễ tái lập thí nghiệm",
+      "Có ảnh Docker và gói PyPI, chạy được trên nhiều nhà cung cấp đám mây GPU",
+      "Cập nhật nhanh hỗ trợ mô hình và kỹ thuật huấn luyện mới"
+    ],
+    "consVi": [
+      "Cần GPU NVIDIA (Ampere trở lên để dùng bf16/Flash Attention) hoặc AMD",
+      "Telemetry bật mặc định (thu thập thông tin hệ thống, loại mô hình, tỉ lệ lỗi), phải tự tắt bằng AXOLOTL_DO_NOT_TRACK=1",
+      "Yêu cầu phiên bản Python và PyTorch mới (Python >= 3.12, PyTorch >= 2.13.0)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Axolotl — Framework tinh chỉnh và hậu huấn luyện LLM bằng cấu hình YAML\n\n> A Free and Open Source LLM Fine-tuning Framework\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nAxolotl là công cụ mã nguồn mở giúp đơn giản hóa hậu huấn luyện (post-training) và tinh chỉnh các mô hình ngôn ngữ lớn mới nhất. Toàn bộ quy trình — tiền xử lý dữ liệu, huấn luyện, đánh giá, lượng tử hóa và suy luận — được cấu hình bằng một tệp YAML duy nhất. Hỗ trợ GPT-OSS, LLaMA, Mistral, Qwen, mô hình đa phương thức và nhiều mô hình trên Hugging Face Hub.\n\nTinh chỉnh LLM bằng LoRA/QLoRA/full fine-tuning, DPO, GRPO trên một hoặc nhiều GPU/nhiều node chỉ bằng tệp cấu hình YAML.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Axolotl AI\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/axolotl-ai-cloud/axolotl](https://github.com/axolotl-ai-cloud/axolotl)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Nhiều mô hình: GPT-OSS, LLaMA, Mistral, Mixtral, Pythia và các mô hình trên Hugging Face Hub**\n- **Huấn luyện đa phương thức: mô hình thị giác-ngôn ngữ (Qwen2-VL, LLaVA, Pixtral...) và âm thanh (Voxtral)**\n- **Phương pháp huấn luyện: full fine-tuning, LoRA, QLoRA, GPTQ, QAT, FP8, DPO, IPO, KTO, ORPO, GRPO, Reward Modelling**\n- **Cấu hình YAML: dùng lại một tệp cho tiền xử lý dữ liệu, huấn luyện, đánh giá, lượng tử hóa và suy luận**\n- **Tối ưu hiệu năng: Multipacking, Flash Attention 2/3/4, Xformers, song song hóa đa GPU và đa node**\n- **Dữ liệu linh hoạt: nạp bộ dữ liệu từ máy cục bộ, Hugging Face và đám mây (S3, Azure, GCP, OCI)**\n- **Xuất GGUF qua `axolotl export` để chạy với llama.cpp và Ollama**\n- **Tài liệu tích hợp cho agent lập trình (Claude Code, Cursor...) qua lệnh `axolotl agent-docs`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\naxolotl train examples/llama-3/lora-1b.yml\n```\n\nYêu cầu: GPU NVIDIA (Ampere trở lên cho bf16 và Flash Attention) hoặc GPU AMD; Python >= 3.12; PyTorch >= 2.13.0. Có thể dùng ảnh Docker axolotlai/axolotl hoặc Google Colab.\nBước 1: Cài đặt uv: `curl -LsSf https://astral.sh/uv/install.sh | sh`\nBước 2: Tạo môi trường ảo: `uv venv --python 3.12` rồi `source .venv/bin/activate`\nBước 3: Cài đặt PyTorch: `uv pip install torch==2.14.0 torchvision`\nBước 4: Cài đặt Axolotl: `uv pip install --no-build-isolation axolotl[deepspeed]`\nBước 5: Tải cấu hình mẫu: `axolotl fetch examples`\nBước 6: Hoặc chạy bằng Docker: `docker run --gpus '\"all\"' --ipc=host --rm -it axolotlai/axolotl:main-latest`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn một tệp YAML mẫu trong thư mục examples và chỉnh mô hình gốc, bộ dữ liệu, tham số LoRA\nBước 2: Chạy huấn luyện bằng lệnh axolotl train kèm đường dẫn tệp cấu hình\nBước 3: Xem hướng dẫn theo chủ đề (sft, grpo, preference_tuning...) bằng axolotl agent-docs\nBước 4: Đặt AXOLOTL_DO_NOT_TRACK=1 nếu muốn tắt telemetry\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết tệp cấu hình Axolotl để tinh chỉnh LoRA mô hình Llama 3 1B trên bộ dữ liệu hỏi đáp tiếng Việt\"\n- \"Thiết lập huấn luyện DPO với Axolotl trên bộ dữ liệu so sánh câu trả lời\"\n- \"Cấu hình Axolotl huấn luyện QLoRA trên 2 GPU với DeepSpeed\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "hiyouga-llamafactory",
+    "slug": "hiyouga-llamafactory",
+    "name": "LlamaFactory — Tinh chỉnh hơn 100 LLM không cần viết mã qua CLI và giao diện web",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/hiyouga/LlamaFactory",
+    "websiteUrl": "https://llamafactory.readthedocs.io/en/latest/",
+    "authorName": "hiyouga (Yaowei Zheng) và cộng đồng LlamaFactory",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "LlamaFactory (trước đây là LLaMA-Factory) là framework tinh chỉnh hơn 100 mô hình ngôn ngữ lớn mà không cần viết mã, qua dòng lệnh hoặc giao diện web LLaMA Board (Gradio). Hỗ trợ tiền huấn luyện tiếp, SFT đa phương thức, reward modeling, PPO, DPO, KTO, ORPO với LoRA, QLoRA 2–8 bit và full-tuning. Sau huấn luyện có thể trò chuyện thử, gộp LoRA và triển khai API kiểu OpenAI với vLLM hoặc SGLang.",
+    "purposeVi": "Cho phép nhà phát triển và nhà nghiên cứu tinh chỉnh LLM (Qwen, Llama, DeepSeek, Gemma, GLM...) trên dữ liệu riêng bằng tệp cấu hình hoặc giao diện web, không cần tự viết vòng lặp huấn luyện.",
+    "featuresVi": [
+      "Nhiều mô hình: LLaMA, LLaVA, Mistral, Mixtral-MoE, Qwen3, Qwen3-VL, DeepSeek, Gemma, GLM, Phi...",
+      "Phương pháp tích hợp: tiền huấn luyện tiếp, SFT (đa phương thức), reward modeling, PPO, DPO, KTO, ORPO",
+      "Tiết kiệm tài nguyên: full-tuning 16-bit, freeze-tuning, LoRA và QLoRA 2/3/4/5/6/8-bit qua AQLM/AWQ/GPTQ/LLM.int8/HQQ/EETQ",
+      "Thuật toán nâng cao: GaLore, BAdam, APOLLO, Adam-mini, Muon...; tăng tốc bằng FlashAttention-2, Unsloth, Liger Kernel",
+      "Giao diện LLaMA Board (Gradio) để huấn luyện không cần viết mã",
+      "Theo dõi thí nghiệm: LlamaBoard, TensorBoard, Wandb, MLflow, SwanLab",
+      "Suy luận nhanh: API kiểu OpenAI, giao diện Gradio và CLI với vLLM hoặc SGLang",
+      "Tải mô hình và dữ liệu từ Hugging Face, ModelScope, Modelers Hub"
+    ],
+    "installGuideVi": "Yêu cầu: Python >= 3.11, PyTorch >= 2.0.0, transformers >= 4.49.0; CUDA 11.6+ (khuyến nghị 12.2) cho GPU NVIDIA; hỗ trợ cả GPU AMD và Ascend NPU. Bảng phần cứng trong README ước tính QLoRA 4-bit cho mô hình 7B cần khoảng 6GB VRAM.\nBước 1: Tải mã nguồn: `git clone --depth 1 https://github.com/hiyouga/LlamaFactory.git`\nBước 2: Vào thư mục: `cd LlamaFactory`\nBước 3: Cài đặt gói: `pip install -e .`\nBước 4: Cài đặt phụ thuộc đo lường: `pip install -r requirements/metrics.txt`\nBước 5: Hoặc dùng ảnh Docker dựng sẵn: `docker run -it --rm --gpus=all --ipc=host hiyouga/llamafactory:latest`",
+    "usageGuideVi": "Bước 1: Chuẩn bị bộ dữ liệu theo hướng dẫn data/README.md và khai báo trong data/dataset_info.json\nBước 2: Huấn luyện LoRA bằng llamafactory-cli train examples/train_lora/qwen3_lora_sft.yaml\nBước 3: Trò chuyện thử với llamafactory-cli chat và gộp LoRA với llamafactory-cli export\nBước 4: Hoặc mở giao diện LLaMA Board bằng llamafactory-cli webui để cấu hình và huấn luyện trực quan\nBước 5: Triển khai API kiểu OpenAI bằng llamafactory-cli api với backend vLLM",
+    "samplePromptsVi": [
+      "Tinh chỉnh LoRA Qwen3-4B-Instruct trên bộ dữ liệu hỏi đáp pháp luật tiếng Việt bằng LlamaFactory",
+      "Cấu hình LlamaFactory huấn luyện DPO trên dữ liệu so sánh câu trả lời của chatbot",
+      "Gộp adapter LoRA vào mô hình gốc rồi phục vụ qua API kiểu OpenAI với vLLM"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "llamafactory-cli webui",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"llamafactory-cli webui\"\n  ],\n  \"nguon\": \"https://github.com/hiyouga/LlamaFactory\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, miễn phí",
+      "Có giao diện web không cần viết mã bên cạnh CLI",
+      "Hỗ trợ rất nhiều mô hình và phương pháp huấn luyện, có ảnh Docker cho CUDA, NPU và ROCm",
+      "Tài liệu có bảng ước tính VRAM theo phương pháp và kích thước mô hình"
+    ],
+    "consVi": [
+      "Trọng số mô hình phải tuân theo giấy phép riêng của từng mô hình (Llama, Qwen, Gemma...)",
+      "Trên Windows phải tự cài bản PyTorch có CUDA; bitsandbytes cần đúng phiên bản CUDA Toolkit",
+      "README lưu ý chỉ các liên kết chính thức được liệt kê là hợp lệ, các trang khác là bên thứ ba không được ủy quyền"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# LlamaFactory — Tinh chỉnh hơn 100 LLM không cần viết mã qua CLI và giao diện web\n\n> Easily fine-tune 100+ large language models with zero-code CLI and Web UI\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nLlamaFactory (trước đây là LLaMA-Factory) là framework tinh chỉnh hơn 100 mô hình ngôn ngữ lớn mà không cần viết mã, qua dòng lệnh hoặc giao diện web LLaMA Board (Gradio). Hỗ trợ tiền huấn luyện tiếp, SFT đa phương thức, reward modeling, PPO, DPO, KTO, ORPO với LoRA, QLoRA 2–8 bit và full-tuning. Sau huấn luyện có thể trò chuyện thử, gộp LoRA và triển khai API kiểu OpenAI với vLLM hoặc SGLang.\n\nCho phép nhà phát triển và nhà nghiên cứu tinh chỉnh LLM (Qwen, Llama, DeepSeek, Gemma, GLM...) trên dữ liệu riêng bằng tệp cấu hình hoặc giao diện web, không cần tự viết vòng lặp huấn luyện.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** hiyouga (Yaowei Zheng) và cộng đồng LlamaFactory\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/hiyouga/LlamaFactory](https://github.com/hiyouga/LlamaFactory)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Nhiều mô hình: LLaMA, LLaVA, Mistral, Mixtral-MoE, Qwen3, Qwen3-VL, DeepSeek, Gemma, GLM, Phi...**\n- **Phương pháp tích hợp: tiền huấn luyện tiếp, SFT (đa phương thức), reward modeling, PPO, DPO, KTO, ORPO**\n- **Tiết kiệm tài nguyên: full-tuning 16-bit, freeze-tuning, LoRA và QLoRA 2/3/4/5/6/8-bit qua AQLM/AWQ/GPTQ/LLM.int8/HQQ/EETQ**\n- **Thuật toán nâng cao: GaLore, BAdam, APOLLO, Adam-mini, Muon...; tăng tốc bằng FlashAttention-2, Unsloth, Liger Kernel**\n- **Giao diện LLaMA Board (Gradio) để huấn luyện không cần viết mã**\n- **Theo dõi thí nghiệm: LlamaBoard, TensorBoard, Wandb, MLflow, SwanLab**\n- **Suy luận nhanh: API kiểu OpenAI, giao diện Gradio và CLI với vLLM hoặc SGLang**\n- **Tải mô hình và dữ liệu từ Hugging Face, ModelScope, Modelers Hub**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nllamafactory-cli webui\n```\n\nYêu cầu: Python >= 3.11, PyTorch >= 2.0.0, transformers >= 4.49.0; CUDA 11.6+ (khuyến nghị 12.2) cho GPU NVIDIA; hỗ trợ cả GPU AMD và Ascend NPU. Bảng phần cứng trong README ước tính QLoRA 4-bit cho mô hình 7B cần khoảng 6GB VRAM.\nBước 1: Tải mã nguồn: `git clone --depth 1 https://github.com/hiyouga/LlamaFactory.git`\nBước 2: Vào thư mục: `cd LlamaFactory`\nBước 3: Cài đặt gói: `pip install -e .`\nBước 4: Cài đặt phụ thuộc đo lường: `pip install -r requirements/metrics.txt`\nBước 5: Hoặc dùng ảnh Docker dựng sẵn: `docker run -it --rm --gpus=all --ipc=host hiyouga/llamafactory:latest`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chuẩn bị bộ dữ liệu theo hướng dẫn data/README.md và khai báo trong data/dataset_info.json\nBước 2: Huấn luyện LoRA bằng llamafactory-cli train examples/train_lora/qwen3_lora_sft.yaml\nBước 3: Trò chuyện thử với llamafactory-cli chat và gộp LoRA với llamafactory-cli export\nBước 4: Hoặc mở giao diện LLaMA Board bằng llamafactory-cli webui để cấu hình và huấn luyện trực quan\nBước 5: Triển khai API kiểu OpenAI bằng llamafactory-cli api với backend vLLM\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tinh chỉnh LoRA Qwen3-4B-Instruct trên bộ dữ liệu hỏi đáp pháp luật tiếng Việt bằng LlamaFactory\"\n- \"Cấu hình LlamaFactory huấn luyện DPO trên dữ liệu so sánh câu trả lời của chatbot\"\n- \"Gộp adapter LoRA vào mô hình gốc rồi phục vụ qua API kiểu OpenAI với vLLM\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "huggingface-trl",
+    "slug": "huggingface-trl",
+    "name": "TRL — Thư viện hậu huấn luyện và căn chỉnh LLM (SFT, GRPO, DPO) của Hugging Face",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/huggingface/trl",
+    "websiteUrl": "https://huggingface.co/docs/trl",
+    "authorName": "Hugging Face",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "TRL (Transformers Reinforcement Learning) là thư viện Python của Hugging Face dùng để hậu huấn luyện mô hình nền tảng bằng các kỹ thuật như SFT, GRPO và DPO. Thư viện xây trên hệ sinh thái Transformers, hỗ trợ nhiều kiến trúc mô hình và mở rộng từ một GPU lên cụm nhiều node. Ngoài API Python còn có CLI để tinh chỉnh không cần viết mã.",
+    "purposeVi": "Cung cấp các trainer dựng sẵn (SFTTrainer, GRPOTrainer, DPOTrainer, KTOTrainer, RewardTrainer) để tinh chỉnh và căn chỉnh (alignment) LLM trên bộ dữ liệu riêng.",
+    "featuresVi": [
+      "Trainer dựng sẵn: SFTTrainer, GRPOTrainer, DPOTrainer, KTOTrainer, RewardTrainer",
+      "Mở rộng quy mô: dùng Accelerate để chạy từ một GPU đến cụm nhiều node với DDP, DeepSpeed",
+      "Tích hợp PEFT: huấn luyện mô hình lớn trên phần cứng vừa phải bằng lượng tử hóa và LoRA/QLoRA",
+      "Tích hợp Unsloth để tăng tốc huấn luyện bằng kernel tối ưu",
+      "CLI: lệnh trl sft, trl dpo, trl kto để tinh chỉnh không cần viết mã",
+      "Chạy trên GPU AMD Instinct (ROCm) và AWS Trainium",
+      "Hàm thưởng có sẵn như accuracy_reward cho GRPO"
+    ],
+    "installGuideVi": "Yêu cầu: Python và PyTorch; các mô hình và bộ dữ liệu lấy từ Hugging Face Hub. GPU được khuyến nghị cho huấn luyện; dùng PEFT/QLoRA để giảm yêu cầu bộ nhớ.\nBước 1: Cài đặt thư viện: `pip install trl`\nBước 2: Hoặc cài đặt bản mới nhất từ mã nguồn: `pip install git+https://github.com/huggingface/trl.git`\nBước 3: Tải kho mã để dùng các ví dụ: `git clone https://github.com/huggingface/trl.git`",
+    "usageGuideVi": "Bước 1: Nạp bộ dữ liệu bằng datasets.load_dataset (ví dụ trl-lib/Capybara)\nBước 2: Khởi tạo trainer phù hợp (SFTTrainer, DPOTrainer, GRPOTrainer...) với tên mô hình và bộ dữ liệu, rồi gọi trainer.train()\nBước 3: Hoặc dùng CLI: trl sft --model_name_or_path Qwen/Qwen2.5-0.5B --dataset_name trl-lib/Capybara --output_dir Qwen2.5-0.5B-SFT\nBước 4: Xem thêm hướng dẫn CLI bằng tùy chọn --help",
+    "samplePromptsVi": [
+      "Viết mã Python dùng SFTTrainer của TRL để tinh chỉnh Qwen2.5-0.5B trên bộ dữ liệu hội thoại tiếng Việt",
+      "Dùng GRPOTrainer với hàm thưởng accuracy_reward để huấn luyện mô hình giải toán",
+      "Chạy DPO bằng CLI trl dpo trên bộ dữ liệu so sánh câu trả lời"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install trl",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install trl\"\n  ],\n  \"nguon\": \"https://github.com/huggingface/trl\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, do Hugging Face phát triển và bảo trì",
+      "API đơn giản, tích hợp sẵn với Transformers, PEFT, Accelerate",
+      "Hỗ trợ nhiều thuật toán căn chỉnh hiện đại (SFT, GRPO, DPO, KTO, Reward Modeling)"
+    ],
+    "consVi": [
+      "Là thư viện lập trình, không có giao diện web",
+      "Các tính năng trong trl.experimental có thể thay đổi hoặc bị xóa ở bất kỳ phiên bản nào mà không báo trước"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# TRL — Thư viện hậu huấn luyện và căn chỉnh LLM (SFT, GRPO, DPO) của Hugging Face\n\n> A comprehensive library to post-train foundation models\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nTRL (Transformers Reinforcement Learning) là thư viện Python của Hugging Face dùng để hậu huấn luyện mô hình nền tảng bằng các kỹ thuật như SFT, GRPO và DPO. Thư viện xây trên hệ sinh thái Transformers, hỗ trợ nhiều kiến trúc mô hình và mở rộng từ một GPU lên cụm nhiều node. Ngoài API Python còn có CLI để tinh chỉnh không cần viết mã.\n\nCung cấp các trainer dựng sẵn (SFTTrainer, GRPOTrainer, DPOTrainer, KTOTrainer, RewardTrainer) để tinh chỉnh và căn chỉnh (alignment) LLM trên bộ dữ liệu riêng.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Hugging Face\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/huggingface/trl](https://github.com/huggingface/trl)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Trainer dựng sẵn: SFTTrainer, GRPOTrainer, DPOTrainer, KTOTrainer, RewardTrainer**\n- **Mở rộng quy mô: dùng Accelerate để chạy từ một GPU đến cụm nhiều node với DDP, DeepSpeed**\n- **Tích hợp PEFT: huấn luyện mô hình lớn trên phần cứng vừa phải bằng lượng tử hóa và LoRA/QLoRA**\n- **Tích hợp Unsloth để tăng tốc huấn luyện bằng kernel tối ưu**\n- **CLI: lệnh trl sft, trl dpo, trl kto để tinh chỉnh không cần viết mã**\n- **Chạy trên GPU AMD Instinct (ROCm) và AWS Trainium**\n- **Hàm thưởng có sẵn như accuracy_reward cho GRPO**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install trl\n```\n\nYêu cầu: Python và PyTorch; các mô hình và bộ dữ liệu lấy từ Hugging Face Hub. GPU được khuyến nghị cho huấn luyện; dùng PEFT/QLoRA để giảm yêu cầu bộ nhớ.\nBước 1: Cài đặt thư viện: `pip install trl`\nBước 2: Hoặc cài đặt bản mới nhất từ mã nguồn: `pip install git+https://github.com/huggingface/trl.git`\nBước 3: Tải kho mã để dùng các ví dụ: `git clone https://github.com/huggingface/trl.git`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Nạp bộ dữ liệu bằng datasets.load_dataset (ví dụ trl-lib/Capybara)\nBước 2: Khởi tạo trainer phù hợp (SFTTrainer, DPOTrainer, GRPOTrainer...) với tên mô hình và bộ dữ liệu, rồi gọi trainer.train()\nBước 3: Hoặc dùng CLI: trl sft --model_name_or_path Qwen/Qwen2.5-0.5B --dataset_name trl-lib/Capybara --output_dir Qwen2.5-0.5B-SFT\nBước 4: Xem thêm hướng dẫn CLI bằng tùy chọn --help\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết mã Python dùng SFTTrainer của TRL để tinh chỉnh Qwen2.5-0.5B trên bộ dữ liệu hội thoại tiếng Việt\"\n- \"Dùng GRPOTrainer với hàm thưởng accuracy_reward để huấn luyện mô hình giải toán\"\n- \"Chạy DPO bằng CLI trl dpo trên bộ dữ liệu so sánh câu trả lời\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "huggingface-peft",
+    "slug": "huggingface-peft",
+    "name": "PEFT — Thư viện tinh chỉnh tiết kiệm tham số (LoRA, adapter) của Hugging Face",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/huggingface/peft",
+    "websiteUrl": "https://huggingface.co/docs/peft",
+    "authorName": "Hugging Face",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "PEFT là thư viện Python của Hugging Face cung cấp các phương pháp tinh chỉnh tiết kiệm tham số như LoRA, chỉ huấn luyện một phần nhỏ tham số (bổ sung) thay vì toàn bộ mô hình. Cách này giảm mạnh chi phí tính toán và lưu trữ, trong khi hiệu năng tương đương tinh chỉnh toàn phần. PEFT tích hợp với Transformers, Diffusers, Accelerate và TRL.",
+    "purposeVi": "Giúp tinh chỉnh mô hình lớn trên phần cứng phổ thông và lưu checkpoint chỉ vài MB cho mỗi tác vụ thay vì vài GB.",
+    "featuresVi": [
+      "Nhiều phương pháp PEFT: LoRA, adapter, soft prompt và các kỹ thuật khác",
+      "Huấn luyện ít tham số: ví dụ với Qwen2.5-3B chỉ khoảng 0,12% tham số được huấn luyện",
+      "Kết hợp lượng tử hóa (QLoRA) để tinh chỉnh mô hình lớn trên GPU 16GB",
+      "Checkpoint nhỏ: mỗi adapter chỉ vài MB, dễ lưu và chuyển đổi giữa các tác vụ",
+      "Tích hợp Transformers (add_adapter, load_adapter, set_adapter) và Diffusers cho Stable Diffusion",
+      "Chạy phân tán với Accelerate và dùng cùng TRL cho RLHF/DPO"
+    ],
+    "installGuideVi": "Yêu cầu: Python, PyTorch và thư viện transformers; GPU được khuyến nghị cho huấn luyện.\nBước 1: Cài đặt thư viện: `pip install peft`",
+    "usageGuideVi": "Bước 1: Nạp mô hình gốc bằng AutoModelForCausalLM.from_pretrained\nBước 2: Tạo LoraConfig (r, lora_alpha, task_type) rồi bọc mô hình bằng get_peft_model\nBước 3: Huấn luyện bằng Trainer của Transformers và lưu adapter bằng save_pretrained\nBước 4: Khi suy luận, nạp adapter bằng PeftModel.from_pretrained",
+    "samplePromptsVi": [
+      "Viết mã dùng PEFT để gắn LoRA vào Qwen2.5-3B-Instruct và in số tham số có thể huấn luyện",
+      "Nạp adapter LoRA đã huấn luyện vào mô hình gốc để sinh văn bản",
+      "Kết hợp PEFT với lượng tử hóa 4-bit để tinh chỉnh mô hình 7B trên GPU 16GB"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install peft",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install peft\"\n  ],\n  \"nguon\": \"https://github.com/huggingface/peft\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, do Hugging Face bảo trì",
+      "Giảm mạnh chi phí tính toán và dung lượng lưu trữ so với tinh chỉnh toàn phần",
+      "Là nền tảng được nhiều framework tinh chỉnh khác sử dụng"
+    ],
+    "consVi": [
+      "Là thư viện lập trình, cần tự viết vòng lặp huấn luyện hoặc kết hợp Trainer/TRL",
+      "Tích hợp trong Transformers không có đủ mọi chức năng của PEFT, ví dụ gộp adapter vào mô hình gốc"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# PEFT — Thư viện tinh chỉnh tiết kiệm tham số (LoRA, adapter) của Hugging Face\n\n> State-of-the-art Parameter-Efficient Fine-Tuning (PEFT) methods\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPEFT là thư viện Python của Hugging Face cung cấp các phương pháp tinh chỉnh tiết kiệm tham số như LoRA, chỉ huấn luyện một phần nhỏ tham số (bổ sung) thay vì toàn bộ mô hình. Cách này giảm mạnh chi phí tính toán và lưu trữ, trong khi hiệu năng tương đương tinh chỉnh toàn phần. PEFT tích hợp với Transformers, Diffusers, Accelerate và TRL.\n\nGiúp tinh chỉnh mô hình lớn trên phần cứng phổ thông và lưu checkpoint chỉ vài MB cho mỗi tác vụ thay vì vài GB.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Hugging Face\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/huggingface/peft](https://github.com/huggingface/peft)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Nhiều phương pháp PEFT: LoRA, adapter, soft prompt và các kỹ thuật khác**\n- **Huấn luyện ít tham số: ví dụ với Qwen2.5-3B chỉ khoảng 0,12% tham số được huấn luyện**\n- **Kết hợp lượng tử hóa (QLoRA) để tinh chỉnh mô hình lớn trên GPU 16GB**\n- **Checkpoint nhỏ: mỗi adapter chỉ vài MB, dễ lưu và chuyển đổi giữa các tác vụ**\n- **Tích hợp Transformers (add_adapter, load_adapter, set_adapter) và Diffusers cho Stable Diffusion**\n- **Chạy phân tán với Accelerate và dùng cùng TRL cho RLHF/DPO**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install peft\n```\n\nYêu cầu: Python, PyTorch và thư viện transformers; GPU được khuyến nghị cho huấn luyện.\nBước 1: Cài đặt thư viện: `pip install peft`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Nạp mô hình gốc bằng AutoModelForCausalLM.from_pretrained\nBước 2: Tạo LoraConfig (r, lora_alpha, task_type) rồi bọc mô hình bằng get_peft_model\nBước 3: Huấn luyện bằng Trainer của Transformers và lưu adapter bằng save_pretrained\nBước 4: Khi suy luận, nạp adapter bằng PeftModel.from_pretrained\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết mã dùng PEFT để gắn LoRA vào Qwen2.5-3B-Instruct và in số tham số có thể huấn luyện\"\n- \"Nạp adapter LoRA đã huấn luyện vào mô hình gốc để sinh văn bản\"\n- \"Kết hợp PEFT với lượng tử hóa 4-bit để tinh chỉnh mô hình 7B trên GPU 16GB\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "verl-project-verl",
+    "slug": "verl-project-verl",
+    "name": "verl — Thư viện huấn luyện học tăng cường (PPO, GRPO) cho LLM của ByteDance Seed",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/verl-project/verl",
+    "websiteUrl": "https://verl.readthedocs.io",
+    "authorName": "ByteDance Seed team và cộng đồng verl",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "verl (Volcano Engine Reinforcement Learning) là thư viện huấn luyện học tăng cường (RL) cho mô hình ngôn ngữ lớn, do ByteDance Seed khởi xướng và cộng đồng verl duy trì. Đây là phiên bản mã nguồn mở của bài báo HybridFlow, cho phép xây dựng luồng hậu huấn luyện như PPO, GRPO chỉ với vài dòng mã. Thư viện kết hợp FSDP/Megatron-LM để huấn luyện với vLLM/SGLang để sinh rollout, mở rộng tới mô hình 671B và hàng trăm GPU.",
+    "purposeVi": "Huấn luyện RL quy mô lớn (PPO, GRPO, DAPO, REINFORCE++...) cho LLM, mô hình suy luận và agent dùng công cụ.",
+    "featuresVi": [
+      "Thuật toán RL: PPO, GRPO, GSPO, ReMax, REINFORCE++, DAPO và nhiều công thức khác",
+      "Backend huấn luyện: FSDP, FSDP2 và Megatron-LM; sinh rollout bằng vLLM, SGLang hoặc HF Transformers",
+      "Phần thưởng dựa trên mô hình hoặc hàm (verifiable reward) cho toán, lập trình",
+      "RL đa phương thức với mô hình thị giác-ngôn ngữ (Qwen2.5-VL, Kimi-VL) và RL nhiều lượt có gọi công cụ",
+      "3D-HybridEngine: chia lại trọng số actor giữa huấn luyện và sinh, giảm dư thừa bộ nhớ",
+      "Mở rộng tới mô hình 671B và hàng trăm GPU với expert parallelism; hỗ trợ LoRA RL",
+      "Theo dõi thí nghiệm với wandb, swanlab, mlflow, tensorboard",
+      "Phần cứng: NVIDIA, AMD (ROCm), Ascend"
+    ],
+    "installGuideVi": "Yêu cầu: Python >= 3.10 và CUDA >= 12.8 theo tài liệu cài đặt; quy trình uv nhắm tới Linux, Python 3.12 trên x86_64 và aarch64. Cần GPU cho huấn luyện; có extra cpu cho kiểm tra nhanh không cần GPU.\nBước 1: Cài đặt uv: `curl -LsSf https://astral.sh/uv/install.sh | sh`\nBước 2: Tải mã nguồn: `git clone https://github.com/verl-project/verl.git`\nBước 3: Vào thư mục: `cd verl`\nBước 4: Lần chạy uv đầu tiên tự dựng môi trường .venv từ uv.lock (chọn backend vllm + fsdp): `uv run --frozen --all-packages --extra vllm --extra fsdp uv pip list`",
+    "usageGuideVi": "Bước 1: Chuẩn bị dữ liệu hậu huấn luyện và cài đặt hàm thưởng theo hướng dẫn trong tài liệu verl\nBước 2: Chọn backend suy luận (vllm hoặc sglang) và huấn luyện (fsdp, megatron hoặc veomni) dưới dạng extra của uv\nBước 3: Chạy các script mẫu trong thư mục examples (ví dụ ppo_trainer, grpo_trainer) qua uv run\nBước 4: Bật FSDP2 bằng các tùy chọn actor_rollout_ref.actor.strategy=fsdp2 và critic.strategy=fsdp2",
+    "samplePromptsVi": [
+      "Thiết lập huấn luyện GRPO với verl cho Qwen3 trên bộ dữ liệu toán GSM8K với hàm thưởng kiểm tra đáp án",
+      "Chạy PPO bằng verl với backend FSDP2 và vLLM trên 8 GPU",
+      "Huấn luyện RL nhiều lượt có gọi công cụ cho agent theo hướng dẫn agent loop của verl"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "uv run --frozen --all-packages --extra vllm --extra fsdp uv pip list",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uv run --frozen --all-packages --extra vllm --extra fsdp uv pip list\"\n  ],\n  \"nguon\": \"https://github.com/verl-project/verl\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Được dùng để huấn luyện các mô hình suy luận quy mô lớn, có nhiều công thức thuật toán tái lập được",
+      "Tích hợp với hạ tầng LLM phổ biến (FSDP, Megatron-LM, vLLM, SGLang)"
+    ],
+    "consVi": [
+      "Hướng tới huấn luyện quy mô cụm GPU, đòi hỏi kiến thức RL và hệ thống phân tán",
+      "README không có lệnh cài đặt; hướng dẫn nằm trong tài liệu docs/start/install.rst",
+      "Quy trình uv chỉ nhắm tới Linux; Ascend NPU và AMD ROCm dùng Dockerfile riêng"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# verl — Thư viện huấn luyện học tăng cường (PPO, GRPO) cho LLM của ByteDance Seed\n\n> verl is a flexible, efficient and production-ready RL training library for large language models (LLMs).\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nverl (Volcano Engine Reinforcement Learning) là thư viện huấn luyện học tăng cường (RL) cho mô hình ngôn ngữ lớn, do ByteDance Seed khởi xướng và cộng đồng verl duy trì. Đây là phiên bản mã nguồn mở của bài báo HybridFlow, cho phép xây dựng luồng hậu huấn luyện như PPO, GRPO chỉ với vài dòng mã. Thư viện kết hợp FSDP/Megatron-LM để huấn luyện với vLLM/SGLang để sinh rollout, mở rộng tới mô hình 671B và hàng trăm GPU.\n\nHuấn luyện RL quy mô lớn (PPO, GRPO, DAPO, REINFORCE++...) cho LLM, mô hình suy luận và agent dùng công cụ.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** ByteDance Seed team và cộng đồng verl\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/verl-project/verl](https://github.com/verl-project/verl)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Thuật toán RL: PPO, GRPO, GSPO, ReMax, REINFORCE++, DAPO và nhiều công thức khác**\n- **Backend huấn luyện: FSDP, FSDP2 và Megatron-LM; sinh rollout bằng vLLM, SGLang hoặc HF Transformers**\n- **Phần thưởng dựa trên mô hình hoặc hàm (verifiable reward) cho toán, lập trình**\n- **RL đa phương thức với mô hình thị giác-ngôn ngữ (Qwen2.5-VL, Kimi-VL) và RL nhiều lượt có gọi công cụ**\n- **3D-HybridEngine: chia lại trọng số actor giữa huấn luyện và sinh, giảm dư thừa bộ nhớ**\n- **Mở rộng tới mô hình 671B và hàng trăm GPU với expert parallelism; hỗ trợ LoRA RL**\n- **Theo dõi thí nghiệm với wandb, swanlab, mlflow, tensorboard**\n- **Phần cứng: NVIDIA, AMD (ROCm), Ascend**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuv run --frozen --all-packages --extra vllm --extra fsdp uv pip list\n```\n\nYêu cầu: Python >= 3.10 và CUDA >= 12.8 theo tài liệu cài đặt; quy trình uv nhắm tới Linux, Python 3.12 trên x86_64 và aarch64. Cần GPU cho huấn luyện; có extra cpu cho kiểm tra nhanh không cần GPU.\nBước 1: Cài đặt uv: `curl -LsSf https://astral.sh/uv/install.sh | sh`\nBước 2: Tải mã nguồn: `git clone https://github.com/verl-project/verl.git`\nBước 3: Vào thư mục: `cd verl`\nBước 4: Lần chạy uv đầu tiên tự dựng môi trường .venv từ uv.lock (chọn backend vllm + fsdp): `uv run --frozen --all-packages --extra vllm --extra fsdp uv pip list`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chuẩn bị dữ liệu hậu huấn luyện và cài đặt hàm thưởng theo hướng dẫn trong tài liệu verl\nBước 2: Chọn backend suy luận (vllm hoặc sglang) và huấn luyện (fsdp, megatron hoặc veomni) dưới dạng extra của uv\nBước 3: Chạy các script mẫu trong thư mục examples (ví dụ ppo_trainer, grpo_trainer) qua uv run\nBước 4: Bật FSDP2 bằng các tùy chọn actor_rollout_ref.actor.strategy=fsdp2 và critic.strategy=fsdp2\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Thiết lập huấn luyện GRPO với verl cho Qwen3 trên bộ dữ liệu toán GSM8K với hàm thưởng kiểm tra đáp án\"\n- \"Chạy PPO bằng verl với backend FSDP2 và vLLM trên 8 GPU\"\n- \"Huấn luyện RL nhiều lượt có gọi công cụ cho agent theo hướng dẫn agent loop của verl\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "modelscope-ms-swift",
+    "slug": "modelscope-ms-swift",
+    "name": "ms-swift — Framework tinh chỉnh, RL và triển khai hơn 1.000 mô hình lớn của ModelScope",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/modelscope/ms-swift",
+    "websiteUrl": "https://swift.readthedocs.io/en/latest/",
+    "authorName": "ModelScope (Alibaba)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "ms-swift (SWIFT) là framework tinh chỉnh và triển khai mô hình lớn và mô hình đa phương thức của cộng đồng ModelScope. Hỗ trợ tiền huấn luyện, tinh chỉnh, căn chỉnh (DPO, KTO, ORPO...), học tăng cường họ GRPO, suy luận, đánh giá, lượng tử hóa và triển khai cho hơn 600 LLM văn bản và hơn 400 mô hình đa phương thức. Có CLI, giao diện Web-UI và API Python.",
+    "purposeVi": "Cung cấp quy trình trọn gói từ huấn luyện đến suy luận, đánh giá, lượng tử hóa và triển khai mô hình lớn (Qwen, DeepSeek, Llama, InternVL...) chỉ bằng vài lệnh.",
+    "featuresVi": [
+      "Mô hình: hơn 600 LLM văn bản, hơn 400 mô hình đa phương thức, hỗ trợ ngày đầu cho mô hình mới",
+      "Bộ dữ liệu: hơn 150 bộ dữ liệu tích hợp sẵn, hỗ trợ dữ liệu tùy chỉnh",
+      "Tinh chỉnh nhẹ: LoRA, QLoRA, DoRA, LoRA+, LongLoRA, ReFT, LISA...; huấn luyện mô hình 7B lượng tử hóa chỉ cần 9GB",
+      "Huấn luyện phân tán: DDP, DeepSpeed ZeRO2/ZeRO3, FSDP/FSDP2 và song song Megatron (TP/PP/CP/EP)",
+      "Học tăng cường: GRPO, DAPO, GSPO, SAPO, CISPO, RLOO, Reinforce++ với tăng tốc vLLM",
+      "Tác vụ khác: DPO, KTO, RM, CPO, SimPO, ORPO, Embedding/Reranker, phân loại chuỗi",
+      "Web-UI (Gradio) cho huấn luyện, suy luận, đánh giá, lượng tử hóa",
+      "Suy luận và triển khai với vLLM, SGLang, LMDeploy; lượng tử hóa AWQ, GPTQ, FP8, BNB; đánh giá bằng EvalScope",
+      "Phần cứng: GPU NVIDIA, AMD, Ascend NPU, Apple MPS và CPU"
+    ],
+    "installGuideVi": "Yêu cầu: Python >= 3.10 (khuyến nghị 3.12), PyTorch >= 2.0, transformers >= 4.33, modelscope >= 1.23; CUDA 12.8/13.0 khuyến nghị (không cần nếu dùng CPU, NPU, MPS). Mặc định tải mô hình và dữ liệu từ ModelScope, dùng --use_hf true để chuyển sang Hugging Face.\nBước 1: Cài đặt bằng pip: `pip install ms-swift -U`\nBước 2: Hoặc cài đặt từ mã nguồn: `git clone https://github.com/modelscope/ms-swift.git`, `cd ms-swift`, rồi `pip install -e .`\nBước 3: Khởi chạy giao diện web: `SWIFT_UI_LANG=en swift web-ui`",
+    "usageGuideVi": "Bước 1: Tinh chỉnh bằng lệnh swift sft, chỉ định --model (ví dụ Qwen/Qwen3-4B-Instruct-2507), --tuner_type lora và --dataset\nBước 2: Suy luận với trọng số đã huấn luyện bằng swift infer --adapters output/vx-xxx/checkpoint-xxx (có thể gộp LoRA và dùng vLLM)\nBước 3: Đẩy mô hình lên ModelScope hoặc Hugging Face bằng swift export --push_to_hub true\nBước 4: Hoặc dùng Web-UI để thực hiện toàn bộ quy trình mà không cần viết lệnh",
+    "samplePromptsVi": [
+      "Tinh chỉnh LoRA tự nhận thức (self-cognition) cho Qwen3-4B-Instruct trên một GPU 3090 bằng ms-swift",
+      "Huấn luyện GRPO với ms-swift và tăng tốc rollout bằng vLLM",
+      "Lượng tử hóa mô hình sau tinh chỉnh sang AWQ rồi triển khai qua API OpenAI bằng ms-swift"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install ms-swift -U",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install ms-swift -U\"\n  ],\n  \"nguon\": \"https://github.com/modelscope/ms-swift\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Quy trình trọn gói: huấn luyện, suy luận, đánh giá, lượng tử hóa, triển khai",
+      "Hỗ trợ số lượng rất lớn mô hình văn bản và đa phương thức, nhiều loại phần cứng",
+      "Có Web-UI cho người không quen dòng lệnh"
+    ],
+    "consVi": [
+      "Mặc định tải mô hình và dữ liệu từ ModelScope; cần thêm --use_hf true để dùng Hugging Face",
+      "Mô hình và bộ dữ liệu phải tuân theo giấy phép gốc của từng tài nguyên",
+      "Nhánh main dành cho swift 4.x; muốn dùng 3.x phải chuyển sang nhánh release/3.12"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# ms-swift — Framework tinh chỉnh, RL và triển khai hơn 1.000 mô hình lớn của ModelScope\n\n> ms-swift is a large model and multimodal large model fine-tuning and deployment framework provided by the ModelScope community.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nms-swift (SWIFT) là framework tinh chỉnh và triển khai mô hình lớn và mô hình đa phương thức của cộng đồng ModelScope. Hỗ trợ tiền huấn luyện, tinh chỉnh, căn chỉnh (DPO, KTO, ORPO...), học tăng cường họ GRPO, suy luận, đánh giá, lượng tử hóa và triển khai cho hơn 600 LLM văn bản và hơn 400 mô hình đa phương thức. Có CLI, giao diện Web-UI và API Python.\n\nCung cấp quy trình trọn gói từ huấn luyện đến suy luận, đánh giá, lượng tử hóa và triển khai mô hình lớn (Qwen, DeepSeek, Llama, InternVL...) chỉ bằng vài lệnh.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** ModelScope (Alibaba)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/modelscope/ms-swift](https://github.com/modelscope/ms-swift)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Mô hình: hơn 600 LLM văn bản, hơn 400 mô hình đa phương thức, hỗ trợ ngày đầu cho mô hình mới**\n- **Bộ dữ liệu: hơn 150 bộ dữ liệu tích hợp sẵn, hỗ trợ dữ liệu tùy chỉnh**\n- **Tinh chỉnh nhẹ: LoRA, QLoRA, DoRA, LoRA+, LongLoRA, ReFT, LISA...; huấn luyện mô hình 7B lượng tử hóa chỉ cần 9GB**\n- **Huấn luyện phân tán: DDP, DeepSpeed ZeRO2/ZeRO3, FSDP/FSDP2 và song song Megatron (TP/PP/CP/EP)**\n- **Học tăng cường: GRPO, DAPO, GSPO, SAPO, CISPO, RLOO, Reinforce++ với tăng tốc vLLM**\n- **Tác vụ khác: DPO, KTO, RM, CPO, SimPO, ORPO, Embedding/Reranker, phân loại chuỗi**\n- **Web-UI (Gradio) cho huấn luyện, suy luận, đánh giá, lượng tử hóa**\n- **Suy luận và triển khai với vLLM, SGLang, LMDeploy; lượng tử hóa AWQ, GPTQ, FP8, BNB; đánh giá bằng EvalScope**\n- **Phần cứng: GPU NVIDIA, AMD, Ascend NPU, Apple MPS và CPU**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install ms-swift -U\n```\n\nYêu cầu: Python >= 3.10 (khuyến nghị 3.12), PyTorch >= 2.0, transformers >= 4.33, modelscope >= 1.23; CUDA 12.8/13.0 khuyến nghị (không cần nếu dùng CPU, NPU, MPS). Mặc định tải mô hình và dữ liệu từ ModelScope, dùng --use_hf true để chuyển sang Hugging Face.\nBước 1: Cài đặt bằng pip: `pip install ms-swift -U`\nBước 2: Hoặc cài đặt từ mã nguồn: `git clone https://github.com/modelscope/ms-swift.git`, `cd ms-swift`, rồi `pip install -e .`\nBước 3: Khởi chạy giao diện web: `SWIFT_UI_LANG=en swift web-ui`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tinh chỉnh bằng lệnh swift sft, chỉ định --model (ví dụ Qwen/Qwen3-4B-Instruct-2507), --tuner_type lora và --dataset\nBước 2: Suy luận với trọng số đã huấn luyện bằng swift infer --adapters output/vx-xxx/checkpoint-xxx (có thể gộp LoRA và dùng vLLM)\nBước 3: Đẩy mô hình lên ModelScope hoặc Hugging Face bằng swift export --push_to_hub true\nBước 4: Hoặc dùng Web-UI để thực hiện toàn bộ quy trình mà không cần viết lệnh\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tinh chỉnh LoRA tự nhận thức (self-cognition) cho Qwen3-4B-Instruct trên một GPU 3090 bằng ms-swift\"\n- \"Huấn luyện GRPO với ms-swift và tăng tốc rollout bằng vLLM\"\n- \"Lượng tử hóa mô hình sau tinh chỉnh sang AWQ rồi triển khai qua API OpenAI bằng ms-swift\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:55:48.817Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]
