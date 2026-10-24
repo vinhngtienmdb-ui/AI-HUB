@@ -1,0 +1,586 @@
+[
+ {
+  "repo": "Unstructured-IO/unstructured",
+  "license": "Apache License 2.0",
+  "authorName": "Unstructured-IO",
+  "websiteUrl": "https://docs.unstructured.io",
+  "toolType": "sdk",
+  "taglineEn": "The `unstructured` library provides open-source components for ingesting and pre-processing images and text documents, such as PDFs, HTML, Word docs, and many more.",
+  "summaryVi": "unstructured là thư viện Python mã nguồn mở để nạp và tiền xử lý tài liệu phi cấu trúc như PDF, HTML, Word, email, ảnh… thành các phần tử có cấu trúc. Mục tiêu của thư viện là tối ưu quy trình xử lý dữ liệu cho LLM; hàm partition tự nhận diện loại tệp và chuyển tới hàm phân tách phù hợp.",
+  "purposeVi": "Chuyển tài liệu phi cấu trúc thành dữ liệu có cấu trúc (danh sách phần tử) để đưa vào pipeline LLM và RAG.",
+  "featuresVi": [
+   "Hàm partition tự động: nhận diện loại tệp và gọi hàm phân tách tương ứng",
+   "Hàm riêng theo định dạng: partition_pdf, partition_text, email (.eml), docx, pptx…",
+   "Cài đặt theo nhóm phụ thuộc: unstructured[all-docs] hoặc chỉ các extra cần thiết như [docx,pptx]",
+   "Ảnh Docker đa nền tảng (x86_64 và Apple silicon) dựng sẵn từ nhánh main",
+   "Có thể tắt telemetry bằng biến môi trường DO_NOT_TRACK hoặc SCARF_NO_ANALYTICS"
+  ],
+  "requirementsVi": "Python. Tùy loại tài liệu cần thêm các gói hệ thống: libmagic-dev (nhận diện loại tệp), poppler-utils (ảnh và PDF), tesseract-ocr (OCR ảnh/PDF), libreoffice (tài liệu MS Office). Hoặc dùng Docker.",
+  "installStepsVi": [
+   "Cài đặt đầy đủ hỗ trợ mọi loại tài liệu: `pip install \"unstructured[all-docs]\"`",
+   "Hoặc cài đặt bản tối thiểu cho text, HTML, XML, JSON, email: `pip install unstructured`",
+   "Hoặc chỉ cài đặt phụ thuộc cho định dạng cần dùng, ví dụ: `pip install \"unstructured[docx,pptx]\"`",
+   "Cài đặt các gói hệ thống libmagic-dev, poppler-utils, tesseract-ocr, libreoffice nếu xử lý PDF, ảnh hoặc tài liệu Office",
+   "Cách khác — chạy bằng Docker: `docker pull downloads.unstructured.io/unstructured-io/unstructured:latest`, rồi `docker run -dt --name unstructured downloads.unstructured.io/unstructured-io/unstructured:latest` và `docker exec -it unstructured bash`"
+  ],
+  "cliCommand": "pip install \"unstructured[all-docs]\"",
+  "usageStepsVi": [
+   "Trong Python, gọi `from unstructured.partition.auto import partition` rồi `elements = partition(filename=\"...\")` để phân tách một tệp bất kỳ",
+   "Với PDF có thể dùng trực tiếp `partition_pdf`, với văn bản dùng `partition_text`",
+   "Duyệt danh sách elements trả về để lấy dữ liệu có cấu trúc, rồi đưa vào bước chia nhỏ (chunking) hoặc nhúng cho hệ thống RAG",
+   "Xem hướng dẫn partitioning trên trang tài liệu để biết hàm riêng cho từng định dạng"
+  ],
+  "samplePromptsVi": [
+   "Dùng partition để tách tệp hợp đồng PDF thành các phần tử tiêu đề, đoạn văn, bảng",
+   "Tiền xử lý thư mục email .eml thành dữ liệu có cấu trúc để nạp vào cơ sở dữ liệu vector",
+   "Trích xuất nội dung từ tệp Word và PowerPoint cho pipeline RAG nội bộ"
+  ],
+  "prosVi": [
+   "Giấy phép Apache 2.0; README cam kết thư viện mã nguồn mở sẽ luôn miễn phí",
+   "Hỗ trợ nhiều định dạng: PDF, HTML, Word, email, ảnh và nhiều loại khác",
+   "Có ảnh Docker dựng sẵn cho x86_64 và Apple silicon",
+   "Dự án được cập nhật thường xuyên"
+  ],
+  "consVi": [
+   "Cần cài đặt nhiều gói hệ thống (poppler, tesseract, libreoffice…) tùy loại tài liệu",
+   "Theo bảng so sánh trong README, chất lượng bảng và văn bản của bản mã nguồn mở thấp hơn dịch vụ trả phí Transform API của cùng hãng",
+   "Mặc định gửi telemetry nhẹ; phải đặt DO_NOT_TRACK hoặc SCARF_NO_ANALYTICS để tắt"
+  ],
+  "sourceEvidence": {
+   "pip install \"unstructured[all-docs]\"": "README.md:116",
+   "pip install unstructured": "README.md:117",
+   "pip install \"unstructured[docx,pptx]\"": "README.md:118",
+   "docker pull downloads.unstructured.io/unstructured-io/unstructured:latest": "README.md:72",
+   "docker run -dt --name unstructured downloads.unstructured.io/unstructured-io/unstructured:latest": "README.md:79",
+   "docker exec -it unstructured bash": "README.md:82"
+  },
+  "meta": {
+   "id": "unstructured-io-unstructured",
+   "nameVi": "unstructured — Thư viện tiền xử lý tài liệu phi cấu trúc cho LLM",
+   "icon": "Layers",
+   "categories": [
+    "office_digital_docs",
+    "data_engineering",
+    "vector_rag"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install \"unstructured[all-docs]\""
+    }
+   ]
+  }
+ },
+ {
+  "repo": "datalab-to/marker",
+  "license": "Apache License 2.0 (mã nguồn); trọng số mô hình theo AI Pubs Open Rail-M License (Modified) trong MODEL_LICENSE",
+  "authorName": "Datalab",
+  "websiteUrl": "https://www.datalab.to",
+  "toolType": "cli",
+  "taglineEn": "Marker converts documents to markdown, JSON, chunks, and HTML quickly and accurately.",
+  "summaryVi": "Marker chuyển đổi tài liệu PDF, ảnh, PPTX, DOCX, XLSX, HTML, EPUB sang Markdown, JSON, chunk và HTML nhanh và chính xác. Công cụ định dạng bảng, biểu mẫu, phương trình, công thức nội dòng, liên kết, khối mã, tự loại bỏ header/footer và có thể dùng thêm LLM (Gemini, Claude, OpenAI, Ollama…) để tăng độ chính xác.",
+  "purposeVi": "Chuyển PDF và tài liệu văn phòng thành Markdown/JSON sạch để đưa vào LLM, RAG hoặc lưu trữ tri thức.",
+  "featuresVi": [
+   "Đa định dạng đầu vào: PDF, ảnh, PPTX, DOCX, XLSX, HTML, EPUB ở mọi ngôn ngữ",
+   "Đầu ra: markdown, json, html, chunks; trích xuất và lưu ảnh",
+   "Xử lý bảng, biểu mẫu, phương trình, toán nội dòng (LaTeX), liên kết, tham chiếu, khối mã",
+   "Hai chế độ balanced (GPU) và fast (CPU); tùy chọn --disable_ocr, --force_ocr, --page_range",
+   "Chế độ lai --use_llm với Gemini, Claude, OpenAI-compatible, Azure, Vertex, OpenRouter hoặc Ollama",
+   "Ứng dụng Streamlit marker_gui và API server FastAPI marker_server"
+  ],
+  "requirementsVi": "Python 3.10+ và PyTorch. Cần backend suy luận: vLLM qua Docker + NVIDIA Container Toolkit (GPU NVIDIA) hoặc llama-server của llama.cpp (CPU / Apple Silicon). Chế độ --use_llm cần khóa API của dịch vụ LLM tương ứng.",
+  "installStepsVi": [
+   "Cài đặt gói: `pip install marker-pdf`",
+   "Để xử lý tài liệu ngoài PDF, cài đặt thêm phụ thuộc: `pip install marker-pdf[full]`",
+   "Trên macOS (CPU / Apple Silicon), cài đặt llama.cpp: `brew install llama.cpp`; trên GPU NVIDIA cần Docker và NVIDIA Container Toolkit",
+   "Chuyển đổi thử một tệp: `marker_single /path/to/file.pdf`"
+  ],
+  "cliCommand": "marker_single /path/to/file.pdf",
+  "usageStepsVi": [
+   "Chuyển một tệp: `marker_single /path/to/file.pdf` kèm --output_format [markdown|json|html|chunks] và --output_dir",
+   "Chuyển cả thư mục: `marker /path/to/input/folder`",
+   "Thêm --use_llm (và --llm_service, khóa API) để gộp bảng qua nhiều trang, xử lý toán nội dòng và trích giá trị biểu mẫu",
+   "Giao diện thử nghiệm: `pip install -U streamlit streamlit-ace` rồi chạy `marker_gui`",
+   "API server: `pip install -U uvicorn fastapi python-multipart` rồi `marker_server --port 8001`, xem tài liệu endpoint tại localhost:8001/docs"
+  ],
+  "samplePromptsVi": [
+   "Chuyển bài báo khoa học PDF sang Markdown, giữ công thức dưới dạng LaTeX",
+   "Chuyển thư mục báo cáo PDF thành JSON chunk để nạp vào hệ thống RAG",
+   "Dùng --use_llm với Claude để định dạng lại bảng trải qua nhiều trang"
+  ],
+  "prosVi": [
+   "Mã nguồn Apache 2.0, dùng thương mại được",
+   "Hỗ trợ nhiều định dạng đầu vào và đầu ra, chạy trên GPU, CPU hoặc MPS",
+   "Tùy chọn kết hợp nhiều nhà cung cấp LLM kể cả mô hình cục bộ qua Ollama",
+   "Dự án được cập nhật thường xuyên"
+  ],
+  "consVi": [
+   "Trọng số mô hình theo giấy phép Open Rail-M sửa đổi: chỉ miễn phí cho nghiên cứu, cá nhân và tổ chức dưới 5 triệu USD doanh thu/gọi vốn; vượt ngưỡng hoặc sản phẩm cạnh tranh với Datalab phải mua giấy phép thương mại",
+   "Cần cài đặt backend suy luận (vLLM qua Docker trên GPU NVIDIA hoặc llama.cpp)",
+   "Chế độ --use_llm cần khóa API và phát sinh chi phí dịch vụ LLM bên ngoài"
+  ],
+  "sourceEvidence": {
+   "pip install marker-pdf": "README.md:80",
+   "pip install marker-pdf[full]": "README.md:86",
+   "brew install llama.cpp": "README.md:96",
+   "marker_single /path/to/file.pdf": "README.md:126",
+   "marker /path/to/input/folder": "README.md:158",
+   "pip install -U streamlit streamlit-ace": "README.md:119",
+   "marker_gui": "README.md:120",
+   "pip install -U uvicorn fastapi python-multipart": "README.md:418",
+   "marker_server --port 8001": "README.md:419"
+  },
+  "meta": {
+   "id": "datalab-to-marker",
+   "nameVi": "Marker — Chuyển PDF và tài liệu sang Markdown, JSON nhanh, chính xác",
+   "icon": "FolderTree",
+   "categories": [
+    "office_digital_docs",
+    "vector_rag",
+    "computer_vision"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Hỗn hợp (mã nguồn Apache 2.0; trọng số mô hình Open Rail-M sửa đổi, giới hạn thương mại trên 5 triệu USD)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "marker_single /path/to/file.pdf"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "opendatalab/MinerU",
+  "license": "MinerU Open Source License (Apache License 2.0 kèm điều khoản bổ sung)",
+  "authorName": "OpenDataLab (MinerU Team)",
+  "websiteUrl": "https://opendatalab.github.io/MinerU/",
+  "toolType": "cli",
+  "taglineEn": "MinerU 4.0 brings document parsing, a local document library, and service tools into one workflow for document conversion, application integration, and agent reading.",
+  "summaryVi": "MinerU là công cụ phân tích tài liệu kèm thư viện tài liệu cục bộ, hỗ trợ PDF, ảnh, Office, OpenDocument, EPUB, OFD, HTML, CSV với bốn mức chất lượng Flash, Basic, Standard, Advanced. Công cụ xuất Markdown, HTML, LaTeX, DOCX… và cung cấp CLI, Python SDK, API, WebUI cùng skill cho agent đọc tài liệu theo trang/khối có locator trích dẫn ổn định.",
+  "purposeVi": "Chuyển tài liệu phức tạp (bảng, công thức, ảnh, bản scan) thành Markdown và nội dung có cấu trúc để agent và ứng dụng LLM đọc, tìm kiếm, trích dẫn.",
+  "featuresVi": [
+   "Bốn mức phân tích: Flash (xem nhanh, lập chỉ mục), Basic (OCR và mô hình), Standard / Advanced cho bố cục khó",
+   "Đầu vào: PDF, ảnh, DOC/DOCX, PPT/PPTX, XLS/XLSX, RTF, ODT/ODS/ODP, EPUB, OFD, HTML/MHTML, CSV/TSV",
+   "Thư viện tài liệu cục bộ: lưu cache, tìm kiếm nội dung, đọc tiếp theo trang/khối với locator doc:…",
+   "Cấu hình mô hình độc lập: ONNX hoặc Torch cho mô hình nhỏ; llama.cpp, vLLM hoặc LMDeploy cho VLM",
+   "Công cụ thống nhất: Python SDK (DoclibClient), V1 API, chuyển đổi hàng loạt mineru-kit, Router đa dịch vụ, WebUI Gradio",
+   "Skill mineru cho agent, cài đặt bằng npx skills add"
+  ],
+  "requirementsVi": "Python >=3.10,<3.15. Bản mặc định chạy ONNX trên CPU và VLM bằng llama.cpp (Vulkan); máy có GPU NVIDIA nên cài mineru[full] để đạt thông lượng tốt nhất. Tài liệu không tự tải lên dịch vụ chính thức; phân tích từ xa phải cấu hình rõ ràng.",
+  "installStepsVi": [
+   "Cài đặt uv: `pip install uv`",
+   "Tạo môi trường ảo: `uv venv .mineru --python 3.12`",
+   "Kích hoạt môi trường (Linux/macOS): `source .mineru/bin/activate`",
+   "Cài đặt MinerU 4.0: `uv pip install -U \"mineru>=4.0,<5\"`",
+   "Chuyển đổi thử: `mineru-kit parse document.pdf -o document.md --tier standard`",
+   "Tùy chọn cho agent: cài đặt skill bằng `npx skills add opendatalab/MinerU --skill mineru --global --yes`"
+  ],
+  "cliCommand": "mineru-kit parse document.pdf -o document.md --tier standard",
+  "usageStepsVi": [
+   "Chuyển đổi không trạng thái một tệp sang Markdown bằng `mineru-kit parse` (mặc định xử lý toàn bộ trang)",
+   "Mở giao diện web bằng `mineru-kit webui`",
+   "Dùng thư viện tài liệu cho agent: `mineru parse \"document.pdf\" --json` (mặc định 10 trang PDF đầu), rồi đọc tiếp bằng `mineru read <locator>`",
+   "Dùng Python SDK: khởi động `mineru server start`, sau đó gọi DoclibClient để gửi yêu cầu phân tích và đọc nội dung"
+  ],
+  "samplePromptsVi": [
+   "Đọc tệp báo cáo PDF scan bằng MinerU và tóm tắt các bảng số liệu chính",
+   "Phân tích sách EPUB rồi tìm đoạn nói về một điều khoản cụ thể và trích dẫn locator",
+   "Chuyển bài báo có nhiều công thức sang Markdown với mức chất lượng standard"
+  ],
+  "prosVi": [
+   "Hỗ trợ rất nhiều định dạng đầu vào, kể cả OFD và tài liệu scan",
+   "Chạy cục bộ, không tự động tải tài liệu lên dịch vụ bên ngoài",
+   "Dùng thương mại được không cần giấy phép riêng dưới ngưỡng quy định",
+   "Có skill và CLI thiết kế riêng cho agent đọc tài liệu dài"
+  ],
+  "consVi": [
+   "Giấy phép bổ sung: cần giấy phép thương mại riêng nếu trên 100 triệu MAU hoặc doanh thu trên 20 triệu USD/tháng; dịch vụ trực tuyến dựa trên MinerU phải ghi rõ có sử dụng MinerU",
+   "Định dạng Office, EPUB, HTML… chỉ được phân tích ở mức Flash",
+   "Hướng dẫn Docker cho thiết bị không phải NVIDIA đang chờ cập nhật"
+  ],
+  "sourceEvidence": {
+   "pip install uv": "README.md:74",
+   "uv venv .mineru --python 3.12": "README.md:75",
+   "source .mineru/bin/activate": "README.md:78",
+   "uv pip install -U \"mineru>=4.0,<5\"": "README.md:84",
+   "mineru-kit parse document.pdf -o document.md --tier standard": "README.md:85",
+   "mineru-kit webui": "README.md:86",
+   "npx skills add opendatalab/MinerU --skill mineru --global --yes": "README.md:66",
+   "mineru parse \"document.pdf\" --json": "README.md:215",
+   "mineru server start": "README.md:91"
+  },
+  "meta": {
+   "id": "opendatalab-mineru",
+   "nameVi": "MinerU — Phân tích PDF, Office sang Markdown cho agent và LLM",
+   "icon": "FolderTree",
+   "categories": [
+    "office_digital_docs",
+    "vector_rag",
+    "computer_vision"
+   ],
+   "platforms": [
+    "web",
+    "claude_code"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0 kèm điều khoản bổ sung: giấy phép thương mại khi vượt ngưỡng, bắt buộc ghi nguồn cho dịch vụ trực tuyến)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh",
+    "Tiếng Trung"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "mineru-kit parse document.pdf -o document.md --tier standard"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "allenai/olmocr",
+  "license": "Apache License 2.0",
+  "authorName": "Allen Institute for AI (Ai2)",
+  "websiteUrl": "https://olmocr.allenai.org",
+  "toolType": "cli",
+  "taglineEn": "A toolkit for converting PDFs and other image-based document formats into clean, readable, plain text format.",
+  "summaryVi": "olmOCR là bộ công cụ của Ai2 chuyển PDF và tài liệu dạng ảnh (PNG, JPEG) thành Markdown sạch, giữ thứ tự đọc tự nhiên kể cả bố cục nhiều cột. Công cụ dựa trên mô hình ngôn ngữ thị giác 7B, hỗ trợ phương trình, bảng, chữ viết tay và kèm bộ benchmark olmOCR-Bench.",
+  "purposeVi": "Chuyển khối lượng lớn PDF thành văn bản Markdown sạch để huấn luyện hoặc đưa vào pipeline LLM.",
+  "featuresVi": [
+   "Chuyển PDF, PNG, JPEG sang Markdown sạch",
+   "Hỗ trợ phương trình, bảng, chữ viết tay và định dạng phức tạp",
+   "Tự loại bỏ header và footer; giữ thứ tự đọc tự nhiên với hình, bố cục nhiều cột",
+   "Dùng server vLLM cục bộ hoặc máy chủ/nhà cung cấp tương thích OpenAI API qua --server",
+   "Chạy cụm nhiều node, hỗ trợ Beaker; có ảnh Docker kèm sẵn mô hình",
+   "Bộ benchmark olmOCR-Bench với hơn 7.000 ca kiểm thử trên 1.400 tài liệu"
+  ],
+  "requirementsVi": "Ubuntu/Debian với poppler-utils và các gói font; môi trường conda Python 3.11. Suy luận cục bộ cần GPU NVIDIA tối thiểu 12 GB VRAM (đã thử RTX 4090, L40S, A100, H100) và 30 GB đĩa trống; hoặc dùng server vLLM từ xa.",
+  "installStepsVi": [
+   "Cài đặt phụ thuộc hệ thống: `sudo apt-get install poppler-utils ttf-mscorefonts-installer msttcorefonts fonts-crosextra-caladea fonts-crosextra-carlito gsfonts lcdf-typetools`",
+   "Tạo môi trường: `conda create -n olmocr python=3.11` rồi `conda activate olmocr`",
+   "Cài đặt bản suy luận GPU cục bộ: `pip install olmocr[gpu] --extra-index-url https://download.pytorch.org/whl/cu128`",
+   "Hoặc cài đặt bản nhẹ dùng server từ xa: `pip install olmocr`",
+   "Cách khác — Docker: `docker pull alleninstituteforai/olmocr:latest-with-model`"
+  ],
+  "cliCommand": "olmocr ./localworkspace --markdown --pdfs olmocr-sample.pdf",
+  "usageStepsVi": [
+   "Tải tệp mẫu: `curl -o olmocr-sample.pdf https://olmocr.allenai.org/papers/olmocr_3pg_sample.pdf`",
+   "Chuyển sang Markdown: `olmocr ./localworkspace --markdown --pdfs olmocr-sample.pdf`; kết quả nằm trong ./localworkspace/markdown/",
+   "Có thể truyền ảnh hoặc nhiều PDF bằng ký tự đại diện cho --pdfs",
+   "Dùng server vLLM có sẵn bằng --server và --model allenai/olmOCR-2-7B-1025-FP8, ví dụ khởi chạy server bằng `vllm serve allenai/olmOCR-2-7B-1025-FP8 --max-model-len 16384`"
+  ],
+  "samplePromptsVi": [
+   "Chuyển thư mục PDF bài báo cũ được scan sang Markdown để làm dữ liệu huấn luyện",
+   "Trích văn bản từ ảnh chụp trang tài liệu có bảng và công thức",
+   "Chạy olmOCR với server vLLM từ xa để xử lý hàng loạt tài liệu"
+  ],
+  "prosVi": [
+   "Giấy phép Apache 2.0",
+   "Theo README chi phí dưới 200 USD cho mỗi triệu trang",
+   "Có ảnh Docker kèm sẵn mô hình và hỗ trợ máy chủ tương thích OpenAI API",
+   "Kèm bộ benchmark công khai olmOCR-Bench"
+  ],
+  "consVi": [
+   "Dựa trên VLM 7B nên suy luận cục bộ bắt buộc GPU NVIDIA từ 12 GB VRAM và 30 GB đĩa",
+   "README khuyến nghị dùng môi trường Python sạch vì phụ thuộc khó cài đặt",
+   "Đầu vào giới hạn ở PDF và ảnh (PNG, JPEG)"
+  ],
+  "sourceEvidence": {
+   "sudo apt-get install poppler-utils ttf-mscorefonts-installer msttcorefonts fonts-crosextra-caladea fonts-crosextra-carlito gsfonts lcdf-typetools": "README.md:195",
+   "conda create -n olmocr python=3.11": "README.md:204",
+   "conda activate olmocr": "README.md:205",
+   "pip install olmocr[gpu] --extra-index-url https://download.pytorch.org/whl/cu128": "README.md:226",
+   "pip install olmocr": "README.md:214",
+   "docker pull alleninstituteforai/olmocr:latest-with-model": "README.md:392",
+   "curl -o olmocr-sample.pdf https://olmocr.allenai.org/papers/olmocr_3pg_sample.pdf": "README.md:271",
+   "olmocr ./localworkspace --markdown --pdfs olmocr-sample.pdf": "README.md:274",
+   "vllm serve allenai/olmOCR-2-7B-1025-FP8 --max-model-len 16384": "README.md:330"
+  },
+  "meta": {
+   "id": "allenai-olmocr",
+   "nameVi": "olmOCR — Chuyển PDF và ảnh tài liệu sang Markdown bằng VLM",
+   "icon": "Cpu",
+   "categories": [
+    "office_digital_docs",
+    "computer_vision",
+    "nlp_llm"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "olmocr ./localworkspace --markdown --pdfs olmocr-sample.pdf"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "Filimoa/open-parse",
+  "license": "MIT License",
+  "authorName": "Sergey Filimonov",
+  "websiteUrl": "https://filimoa.github.io/open-parse/",
+  "toolType": "sdk",
+  "taglineEn": "Easily chunk complex documents the same way a human would.",
+  "summaryVi": "Open Parse là thư viện Python phân tích bố cục tài liệu bằng thị giác để chia nhỏ (chunk) tài liệu phức tạp như con người, phục vụ hệ thống RAG. Thư viện hỗ trợ Markdown cơ bản, trích bảng sang Markdown, pipeline ngữ nghĩa dùng embedding để gom nhóm nút và tuần tự hóa kết quả bằng pydantic.",
+  "purposeVi": "Chia nhỏ tài liệu PDF phức tạp theo cấu trúc trực quan để tạo đầu vào chất lượng cao cho LLM và RAG.",
+  "featuresVi": [
+   "Phân tích trực quan bố cục tài liệu thay vì cắt văn bản thô",
+   "Hỗ trợ Markdown cơ bản: tiêu đề, in đậm, in nghiêng",
+   "Trích bảng sang Markdown bằng PyMuPDF, Table Transformer hoặc unitable",
+   "SemanticIngestionPipeline: nhúng văn bản từng nút (OpenAI embedding) để gom các nút tương đồng",
+   "Kết quả dựa trên pydantic, xuất được dict hoặc JSON",
+   "Hỗ trợ OCR qua PyMuPDF khi đã cài đặt Tesseract"
+  ],
+  "requirementsVi": "Python 3.8+. OCR cần cài đặt Tesseract và đặt biến TESSDATA_PREFIX. Pipeline ngữ nghĩa cần khóa API OpenAI. Trích bảng bằng mô hình học sâu cần cài đặt thêm openparse[ml].",
+  "installStepsVi": [
+   "Cài đặt thư viện lõi: `pip install openparse`",
+   "Tùy chọn trích bảng bằng học sâu: `pip install \"openparse[ml]\"`",
+   "Tải trọng số mô hình cho trích bảng: `openparse-download`",
+   "Nếu cần OCR: cài đặt Tesseract và đặt biến môi trường TESSDATA_PREFIX tới thư mục tessdata"
+  ],
+  "cliCommand": "pip install openparse",
+  "usageStepsVi": [
+   "Trong Python: `import openparse`, tạo `parser = openparse.DocumentParser()` rồi `parser.parse(\"tai-lieu.pdf\")`",
+   "Duyệt `parsed.nodes` để lấy các khối nội dung đã chia nhỏ",
+   "Truyền table_args (ví dụ parsing_algorithm unitable) để trích bảng chất lượng cao",
+   "Dùng SemanticIngestionPipeline với khóa OpenAI để gom nhóm nút theo ngữ nghĩa, rồi xuất bằng `.json()`"
+  ],
+  "samplePromptsVi": [
+   "Chia nhỏ sổ tay hướng dẫn PDF thành các khối theo tiêu đề để nạp vào cơ sở dữ liệu vector",
+   "Trích các bảng trong báo cáo tài chính PDF sang Markdown",
+   "Gom nhóm các đoạn liên quan theo ngữ nghĩa với giới hạn 64–1024 token mỗi khối"
+  ],
+  "prosVi": [
+   "Giấy phép MIT",
+   "Chạy cục bộ, không bắt buộc chia sẻ dữ liệu với nhà cung cấp",
+   "API Python đơn giản, dễ mở rộng bằng bước hậu xử lý riêng"
+  ],
+  "consVi": [
+   "PyMuPDF dùng cho phát hiện bảng có giấy phép riêng (README khuyên xem điều khoản thương mại của MuPDF)",
+   "README thừa nhận mô hình phát hiện bảng table-transformers cho kết quả chưa tốt",
+   "Pipeline ngữ nghĩa cần khóa API OpenAI; hỗ trợ Markdown chỉ ở mức cơ bản"
+  ],
+  "sourceEvidence": {
+   "pip install openparse": "README.md:127",
+   "pip install \"openparse[ml]\"": "README.md:165",
+   "openparse-download": "README.md:171"
+  },
+  "meta": {
+   "id": "filimoa-open-parse",
+   "nameVi": "Open Parse — Thư viện chia nhỏ tài liệu theo bố cục cho RAG",
+   "icon": "Layers",
+   "categories": [
+    "vector_rag",
+    "office_digital_docs",
+    "data_engineering"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install openparse"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "opendataloader-project/opendataloader-pdf",
+  "license": "Apache License 2.0",
+  "authorName": "Hancom Inc. (OpenDataLoader Project)",
+  "websiteUrl": "https://opendataloader.org",
+  "toolType": "cli",
+  "taglineEn": "PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.",
+  "summaryVi": "OpenDataLoader PDF là bộ phân tích PDF trích xuất Markdown, JSON (kèm bounding box) và HTML cho dữ liệu AI, với chế độ cục bộ tất định và chế độ lai (hybrid) dùng AI cho trang phức tạp. Công cụ có SDK Python, Node.js, Java, tích hợp LangChain, OCR hơn 80 ngôn ngữ ở chế độ lai và tự động gắn thẻ PDF (Tagged PDF) cho khả năng tiếp cận.",
+  "purposeVi": "Chuyển PDF thành dữ liệu có cấu trúc kèm tọa độ để chia nhỏ và trích dẫn nguồn trong pipeline RAG/LLM.",
+  "featuresVi": [
+   "Trích văn bản đúng thứ tự đọc (XY-Cut++), bounding box cho mọi phần tử, phát hiện tiêu đề, danh sách, ảnh",
+   "Chế độ lai (hybrid) cho bảng phức tạp, PDF scan (OCR), công thức LaTeX, mô tả biểu đồ bằng AI",
+   "Bảo vệ prompt injection: lọc văn bản ẩn, nội dung ngoài trang; tùy chọn --sanitize che email, URL, số điện thoại",
+   "SDK Python, Node.js, Java và gói langchain-opendataloader-pdf",
+   "Tự động gắn thẻ PDF chưa có thẻ thành Tagged PDF (miễn phí)",
+   "Không cần GPU"
+  ],
+  "requirementsVi": "Java 11+ và Python 3.10+ (hoặc Node.js / Java). Chế độ lai cần cài đặt opendataloader-pdf[hybrid] và chạy server backend riêng.",
+  "installStepsVi": [
+   "Kiểm tra Java: `java -version` (cần JDK 11+)",
+   "Cài đặt gói Python: `pip install -U opendataloader-pdf`",
+   "Hoặc cài đặt cho Node.js: `npm install @opendataloader/pdf`",
+   "Tùy chọn chế độ lai: `pip install -U \"opendataloader-pdf[hybrid]\"` rồi khởi động backend `opendataloader-pdf-hybrid --port 5002`",
+   "Tùy chọn tích hợp LangChain: `pip install -U langchain-opendataloader-pdf`"
+  ],
+  "cliCommand": "pip install -U opendataloader-pdf",
+  "usageStepsVi": [
+   "Trong Python: gọi `opendataloader_pdf.convert(input_path=[...], output_dir=\"output/\", format=\"markdown,json\")`; nên gom nhiều tệp vào một lần gọi vì mỗi lần gọi khởi tạo một tiến trình JVM",
+   "Với PDF phức tạp: chạy backend lai rồi xử lý bằng `opendataloader-pdf --hybrid docling-fast file1.pdf file2.pdf folder/`",
+   "Thêm --sanitize để thay thông tin nhạy cảm bằng placeholder: `opendataloader-pdf file1.pdf file2.pdf folder/ --sanitize`",
+   "Dùng JSON có bounding box để trích dẫn vị trí nguồn trong câu trả lời RAG"
+  ],
+  "samplePromptsVi": [
+   "Chuyển thư mục PDF hợp đồng sang Markdown và JSON có tọa độ để làm RAG có trích dẫn",
+   "Xử lý PDF scan tiếng Hàn bằng chế độ lai kèm OCR",
+   "Lọc nội dung ẩn có thể chứa prompt injection trước khi đưa PDF vào LLM"
+  ],
+  "prosVi": [
+   "Giấy phép Apache 2.0",
+   "Chế độ mặc định chạy cục bộ, tất định, không cần GPU",
+   "Có SDK cho Python, Node.js, Java và tích hợp LangChain",
+   "Tính năng an toàn AI lọc prompt injection ẩn trong PDF"
+  ],
+  "consVi": [
+   "Chỉ xử lý PDF, không hỗ trợ Word/Excel/PowerPoint",
+   "Cần Java 11+; mỗi lần gọi convert khởi tạo tiến trình JVM nên gọi lặp lại sẽ chậm",
+   "Xuất PDF/UA-1, PDF/UA-2 và trình chỉnh sửa trực quan là tiện ích bổ sung bản doanh nghiệp"
+  ],
+  "sourceEvidence": {
+   "java -version": "README.md:46",
+   "pip install -U opendataloader-pdf": "README.md:49",
+   "npm install @opendataloader/pdf": "README.md:161",
+   "pip install -U \"opendataloader-pdf[hybrid]\"": "README.md:191",
+   "opendataloader-pdf-hybrid --port 5002": "README.md:197",
+   "pip install -U langchain-opendataloader-pdf": "README.md:513",
+   "opendataloader-pdf --hybrid docling-fast file1.pdf file2.pdf folder/": "README.md:204",
+   "opendataloader-pdf file1.pdf file2.pdf folder/ --sanitize": "README.md:459"
+  },
+  "meta": {
+   "id": "opendataloader-project-opendataloader-pdf",
+   "nameVi": "OpenDataLoader PDF — Phân tích PDF thành Markdown, JSON có tọa độ cho RAG",
+   "icon": "Search",
+   "categories": [
+    "office_digital_docs",
+    "vector_rag",
+    "data_engineering"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install -U opendataloader-pdf"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "apache/tika",
+  "license": "Apache License 2.0",
+  "authorName": "Apache Software Foundation",
+  "websiteUrl": "https://tika.apache.org/",
+  "toolType": "software",
+  "taglineEn": "Apache Tika(TM) detects and extracts metadata and text from over a thousand file types.",
+  "summaryVi": "Apache Tika phát hiện và trích xuất siêu dữ liệu, văn bản từ hơn một nghìn loại tệp. Từ bản 4.0, Tika xuất Markdown mặc định cho pipeline LLM và RAG, phân tích trong tiến trình tách biệt để chống sập, và bổ sung bộ phân tích dùng mô hình thị giác–ngôn ngữ (Claude, Gemini, OpenAI) cho tài liệu OCR khó đọc.",
+  "purposeVi": "Trích văn bản và siêu dữ liệu từ hầu hết mọi định dạng tệp thành Markdown/JSON để đưa vào agent và hệ thống RAG.",
+  "featuresVi": [
+   "Hỗ trợ hơn một nghìn loại tệp, phát hiện loại tệp và trích siêu dữ liệu",
+   "Bản 4.x xuất Markdown mặc định; -J xuất JSON đệ quy gồm cả nội dung nhúng bên trong tài liệu",
+   "Phân tích trong tiến trình fork tách biệt: tài liệu độc hại chỉ làm sập tiến trình con",
+   "Bộ phân tích VLM (Claude, Gemini, OpenAI) cho tài liệu OCR không đọc được",
+   "Skill dựng sẵn cho agent trong thư mục .skills: file-to-markdown và file-to-markdown-docker",
+   "Dùng như thư viện Java (Maven/Gradle), tika-app dòng lệnh hoặc tika-server"
+  ],
+  "requirementsVi": "Java 17 (Tika 4.x). Dựng từ mã nguồn dùng Maven wrapper có sẵn; Docker chỉ cần cho một số kiểm thử tích hợp.",
+  "installStepsVi": [
+   "Cài đặt Java 17, sau đó tải bản dựng sẵn tika-app từ https://tika.apache.org/download.html, giải nén tệp zip vào một thư mục (jar cần thư mục lib/ đi kèm)",
+   "Hoặc thêm phụ thuộc Maven org.apache.tika:tika-parsers-standard-package vào dự án Java",
+   "Hoặc dựng từ mã nguồn: `./mvnw clean install`",
+   "Chạy thử trong thư mục đã giải nén: `java -jar tika-app-<version>.jar document.pdf`"
+  ],
+  "cliCommand": "java -jar tika-app-<version>.jar document.pdf",
+  "usageStepsVi": [
+   "Trích Markdown (mặc định 4.x): `java -jar tika-app-<version>.jar document.pdf`",
+   "Trích văn bản thuần bằng --text, hoặc JSON có cấu trúc (siêu dữ liệu và nội dung nhúng) bằng -J",
+   "Trong Java: tạo `new Tika()` và gọi `parseToString(new File(\"document.pdf\"))`",
+   "Sao chép skill file-to-markdown trong .skills vào thư mục skill của agent để agent tự chuyển tệp sang Markdown"
+  ],
+  "samplePromptsVi": [
+   "Trích toàn bộ văn bản và siêu dữ liệu từ thư mục tệp hỗn hợp PDF, DOCX, email",
+   "Chuyển tệp lưu trữ có tài liệu nhúng thành JSON đệ quy để lập chỉ mục",
+   "Dùng skill file-to-markdown để agent đọc tệp đính kèm dưới dạng Markdown"
+  ],
+  "prosVi": [
+   "Dự án Apache Software Foundation, giấy phép Apache 2.0, bảo trì tích cực",
+   "Phạm vi định dạng rất rộng (hơn một nghìn loại tệp)",
+   "Phân tích cách ly tiến trình, phù hợp chạy dịch vụ xử lý tệp không tin cậy",
+   "Có skill dựng sẵn cho agent"
+  ],
+  "consVi": [
+   "Cần Java 17; tika-app phải chạy cùng thư mục lib/, jar đơn lẻ sẽ lỗi NoClassDefFoundError",
+   "Nâng cấp từ 3.x lên 4.x cần thay đổi mã và cấu hình (cấu hình JSON, khóa siêu dữ liệu có namespace)",
+   "Bộ phân tích VLM cần khóa API của Claude, Gemini hoặc OpenAI"
+  ],
+  "sourceEvidence": {
+   "./mvnw clean install": "README.md:88",
+   "java -jar tika-app-<version>.jar document.pdf": "README.md:49"
+  },
+  "meta": {
+   "id": "apache-tika",
+   "nameVi": "Apache Tika — Bộ công cụ trích văn bản, siêu dữ liệu từ hơn nghìn định dạng tệp",
+   "icon": "Box",
+   "categories": [
+    "office_digital_docs",
+    "data_engineering",
+    "vector_rag"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "java -jar tika-app-<version>.jar document.pdf"
+    }
+   ]
+  }
+ }
+]

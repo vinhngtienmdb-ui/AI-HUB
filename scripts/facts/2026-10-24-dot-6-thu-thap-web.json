@@ -1,0 +1,554 @@
+[
+  {
+    "repo": "firecrawl/firecrawl",
+    "license": "GNU Affero General Public License v3.0 (AGPL-3.0) cho phần chính; các SDK và một số thành phần giao diện theo giấy phép MIT",
+    "authorName": "Firecrawl",
+    "websiteUrl": "https://firecrawl.dev",
+    "toolType": "api",
+    "taglineEn": "The API to search, scrape, and interact with the web at scale. Firecrawl is the context API for AI agents.",
+    "summaryVi": "Firecrawl là API mã nguồn mở để tìm kiếm, thu thập (scrape) và tương tác với web ở quy mô lớn, được thiết kế làm nguồn ngữ cảnh cho AI agent. Công cụ chuyển bất kỳ URL nào thành Markdown, HTML, ảnh chụp màn hình hoặc JSON có cấu trúc, hỗ trợ crawl cả website, lập bản đồ URL và phân tích tài liệu PDF/DOCX. Có thể dùng bản cloud tại firecrawl.dev hoặc tự triển khai bằng Docker Compose theo SELF_HOST.md.",
+    "purposeVi": "Cung cấp dữ liệu web sạch, sẵn sàng cho LLM (Markdown/JSON) để xây dựng ứng dụng RAG, agent và pipeline thu thập dữ liệu.",
+    "featuresVi": [
+      "Search: tìm kiếm web và lấy nội dung đầy đủ của các trang kết quả",
+      "Scrape: chuyển URL thành Markdown, HTML, ảnh chụp màn hình hoặc JSON có cấu trúc",
+      "Interact/Actions: nhấp, cuộn, gõ, chờ trước khi trích xuất nội dung",
+      "Crawl, Map, Batch Scrape: thu thập toàn bộ URL của website, khám phá URL, scrape hàng nghìn URL bất đồng bộ",
+      "Parse: chuyển PDF, DOCX và tài liệu khác thành Markdown hoặc JSON",
+      "SDK đa ngôn ngữ: Python, Node.js, Go, Java, Rust, Ruby, .NET, PHP, Elixir",
+      "Kết nối agent: skill cho Claude Code và máy chủ MCP firecrawl-mcp"
+    ],
+    "requirementsVi": "Bản cloud cần khóa API từ firecrawl.dev (dạng fc-...). Bản tự triển khai dùng Docker Compose (API mở ở cổng 3002, mặc định không xác thực); các tính năng AI cần kết nối OpenAI, endpoint tương thích OpenAI hoặc Ollama.",
+    "installStepsVi": [
+      "Cài đặt SDK Python: `pip install firecrawl`",
+      "Hoặc cài đặt SDK Node.js: `npm install firecrawl`",
+      "Cài đặt skill/CLI cho AI agent (Claude Code, OpenCode...): `npx -y firecrawl-cli@latest init --all --browser`"
+    ],
+    "cliCommand": "npx -y firecrawl-cli@latest init --all --browser",
+    "usageStepsVi": [
+      "Đăng ký tại firecrawl.dev để lấy khóa API, hoặc tự triển khai theo hướng dẫn SELF_HOST.md",
+      "Khởi tạo client: Firecrawl(api_key=\"fc-YOUR_API_KEY\")",
+      "Gọi app.scrape(url, formats=[\"markdown\"]), app.crawl(url, limit=50) hoặc app.search(query) để lấy dữ liệu",
+      "Đưa kết quả Markdown/JSON vào pipeline RAG hoặc agent"
+    ],
+    "samplePromptsVi": [
+      "Dùng Firecrawl crawl toàn bộ trang tài liệu docs.example.com (tối đa 50 trang) và lưu nội dung dạng Markdown",
+      "Scrape trang sản phẩm này và trả về JSON gồm tên, giá, mô tả",
+      "Tìm kiếm web về 'công cụ dữ liệu AI' và lấy nội dung đầy đủ 5 kết quả đầu"
+    ],
+    "prosVi": [
+      "Mã nguồn mở, có thể tự triển khai bằng Docker Compose hoặc Kubernetes/Helm",
+      "Đầu ra Markdown/JSON sạch, tiết kiệm token cho LLM",
+      "SDK cho nhiều ngôn ngữ và tích hợp sẵn MCP, skill cho agent",
+      "Hỗ trợ cả trang nặng JavaScript và tài liệu PDF/DOCX"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0 cho phần chính: cung cấp dịch vụ qua mạng dựa trên bản sửa đổi phải công bố mã nguồn",
+      "Bản cloud có thêm tính năng không có trong bản mã nguồn mở và cần khóa API",
+      "Bản tự triển khai mặc định không xác thực API; tự chịu trách nhiệm bảo mật, sao lưu và vận hành"
+    ],
+    "sourceEvidence": {
+      "pip install firecrawl": "README.md:524",
+      "npm install firecrawl": "README.md:553",
+      "npx -y firecrawl-cli@latest init --all --browser": "README.md:281"
+    },
+    "meta": {
+      "id": "firecrawl-firecrawl",
+      "nameVi": "Firecrawl — API thu thập, tìm kiếm và chuyển web thành dữ liệu cho AI agent",
+      "icon": "Globe",
+      "categories": [
+        "web_scraping_crawling",
+        "vector_rag",
+        "data_engineering"
+      ],
+      "platforms": [
+        "web",
+        "claude_code"
+      ],
+      "licenseShort": "Mã nguồn mở (AGPL-3.0; SDK theo MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install firecrawl"
+        },
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "npx -y firecrawl-cli@latest init --all --browser"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "ScrapeGraphAI/Scrapegraph-ai",
+    "license": "MIT License",
+    "authorName": "ScrapeGraphAI",
+    "websiteUrl": "https://scrapegraphai.com",
+    "toolType": "sdk",
+    "taglineEn": "ScrapeGraphAI is a web scraping python library that uses LLM and direct graph logic to create scraping pipelines for websites and local documents (XML, HTML, JSON, Markdown, etc.).",
+    "summaryVi": "ScrapeGraphAI là thư viện Python thu thập dữ liệu web dùng LLM và logic đồ thị để tạo pipeline trích xuất từ website và tài liệu cục bộ (XML, HTML, JSON, Markdown...). Người dùng chỉ cần mô tả thông tin muốn lấy bằng câu lệnh tự nhiên, thư viện sẽ tự trích xuất. Hỗ trợ LLM qua API (OpenAI, Groq, Azure, Gemini, MiniMax...) hoặc mô hình chạy cục bộ bằng Ollama.",
+    "purposeVi": "Trích xuất dữ liệu có cấu trúc từ trang web bằng câu lệnh ngôn ngữ tự nhiên thay vì viết bộ chọn CSS/XPath thủ công.",
+    "featuresVi": [
+      "SmartScraperGraph: trích xuất thông tin từ một trang chỉ với prompt và URL nguồn",
+      "SearchGraph: lấy thông tin từ n kết quả đầu của công cụ tìm kiếm",
+      "SpeechGraph: trích xuất thông tin và tạo tệp âm thanh",
+      "ScriptCreatorGraph: sinh script Python để trích xuất dữ liệu",
+      "Phiên bản Multi: gọi LLM song song cho nhiều trang/nguồn",
+      "Hỗ trợ LLM qua API hoặc mô hình cục bộ qua Ollama"
+    ],
+    "requirementsVi": "Python (khuyến nghị dùng môi trường ảo); Playwright để tải nội dung trang; khóa API của nhà cung cấp LLM (ví dụ OpenAI) hoặc Ollama cài sẵn với mô hình đã tải bằng ollama pull.",
+    "installStepsVi": [
+      "Cài đặt thư viện: `pip install scrapegraphai`",
+      "Cài đặt trình duyệt cho Playwright (bắt buộc để tải nội dung website): `playwright install`"
+    ],
+    "cliCommand": "pip install scrapegraphai",
+    "usageStepsVi": [
+      "Khai báo graph_config với mô hình LLM (ví dụ ollama/llama3.2 hoặc openai/gpt-4o-mini kèm api_key)",
+      "Tạo SmartScraperGraph với prompt mô tả dữ liệu cần lấy và source là URL",
+      "Gọi smart_scraper_graph.run() để nhận kết quả dạng dictionary/JSON"
+    ],
+    "samplePromptsVi": [
+      "Trích xuất mô tả công ty, danh sách nhà sáng lập và liên kết mạng xã hội từ trang chủ này",
+      "Lấy tên sản phẩm và giá từ danh sách các trang sau bằng SmartScraperMultiGraph",
+      "Sinh script Python trích xuất tiêu đề bài viết từ trang tin tức này"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, tự chạy trên hạ tầng riêng",
+      "Chạy được hoàn toàn cục bộ với Ollama, không cần gửi dữ liệu ra ngoài",
+      "Nhiều pipeline dựng sẵn cho một trang, nhiều trang và tìm kiếm"
+    ],
+    "consVi": [
+      "Tự quản lý trình duyệt (Playwright), proxy và mở rộng quy mô",
+      "Tốn chi phí token LLM cho mỗi lần trích xuất khi dùng mô hình qua API",
+      "Một số tính năng như Crawl, Monitor chỉ có ở API trả phí của ScrapeGraphAI"
+    ],
+    "sourceEvidence": {
+      "pip install scrapegraphai": "README.md:59",
+      "playwright install": "README.md:62"
+    },
+    "meta": {
+      "id": "scrapegraphai-scrapegraph-ai",
+      "nameVi": "ScrapeGraphAI — Thư viện Python thu thập dữ liệu web bằng LLM theo câu lệnh tự nhiên",
+      "icon": "Search",
+      "categories": [
+        "web_scraping_crawling",
+        "nlp_llm",
+        "data_engineering"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install scrapegraphai"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "apify/crawlee",
+    "license": "Apache License 2.0",
+    "authorName": "Apify",
+    "websiteUrl": "https://crawlee.dev",
+    "toolType": "sdk",
+    "taglineEn": "Crawlee covers your crawling and scraping end-to-end and helps you build reliable scrapers. Fast.",
+    "summaryVi": "Crawlee là thư viện thu thập dữ liệu web và tự động hóa trình duyệt cho Node.js/TypeScript do Apify phát triển. Thư viện cung cấp một giao diện thống nhất cho crawl qua HTTP (Cheerio, JSDOM) và trình duyệt không giao diện (Playwright, Puppeteer), kèm hàng đợi URL bền vững, lưu trữ dữ liệu và tự mở rộng theo tài nguyên hệ thống. Có phiên bản Python riêng tại apify/crawlee-python.",
+    "purposeVi": "Xây dựng công cụ crawl và scrape ổn định để thu thập liên kết, trích xuất dữ liệu và lưu ra định dạng máy đọc được.",
+    "featuresVi": [
+      "Giao diện chung cho crawl qua HTTP và trình duyệt không giao diện",
+      "Hàng đợi URL bền vững (theo chiều rộng và chiều sâu)",
+      "Lưu trữ dữ liệu dạng bảng và tệp, mặc định vào thư mục ./storage",
+      "Tự động mở rộng theo tài nguyên hệ thống, luân chuyển proxy và quản lý phiên",
+      "Dùng Playwright hoặc Puppeteer với cùng một giao diện; hỗ trợ Chrome, Firefox, WebKit",
+      "CLI tạo dự án mẫu và Dockerfile sẵn để triển khai"
+    ],
+    "requirementsVi": "Node.js 22.13 trở lên; cài đặt Playwright riêng nếu dùng PlaywrightCrawler.",
+    "installStepsVi": [
+      "Cài đặt nhanh bằng Crawlee CLI và chọn mẫu Getting started: `npx crawlee create my-crawler`",
+      "Vào thư mục dự án: `cd my-crawler`",
+      "Chạy crawler mẫu: `npm start`",
+      "Hoặc cài đặt vào dự án có sẵn: `npm install crawlee playwright`"
+    ],
+    "cliCommand": "npx crawlee create my-crawler",
+    "usageStepsVi": [
+      "Tạo PlaywrightCrawler (hoặc CheerioCrawler) với requestHandler xử lý từng trang",
+      "Dùng Dataset.pushData() để lưu dữ liệu và enqueueLinks() để thêm liên kết vào hàng đợi",
+      "Gọi crawler.run([...URL bắt đầu]) và xem kết quả JSON trong ./storage/datasets/default"
+    ],
+    "samplePromptsVi": [
+      "Viết PlaywrightCrawler bằng Crawlee thu thập tiêu đề mọi trang trong crawlee.dev và lưu vào Dataset",
+      "Tạo CheerioCrawler lấy danh sách bài viết từ trang blog và chỉ crawl các liên kết cùng tên miền",
+      "Cấu hình Crawlee giới hạn số yêu cầu tối đa và chạy với trình duyệt có giao diện để gỡ lỗi"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, chạy ở mọi nơi",
+      "Có cả bản TypeScript và Python",
+      "Tích hợp sẵn retry, xử lý lỗi, định tuyến yêu cầu và hàng đợi bền vững"
+    ],
+    "consVi": [
+      "Yêu cầu Node.js 22.13 trở lên",
+      "Playwright không đi kèm, phải cài đặt riêng",
+      "Là thư viện cho lập trình viên, không có giao diện không cần viết mã"
+    ],
+    "sourceEvidence": {
+      "npx crawlee create my-crawler": "README.md:44",
+      "cd my-crawler": "README.md:48",
+      "npm start": "README.md:49",
+      "npm install crawlee playwright": "README.md:56"
+    },
+    "meta": {
+      "id": "apify-crawlee",
+      "nameVi": "Crawlee — Thư viện Node.js thu thập dữ liệu web và tự động hóa trình duyệt",
+      "icon": "Globe",
+      "categories": [
+        "web_scraping_crawling",
+        "data_engineering"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npx crawlee create my-crawler"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "jina-ai/reader",
+    "license": "Apache License 2.0",
+    "authorName": "Jina AI",
+    "websiteUrl": "https://jina.ai/reader",
+    "toolType": "api",
+    "taglineEn": "Your LLMs deserve better input.",
+    "summaryVi": "Reader là nhánh mã nguồn mở của dịch vụ r.jina.ai và s.jina.ai, chuyển bất kỳ URL nào thành đầu vào thân thiện với LLM và tìm kiếm web trả về nội dung Markdown. Công cụ đọc được trang web (qua Chrome không giao diện hoặc curl), PDF, tài liệu Word/Excel/PowerPoint và chú thích hình ảnh bằng mô hình thị giác. Có thể tự chạy bằng ảnh Docker ở chế độ không trạng thái hoặc có bộ nhớ đệm S3.",
+    "purposeVi": "Biến trang web và tài liệu thành văn bản Markdown sạch để đưa vào agent và hệ thống RAG.",
+    "featuresVi": [
+      "Read: thêm tiền tố https://r.jina.ai/ trước URL để nhận nội dung thân thiện với LLM",
+      "Search: https://s.jina.ai/ tìm kiếm web, lấy 5 kết quả đầu và chuyển từng trang thành Markdown",
+      "Đọc PDF (PDF.js), tài liệu MS Office (qua LibreOffice) và chú thích ảnh bằng VLM",
+      "Điều khiển bằng header: định dạng đầu ra, bộ chọn CSS, thời gian chờ, giới hạn token, chia đoạn Markdown",
+      "Hỗ trợ trang SPA nhờ Puppeteer và Chrome không giao diện",
+      "Ảnh Docker dựng sẵn kèm Chrome, LibreOffice và font CJK"
+    ],
+    "requirementsVi": "Docker để tự chạy ảnh ghcr.io/jina-ai/reader:oss (cổng 8080 HTTP/2 h2c và 8081 HTTP/1.1); tùy chọn bucket tương thích S3 để lưu đệm. Phát triển cục bộ cần Node.js (nvm).",
+    "installStepsVi": [
+      "Tải ảnh Docker mã nguồn mở: `docker pull ghcr.io/jina-ai/reader:oss`",
+      "Chạy Reader, ánh xạ cổng HTTP/1.1 ra cổng 3000: `docker run --rm -p 3000:8081 ghcr.io/jina-ai/reader:oss`"
+    ],
+    "cliCommand": "docker run --rm -p 3000:8081 ghcr.io/jina-ai/reader:oss",
+    "usageStepsVi": [
+      "Gửi yêu cầu tới http://localhost:3000/<URL cần đọc>, ví dụ http://localhost:3000/https://example.com",
+      "Thêm header như x-respond-with (markdown, html, text, screenshot) hoặc x-target-selector để tinh chỉnh kết quả",
+      "Hoặc dùng trực tiếp dịch vụ công khai https://r.jina.ai/ và https://s.jina.ai/"
+    ],
+    "samplePromptsVi": [
+      "Đọc trang https://en.wikipedia.org/wiki/Artificial_intelligence qua Reader và tóm tắt nội dung",
+      "Chuyển tệp PDF tại URL này thành Markdown để đưa vào cơ sở dữ liệu vector",
+      "Tìm kiếm 'Jina AI thành lập năm nào' chỉ trong trang jina.ai bằng s.jina.ai"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, tự chạy được bằng một lệnh Docker",
+      "Đọc nhiều loại nguồn: trang web, SPA, PDF, Office, hình ảnh",
+      "Nhiều tùy chọn kiểm soát token và định dạng đầu ra cho LLM"
+    ],
+    "consVi": [
+      "Bản mã nguồn mở không gồm lớp lưu trữ MongoDB của bản SaaS; mặc định không có cache và giới hạn tốc độ",
+      "Một số tài nguyên có giấy phép riêng (GeoLite2, font, danh sách user-agent) phải tải bổ sung khi tự build",
+      "Dịch vụ công khai có giới hạn tốc độ cho truy cập không dùng khóa API"
+    ],
+    "sourceEvidence": {
+      "docker pull ghcr.io/jina-ai/reader:oss": "README.md:193",
+      "docker run --rm -p 3000:8081 ghcr.io/jina-ai/reader:oss": "README.md:206"
+    },
+    "meta": {
+      "id": "jina-ai-reader",
+      "nameVi": "Jina Reader — Chuyển URL và kết quả tìm kiếm thành Markdown thân thiện với LLM",
+      "icon": "Globe",
+      "categories": [
+        "web_scraping_crawling",
+        "vector_rag",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "docker run --rm -p 3000:8081 ghcr.io/jina-ai/reader:oss"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "Skyvern-AI/skyvern",
+    "license": "GNU Affero General Public License v3.0 (AGPL-3.0); riêng các biện pháp chống bot chỉ có trong bản cloud, không thuộc kho mã nguồn mở",
+    "authorName": "Skyvern",
+    "websiteUrl": "https://www.skyvern.com",
+    "toolType": "agent",
+    "taglineEn": "Automate Browser-based workflows using LLMs and Computer Vision",
+    "summaryVi": "Skyvern tự động hóa quy trình trên trình duyệt bằng LLM và thị giác máy tính, thay vì dựa vào XPath/DOM dễ hỏng khi giao diện thay đổi. Công cụ cung cấp SDK mở rộng Playwright với các lệnh AI (act, extract, validate, prompt), trình tạo workflow không cần code, hỗ trợ điền form, trích xuất dữ liệu, tải tệp và xác thực 2FA. Có thể chạy cục bộ qua pip hoặc Docker Compose, hoặc dùng Skyvern Cloud.",
+    "purposeVi": "Tự động hóa các tác vụ web lặp lại (điền biểu mẫu, trích xuất dữ liệu, tải tệp) trên cả những website chưa từng gặp bằng câu lệnh tự nhiên.",
+    "featuresVi": [
+      "Lệnh AI trên trang: page.act, page.extract (kèm JSON schema), page.validate, page.prompt",
+      "Hành động Playwright tăng cường AI: click, fill, select, upload bằng mô tả tự nhiên, có cơ chế dự phòng",
+      "Tác vụ và workflow nhiều bước, trình tạo workflow không cần code",
+      "Trích xuất dữ liệu, điền form, tải tệp, livestream trình duyệt",
+      "Xác thực: hỗ trợ 2FA (TOTP) và tích hợp trình quản lý mật khẩu (Bitwarden, 1Password)",
+      "Hỗ trợ OpenAI, Anthropic, Azure OpenAI, AWS Bedrock, Gemini, Ollama, OpenRouter và endpoint tương thích OpenAI",
+      "Hỗ trợ Model Context Protocol (MCP)"
+    ],
+    "requirementsVi": "Python 3.11, 3.12 hoặc 3.13 (Windows cần thêm Rust và VS Code có C++ dev tools) cho cách cài đặt pip; hoặc Docker Desktop cho Docker Compose. Cần khóa API của nhà cung cấp LLM. Giao diện web chạy tại http://localhost:8080; mặc định dùng SQLite tại ~/.skyvern/data.db.",
+    "installStepsVi": [
+      "Cài đặt Skyvern kèm máy chủ và giao diện: `pip install \"skyvern[all]\"`",
+      "Chạy trình cài đặt nhanh: `skyvern quickstart`",
+      "Hoặc dùng Docker Compose — tải mã nguồn: `git clone https://github.com/skyvern-ai/skyvern.git && cd skyvern`",
+      "Tạo tệp cấu hình và thêm khóa API của LLM: `cp .env.example .env`",
+      "Khởi động toàn bộ dịch vụ (Postgres, API, UI): `docker compose up -d`"
+    ],
+    "cliCommand": "skyvern quickstart",
+    "usageStepsVi": [
+      "Chạy `skyvern run all` rồi mở http://localhost:8080 để giao tác vụ qua giao diện web",
+      "Hoặc dùng SDK Python: Skyvern.local(), mở trang và gọi page.act(...) / page.extract(...)",
+      "Tạo workflow nhiều bước cho các quy trình lặp lại và chạy lại khi cần"
+    ],
+    "samplePromptsVi": [
+      "Mở trang này, điền biểu mẫu liên hệ với thông tin sau và bấm Gửi",
+      "Trích xuất chi tiết đơn hàng gồm mã đơn, tổng tiền và danh sách sản phẩm theo schema JSON",
+      "Kiểm tra xem người dùng đã đăng nhập thành công hay chưa"
+    ],
+    "prosVi": [
+      "Không phụ thuộc XPath nên chịu được thay đổi bố cục website",
+      "Tương thích Playwright: kết hợp lệnh truyền thống và lệnh AI trong cùng script",
+      "Hỗ trợ nhiều nhà cung cấp LLM, kể cả mô hình cục bộ qua Ollama"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0; các biện pháp chống bot chỉ có trong bản cloud trả phí",
+      "Mặc định thu thập thống kê sử dụng; tắt bằng SKYVERN_TELEMETRY=false",
+      "Cần khóa API LLM và chịu chi phí token khi chạy tác vụ"
+    ],
+    "sourceEvidence": {
+      "pip install \"skyvern[all]\"": "README.md:82",
+      "skyvern quickstart": "README.md:88",
+      "git clone https://github.com/skyvern-ai/skyvern.git && cd skyvern": "README.md:100",
+      "cp .env.example .env": "README.md:104",
+      "docker compose up -d": "README.md:109",
+      "skyvern run all": "README.md:209"
+    },
+    "meta": {
+      "id": "skyvern-ai-skyvern",
+      "nameVi": "Skyvern — Agent tự động hóa quy trình trình duyệt bằng LLM và thị giác máy tính",
+      "icon": "Workflow",
+      "categories": [
+        "web_scraping_crawling",
+        "rpa_workflow_automation",
+        "computer_vision"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (AGPL-3.0; chống bot chỉ có ở bản cloud)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "skyvern quickstart"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "lightpanda-io/browser",
+    "license": "GNU Affero General Public License v3.0 (AGPL-3.0-only)",
+    "authorName": "Lightpanda",
+    "websiteUrl": "https://lightpanda.io",
+    "toolType": "software",
+    "taglineEn": "The headless browser built from scratch for AI agents and automation.",
+    "summaryVi": "Lightpanda là trình duyệt không giao diện viết mới hoàn toàn bằng Zig (không phải bản fork Chromium hay WebKit) dành cho AI agent và tự động hóa. Theo benchmark trong README, trình duyệt dùng ít bộ nhớ hơn khoảng 16 lần và nhanh hơn khoảng 9 lần so với Chrome không giao diện. Lightpanda có máy chủ CDP tương thích Puppeteer/Playwright, chế độ agent điều khiển bằng ngôn ngữ tự nhiên và máy chủ MCP tích hợp sẵn.",
+    "purposeVi": "Cung cấp trình duyệt nhẹ, nhanh để agent và script crawl, trích xuất dữ liệu hoặc tự động hóa web với chi phí tài nguyên thấp.",
+    "featuresVi": [
+      "Lệnh fetch: xuất trang ra HTML, Markdown, PNG, PDF hoặc dữ liệu cấu trúc (JSON-LD, OpenGraph)",
+      "Máy chủ CDP và WebDriver BiDi: dùng với Puppeteer, Playwright qua browserWSEndpoint",
+      "Chế độ agent: điều khiển trình duyệt bằng tiếng Anh tự nhiên, xuất script PandaScript để chạy lại không cần LLM",
+      "Máy chủ MCP tích hợp qua stdio hoặc HTTP, mỗi kết nối có phiên duyệt riêng",
+      "Hỗ trợ JavaScript (V8), DOM API, XHR/Fetch, cookie, proxy, chặn quảng cáo",
+      "Tôn trọng robots.txt với tùy chọn --obey-robots"
+    ],
+    "requirementsVi": "Linux (x86_64/aarch64, glibc) hoặc macOS; Windows dùng qua WSL2; hoặc Docker. Máy chủ CDP mặc định ở cổng 9222. Chế độ agent cần khóa API LLM (Anthropic, OpenAI, Gemini...) hoặc mô hình cục bộ qua Ollama/llama.cpp.",
+    "installStepsVi": [
+      "Cài đặt bản nightly qua Homebrew: `brew install lightpanda-io/browser/lightpanda`",
+      "Hoặc chạy bằng Docker, mở máy chủ CDP ở cổng 9222: `docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:latest`",
+      "Kiểm tra bằng cách xuất một trang ra HTML: `./lightpanda fetch --obey-robots --dump html --log-format pretty  --log-level info https://demo-browser.lightpanda.io/campfire-commerce/`"
+    ],
+    "cliCommand": "docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:latest",
+    "usageStepsVi": [
+      "Kết nối Puppeteer/Playwright tới ws://127.0.0.1:9222 và giữ nguyên phần còn lại của script",
+      "Dùng tùy chọn --dump markdown để chuyển trang trực tiếp thành Markdown cho LLM",
+      "Thêm Lightpanda vào cấu hình MCP (command là đường dẫn tới lightpanda, args là [\"mcp\"]) để agent duyệt web",
+      "Tắt telemetry bằng biến môi trường LIGHTPANDA_DISABLE_TELEMETRY=true nếu cần"
+    ],
+    "samplePromptsVi": [
+      "Dùng Lightpanda MCP mở trang này và trích xuất toàn bộ liên kết",
+      "Lấy dữ liệu cấu trúc (JSON-LD, OpenGraph) của trang sản phẩm này",
+      "Tìm tin nổi bật nhất trên news.ycombinator.com bằng lightpanda agent"
+    ],
+    "prosVi": [
+      "Rất nhẹ và nhanh so với Chrome không giao diện theo benchmark của dự án",
+      "Tương thích CDP nên dùng lại được script Puppeteer/Playwright",
+      "Có sẵn MCP và chế độ agent, hỗ trợ cả mô hình cục bộ"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0-only",
+      "Mặc định gửi telemetry; tắt bằng LIGHTPANDA_DISABLE_TELEMETRY=true",
+      "Không có bản Windows gốc (dùng WSL2), không chạy trên Linux musl (Alpine) hay Android",
+      "Bản cài đặt nhanh là bản nightly; Web API chưa đầy đủ như trình duyệt lớn"
+    ],
+    "sourceEvidence": {
+      "brew install lightpanda-io/browser/lightpanda": "README.md:47",
+      "docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:latest": "README.md:102",
+      "./lightpanda fetch --obey-robots --dump html --log-format pretty  --log-level info https://demo-browser.lightpanda.io/campfire-commerce/": "README.md:108"
+    },
+    "meta": {
+      "id": "lightpanda-io-browser",
+      "nameVi": "Lightpanda — Trình duyệt không giao diện siêu nhẹ cho AI agent và tự động hóa",
+      "icon": "Globe",
+      "categories": [
+        "web_scraping_crawling",
+        "rpa_workflow_automation"
+      ],
+      "platforms": [
+        "web",
+        "claude_desktop"
+      ],
+      "licenseShort": "Mã nguồn mở (AGPL-3.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:latest"
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"lightpanda\": {\n      \"command\": \"/path/to/lightpanda\",\n      \"args\": [\"mcp\"]\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "browserbase/stagehand",
+    "license": "MIT License",
+    "authorName": "Browserbase",
+    "websiteUrl": "https://docs.stagehand.dev",
+    "toolType": "sdk",
+    "taglineEn": "AI that uses the browser like humans.",
+    "summaryVi": "Stagehand là framework tự động hóa trình duyệt bằng AI của Browserbase, kết hợp API kiểu Playwright (goto, click, locator, screenshot) với ba lệnh AI: act, observe và extract. Lệnh extract trả về dữ liệu đã kiểm tra theo schema (Zod/Pydantic), còn act và observe tự thích ứng khi giao diện website thay đổi. SDK có cho TypeScript, Python và Go, chạy với Chrome cục bộ hoặc trình duyệt cloud Browserbase.",
+    "purposeVi": "Viết script tự động hóa và trích xuất dữ liệu web bằng câu lệnh tự nhiên, ổn định hơn khi website đổi giao diện.",
+    "featuresVi": [
+      "act(): thực hiện hành động bằng câu lệnh tự nhiên, tự phục hồi khi website đổi thiết kế",
+      "observe(): trả về bộ chọn thật để thông tin đăng nhập không phải gửi cho mô hình",
+      "extract(): trích xuất dữ liệu theo schema Zod (TS) hoặc Pydantic (Python)",
+      "API quen thuộc kiểu Playwright, cắt gọn cây accessibility để tiết kiệm token",
+      "Hỗ trợ WebMCP, iframe lồng nhau, Shadow DOM đóng, OTel traces",
+      "Một bộ điều khiển trình duyệt cho TypeScript, Python và Go"
+    ],
+    "requirementsVi": "Chạy cục bộ cần cài Chrome; khóa API của nhà cung cấp mô hình (ví dụ OPENAI_API_KEY). Chạy trên cloud cần BROWSERBASE_API_KEY.",
+    "installStepsVi": [
+      "Cài đặt SDK TypeScript: `pnpm add @browserbasehq/stagehand 'zod@~4.4.3'`",
+      "Hoặc cài đặt SDK Python: `pip install stagehand`",
+      "Hoặc cài đặt SDK Go: `go get github.com/browserbase/stagehand/packages/sdk-go/v4@v4.0.0`"
+    ],
+    "cliCommand": "pnpm add @browserbasehq/stagehand 'zod@~4.4.3'",
+    "usageStepsVi": [
+      "Khởi chạy trình duyệt cục bộ bằng localBrowser.launch({ userDataDir: \"./browser-data\" }) để giữ phiên đăng nhập",
+      "Tạo Stagehand.create({ browser, model: {...} }) với tên mô hình và khóa API",
+      "Dùng stagehand.act(), stagehand.observe() và stagehand.extract() kết hợp với API trang kiểu Playwright",
+      "Đóng stagehand và trình duyệt khi hoàn tất"
+    ],
+    "samplePromptsVi": [
+      "Mở trang thanh toán và trích xuất mọi hóa đơn trong bảng gồm số hóa đơn, số tiền, trạng thái đã trả",
+      "Tìm ô nhập email và mật khẩu rồi bấm nút đăng nhập",
+      "Viết script Stagehand bằng Python lấy danh sách sản phẩm theo schema Pydantic"
+    ],
+    "prosVi": [
+      "Giấy phép MIT",
+      "SDK cho ba ngôn ngữ: TypeScript, Python, Go",
+      "Chạy cục bộ với Chrome hoặc chuyển sang Browserbase mà không đổi script"
+    ],
+    "consVi": [
+      "Cần khóa API mô hình LLM khi chạy cục bộ",
+      "Các tính năng như proxy dân cư, ghi lại phiên, Model Gateway, cache phía server cần tài khoản Browserbase",
+      "Chạy cục bộ yêu cầu cài sẵn Chrome"
+    ],
+    "sourceEvidence": {
+      "pnpm add @browserbasehq/stagehand 'zod@~4.4.3'": "README.md:268",
+      "pip install stagehand": "README.md:275",
+      "go get github.com/browserbase/stagehand/packages/sdk-go/v4@v4.0.0": "README.md:284"
+    },
+    "meta": {
+      "id": "browserbase-stagehand",
+      "nameVi": "Stagehand — Framework tự động hóa trình duyệt bằng AI cho TypeScript, Python, Go",
+      "icon": "Code2",
+      "categories": [
+        "web_scraping_crawling",
+        "rpa_workflow_automation",
+        "qa_testing"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pnpm add @browserbasehq/stagehand 'zod@~4.4.3'"
+        }
+      ]
+    }
+  }
+]
