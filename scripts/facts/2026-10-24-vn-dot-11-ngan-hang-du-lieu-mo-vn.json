@@ -1,0 +1,527 @@
+[
+  {
+    "repo": "payOSHQ/payos-lib-python",
+    "license": "MIT License",
+    "authorName": "payOS",
+    "websiteUrl": "https://payos.vn/docs",
+    "toolType": "sdk",
+    "taglineEn": "The payOS Python library provides convenient access to the payOS Merchant API from applications written in Python.",
+    "summaryVi": "payOS Python SDK là thư viện chính thức của payOS để gọi payOS Merchant API từ ứng dụng Python. Thư viện có định nghĩa kiểu cho mọi tham số và phản hồi, cung cấp cả client đồng bộ (PayOS) lẫn bất đồng bộ (AsyncPayOS) dựa trên httpx.",
+    "purposeVi": "Giúp lập trình viên Python tại Việt Nam tạo link thanh toán chuyển khoản qua payOS, nhận và xác thực webhook kết quả thanh toán mà không phải tự ký dữ liệu.",
+    "featuresVi": [
+      "Tạo link thanh toán: gọi API payment requests với mã đơn hàng, số tiền, mô tả, returnUrl và cancelUrl",
+      "Xác thực webhook: đăng ký URL nhận webhook (confirm) và kiểm tra chữ ký dữ liệu thanh toán gửi về (verify)",
+      "Xử lý lỗi thống nhất: ném ngoại lệ APIError khi mã HTTP 4xx/5xx hoặc mã kết quả khác '00'",
+      "Phân trang tự động: duyệt danh sách (ví dụ danh sách lệnh chi payouts) qua các trang",
+      "Client bất đồng bộ: dùng AsyncPayOS với await cho từng lời gọi API"
+    ],
+    "requirementsVi": "Python 3.9 trở lên; tài khoản payOS với Client ID, API Key, Checksum Key (đặt qua biến môi trường PAYOS_CLIENT_ID, PAYOS_API_KEY, PAYOS_CHECKSUM_KEY).",
+    "installStepsVi": [
+      "Cài đặt thư viện từ PyPI: `pip install payos`",
+      "Nếu nâng cấp từ phiên bản v0, đọc hướng dẫn chuyển đổi trong MIGRATION.md",
+      "Khởi tạo PayOS với client_id, api_key, checksum_key lấy từ biến môi trường"
+    ],
+    "cliCommand": "pip install payos",
+    "usageStepsVi": [
+      "Gọi client.payment_requests.create() với CreatePaymentLinkRequest (order_code, amount, description, cancel_url, return_url) để tạo link thanh toán",
+      "Đăng ký URL webhook bằng client.webhooks.confirm(...) rồi dùng client.webhooks.verify(data) trong endpoint để xác thực dữ liệu",
+      "Bắt ngoại lệ APIError để đọc error_code, error_desc, status_code",
+      "Xem thêm ví dụ trong thư mục examples/ và tài liệu hướng dẫn tại payos.vn/docs"
+    ],
+    "samplePromptsVi": [
+      "Viết endpoint Flask tạo link thanh toán payOS 50.000 đồng cho đơn hàng bằng thư viện payos",
+      "Hướng dẫn xác thực webhook payOS trong Python bằng client.webhooks.verify",
+      "Chuyển đoạn mã tạo link thanh toán payOS sang dùng AsyncPayOS"
+    ],
+    "prosVi": [
+      "SDK chính thức do payOS phát hành, giấy phép MIT",
+      "Có định nghĩa kiểu đầy đủ, hỗ trợ cả đồng bộ và bất đồng bộ",
+      "Được bảo trì tích cực (cập nhật năm 2026)"
+    ],
+    "consVi": [
+      "Cần tài khoản payOS và bộ khóa Client ID, API Key, Checksum Key của kênh thanh toán",
+      "Chỉ là thư viện gọi payOS Merchant API; tài liệu API chi tiết nằm ở trang payos.vn/docs",
+      "Phiên bản v1 có thay đổi API so với v0, dự án cũ cần làm theo MIGRATION.md"
+    ],
+    "sourceEvidence": {
+      "pip install payos": "README.md:17"
+    },
+    "meta": {
+      "id": "payoshq-payos-lib-python",
+      "nameVi": "payOS Python SDK — Thư viện chính thức tích hợp cổng thanh toán payOS cho Python",
+      "icon": "CreditCard",
+      "categories": [
+        "payment_gateway",
+        "fintech_banking",
+        "backend_api"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install payos"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "payOSHQ/payos-lib-php",
+    "license": "MIT License",
+    "authorName": "payOS",
+    "websiteUrl": "https://payos.vn/docs",
+    "toolType": "sdk",
+    "taglineEn": "The payOS PHP library provides convenient access to the payOS Merchant API from applications written in PHP.",
+    "summaryVi": "payOS PHP Library là thư viện chính thức của payOS để gọi payOS Merchant API từ ứng dụng PHP, phát hành trên Packagist với tên payos/payos. Thư viện cung cấp các resource như paymentRequests, webhooks, payouts kèm model dữ liệu cho từng yêu cầu.",
+    "purposeVi": "Giúp website và hệ thống PHP tại Việt Nam tạo link thanh toán payOS, xác thực webhook và quản lý lệnh chi bằng công cụ chính chủ.",
+    "featuresVi": [
+      "Tạo link thanh toán: gọi API payment requests với mã đơn hàng, số tiền, mô tả, returnUrl và cancelUrl",
+      "Xác thực webhook: đăng ký URL nhận webhook (confirm) và kiểm tra chữ ký dữ liệu thanh toán gửi về (verify)",
+      "Xử lý lỗi thống nhất: ném ngoại lệ APIError khi mã HTTP 4xx/5xx hoặc mã kết quả khác '00'",
+      "Phân trang tự động: duyệt danh sách (ví dụ danh sách lệnh chi payouts) qua các trang",
+      "Tương thích kết quả kiểu mảng: truyền tùy chọn asArray để nhận dữ liệu dạng mảng như phiên bản cũ"
+    ],
+    "requirementsVi": "PHP 8.2 trở lên, Composer và một PSR-18 HTTP client (ví dụ Guzzle); tài khoản payOS với Client ID, API Key, Checksum Key.",
+    "installStepsVi": [
+      "Cài đặt thư viện bằng Composer: `composer require payos/payos`",
+      "Nếu dự án chưa có PSR-18 HTTP client, cài đặt thêm Guzzle: `composer require guzzlehttp/guzzle`",
+      "Khởi tạo đối tượng PayOS với clientId, apiKey, checksumKey lấy từ biến môi trường"
+    ],
+    "cliCommand": "composer require payos/payos",
+    "usageStepsVi": [
+      "Tạo CreatePaymentLinkRequest (orderCode, amount, description, returnUrl, cancelUrl) và gọi $payOS->paymentRequests->create(...)",
+      "Dùng $result->checkoutUrl để chuyển khách hàng tới trang thanh toán",
+      "Đăng ký webhook bằng $payOS->webhooks->confirm(...) và xác thực dữ liệu nhận được bằng $payOS->webhooks->verify(...)",
+      "Bắt \\PayOS\\Exceptions\\APIException để xử lý lỗi; xem ví dụ trong thư mục examples/"
+    ],
+    "samplePromptsVi": [
+      "Viết controller Laravel tạo link thanh toán payOS bằng thư viện payos/payos",
+      "Hướng dẫn xác thực webhook payOS trong PHP và cập nhật trạng thái đơn hàng",
+      "Liệt kê các lệnh chi payouts bằng payOS PHP SDK có phân trang"
+    ],
+    "prosVi": [
+      "SDK chính thức do payOS phát hành, giấy phép MIT",
+      "Phát hành trên Packagist, cài đặt nhanh bằng Composer",
+      "Được bảo trì tích cực (cập nhật năm 2025)"
+    ],
+    "consVi": [
+      "Cần tài khoản payOS và bộ khóa Client ID, API Key, Checksum Key của kênh thanh toán",
+      "Chỉ là thư viện gọi payOS Merchant API; tài liệu API chi tiết nằm ở trang payos.vn/docs",
+      "Yêu cầu PHP 8.2 trở lên và một PSR-18 HTTP client"
+    ],
+    "sourceEvidence": {
+      "composer require payos/payos": "README.md:19",
+      "composer require guzzlehttp/guzzle": "README.md:25"
+    },
+    "meta": {
+      "id": "payoshq-payos-lib-php",
+      "nameVi": "payOS PHP Library — Thư viện chính thức tích hợp cổng thanh toán payOS cho PHP",
+      "icon": "CreditCard",
+      "categories": [
+        "payment_gateway",
+        "fintech_banking",
+        "backend_api"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "composer require payos/payos"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "payOSHQ/payos-lib-java",
+    "license": "MIT License",
+    "authorName": "payOS",
+    "websiteUrl": "https://payos.vn/docs",
+    "toolType": "sdk",
+    "taglineEn": "The payOS Java library provides convenient access to the payOS Merchant API from applications written in Java.",
+    "summaryVi": "payOS Java Library là thư viện chính thức của payOS để gọi payOS Merchant API từ ứng dụng Java, phát hành trên Maven Central với mã vn.payos:payos-java. Thư viện hỗ trợ tạo link thanh toán, xác thực webhook và có Javadoc trên javadoc.io.",
+    "purposeVi": "Giúp hệ thống backend Java (Spring, Android server…) tại Việt Nam tích hợp thanh toán chuyển khoản qua payOS bằng công cụ chính chủ.",
+    "featuresVi": [
+      "Tạo link thanh toán: gọi API payment requests với mã đơn hàng, số tiền, mô tả, returnUrl và cancelUrl",
+      "Xác thực webhook: đăng ký URL nhận webhook (confirm) và kiểm tra chữ ký dữ liệu thanh toán gửi về (verify)",
+      "Xử lý lỗi thống nhất: ném ngoại lệ APIError khi mã HTTP 4xx/5xx hoặc mã kết quả khác '00'",
+      "Phân trang tự động: duyệt danh sách (ví dụ danh sách lệnh chi payouts) qua các trang",
+      "Khởi tạo từ biến môi trường: PayOS.fromEnv() đọc PAYOS_CLIENT_ID, PAYOS_API_KEY, PAYOS_CHECKSUM_KEY"
+    ],
+    "requirementsVi": "Java 8 trở lên, Gradle hoặc Maven; tài khoản payOS với Client ID, API Key, Checksum Key.",
+    "installStepsVi": [
+      "Cài đặt bằng Gradle, thêm dòng phụ thuộc: `implementation 'vn.payos:payos-java:2.0.1'`",
+      "Hoặc cài đặt bằng Maven: thêm dependency groupId vn.payos, artifactId payos-java, version 2.0.1 vào pom.xml",
+      "Đặt các biến môi trường PAYOS_CLIENT_ID, PAYOS_API_KEY, PAYOS_CHECKSUM_KEY rồi khởi tạo client bằng PayOS.fromEnv()"
+    ],
+    "cliCommand": "implementation 'vn.payos:payos-java:2.0.1'",
+    "usageStepsVi": [
+      "Dựng CreatePaymentLinkRequest bằng builder (orderCode, amount, description, returnUrl, cancelUrl) và gọi client.paymentRequests().create(...)",
+      "Đăng ký webhook bằng client.webhooks().confirm(...) và xác thực dữ liệu bằng client.webhooks().verify(body)",
+      "Bắt PayOSException/APIException để xử lý lỗi",
+      "Xem ví dụ trong src/main/java/vn/payos/examples và Javadoc trên javadoc.io"
+    ],
+    "samplePromptsVi": [
+      "Viết REST controller Spring Boot tạo link thanh toán payOS bằng thư viện payos-java",
+      "Hướng dẫn xác thực webhook payOS trong Java",
+      "Thêm payos-java vào dự án Maven và tạo đơn thanh toán thử 2.000 đồng"
+    ],
+    "prosVi": [
+      "SDK chính thức do payOS phát hành, giấy phép MIT",
+      "Hỗ trợ từ Java 8, có Javadoc",
+      "Được bảo trì tích cực (cập nhật năm 2025)"
+    ],
+    "consVi": [
+      "Cần tài khoản payOS và bộ khóa Client ID, API Key, Checksum Key của kênh thanh toán",
+      "Chỉ là thư viện gọi payOS Merchant API; tài liệu API chi tiết nằm ở trang payos.vn/docs"
+    ],
+    "sourceEvidence": {
+      "implementation 'vn.payos:payos-java:2.0.1'": "README.md:19"
+    },
+    "meta": {
+      "id": "payoshq-payos-lib-java",
+      "nameVi": "payOS Java Library — Thư viện chính thức tích hợp cổng thanh toán payOS cho Java",
+      "icon": "CreditCard",
+      "categories": [
+        "payment_gateway",
+        "fintech_banking",
+        "backend_api"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Gradle",
+          "cliCommand": "implementation 'vn.payos:payos-java:2.0.1'"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "payOSHQ/payos-lib-golang",
+    "license": "MIT License",
+    "authorName": "payOS",
+    "websiteUrl": "https://payos.vn/docs",
+    "toolType": "sdk",
+    "taglineEn": "The payOS Go library provides convenient access to the payOS Merchant API from applications written in Go.",
+    "summaryVi": "payOS Go Library là thư viện chính thức của payOS để gọi payOS Merchant API từ ứng dụng Go (module github.com/payOSHQ/payos-lib-golang/v2). Thư viện hỗ trợ tạo link thanh toán, đăng ký và xác thực webhook, xử lý lỗi theo mã phản hồi.",
+    "purposeVi": "Giúp dịch vụ backend viết bằng Go tại Việt Nam tích hợp thanh toán chuyển khoản qua payOS bằng công cụ chính chủ.",
+    "featuresVi": [
+      "Tạo link thanh toán: gọi API payment requests với mã đơn hàng, số tiền, mô tả, returnUrl và cancelUrl",
+      "Xác thực webhook: đăng ký URL nhận webhook (Webhooks.Confirm) và kiểm tra dữ liệu thanh toán gửi về (Webhooks.VerifyData)",
+      "Xử lý lỗi thống nhất: ném ngoại lệ APIError khi mã HTTP 4xx/5xx hoặc mã kết quả khác '00'"
+    ],
+    "requirementsVi": "Go 1.21 trở lên; tài khoản payOS với Client ID, API Key, Checksum Key.",
+    "installStepsVi": [
+      "Cài đặt module: `go get github.com/payOSHQ/payos-lib-golang/v2`",
+      "Nếu nâng cấp từ v1, đọc hướng dẫn chuyển đổi trong MIGRATION.md",
+      "Khởi tạo client bằng payos.NewPayOS với ClientId, ApiKey, ChecksumKey"
+    ],
+    "cliCommand": "go get github.com/payOSHQ/payos-lib-golang/v2",
+    "usageStepsVi": [
+      "Gọi client.PaymentRequests.Create(ctx, payos.CreatePaymentLinkRequest{...}) để tạo link thanh toán",
+      "Đăng ký webhook bằng client.Webhooks.Confirm(ctx, url)",
+      "Xác thực dữ liệu webhook nhận được bằng client.Webhooks.VerifyData(...)",
+      "Xem thêm ví dụ trong thư mục examples/"
+    ],
+    "samplePromptsVi": [
+      "Viết handler Go (net/http) tạo link thanh toán payOS bằng payos-lib-golang v2",
+      "Hướng dẫn xác thực webhook payOS trong Go",
+      "Chuyển mã tích hợp payOS Go từ v1 sang v2"
+    ],
+    "prosVi": [
+      "SDK chính thức do payOS phát hành, giấy phép MIT",
+      "Có tài liệu trên pkg.go.dev",
+      "Được bảo trì tích cực (cập nhật năm 2025)"
+    ],
+    "consVi": [
+      "Cần tài khoản payOS và bộ khóa Client ID, API Key, Checksum Key của kênh thanh toán",
+      "Chỉ là thư viện gọi payOS Merchant API; tài liệu API chi tiết nằm ở trang payos.vn/docs",
+      "Phiên bản v2 thay đổi API so với v1, cần làm theo MIGRATION.md"
+    ],
+    "sourceEvidence": {
+      "go get github.com/payOSHQ/payos-lib-golang/v2": "README.md:17"
+    },
+    "meta": {
+      "id": "payoshq-payos-lib-golang",
+      "nameVi": "payOS Go Library — Thư viện chính thức tích hợp cổng thanh toán payOS cho Go",
+      "icon": "CreditCard",
+      "categories": [
+        "payment_gateway",
+        "fintech_banking",
+        "backend_api"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "go get github.com/payOSHQ/payos-lib-golang/v2"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "shinxz12/napas-qr-python",
+    "license": "MIT License",
+    "authorName": "shinxz12",
+    "websiteUrl": "https://shinxz12.github.io/napas-qr-python",
+    "toolType": "sdk",
+    "taglineEn": "Generate VietQR for python following VietQR Vi Version and En Version",
+    "summaryVi": "Napas QR Python là thư viện Python tạo và giải mã mã VietQR theo đặc tả NAPAS247 (bản tiếng Việt và tiếng Anh). Thư viện hỗ trợ đầy đủ các trường gốc và trường mẫu của chuẩn, kiểm tra CRC khi giải mã, dùng segno để xuất ảnh QR và có công cụ dòng lệnh napas_qr.",
+    "purposeVi": "Giúp lập trình viên tạo chuỗi và ảnh mã QR chuyển khoản liên ngân hàng VietQR (theo mã BIN ngân hàng và số tài khoản/thẻ) hoặc đọc lại dữ liệu từ mã QR có sẵn.",
+    "featuresVi": [
+      "Mã hóa VietQR: tạo payload theo mã BIN, số tài khoản/thẻ, số tiền, nội dung chuyển khoản",
+      "Giải mã VietQR: phân tích payload thành các trường dữ liệu, kiểm tra CRC mặc định",
+      "Tạo ảnh QR: dùng segno, tùy chỉnh kích thước và màu",
+      "Hỗ trợ nhiều dịch vụ: ACCOUNT, CARD, PAYMENT, CASH_WITHDRAWL; QR tĩnh hoặc động",
+      "Công cụ dòng lệnh napas_qr với lệnh encode và decode"
+    ],
+    "requirementsVi": "Python 3.8.2 trở lên (theo pyproject.toml).",
+    "installStepsVi": [
+      "Cài đặt thư viện từ PyPI: `pip install napas-qr-python`",
+      "Kiểm tra công cụ dòng lệnh bằng cách mã hóa thử một payload: `napas_qr encode --bin 970436 --consumer 1031933430 --amount 50000 --purpose \"Thanh toan\"`"
+    ],
+    "cliCommand": "pip install napas-qr-python",
+    "usageStepsVi": [
+      "Trong Python: `from qr_pay import QRPay`, tạo QRPay('970436', '1031933430', purpose_of_transaction=...) rồi đọc thuộc tính code",
+      "Gọi qr_pay.generate_qr_pay() để xuất ảnh QR; truyền dist và styles để tùy chỉnh",
+      "Giải mã payload bằng decode(code) hoặc QRPay.decode(code); thêm verify_crc=False để bỏ qua kiểm tra CRC",
+      "Dùng dòng lệnh `napas_qr decode \"<payload>\"` để xuất dữ liệu dạng JSON"
+    ],
+    "samplePromptsVi": [
+      "Tạo mã VietQR chuyển khoản 50.000 đồng tới tài khoản Vietcombank (BIN 970436) với nội dung thanh toán hóa đơn",
+      "Viết hàm Python đọc payload VietQR và trả về số tài khoản, mã ngân hàng, số tiền",
+      "Xuất ảnh QR màu xanh đậm cho mã VietQR bằng napas-qr-python"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, có tài liệu hướng dẫn riêng",
+      "Hỗ trợ cả mã hóa lẫn giải mã có kiểm tra CRC",
+      "Hoạt động offline, không cần khóa API",
+      "Được bảo trì (cập nhật năm 2026)"
+    ],
+    "consVi": [
+      "Dự án cá nhân, không phải thư viện chính thức của NAPAS",
+      "Chỉ tạo/giải mã chuỗi QR, không xác nhận giao dịch hay tra cứu ngân hàng"
+    ],
+    "sourceEvidence": {
+      "pip install napas-qr-python": "docs/installation.md:9",
+      "napas_qr encode --bin 970436 --consumer 1031933430 --amount 50000 --purpose \"Thanh toan\"": "README.md:142"
+    },
+    "meta": {
+      "id": "shinxz12-napas-qr-python",
+      "nameVi": "Napas QR Python — Thư viện tạo và giải mã mã VietQR chuẩn NAPAS247",
+      "icon": "CreditCard",
+      "categories": [
+        "payment_gateway",
+        "fintech_banking"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install napas-qr-python"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "ducnpdev/vietqr",
+    "license": "MIT License",
+    "authorName": "ducnpdev",
+    "websiteUrl": "",
+    "toolType": "sdk",
+    "taglineEn": "A powerful Golang library for generating VietQR codes for NAPAS payment integration",
+    "summaryVi": "VietQR - Golang là thư viện Go giúp tạo nội dung mã QR thanh toán tuân theo chuẩn NAPAS VietQR. Thư viện cung cấp API đơn giản để điền thông tin tài khoản thụ hưởng, số tiền, nội dung, MCC, tên người nhận và sinh chuỗi QR.",
+    "purposeVi": "Giúp dịch vụ backend Go tại Việt Nam sinh mã QR chuyển khoản theo chuẩn NAPAS VietQR cho đơn hàng, hóa đơn.",
+    "featuresVi": [
+      "Sinh chuỗi VietQR: hàm GenerateViQR từ cấu trúc RequestGenerateViQR",
+      "Hỗ trợ các trường NAPAS VietQR: tài khoản thụ hưởng, số tiền, nội dung, MCC, tên người nhận",
+      "Kiểm tra dữ liệu: kiểm tra trường đầu vào, phân tích và kiểm tra mã QR"
+    ],
+    "requirementsVi": "Go 1.16 trở lên.",
+    "installStepsVi": [
+      "Cài đặt thư viện: `go get github.com/ducnpdev/vietqr`"
+    ],
+    "cliCommand": "go get github.com/ducnpdev/vietqr",
+    "usageStepsVi": [
+      "Tạo vietqr.RequestGenerateViQR với MerchantAccountInformation.AccountNo, TransactionAmount, mô tả, Mcc, ReceiverName",
+      "Gọi vietqr.GenerateViQR(qrRequest) để nhận chuỗi nội dung QR",
+      "Dùng thư viện vẽ QR bất kỳ để chuyển chuỗi thành ảnh; tham khảo cấu trúc trường trong README và tài liệu NAPAS"
+    ],
+    "samplePromptsVi": [
+      "Viết hàm Go sinh mã VietQR 505.000 đồng cho đơn hàng với nội dung thanh toán dịch vụ",
+      "Giải thích cấu trúc các tag 38, 54, 62 trong chuỗi VietQR do thư viện ducnpdev/vietqr sinh ra"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, không cần khóa API",
+      "Thư viện Go thuần, API gọn"
+    ],
+    "consVi": [
+      "Dự án cá nhân, không phải thư viện chính thức của NAPAS",
+      "Chỉ sinh chuỗi nội dung QR, không kèm chức năng xuất ảnh trong ví dụ README",
+      "Cập nhật gần nhất tháng 6/2025"
+    ],
+    "sourceEvidence": {
+      "go get github.com/ducnpdev/vietqr": "README.md:47"
+    },
+    "meta": {
+      "id": "ducnpdev-vietqr",
+      "nameVi": "VietQR Go — Thư viện Go sinh mã QR thanh toán chuẩn NAPAS VietQR",
+      "icon": "CreditCard",
+      "categories": [
+        "payment_gateway",
+        "fintech_banking"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "go get github.com/ducnpdev/vietqr"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "doxuta/amlich",
+    "license": "MIT License",
+    "authorName": "Xuan Tai Doan",
+    "websiteUrl": "https://pkg.go.dev/github.com/doxuta/amlich",
+    "toolType": "mcp",
+    "taglineEn": "Astronomical Vietnamese & Korean lunisolar calendar engine in pure Go — with an MCP server so AI agents stop guessing when Tết is.",
+    "summaryVi": "amlich là thư viện Go thuần (không phụ thuộc) tính âm lịch Việt Nam và Hàn Quốc bằng thiên văn — điểm sóc và kinh độ mặt trời — thay vì bảng tra, kèm công cụ dòng lệnh và máy chủ MCP cho tác tử AI. Thư viện đổi ngày dương ↔ âm, liệt kê ngày lễ âm lịch (Tết, Giỗ tổ, Trung thu), tính can chi và chỉ ra những năm Tết Việt Nam lệch Seollal Hàn Quốc một ngày.",
+    "purposeVi": "Giúp ứng dụng và tác tử AI tính chính xác ngày âm lịch, ngày lễ Việt Nam thay vì đoán, hoạt động offline và không cần khóa API.",
+    "featuresVi": [
+      "Đổi ngày: SolarToLunar, LunarToSolar cho múi giờ Việt Nam (UTC+7) và Hàn Quốc (UTC+9)",
+      "Ngày lễ âm lịch: Holidays liệt kê Tết, Giỗ tổ, Trung thu… theo năm",
+      "Can chi: tên năm theo cách đọc tiếng Việt và tiếng Hàn",
+      "Máy chủ MCP amlich-mcp với các tool convert_date, lunar_today, holidays_in_year, vn_kr_divergence",
+      "Công cụ dòng lệnh amlich: today, convert, holidays, canchi, divergence",
+      "Phạm vi hỗ trợ 1200–3000; được đối chứng 59.810 phép đổi và kiểm thử fuzz"
+    ],
+    "requirementsVi": "Go (để cài đặt bằng go get/go install); Claude Code nếu dùng máy chủ MCP.",
+    "installStepsVi": [
+      "Cài đặt máy chủ MCP: `go install github.com/doxuta/amlich/cmd/amlich-mcp@latest`",
+      "Thêm máy chủ vào Claude Code: `claude mcp add amlich -- amlich-mcp`",
+      "Cài đặt công cụ dòng lệnh (tùy chọn): `go install github.com/doxuta/amlich/cmd/amlich@latest`",
+      "Dùng làm thư viện trong dự án Go: `go get github.com/doxuta/amlich`"
+    ],
+    "cliCommand": "claude mcp add amlich -- amlich-mcp",
+    "usageStepsVi": [
+      "Hỏi tác tử AI về ngày âm lịch; tác tử gọi tool convert_date, lunar_today hoặc holidays_in_year",
+      "Trên terminal: `amlich today` để xem hôm nay âm lịch, `amlich convert 2026-02-17` để đổi ngày",
+      "`amlich holidays 2027` để liệt kê ngày lễ âm lịch; `amlich canchi 2027` để xem can chi",
+      "Trong mã Go: gọi amlich.SolarToLunar(2026, 2, 17, amlich.Vietnam)"
+    ],
+    "samplePromptsVi": [
+      "Hôm nay là ngày bao nhiêu âm lịch?",
+      "Tết Nguyên Đán năm 2027 rơi vào ngày dương lịch nào?",
+      "Liệt kê các ngày lễ âm lịch Việt Nam năm 2028",
+      "Những năm nào từ 2026 đến 2031 Tết Việt Nam và Seollal Hàn Quốc lệch nhau?"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, không phụ thuộc thư viện ngoài",
+      "Hoạt động offline, không cần khóa API",
+      "Có sẵn máy chủ MCP và lệnh claude mcp add trong README",
+      "README có tóm tắt tiếng Việt"
+    ],
+    "consVi": [
+      "Dự án rất mới (2026), một tác giả; README nêu phần chuyển mã được thực hiện với tác tử AI dưới sự rà soát của con người",
+      "Chỉ hỗ trợ khoảng năm 1200–3000",
+      "Cần cài Go để cài đặt"
+    ],
+    "sourceEvidence": {
+      "go install github.com/doxuta/amlich/cmd/amlich-mcp@latest": "README.md:59",
+      "claude mcp add amlich -- amlich-mcp": "README.md:60",
+      "go install github.com/doxuta/amlich/cmd/amlich@latest": "README.md:70",
+      "go get github.com/doxuta/amlich": "README.md:38"
+    },
+    "meta": {
+      "id": "doxuta-amlich",
+      "nameVi": "amlich — Thư viện, CLI và máy chủ MCP tính âm lịch Việt Nam bằng thiên văn",
+      "icon": "Wrench",
+      "categories": [
+        "backend_api",
+        "office_digital_docs"
+      ],
+      "platforms": [
+        "claude_code",
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude mcp add amlich -- amlich-mcp"
+        },
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "go install github.com/doxuta/amlich/cmd/amlich@latest"
+        }
+      ]
+    }
+  }
+]
