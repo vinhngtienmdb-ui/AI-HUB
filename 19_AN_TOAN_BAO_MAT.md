@@ -30,6 +30,7 @@ Tài liệu này xác định các chính sách an toàn thông tin, kiểm soá
    - Khóa API sinh bằng CSPRNG, chỉ lưu chuỗi băm HMAC-SHA256, so sánh bằng `timingSafeEqual`.
    - Muối HMAC lấy từ `AIHUB_SECURITY_SALT` hoặc tự sinh ngẫu nhiên và lưu tại `backend/data/.security-salt`. Thư mục `backend/data/` không được đưa lên kho mã.
    - Điểm cuối quản trị (`/stats`, `/keys`, `/keys/generate`, `/keys/revoke`, `/audit-logs`) bắt buộc khóa có vai trò `admin` và bị giới hạn 30 yêu cầu/phút/IP. Vai trò khi tạo khóa chỉ nhận `developer` hoặc `admin`.
+   - Điểm cuối công khai chỉ đọc `GET /api/v1/tools` và `GET /api/v1/tools/:id` không cần khóa, chỉ trả công cụ đang hiển thị, giới hạn 120 yêu cầu/phút/IP; tham số phân trang sai trả 400 (`INVALID_QUERY`). Kiểm thử: `backend/tests/api-tools.test.js`.
    - Điểm cuối `/dispatch` bắt buộc Bearer token, giới hạn tần suất theo từng khóa và hạn mức số lượt mỗi ngày (`dailyQuota`, theo ngày UTC).
    - Tham số tạo khóa được kiểm tra kiểu và giới hạn (tên ≤ 100 ký tự, 1–1.000 yêu cầu/phút, 1–1.000.000 lượt/ngày, 1–3.650 ngày); sai thì trả 400.
    - Lỗi nội bộ không trả chi tiết cho máy khách; nhật ký kiểm toán không lưu nội dung câu hỏi.

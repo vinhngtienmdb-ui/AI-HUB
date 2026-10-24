@@ -25,7 +25,27 @@ import { dispatchTask } from './dispatcher.js';
 import { GATEWAY_VERSION } from '@aihub/shared/gateway-core.js';
 
 // Lỗi do yêu cầu của máy khách (thân JSON sai, quá lớn): trả 400 thay vì 500
-class ClientError extends Error {}
+class ClientError extends Error {
+  constructor(message, code = 'INVALID_BODY') {
+    super(message);
+    this.code = code;
+  }
+}
+
+// Danh mục công cụ công khai: kích thước trang và hạn mức đọc theo IP
+const DEFAULT_PAGE_SIZE = 20;
+const MAX_PAGE_SIZE = 100;
+const PUBLIC_READS_PER_MIN = 120;
+
+/** Đọc tham số số nguyên dương từ chuỗi truy vấn; giá trị sai trả lỗi 400. */
+function parsePositiveInt(value, fallback, name, max) {
+  if (value === undefined || value === '') return fallback;
+  const n = Number(value);
+  if (!Number.isInteger(n) || n < 1 || n > max) {
+    throw new ClientError(`Tham số ${name} phải là số nguyên từ 1 đến ${max}.`, 'INVALID_QUERY');
+  }
+  return n;
+}
 
 const PORT = process.env.AIHUB_API_PORT ? parseInt(process.env.AIHUB_API_PORT, 10) : 4000;
 // Mặc định chỉ lắng nghe trên máy cục bộ. Đặt AIHUB_API_HOST=0.0.0.0 khi cần mở ra mạng (kèm reverse proxy HTTPS).
@@ -462,17 +482,49 @@ export const requestHandler = async (req, res) => {
       return;
     }
 
-    // 7. ENDPOINT: Tra cứu năng lực và danh mục công cụ
-    if (req.method === 'GET' && pathname === '/api/v1/tools') {
-      const q = parsedUrl.query.q ? String(parsedUrl.query.q).toLowerCase() : '';
-      const category = parsedUrl.query.category ? String(parsedUrl.query.category) : '';
+    // 7. ENDPOINT: Danh mục công cụ công khai (tìm kiếm, lọc, phân trang) và chi tiết một công cụ
+    if (req.method === 'GET' && (pathname === '/api/v1/tools' || pathname.startsWith('/api/v1/tools/'))) {
+      const readLimit = checkRateLimit(`tools:${clientIp}`, PUBLIC_READS_PER_MIN);
+      if (!readLimit.allowed) {
+        res.statusCode = 429;
+        res.setHeader('Retry-After', String(readLimit.resetInSeconds));
+        res.end(JSON.stringify({ error: 'Vượt quá hạn mức tần suất yêu cầu.', code: 'RATE_LIMITED' }));
+        return;
+      }
+
+      // Chi tiết: /api/v1/tools/:id (mã hoặc slug). Chỉ công cụ đang hiển thị; bản ghi bị ẩn trả 404
+      if (pathname !== '/api/v1/tools') {
+        const key = decodeURIComponent(pathname.slice('/api/v1/tools/'.length));
+        const tool = getPublishedTools().find(t => t.id === key || t.slug === key);
+        if (!tool) {
+          res.statusCode = 404;
+          res.end(JSON.stringify({ success: false, error: 'Không tìm thấy công cụ.', code: 'TOOL_NOT_FOUND' }));
+          return;
+        }
+        res.statusCode = 200;
+        res.end(JSON.stringify({ success: true, data: tool }, null, 2));
+        return;
+      }
+
+      const query = parsedUrl.query;
+      const page = parsePositiveInt(query.page, 1, 'page', 10000);
+      const limit = parsePositiveInt(query.limit, DEFAULT_PAGE_SIZE, 'limit', MAX_PAGE_SIZE);
+      const q = query.q ? String(query.q).toLowerCase() : '';
+      const category = query.category ? String(query.category) : '';
+      const toolType = query.tool_type || query.type ? String(query.tool_type || query.type) : '';
+      const platform = query.platform ? String(query.platform) : '';
+      const vietnamOnly = query.vietnam === '1' || query.vietnam === 'true';
+
       // Chỉ trả về công cụ đang hiển thị; bản ghi bị ẩn (rejected) không thuộc danh mục công khai
       let tools = getPublishedTools();
-
       if (category) {
         tools = tools.filter(t => t.category === category || (t.categories && t.categories.includes(category)));
       }
-
+      if (toolType) tools = tools.filter(t => t.toolType === toolType);
+      if (platform) {
+        tools = tools.filter(t => (t.platforms || []).includes(platform) || (t.configs || []).some(c => c.platform === platform));
+      }
+      if (vietnamOnly) tools = tools.filter(t => t.isVietnamMarket);
       if (q) {
         // Dữ liệu dùng summaryVi; descriptionVi và tags chỉ có ở một số bản ghi cũ
         tools = tools.filter(t =>
@@ -482,17 +534,27 @@ export const requestHandler = async (req, res) => {
         );
       }
 
+      const total = tools.length;
       res.statusCode = 200;
       res.end(JSON.stringify({
-        total: tools.length,
-        tools: tools.slice(0, 50).map(t => ({
+        success: true,
+        total,
+        meta: { total, page, limit, totalPages: Math.ceil(total / limit) },
+        tools: tools.slice((page - 1) * limit, page * limit).map(t => ({
           id: t.id,
           name: t.name,
+          toolType: t.toolType,
           category: t.category,
           categoryNameVi: t.categoryNameVi,
+          categories: t.categories || [],
+          platforms: t.platforms || [],
           isVietnamMarket: Boolean(t.isVietnamMarket),
           descriptionVi: t.summaryVi || t.descriptionVi,
-          sourceUrl: t.sourceUrl
+          license: t.license,
+          pricingModel: t.pricingModel,
+          linkHealth: t.linkHealth,
+          sourceUrl: t.sourceUrl,
+          detailUrl: `/api/v1/tools/${encodeURIComponent(t.id)}`
         }))
       }, null, 2));
       return;
@@ -521,7 +583,8 @@ export const requestHandler = async (req, res) => {
         'POST /api/v1/keys/generate (Requires admin key)',
         'POST /api/v1/keys/revoke (Requires admin key)',
         'POST /api/v1/dispatch (Requires Bearer Token)',
-        'GET  /api/v1/tools',
+        'GET  /api/v1/tools?q=&category=&tool_type=&platform=&vietnam=1&page=1&limit=20',
+        'GET  /api/v1/tools/:id',
         'GET  /api/v1/audit-logs (Requires admin key)'
       ]
     }, null, 2));
@@ -530,7 +593,7 @@ export const requestHandler = async (req, res) => {
     const latency = Date.now() - startTime;
     if (err instanceof ClientError) {
       res.statusCode = 400;
-      res.end(JSON.stringify({ error: err.message, code: 'INVALID_BODY' }, null, 2));
+      res.end(JSON.stringify({ error: err.message, code: err.code }, null, 2));
       return;
     }
     recordAuditLog({
