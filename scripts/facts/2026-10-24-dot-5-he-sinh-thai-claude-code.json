@@ -279,7 +279,7 @@
     ],
     "requirementsVi": "Node.js và npm; đã cài ít nhất một trợ lý lập trình AI (mặc định là lệnh `claude`); dự án là Git repository.",
     "installStepsVi": [
-      "Cài toàn cục: `npm install -g ccmanager`",
+      "Cài đặt toàn cục: `npm install -g ccmanager`",
       "Hoặc chạy không cần cài: `npx ccmanager`"
     ],
     "cliCommand": "npm install -g ccmanager",

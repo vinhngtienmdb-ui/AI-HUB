@@ -433,7 +433,7 @@
     ],
     "requirementsVi": "Terminal trên macOS, Linux, Windows hoặc BSD; API key của nhà cung cấp mô hình (Anthropic, OpenAI, Gemini, OpenRouter...) qua biến môi trường hoặc model picker, gói Charm Hyper, hoặc mô hình cục bộ.",
     "installStepsVi": [
-      "Homebrew: `brew install charmbracelet/tap/crush`",
+      "Cài đặt bằng Homebrew: `brew install charmbracelet/tap/crush`",
       "Hoặc NPM (macOS, Linux, Windows): `npm install -g @charmland/crush`",
       "Windows qua Winget: `winget install charmbracelet.crush`",
       "Hoặc cài bằng Go: `go install github.com/charmbracelet/crush@latest`",
