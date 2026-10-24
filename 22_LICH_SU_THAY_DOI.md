@@ -4,6 +4,12 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.5 (Ngày 24-10-2026)
+- **Loại hình**: Hiển thị README giống GitHub.
+- **Chế độ "Bản gốc GitHub"** trong tab README: đọc README gốc của repo (hoặc README của thư mục / tệp Markdown khi liên kết nguồn trỏ vào trong repo) qua GitHub API và hiển thị như trên github.com: giữ ảnh, căn giữa (`align="center"`), bảng, khối `<picture>`; ảnh và liên kết tương đối trỏ về repo; neo mục lục (`#office`) cuộn tới tiêu đề; hộp cảnh báo `> [!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, `[!CAUTION]`. Khi hết lượt GitHub API (60 lần/giờ không đăng nhập), thử đọc trực tiếp `README.md`.
+- **Kiểu chữ theo GitHub** cho cả README tiếng Việt và bản gốc: cỡ chữ, khoảng cách, màu sáng/tối, tiêu đề có gạch chân, khối mã, bảng, trích dẫn theo bảng màu của github.com.
+- Mã: `src/lib/githubMarkdown.ts` (đọc, chuyển đổi, làm sạch), `src/components/GitHubReadmeViewer.tsx`, `src/index.css`.
+
 ### Phiên Bản 2.1.4 (Ngày 24-10-2026)
 - **Loại hình**: Bổ sung tài nguyên theo yêu cầu, script `scripts/migrations/2026-10-24-bo-sung-agent-office-postiz-everything.cjs`.
 - **3 tài nguyên mới** (nội dung, câu lệnh, cổng, tài khoản mặc định lấy từ README và tệp cấu hình trong repo gốc):

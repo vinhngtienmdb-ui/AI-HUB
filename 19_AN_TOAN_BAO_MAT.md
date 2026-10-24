@@ -14,7 +14,7 @@ Tài liệu này xác định các chính sách an toàn thông tin, kiểm soá
 
 2. **Phòng chống tấn công tiêm mã (XSS)**:
    - Nội dung văn bản được React tự động mã hóa ký tự đặc biệt khi hiển thị.
-   - Nội dung README (Markdown của bên thứ ba) được chuyển sang HTML bằng `marked`, sau đó làm sạch bằng `DOMPurify` trước khi hiển thị (`src/components/GitHubReadmeViewer.tsx`). Thẻ `<script>`, thuộc tính `on*` và liên kết `javascript:` bị loại bỏ.
+   - Nội dung README (Markdown của bên thứ ba) được chuyển sang HTML bằng `marked`, sau đó làm sạch bằng `DOMPurify` trước khi hiển thị (`src/lib/githubMarkdown.ts`). Thẻ `<script>`, thuộc tính `on*` và liên kết `javascript:` bị loại bỏ. Áp dụng cho cả README tiếng Việt lẫn README gốc đọc trực tiếp từ GitHub (chế độ "Bản gốc GitHub"); liên kết ngoài mở tab mới với `rel="noopener noreferrer"`.
 
 3. **Cầu nối thực thi lệnh cục bộ (`server/commandBridge.js`)**:
    - **Chỉ chạy trong máy chủ phát triển**: Cầu nối gắn vào `npm run dev`, không tồn tại trong bản đóng gói. Máy chủ phát triển chỉ lắng nghe trên `127.0.0.1`.
