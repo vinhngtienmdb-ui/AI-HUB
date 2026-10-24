@@ -150870,5 +150870,2170 @@
       "guideIsTemplate": false,
       "starsVerified": false
     }
+  },
+  {
+    "id": "beiryu-vn-skills",
+    "slug": "beiryu-vn-skills",
+    "name": "vn-skills — Bộ MCP, CLI và Agent Skills cho dữ liệu đặc thù Việt Nam",
+    "icon": "Wrench",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "legal_public_service",
+    "categoryNameVi": "Pháp luật & Dịch vụ công số",
+    "categories": [
+      "legal_public_service",
+      "backend_api",
+      "e_invoice_tax"
+    ],
+    "categoryNamesVi": [
+      "Pháp luật & Dịch vụ công số",
+      "Backend & Kiến trúc API",
+      "Hóa đơn điện tử, Thuế & Chữ ký số (e-Tax)"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/beiryu/vn-skills",
+    "websiteUrl": "https://www.npmjs.com/package/@vn-skills/mcp",
+    "authorName": "beiryu (vn-skills contributors)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "vn-skills là bộ công cụ ngoại tuyến cho logic đặc thù Việt Nam, gồm 3 lớp dùng chung một lõi: Agent Skills (SKILL.md), CLI @vn-skills/cli và máy chủ MCP @vn-skills/mcp, cùng thư viện TypeScript @vn-skills/core. Máy chủ MCP cung cấp 28 công cụ: VietQR, chuyển địa chỉ sang cấu trúc 34 tỉnh, kiểm tra mã số thuế, giải mã CCCD, số điện thoại, ngày nghỉ lễ, đọc số tiền thành chữ, âm lịch, hóa đơn điện tử, tách họ tên và định dạng số.",
+    "purposeVi": "Giúp các agent lập trình (Claude Code, Cursor, Codex) xử lý đúng dữ liệu Việt Nam như mã BIN ngân hàng, địa chỉ sau sáp nhập 01/07/2025, số tiền bằng chữ và lịch âm Việt Nam mà không cần tài khoản hay khóa API.",
+    "featuresVi": [
+      "VietQR: tạo/đọc payload NAPAS 247 (EMVCo), CRC16, xuất PNG/SVG, tra mã BIN ngân hàng",
+      "Địa chỉ: chuẩn hóa và chuyển địa chỉ 63 tỉnh + quận/huyện sang cấu trúc 34 tỉnh, 2 cấp; chuyển hàng loạt từ tệp TXT/CSV",
+      "Mã số thuế và CCCD: kiểm tra MST 10/13 số (chữ số kiểm tra, hậu tố chi nhánh), giải mã CCCD 12 số (tỉnh, giới tính, năm sinh)",
+      "Ngày nghỉ lễ và âm lịch: ngày nghỉ chính thức theo năm, nghỉ bù, cộng N ngày làm việc; chuyển dương ↔ âm, tháng nhuận, can chi, Tết (UTC+7)",
+      "Tiện ích khác: đọc số tiền thành chữ tiếng Việt, chuẩn hóa số điện thoại và nhà mạng, tách họ/tên đệm/tên, định dạng số và ngày kiểu Việt Nam, kiểm tra hóa đơn điện tử"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js 22 trở lên; không cần tài khoản hay khóa API.\nBước 1: Thêm máy chủ MCP vào Claude Code: `claude mcp add vn-skills -- npx -y @vn-skills/mcp`\nBước 2: Hoặc cài plugin Claude Code (toàn bộ skill + máy chủ MCP): `/plugin marketplace add beiryu/vn-skills` rồi `/plugin install vn-skills@vn-skills`\nBước 3: Cài một skill bằng CLI: `npx -y @vn-skills/cli install vietqr --agent claude`\nBước 4: Với Claude Desktop/Cursor: thêm khối mcpServers (command npx, args -y @vn-skills/mcp) vào claude_desktop_config.json hoặc .cursor/mcp.json.\nBước 5: Dùng làm thư viện TypeScript: `npm i @vn-skills/core`",
+    "usageGuideVi": "Bước 1: Sau khi thêm máy chủ, hỏi agent bằng tiếng Việt; agent gọi các công cụ như vn_address_convert, vn_tax_id_validate, vn_lunar_tet.\nBước 2: Với skill, agent gọi `npx -y @vn-skills/cli` và nhận kết quả JSON.\nBước 3: Mọi hàm trả về { ok: true, ... } hoặc { ok: false, error } thay vì ném lỗi.",
+    "samplePromptsVi": [
+      "Chuyển địa chỉ \"12 Nguyễn Huệ, P. Bến Nghé, Q.1, TP.HCM\" sang địa chỉ mới theo 34 tỉnh.",
+      "Tạo QR chuyển 500k vào VCB số tài khoản 0011001234567.",
+      "Kiểm tra mã số thuế 0100233488-001 có hợp lệ không và cho biết đây là mã chi nhánh hay doanh nghiệp.",
+      "Tết Nguyên đán năm 2027 rơi vào ngày dương lịch nào, năm can chi gì?"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add vn-skills -- npx -y @vn-skills/mcp",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add vn-skills -- npx -y @vn-skills/mcp\"\n  ],\n  \"nguon\": \"https://github.com/beiryu/vn-skills\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "npx -y @vn-skills/mcp",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"vn-skills\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@vn-skills/mcp\"\n      ]\n    }\n  }\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "cliCommand": "npx -y @vn-skills/mcp",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"vn-skills\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@vn-skills/mcp\"\n      ]\n    }\n  }\n}"
+      },
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npx -y @vn-skills/cli install vietqr --agent claude",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx -y @vn-skills/cli install vietqr --agent claude\"\n  ],\n  \"nguon\": \"https://github.com/beiryu/vn-skills\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, không cần tài khoản hay khóa API",
+    "prosVi": [
+      "Mã nguồn mở MIT; dữ liệu đi kèm lấy từ các bộ dữ liệu cộng đồng giấy phép MIT",
+      "Chạy hoàn toàn ngoại tuyến, không cần tài khoản hay khóa API",
+      "Một lõi dùng chung cho MCP, CLI, Agent Skills và thư viện TypeScript",
+      "Có hướng dẫn cấu hình cho Claude Code, Claude Desktop, Cursor, VS Code và Codex"
+    ],
+    "consVi": [
+      "Dự án mới, phiên bản 0.x",
+      "Chỉ là công cụ kỹ thuật: không phải tư vấn thuế/pháp lý, không xác minh MST đã đăng ký hay địa chỉ được hãng vận chuyển chấp nhận",
+      "Không phải cổng thanh toán: không thu tiền, không xác nhận giao dịch",
+      "Bộ chuyển hóa đơn điện tử MISA/Viettel/VNPT mới ở dạng khung (skeleton)",
+      "Cần Node.js 22+"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# vn-skills — Bộ MCP, CLI và Agent Skills cho dữ liệu đặc thù Việt Nam\n\n> Teach your AI agent to work with VietQR, e-invoices, the new 34-province addresses and more — with one command.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nvn-skills là bộ công cụ ngoại tuyến cho logic đặc thù Việt Nam, gồm 3 lớp dùng chung một lõi: Agent Skills (SKILL.md), CLI @vn-skills/cli và máy chủ MCP @vn-skills/mcp, cùng thư viện TypeScript @vn-skills/core. Máy chủ MCP cung cấp 28 công cụ: VietQR, chuyển địa chỉ sang cấu trúc 34 tỉnh, kiểm tra mã số thuế, giải mã CCCD, số điện thoại, ngày nghỉ lễ, đọc số tiền thành chữ, âm lịch, hóa đơn điện tử, tách họ tên và định dạng số.\n\nGiúp các agent lập trình (Claude Code, Cursor, Codex) xử lý đúng dữ liệu Việt Nam như mã BIN ngân hàng, địa chỉ sau sáp nhập 01/07/2025, số tiền bằng chữ và lịch âm Việt Nam mà không cần tài khoản hay khóa API.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Pháp luật & Dịch vụ công số\n- **Tác giả / Nhà phát triển:** beiryu (vn-skills contributors)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`, `web`\n- **Kho lưu trữ chính thức:** [https://github.com/beiryu/vn-skills](https://github.com/beiryu/vn-skills)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **VietQR: tạo/đọc payload NAPAS 247 (EMVCo), CRC16, xuất PNG/SVG, tra mã BIN ngân hàng**\n- **Địa chỉ: chuẩn hóa và chuyển địa chỉ 63 tỉnh + quận/huyện sang cấu trúc 34 tỉnh, 2 cấp; chuyển hàng loạt từ tệp TXT/CSV**\n- **Mã số thuế và CCCD: kiểm tra MST 10/13 số (chữ số kiểm tra, hậu tố chi nhánh), giải mã CCCD 12 số (tỉnh, giới tính, năm sinh)**\n- **Ngày nghỉ lễ và âm lịch: ngày nghỉ chính thức theo năm, nghỉ bù, cộng N ngày làm việc; chuyển dương ↔ âm, tháng nhuận, can chi, Tết (UTC+7)**\n- **Tiện ích khác: đọc số tiền thành chữ tiếng Việt, chuẩn hóa số điện thoại và nhà mạng, tách họ/tên đệm/tên, định dạng số và ngày kiểu Việt Nam, kiểm tra hóa đơn điện tử**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add vn-skills -- npx -y @vn-skills/mcp\n```\n\nYêu cầu: Node.js 22 trở lên; không cần tài khoản hay khóa API.\nBước 1: Thêm máy chủ MCP vào Claude Code: `claude mcp add vn-skills -- npx -y @vn-skills/mcp`\nBước 2: Hoặc cài plugin Claude Code (toàn bộ skill + máy chủ MCP): `/plugin marketplace add beiryu/vn-skills` rồi `/plugin install vn-skills@vn-skills`\nBước 3: Cài một skill bằng CLI: `npx -y @vn-skills/cli install vietqr --agent claude`\nBước 4: Với Claude Desktop/Cursor: thêm khối mcpServers (command npx, args -y @vn-skills/mcp) vào claude_desktop_config.json hoặc .cursor/mcp.json.\nBước 5: Dùng làm thư viện TypeScript: `npm i @vn-skills/core`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Sau khi thêm máy chủ, hỏi agent bằng tiếng Việt; agent gọi các công cụ như vn_address_convert, vn_tax_id_validate, vn_lunar_tet.\nBước 2: Với skill, agent gọi `npx -y @vn-skills/cli` và nhận kết quả JSON.\nBước 3: Mọi hàm trả về { ok: true, ... } hoặc { ok: false, error } thay vì ném lỗi.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Chuyển địa chỉ \"12 Nguyễn Huệ, P. Bến Nghé, Q.1, TP.HCM\" sang địa chỉ mới theo 34 tỉnh.\"\n- \"Tạo QR chuyển 500k vào VCB số tài khoản 0011001234567.\"\n- \"Kiểm tra mã số thuế 0100233488-001 có hợp lệ không và cho biết đây là mã chi nhánh hay doanh nghiệp.\"\n- \"Tết Nguyên đán năm 2027 rơi vào ngày dương lịch nào, năm can chi gì?\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "thanglequoc-vietnamese-provinces-database",
+    "slug": "thanglequoc-vietnamese-provinces-database",
+    "name": "Vietnamese Provinces Database — CSDL 34 tỉnh và phường/xã Việt Nam sau sáp nhập",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "dataset",
+    "typeNameVi": "Dataset",
+    "category": "database",
+    "categoryNameVi": "Cơ sở dữ liệu & Quản lý tri thức",
+    "categories": [
+      "database",
+      "data_engineering",
+      "legal_public_service"
+    ],
+    "categoryNamesVi": [
+      "Cơ sở dữ liệu & Quản lý tri thức",
+      "Kỹ thuật dữ liệu & Đường ống ETL",
+      "Pháp luật & Dịch vụ công số"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/thanglequoc/vietnamese-provinces-database",
+    "websiteUrl": "",
+    "authorName": "Thang Le Quoc (thanglequoc)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Bộ cơ sở dữ liệu đơn vị hành chính Việt Nam gồm 34 tỉnh/thành và 3.321 phường, xã, đặc khu, cập nhật theo các nghị quyết mới nhất (bản v5.2.0 theo 388/NQ-UBTVQH16, hiệu lực 20/09/2026). Dữ liệu có sẵn cho PostgreSQL/PostGIS, MySQL/MariaDB, SQL Server, Oracle, JSON, MongoDB, Redis và Elasticsearch, kèm tiện ích GIS ranh giới hành chính và mã bưu chính.",
+    "purposeVi": "Cung cấp dữ liệu tỉnh/phường/xã chuẩn sau sáp nhập 2025 để nhập thẳng vào cơ sở dữ liệu của ứng dụng (form địa chỉ, giao vận, CRM).",
+    "featuresVi": [
+      "34 tỉnh/thành và 3.321 đơn vị cấp xã, theo dõi từng nghị quyết thay đổi qua các phiên bản phát hành",
+      "Nhiều định dạng: PostgreSQL, MySQL/MariaDB, SQL Server, Oracle, JSON, MongoDB, Redis, Elasticsearch",
+      "Bảng bổ sung: administrative_regions (8 vùng), administrative_units, tên tiếng Anh và code name (slug)",
+      "Tiện ích GIS: ranh giới hành chính dạng GeoJSON, PostGIS, Elasticsearch, MongoDB",
+      "Mã bưu chính và bảng vn_provinces_metadata ghi phiên bản dữ liệu đã cài"
+    ],
+    "installGuideVi": "Yêu cầu: Một hệ quản trị CSDL được hỗ trợ (PostgreSQL, MySQL/MariaDB, SQL Server, Oracle) hoặc MongoDB/Redis/Elasticsearch/JSON.\nBước 1: Tải gói dữ liệu cho hệ CSDL của bạn từ bảng Download trong README (hoặc dùng thư mục tương ứng trong repo: postgresql/, mysql/, sqlserver/, oracle/).\nBước 2: Tạo cơ sở dữ liệu: `CREATE DATABASE vietnamese_administrative_units;`\nBước 3: Chạy lần lượt `CreateTable_vn_units.sql` (tạo schema) rồi `ImportData_vn_units.sql` (nhập dữ liệu).",
+    "usageGuideVi": "Bước 1: Truy vấn bảng provinces và wards (khóa là mã đơn vị hành chính do nhà nước ban hành).\nBước 2: Kiểm tra phiên bản dữ liệu đã cài qua bảng vn_provinces_metadata.\nBước 3: Theo dõi bản phát hành mới khi có nghị quyết điều chỉnh đơn vị hành chính.",
+    "samplePromptsVi": [
+      "Viết câu SQL lấy danh sách tất cả phường/xã thuộc Thành phố Hồ Chí Minh từ bảng wards.",
+      "Tạo dropdown chọn tỉnh → phường/xã cho form địa chỉ dựa trên dữ liệu JSON của vietnamese-provinces-database."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "CREATE DATABASE vietnamese_administrative_units;",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"CREATE DATABASE vietnamese_administrative_units;\"\n  ],\n  \"nguon\": \"https://github.com/thanglequoc/vietnamese-provinces-database\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, kể cả dùng thương mại",
+    "prosVi": [
+      "Giấy phép MIT, dùng được cho dự án thương mại, không cần đăng ký hay trả phí",
+      "Cập nhật theo từng nghị quyết, có bảng lịch sử phiên bản",
+      "Hỗ trợ nhiều hệ CSDL SQL và NoSQL, có dữ liệu GIS và mã bưu chính"
+    ],
+    "consVi": [
+      "Không phải nguồn chính thức: tác giả không liên kết với Tổng cục Thống kê hay cơ quan nhà nước",
+      "Chỉ là dữ liệu, không kèm API hay thư viện phân tích địa chỉ",
+      "Gói tải có dung lượng lớn (khoảng 40–96 MB với bản có GIS)"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Vietnamese Provinces Database — CSDL 34 tỉnh và phường/xã Việt Nam sau sáp nhập\n\n> A complete SQL (and also non-SQL) databases of Vietnamese administrative units, includes all 34 Vietnamese provinces and associated districts, wards sub-divisions.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nBộ cơ sở dữ liệu đơn vị hành chính Việt Nam gồm 34 tỉnh/thành và 3.321 phường, xã, đặc khu, cập nhật theo các nghị quyết mới nhất (bản v5.2.0 theo 388/NQ-UBTVQH16, hiệu lực 20/09/2026). Dữ liệu có sẵn cho PostgreSQL/PostGIS, MySQL/MariaDB, SQL Server, Oracle, JSON, MongoDB, Redis và Elasticsearch, kèm tiện ích GIS ranh giới hành chính và mã bưu chính.\n\nCung cấp dữ liệu tỉnh/phường/xã chuẩn sau sáp nhập 2025 để nhập thẳng vào cơ sở dữ liệu của ứng dụng (form địa chỉ, giao vận, CRM).\n\n- **Loại hình thành phần:** Dataset\n- **Lĩnh vực chuyên môn:** Cơ sở dữ liệu & Quản lý tri thức\n- **Tác giả / Nhà phát triển:** Thang Le Quoc (thanglequoc)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/thanglequoc/vietnamese-provinces-database](https://github.com/thanglequoc/vietnamese-provinces-database)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **34 tỉnh/thành và 3.321 đơn vị cấp xã, theo dõi từng nghị quyết thay đổi qua các phiên bản phát hành**\n- **Nhiều định dạng: PostgreSQL, MySQL/MariaDB, SQL Server, Oracle, JSON, MongoDB, Redis, Elasticsearch**\n- **Bảng bổ sung: administrative_regions (8 vùng), administrative_units, tên tiếng Anh và code name (slug)**\n- **Tiện ích GIS: ranh giới hành chính dạng GeoJSON, PostGIS, Elasticsearch, MongoDB**\n- **Mã bưu chính và bảng vn_provinces_metadata ghi phiên bản dữ liệu đã cài**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nCREATE DATABASE vietnamese_administrative_units;\n```\n\nYêu cầu: Một hệ quản trị CSDL được hỗ trợ (PostgreSQL, MySQL/MariaDB, SQL Server, Oracle) hoặc MongoDB/Redis/Elasticsearch/JSON.\nBước 1: Tải gói dữ liệu cho hệ CSDL của bạn từ bảng Download trong README (hoặc dùng thư mục tương ứng trong repo: postgresql/, mysql/, sqlserver/, oracle/).\nBước 2: Tạo cơ sở dữ liệu: `CREATE DATABASE vietnamese_administrative_units;`\nBước 3: Chạy lần lượt `CreateTable_vn_units.sql` (tạo schema) rồi `ImportData_vn_units.sql` (nhập dữ liệu).\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Truy vấn bảng provinces và wards (khóa là mã đơn vị hành chính do nhà nước ban hành).\nBước 2: Kiểm tra phiên bản dữ liệu đã cài qua bảng vn_provinces_metadata.\nBước 3: Theo dõi bản phát hành mới khi có nghị quyết điều chỉnh đơn vị hành chính.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết câu SQL lấy danh sách tất cả phường/xã thuộc Thành phố Hồ Chí Minh từ bảng wards.\"\n- \"Tạo dropdown chọn tỉnh → phường/xã cho form địa chỉ dựa trên dữ liệu JSON của vietnamese-provinces-database.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "tranngocminhhieu-vietnamadminunits",
+    "slug": "tranngocminhhieu-vietnamadminunits",
+    "name": "vietnamadminunits — Thư viện Python chuyển địa chỉ 63 tỉnh sang 34 tỉnh",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "data_engineering",
+    "categoryNameVi": "Kỹ thuật dữ liệu & Đường ống ETL",
+    "categories": [
+      "data_engineering",
+      "legal_public_service",
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Kỹ thuật dữ liệu & Đường ống ETL",
+      "Pháp luật & Dịch vụ công số",
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/tranngocminhhieu/vietnamadminunits",
+    "websiteUrl": "https://pypi.org/project/vietnamadminunits",
+    "authorName": "Tran Ngoc Minh Hieu",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "vietnamadminunits là thư viện Python kèm bộ dữ liệu mở để phân tích, chuyển đổi và chuẩn hóa đơn vị hành chính Việt Nam. Repo có bộ dữ liệu 63 tỉnh, 34 tỉnh và bảng ánh xạ từ 63 sang 34 tỉnh; thư viện có parse_address(), convert_address() và các hàm cho pandas.",
+    "purposeVi": "Giúp làm sạch và chuyển đổi hàng loạt địa chỉ cũ (63 tỉnh, 3 cấp) sang cấu trúc mới 34 tỉnh, 2 cấp trong các pipeline dữ liệu.",
+    "featuresVi": [
+      "parse_address(): tách địa chỉ thành đối tượng AdminUnit (tỉnh, phường/xã, đường, mã, tọa độ) ở chế độ FROM_2025 hoặc LEGACY",
+      "convert_address(): chuyển địa chỉ định dạng 63 tỉnh sang 34 tỉnh (CONVERT_2025)",
+      "Pandas: standardize_admin_unit_columns() và convert_address_column() chuẩn hóa/chuyển đổi cả cột DataFrame",
+      "Module database: get_data() lấy bảng admin_units (34 tỉnh) hoặc admin_units_legacy (63 tỉnh)",
+      "Bộ dữ liệu mở trong data/processed: 63 tỉnh, 34 tỉnh và ánh xạ 63 → 34"
+    ],
+    "installGuideVi": "Yêu cầu: Python và pip; pandas khi dùng các hàm xử lý DataFrame.\nBước 1: Cài từ PyPI: `pip install vietnamadminunits`\nBước 2: Cập nhật bản mới nhất: `pip install --upgrade vietnamadminunits`",
+    "usageGuideVi": "Bước 1: Gọi `parse_address('70 nguyễn sỹ sách, tan son, hcm')` để chuẩn hóa địa chỉ mới.\nBước 2: Gọi `convert_address(...)` để chuyển địa chỉ cũ có quận/huyện sang địa chỉ mới.\nBước 3: Dùng `convert_address_column(df, address='address')` để chuyển cả cột địa chỉ trong DataFrame.",
+    "samplePromptsVi": [
+      "Viết script Python dùng vietnamadminunits chuyển cột địa chỉ khách hàng trong file CSV sang địa chỉ mới theo 34 tỉnh.",
+      "Chuẩn hóa địa chỉ '59 nguyễn sỹ sách, p15, tan binh, hcm' sang cấu trúc hành chính mới."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install vietnamadminunits",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install vietnamadminunits\"\n  ],\n  \"nguon\": \"https://github.com/tranngocminhhieu/vietnamadminunits\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Giấy phép MIT, cài nhanh qua pip",
+      "Hỗ trợ cả địa chỉ cũ (LEGACY) và mới (FROM_2025), bỏ qua chữ hoa/thường và thường bỏ qua dấu",
+      "Tích hợp pandas để xử lý hàng loạt"
+    ],
+    "consVi": [
+      "Chỉ dành cho Python",
+      "Kết quả phụ thuộc định dạng đầu vào: README khuyến nghị dạng \"(đường), phường, (quận), tỉnh\" có dấu phẩy phân tách",
+      "Chế độ chuyển đổi hiện chỉ hỗ trợ CONVERT_2025"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# vietnamadminunits — Thư viện Python chuyển địa chỉ 63 tỉnh sang 34 tỉnh\n\n> A Python library and open dataset for parsing, converting, and standardizing Vietnam's administrative units — built to support changes such as the 2025 province merger and beyond.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nvietnamadminunits là thư viện Python kèm bộ dữ liệu mở để phân tích, chuyển đổi và chuẩn hóa đơn vị hành chính Việt Nam. Repo có bộ dữ liệu 63 tỉnh, 34 tỉnh và bảng ánh xạ từ 63 sang 34 tỉnh; thư viện có parse_address(), convert_address() và các hàm cho pandas.\n\nGiúp làm sạch và chuyển đổi hàng loạt địa chỉ cũ (63 tỉnh, 3 cấp) sang cấu trúc mới 34 tỉnh, 2 cấp trong các pipeline dữ liệu.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Kỹ thuật dữ liệu & Đường ống ETL\n- **Tác giả / Nhà phát triển:** Tran Ngoc Minh Hieu\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/tranngocminhhieu/vietnamadminunits](https://github.com/tranngocminhhieu/vietnamadminunits)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **parse_address(): tách địa chỉ thành đối tượng AdminUnit (tỉnh, phường/xã, đường, mã, tọa độ) ở chế độ FROM_2025 hoặc LEGACY**\n- **convert_address(): chuyển địa chỉ định dạng 63 tỉnh sang 34 tỉnh (CONVERT_2025)**\n- **Pandas: standardize_admin_unit_columns() và convert_address_column() chuẩn hóa/chuyển đổi cả cột DataFrame**\n- **Module database: get_data() lấy bảng admin_units (34 tỉnh) hoặc admin_units_legacy (63 tỉnh)**\n- **Bộ dữ liệu mở trong data/processed: 63 tỉnh, 34 tỉnh và ánh xạ 63 → 34**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install vietnamadminunits\n```\n\nYêu cầu: Python và pip; pandas khi dùng các hàm xử lý DataFrame.\nBước 1: Cài từ PyPI: `pip install vietnamadminunits`\nBước 2: Cập nhật bản mới nhất: `pip install --upgrade vietnamadminunits`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Gọi `parse_address('70 nguyễn sỹ sách, tan son, hcm')` để chuẩn hóa địa chỉ mới.\nBước 2: Gọi `convert_address(...)` để chuyển địa chỉ cũ có quận/huyện sang địa chỉ mới.\nBước 3: Dùng `convert_address_column(df, address='address')` để chuyển cả cột địa chỉ trong DataFrame.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết script Python dùng vietnamadminunits chuyển cột địa chỉ khách hàng trong file CSV sang địa chỉ mới theo 34 tỉnh.\"\n- \"Chuẩn hóa địa chỉ '59 nguyễn sỹ sách, p15, tan binh, hcm' sang cấu trúc hành chính mới.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "ioecmcomc-chiecthuyenngoaixa",
+    "slug": "ioecmcomc-chiecthuyenngoaixa",
+    "name": "chiecthuyenngoaixa — Thư viện Python đọc số thành chữ, kiểm tra CCCD, xử lý văn bản tiếng Việt",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_language",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên NLP",
+    "categories": [
+      "nlp_language",
+      "backend_api",
+      "legal_public_service"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên NLP",
+      "Backend & Kiến trúc API",
+      "Pháp luật & Dịch vụ công số"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/IoeCmcomc/chiecthuyenngoaixa",
+    "websiteUrl": "https://chiecthuyenngoaixa.readthedocs.io",
+    "authorName": "IoeCmcomc",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "chiecthuyenngoaixa (module ctnx) là thư viện Python thuần, không phụ thuộc bên ngoài, cho các tác vụ xử lý văn bản tiếng Việt: bỏ dấu, chuyển số thành chữ, sắp xếp theo thứ tự tiếng Việt, chuẩn hóa văn bản và kiểm tra hợp lệ. Thư viện có hàm kiểm tra và trích xuất thông tin từ số CCCD (giới tính, năm sinh, tỉnh khai sinh).",
+    "purposeVi": "Cung cấp các tiện ích tiếng Việt hay dùng trong ứng dụng hành chính, kế toán như đọc số thành chữ, kiểm tra CCCD và sắp xếp tên địa danh đúng thứ tự tiếng Việt.",
+    "featuresVi": [
+      "num_to_words(): chuyển số (kể cả phần thập phân) thành chữ tiếng Việt",
+      "validation.is_valid_cccd() / parse_cccd(): kiểm tra và giải mã số Căn cước công dân",
+      "vi_sort_key / ViCollator: sắp xếp chuỗi tiếng Việt, tùy chỉnh thứ tự dấu",
+      "Chuẩn hóa văn bản: normalize_text, chuẩn hóa ký tự dễ nhầm, vị trí dấu thanh kiểu cũ/mới, chuẩn hóa i/y",
+      "remove_diacritics() và lớp Syllable để thao tác âm tiết tiếng Việt"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.8 trở lên; không có phụ thuộc ngoài.\nBước 1: Cài từ PyPI: `pip install chiecthuyenngoaixa`\nBước 2: Hoặc với Poetry: `poetry add chiecthuyenngoaixa`\nBước 3: Hoặc với uv: `uv add chiecthuyenngoaixa`",
+    "usageGuideVi": "Bước 1: Import module `ctnx`, ví dụ `from ctnx import num_to_words`.\nBước 2: Gọi `num_to_words(123456789021003.45)` để đọc số thành chữ.\nBước 3: Gọi `validation.parse_cccd(\"024192123456\")` để lấy giới tính, năm sinh, tỉnh khai sinh.",
+    "samplePromptsVi": [
+      "Viết hàm Python dùng ctnx đọc số tiền 1250000 thành chữ tiếng Việt để in trên phiếu thu.",
+      "Kiểm tra danh sách số CCCD trong file Excel và trích năm sinh, giới tính bằng chiecthuyenngoaixa."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install chiecthuyenngoaixa",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install chiecthuyenngoaixa\"\n  ],\n  \"nguon\": \"https://github.com/IoeCmcomc/chiecthuyenngoaixa\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Giấy phép MIT, Python thuần, không phụ thuộc ngoài",
+      "Có tài liệu trên Read the Docs và README tiếng Việt",
+      "Gộp nhiều tiện ích tiếng Việt trong một gói"
+    ],
+    "consVi": [
+      "Chỉ dành cho Python",
+      "Kiểm tra CCCD chỉ dựa trên cấu trúc số, không tra cứu cơ sở dữ liệu dân cư"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# chiecthuyenngoaixa — Thư viện Python đọc số thành chữ, kiểm tra CCCD, xử lý văn bản tiếng Việt\n\n> chiecthuyenngoaixa is a Python library which provides functions and classes for various tasks in processing Vietnamese texts, such as removing diacritics, converting numbers to words, sorting strings, validations and more.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nchiecthuyenngoaixa (module ctnx) là thư viện Python thuần, không phụ thuộc bên ngoài, cho các tác vụ xử lý văn bản tiếng Việt: bỏ dấu, chuyển số thành chữ, sắp xếp theo thứ tự tiếng Việt, chuẩn hóa văn bản và kiểm tra hợp lệ. Thư viện có hàm kiểm tra và trích xuất thông tin từ số CCCD (giới tính, năm sinh, tỉnh khai sinh).\n\nCung cấp các tiện ích tiếng Việt hay dùng trong ứng dụng hành chính, kế toán như đọc số thành chữ, kiểm tra CCCD và sắp xếp tên địa danh đúng thứ tự tiếng Việt.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên NLP\n- **Tác giả / Nhà phát triển:** IoeCmcomc\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/IoeCmcomc/chiecthuyenngoaixa](https://github.com/IoeCmcomc/chiecthuyenngoaixa)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **num_to_words(): chuyển số (kể cả phần thập phân) thành chữ tiếng Việt**\n- **validation.is_valid_cccd() / parse_cccd(): kiểm tra và giải mã số Căn cước công dân**\n- **vi_sort_key / ViCollator: sắp xếp chuỗi tiếng Việt, tùy chỉnh thứ tự dấu**\n- **Chuẩn hóa văn bản: normalize_text, chuẩn hóa ký tự dễ nhầm, vị trí dấu thanh kiểu cũ/mới, chuẩn hóa i/y**\n- **remove_diacritics() và lớp Syllable để thao tác âm tiết tiếng Việt**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install chiecthuyenngoaixa\n```\n\nYêu cầu: Python 3.8 trở lên; không có phụ thuộc ngoài.\nBước 1: Cài từ PyPI: `pip install chiecthuyenngoaixa`\nBước 2: Hoặc với Poetry: `poetry add chiecthuyenngoaixa`\nBước 3: Hoặc với uv: `uv add chiecthuyenngoaixa`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Import module `ctnx`, ví dụ `from ctnx import num_to_words`.\nBước 2: Gọi `num_to_words(123456789021003.45)` để đọc số thành chữ.\nBước 3: Gọi `validation.parse_cccd(\"024192123456\")` để lấy giới tính, năm sinh, tỉnh khai sinh.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết hàm Python dùng ctnx đọc số tiền 1250000 thành chữ tiếng Việt để in trên phiếu thu.\"\n- \"Kiểm tra danh sách số CCCD trong file Excel và trích năm sinh, giới tính bằng chiecthuyenngoaixa.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "nguyenanhung-vn-telco-phonenumber",
+    "slug": "nguyenanhung-vn-telco-phonenumber",
+    "name": "vn-telco-phonenumber — Thư viện PHP kiểm tra số điện thoại và nhận diện nhà mạng Việt Nam",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "backend_api",
+    "categoryNameVi": "Backend & Kiến trúc API",
+    "categories": [
+      "backend_api",
+      "customer_support"
+    ],
+    "categoryNamesVi": [
+      "Backend & Kiến trúc API",
+      "Chăm sóc khách hàng & Trợ lý ảo CS"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/nguyenanhung/vn-telco-phonenumber",
+    "websiteUrl": "https://packagist.org/packages/nguyenanhung/vn-telco-phonenumber",
+    "authorName": "Nguyen An Hung",
+    "license": "Mã nguồn mở (GPL-3.0, copyleft)",
+    "summaryVi": "vn-telco-phonenumber là thư viện PHP kiểm tra, định dạng số điện thoại Việt Nam và nhận diện nhà mạng (Viettel, VinaPhone, MobiFone, Vietnamobile...). Thư viện dùng libphonenumber của Google (bản PHP của giggsey) và hỗ trợ chuyển đổi giữa số 11 chữ số cũ và 10 chữ số mới.",
+    "purposeVi": "Giúp ứng dụng PHP chuẩn hóa số điện thoại khách hàng, xác định nhà mạng và xử lý việc chuyển đầu số di động.",
+    "featuresVi": [
+      "Kiểm tra hợp lệ: is_valid(), is_possible_number() cho số Việt Nam",
+      "Định dạng: quốc tế (84...), nội địa (0...), dễ đọc, hoặc che số (0163***3760)",
+      "Nhận diện nhà mạng: detect_carrier() trả tên, id hoặc tên ngắn",
+      "Chuyển đầu số: vn_convert_phone_number() và vn_phone_number_old_and_new() đổi giữa số cũ và số mới"
+    ],
+    "installGuideVi": "Yêu cầu: PHP >= 7.0 cho bản v3.x (v1.x, v2.x hỗ trợ PHP >= 5.6); Composer.\nBước 1: Cài qua Composer: `composer require nguyenanhung/vn-telco-phonenumber`\nBước 2: Nạp `vendor/autoload.php` và khởi tạo `new Phone_number()`.",
+    "usageGuideVi": "Bước 1: Gọi `$phone->is_valid($number, 'VN')` để kiểm tra số.\nBước 2: Gọi `$phone->detect_carrier($number)` để lấy nhà mạng.\nBước 3: Gọi `$phone->vn_convert_phone_number($number, 'new', 'vn')` để đổi số 11 chữ số sang 10 chữ số.",
+    "samplePromptsVi": [
+      "Viết đoạn PHP dùng vn-telco-phonenumber chuẩn hóa danh sách số điện thoại khách hàng và gắn nhãn nhà mạng.",
+      "Chuyển số cũ 0163 295 3760 sang đầu số mới và hiển thị dạng che số."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "composer require nguyenanhung/vn-telco-phonenumber",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"composer require nguyenanhung/vn-telco-phonenumber\"\n  ],\n  \"nguon\": \"https://github.com/nguyenanhung/vn-telco-phonenumber\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Mã nguồn mở, cài qua Composer/Packagist",
+      "Dựa trên libphonenumber của Google",
+      "Hỗ trợ chuyển đổi đầu số cũ/mới của Việt Nam"
+    ],
+    "consVi": [
+      "Giấy phép GPL-3.0: phần mềm phân phối kèm thư viện phải tuân thủ điều khoản copyleft",
+      "Chỉ dành cho PHP",
+      "Nhận diện nhà mạng theo đầu số, không phản ánh thuê bao đã chuyển mạng giữ số"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# vn-telco-phonenumber — Thư viện PHP kiểm tra số điện thoại và nhận diện nhà mạng Việt Nam\n\n> Library detect carrier Vietnam telco: Viettel, VinaPhone, MobiFone, Vietnamobile ...\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nvn-telco-phonenumber là thư viện PHP kiểm tra, định dạng số điện thoại Việt Nam và nhận diện nhà mạng (Viettel, VinaPhone, MobiFone, Vietnamobile...). Thư viện dùng libphonenumber của Google (bản PHP của giggsey) và hỗ trợ chuyển đổi giữa số 11 chữ số cũ và 10 chữ số mới.\n\nGiúp ứng dụng PHP chuẩn hóa số điện thoại khách hàng, xác định nhà mạng và xử lý việc chuyển đầu số di động.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Backend & Kiến trúc API\n- **Tác giả / Nhà phát triển:** Nguyen An Hung\n- **Giấy phép bản quyền:** Mã nguồn mở (GPL-3.0, copyleft)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/nguyenanhung/vn-telco-phonenumber](https://github.com/nguyenanhung/vn-telco-phonenumber)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Kiểm tra hợp lệ: is_valid(), is_possible_number() cho số Việt Nam**\n- **Định dạng: quốc tế (84...), nội địa (0...), dễ đọc, hoặc che số (0163***3760)**\n- **Nhận diện nhà mạng: detect_carrier() trả tên, id hoặc tên ngắn**\n- **Chuyển đầu số: vn_convert_phone_number() và vn_phone_number_old_and_new() đổi giữa số cũ và số mới**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ncomposer require nguyenanhung/vn-telco-phonenumber\n```\n\nYêu cầu: PHP >= 7.0 cho bản v3.x (v1.x, v2.x hỗ trợ PHP >= 5.6); Composer.\nBước 1: Cài qua Composer: `composer require nguyenanhung/vn-telco-phonenumber`\nBước 2: Nạp `vendor/autoload.php` và khởi tạo `new Phone_number()`.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Gọi `$phone->is_valid($number, 'VN')` để kiểm tra số.\nBước 2: Gọi `$phone->detect_carrier($number)` để lấy nhà mạng.\nBước 3: Gọi `$phone->vn_convert_phone_number($number, 'new', 'vn')` để đổi số 11 chữ số sang 10 chữ số.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết đoạn PHP dùng vn-telco-phonenumber chuẩn hóa danh sách số điện thoại khách hàng và gắn nhãn nhà mạng.\"\n- \"Chuyển số cũ 0163 295 3760 sang đầu số mới và hiển thị dạng che số.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "kaylode-vietnamese-ocr-toolbox",
+    "slug": "kaylode-vietnamese-ocr-toolbox",
+    "name": "Vietnamese OCR Toolbox — Pipeline OCR và trích xuất thông tin hóa đơn, giấy tờ tiếng Việt",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "computer_vision",
+    "categoryNameVi": "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+    "categories": [
+      "computer_vision",
+      "office_digital_docs"
+    ],
+    "categoryNamesVi": [
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+      "Văn phòng số & Quản lý văn bản điện tử"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/kaylode/vietnamese-ocr-toolbox",
+    "websiteUrl": "https://doi.org/10.5281/zenodo.22748432",
+    "authorName": "Minh-Khoi Pham, Thang-Long Nguyen-Ho (kaylode)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Vietnamese OCR Toolbox là bộ công cụ Python cung cấp pipeline OCR cho tài liệu tiếng Việt như hóa đơn, chứng minh nhân dân, giấy phép. Pipeline gồm phát hiện và nắn thẳng tài liệu bằng Canny/contour, phát hiện vùng chữ bằng Pixel Aggregation Network (PAN), nhận dạng chữ bằng VietOCR kèm sửa lỗi từ, rồi trích xuất thông tin theo lớp.",
+    "purposeVi": "Giúp số hóa và trích xuất thông tin từ ảnh hóa đơn, giấy tờ tùy thân tiếng Việt, đồng thời có sẵn notebook để huấn luyện lại cho bài toán riêng.",
+    "featuresVi": [
+      "Nắn tài liệu: phát hiện cạnh Canny, tìm contour, cắt và chuẩn hóa ảnh hóa đơn",
+      "Phát hiện vùng chữ: Pixel Aggregation Network (PAN), có trọng số huấn luyện sẵn trên SROIE19",
+      "Nhận dạng chữ tiếng Việt: Transformer OCR (VietOCR) huấn luyện trên MCOCR2021, kèm sửa lỗi từ",
+      "Trích xuất thông tin: phân loại trường bằng PhoBERT huấn luyện trên MCOCR2021",
+      "Hai giai đoạn: tùy chọn tìm hướng xoay tốt nhất trước khi chạy toàn bộ pipeline",
+      "Notebook Colab để huấn luyện PAN, Transformer OCR, PhoBERT và chạy suy luận"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.7 trở lên; tải trọng số huấn luyện sẵn (PAN, Transformer OCR, PhoBERT) từ các liên kết Google Drive trong README.\nBước 1: Tải mã nguồn repo kaylode/vietnamese-ocr-toolbox từ GitHub.\nBước 2: Cài thư viện: `pip install -r requirements.txt`\nBước 3: Tải trọng số huấn luyện sẵn từ các liên kết trong mục Pretrained weights của README.\nBước 4: Chạy toàn bộ pipeline: `python run.py --input=<input image> --output=<output folder>`",
+    "usageGuideVi": "Bước 1: Đưa ảnh hóa đơn hoặc giấy tờ vào tham số --input và chọn thư mục kết quả bằng --output.\nBước 2: Thêm --find_best_rotation để tìm hướng xoay tốt nhất trước khi nhận dạng.\nBước 3: Thêm --do_retrieve để trích xuất thông tin theo lớp định nghĩa trong cấu hình, hoặc bỏ đi để chỉ OCR.\nBước 4: Thêm --debug để lưu kết quả trung gian của từng bước.",
+    "samplePromptsVi": [
+      "Chạy OCR cho ảnh hóa đơn siêu thị và trích xuất tên cửa hàng, ngày giờ, tổng tiền.",
+      "Nhận dạng chữ trên ảnh chụp chứng minh nhân dân bị nghiêng, tự tìm hướng xoay phù hợp.",
+      "Huấn luyện lại mô hình Transformer OCR trên bộ ảnh hóa đơn của công ty bằng notebook Colab."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "python run.py --input=<input image> --output=<output folder>",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"python run.py --input=<input image> --output=<output folder>\"\n  ],\n  \"nguon\": \"https://github.com/kaylode/vietnamese-ocr-toolbox\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, mã nguồn mở",
+    "prosVi": [
+      "Giấy phép Apache 2.0, dùng được cho mục đích thương mại",
+      "Pipeline đầy đủ từ nắn ảnh đến trích xuất thông tin, có trọng số huấn luyện sẵn",
+      "Có notebook Colab cho huấn luyện và suy luận, có DOI Zenodo để trích dẫn"
+    ],
+    "consVi": [
+      "Trọng số và dữ liệu tải thủ công từ Google Drive",
+      "Mô hình huấn luyện trên SROIE19 và MCOCR2021 nên cần huấn luyện lại cho mẫu giấy tờ khác",
+      "Chỉ có giao diện dòng lệnh, không có API hay giao diện web"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Vietnamese OCR Toolbox — Pipeline OCR và trích xuất thông tin hóa đơn, giấy tờ tiếng Việt\n\n> This toolbox provides a pipeline to do OCR in Vietnamese documents (such as receipts, personal id, licenses,...).\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nVietnamese OCR Toolbox là bộ công cụ Python cung cấp pipeline OCR cho tài liệu tiếng Việt như hóa đơn, chứng minh nhân dân, giấy phép. Pipeline gồm phát hiện và nắn thẳng tài liệu bằng Canny/contour, phát hiện vùng chữ bằng Pixel Aggregation Network (PAN), nhận dạng chữ bằng VietOCR kèm sửa lỗi từ, rồi trích xuất thông tin theo lớp.\n\nGiúp số hóa và trích xuất thông tin từ ảnh hóa đơn, giấy tờ tùy thân tiếng Việt, đồng thời có sẵn notebook để huấn luyện lại cho bài toán riêng.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Thị giác máy tính & Xử lý ảnh (Vision & OCR)\n- **Tác giả / Nhà phát triển:** Minh-Khoi Pham, Thang-Long Nguyen-Ho (kaylode)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/kaylode/vietnamese-ocr-toolbox](https://github.com/kaylode/vietnamese-ocr-toolbox)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Nắn tài liệu: phát hiện cạnh Canny, tìm contour, cắt và chuẩn hóa ảnh hóa đơn**\n- **Phát hiện vùng chữ: Pixel Aggregation Network (PAN), có trọng số huấn luyện sẵn trên SROIE19**\n- **Nhận dạng chữ tiếng Việt: Transformer OCR (VietOCR) huấn luyện trên MCOCR2021, kèm sửa lỗi từ**\n- **Trích xuất thông tin: phân loại trường bằng PhoBERT huấn luyện trên MCOCR2021**\n- **Hai giai đoạn: tùy chọn tìm hướng xoay tốt nhất trước khi chạy toàn bộ pipeline**\n- **Notebook Colab để huấn luyện PAN, Transformer OCR, PhoBERT và chạy suy luận**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npython run.py --input=<input image> --output=<output folder>\n```\n\nYêu cầu: Python 3.7 trở lên; tải trọng số huấn luyện sẵn (PAN, Transformer OCR, PhoBERT) từ các liên kết Google Drive trong README.\nBước 1: Tải mã nguồn repo kaylode/vietnamese-ocr-toolbox từ GitHub.\nBước 2: Cài thư viện: `pip install -r requirements.txt`\nBước 3: Tải trọng số huấn luyện sẵn từ các liên kết trong mục Pretrained weights của README.\nBước 4: Chạy toàn bộ pipeline: `python run.py --input=<input image> --output=<output folder>`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đưa ảnh hóa đơn hoặc giấy tờ vào tham số --input và chọn thư mục kết quả bằng --output.\nBước 2: Thêm --find_best_rotation để tìm hướng xoay tốt nhất trước khi nhận dạng.\nBước 3: Thêm --do_retrieve để trích xuất thông tin theo lớp định nghĩa trong cấu hình, hoặc bỏ đi để chỉ OCR.\nBước 4: Thêm --debug để lưu kết quả trung gian của từng bước.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Chạy OCR cho ảnh hóa đơn siêu thị và trích xuất tên cửa hàng, ngày giờ, tổng tiền.\"\n- \"Nhận dạng chữ trên ảnh chụp chứng minh nhân dân bị nghiêng, tự tìm hướng xoay phù hợp.\"\n- \"Huấn luyện lại mô hình Transformer OCR trên bộ ảnh hóa đơn của công ty bằng notebook Colab.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "vinairesearch-dict-guided",
+    "slug": "vinairesearch-dict-guided",
+    "name": "Dict-Guided (VinText) — Nhận dạng chữ tiếng Việt trong ảnh cảnh thực của VinAI",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "computer_vision",
+    "categoryNameVi": "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+    "categories": [
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/VinAIResearch/dict-guided",
+    "websiteUrl": "https://www3.cs.stonybrook.edu/~minhhoai/papers/vintext_CVPR21.pdf",
+    "authorName": "VinAI Research",
+    "license": "Mã nguồn mở (AGPL-3.0); dữ liệu VinText chỉ cho nghiên cứu/giáo dục",
+    "summaryVi": "Dict-Guided là mã nguồn chính thức của bài báo CVPR 2021 \"Dictionary-guided Scene Text Recognition\" của VinAI Research, nhận dạng chữ trong ảnh cảnh thực có dùng từ điển để cải thiện độ chính xác. Repo đồng thời giới thiệu bộ dữ liệu VinText cho nhận dạng chữ tiếng Việt trong ảnh cảnh thực (2.000 ảnh, khoảng 56.000 vùng chữ).",
+    "purposeVi": "Dùng để phát hiện và đọc chữ tiếng Việt có dấu trên biển hiệu, bảng quảng cáo, ảnh đường phố, hoặc làm chuẩn đánh giá cho nghiên cứu scene text tiếng Việt.",
+    "featuresVi": [
+      "Nhận dạng scene text có hướng dẫn từ điển, có thể áp dụng để cải thiện nhiều mô hình hiện có",
+      "Bộ dữ liệu VinText: 2.000 ảnh, khoảng 56.000 vùng chữ tiếng Việt, có bản chuyển sang định dạng COCO",
+      "Mô hình huấn luyện sẵn trên VinText để chạy thử",
+      "Script demo, huấn luyện và đánh giá dựa trên ABCNet/Detectron2"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.7, torch 1.4.0, detectron2 0.2, CUDA 10.0 (theo README); Conda.\nBước 1: Tạo môi trường: `conda create -n dict-guided -y python=3.7`\nBước 2: Kích hoạt môi trường: `conda activate dict-guided`\nBước 3: Cài PyTorch: `conda install -y pytorch torchvision cudatoolkit=10.0 -c pytorch`\nBước 4: Cài thư viện phụ trợ: `python -m pip install ninja yacs cython matplotlib tqdm opencv-python shapely scipy tensorboardX pyclipper Polygon3 weighted-levenshtein editdistance`\nBước 5: Cài Detectron2 0.2 theo lệnh trong README (wheel cu100/torch1.4).\nBước 6: Tải mã nguồn và build: `python setup.py build develop`\nBước 7: Tải mô hình huấn luyện sẵn trên VinText từ liên kết trong README.",
+    "usageGuideVi": "Bước 1: Tạo thư mục sample_input và sample_output, chép ảnh cần nhận dạng vào sample_input.\nBước 2: Chạy script demo với cấu hình VinText và đường dẫn trọng số đã tải.\nBước 3: Xem ảnh kết quả có khung và chữ nhận dạng trong sample_output.\nBước 4: Huấn luyện lại hoặc đánh giá bằng tools/train_net.py (thêm --eval-only để đánh giá).",
+    "samplePromptsVi": [
+      "Đọc chữ tiếng Việt trên ảnh chụp biển hiệu cửa hàng ngoài đường.",
+      "Đánh giá mô hình nhận dạng scene text của tôi trên bộ dữ liệu VinText.",
+      "Huấn luyện lại mô hình từ trọng số tt_attn_R_50 của ABCNet trên dữ liệu VinText."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "python demo/demo.py --config-file configs/BAText/VinText/attn_R_50.yaml --input sample_input/ --output sample_output/ --opts MODEL.WEIGHTS path-to-trained_model-checkpoint",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"python demo/demo.py --config-file configs/BAText/VinText/attn_R_50.yaml --input sample_input/ --output sample_output/ --opts MODEL.WEIGHTS path-to-trained_model-checkpoint\"\n  ],\n  \"nguon\": \"https://github.com/VinAIResearch/dict-guided\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí; dữ liệu VinText giới hạn mục đích nghiên cứu, giáo dục",
+    "prosVi": [
+      "Mã nguồn chính thức của bài báo CVPR 2021 từ VinAI Research",
+      "Kèm bộ dữ liệu chuẩn VinText dành riêng cho chữ tiếng Việt trong ảnh cảnh thực",
+      "Có mô hình huấn luyện sẵn và script huấn luyện/đánh giá đầy đủ"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0: phải công khai mã nguồn khi cung cấp dịch vụ qua mạng",
+      "Bộ dữ liệu VinText chỉ được dùng cho nghiên cứu hoặc giáo dục, không được phân phối lại",
+      "Phụ thuộc phiên bản cũ (Python 3.7, torch 1.4.0, detectron2 0.2, CUDA 10.0)",
+      "Lệnh git clone trong README trỏ tới bản fork nguyennm1024/dict-guided"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Dict-Guided (VinText) — Nhận dạng chữ tiếng Việt trong ảnh cảnh thực của VinAI\n\n> We propose a novel dictionary-guided sense text recognition approach that could be used to improve many state-of-the-art models.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nDict-Guided là mã nguồn chính thức của bài báo CVPR 2021 \"Dictionary-guided Scene Text Recognition\" của VinAI Research, nhận dạng chữ trong ảnh cảnh thực có dùng từ điển để cải thiện độ chính xác. Repo đồng thời giới thiệu bộ dữ liệu VinText cho nhận dạng chữ tiếng Việt trong ảnh cảnh thực (2.000 ảnh, khoảng 56.000 vùng chữ).\n\nDùng để phát hiện và đọc chữ tiếng Việt có dấu trên biển hiệu, bảng quảng cáo, ảnh đường phố, hoặc làm chuẩn đánh giá cho nghiên cứu scene text tiếng Việt.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Thị giác máy tính & Xử lý ảnh (Vision & OCR)\n- **Tác giả / Nhà phát triển:** VinAI Research\n- **Giấy phép bản quyền:** Mã nguồn mở (AGPL-3.0); dữ liệu VinText chỉ cho nghiên cứu/giáo dục\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/VinAIResearch/dict-guided](https://github.com/VinAIResearch/dict-guided)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Nhận dạng scene text có hướng dẫn từ điển, có thể áp dụng để cải thiện nhiều mô hình hiện có**\n- **Bộ dữ liệu VinText: 2.000 ảnh, khoảng 56.000 vùng chữ tiếng Việt, có bản chuyển sang định dạng COCO**\n- **Mô hình huấn luyện sẵn trên VinText để chạy thử**\n- **Script demo, huấn luyện và đánh giá dựa trên ABCNet/Detectron2**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npython demo/demo.py --config-file configs/BAText/VinText/attn_R_50.yaml --input sample_input/ --output sample_output/ --opts MODEL.WEIGHTS path-to-trained_model-checkpoint\n```\n\nYêu cầu: Python 3.7, torch 1.4.0, detectron2 0.2, CUDA 10.0 (theo README); Conda.\nBước 1: Tạo môi trường: `conda create -n dict-guided -y python=3.7`\nBước 2: Kích hoạt môi trường: `conda activate dict-guided`\nBước 3: Cài PyTorch: `conda install -y pytorch torchvision cudatoolkit=10.0 -c pytorch`\nBước 4: Cài thư viện phụ trợ: `python -m pip install ninja yacs cython matplotlib tqdm opencv-python shapely scipy tensorboardX pyclipper Polygon3 weighted-levenshtein editdistance`\nBước 5: Cài Detectron2 0.2 theo lệnh trong README (wheel cu100/torch1.4).\nBước 6: Tải mã nguồn và build: `python setup.py build develop`\nBước 7: Tải mô hình huấn luyện sẵn trên VinText từ liên kết trong README.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo thư mục sample_input và sample_output, chép ảnh cần nhận dạng vào sample_input.\nBước 2: Chạy script demo với cấu hình VinText và đường dẫn trọng số đã tải.\nBước 3: Xem ảnh kết quả có khung và chữ nhận dạng trong sample_output.\nBước 4: Huấn luyện lại hoặc đánh giá bằng tools/train_net.py (thêm --eval-only để đánh giá).\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Đọc chữ tiếng Việt trên ảnh chụp biển hiệu cửa hàng ngoài đường.\"\n- \"Đánh giá mô hình nhận dạng scene text của tôi trên bộ dữ liệu VinText.\"\n- \"Huấn luyện lại mô hình từ trọng số tt_attn_R_50 của ABCNet trên dữ liệu VinText.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "nguyennguyenit-sapo-mcp",
+    "slug": "nguyennguyenit-sapo-mcp",
+    "name": "Sapo MCP — Máy chủ MCP kết nối AI với cửa hàng Sapo.vn",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "erp_enterprise",
+    "categoryNameVi": "Quản trị tổng thể doanh nghiệp (ERP)",
+    "categories": [
+      "erp_enterprise",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Quản trị tổng thể doanh nghiệp (ERP)",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "claude_desktop",
+      "cursor",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/nguyennguyenit/Sapo-MCP",
+    "websiteUrl": "https://www.npmjs.com/package/sapo-mcp",
+    "authorName": "Plateau Nguyen (nguyennguyenit)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Sapo-MCP là máy chủ MCP kết nối trợ lý AI (Claude Desktop, Cursor) với nền tảng bán hàng Sapo.vn, gồm 105 công cụ chia thành 4 chế độ: pos-online, web, pos-counter và analytics. Máy chủ chạy qua stdio hoặc Streamable HTTP, dùng thông tin Private App của một cửa hàng.",
+    "purposeVi": "Giúp chủ shop dùng Sapo tra cứu đơn hàng, khách hàng, sản phẩm, tồn kho và báo cáo doanh thu bằng ngôn ngữ tự nhiên thông qua trợ lý AI.",
+    "featuresVi": [
+      "105 công cụ, 4 chế độ: pos-online (51), web (31), pos-counter (15), analytics (10)",
+      "Hai kiểu truyền tải: stdio cho Claude Desktop/Cursor và Streamable HTTP (mặc định cổng 3333) cho Docker",
+      "An toàn mặc định: thao tác phá hủy (hủy, xóa, hoàn tiền...) bị chặn trừ khi bật qua SAPO_ALLOW_OPS và phải truyền confirm: true",
+      "Báo cáo tổng hợp: doanh thu, sản phẩm/khách hàng hàng đầu, LTV, thuế, so sánh online và tại quầy, tồn kho thấp",
+      "Kiểm tra endpoint: lệnh probe chỉ đọc và canary phát hiện thay đổi schema"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js 20 trở lên; Private App tạo tại developers.sapo.vn (tên cửa hàng, API Key, API Secret).\nBước 1: Tạo Private App tại developers.sapo.vn để lấy tên cửa hàng, API Key và API Secret.\nBước 2: Chạy thử không cần cài đặt: `npx -y sapo-mcp@latest --version`\nBước 3: Hoặc cài toàn cục: `npm install -g sapo-mcp`\nBước 4: Thêm cấu hình mcpServers (command npx, args sapo-mcp --mode=...) cùng biến môi trường SAPO_STORE, SAPO_API_KEY, SAPO_API_SECRET vào claude_desktop_config.json hoặc ~/.cursor/mcp.json, rồi khởi động lại ứng dụng.\nBước 5: Chạy chế độ HTTP cục bộ: `sapo-mcp --mode=pos-online --transport=http --port=3333`",
+    "usageGuideVi": "Bước 1: Chọn các chế độ cần dùng bằng cờ --mode (ví dụ pos-online,web,analytics).\nBước 2: Hỏi trợ lý AI về đơn hàng, khách hàng, tồn kho hoặc báo cáo; các công cụ Sapo xuất hiện trong ứng dụng MCP.\nBước 3: Chỉ bật SAPO_ALLOW_OPS (ví dụ cancel,delete) khi thực sự cần thao tác hủy/xóa.",
+    "samplePromptsVi": [
+      "Tổng hợp doanh thu cửa hàng Sapo của tôi trong tháng này và liệt kê 10 sản phẩm bán chạy nhất.",
+      "Tìm khách hàng có số điện thoại 0901234567 và cho tôi xem các đơn hàng của họ.",
+      "Những sản phẩm nào đang sắp hết hàng trong kho?"
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "npx -y sapo-mcp --mode=pos-online,web,analytics",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"sapo\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"sapo-mcp\",\n        \"--mode=pos-online,web,analytics\"\n      ],\n      \"env\": {\n        \"SAPO_STORE\": \"mystorename\",\n        \"SAPO_API_KEY\": \"xxx\",\n        \"SAPO_API_SECRET\": \"yyy\"\n      }\n    }\n  }\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "cliCommand": "npx -y sapo-mcp --mode=pos-online,web",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"sapo\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"sapo-mcp\",\n        \"--mode=pos-online,web\"\n      ],\n      \"env\": {\n        \"SAPO_STORE\": \"mystorename\",\n        \"SAPO_API_KEY\": \"xxx\",\n        \"SAPO_API_SECRET\": \"yyy\"\n      }\n    }\n  }\n}"
+      },
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npx sapo-mcp --mode=pos-online",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx sapo-mcp --mode=pos-online\"\n  ],\n  \"nguon\": \"https://github.com/nguyennguyenit/Sapo-MCP\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, cần tài khoản Sapo có Private App",
+    "prosVi": [
+      "Mã nguồn mở MIT, cài nhanh bằng npx",
+      "Thao tác phá hủy bị chặn mặc định và cần xác nhận confirm: true",
+      "Hỗ trợ cả stdio và HTTP, có ví dụ Dockerfile"
+    ],
+    "consVi": [
+      "Dự án cộng đồng, không phải sản phẩm chính thức của Sapo",
+      "Phiên bản trước 1.0: tên công cụ và schema có thể thay đổi giữa các bản nhỏ",
+      "Mỗi máy chủ chỉ phục vụ một cửa hàng (single-tenant Private App); 5 endpoint nội bộ của pos-counter cần OAuth Partner App",
+      "README ghi nhận 2 công cụ ca POS (list_pos_shifts, get_pos_shift) đang lỗi"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Sapo MCP — Máy chủ MCP kết nối AI với cửa hàng Sapo.vn\n\n> Model Context Protocol server for Sapo.vn POS & e-commerce platform.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSapo-MCP là máy chủ MCP kết nối trợ lý AI (Claude Desktop, Cursor) với nền tảng bán hàng Sapo.vn, gồm 105 công cụ chia thành 4 chế độ: pos-online, web, pos-counter và analytics. Máy chủ chạy qua stdio hoặc Streamable HTTP, dùng thông tin Private App của một cửa hàng.\n\nGiúp chủ shop dùng Sapo tra cứu đơn hàng, khách hàng, sản phẩm, tồn kho và báo cáo doanh thu bằng ngôn ngữ tự nhiên thông qua trợ lý AI.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Quản trị tổng thể doanh nghiệp (ERP)\n- **Tác giả / Nhà phát triển:** Plateau Nguyen (nguyennguyenit)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `cursor`, `web`\n- **Kho lưu trữ chính thức:** [https://github.com/nguyennguyenit/Sapo-MCP](https://github.com/nguyennguyenit/Sapo-MCP)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **105 công cụ, 4 chế độ: pos-online (51), web (31), pos-counter (15), analytics (10)**\n- **Hai kiểu truyền tải: stdio cho Claude Desktop/Cursor và Streamable HTTP (mặc định cổng 3333) cho Docker**\n- **An toàn mặc định: thao tác phá hủy (hủy, xóa, hoàn tiền...) bị chặn trừ khi bật qua SAPO_ALLOW_OPS và phải truyền confirm: true**\n- **Báo cáo tổng hợp: doanh thu, sản phẩm/khách hàng hàng đầu, LTV, thuế, so sánh online và tại quầy, tồn kho thấp**\n- **Kiểm tra endpoint: lệnh probe chỉ đọc và canary phát hiện thay đổi schema**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx -y sapo-mcp --mode=pos-online,web,analytics\n```\n\nYêu cầu: Node.js 20 trở lên; Private App tạo tại developers.sapo.vn (tên cửa hàng, API Key, API Secret).\nBước 1: Tạo Private App tại developers.sapo.vn để lấy tên cửa hàng, API Key và API Secret.\nBước 2: Chạy thử không cần cài đặt: `npx -y sapo-mcp@latest --version`\nBước 3: Hoặc cài toàn cục: `npm install -g sapo-mcp`\nBước 4: Thêm cấu hình mcpServers (command npx, args sapo-mcp --mode=...) cùng biến môi trường SAPO_STORE, SAPO_API_KEY, SAPO_API_SECRET vào claude_desktop_config.json hoặc ~/.cursor/mcp.json, rồi khởi động lại ứng dụng.\nBước 5: Chạy chế độ HTTP cục bộ: `sapo-mcp --mode=pos-online --transport=http --port=3333`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn các chế độ cần dùng bằng cờ --mode (ví dụ pos-online,web,analytics).\nBước 2: Hỏi trợ lý AI về đơn hàng, khách hàng, tồn kho hoặc báo cáo; các công cụ Sapo xuất hiện trong ứng dụng MCP.\nBước 3: Chỉ bật SAPO_ALLOW_OPS (ví dụ cancel,delete) khi thực sự cần thao tác hủy/xóa.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tổng hợp doanh thu cửa hàng Sapo của tôi trong tháng này và liệt kê 10 sản phẩm bán chạy nhất.\"\n- \"Tìm khách hàng có số điện thoại 0901234567 và cho tôi xem các đơn hàng của họ.\"\n- \"Những sản phẩm nào đang sắp hết hàng trong kho?\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "congminh1254-shopee-sdk",
+    "slug": "congminh1254-shopee-sdk",
+    "name": "Shopee SDK — Thư viện TypeScript đầy đủ cho Shopee Open API",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "erp_enterprise",
+    "categoryNameVi": "Quản trị tổng thể doanh nghiệp (ERP)",
+    "categories": [
+      "erp_enterprise",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Quản trị tổng thể doanh nghiệp (ERP)",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/congminh1254/shopee-sdk",
+    "websiteUrl": "https://www.npmjs.com/package/@congminh1254/shopee-sdk",
+    "authorName": "Minh Nguyen Cong (congminh1254)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Shopee SDK là thư viện TypeScript cho Shopee Open API, bao phủ 30 nhóm API (manager) như sản phẩm, đơn hàng, vận chuyển, thanh toán, voucher, quảng cáo, trả hàng, livestream. SDK tự động ký request, làm mới token và hỗ trợ nhiều khu vực Shopee.",
+    "purposeVi": "Giúp lập trình viên xây dựng hệ thống quản lý bán hàng đa kênh, đồng bộ tồn kho, xử lý đơn và tích hợp ERP với gian hàng Shopee.",
+    "featuresVi": [
+      "30 API manager: Product, Order, Logistics, Payment, Voucher, Push, Ads, Returns, Livestream, Video...",
+      "Xác thực OAuth và tự động làm mới token, lưu token bằng tệp hoặc tùy biến",
+      "Định nghĩa TypeScript đầy đủ cho request/response",
+      "Hỗ trợ đa khu vực Shopee và cấu hình proxy HTTP/HTTPS",
+      "Bộ kiểm thử đơn vị và kiểm thử tích hợp với Shopee Sandbox"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js >= 20.0.0; tài khoản Shopee Open Platform (partner_id, partner_key).\nBước 1: Cài thư viện: `npm install @congminh1254/shopee-sdk`\nBước 2: Khởi tạo ShopeeSDK với partner_id, partner_key, region (và shop_id nếu cần).\nBước 3: Tạo URL ủy quyền bằng getAuthorizationUrl, sau đó gọi authenticateWithCode với mã nhận được từ callback.",
+    "usageGuideVi": "Bước 1: Gọi sdk.product.getItemList để lấy danh sách sản phẩm.\nBước 2: Gọi sdk.order.getOrderList để lấy đơn hàng theo khoảng thời gian.\nBước 3: Dùng sdk.logistics và sdk.returns để xử lý vận chuyển và trả hàng.",
+    "samplePromptsVi": [
+      "Viết script Node.js dùng @congminh1254/shopee-sdk lấy toàn bộ đơn hàng Shopee trong 24 giờ qua.",
+      "Tạo hàm đồng bộ số lượng tồn kho từ hệ thống của tôi lên các sản phẩm Shopee bằng ProductManager.",
+      "Hướng dẫn tôi triển khai luồng OAuth Shopee với getAuthorizationUrl và authenticateWithCode."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm install @congminh1254/shopee-sdk",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm install @congminh1254/shopee-sdk\"\n  ],\n  \"nguon\": \"https://github.com/congminh1254/shopee-sdk\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, cần tài khoản Shopee Open Platform",
+    "prosVi": [
+      "Mã nguồn mở MIT, cập nhật thường xuyên (phát hành tự động qua Release Please)",
+      "README công bố bao phủ toàn bộ endpoint Shopee với 30 manager",
+      "Có tài liệu riêng cho AI agent (llms.txt)"
+    ],
+    "consVi": [
+      "SDK cộng đồng, không phải SDK chính thức của Shopee",
+      "Cần đăng ký Shopee Open Platform để có partner_id/partner_key",
+      "Yêu cầu Node.js 20 trở lên"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Shopee SDK — Thư viện TypeScript đầy đủ cho Shopee Open API\n\n> The most complete, production-ready TypeScript SDK for Shopee Open API\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nShopee SDK là thư viện TypeScript cho Shopee Open API, bao phủ 30 nhóm API (manager) như sản phẩm, đơn hàng, vận chuyển, thanh toán, voucher, quảng cáo, trả hàng, livestream. SDK tự động ký request, làm mới token và hỗ trợ nhiều khu vực Shopee.\n\nGiúp lập trình viên xây dựng hệ thống quản lý bán hàng đa kênh, đồng bộ tồn kho, xử lý đơn và tích hợp ERP với gian hàng Shopee.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Quản trị tổng thể doanh nghiệp (ERP)\n- **Tác giả / Nhà phát triển:** Minh Nguyen Cong (congminh1254)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/congminh1254/shopee-sdk](https://github.com/congminh1254/shopee-sdk)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **30 API manager: Product, Order, Logistics, Payment, Voucher, Push, Ads, Returns, Livestream, Video...**\n- **Xác thực OAuth và tự động làm mới token, lưu token bằng tệp hoặc tùy biến**\n- **Định nghĩa TypeScript đầy đủ cho request/response**\n- **Hỗ trợ đa khu vực Shopee và cấu hình proxy HTTP/HTTPS**\n- **Bộ kiểm thử đơn vị và kiểm thử tích hợp với Shopee Sandbox**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm install @congminh1254/shopee-sdk\n```\n\nYêu cầu: Node.js >= 20.0.0; tài khoản Shopee Open Platform (partner_id, partner_key).\nBước 1: Cài thư viện: `npm install @congminh1254/shopee-sdk`\nBước 2: Khởi tạo ShopeeSDK với partner_id, partner_key, region (và shop_id nếu cần).\nBước 3: Tạo URL ủy quyền bằng getAuthorizationUrl, sau đó gọi authenticateWithCode với mã nhận được từ callback.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Gọi sdk.product.getItemList để lấy danh sách sản phẩm.\nBước 2: Gọi sdk.order.getOrderList để lấy đơn hàng theo khoảng thời gian.\nBước 3: Dùng sdk.logistics và sdk.returns để xử lý vận chuyển và trả hàng.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết script Node.js dùng @congminh1254/shopee-sdk lấy toàn bộ đơn hàng Shopee trong 24 giờ qua.\"\n- \"Tạo hàm đồng bộ số lượng tồn kho từ hệ thống của tôi lên các sản phẩm Shopee bằng ProductManager.\"\n- \"Hướng dẫn tôi triển khai luồng OAuth Shopee với getAuthorizationUrl và authenticateWithCode.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "ecomphp-shopee-php",
+    "slug": "ecomphp-shopee-php",
+    "name": "Shopee PHP SDK — Thư viện PHP cho Shopee Open Platform v2",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "erp_enterprise",
+    "categoryNameVi": "Quản trị tổng thể doanh nghiệp (ERP)",
+    "categories": [
+      "erp_enterprise",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Quản trị tổng thể doanh nghiệp (ERP)",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/EcomPHP/shopee-php",
+    "websiteUrl": "https://packagist.org/packages/ecomphp/shopee-php",
+    "authorName": "EcomPHP",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "ecomphp/shopee-php là thư viện PHP cho Shopee Open Platform v2, dùng được với PHP thuần, Laravel hoặc Symfony. Thư viện hỗ trợ xác thực OAuth2, lấy và làm mới access token, đồng bộ sản phẩm và lấy đơn hàng.",
+    "purposeVi": "Giúp các website/hệ thống PHP kết nối gian hàng Shopee để quản lý sản phẩm và đơn hàng.",
+    "featuresVi": [
+      "Lớp Auth: tạo URL ủy quyền, đổi mã lấy token, làm mới token",
+      "Gọi API sản phẩm (getItemList) và đơn hàng (getOrderList)",
+      "Tương thích PHP thuần, Laravel, Symfony"
+    ],
+    "installGuideVi": "Yêu cầu: PHP ^7.2 hoặc ^8.0, Composer; partner_id và partner_key từ Shopee Open Platform.\nBước 1: Cài qua Composer: `composer require ecomphp/shopee-php`\nBước 2: Khởi tạo EcomPHP\\Shopee\\Client với partner_id và partner_key.\nBước 3: Dùng $client->auth() để tạo URL ủy quyền, đổi mã lấy access_token và lưu shop_id.",
+    "usageGuideVi": "Bước 1: Gắn token cho cửa hàng bằng $client->setAccessToken($shop_id, $access_token).\nBước 2: Gọi $client->Product->getItemList hoặc $client->Order->getOrderList.\nBước 3: Làm mới token định kỳ bằng $auth->refreshNewToken.",
+    "samplePromptsVi": [
+      "Viết controller Laravel dùng ecomphp/shopee-php để lấy các đơn Shopee ở trạng thái READY_TO_SHIP.",
+      "Hướng dẫn lưu và tự động làm mới access token Shopee với ecomphp/shopee-php."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "composer require ecomphp/shopee-php",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"composer require ecomphp/shopee-php\"\n  ],\n  \"nguon\": \"https://github.com/EcomPHP/shopee-php\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, cần tài khoản Shopee Open Platform",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Cài nhanh qua Composer, hỗ trợ Laravel/Symfony"
+    ],
+    "consVi": [
+      "Thư viện không chính thức của Shopee",
+      "Cần tài khoản Shopee Open Platform",
+      "README chỉ minh họa một số API cơ bản"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Shopee PHP SDK — Thư viện PHP cho Shopee Open Platform v2\n\n> A powerful, lightweight, and developer-friendly Shopee API PHP SDK designed to integrate Shopee Open Platform v2 into vanilla PHP applications, Laravel, or Symfony projects.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\necomphp/shopee-php là thư viện PHP cho Shopee Open Platform v2, dùng được với PHP thuần, Laravel hoặc Symfony. Thư viện hỗ trợ xác thực OAuth2, lấy và làm mới access token, đồng bộ sản phẩm và lấy đơn hàng.\n\nGiúp các website/hệ thống PHP kết nối gian hàng Shopee để quản lý sản phẩm và đơn hàng.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Quản trị tổng thể doanh nghiệp (ERP)\n- **Tác giả / Nhà phát triển:** EcomPHP\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/EcomPHP/shopee-php](https://github.com/EcomPHP/shopee-php)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Lớp Auth: tạo URL ủy quyền, đổi mã lấy token, làm mới token**\n- **Gọi API sản phẩm (getItemList) và đơn hàng (getOrderList)**\n- **Tương thích PHP thuần, Laravel, Symfony**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ncomposer require ecomphp/shopee-php\n```\n\nYêu cầu: PHP ^7.2 hoặc ^8.0, Composer; partner_id và partner_key từ Shopee Open Platform.\nBước 1: Cài qua Composer: `composer require ecomphp/shopee-php`\nBước 2: Khởi tạo EcomPHP\\Shopee\\Client với partner_id và partner_key.\nBước 3: Dùng $client->auth() để tạo URL ủy quyền, đổi mã lấy access_token và lưu shop_id.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Gắn token cho cửa hàng bằng $client->setAccessToken($shop_id, $access_token).\nBước 2: Gọi $client->Product->getItemList hoặc $client->Order->getOrderList.\nBước 3: Làm mới token định kỳ bằng $auth->refreshNewToken.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết controller Laravel dùng ecomphp/shopee-php để lấy các đơn Shopee ở trạng thái READY_TO_SHIP.\"\n- \"Hướng dẫn lưu và tự động làm mới access token Shopee với ecomphp/shopee-php.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "ecomphp-tiktokshop-php",
+    "slug": "ecomphp-tiktokshop-php",
+    "name": "TikTok Shop PHP SDK — Thư viện PHP cho TikTok Shop API",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "erp_enterprise",
+    "categoryNameVi": "Quản trị tổng thể doanh nghiệp (ERP)",
+    "categories": [
+      "erp_enterprise",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Quản trị tổng thể doanh nghiệp (ERP)",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/EcomPHP/tiktokshop-php",
+    "websiteUrl": "https://packagist.org/packages/ecomphp/tiktokshop-php",
+    "authorName": "EcomPHP",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "ecomphp/tiktokshop-php là thư viện PHP gọi TikTok Shop API, từ v2.x dùng API phiên bản 202309 trở lên. Thư viện hỗ trợ ủy quyền OAuth, lấy shop cipher, gọi API sản phẩm/đơn hàng, đổi phiên bản API và nhận webhook.",
+    "purposeVi": "Giúp hệ thống PHP của người bán tích hợp gian hàng TikTok Shop để quản lý sản phẩm, đơn hàng và nhận thông báo.",
+    "featuresVi": [
+      "Ủy quyền OAuth: tạo yêu cầu ủy quyền, lấy và làm mới token",
+      "Lấy danh sách shop đã ủy quyền và shop cipher",
+      "Gọi API sản phẩm (getProductList), đơn hàng (getOrderList)",
+      "Đổi phiên bản API bằng useVersion",
+      "Xác minh và đọc webhook từ TikTok Shop"
+    ],
+    "installGuideVi": "Yêu cầu: PHP ^7.2 hoặc ^8.0, Composer; app key và app secret của TikTok Shop.\nBước 1: Cài qua Composer: `composer require ecomphp/tiktokshop-php`\nBước 2: Khởi tạo EcomPHP\\TiktokShop\\Client với app_key và app_secret.\nBước 3: Dùng $client->auth() để lấy access token, sau đó lấy shop cipher qua $client->Authorization->getAuthorizedShop().",
+    "usageGuideVi": "Bước 1: Gọi setAccessToken và setShopCipher trên client.\nBước 2: Gọi $client->Product->getProductList hoặc $client->Order->getOrderList.\nBước 3: Tạo $client->webhook() để xác minh và xử lý thông báo.",
+    "samplePromptsVi": [
+      "Viết đoạn PHP dùng ecomphp/tiktokshop-php lấy các đơn TikTok Shop chưa thanh toán.",
+      "Hướng dẫn xây endpoint nhận webhook TikTok Shop và ghi log loại sự kiện cùng shop ID."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "composer require ecomphp/tiktokshop-php",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"composer require ecomphp/tiktokshop-php\"\n  ],\n  \"nguon\": \"https://github.com/EcomPHP/tiktokshop-php\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, cần tài khoản TikTok Shop Partner",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Hỗ trợ API TikTok Shop 202309 trở lên, có webhook"
+    ],
+    "consVi": [
+      "Thư viện không chính thức của TikTok Shop",
+      "Cần app key/secret của TikTok Shop",
+      "API phiên bản cũ phải dùng v1.x"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# TikTok Shop PHP SDK — Thư viện PHP cho TikTok Shop API\n\n> Tiktok Shop API Client is a simple SDK implementation of Tiktok Shop API.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\necomphp/tiktokshop-php là thư viện PHP gọi TikTok Shop API, từ v2.x dùng API phiên bản 202309 trở lên. Thư viện hỗ trợ ủy quyền OAuth, lấy shop cipher, gọi API sản phẩm/đơn hàng, đổi phiên bản API và nhận webhook.\n\nGiúp hệ thống PHP của người bán tích hợp gian hàng TikTok Shop để quản lý sản phẩm, đơn hàng và nhận thông báo.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Quản trị tổng thể doanh nghiệp (ERP)\n- **Tác giả / Nhà phát triển:** EcomPHP\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/EcomPHP/tiktokshop-php](https://github.com/EcomPHP/tiktokshop-php)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Ủy quyền OAuth: tạo yêu cầu ủy quyền, lấy và làm mới token**\n- **Lấy danh sách shop đã ủy quyền và shop cipher**\n- **Gọi API sản phẩm (getProductList), đơn hàng (getOrderList)**\n- **Đổi phiên bản API bằng useVersion**\n- **Xác minh và đọc webhook từ TikTok Shop**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ncomposer require ecomphp/tiktokshop-php\n```\n\nYêu cầu: PHP ^7.2 hoặc ^8.0, Composer; app key và app secret của TikTok Shop.\nBước 1: Cài qua Composer: `composer require ecomphp/tiktokshop-php`\nBước 2: Khởi tạo EcomPHP\\TiktokShop\\Client với app_key và app_secret.\nBước 3: Dùng $client->auth() để lấy access token, sau đó lấy shop cipher qua $client->Authorization->getAuthorizedShop().\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Gọi setAccessToken và setShopCipher trên client.\nBước 2: Gọi $client->Product->getProductList hoặc $client->Order->getOrderList.\nBước 3: Tạo $client->webhook() để xác minh và xử lý thông báo.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết đoạn PHP dùng ecomphp/tiktokshop-php lấy các đơn TikTok Shop chưa thanh toán.\"\n- \"Hướng dẫn xây endpoint nhận webhook TikTok Shop và ghi log loại sự kiện cùng shop ID.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "ecomphp-lazada-php",
+    "slug": "ecomphp-lazada-php",
+    "name": "Lazada PHP SDK — Thư viện PHP cho Lazada Open Platform",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "erp_enterprise",
+    "categoryNameVi": "Quản trị tổng thể doanh nghiệp (ERP)",
+    "categories": [
+      "erp_enterprise",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Quản trị tổng thể doanh nghiệp (ERP)",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/EcomPHP/lazada-php",
+    "websiteUrl": "https://packagist.org/packages/ecomphp/lazada-php",
+    "authorName": "EcomPHP",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "ecomphp/lazada-php là thư viện PHP cho Lazada Open Platform, hỗ trợ các khu vực vn, sg, my, th, ph, id. Thư viện xử lý OAuth, token, và cung cấp nhiều nhóm API như Order, Product, Finance, Logistic, ReturnAndRefund, SellerVoucher.",
+    "purposeVi": "Giúp hệ thống PHP của người bán Lazada (bao gồm Lazada Việt Nam) đồng bộ sản phẩm, lấy đơn hàng và cập nhật trạng thái giao hàng.",
+    "featuresVi": [
+      "Hỗ trợ khu vực Lazada: vn, sg, my, th, ph, id",
+      "Lớp Auth: tạo URL ủy quyền theo quốc gia, lấy và làm mới token",
+      "Hơn 20 nhóm API: System, Seller, Order, Finance, Product, Logistic, Fulfillment, Wallet, LazLive...",
+      "Ví dụ cập nhật đơn sang trạng thái Ready to Ship"
+    ],
+    "installGuideVi": "Yêu cầu: PHP >= 7.4, Composer; app key, app secret và callback URL từ Lazada Open Platform.\nBước 1: Cài qua Composer: `composer require ecomphp/lazada-php`\nBước 2: Khởi tạo EcomPHP\\Lazada\\Client với app_key, app_secret và callback_url.\nBước 3: Tạo URL ủy quyền (ví dụ country = 'vn'), đổi mã lấy token rồi gọi setAccessToken($access_token, 'vn').",
+    "usageGuideVi": "Bước 1: Gọi $client->Product->GetProducts để lấy sản phẩm.\nBước 2: Gọi các API nhóm Order để lấy đơn hàng và chi tiết đơn.\nBước 3: Làm mới token bằng $auth->refreshNewToken khi hết hạn.",
+    "samplePromptsVi": [
+      "Viết script PHP dùng ecomphp/lazada-php lấy 50 sản phẩm của shop Lazada Việt Nam.",
+      "Hướng dẫn lưu access token, refresh token và region của người bán Lazada vào cơ sở dữ liệu."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "composer require ecomphp/lazada-php",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"composer require ecomphp/lazada-php\"\n  ],\n  \"nguon\": \"https://github.com/EcomPHP/lazada-php\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, cần tài khoản Lazada Open Platform",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Hỗ trợ trực tiếp khu vực Lazada Việt Nam (vn)",
+      "Bao phủ nhiều nhóm API"
+    ],
+    "consVi": [
+      "Thư viện không chính thức của Lazada",
+      "Cần tài khoản Lazada Open Platform"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Lazada PHP SDK — Thư viện PHP cho Lazada Open Platform\n\n> A powerful, lightweight, and developer-friendly Lazada API PHP SDK designed to integrate Lazada Open Platform into vanilla PHP applications, Laravel, or Symfony projects.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\necomphp/lazada-php là thư viện PHP cho Lazada Open Platform, hỗ trợ các khu vực vn, sg, my, th, ph, id. Thư viện xử lý OAuth, token, và cung cấp nhiều nhóm API như Order, Product, Finance, Logistic, ReturnAndRefund, SellerVoucher.\n\nGiúp hệ thống PHP của người bán Lazada (bao gồm Lazada Việt Nam) đồng bộ sản phẩm, lấy đơn hàng và cập nhật trạng thái giao hàng.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Quản trị tổng thể doanh nghiệp (ERP)\n- **Tác giả / Nhà phát triển:** EcomPHP\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/EcomPHP/lazada-php](https://github.com/EcomPHP/lazada-php)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Hỗ trợ khu vực Lazada: vn, sg, my, th, ph, id**\n- **Lớp Auth: tạo URL ủy quyền theo quốc gia, lấy và làm mới token**\n- **Hơn 20 nhóm API: System, Seller, Order, Finance, Product, Logistic, Fulfillment, Wallet, LazLive...**\n- **Ví dụ cập nhật đơn sang trạng thái Ready to Ship**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ncomposer require ecomphp/lazada-php\n```\n\nYêu cầu: PHP >= 7.4, Composer; app key, app secret và callback URL từ Lazada Open Platform.\nBước 1: Cài qua Composer: `composer require ecomphp/lazada-php`\nBước 2: Khởi tạo EcomPHP\\Lazada\\Client với app_key, app_secret và callback_url.\nBước 3: Tạo URL ủy quyền (ví dụ country = 'vn'), đổi mã lấy token rồi gọi setAccessToken($access_token, 'vn').\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Gọi $client->Product->GetProducts để lấy sản phẩm.\nBước 2: Gọi các API nhóm Order để lấy đơn hàng và chi tiết đơn.\nBước 3: Làm mới token bằng $auth->refreshNewToken khi hết hạn.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết script PHP dùng ecomphp/lazada-php lấy 50 sản phẩm của shop Lazada Việt Nam.\"\n- \"Hướng dẫn lưu access token, refresh token và region của người bán Lazada vào cơ sở dữ liệu.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "epoxyteam-kiotviet-client-sdk",
+    "slug": "epoxyteam-kiotviet-client-sdk",
+    "name": "KiotViet Client SDK — Thư viện TypeScript cho Public API KiotViet",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "erp_enterprise",
+    "categoryNameVi": "Quản trị tổng thể doanh nghiệp (ERP)",
+    "categories": [
+      "erp_enterprise",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Quản trị tổng thể doanh nghiệp (ERP)",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/epoxyteam/kiotviet-client-sdk",
+    "websiteUrl": "https://www.npmjs.com/package/kiotviet-client-sdk",
+    "authorName": "Epoxy Team (Phong H.)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "KiotViet Retail SDK là thư viện TypeScript/JavaScript cho Public API bán lẻ của KiotViet, quản lý sản phẩm, khách hàng, đơn hàng, hóa đơn, chi nhánh, nhà cung cấp, voucher, webhook và hóa đơn điện tử. SDK tự lấy và làm mới access token theo chuẩn OAuth 2.0.",
+    "purposeVi": "Giúp lập trình viên tích hợp hệ thống bán lẻ KiotViet với website, ứng dụng hoặc công cụ tự động hóa.",
+    "featuresVi": [
+      "Quản lý token tự động bằng client credentials (token hiệu lực 1 giờ, tự làm mới)",
+      "Hỗ trợ TypeScript đầy đủ, API dạng Promise",
+      "Nhiều nhóm API: sản phẩm, khách hàng, đơn hàng, đơn đặt hàng, hóa đơn, chi nhánh, nhà cung cấp, dòng tiền, phụ thu, thuế, hóa đơn điện tử",
+      "Webhook: tạo, bật/tắt và xác thực chữ ký"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js >= 14; clientId, clientSecret và retailerName lấy từ cổng nhà phát triển KiotViet.\nBước 1: Cài thư viện: `npm install kiotviet-client-sdk`\nBước 2: Khởi tạo KiotVietClient với clientId, clientSecret, retailerName.",
+    "usageGuideVi": "Bước 1: Gọi client.products.list để lấy sản phẩm kèm tồn kho.\nBước 2: Dùng client.webhooks.create và verifySignature để nhận sự kiện từ KiotViet.",
+    "samplePromptsVi": [
+      "Viết script TypeScript dùng kiotviet-client-sdk liệt kê sản phẩm kèm tồn kho của cửa hàng KiotViet.",
+      "Tạo webhook KiotViet và hàm xác thực chữ ký payload bằng kiotviet-client-sdk."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm install kiotviet-client-sdk",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm install kiotviet-client-sdk\"\n  ],\n  \"nguon\": \"https://github.com/epoxyteam/kiotviet-client-sdk\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, cần tài khoản KiotViet có Public API",
+    "prosVi": [
+      "Mã nguồn mở MIT",
+      "Tài liệu tiếng Việt chi tiết",
+      "Tự động quản lý token"
+    ],
+    "consVi": [
+      "Thư viện cộng đồng, không phải SDK chính thức của KiotViet",
+      "Cần đăng ký Public API KiotViet",
+      "Tự động thử lại khi bị giới hạn tần suất vẫn đang \"coming soon\""
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# KiotViet Client SDK — Thư viện TypeScript cho Public API KiotViet\n\n> A TypeScript/JavaScript SDK for interacting with KiotViet's Public API Retail platform.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nKiotViet Retail SDK là thư viện TypeScript/JavaScript cho Public API bán lẻ của KiotViet, quản lý sản phẩm, khách hàng, đơn hàng, hóa đơn, chi nhánh, nhà cung cấp, voucher, webhook và hóa đơn điện tử. SDK tự lấy và làm mới access token theo chuẩn OAuth 2.0.\n\nGiúp lập trình viên tích hợp hệ thống bán lẻ KiotViet với website, ứng dụng hoặc công cụ tự động hóa.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Quản trị tổng thể doanh nghiệp (ERP)\n- **Tác giả / Nhà phát triển:** Epoxy Team (Phong H.)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/epoxyteam/kiotviet-client-sdk](https://github.com/epoxyteam/kiotviet-client-sdk)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Quản lý token tự động bằng client credentials (token hiệu lực 1 giờ, tự làm mới)**\n- **Hỗ trợ TypeScript đầy đủ, API dạng Promise**\n- **Nhiều nhóm API: sản phẩm, khách hàng, đơn hàng, đơn đặt hàng, hóa đơn, chi nhánh, nhà cung cấp, dòng tiền, phụ thu, thuế, hóa đơn điện tử**\n- **Webhook: tạo, bật/tắt và xác thực chữ ký**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm install kiotviet-client-sdk\n```\n\nYêu cầu: Node.js >= 14; clientId, clientSecret và retailerName lấy từ cổng nhà phát triển KiotViet.\nBước 1: Cài thư viện: `npm install kiotviet-client-sdk`\nBước 2: Khởi tạo KiotVietClient với clientId, clientSecret, retailerName.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Gọi client.products.list để lấy sản phẩm kèm tồn kho.\nBước 2: Dùng client.webhooks.create và verifySignature để nhận sự kiện từ KiotViet.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết script TypeScript dùng kiotviet-client-sdk liệt kê sản phẩm kèm tồn kho của cửa hàng KiotViet.\"\n- \"Tạo webhook KiotViet và hàm xác thực chữ ký payload bằng kiotviet-client-sdk.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "lehuygiang28-giaohangnhanh",
+    "slug": "lehuygiang28-giaohangnhanh",
+    "name": "giaohangnhanh — Thư viện Node.js tích hợp API Giao Hàng Nhanh (GHN)",
+    "icon": "Box",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "backend_api",
+    "categoryNameVi": "Backend & Kiến trúc API",
+    "categories": [
+      "backend_api",
+      "erp_enterprise"
+    ],
+    "categoryNamesVi": [
+      "Backend & Kiến trúc API",
+      "Quản trị tổng thể doanh nghiệp (ERP)"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/lehuygiang28/giaohangnhanh",
+    "websiteUrl": "https://www.npmjs.com/package/giaohangnhanh",
+    "authorName": "Lê Huy Giang",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "giaohangnhanh là thư viện Node.js/TypeScript gọi API của Giao Hàng Nhanh (GHN). Thư viện hỗ trợ tra cứu địa giới hành chính, tính phí và thời gian giao, tạo/xem trước/hủy đơn và lấy URL theo dõi đơn.",
+    "purposeVi": "Giúp website bán hàng tích hợp vận chuyển GHN: tính phí ship, tạo vận đơn và theo dõi đơn hàng.",
+    "featuresVi": [
+      "Địa chỉ: truy vấn tỉnh/thành, quận/huyện, phường/xã",
+      "Tính phí: danh sách dịch vụ theo địa chỉ và phí giao hàng",
+      "Đơn hàng: dự kiến thời gian giao, ca lấy hàng, xem trước, tạo, xem chi tiết, hủy đơn, lấy URL theo dõi",
+      "Chế độ test chuyển toàn bộ host sang môi trường sandbox"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js; token và shopId của tài khoản GHN.\nBước 1: Cài đặt bằng npm: `npm install giaohangnhanh`\nBước 2: Hoặc yarn: `yarn add giaohangnhanh`\nBước 3: Hoặc pnpm: `pnpm install giaohangnhanh`\nBước 4: Khởi tạo new Ghn({ token, shopId, host, trackingHost, testMode }).",
+    "usageGuideVi": "Bước 1: Bật testMode: true để thử trên sandbox GHN.\nBước 2: Gọi các phương thức address, calculateFee và order (ví dụ createOrder, cancelOrder).",
+    "samplePromptsVi": [
+      "Viết hàm TypeScript dùng thư viện giaohangnhanh tính phí ship GHN từ quận 1 TP.HCM đến Hà Nội.",
+      "Tạo đơn GHN trên môi trường sandbox rồi lấy URL theo dõi đơn."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm install giaohangnhanh",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm install giaohangnhanh\"\n  ],\n  \"nguon\": \"https://github.com/lehuygiang28/giaohangnhanh\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, cần tài khoản GHN",
+    "prosVi": [
+      "Mã nguồn mở MIT",
+      "README tiếng Việt, có chế độ sandbox"
+    ],
+    "consVi": [
+      "Thư viện cộng đồng, không phải SDK chính thức của GHN",
+      "Lần cập nhật gần nhất tháng 7/2024",
+      "Chỉ bao phủ một phần API GHN (địa chỉ, phí, đơn hàng)"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# giaohangnhanh — Thư viện Node.js tích hợp API Giao Hàng Nhanh (GHN)\n\n> Thư viện mã nguồn mở hỗ trợ quản lý giao hàng với giaohangnhanh (ghn).\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\ngiaohangnhanh là thư viện Node.js/TypeScript gọi API của Giao Hàng Nhanh (GHN). Thư viện hỗ trợ tra cứu địa giới hành chính, tính phí và thời gian giao, tạo/xem trước/hủy đơn và lấy URL theo dõi đơn.\n\nGiúp website bán hàng tích hợp vận chuyển GHN: tính phí ship, tạo vận đơn và theo dõi đơn hàng.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Backend & Kiến trúc API\n- **Tác giả / Nhà phát triển:** Lê Huy Giang\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/lehuygiang28/giaohangnhanh](https://github.com/lehuygiang28/giaohangnhanh)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Địa chỉ: truy vấn tỉnh/thành, quận/huyện, phường/xã**\n- **Tính phí: danh sách dịch vụ theo địa chỉ và phí giao hàng**\n- **Đơn hàng: dự kiến thời gian giao, ca lấy hàng, xem trước, tạo, xem chi tiết, hủy đơn, lấy URL theo dõi**\n- **Chế độ test chuyển toàn bộ host sang môi trường sandbox**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm install giaohangnhanh\n```\n\nYêu cầu: Node.js; token và shopId của tài khoản GHN.\nBước 1: Cài đặt bằng npm: `npm install giaohangnhanh`\nBước 2: Hoặc yarn: `yarn add giaohangnhanh`\nBước 3: Hoặc pnpm: `pnpm install giaohangnhanh`\nBước 4: Khởi tạo new Ghn({ token, shopId, host, trackingHost, testMode }).\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Bật testMode: true để thử trên sandbox GHN.\nBước 2: Gọi các phương thức address, calculateFee và order (ví dụ createOrder, cancelOrder).\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết hàm TypeScript dùng thư viện giaohangnhanh tính phí ship GHN từ quận 1 TP.HCM đến Hà Nội.\"\n- \"Tạo đơn GHN trên môi trường sandbox rồi lấy URL theo dõi đơn.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "zaloplatform-zalo-php-sdk",
+    "slug": "zaloplatform-zalo-php-sdk",
+    "name": "Zalo PHP SDK — Thư viện PHP chính thức cho Zalo Official Account và Social API",
+    "icon": "MessageSquare",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "customer_support",
+    "categoryNameVi": "Chăm sóc khách hàng & Trợ lý ảo CS",
+    "categories": [
+      "customer_support",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Chăm sóc khách hàng & Trợ lý ảo CS",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/zaloplatform/zalo-php-sdk",
+    "websiteUrl": "https://developers.zalo.me/",
+    "authorName": "Zalo Platform Team",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "SDK PHP chính thức của Zalo Platform, bao bọc Social API và Official Account Open API. Hỗ trợ đăng nhập OAuth (code verifier/code challenge), lấy access token của người dùng hoặc OA và gửi các loại tin nhắn từ Official Account.",
+    "purposeVi": "Giúp backend PHP tích hợp Zalo Official Account để gửi tin tư vấn, tin giao dịch, tin truyền thông và quản lý người quan tâm.",
+    "featuresVi": [
+      "Social API: tạo link đăng nhập Zalo, lấy access token và thông tin người dùng",
+      "Xác thực OA: tạo link để quản trị viên OA ủy quyền cho ứng dụng và lấy OA access token",
+      "Tin Tư vấn: gửi văn bản, hình ảnh, file, sticker, tin trích dẫn và tin yêu cầu thông tin người dùng",
+      "Tin Giao dịch và tin Truyền thông cá nhân qua MessageBuilder",
+      "Upload hình, ảnh GIF và file PDF",
+      "Quản lý nhãn và người quan tâm; lấy thông tin OA, danh sách tin nhắn gần nhất",
+      "Hỗ trợ bật xác thực API với appsecret_proof"
+    ],
+    "installGuideVi": "Yêu cầu: PHP >= 5.4 và Composer; cần ứng dụng Zalo (app_id, app_secret) và Official Account đã ủy quyền cho ứng dụng.\nBước 1: Cài đặt SDK qua Composer: `composer require zaloplatform/zalo-php-sdk`\nBước 2: Nạp autoload của Composer và khởi tạo `new Zalo($config)` với app_id, app_secret\nBước 3: Tạo link ủy quyền OA, lấy OA access token rồi gọi các endpoint gửi tin",
+    "usageGuideVi": "Bước 1: Đăng ký ứng dụng trên developers.zalo.me để có app_id và app_secret\nBước 2: Dùng getLoginUrlByOA() để quản trị viên OA cấp quyền, sau đó getZaloTokenByOA() để lấy access token\nBước 3: Dùng MessageBuilder để dựng tin nhắn và gửi qua $zalo->post(ZaloEndPoint::API_OA_SEND_CONSULTATION_MESSAGE_V3, ...)",
+    "samplePromptsVi": [
+      "Viết controller Laravel dùng zalo-php-sdk để gửi tin tư vấn kèm hình ảnh cho người quan tâm OA",
+      "Tạo luồng OAuth với code verifier/code challenge để OA ủy quyền cho ứng dụng PHP của tôi",
+      "Viết script gán nhãn \"khách VIP\" cho danh sách người quan tâm của OA"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "composer require zaloplatform/zalo-php-sdk",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"composer require zaloplatform/zalo-php-sdk\"\n  ],\n  \"nguon\": \"https://github.com/zaloplatform/zalo-php-sdk\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí (MIT); cần tài khoản Zalo Official Account",
+    "prosVi": [
+      "SDK chính thức do đội ngũ Zalo Platform phát hành",
+      "Giấy phép MIT, dùng tự do cả cho mục đích thương mại",
+      "README có ví dụ mã tiếng Việt cho từng loại tin nhắn OA"
+    ],
+    "consVi": [
+      "Commit gần nhất từ tháng 12/2023, cần đối chiếu với tài liệu API mới nhất của Zalo",
+      "Cần ứng dụng Zalo và Official Account được ủy quyền mới gọi được API",
+      "Chỉ dành cho PHP"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Zalo PHP SDK — Thư viện PHP chính thức cho Zalo Official Account và Social API\n\n> Zalo SDK for PHP (v4.0.4)\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSDK PHP chính thức của Zalo Platform, bao bọc Social API và Official Account Open API. Hỗ trợ đăng nhập OAuth (code verifier/code challenge), lấy access token của người dùng hoặc OA và gửi các loại tin nhắn từ Official Account.\n\nGiúp backend PHP tích hợp Zalo Official Account để gửi tin tư vấn, tin giao dịch, tin truyền thông và quản lý người quan tâm.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Chăm sóc khách hàng & Trợ lý ảo CS\n- **Tác giả / Nhà phát triển:** Zalo Platform Team\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/zaloplatform/zalo-php-sdk](https://github.com/zaloplatform/zalo-php-sdk)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Social API: tạo link đăng nhập Zalo, lấy access token và thông tin người dùng**\n- **Xác thực OA: tạo link để quản trị viên OA ủy quyền cho ứng dụng và lấy OA access token**\n- **Tin Tư vấn: gửi văn bản, hình ảnh, file, sticker, tin trích dẫn và tin yêu cầu thông tin người dùng**\n- **Tin Giao dịch và tin Truyền thông cá nhân qua MessageBuilder**\n- **Upload hình, ảnh GIF và file PDF**\n- **Quản lý nhãn và người quan tâm; lấy thông tin OA, danh sách tin nhắn gần nhất**\n- **Hỗ trợ bật xác thực API với appsecret_proof**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ncomposer require zaloplatform/zalo-php-sdk\n```\n\nYêu cầu: PHP >= 5.4 và Composer; cần ứng dụng Zalo (app_id, app_secret) và Official Account đã ủy quyền cho ứng dụng.\nBước 1: Cài đặt SDK qua Composer: `composer require zaloplatform/zalo-php-sdk`\nBước 2: Nạp autoload của Composer và khởi tạo `new Zalo($config)` với app_id, app_secret\nBước 3: Tạo link ủy quyền OA, lấy OA access token rồi gọi các endpoint gửi tin\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đăng ký ứng dụng trên developers.zalo.me để có app_id và app_secret\nBước 2: Dùng getLoginUrlByOA() để quản trị viên OA cấp quyền, sau đó getZaloTokenByOA() để lấy access token\nBước 3: Dùng MessageBuilder để dựng tin nhắn và gửi qua $zalo->post(ZaloEndPoint::API_OA_SEND_CONSULTATION_MESSAGE_V3, ...)\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết controller Laravel dùng zalo-php-sdk để gửi tin tư vấn kèm hình ảnh cho người quan tâm OA\"\n- \"Tạo luồng OAuth với code verifier/code challenge để OA ủy quyền cho ứng dụng PHP của tôi\"\n- \"Viết script gán nhãn \"khách VIP\" cho danh sách người quan tâm của OA\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "zalo-miniapp-zaui-market",
+    "slug": "zalo-miniapp-zaui-market",
+    "name": "ZaUI Market — Mẫu Zalo Mini App bán hàng chính thức",
+    "icon": "Box",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "mobile_app",
+    "categoryNameVi": "Ứng dụng di động (Mobile App)",
+    "categories": [
+      "mobile_app",
+      "frontend_ui"
+    ],
+    "categoryNamesVi": [
+      "Ứng dụng di động (Mobile App)",
+      "Frontend & Giao diện người dùng"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/Zalo-MiniApp/zaui-market",
+    "websiteUrl": "https://mini.zalo.me/",
+    "authorName": "Zalo Group (Zalo Mini App)",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Mẫu Zalo Mini App chính thức (ZaUI Market) cho người bán hàng trên chợ trực tuyến, xây dựng bằng React, zmp-ui, zmp-sdk, Jotai, Tailwind CSS và Vite. Có sẵn xem sản phẩm, giỏ hàng, thanh toán, quản lý đơn hàng, hồ sơ và widget theo dõi Official Account.",
+    "purposeVi": "Giúp doanh nghiệp nhanh chóng dựng Mini App bán hàng chạy trong Zalo và kết nối với API của mình.",
+    "featuresVi": [
+      "Đầy đủ luồng bán hàng: xem sản phẩm, giỏ hàng, thanh toán, quản lý đơn hàng, hồ sơ",
+      "Kết nối server riêng: đặt template.apiUrl trong app-config.json, server cung cấp /categories, /products, /banners, /stations, /orders",
+      "Widget theo dõi OA: tích hợp showOAWidget để người dùng theo dõi Official Account",
+      "Tùy biến giao diện qua biến CSS trong src/css/tailwind.scss",
+      "Dữ liệu mẫu JSON trong src/mock để thử giao diện"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js, Zalo Mini App CLI (zmp-cli) hoặc VS Code với Zalo Mini App Extension; cần Zalo Mini App ID để triển khai. Không tương thích Zalo Mini App Studio (dùng Vite 5.x).\nBước 1: Cài Node.js và Zalo Mini App CLI, sau đó tải hoặc clone repo\nBước 2: Cài phụ thuộc: `npm install`\nBước 3: Chạy máy chủ phát triển: `zmp start` rồi mở localhost:3000\nBước 4: Triển khai lên Zalo: `zmp login` rồi `zmp deploy`",
+    "usageGuideVi": "Bước 1: Tạo Zalo Mini App ID theo hướng dẫn Coffee Shop Tutorial\nBước 2: Đặt template.apiUrl trong app-config.json trỏ tới API của bạn\nBước 3: Triển khai rồi quét mã QR bằng Zalo để xem trước Mini App",
+    "samplePromptsVi": [
+      "Thêm trang khuyến mãi vào mẫu ZaUI Market và đăng ký nó trong src/router.ts",
+      "Viết API Express trả về /products và /categories đúng cấu trúc src/mock của ZaUI Market",
+      "Đổi màu chủ đạo của Mini App sang màu thương hiệu bằng biến CSS --primary"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "zmp start",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"zmp start\"\n  ],\n  \"nguon\": \"https://github.com/Zalo-MiniApp/zaui-market\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí (Apache 2.0); cần Zalo Mini App ID để triển khai",
+    "prosVi": [
+      "Mẫu chính thức từ tổ chức Zalo-MiniApp",
+      "Giấy phép Apache 2.0, cho phép dùng thương mại",
+      "Hướng dẫn cài đặt, triển khai và tích hợp API rõ ràng"
+    ],
+    "consVi": [
+      "Không tương thích Zalo Mini App Studio do dùng Vite 5.x",
+      "Cần Zalo Mini App ID và tài khoản Zalo để triển khai",
+      "Phần backend (API sản phẩm, đơn hàng) phải tự xây dựng"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# ZaUI Market — Mẫu Zalo Mini App bán hàng chính thức\n\n> A template for vendors to sale their products on the online market. It provides full features such as product viewing, shopping cart, payment, order management, profile management, etc.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMẫu Zalo Mini App chính thức (ZaUI Market) cho người bán hàng trên chợ trực tuyến, xây dựng bằng React, zmp-ui, zmp-sdk, Jotai, Tailwind CSS và Vite. Có sẵn xem sản phẩm, giỏ hàng, thanh toán, quản lý đơn hàng, hồ sơ và widget theo dõi Official Account.\n\nGiúp doanh nghiệp nhanh chóng dựng Mini App bán hàng chạy trong Zalo và kết nối với API của mình.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Ứng dụng di động (Mobile App)\n- **Tác giả / Nhà phát triển:** Zalo Group (Zalo Mini App)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/Zalo-MiniApp/zaui-market](https://github.com/Zalo-MiniApp/zaui-market)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Đầy đủ luồng bán hàng: xem sản phẩm, giỏ hàng, thanh toán, quản lý đơn hàng, hồ sơ**\n- **Kết nối server riêng: đặt template.apiUrl trong app-config.json, server cung cấp /categories, /products, /banners, /stations, /orders**\n- **Widget theo dõi OA: tích hợp showOAWidget để người dùng theo dõi Official Account**\n- **Tùy biến giao diện qua biến CSS trong src/css/tailwind.scss**\n- **Dữ liệu mẫu JSON trong src/mock để thử giao diện**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nzmp start\n```\n\nYêu cầu: Node.js, Zalo Mini App CLI (zmp-cli) hoặc VS Code với Zalo Mini App Extension; cần Zalo Mini App ID để triển khai. Không tương thích Zalo Mini App Studio (dùng Vite 5.x).\nBước 1: Cài Node.js và Zalo Mini App CLI, sau đó tải hoặc clone repo\nBước 2: Cài phụ thuộc: `npm install`\nBước 3: Chạy máy chủ phát triển: `zmp start` rồi mở localhost:3000\nBước 4: Triển khai lên Zalo: `zmp login` rồi `zmp deploy`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo Zalo Mini App ID theo hướng dẫn Coffee Shop Tutorial\nBước 2: Đặt template.apiUrl trong app-config.json trỏ tới API của bạn\nBước 3: Triển khai rồi quét mã QR bằng Zalo để xem trước Mini App\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Thêm trang khuyến mãi vào mẫu ZaUI Market và đăng ký nó trong src/router.ts\"\n- \"Viết API Express trả về /products và /categories đúng cấu trúc src/mock của ZaUI Market\"\n- \"Đổi màu chủ đạo của Mini App sang màu thương hiệu bằng biến CSS --primary\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "trongnguyenbinh-zalo-bot-mcp",
+    "slug": "trongnguyenbinh-zalo-bot-mcp",
+    "name": "Zalo Bot MCP — Kết nối bot Zalo với phiên Claude Code qua MCP channel",
+    "icon": "MessageSquare",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "customer_support",
+    "categoryNameVi": "Chăm sóc khách hàng & Trợ lý ảo CS",
+    "categories": [
+      "customer_support",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Chăm sóc khách hàng & Trợ lý ảo CS",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/trongnguyenbinh/zalo-bot-mcp",
+    "websiteUrl": "https://pypi.org/project/zalo-bot-mcp/",
+    "authorName": "trongnguyenbinh",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "MCP channel server dùng Zalo Bot API chính thức: tin nhắn gửi tới bot Zalo được đưa vào phiên Claude Code và phiên trả lời qua công cụ reply. Máy chủ lấy tin bằng getUpdates nên không cần URL công khai, webhook hay tunnel.",
+    "purposeVi": "Cho phép trò chuyện với AI agent từ tin nhắn trực tiếp hoặc nhóm Zalo, có cổng kiểm soát truy cập chặt chẽ.",
+    "featuresVi": [
+      "Long-polling getUpdates: chạy được trên laptop sau NAT, không cần public URL",
+      "Chính sách DM: pairing, allowlist hoặc disabled",
+      "Nhóm phải cấu hình theo ID; có thể giới hạn thành viên được kích hoạt bot",
+      "Không tin nhắn Zalo nào được đổi cấu hình truy cập; từ chối khởi động nếu allowlist có wildcard",
+      "Cài dạng plugin Claude Code (skill /zalo:*) hoặc gói Python với CLI zalo-bot-mcp-admin"
+    ],
+    "installGuideVi": "Yêu cầu: uv, Claude Code, một bot Zalo tạo qua OA Zalo Bot Manager (token bot). Phải khởi động Claude Code với cờ --dangerously-load-development-channels.\nBước 1: Cách A (plugin): trong Claude Code chạy `/plugin marketplace add trongnguyenbinh/zalo-bot-mcp` và `/plugin install zalo@zalo-bot-mcp`\nBước 2: Cách B (gói Python): `uv tool install zalo-bot-mcp`\nBước 3: Tạo .mcp.json trong thư mục dự án với nội dung `{ \"mcpServers\": { \"zalo\": { \"command\": \"zalo-bot-mcp\" } } }`\nBước 4: Cài token (nhập ẩn): `zalo-bot-mcp-admin set-token`\nBước 5: Khởi động Claude Code với cờ channel: `claude --dangerously-load-development-channels server:zalo`\nBước 6: Duyệt mã pairing: `zalo-bot-mcp-admin approve a1b2c3`, sau đó khóa lại bằng `zalo-bot-mcp-admin policy allowlist`",
+    "usageGuideVi": "Bước 1: Tạo bot trong ứng dụng Zalo qua OA Zalo Bot Manager (tên bot bắt đầu bằng \"Bot\") và nhận token\nBước 2: Nhắn tin cho bot trên Zalo để nhận mã pairing, duyệt mã trong Claude Code hoặc bằng CLI\nBước 3: Trong nhóm, bot chỉ nhận tin khi được nhắc tên (mention) hoặc khi có người trả lời tin của bot",
+    "samplePromptsVi": [
+      "Khi có tin nhắn Zalo hỏi tình trạng build, hãy kiểm tra log và trả lời qua công cụ reply",
+      "Tóm tắt các thay đổi trong repo hôm nay rồi gửi vào nhóm Zalo đã cấu hình",
+      "Trả lời tin nhắn Zalo vừa nhận, chia nhỏ nếu dài quá 2000 ký tự"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "uv tool install zalo-bot-mcp",
+        "jsonConfig": "{ \"mcpServers\": { \"zalo\": { \"command\": \"zalo-bot-mcp\" } } }"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí (MIT); Zalo Bot có gói Basic miễn phí với hạn mức",
+    "prosVi": [
+      "Dùng Zalo Bot API chính thức, không tự động hóa tài khoản cá nhân",
+      "Thiết kế an toàn: pairing, allowlist, cấu hình truy cập không thể đổi qua tin nhắn",
+      "Giấy phép MIT, phụ thuộc runtime chỉ gồm httpx và mcp"
+    ],
+    "consVi": [
+      "Đang ở giai đoạn phát triển sớm; MCP channel là tính năng thử nghiệm của Claude Code",
+      "Phải chạy Claude Code với cờ --dangerously-load-development-channels",
+      "Dự án cá nhân, không liên kết với Zalo/VNG; gói Basic miễn phí của Zalo giới hạn 3.000 tin gửi đi mỗi tháng",
+      "Zalo Bot API không hỗ trợ sửa tin nhắn hay reaction, tin tối đa 2000 ký tự"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Zalo Bot MCP — Kết nối bot Zalo với phiên Claude Code qua MCP channel\n\n> An MCP channel server for the Zalo Bot API. Messages sent to your Zalo bot arrive in an MCP client session; the session replies through a tool call.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP channel server dùng Zalo Bot API chính thức: tin nhắn gửi tới bot Zalo được đưa vào phiên Claude Code và phiên trả lời qua công cụ reply. Máy chủ lấy tin bằng getUpdates nên không cần URL công khai, webhook hay tunnel.\n\nCho phép trò chuyện với AI agent từ tin nhắn trực tiếp hoặc nhóm Zalo, có cổng kiểm soát truy cập chặt chẽ.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Chăm sóc khách hàng & Trợ lý ảo CS\n- **Tác giả / Nhà phát triển:** trongnguyenbinh\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/trongnguyenbinh/zalo-bot-mcp](https://github.com/trongnguyenbinh/zalo-bot-mcp)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Long-polling getUpdates: chạy được trên laptop sau NAT, không cần public URL**\n- **Chính sách DM: pairing, allowlist hoặc disabled**\n- **Nhóm phải cấu hình theo ID; có thể giới hạn thành viên được kích hoạt bot**\n- **Không tin nhắn Zalo nào được đổi cấu hình truy cập; từ chối khởi động nếu allowlist có wildcard**\n- **Cài dạng plugin Claude Code (skill /zalo:*) hoặc gói Python với CLI zalo-bot-mcp-admin**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuv tool install zalo-bot-mcp\n```\n\nYêu cầu: uv, Claude Code, một bot Zalo tạo qua OA Zalo Bot Manager (token bot). Phải khởi động Claude Code với cờ --dangerously-load-development-channels.\nBước 1: Cách A (plugin): trong Claude Code chạy `/plugin marketplace add trongnguyenbinh/zalo-bot-mcp` và `/plugin install zalo@zalo-bot-mcp`\nBước 2: Cách B (gói Python): `uv tool install zalo-bot-mcp`\nBước 3: Tạo .mcp.json trong thư mục dự án với nội dung `{ \"mcpServers\": { \"zalo\": { \"command\": \"zalo-bot-mcp\" } } }`\nBước 4: Cài token (nhập ẩn): `zalo-bot-mcp-admin set-token`\nBước 5: Khởi động Claude Code với cờ channel: `claude --dangerously-load-development-channels server:zalo`\nBước 6: Duyệt mã pairing: `zalo-bot-mcp-admin approve a1b2c3`, sau đó khóa lại bằng `zalo-bot-mcp-admin policy allowlist`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo bot trong ứng dụng Zalo qua OA Zalo Bot Manager (tên bot bắt đầu bằng \"Bot\") và nhận token\nBước 2: Nhắn tin cho bot trên Zalo để nhận mã pairing, duyệt mã trong Claude Code hoặc bằng CLI\nBước 3: Trong nhóm, bot chỉ nhận tin khi được nhắc tên (mention) hoặc khi có người trả lời tin của bot\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Khi có tin nhắn Zalo hỏi tình trạng build, hãy kiểm tra log và trả lời qua công cụ reply\"\n- \"Tóm tắt các thay đổi trong repo hôm nay rồi gửi vào nhóm Zalo đã cấu hình\"\n- \"Trả lời tin nhắn Zalo vừa nhận, chia nhỏ nếu dài quá 2000 ký tự\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "moken627-hub-hermes-plugin-zalo",
+    "slug": "moken627-hub-hermes-plugin-zalo",
+    "name": "Hermes Zalo Plugin — Kết nối Hermes Agent với Zalo Bot API",
+    "icon": "MessageSquare",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "customer_support",
+    "categoryNameVi": "Chăm sóc khách hàng & Trợ lý ảo CS",
+    "categories": [
+      "customer_support",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Chăm sóc khách hàng & Trợ lý ảo CS",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/moken627-hub/hermes-plugin-zalo",
+    "websiteUrl": "",
+    "authorName": "Moken",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Plugin nền tảng cho Hermes Agent (NousResearch) bổ sung kênh nhắn tin Zalo qua Zalo Bot API chính thức, không cần sửa lõi Hermes. Hỗ trợ long-polling hoặc webhook, chính sách truy cập pairing/allowlist/open, quản lý nhóm, chống spam và danh bạ CRM.",
+    "purposeVi": "Đưa AI agent Hermes vào tin nhắn trực tiếp và nhóm Zalo để chăm sóc khách hàng, quản trị cộng đồng hoặc gửi thông báo định kỳ.",
+    "featuresVi": [
+      "Gửi/nhận tin văn bản (chia khối 2000 ký tự), gửi ảnh từ URL, hiển thị trạng thái đang gõ",
+      "Long-polling (getUpdates) hoặc webhook qua aiohttp cho môi trường production",
+      "Chính sách truy cập: pairing (mã captcha 6 số + duyệt bằng Hermes), allowlist, open",
+      "Gửi tác vụ cron tới Zalo (deliver=zalo)",
+      "Quản lý nhóm và lệnh slash (/menu, /warn, /kick, /promote, /poll, /pin...)",
+      "Chống spam không tốn token, đồng bộ lịch sử chat (JSONL) và danh bạ CRM (nhập/xuất CSV, tìm theo số điện thoại)"
+    ],
+    "installGuideVi": "Yêu cầu: Hermes Agent >= 0.13.0, Python 3.11+, token bot tạo tại bot.zaloplatforms.com.\nBước 1: Clone plugin vào thư mục plugin của Hermes: `git clone https://github.com/moken627-hub/hermes-plugin-zalo.git ~/.hermes/plugins/zalo`\nBước 2: Tạo bot tại bot.zaloplatforms.com và đặt token: `export ZALO_BOT_TOKEN=\"your_bot_token_here\"` (hoặc chạy `hermes gateway setup zalo`)\nBước 3: Bật plugin: `hermes plugins enable zalo-platform` rồi `hermes gateway restart`\nBước 4: Kiểm tra: `hermes gateway status`",
+    "usageGuideVi": "Bước 1: Người dùng mới nhắn bot sẽ nhận mã captcha; duyệt bằng lệnh pairing của Hermes\nBước 2: Với production, cấu hình webhook_url và webhook_secret trong ~/.hermes/config.yaml, đặt sau reverse proxy TLS\nBước 3: Dùng biến ZALO_ALLOWED_USERS hoặc ZALO_HOME_CHANNEL để giới hạn người dùng và kênh nhận cron",
+    "samplePromptsVi": [
+      "Mỗi sáng 8 giờ gửi tóm tắt đơn hàng hôm qua vào nhóm Zalo của cửa hàng",
+      "Trả lời khách hỏi giờ mở cửa và giá dịch vụ qua tin nhắn Zalo",
+      "Tìm khách trong danh bạ CRM theo số điện thoại và gửi lời nhắc lịch hẹn"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "hermes plugins enable zalo-platform",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"hermes plugins enable zalo-platform\"\n  ],\n  \"nguon\": \"https://github.com/moken627-hub/hermes-plugin-zalo\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí (MIT); cần token Zalo Bot",
+    "prosVi": [
+      "Dùng Zalo Bot API chính thức, không tự động hóa tài khoản cá nhân",
+      "Không thêm phụ thuộc (dùng httpx sẵn có của Hermes)",
+      "Giấy phép MIT"
+    ],
+    "consVi": [
+      "Chỉ dùng được với Hermes Agent",
+      "Chưa hỗ trợ sticker, upload file multipart, tin nhắn thoại (nằm trong roadmap)",
+      "Dự án cộng đồng, không phải sản phẩm chính thức của Zalo"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Hermes Zalo Plugin — Kết nối Hermes Agent với Zalo Bot API\n\n> Connect Hermes Agent to Zalo Bot Platform via official Bot API.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPlugin nền tảng cho Hermes Agent (NousResearch) bổ sung kênh nhắn tin Zalo qua Zalo Bot API chính thức, không cần sửa lõi Hermes. Hỗ trợ long-polling hoặc webhook, chính sách truy cập pairing/allowlist/open, quản lý nhóm, chống spam và danh bạ CRM.\n\nĐưa AI agent Hermes vào tin nhắn trực tiếp và nhóm Zalo để chăm sóc khách hàng, quản trị cộng đồng hoặc gửi thông báo định kỳ.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Chăm sóc khách hàng & Trợ lý ảo CS\n- **Tác giả / Nhà phát triển:** Moken\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/moken627-hub/hermes-plugin-zalo](https://github.com/moken627-hub/hermes-plugin-zalo)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Gửi/nhận tin văn bản (chia khối 2000 ký tự), gửi ảnh từ URL, hiển thị trạng thái đang gõ**\n- **Long-polling (getUpdates) hoặc webhook qua aiohttp cho môi trường production**\n- **Chính sách truy cập: pairing (mã captcha 6 số + duyệt bằng Hermes), allowlist, open**\n- **Gửi tác vụ cron tới Zalo (deliver=zalo)**\n- **Quản lý nhóm và lệnh slash (/menu, /warn, /kick, /promote, /poll, /pin...)**\n- **Chống spam không tốn token, đồng bộ lịch sử chat (JSONL) và danh bạ CRM (nhập/xuất CSV, tìm theo số điện thoại)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nhermes plugins enable zalo-platform\n```\n\nYêu cầu: Hermes Agent >= 0.13.0, Python 3.11+, token bot tạo tại bot.zaloplatforms.com.\nBước 1: Clone plugin vào thư mục plugin của Hermes: `git clone https://github.com/moken627-hub/hermes-plugin-zalo.git ~/.hermes/plugins/zalo`\nBước 2: Tạo bot tại bot.zaloplatforms.com và đặt token: `export ZALO_BOT_TOKEN=\"your_bot_token_here\"` (hoặc chạy `hermes gateway setup zalo`)\nBước 3: Bật plugin: `hermes plugins enable zalo-platform` rồi `hermes gateway restart`\nBước 4: Kiểm tra: `hermes gateway status`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Người dùng mới nhắn bot sẽ nhận mã captcha; duyệt bằng lệnh pairing của Hermes\nBước 2: Với production, cấu hình webhook_url và webhook_secret trong ~/.hermes/config.yaml, đặt sau reverse proxy TLS\nBước 3: Dùng biến ZALO_ALLOWED_USERS hoặc ZALO_HOME_CHANNEL để giới hạn người dùng và kênh nhận cron\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Mỗi sáng 8 giờ gửi tóm tắt đơn hàng hôm qua vào nhóm Zalo của cửa hàng\"\n- \"Trả lời khách hỏi giờ mở cửa và giá dịch vụ qua tin nhắn Zalo\"\n- \"Tìm khách trong danh bạ CRM theo số điện thoại và gửi lời nhắc lịch hẹn\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "nduyhai-go-zalo-bot-api",
+    "slug": "nduyhai-go-zalo-bot-api",
+    "name": "go-zalo-bot-api — Thư viện Go cho Zalo Bot API",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "customer_support",
+    "categoryNameVi": "Chăm sóc khách hàng & Trợ lý ảo CS",
+    "categories": [
+      "customer_support",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Chăm sóc khách hàng & Trợ lý ảo CS",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/nduyhai/go-zalo-bot-api",
+    "websiteUrl": "",
+    "authorName": "nduyhai",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Thư viện Go cho Zalo Bot API, bao bọc các endpoint HTTP bằng model request/response có kiểu, transport có retry và các helper tiện dụng. Có helper long-polling dạng iterator và giao diện logging có cấu trúc.",
+    "purposeVi": "Giúp lập trình viên Go xây dựng bot Zalo (gửi tin, sticker, quản lý webhook) mà không phải tự viết lớp gọi HTTP.",
+    "featuresVi": [
+      "Client nhẹ, an toàn đồng thời, cấu hình được base URL, HTTP client và user agent",
+      "Helper endpoint: lấy thông tin bot, quản lý webhook, gửi tin nhắn, sticker, chat action",
+      "Long-polling dạng iterator, xử lý phân trang và lỗi tạm thời",
+      "Logging cắm được, hỗ trợ slog có cấu trúc",
+      "Tùy chọn theo từng lời gọi như timeout"
+    ],
+    "installGuideVi": "Yêu cầu: Go (go.mod khai báo go 1.25.0) và token bot Zalo; ví dụ dùng biến BOT_TOKEN, CHAT_ID.\nBước 1: Cài đặt thư viện: `go get github.com/nduyhai/go-zalo-bot-api`\nBước 2: Đặt biến môi trường BOT_TOKEN và CHAT_ID (hoặc tệp .env)\nBước 3: Chạy bot ví dụ: `make run`",
+    "usageGuideVi": "Bước 1: Tạo client bằng zalobotapi.New(botToken, ...) kèm logger và user agent\nBước 2: Gọi endpoints.SendMessage(ctx, client, ...) để gửi tin\nBước 3: Xem cmd/example/main.go cho ví dụ retry và long-polling",
+    "samplePromptsVi": [
+      "Viết bot Go dùng go-zalo-bot-api trả lời \"Xin chào\" mỗi khi có tin nhắn mới qua long-polling",
+      "Thêm timeout 5 giây và logging slog cho lời gọi SendMessage",
+      "Viết handler đăng ký webhook cho bot Zalo bằng thư viện này"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "go get github.com/nduyhai/go-zalo-bot-api",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"go get github.com/nduyhai/go-zalo-bot-api\"\n  ],\n  \"nguon\": \"https://github.com/nduyhai/go-zalo-bot-api\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí (MIT); cần token Zalo Bot",
+    "prosVi": [
+      "Kiểu dữ liệu rõ ràng, có retry và long-polling sẵn",
+      "Giấy phép MIT",
+      "Có chương trình ví dụ đầy đủ"
+    ],
+    "consVi": [
+      "Thư viện cộng đồng, không phải SDK chính thức của Zalo",
+      "Cần token bot Zalo",
+      "Chỉ dành cho Go"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# go-zalo-bot-api — Thư viện Go cho Zalo Bot API\n\n> A batteries-included Go client for the Zalo Bot API.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nThư viện Go cho Zalo Bot API, bao bọc các endpoint HTTP bằng model request/response có kiểu, transport có retry và các helper tiện dụng. Có helper long-polling dạng iterator và giao diện logging có cấu trúc.\n\nGiúp lập trình viên Go xây dựng bot Zalo (gửi tin, sticker, quản lý webhook) mà không phải tự viết lớp gọi HTTP.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Chăm sóc khách hàng & Trợ lý ảo CS\n- **Tác giả / Nhà phát triển:** nduyhai\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/nduyhai/go-zalo-bot-api](https://github.com/nduyhai/go-zalo-bot-api)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Client nhẹ, an toàn đồng thời, cấu hình được base URL, HTTP client và user agent**\n- **Helper endpoint: lấy thông tin bot, quản lý webhook, gửi tin nhắn, sticker, chat action**\n- **Long-polling dạng iterator, xử lý phân trang và lỗi tạm thời**\n- **Logging cắm được, hỗ trợ slog có cấu trúc**\n- **Tùy chọn theo từng lời gọi như timeout**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ngo get github.com/nduyhai/go-zalo-bot-api\n```\n\nYêu cầu: Go (go.mod khai báo go 1.25.0) và token bot Zalo; ví dụ dùng biến BOT_TOKEN, CHAT_ID.\nBước 1: Cài đặt thư viện: `go get github.com/nduyhai/go-zalo-bot-api`\nBước 2: Đặt biến môi trường BOT_TOKEN và CHAT_ID (hoặc tệp .env)\nBước 3: Chạy bot ví dụ: `make run`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo client bằng zalobotapi.New(botToken, ...) kèm logger và user agent\nBước 2: Gọi endpoints.SendMessage(ctx, client, ...) để gửi tin\nBước 3: Xem cmd/example/main.go cho ví dụ retry và long-polling\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết bot Go dùng go-zalo-bot-api trả lời \"Xin chào\" mỗi khi có tin nhắn mới qua long-polling\"\n- \"Thêm timeout 5 giây và logging slog cho lời gọi SendMessage\"\n- \"Viết handler đăng ký webhook cho bot Zalo bằng thư viện này\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "nhanchaukp-zalo-bot-sdk",
+    "slug": "nhanchaukp-zalo-bot-sdk",
+    "name": "Zalo Bot SDK for Laravel — Xây dựng bot Zalo trên Laravel",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "customer_support",
+    "categoryNameVi": "Chăm sóc khách hàng & Trợ lý ảo CS",
+    "categories": [
+      "customer_support",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Chăm sóc khách hàng & Trợ lý ảo CS",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/nhanchaukp/zalo-bot-sdk",
+    "websiteUrl": "https://packagist.org/packages/nhanchaukp/zalo-bot-sdk",
+    "authorName": "Châu Thái Nhân (NhanChauKP)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "SDK xây dựng Zalo Bot trên Laravel, thiết kế tương tự Telegram Bot SDK. Hỗ trợ nhiều bot cùng lúc, hệ thống command mở rộng, Facade Laravel và xử lý webhook.",
+    "purposeVi": "Giúp ứng dụng Laravel tạo bot Zalo chăm sóc khách hàng với các lệnh và webhook.",
+    "featuresVi": [
+      "Nhiều bot cùng lúc: cấu hình trong config/zalo-bot.php",
+      "Hệ thống command: command groups, shared commands, auto-discovery",
+      "Gửi tin nhắn, hình ảnh, sticker và trạng thái đang gõ (sendChatAction)",
+      "Quản lý webhook: setWebhook, deleteWebhook, getWebhookInfo",
+      "HTTP client tùy chỉnh (mặc định GuzzlePHP) và Laravel Facade"
+    ],
+    "installGuideVi": "Yêu cầu: PHP ^8.2, Laravel, Composer và token Zalo Bot.\nBước 1: Cài đặt package: `composer require nhanchaukp/zalo-bot-sdk`\nBước 2: Publish file cấu hình: `php artisan vendor:publish --tag=\"zalo-bot-config\"`\nBước 3: Thêm ZALO_BOT_TOKEN, ZALO_WEBHOOK_URL vào .env",
+    "usageGuideVi": "Bước 1: Gửi tin bằng ZaloBot::sendMessage('chat_id', 'Xin chào!') hoặc chọn bot cụ thể với ZaloBot::bot('support_bot')\nBước 2: Tạo class Command (ví dụ StartCommand) và đăng ký trong cấu hình bot\nBước 3: Tạo controller và route nhận webhook từ Zalo",
+    "samplePromptsVi": [
+      "Tạo command /giohang cho bot Zalo Laravel trả về trạng thái đơn hàng của khách",
+      "Cấu hình hai bot bán hàng và hỗ trợ trong config/zalo-bot.php",
+      "Viết controller nhận webhook Zalo và chuyển tin nhắn tới hệ thống ticket"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "composer require nhanchaukp/zalo-bot-sdk",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"composer require nhanchaukp/zalo-bot-sdk\"\n  ],\n  \"nguon\": \"https://github.com/nhanchaukp/zalo-bot-sdk\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí (MIT); cần token Zalo Bot",
+    "prosVi": [
+      "Tích hợp sâu với Laravel (Facade, publish config)",
+      "README tiếng Việt chi tiết",
+      "Giấy phép MIT"
+    ],
+    "consVi": [
+      "Thư viện cộng đồng, không phải SDK chính thức của Zalo",
+      "Yêu cầu PHP 8.2+ và Laravel",
+      "Cần token Zalo Bot"
+    ],
+    "languages": [
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Zalo Bot SDK for Laravel — Xây dựng bot Zalo trên Laravel\n\n> Zalo Bot SDK for Laravel\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSDK xây dựng Zalo Bot trên Laravel, thiết kế tương tự Telegram Bot SDK. Hỗ trợ nhiều bot cùng lúc, hệ thống command mở rộng, Facade Laravel và xử lý webhook.\n\nGiúp ứng dụng Laravel tạo bot Zalo chăm sóc khách hàng với các lệnh và webhook.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Chăm sóc khách hàng & Trợ lý ảo CS\n- **Tác giả / Nhà phát triển:** Châu Thái Nhân (NhanChauKP)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/nhanchaukp/zalo-bot-sdk](https://github.com/nhanchaukp/zalo-bot-sdk)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Nhiều bot cùng lúc: cấu hình trong config/zalo-bot.php**\n- **Hệ thống command: command groups, shared commands, auto-discovery**\n- **Gửi tin nhắn, hình ảnh, sticker và trạng thái đang gõ (sendChatAction)**\n- **Quản lý webhook: setWebhook, deleteWebhook, getWebhookInfo**\n- **HTTP client tùy chỉnh (mặc định GuzzlePHP) và Laravel Facade**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ncomposer require nhanchaukp/zalo-bot-sdk\n```\n\nYêu cầu: PHP ^8.2, Laravel, Composer và token Zalo Bot.\nBước 1: Cài đặt package: `composer require nhanchaukp/zalo-bot-sdk`\nBước 2: Publish file cấu hình: `php artisan vendor:publish --tag=\"zalo-bot-config\"`\nBước 3: Thêm ZALO_BOT_TOKEN, ZALO_WEBHOOK_URL vào .env\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Gửi tin bằng ZaloBot::sendMessage('chat_id', 'Xin chào!') hoặc chọn bot cụ thể với ZaloBot::bot('support_bot')\nBước 2: Tạo class Command (ví dụ StartCommand) và đăng ký trong cấu hình bot\nBước 3: Tạo controller và route nhận webhook từ Zalo\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo command /giohang cho bot Zalo Laravel trả về trạng thái đơn hàng của khách\"\n- \"Cấu hình hai bot bán hàng và hỗ trợ trong config/zalo-bot.php\"\n- \"Viết controller nhận webhook Zalo và chuyển tin nhắn tới hệ thống ticket\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "demdecuong-vihealthbert",
+    "slug": "demdecuong-vihealthbert",
+    "name": "ViHealthBERT — Mô hình ngôn ngữ y tế tiếng Việt kèm bộ dữ liệu từ viết tắt và tóm tắt",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "pharmacy_wellness",
+    "categoryNameVi": "Dược phẩm & Chăm sóc sức khỏe",
+    "categories": [
+      "pharmacy_wellness",
+      "nlp_language",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Dược phẩm & Chăm sóc sức khỏe",
+      "Xử lý ngôn ngữ tự nhiên NLP",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/demdecuong/vihealthbert",
+    "websiteUrl": "https://aclanthology.org/2022.lrec-1.35/",
+    "authorName": "Nguyen Minh, Vu Hoang Tran, Vu Hoang, Huy Duc Ta, Trung Huu Bui, Steven Quoc Hung Truong (nhóm ViHealthBERT)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "ViHealthBERT là mô hình ngôn ngữ huấn luyện sẵn dành riêng cho lĩnh vực y tế tiếng Việt, công bố tại hội nghị LREC 2022. Theo README, mô hình đạt kết quả state-of-the-art trên 3 tác vụ: nhận dạng thực thể (bộ COVID-19 và ViMQ), phân giải từ viết tắt (Acronym Disambiguation) và tóm tắt. Repo còn công bố hai bộ dữ liệu y tế tiếng Việt: acrDrAid (từ viết tắt, 135 bộ từ khóa) và bộ tóm tắt câu hỏi thường gặp (FAQ summarization).",
+    "purposeVi": "Làm mô hình nền cho các bài toán NLP y tế tiếng Việt như trích xuất thực thể từ câu hỏi bệnh nhân, giải nghĩa từ viết tắt trong văn bản y khoa và tóm tắt câu hỏi.",
+    "featuresVi": [
+      "Mô hình trên Hugging Face: `demdecuong/vihealthbert-base-word` (mức từ) và `demdecuong/vihealthbert-base-syllable` (mức âm tiết), 135M tham số",
+      "Bộ dữ liệu acrDrAid: phân giải từ viết tắt y khoa tiếng Việt, kèm từ điển và tệp đáp án",
+      "Bộ dữ liệu FAQ summarization: tóm tắt câu hỏi thường gặp trong lĩnh vực y tế",
+      "Mã tinh chỉnh NER: tái lập kết quả trên PhoNER COVID-19 và ViMQ",
+      "Mã tiền huấn luyện và phân giải từ viết tắt (AcrBERT) đi kèm trong thư mục `code`"
+    ],
+    "installGuideVi": "Yêu cầu: Python >= 3.6, PyTorch >= 1.4.0 (theo code/finetune/ner/src/README.md). Dữ liệu COVID-19 và ViMQ cần tải riêng.\nBước 1: Tải mã nguồn: `git clone https://github.com/demdecuong/vihealthbert.git`\nBước 2: Vào thư mục mã NER: `cd code/finetune/ner/src`, rồi cài thư viện: `pip3 install -r requirements.txt`\nBước 3: Chép dữ liệu COVID-19 và ViMQ vào thư mục data/vinai_covid_word và data/vimq_word, rồi chuyển sang định dạng IOB: `python preprocess.py`\nBước 4: Huấn luyện và đánh giá NER: `bash main.sh`",
+    "usageGuideVi": "Bước 1: Dùng trực tiếp mô hình `demdecuong/vihealthbert-base-word` hoặc `demdecuong/vihealthbert-base-syllable` từ Hugging Face làm bộ mã hóa cho tác vụ y tế tiếng Việt.\nBước 2: Để tái lập kết quả NER, tải bộ COVID-19 (bản tách từ) và ViMQ, chạy `python preprocess.py` rồi `bash main.sh` trong `code/finetune/ner/src`.\nBước 3: Để thử phân giải từ viết tắt, dùng dữ liệu trong `dataset/acrDrAid` với mã trong `code/finetune/wsd/src`.",
+    "samplePromptsVi": [
+      "Viết script tinh chỉnh demdecuong/vihealthbert-base-word để nhận dạng triệu chứng và tên thuốc trong câu hỏi của bệnh nhân",
+      "So sánh ViHealthBERT với PhoBERT trên bộ ViMQ theo hướng dẫn trong repo",
+      "Dùng bộ acrDrAid để huấn luyện mô hình giải nghĩa từ viết tắt trong hồ sơ y khoa tiếng Việt"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "git clone https://github.com/demdecuong/vihealthbert.git",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"git clone https://github.com/demdecuong/vihealthbert.git\"\n  ],\n  \"nguon\": \"https://github.com/demdecuong/vihealthbert\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, mã nguồn mở theo giấy phép MIT",
+    "prosVi": [
+      "Giấy phép MIT, dùng được cho mục đích thương mại",
+      "Mô hình chuyên ngành y tế tiếng Việt đầu tiên, có bài báo LREC 2022 đi kèm",
+      "Kèm hai bộ dữ liệu y tế tiếng Việt mới (acrDrAid và FAQ summarization)"
+    ],
+    "consVi": [
+      "README chính không có hướng dẫn cài đặt; lệnh nằm trong README con của từng thư mục mã",
+      "Dữ liệu COVID-19 và ViMQ phải tải riêng; README tác vụ từ viết tắt để trống đường dẫn tải",
+      "Yêu cầu phiên bản Python/PyTorch cũ, có thể cần kiểm tra tương thích",
+      "README đề nghị trích dẫn bài báo khi dùng cho kết quả công bố"
+    ],
+    "languages": [
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# ViHealthBERT — Mô hình ngôn ngữ y tế tiếng Việt kèm bộ dữ liệu từ viết tắt và tóm tắt\n\n> ViHealthBERT is a strong baseline language models for Vietnamese in Healthcare domain.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nViHealthBERT là mô hình ngôn ngữ huấn luyện sẵn dành riêng cho lĩnh vực y tế tiếng Việt, công bố tại hội nghị LREC 2022. Theo README, mô hình đạt kết quả state-of-the-art trên 3 tác vụ: nhận dạng thực thể (bộ COVID-19 và ViMQ), phân giải từ viết tắt (Acronym Disambiguation) và tóm tắt. Repo còn công bố hai bộ dữ liệu y tế tiếng Việt: acrDrAid (từ viết tắt, 135 bộ từ khóa) và bộ tóm tắt câu hỏi thường gặp (FAQ summarization).\n\nLàm mô hình nền cho các bài toán NLP y tế tiếng Việt như trích xuất thực thể từ câu hỏi bệnh nhân, giải nghĩa từ viết tắt trong văn bản y khoa và tóm tắt câu hỏi.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Dược phẩm & Chăm sóc sức khỏe\n- **Tác giả / Nhà phát triển:** Nguyen Minh, Vu Hoang Tran, Vu Hoang, Huy Duc Ta, Trung Huu Bui, Steven Quoc Hung Truong (nhóm ViHealthBERT)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/demdecuong/vihealthbert](https://github.com/demdecuong/vihealthbert)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Mô hình trên Hugging Face: `demdecuong/vihealthbert-base-word` (mức từ) và `demdecuong/vihealthbert-base-syllable` (mức âm tiết), 135M tham số**\n- **Bộ dữ liệu acrDrAid: phân giải từ viết tắt y khoa tiếng Việt, kèm từ điển và tệp đáp án**\n- **Bộ dữ liệu FAQ summarization: tóm tắt câu hỏi thường gặp trong lĩnh vực y tế**\n- **Mã tinh chỉnh NER: tái lập kết quả trên PhoNER COVID-19 và ViMQ**\n- **Mã tiền huấn luyện và phân giải từ viết tắt (AcrBERT) đi kèm trong thư mục `code`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ngit clone https://github.com/demdecuong/vihealthbert.git\n```\n\nYêu cầu: Python >= 3.6, PyTorch >= 1.4.0 (theo code/finetune/ner/src/README.md). Dữ liệu COVID-19 và ViMQ cần tải riêng.\nBước 1: Tải mã nguồn: `git clone https://github.com/demdecuong/vihealthbert.git`\nBước 2: Vào thư mục mã NER: `cd code/finetune/ner/src`, rồi cài thư viện: `pip3 install -r requirements.txt`\nBước 3: Chép dữ liệu COVID-19 và ViMQ vào thư mục data/vinai_covid_word và data/vimq_word, rồi chuyển sang định dạng IOB: `python preprocess.py`\nBước 4: Huấn luyện và đánh giá NER: `bash main.sh`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Dùng trực tiếp mô hình `demdecuong/vihealthbert-base-word` hoặc `demdecuong/vihealthbert-base-syllable` từ Hugging Face làm bộ mã hóa cho tác vụ y tế tiếng Việt.\nBước 2: Để tái lập kết quả NER, tải bộ COVID-19 (bản tách từ) và ViMQ, chạy `python preprocess.py` rồi `bash main.sh` trong `code/finetune/ner/src`.\nBước 3: Để thử phân giải từ viết tắt, dùng dữ liệu trong `dataset/acrDrAid` với mã trong `code/finetune/wsd/src`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết script tinh chỉnh demdecuong/vihealthbert-base-word để nhận dạng triệu chứng và tên thuốc trong câu hỏi của bệnh nhân\"\n- \"So sánh ViHealthBERT với PhoBERT trên bộ ViMQ theo hướng dẫn trong repo\"\n- \"Dùng bộ acrDrAid để huấn luyện mô hình giải nghĩa từ viết tắt trong hồ sơ y khoa tiếng Việt\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "anhhoang0529-visolex",
+    "slug": "anhhoang0529-visolex",
+    "name": "ViSoLex — Chuẩn hóa từ viết tắt, teencode trong văn bản mạng xã hội tiếng Việt",
+    "icon": "Wrench",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "nlp_language",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên NLP",
+    "categories": [
+      "nlp_language",
+      "content_writing"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên NLP",
+      "Sáng tạo nội dung & Biên tập"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/AnhHoang0529/ViSoLex",
+    "websiteUrl": "https://www.youtube.com/watch?v=XBIAogDpF3o",
+    "authorName": "Anh Hoang, HaDung2002 (nhóm ViSoLex)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "ViSoLex là dự án mã nguồn mở chuẩn hóa từ không chuẩn (NSW) trong văn bản mạng xã hội tiếng Việt như viết tắt, teencode, sai chính tả. Repo cung cấp khung học bán giám sát (weakly supervised) cho chuẩn hóa từ vựng, gồm huấn luyện, suy luận và phát hiện NSW, hỗ trợ mô hình ViSoBERT và BARTpho. Có demo dòng lệnh, notebook Colab và giao diện web Flask cho người không chuyên.",
+    "purposeVi": "Làm sạch, chuẩn hóa bình luận và tin nhắn tiếng Việt trên mạng xã hội trước khi đưa vào các hệ thống phân tích hoặc mô hình ngôn ngữ.",
+    "featuresVi": [
+      "Phát hiện từ không chuẩn: bộ dự đoán nhị phân NSW (`nsw_detector.py`)",
+      "Chuẩn hóa bằng mô hình: hỗ trợ ViSoBERT và BARTpho",
+      "Học bán giám sát: mạng rule attention và mô hình teacher–student",
+      "Từ điển NSW: `dict/dictionary.json` với diễn giải tạo bằng GPT-4o, có thể tra cứu qua OpenAI API (`chatgpt.py`)",
+      "Giao diện: demo dòng lệnh `demo.py`, notebook `demo.ipynb` và ứng dụng web Flask `app.py`"
+    ],
+    "installGuideVi": "Yêu cầu: Conda, Python 3.10. Phần cứng tối thiểu để huấn luyện: ViSoBERT cần 55GB RAM CPU và 12GB RAM GPU; BARTpho cần 120GB RAM CPU và 32GB RAM GPU. Checkpoint tải qua Google Drive, dữ liệu thí nghiệm ở repo ViSoLex-Resources.\nBước 1: Tạo môi trường: `conda create -n visolex python=3.10` rồi `conda activate visolex`\nBước 2: Cài thư viện: `pip install -r requirements.txt`\nBước 3: Huấn luyện (tùy chọn): `python main.py --student_name visobert --training_mode weakly_supervised --num_epochs 5 --num_unsup_epochs 5 --eval_batch_size 16 --unsup_batch_size 16 --num_iter 10 --lower_case --hard_student_rule --soft_labels --append_n_mask --nsw_detect --rm_accent_ratio 1.0`",
+    "usageGuideVi": "Bước 1: Tải checkpoint mô hình từ Google Drive theo đường dẫn trong README.\nBước 2: Chạy demo nhanh trên terminal: `python demo.py`.\nBước 3: Hoặc chạy giao diện web Flask: `python app.py` (có thể triển khai trên Google Colab theo `demo.ipynb`).",
+    "samplePromptsVi": [
+      "Chuẩn hóa bình luận \"ko bít đi đâu h\" thành tiếng Việt chuẩn bằng ViSoLex",
+      "Huấn luyện lại mô hình ViSoBERT của ViSoLex với dữ liệu bình luận riêng",
+      "Tích hợp bước chuẩn hóa ViSoLex trước mô hình phân loại cảm xúc bình luận"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "python demo.py",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"python demo.py\"\n  ],\n  \"nguon\": \"https://github.com/AnhHoang0529/ViSoLex\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, mã nguồn mở theo giấy phép MIT",
+    "prosVi": [
+      "Giấy phép MIT",
+      "Có cả giao diện web Flask cho người không chuyên lẫn công cụ huấn luyện cho nhà nghiên cứu",
+      "Hỗ trợ hai mô hình tiếng Việt phổ biến là ViSoBERT và BARTpho"
+    ],
+    "consVi": [
+      "Huấn luyện đòi hỏi phần cứng lớn (tối thiểu 55–120GB RAM CPU và 12–32GB RAM GPU)",
+      "Checkpoint và dữ liệu thí nghiệm nằm ngoài repo (Google Drive, repo ViSoLex-Resources)",
+      "Tra cứu NSW qua `chatgpt.py` dùng OpenAI API nên cần khóa API riêng"
+    ],
+    "languages": [
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# ViSoLex — Chuẩn hóa từ viết tắt, teencode trong văn bản mạng xã hội tiếng Việt\n\n> ViSoLex is an open-source project for normalizing Non-Standard Words (NSWs) in Vietnamese social media texts.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nViSoLex là dự án mã nguồn mở chuẩn hóa từ không chuẩn (NSW) trong văn bản mạng xã hội tiếng Việt như viết tắt, teencode, sai chính tả. Repo cung cấp khung học bán giám sát (weakly supervised) cho chuẩn hóa từ vựng, gồm huấn luyện, suy luận và phát hiện NSW, hỗ trợ mô hình ViSoBERT và BARTpho. Có demo dòng lệnh, notebook Colab và giao diện web Flask cho người không chuyên.\n\nLàm sạch, chuẩn hóa bình luận và tin nhắn tiếng Việt trên mạng xã hội trước khi đưa vào các hệ thống phân tích hoặc mô hình ngôn ngữ.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên NLP\n- **Tác giả / Nhà phát triển:** Anh Hoang, HaDung2002 (nhóm ViSoLex)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/AnhHoang0529/ViSoLex](https://github.com/AnhHoang0529/ViSoLex)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Phát hiện từ không chuẩn: bộ dự đoán nhị phân NSW (`nsw_detector.py`)**\n- **Chuẩn hóa bằng mô hình: hỗ trợ ViSoBERT và BARTpho**\n- **Học bán giám sát: mạng rule attention và mô hình teacher–student**\n- **Từ điển NSW: `dict/dictionary.json` với diễn giải tạo bằng GPT-4o, có thể tra cứu qua OpenAI API (`chatgpt.py`)**\n- **Giao diện: demo dòng lệnh `demo.py`, notebook `demo.ipynb` và ứng dụng web Flask `app.py`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npython demo.py\n```\n\nYêu cầu: Conda, Python 3.10. Phần cứng tối thiểu để huấn luyện: ViSoBERT cần 55GB RAM CPU và 12GB RAM GPU; BARTpho cần 120GB RAM CPU và 32GB RAM GPU. Checkpoint tải qua Google Drive, dữ liệu thí nghiệm ở repo ViSoLex-Resources.\nBước 1: Tạo môi trường: `conda create -n visolex python=3.10` rồi `conda activate visolex`\nBước 2: Cài thư viện: `pip install -r requirements.txt`\nBước 3: Huấn luyện (tùy chọn): `python main.py --student_name visobert --training_mode weakly_supervised --num_epochs 5 --num_unsup_epochs 5 --eval_batch_size 16 --unsup_batch_size 16 --num_iter 10 --lower_case --hard_student_rule --soft_labels --append_n_mask --nsw_detect --rm_accent_ratio 1.0`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tải checkpoint mô hình từ Google Drive theo đường dẫn trong README.\nBước 2: Chạy demo nhanh trên terminal: `python demo.py`.\nBước 3: Hoặc chạy giao diện web Flask: `python app.py` (có thể triển khai trên Google Colab theo `demo.ipynb`).\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Chuẩn hóa bình luận \"ko bít đi đâu h\" thành tiếng Việt chuẩn bằng ViSoLex\"\n- \"Huấn luyện lại mô hình ViSoBERT của ViSoLex với dữ liệu bình luận riêng\"\n- \"Tích hợp bước chuẩn hóa ViSoLex trước mô hình phân loại cảm xúc bình luận\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "nghimestudio-vietnormalizer",
+    "slug": "nghimestudio-vietnormalizer",
+    "name": "vietnormalizer — Thư viện chuẩn hóa văn bản tiếng Việt cho TTS và NLP",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "nlp_language",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên NLP",
+    "categories": [
+      "nlp_language",
+      "speech_voice"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên NLP",
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/nghimestudio/vietnormalizer",
+    "websiteUrl": "https://pypi.org/project/vietnormalizer/",
+    "authorName": "nghimestudio",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "vietnormalizer là thư viện Python chuẩn hóa văn bản tiếng Việt cho ứng dụng chuyển văn bản thành giọng nói (TTS) và xử lý ngôn ngữ tự nhiên. Thư viện đổi số, ngày giờ, tiền tệ, phần trăm, đơn vị đo, số điện thoại sang chữ tiếng Việt, mở rộng từ viết tắt và phiên âm từ nước ngoài theo từ điển hoặc theo quy tắc. Không cần thư viện ngoài, khoảng 0,6ms mỗi lần gọi với hơn 17 nghìn mục từ điển.",
+    "purposeVi": "Chuẩn bị văn bản tiếng Việt \"đọc được\" cho hệ thống TTS, trợ lý giọng nói hoặc bước tiền xử lý NLP.",
+    "featuresVi": [
+      "Chuyển số và ngày giờ: `25/12/2023` thành \"ngày hai mươi lăm tháng mười hai năm hai nghìn không trăm hai mươi ba\"",
+      "Tiền tệ, phần trăm, đơn vị: `50.000đ`, `3-5%`, `120km/h` sang chữ tiếng Việt",
+      "Từ viết tắt và từ nước ngoài: thay theo từ điển CSV (`TV` → \"ti vi\", `container` → \"công-tê-nơ\"), hỗ trợ từ điển tùy chỉnh",
+      "Phiên âm theo quy tắc: từ không có trong từ điển được phiên âm sang tiếng Việt, có thể tắt",
+      "Nhận diện từ tiếng Việt: hàm `is_vietnamese_word` để bỏ qua từ thuần Việt khi phiên âm",
+      "Làm sạch văn bản: bỏ emoji, URL, email, chuẩn hóa Unicode và dấu câu"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.8+, không phụ thuộc thư viện ngoài (chỉ dùng thư viện chuẩn).\nBước 1: Cài từ PyPI: `pip install vietnormalizer`\nBước 2: Hoặc cài từ mã nguồn: `git clone https://github.com/nghimestudio/vietnormalizer.git`, `cd vietnormalizer`, `pip install -e .`",
+    "usageGuideVi": "Bước 1: Nhập thư viện: `from vietnormalizer import VietnameseNormalizer`.\nBước 2: Tạo đối tượng `normalizer = VietnameseNormalizer()` rồi gọi `normalizer.normalize(\"Giá 50.000đ cho mỗi người\")`.\nBước 3: Tắt phiên âm khi cần: `VietnameseNormalizer(enable_transliteration=False)`; dùng từ điển riêng qua `acronyms_path`, `non_vietnamese_words_path` hoặc `data_dir`.",
+    "samplePromptsVi": [
+      "Viết hàm Python dùng vietnormalizer chuẩn hóa bản tin trước khi đưa vào mô hình TTS tiếng Việt",
+      "Thêm từ điển viết tắt riêng của công ty vào vietnormalizer bằng tệp acronyms.csv",
+      "Chuẩn hóa hóa đơn có số tiền, ngày tháng và đơn vị đo thành câu đọc được"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install vietnormalizer",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install vietnormalizer\"\n  ],\n  \"nguon\": \"https://github.com/nghimestudio/vietnormalizer\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, mã nguồn mở theo giấy phép MIT",
+    "prosVi": [
+      "Giấy phép MIT, dùng được cho mục đích thương mại",
+      "Có gói PyPI, cài một lệnh, không phụ thuộc thư viện ngoài",
+      "Nhanh (khoảng 0,6ms mỗi lần gọi theo README) và đang được cập nhật (2026)"
+    ],
+    "consVi": [
+      "Dựa trên quy tắc và từ điển, không dùng mô hình học máy nên phiên âm từ lạ có thể chưa chuẩn",
+      "Tập trung cho TTS: kết quả viết thường và đổi số thành chữ, không phù hợp nếu cần giữ nguyên định dạng"
+    ],
+    "languages": [
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# vietnormalizer — Thư viện chuẩn hóa văn bản tiếng Việt cho TTS và NLP\n\n> A Python library for normalizing Vietnamese text, designed for Text-to-Speech (TTS) and Natural Language Processing (NLP) applications.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nvietnormalizer là thư viện Python chuẩn hóa văn bản tiếng Việt cho ứng dụng chuyển văn bản thành giọng nói (TTS) và xử lý ngôn ngữ tự nhiên. Thư viện đổi số, ngày giờ, tiền tệ, phần trăm, đơn vị đo, số điện thoại sang chữ tiếng Việt, mở rộng từ viết tắt và phiên âm từ nước ngoài theo từ điển hoặc theo quy tắc. Không cần thư viện ngoài, khoảng 0,6ms mỗi lần gọi với hơn 17 nghìn mục từ điển.\n\nChuẩn bị văn bản tiếng Việt \"đọc được\" cho hệ thống TTS, trợ lý giọng nói hoặc bước tiền xử lý NLP.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên NLP\n- **Tác giả / Nhà phát triển:** nghimestudio\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/nghimestudio/vietnormalizer](https://github.com/nghimestudio/vietnormalizer)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Chuyển số và ngày giờ: `25/12/2023` thành \"ngày hai mươi lăm tháng mười hai năm hai nghìn không trăm hai mươi ba\"**\n- **Tiền tệ, phần trăm, đơn vị: `50.000đ`, `3-5%`, `120km/h` sang chữ tiếng Việt**\n- **Từ viết tắt và từ nước ngoài: thay theo từ điển CSV (`TV` → \"ti vi\", `container` → \"công-tê-nơ\"), hỗ trợ từ điển tùy chỉnh**\n- **Phiên âm theo quy tắc: từ không có trong từ điển được phiên âm sang tiếng Việt, có thể tắt**\n- **Nhận diện từ tiếng Việt: hàm `is_vietnamese_word` để bỏ qua từ thuần Việt khi phiên âm**\n- **Làm sạch văn bản: bỏ emoji, URL, email, chuẩn hóa Unicode và dấu câu**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install vietnormalizer\n```\n\nYêu cầu: Python 3.8+, không phụ thuộc thư viện ngoài (chỉ dùng thư viện chuẩn).\nBước 1: Cài từ PyPI: `pip install vietnormalizer`\nBước 2: Hoặc cài từ mã nguồn: `git clone https://github.com/nghimestudio/vietnormalizer.git`, `cd vietnormalizer`, `pip install -e .`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Nhập thư viện: `from vietnormalizer import VietnameseNormalizer`.\nBước 2: Tạo đối tượng `normalizer = VietnameseNormalizer()` rồi gọi `normalizer.normalize(\"Giá 50.000đ cho mỗi người\")`.\nBước 3: Tắt phiên âm khi cần: `VietnameseNormalizer(enable_transliteration=False)`; dùng từ điển riêng qua `acronyms_path`, `non_vietnamese_words_path` hoặc `data_dir`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết hàm Python dùng vietnormalizer chuẩn hóa bản tin trước khi đưa vào mô hình TTS tiếng Việt\"\n- \"Thêm từ điển viết tắt riêng của công ty vào vietnormalizer bằng tệp acronyms.csv\"\n- \"Chuẩn hóa hóa đơn có số tiền, ngày tháng và đơn vị đo thành câu đọc được\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "stair-lab-melt",
+    "slug": "stair-lab-melt",
+    "name": "MELT — Bộ công cụ đánh giá mô hình ngôn ngữ lớn tiếng Việt",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "data_science_analytics",
+      "nlp_language"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Khoa học dữ liệu & Phân tích kinh doanh",
+      "Xử lý ngôn ngữ tự nhiên NLP"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/stair-lab/melt",
+    "websiteUrl": "https://ai.stanford.edu/~sttruong/villm/",
+    "authorName": "Stanford STAIR Lab & ĐH Bách khoa TP.HCM (Sang T. Truong, Duc Q. Nguyen, Tho Quan, Sanmi Koyejo và cộng sự)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "MELT (Multilingual Evaluation Toolkits) là bộ công cụ đánh giá mô hình ngôn ngữ lớn đa ngôn ngữ, hỗ trợ đầy đủ nhất cho tiếng Việt. Bộ công cụ gồm 10 kịch bản: tóm tắt, hỏi đáp, kiến thức, phân tích cảm xúc, phân loại văn bản, phát hiện độc hại, mô hình ngôn ngữ, suy luận, toán học và truy hồi thông tin, cùng các đánh giá thiên kiến, độc hại, công bằng và độ bền. Bộ dữ liệu ví dụ gồm đọc hiểu trắc nghiệm ViMMRC, MATH, VSFC, ViHSD; bảng xếp hạng công bố tại trang ViLLM.",
+    "purposeVi": "Đo năng lực mô hình ngôn ngữ lớn trên tiếng Việt (gồm đọc hiểu, toán, kiến thức) để chọn hoặc cải thiện mô hình cho ứng dụng giáo dục và nghiệp vụ.",
+    "featuresVi": [
+      "10 kịch bản đánh giá: tóm tắt, hỏi đáp, kiến thức mở và trắc nghiệm, cảm xúc, phân loại, độc hại, dịch, suy luận, toán, truy hồi thông tin",
+      "Đánh giá có trách nhiệm: thiên kiến, độc hại, công bằng, độ bền trước nhiễu",
+      "Nhiều kiểu triển khai mô hình: Hugging Face (`hf`), vLLM, TGI, OpenAI/Azure, Gemini",
+      "Bộ dữ liệu tiếng Việt: ViMMRC (đọc hiểu trắc nghiệm), MATH, zalo_e2eqa, VSFC, ViHSD trên Hugging Face `ura-hcmut`",
+      "Mở rộng ngôn ngữ và dữ liệu: cấu hình qua `config/<mã ngôn ngữ>/` và `datasets_info.json`, hỗ trợ dữ liệu cục bộ",
+      "Few-shot và bootstrap: tham số `--num_fs`, `--fewshot_prompting`, `--n_bootstrap`"
+    ],
+    "installGuideVi": "Yêu cầu: Python >= 3.8 (theo pyproject.toml). Cần khóa API tương ứng (OPENAI_API_KEY, GEMINI_KEY, TGI_ENDPOINT...) trong tệp `.env` nếu đánh giá mô hình qua API; GPU nếu chạy mô hình Hugging Face cục bộ.\nBước 1: Tải mã nguồn repo và cài gói ở chế độ phát triển: `pip install -e .`\nBước 2: Đổi tên tệp .env.template thành .env và điền biến môi trường cho trình bao mô hình đã chọn (OpenAI, AzureGPT, TGI, Gemini)",
+    "usageGuideVi": "Bước 1: Chạy đánh giá một mô hình Hugging Face trên bộ zalo_e2eqa tiếng Việt, ví dụ trong README: `melt --wtype hf --model_name meta-llama/Meta-Llama-3.1-8B-Instruct --dataset_name zalo_e2eqa --lang vi`.\nBước 2: Các ví dụ chi tiết hơn trong README dùng lệnh `vieval` với các tham số `--num_fs`, `--fewshot_prompting`, `--ptemplate`, `--seed`.\nBước 3: Thêm bộ dữ liệu riêng bằng cách khai báo trong `config/vi/datasets_info.json` và đặt tệp vào thư mục `datasets`.\nBước 4: Xem kết quả trong `results/generation` và điểm số trong `results/evaluation`.",
+    "samplePromptsVi": [
+      "Dùng MELT đánh giá một mô hình Llama tiếng Việt trên bộ đọc hiểu trắc nghiệm ViMMRC",
+      "So sánh điểm toán (MATH) tiếng Việt của GPT-4 và Gemini bằng MELT",
+      "Thêm bộ câu hỏi ôn thi của trường vào MELT để đo độ chính xác của chatbot học tập"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install -e .",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install -e .\"\n  ],\n  \"nguon\": \"https://github.com/stair-lab/melt\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, mã nguồn mở theo giấy phép MIT; đánh giá mô hình qua API (OpenAI, Gemini) tốn phí theo nhà cung cấp",
+    "prosVi": [
+      "Giấy phép MIT",
+      "Phát triển bởi Stanford và ĐH Bách khoa TP.HCM, có bảng xếp hạng ViLLM công khai",
+      "Hỗ trợ nhiều cách triển khai mô hình (Hugging Face, vLLM, TGI, OpenAI, Gemini)",
+      "Bao quát cả năng lực lẫn đánh giá thiên kiến, độc hại cho tiếng Việt"
+    ],
+    "consVi": [
+      "Đánh giá mô hình thương mại cần khóa API trả phí (OpenAI, Gemini)",
+      "README dùng hai tên lệnh khác nhau (`melt` và `vieval`); `pyproject.toml` khai báo lệnh `melt`",
+      "Phiên bản 0.0.1, lần commit gần nhất tháng 9/2024; tiếng Indonesia và Hàn Quốc chỉ hỗ trợ một phần tác vụ"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# MELT — Bộ công cụ đánh giá mô hình ngôn ngữ lớn tiếng Việt\n\n> A Python package for evaluating Vietnamese LLMs\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMELT (Multilingual Evaluation Toolkits) là bộ công cụ đánh giá mô hình ngôn ngữ lớn đa ngôn ngữ, hỗ trợ đầy đủ nhất cho tiếng Việt. Bộ công cụ gồm 10 kịch bản: tóm tắt, hỏi đáp, kiến thức, phân tích cảm xúc, phân loại văn bản, phát hiện độc hại, mô hình ngôn ngữ, suy luận, toán học và truy hồi thông tin, cùng các đánh giá thiên kiến, độc hại, công bằng và độ bền. Bộ dữ liệu ví dụ gồm đọc hiểu trắc nghiệm ViMMRC, MATH, VSFC, ViHSD; bảng xếp hạng công bố tại trang ViLLM.\n\nĐo năng lực mô hình ngôn ngữ lớn trên tiếng Việt (gồm đọc hiểu, toán, kiến thức) để chọn hoặc cải thiện mô hình cho ứng dụng giáo dục và nghiệp vụ.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Stanford STAIR Lab & ĐH Bách khoa TP.HCM (Sang T. Truong, Duc Q. Nguyen, Tho Quan, Sanmi Koyejo và cộng sự)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/stair-lab/melt](https://github.com/stair-lab/melt)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **10 kịch bản đánh giá: tóm tắt, hỏi đáp, kiến thức mở và trắc nghiệm, cảm xúc, phân loại, độc hại, dịch, suy luận, toán, truy hồi thông tin**\n- **Đánh giá có trách nhiệm: thiên kiến, độc hại, công bằng, độ bền trước nhiễu**\n- **Nhiều kiểu triển khai mô hình: Hugging Face (`hf`), vLLM, TGI, OpenAI/Azure, Gemini**\n- **Bộ dữ liệu tiếng Việt: ViMMRC (đọc hiểu trắc nghiệm), MATH, zalo_e2eqa, VSFC, ViHSD trên Hugging Face `ura-hcmut`**\n- **Mở rộng ngôn ngữ và dữ liệu: cấu hình qua `config/<mã ngôn ngữ>/` và `datasets_info.json`, hỗ trợ dữ liệu cục bộ**\n- **Few-shot và bootstrap: tham số `--num_fs`, `--fewshot_prompting`, `--n_bootstrap`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install -e .\n```\n\nYêu cầu: Python >= 3.8 (theo pyproject.toml). Cần khóa API tương ứng (OPENAI_API_KEY, GEMINI_KEY, TGI_ENDPOINT...) trong tệp `.env` nếu đánh giá mô hình qua API; GPU nếu chạy mô hình Hugging Face cục bộ.\nBước 1: Tải mã nguồn repo và cài gói ở chế độ phát triển: `pip install -e .`\nBước 2: Đổi tên tệp .env.template thành .env và điền biến môi trường cho trình bao mô hình đã chọn (OpenAI, AzureGPT, TGI, Gemini)\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy đánh giá một mô hình Hugging Face trên bộ zalo_e2eqa tiếng Việt, ví dụ trong README: `melt --wtype hf --model_name meta-llama/Meta-Llama-3.1-8B-Instruct --dataset_name zalo_e2eqa --lang vi`.\nBước 2: Các ví dụ chi tiết hơn trong README dùng lệnh `vieval` với các tham số `--num_fs`, `--fewshot_prompting`, `--ptemplate`, `--seed`.\nBước 3: Thêm bộ dữ liệu riêng bằng cách khai báo trong `config/vi/datasets_info.json` và đặt tệp vào thư mục `datasets`.\nBước 4: Xem kết quả trong `results/generation` và điểm số trong `results/evaluation`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Dùng MELT đánh giá một mô hình Llama tiếng Việt trên bộ đọc hiểu trắc nghiệm ViMMRC\"\n- \"So sánh điểm toán (MATH) tiếng Việt của GPT-4 và Gemini bằng MELT\"\n- \"Thêm bộ câu hỏi ôn thi của trường vào MELT để đo độ chính xác của chatbot học tập\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "zaloai-jaist-vmlu",
+    "slug": "zaloai-jaist-vmlu",
+    "name": "VMLU — Bộ đánh giá hiểu biết đa nhiệm cho LLM tiếng Việt",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "dataset",
+    "typeNameVi": "Dataset",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "nlp_language",
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Xử lý ngôn ngữ tự nhiên NLP",
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/ZaloAI-Jaist/VMLU",
+    "websiteUrl": "https://vmlu.ai",
+    "authorName": "Zalo AI & JAIST",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "VMLU là bộ đánh giá (benchmark) do Zalo AI và JAIST xây dựng để đo năng lực tổng quát của các mô hình ngôn ngữ lớn bằng tiếng Việt. Bộ dữ liệu gồm 10.880 câu hỏi trắc nghiệm thuộc 58 môn học, chia thành bốn nhóm STEM, Khoa học xã hội, Nhân văn và Khác, trải từ cấp tiểu học đến trình độ chuyên môn. Kho mã kèm mã chấm điểm mẫu và bảng xếp hạng các mô hình như Vistral, SeaLLM, PhoGPT, GPT-4.",
+    "purposeVi": "Giúp nhà phát triển theo dõi tiến bộ và phân tích điểm mạnh, điểm yếu của mô hình ngôn ngữ lớn khi xử lý kiến thức và bài toán bằng tiếng Việt.",
+    "featuresVi": [
+      "58 môn học: từ Toán tiểu học, Vật lý THPT đến Luật hành chính, Kế toán thuế, Công chức, Bằng lái xe",
+      "10.880 câu trắc nghiệm: định dạng JSONL, có cả bản LaTeX và không LaTeX",
+      "Bảng xếp hạng: phân tách mô hình huấn luyện từ đầu và mô hình tinh chỉnh, chấm zero-shot",
+      "Mã đánh giá mẫu: thư mục code_benchmark với script test_gpt.py và test_prompt.py",
+      "Nộp kết quả: tải tệp CSV (id, answer) lên vmlu.ai để được chấm điểm"
+    ],
+    "installGuideVi": "Yêu cầu: Python, các thư viện trong requirements.txt (transformers, torch, openai 0.28...). Tải bộ dữ liệu từ trang vmlu.ai; muốn chạy script mẫu với GPT cần khóa API OpenAI.\nBước 1: Tải tệp zip dữ liệu VMLU từ trang https://vmlu.ai/#DataSection\nBước 2: Chuyển vào thư mục mã đánh giá: `cd code_benchmark;`\nBước 3: Chạy đánh giá mẫu với GPT: `GPTKEY='<YOUR GPT KEY>' python test_gpt.py`",
+    "usageGuideVi": "Bước 1: Tải và giải nén bộ dữ liệu VMLU (dev/test dạng JSONL)\nBước 2: Sửa script trong code_benchmark để gọi mô hình của bạn, sinh đáp án A/B/C/D cho từng câu\nBước 3: Xuất tệp CSV UTF-8 gồm cột id, answer theo mẫu example_submission.csv\nBước 4: Đăng nhập vmlu.ai và nộp tệp CSV để nhận điểm trên bảng xếp hạng",
+    "samplePromptsVi": [
+      "Đánh giá mô hình Vistral-7B-Chat trên VMLU ở chế độ zero-shot và so sánh với bảng xếp hạng",
+      "Tính độ chính xác theo từng nhóm STEM, Khoa học xã hội, Nhân văn cho mô hình của tôi"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "GPTKEY='<YOUR GPT KEY>' python test_gpt.py",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"GPTKEY='<YOUR GPT KEY>' python test_gpt.py\"\n  ],\n  \"nguon\": \"https://github.com/ZaloAI-Jaist/VMLU\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí; dữ liệu tải tại vmlu.ai",
+    "prosVi": [
+      "Giấy phép MIT cho mã nguồn",
+      "Bộ câu hỏi thuần tiếng Việt, bao phủ 58 môn học nhiều cấp độ",
+      "Có bảng xếp hạng công khai tại vmlu.ai"
+    ],
+    "consVi": [
+      "Dữ liệu phải tải từ trang vmlu.ai, không nằm sẵn trong kho; mục Licenses trong README vẫn ghi TBU",
+      "Nộp kết quả cần đăng nhập tài khoản trên vmlu.ai",
+      "Script mẫu dùng API GPT (cần khóa OpenAI); kho ít cập nhật kể từ tháng 5/2024"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# VMLU — Bộ đánh giá hiểu biết đa nhiệm cho LLM tiếng Việt\n\n> VMLU is a human-centric benchmark suite specifically designed to evaluate the general capabilities of foundational models with a focus on the Vietnamese language.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nVMLU là bộ đánh giá (benchmark) do Zalo AI và JAIST xây dựng để đo năng lực tổng quát của các mô hình ngôn ngữ lớn bằng tiếng Việt. Bộ dữ liệu gồm 10.880 câu hỏi trắc nghiệm thuộc 58 môn học, chia thành bốn nhóm STEM, Khoa học xã hội, Nhân văn và Khác, trải từ cấp tiểu học đến trình độ chuyên môn. Kho mã kèm mã chấm điểm mẫu và bảng xếp hạng các mô hình như Vistral, SeaLLM, PhoGPT, GPT-4.\n\nGiúp nhà phát triển theo dõi tiến bộ và phân tích điểm mạnh, điểm yếu của mô hình ngôn ngữ lớn khi xử lý kiến thức và bài toán bằng tiếng Việt.\n\n- **Loại hình thành phần:** Dataset\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Zalo AI & JAIST\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/ZaloAI-Jaist/VMLU](https://github.com/ZaloAI-Jaist/VMLU)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **58 môn học: từ Toán tiểu học, Vật lý THPT đến Luật hành chính, Kế toán thuế, Công chức, Bằng lái xe**\n- **10.880 câu trắc nghiệm: định dạng JSONL, có cả bản LaTeX và không LaTeX**\n- **Bảng xếp hạng: phân tách mô hình huấn luyện từ đầu và mô hình tinh chỉnh, chấm zero-shot**\n- **Mã đánh giá mẫu: thư mục code_benchmark với script test_gpt.py và test_prompt.py**\n- **Nộp kết quả: tải tệp CSV (id, answer) lên vmlu.ai để được chấm điểm**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nGPTKEY='<YOUR GPT KEY>' python test_gpt.py\n```\n\nYêu cầu: Python, các thư viện trong requirements.txt (transformers, torch, openai 0.28...). Tải bộ dữ liệu từ trang vmlu.ai; muốn chạy script mẫu với GPT cần khóa API OpenAI.\nBước 1: Tải tệp zip dữ liệu VMLU từ trang https://vmlu.ai/#DataSection\nBước 2: Chuyển vào thư mục mã đánh giá: `cd code_benchmark;`\nBước 3: Chạy đánh giá mẫu với GPT: `GPTKEY='<YOUR GPT KEY>' python test_gpt.py`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tải và giải nén bộ dữ liệu VMLU (dev/test dạng JSONL)\nBước 2: Sửa script trong code_benchmark để gọi mô hình của bạn, sinh đáp án A/B/C/D cho từng câu\nBước 3: Xuất tệp CSV UTF-8 gồm cột id, answer theo mẫu example_submission.csv\nBước 4: Đăng nhập vmlu.ai và nộp tệp CSV để nhận điểm trên bảng xếp hạng\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Đánh giá mô hình Vistral-7B-Chat trên VMLU ở chế độ zero-shot và so sánh với bảng xếp hạng\"\n- \"Tính độ chính xác theo từng nhóm STEM, Khoa học xã hội, Nhân văn cho mô hình của tôi\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "hllj-vistral-v",
+    "slug": "hllj-vistral-v",
+    "name": "Vistral-V — Mô hình thị giác – ngôn ngữ lớn tiếng Việt",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "computer_vision",
+      "nlp_language"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+      "Xử lý ngôn ngữ tự nhiên NLP"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/hllj/Vistral-V",
+    "websiteUrl": "https://huggingface.co/Vi-VLM",
+    "authorName": "Bùi Văn Hợp (Vietnamese-VLM)",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Vistral-V là mô hình thị giác – ngôn ngữ lớn tiếng Việt, được huấn luyện theo phương pháp visual instruction tuning của LLaVA trên nền mô hình Vistral-7B-Chat. Dự án dùng bộ mã hóa ảnh SigLIP đa ngôn ngữ thay cho CLIP vì hiểu tiếng Việt tốt hơn, và công bố đầy đủ quy trình chuẩn bị dữ liệu, tiền huấn luyện, tinh chỉnh LoRA cùng CLI và demo Gradio.",
+    "purposeVi": "Cho phép hỏi đáp, mô tả và suy luận về hình ảnh bằng tiếng Việt, đồng thời cung cấp công thức để tự huấn luyện lại mô hình thị giác – ngôn ngữ tiếng Việt.",
+    "featuresVi": [
+      "Hai giai đoạn huấn luyện: căn chỉnh đặc trưng (pretrain projector) và visual instruction tuning",
+      "SigLIP đa ngôn ngữ: bộ mã hóa ảnh google/siglip-base-patch16-256-multilingual",
+      "Tinh chỉnh LoRA: chạy được trên 1–2 GPU NVIDIA A100 40GB",
+      "CLI suy luận: python -m llava.serve.cli với mô hình Vi-VLM/Vistral-V-7B",
+      "Demo web: controller, model worker và Gradio web server theo kiến trúc LLaVA",
+      "Gộp LoRA và đẩy lên Hugging Face Hub bằng upload_merge_model.py"
+    ],
+    "installGuideVi": "Yêu cầu: Linux (macOS/Windows xem hướng dẫn của LLaVA), Conda, Python 3.10, GPU NVIDIA; huấn luyện cần flash-attn và GPU cỡ A100 40GB.\nBước 1: Tải mã nguồn: `git clone https://github.com/hllj/Vistral-V.git` rồi `cd Vistral-V`\nBước 2: Tạo môi trường Conda Python 3.10 và cài gói: `pip install -e .`\nBước 3: Cài thêm phụ thuộc: `pip install -r requirements.txt`",
+    "usageGuideVi": "Bước 1: Chạy CLI với mô hình Vi-VLM/Vistral-V-7B và một tệp ảnh để hỏi đáp bằng tiếng Việt\nBước 2: Muốn dùng giao diện web: khởi động controller ở cổng 10000, một model worker ở cổng 40000 rồi chạy Gradio web server\nBước 3: Muốn tự huấn luyện: chuẩn bị dữ liệu bằng các script trong thư mục data, chạy scripts/vistral_llava/pretrain_v1.sh rồi finetune_lora_v1.sh",
+    "samplePromptsVi": [
+      "Mô tả chi tiết bức ảnh này bằng tiếng Việt",
+      "Trong ảnh có bao nhiêu người và họ đang làm gì?"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "python -m llava.serve.cli --model-path Vi-VLM/Vistral-V-7B --image-file ./assets/images/example.jpeg",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"python -m llava.serve.cli --model-path Vi-VLM/Vistral-V-7B --image-file ./assets/images/example.jpeg\"\n  ],\n  \"nguon\": \"https://github.com/hllj/Vistral-V\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, tự triển khai trên GPU",
+    "prosVi": [
+      "Giấy phép Apache 2.0 cho mã nguồn",
+      "Công bố đầy đủ công thức huấn luyện, checkpoint pretrain và LoRA trên Hugging Face",
+      "Mô hình thị giác – ngôn ngữ dành riêng cho tiếng Việt"
+    ],
+    "consVi": [
+      "README cho biết mô hình chưa được chạy trên benchmark thị giác – ngôn ngữ nào",
+      "Chỉ hướng dẫn trực tiếp cho Linux; huấn luyện cần GPU lớn (A100 40GB)",
+      "Mới tinh chỉnh bằng LoRA do giới hạn phần cứng; mô hình nền Vistral-7B-Chat có điều khoản riêng trên Hugging Face"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Vistral-V — Mô hình thị giác – ngôn ngữ lớn tiếng Việt\n\n> Vistral-V (Vistral-Vision) - Visual Instruction Tuning for Vistral - Vietnamese Large Vision-Language Model.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nVistral-V là mô hình thị giác – ngôn ngữ lớn tiếng Việt, được huấn luyện theo phương pháp visual instruction tuning của LLaVA trên nền mô hình Vistral-7B-Chat. Dự án dùng bộ mã hóa ảnh SigLIP đa ngôn ngữ thay cho CLIP vì hiểu tiếng Việt tốt hơn, và công bố đầy đủ quy trình chuẩn bị dữ liệu, tiền huấn luyện, tinh chỉnh LoRA cùng CLI và demo Gradio.\n\nCho phép hỏi đáp, mô tả và suy luận về hình ảnh bằng tiếng Việt, đồng thời cung cấp công thức để tự huấn luyện lại mô hình thị giác – ngôn ngữ tiếng Việt.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Bùi Văn Hợp (Vietnamese-VLM)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/hllj/Vistral-V](https://github.com/hllj/Vistral-V)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Hai giai đoạn huấn luyện: căn chỉnh đặc trưng (pretrain projector) và visual instruction tuning**\n- **SigLIP đa ngôn ngữ: bộ mã hóa ảnh google/siglip-base-patch16-256-multilingual**\n- **Tinh chỉnh LoRA: chạy được trên 1–2 GPU NVIDIA A100 40GB**\n- **CLI suy luận: python -m llava.serve.cli với mô hình Vi-VLM/Vistral-V-7B**\n- **Demo web: controller, model worker và Gradio web server theo kiến trúc LLaVA**\n- **Gộp LoRA và đẩy lên Hugging Face Hub bằng upload_merge_model.py**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npython -m llava.serve.cli --model-path Vi-VLM/Vistral-V-7B --image-file ./assets/images/example.jpeg\n```\n\nYêu cầu: Linux (macOS/Windows xem hướng dẫn của LLaVA), Conda, Python 3.10, GPU NVIDIA; huấn luyện cần flash-attn và GPU cỡ A100 40GB.\nBước 1: Tải mã nguồn: `git clone https://github.com/hllj/Vistral-V.git` rồi `cd Vistral-V`\nBước 2: Tạo môi trường Conda Python 3.10 và cài gói: `pip install -e .`\nBước 3: Cài thêm phụ thuộc: `pip install -r requirements.txt`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy CLI với mô hình Vi-VLM/Vistral-V-7B và một tệp ảnh để hỏi đáp bằng tiếng Việt\nBước 2: Muốn dùng giao diện web: khởi động controller ở cổng 10000, một model worker ở cổng 40000 rồi chạy Gradio web server\nBước 3: Muốn tự huấn luyện: chuẩn bị dữ liệu bằng các script trong thư mục data, chạy scripts/vistral_llava/pretrain_v1.sh rồi finetune_lora_v1.sh\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Mô tả chi tiết bức ảnh này bằng tiếng Việt\"\n- \"Trong ảnh có bao nhiêu người và họ đang làm gì?\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "aisingapore-sea-helm",
+    "slug": "aisingapore-sea-helm",
+    "name": "SEA-HELM — Bộ đánh giá toàn diện LLM cho ngôn ngữ Đông Nam Á (có tiếng Việt)",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "nlp_language",
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Xử lý ngôn ngữ tự nhiên NLP",
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/aisingapore/SEA-HELM",
+    "websiteUrl": "https://leaderboard.sea-lion.ai/",
+    "authorName": "AI Singapore",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "SEA-HELM (SouthEast Asian Holistic Evaluation of Language Models) là bộ đánh giá mở của AI Singapore cho mô hình ngôn ngữ lớn trên các ngôn ngữ Đông Nam Á, trong đó có tiếng Việt. Bộ đánh giá gồm 5 trụ cột: NLP cổ điển, năng lực riêng của LLM, ngôn ngữ học Đông Nam Á, văn hóa Đông Nam Á và an toàn; với tiếng Việt có các tác vụ như UIT-VSFC, XQuAD, FLORES, XL-Sum, XNLI và SEA MT-Bench.",
+    "purposeVi": "Chấm điểm và so sánh LLM một cách toàn diện, lặp lại được trên tiếng Việt và các ngôn ngữ Đông Nam Á khác, phục vụ bảng xếp hạng SEA-HELM.",
+    "featuresVi": [
+      "5 trụ cột đánh giá: NLP Classics, LLM-specifics, SEA Linguistics, SEA Culture, Safety",
+      "Tác vụ tiếng Việt: phân tích cảm xúc UIT-VSFC, hỏi đáp XQuAD, dịch FLORES, tóm tắt XL-Sum, suy luận XNLI",
+      "LLM-as-a-Judge: SEA-MT-Bench dùng gpt-4.1 làm giám khảo qua OpenAI Batch API",
+      "Chạy bằng vLLM, hỗ trợ AWS Bedrock và nhiều kiểu phục vụ (Offline, Online, Batched)",
+      "8 lần chạy độc lập mỗi mô hình, tính khoảng tin cậy bằng bootstrap",
+      "Script cho bộ lập lịch PBS và SLURM; lưu đệm kết quả để chạy tiếp"
+    ],
+    "installGuideVi": "Yêu cầu: Công cụ uv, GPU chạy vLLM, biến môi trường HF_TOKEN (có quyền với mô hình gated); OPENAI_API_KEY nếu chạy MT-Bench; quyền truy cập MetricX-24 trên Hugging Face cho đánh giá dịch.\nBước 1: Cài môi trường ảo bằng `uv sync`\nBước 2: Đặt biến môi trường HF_TOKEN (và OPENAI_API_KEY nếu chạy SEA-MT-Bench)\nBước 3: Chạy đánh giá bằng script: `bash run_evaluation.sh -m <model_name> -o ./results -t seahelm --run-number 0 --model-type vllm`",
+    "usageGuideVi": "Bước 1: Thay <model_name> bằng mã mô hình trên Hugging Face hoặc thư mục mô hình cục bộ\nBước 2: Thêm cờ --base_model nếu đánh giá mô hình nền (sẽ tắt MT-Bench)\nBước 3: Xem kết quả JSON và log trong thư mục output, so sánh với bảng xếp hạng leaderboard.sea-lion.ai",
+    "samplePromptsVi": [
+      "Đánh giá mô hình Qwen của tôi trên bộ seahelm và xem điểm riêng phần tiếng Việt",
+      "Chạy 8 lần đánh giá trên cụm SLURM cho mô hình tinh chỉnh tiếng Việt"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "uv run seahelm_evaluation.py --tasks seahelm --output_dir <output_dir> --model_type vllm --model_name <model_name> --model_args \"enable_prefix_caching=True,tensor_parallel_size=auto\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uv run seahelm_evaluation.py --tasks seahelm --output_dir <output_dir> --model_type vllm --model_name <model_name> --model_args \\\"enable_prefix_caching=True,tensor_parallel_size=auto\\\"\"\n  ],\n  \"nguon\": \"https://github.com/aisingapore/SEA-HELM\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí; MT-Bench phát sinh phí API OpenAI",
+    "prosVi": [
+      "Giấy phép MIT, được AI Singapore duy trì và cập nhật thường xuyên",
+      "Bao phủ nhiều tác vụ tiếng Việt cùng các ngôn ngữ Đông Nam Á khác",
+      "Phương pháp nhiều lần chạy, có khoảng tin cậy"
+    ],
+    "consVi": [
+      "Không dành riêng cho tiếng Việt",
+      "MT-Bench cần khóa OpenAI (gpt-4.1 làm giám khảo, phát sinh chi phí API)",
+      "Cần GPU và HF_TOKEN có quyền với mô hình gated; một số bộ dữ liệu có giấy phép phi thương mại (ví dụ XL-Sum CC BY-NC-SA 4.0)"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# SEA-HELM — Bộ đánh giá toàn diện LLM cho ngôn ngữ Đông Nam Á (có tiếng Việt)\n\n> An open and comprehensive evaluation suite for SEA languages\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSEA-HELM (SouthEast Asian Holistic Evaluation of Language Models) là bộ đánh giá mở của AI Singapore cho mô hình ngôn ngữ lớn trên các ngôn ngữ Đông Nam Á, trong đó có tiếng Việt. Bộ đánh giá gồm 5 trụ cột: NLP cổ điển, năng lực riêng của LLM, ngôn ngữ học Đông Nam Á, văn hóa Đông Nam Á và an toàn; với tiếng Việt có các tác vụ như UIT-VSFC, XQuAD, FLORES, XL-Sum, XNLI và SEA MT-Bench.\n\nChấm điểm và so sánh LLM một cách toàn diện, lặp lại được trên tiếng Việt và các ngôn ngữ Đông Nam Á khác, phục vụ bảng xếp hạng SEA-HELM.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** AI Singapore\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/aisingapore/SEA-HELM](https://github.com/aisingapore/SEA-HELM)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **5 trụ cột đánh giá: NLP Classics, LLM-specifics, SEA Linguistics, SEA Culture, Safety**\n- **Tác vụ tiếng Việt: phân tích cảm xúc UIT-VSFC, hỏi đáp XQuAD, dịch FLORES, tóm tắt XL-Sum, suy luận XNLI**\n- **LLM-as-a-Judge: SEA-MT-Bench dùng gpt-4.1 làm giám khảo qua OpenAI Batch API**\n- **Chạy bằng vLLM, hỗ trợ AWS Bedrock và nhiều kiểu phục vụ (Offline, Online, Batched)**\n- **8 lần chạy độc lập mỗi mô hình, tính khoảng tin cậy bằng bootstrap**\n- **Script cho bộ lập lịch PBS và SLURM; lưu đệm kết quả để chạy tiếp**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuv run seahelm_evaluation.py --tasks seahelm --output_dir <output_dir> --model_type vllm --model_name <model_name> --model_args \"enable_prefix_caching=True,tensor_parallel_size=auto\"\n```\n\nYêu cầu: Công cụ uv, GPU chạy vLLM, biến môi trường HF_TOKEN (có quyền với mô hình gated); OPENAI_API_KEY nếu chạy MT-Bench; quyền truy cập MetricX-24 trên Hugging Face cho đánh giá dịch.\nBước 1: Cài môi trường ảo bằng `uv sync`\nBước 2: Đặt biến môi trường HF_TOKEN (và OPENAI_API_KEY nếu chạy SEA-MT-Bench)\nBước 3: Chạy đánh giá bằng script: `bash run_evaluation.sh -m <model_name> -o ./results -t seahelm --run-number 0 --model-type vllm`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Thay <model_name> bằng mã mô hình trên Hugging Face hoặc thư mục mô hình cục bộ\nBước 2: Thêm cờ --base_model nếu đánh giá mô hình nền (sẽ tắt MT-Bench)\nBước 3: Xem kết quả JSON và log trong thư mục output, so sánh với bảng xếp hạng leaderboard.sea-lion.ai\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Đánh giá mô hình Qwen của tôi trên bộ seahelm và xem điểm riêng phần tiếng Việt\"\n- \"Chạy 8 lần đánh giá trên cụm SLURM cho mô hình tinh chỉnh tiếng Việt\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:38:00.151Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]

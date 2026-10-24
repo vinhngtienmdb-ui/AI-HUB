@@ -19,7 +19,7 @@
     ],
     "requirementsVi": "PHP >= 5.4 và Composer; cần ứng dụng Zalo (app_id, app_secret) và Official Account đã ủy quyền cho ứng dụng.",
     "installStepsVi": [
-      "Cài SDK qua Composer: `composer require zaloplatform/zalo-php-sdk`",
+      "Cài đặt SDK qua Composer: `composer require zaloplatform/zalo-php-sdk`",
       "Nạp autoload của Composer và khởi tạo `new Zalo($config)` với app_id, app_secret",
       "Tạo link ủy quyền OA, lấy OA access token rồi gọi các endpoint gửi tin"
     ],
@@ -294,7 +294,7 @@
     ],
     "requirementsVi": "Go (go.mod khai báo go 1.25.0) và token bot Zalo; ví dụ dùng biến BOT_TOKEN, CHAT_ID.",
     "installStepsVi": [
-      "Cài thư viện: `go get github.com/nduyhai/go-zalo-bot-api`",
+      "Cài đặt thư viện: `go get github.com/nduyhai/go-zalo-bot-api`",
       "Đặt biến môi trường BOT_TOKEN và CHAT_ID (hoặc tệp .env)",
       "Chạy bot ví dụ: `make run`"
     ],
@@ -357,7 +357,7 @@
     ],
     "requirementsVi": "PHP ^8.2, Laravel, Composer và token Zalo Bot.",
     "installStepsVi": [
-      "Cài package: `composer require nhanchaukp/zalo-bot-sdk`",
+      "Cài đặt package: `composer require nhanchaukp/zalo-bot-sdk`",
       "Publish file cấu hình: `php artisan vendor:publish --tag=\"zalo-bot-config\"`",
       "Thêm ZALO_BOT_TOKEN, ZALO_WEBHOOK_URL vào .env"
     ],

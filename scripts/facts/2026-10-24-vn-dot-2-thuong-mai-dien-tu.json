@@ -464,7 +464,7 @@
     ],
     "requirementsVi": "Node.js; token và shopId của tài khoản GHN.",
     "installStepsVi": [
-      "Cài bằng npm: `npm install giaohangnhanh`",
+      "Cài đặt bằng npm: `npm install giaohangnhanh`",
       "Hoặc yarn: `yarn add giaohangnhanh`",
       "Hoặc pnpm: `pnpm install giaohangnhanh`",
       "Khởi tạo new Ghn({ token, shopId, host, trackingHost, testMode })."
