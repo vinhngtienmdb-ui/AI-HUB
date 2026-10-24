@@ -11,114 +11,117 @@
   }
 }
 
-/* Định dạng hiển thị README chuẩn GitHub (GitHub Flavored Markdown Body) */
+/*
+ * Hiển thị README giống GitHub (theo bảng màu và khoảng cách của giao diện Markdown trên github.com).
+ * Màu đặt bằng biến để có bản sáng và tối; chế độ tối theo lớp .dark của ứng dụng.
+ */
 .github-markdown-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  line-height: 1.65;
+  --md-fg: #1f2328;
+  --md-muted: #59636e;
+  --md-border: #d1d9e0;
+  --md-border-muted: #d1d9e0b3;
+  --md-canvas-subtle: #f6f8fa;
+  --md-neutral-muted: #818b981f;
+  --md-accent: #0969da;
+  --md-note: #0969da;
+  --md-tip: #1a7f37;
+  --md-important: #8250df;
+  --md-warning: #9a6700;
+  --md-caution: #d1242f;
+  color: var(--md-fg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-size: 16px;
+  line-height: 1.5;
   word-wrap: break-word;
 }
 
-.github-markdown-body h1 {
-  font-size: 1.85rem;
-  font-weight: 700;
-  padding-bottom: 0.4em;
-  margin-top: 1.2em;
-  margin-bottom: 1em;
-  border-bottom: 1px solid #e1e4e8;
-  letter-spacing: -0.02em;
+.dark .github-markdown-body {
+  --md-fg: #f0f6fc;
+  --md-muted: #9198a1;
+  --md-border: #3d444d;
+  --md-border-muted: #3d444db3;
+  --md-canvas-subtle: #151b23;
+  --md-neutral-muted: #656c7633;
+  --md-accent: #4493f8;
+  --md-note: #4493f8;
+  --md-tip: #3fb950;
+  --md-important: #ab7df8;
+  --md-warning: #d29922;
+  --md-caution: #f85149;
 }
 
-.dark .github-markdown-body h1 {
-  border-bottom-color: #30363d;
-}
+.github-markdown-body > *:first-child { margin-top: 0 !important; }
+.github-markdown-body > *:last-child { margin-bottom: 0 !important; }
 
-.github-markdown-body h2 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  padding-bottom: 0.35em;
-  margin-top: 1.5em;
-  margin-bottom: 0.8em;
-  border-bottom: 1px solid #e1e4e8;
-  letter-spacing: -0.01em;
-}
-
-.dark .github-markdown-body h2 {
-  border-bottom-color: #30363d;
-}
-
-.github-markdown-body h3 {
-  font-size: 1.18rem;
-  font-weight: 600;
-  margin-top: 1.2em;
-  margin-bottom: 0.6em;
-}
-
-.github-markdown-body h4 {
-  font-size: 1.02rem;
-  font-weight: 600;
-  margin-top: 1em;
-  margin-bottom: 0.5em;
-}
-
-.github-markdown-body p {
+.github-markdown-body p,
+.github-markdown-body blockquote,
+.github-markdown-body ul,
+.github-markdown-body ol,
+.github-markdown-body dl,
+.github-markdown-body table,
+.github-markdown-body pre,
+.github-markdown-body details,
+.github-markdown-body .markdown-alert {
   margin-top: 0;
-  margin-bottom: 1em;
+  margin-bottom: 16px;
 }
+
+.github-markdown-body h1,
+.github-markdown-body h2,
+.github-markdown-body h3,
+.github-markdown-body h4,
+.github-markdown-body h5,
+.github-markdown-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  scroll-margin-top: 96px;
+}
+.github-markdown-body h1 { font-size: 2em; padding-bottom: 0.3em; border-bottom: 1px solid var(--md-border-muted); }
+.github-markdown-body h2 { font-size: 1.5em; padding-bottom: 0.3em; border-bottom: 1px solid var(--md-border-muted); }
+.github-markdown-body h3 { font-size: 1.25em; }
+.github-markdown-body h4 { font-size: 1em; }
+.github-markdown-body h5 { font-size: 0.875em; }
+.github-markdown-body h6 { font-size: 0.85em; color: var(--md-muted); }
+
+.github-markdown-body a { color: var(--md-accent); text-decoration: none; }
+.github-markdown-body a:hover { text-decoration: underline; }
+
+.github-markdown-body strong, .github-markdown-body b { font-weight: 600; }
+
+.github-markdown-body ul,
+.github-markdown-body ol { padding-left: 2em; }
+.github-markdown-body ul { list-style: disc; }
+.github-markdown-body ol { list-style: decimal; }
+.github-markdown-body ul ul { list-style: circle; }
+.github-markdown-body ul ul ul { list-style: square; }
+.github-markdown-body ul ul,
+.github-markdown-body ul ol,
+.github-markdown-body ol ol,
+.github-markdown-body ol ul { margin-top: 0; margin-bottom: 0; }
+.github-markdown-body li + li { margin-top: 0.25em; }
+.github-markdown-body li > p { margin-top: 16px; }
+.github-markdown-body li:has(> input[type='checkbox']) { list-style: none; }
+.github-markdown-body li > input[type='checkbox'] { margin: 0 0.2em 0.25em -1.4em; vertical-align: middle; }
 
 .github-markdown-body blockquote {
-  padding: 0.5em 1em;
-  color: #57606a;
-  border-left: 0.25em solid #d0d7de;
-  margin: 1em 0;
-  background-color: rgba(246, 248, 250, 0.6);
-  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 0 1em;
+  color: var(--md-muted);
+  border-left: 0.25em solid var(--md-border);
 }
+.github-markdown-body blockquote > :first-child { margin-top: 0; }
+.github-markdown-body blockquote > :last-child { margin-bottom: 0; }
 
-.dark .github-markdown-body blockquote {
-  color: #8b949e;
-  border-left-color: #3b434b;
-  background-color: rgba(22, 27, 34, 0.5);
-}
-
-.github-markdown-body blockquote > p:last-child {
-  margin-bottom: 0;
-}
-
-.github-markdown-body ul {
-  list-style-type: disc;
-  padding-left: 2em;
-  margin-top: 0;
-  margin-bottom: 1em;
-}
-
-.github-markdown-body ol {
-  list-style-type: decimal;
-  padding-left: 2em;
-  margin-top: 0;
-  margin-bottom: 1em;
-}
-
-.github-markdown-body li {
-  margin-top: 0.25em;
-}
-
-.github-markdown-body li > p {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-}
-
-.github-markdown-body code:not(pre code) {
+.github-markdown-body code,
+.github-markdown-body tt {
   padding: 0.2em 0.4em;
   margin: 0;
   font-size: 85%;
-  background-color: rgba(175, 184, 193, 0.2);
+  white-space: break-spaces;
+  background-color: var(--md-neutral-muted);
   border-radius: 6px;
-  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
-}
-
-.dark .github-markdown-body code:not(pre code) {
-  background-color: rgba(110, 118, 129, 0.4);
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
 }
 
 .github-markdown-body pre {
@@ -126,87 +129,85 @@
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
-  background-color: #f6f8fa;
-  border-radius: 8px;
-  border: 1px solid #d0d7de;
-  margin-top: 0.8em;
-  margin-bottom: 1.2em;
+  color: var(--md-fg);
+  background-color: var(--md-canvas-subtle);
+  border-radius: 6px;
 }
-
-.dark .github-markdown-body pre {
-  background-color: #161b22;
-  border-color: #30363d;
-}
-
 .github-markdown-body pre code {
-  background-color: transparent;
+  display: inline;
   padding: 0;
-  border: 0;
+  margin: 0;
   font-size: 100%;
-  color: inherit;
-  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  white-space: pre;
+  word-break: normal;
+  background: transparent;
+  border: 0;
 }
 
 .github-markdown-body hr {
-  height: 0.2em;
+  height: 0.25em;
   padding: 0;
   margin: 24px 0;
-  background-color: #e1e4e8;
+  background-color: var(--md-border);
   border: 0;
 }
 
-.dark .github-markdown-body hr {
-  background-color: #30363d;
+.github-markdown-body img {
+  display: inline;
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: transparent;
 }
-
-.github-markdown-body a {
-  color: #0969da;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.dark .github-markdown-body a {
-  color: #58a6ff;
-}
-
-.github-markdown-body a:hover {
-  text-decoration: underline;
-}
+.github-markdown-body [align='center'] { text-align: center; }
+.github-markdown-body [align='right'] { text-align: right; }
+.github-markdown-body img[align='right'] { float: right; padding-left: 20px; }
+.github-markdown-body img[align='left'] { float: left; padding-right: 20px; }
 
 .github-markdown-body table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow: auto;
   border-spacing: 0;
   border-collapse: collapse;
-  margin-top: 0;
-  margin-bottom: 16px;
-  width: 100%;
-  overflow: auto;
-  display: block;
 }
-
 .github-markdown-body table th,
 .github-markdown-body table td {
   padding: 6px 13px;
-  border: 1px solid #d0d7de;
+  border: 1px solid var(--md-border);
+}
+.github-markdown-body table th { font-weight: 600; }
+.github-markdown-body table tr { border-top: 1px solid var(--md-border-muted); }
+.github-markdown-body table tr:nth-child(2n) { background-color: var(--md-canvas-subtle); }
+.github-markdown-body table img { background-color: transparent; }
+
+.github-markdown-body details summary { cursor: pointer; }
+.github-markdown-body kbd {
+  display: inline-block;
+  padding: 0 4px;
+  font-size: 11px;
+  line-height: 20px;
+  vertical-align: middle;
+  border: 1px solid var(--md-border);
+  border-bottom-width: 2px;
+  border-radius: 6px;
 }
 
-.dark .github-markdown-body table th,
-.dark .github-markdown-body table td {
-  border-color: #30363d;
+/* Hộp cảnh báo GitHub: > [!NOTE], [!TIP], [!IMPORTANT], [!WARNING], [!CAUTION] */
+.github-markdown-body .markdown-alert {
+  padding: 8px 16px;
+  color: inherit;
+  border-left: 0.25em solid var(--md-border);
 }
-
-.github-markdown-body table th {
-  font-weight: 600;
-  background-color: #f6f8fa;
-}
-
-.dark .github-markdown-body table th {
-  background-color: #161b22;
-}
-
-.github-markdown-body table tr:nth-child(2n) {
-  background-color: #f6f8fa;
-}
-
-.dark .github-markdown-body table tr:nth-child(2n) {
-  background-color: #161b22;
-}
+.github-markdown-body .markdown-alert > :last-child { margin-bottom: 0; }
+.github-markdown-body .markdown-alert-title { font-weight: 500; line-height: 1; margin-bottom: 8px !important; }
+.github-markdown-body .markdown-alert-note { border-left-color: var(--md-note); }
+.github-markdown-body .markdown-alert-note .markdown-alert-title { color: var(--md-note); }
+.github-markdown-body .markdown-alert-tip { border-left-color: var(--md-tip); }
+.github-markdown-body .markdown-alert-tip .markdown-alert-title { color: var(--md-tip); }
+.github-markdown-body .markdown-alert-important { border-left-color: var(--md-important); }
+.github-markdown-body .markdown-alert-important .markdown-alert-title { color: var(--md-important); }
+.github-markdown-body .markdown-alert-warning { border-left-color: var(--md-warning); }
+.github-markdown-body .markdown-alert-warning .markdown-alert-title { color: var(--md-warning); }
+.github-markdown-body .markdown-alert-caution { border-left-color: var(--md-caution); }
+.github-markdown-body .markdown-alert-caution .markdown-alert-title { color: var(--md-caution); }
