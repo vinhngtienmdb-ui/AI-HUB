@@ -159867,5 +159867,1634 @@
       "guideIsTemplate": false,
       "starsVerified": false
     }
+  },
+  {
+    "id": "invoke-ai-invokeai",
+    "slug": "invoke-ai-invokeai",
+    "name": "InvokeAI — Công cụ sáng tạo hình ảnh AI với Canvas và workflow",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "generative_ai_multimedia",
+    "categoryNameVi": "Sinh nội dung & Đa phương tiện (Generative AI)",
+    "categories": [
+      "generative_ai_multimedia",
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Sinh nội dung & Đa phương tiện (Generative AI)",
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/invoke-ai/InvokeAI",
+    "websiteUrl": "https://invoke.ai",
+    "authorName": "Invoke (InvokeAI Contributors)",
+    "license": "Mã nguồn mở (Apache 2.0); trọng số mô hình theo giấy phép riêng",
+    "summaryVi": "Invoke (InvokeAI) là công cụ sáng tạo hình ảnh bằng AI chạy cục bộ, gồm máy chủ web và giao diện React với Unified Canvas, quy trình dạng node (workflow) và quản lý thư viện ảnh. Ứng dụng hỗ trợ nhiều dòng mô hình như SD 1.5, SDXL, SD 3.5, Flux.1, Flux.2, Qwen Image và một số mô hình chỉ qua API.",
+    "purposeVi": "Giúp nhà thiết kế, họa sĩ và người làm nội dung tạo, chỉnh sửa (inpaint/outpaint) và lặp lại hình ảnh bằng AI trên máy của mình, đồng thời xây dựng quy trình sinh ảnh tùy biến có thể chia sẻ.",
+    "featuresVi": [
+      "Unified Canvas: vẽ, inpaint/outpaint và cọ vẽ trong một khung làm việc tích hợp",
+      "Workflows & Nodes: kết hợp quy trình dạng node với giao diện dễ dùng, có thể chia sẻ quy trình",
+      "Quản lý Board & Gallery: lưu trữ ảnh kèm siêu dữ liệu để gọi lại prompt và thiết lập",
+      "Hỗ trợ nhiều mô hình: SD 1.5/2.0, SDXL, SD 3.5, Flux.1/Flux.2, Z-Image, Qwen Image, CogView 4...",
+      "Công cụ phóng to ảnh (upscaling), quản lý mô hình, embedding và phân đoạn đối tượng (SAM/SAM2)"
+    ],
+    "installGuideVi": "Yêu cầu: Máy tính có GPU tương thích; với Docker cần cấu hình Docker truy cập GPU (ảnh CUDA yêu cầu driver NVIDIA dòng R580 trở lên và GPU compute capability 7.5 trở lên). Trên macOS nên dùng launcher vì Docker không truy cập được GPU.\nBước 1: Cài đặt bằng launcher: tải Invoke Launcher từ trang phát hành github.com/invoke-ai/launcher/releases/latest rồi làm theo hướng dẫn trên màn hình.\nBước 2: Hoặc cài đặt bằng Docker (Linux/Windows có GPU NVIDIA): `docker run --runtime=nvidia --gpus=all --publish 9090:9090 ghcr.io/invoke-ai/invokeai`\nBước 3: Sau khi container khởi động, mở http://localhost:9090 trong trình duyệt, cài đặt mô hình và bắt đầu tạo ảnh.\nBước 4: Tự build bằng Docker Compose trong thư mục docker của repo: `cp .env.sample .env` rồi `docker compose up`",
+    "usageGuideVi": "Bước 1: Mở giao diện web (mặc định cổng 9090 khi chạy Docker) và cài đặt mô hình qua Model Manager.\nBước 2: Nhập prompt để tạo ảnh, sau đó dùng Unified Canvas để inpaint/outpaint hoặc chỉnh sửa vùng ảnh.\nBước 3: Tạo workflow dạng node cho quy trình lặp lại và lưu ảnh vào các board trong gallery.",
+    "samplePromptsVi": [
+      "Ảnh minh họa một quán cà phê nhỏ ở phố cổ Hà Nội lúc chiều tà, phong cách màu nước",
+      "Mở rộng (outpaint) bức ảnh sản phẩm này sang hai bên để làm banner ngang",
+      "Thay nền ảnh chân dung bằng phông studio màu xám nhạt bằng công cụ inpaint"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker run --runtime=nvidia --gpus=all --publish 9090:9090 ghcr.io/invoke-ai/invokeai",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker run --runtime=nvidia --gpus=all --publish 9090:9090 ghcr.io/invoke-ai/invokeai\"\n  ],\n  \"nguon\": \"https://github.com/invoke-ai/InvokeAI\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0, README ghi rõ giấy phép thân thiện với thương mại",
+      "Chạy cục bộ, có cả launcher cài đặt sẵn và ảnh Docker chính thức",
+      "Hỗ trợ rất nhiều dòng mô hình ảnh mới, cập nhật liên tục"
+    ],
+    "consVi": [
+      "Cần GPU đủ mạnh; Docker trên macOS không dùng được GPU",
+      "Trọng số mô hình (SDXL, Flux...) có giấy phép riêng, một số mô hình hạn chế dùng thương mại",
+      "Một số mô hình (Nano Banana, GPT Image, Wan) chỉ dùng qua API bên thứ ba"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# InvokeAI — Công cụ sáng tạo hình ảnh AI với Canvas và workflow\n\n> Invoke is a leading creative engine built to empower professionals and enthusiasts alike.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nInvoke (InvokeAI) là công cụ sáng tạo hình ảnh bằng AI chạy cục bộ, gồm máy chủ web và giao diện React với Unified Canvas, quy trình dạng node (workflow) và quản lý thư viện ảnh. Ứng dụng hỗ trợ nhiều dòng mô hình như SD 1.5, SDXL, SD 3.5, Flux.1, Flux.2, Qwen Image và một số mô hình chỉ qua API.\n\nGiúp nhà thiết kế, họa sĩ và người làm nội dung tạo, chỉnh sửa (inpaint/outpaint) và lặp lại hình ảnh bằng AI trên máy của mình, đồng thời xây dựng quy trình sinh ảnh tùy biến có thể chia sẻ.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Sinh nội dung & Đa phương tiện (Generative AI)\n- **Tác giả / Nhà phát triển:** Invoke (InvokeAI Contributors)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0); trọng số mô hình theo giấy phép riêng\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/invoke-ai/InvokeAI](https://github.com/invoke-ai/InvokeAI)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Unified Canvas: vẽ, inpaint/outpaint và cọ vẽ trong một khung làm việc tích hợp**\n- **Workflows & Nodes: kết hợp quy trình dạng node với giao diện dễ dùng, có thể chia sẻ quy trình**\n- **Quản lý Board & Gallery: lưu trữ ảnh kèm siêu dữ liệu để gọi lại prompt và thiết lập**\n- **Hỗ trợ nhiều mô hình: SD 1.5/2.0, SDXL, SD 3.5, Flux.1/Flux.2, Z-Image, Qwen Image, CogView 4...**\n- **Công cụ phóng to ảnh (upscaling), quản lý mô hình, embedding và phân đoạn đối tượng (SAM/SAM2)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker run --runtime=nvidia --gpus=all --publish 9090:9090 ghcr.io/invoke-ai/invokeai\n```\n\nYêu cầu: Máy tính có GPU tương thích; với Docker cần cấu hình Docker truy cập GPU (ảnh CUDA yêu cầu driver NVIDIA dòng R580 trở lên và GPU compute capability 7.5 trở lên). Trên macOS nên dùng launcher vì Docker không truy cập được GPU.\nBước 1: Cài đặt bằng launcher: tải Invoke Launcher từ trang phát hành github.com/invoke-ai/launcher/releases/latest rồi làm theo hướng dẫn trên màn hình.\nBước 2: Hoặc cài đặt bằng Docker (Linux/Windows có GPU NVIDIA): `docker run --runtime=nvidia --gpus=all --publish 9090:9090 ghcr.io/invoke-ai/invokeai`\nBước 3: Sau khi container khởi động, mở http://localhost:9090 trong trình duyệt, cài đặt mô hình và bắt đầu tạo ảnh.\nBước 4: Tự build bằng Docker Compose trong thư mục docker của repo: `cp .env.sample .env` rồi `docker compose up`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở giao diện web (mặc định cổng 9090 khi chạy Docker) và cài đặt mô hình qua Model Manager.\nBước 2: Nhập prompt để tạo ảnh, sau đó dùng Unified Canvas để inpaint/outpaint hoặc chỉnh sửa vùng ảnh.\nBước 3: Tạo workflow dạng node cho quy trình lặp lại và lưu ảnh vào các board trong gallery.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Ảnh minh họa một quán cà phê nhỏ ở phố cổ Hà Nội lúc chiều tà, phong cách màu nước\"\n- \"Mở rộng (outpaint) bức ảnh sản phẩm này sang hai bên để làm banner ngang\"\n- \"Thay nền ảnh chân dung bằng phông studio màu xám nhạt bằng công cụ inpaint\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "huggingface-diffusers",
+    "slug": "huggingface-diffusers",
+    "name": "Diffusers — Thư viện Python cho mô hình khuếch tán tạo ảnh, video",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "generative_ai_multimedia",
+    "categoryNameVi": "Sinh nội dung & Đa phương tiện (Generative AI)",
+    "categories": [
+      "generative_ai_multimedia",
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Sinh nội dung & Đa phương tiện (Generative AI)",
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/huggingface/diffusers",
+    "websiteUrl": "https://huggingface.co/docs/diffusers",
+    "authorName": "Hugging Face",
+    "license": "Mã nguồn mở (Apache 2.0); checkpoint theo giấy phép riêng",
+    "summaryVi": "Diffusers là thư viện Python của Hugging Face cho các mô hình khuếch tán (diffusion) tiền huấn luyện để tạo ảnh, âm thanh và cả cấu trúc 3D phân tử. Thư viện gồm ba thành phần: pipeline suy luận chỉ vài dòng mã, bộ lập lịch nhiễu (scheduler) có thể thay thế, và các mô hình tiền huấn luyện làm khối xây dựng.",
+    "purposeVi": "Giúp lập trình viên tích hợp tạo ảnh/video bằng AI vào ứng dụng hoặc tự huấn luyện, tinh chỉnh mô hình khuếch tán với hơn 30.000 checkpoint trên Hugging Face Hub.",
+    "featuresVi": [
+      "Pipeline khuếch tán hiện đại: text-to-image, image-to-image, inpainting, super resolution... chạy trong vài dòng mã",
+      "Scheduler thay thế được để cân bằng tốc độ và chất lượng",
+      "Mô hình tiền huấn luyện làm khối xây dựng (UNet2DModel, ...) để tự lắp hệ thống khuếch tán",
+      "Modular Diffusers, hướng dẫn tối ưu bộ nhớ/tốc độ và hướng dẫn huấn luyện",
+      "Tải trực tiếp checkpoint từ Hugging Face Hub bằng from_pretrained"
+    ],
+    "installGuideVi": "Yêu cầu: Python và PyTorch (khuyến nghị cài đặt trong môi trường ảo); GPU CUDA để chạy nhanh, có hướng dẫn riêng cho Apple Silicon.\nBước 1: Cài đặt bằng pip (gói chính thức): `pip install --upgrade diffusers[torch]`\nBước 2: Hoặc cài đặt bằng conda (cộng đồng duy trì): `conda install -c conda-forge diffusers`\nBước 3: Xem hướng dẫn PyTorch chính thức nếu cần cài đặt PyTorch phù hợp với GPU.",
+    "usageGuideVi": "Bước 1: Nạp pipeline bằng DiffusionPipeline.from_pretrained với mã checkpoint trên Hub (ví dụ stable-diffusion-v1-5/stable-diffusion-v1-5).\nBước 2: Chuyển pipeline sang GPU bằng pipeline.to(\"cuda\") và gọi pipeline với prompt để nhận ảnh.\nBước 3: Tham khảo tài liệu Loading, Optimization và Training để đổi scheduler, giảm bộ nhớ hoặc huấn luyện mô hình.",
+    "samplePromptsVi": [
+      "Viết đoạn mã Python dùng Diffusers tạo ảnh \"một chú sóc theo phong cách Picasso\" từ checkpoint Stable Diffusion v1.5",
+      "Đổi scheduler của pipeline sang DDPMScheduler và so sánh chất lượng ảnh",
+      "Hướng dẫn tôi tối ưu bộ nhớ khi chạy pipeline Diffusers trên GPU 8GB"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install --upgrade diffusers[torch]",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install --upgrade diffusers[torch]\"\n  ],\n  \"nguon\": \"https://github.com/huggingface/diffusers\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0, do Hugging Face phát triển và cập nhật thường xuyên",
+      "Truy cập hơn 30.000 checkpoint trên Hugging Face Hub",
+      "Hỗ trợ cả suy luận và huấn luyện, nhiều mô hình ảnh/video mới được tích hợp"
+    ],
+    "consVi": [
+      "Là thư viện lập trình, không có giao diện người dùng sẵn",
+      "Giấy phép của từng checkpoint khác nhau; cần tự kiểm tra trước khi dùng thương mại",
+      "Cần GPU để chạy với tốc độ hợp lý"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Diffusers — Thư viện Python cho mô hình khuếch tán tạo ảnh, video\n\n> Diffusers is the go-to library for state-of-the-art pretrained diffusion models for generating images, audio, and even 3D structures of molecules.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nDiffusers là thư viện Python của Hugging Face cho các mô hình khuếch tán (diffusion) tiền huấn luyện để tạo ảnh, âm thanh và cả cấu trúc 3D phân tử. Thư viện gồm ba thành phần: pipeline suy luận chỉ vài dòng mã, bộ lập lịch nhiễu (scheduler) có thể thay thế, và các mô hình tiền huấn luyện làm khối xây dựng.\n\nGiúp lập trình viên tích hợp tạo ảnh/video bằng AI vào ứng dụng hoặc tự huấn luyện, tinh chỉnh mô hình khuếch tán với hơn 30.000 checkpoint trên Hugging Face Hub.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Sinh nội dung & Đa phương tiện (Generative AI)\n- **Tác giả / Nhà phát triển:** Hugging Face\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0); checkpoint theo giấy phép riêng\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/huggingface/diffusers](https://github.com/huggingface/diffusers)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Pipeline khuếch tán hiện đại: text-to-image, image-to-image, inpainting, super resolution... chạy trong vài dòng mã**\n- **Scheduler thay thế được để cân bằng tốc độ và chất lượng**\n- **Mô hình tiền huấn luyện làm khối xây dựng (UNet2DModel, ...) để tự lắp hệ thống khuếch tán**\n- **Modular Diffusers, hướng dẫn tối ưu bộ nhớ/tốc độ và hướng dẫn huấn luyện**\n- **Tải trực tiếp checkpoint từ Hugging Face Hub bằng from_pretrained**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install --upgrade diffusers[torch]\n```\n\nYêu cầu: Python và PyTorch (khuyến nghị cài đặt trong môi trường ảo); GPU CUDA để chạy nhanh, có hướng dẫn riêng cho Apple Silicon.\nBước 1: Cài đặt bằng pip (gói chính thức): `pip install --upgrade diffusers[torch]`\nBước 2: Hoặc cài đặt bằng conda (cộng đồng duy trì): `conda install -c conda-forge diffusers`\nBước 3: Xem hướng dẫn PyTorch chính thức nếu cần cài đặt PyTorch phù hợp với GPU.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Nạp pipeline bằng DiffusionPipeline.from_pretrained với mã checkpoint trên Hub (ví dụ stable-diffusion-v1-5/stable-diffusion-v1-5).\nBước 2: Chuyển pipeline sang GPU bằng pipeline.to(\"cuda\") và gọi pipeline với prompt để nhận ảnh.\nBước 3: Tham khảo tài liệu Loading, Optimization và Training để đổi scheduler, giảm bộ nhớ hoặc huấn luyện mô hình.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết đoạn mã Python dùng Diffusers tạo ảnh \"một chú sóc theo phong cách Picasso\" từ checkpoint Stable Diffusion v1.5\"\n- \"Đổi scheduler của pipeline sang DDPMScheduler và so sánh chất lượng ảnh\"\n- \"Hướng dẫn tôi tối ưu bộ nhớ khi chạy pipeline Diffusers trên GPU 8GB\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "wan-video-wan2-2",
+    "slug": "wan-video-wan2-2",
+    "name": "Wan2.2 — Bộ mô hình tạo video mã nguồn mở từ văn bản và hình ảnh",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "generative_ai_multimedia",
+    "categoryNameVi": "Sinh nội dung & Đa phương tiện (Generative AI)",
+    "categories": [
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/Wan-Video/Wan2.2",
+    "websiteUrl": "https://wan.video",
+    "authorName": "Wan Team (Alibaba)",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Wan2.2 là bộ mô hình tạo video mã nguồn mở với kiến trúc Mixture-of-Experts (MoE), gồm các mô hình Text-to-Video, Image-to-Video (A14B), mô hình lai TI2V-5B tạo video 720P 24fps, Speech-to-Video (S2V-14B) và Animate-14B. Repo cung cấp mã suy luận, liên kết tải trọng số và đã tích hợp vào ComfyUI và Diffusers.",
+    "purposeVi": "Giúp nhà nghiên cứu và người làm nội dung tạo video chất lượng điện ảnh từ văn bản hoặc hình ảnh trên hạ tầng GPU của mình, kể cả card đồ họa phổ thông như RTX 4090 với mô hình TI2V-5B.",
+    "featuresVi": [
+      "Kiến trúc MoE: hai chuyên gia khử nhiễu (tổng 27B, 14B tham số hoạt động mỗi bước) giữ chi phí tính toán gần như không đổi",
+      "TI2V-5B: tạo video 720P 24fps từ văn bản hoặc ảnh, chạy được trên GPU 24GB như RTX 4090",
+      "Text-to-Video và Image-to-Video A14B hỗ trợ 480P và 720P",
+      "Speech-to-Video (S2V-14B) tạo video theo âm thanh, Animate-14B cho hoạt họa nhân vật",
+      "Suy luận đa GPU với FSDP + DeepSpeed Ulysses, mở rộng prompt qua Dashscope API hoặc mô hình Qwen cục bộ"
+    ],
+    "installGuideVi": "Yêu cầu: PyTorch 2.4.0 trở lên; GPU tối thiểu 24GB VRAM cho TI2V-5B (có offload), 80GB VRAM cho các lệnh A14B trên một GPU.\nBước 1: Tải mã nguồn: `git clone https://github.com/Wan-Video/Wan2.2.git` rồi `cd Wan2.2`\nBước 2: Cài đặt thư viện phụ thuộc: `pip install -r requirements.txt` (nếu flash_attn lỗi, cài đặt các gói khác trước rồi cài flash_attn sau cùng)\nBước 3: Cài đặt công cụ tải mô hình: `pip install \"huggingface_hub[cli]\"`\nBước 4: Tải trọng số, ví dụ mô hình T2V-A14B: `huggingface-cli download Wan-AI/Wan2.2-T2V-A14B --local-dir ./Wan2.2-T2V-A14B` (đổi tên mô hình thành Wan2.2-TI2V-5B, I2V-A14B... theo nhu cầu)",
+    "usageGuideVi": "Bước 1: Chọn tác vụ bằng --task (t2v-A14B, i2v-A14B, ti2v-5B, s2v-14B...) và độ phân giải bằng --size.\nBước 2: Với GPU ít bộ nhớ, dùng các tùy chọn --offload_model True, --convert_model_dtype và --t5_cpu.\nBước 3: Thêm --image để tạo video từ ảnh với TI2V-5B; dùng torchrun để chạy đa GPU.",
+    "samplePromptsVi": [
+      "Hai chú mèo nhân hóa mặc đồ boxing, đeo găng sáng màu đấu nhau trên sân khấu có đèn rọi",
+      "Tạo video 720P từ ảnh chú mèo trắng đeo kính râm ngồi trên ván lướt sóng ở bãi biển",
+      "Cảnh quay điện ảnh: thuyền rồng trôi trên vịnh Hạ Long lúc bình minh, ánh sáng vàng ấm"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "python generate.py --task ti2v-5B --size 1280*704 --ckpt_dir ./Wan2.2-TI2V-5B --offload_model True --convert_model_dtype --t5_cpu --prompt \"Two anthropomorphic cats in comfy boxing gear and bright gloves fight intensely on a spotlighted stage\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"python generate.py --task ti2v-5B --size 1280*704 --ckpt_dir ./Wan2.2-TI2V-5B --offload_model True --convert_model_dtype --t5_cpu --prompt \\\"Two anthropomorphic cats in comfy boxing gear and bright gloves fight intensely on a spotlighted stage\\\"\"\n  ],\n  \"nguon\": \"https://github.com/Wan-Video/Wan2.2\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn và mô hình theo Apache 2.0, README nêu không giữ quyền với nội dung tạo ra",
+      "Có mô hình 5B chạy được trên GPU phổ thông 24GB",
+      "Đã tích hợp sẵn vào ComfyUI và Diffusers"
+    ],
+    "consVi": [
+      "Mô hình A14B cần GPU tối thiểu 80GB VRAM khi chạy một GPU",
+      "Mở rộng prompt qua Dashscope cần API key của Alibaba Cloud",
+      "README yêu cầu không dùng để chia sẻ nội dung vi phạm pháp luật, gây hại hoặc phát tán thông tin sai lệch"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Wan2.2 — Bộ mô hình tạo video mã nguồn mở từ văn bản và hình ảnh\n\n> Wan: Open and Advanced Large-Scale Video Generative Models\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nWan2.2 là bộ mô hình tạo video mã nguồn mở với kiến trúc Mixture-of-Experts (MoE), gồm các mô hình Text-to-Video, Image-to-Video (A14B), mô hình lai TI2V-5B tạo video 720P 24fps, Speech-to-Video (S2V-14B) và Animate-14B. Repo cung cấp mã suy luận, liên kết tải trọng số và đã tích hợp vào ComfyUI và Diffusers.\n\nGiúp nhà nghiên cứu và người làm nội dung tạo video chất lượng điện ảnh từ văn bản hoặc hình ảnh trên hạ tầng GPU của mình, kể cả card đồ họa phổ thông như RTX 4090 với mô hình TI2V-5B.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Sinh nội dung & Đa phương tiện (Generative AI)\n- **Tác giả / Nhà phát triển:** Wan Team (Alibaba)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/Wan-Video/Wan2.2](https://github.com/Wan-Video/Wan2.2)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Kiến trúc MoE: hai chuyên gia khử nhiễu (tổng 27B, 14B tham số hoạt động mỗi bước) giữ chi phí tính toán gần như không đổi**\n- **TI2V-5B: tạo video 720P 24fps từ văn bản hoặc ảnh, chạy được trên GPU 24GB như RTX 4090**\n- **Text-to-Video và Image-to-Video A14B hỗ trợ 480P và 720P**\n- **Speech-to-Video (S2V-14B) tạo video theo âm thanh, Animate-14B cho hoạt họa nhân vật**\n- **Suy luận đa GPU với FSDP + DeepSpeed Ulysses, mở rộng prompt qua Dashscope API hoặc mô hình Qwen cục bộ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npython generate.py --task ti2v-5B --size 1280*704 --ckpt_dir ./Wan2.2-TI2V-5B --offload_model True --convert_model_dtype --t5_cpu --prompt \"Two anthropomorphic cats in comfy boxing gear and bright gloves fight intensely on a spotlighted stage\"\n```\n\nYêu cầu: PyTorch 2.4.0 trở lên; GPU tối thiểu 24GB VRAM cho TI2V-5B (có offload), 80GB VRAM cho các lệnh A14B trên một GPU.\nBước 1: Tải mã nguồn: `git clone https://github.com/Wan-Video/Wan2.2.git` rồi `cd Wan2.2`\nBước 2: Cài đặt thư viện phụ thuộc: `pip install -r requirements.txt` (nếu flash_attn lỗi, cài đặt các gói khác trước rồi cài flash_attn sau cùng)\nBước 3: Cài đặt công cụ tải mô hình: `pip install \"huggingface_hub[cli]\"`\nBước 4: Tải trọng số, ví dụ mô hình T2V-A14B: `huggingface-cli download Wan-AI/Wan2.2-T2V-A14B --local-dir ./Wan2.2-T2V-A14B` (đổi tên mô hình thành Wan2.2-TI2V-5B, I2V-A14B... theo nhu cầu)\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn tác vụ bằng --task (t2v-A14B, i2v-A14B, ti2v-5B, s2v-14B...) và độ phân giải bằng --size.\nBước 2: Với GPU ít bộ nhớ, dùng các tùy chọn --offload_model True, --convert_model_dtype và --t5_cpu.\nBước 3: Thêm --image để tạo video từ ảnh với TI2V-5B; dùng torchrun để chạy đa GPU.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hai chú mèo nhân hóa mặc đồ boxing, đeo găng sáng màu đấu nhau trên sân khấu có đèn rọi\"\n- \"Tạo video 720P từ ảnh chú mèo trắng đeo kính râm ngồi trên ván lướt sóng ở bãi biển\"\n- \"Cảnh quay điện ảnh: thuyền rồng trôi trên vịnh Hạ Long lúc bình minh, ánh sáng vàng ấm\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "lightricks-ltx-2",
+    "slug": "lightricks-ltx-2",
+    "name": "LTX-2 — Mô hình tạo video kèm âm thanh đồng bộ của Lightricks",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "generative_ai_multimedia",
+    "categoryNameVi": "Sinh nội dung & Đa phương tiện (Generative AI)",
+    "categories": [
+      "generative_ai_multimedia",
+      "speech_voice"
+    ],
+    "categoryNamesVi": [
+      "Sinh nội dung & Đa phương tiện (Generative AI)",
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/Lightricks/LTX-2",
+    "websiteUrl": "https://ltx.io",
+    "authorName": "Lightricks",
+    "license": "Giấy phép cộng đồng LTX (miễn phí dưới 10 triệu USD doanh thu/năm, trên mức đó cần giấy phép thương mại)",
+    "summaryVi": "LTX-2 là mô hình nền tảng tạo video kèm âm thanh đồng bộ dựa trên kiến trúc DiT của Lightricks. Repo dạng monorepo gồm ltx-core, ltx-pipelines (text/image-to-video, audio-to-video, video-to-video, HDR...) và ltx-trainer để tinh chỉnh LoRA; mô hình khuyến nghị hiện tại là LTX-2.5.",
+    "purposeVi": "Giúp nhà làm phim, người làm nội dung và nhà phát triển tạo video có âm thanh từ văn bản, ảnh hoặc âm thanh, chỉnh sửa đoạn video có sẵn và tinh chỉnh mô hình cho phong cách riêng.",
+    "featuresVi": [
+      "Tạo video và âm thanh đồng bộ trong một mô hình",
+      "Nhiều pipeline: DistilledPipeline (nhanh), DFR (chất lượng sản xuất, hỗ trợ 4K), TI2Vid hai giai đoạn, A2Vid (audio-to-video), Retake, ICLoRA video-to-video",
+      "Hỗ trợ HDR/EXR với đầu ra BT.2020/HLG",
+      "Lượng tử hóa FP8 (--quantization fp8-cast) và offload CPU/đĩa khi thiếu VRAM",
+      "ltx-trainer: huấn luyện LoRA, tinh chỉnh toàn phần và IC-LoRA; tích hợp ComfyUI qua ComfyUI-LTXVideo"
+    ],
+    "installGuideVi": "Yêu cầu: Công cụ uv; GPU CUDA (backend natten chỉ cho Linux + CUDA); tài khoản Hugging Face với token Read và chấp nhận điều khoản mô hình; khoảng 66 GiB dung lượng cho bộ trọng số LTX-2.5.\nBước 1: Tải mã nguồn: `git clone https://github.com/Lightricks/LTX-2.git` rồi `cd LTX-2`\nBước 2: Cài đặt thư viện phụ thuộc: `uv sync --extra natten`\nBước 3: Đăng nhập Hugging Face: `hf auth login` (chấp nhận điều khoản mô hình trên Hugging Face nếu gặp lỗi 401/403)\nBước 4: Tải các tệp mô hình LTX-2.5 (transformer distilled, text encoder, video VAE, audio VAE, spatial upscaler) bằng lệnh hf download như hướng dẫn trong README, tổng khoảng 66 GiB.",
+    "usageGuideVi": "Bước 1: Chạy DistilledPipeline với đường dẫn các tệp mô hình, số khung hình (--num-frames), seed, --output-path và --prompt.\nBước 2: Dùng DFR pipeline (ltx_pipelines.dfr_pipeline) với detailing IC-LoRA khi cần chất lượng sản xuất.\nBước 3: Khi thiếu bộ nhớ GPU, thêm --quantization fp8-cast --offload cpu hoặc disk.",
+    "samplePromptsVi": [
+      "Cận cảnh một người đàn ông nhìn thẳng vào máy quay và nói với giọng trầm: 'Thật tuyệt', máy quay đứng yên, hậu cảnh mờ",
+      "Tạo video từ ảnh phong cảnh ruộng bậc thang, máy quay lia chậm từ trái sang phải, có tiếng gió và chim hót",
+      "Tạo lại đoạn từ giây thứ 3 đến giây thứ 5 của video này với ánh sáng hoàng hôn"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "uv run python -m ltx_pipelines.distilled",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uv run python -m ltx_pipelines.distilled\"\n  ],\n  \"nguon\": \"https://github.com/Lightricks/LTX-2\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "prosVi": [
+      "Tạo cả video và âm thanh đồng bộ trong một mô hình",
+      "Có pipeline chưng cất nhanh và pipeline chất lượng sản xuất đến 4K",
+      "Kèm bộ công cụ huấn luyện LoRA và tích hợp ComfyUI"
+    ],
+    "consVi": [
+      "Không phải giấy phép OSI: tổ chức có doanh thu từ 10 triệu USD/năm phải mua giấy phép thương mại",
+      "Cần tài khoản Hugging Face và chấp nhận điều khoản mô hình (gated)",
+      "Bộ trọng số khoảng 66 GiB, yêu cầu GPU mạnh; backend natten chỉ hỗ trợ Linux + CUDA"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# LTX-2 — Mô hình tạo video kèm âm thanh đồng bộ của Lightricks\n\n> LTX-2 is the first DiT-based audio-video foundation model that contains all core capabilities of modern video generation in one model\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nLTX-2 là mô hình nền tảng tạo video kèm âm thanh đồng bộ dựa trên kiến trúc DiT của Lightricks. Repo dạng monorepo gồm ltx-core, ltx-pipelines (text/image-to-video, audio-to-video, video-to-video, HDR...) và ltx-trainer để tinh chỉnh LoRA; mô hình khuyến nghị hiện tại là LTX-2.5.\n\nGiúp nhà làm phim, người làm nội dung và nhà phát triển tạo video có âm thanh từ văn bản, ảnh hoặc âm thanh, chỉnh sửa đoạn video có sẵn và tinh chỉnh mô hình cho phong cách riêng.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Sinh nội dung & Đa phương tiện (Generative AI)\n- **Tác giả / Nhà phát triển:** Lightricks\n- **Giấy phép bản quyền:** Giấy phép cộng đồng LTX (miễn phí dưới 10 triệu USD doanh thu/năm, trên mức đó cần giấy phép thương mại)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/Lightricks/LTX-2](https://github.com/Lightricks/LTX-2)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tạo video và âm thanh đồng bộ trong một mô hình**\n- **Nhiều pipeline: DistilledPipeline (nhanh), DFR (chất lượng sản xuất, hỗ trợ 4K), TI2Vid hai giai đoạn, A2Vid (audio-to-video), Retake, ICLoRA video-to-video**\n- **Hỗ trợ HDR/EXR với đầu ra BT.2020/HLG**\n- **Lượng tử hóa FP8 (--quantization fp8-cast) và offload CPU/đĩa khi thiếu VRAM**\n- **ltx-trainer: huấn luyện LoRA, tinh chỉnh toàn phần và IC-LoRA; tích hợp ComfyUI qua ComfyUI-LTXVideo**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuv run python -m ltx_pipelines.distilled\n```\n\nYêu cầu: Công cụ uv; GPU CUDA (backend natten chỉ cho Linux + CUDA); tài khoản Hugging Face với token Read và chấp nhận điều khoản mô hình; khoảng 66 GiB dung lượng cho bộ trọng số LTX-2.5.\nBước 1: Tải mã nguồn: `git clone https://github.com/Lightricks/LTX-2.git` rồi `cd LTX-2`\nBước 2: Cài đặt thư viện phụ thuộc: `uv sync --extra natten`\nBước 3: Đăng nhập Hugging Face: `hf auth login` (chấp nhận điều khoản mô hình trên Hugging Face nếu gặp lỗi 401/403)\nBước 4: Tải các tệp mô hình LTX-2.5 (transformer distilled, text encoder, video VAE, audio VAE, spatial upscaler) bằng lệnh hf download như hướng dẫn trong README, tổng khoảng 66 GiB.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy DistilledPipeline với đường dẫn các tệp mô hình, số khung hình (--num-frames), seed, --output-path và --prompt.\nBước 2: Dùng DFR pipeline (ltx_pipelines.dfr_pipeline) với detailing IC-LoRA khi cần chất lượng sản xuất.\nBước 3: Khi thiếu bộ nhớ GPU, thêm --quantization fp8-cast --offload cpu hoặc disk.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Cận cảnh một người đàn ông nhìn thẳng vào máy quay và nói với giọng trầm: 'Thật tuyệt', máy quay đứng yên, hậu cảnh mờ\"\n- \"Tạo video từ ảnh phong cảnh ruộng bậc thang, máy quay lia chậm từ trái sang phải, có tiếng gió và chim hót\"\n- \"Tạo lại đoạn từ giây thứ 3 đến giây thứ 5 của video này với ánh sáng hoàng hôn\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "leejet-stable-diffusion-cpp",
+    "slug": "leejet-stable-diffusion-cpp",
+    "name": "stable-diffusion.cpp — Chạy mô hình tạo ảnh, video bằng C/C++ thuần",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "generative_ai_multimedia",
+    "categoryNameVi": "Sinh nội dung & Đa phương tiện (Generative AI)",
+    "categories": [
+      "generative_ai_multimedia",
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Sinh nội dung & Đa phương tiện (Generative AI)",
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/leejet/stable-diffusion.cpp",
+    "websiteUrl": "",
+    "authorName": "leejet",
+    "license": "Mã nguồn mở (MIT); trọng số mô hình theo giấy phép riêng",
+    "summaryVi": "stable-diffusion.cpp là công cụ suy luận mô hình khuếch tán viết thuần C/C++ dựa trên ggml (giống llama.cpp), không phụ thuộc thư viện ngoài. Công cụ chạy nhiều mô hình ảnh (SD1.x, SDXL, SD3.5, FLUX, Qwen Image, Z-Image...), mô hình chỉnh sửa ảnh và mô hình video (Wan2.1/2.2, LTX-2.x, HunyuanVideo 1.5), kèm máy chủ có giao diện web nhúng.",
+    "purposeVi": "Giúp người dùng chạy tạo ảnh/video bằng AI gọn nhẹ trên CPU hoặc nhiều loại GPU (CUDA, Vulkan, Metal, OpenCL, SYCL), kể cả máy cấu hình thấp và Android, với trọng số định dạng GGUF lượng tử hóa.",
+    "featuresVi": [
+      "Thuần C/C++ dựa trên ggml, siêu nhẹ, không phụ thuộc ngoài",
+      "Hỗ trợ mô hình ảnh, chỉnh sửa ảnh (FLUX.1-Kontext, Qwen Image Edit...) và video (Wan2.1/2.2, LTX-2.3/2.5, HunyuanVideo 1.5)",
+      "Nhiều backend: CPU (AVX/AVX2/AVX512), CUDA, Vulkan, Metal, OpenCL, SYCL",
+      "Đọc .ckpt/.safetensors/.gguf, chế độ chuyển đổi sang .gguf, LoRA, ControlNet, PhotoMaker, ESRGAN, TAESD",
+      "sd-server có giao diện web nhúng và API tương thích (/v1, /sdapi/v1)"
+    ],
+    "installGuideVi": "Yêu cầu: Bản dựng sẵn từ trang Releases hoặc tự build bằng CMake; bản CUDA cần CUDA Toolkit và khuyến nghị tối thiểu 4GB VRAM; có thể build bản chỉ dùng CPU.\nBước 1: Cách nhanh nhất: tải bản dựng sẵn (sd-cli, sd-server) từ trang Releases của repo.\nBước 2: Hoặc tự build: `git clone --recursive https://github.com/leejet/stable-diffusion.cpp` rồi `cd stable-diffusion.cpp`\nBước 3: Cài đặt bản CUDA: `mkdir build && cd build`, `cmake .. -DSD_CUDA=ON`, `cmake --build . --config Release` (bỏ -DSD_CUDA=ON để build bản chỉ dùng CPU)\nBước 4: Tải trọng số mô hình, ví dụ Stable Diffusion v1.5: `curl -L -O https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors`",
+    "usageGuideVi": "Bước 1: Tạo ảnh bằng một lệnh: chỉ định mô hình với -m và prompt với -p.\nBước 2: Chạy giao diện web: `sd-server --model-dir ./models`, sau đó mở http://127.0.0.1:1234/ để chọn mô hình và tạo ảnh.\nBước 3: Xem tài liệu cli và performance để giảm VRAM/RAM, dùng LoRA hoặc lượng tử hóa GGUF.",
+    "samplePromptsVi": [
+      "a lovely cat",
+      "Tạo ảnh phong cảnh núi Fansipan phủ mây bằng mô hình FLUX ở định dạng GGUF trên máy không có GPU rời",
+      "Tạo video ngắn từ ảnh bằng mô hình Wan2.2 qua sd-cli"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "./bin/sd-cli -m ../models/v1-5-pruned-emaonly.safetensors -p \"a lovely cat\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"./bin/sd-cli -m ../models/v1-5-pruned-emaonly.safetensors -p \\\"a lovely cat\\\"\"\n  ],\n  \"nguon\": \"https://github.com/leejet/stable-diffusion.cpp\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, nhẹ, không phụ thuộc Python",
+      "Chạy được trên CPU và nhiều loại GPU, cả Linux, macOS, Windows, Android (Termux)",
+      "Hỗ trợ mô hình mới rất nhanh (Day-0/Day-1), có máy chủ web và API tương thích"
+    ],
+    "consVi": [
+      "README cảnh báo dự án đang phát triển tích cực, API và tùy chọn dòng lệnh có thể thay đổi thường xuyên",
+      "Trọng số mô hình tải riêng và theo giấy phép của từng nhà phát triển",
+      "Tự build cần CMake và bộ công cụ GPU tương ứng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# stable-diffusion.cpp — Chạy mô hình tạo ảnh, video bằng C/C++ thuần\n\n> Diffusion model(SD,Flux,Wan,...) inference in pure C/C++\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nstable-diffusion.cpp là công cụ suy luận mô hình khuếch tán viết thuần C/C++ dựa trên ggml (giống llama.cpp), không phụ thuộc thư viện ngoài. Công cụ chạy nhiều mô hình ảnh (SD1.x, SDXL, SD3.5, FLUX, Qwen Image, Z-Image...), mô hình chỉnh sửa ảnh và mô hình video (Wan2.1/2.2, LTX-2.x, HunyuanVideo 1.5), kèm máy chủ có giao diện web nhúng.\n\nGiúp người dùng chạy tạo ảnh/video bằng AI gọn nhẹ trên CPU hoặc nhiều loại GPU (CUDA, Vulkan, Metal, OpenCL, SYCL), kể cả máy cấu hình thấp và Android, với trọng số định dạng GGUF lượng tử hóa.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Sinh nội dung & Đa phương tiện (Generative AI)\n- **Tác giả / Nhà phát triển:** leejet\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT); trọng số mô hình theo giấy phép riêng\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/leejet/stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Thuần C/C++ dựa trên ggml, siêu nhẹ, không phụ thuộc ngoài**\n- **Hỗ trợ mô hình ảnh, chỉnh sửa ảnh (FLUX.1-Kontext, Qwen Image Edit...) và video (Wan2.1/2.2, LTX-2.3/2.5, HunyuanVideo 1.5)**\n- **Nhiều backend: CPU (AVX/AVX2/AVX512), CUDA, Vulkan, Metal, OpenCL, SYCL**\n- **Đọc .ckpt/.safetensors/.gguf, chế độ chuyển đổi sang .gguf, LoRA, ControlNet, PhotoMaker, ESRGAN, TAESD**\n- **sd-server có giao diện web nhúng và API tương thích (/v1, /sdapi/v1)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n./bin/sd-cli -m ../models/v1-5-pruned-emaonly.safetensors -p \"a lovely cat\"\n```\n\nYêu cầu: Bản dựng sẵn từ trang Releases hoặc tự build bằng CMake; bản CUDA cần CUDA Toolkit và khuyến nghị tối thiểu 4GB VRAM; có thể build bản chỉ dùng CPU.\nBước 1: Cách nhanh nhất: tải bản dựng sẵn (sd-cli, sd-server) từ trang Releases của repo.\nBước 2: Hoặc tự build: `git clone --recursive https://github.com/leejet/stable-diffusion.cpp` rồi `cd stable-diffusion.cpp`\nBước 3: Cài đặt bản CUDA: `mkdir build && cd build`, `cmake .. -DSD_CUDA=ON`, `cmake --build . --config Release` (bỏ -DSD_CUDA=ON để build bản chỉ dùng CPU)\nBước 4: Tải trọng số mô hình, ví dụ Stable Diffusion v1.5: `curl -L -O https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo ảnh bằng một lệnh: chỉ định mô hình với -m và prompt với -p.\nBước 2: Chạy giao diện web: `sd-server --model-dir ./models`, sau đó mở http://127.0.0.1:1234/ để chọn mô hình và tạo ảnh.\nBước 3: Xem tài liệu cli và performance để giảm VRAM/RAM, dùng LoRA hoặc lượng tử hóa GGUF.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"a lovely cat\"\n- \"Tạo ảnh phong cảnh núi Fansipan phủ mây bằng mô hình FLUX ở định dạng GGUF trên máy không có GPU rời\"\n- \"Tạo video ngắn từ ảnh bằng mô hình Wan2.2 qua sd-cli\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "upscayl-upscayl",
+    "slug": "upscayl-upscayl",
+    "name": "Upscayl — Ứng dụng phóng to, làm nét ảnh bằng AI miễn phí",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "generative_ai_multimedia",
+    "categoryNameVi": "Sinh nội dung & Đa phương tiện (Generative AI)",
+    "categories": [
+      "generative_ai_multimedia",
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Sinh nội dung & Đa phương tiện (Generative AI)",
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/upscayl/upscayl",
+    "websiteUrl": "https://upscayl.org",
+    "authorName": "Upscayl (Nayam Amarshe và TGS963)",
+    "license": "Mã nguồn mở (AGPL-3.0)",
+    "summaryVi": "Upscayl là ứng dụng máy tính miễn phí, mã nguồn mở để phóng to và làm nét ảnh độ phân giải thấp bằng AI. Ứng dụng dùng Real-ESRGAN và Vulkan (backend upscayl-ncnn), có xử lý hàng loạt và hỗ trợ thêm mô hình tùy chỉnh.",
+    "purposeVi": "Giúp người dùng phổ thông, nhiếp ảnh gia và người làm nội dung tăng độ phân giải ảnh cũ, ảnh nhỏ hoặc bị vỡ hạt mà không cần viết mã.",
+    "featuresVi": [
+      "Phóng to và làm nét ảnh bằng AI dựa trên Real-ESRGAN",
+      "Xử lý hàng loạt (Batch Upscayl) nhiều ảnh",
+      "Nhiều mô hình kèm sẵn (High Fidelity, Remacri, Ultrasharp...) và hỗ trợ mô hình tùy chỉnh",
+      "Chọn GPU theo GPU ID",
+      "Có bản cho Linux, macOS và Windows; công cụ dòng lệnh riêng là upscayl-ncnn"
+    ],
+    "installGuideVi": "Yêu cầu: GPU tương thích Vulkan (nhiều GPU tích hợp không hoạt động); macOS 12 trở lên hoặc Windows 10 trở lên; Linux qua Flathub, AppImage, AUR, Snap, DEB/RPM.\nBước 1: Cài đặt trên Windows/macOS/Linux: tải tệp cài đặt (.exe, .dmg, .AppImage...) từ trang Releases hoặc upscayl.org.\nBước 2: Cài đặt trên macOS bằng Homebrew: `brew install --cask upscayl`\nBước 3: Chạy từ mã nguồn (dành cho nhà phát triển): `git clone https://github.com/upscayl/upscayl`, `cd upscayl`, `npm install` rồi `npm run start`",
+    "usageGuideVi": "Bước 1: Mở ứng dụng, chọn ảnh hoặc thư mục ảnh cần phóng to.\nBước 2: Chọn mô hình AI và tỉ lệ phóng to, rồi bấm Upscayl để xử lý.\nBước 3: Xem hướng dẫn tại docs.upscayl.org hoặc tải thêm mô hình từ upscayl/custom-models.",
+    "samplePromptsVi": [
+      "Phóng to ảnh chân dung cũ độ phân giải thấp lên gấp 4 lần",
+      "Phóng to hàng loạt ảnh sản phẩm trong một thư mục để in khổ lớn",
+      "Làm nét ảnh minh họa bị vỡ hạt bằng mô hình Ultrasharp"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "brew install --cask upscayl",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"brew install --cask upscayl\"\n  ],\n  \"nguon\": \"https://github.com/upscayl/upscayl\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Miễn phí, mã nguồn mở, có giao diện đồ họa dễ dùng",
+      "Đa nền tảng với nhiều kênh cài đặt (Flathub, Snap, Homebrew, App Store...)",
+      "Hỗ trợ xử lý hàng loạt và mô hình tùy chỉnh"
+    ],
+    "consVi": [
+      "Bắt buộc GPU hỗ trợ Vulkan; phần lớn GPU tích hợp và CPU không chạy được",
+      "Không khử mờ hoặc chỉnh lấy nét cho ảnh bị mất nét hoàn toàn (theo FAQ)",
+      "Giấy phép AGPL-3.0 yêu cầu công bố mã nguồn khi phân phối hoặc cung cấp bản sửa đổi qua mạng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Upscayl — Ứng dụng phóng to, làm nét ảnh bằng AI miễn phí\n\n> Free and Open Source AI Image Upscaler\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nUpscayl là ứng dụng máy tính miễn phí, mã nguồn mở để phóng to và làm nét ảnh độ phân giải thấp bằng AI. Ứng dụng dùng Real-ESRGAN và Vulkan (backend upscayl-ncnn), có xử lý hàng loạt và hỗ trợ thêm mô hình tùy chỉnh.\n\nGiúp người dùng phổ thông, nhiếp ảnh gia và người làm nội dung tăng độ phân giải ảnh cũ, ảnh nhỏ hoặc bị vỡ hạt mà không cần viết mã.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Sinh nội dung & Đa phương tiện (Generative AI)\n- **Tác giả / Nhà phát triển:** Upscayl (Nayam Amarshe và TGS963)\n- **Giấy phép bản quyền:** Mã nguồn mở (AGPL-3.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/upscayl/upscayl](https://github.com/upscayl/upscayl)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Phóng to và làm nét ảnh bằng AI dựa trên Real-ESRGAN**\n- **Xử lý hàng loạt (Batch Upscayl) nhiều ảnh**\n- **Nhiều mô hình kèm sẵn (High Fidelity, Remacri, Ultrasharp...) và hỗ trợ mô hình tùy chỉnh**\n- **Chọn GPU theo GPU ID**\n- **Có bản cho Linux, macOS và Windows; công cụ dòng lệnh riêng là upscayl-ncnn**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nbrew install --cask upscayl\n```\n\nYêu cầu: GPU tương thích Vulkan (nhiều GPU tích hợp không hoạt động); macOS 12 trở lên hoặc Windows 10 trở lên; Linux qua Flathub, AppImage, AUR, Snap, DEB/RPM.\nBước 1: Cài đặt trên Windows/macOS/Linux: tải tệp cài đặt (.exe, .dmg, .AppImage...) từ trang Releases hoặc upscayl.org.\nBước 2: Cài đặt trên macOS bằng Homebrew: `brew install --cask upscayl`\nBước 3: Chạy từ mã nguồn (dành cho nhà phát triển): `git clone https://github.com/upscayl/upscayl`, `cd upscayl`, `npm install` rồi `npm run start`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở ứng dụng, chọn ảnh hoặc thư mục ảnh cần phóng to.\nBước 2: Chọn mô hình AI và tỉ lệ phóng to, rồi bấm Upscayl để xử lý.\nBước 3: Xem hướng dẫn tại docs.upscayl.org hoặc tải thêm mô hình từ upscayl/custom-models.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Phóng to ảnh chân dung cũ độ phân giải thấp lên gấp 4 lần\"\n- \"Phóng to hàng loạt ảnh sản phẩm trong một thư mục để in khổ lớn\"\n- \"Làm nét ảnh minh họa bị vỡ hạt bằng mô hình Ultrasharp\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "tencent-hunyuan-hunyuanvideo-1-5",
+    "slug": "tencent-hunyuan-hunyuanvideo-1-5",
+    "name": "HunyuanVideo-1.5 — Mô hình tạo video 8,3B tham số của Tencent",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "generative_ai_multimedia",
+    "categoryNameVi": "Sinh nội dung & Đa phương tiện (Generative AI)",
+    "categories": [
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5",
+    "websiteUrl": "https://huggingface.co/tencent/HunyuanVideo-1.5",
+    "authorName": "Tencent Hunyuan",
+    "license": "Giấy phép cộng đồng Tencent Hunyuan (không áp dụng tại EU, Anh, Hàn Quốc; hạn chế trên 100 triệu MAU)",
+    "summaryVi": "HunyuanVideo-1.5 là mô hình tạo video của Tencent với 8,3 tỷ tham số (Diffusion Transformer kết hợp 3D causal VAE), hỗ trợ text-to-video và image-to-video ở 480p/720p cùng mạng siêu phân giải nâng lên 1080p. Repo cung cấp mã suy luận, mã huấn luyện, nút ComfyUI và hướng dẫn dùng qua Diffusers.",
+    "purposeVi": "Giúp nhà phát triển và người làm nội dung tạo video chất lượng cao trên GPU phổ thông (tối thiểu 14GB khi bật offload) thay vì phải dùng hạ tầng trung tâm dữ liệu.",
+    "featuresVi": [
+      "Kiến trúc gọn nhẹ: DiT 8,3B tham số, VAE nén 16× không gian và 4× thời gian, cơ chế SSTA tăng tốc video dài",
+      "Text-to-video và image-to-video ở 480p và 720p, có bản chưng cất CFG/step để tăng tốc",
+      "Siêu phân giải video vài bước lên 720p/1080p",
+      "Tăng tốc bằng SageAttention, sparse attention, feature cache (deepcache, teacache, taylorcache)",
+      "Viết lại prompt tự động qua máy chủ vLLM; có mã huấn luyện và tích hợp ComfyUI, Diffusers"
+    ],
+    "installGuideVi": "Yêu cầu: Linux, Python 3.10 trở lên, GPU NVIDIA hỗ trợ CUDA với tối thiểu 14GB bộ nhớ (khi bật offload); cần tải thêm text encoder Qwen2.5-VL-7B-Instruct và byT5.\nBước 1: Tải mã nguồn: `git clone https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5.git` rồi `cd HunyuanVideo-1.5`\nBước 2: Cài đặt thư viện phụ thuộc: `pip install -r requirements.txt`\nBước 3: Cài đặt công cụ tải mô hình: `pip install -U \"huggingface_hub[cli]\"`\nBước 4: Tải trọng số: `hf download tencent/HunyuanVideo-1.5 --local-dir ./ckpts`, sau đó tải text encoder theo checkpoints-download.md (ví dụ `hf download Qwen/Qwen2.5-VL-7B-Instruct --local-dir ./ckpts/text_encoder/llm`)\nBước 5: Tùy chọn: cài đặt thư viện attention (Flash Attention, flex-block-attn, SageAttention) để tăng tốc.",
+    "usageGuideVi": "Bước 1: Đặt các biến PROMPT, IMAGE_PATH (none cho text-to-video), RESOLUTION, ASPECT_RATIO, MODEL_PATH theo ví dụ trong README.\nBước 2: Chạy generate.py qua torchrun với các tùy chọn --cfg_distilled, --enable_step_distill, --sr để cân bằng tốc độ và chất lượng.\nBước 3: Nếu không cấu hình máy chủ vLLM để viết lại prompt, pipeline vẫn chạy mà không viết lại; có thể tắt bằng --rewrite false.",
+    "samplePromptsVi": [
+      "Một cô gái cầm tờ giấy có dòng chữ \"Hello, world!\"",
+      "Tạo video 720p từ ảnh chụp phố đèn lồng Hội An, máy quay tiến chậm về phía trước",
+      "Cảnh đồng lúa chín vàng lay động trong gió, góc quay flycam từ trên cao"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "torchrun --nproc_per_node=$N_INFERENCE_GPU generate.py",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"torchrun --nproc_per_node=$N_INFERENCE_GPU generate.py\"\n  ],\n  \"nguon\": \"https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "prosVi": [
+      "Chạy được trên GPU phổ thông từ 14GB khi bật offload",
+      "Có bản chưng cất và nhiều kỹ thuật tăng tốc, siêu phân giải lên 1080p",
+      "Có mã huấn luyện, nút ComfyUI và hỗ trợ Diffusers"
+    ],
+    "consVi": [
+      "Không phải giấy phép mã nguồn mở OSI: cấm sử dụng tại EU, Anh và Hàn Quốc",
+      "Sản phẩm trên 100 triệu người dùng hoạt động hằng tháng phải xin giấy phép riêng từ Tencent",
+      "Chỉ hỗ trợ Linux và GPU NVIDIA; viết lại prompt cần tự triển khai máy chủ vLLM"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# HunyuanVideo-1.5 — Mô hình tạo video 8,3B tham số của Tencent\n\n> HunyuanVideo-1.5 is a video generation model that delivers top-tier quality with only 8.3B parameters, significantly lowering the barrier to usage.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nHunyuanVideo-1.5 là mô hình tạo video của Tencent với 8,3 tỷ tham số (Diffusion Transformer kết hợp 3D causal VAE), hỗ trợ text-to-video và image-to-video ở 480p/720p cùng mạng siêu phân giải nâng lên 1080p. Repo cung cấp mã suy luận, mã huấn luyện, nút ComfyUI và hướng dẫn dùng qua Diffusers.\n\nGiúp nhà phát triển và người làm nội dung tạo video chất lượng cao trên GPU phổ thông (tối thiểu 14GB khi bật offload) thay vì phải dùng hạ tầng trung tâm dữ liệu.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Sinh nội dung & Đa phương tiện (Generative AI)\n- **Tác giả / Nhà phát triển:** Tencent Hunyuan\n- **Giấy phép bản quyền:** Giấy phép cộng đồng Tencent Hunyuan (không áp dụng tại EU, Anh, Hàn Quốc; hạn chế trên 100 triệu MAU)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5](https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Kiến trúc gọn nhẹ: DiT 8,3B tham số, VAE nén 16× không gian và 4× thời gian, cơ chế SSTA tăng tốc video dài**\n- **Text-to-video và image-to-video ở 480p và 720p, có bản chưng cất CFG/step để tăng tốc**\n- **Siêu phân giải video vài bước lên 720p/1080p**\n- **Tăng tốc bằng SageAttention, sparse attention, feature cache (deepcache, teacache, taylorcache)**\n- **Viết lại prompt tự động qua máy chủ vLLM; có mã huấn luyện và tích hợp ComfyUI, Diffusers**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ntorchrun --nproc_per_node=$N_INFERENCE_GPU generate.py\n```\n\nYêu cầu: Linux, Python 3.10 trở lên, GPU NVIDIA hỗ trợ CUDA với tối thiểu 14GB bộ nhớ (khi bật offload); cần tải thêm text encoder Qwen2.5-VL-7B-Instruct và byT5.\nBước 1: Tải mã nguồn: `git clone https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5.git` rồi `cd HunyuanVideo-1.5`\nBước 2: Cài đặt thư viện phụ thuộc: `pip install -r requirements.txt`\nBước 3: Cài đặt công cụ tải mô hình: `pip install -U \"huggingface_hub[cli]\"`\nBước 4: Tải trọng số: `hf download tencent/HunyuanVideo-1.5 --local-dir ./ckpts`, sau đó tải text encoder theo checkpoints-download.md (ví dụ `hf download Qwen/Qwen2.5-VL-7B-Instruct --local-dir ./ckpts/text_encoder/llm`)\nBước 5: Tùy chọn: cài đặt thư viện attention (Flash Attention, flex-block-attn, SageAttention) để tăng tốc.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đặt các biến PROMPT, IMAGE_PATH (none cho text-to-video), RESOLUTION, ASPECT_RATIO, MODEL_PATH theo ví dụ trong README.\nBước 2: Chạy generate.py qua torchrun với các tùy chọn --cfg_distilled, --enable_step_distill, --sr để cân bằng tốc độ và chất lượng.\nBước 3: Nếu không cấu hình máy chủ vLLM để viết lại prompt, pipeline vẫn chạy mà không viết lại; có thể tắt bằng --rewrite false.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Một cô gái cầm tờ giấy có dòng chữ \"Hello, world!\"\"\n- \"Tạo video 720p từ ảnh chụp phố đèn lồng Hội An, máy quay tiến chậm về phía trước\"\n- \"Cảnh đồng lúa chín vàng lay động trong gió, góc quay flycam từ trên cao\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "ggml-org-whisper-cpp",
+    "slug": "ggml-org-whisper-cpp",
+    "name": "whisper.cpp — Nhận dạng giọng nói Whisper hiệu năng cao bằng C/C++",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/ggml-org/whisper.cpp",
+    "websiteUrl": "",
+    "authorName": "ggml-org (The ggml authors)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "whisper.cpp là bản triển khai bằng C/C++ thuần, không phụ thuộc thư viện ngoài, để chạy mô hình nhận dạng giọng nói Whisper của OpenAI với hiệu năng cao. Công cụ tối ưu cho Apple Silicon (Metal, Core ML), hỗ trợ AVX trên x86, GPU NVIDIA, AMD ROCm, Vulkan, OpenVINO và có thể chạy hoàn toàn trên CPU. Dự án chạy được trên macOS, Linux, Windows, iOS, Android, WebAssembly, Raspberry Pi và Docker.",
+    "purposeVi": "Chuyển giọng nói thành văn bản ngoại tuyến ngay trên máy cá nhân, máy chủ hoặc thiết bị di động mà không cần gửi dữ liệu âm thanh lên đám mây.",
+    "featuresVi": [
+      "C/C++ thuần: toàn bộ mô hình nằm trong whisper.h và whisper.cpp, không cấp phát bộ nhớ khi chạy",
+      "Tăng tốc phần cứng: ARM NEON, Metal, Core ML, AVX, CUDA, ROCm, Vulkan, OpenVINO, NPU Ascend và AMD Ryzen AI",
+      "Lượng tử hóa số nguyên và độ chính xác hỗn hợp F16/F32 để giảm bộ nhớ",
+      "Phát hiện hoạt động giọng nói (VAD) tích hợp",
+      "Ví dụ đi kèm: whisper-cli, whisper-stream (phiên âm thời gian thực từ micro), whisper-server (máy chủ HTTP với API kiểu OpenAI)",
+      "Đa nền tảng: macOS, Linux, Windows, iOS, Android, WebAssembly, Raspberry Pi, Docker; có binding Java"
+    ],
+    "installGuideVi": "Yêu cầu: Trình biên dịch C/C++ và CMake; tệp mô hình Whisper định dạng ggml (tải bằng script đi kèm); ffmpeg để chuyển âm thanh sang WAV 16-bit.\nBước 1: Tải mã nguồn: `git clone https://github.com/ggml-org/whisper.cpp.git` rồi `cd whisper.cpp`\nBước 2: Tải mô hình ggml, ví dụ base.en: `sh ./models/download-ggml-model.sh base.en`\nBước 3: Cài đặt bằng cách biên dịch dự án: `cmake -B build` rồi `cmake --build build -j --config Release`\nBước 4: Chạy thử phiên âm tệp mẫu: `./build/bin/whisper-cli -f samples/jfk.wav`",
+    "usageGuideVi": "Bước 1: Chuyển tệp âm thanh sang WAV 16 kHz một kênh: `ffmpeg -i input.mp3 -ar 16000 -ac 1 -c:a pcm_s16le output.wav`\nBước 2: Phiên âm tệp bằng whisper-cli; xem hướng dẫn tham số bằng tùy chọn -h\nBước 3: Phiên âm thời gian thực từ micro: `./build/bin/whisper-stream -m ./models/ggml-base.en.bin -t 8 --step 500 --length 5000`\nBước 4: Dùng whisper-server nếu cần dịch vụ HTTP phiên âm cho ứng dụng khác",
+    "samplePromptsVi": [
+      "Biên dịch whisper.cpp với hỗ trợ Metal trên MacBook M2 và phiên âm một tệp ghi âm cuộc họp",
+      "Viết script chuyển hàng loạt tệp MP3 sang WAV 16 kHz rồi phiên âm bằng whisper-cli",
+      "Chạy whisper-stream để phụ đề trực tiếp giọng nói từ micro"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "./build/bin/whisper-cli -f samples/jfk.wav",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"./build/bin/whisper-cli -f samples/jfk.wav\"\n  ],\n  \"nguon\": \"https://github.com/ggml-org/whisper.cpp\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép MIT",
+      "Chạy ngoại tuyến hoàn toàn, kể cả trên iPhone và Raspberry Pi",
+      "Hỗ trợ rất nhiều loại GPU/NPU và có thể chạy chỉ bằng CPU",
+      "Có ảnh Docker chính thức và gói npm, Conan"
+    ],
+    "consVi": [
+      "whisper-cli hiện chỉ nhận tệp WAV 16-bit, cần chuyển đổi trước bằng ffmpeg",
+      "Phải tự biên dịch hoặc dùng Docker; cần tải mô hình ggml riêng",
+      "Mô hình lớn (large) cần nhiều bộ nhớ hơn đáng kể so với tiny/base"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# whisper.cpp — Nhận dạng giọng nói Whisper hiệu năng cao bằng C/C++\n\n> High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nwhisper.cpp là bản triển khai bằng C/C++ thuần, không phụ thuộc thư viện ngoài, để chạy mô hình nhận dạng giọng nói Whisper của OpenAI với hiệu năng cao. Công cụ tối ưu cho Apple Silicon (Metal, Core ML), hỗ trợ AVX trên x86, GPU NVIDIA, AMD ROCm, Vulkan, OpenVINO và có thể chạy hoàn toàn trên CPU. Dự án chạy được trên macOS, Linux, Windows, iOS, Android, WebAssembly, Raspberry Pi và Docker.\n\nChuyển giọng nói thành văn bản ngoại tuyến ngay trên máy cá nhân, máy chủ hoặc thiết bị di động mà không cần gửi dữ liệu âm thanh lên đám mây.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** ggml-org (The ggml authors)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/ggml-org/whisper.cpp](https://github.com/ggml-org/whisper.cpp)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **C/C++ thuần: toàn bộ mô hình nằm trong whisper.h và whisper.cpp, không cấp phát bộ nhớ khi chạy**\n- **Tăng tốc phần cứng: ARM NEON, Metal, Core ML, AVX, CUDA, ROCm, Vulkan, OpenVINO, NPU Ascend và AMD Ryzen AI**\n- **Lượng tử hóa số nguyên và độ chính xác hỗn hợp F16/F32 để giảm bộ nhớ**\n- **Phát hiện hoạt động giọng nói (VAD) tích hợp**\n- **Ví dụ đi kèm: whisper-cli, whisper-stream (phiên âm thời gian thực từ micro), whisper-server (máy chủ HTTP với API kiểu OpenAI)**\n- **Đa nền tảng: macOS, Linux, Windows, iOS, Android, WebAssembly, Raspberry Pi, Docker; có binding Java**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n./build/bin/whisper-cli -f samples/jfk.wav\n```\n\nYêu cầu: Trình biên dịch C/C++ và CMake; tệp mô hình Whisper định dạng ggml (tải bằng script đi kèm); ffmpeg để chuyển âm thanh sang WAV 16-bit.\nBước 1: Tải mã nguồn: `git clone https://github.com/ggml-org/whisper.cpp.git` rồi `cd whisper.cpp`\nBước 2: Tải mô hình ggml, ví dụ base.en: `sh ./models/download-ggml-model.sh base.en`\nBước 3: Cài đặt bằng cách biên dịch dự án: `cmake -B build` rồi `cmake --build build -j --config Release`\nBước 4: Chạy thử phiên âm tệp mẫu: `./build/bin/whisper-cli -f samples/jfk.wav`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chuyển tệp âm thanh sang WAV 16 kHz một kênh: `ffmpeg -i input.mp3 -ar 16000 -ac 1 -c:a pcm_s16le output.wav`\nBước 2: Phiên âm tệp bằng whisper-cli; xem hướng dẫn tham số bằng tùy chọn -h\nBước 3: Phiên âm thời gian thực từ micro: `./build/bin/whisper-stream -m ./models/ggml-base.en.bin -t 8 --step 500 --length 5000`\nBước 4: Dùng whisper-server nếu cần dịch vụ HTTP phiên âm cho ứng dụng khác\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Biên dịch whisper.cpp với hỗ trợ Metal trên MacBook M2 và phiên âm một tệp ghi âm cuộc họp\"\n- \"Viết script chuyển hàng loạt tệp MP3 sang WAV 16 kHz rồi phiên âm bằng whisper-cli\"\n- \"Chạy whisper-stream để phụ đề trực tiếp giọng nói từ micro\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "systran-faster-whisper",
+    "slug": "systran-faster-whisper",
+    "name": "faster-whisper — Thư viện Python nhận dạng giọng nói Whisper nhanh gấp 4 lần",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/SYSTRAN/faster-whisper",
+    "websiteUrl": "",
+    "authorName": "SYSTRAN",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "faster-whisper là thư viện Python triển khai lại mô hình Whisper của OpenAI trên CTranslate2. Theo README, thư viện nhanh hơn tới 4 lần so với openai/whisper với cùng độ chính xác và tốn ít bộ nhớ hơn, có thể tăng hiệu quả thêm bằng lượng tử hóa 8-bit trên CPU và GPU. Âm thanh được giải mã bằng PyAV nên không cần cài đặt FFmpeg trên hệ thống.",
+    "purposeVi": "Tích hợp nhận dạng giọng nói Whisper nhanh, tiết kiệm bộ nhớ vào ứng dụng Python để phiên âm, tạo phụ đề và xử lý dữ liệu âm thanh.",
+    "featuresVi": [
+      "Tốc độ cao: nhanh tới 4 lần openai/whisper với cùng độ chính xác",
+      "Lượng tử hóa: chạy FP16, INT8 trên GPU hoặc INT8 trên CPU",
+      "Phiên âm theo lô: BatchedInferencePipeline thay thế trực tiếp WhisperModel.transcribe",
+      "Mốc thời gian theo từng từ (word_timestamps)",
+      "Bộ lọc VAD tích hợp Silero VAD để bỏ đoạn không có tiếng nói",
+      "Tương thích các checkpoint Distil-Whisper như distil-large-v3; tự phát hiện ngôn ngữ"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.9 trở lên. Chạy trên GPU cần thư viện NVIDIA cuBLAS cho CUDA 12 và cuDNN 9.\nBước 1: Cài đặt gói từ PyPI: `pip install faster-whisper`\nBước 2: Nếu dùng GPU trên Linux, có thể cài đặt thư viện NVIDIA qua pip: `pip install nvidia-cublas-cu12 nvidia-cudnn-cu12==9.*` và đặt LD_LIBRARY_PATH theo hướng dẫn README",
+    "usageGuideVi": "Bước 1: Tạo WhisperModel với kích thước mô hình (ví dụ large-v3), thiết bị cuda hoặc cpu và compute_type phù hợp\nBước 2: Gọi model.transcribe(\"audio.mp3\", beam_size=5) và duyệt generator segments để lấy văn bản kèm mốc thời gian\nBước 3: Bật vad_filter=True hoặc word_timestamps=True khi cần lọc khoảng lặng hoặc mốc thời gian theo từ",
+    "samplePromptsVi": [
+      "Viết script Python dùng faster-whisper phiên âm thư mục ghi âm phỏng vấn tiếng Việt và xuất phụ đề SRT",
+      "Chạy faster-whisper trên CPU với compute_type int8 để phiên âm podcast dài",
+      "Dùng BatchedInferencePipeline với batch_size=16 để tăng tốc phiên âm trên GPU"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install faster-whisper",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install faster-whisper\"\n  ],\n  \"nguon\": \"https://github.com/SYSTRAN/faster-whisper\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép MIT",
+      "Không cần cài FFmpeg trên hệ thống nhờ PyAV",
+      "Có bảng benchmark công khai so với openai/whisper, whisper.cpp và transformers",
+      "Nhiều dự án cộng đồng tích hợp (README liệt kê)"
+    ],
+    "consVi": [
+      "Bản ctranslate2 mới nhất chỉ hỗ trợ CUDA 12 và cuDNN 9; CUDA 11 phải hạ phiên bản ctranslate2",
+      "Là thư viện Python, không có giao diện dòng lệnh hay giao diện đồ họa riêng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# faster-whisper — Thư viện Python nhận dạng giọng nói Whisper nhanh gấp 4 lần\n\n> faster-whisper is a reimplementation of OpenAI's Whisper model using CTranslate2, which is a fast inference engine for Transformer models.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nfaster-whisper là thư viện Python triển khai lại mô hình Whisper của OpenAI trên CTranslate2. Theo README, thư viện nhanh hơn tới 4 lần so với openai/whisper với cùng độ chính xác và tốn ít bộ nhớ hơn, có thể tăng hiệu quả thêm bằng lượng tử hóa 8-bit trên CPU và GPU. Âm thanh được giải mã bằng PyAV nên không cần cài đặt FFmpeg trên hệ thống.\n\nTích hợp nhận dạng giọng nói Whisper nhanh, tiết kiệm bộ nhớ vào ứng dụng Python để phiên âm, tạo phụ đề và xử lý dữ liệu âm thanh.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** SYSTRAN\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/SYSTRAN/faster-whisper](https://github.com/SYSTRAN/faster-whisper)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tốc độ cao: nhanh tới 4 lần openai/whisper với cùng độ chính xác**\n- **Lượng tử hóa: chạy FP16, INT8 trên GPU hoặc INT8 trên CPU**\n- **Phiên âm theo lô: BatchedInferencePipeline thay thế trực tiếp WhisperModel.transcribe**\n- **Mốc thời gian theo từng từ (word_timestamps)**\n- **Bộ lọc VAD tích hợp Silero VAD để bỏ đoạn không có tiếng nói**\n- **Tương thích các checkpoint Distil-Whisper như distil-large-v3; tự phát hiện ngôn ngữ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install faster-whisper\n```\n\nYêu cầu: Python 3.9 trở lên. Chạy trên GPU cần thư viện NVIDIA cuBLAS cho CUDA 12 và cuDNN 9.\nBước 1: Cài đặt gói từ PyPI: `pip install faster-whisper`\nBước 2: Nếu dùng GPU trên Linux, có thể cài đặt thư viện NVIDIA qua pip: `pip install nvidia-cublas-cu12 nvidia-cudnn-cu12==9.*` và đặt LD_LIBRARY_PATH theo hướng dẫn README\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo WhisperModel với kích thước mô hình (ví dụ large-v3), thiết bị cuda hoặc cpu và compute_type phù hợp\nBước 2: Gọi model.transcribe(\"audio.mp3\", beam_size=5) và duyệt generator segments để lấy văn bản kèm mốc thời gian\nBước 3: Bật vad_filter=True hoặc word_timestamps=True khi cần lọc khoảng lặng hoặc mốc thời gian theo từ\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết script Python dùng faster-whisper phiên âm thư mục ghi âm phỏng vấn tiếng Việt và xuất phụ đề SRT\"\n- \"Chạy faster-whisper trên CPU với compute_type int8 để phiên âm podcast dài\"\n- \"Dùng BatchedInferencePipeline với batch_size=16 để tăng tốc phiên âm trên GPU\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "m-bain-whisperx",
+    "slug": "m-bain-whisperx",
+    "name": "WhisperX — Phiên âm nhanh với mốc thời gian theo từ và phân biệt người nói",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/m-bain/whisperX",
+    "websiteUrl": "",
+    "authorName": "Max Bain",
+    "license": "Mã nguồn mở (BSD-2-Clause)",
+    "summaryVi": "WhisperX là công cụ nhận dạng giọng nói tự động dựa trên Whisper, phiên âm theo lô nhanh tới 70 lần thời gian thực với large-v2 nhờ backend faster-whisper. Công cụ căn chỉnh âm vị bằng wav2vec2 để có mốc thời gian chính xác theo từng từ và gán nhãn người nói (speaker diarization) bằng pyannote-audio. Có thể dùng qua dòng lệnh hoặc thư viện Python.",
+    "purposeVi": "Tạo bản phiên âm và phụ đề có mốc thời gian theo từ và phân biệt người nói cho ghi âm cuộc họp, phỏng vấn, video.",
+    "featuresVi": [
+      "Phiên âm theo lô: 70x thời gian thực với Whisper large-v2, cần dưới 8GB GPU với beam_size=5",
+      "Mốc thời gian theo từ chính xác nhờ căn chỉnh bằng wav2vec2",
+      "Phân biệt người nói (diarization) bằng pyannote-audio",
+      "Tiền xử lý VAD giúp giảm ảo giác (hallucination) mà không làm tăng WER",
+      "Hỗ trợ nhiều ngôn ngữ qua tham số --language; alignment.py có mô hình căn chỉnh mặc định cho tiếng Việt (nguyenvulebinh/wav2vec2-base-vi-vlsp2020)",
+      "Xuất phụ đề .srt, có thể tô sáng từng từ bằng --highlight_words True"
+    ],
+    "installGuideVi": "Yêu cầu: Python; bộ công cụ CUDA 12.8 nếu muốn tăng tốc GPU (có thể chạy CPU). Diarization cần Hugging Face access token và chấp nhận điều khoản mô hình pyannote speaker-diarization-community-1. Có thể cần ffmpeg.\nBước 1: Cài đặt từ PyPI: `pip install whisperx`\nBước 2: Hoặc chạy trực tiếp bằng uv: `uvx whisperx`\nBước 3: Tùy chọn cài đặt Numba để tăng tốc căn chỉnh: `pip install \"whisperx[fast]\"`",
+    "usageGuideVi": "Bước 1: Phiên âm một tệp với tham số mặc định: `whisperx path/to/audio.wav`\nBước 2: Gán nhãn người nói: `whisperx path/to/audio.wav --model large-v2 --diarize --highlight_words True` (kèm --hf_token)\nBước 3: Chạy trên CPU hoặc Mac: `whisperx path/to/audio.wav --compute_type int8 --device cpu`\nBước 4: Với ngôn ngữ khác tiếng Anh, truyền mã ngôn ngữ qua --language và dùng mô hình Whisper large",
+    "samplePromptsVi": [
+      "Phiên âm ghi âm cuộc họp tiếng Việt có 3 người nói và xuất phụ đề SRT kèm nhãn người nói",
+      "Tạo phụ đề theo từng từ cho video bài giảng bằng whisperx",
+      "Viết script Python dùng whisperx.load_model, whisperx.align và DiarizationPipeline"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install whisperx",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install whisperx\"\n  ],\n  \"nguon\": \"https://github.com/m-bain/whisperX\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép BSD 2-Clause",
+      "Mốc thời gian theo từ chính xác hơn Whisper gốc",
+      "Kết hợp phiên âm, căn chỉnh và phân biệt người nói trong một công cụ",
+      "Đạt giải nhất Ego4d transcription challenge, được nhận tại INTERSPEECH 2023"
+    ],
+    "consVi": [
+      "Diarization cần tài khoản Hugging Face và chấp nhận điều khoản mô hình pyannote",
+      "Từ không có trong từ điển mô hình căn chỉnh (ví dụ \"2014.\") không có mốc thời gian",
+      "Xử lý lời nói chồng lấn chưa tốt; diarization còn xa mới hoàn hảo",
+      "Mỗi ngôn ngữ cần mô hình wav2vec2 riêng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# WhisperX — Phiên âm nhanh với mốc thời gian theo từ và phân biệt người nói\n\n> This repository provides fast automatic speech recognition (70x realtime with large-v2) with word-level timestamps and speaker diarization.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nWhisperX là công cụ nhận dạng giọng nói tự động dựa trên Whisper, phiên âm theo lô nhanh tới 70 lần thời gian thực với large-v2 nhờ backend faster-whisper. Công cụ căn chỉnh âm vị bằng wav2vec2 để có mốc thời gian chính xác theo từng từ và gán nhãn người nói (speaker diarization) bằng pyannote-audio. Có thể dùng qua dòng lệnh hoặc thư viện Python.\n\nTạo bản phiên âm và phụ đề có mốc thời gian theo từ và phân biệt người nói cho ghi âm cuộc họp, phỏng vấn, video.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** Max Bain\n- **Giấy phép bản quyền:** Mã nguồn mở (BSD-2-Clause)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/m-bain/whisperX](https://github.com/m-bain/whisperX)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Phiên âm theo lô: 70x thời gian thực với Whisper large-v2, cần dưới 8GB GPU với beam_size=5**\n- **Mốc thời gian theo từ chính xác nhờ căn chỉnh bằng wav2vec2**\n- **Phân biệt người nói (diarization) bằng pyannote-audio**\n- **Tiền xử lý VAD giúp giảm ảo giác (hallucination) mà không làm tăng WER**\n- **Hỗ trợ nhiều ngôn ngữ qua tham số --language; alignment.py có mô hình căn chỉnh mặc định cho tiếng Việt (nguyenvulebinh/wav2vec2-base-vi-vlsp2020)**\n- **Xuất phụ đề .srt, có thể tô sáng từng từ bằng --highlight_words True**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install whisperx\n```\n\nYêu cầu: Python; bộ công cụ CUDA 12.8 nếu muốn tăng tốc GPU (có thể chạy CPU). Diarization cần Hugging Face access token và chấp nhận điều khoản mô hình pyannote speaker-diarization-community-1. Có thể cần ffmpeg.\nBước 1: Cài đặt từ PyPI: `pip install whisperx`\nBước 2: Hoặc chạy trực tiếp bằng uv: `uvx whisperx`\nBước 3: Tùy chọn cài đặt Numba để tăng tốc căn chỉnh: `pip install \"whisperx[fast]\"`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Phiên âm một tệp với tham số mặc định: `whisperx path/to/audio.wav`\nBước 2: Gán nhãn người nói: `whisperx path/to/audio.wav --model large-v2 --diarize --highlight_words True` (kèm --hf_token)\nBước 3: Chạy trên CPU hoặc Mac: `whisperx path/to/audio.wav --compute_type int8 --device cpu`\nBước 4: Với ngôn ngữ khác tiếng Anh, truyền mã ngôn ngữ qua --language và dùng mô hình Whisper large\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Phiên âm ghi âm cuộc họp tiếng Việt có 3 người nói và xuất phụ đề SRT kèm nhãn người nói\"\n- \"Tạo phụ đề theo từng từ cho video bài giảng bằng whisperx\"\n- \"Viết script Python dùng whisperx.load_model, whisperx.align và DiarizationPipeline\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "hexgrad-kokoro",
+    "slug": "hexgrad-kokoro",
+    "name": "Kokoro — Mô hình chuyển văn bản thành giọng nói 82M tham số, trọng số mở",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice",
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/hexgrad/kokoro",
+    "websiteUrl": "https://huggingface.co/hexgrad/Kokoro-82M",
+    "authorName": "hexgrad",
+    "license": "Mã nguồn mở (Apache-2.0, kể cả trọng số mô hình)",
+    "summaryVi": "kokoro là thư viện suy luận cho Kokoro-82M, mô hình chuyển văn bản thành giọng nói (TTS) trọng số mở với 82 triệu tham số. Theo README, mô hình cho chất lượng tương đương các mô hình lớn hơn nhưng nhanh và tiết kiệm chi phí hơn đáng kể; trọng số theo giấy phép Apache nên có thể triển khai cả trong môi trường production. Thư viện dùng misaki để chuyển chữ sang âm vị (G2P).",
+    "purposeVi": "Tổng hợp giọng nói chất lượng cao, nhẹ và nhanh cho ứng dụng đọc văn bản, trợ lý giọng nói hoặc sản xuất nội dung âm thanh.",
+    "featuresVi": [
+      "Mô hình nhỏ: 82 triệu tham số, trọng số mở theo giấy phép Apache",
+      "Đa ngôn ngữ: tiếng Anh Mỹ/Anh, Tây Ban Nha, Pháp, Hindi, Ý, Nhật, Bồ Đào Nha (Brazil), tiếng Trung",
+      "API KPipeline đơn giản: chọn lang_code, voice (ví dụ af_heart), speed và mẫu tách đoạn",
+      "Có thể nạp tensor giọng nói tùy chỉnh từ tệp .pt",
+      "Tăng tốc GPU Apple Silicon qua PYTORCH_ENABLE_MPS_FALLBACK=1"
+    ],
+    "installGuideVi": "Yêu cầu: Python và espeak-ng (dùng làm dự phòng cho tiếng Anh và một số ngôn ngữ khác); tiếng Nhật và tiếng Trung cần misaki[ja] hoặc misaki[zh]. README cung cấp tệp môi trường conda với Python 3.9.\nBước 1: Cài đặt thư viện: `pip install kokoro`\nBước 2: Cài đặt espeak-ng trên Linux/Colab: `apt-get -qq -y install espeak-ng > /dev/null 2>&1`; trên Windows tải bộ cài .msi từ trang phát hành espeak-ng",
+    "usageGuideVi": "Bước 1: Khởi tạo KPipeline(lang_code='a') với mã ngôn ngữ khớp giọng đọc\nBước 2: Gọi pipeline(text, voice='af_heart') và lưu từng đoạn âm thanh 24 kHz bằng soundfile\nBước 3: Trên Mac Apple Silicon chạy script với `PYTORCH_ENABLE_MPS_FALLBACK=1 python run-your-kokoro-script.py`",
+    "samplePromptsVi": [
+      "Viết script Python dùng kokoro đọc một bài blog tiếng Anh thành tệp WAV với giọng af_heart",
+      "Tạo audiobook tiếng Pháp từ tệp văn bản, tách đoạn theo dòng trống",
+      "So sánh tốc độ đọc speed=1 và speed=1.2 cho cùng một đoạn văn"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install kokoro",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install kokoro\"\n  ],\n  \"nguon\": \"https://github.com/hexgrad/kokoro\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Cả mã nguồn và trọng số mô hình đều theo giấy phép Apache 2.0, dùng được cho mục đích thương mại",
+      "Mô hình rất nhẹ (82M tham số), nhanh",
+      "Hỗ trợ 8 nhóm ngôn ngữ"
+    ],
+    "consVi": [
+      "Chưa hỗ trợ tiếng Việt theo danh sách ngôn ngữ trong README",
+      "Cần cài đặt espeak-ng riêng; tiếng Nhật/Trung cần gói misaki bổ sung",
+      "Repo ít cập nhật (commit gần nhất tháng 8/2025)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Kokoro — Mô hình chuyển văn bản thành giọng nói 82M tham số, trọng số mở\n\n> Kokoro is an open-weight TTS model with 82 million parameters.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nkokoro là thư viện suy luận cho Kokoro-82M, mô hình chuyển văn bản thành giọng nói (TTS) trọng số mở với 82 triệu tham số. Theo README, mô hình cho chất lượng tương đương các mô hình lớn hơn nhưng nhanh và tiết kiệm chi phí hơn đáng kể; trọng số theo giấy phép Apache nên có thể triển khai cả trong môi trường production. Thư viện dùng misaki để chuyển chữ sang âm vị (G2P).\n\nTổng hợp giọng nói chất lượng cao, nhẹ và nhanh cho ứng dụng đọc văn bản, trợ lý giọng nói hoặc sản xuất nội dung âm thanh.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** hexgrad\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0, kể cả trọng số mô hình)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/hexgrad/kokoro](https://github.com/hexgrad/kokoro)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Mô hình nhỏ: 82 triệu tham số, trọng số mở theo giấy phép Apache**\n- **Đa ngôn ngữ: tiếng Anh Mỹ/Anh, Tây Ban Nha, Pháp, Hindi, Ý, Nhật, Bồ Đào Nha (Brazil), tiếng Trung**\n- **API KPipeline đơn giản: chọn lang_code, voice (ví dụ af_heart), speed và mẫu tách đoạn**\n- **Có thể nạp tensor giọng nói tùy chỉnh từ tệp .pt**\n- **Tăng tốc GPU Apple Silicon qua PYTORCH_ENABLE_MPS_FALLBACK=1**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install kokoro\n```\n\nYêu cầu: Python và espeak-ng (dùng làm dự phòng cho tiếng Anh và một số ngôn ngữ khác); tiếng Nhật và tiếng Trung cần misaki[ja] hoặc misaki[zh]. README cung cấp tệp môi trường conda với Python 3.9.\nBước 1: Cài đặt thư viện: `pip install kokoro`\nBước 2: Cài đặt espeak-ng trên Linux/Colab: `apt-get -qq -y install espeak-ng > /dev/null 2>&1`; trên Windows tải bộ cài .msi từ trang phát hành espeak-ng\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi tạo KPipeline(lang_code='a') với mã ngôn ngữ khớp giọng đọc\nBước 2: Gọi pipeline(text, voice='af_heart') và lưu từng đoạn âm thanh 24 kHz bằng soundfile\nBước 3: Trên Mac Apple Silicon chạy script với `PYTORCH_ENABLE_MPS_FALLBACK=1 python run-your-kokoro-script.py`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết script Python dùng kokoro đọc một bài blog tiếng Anh thành tệp WAV với giọng af_heart\"\n- \"Tạo audiobook tiếng Pháp từ tệp văn bản, tách đoạn theo dòng trống\"\n- \"So sánh tốc độ đọc speed=1 và speed=1.2 cho cùng một đoạn văn\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "k2-fsa-sherpa-onnx",
+    "slug": "k2-fsa-sherpa-onnx",
+    "name": "sherpa-onnx — Bộ công cụ nhận dạng và tổng hợp giọng nói ngoại tuyến đa nền tảng",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/k2-fsa/sherpa-onnx",
+    "websiteUrl": "https://k2-fsa.github.io/sherpa/onnx/",
+    "authorName": "k2-fsa (Next-gen Kaldi)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "sherpa-onnx là bộ công cụ xử lý giọng nói chạy cục bộ dựa trên ONNX Runtime, hỗ trợ nhận dạng giọng nói (streaming và không streaming), tổng hợp giọng nói, phân biệt và xác minh người nói, nhận diện ngôn ngữ, VAD, phát hiện từ khóa, thêm dấu câu, tăng cường và tách nguồn âm thanh. Dự án chạy trên Linux, macOS, Windows, Android, iOS, HarmonyOS, WebAssembly, Raspberry Pi, Jetson và nhiều NPU (RKNN, Qualcomm QNN, Ascend). Có API cho 12 ngôn ngữ lập trình gồm C++, C, Python, JavaScript, Java, C#, Kotlin, Swift, Go, Dart, Rust, Pascal.",
+    "purposeVi": "Nhúng nhận dạng và tổng hợp giọng nói ngoại tuyến vào ứng dụng di động, nhúng, máy tính để bàn hoặc máy chủ mà không cần kết nối Internet.",
+    "featuresVi": [
+      "Nhận dạng giọng nói streaming và không streaming với nhiều mô hình (Zipformer, Paraformer, SenseVoice, Whisper, Moonshine...)",
+      "Tổng hợp giọng nói (TTS), phân biệt người nói, nhận diện và xác minh người nói",
+      "VAD (silero-vad), phát hiện từ khóa, thêm dấu câu, gắn nhãn âm thanh",
+      "Tăng cường giọng nói và tách nguồn âm thanh (spleeter, UVR)",
+      "Đa nền tảng: x86, ARM, RISC-V, NPU; Android, iOS, HarmonyOS, WebAssembly; có ứng dụng Flutter, Tauri và APK dựng sẵn",
+      "Demo trên Hugging Face Spaces chạy ngay trong trình duyệt"
+    ],
+    "installGuideVi": "Yêu cầu: Tùy ngôn ngữ lập trình; với Python cần Python 3 và pip. Cần tải mô hình tiền huấn luyện tương ứng từ trang tài liệu.\nBước 1: Cài đặt gói Python (theo hướng dẫn ví dụ máy chủ WebSocket trong python-api-examples/orukeet.md): `python3 -m pip install sherpa-onnx numpy 'websockets<14'`\nBước 2: Tải mô hình tiền huấn luyện phù hợp theo danh sách ở mục \"Links for pre-trained models\" trong README\nBước 3: Với di động hoặc máy tính, có thể dùng APK Android, ứng dụng Flutter hoặc Tauri dựng sẵn",
+    "usageGuideVi": "Bước 1: Chọn chức năng (ASR, TTS, VAD, diarization...) và mô hình tương ứng\nBước 2: Chạy các ví dụ trong thư mục python-api-examples hoặc ví dụ cho ngôn ngữ lập trình bạn dùng\nBước 3: Thử nhanh không cần cài đặt qua các Hugging Face Spaces liệt kê trong README",
+    "samplePromptsVi": [
+      "Tích hợp nhận dạng giọng nói ngoại tuyến vào ứng dụng Android bằng sherpa-onnx",
+      "Dựng máy chủ WebSocket phiên âm bằng sherpa-onnx Python trên Raspberry Pi",
+      "Tạo phụ đề cho video bằng VAD kết hợp mô hình Whisper trong sherpa-onnx"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "python3 -m pip install sherpa-onnx numpy 'websockets<14'",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"python3 -m pip install sherpa-onnx numpy 'websockets<14'\"\n  ],\n  \"nguon\": \"https://github.com/k2-fsa/sherpa-onnx\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép Apache 2.0",
+      "Chạy hoàn toàn cục bộ, hỗ trợ rất nhiều nền tảng phần cứng và NPU",
+      "API cho 12 ngôn ngữ lập trình và WebAssembly",
+      "Cộng đồng lớn, README liệt kê nhiều dự án sử dụng"
+    ],
+    "consVi": [
+      "README chính không có lệnh cài đặt; hướng dẫn chi tiết nằm ở trang tài liệu riêng",
+      "Phải tự chọn và tải mô hình; giấy phép từng mô hình tiền huấn luyện có thể khác nhau",
+      "Nhiều mô hình mẫu tập trung vào tiếng Trung và tiếng Anh"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# sherpa-onnx — Bộ công cụ nhận dạng và tổng hợp giọng nói ngoại tuyến đa nền tảng\n\n> This repository supports running the following functions locally\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nsherpa-onnx là bộ công cụ xử lý giọng nói chạy cục bộ dựa trên ONNX Runtime, hỗ trợ nhận dạng giọng nói (streaming và không streaming), tổng hợp giọng nói, phân biệt và xác minh người nói, nhận diện ngôn ngữ, VAD, phát hiện từ khóa, thêm dấu câu, tăng cường và tách nguồn âm thanh. Dự án chạy trên Linux, macOS, Windows, Android, iOS, HarmonyOS, WebAssembly, Raspberry Pi, Jetson và nhiều NPU (RKNN, Qualcomm QNN, Ascend). Có API cho 12 ngôn ngữ lập trình gồm C++, C, Python, JavaScript, Java, C#, Kotlin, Swift, Go, Dart, Rust, Pascal.\n\nNhúng nhận dạng và tổng hợp giọng nói ngoại tuyến vào ứng dụng di động, nhúng, máy tính để bàn hoặc máy chủ mà không cần kết nối Internet.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** k2-fsa (Next-gen Kaldi)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/k2-fsa/sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Nhận dạng giọng nói streaming và không streaming với nhiều mô hình (Zipformer, Paraformer, SenseVoice, Whisper, Moonshine...)**\n- **Tổng hợp giọng nói (TTS), phân biệt người nói, nhận diện và xác minh người nói**\n- **VAD (silero-vad), phát hiện từ khóa, thêm dấu câu, gắn nhãn âm thanh**\n- **Tăng cường giọng nói và tách nguồn âm thanh (spleeter, UVR)**\n- **Đa nền tảng: x86, ARM, RISC-V, NPU; Android, iOS, HarmonyOS, WebAssembly; có ứng dụng Flutter, Tauri và APK dựng sẵn**\n- **Demo trên Hugging Face Spaces chạy ngay trong trình duyệt**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npython3 -m pip install sherpa-onnx numpy 'websockets<14'\n```\n\nYêu cầu: Tùy ngôn ngữ lập trình; với Python cần Python 3 và pip. Cần tải mô hình tiền huấn luyện tương ứng từ trang tài liệu.\nBước 1: Cài đặt gói Python (theo hướng dẫn ví dụ máy chủ WebSocket trong python-api-examples/orukeet.md): `python3 -m pip install sherpa-onnx numpy 'websockets<14'`\nBước 2: Tải mô hình tiền huấn luyện phù hợp theo danh sách ở mục \"Links for pre-trained models\" trong README\nBước 3: Với di động hoặc máy tính, có thể dùng APK Android, ứng dụng Flutter hoặc Tauri dựng sẵn\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn chức năng (ASR, TTS, VAD, diarization...) và mô hình tương ứng\nBước 2: Chạy các ví dụ trong thư mục python-api-examples hoặc ví dụ cho ngôn ngữ lập trình bạn dùng\nBước 3: Thử nhanh không cần cài đặt qua các Hugging Face Spaces liệt kê trong README\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tích hợp nhận dạng giọng nói ngoại tuyến vào ứng dụng Android bằng sherpa-onnx\"\n- \"Dựng máy chủ WebSocket phiên âm bằng sherpa-onnx Python trên Raspberry Pi\"\n- \"Tạo phụ đề cho video bằng VAD kết hợp mô hình Whisper trong sherpa-onnx\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "pipecat-ai-pipecat",
+    "slug": "pipecat-ai-pipecat",
+    "name": "Pipecat — Framework Python xây dựng tác tử giọng nói thời gian thực",
+    "icon": "MessageSquare",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice",
+      "customer_support"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+      "Chăm sóc khách hàng & Trợ lý ảo CS"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/pipecat-ai/pipecat",
+    "websiteUrl": "https://docs.pipecat.ai",
+    "authorName": "Daily",
+    "license": "Mã nguồn mở (BSD-2-Clause)",
+    "summaryVi": "Pipecat là framework Python mã nguồn mở để xây dựng tác tử hội thoại giọng nói và đa phương thức thời gian thực, từ một trợ lý giọng nói đơn lẻ đến hệ đa tác tử có chuyển giao, chạy song song và phối hợp qua bus chung. Framework điều phối âm thanh, video, dịch vụ AI, transport (WebSocket, WebRTC) và pipeline hội thoại. Pipecat tích hợp sẵn nhiều dịch vụ STT, LLM, TTS, speech-to-speech và có SDK client cho JavaScript, React, React Native, Swift, Kotlin, C++.",
+    "purposeVi": "Xây dựng trợ lý giọng nói, tổng đài AI, bot chăm sóc khách hàng và giao diện đa phương thức có độ trễ thấp.",
+    "featuresVi": [
+      "Ưu tiên giọng nói: tích hợp nhận dạng giọng nói, tổng hợp giọng nói và quản lý hội thoại",
+      "Pipeline có thể ghép nối từ các thành phần mô-đun",
+      "Đa tác tử: chuyển giao, chạy song song, sidecar hoặc triển khai phân tán",
+      "Thời gian thực, độ trễ thấp qua WebSocket hoặc WebRTC (Daily, LiveKit, FastAPI WebSocket)",
+      "Nhiều dịch vụ tích hợp: STT, LLM, TTS, speech-to-speech, video avatar, bộ nhớ mem0, Silero VAD, OpenTelemetry",
+      "Pipecat Flows cho hội thoại có cấu trúc; Pipecat CLI để khởi tạo và triển khai dự án; Pipecat Skills cho Claude Code"
+    ],
+    "installGuideVi": "Yêu cầu: uv (hoặc pip); Python 3.11 trở lên theo mục phát triển của README; khóa API của các dịch vụ AI bên thứ ba bạn chọn (cấu hình trong tệp .env).\nBước 1: Cài đặt uv: `curl -LsSf https://astral.sh/uv/install.sh | sh`\nBước 2: Cài đặt Pipecat CLI: `uv tool install \"pipecat-ai[cli]\"` rồi khởi tạo dự án bằng `pipecat init`\nBước 3: Hoặc thêm thủ công vào dự án: `uv add pipecat-ai` (dùng pip: `pip install pipecat-ai`)\nBước 4: Sao chép tệp cấu hình môi trường: `cp env.example .env` và điền khóa API\nBước 5: Tùy chọn cho Claude Code: `claude plugin marketplace add pipecat-ai/skills`",
+    "usageGuideVi": "Bước 1: Chạy pipecat init để dựng bot điện thoại hoặc web/mobile theo hướng dẫn tương tác\nBước 2: Thêm extra cho dịch vụ cần dùng bằng uv add \"pipecat-ai[option,...]\"\nBước 3: Tham khảo thư mục examples và repo pipecat-examples để ghép pipeline STT → LLM → TTS\nBước 4: Theo dõi và triển khai tác tử lên production bằng Pipecat CLI",
+    "samplePromptsVi": [
+      "Dựng bot tổng đài giọng nói dùng Deepgram STT, Claude và Cartesia TTS qua WebRTC bằng Pipecat",
+      "Tạo trợ lý tiếp nhận khách hàng với Pipecat Flows có các bước hỏi thông tin có cấu trúc",
+      "Thiết kế hệ đa tác tử Pipecat trong đó tác tử lễ tân chuyển giao cho tác tử chuyên môn"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "uv tool install \"pipecat-ai[cli]\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uv tool install \\\"pipecat-ai[cli]\\\"\"\n  ],\n  \"nguon\": \"https://github.com/pipecat-ai/pipecat\"\n}"
+      },
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude plugin marketplace add pipecat-ai/skills",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude plugin marketplace add pipecat-ai/skills\"\n  ],\n  \"nguon\": \"https://github.com/pipecat-ai/pipecat\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép BSD 2-Clause",
+      "Hệ sinh thái lớn: SDK client đa nền tảng, UI, công cụ gỡ lỗi Whisker, CLI",
+      "Hỗ trợ rất nhiều nhà cung cấp STT/LLM/TTS, dễ thay thế",
+      "Có Skills chính thức cho Claude Code"
+    ],
+    "consVi": [
+      "Phần lớn dịch vụ tích hợp là dịch vụ đám mây trả phí cần tài khoản và khóa API riêng",
+      "Gói lõi tối giản, phải cài thêm extra cho từng dịch vụ",
+      "Một số extra (local, gstreamer) cần thư viện hệ thống"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Pipecat — Framework Python xây dựng tác tử giọng nói thời gian thực\n\n> Pipecat is an open-source Python framework for building real-time voice and multimodal conversational agents.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPipecat là framework Python mã nguồn mở để xây dựng tác tử hội thoại giọng nói và đa phương thức thời gian thực, từ một trợ lý giọng nói đơn lẻ đến hệ đa tác tử có chuyển giao, chạy song song và phối hợp qua bus chung. Framework điều phối âm thanh, video, dịch vụ AI, transport (WebSocket, WebRTC) và pipeline hội thoại. Pipecat tích hợp sẵn nhiều dịch vụ STT, LLM, TTS, speech-to-speech và có SDK client cho JavaScript, React, React Native, Swift, Kotlin, C++.\n\nXây dựng trợ lý giọng nói, tổng đài AI, bot chăm sóc khách hàng và giao diện đa phương thức có độ trễ thấp.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** Daily\n- **Giấy phép bản quyền:** Mã nguồn mở (BSD-2-Clause)\n- **Nền tảng hỗ trợ:** `web`, `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/pipecat-ai/pipecat](https://github.com/pipecat-ai/pipecat)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Ưu tiên giọng nói: tích hợp nhận dạng giọng nói, tổng hợp giọng nói và quản lý hội thoại**\n- **Pipeline có thể ghép nối từ các thành phần mô-đun**\n- **Đa tác tử: chuyển giao, chạy song song, sidecar hoặc triển khai phân tán**\n- **Thời gian thực, độ trễ thấp qua WebSocket hoặc WebRTC (Daily, LiveKit, FastAPI WebSocket)**\n- **Nhiều dịch vụ tích hợp: STT, LLM, TTS, speech-to-speech, video avatar, bộ nhớ mem0, Silero VAD, OpenTelemetry**\n- **Pipecat Flows cho hội thoại có cấu trúc; Pipecat CLI để khởi tạo và triển khai dự án; Pipecat Skills cho Claude Code**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuv tool install \"pipecat-ai[cli]\"\n```\n\nYêu cầu: uv (hoặc pip); Python 3.11 trở lên theo mục phát triển của README; khóa API của các dịch vụ AI bên thứ ba bạn chọn (cấu hình trong tệp .env).\nBước 1: Cài đặt uv: `curl -LsSf https://astral.sh/uv/install.sh | sh`\nBước 2: Cài đặt Pipecat CLI: `uv tool install \"pipecat-ai[cli]\"` rồi khởi tạo dự án bằng `pipecat init`\nBước 3: Hoặc thêm thủ công vào dự án: `uv add pipecat-ai` (dùng pip: `pip install pipecat-ai`)\nBước 4: Sao chép tệp cấu hình môi trường: `cp env.example .env` và điền khóa API\nBước 5: Tùy chọn cho Claude Code: `claude plugin marketplace add pipecat-ai/skills`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy pipecat init để dựng bot điện thoại hoặc web/mobile theo hướng dẫn tương tác\nBước 2: Thêm extra cho dịch vụ cần dùng bằng uv add \"pipecat-ai[option,...]\"\nBước 3: Tham khảo thư mục examples và repo pipecat-examples để ghép pipeline STT → LLM → TTS\nBước 4: Theo dõi và triển khai tác tử lên production bằng Pipecat CLI\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Dựng bot tổng đài giọng nói dùng Deepgram STT, Claude và Cartesia TTS qua WebRTC bằng Pipecat\"\n- \"Tạo trợ lý tiếp nhận khách hàng với Pipecat Flows có các bước hỏi thông tin có cấu trúc\"\n- \"Thiết kế hệ đa tác tử Pipecat trong đó tác tử lễ tân chuyển giao cho tác tử chuyên môn\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "resemble-ai-chatterbox",
+    "slug": "resemble-ai-chatterbox",
+    "name": "Chatterbox — Họ mô hình chuyển văn bản thành giọng nói đa ngôn ngữ của Resemble AI",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice",
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/resemble-ai/chatterbox",
+    "websiteUrl": "https://resemble-ai.github.io/chatterbox_demopage/",
+    "authorName": "Resemble AI",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Chatterbox là họ mô hình chuyển văn bản thành giọng nói mã nguồn mở của Resemble AI, gồm Chatterbox-Turbo (350M, tiếng Anh, độ trễ thấp cho tác tử giọng nói), Chatterbox-Nano (110M, chạy trên CPU), Chatterbox-Multilingual V3 (500M, hơn 23 ngôn ngữ) và các bản tinh chỉnh đơn ngôn ngữ. Mô hình hỗ trợ thẻ cận ngôn ngữ như [laugh], [cough] và nhân bản giọng từ đoạn âm thanh tham chiếu. Mọi tệp âm thanh sinh ra đều được gắn watermark thần kinh Perth để phát hiện nội dung do AI tạo.",
+    "purposeVi": "Tổng hợp giọng nói tự nhiên, biểu cảm cho tác tử giọng nói, lồng tiếng, tường thuật và bản địa hóa nội dung đa ngôn ngữ.",
+    "featuresVi": [
+      "Chatterbox-Turbo 350M: độ trễ thấp, ít VRAM, thẻ cận ngôn ngữ [laugh], [chuckle], [cough]",
+      "Chatterbox-Nano 110M: chạy trên CPU nhanh gấp 3 lần thời gian thực với 8 nhân",
+      "Multilingual V3 500M: 23 ngôn ngữ gồm Ả Rập, Đức, Pháp, Hindi, Nhật, Hàn, Mã Lai, Nga, Trung...",
+      "Single Language Pack: bản tinh chỉnh riêng cho tiếng Trung, Tây Ban Nha, Bồ Đào Nha, Hindi",
+      "Điều chỉnh exaggeration và cfg_weight để tăng biểu cảm hoặc chỉnh nhịp đọc",
+      "Watermark Perth tích hợp, có script kiểm tra watermark"
+    ],
+    "installGuideVi": "Yêu cầu: Python (được phát triển và kiểm thử trên Python 3.11, Debian 11); GPU CUDA, CPU hoặc MPS; tải trọng số mô hình từ Hugging Face.\nBước 1: Cài đặt từ PyPI: `pip install chatterbox-tts`\nBước 2: Hoặc cài đặt từ mã nguồn sau khi clone repo: `pip install -e .`",
+    "usageGuideVi": "Bước 1: Nạp mô hình, ví dụ ChatterboxTurboTTS.from_pretrained(device=\"cuda\") hoặc ChatterboxMultilingualTTS.from_pretrained(device=device, t3_model=\"v3\")\nBước 2: Gọi model.generate(text, language_id=...) và lưu bằng torchaudio\nBước 3: Truyền audio_prompt_path là đoạn ghi âm tham chiếu khoảng 10 giây của chính bạn (có sự đồng ý) để đổi giọng\nBước 4: Kiểm tra watermark trong tệp âm thanh bằng thư viện perth",
+    "samplePromptsVi": [
+      "Viết script Python dùng Chatterbox-Turbo đọc lời chào tổng đài có thẻ [chuckle]",
+      "Tạo bản đọc tiếng Pháp và tiếng Nhật cho cùng một kịch bản bằng Chatterbox Multilingual V3",
+      "Chạy Chatterbox-Nano trên CPU để sinh giọng đọc cho ứng dụng ngoại tuyến"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install chatterbox-tts",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install chatterbox-tts\"\n  ],\n  \"nguon\": \"https://github.com/resemble-ai/chatterbox\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn theo giấy phép MIT",
+      "Nhiều kích cỡ mô hình từ 110M (CPU) đến 500M đa ngôn ngữ",
+      "Có watermark Perth giúp nhận diện âm thanh do AI tạo",
+      "Có demo trên Hugging Face Spaces và đánh giá công khai trên Podonos"
+    ],
+    "consVi": [
+      "Danh sách 23 ngôn ngữ chưa có tiếng Việt",
+      "Có khả năng nhân bản giọng: chỉ dùng giọng của chính mình hoặc khi có sự đồng ý; README cảnh báo không dùng vào mục đích xấu",
+      "Turbo và Nano chỉ hỗ trợ tiếng Anh",
+      "Bản dịch vụ trả phí mở rộng do Resemble AI cung cấp riêng"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Chatterbox — Họ mô hình chuyển văn bản thành giọng nói đa ngôn ngữ của Resemble AI\n\n> Chatterbox is a family of state-of-the-art, open-source text-to-speech models by Resemble AI.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nChatterbox là họ mô hình chuyển văn bản thành giọng nói mã nguồn mở của Resemble AI, gồm Chatterbox-Turbo (350M, tiếng Anh, độ trễ thấp cho tác tử giọng nói), Chatterbox-Nano (110M, chạy trên CPU), Chatterbox-Multilingual V3 (500M, hơn 23 ngôn ngữ) và các bản tinh chỉnh đơn ngôn ngữ. Mô hình hỗ trợ thẻ cận ngôn ngữ như [laugh], [cough] và nhân bản giọng từ đoạn âm thanh tham chiếu. Mọi tệp âm thanh sinh ra đều được gắn watermark thần kinh Perth để phát hiện nội dung do AI tạo.\n\nTổng hợp giọng nói tự nhiên, biểu cảm cho tác tử giọng nói, lồng tiếng, tường thuật và bản địa hóa nội dung đa ngôn ngữ.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** Resemble AI\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/resemble-ai/chatterbox](https://github.com/resemble-ai/chatterbox)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Chatterbox-Turbo 350M: độ trễ thấp, ít VRAM, thẻ cận ngôn ngữ [laugh], [chuckle], [cough]**\n- **Chatterbox-Nano 110M: chạy trên CPU nhanh gấp 3 lần thời gian thực với 8 nhân**\n- **Multilingual V3 500M: 23 ngôn ngữ gồm Ả Rập, Đức, Pháp, Hindi, Nhật, Hàn, Mã Lai, Nga, Trung...**\n- **Single Language Pack: bản tinh chỉnh riêng cho tiếng Trung, Tây Ban Nha, Bồ Đào Nha, Hindi**\n- **Điều chỉnh exaggeration và cfg_weight để tăng biểu cảm hoặc chỉnh nhịp đọc**\n- **Watermark Perth tích hợp, có script kiểm tra watermark**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install chatterbox-tts\n```\n\nYêu cầu: Python (được phát triển và kiểm thử trên Python 3.11, Debian 11); GPU CUDA, CPU hoặc MPS; tải trọng số mô hình từ Hugging Face.\nBước 1: Cài đặt từ PyPI: `pip install chatterbox-tts`\nBước 2: Hoặc cài đặt từ mã nguồn sau khi clone repo: `pip install -e .`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Nạp mô hình, ví dụ ChatterboxTurboTTS.from_pretrained(device=\"cuda\") hoặc ChatterboxMultilingualTTS.from_pretrained(device=device, t3_model=\"v3\")\nBước 2: Gọi model.generate(text, language_id=...) và lưu bằng torchaudio\nBước 3: Truyền audio_prompt_path là đoạn ghi âm tham chiếu khoảng 10 giây của chính bạn (có sự đồng ý) để đổi giọng\nBước 4: Kiểm tra watermark trong tệp âm thanh bằng thư viện perth\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết script Python dùng Chatterbox-Turbo đọc lời chào tổng đài có thẻ [chuckle]\"\n- \"Tạo bản đọc tiếng Pháp và tiếng Nhật cho cùng một kịch bản bằng Chatterbox Multilingual V3\"\n- \"Chạy Chatterbox-Nano trên CPU để sinh giọng đọc cho ứng dụng ngoại tuyến\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "paddlepaddle-paddleocr",
+    "slug": "paddlepaddle-paddleocr",
+    "name": "PaddleOCR — Bộ công cụ OCR và phân tích tài liệu đa ngôn ngữ",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "computer_vision",
+    "categoryNameVi": "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+    "categories": [
+      "computer_vision",
+      "office_digital_docs"
+    ],
+    "categoryNamesVi": [
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+      "Văn phòng số & Quản lý văn bản điện tử"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_desktop"
+    ],
+    "sourceUrl": "https://github.com/PaddlePaddle/PaddleOCR",
+    "websiteUrl": "https://www.paddleocr.com",
+    "authorName": "PaddlePaddle (Baidu)",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "PaddleOCR là bộ công cụ OCR và phân tích tài liệu mã nguồn mở của PaddlePaddle, chuyển PDF và ảnh thành dữ liệu có cấu trúc (JSON/Markdown) sẵn sàng cho LLM. Bộ công cụ gồm dòng mô hình nhận dạng chữ PP-OCRv6, pipeline phân tích bố cục PP-StructureV3 và mô hình thị giác - ngôn ngữ PaddleOCR-VL (0.9B) cho phân tích tài liệu phức tạp.",
+    "purposeVi": "Giúp số hóa ảnh và PDF thành văn bản, bảng, công thức có cấu trúc để đưa vào hệ thống RAG, tác tử AI hoặc quy trình xử lý dữ liệu.",
+    "featuresVi": [
+      "PP-OCRv6: phát hiện và nhận dạng chữ, một mô hình thống nhất cho 50 ngôn ngữ (tiếng Trung, Anh, Nhật và 46 ngôn ngữ chữ Latinh)",
+      "PaddleOCR-VL: mô hình thị giác - ngôn ngữ 0.9B phân tích tài liệu, nhận dạng văn bản, bảng, công thức, biểu đồ, xuất Markdown/JSON",
+      "PP-StructureV3: chuyển PDF/ảnh phức tạp sang Markdown hoặc JSON kèm tọa độ chi tiết của ô bảng và dòng chữ",
+      "Hai bộ máy suy luận: PaddlePaddle hoặc Hugging Face Transformers",
+      "Xuất kết quả phân tích ra DOCX; có SDK chạy trên trình duyệt PaddleOCR.js",
+      "Máy chủ MCP paddleocr-mcp: đưa công cụ OCR, PP-StructureV3, PaddleOCR-VL vào Claude Desktop và các ứng dụng LLM",
+      "Hỗ trợ xuất ONNX, tăng tốc bằng OpenVINO/ONNX Runtime/TensorRT và triển khai dịch vụ cho C++, C#, Java"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.8 trở lên; bộ máy suy luận PaddlePaddle 3.0 trở lên (CPU hoặc GPU) hoặc Hugging Face Transformers >= 5.8.0.\nBước 1: Cài đặt bộ máy suy luận PaddlePaddle bản CPU: `python -m pip install paddlepaddle==3.2.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/`\nBước 2: Hoặc cài đặt bản GPU (ví dụ CUDA 11.8 trên Linux): `python -m pip install paddlepaddle-gpu==3.2.0 -i https://www.paddlepaddle.org.cn/packages/stable/cu118/`\nBước 3: Cài đặt đầy đủ PaddleOCR: `python -m pip install \"paddleocr[all]\"`\nBước 4: Chạy thử phát hiện vùng chữ trên ảnh mẫu: `paddleocr text_detection -i ./general_ocr_001.png --engine paddle`\nBước 5: Tùy chọn: cài đặt máy chủ MCP để dùng với Claude Desktop: `pip install \"paddleocr-mcp[local-cpu]\"`",
+    "usageGuideVi": "Bước 1: Dùng lệnh `paddleocr ocr -i <ảnh>` để nhận dạng chữ toàn trang với PP-OCRv6.\nBước 2: Dùng `paddleocr text_recognition -i ./general_ocr_rec_001.png --engine paddle` để nhận dạng một dòng chữ đã cắt sẵn.\nBước 3: Dùng `paddleocr pp_structurev3 -i <ảnh hoặc PDF>` để chuyển tài liệu sang Markdown/JSON có bố cục.\nBước 4: Trong Python, gọi `from paddleocr import PaddleOCR` hoặc `PPStructureV3` để tích hợp vào ứng dụng.\nBước 5: Với Claude Desktop, thêm cấu hình mcpServers trỏ tới lệnh `paddleocr_mcp` và đặt biến PADDLEOCR_MCP_MODEL.",
+    "samplePromptsVi": [
+      "Nhận dạng toàn bộ chữ trong ảnh chụp hóa đơn này và trả về danh sách dòng chữ kèm tọa độ.",
+      "Chuyển tệp PDF báo cáo tài chính sang Markdown, giữ nguyên bảng và tiêu đề.",
+      "Trích xuất công thức và bảng từ trang tài liệu khoa học này dưới dạng JSON."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "python -m pip install \"paddleocr[all]\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"python -m pip install \\\"paddleocr[all]\\\"\"\n  ],\n  \"nguon\": \"https://github.com/PaddlePaddle/PaddleOCR\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "pip install \"paddleocr-mcp[local-cpu]\"",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"paddleocr\": {\n      \"command\": \"paddleocr_mcp\",\n      \"args\": [],\n      \"env\": {\n        \"PADDLEOCR_MCP_MODEL\": \"PP-OCRv5\",\n        \"PADDLEOCR_MCP_PPOCR_SOURCE\": \"local\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, dùng được cho mục đích thương mại",
+      "Hỗ trợ hơn 100 ngôn ngữ, chạy được trên CPU và GPU",
+      "Có máy chủ MCP chính chủ, tích hợp sẵn với Dify, RAGFlow, Cherry Studio"
+    ],
+    "consVi": [
+      "Hướng dẫn cài đặt chi tiết nằm trong thư mục docs/ và trang tài liệu riêng, README chỉ dẫn liên kết",
+      "Cài đặt GPU phụ thuộc phiên bản CUDA cụ thể",
+      "Một số tính năng PP-StructureV3 với bộ máy Transformers còn hạn chế (phải tắt nhận dạng công thức)"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# PaddleOCR — Bộ công cụ OCR và phân tích tài liệu đa ngôn ngữ\n\n> PaddleOCR converts PDF documents and images into structured, LLM-ready data (JSON/Markdown) with industry-leading accuracy.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPaddleOCR là bộ công cụ OCR và phân tích tài liệu mã nguồn mở của PaddlePaddle, chuyển PDF và ảnh thành dữ liệu có cấu trúc (JSON/Markdown) sẵn sàng cho LLM. Bộ công cụ gồm dòng mô hình nhận dạng chữ PP-OCRv6, pipeline phân tích bố cục PP-StructureV3 và mô hình thị giác - ngôn ngữ PaddleOCR-VL (0.9B) cho phân tích tài liệu phức tạp.\n\nGiúp số hóa ảnh và PDF thành văn bản, bảng, công thức có cấu trúc để đưa vào hệ thống RAG, tác tử AI hoặc quy trình xử lý dữ liệu.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Thị giác máy tính & Xử lý ảnh (Vision & OCR)\n- **Tác giả / Nhà phát triển:** PaddlePaddle (Baidu)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`, `claude_desktop`\n- **Kho lưu trữ chính thức:** [https://github.com/PaddlePaddle/PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **PP-OCRv6: phát hiện và nhận dạng chữ, một mô hình thống nhất cho 50 ngôn ngữ (tiếng Trung, Anh, Nhật và 46 ngôn ngữ chữ Latinh)**\n- **PaddleOCR-VL: mô hình thị giác - ngôn ngữ 0.9B phân tích tài liệu, nhận dạng văn bản, bảng, công thức, biểu đồ, xuất Markdown/JSON**\n- **PP-StructureV3: chuyển PDF/ảnh phức tạp sang Markdown hoặc JSON kèm tọa độ chi tiết của ô bảng và dòng chữ**\n- **Hai bộ máy suy luận: PaddlePaddle hoặc Hugging Face Transformers**\n- **Xuất kết quả phân tích ra DOCX; có SDK chạy trên trình duyệt PaddleOCR.js**\n- **Máy chủ MCP paddleocr-mcp: đưa công cụ OCR, PP-StructureV3, PaddleOCR-VL vào Claude Desktop và các ứng dụng LLM**\n- **Hỗ trợ xuất ONNX, tăng tốc bằng OpenVINO/ONNX Runtime/TensorRT và triển khai dịch vụ cho C++, C#, Java**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npython -m pip install \"paddleocr[all]\"\n```\n\nYêu cầu: Python 3.8 trở lên; bộ máy suy luận PaddlePaddle 3.0 trở lên (CPU hoặc GPU) hoặc Hugging Face Transformers >= 5.8.0.\nBước 1: Cài đặt bộ máy suy luận PaddlePaddle bản CPU: `python -m pip install paddlepaddle==3.2.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/`\nBước 2: Hoặc cài đặt bản GPU (ví dụ CUDA 11.8 trên Linux): `python -m pip install paddlepaddle-gpu==3.2.0 -i https://www.paddlepaddle.org.cn/packages/stable/cu118/`\nBước 3: Cài đặt đầy đủ PaddleOCR: `python -m pip install \"paddleocr[all]\"`\nBước 4: Chạy thử phát hiện vùng chữ trên ảnh mẫu: `paddleocr text_detection -i ./general_ocr_001.png --engine paddle`\nBước 5: Tùy chọn: cài đặt máy chủ MCP để dùng với Claude Desktop: `pip install \"paddleocr-mcp[local-cpu]\"`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Dùng lệnh `paddleocr ocr -i <ảnh>` để nhận dạng chữ toàn trang với PP-OCRv6.\nBước 2: Dùng `paddleocr text_recognition -i ./general_ocr_rec_001.png --engine paddle` để nhận dạng một dòng chữ đã cắt sẵn.\nBước 3: Dùng `paddleocr pp_structurev3 -i <ảnh hoặc PDF>` để chuyển tài liệu sang Markdown/JSON có bố cục.\nBước 4: Trong Python, gọi `from paddleocr import PaddleOCR` hoặc `PPStructureV3` để tích hợp vào ứng dụng.\nBước 5: Với Claude Desktop, thêm cấu hình mcpServers trỏ tới lệnh `paddleocr_mcp` và đặt biến PADDLEOCR_MCP_MODEL.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Nhận dạng toàn bộ chữ trong ảnh chụp hóa đơn này và trả về danh sách dòng chữ kèm tọa độ.\"\n- \"Chuyển tệp PDF báo cáo tài chính sang Markdown, giữ nguyên bảng và tiêu đề.\"\n- \"Trích xuất công thức và bảng từ trang tài liệu khoa học này dưới dạng JSON.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "datalab-to-surya",
+    "slug": "datalab-to-surya",
+    "name": "Surya — Công cụ OCR, phân tích bố cục và bảng cho tài liệu",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "computer_vision",
+    "categoryNameVi": "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+    "categories": [
+      "computer_vision",
+      "office_digital_docs"
+    ],
+    "categoryNamesVi": [
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+      "Văn phòng số & Quản lý văn bản điện tử"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/datalab-to/surya",
+    "websiteUrl": "https://www.datalab.to",
+    "authorName": "Datalab",
+    "license": "Hỗn hợp: mã nguồn Apache 2.0, trọng số Open RAIL-M (giới hạn thương mại)",
+    "summaryVi": "Surya là bộ công cụ OCR tài liệu với mô hình 650M tham số, thực hiện nhận dạng chữ, phân tích bố cục kèm thứ tự đọc và nhận dạng bảng thông qua một mô hình thị giác - ngôn ngữ duy nhất. Bộ công cụ có các mô hình nhỏ riêng cho phát hiện dòng chữ và phát hiện lỗi OCR, chạy qua vllm (GPU NVIDIA) hoặc llama.cpp (CPU / Apple Silicon).",
+    "purposeVi": "Giúp chuyển ảnh, PDF tài liệu thành văn bản và cấu trúc bố cục (bảng, tiêu đề, hình) dạng JSON để xử lý dữ liệu tiếp theo.",
+    "featuresVi": [
+      "OCR toàn trang: đạt 83,3% trên olmOCR-bench, xuất JSON gồm khối chữ, nhãn bố cục, polygon và bbox",
+      "Đa ngôn ngữ: 87,2% trên bộ đánh giá nội bộ 91 ngôn ngữ",
+      "Phân tích bố cục và thứ tự đọc: bảng, hình, tiêu đề, đầu trang...",
+      "Nhận dạng bảng: hàng, cột, hoặc xuất HTML đầy đủ",
+      "Phát hiện dòng chữ chạy thuần torch, không cần máy chủ suy luận",
+      "Giao diện Streamlit `surya_gui` để thử nghiệm tương tác"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10 trở lên; với GPU NVIDIA cần Docker và NVIDIA Container Toolkit (vllm); với CPU / Apple Silicon cần tệp chạy llama-server của llama.cpp.\nBước 1: Cài đặt gói Surya: `pip install surya-ocr`\nBước 2: Cài đặt bộ máy suy luận: GPU NVIDIA dùng Docker + NVIDIA Container Toolkit; macOS cài đặt llama.cpp bằng `brew install llama.cpp`\nBước 3: Tùy chọn: cài đặt giao diện web: `pip install streamlit pdftext` rồi chạy `surya_gui`",
+    "usageGuideVi": "Bước 1: Chạy `surya_ocr DATA_PATH` với DATA_PATH là ảnh, PDF hoặc thư mục; kết quả ghi ra tệp results.json.\nBước 2: Thêm `--output_dir` để chọn thư mục kết quả, `--page_range` để chọn trang PDF, `--images` để lưu ảnh minh họa.\nBước 3: Dùng `surya_detect DATA_PATH` để phát hiện dòng chữ, `surya_layout DATA_PATH` để phân tích bố cục, `surya_table DATA_PATH` để nhận dạng bảng.\nBước 4: Thêm `--keep_server` để giữ máy chủ suy luận chạy giữa các lệnh.",
+    "samplePromptsVi": [
+      "Nhận dạng chữ trong tệp PDF hợp đồng 20 trang này, chỉ xử lý trang 0 và 5-10.",
+      "Phân tích bố cục trang tài liệu và cho biết thứ tự đọc các khối tiêu đề, đoạn văn, bảng.",
+      "Trích xuất cấu trúc hàng, cột của bảng trong ảnh chụp báo cáo này."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "surya_ocr DATA_PATH",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"surya_ocr DATA_PATH\"\n  ],\n  \"nguon\": \"https://github.com/datalab-to/surya\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "prosVi": [
+      "Mã nguồn Apache 2.0, chạy cục bộ trên GPU NVIDIA, CPU hoặc Apple Silicon",
+      "Một mô hình duy nhất cho OCR, bố cục và bảng, có giao diện dòng lệnh đầy đủ",
+      "Đang được phát triển tích cực"
+    ],
+    "consVi": [
+      "Trọng số mô hình theo giấy phép Open RAIL-M sửa đổi: miễn phí cho nghiên cứu, cá nhân và startup dưới 5 triệu USD vốn/doanh thu; mức lớn hơn cần mua giấy phép thương mại",
+      "Chuyên cho tài liệu, không nhắm tới ảnh chụp đời thường hay cảnh tự nhiên",
+      "OCR, bố cục và bảng cần máy chủ suy luận vllm hoặc llama.cpp đang chạy"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Surya — Công cụ OCR, phân tích bố cục và bảng cho tài liệu\n\n> Surya is a 650M param OCR model with these features:\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSurya là bộ công cụ OCR tài liệu với mô hình 650M tham số, thực hiện nhận dạng chữ, phân tích bố cục kèm thứ tự đọc và nhận dạng bảng thông qua một mô hình thị giác - ngôn ngữ duy nhất. Bộ công cụ có các mô hình nhỏ riêng cho phát hiện dòng chữ và phát hiện lỗi OCR, chạy qua vllm (GPU NVIDIA) hoặc llama.cpp (CPU / Apple Silicon).\n\nGiúp chuyển ảnh, PDF tài liệu thành văn bản và cấu trúc bố cục (bảng, tiêu đề, hình) dạng JSON để xử lý dữ liệu tiếp theo.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Thị giác máy tính & Xử lý ảnh (Vision & OCR)\n- **Tác giả / Nhà phát triển:** Datalab\n- **Giấy phép bản quyền:** Hỗn hợp: mã nguồn Apache 2.0, trọng số Open RAIL-M (giới hạn thương mại)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/datalab-to/surya](https://github.com/datalab-to/surya)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **OCR toàn trang: đạt 83,3% trên olmOCR-bench, xuất JSON gồm khối chữ, nhãn bố cục, polygon và bbox**\n- **Đa ngôn ngữ: 87,2% trên bộ đánh giá nội bộ 91 ngôn ngữ**\n- **Phân tích bố cục và thứ tự đọc: bảng, hình, tiêu đề, đầu trang...**\n- **Nhận dạng bảng: hàng, cột, hoặc xuất HTML đầy đủ**\n- **Phát hiện dòng chữ chạy thuần torch, không cần máy chủ suy luận**\n- **Giao diện Streamlit `surya_gui` để thử nghiệm tương tác**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nsurya_ocr DATA_PATH\n```\n\nYêu cầu: Python 3.10 trở lên; với GPU NVIDIA cần Docker và NVIDIA Container Toolkit (vllm); với CPU / Apple Silicon cần tệp chạy llama-server của llama.cpp.\nBước 1: Cài đặt gói Surya: `pip install surya-ocr`\nBước 2: Cài đặt bộ máy suy luận: GPU NVIDIA dùng Docker + NVIDIA Container Toolkit; macOS cài đặt llama.cpp bằng `brew install llama.cpp`\nBước 3: Tùy chọn: cài đặt giao diện web: `pip install streamlit pdftext` rồi chạy `surya_gui`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy `surya_ocr DATA_PATH` với DATA_PATH là ảnh, PDF hoặc thư mục; kết quả ghi ra tệp results.json.\nBước 2: Thêm `--output_dir` để chọn thư mục kết quả, `--page_range` để chọn trang PDF, `--images` để lưu ảnh minh họa.\nBước 3: Dùng `surya_detect DATA_PATH` để phát hiện dòng chữ, `surya_layout DATA_PATH` để phân tích bố cục, `surya_table DATA_PATH` để nhận dạng bảng.\nBước 4: Thêm `--keep_server` để giữ máy chủ suy luận chạy giữa các lệnh.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Nhận dạng chữ trong tệp PDF hợp đồng 20 trang này, chỉ xử lý trang 0 và 5-10.\"\n- \"Phân tích bố cục trang tài liệu và cho biết thứ tự đọc các khối tiêu đề, đoạn văn, bảng.\"\n- \"Trích xuất cấu trúc hàng, cột của bảng trong ảnh chụp báo cáo này.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "jaidedai-easyocr",
+    "slug": "jaidedai-easyocr",
+    "name": "EasyOCR — Thư viện OCR Python hỗ trợ hơn 80 ngôn ngữ",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "computer_vision",
+    "categoryNameVi": "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+    "categories": [
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/JaidedAI/EasyOCR",
+    "websiteUrl": "https://www.jaided.ai/easyocr",
+    "authorName": "Jaided AI",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "EasyOCR là thư viện Python OCR dùng ngay, hỗ trợ hơn 80 ngôn ngữ và các hệ chữ phổ biến như Latinh, Trung, Ả Rập, Devanagari, Kirin. Thư viện dùng CRAFT để phát hiện vùng chữ, mô hình nhận dạng chạy trên PyTorch, tự tải trọng số theo ngôn ngữ đã chọn.",
+    "purposeVi": "Giúp lập trình viên thêm tính năng đọc chữ trong ảnh vào ứng dụng Python chỉ với vài dòng mã hoặc một lệnh dòng lệnh.",
+    "featuresVi": [
+      "Hơn 80 ngôn ngữ: chọn danh sách ngôn ngữ khi khởi tạo Reader, có thể đọc nhiều ngôn ngữ cùng lúc",
+      "Kết quả có hộp bao, văn bản và độ tin cậy; tùy chọn detail=0 để chỉ lấy văn bản",
+      "Đầu vào linh hoạt: đường dẫn tệp, ảnh OpenCV (numpy), bytes hoặc URL ảnh",
+      "Chạy trên GPU hoặc chế độ chỉ CPU với gpu=False",
+      "Công cụ dòng lệnh `easyocr`",
+      "Hướng dẫn huấn luyện mô hình nhận dạng và phát hiện (CRAFT) tùy chỉnh"
+    ],
+    "installGuideVi": "Yêu cầu: Python và PyTorch; trên Windows cần cài đặt torch và torchvision trước theo hướng dẫn của pytorch.org.\nBước 1: Cài đặt bản ổn định: `pip install easyocr`\nBước 2: Hoặc cài đặt bản phát triển mới nhất: `pip install git+https://github.com/JaidedAI/EasyOCR.git`\nBước 3: Trọng số mô hình theo ngôn ngữ được tự động tải về thư mục ~/.EasyOCR/model khi dùng lần đầu.",
+    "usageGuideVi": "Bước 1: Trong Python: `import easyocr`, tạo `reader = easyocr.Reader(['ch_sim','en'])` (chỉ cần chạy một lần để nạp mô hình).\nBước 2: Gọi `reader.readtext('chinese.jpg')` để nhận danh sách hộp bao, văn bản và độ tin cậy.\nBước 3: Dùng dòng lệnh `easyocr -l <ngôn ngữ> -f <ảnh>` để nhận dạng nhanh không cần viết mã.",
+    "samplePromptsVi": [
+      "Đọc chữ tiếng Việt và tiếng Anh trên ảnh biển hiệu này, chỉ trả về văn bản.",
+      "Nhận dạng chữ trong ảnh chụp tài liệu và trả về tọa độ hộp bao từng dòng.",
+      "Chạy OCR trên CPU cho thư mục ảnh hóa đơn vì máy không có GPU."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install easyocr",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install easyocr\"\n  ],\n  \"nguon\": \"https://github.com/JaidedAI/EasyOCR\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, cài đặt bằng một lệnh pip",
+      "Hỗ trợ hơn 80 ngôn ngữ, trong đó có tiếng Việt (mã 'vi')",
+      "Chạy được ở chế độ chỉ CPU"
+    ],
+    "consVi": [
+      "Bản phát hành gần nhất ghi trong README là 1.7.2 (tháng 9/2024), nhịp cập nhật chậm",
+      "Chưa hỗ trợ chữ viết tay (đang trong kế hoạch)",
+      "Không phải mọi ngôn ngữ đều dùng chung được trong một Reader"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# EasyOCR — Thư viện OCR Python hỗ trợ hơn 80 ngôn ngữ\n\n> Ready-to-use OCR with 80+ supported languages and all popular writing scripts including: Latin, Chinese, Arabic, Devanagari, Cyrillic, etc.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nEasyOCR là thư viện Python OCR dùng ngay, hỗ trợ hơn 80 ngôn ngữ và các hệ chữ phổ biến như Latinh, Trung, Ả Rập, Devanagari, Kirin. Thư viện dùng CRAFT để phát hiện vùng chữ, mô hình nhận dạng chạy trên PyTorch, tự tải trọng số theo ngôn ngữ đã chọn.\n\nGiúp lập trình viên thêm tính năng đọc chữ trong ảnh vào ứng dụng Python chỉ với vài dòng mã hoặc một lệnh dòng lệnh.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Thị giác máy tính & Xử lý ảnh (Vision & OCR)\n- **Tác giả / Nhà phát triển:** Jaided AI\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/JaidedAI/EasyOCR](https://github.com/JaidedAI/EasyOCR)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Hơn 80 ngôn ngữ: chọn danh sách ngôn ngữ khi khởi tạo Reader, có thể đọc nhiều ngôn ngữ cùng lúc**\n- **Kết quả có hộp bao, văn bản và độ tin cậy; tùy chọn detail=0 để chỉ lấy văn bản**\n- **Đầu vào linh hoạt: đường dẫn tệp, ảnh OpenCV (numpy), bytes hoặc URL ảnh**\n- **Chạy trên GPU hoặc chế độ chỉ CPU với gpu=False**\n- **Công cụ dòng lệnh `easyocr`**\n- **Hướng dẫn huấn luyện mô hình nhận dạng và phát hiện (CRAFT) tùy chỉnh**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install easyocr\n```\n\nYêu cầu: Python và PyTorch; trên Windows cần cài đặt torch và torchvision trước theo hướng dẫn của pytorch.org.\nBước 1: Cài đặt bản ổn định: `pip install easyocr`\nBước 2: Hoặc cài đặt bản phát triển mới nhất: `pip install git+https://github.com/JaidedAI/EasyOCR.git`\nBước 3: Trọng số mô hình theo ngôn ngữ được tự động tải về thư mục ~/.EasyOCR/model khi dùng lần đầu.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trong Python: `import easyocr`, tạo `reader = easyocr.Reader(['ch_sim','en'])` (chỉ cần chạy một lần để nạp mô hình).\nBước 2: Gọi `reader.readtext('chinese.jpg')` để nhận danh sách hộp bao, văn bản và độ tin cậy.\nBước 3: Dùng dòng lệnh `easyocr -l <ngôn ngữ> -f <ảnh>` để nhận dạng nhanh không cần viết mã.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Đọc chữ tiếng Việt và tiếng Anh trên ảnh biển hiệu này, chỉ trả về văn bản.\"\n- \"Nhận dạng chữ trong ảnh chụp tài liệu và trả về tọa độ hộp bao từng dòng.\"\n- \"Chạy OCR trên CPU cho thư mục ảnh hóa đơn vì máy không có GPU.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "mindee-doctr",
+    "slug": "mindee-doctr",
+    "name": "docTR — Thư viện OCR tài liệu trên PyTorch",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "computer_vision",
+    "categoryNameVi": "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+    "categories": [
+      "computer_vision",
+      "office_digital_docs"
+    ],
+    "categoryNamesVi": [
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+      "Văn phòng số & Quản lý văn bản điện tử"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/mindee/doctr",
+    "websiteUrl": "https://mindee.github.io/doctr",
+    "authorName": "Mindee (hiện do t2k GmbH phát triển và bảo trì)",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "docTR là thư viện OCR trên PyTorch theo hướng hai giai đoạn: phát hiện từ rồi nhận dạng ký tự, cho phép chọn kiến trúc như DBNet, FAST, CRNN, PARSeq, ViTSTR. Thư viện đọc được PDF, ảnh và trang web, có thêm phát hiện bố cục, nhận dạng cấu trúc bảng và bộ dự đoán KIE trích xuất thông tin theo lớp.",
+    "purposeVi": "Giúp phân tích văn bản trong tài liệu (định vị và nhận dạng từng từ) và tích hợp vào kiến trúc hệ thống sẵn có qua thư viện Python, Docker hoặc API FastAPI mẫu.",
+    "featuresVi": [
+      "OCR hai giai đoạn: chọn kiến trúc phát hiện (DBNet, LinkNet, FAST) và nhận dạng (CRNN, SAR, MASTER, ViTSTR, PARSeq, VIPTR)",
+      "Đọc nhiều nguồn: PDF, ảnh, nhiều trang ảnh, trang web (cần weasyprint)",
+      "Phát hiện bố cục: tiêu đề, đoạn văn, bảng, đầu/chân trang với detect_layout=True",
+      "Bộ dự đoán KIE: phát hiện nhiều lớp thông tin (ví dụ ngày, địa chỉ) trong tài liệu",
+      "Ứng dụng demo Streamlit và API mẫu FastAPI với các tuyến /detection, /recognition, /ocr, /kie",
+      "Ảnh Docker hỗ trợ GPU (CUDA 12.2)"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.11 trở lên và pip; Docker GPU cần máy chủ CUDA 12.2 trở lên.\nBước 1: Cài đặt bản phát hành: `pip install python-doctr`\nBước 2: Cài đặt thêm phần phụ thuộc trực quan hóa, HTML và contrib: `pip install \"python-doctr[viz,html,contrib]\"`\nBước 3: Hoặc chạy bằng Docker có GPU: `docker run -it --gpus all ghcr.io/mindee/doctr:torch-py3.9.18-2024-10 bash`",
+    "usageGuideVi": "Bước 1: Tạo mô hình `ocr_predictor(pretrained=True)` và đọc tài liệu bằng `DocumentFile.from_pdf(...)` hoặc `DocumentFile.from_images(...)`.\nBước 2: Gọi `result = model(doc)` để nhận kết quả theo trang, khối, dòng, từ.\nBước 3: Chạy demo cục bộ: `pip install -r demo/pt-requirements.txt` rồi `streamlit run demo/app.py`.\nBước 4: Triển khai API mẫu: `uvicorn --reload --workers 1 --host 0.0.0.0 --port=8002 --app-dir api/ app.main:app`, xem tài liệu tại http://localhost:8002/redoc.",
+    "samplePromptsVi": [
+      "Nhận dạng toàn bộ chữ trong tệp PDF này và xuất ra cấu trúc trang, dòng, từ.",
+      "Phát hiện các vùng tiêu đề, bảng và chân trang trong ảnh tài liệu này.",
+      "Dùng bộ dự đoán KIE để tìm ngày tháng và địa chỉ trong hóa đơn PDF."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install python-doctr",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install python-doctr\"\n  ],\n  \"nguon\": \"https://github.com/mindee/doctr\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, đang được bảo trì tích cực",
+      "Nhiều kiến trúc mô hình để lựa chọn, có mô hình huấn luyện sẵn",
+      "Có sẵn Docker, demo và API mẫu để triển khai"
+    ],
+    "consVi": [
+      "Yêu cầu Python 3.11 trở lên",
+      "Đọc trang web cần cài đặt thêm weasyprint; hiển thị kết quả cần matplotlib và mplcursors"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# docTR — Thư viện OCR tài liệu trên PyTorch\n\n> Optical Character Recognition made seamless & accessible to anyone, powered by PyTorch\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\ndocTR là thư viện OCR trên PyTorch theo hướng hai giai đoạn: phát hiện từ rồi nhận dạng ký tự, cho phép chọn kiến trúc như DBNet, FAST, CRNN, PARSeq, ViTSTR. Thư viện đọc được PDF, ảnh và trang web, có thêm phát hiện bố cục, nhận dạng cấu trúc bảng và bộ dự đoán KIE trích xuất thông tin theo lớp.\n\nGiúp phân tích văn bản trong tài liệu (định vị và nhận dạng từng từ) và tích hợp vào kiến trúc hệ thống sẵn có qua thư viện Python, Docker hoặc API FastAPI mẫu.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Thị giác máy tính & Xử lý ảnh (Vision & OCR)\n- **Tác giả / Nhà phát triển:** Mindee (hiện do t2k GmbH phát triển và bảo trì)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/mindee/doctr](https://github.com/mindee/doctr)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **OCR hai giai đoạn: chọn kiến trúc phát hiện (DBNet, LinkNet, FAST) và nhận dạng (CRNN, SAR, MASTER, ViTSTR, PARSeq, VIPTR)**\n- **Đọc nhiều nguồn: PDF, ảnh, nhiều trang ảnh, trang web (cần weasyprint)**\n- **Phát hiện bố cục: tiêu đề, đoạn văn, bảng, đầu/chân trang với detect_layout=True**\n- **Bộ dự đoán KIE: phát hiện nhiều lớp thông tin (ví dụ ngày, địa chỉ) trong tài liệu**\n- **Ứng dụng demo Streamlit và API mẫu FastAPI với các tuyến /detection, /recognition, /ocr, /kie**\n- **Ảnh Docker hỗ trợ GPU (CUDA 12.2)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install python-doctr\n```\n\nYêu cầu: Python 3.11 trở lên và pip; Docker GPU cần máy chủ CUDA 12.2 trở lên.\nBước 1: Cài đặt bản phát hành: `pip install python-doctr`\nBước 2: Cài đặt thêm phần phụ thuộc trực quan hóa, HTML và contrib: `pip install \"python-doctr[viz,html,contrib]\"`\nBước 3: Hoặc chạy bằng Docker có GPU: `docker run -it --gpus all ghcr.io/mindee/doctr:torch-py3.9.18-2024-10 bash`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo mô hình `ocr_predictor(pretrained=True)` và đọc tài liệu bằng `DocumentFile.from_pdf(...)` hoặc `DocumentFile.from_images(...)`.\nBước 2: Gọi `result = model(doc)` để nhận kết quả theo trang, khối, dòng, từ.\nBước 3: Chạy demo cục bộ: `pip install -r demo/pt-requirements.txt` rồi `streamlit run demo/app.py`.\nBước 4: Triển khai API mẫu: `uvicorn --reload --workers 1 --host 0.0.0.0 --port=8002 --app-dir api/ app.main:app`, xem tài liệu tại http://localhost:8002/redoc.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Nhận dạng toàn bộ chữ trong tệp PDF này và xuất ra cấu trúc trang, dòng, từ.\"\n- \"Phát hiện các vùng tiêu đề, bảng và chân trang trong ảnh tài liệu này.\"\n- \"Dùng bộ dự đoán KIE để tìm ngày tháng và địa chỉ trong hóa đơn PDF.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "ultralytics-ultralytics",
+    "slug": "ultralytics-ultralytics",
+    "name": "Ultralytics YOLO — Bộ công cụ phát hiện, phân đoạn và theo dõi đối tượng",
+    "icon": "Box",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "computer_vision",
+    "categoryNameVi": "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+    "categories": [
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/ultralytics/ultralytics",
+    "websiteUrl": "https://docs.ultralytics.com",
+    "authorName": "Ultralytics",
+    "license": "Mã nguồn mở (AGPL-3.0), thương mại cần giấy phép Enterprise",
+    "summaryVi": "Ultralytics là gói Python và công cụ dòng lệnh `yolo` cho các mô hình YOLO, từ YOLOv3 đến YOLO26. Gói hỗ trợ phát hiện đối tượng, phân đoạn thực thể và ngữ nghĩa, ước lượng độ sâu, phân loại ảnh, ước lượng tư thế, phát hiện đối tượng xoay (OBB) và theo dõi đối tượng qua khung hình video.",
+    "purposeVi": "Giúp huấn luyện, đánh giá, suy luận và xuất mô hình thị giác máy tính YOLO (ví dụ sang ONNX) cho ứng dụng thực tế chỉ với vài lệnh.",
+    "featuresVi": [
+      "Nhiều tác vụ: phát hiện, phân đoạn thực thể, phân đoạn ngữ nghĩa, độ sâu, phân loại, tư thế, OBB",
+      "Theo dõi đối tượng qua video với các mô hình phát hiện, phân đoạn, tư thế, OBB",
+      "Mô hình huấn luyện sẵn YOLO26 (n, s, m, l, x) trên COCO, ImageNet, Cityscapes, DOTAv1, tự tải khi dùng lần đầu",
+      "Huấn luyện, đánh giá, dự đoán, xuất mô hình (ONNX, TensorRT...) qua CLI `yolo` hoặc Python API",
+      "Cài đặt qua pip, Conda hoặc Docker"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.8 trở lên và PyTorch 1.8 trở lên.\nBước 1: Cài đặt gói ultralytics kèm toàn bộ phụ thuộc: `pip install ultralytics`\nBước 2: Chạy thử dự đoán với mô hình huấn luyện sẵn: `yolo predict model=yolo26n.pt source='https://ultralytics.com/images/bus.jpg'`",
+    "usageGuideVi": "Bước 1: Dùng lệnh `yolo` với tác vụ và chế độ (predict, train, val, export) cùng các tham số như imgsz=640.\nBước 2: Trong Python: `from ultralytics import YOLO`, tạo `model = YOLO(\"yolo26n.pt\")`.\nBước 3: Huấn luyện bằng `model.train(data=\"coco8.yaml\", epochs=100, imgsz=640)`, đánh giá bằng `model.val()`.\nBước 4: Xuất mô hình để triển khai bằng `model.export(format=\"onnx\")`.",
+    "samplePromptsVi": [
+      "Phát hiện và đếm xe ô tô, xe máy trong ảnh camera giao thông này bằng YOLO26n.",
+      "Huấn luyện mô hình phát hiện lỗi sản phẩm trên bộ dữ liệu YOLO tự gán nhãn trong 100 epoch.",
+      "Xuất mô hình đã huấn luyện sang ONNX để chạy trên máy chủ không có GPU."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install ultralytics",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install ultralytics\"\n  ],\n  \"nguon\": \"https://github.com/ultralytics/ultralytics\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "prosVi": [
+      "Một gói duy nhất cho nhiều tác vụ thị giác, có CLI và Python API",
+      "Mô hình huấn luyện sẵn tự tải về, cập nhật thường xuyên",
+      "Tài liệu và cộng đồng lớn (Discord, diễn đàn)"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0: tích hợp vào sản phẩm, dịch vụ thương mại hoặc công cụ nội bộ mà không mở mã nguồn cần mua Ultralytics Enterprise License",
+      "Huấn luyện mô hình lớn cần GPU để đạt tốc độ hợp lý"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Ultralytics YOLO — Bộ công cụ phát hiện, phân đoạn và theo dõi đối tượng\n\n> Ultralytics creates cutting-edge, state-of-the-art (SOTA) YOLO models built on years of foundational research in computer vision and AI.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nUltralytics là gói Python và công cụ dòng lệnh `yolo` cho các mô hình YOLO, từ YOLOv3 đến YOLO26. Gói hỗ trợ phát hiện đối tượng, phân đoạn thực thể và ngữ nghĩa, ước lượng độ sâu, phân loại ảnh, ước lượng tư thế, phát hiện đối tượng xoay (OBB) và theo dõi đối tượng qua khung hình video.\n\nGiúp huấn luyện, đánh giá, suy luận và xuất mô hình thị giác máy tính YOLO (ví dụ sang ONNX) cho ứng dụng thực tế chỉ với vài lệnh.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Thị giác máy tính & Xử lý ảnh (Vision & OCR)\n- **Tác giả / Nhà phát triển:** Ultralytics\n- **Giấy phép bản quyền:** Mã nguồn mở (AGPL-3.0), thương mại cần giấy phép Enterprise\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/ultralytics/ultralytics](https://github.com/ultralytics/ultralytics)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Nhiều tác vụ: phát hiện, phân đoạn thực thể, phân đoạn ngữ nghĩa, độ sâu, phân loại, tư thế, OBB**\n- **Theo dõi đối tượng qua video với các mô hình phát hiện, phân đoạn, tư thế, OBB**\n- **Mô hình huấn luyện sẵn YOLO26 (n, s, m, l, x) trên COCO, ImageNet, Cityscapes, DOTAv1, tự tải khi dùng lần đầu**\n- **Huấn luyện, đánh giá, dự đoán, xuất mô hình (ONNX, TensorRT...) qua CLI `yolo` hoặc Python API**\n- **Cài đặt qua pip, Conda hoặc Docker**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install ultralytics\n```\n\nYêu cầu: Python 3.8 trở lên và PyTorch 1.8 trở lên.\nBước 1: Cài đặt gói ultralytics kèm toàn bộ phụ thuộc: `pip install ultralytics`\nBước 2: Chạy thử dự đoán với mô hình huấn luyện sẵn: `yolo predict model=yolo26n.pt source='https://ultralytics.com/images/bus.jpg'`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Dùng lệnh `yolo` với tác vụ và chế độ (predict, train, val, export) cùng các tham số như imgsz=640.\nBước 2: Trong Python: `from ultralytics import YOLO`, tạo `model = YOLO(\"yolo26n.pt\")`.\nBước 3: Huấn luyện bằng `model.train(data=\"coco8.yaml\", epochs=100, imgsz=640)`, đánh giá bằng `model.val()`.\nBước 4: Xuất mô hình để triển khai bằng `model.export(format=\"onnx\")`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Phát hiện và đếm xe ô tô, xe máy trong ảnh camera giao thông này bằng YOLO26n.\"\n- \"Huấn luyện mô hình phát hiện lỗi sản phẩm trên bộ dữ liệu YOLO tự gán nhãn trong 100 epoch.\"\n- \"Xuất mô hình đã huấn luyện sang ONNX để chạy trên máy chủ không có GPU.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "roboflow-supervision",
+    "slug": "roboflow-supervision",
+    "name": "Supervision — Thư viện công cụ dựng ứng dụng thị giác máy tính",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "computer_vision",
+    "categoryNameVi": "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+    "categories": [
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/roboflow/supervision",
+    "websiteUrl": "https://supervision.roboflow.com",
+    "authorName": "Roboflow",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Supervision là thư viện Python cung cấp các khối xây dựng tái sử dụng cho ứng dụng thị giác máy tính: chuẩn hóa kết quả mô hình về `sv.Detections`, vẽ chú thích, xử lý bộ dữ liệu và đếm theo vùng thời gian thực. Thư viện độc lập với mô hình, có bộ kết nối cho Ultralytics, Transformers, MMDetection, Inference và rfdetr.",
+    "purposeVi": "Giúp lập trình viên tập trung xây dựng ứng dụng quanh mô hình thị giác (đếm, theo dõi, trực quan hóa) thay vì tự viết mã xử lý kết quả và dữ liệu.",
+    "featuresVi": [
+      "Độc lập mô hình: kết nối Ultralytics, Transformers, MMDetection, Roboflow Inference; rfdetr trả về sv.Detections trực tiếp",
+      "Bộ annotator tùy biến cao (ví dụ BoxAnnotator) để vẽ kết quả phát hiện lên ảnh/video",
+      "Tiện ích bộ dữ liệu: nạp từ YOLO, Pascal VOC, COCO; chia, gộp và xuất lại các định dạng",
+      "Đếm theo vùng thời gian thực, theo dõi đối tượng (hướng dẫn kèm ByteTrack)"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10 trở lên. Dùng mô hình qua Roboflow Inference cần Roboflow API key.\nBước 1: Cài đặt thư viện: `pip install supervision`\nBước 2: Cài đặt phụ thuộc tùy chọn cho ví dụ nhanh: `pip install pillow rfdetr`",
+    "usageGuideVi": "Bước 1: `import supervision as sv`, chạy mô hình phát hiện (ví dụ RFDETRSmall) để nhận đối tượng `detections`.\nBước 2: Chuyển kết quả từ thư viện khác bằng các bộ kết nối như `sv.Detections.from_inference(result)`.\nBước 3: Vẽ kết quả bằng `sv.BoxAnnotator().annotate(scene=image.copy(), detections=detections)`.\nBước 4: Nạp bộ dữ liệu bằng `sv.DetectionDataset.from_coco(...)`, chia bằng `dataset.split(split_ratio=0.7)`.",
+    "samplePromptsVi": [
+      "Vẽ hộp bao và nhãn lên ảnh từ kết quả phát hiện của mô hình YOLO.",
+      "Chuyển bộ dữ liệu gán nhãn định dạng COCO sang định dạng YOLO và chia 70/15/15.",
+      "Đếm số người đi vào một vùng xác định trong video camera cửa hàng."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install supervision",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install supervision\"\n  ],\n  \"nguon\": \"https://github.com/roboflow/supervision\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, dùng thương mại tự do",
+      "Không phụ thuộc vào một mô hình cụ thể",
+      "Được bảo trì tích cực"
+    ],
+    "consVi": [
+      "Là thư viện, không kèm mô hình riêng hay công cụ dòng lệnh",
+      "Yêu cầu Python 3.10 trở lên; dùng Roboflow Inference cần tài khoản và API key Roboflow"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Supervision — Thư viện công cụ dựng ứng dụng thị giác máy tính\n\n> We are your essential toolkit for computer vision.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSupervision là thư viện Python cung cấp các khối xây dựng tái sử dụng cho ứng dụng thị giác máy tính: chuẩn hóa kết quả mô hình về `sv.Detections`, vẽ chú thích, xử lý bộ dữ liệu và đếm theo vùng thời gian thực. Thư viện độc lập với mô hình, có bộ kết nối cho Ultralytics, Transformers, MMDetection, Inference và rfdetr.\n\nGiúp lập trình viên tập trung xây dựng ứng dụng quanh mô hình thị giác (đếm, theo dõi, trực quan hóa) thay vì tự viết mã xử lý kết quả và dữ liệu.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Thị giác máy tính & Xử lý ảnh (Vision & OCR)\n- **Tác giả / Nhà phát triển:** Roboflow\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/roboflow/supervision](https://github.com/roboflow/supervision)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Độc lập mô hình: kết nối Ultralytics, Transformers, MMDetection, Roboflow Inference; rfdetr trả về sv.Detections trực tiếp**\n- **Bộ annotator tùy biến cao (ví dụ BoxAnnotator) để vẽ kết quả phát hiện lên ảnh/video**\n- **Tiện ích bộ dữ liệu: nạp từ YOLO, Pascal VOC, COCO; chia, gộp và xuất lại các định dạng**\n- **Đếm theo vùng thời gian thực, theo dõi đối tượng (hướng dẫn kèm ByteTrack)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install supervision\n```\n\nYêu cầu: Python 3.10 trở lên. Dùng mô hình qua Roboflow Inference cần Roboflow API key.\nBước 1: Cài đặt thư viện: `pip install supervision`\nBước 2: Cài đặt phụ thuộc tùy chọn cho ví dụ nhanh: `pip install pillow rfdetr`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: `import supervision as sv`, chạy mô hình phát hiện (ví dụ RFDETRSmall) để nhận đối tượng `detections`.\nBước 2: Chuyển kết quả từ thư viện khác bằng các bộ kết nối như `sv.Detections.from_inference(result)`.\nBước 3: Vẽ kết quả bằng `sv.BoxAnnotator().annotate(scene=image.copy(), detections=detections)`.\nBước 4: Nạp bộ dữ liệu bằng `sv.DetectionDataset.from_coco(...)`, chia bằng `dataset.split(split_ratio=0.7)`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Vẽ hộp bao và nhãn lên ảnh từ kết quả phát hiện của mô hình YOLO.\"\n- \"Chuyển bộ dữ liệu gán nhãn định dạng COCO sang định dạng YOLO và chia 70/15/15.\"\n- \"Đếm số người đi vào một vùng xác định trong video camera cửa hàng.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "tesseract-ocr-tesseract",
+    "slug": "tesseract-ocr-tesseract",
+    "name": "Tesseract OCR — Bộ máy nhận dạng chữ mã nguồn mở hơn 100 ngôn ngữ",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "computer_vision",
+    "categoryNameVi": "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+    "categories": [
+      "computer_vision",
+      "office_digital_docs"
+    ],
+    "categoryNamesVi": [
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+      "Văn phòng số & Quản lý văn bản điện tử"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/tesseract-ocr/tesseract",
+    "websiteUrl": "https://tesseract-ocr.github.io/tessdoc/",
+    "authorName": "Tesseract OCR (Stefan Weil, Zdenko Podobny và cộng đồng)",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Tesseract là bộ máy OCR mã nguồn mở lâu đời (khởi nguồn từ HP, Google phát triển 2006-2017), gồm thư viện libtesseract và công cụ dòng lệnh tesseract. Từ phiên bản 4, Tesseract dùng mạng nơ-ron LSTM nhận dạng theo dòng, hỗ trợ Unicode và hơn 100 ngôn ngữ, có thể huấn luyện thêm ngôn ngữ mới.",
+    "purposeVi": "Giúp nhận dạng chữ từ ảnh PNG, JPEG, TIFF ngay trên máy và xuất ra văn bản, hOCR, PDF có lớp chữ, TSV, ALTO hoặc PAGE.",
+    "featuresVi": [
+      "Bộ máy LSTM nhận dạng theo dòng, vẫn hỗ trợ bộ máy cũ của Tesseract 3 (--oem 0)",
+      "Hơn 100 ngôn ngữ dùng ngay với tệp traineddata, hỗ trợ UTF-8",
+      "Nhiều định dạng đầu ra: văn bản thuần, hOCR (HTML), PDF, PDF chỉ lớp chữ ẩn, TSV, ALTO, PAGE",
+      "API C và C++ (libtesseract) cùng nhiều wrapper cho ngôn ngữ khác",
+      "Có thể huấn luyện để nhận dạng ngôn ngữ mới"
+    ],
+    "installGuideVi": "Yêu cầu: Cài đặt từ gói nhị phân dựng sẵn hoặc biên dịch từ mã nguồn (trình biên dịch C++17, Leptonica, automake, pkg-config hoặc cmake); cần ít nhất tệp traineddata tiếng Anh và OSD trong thư mục TESSDATA_PREFIX.\nBước 1: Cài đặt bằng gói nhị phân dựng sẵn theo hướng dẫn Installation trên tessdoc, hoặc biên dịch từ mã nguồn như các bước dưới.\nBước 2: Biên dịch bằng autotools: chạy `./autogen.sh`, `./configure`, `make`, rồi `sudo make install` và `sudo ldconfig`.\nBước 3: Hoặc dùng cmake trên Linux: `mkdir build`, `cd build && cmake .. && make`, rồi `sudo make install`.\nBước 4: Tải tệp dữ liệu ngôn ngữ (traineddata) cần dùng vào thư mục TESSDATA_PREFIX.",
+    "usageGuideVi": "Bước 1: Chạy `tesseract <ảnh> <tên tệp đầu ra> -l <ngôn ngữ>` để nhận dạng chữ trong ảnh.\nBước 2: Dùng `--psm` để chọn chế độ phân đoạn trang, `--oem` để chọn bộ máy OCR.\nBước 3: Xem toàn bộ tùy chọn bằng `tesseract --help` hoặc `man tesseract`.\nBước 4: Cải thiện chất lượng ảnh đầu vào (độ phân giải, khử nhiễu) để tăng độ chính xác.",
+    "samplePromptsVi": [
+      "Nhận dạng chữ tiếng Việt trong ảnh scan công văn và xuất ra tệp PDF có thể tìm kiếm.",
+      "Chuyển thư mục ảnh TIFF nhiều trang thành văn bản thuần.",
+      "Xuất kết quả OCR dạng TSV để lấy tọa độ từng từ."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "tesseract imagename outputbase [-l lang] [--oem ocrenginemode] [--psm pagesegmode] [configfiles...]",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"tesseract imagename outputbase [-l lang] [--oem ocrenginemode] [--psm pagesegmode] [configfiles...]\"\n  ],\n  \"nguon\": \"https://github.com/tesseract-ocr/tesseract\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, dự án lâu đời và vẫn được bảo trì",
+      "Hơn 100 ngôn ngữ, chạy hoàn toàn cục bộ, không cần GPU",
+      "Có API C/C++ để nhúng vào ứng dụng"
+    ],
+    "consVi": [
+      "Không có giao diện đồ họa (cần dùng ứng dụng bên thứ ba)",
+      "Thường cần tiền xử lý ảnh để đạt kết quả tốt",
+      "README không kèm lệnh cài đặt gói nhị phân, cần xem tài liệu tessdoc"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Tesseract OCR — Bộ máy nhận dạng chữ mã nguồn mở hơn 100 ngôn ngữ\n\n> This package contains an OCR engine - libtesseract and a command line program - tesseract.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nTesseract là bộ máy OCR mã nguồn mở lâu đời (khởi nguồn từ HP, Google phát triển 2006-2017), gồm thư viện libtesseract và công cụ dòng lệnh tesseract. Từ phiên bản 4, Tesseract dùng mạng nơ-ron LSTM nhận dạng theo dòng, hỗ trợ Unicode và hơn 100 ngôn ngữ, có thể huấn luyện thêm ngôn ngữ mới.\n\nGiúp nhận dạng chữ từ ảnh PNG, JPEG, TIFF ngay trên máy và xuất ra văn bản, hOCR, PDF có lớp chữ, TSV, ALTO hoặc PAGE.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Thị giác máy tính & Xử lý ảnh (Vision & OCR)\n- **Tác giả / Nhà phát triển:** Tesseract OCR (Stefan Weil, Zdenko Podobny và cộng đồng)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/tesseract-ocr/tesseract](https://github.com/tesseract-ocr/tesseract)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Bộ máy LSTM nhận dạng theo dòng, vẫn hỗ trợ bộ máy cũ của Tesseract 3 (--oem 0)**\n- **Hơn 100 ngôn ngữ dùng ngay với tệp traineddata, hỗ trợ UTF-8**\n- **Nhiều định dạng đầu ra: văn bản thuần, hOCR (HTML), PDF, PDF chỉ lớp chữ ẩn, TSV, ALTO, PAGE**\n- **API C và C++ (libtesseract) cùng nhiều wrapper cho ngôn ngữ khác**\n- **Có thể huấn luyện để nhận dạng ngôn ngữ mới**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ntesseract imagename outputbase [-l lang] [--oem ocrenginemode] [--psm pagesegmode] [configfiles...]\n```\n\nYêu cầu: Cài đặt từ gói nhị phân dựng sẵn hoặc biên dịch từ mã nguồn (trình biên dịch C++17, Leptonica, automake, pkg-config hoặc cmake); cần ít nhất tệp traineddata tiếng Anh và OSD trong thư mục TESSDATA_PREFIX.\nBước 1: Cài đặt bằng gói nhị phân dựng sẵn theo hướng dẫn Installation trên tessdoc, hoặc biên dịch từ mã nguồn như các bước dưới.\nBước 2: Biên dịch bằng autotools: chạy `./autogen.sh`, `./configure`, `make`, rồi `sudo make install` và `sudo ldconfig`.\nBước 3: Hoặc dùng cmake trên Linux: `mkdir build`, `cd build && cmake .. && make`, rồi `sudo make install`.\nBước 4: Tải tệp dữ liệu ngôn ngữ (traineddata) cần dùng vào thư mục TESSDATA_PREFIX.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy `tesseract <ảnh> <tên tệp đầu ra> -l <ngôn ngữ>` để nhận dạng chữ trong ảnh.\nBước 2: Dùng `--psm` để chọn chế độ phân đoạn trang, `--oem` để chọn bộ máy OCR.\nBước 3: Xem toàn bộ tùy chọn bằng `tesseract --help` hoặc `man tesseract`.\nBước 4: Cải thiện chất lượng ảnh đầu vào (độ phân giải, khử nhiễu) để tăng độ chính xác.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Nhận dạng chữ tiếng Việt trong ảnh scan công văn và xuất ra tệp PDF có thể tìm kiếm.\"\n- \"Chuyển thư mục ảnh TIFF nhiều trang thành văn bản thuần.\"\n- \"Xuất kết quả OCR dạng TSV để lấy tọa độ từng từ.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:01:36.864Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]

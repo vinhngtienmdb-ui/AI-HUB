@@ -1,0 +1,510 @@
+[
+  {
+    "repo": "PaddlePaddle/PaddleOCR",
+    "license": "Apache License 2.0",
+    "authorName": "PaddlePaddle (Baidu)",
+    "websiteUrl": "https://www.paddleocr.com",
+    "toolType": "sdk",
+    "taglineEn": "PaddleOCR converts PDF documents and images into structured, LLM-ready data (JSON/Markdown) with industry-leading accuracy.",
+    "summaryVi": "PaddleOCR là bộ công cụ OCR và phân tích tài liệu mã nguồn mở của PaddlePaddle, chuyển PDF và ảnh thành dữ liệu có cấu trúc (JSON/Markdown) sẵn sàng cho LLM. Bộ công cụ gồm dòng mô hình nhận dạng chữ PP-OCRv6, pipeline phân tích bố cục PP-StructureV3 và mô hình thị giác - ngôn ngữ PaddleOCR-VL (0.9B) cho phân tích tài liệu phức tạp.",
+    "purposeVi": "Giúp số hóa ảnh và PDF thành văn bản, bảng, công thức có cấu trúc để đưa vào hệ thống RAG, tác tử AI hoặc quy trình xử lý dữ liệu.",
+    "featuresVi": [
+      "PP-OCRv6: phát hiện và nhận dạng chữ, một mô hình thống nhất cho 50 ngôn ngữ (tiếng Trung, Anh, Nhật và 46 ngôn ngữ chữ Latinh)",
+      "PaddleOCR-VL: mô hình thị giác - ngôn ngữ 0.9B phân tích tài liệu, nhận dạng văn bản, bảng, công thức, biểu đồ, xuất Markdown/JSON",
+      "PP-StructureV3: chuyển PDF/ảnh phức tạp sang Markdown hoặc JSON kèm tọa độ chi tiết của ô bảng và dòng chữ",
+      "Hai bộ máy suy luận: PaddlePaddle hoặc Hugging Face Transformers",
+      "Xuất kết quả phân tích ra DOCX; có SDK chạy trên trình duyệt PaddleOCR.js",
+      "Máy chủ MCP paddleocr-mcp: đưa công cụ OCR, PP-StructureV3, PaddleOCR-VL vào Claude Desktop và các ứng dụng LLM",
+      "Hỗ trợ xuất ONNX, tăng tốc bằng OpenVINO/ONNX Runtime/TensorRT và triển khai dịch vụ cho C++, C#, Java"
+    ],
+    "requirementsVi": "Python 3.8 trở lên; bộ máy suy luận PaddlePaddle 3.0 trở lên (CPU hoặc GPU) hoặc Hugging Face Transformers >= 5.8.0.",
+    "installStepsVi": [
+      "Cài đặt bộ máy suy luận PaddlePaddle bản CPU: `python -m pip install paddlepaddle==3.2.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/`",
+      "Hoặc cài đặt bản GPU (ví dụ CUDA 11.8 trên Linux): `python -m pip install paddlepaddle-gpu==3.2.0 -i https://www.paddlepaddle.org.cn/packages/stable/cu118/`",
+      "Cài đặt đầy đủ PaddleOCR: `python -m pip install \"paddleocr[all]\"`",
+      "Chạy thử phát hiện vùng chữ trên ảnh mẫu: `paddleocr text_detection -i ./general_ocr_001.png --engine paddle`",
+      "Tùy chọn: cài đặt máy chủ MCP để dùng với Claude Desktop: `pip install \"paddleocr-mcp[local-cpu]\"`"
+    ],
+    "cliCommand": "python -m pip install \"paddleocr[all]\"",
+    "usageStepsVi": [
+      "Dùng lệnh `paddleocr ocr -i <ảnh>` để nhận dạng chữ toàn trang với PP-OCRv6.",
+      "Dùng `paddleocr text_recognition -i ./general_ocr_rec_001.png --engine paddle` để nhận dạng một dòng chữ đã cắt sẵn.",
+      "Dùng `paddleocr pp_structurev3 -i <ảnh hoặc PDF>` để chuyển tài liệu sang Markdown/JSON có bố cục.",
+      "Trong Python, gọi `from paddleocr import PaddleOCR` hoặc `PPStructureV3` để tích hợp vào ứng dụng.",
+      "Với Claude Desktop, thêm cấu hình mcpServers trỏ tới lệnh `paddleocr_mcp` và đặt biến PADDLEOCR_MCP_MODEL."
+    ],
+    "samplePromptsVi": [
+      "Nhận dạng toàn bộ chữ trong ảnh chụp hóa đơn này và trả về danh sách dòng chữ kèm tọa độ.",
+      "Chuyển tệp PDF báo cáo tài chính sang Markdown, giữ nguyên bảng và tiêu đề.",
+      "Trích xuất công thức và bảng từ trang tài liệu khoa học này dưới dạng JSON."
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, dùng được cho mục đích thương mại",
+      "Hỗ trợ hơn 100 ngôn ngữ, chạy được trên CPU và GPU",
+      "Có máy chủ MCP chính chủ, tích hợp sẵn với Dify, RAGFlow, Cherry Studio"
+    ],
+    "consVi": [
+      "Hướng dẫn cài đặt chi tiết nằm trong thư mục docs/ và trang tài liệu riêng, README chỉ dẫn liên kết",
+      "Cài đặt GPU phụ thuộc phiên bản CUDA cụ thể",
+      "Một số tính năng PP-StructureV3 với bộ máy Transformers còn hạn chế (phải tắt nhận dạng công thức)"
+    ],
+    "sourceEvidence": {
+      "python -m pip install paddlepaddle==3.2.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/": "docs/quick_start.en.md:18",
+      "python -m pip install paddlepaddle-gpu==3.2.0 -i https://www.paddlepaddle.org.cn/packages/stable/cu118/": "docs/quick_start.en.md:26",
+      "python -m pip install \"paddleocr[all]\"": "docs/quick_start.en.md:46",
+      "paddleocr text_detection -i ./general_ocr_001.png --engine paddle": "docs/quick_start.en.md:77",
+      "paddleocr text_recognition -i ./general_ocr_rec_001.png --engine paddle": "docs/quick_start.en.md:89",
+      "pip install \"paddleocr-mcp[local-cpu]\"": "docs/version3.x/integrations/mcp_server.en.md:201",
+      "mcpServers paddleocr_mcp": "docs/version3.x/integrations/mcp_server.en.md:211-224",
+      "license": "LICENSE:1-2; README.md:281"
+    },
+    "meta": {
+      "id": "paddlepaddle-paddleocr",
+      "nameVi": "PaddleOCR — Bộ công cụ OCR và phân tích tài liệu đa ngôn ngữ",
+      "icon": "Search",
+      "categories": ["computer_vision", "office_digital_docs"],
+      "platforms": ["web", "claude_desktop"],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh", "Tiếng Trung"],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "python -m pip install \"paddleocr[all]\""
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "pip install \"paddleocr-mcp[local-cpu]\"",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"paddleocr\": {\n      \"command\": \"paddleocr_mcp\",\n      \"args\": [],\n      \"env\": {\n        \"PADDLEOCR_MCP_MODEL\": \"PP-OCRv5\",\n        \"PADDLEOCR_MCP_PPOCR_SOURCE\": \"local\"\n      }\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "datalab-to/surya",
+    "license": "Apache License 2.0 (mã nguồn); trọng số mô hình theo AI Pubs Open RAIL-M (sửa đổi)",
+    "authorName": "Datalab",
+    "websiteUrl": "https://www.datalab.to",
+    "toolType": "software",
+    "taglineEn": "Surya is a 650M param OCR model with these features:",
+    "summaryVi": "Surya là bộ công cụ OCR tài liệu với mô hình 650M tham số, thực hiện nhận dạng chữ, phân tích bố cục kèm thứ tự đọc và nhận dạng bảng thông qua một mô hình thị giác - ngôn ngữ duy nhất. Bộ công cụ có các mô hình nhỏ riêng cho phát hiện dòng chữ và phát hiện lỗi OCR, chạy qua vllm (GPU NVIDIA) hoặc llama.cpp (CPU / Apple Silicon).",
+    "purposeVi": "Giúp chuyển ảnh, PDF tài liệu thành văn bản và cấu trúc bố cục (bảng, tiêu đề, hình) dạng JSON để xử lý dữ liệu tiếp theo.",
+    "featuresVi": [
+      "OCR toàn trang: đạt 83,3% trên olmOCR-bench, xuất JSON gồm khối chữ, nhãn bố cục, polygon và bbox",
+      "Đa ngôn ngữ: 87,2% trên bộ đánh giá nội bộ 91 ngôn ngữ",
+      "Phân tích bố cục và thứ tự đọc: bảng, hình, tiêu đề, đầu trang...",
+      "Nhận dạng bảng: hàng, cột, hoặc xuất HTML đầy đủ",
+      "Phát hiện dòng chữ chạy thuần torch, không cần máy chủ suy luận",
+      "Giao diện Streamlit `surya_gui` để thử nghiệm tương tác"
+    ],
+    "requirementsVi": "Python 3.10 trở lên; với GPU NVIDIA cần Docker và NVIDIA Container Toolkit (vllm); với CPU / Apple Silicon cần tệp chạy llama-server của llama.cpp.",
+    "installStepsVi": [
+      "Cài đặt gói Surya: `pip install surya-ocr`",
+      "Cài đặt bộ máy suy luận: GPU NVIDIA dùng Docker + NVIDIA Container Toolkit; macOS cài đặt llama.cpp bằng `brew install llama.cpp`",
+      "Tùy chọn: cài đặt giao diện web: `pip install streamlit pdftext` rồi chạy `surya_gui`"
+    ],
+    "cliCommand": "surya_ocr DATA_PATH",
+    "usageStepsVi": [
+      "Chạy `surya_ocr DATA_PATH` với DATA_PATH là ảnh, PDF hoặc thư mục; kết quả ghi ra tệp results.json.",
+      "Thêm `--output_dir` để chọn thư mục kết quả, `--page_range` để chọn trang PDF, `--images` để lưu ảnh minh họa.",
+      "Dùng `surya_detect DATA_PATH` để phát hiện dòng chữ, `surya_layout DATA_PATH` để phân tích bố cục, `surya_table DATA_PATH` để nhận dạng bảng.",
+      "Thêm `--keep_server` để giữ máy chủ suy luận chạy giữa các lệnh."
+    ],
+    "samplePromptsVi": [
+      "Nhận dạng chữ trong tệp PDF hợp đồng 20 trang này, chỉ xử lý trang 0 và 5-10.",
+      "Phân tích bố cục trang tài liệu và cho biết thứ tự đọc các khối tiêu đề, đoạn văn, bảng.",
+      "Trích xuất cấu trúc hàng, cột của bảng trong ảnh chụp báo cáo này."
+    ],
+    "prosVi": [
+      "Mã nguồn Apache 2.0, chạy cục bộ trên GPU NVIDIA, CPU hoặc Apple Silicon",
+      "Một mô hình duy nhất cho OCR, bố cục và bảng, có giao diện dòng lệnh đầy đủ",
+      "Đang được phát triển tích cực"
+    ],
+    "consVi": [
+      "Trọng số mô hình theo giấy phép Open RAIL-M sửa đổi: miễn phí cho nghiên cứu, cá nhân và startup dưới 5 triệu USD vốn/doanh thu; mức lớn hơn cần mua giấy phép thương mại",
+      "Chuyên cho tài liệu, không nhắm tới ảnh chụp đời thường hay cảnh tự nhiên",
+      "OCR, bố cục và bảng cần máy chủ suy luận vllm hoặc llama.cpp đang chạy"
+    ],
+    "sourceEvidence": {
+      "pip install surya-ocr": "README.md:78",
+      "brew install llama.cpp": "README.md:88",
+      "pip install streamlit pdftext": "README.md:139",
+      "surya_gui": "README.md:140",
+      "surya_ocr DATA_PATH": "README.md:148",
+      "surya_detect DATA_PATH": "README.md:206",
+      "surya_layout DATA_PATH": "README.md:244",
+      "surya_table DATA_PATH": "README.md:286",
+      "license": "LICENSE:1; MODEL_LICENSE:1; README.md:71"
+    },
+    "meta": {
+      "id": "datalab-to-surya",
+      "nameVi": "Surya — Công cụ OCR, phân tích bố cục và bảng cho tài liệu",
+      "icon": "Search",
+      "categories": ["computer_vision", "office_digital_docs"],
+      "platforms": ["web"],
+      "licenseShort": "Hỗn hợp: mã nguồn Apache 2.0, trọng số Open RAIL-M (giới hạn thương mại)",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "surya_ocr DATA_PATH"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "JaidedAI/EasyOCR",
+    "license": "Apache License 2.0",
+    "authorName": "Jaided AI",
+    "websiteUrl": "https://www.jaided.ai/easyocr",
+    "toolType": "sdk",
+    "taglineEn": "Ready-to-use OCR with 80+ supported languages and all popular writing scripts including: Latin, Chinese, Arabic, Devanagari, Cyrillic, etc.",
+    "summaryVi": "EasyOCR là thư viện Python OCR dùng ngay, hỗ trợ hơn 80 ngôn ngữ và các hệ chữ phổ biến như Latinh, Trung, Ả Rập, Devanagari, Kirin. Thư viện dùng CRAFT để phát hiện vùng chữ, mô hình nhận dạng chạy trên PyTorch, tự tải trọng số theo ngôn ngữ đã chọn.",
+    "purposeVi": "Giúp lập trình viên thêm tính năng đọc chữ trong ảnh vào ứng dụng Python chỉ với vài dòng mã hoặc một lệnh dòng lệnh.",
+    "featuresVi": [
+      "Hơn 80 ngôn ngữ: chọn danh sách ngôn ngữ khi khởi tạo Reader, có thể đọc nhiều ngôn ngữ cùng lúc",
+      "Kết quả có hộp bao, văn bản và độ tin cậy; tùy chọn detail=0 để chỉ lấy văn bản",
+      "Đầu vào linh hoạt: đường dẫn tệp, ảnh OpenCV (numpy), bytes hoặc URL ảnh",
+      "Chạy trên GPU hoặc chế độ chỉ CPU với gpu=False",
+      "Công cụ dòng lệnh `easyocr`",
+      "Hướng dẫn huấn luyện mô hình nhận dạng và phát hiện (CRAFT) tùy chỉnh"
+    ],
+    "requirementsVi": "Python và PyTorch; trên Windows cần cài đặt torch và torchvision trước theo hướng dẫn của pytorch.org.",
+    "installStepsVi": [
+      "Cài đặt bản ổn định: `pip install easyocr`",
+      "Hoặc cài đặt bản phát triển mới nhất: `pip install git+https://github.com/JaidedAI/EasyOCR.git`",
+      "Trọng số mô hình theo ngôn ngữ được tự động tải về thư mục ~/.EasyOCR/model khi dùng lần đầu."
+    ],
+    "cliCommand": "easyocr -l ch_sim en -f chinese.jpg --detail=1 --gpu=True",
+    "usageStepsVi": [
+      "Trong Python: `import easyocr`, tạo `reader = easyocr.Reader(['ch_sim','en'])` (chỉ cần chạy một lần để nạp mô hình).",
+      "Gọi `reader.readtext('chinese.jpg')` để nhận danh sách hộp bao, văn bản và độ tin cậy.",
+      "Dùng dòng lệnh `easyocr -l <ngôn ngữ> -f <ảnh>` để nhận dạng nhanh không cần viết mã."
+    ],
+    "samplePromptsVi": [
+      "Đọc chữ tiếng Việt và tiếng Anh trên ảnh biển hiệu này, chỉ trả về văn bản.",
+      "Nhận dạng chữ trong ảnh chụp tài liệu và trả về tọa độ hộp bao từng dòng.",
+      "Chạy OCR trên CPU cho thư mục ảnh hóa đơn vì máy không có GPU."
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, cài đặt bằng một lệnh pip",
+      "Hỗ trợ hơn 80 ngôn ngữ, trong đó có tiếng Việt (mã 'vi')",
+      "Chạy được ở chế độ chỉ CPU"
+    ],
+    "consVi": [
+      "Bản phát hành gần nhất ghi trong README là 1.7.2 (tháng 9/2024), nhịp cập nhật chậm",
+      "Chưa hỗ trợ chữ viết tay (đang trong kế hoạch)",
+      "Không phải mọi ngôn ngữ đều dùng chung được trong một Reader"
+    ],
+    "sourceEvidence": {
+      "pip install easyocr": "README.md:40",
+      "pip install git+https://github.com/JaidedAI/EasyOCR.git": "README.md:46",
+      "easyocr -l ch_sim en -f chinese.jpg --detail=1 --gpu=True": "README.md:105",
+      "vi language code": "easyocr/config.py:33",
+      "license": "LICENSE:1-2; README.md:4"
+    },
+    "meta": {
+      "id": "jaidedai-easyocr",
+      "nameVi": "EasyOCR — Thư viện OCR Python hỗ trợ hơn 80 ngôn ngữ",
+      "icon": "Search",
+      "categories": ["computer_vision"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh", "Tiếng Việt"],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install easyocr"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "mindee/doctr",
+    "license": "Apache License 2.0",
+    "authorName": "Mindee (hiện do t2k GmbH phát triển và bảo trì)",
+    "websiteUrl": "https://mindee.github.io/doctr",
+    "toolType": "sdk",
+    "taglineEn": "Optical Character Recognition made seamless & accessible to anyone, powered by PyTorch",
+    "summaryVi": "docTR là thư viện OCR trên PyTorch theo hướng hai giai đoạn: phát hiện từ rồi nhận dạng ký tự, cho phép chọn kiến trúc như DBNet, FAST, CRNN, PARSeq, ViTSTR. Thư viện đọc được PDF, ảnh và trang web, có thêm phát hiện bố cục, nhận dạng cấu trúc bảng và bộ dự đoán KIE trích xuất thông tin theo lớp.",
+    "purposeVi": "Giúp phân tích văn bản trong tài liệu (định vị và nhận dạng từng từ) và tích hợp vào kiến trúc hệ thống sẵn có qua thư viện Python, Docker hoặc API FastAPI mẫu.",
+    "featuresVi": [
+      "OCR hai giai đoạn: chọn kiến trúc phát hiện (DBNet, LinkNet, FAST) và nhận dạng (CRNN, SAR, MASTER, ViTSTR, PARSeq, VIPTR)",
+      "Đọc nhiều nguồn: PDF, ảnh, nhiều trang ảnh, trang web (cần weasyprint)",
+      "Phát hiện bố cục: tiêu đề, đoạn văn, bảng, đầu/chân trang với detect_layout=True",
+      "Bộ dự đoán KIE: phát hiện nhiều lớp thông tin (ví dụ ngày, địa chỉ) trong tài liệu",
+      "Ứng dụng demo Streamlit và API mẫu FastAPI với các tuyến /detection, /recognition, /ocr, /kie",
+      "Ảnh Docker hỗ trợ GPU (CUDA 12.2)"
+    ],
+    "requirementsVi": "Python 3.11 trở lên và pip; Docker GPU cần máy chủ CUDA 12.2 trở lên.",
+    "installStepsVi": [
+      "Cài đặt bản phát hành: `pip install python-doctr`",
+      "Cài đặt thêm phần phụ thuộc trực quan hóa, HTML và contrib: `pip install \"python-doctr[viz,html,contrib]\"`",
+      "Hoặc chạy bằng Docker có GPU: `docker run -it --gpus all ghcr.io/mindee/doctr:torch-py3.9.18-2024-10 bash`"
+    ],
+    "cliCommand": "pip install python-doctr",
+    "usageStepsVi": [
+      "Tạo mô hình `ocr_predictor(pretrained=True)` và đọc tài liệu bằng `DocumentFile.from_pdf(...)` hoặc `DocumentFile.from_images(...)`.",
+      "Gọi `result = model(doc)` để nhận kết quả theo trang, khối, dòng, từ.",
+      "Chạy demo cục bộ: `pip install -r demo/pt-requirements.txt` rồi `streamlit run demo/app.py`.",
+      "Triển khai API mẫu: `uvicorn --reload --workers 1 --host 0.0.0.0 --port=8002 --app-dir api/ app.main:app`, xem tài liệu tại http://localhost:8002/redoc."
+    ],
+    "samplePromptsVi": [
+      "Nhận dạng toàn bộ chữ trong tệp PDF này và xuất ra cấu trúc trang, dòng, từ.",
+      "Phát hiện các vùng tiêu đề, bảng và chân trang trong ảnh tài liệu này.",
+      "Dùng bộ dự đoán KIE để tìm ngày tháng và địa chỉ trong hóa đơn PDF."
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, đang được bảo trì tích cực",
+      "Nhiều kiến trúc mô hình để lựa chọn, có mô hình huấn luyện sẵn",
+      "Có sẵn Docker, demo và API mẫu để triển khai"
+    ],
+    "consVi": [
+      "Yêu cầu Python 3.11 trở lên",
+      "Đọc trang web cần cài đặt thêm weasyprint; hiển thị kết quả cần matplotlib và mplcursors"
+    ],
+    "sourceEvidence": {
+      "pip install python-doctr": "README.md:167",
+      "pip install \"python-doctr[viz,html,contrib]\"": "README.md:176",
+      "docker run -it --gpus all ghcr.io/mindee/doctr:torch-py3.9.18-2024-10 bash": "README.md:267",
+      "pip install -r demo/pt-requirements.txt": "README.md:244",
+      "streamlit run demo/app.py": "README.md:250",
+      "uvicorn --reload --workers 1 --host 0.0.0.0 --port=8002 --app-dir api/ app.main:app": "README.md:328",
+      "Python 3.11": "README.md:160",
+      "license": "LICENSE:1-2"
+    },
+    "meta": {
+      "id": "mindee-doctr",
+      "nameVi": "docTR — Thư viện OCR tài liệu trên PyTorch",
+      "icon": "Search",
+      "categories": ["computer_vision", "office_digital_docs"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install python-doctr"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "ultralytics/ultralytics",
+    "license": "GNU Affero General Public License v3.0 (AGPL-3.0); có giấy phép Enterprise thương mại riêng",
+    "authorName": "Ultralytics",
+    "websiteUrl": "https://docs.ultralytics.com",
+    "toolType": "sdk",
+    "taglineEn": "Ultralytics creates cutting-edge, state-of-the-art (SOTA) YOLO models built on years of foundational research in computer vision and AI.",
+    "summaryVi": "Ultralytics là gói Python và công cụ dòng lệnh `yolo` cho các mô hình YOLO, từ YOLOv3 đến YOLO26. Gói hỗ trợ phát hiện đối tượng, phân đoạn thực thể và ngữ nghĩa, ước lượng độ sâu, phân loại ảnh, ước lượng tư thế, phát hiện đối tượng xoay (OBB) và theo dõi đối tượng qua khung hình video.",
+    "purposeVi": "Giúp huấn luyện, đánh giá, suy luận và xuất mô hình thị giác máy tính YOLO (ví dụ sang ONNX) cho ứng dụng thực tế chỉ với vài lệnh.",
+    "featuresVi": [
+      "Nhiều tác vụ: phát hiện, phân đoạn thực thể, phân đoạn ngữ nghĩa, độ sâu, phân loại, tư thế, OBB",
+      "Theo dõi đối tượng qua video với các mô hình phát hiện, phân đoạn, tư thế, OBB",
+      "Mô hình huấn luyện sẵn YOLO26 (n, s, m, l, x) trên COCO, ImageNet, Cityscapes, DOTAv1, tự tải khi dùng lần đầu",
+      "Huấn luyện, đánh giá, dự đoán, xuất mô hình (ONNX, TensorRT...) qua CLI `yolo` hoặc Python API",
+      "Cài đặt qua pip, Conda hoặc Docker"
+    ],
+    "requirementsVi": "Python 3.8 trở lên và PyTorch 1.8 trở lên.",
+    "installStepsVi": [
+      "Cài đặt gói ultralytics kèm toàn bộ phụ thuộc: `pip install ultralytics`",
+      "Chạy thử dự đoán với mô hình huấn luyện sẵn: `yolo predict model=yolo26n.pt source='https://ultralytics.com/images/bus.jpg'`"
+    ],
+    "cliCommand": "yolo predict model=yolo26n.pt source='https://ultralytics.com/images/bus.jpg'",
+    "usageStepsVi": [
+      "Dùng lệnh `yolo` với tác vụ và chế độ (predict, train, val, export) cùng các tham số như imgsz=640.",
+      "Trong Python: `from ultralytics import YOLO`, tạo `model = YOLO(\"yolo26n.pt\")`.",
+      "Huấn luyện bằng `model.train(data=\"coco8.yaml\", epochs=100, imgsz=640)`, đánh giá bằng `model.val()`.",
+      "Xuất mô hình để triển khai bằng `model.export(format=\"onnx\")`."
+    ],
+    "samplePromptsVi": [
+      "Phát hiện và đếm xe ô tô, xe máy trong ảnh camera giao thông này bằng YOLO26n.",
+      "Huấn luyện mô hình phát hiện lỗi sản phẩm trên bộ dữ liệu YOLO tự gán nhãn trong 100 epoch.",
+      "Xuất mô hình đã huấn luyện sang ONNX để chạy trên máy chủ không có GPU."
+    ],
+    "prosVi": [
+      "Một gói duy nhất cho nhiều tác vụ thị giác, có CLI và Python API",
+      "Mô hình huấn luyện sẵn tự tải về, cập nhật thường xuyên",
+      "Tài liệu và cộng đồng lớn (Discord, diễn đàn)"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0: tích hợp vào sản phẩm, dịch vụ thương mại hoặc công cụ nội bộ mà không mở mã nguồn cần mua Ultralytics Enterprise License",
+      "Huấn luyện mô hình lớn cần GPU để đạt tốc độ hợp lý"
+    ],
+    "sourceEvidence": {
+      "pip install ultralytics": "README.md:67",
+      "yolo predict model=yolo26n.pt source='https://ultralytics.com/images/bus.jpg'": "README.md:85",
+      "Python>=3.8 PyTorch>=1.8": "README.md:62",
+      "license": "LICENSE:1; README.md:33; README.md:280-281"
+    },
+    "meta": {
+      "id": "ultralytics-ultralytics",
+      "nameVi": "Ultralytics YOLO — Bộ công cụ phát hiện, phân đoạn và theo dõi đối tượng",
+      "icon": "Box",
+      "categories": ["computer_vision"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (AGPL-3.0), thương mại cần giấy phép Enterprise",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh", "Tiếng Trung"],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install ultralytics"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "roboflow/supervision",
+    "license": "MIT License",
+    "authorName": "Roboflow",
+    "websiteUrl": "https://supervision.roboflow.com",
+    "toolType": "sdk",
+    "taglineEn": "We are your essential toolkit for computer vision.",
+    "summaryVi": "Supervision là thư viện Python cung cấp các khối xây dựng tái sử dụng cho ứng dụng thị giác máy tính: chuẩn hóa kết quả mô hình về `sv.Detections`, vẽ chú thích, xử lý bộ dữ liệu và đếm theo vùng thời gian thực. Thư viện độc lập với mô hình, có bộ kết nối cho Ultralytics, Transformers, MMDetection, Inference và rfdetr.",
+    "purposeVi": "Giúp lập trình viên tập trung xây dựng ứng dụng quanh mô hình thị giác (đếm, theo dõi, trực quan hóa) thay vì tự viết mã xử lý kết quả và dữ liệu.",
+    "featuresVi": [
+      "Độc lập mô hình: kết nối Ultralytics, Transformers, MMDetection, Roboflow Inference; rfdetr trả về sv.Detections trực tiếp",
+      "Bộ annotator tùy biến cao (ví dụ BoxAnnotator) để vẽ kết quả phát hiện lên ảnh/video",
+      "Tiện ích bộ dữ liệu: nạp từ YOLO, Pascal VOC, COCO; chia, gộp và xuất lại các định dạng",
+      "Đếm theo vùng thời gian thực, theo dõi đối tượng (hướng dẫn kèm ByteTrack)"
+    ],
+    "requirementsVi": "Python 3.10 trở lên. Dùng mô hình qua Roboflow Inference cần Roboflow API key.",
+    "installStepsVi": [
+      "Cài đặt thư viện: `pip install supervision`",
+      "Cài đặt phụ thuộc tùy chọn cho ví dụ nhanh: `pip install pillow rfdetr`"
+    ],
+    "cliCommand": "pip install supervision",
+    "usageStepsVi": [
+      "`import supervision as sv`, chạy mô hình phát hiện (ví dụ RFDETRSmall) để nhận đối tượng `detections`.",
+      "Chuyển kết quả từ thư viện khác bằng các bộ kết nối như `sv.Detections.from_inference(result)`.",
+      "Vẽ kết quả bằng `sv.BoxAnnotator().annotate(scene=image.copy(), detections=detections)`.",
+      "Nạp bộ dữ liệu bằng `sv.DetectionDataset.from_coco(...)`, chia bằng `dataset.split(split_ratio=0.7)`."
+    ],
+    "samplePromptsVi": [
+      "Vẽ hộp bao và nhãn lên ảnh từ kết quả phát hiện của mô hình YOLO.",
+      "Chuyển bộ dữ liệu gán nhãn định dạng COCO sang định dạng YOLO và chia 70/15/15.",
+      "Đếm số người đi vào một vùng xác định trong video camera cửa hàng."
+    ],
+    "prosVi": [
+      "Giấy phép MIT, dùng thương mại tự do",
+      "Không phụ thuộc vào một mô hình cụ thể",
+      "Được bảo trì tích cực"
+    ],
+    "consVi": [
+      "Là thư viện, không kèm mô hình riêng hay công cụ dòng lệnh",
+      "Yêu cầu Python 3.10 trở lên; dùng Roboflow Inference cần tài khoản và API key Roboflow"
+    ],
+    "sourceEvidence": {
+      "pip install supervision": "README.md:52",
+      "pip install pillow rfdetr": "README.md:63",
+      "Python>=3.10": "README.md:49",
+      "license": "LICENSE.md:1"
+    },
+    "meta": {
+      "id": "roboflow-supervision",
+      "nameVi": "Supervision — Thư viện công cụ dựng ứng dụng thị giác máy tính",
+      "icon": "Layers",
+      "categories": ["computer_vision"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install supervision"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "tesseract-ocr/tesseract",
+    "license": "Apache License 2.0",
+    "authorName": "Tesseract OCR (Stefan Weil, Zdenko Podobny và cộng đồng)",
+    "websiteUrl": "https://tesseract-ocr.github.io/tessdoc/",
+    "toolType": "cli",
+    "taglineEn": "This package contains an OCR engine - libtesseract and a command line program - tesseract.",
+    "summaryVi": "Tesseract là bộ máy OCR mã nguồn mở lâu đời (khởi nguồn từ HP, Google phát triển 2006-2017), gồm thư viện libtesseract và công cụ dòng lệnh tesseract. Từ phiên bản 4, Tesseract dùng mạng nơ-ron LSTM nhận dạng theo dòng, hỗ trợ Unicode và hơn 100 ngôn ngữ, có thể huấn luyện thêm ngôn ngữ mới.",
+    "purposeVi": "Giúp nhận dạng chữ từ ảnh PNG, JPEG, TIFF ngay trên máy và xuất ra văn bản, hOCR, PDF có lớp chữ, TSV, ALTO hoặc PAGE.",
+    "featuresVi": [
+      "Bộ máy LSTM nhận dạng theo dòng, vẫn hỗ trợ bộ máy cũ của Tesseract 3 (--oem 0)",
+      "Hơn 100 ngôn ngữ dùng ngay với tệp traineddata, hỗ trợ UTF-8",
+      "Nhiều định dạng đầu ra: văn bản thuần, hOCR (HTML), PDF, PDF chỉ lớp chữ ẩn, TSV, ALTO, PAGE",
+      "API C và C++ (libtesseract) cùng nhiều wrapper cho ngôn ngữ khác",
+      "Có thể huấn luyện để nhận dạng ngôn ngữ mới"
+    ],
+    "requirementsVi": "Cài đặt từ gói nhị phân dựng sẵn hoặc biên dịch từ mã nguồn (trình biên dịch C++17, Leptonica, automake, pkg-config hoặc cmake); cần ít nhất tệp traineddata tiếng Anh và OSD trong thư mục TESSDATA_PREFIX.",
+    "installStepsVi": [
+      "Cài đặt bằng gói nhị phân dựng sẵn theo hướng dẫn Installation trên tessdoc, hoặc biên dịch từ mã nguồn như các bước dưới.",
+      "Biên dịch bằng autotools: chạy `./autogen.sh`, `./configure`, `make`, rồi `sudo make install` và `sudo ldconfig`.",
+      "Hoặc dùng cmake trên Linux: `mkdir build`, `cd build && cmake .. && make`, rồi `sudo make install`.",
+      "Tải tệp dữ liệu ngôn ngữ (traineddata) cần dùng vào thư mục TESSDATA_PREFIX."
+    ],
+    "cliCommand": "tesseract imagename outputbase [-l lang] [--oem ocrenginemode] [--psm pagesegmode] [configfiles...]",
+    "usageStepsVi": [
+      "Chạy `tesseract <ảnh> <tên tệp đầu ra> -l <ngôn ngữ>` để nhận dạng chữ trong ảnh.",
+      "Dùng `--psm` để chọn chế độ phân đoạn trang, `--oem` để chọn bộ máy OCR.",
+      "Xem toàn bộ tùy chọn bằng `tesseract --help` hoặc `man tesseract`.",
+      "Cải thiện chất lượng ảnh đầu vào (độ phân giải, khử nhiễu) để tăng độ chính xác."
+    ],
+    "samplePromptsVi": [
+      "Nhận dạng chữ tiếng Việt trong ảnh scan công văn và xuất ra tệp PDF có thể tìm kiếm.",
+      "Chuyển thư mục ảnh TIFF nhiều trang thành văn bản thuần.",
+      "Xuất kết quả OCR dạng TSV để lấy tọa độ từng từ."
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, dự án lâu đời và vẫn được bảo trì",
+      "Hơn 100 ngôn ngữ, chạy hoàn toàn cục bộ, không cần GPU",
+      "Có API C/C++ để nhúng vào ứng dụng"
+    ],
+    "consVi": [
+      "Không có giao diện đồ họa (cần dùng ứng dụng bên thứ ba)",
+      "Thường cần tiền xử lý ảnh để đạt kết quả tốt",
+      "README không kèm lệnh cài đặt gói nhị phân, cần xem tài liệu tessdoc"
+    ],
+    "sourceEvidence": {
+      "tesseract imagename outputbase [-l lang] [--oem ocrenginemode] [--psm pagesegmode] [configfiles...]": "README.md:72",
+      "./autogen.sh": "INSTALL.GIT.md:22",
+      "./configure": "INSTALL.GIT.md:23",
+      "make": "INSTALL.GIT.md:24",
+      "sudo make install": "INSTALL.GIT.md:25",
+      "sudo ldconfig": "INSTALL.GIT.md:26",
+      "mkdir build": "INSTALL.GIT.md:59",
+      "cd build && cmake .. && make": "INSTALL.GIT.md:60",
+      "license": "LICENSE:2; README.md:101-111"
+    },
+    "meta": {
+      "id": "tesseract-ocr-tesseract",
+      "nameVi": "Tesseract OCR — Bộ máy nhận dạng chữ mã nguồn mở hơn 100 ngôn ngữ",
+      "icon": "Terminal",
+      "categories": ["computer_vision", "office_digital_docs"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "tesseract imagename outputbase [-l lang] [--oem ocrenginemode] [--psm pagesegmode] [configfiles...]"
+        }
+      ]
+    }
+  }
+]
