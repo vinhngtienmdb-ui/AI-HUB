@@ -166121,5 +166121,1635 @@
       "guideIsTemplate": false,
       "starsVerified": false
     }
+  },
+  {
+    "id": "livekit-agents",
+    "slug": "livekit-agents",
+    "name": "LiveKit Agents — Khung xây dựng tác tử giọng nói thời gian thực",
+    "icon": "MessageSquare",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/livekit/agents",
+    "websiteUrl": "https://docs.livekit.io/agents/",
+    "authorName": "LiveKit",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "LiveKit Agents là khung lập trình Python để xây dựng tác tử hội thoại giọng nói thời gian thực, đa phương thức, chạy phía máy chủ và có thể nghe, nhìn, hiểu người dùng. Thư viện cho phép kết hợp tùy ý các nhà cung cấp STT, LLM, TTS và Realtime API, tích hợp điều phối công việc, điện thoại (SIP), MCP và khung kiểm thử tác tử. Toàn bộ ngăn xếp, kể cả máy chủ WebRTC LiveKit, có thể tự triển khai.",
+    "purposeVi": "Công cụ giúp lập trình viên dựng trợ lý giọng nói, tổng đài viên ảo hoặc tác tử gọi điện thoại chạy thời gian thực trên hạ tầng WebRTC.",
+    "featuresVi": [
+      "Tích hợp linh hoạt: phối hợp STT, LLM, TTS và Realtime API từ nhiều nhà cung cấp qua plugin",
+      "Điều phối công việc: lập lịch và phân phối phiên tác tử với dispatch API",
+      "Điện thoại: gọi đi và nhận cuộc gọi qua ngăn xếp telephony (SIP) của LiveKit",
+      "Phát hiện lượt nói ngữ nghĩa: mô hình transformer nhận biết khi người dùng nói xong để giảm ngắt lời",
+      "Hỗ trợ MCP: dùng công cụ từ máy chủ MCP chỉ với một dòng mã",
+      "Khung kiểm thử tích hợp: viết test và dùng LLM làm giám khảo đánh giá tác tử",
+      "Chuyển giao đa tác tử (handoff) và trao đổi dữ liệu với client qua RPC"
+    ],
+    "installGuideVi": "Yêu cầu: Python; máy chủ LiveKit (LiveKit Cloud hoặc tự triển khai) với biến môi trường LIVEKIT_URL, LIVEKIT_API_KEY, LIVEKIT_API_SECRET; khóa API của nhà cung cấp mô hình (ví dụ OpenAI, Deepgram, Cartesia) hoặc dùng LiveKit Inference.\nBước 1: Cài đặt thư viện lõi kèm plugin nhà cung cấp mô hình: `pip install \"livekit-agents[openai,deepgram,cartesia]\"`\nBước 2: Đặt biến môi trường LIVEKIT_URL, LIVEKIT_API_KEY, LIVEKIT_API_SECRET theo hướng dẫn trong README\nBước 3: Chạy thử tác tử ngay trong terminal với âm thanh cục bộ: `python myagent.py console`",
+    "usageGuideVi": "Bước 1: Viết tệp tác tử với Agent, AgentSession và hàm entrypoint theo ví dụ “Simple voice agent” trong README\nBước 2: Chạy chế độ phát triển có tải lại nóng và kết nối máy chủ LiveKit: `python myagent.py dev`\nBước 3: Kết nối bằng LiveKit client SDK, Agents Playground hoặc tích hợp điện thoại\nBước 4: Chạy chế độ sản xuất: `python myagent.py start`",
+    "samplePromptsVi": [
+      "Viết tác tử giọng nói LiveKit dùng Deepgram để nhận dạng, GPT để trả lời và Cartesia để đọc, có công cụ tra cứu thời tiết",
+      "Thêm luồng chuyển giao từ tác tử chào hỏi sang tác tử kể chuyện sau khi thu thập tên và nơi ở của người dùng",
+      "Viết test pytest kiểm tra tác tử gọi đúng hàm start_order khi khách muốn đặt hàng"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install \"livekit-agents[openai,deepgram,cartesia]\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install \\\"livekit-agents[openai,deepgram,cartesia]\\\"\"\n  ],\n  \"nguon\": \"https://github.com/livekit/agents\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0, có thể tự triển khai toàn bộ ngăn xếp",
+      "Hệ sinh thái plugin lớn cho STT, LLM, TTS và client SDK trên mọi nền tảng chính",
+      "Có chế độ console để thử nhanh không cần máy chủ ngoài",
+      "Có bản JS/TS riêng (AgentsJS)"
+    ],
+    "consVi": [
+      "Cần máy chủ LiveKit và khóa API (LiveKit Cloud hoặc tự vận hành) để chạy với client thật",
+      "Mô hình phát hiện lượt nói dùng giấy phép riêng LiveKit Model License, không phải Apache 2.0",
+      "Ví dụ mặc định gọi mô hình qua dịch vụ đám mây của nhà cung cấp, phát sinh chi phí theo nhà cung cấp"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# LiveKit Agents — Khung xây dựng tác tử giọng nói thời gian thực\n\n> The Agent Framework is designed for building realtime, programmable participants that run on servers.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nLiveKit Agents là khung lập trình Python để xây dựng tác tử hội thoại giọng nói thời gian thực, đa phương thức, chạy phía máy chủ và có thể nghe, nhìn, hiểu người dùng. Thư viện cho phép kết hợp tùy ý các nhà cung cấp STT, LLM, TTS và Realtime API, tích hợp điều phối công việc, điện thoại (SIP), MCP và khung kiểm thử tác tử. Toàn bộ ngăn xếp, kể cả máy chủ WebRTC LiveKit, có thể tự triển khai.\n\nCông cụ giúp lập trình viên dựng trợ lý giọng nói, tổng đài viên ảo hoặc tác tử gọi điện thoại chạy thời gian thực trên hạ tầng WebRTC.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** LiveKit\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/livekit/agents](https://github.com/livekit/agents)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tích hợp linh hoạt: phối hợp STT, LLM, TTS và Realtime API từ nhiều nhà cung cấp qua plugin**\n- **Điều phối công việc: lập lịch và phân phối phiên tác tử với dispatch API**\n- **Điện thoại: gọi đi và nhận cuộc gọi qua ngăn xếp telephony (SIP) của LiveKit**\n- **Phát hiện lượt nói ngữ nghĩa: mô hình transformer nhận biết khi người dùng nói xong để giảm ngắt lời**\n- **Hỗ trợ MCP: dùng công cụ từ máy chủ MCP chỉ với một dòng mã**\n- **Khung kiểm thử tích hợp: viết test và dùng LLM làm giám khảo đánh giá tác tử**\n- **Chuyển giao đa tác tử (handoff) và trao đổi dữ liệu với client qua RPC**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install \"livekit-agents[openai,deepgram,cartesia]\"\n```\n\nYêu cầu: Python; máy chủ LiveKit (LiveKit Cloud hoặc tự triển khai) với biến môi trường LIVEKIT_URL, LIVEKIT_API_KEY, LIVEKIT_API_SECRET; khóa API của nhà cung cấp mô hình (ví dụ OpenAI, Deepgram, Cartesia) hoặc dùng LiveKit Inference.\nBước 1: Cài đặt thư viện lõi kèm plugin nhà cung cấp mô hình: `pip install \"livekit-agents[openai,deepgram,cartesia]\"`\nBước 2: Đặt biến môi trường LIVEKIT_URL, LIVEKIT_API_KEY, LIVEKIT_API_SECRET theo hướng dẫn trong README\nBước 3: Chạy thử tác tử ngay trong terminal với âm thanh cục bộ: `python myagent.py console`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Viết tệp tác tử với Agent, AgentSession và hàm entrypoint theo ví dụ “Simple voice agent” trong README\nBước 2: Chạy chế độ phát triển có tải lại nóng và kết nối máy chủ LiveKit: `python myagent.py dev`\nBước 3: Kết nối bằng LiveKit client SDK, Agents Playground hoặc tích hợp điện thoại\nBước 4: Chạy chế độ sản xuất: `python myagent.py start`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết tác tử giọng nói LiveKit dùng Deepgram để nhận dạng, GPT để trả lời và Cartesia để đọc, có công cụ tra cứu thời tiết\"\n- \"Thêm luồng chuyển giao từ tác tử chào hỏi sang tác tử kể chuyện sau khi thu thập tên và nơi ở của người dùng\"\n- \"Viết test pytest kiểm tra tác tử gọi đúng hàm start_order khi khách muốn đặt hàng\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "ohf-voice-piper1-gpl",
+    "slug": "ohf-voice-piper1-gpl",
+    "name": "Piper — Bộ máy chuyển văn bản thành giọng nói cục bộ, có giọng tiếng Việt",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/OHF-Voice/piper1-gpl",
+    "websiteUrl": "https://rhasspy.github.io/piper-samples",
+    "authorName": "Open Home Foundation (OHF-Voice)",
+    "license": "Mã nguồn mở (GPL-3.0); giọng đọc theo giấy phép riêng",
+    "summaryVi": "Piper là bộ máy chuyển văn bản thành giọng nói (TTS) bằng mạng nơ-ron, chạy nhanh và hoàn toàn cục bộ, dùng espeak-ng để phiên âm. Các giọng đọc được huấn luyện bằng VITS và xuất sang onnxruntime, có sẵn cho nhiều ngôn ngữ, trong đó có tiếng Việt (vi_VN). Dự án cung cấp giao diện dòng lệnh, máy chủ web, API Python, API C/C++ và hướng dẫn huấn luyện giọng mới; được dùng trong Home Assistant và NVDA.",
+    "purposeVi": "Đọc văn bản thành giọng nói ngoại tuyến cho trợ lý nhà thông minh, phần mềm hỗ trợ người khiếm thị hoặc ứng dụng cần TTS nhẹ chạy trên CPU.",
+    "featuresVi": [
+      "TTS cục bộ: chạy bằng onnxruntime, không cần dịch vụ đám mây",
+      "Nhiều ngôn ngữ: danh sách giọng có tiếng Việt (vi_VN) cùng hàng chục ngôn ngữ khác",
+      "Máy chủ HTTP: giao diện web thử giọng và endpoint /info ở cổng 5000",
+      "Tùy chọn CLI: tăng tốc GPU với --cuda, đọc từ tệp, chèn khoảng lặng, chỉnh âm lượng",
+      "Chèn phiên âm espeak-ng thô bằng khối [[ ... ]]",
+      "API Python, API C/C++ (libpiper) và công cụ huấn luyện giọng đọc mới"
+    ],
+    "installGuideVi": "Yêu cầu: Python và pip; tệp giọng đọc .onnx kèm .onnx.json (tải bằng piper.download_voices); ffplay nếu muốn phát trực tiếp; gói onnxruntime-gpu nếu dùng --cuda.\nBước 1: Cài đặt gói: `pip install piper-tts`\nBước 2: Xem danh sách giọng đọc: `python3 -m piper.download_voices`\nBước 3: Tải một giọng, ví dụ: `python3 -m piper.download_voices en_US-lessac-medium`\nBước 4: Chạy thử tạo tệp âm thanh: `python3 -m piper -m en_US-lessac-medium -f test.wav -- 'This is a test.'`",
+    "usageGuideVi": "Bước 1: Cài đặt thêm phụ thuộc máy chủ web: `python3 -m pip install piper-tts[http]`\nBước 2: Chạy máy chủ: `python3 -m piper.http_server -m en_US-lessac-medium` rồi mở http://localhost:5000 để nhập văn bản và nghe\nBước 3: Đổi sang giọng tiếng Việt (vi_VN) trong danh sách giọng nếu cần đọc văn bản tiếng Việt\nBước 4: Đọc kỹ MODEL_CARD của từng giọng để biết giấy phép dữ liệu trước khi dùng",
+    "samplePromptsVi": [
+      "Cài đặt Piper và tải một giọng tiếng Việt để đọc thông báo trong Home Assistant",
+      "Chạy máy chủ HTTP Piper trên Raspberry Pi và gọi endpoint từ ứng dụng nội bộ",
+      "Viết script đọc hàng loạt tệp văn bản thành WAV bằng tùy chọn --input-file"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "python3 -m piper -m en_US-lessac-medium -f test.wav -- 'This is a test.'",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"python3 -m piper -m en_US-lessac-medium -f test.wav -- 'This is a test.'\"\n  ],\n  \"nguon\": \"https://github.com/OHF-Voice/piper1-gpl\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở, chạy hoàn toàn ngoại tuyến",
+      "Có giọng tiếng Việt trong danh sách giọng hỗ trợ",
+      "Nhiều cách dùng: CLI, máy chủ web, Python, C/C++",
+      "Được dùng rộng rãi (Home Assistant, NVDA, LocalAI)"
+    ],
+    "consVi": [
+      "Giấy phép GPLv3 có tính lan truyền (copyleft) khi phân phối phần mềm dẫn xuất",
+      "Một số giọng đọc có giấy phép hạn chế; tài liệu ghi Piper dành cho mục đích cá nhân và nghiên cứu TTS",
+      "CLI chậm khi gọi lặp lại vì phải nạp mô hình mỗi lần",
+      "README cho biết dự án đang tìm người bảo trì"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Piper — Bộ máy chuyển văn bản thành giọng nói cục bộ, có giọng tiếng Việt\n\n> A fast and local neural text-to-speech engine that embeds espeak-ng for phonemization.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPiper là bộ máy chuyển văn bản thành giọng nói (TTS) bằng mạng nơ-ron, chạy nhanh và hoàn toàn cục bộ, dùng espeak-ng để phiên âm. Các giọng đọc được huấn luyện bằng VITS và xuất sang onnxruntime, có sẵn cho nhiều ngôn ngữ, trong đó có tiếng Việt (vi_VN). Dự án cung cấp giao diện dòng lệnh, máy chủ web, API Python, API C/C++ và hướng dẫn huấn luyện giọng mới; được dùng trong Home Assistant và NVDA.\n\nĐọc văn bản thành giọng nói ngoại tuyến cho trợ lý nhà thông minh, phần mềm hỗ trợ người khiếm thị hoặc ứng dụng cần TTS nhẹ chạy trên CPU.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** Open Home Foundation (OHF-Voice)\n- **Giấy phép bản quyền:** Mã nguồn mở (GPL-3.0); giọng đọc theo giấy phép riêng\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/OHF-Voice/piper1-gpl](https://github.com/OHF-Voice/piper1-gpl)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **TTS cục bộ: chạy bằng onnxruntime, không cần dịch vụ đám mây**\n- **Nhiều ngôn ngữ: danh sách giọng có tiếng Việt (vi_VN) cùng hàng chục ngôn ngữ khác**\n- **Máy chủ HTTP: giao diện web thử giọng và endpoint /info ở cổng 5000**\n- **Tùy chọn CLI: tăng tốc GPU với --cuda, đọc từ tệp, chèn khoảng lặng, chỉnh âm lượng**\n- **Chèn phiên âm espeak-ng thô bằng khối [[ ... ]]**\n- **API Python, API C/C++ (libpiper) và công cụ huấn luyện giọng đọc mới**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npython3 -m piper -m en_US-lessac-medium -f test.wav -- 'This is a test.'\n```\n\nYêu cầu: Python và pip; tệp giọng đọc .onnx kèm .onnx.json (tải bằng piper.download_voices); ffplay nếu muốn phát trực tiếp; gói onnxruntime-gpu nếu dùng --cuda.\nBước 1: Cài đặt gói: `pip install piper-tts`\nBước 2: Xem danh sách giọng đọc: `python3 -m piper.download_voices`\nBước 3: Tải một giọng, ví dụ: `python3 -m piper.download_voices en_US-lessac-medium`\nBước 4: Chạy thử tạo tệp âm thanh: `python3 -m piper -m en_US-lessac-medium -f test.wav -- 'This is a test.'`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Cài đặt thêm phụ thuộc máy chủ web: `python3 -m pip install piper-tts[http]`\nBước 2: Chạy máy chủ: `python3 -m piper.http_server -m en_US-lessac-medium` rồi mở http://localhost:5000 để nhập văn bản và nghe\nBước 3: Đổi sang giọng tiếng Việt (vi_VN) trong danh sách giọng nếu cần đọc văn bản tiếng Việt\nBước 4: Đọc kỹ MODEL_CARD của từng giọng để biết giấy phép dữ liệu trước khi dùng\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Cài đặt Piper và tải một giọng tiếng Việt để đọc thông báo trong Home Assistant\"\n- \"Chạy máy chủ HTTP Piper trên Raspberry Pi và gọi endpoint từ ứng dụng nội bộ\"\n- \"Viết script đọc hàng loạt tệp văn bản thành WAV bằng tùy chọn --input-file\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "funaudiollm-cosyvoice",
+    "slug": "funaudiollm-cosyvoice",
+    "name": "CosyVoice — Mô hình chuyển văn bản thành giọng nói đa ngôn ngữ dựa trên LLM",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice",
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/FunAudioLLM/CosyVoice",
+    "websiteUrl": "https://funaudiollm.github.io/cosyvoice3/",
+    "authorName": "FunAudioLLM (Tongyi Lab, Alibaba)",
+    "license": "Mã nguồn mở (Apache 2.0); trọng số xem model card",
+    "summaryVi": "CosyVoice là hệ thống chuyển văn bản thành giọng nói dựa trên mô hình ngôn ngữ lớn, phiên bản Fun-CosyVoice 3.0 (0.5B) hướng tới tổng hợp giọng nói đa ngôn ngữ zero-shot. Mô hình hỗ trợ 9 ngôn ngữ phổ biến và hơn 18 phương ngữ tiếng Trung, phát trực tuyến hai chiều với độ trễ thấp tới 150ms, điều khiển bằng chỉ dẫn về cảm xúc, tốc độ, âm lượng. Kho mã kèm kịch bản huấn luyện, suy luận, giao diện web, máy chủ gRPC/FastAPI và hỗ trợ vLLM, TensorRT-LLM.",
+    "purposeVi": "Tạo giọng nói tự nhiên đa ngôn ngữ cho sản phẩm thuyết minh, trợ lý ảo hoặc nghiên cứu TTS dựa trên LLM, có thể tự triển khai trên GPU.",
+    "featuresVi": [
+      "Đa ngôn ngữ: tiếng Trung, Anh, Nhật, Hàn, Đức, Tây Ban Nha, Pháp, Ý, Nga và hơn 18 phương ngữ tiếng Trung",
+      "Nhân bản giọng zero-shot đa ngôn ngữ và xuyên ngôn ngữ",
+      "Phát trực tuyến hai chiều (văn bản vào, âm thanh ra) với độ trễ thấp tới 150ms",
+      "Điều khiển bằng chỉ dẫn: ngôn ngữ, phương ngữ, cảm xúc, tốc độ, âm lượng",
+      "Chỉnh phát âm bằng Pinyin và âm vị CMU, chuẩn hóa văn bản không cần frontend truyền thống",
+      "Triển khai: web demo, máy chủ gRPC/FastAPI qua Docker, vLLM và TensorRT-LLM"
+    ],
+    "installGuideVi": "Yêu cầu: Conda với Python 3.10; GPU NVIDIA khuyến nghị (Docker dùng --runtime=nvidia); sox/libsox-dev nếu gặp lỗi tương thích; tải trọng số mô hình từ ModelScope hoặc Hugging Face.\nBước 1: Tải mã nguồn kèm submodule: `git clone --recursive https://github.com/FunAudioLLM/CosyVoice.git`\nBước 2: Tạo môi trường Conda: `conda create -n cosyvoice -y python=3.10` rồi `conda activate cosyvoice`\nBước 3: Cài đặt phụ thuộc: `pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host=mirrors.aliyun.com`\nBước 4: Tải mô hình Fun-CosyVoice3-0.5B bằng snapshot_download của ModelScope hoặc Hugging Face vào thư mục pretrained_models theo hướng dẫn README\nBước 5: Chạy ví dụ: `python example.py`",
+    "usageGuideVi": "Bước 1: Xem example.py để biết cách gọi từng mô hình (SFT, zero-shot, cross-lingual, instruct)\nBước 2: Mở giao diện web: `python3 webui.py --port 50000 --model_dir pretrained_models/CosyVoice-300M`\nBước 3: Dựng dịch vụ: `cd runtime/python` rồi `docker build -t cosyvoice:v1.0 .` và chạy máy chủ gRPC hoặc FastAPI ở cổng 50000\nBước 4: Tăng tốc với vLLM bằng `python vllm_example.py` trong môi trường riêng",
+    "samplePromptsVi": [
+      "Cài đặt CosyVoice và tạo giọng đọc tiếng Anh với cảm xúc vui vẻ, tốc độ chậm bằng chế độ instruct",
+      "Dựng máy chủ FastAPI CosyVoice bằng Docker ở cổng 50000 và gọi thử từ client",
+      "Tổng hợp giọng nói phát trực tuyến cho trợ lý ảo với độ trễ thấp bằng Fun-CosyVoice3-0.5B"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "python example.py",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"python example.py\"\n  ],\n  \"nguon\": \"https://github.com/FunAudioLLM/CosyVoice\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn Apache 2.0, kèm kịch bản huấn luyện và suy luận",
+      "Chất lượng cạnh tranh trên bảng đánh giá trong README",
+      "Nhiều lựa chọn triển khai: web demo, gRPC, FastAPI, vLLM, TensorRT-LLM",
+      "Hỗ trợ phát trực tuyến độ trễ thấp"
+    ],
+    "consVi": [
+      "Không hỗ trợ tiếng Việt trong danh sách 9 ngôn ngữ được nêu",
+      "README không nêu giấy phép trọng số; cần kiểm tra model card trên ModelScope/Hugging Face trước khi dùng thương mại",
+      "Tuyên bố miễn trừ cho biết nội dung README chỉ phục vụ mục đích học thuật",
+      "Cài đặt nặng (Conda, submodule, GPU); vLLM có yêu cầu phiên bản khắt khe"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# CosyVoice — Mô hình chuyển văn bản thành giọng nói đa ngôn ngữ dựa trên LLM\n\n> Fun-CosyVoice 3.0 is an advanced text-to-speech (TTS) system based on large language models (LLM), surpassing its predecessor (CosyVoice 2.0) in content consistency, speaker similarity, and prosody naturalness.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nCosyVoice là hệ thống chuyển văn bản thành giọng nói dựa trên mô hình ngôn ngữ lớn, phiên bản Fun-CosyVoice 3.0 (0.5B) hướng tới tổng hợp giọng nói đa ngôn ngữ zero-shot. Mô hình hỗ trợ 9 ngôn ngữ phổ biến và hơn 18 phương ngữ tiếng Trung, phát trực tuyến hai chiều với độ trễ thấp tới 150ms, điều khiển bằng chỉ dẫn về cảm xúc, tốc độ, âm lượng. Kho mã kèm kịch bản huấn luyện, suy luận, giao diện web, máy chủ gRPC/FastAPI và hỗ trợ vLLM, TensorRT-LLM.\n\nTạo giọng nói tự nhiên đa ngôn ngữ cho sản phẩm thuyết minh, trợ lý ảo hoặc nghiên cứu TTS dựa trên LLM, có thể tự triển khai trên GPU.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** FunAudioLLM (Tongyi Lab, Alibaba)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0); trọng số xem model card\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/FunAudioLLM/CosyVoice](https://github.com/FunAudioLLM/CosyVoice)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Đa ngôn ngữ: tiếng Trung, Anh, Nhật, Hàn, Đức, Tây Ban Nha, Pháp, Ý, Nga và hơn 18 phương ngữ tiếng Trung**\n- **Nhân bản giọng zero-shot đa ngôn ngữ và xuyên ngôn ngữ**\n- **Phát trực tuyến hai chiều (văn bản vào, âm thanh ra) với độ trễ thấp tới 150ms**\n- **Điều khiển bằng chỉ dẫn: ngôn ngữ, phương ngữ, cảm xúc, tốc độ, âm lượng**\n- **Chỉnh phát âm bằng Pinyin và âm vị CMU, chuẩn hóa văn bản không cần frontend truyền thống**\n- **Triển khai: web demo, máy chủ gRPC/FastAPI qua Docker, vLLM và TensorRT-LLM**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npython example.py\n```\n\nYêu cầu: Conda với Python 3.10; GPU NVIDIA khuyến nghị (Docker dùng --runtime=nvidia); sox/libsox-dev nếu gặp lỗi tương thích; tải trọng số mô hình từ ModelScope hoặc Hugging Face.\nBước 1: Tải mã nguồn kèm submodule: `git clone --recursive https://github.com/FunAudioLLM/CosyVoice.git`\nBước 2: Tạo môi trường Conda: `conda create -n cosyvoice -y python=3.10` rồi `conda activate cosyvoice`\nBước 3: Cài đặt phụ thuộc: `pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host=mirrors.aliyun.com`\nBước 4: Tải mô hình Fun-CosyVoice3-0.5B bằng snapshot_download của ModelScope hoặc Hugging Face vào thư mục pretrained_models theo hướng dẫn README\nBước 5: Chạy ví dụ: `python example.py`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Xem example.py để biết cách gọi từng mô hình (SFT, zero-shot, cross-lingual, instruct)\nBước 2: Mở giao diện web: `python3 webui.py --port 50000 --model_dir pretrained_models/CosyVoice-300M`\nBước 3: Dựng dịch vụ: `cd runtime/python` rồi `docker build -t cosyvoice:v1.0 .` và chạy máy chủ gRPC hoặc FastAPI ở cổng 50000\nBước 4: Tăng tốc với vLLM bằng `python vllm_example.py` trong môi trường riêng\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Cài đặt CosyVoice và tạo giọng đọc tiếng Anh với cảm xúc vui vẻ, tốc độ chậm bằng chế độ instruct\"\n- \"Dựng máy chủ FastAPI CosyVoice bằng Docker ở cổng 50000 và gọi thử từ client\"\n- \"Tổng hợp giọng nói phát trực tuyến cho trợ lý ảo với độ trễ thấp bằng Fun-CosyVoice3-0.5B\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "snakers4-silero-vad",
+    "slug": "snakers4-silero-vad",
+    "name": "Silero VAD — Mô hình phát hiện giọng nói nhẹ và nhanh",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/snakers4/silero-vad",
+    "websiteUrl": "",
+    "authorName": "Silero Team",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Silero VAD là mô hình phát hiện hoạt động giọng nói (VAD) đã huấn luyện sẵn, nhỏ gọn (bản JIT khoảng 2MB) và rất nhanh: mỗi đoạn âm thanh 30ms xử lý dưới 1ms trên một luồng CPU. Mô hình được huấn luyện trên dữ liệu hơn 6000 ngôn ngữ, hỗ trợ tần số lấy mẫu 8000 Hz và 16000 Hz, chạy trên PyTorch và ONNX. Phát hành theo giấy phép MIT, không thu thập dữ liệu, không cần khóa hay đăng ký.",
+    "purposeVi": "Tách các đoạn có tiếng nói trong âm thanh để làm sạch dữ liệu, cắt đoạn trước khi nhận dạng giọng nói hoặc làm thành phần nhận biết lượt nói cho bot giọng nói, tổng đài.",
+    "featuresVi": [
+      "Độ chính xác cao trên các bài toán phát hiện tiếng nói",
+      "Nhanh: dưới 1ms cho mỗi đoạn 30ms trên một luồng CPU, ONNX có thể nhanh hơn 4-5 lần",
+      "Nhẹ: mô hình JIT khoảng 2MB",
+      "Tổng quát: huấn luyện trên hơn 6000 ngôn ngữ, chịu được nhiễu nền",
+      "Tần số lấy mẫu 8000 Hz và 16000 Hz",
+      "Di động: PyTorch, ONNX, ví dụ C++, Rust, Go, Java, C#, trình duyệt"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.8+, torch>=1.12.0; CPU hiện đại có AVX/AVX2/AVX-512 hoặc AMX; FFmpeg nếu dùng phần đọc/ghi âm thanh qua torchcodec.\nBước 1: Cài đặt gói kèm công cụ đọc âm thanh: `pip install silero-vad[audio]`\nBước 2: Hoặc cài đặt bản tối giản nếu tự nạp âm thanh: `pip install silero-vad`\nBước 3: Gọi load_silero_vad, read_audio và get_speech_timestamps trong Python theo ví dụ README",
+    "usageGuideVi": "Bước 1: Nạp mô hình bằng load_silero_vad()\nBước 2: Đọc tệp âm thanh bằng read_audio('path_to_audio_file')\nBước 3: Lấy mốc thời gian các đoạn có tiếng nói bằng get_speech_timestamps(wav, model, return_seconds=True)\nBước 4: Hoặc nạp qua torch.hub với repo_or_dir='snakers4/silero-vad'",
+    "samplePromptsVi": [
+      "Dùng Silero VAD cắt bỏ khoảng lặng trong bộ dữ liệu ghi âm trước khi huấn luyện mô hình nhận dạng giọng nói",
+      "Viết script trả về danh sách đoạn có tiếng nói theo giây cho một tệp ghi âm cuộc gọi",
+      "Tích hợp Silero VAD bản ONNX để phát hiện người dùng bắt đầu nói trong bot giọng nói"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install silero-vad[audio]",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install silero-vad[audio]\"\n  ],\n  \"nguon\": \"https://github.com/snakers4/silero-vad\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, không telemetry, không khóa, không đăng ký",
+      "Rất nhẹ và nhanh, chạy tốt trên CPU, thiết bị biên và di động",
+      "Nhiều ví dụ đa ngôn ngữ lập trình và ONNX"
+    ],
+    "consVi": [
+      "Chỉ hỗ trợ tần số lấy mẫu 8000 Hz và 16000 Hz",
+      "Khi chỉ dùng onnx-runtime phải tự viết phần đọc/ghi âm thanh và điều chỉnh xử lý hậu kỳ",
+      "Chỉ phát hiện có tiếng nói hay không, không nhận dạng nội dung"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Silero VAD — Mô hình phát hiện giọng nói nhẹ và nhanh\n\n> Silero VAD - pre-trained enterprise-grade Voice Activity Detector\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSilero VAD là mô hình phát hiện hoạt động giọng nói (VAD) đã huấn luyện sẵn, nhỏ gọn (bản JIT khoảng 2MB) và rất nhanh: mỗi đoạn âm thanh 30ms xử lý dưới 1ms trên một luồng CPU. Mô hình được huấn luyện trên dữ liệu hơn 6000 ngôn ngữ, hỗ trợ tần số lấy mẫu 8000 Hz và 16000 Hz, chạy trên PyTorch và ONNX. Phát hành theo giấy phép MIT, không thu thập dữ liệu, không cần khóa hay đăng ký.\n\nTách các đoạn có tiếng nói trong âm thanh để làm sạch dữ liệu, cắt đoạn trước khi nhận dạng giọng nói hoặc làm thành phần nhận biết lượt nói cho bot giọng nói, tổng đài.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** Silero Team\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/snakers4/silero-vad](https://github.com/snakers4/silero-vad)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Độ chính xác cao trên các bài toán phát hiện tiếng nói**\n- **Nhanh: dưới 1ms cho mỗi đoạn 30ms trên một luồng CPU, ONNX có thể nhanh hơn 4-5 lần**\n- **Nhẹ: mô hình JIT khoảng 2MB**\n- **Tổng quát: huấn luyện trên hơn 6000 ngôn ngữ, chịu được nhiễu nền**\n- **Tần số lấy mẫu 8000 Hz và 16000 Hz**\n- **Di động: PyTorch, ONNX, ví dụ C++, Rust, Go, Java, C#, trình duyệt**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install silero-vad[audio]\n```\n\nYêu cầu: Python 3.8+, torch>=1.12.0; CPU hiện đại có AVX/AVX2/AVX-512 hoặc AMX; FFmpeg nếu dùng phần đọc/ghi âm thanh qua torchcodec.\nBước 1: Cài đặt gói kèm công cụ đọc âm thanh: `pip install silero-vad[audio]`\nBước 2: Hoặc cài đặt bản tối giản nếu tự nạp âm thanh: `pip install silero-vad`\nBước 3: Gọi load_silero_vad, read_audio và get_speech_timestamps trong Python theo ví dụ README\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Nạp mô hình bằng load_silero_vad()\nBước 2: Đọc tệp âm thanh bằng read_audio('path_to_audio_file')\nBước 3: Lấy mốc thời gian các đoạn có tiếng nói bằng get_speech_timestamps(wav, model, return_seconds=True)\nBước 4: Hoặc nạp qua torch.hub với repo_or_dir='snakers4/silero-vad'\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Dùng Silero VAD cắt bỏ khoảng lặng trong bộ dữ liệu ghi âm trước khi huấn luyện mô hình nhận dạng giọng nói\"\n- \"Viết script trả về danh sách đoạn có tiếng nói theo giây cho một tệp ghi âm cuộc gọi\"\n- \"Tích hợp Silero VAD bản ONNX để phát hiện người dùng bắt đầu nói trong bot giọng nói\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "pyannote-pyannote-audio",
+    "slug": "pyannote-pyannote-audio",
+    "name": "pyannote.audio — Bộ công cụ phân tách người nói trong âm thanh",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/pyannote/pyannote-audio",
+    "websiteUrl": "https://hf.co/pyannote",
+    "authorName": "pyannote (CNRS / pyannoteAI)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "pyannote.audio là bộ công cụ Python mã nguồn mở cho bài toán phân tách người nói (speaker diarization), xác định “ai nói lúc nào” trong tệp ghi âm. Thư viện dựa trên PyTorch, đi kèm các pipeline và mô hình huấn luyện sẵn trên Hugging Face như speaker-diarization-community-1, có thể tinh chỉnh trên dữ liệu riêng. Ngoài ra hỗ trợ sẵn pipeline cao cấp precision-2 chạy trên máy chủ pyannoteAI.",
+    "purposeVi": "Gán nhãn người nói theo mốc thời gian cho biên bản cuộc họp, cuộc gọi tổng đài hoặc podcast, thường kết hợp với công cụ chuyển giọng nói thành văn bản.",
+    "featuresVi": [
+      "Pipeline community-1 mã nguồn mở chạy cục bộ, cải thiện đếm và gán người nói so với bản 3.1",
+      "Pipeline precision-2 cao cấp qua API pyannoteAI",
+      "API Python ưu tiên, chạy được trên GPU",
+      "Huấn luyện đa GPU với pytorch-lightning, tinh chỉnh trên dữ liệu riêng",
+      "Bảng đánh giá DER trên AMI, DIHARD 3, VoxConverse và nhiều bộ dữ liệu khác",
+      "Telemetry tùy chọn, cấu hình bằng PYANNOTE_METRICS_ENABLED"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.11+; ffmpeg (cho thư viện giải mã torchcodec); tài khoản Hugging Face, chấp nhận điều kiện của pyannote/speaker-diarization-community-1 và tạo access token; GPU khuyến nghị.\nBước 1: Cài đặt ffmpeg trên máy\nBước 2: Cài đặt thư viện: `pip install pyannote.audio` (hoặc dùng uv add)\nBước 3: Chấp nhận điều kiện sử dụng mô hình pyannote/speaker-diarization-community-1 trên Hugging Face và tạo access token tại hf.co/settings/tokens",
+    "usageGuideVi": "Bước 1: Nạp pipeline bằng Pipeline.from_pretrained(\"pyannote/speaker-diarization-community-1\", token=...)\nBước 2: Chuyển pipeline sang GPU nếu có và chạy trên tệp audio.wav (xử lý cục bộ)\nBước 3: Duyệt output.speaker_diarization để lấy thời điểm bắt đầu, kết thúc và nhãn người nói\nBước 4: Tắt telemetry nếu muốn: `export PYANNOTE_METRICS_ENABLED=0`",
+    "samplePromptsVi": [
+      "Phân tách người nói trong bản ghi cuộc họp 1 giờ và xuất bảng mốc thời gian theo từng người",
+      "Kết hợp pyannote.audio với kết quả phiên âm để tạo biên bản có ghi tên người nói",
+      "Tinh chỉnh pipeline phân tách người nói trên dữ liệu cuộc gọi tổng đài nội bộ"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install pyannote.audio",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install pyannote.audio\"\n  ],\n  \"nguon\": \"https://github.com/pyannote/pyannote-audio\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn MIT, mô hình community-1 chạy cục bộ",
+      "Hiệu năng hàng đầu với bảng đánh giá công khai",
+      "Có thể tinh chỉnh trên dữ liệu riêng"
+    ],
+    "consVi": [
+      "Cần tài khoản Hugging Face, chấp nhận điều kiện mô hình và access token",
+      "Pipeline precision-2 chạy trên máy chủ pyannoteAI và cần khóa API (README nêu có tín dụng miễn phí ban đầu)",
+      "Có telemetry tùy chọn gửi số liệu sử dụng ẩn danh",
+      "Các tutorial được viết cho phiên bản cũ và cần cập nhật"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# pyannote.audio — Bộ công cụ phân tách người nói trong âm thanh\n\n> pyannote.audio is an open-source toolkit written in Python for speaker diarization.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\npyannote.audio là bộ công cụ Python mã nguồn mở cho bài toán phân tách người nói (speaker diarization), xác định “ai nói lúc nào” trong tệp ghi âm. Thư viện dựa trên PyTorch, đi kèm các pipeline và mô hình huấn luyện sẵn trên Hugging Face như speaker-diarization-community-1, có thể tinh chỉnh trên dữ liệu riêng. Ngoài ra hỗ trợ sẵn pipeline cao cấp precision-2 chạy trên máy chủ pyannoteAI.\n\nGán nhãn người nói theo mốc thời gian cho biên bản cuộc họp, cuộc gọi tổng đài hoặc podcast, thường kết hợp với công cụ chuyển giọng nói thành văn bản.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** pyannote (CNRS / pyannoteAI)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/pyannote/pyannote-audio](https://github.com/pyannote/pyannote-audio)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Pipeline community-1 mã nguồn mở chạy cục bộ, cải thiện đếm và gán người nói so với bản 3.1**\n- **Pipeline precision-2 cao cấp qua API pyannoteAI**\n- **API Python ưu tiên, chạy được trên GPU**\n- **Huấn luyện đa GPU với pytorch-lightning, tinh chỉnh trên dữ liệu riêng**\n- **Bảng đánh giá DER trên AMI, DIHARD 3, VoxConverse và nhiều bộ dữ liệu khác**\n- **Telemetry tùy chọn, cấu hình bằng PYANNOTE_METRICS_ENABLED**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install pyannote.audio\n```\n\nYêu cầu: Python 3.11+; ffmpeg (cho thư viện giải mã torchcodec); tài khoản Hugging Face, chấp nhận điều kiện của pyannote/speaker-diarization-community-1 và tạo access token; GPU khuyến nghị.\nBước 1: Cài đặt ffmpeg trên máy\nBước 2: Cài đặt thư viện: `pip install pyannote.audio` (hoặc dùng uv add)\nBước 3: Chấp nhận điều kiện sử dụng mô hình pyannote/speaker-diarization-community-1 trên Hugging Face và tạo access token tại hf.co/settings/tokens\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Nạp pipeline bằng Pipeline.from_pretrained(\"pyannote/speaker-diarization-community-1\", token=...)\nBước 2: Chuyển pipeline sang GPU nếu có và chạy trên tệp audio.wav (xử lý cục bộ)\nBước 3: Duyệt output.speaker_diarization để lấy thời điểm bắt đầu, kết thúc và nhãn người nói\nBước 4: Tắt telemetry nếu muốn: `export PYANNOTE_METRICS_ENABLED=0`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Phân tách người nói trong bản ghi cuộc họp 1 giờ và xuất bảng mốc thời gian theo từng người\"\n- \"Kết hợp pyannote.audio với kết quả phiên âm để tạo biên bản có ghi tên người nói\"\n- \"Tinh chỉnh pipeline phân tách người nói trên dữ liệu cuộc gọi tổng đài nội bộ\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "idiap-coqui-ai-tts",
+    "slug": "idiap-coqui-ai-tts",
+    "name": "Coqui TTS — Thư viện chuyển văn bản thành giọng nói hơn 1100 ngôn ngữ",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice",
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/idiap/coqui-ai-TTS",
+    "websiteUrl": "https://coqui-tts.readthedocs.io/en/latest/",
+    "authorName": "Idiap Research Institute (bản fork của Coqui TTS)",
+    "license": "Mã nguồn mở (MPL-2.0); mô hình XTTS theo giấy phép riêng CPML",
+    "summaryVi": "Coqui TTS là thư viện Python chuyển văn bản thành giọng nói với mô hình huấn luyện sẵn cho hơn 1100 ngôn ngữ, kèm công cụ huấn luyện, tinh chỉnh mô hình và phân tích bộ dữ liệu. Đây là bản fork được Idiap tiếp tục bảo trì từ kho gốc coqui-ai/TTS đã ngừng phát triển, phát hành gói PyPI mới coqui-tts. Thư viện hỗ trợ XTTS v2 (17 ngôn ngữ, phát trực tuyến dưới 200ms), VITS, Tortoise, Bark và các mô hình chuyển đổi giọng nói như FreeVC, kNN-VC, OpenVoice.",
+    "purposeVi": "Tổng hợp giọng nói đa ngôn ngữ, huấn luyện hoặc tinh chỉnh mô hình TTS riêng và dựng máy chủ TTS tự lưu trữ.",
+    "featuresVi": [
+      "Mô hình huấn luyện sẵn cho hơn 1100 ngôn ngữ (bao gồm mô hình Fairseq MMS)",
+      "XTTS v2: 17 ngôn ngữ, phát trực tuyến độ trễ dưới 200ms, nhân bản giọng từ mẫu âm thanh",
+      "Nhiều kiến trúc: Tacotron2, Glow-TTS, FastPitch, VITS, Tortoise, Bark và các vocoder HiFiGAN, UnivNet",
+      "Chuyển đổi giọng nói: FreeVC, kNN-VC, OpenVoice",
+      "Công cụ huấn luyện, tinh chỉnh và phân tích bộ dữ liệu TTS",
+      "Giao diện dòng lệnh tts, API Python và máy chủ TTS qua Docker ở cổng 5002"
+    ],
+    "installGuideVi": "Yêu cầu: Python >= 3.10, < 3.15; PyTorch 2.2+, torchaudio (và torchcodec với PyTorch 2.9+) cài riêng; thử nghiệm trên Ubuntu 24.04, cũng chạy trên Mac và Windows.\nBước 1: Cài đặt PyTorch phù hợp phần cứng: `uv pip install torch torchaudio torchcodec --torch-backend=auto`\nBước 2: Cài đặt thư viện từ PyPI: `uv pip install coqui-tts`\nBước 3: Xem danh sách mô hình có sẵn: `tts --list_models`\nBước 4: Chạy thử tổng hợp giọng nói: `tts --text \"Text for TTS\" --out_path output/path/speech.wav`",
+    "usageGuideVi": "Bước 1: Dùng API Python: TTS(\"tts_models/multilingual/multi-dataset/xtts_v2\") rồi gọi tts_to_file với văn bản và ngôn ngữ\nBước 2: Chọn mô hình cụ thể bằng tham số --model_name khi chạy lệnh tts\nBước 3: Chạy máy chủ TTS không cần cài đặt: `docker run --rm -it -p 5002:5002 --entrypoint /bin/bash ghcr.io/idiap/coqui-tts-cpu` rồi mở http://localhost:5002\nBước 4: Kiểm tra giấy phép của mô hình trong TTS/.models.json trước khi dùng thương mại",
+    "samplePromptsVi": [
+      "Cài đặt coqui-tts và tạo tệp WAV đọc một đoạn văn bản tiếng Anh bằng mô hình VITS",
+      "Dùng mô hình Fairseq vits cho một ngôn ngữ ít tài nguyên để đọc văn bản",
+      "Tinh chỉnh XTTS trên bộ dữ liệu giọng đọc riêng theo công thức mẫu trong thư mục recipes"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "tts --text \"Text for TTS\" --out_path output/path/speech.wav",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"tts --text \\\"Text for TTS\\\" --out_path output/path/speech.wav\"\n  ],\n  \"nguon\": \"https://github.com/idiap/coqui-ai-TTS\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn MPL 2.0, được bảo trì tích cực thay cho kho gốc",
+      "Kho mô hình rất lớn, hỗ trợ hơn 1100 ngôn ngữ",
+      "Có wheel dựng sẵn cho Linux, macOS, Windows và ảnh Docker",
+      "Đầy đủ công cụ huấn luyện và tinh chỉnh"
+    ],
+    "consVi": [
+      "Mô hình XTTS dùng giấy phép riêng CPML (Coqui Public Model License); cần đọc điều khoản trước khi dùng thương mại",
+      "Từ bản 0.27.4 PyTorch không được cài kèm, phải tự cài",
+      "Một số mô hình Fairseq cần thư viện uroman (extra languages)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Coqui TTS — Thư viện chuyển văn bản thành giọng nói hơn 1100 ngôn ngữ\n\n> Coqui TTS is a library for advanced Text-to-Speech generation.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nCoqui TTS là thư viện Python chuyển văn bản thành giọng nói với mô hình huấn luyện sẵn cho hơn 1100 ngôn ngữ, kèm công cụ huấn luyện, tinh chỉnh mô hình và phân tích bộ dữ liệu. Đây là bản fork được Idiap tiếp tục bảo trì từ kho gốc coqui-ai/TTS đã ngừng phát triển, phát hành gói PyPI mới coqui-tts. Thư viện hỗ trợ XTTS v2 (17 ngôn ngữ, phát trực tuyến dưới 200ms), VITS, Tortoise, Bark và các mô hình chuyển đổi giọng nói như FreeVC, kNN-VC, OpenVoice.\n\nTổng hợp giọng nói đa ngôn ngữ, huấn luyện hoặc tinh chỉnh mô hình TTS riêng và dựng máy chủ TTS tự lưu trữ.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** Idiap Research Institute (bản fork của Coqui TTS)\n- **Giấy phép bản quyền:** Mã nguồn mở (MPL-2.0); mô hình XTTS theo giấy phép riêng CPML\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/idiap/coqui-ai-TTS](https://github.com/idiap/coqui-ai-TTS)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Mô hình huấn luyện sẵn cho hơn 1100 ngôn ngữ (bao gồm mô hình Fairseq MMS)**\n- **XTTS v2: 17 ngôn ngữ, phát trực tuyến độ trễ dưới 200ms, nhân bản giọng từ mẫu âm thanh**\n- **Nhiều kiến trúc: Tacotron2, Glow-TTS, FastPitch, VITS, Tortoise, Bark và các vocoder HiFiGAN, UnivNet**\n- **Chuyển đổi giọng nói: FreeVC, kNN-VC, OpenVoice**\n- **Công cụ huấn luyện, tinh chỉnh và phân tích bộ dữ liệu TTS**\n- **Giao diện dòng lệnh tts, API Python và máy chủ TTS qua Docker ở cổng 5002**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ntts --text \"Text for TTS\" --out_path output/path/speech.wav\n```\n\nYêu cầu: Python >= 3.10, < 3.15; PyTorch 2.2+, torchaudio (và torchcodec với PyTorch 2.9+) cài riêng; thử nghiệm trên Ubuntu 24.04, cũng chạy trên Mac và Windows.\nBước 1: Cài đặt PyTorch phù hợp phần cứng: `uv pip install torch torchaudio torchcodec --torch-backend=auto`\nBước 2: Cài đặt thư viện từ PyPI: `uv pip install coqui-tts`\nBước 3: Xem danh sách mô hình có sẵn: `tts --list_models`\nBước 4: Chạy thử tổng hợp giọng nói: `tts --text \"Text for TTS\" --out_path output/path/speech.wav`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Dùng API Python: TTS(\"tts_models/multilingual/multi-dataset/xtts_v2\") rồi gọi tts_to_file với văn bản và ngôn ngữ\nBước 2: Chọn mô hình cụ thể bằng tham số --model_name khi chạy lệnh tts\nBước 3: Chạy máy chủ TTS không cần cài đặt: `docker run --rm -it -p 5002:5002 --entrypoint /bin/bash ghcr.io/idiap/coqui-tts-cpu` rồi mở http://localhost:5002\nBước 4: Kiểm tra giấy phép của mô hình trong TTS/.models.json trước khi dùng thương mại\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Cài đặt coqui-tts và tạo tệp WAV đọc một đoạn văn bản tiếng Anh bằng mô hình VITS\"\n- \"Dùng mô hình Fairseq vits cho một ngôn ngữ ít tài nguyên để đọc văn bản\"\n- \"Tinh chỉnh XTTS trên bộ dữ liệu giọng đọc riêng theo công thức mẫu trong thư mục recipes\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "2noise-chattts",
+    "slug": "2noise-chattts",
+    "name": "ChatTTS — Mô hình tổng hợp giọng nói cho hội thoại",
+    "icon": "MessageSquare",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice",
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/2noise/ChatTTS",
+    "websiteUrl": "https://huggingface.co/2Noise/ChatTTS",
+    "authorName": "2noise",
+    "license": "Mã nguồn mở (AGPL-3.0); mô hình phi thương mại (CC BY-NC 4.0)",
+    "summaryVi": "ChatTTS là mô hình chuyển văn bản thành giọng nói thiết kế riêng cho hội thoại, ví dụ trợ lý LLM, hỗ trợ tiếng Anh và tiếng Trung. Mô hình có thể dự đoán và điều khiển các đặc trưng ngữ điệu chi tiết như tiếng cười, ngắt nghỉ, từ đệm, hỗ trợ nhiều người nói. Bản mã nguồn mở trên Hugging Face là mô hình nền 40.000 giờ chưa SFT, chỉ dành cho mục đích học thuật.",
+    "purposeVi": "Nghiên cứu và thử nghiệm tổng hợp giọng nói tự nhiên cho kịch bản hội thoại, như phần đọc câu trả lời của chatbot.",
+    "featuresVi": [
+      "TTS hội thoại: tối ưu cho đối thoại, hỗ trợ nhiều người nói",
+      "Điều khiển chi tiết: tiếng cười, ngắt nghỉ, từ đệm qua token như [laugh], [uv_break], [lbreak]",
+      "Lấy mẫu người nói ngẫu nhiên và lưu lại để tái tạo âm sắc",
+      "Sinh âm thanh dạng luồng (streaming)",
+      "Giao diện web và dòng lệnh đi kèm, gói PyPI ChatTTS"
+    ],
+    "installGuideVi": "Yêu cầu: Python (ví dụ Conda với Python 3.11); GPU tối thiểu 4GB VRAM cho đoạn âm thanh 30 giây; vLLM tùy chọn chỉ trên Linux.\nBước 1: Tải mã nguồn: `git clone https://github.com/2noise/ChatTTS` rồi `cd ChatTTS`\nBước 2: Cài đặt phụ thuộc: `pip install --upgrade -r requirements.txt`\nBước 3: Chạy giao diện web: `python examples/web/webui.py`",
+    "usageGuideVi": "Bước 1: Suy luận bằng dòng lệnh, âm thanh lưu thành ./output_audio_n.mp3\nBước 2: Hoặc cài đặt gói `pip install ChatTTS` và gọi ChatTTS.Chat().load() rồi chat.infer(texts) trong Python\nBước 3: Dùng RefineTextParams với prompt như [oral_2][laugh_0][break_6] để điều khiển ngữ điệu",
+    "samplePromptsVi": [
+      "Tạo đoạn hội thoại tiếng Anh có tiếng cười và ngắt nghỉ tự nhiên bằng ChatTTS để demo chatbot",
+      "Lấy mẫu một giọng ngẫu nhiên, lưu embedding và dùng lại cho nhiều câu trả lời",
+      "Chạy giao diện web ChatTTS để thử các tham số temperature, top_P, top_K"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "python examples/cmd/run.py \"Your text 1.\" \"Your text 2.\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"python examples/cmd/run.py \\\"Your text 1.\\\" \\\"Your text 2.\\\"\"\n  ],\n  \"nguon\": \"https://github.com/2noise/ChatTTS\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Ngữ điệu tự nhiên cho hội thoại, điều khiển tiếng cười và ngắt nghỉ",
+      "Cài đặt đơn giản qua pip, có WebUI và CLI",
+      "Cộng đồng lớn với danh mục Awesome-ChatTTS"
+    ],
+    "consVi": [
+      "Trọng số mô hình theo CC BY-NC 4.0: chỉ dùng cho giáo dục, nghiên cứu, không được dùng thương mại",
+      "Mã nguồn AGPLv3+ yêu cầu công bố mã khi cung cấp dịch vụ qua mạng",
+      "Chỉ hỗ trợ tiếng Anh và tiếng Trung; tiếng Anh còn thử nghiệm",
+      "Độ ổn định chưa cao (lẫn người nói, chất lượng âm thanh); mô hình được cố ý thêm nhiễu tần số cao và nén chất lượng"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# ChatTTS — Mô hình tổng hợp giọng nói cho hội thoại\n\n> A generative speech model for daily dialogue.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nChatTTS là mô hình chuyển văn bản thành giọng nói thiết kế riêng cho hội thoại, ví dụ trợ lý LLM, hỗ trợ tiếng Anh và tiếng Trung. Mô hình có thể dự đoán và điều khiển các đặc trưng ngữ điệu chi tiết như tiếng cười, ngắt nghỉ, từ đệm, hỗ trợ nhiều người nói. Bản mã nguồn mở trên Hugging Face là mô hình nền 40.000 giờ chưa SFT, chỉ dành cho mục đích học thuật.\n\nNghiên cứu và thử nghiệm tổng hợp giọng nói tự nhiên cho kịch bản hội thoại, như phần đọc câu trả lời của chatbot.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** 2noise\n- **Giấy phép bản quyền:** Mã nguồn mở (AGPL-3.0); mô hình phi thương mại (CC BY-NC 4.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/2noise/ChatTTS](https://github.com/2noise/ChatTTS)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **TTS hội thoại: tối ưu cho đối thoại, hỗ trợ nhiều người nói**\n- **Điều khiển chi tiết: tiếng cười, ngắt nghỉ, từ đệm qua token như [laugh], [uv_break], [lbreak]**\n- **Lấy mẫu người nói ngẫu nhiên và lưu lại để tái tạo âm sắc**\n- **Sinh âm thanh dạng luồng (streaming)**\n- **Giao diện web và dòng lệnh đi kèm, gói PyPI ChatTTS**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npython examples/cmd/run.py \"Your text 1.\" \"Your text 2.\"\n```\n\nYêu cầu: Python (ví dụ Conda với Python 3.11); GPU tối thiểu 4GB VRAM cho đoạn âm thanh 30 giây; vLLM tùy chọn chỉ trên Linux.\nBước 1: Tải mã nguồn: `git clone https://github.com/2noise/ChatTTS` rồi `cd ChatTTS`\nBước 2: Cài đặt phụ thuộc: `pip install --upgrade -r requirements.txt`\nBước 3: Chạy giao diện web: `python examples/web/webui.py`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Suy luận bằng dòng lệnh, âm thanh lưu thành ./output_audio_n.mp3\nBước 2: Hoặc cài đặt gói `pip install ChatTTS` và gọi ChatTTS.Chat().load() rồi chat.infer(texts) trong Python\nBước 3: Dùng RefineTextParams với prompt như [oral_2][laugh_0][break_6] để điều khiển ngữ điệu\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo đoạn hội thoại tiếng Anh có tiếng cười và ngắt nghỉ tự nhiên bằng ChatTTS để demo chatbot\"\n- \"Lấy mẫu một giọng ngẫu nhiên, lưu embedding và dùng lại cho nhiều câu trả lời\"\n- \"Chạy giao diện web ChatTTS để thử các tham số temperature, top_P, top_K\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "hpcaitech-open-sora",
+    "slug": "hpcaitech-open-sora",
+    "name": "Open-Sora — Mô hình mã nguồn mở tạo video từ văn bản và hình ảnh",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "generative_ai_multimedia",
+    "categoryNameVi": "Sinh nội dung & Đa phương tiện (Generative AI)",
+    "categories": [
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/hpcaitech/Open-Sora",
+    "websiteUrl": "https://hpcaitech.github.io/Open-Sora/",
+    "authorName": "HPC-AI Tech (hpcaitech)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Open-Sora là dự án mã nguồn mở của HPC-AI Tech nhằm tạo video chất lượng cao một cách hiệu quả, công bố cả mô hình, công cụ và chi tiết huấn luyện. Phiên bản Open-Sora 2.0 (11B) hỗ trợ tạo video từ văn bản (T2V) và từ ảnh (I2V) trong cùng một mô hình ở độ phân giải 256px và 768px, kèm mã huấn luyện đầy đủ.",
+    "purposeVi": "Giúp nhà nghiên cứu và nhà phát triển tự chạy hoặc tự huấn luyện mô hình tạo video từ văn bản và hình ảnh trên GPU của mình, thay vì phụ thuộc dịch vụ đóng.",
+    "featuresVi": [
+      "Text-to-Video và Image-to-Video: một mô hình 11B hỗ trợ cả hai chế độ ở 256px và 768px",
+      "Pipeline văn bản → ảnh → video: dùng mô hình Flux tạo ảnh đầu rồi sinh video để tăng chất lượng",
+      "Tùy chỉnh khung hình: chọn tỉ lệ 16:9, 9:16, 1:1, 2.39:1 và số khung hình (4k+1, dưới 129)",
+      "Motion score: điều chỉnh mức chuyển động của video (mặc định 4) hoặc đánh giá động qua OpenAI API",
+      "Chạy đa GPU: song song hóa chuỗi với ColossalAI; tùy chọn --offload để tiết kiệm bộ nhớ",
+      "Mã huấn luyện mở: có hướng dẫn huấn luyện/tinh chỉnh mô hình và autoencoder video"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10, PyTorch >= 2.4.0, GPU NVIDIA có CUDA (README đo hiệu năng trên H100/H800); xformers và flash-attn; tải checkpoint Open-Sora-v2 từ Hugging Face hoặc ModelScope.\nBước 1: Tạo môi trường conda Python 3.10 rồi tải mã nguồn: `git clone https://github.com/hpcaitech/Open-Sora`\nBước 2: Cài đặt gói (yêu cầu torch >= 2.4.0): `pip install -v .`\nBước 3: Cài đặt flash attention: `pip install flash-attn --no-build-isolation`\nBước 4: Cài đặt công cụ tải mô hình: `pip install \"huggingface_hub[cli]\"`\nBước 5: Tải trọng số mô hình 11B vào thư mục ckpts: `huggingface-cli download hpcai-tech/Open-Sora-v2 --local-dir ./ckpts`",
+    "usageGuideVi": "Bước 1: Chạy lệnh torchrun với cấu hình t2i2v_256px.py và tham số --prompt để tạo video 256px trên 1 GPU\nBước 2: Thêm --offload True để tiết kiệm bộ nhớ GPU, hoặc dùng --dataset.data-path với tệp CSV để tạo hàng loạt\nBước 3: Dùng cấu hình t2i2v_768px.py với --nproc_per_node 8 để tạo video 768px trên nhiều GPU\nBước 4: Thêm --cond_type i2v_head để tạo video từ ảnh tham chiếu; đặt --sampling_option.seed và --seed để tái lập kết quả",
+    "samplePromptsVi": [
+      "Hướng dẫn chạy Open-Sora 2.0 tạo video 256px từ câu mô tả \"raining, sea\" trên một GPU",
+      "Viết tệp CSV chứa 10 câu mô tả để Open-Sora tạo video hàng loạt",
+      "Giải thích cách chỉnh motion score và tỉ lệ khung hình 9:16 khi tạo video bằng Open-Sora"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "torchrun --nproc_per_node 1 --standalone scripts/diffusion/inference.py configs/diffusion/inference/t2i2v_256px.py --save-dir samples --prompt \"raining, sea\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"torchrun --nproc_per_node 1 --standalone scripts/diffusion/inference.py configs/diffusion/inference/t2i2v_256px.py --save-dir samples --prompt \\\"raining, sea\\\"\"\n  ],\n  \"nguon\": \"https://github.com/hpcaitech/Open-Sora\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn giấy phép Apache-2.0, công bố cả checkpoint và mã huấn luyện",
+      "Một mô hình hỗ trợ cả tạo video từ văn bản và từ ảnh",
+      "Hỗ trợ chạy nhiều GPU và offload để giảm bộ nhớ"
+    ],
+    "consVi": [
+      "Yêu cầu GPU mạnh: tạo video 768px trên 1 GPU H100/H800 mất khoảng 1656 giây theo bảng hiệu năng trong README",
+      "Tính năng đánh giá motion score động và tinh chỉnh prompt cần OpenAI API key",
+      "Điều khoản sử dụng trọng số mô hình cần xem trên trang Hugging Face/ModelScope; tệp LICENSE trong repo áp dụng cho mã nguồn"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Open-Sora — Mô hình mã nguồn mở tạo video từ văn bản và hình ảnh\n\n> Open-Sora: Democratizing Efficient Video Production for All\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nOpen-Sora là dự án mã nguồn mở của HPC-AI Tech nhằm tạo video chất lượng cao một cách hiệu quả, công bố cả mô hình, công cụ và chi tiết huấn luyện. Phiên bản Open-Sora 2.0 (11B) hỗ trợ tạo video từ văn bản (T2V) và từ ảnh (I2V) trong cùng một mô hình ở độ phân giải 256px và 768px, kèm mã huấn luyện đầy đủ.\n\nGiúp nhà nghiên cứu và nhà phát triển tự chạy hoặc tự huấn luyện mô hình tạo video từ văn bản và hình ảnh trên GPU của mình, thay vì phụ thuộc dịch vụ đóng.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Sinh nội dung & Đa phương tiện (Generative AI)\n- **Tác giả / Nhà phát triển:** HPC-AI Tech (hpcaitech)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/hpcaitech/Open-Sora](https://github.com/hpcaitech/Open-Sora)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Text-to-Video và Image-to-Video: một mô hình 11B hỗ trợ cả hai chế độ ở 256px và 768px**\n- **Pipeline văn bản → ảnh → video: dùng mô hình Flux tạo ảnh đầu rồi sinh video để tăng chất lượng**\n- **Tùy chỉnh khung hình: chọn tỉ lệ 16:9, 9:16, 1:1, 2.39:1 và số khung hình (4k+1, dưới 129)**\n- **Motion score: điều chỉnh mức chuyển động của video (mặc định 4) hoặc đánh giá động qua OpenAI API**\n- **Chạy đa GPU: song song hóa chuỗi với ColossalAI; tùy chọn --offload để tiết kiệm bộ nhớ**\n- **Mã huấn luyện mở: có hướng dẫn huấn luyện/tinh chỉnh mô hình và autoencoder video**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ntorchrun --nproc_per_node 1 --standalone scripts/diffusion/inference.py configs/diffusion/inference/t2i2v_256px.py --save-dir samples --prompt \"raining, sea\"\n```\n\nYêu cầu: Python 3.10, PyTorch >= 2.4.0, GPU NVIDIA có CUDA (README đo hiệu năng trên H100/H800); xformers và flash-attn; tải checkpoint Open-Sora-v2 từ Hugging Face hoặc ModelScope.\nBước 1: Tạo môi trường conda Python 3.10 rồi tải mã nguồn: `git clone https://github.com/hpcaitech/Open-Sora`\nBước 2: Cài đặt gói (yêu cầu torch >= 2.4.0): `pip install -v .`\nBước 3: Cài đặt flash attention: `pip install flash-attn --no-build-isolation`\nBước 4: Cài đặt công cụ tải mô hình: `pip install \"huggingface_hub[cli]\"`\nBước 5: Tải trọng số mô hình 11B vào thư mục ckpts: `huggingface-cli download hpcai-tech/Open-Sora-v2 --local-dir ./ckpts`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy lệnh torchrun với cấu hình t2i2v_256px.py và tham số --prompt để tạo video 256px trên 1 GPU\nBước 2: Thêm --offload True để tiết kiệm bộ nhớ GPU, hoặc dùng --dataset.data-path với tệp CSV để tạo hàng loạt\nBước 3: Dùng cấu hình t2i2v_768px.py với --nproc_per_node 8 để tạo video 768px trên nhiều GPU\nBước 4: Thêm --cond_type i2v_head để tạo video từ ảnh tham chiếu; đặt --sampling_option.seed và --seed để tái lập kết quả\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hướng dẫn chạy Open-Sora 2.0 tạo video 256px từ câu mô tả \"raining, sea\" trên một GPU\"\n- \"Viết tệp CSV chứa 10 câu mô tả để Open-Sora tạo video hàng loạt\"\n- \"Giải thích cách chỉnh motion score và tỉ lệ khung hình 9:16 khi tạo video bằng Open-Sora\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "black-forest-labs-flux",
+    "slug": "black-forest-labs-flux",
+    "name": "FLUX — Mã suy luận chính thức cho mô hình tạo và chỉnh sửa ảnh FLUX.1",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "generative_ai_multimedia",
+    "categoryNameVi": "Sinh nội dung & Đa phương tiện (Generative AI)",
+    "categories": [
+      "generative_ai_multimedia",
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Sinh nội dung & Đa phương tiện (Generative AI)",
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/black-forest-labs/flux",
+    "websiteUrl": "https://bfl.ai",
+    "authorName": "Black Forest Labs",
+    "license": "Hỗn hợp: mã Apache-2.0; FLUX.1 [schnell] Apache-2.0; FLUX.1 [dev] phi thương mại",
+    "summaryVi": "FLUX là repo chính thức của Black Forest Labs chứa mã suy luận tối giản để chạy các mô hình tạo và chỉnh sửa ảnh trọng số mở FLUX.1. Bộ mô hình gồm FLUX.1 [schnell], FLUX.1 [dev], các biến thể Fill (inpaint/outpaint), Canny/Depth (điều khiển cấu trúc), Redux (biến thể ảnh), Kontext (chỉnh sửa ảnh) và Krea.",
+    "purposeVi": "Cho phép nhà phát triển tự chạy mô hình tạo ảnh từ văn bản và chỉnh sửa ảnh FLUX.1 trên máy của mình qua dòng lệnh hoặc giao diện demo Streamlit/Gradio.",
+    "featuresVi": [
+      "Tạo ảnh từ văn bản: chạy flux-schnell hoặc flux-dev qua lệnh python -m flux t2i",
+      "Chỉnh sửa ảnh: FLUX.1 Kontext [dev] chỉnh ảnh theo câu lệnh văn bản",
+      "Inpainting/Outpainting: FLUX.1 Fill [dev]",
+      "Điều khiển cấu trúc: FLUX.1 Canny/Depth [dev] và bản LoRA",
+      "Tăng tốc TensorRT: xuất BF16, FP8, FP4 khi cài đặt bản hỗ trợ TensorRT",
+      "Demo giao diện: Streamlit (demo_st.py) và Gradio (demo_gr.py)",
+      "Theo dõi lượng dùng: tùy chọn --track_usage báo cáo qua BFL API cho giấy phép thương mại"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10, GPU (mặc định cuda, có thể chạy cpu); trọng số tự tải từ Hugging Face vào checkpoints/; dùng thương mại các mô hình [dev] cần mua giấy phép và BFL_API_KEY để theo dõi lượng dùng.\nBước 1: Tải mã nguồn: `cd $HOME && git clone https://github.com/black-forest-labs/flux`\nBước 2: Tạo môi trường ảo Python 3.10 trong thư mục flux rồi cài đặt gói đầy đủ: `pip install -e \".[all]\"`\nBước 3: Trọng số sẽ tự tải về thư mục checkpoints/ khi chạy demo lần đầu",
+    "usageGuideVi": "Bước 1: Chạy `python -m flux t2i --name <name> --loop` với name là flux-dev hoặc flux-schnell để tạo ảnh tương tác\nBước 2: Chạy demo Gradio: `python demo_gr.py --name flux-schnell --device cuda`\nBước 3: Chỉnh sửa ảnh với Kontext kèm theo dõi lượng dùng thương mại: `python -m flux kontext --track_usage --loop` (cần BFL_API_KEY)",
+    "samplePromptsVi": [
+      "Hướng dẫn cài đặt FLUX.1 [schnell] và tạo ảnh 1024x768 từ câu mô tả tiếng Anh",
+      "Viết lệnh dùng FLUX.1 Kontext [dev] để thay logo trong ảnh bằng dòng chữ mới",
+      "So sánh giấy phép giữa FLUX.1 [schnell] và FLUX.1 [dev] trước khi dùng cho sản phẩm thương mại"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "python -m flux t2i --name <name> --loop",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"python -m flux t2i --name <name> --loop\"\n  ],\n  \"nguon\": \"https://github.com/black-forest-labs/flux\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã suy luận chính thức từ Black Forest Labs, giấy phép Apache-2.0",
+      "FLUX.1 [schnell] và trọng số autoencoder dùng giấy phép Apache-2.0",
+      "Nhiều biến thể cho tạo ảnh, inpaint, điều khiển cấu trúc và chỉnh sửa ảnh"
+    ],
+    "consVi": [
+      "Các mô hình FLUX.1 [dev] chỉ được dùng phi thương mại; dùng thương mại phải mua giấy phép tại bfl.ai/pricing/licensing",
+      "Mô hình Pro không có trọng số mở, chỉ dùng qua BFL API",
+      "Repo chỉ chứa mã suy luận tối giản; lần cập nhật gần nhất tháng 7/2025"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# FLUX — Mã suy luận chính thức cho mô hình tạo và chỉnh sửa ảnh FLUX.1\n\n> This repo contains minimal inference code to run image generation & editing with our Flux open-weight models.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nFLUX là repo chính thức của Black Forest Labs chứa mã suy luận tối giản để chạy các mô hình tạo và chỉnh sửa ảnh trọng số mở FLUX.1. Bộ mô hình gồm FLUX.1 [schnell], FLUX.1 [dev], các biến thể Fill (inpaint/outpaint), Canny/Depth (điều khiển cấu trúc), Redux (biến thể ảnh), Kontext (chỉnh sửa ảnh) và Krea.\n\nCho phép nhà phát triển tự chạy mô hình tạo ảnh từ văn bản và chỉnh sửa ảnh FLUX.1 trên máy của mình qua dòng lệnh hoặc giao diện demo Streamlit/Gradio.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Sinh nội dung & Đa phương tiện (Generative AI)\n- **Tác giả / Nhà phát triển:** Black Forest Labs\n- **Giấy phép bản quyền:** Hỗn hợp: mã Apache-2.0; FLUX.1 [schnell] Apache-2.0; FLUX.1 [dev] phi thương mại\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/black-forest-labs/flux](https://github.com/black-forest-labs/flux)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tạo ảnh từ văn bản: chạy flux-schnell hoặc flux-dev qua lệnh python -m flux t2i**\n- **Chỉnh sửa ảnh: FLUX.1 Kontext [dev] chỉnh ảnh theo câu lệnh văn bản**\n- **Inpainting/Outpainting: FLUX.1 Fill [dev]**\n- **Điều khiển cấu trúc: FLUX.1 Canny/Depth [dev] và bản LoRA**\n- **Tăng tốc TensorRT: xuất BF16, FP8, FP4 khi cài đặt bản hỗ trợ TensorRT**\n- **Demo giao diện: Streamlit (demo_st.py) và Gradio (demo_gr.py)**\n- **Theo dõi lượng dùng: tùy chọn --track_usage báo cáo qua BFL API cho giấy phép thương mại**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npython -m flux t2i --name <name> --loop\n```\n\nYêu cầu: Python 3.10, GPU (mặc định cuda, có thể chạy cpu); trọng số tự tải từ Hugging Face vào checkpoints/; dùng thương mại các mô hình [dev] cần mua giấy phép và BFL_API_KEY để theo dõi lượng dùng.\nBước 1: Tải mã nguồn: `cd $HOME && git clone https://github.com/black-forest-labs/flux`\nBước 2: Tạo môi trường ảo Python 3.10 trong thư mục flux rồi cài đặt gói đầy đủ: `pip install -e \".[all]\"`\nBước 3: Trọng số sẽ tự tải về thư mục checkpoints/ khi chạy demo lần đầu\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy `python -m flux t2i --name <name> --loop` với name là flux-dev hoặc flux-schnell để tạo ảnh tương tác\nBước 2: Chạy demo Gradio: `python demo_gr.py --name flux-schnell --device cuda`\nBước 3: Chỉnh sửa ảnh với Kontext kèm theo dõi lượng dùng thương mại: `python -m flux kontext --track_usage --loop` (cần BFL_API_KEY)\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hướng dẫn cài đặt FLUX.1 [schnell] và tạo ảnh 1024x768 từ câu mô tả tiếng Anh\"\n- \"Viết lệnh dùng FLUX.1 Kontext [dev] để thay logo trong ảnh bằng dòng chữ mới\"\n- \"So sánh giấy phép giữa FLUX.1 [schnell] và FLUX.1 [dev] trước khi dùng cho sản phẩm thương mại\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "mcmonkeyprojects-swarmui",
+    "slug": "mcmonkeyprojects-swarmui",
+    "name": "SwarmUI — Giao diện web mô-đun tạo ảnh và video AI chạy cục bộ",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "generative_ai_multimedia",
+    "categoryNameVi": "Sinh nội dung & Đa phương tiện (Generative AI)",
+    "categories": [
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/mcmonkeyprojects/SwarmUI",
+    "websiteUrl": "https://swarmui.net/",
+    "authorName": "Alex \"mcmonkey\" Goodwin (mcmonkeyprojects)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "SwarmUI (trước đây là StableSwarmUI) là giao diện web dạng mô-đun để tạo ảnh bằng AI, hỗ trợ mô hình ảnh như Stable Diffusion, Flux, mô hình video như Wan, LTX-2 và một số mô hình âm thanh. Ứng dụng có tab Generate thân thiện cho người mới và tab Comfy Workflow để chỉnh đồ thị ComfyUI trực tiếp.",
+    "purposeVi": "Cung cấp công cụ tạo ảnh và video AI chạy cục bộ, dễ dùng cho người mới nhưng vẫn đủ mạnh cho người dùng nâng cao, có thể dùng nhiều GPU cùng lúc.",
+    "featuresVi": [
+      "Tab Generate: giao diện tạo ảnh dễ dùng với trình chỉnh sửa ảnh và tự động sinh workflow",
+      "Tab Comfy Workflow: truy cập đồ thị ComfyUI thô không giới hạn",
+      "Đa mô hình: hỗ trợ mô hình ảnh (Stable Diffusion, Flux...), video (Wan, LTX-2...) và âm thanh (ACE-Step...)",
+      "Swarm GPU: cho nhiều GPU cùng tạo ảnh cho một người dùng (ví dụ lưới ảnh lớn)",
+      "Tự cài đặt backend: có thể tự cài ComfyUI làm backend",
+      "Đa nền tảng: Windows, Linux, Mac Apple Silicon, Docker, Google Colab"
+    ],
+    "installGuideVi": "Yêu cầu: git, .NET 8 SDK (và .NET 10 SDK cho phiên bản tương lai), Python 3.10-3.12 (không dùng 3.14 trở lên); Mac chỉ hỗ trợ chip Apple M-series. Giao diện chạy tại http://localhost:7801.\nBước 1: Cài đặt git và python3 (kèm pip, venv) bằng trình quản lý gói của hệ điều hành\nBước 2: Tải mã nguồn: `git clone https://github.com/mcmonkeyprojects/SwarmUI`\nBước 3: Vào thư mục SwarmUI và cài đặt .NET: `./launchtools/linux-dotnet-install.sh`\nBước 4: Khởi chạy: `./launch-linux.sh` rồi mở http://localhost:7801/Install và làm theo hướng dẫn cài đặt trên trang\nBước 5: Trên Windows có thể tải tệp install-windows.bat từ trang Releases và chạy để tự cài đặt",
+    "usageGuideVi": "Bước 1: Mở http://localhost:7801 trong trình duyệt sau khi khởi chạy\nBước 2: Dùng tab Generate để nhập prompt, chọn mô hình và tạo ảnh/video\nBước 3: Dùng tab Comfy Workflow khi cần chỉnh workflow ComfyUI chi tiết\nBước 4: Trên máy chủ không màn hình: `./launch-linux.sh --launch_mode none --host 0.0.0.0`\nBước 5: Xem Basic Usage Guide trong thư mục docs để biết thêm hướng dẫn",
+    "samplePromptsVi": [
+      "Hướng dẫn cài đặt SwarmUI trên Ubuntu và mở giao diện ở cổng 7801",
+      "Cách chạy SwarmUI trên máy chủ GPU không màn hình và truy cập từ xa",
+      "Giải thích khác biệt giữa tab Generate và tab Comfy Workflow trong SwarmUI"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "./launch-linux.sh",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"./launch-linux.sh\"\n  ],\n  \"nguon\": \"https://github.com/mcmonkeyprojects/SwarmUI\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, tác giả cam kết miễn phí, không paywall, không quảng cáo",
+      "Cập nhật rất tích cực (commit tháng 10/2026)",
+      "Hỗ trợ cả ảnh, video và một số mô hình âm thanh trong một giao diện"
+    ],
+    "consVi": [
+      "Vẫn ở trạng thái Beta (v0.9.8, \"Almost-Release\")",
+      "Một số thành phần kết nối dùng giấy phép GPL/AGPL (ComfyUI, ultralytics) có thể ảnh hưởng điều kiện sử dụng; mô hình có giấy phép riêng",
+      "Cần cài đặt .NET SDK và Python; Mac chỉ hỗ trợ chip Apple Silicon"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# SwarmUI — Giao diện web mô-đun tạo ảnh và video AI chạy cục bộ\n\n> A Modular AI Image Generation Web-User-Interface, with an emphasis on making powertools easily accessible, high performance, and extensibility.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSwarmUI (trước đây là StableSwarmUI) là giao diện web dạng mô-đun để tạo ảnh bằng AI, hỗ trợ mô hình ảnh như Stable Diffusion, Flux, mô hình video như Wan, LTX-2 và một số mô hình âm thanh. Ứng dụng có tab Generate thân thiện cho người mới và tab Comfy Workflow để chỉnh đồ thị ComfyUI trực tiếp.\n\nCung cấp công cụ tạo ảnh và video AI chạy cục bộ, dễ dùng cho người mới nhưng vẫn đủ mạnh cho người dùng nâng cao, có thể dùng nhiều GPU cùng lúc.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Sinh nội dung & Đa phương tiện (Generative AI)\n- **Tác giả / Nhà phát triển:** Alex \"mcmonkey\" Goodwin (mcmonkeyprojects)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/mcmonkeyprojects/SwarmUI](https://github.com/mcmonkeyprojects/SwarmUI)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tab Generate: giao diện tạo ảnh dễ dùng với trình chỉnh sửa ảnh và tự động sinh workflow**\n- **Tab Comfy Workflow: truy cập đồ thị ComfyUI thô không giới hạn**\n- **Đa mô hình: hỗ trợ mô hình ảnh (Stable Diffusion, Flux...), video (Wan, LTX-2...) và âm thanh (ACE-Step...)**\n- **Swarm GPU: cho nhiều GPU cùng tạo ảnh cho một người dùng (ví dụ lưới ảnh lớn)**\n- **Tự cài đặt backend: có thể tự cài ComfyUI làm backend**\n- **Đa nền tảng: Windows, Linux, Mac Apple Silicon, Docker, Google Colab**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n./launch-linux.sh\n```\n\nYêu cầu: git, .NET 8 SDK (và .NET 10 SDK cho phiên bản tương lai), Python 3.10-3.12 (không dùng 3.14 trở lên); Mac chỉ hỗ trợ chip Apple M-series. Giao diện chạy tại http://localhost:7801.\nBước 1: Cài đặt git và python3 (kèm pip, venv) bằng trình quản lý gói của hệ điều hành\nBước 2: Tải mã nguồn: `git clone https://github.com/mcmonkeyprojects/SwarmUI`\nBước 3: Vào thư mục SwarmUI và cài đặt .NET: `./launchtools/linux-dotnet-install.sh`\nBước 4: Khởi chạy: `./launch-linux.sh` rồi mở http://localhost:7801/Install và làm theo hướng dẫn cài đặt trên trang\nBước 5: Trên Windows có thể tải tệp install-windows.bat từ trang Releases và chạy để tự cài đặt\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở http://localhost:7801 trong trình duyệt sau khi khởi chạy\nBước 2: Dùng tab Generate để nhập prompt, chọn mô hình và tạo ảnh/video\nBước 3: Dùng tab Comfy Workflow khi cần chỉnh workflow ComfyUI chi tiết\nBước 4: Trên máy chủ không màn hình: `./launch-linux.sh --launch_mode none --host 0.0.0.0`\nBước 5: Xem Basic Usage Guide trong thư mục docs để biết thêm hướng dẫn\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hướng dẫn cài đặt SwarmUI trên Ubuntu và mở giao diện ở cổng 7801\"\n- \"Cách chạy SwarmUI trên máy chủ GPU không màn hình và truy cập từ xa\"\n- \"Giải thích khác biệt giữa tab Generate và tab Comfy Workflow trong SwarmUI\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "chainner-org-chainner",
+    "slug": "chainner-org-chainner",
+    "name": "chaiNNer — Công cụ xử lý ảnh dạng nút, phóng to ảnh bằng AI",
+    "icon": "Workflow",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "generative_ai_multimedia",
+    "categoryNameVi": "Sinh nội dung & Đa phương tiện (Generative AI)",
+    "categories": [
+      "generative_ai_multimedia",
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Sinh nội dung & Đa phương tiện (Generative AI)",
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/chaiNNer-org/chaiNNer",
+    "websiteUrl": "",
+    "authorName": "chaiNNer-org",
+    "license": "Mã nguồn mở (GPL-3.0)",
+    "summaryVi": "chaiNNer là ứng dụng xử lý ảnh dạng nút (node) với giao diện đồ họa, ban đầu dùng để phóng to ảnh bằng AI (upscaling) và nay trở thành công cụ xử lý ảnh lập trình được rất linh hoạt. Ứng dụng chạy trên Windows, macOS, Linux và hỗ trợ PyTorch, NCNN, ONNX, TensorRT.",
+    "purposeVi": "Giúp người dùng xây dựng chuỗi xử lý ảnh/video (upscale bằng AI, xóa nền, xử lý hàng loạt) bằng cách kéo thả và nối các nút, không cần viết mã.",
+    "featuresVi": [
+      "Trình soạn thảo dạng nút: kéo thả, nối nút với kiểm tra kiểu dữ liệu theo màu",
+      "Upscale bằng AI: hỗ trợ kiến trúc PyTorch qua thư viện Spandrel, ESRGAN, Waifu2x qua NCNN/ONNX",
+      "Xóa nền: mô hình u2net, isnet qua ONNX",
+      "Xử lý hàng loạt: nút Load Images cho thư mục ảnh và Load Video cho video",
+      "Quản lý phụ thuộc: tự tải Python tích hợp và cài đặt framework qua Dependency Manager",
+      "Hỗ trợ GPU đa dạng: NVIDIA (CUDA, TensorRT), AMD (ROCm trên Linux, NCNN), Apple Silicon (MPS), Intel (NCNN)"
+    ],
+    "installGuideVi": "Yêu cầu: Windows 10 trở lên, macOS 11 trở lên hoặc Linux; không bắt buộc cài Python (ứng dụng tự tải Python tích hợp); nếu dùng Python hệ thống cần Python 3.10 trở lên. Tự build cần npm v7 trở lên.\nBước 1: Tải bản cài đặt mới nhất từ trang GitHub Releases và chạy trình cài đặt phù hợp hệ điều hành\nBước 2: Mở Dependency Manager (góc trên bên phải) để cài đặt framework mạng nơ-ron (PyTorch, NCNN, ONNX hoặc TensorRT)\nBước 3: Nếu muốn tự build: cài đặt phụ thuộc Node.js bằng `npm install` rồi đóng gói bằng `npm run make`",
+    "usageGuideVi": "Bước 1: Kéo thả hoặc nhấp đúp tên nút trong bảng chọn để đưa vào trình soạn thảo\nBước 2: Nối các nút (ví dụ Load Image → Upscale → Save Image) để tạo chuỗi xử lý\nBước 3: Bấm nút Run màu xanh để chạy; dùng Stop/Pause để dừng\nBước 4: Dùng nút Load Images hoặc Load Video để xử lý hàng loạt",
+    "samplePromptsVi": [
+      "Hướng dẫn tạo chuỗi chaiNNer phóng to cả thư mục ảnh gấp 4 lần bằng mô hình ESRGAN",
+      "Cách xóa nền ảnh sản phẩm hàng loạt bằng nút u2net trong chaiNNer",
+      "Nên chọn PyTorch hay NCNN trong chaiNNer khi dùng GPU AMD trên Windows?"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm run make",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm run make\"\n  ],\n  \"nguon\": \"https://github.com/chaiNNer-org/chaiNNer\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép GPL-3.0, có bản cài đặt sẵn cho Windows, macOS, Linux",
+      "Đang phát triển tích cực (commit tháng 10/2026)",
+      "Không cần cấu hình Python thủ công nhờ Python tích hợp"
+    ],
+    "consVi": [
+      "Chỉ hỗ trợ một số kiến trúc mạng nơ-ron nhất định",
+      "NCNN có thể cho ảnh đen trên một số GPU không phải NVIDIA khi thiếu bộ nhớ",
+      "Không hỗ trợ macOS 10.x và Windows 8.1 trở xuống; ONNX trên Apple Silicon chỉ chạy CPU"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# chaiNNer — Công cụ xử lý ảnh dạng nút, phóng to ảnh bằng AI\n\n> A node-based image processing GUI aimed at making chaining image processing tasks easy and customizable.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nchaiNNer là ứng dụng xử lý ảnh dạng nút (node) với giao diện đồ họa, ban đầu dùng để phóng to ảnh bằng AI (upscaling) và nay trở thành công cụ xử lý ảnh lập trình được rất linh hoạt. Ứng dụng chạy trên Windows, macOS, Linux và hỗ trợ PyTorch, NCNN, ONNX, TensorRT.\n\nGiúp người dùng xây dựng chuỗi xử lý ảnh/video (upscale bằng AI, xóa nền, xử lý hàng loạt) bằng cách kéo thả và nối các nút, không cần viết mã.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Sinh nội dung & Đa phương tiện (Generative AI)\n- **Tác giả / Nhà phát triển:** chaiNNer-org\n- **Giấy phép bản quyền:** Mã nguồn mở (GPL-3.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/chaiNNer-org/chaiNNer](https://github.com/chaiNNer-org/chaiNNer)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Trình soạn thảo dạng nút: kéo thả, nối nút với kiểm tra kiểu dữ liệu theo màu**\n- **Upscale bằng AI: hỗ trợ kiến trúc PyTorch qua thư viện Spandrel, ESRGAN, Waifu2x qua NCNN/ONNX**\n- **Xóa nền: mô hình u2net, isnet qua ONNX**\n- **Xử lý hàng loạt: nút Load Images cho thư mục ảnh và Load Video cho video**\n- **Quản lý phụ thuộc: tự tải Python tích hợp và cài đặt framework qua Dependency Manager**\n- **Hỗ trợ GPU đa dạng: NVIDIA (CUDA, TensorRT), AMD (ROCm trên Linux, NCNN), Apple Silicon (MPS), Intel (NCNN)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm run make\n```\n\nYêu cầu: Windows 10 trở lên, macOS 11 trở lên hoặc Linux; không bắt buộc cài Python (ứng dụng tự tải Python tích hợp); nếu dùng Python hệ thống cần Python 3.10 trở lên. Tự build cần npm v7 trở lên.\nBước 1: Tải bản cài đặt mới nhất từ trang GitHub Releases và chạy trình cài đặt phù hợp hệ điều hành\nBước 2: Mở Dependency Manager (góc trên bên phải) để cài đặt framework mạng nơ-ron (PyTorch, NCNN, ONNX hoặc TensorRT)\nBước 3: Nếu muốn tự build: cài đặt phụ thuộc Node.js bằng `npm install` rồi đóng gói bằng `npm run make`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Kéo thả hoặc nhấp đúp tên nút trong bảng chọn để đưa vào trình soạn thảo\nBước 2: Nối các nút (ví dụ Load Image → Upscale → Save Image) để tạo chuỗi xử lý\nBước 3: Bấm nút Run màu xanh để chạy; dùng Stop/Pause để dừng\nBước 4: Dùng nút Load Images hoặc Load Video để xử lý hàng loạt\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hướng dẫn tạo chuỗi chaiNNer phóng to cả thư mục ảnh gấp 4 lần bằng mô hình ESRGAN\"\n- \"Cách xóa nền ảnh sản phẩm hàng loạt bằng nút u2net trong chaiNNer\"\n- \"Nên chọn PyTorch hay NCNN trong chaiNNer khi dùng GPU AMD trên Windows?\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "deepbeepmeep-wan2gp",
+    "slug": "deepbeepmeep-wan2gp",
+    "name": "WanGP — Ứng dụng tạo video, ảnh, âm thanh bằng mô hình mở cho GPU ít VRAM",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "generative_ai_multimedia",
+    "categoryNameVi": "Sinh nội dung & Đa phương tiện (Generative AI)",
+    "categories": [
+      "generative_ai_multimedia",
+      "speech_voice"
+    ],
+    "categoryNamesVi": [
+      "Sinh nội dung & Đa phương tiện (Generative AI)",
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/deepbeepmeep/Wan2GP",
+    "websiteUrl": "https://wangp.ai/",
+    "authorName": "DeepBeepMeep",
+    "license": "Giấy phép cộng đồng WanGP 2.0 (miễn phí dùng cục bộ, hạn chế thương mại hóa phần mềm)",
+    "summaryVi": "WanGP (Wan2GP) là ứng dụng web chạy cục bộ gom các mô hình sinh nội dung mã nguồn mở về video (Wan 2.1/2.2, LTX-2, Hunyuan Video...), ảnh (Qwen Image, Flux, Z-Image...) và âm thanh/TTS. Điểm nổi bật là tối ưu VRAM để chạy một số mô hình với GPU chỉ 6 GB, kèm hàng đợi, chế độ headless và API.",
+    "purposeVi": "Giúp người có GPU phổ thông (kể cả GTX 10XX, RTX 20XX, GPU AMD) tạo video, ảnh và âm thanh bằng các mô hình mở mới nhất trên máy tính của mình.",
+    "featuresVi": [
+      "Yêu cầu VRAM thấp: chạy một số mô hình với 6 GB VRAM, hỗ trợ GPU NVIDIA cũ và AMD RDNA 2-4",
+      "Đa mô hình: video (Wan, LTX-2, Hunyuan Video), ảnh (Qwen Image, Flux, Z-Image), âm thanh/TTS (Qwen3 TTS, Ace Step...)",
+      "Giao diện web đầy đủ: thư viện video/ảnh/âm thanh, tái sử dụng thiết lập",
+      "LoRA và finetune: thêm LoRA, checkpoint từ Hugging Face hoặc CivitAI; hỗ trợ int8, fp8, gguf, NV FP4",
+      "Hàng đợi và chế độ headless: xếp lịch tác vụ và xử lý hàng đợi từ dòng lệnh",
+      "Công cụ chuẩn bị đầu vào: trình sửa mask, xóa nền, trích xuất pose/depth, upsampling RIFE/FlashVSR"
+    ],
+    "installGuideVi": "Yêu cầu: GPU NVIDIA (GTX 10XX đến RTX 50XX) hoặc AMD; conda với Python 3.11 (RTX 20XX-50XX) hoặc 3.10.9 (GTX 10XX); PyTorch theo hướng dẫn; trên Windows cần Triton tương ứng.\nBước 1: Tải mã nguồn: `git clone https://github.com/deepbeepmeep/Wan2GP.git`\nBước 2: Tạo môi trường: `conda create -n wan2gp python=3.11.14` rồi `conda activate wan2gp`\nBước 3: Cài đặt PyTorch (RTX 20XX-50XX): `pip install torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cu130`\nBước 4: Cài đặt các thư viện còn lại: `pip install -r requirements.txt`\nBước 5: Hoặc dùng bộ cài tự động scripts/install.sh (Linux/macOS) hay scripts\\install.bat (Windows)",
+    "usageGuideVi": "Bước 1: Khởi chạy giao diện web bằng `python wgp.py`\nBước 2: Lần đầu dùng, xem tab Guides để chọn mô hình được khuyến nghị\nBước 3: Tạo hàng đợi trong giao diện, lưu bằng Save Queue rồi xử lý không giao diện: `python wgp.py --process my_queue.zip`\nBước 4: Xem docs/CLI.md để biết đầy đủ tham số dòng lệnh",
+    "samplePromptsVi": [
+      "Hướng dẫn cài đặt WanGP trên máy RTX 3060 12 GB để tạo video từ văn bản",
+      "Cách lưu hàng đợi tác vụ trong WanGP và chạy qua đêm bằng chế độ headless",
+      "Nên chọn mô hình video nào trong WanGP khi GPU chỉ có 8 GB VRAM?"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "python wgp.py",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"python wgp.py\"\n  ],\n  \"nguon\": \"https://github.com/deepbeepmeep/Wan2GP\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Miễn phí khi chạy cục bộ, được dùng trong công ty và được bán sản phẩm đầu ra theo giấy phép",
+      "Tối ưu VRAM, hỗ trợ nhiều thế hệ GPU NVIDIA và AMD",
+      "Cập nhật rất thường xuyên (phiên bản v18.21 tháng 10/2026)"
+    ],
+    "consVi": [
+      "Giấy phép WanGP Community License 2.0 cấm bán lại, white-label, nhúng vào sản phẩm trả phí hoặc cung cấp API/SaaS trả phí nếu không có giấy phép thương mại riêng",
+      "Khi bán trực tiếp sản phẩm đầu ra cần ghi công WanGP; mô hình và trọng số bên thứ ba giữ giấy phép riêng",
+      "Cài đặt thủ công cần chọn đúng phiên bản PyTorch, Triton, SageAttention theo GPU"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# WanGP — Ứng dụng tạo video, ảnh, âm thanh bằng mô hình mở cho GPU ít VRAM\n\n> WanGP is a one-stop super app for the best open source generative models across video, image, audio, and text-to-speech.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nWanGP (Wan2GP) là ứng dụng web chạy cục bộ gom các mô hình sinh nội dung mã nguồn mở về video (Wan 2.1/2.2, LTX-2, Hunyuan Video...), ảnh (Qwen Image, Flux, Z-Image...) và âm thanh/TTS. Điểm nổi bật là tối ưu VRAM để chạy một số mô hình với GPU chỉ 6 GB, kèm hàng đợi, chế độ headless và API.\n\nGiúp người có GPU phổ thông (kể cả GTX 10XX, RTX 20XX, GPU AMD) tạo video, ảnh và âm thanh bằng các mô hình mở mới nhất trên máy tính của mình.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Sinh nội dung & Đa phương tiện (Generative AI)\n- **Tác giả / Nhà phát triển:** DeepBeepMeep\n- **Giấy phép bản quyền:** Giấy phép cộng đồng WanGP 2.0 (miễn phí dùng cục bộ, hạn chế thương mại hóa phần mềm)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/deepbeepmeep/Wan2GP](https://github.com/deepbeepmeep/Wan2GP)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Yêu cầu VRAM thấp: chạy một số mô hình với 6 GB VRAM, hỗ trợ GPU NVIDIA cũ và AMD RDNA 2-4**\n- **Đa mô hình: video (Wan, LTX-2, Hunyuan Video), ảnh (Qwen Image, Flux, Z-Image), âm thanh/TTS (Qwen3 TTS, Ace Step...)**\n- **Giao diện web đầy đủ: thư viện video/ảnh/âm thanh, tái sử dụng thiết lập**\n- **LoRA và finetune: thêm LoRA, checkpoint từ Hugging Face hoặc CivitAI; hỗ trợ int8, fp8, gguf, NV FP4**\n- **Hàng đợi và chế độ headless: xếp lịch tác vụ và xử lý hàng đợi từ dòng lệnh**\n- **Công cụ chuẩn bị đầu vào: trình sửa mask, xóa nền, trích xuất pose/depth, upsampling RIFE/FlashVSR**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npython wgp.py\n```\n\nYêu cầu: GPU NVIDIA (GTX 10XX đến RTX 50XX) hoặc AMD; conda với Python 3.11 (RTX 20XX-50XX) hoặc 3.10.9 (GTX 10XX); PyTorch theo hướng dẫn; trên Windows cần Triton tương ứng.\nBước 1: Tải mã nguồn: `git clone https://github.com/deepbeepmeep/Wan2GP.git`\nBước 2: Tạo môi trường: `conda create -n wan2gp python=3.11.14` rồi `conda activate wan2gp`\nBước 3: Cài đặt PyTorch (RTX 20XX-50XX): `pip install torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cu130`\nBước 4: Cài đặt các thư viện còn lại: `pip install -r requirements.txt`\nBước 5: Hoặc dùng bộ cài tự động scripts/install.sh (Linux/macOS) hay scripts\\install.bat (Windows)\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi chạy giao diện web bằng `python wgp.py`\nBước 2: Lần đầu dùng, xem tab Guides để chọn mô hình được khuyến nghị\nBước 3: Tạo hàng đợi trong giao diện, lưu bằng Save Queue rồi xử lý không giao diện: `python wgp.py --process my_queue.zip`\nBước 4: Xem docs/CLI.md để biết đầy đủ tham số dòng lệnh\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Hướng dẫn cài đặt WanGP trên máy RTX 3060 12 GB để tạo video từ văn bản\"\n- \"Cách lưu hàng đợi tác vụ trong WanGP và chạy qua đêm bằng chế độ headless\"\n- \"Nên chọn mô hình video nào trong WanGP khi GPU chỉ có 8 GB VRAM?\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "modelscope-diffsynth-studio",
+    "slug": "modelscope-diffsynth-studio",
+    "name": "DiffSynth-Studio — Engine suy luận và huấn luyện mô hình Diffusion tạo ảnh, video, âm thanh",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "generative_ai_multimedia",
+    "categoryNameVi": "Sinh nội dung & Đa phương tiện (Generative AI)",
+    "categories": [
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/modelscope/DiffSynth-Studio",
+    "websiteUrl": "https://diffsynth-studio-doc.readthedocs.io/en/latest/README.html",
+    "authorName": "ModelScope Community",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "DiffSynth-Studio là engine mã nguồn mở cho mô hình Diffusion do cộng đồng ModelScope phát triển, tích hợp các mô hình tạo ảnh (FLUX, Qwen-Image, Z-Image...), tạo video (Wan, LTX-2...) và tạo âm thanh. Framework thiết kế lại pipeline suy luận và huấn luyện, có quản lý VRAM, lượng tử hóa và huấn luyện LoRA.",
+    "purposeVi": "Cung cấp thư viện Python thống nhất để suy luận và huấn luyện (toàn phần hoặc LoRA) nhiều mô hình Diffusion trên GPU phổ thông.",
+    "featuresVi": [
+      "Hỗ trợ nhiều mô hình: ảnh (FLUX, Qwen-Image, Z-Image, Stable Diffusion...), video (Wan, LTX-2...), âm thanh (ACE-Step...)",
+      "Quản lý VRAM: điều phối tham số giữa ổ đĩa, RAM và VRAM để chạy mô hình lớn trên GPU ít VRAM",
+      "Lượng tử hóa: NF4, INT8 để giảm VRAM khi suy luận và huấn luyện LoRA",
+      "Huấn luyện tùy ý: huấn luyện toàn phần, LoRA hoặc Adapter cho hầu hết mô hình hỗ trợ",
+      "Split Training: chia quá trình huấn luyện thành hai giai đoạn để tăng hiệu quả",
+      "Ví dụ sẵn có: mã suy luận, suy luận VRAM thấp và huấn luyện cho từng mô hình trong thư mục examples/"
+    ],
+    "installGuideVi": "Yêu cầu: Python và PyTorch; GPU NVIDIA (có hướng dẫn riêng cho GPU AMD và NPU); mô hình tải từ ModelScope (mặc định) hoặc Hugging Face.\nBước 1: Tải mã nguồn (khuyến nghị): `git clone https://github.com/modelscope/DiffSynth-Studio.git`\nBước 2: Vào thư mục DiffSynth-Studio và cài đặt: `pip install -e .`\nBước 3: Hoặc cài đặt từ PyPI: `pip install diffsynth`\nBước 4: Người dùng ngoài Trung Quốc có thể đặt nguồn tải: `export MODELSCOPE_ENDPOINT=https://modelscope.ai`",
+    "usageGuideVi": "Bước 1: Chọn mô hình trong bảng Supported Models và mở mã ví dụ tương ứng trong thư mục examples/\nBước 2: Tạo pipeline bằng from_pretrained với các ModelConfig (ví dụ ZImagePipeline cho Z-Image-Turbo) rồi gọi pipe(prompt=...)\nBước 3: Dùng bản ví dụ model_inference_low_vram khi GPU ít VRAM\nBước 4: Dùng script trong model_training để huấn luyện toàn phần hoặc LoRA",
+    "samplePromptsVi": [
+      "Viết mã Python dùng DiffSynth-Studio tạo ảnh bằng Z-Image-Turbo",
+      "Hướng dẫn huấn luyện LoRA cho Qwen-Image bằng DiffSynth-Studio trên GPU 24 GB",
+      "Cách cấu hình DiffSynth-Studio tải mô hình từ Hugging Face thay vì ModelScope"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install diffsynth",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install diffsynth\"\n  ],\n  \"nguon\": \"https://github.com/modelscope/DiffSynth-Studio\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache-2.0, cập nhật rất tích cực (commit tháng 10/2026)",
+      "Một framework cho cả suy luận và huấn luyện nhiều mô hình ảnh, video, âm thanh",
+      "Có tài liệu tiếng Anh và tiếng Trung"
+    ],
+    "consVi": [
+      "README cho biết nhân lực phát triển hạn chế nên tốc độ phát triển tính năng mới và phản hồi issue có thể chậm",
+      "Phiên bản lớn mới bỏ một số tính năng cũ, cần chuyển về phiên bản lịch sử nếu muốn dùng",
+      "Mỗi mô hình tích hợp có giấy phép trọng số riêng"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# DiffSynth-Studio — Engine suy luận và huấn luyện mô hình Diffusion tạo ảnh, video, âm thanh\n\n> DiffSynth-Studio is an open-source Diffusion model engine developed and maintained by the ModelScope Community team.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nDiffSynth-Studio là engine mã nguồn mở cho mô hình Diffusion do cộng đồng ModelScope phát triển, tích hợp các mô hình tạo ảnh (FLUX, Qwen-Image, Z-Image...), tạo video (Wan, LTX-2...) và tạo âm thanh. Framework thiết kế lại pipeline suy luận và huấn luyện, có quản lý VRAM, lượng tử hóa và huấn luyện LoRA.\n\nCung cấp thư viện Python thống nhất để suy luận và huấn luyện (toàn phần hoặc LoRA) nhiều mô hình Diffusion trên GPU phổ thông.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Sinh nội dung & Đa phương tiện (Generative AI)\n- **Tác giả / Nhà phát triển:** ModelScope Community\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/modelscope/DiffSynth-Studio](https://github.com/modelscope/DiffSynth-Studio)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Hỗ trợ nhiều mô hình: ảnh (FLUX, Qwen-Image, Z-Image, Stable Diffusion...), video (Wan, LTX-2...), âm thanh (ACE-Step...)**\n- **Quản lý VRAM: điều phối tham số giữa ổ đĩa, RAM và VRAM để chạy mô hình lớn trên GPU ít VRAM**\n- **Lượng tử hóa: NF4, INT8 để giảm VRAM khi suy luận và huấn luyện LoRA**\n- **Huấn luyện tùy ý: huấn luyện toàn phần, LoRA hoặc Adapter cho hầu hết mô hình hỗ trợ**\n- **Split Training: chia quá trình huấn luyện thành hai giai đoạn để tăng hiệu quả**\n- **Ví dụ sẵn có: mã suy luận, suy luận VRAM thấp và huấn luyện cho từng mô hình trong thư mục examples/**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install diffsynth\n```\n\nYêu cầu: Python và PyTorch; GPU NVIDIA (có hướng dẫn riêng cho GPU AMD và NPU); mô hình tải từ ModelScope (mặc định) hoặc Hugging Face.\nBước 1: Tải mã nguồn (khuyến nghị): `git clone https://github.com/modelscope/DiffSynth-Studio.git`\nBước 2: Vào thư mục DiffSynth-Studio và cài đặt: `pip install -e .`\nBước 3: Hoặc cài đặt từ PyPI: `pip install diffsynth`\nBước 4: Người dùng ngoài Trung Quốc có thể đặt nguồn tải: `export MODELSCOPE_ENDPOINT=https://modelscope.ai`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn mô hình trong bảng Supported Models và mở mã ví dụ tương ứng trong thư mục examples/\nBước 2: Tạo pipeline bằng from_pretrained với các ModelConfig (ví dụ ZImagePipeline cho Z-Image-Turbo) rồi gọi pipe(prompt=...)\nBước 3: Dùng bản ví dụ model_inference_low_vram khi GPU ít VRAM\nBước 4: Dùng script trong model_training để huấn luyện toàn phần hoặc LoRA\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết mã Python dùng DiffSynth-Studio tạo ảnh bằng Z-Image-Turbo\"\n- \"Hướng dẫn huấn luyện LoRA cho Qwen-Image bằng DiffSynth-Studio trên GPU 24 GB\"\n- \"Cách cấu hình DiffSynth-Studio tải mô hình từ Hugging Face thay vì ModelScope\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "tencent-hunyuan-hunyuanimage-2-1",
+    "slug": "tencent-hunyuan-hunyuanimage-2-1",
+    "name": "HunyuanImage-2.1 — Mô hình 17B tạo ảnh 2K từ văn bản của Tencent",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "generative_ai_multimedia",
+    "categoryNameVi": "Sinh nội dung & Đa phương tiện (Generative AI)",
+    "categories": [
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/Tencent-Hunyuan/HunyuanImage-2.1",
+    "websiteUrl": "https://huggingface.co/tencent/HunyuanImage-2.1",
+    "authorName": "Tencent Hunyuan",
+    "license": "Giấy phép cộng đồng Tencent Hunyuan (giới hạn lãnh thổ, trên 100 triệu MAU cần xin phép)",
+    "summaryVi": "HunyuanImage-2.1 là mô hình tạo ảnh từ văn bản 17B của Tencent, tạo ảnh độ phân giải 2K (2048 × 2048). Kiến trúc hai giai đoạn gồm mô hình tạo ảnh cơ sở dùng hai bộ mã hóa văn bản (MLLM và bộ mã hóa nhận biết ký tự) và mô hình refiner nâng chất lượng ảnh. Repo chứa định nghĩa mô hình PyTorch, trọng số và mã suy luận.",
+    "purposeVi": "Giúp nhà phát triển tự chạy mô hình tạo ảnh 2K chất lượng cao, hiển thị chữ tốt, hỗ trợ prompt tiếng Trung và tiếng Anh trên GPU của mình.",
+    "featuresVi": [
+      "Ảnh 2K: tạo ảnh độ phân giải cao (2048x2048, 2560x1536...) với bố cục điện ảnh",
+      "Đa ngôn ngữ: hỗ trợ sẵn prompt tiếng Trung và tiếng Anh",
+      "Hiển thị chữ: dùng ByT5 để vẽ chữ trong ảnh chính xác hơn",
+      "Nhiều tỉ lệ khung hình: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3",
+      "Mô hình chưng cất: bản distilled chạy 8 bước để suy luận nhanh",
+      "Tăng cường prompt và refiner: tự viết lại prompt và tinh chỉnh ảnh đầu ra"
+    ],
+    "installGuideVi": "Yêu cầu: Linux, GPU NVIDIA có CUDA với tối thiểu 24 GB VRAM để tạo ảnh 2048x2048 (khi bật CPU offload và lượng tử hóa FP8); flash-attn 2.7.3.\nBước 1: Tải mã nguồn: `git clone https://github.com/Tencent-Hunyuan/HunyuanImage-2.1.git`\nBước 2: Cài đặt thư viện: `pip install -r requirements.txt`\nBước 3: Cài đặt flash attention: `pip install flash-attn==2.7.3 --no-build-isolation`\nBước 4: Tải trọng số mô hình: `hf download tencent/HunyuanImage-2.1 --local-dir ./ckpts`\nBước 5: Tải các bộ mã hóa văn bản theo hướng dẫn trong ckpts/checkpoints-download.md: `hf download Qwen/Qwen2.5-VL-7B-Instruct --local-dir ./ckpts/text_encoder/llm` và `hf download google/byt5-small --local-dir ./ckpts/text_encoder/byt5-small`",
+    "usageGuideVi": "Bước 1: Tạo pipeline bằng HunyuanImagePipeline.from_pretrained(model_name=\"hunyuanimage-v2.1\", use_fp8=True) và chuyển sang cuda\nBước 2: Gọi pipe(prompt=..., width=2048, height=2048, use_refiner=True, num_inference_steps=50) rồi lưu ảnh\nBước 3: Dùng bản hunyuanimage-v2.1-distilled với 8 bước để tạo nhanh hơn\nBước 4: Chỉ tạo ảnh 2K; ảnh 1K sẽ bị lỗi hình",
+    "samplePromptsVi": [
+      "Viết mã Python dùng HunyuanImage-2.1 tạo poster 16:9 có dòng chữ tiêu đề rõ nét",
+      "Hướng dẫn chạy HunyuanImage-2.1 bản distilled trên GPU 24 GB với FP8",
+      "Giải thích các điều kiện của Tencent Hunyuan Community License khi dùng HunyuanImage-2.1 cho sản phẩm"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "hf download tencent/HunyuanImage-2.1 --local-dir ./ckpts",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"hf download tencent/HunyuanImage-2.1 --local-dir ./ckpts\"\n  ],\n  \"nguon\": \"https://github.com/Tencent-Hunyuan/HunyuanImage-2.1\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mô hình mở tạo ảnh 2K, README cho biết đạt Top1 bảng xếp hạng Arena cho mô hình text-to-image mã nguồn mở (09/2025)",
+      "Có bản FP8 và bản chưng cất 8 bước",
+      "Hỗ trợ prompt tiếng Trung và tiếng Anh, hiển thị chữ tốt"
+    ],
+    "consVi": [
+      "Giấy phép Tencent Hunyuan Community License không áp dụng tại EU, Vương quốc Anh và Hàn Quốc; dịch vụ trên 100 triệu người dùng hoạt động hằng tháng phải xin giấy phép riêng",
+      "Chỉ hỗ trợ Linux và GPU NVIDIA tối thiểu 24 GB VRAM",
+      "Chỉ tạo tốt ở độ phân giải 2K; lần cập nhật gần nhất tháng 10/2025"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# HunyuanImage-2.1 — Mô hình 17B tạo ảnh 2K từ văn bản của Tencent\n\n> HunyuanImage-2.1: An Efficient Diffusion Model for High-Resolution (2K) Text-to-Image Generation\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nHunyuanImage-2.1 là mô hình tạo ảnh từ văn bản 17B của Tencent, tạo ảnh độ phân giải 2K (2048 × 2048). Kiến trúc hai giai đoạn gồm mô hình tạo ảnh cơ sở dùng hai bộ mã hóa văn bản (MLLM và bộ mã hóa nhận biết ký tự) và mô hình refiner nâng chất lượng ảnh. Repo chứa định nghĩa mô hình PyTorch, trọng số và mã suy luận.\n\nGiúp nhà phát triển tự chạy mô hình tạo ảnh 2K chất lượng cao, hiển thị chữ tốt, hỗ trợ prompt tiếng Trung và tiếng Anh trên GPU của mình.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Sinh nội dung & Đa phương tiện (Generative AI)\n- **Tác giả / Nhà phát triển:** Tencent Hunyuan\n- **Giấy phép bản quyền:** Giấy phép cộng đồng Tencent Hunyuan (giới hạn lãnh thổ, trên 100 triệu MAU cần xin phép)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/Tencent-Hunyuan/HunyuanImage-2.1](https://github.com/Tencent-Hunyuan/HunyuanImage-2.1)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Ảnh 2K: tạo ảnh độ phân giải cao (2048x2048, 2560x1536...) với bố cục điện ảnh**\n- **Đa ngôn ngữ: hỗ trợ sẵn prompt tiếng Trung và tiếng Anh**\n- **Hiển thị chữ: dùng ByT5 để vẽ chữ trong ảnh chính xác hơn**\n- **Nhiều tỉ lệ khung hình: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3**\n- **Mô hình chưng cất: bản distilled chạy 8 bước để suy luận nhanh**\n- **Tăng cường prompt và refiner: tự viết lại prompt và tinh chỉnh ảnh đầu ra**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nhf download tencent/HunyuanImage-2.1 --local-dir ./ckpts\n```\n\nYêu cầu: Linux, GPU NVIDIA có CUDA với tối thiểu 24 GB VRAM để tạo ảnh 2048x2048 (khi bật CPU offload và lượng tử hóa FP8); flash-attn 2.7.3.\nBước 1: Tải mã nguồn: `git clone https://github.com/Tencent-Hunyuan/HunyuanImage-2.1.git`\nBước 2: Cài đặt thư viện: `pip install -r requirements.txt`\nBước 3: Cài đặt flash attention: `pip install flash-attn==2.7.3 --no-build-isolation`\nBước 4: Tải trọng số mô hình: `hf download tencent/HunyuanImage-2.1 --local-dir ./ckpts`\nBước 5: Tải các bộ mã hóa văn bản theo hướng dẫn trong ckpts/checkpoints-download.md: `hf download Qwen/Qwen2.5-VL-7B-Instruct --local-dir ./ckpts/text_encoder/llm` và `hf download google/byt5-small --local-dir ./ckpts/text_encoder/byt5-small`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo pipeline bằng HunyuanImagePipeline.from_pretrained(model_name=\"hunyuanimage-v2.1\", use_fp8=True) và chuyển sang cuda\nBước 2: Gọi pipe(prompt=..., width=2048, height=2048, use_refiner=True, num_inference_steps=50) rồi lưu ảnh\nBước 3: Dùng bản hunyuanimage-v2.1-distilled với 8 bước để tạo nhanh hơn\nBước 4: Chỉ tạo ảnh 2K; ảnh 1K sẽ bị lỗi hình\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết mã Python dùng HunyuanImage-2.1 tạo poster 16:9 có dòng chữ tiêu đề rõ nét\"\n- \"Hướng dẫn chạy HunyuanImage-2.1 bản distilled trên GPU 24 GB với FP8\"\n- \"Giải thích các điều kiện của Tencent Hunyuan Community License khi dùng HunyuanImage-2.1 cho sản phẩm\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "deepseek-ai-deepseek-ocr",
+    "slug": "deepseek-ai-deepseek-ocr",
+    "name": "DeepSeek-OCR — Mô hình OCR nén ngữ cảnh thị giác, chuyển tài liệu sang Markdown",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs",
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử",
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/deepseek-ai/DeepSeek-OCR",
+    "websiteUrl": "https://huggingface.co/deepseek-ai/DeepSeek-OCR",
+    "authorName": "DeepSeek",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "DeepSeek-OCR là mô hình OCR thị giác - ngôn ngữ của DeepSeek, nghiên cứu vai trò của bộ mã hóa thị giác theo góc nhìn lấy LLM làm trung tâm (nén ngữ cảnh bằng hình ảnh). Kho mã cung cấp mã suy luận bằng vLLM và Hugging Face Transformers cho ảnh và PDF, hỗ trợ chuyển tài liệu sang Markdown.",
+    "purposeVi": "Giúp nhận dạng chữ và chuyển ảnh, PDF tài liệu thành Markdown hoặc văn bản để đưa vào hệ thống xử lý dữ liệu và RAG, chạy cục bộ trên GPU.",
+    "featuresVi": [
+      "Chuyển tài liệu sang Markdown: lời nhắc `<|grounding|>Convert the document to markdown.`",
+      "Nhiều chế độ: OCR có bố cục, OCR thuần (Free OCR), phân tích hình vẽ trong tài liệu, mô tả ảnh, định vị đối tượng theo tham chiếu",
+      "Độ phân giải gốc Tiny/Small/Base/Large (64–400 token thị giác) và chế độ động Gundam",
+      "Suy luận bằng vLLM cho ảnh (xuất dạng luồng) và PDF; đã được hỗ trợ chính thức trong vLLM upstream",
+      "Suy luận bằng Hugging Face Transformers với `trust_remote_code`"
+    ],
+    "installGuideVi": "Yêu cầu: Môi trường được thử nghiệm: CUDA 11.8 + PyTorch 2.6.0, Python 3.12.9 (Conda); GPU NVIDIA (README nêu tốc độ PDF ~2500 token/s trên A100-40G).\nBước 1: Tải mã nguồn: `git clone https://github.com/deepseek-ai/DeepSeek-OCR.git`\nBước 2: Tạo môi trường Conda: `conda create -n deepseek-ocr python=3.12.9 -y`\nBước 3: Cài đặt PyTorch: `pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu118`\nBước 4: Tải bản whl vllm-0.8.5 rồi cài đặt: `pip install vllm-0.8.5+cu118-cp38-abi3-manylinux1_x86_64.whl`\nBước 5: Cài đặt các gói phụ thuộc: `pip install -r requirements.txt`\nBước 6: Cài đặt flash-attn: `pip install flash-attn==2.7.3 --no-build-isolation`",
+    "usageGuideVi": "Bước 1: Sửa INPUT_PATH/OUTPUT_PATH trong DeepSeek-OCR-master/DeepSeek-OCR-vllm/config.py theo hướng dẫn của README.\nBước 2: Vào thư mục `DeepSeek-OCR-master/DeepSeek-OCR-vllm` và chạy `python run_dpsk_ocr_image.py` để OCR ảnh, hoặc `python run_dpsk_ocr_pdf.py` cho PDF.\nBước 3: Hoặc dùng Transformers: vào `DeepSeek-OCR-master/DeepSeek-OCR-hf` và chạy `python run_dpsk_ocr.py`.\nBước 4: Chọn lời nhắc phù hợp, ví dụ `<image>\\nFree OCR.` để lấy văn bản không kèm bố cục.",
+    "samplePromptsVi": [
+      "Chuyển trang tài liệu scan này sang Markdown, giữ nguyên tiêu đề và bảng.",
+      "OCR toàn bộ chữ trong ảnh chụp này, không cần bố cục.",
+      "Phân tích biểu đồ trong trang tài liệu và mô tả nội dung."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install -r requirements.txt",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install -r requirements.txt\"\n  ],\n  \"nguon\": \"https://github.com/deepseek-ai/DeepSeek-OCR\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, dùng được cho mục đích thương mại",
+      "Hỗ trợ cả vLLM và Transformers, đã tích hợp vào vLLM upstream",
+      "Có nhiều chế độ độ phân giải để cân bằng tốc độ và chất lượng"
+    ],
+    "consVi": [
+      "Cần GPU NVIDIA và môi trường CUDA cụ thể (CUDA 11.8, torch 2.6.0)",
+      "Phải tự tải tệp whl vLLM 0.8.5 riêng; có thể gặp xung đột phiên bản transformers",
+      "DeepSeek đã ra mắt DeepSeek-OCR2 ở kho riêng, kho này là phiên bản đầu"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# DeepSeek-OCR — Mô hình OCR nén ngữ cảnh thị giác, chuyển tài liệu sang Markdown\n\n> Explore the boundaries of visual-text compression.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nDeepSeek-OCR là mô hình OCR thị giác - ngôn ngữ của DeepSeek, nghiên cứu vai trò của bộ mã hóa thị giác theo góc nhìn lấy LLM làm trung tâm (nén ngữ cảnh bằng hình ảnh). Kho mã cung cấp mã suy luận bằng vLLM và Hugging Face Transformers cho ảnh và PDF, hỗ trợ chuyển tài liệu sang Markdown.\n\nGiúp nhận dạng chữ và chuyển ảnh, PDF tài liệu thành Markdown hoặc văn bản để đưa vào hệ thống xử lý dữ liệu và RAG, chạy cục bộ trên GPU.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** DeepSeek\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/deepseek-ai/DeepSeek-OCR](https://github.com/deepseek-ai/DeepSeek-OCR)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Chuyển tài liệu sang Markdown: lời nhắc `<|grounding|>Convert the document to markdown.`**\n- **Nhiều chế độ: OCR có bố cục, OCR thuần (Free OCR), phân tích hình vẽ trong tài liệu, mô tả ảnh, định vị đối tượng theo tham chiếu**\n- **Độ phân giải gốc Tiny/Small/Base/Large (64–400 token thị giác) và chế độ động Gundam**\n- **Suy luận bằng vLLM cho ảnh (xuất dạng luồng) và PDF; đã được hỗ trợ chính thức trong vLLM upstream**\n- **Suy luận bằng Hugging Face Transformers với `trust_remote_code`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install -r requirements.txt\n```\n\nYêu cầu: Môi trường được thử nghiệm: CUDA 11.8 + PyTorch 2.6.0, Python 3.12.9 (Conda); GPU NVIDIA (README nêu tốc độ PDF ~2500 token/s trên A100-40G).\nBước 1: Tải mã nguồn: `git clone https://github.com/deepseek-ai/DeepSeek-OCR.git`\nBước 2: Tạo môi trường Conda: `conda create -n deepseek-ocr python=3.12.9 -y`\nBước 3: Cài đặt PyTorch: `pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu118`\nBước 4: Tải bản whl vllm-0.8.5 rồi cài đặt: `pip install vllm-0.8.5+cu118-cp38-abi3-manylinux1_x86_64.whl`\nBước 5: Cài đặt các gói phụ thuộc: `pip install -r requirements.txt`\nBước 6: Cài đặt flash-attn: `pip install flash-attn==2.7.3 --no-build-isolation`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Sửa INPUT_PATH/OUTPUT_PATH trong DeepSeek-OCR-master/DeepSeek-OCR-vllm/config.py theo hướng dẫn của README.\nBước 2: Vào thư mục `DeepSeek-OCR-master/DeepSeek-OCR-vllm` và chạy `python run_dpsk_ocr_image.py` để OCR ảnh, hoặc `python run_dpsk_ocr_pdf.py` cho PDF.\nBước 3: Hoặc dùng Transformers: vào `DeepSeek-OCR-master/DeepSeek-OCR-hf` và chạy `python run_dpsk_ocr.py`.\nBước 4: Chọn lời nhắc phù hợp, ví dụ `<image>\\nFree OCR.` để lấy văn bản không kèm bố cục.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Chuyển trang tài liệu scan này sang Markdown, giữ nguyên tiêu đề và bảng.\"\n- \"OCR toàn bộ chữ trong ảnh chụp này, không cần bố cục.\"\n- \"Phân tích biểu đồ trong trang tài liệu và mô tả nội dung.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "rednote-hilab-dots-mocr",
+    "slug": "rednote-hilab-dots-mocr",
+    "name": "dots.mocr — Mô hình phân tích tài liệu đa ngôn ngữ và chuyển đồ họa sang SVG",
+    "icon": "FolderTree",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs",
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử",
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/rednote-hilab/dots.mocr",
+    "websiteUrl": "https://dotsocr.xiaohongshu.com",
+    "authorName": "rednote-hilab (Xiaohongshu)",
+    "license": "Mã nguồn mở (MIT, kèm thỏa thuận giấy phép mô hình)",
+    "summaryVi": "dots.mocr (tên mới của dots.ocr-1.5) là mô hình thị giác - ngôn ngữ phân tích tài liệu đa ngôn ngữ của rednote-hilab. Ngoài phân tích bố cục và nhận dạng chữ, mô hình còn chuyển đồ họa có cấu trúc (biểu đồ, giao diện, hình khoa học) thành mã SVG, kèm biến thể dots.mocr-svg.",
+    "purposeVi": "Giúp trích xuất bố cục, văn bản, bảng (HTML) và công thức (LaTeX) từ ảnh hoặc PDF thành JSON/Markdown để đưa vào quy trình xử lý dữ liệu tài liệu.",
+    "featuresVi": [
+      "Phân tích bố cục tài liệu: trả về bbox, loại phần tử và nội dung chữ theo thứ tự đọc",
+      "Chuyển đồ họa có cấu trúc (biểu đồ, giao diện, hình khoa học) sang mã SVG",
+      "Các chế độ lời nhắc: phân tích trang web, nhận dạng chữ trong cảnh (scene spotting), hỏi đáp chung",
+      "Công cụ parser.py xử lý ảnh hoặc PDF, xuất JSON, Markdown và ảnh trực quan hóa bố cục",
+      "Triển khai bằng vLLM (tích hợp chính thức từ vLLM 0.11.0) hoặc Hugging Face Transformers"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.12 (Conda), PyTorch theo phiên bản CUDA; GPU NVIDIA được khuyến nghị (vLLM). Suy luận CPU có hướng dẫn riêng qua issue trên GitHub.\nBước 1: Tạo môi trường: `conda create -n dots_mocr python=3.12`\nBước 2: Tải mã nguồn: `git clone https://github.com/rednote-hilab/dots.mocr.git`\nBước 3: Cài đặt gói (sau khi cài PyTorch phù hợp CUDA): `pip install -e .`\nBước 4: Tải trọng số mô hình: `python3 tools/download_model.py`",
+    "usageGuideVi": "Bước 1: Khởi động máy chủ vLLM: `CUDA_VISIBLE_DEVICES=0 vllm serve rednote-hilab/dots.mocr --tensor-parallel-size 1 --gpu-memory-utilization 0.9 --chat-template-content-format string --trust-remote-code`.\nBước 2: Phân tích một ảnh: `python3 dots_mocr/parser.py demo/demo_image1.jpg`; với PDF thêm `--num_thread 64`.\nBước 3: Chỉ phát hiện bố cục với `--prompt prompt_layout_only_en`, chỉ lấy chữ với `--prompt prompt_ocr`.\nBước 4: Dùng Transformers thay vLLM bằng cách thêm `--use_hf true`; kết quả gồm tệp JSON, Markdown và ảnh bố cục.",
+    "samplePromptsVi": [
+      "Phân tích PDF báo cáo này, xuất Markdown kèm bảng dạng HTML và công thức LaTeX.",
+      "Chuyển biểu đồ trong ảnh thành mã SVG.",
+      "Nhận dạng chữ trên biển hiệu trong ảnh chụp đường phố."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install -e .",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install -e .\"\n  ],\n  \"nguon\": \"https://github.com/rednote-hilab/dots.mocr\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn MIT; thỏa thuận giấy phép mô hình cho phép sử dụng miễn phí, không thu phí bản quyền",
+      "Đã được tích hợp chính thức vào vLLM",
+      "Có bản demo trực tuyến để thử trước"
+    ],
+    "consVi": [
+      "README nêu bảng và công thức phức tạp vẫn còn khó, đôi khi phân tích thất bại",
+      "Trọng số chịu thêm dots.mocr LICENSE AGREEMENT (ví dụ: cần sự đồng ý của chủ thể dữ liệu khi dùng đầu ra để huấn luyện mô hình khác)",
+      "Thư mục lưu mô hình không được chứa dấu chấm (giải pháp tạm thời theo README)"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# dots.mocr — Mô hình phân tích tài liệu đa ngôn ngữ và chuyển đồ họa sang SVG\n\n> Designed for comprehensive parsing, dots.mocr seamlessly recognizes both diverse human scripts and structured graphical content.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\ndots.mocr (tên mới của dots.ocr-1.5) là mô hình thị giác - ngôn ngữ phân tích tài liệu đa ngôn ngữ của rednote-hilab. Ngoài phân tích bố cục và nhận dạng chữ, mô hình còn chuyển đồ họa có cấu trúc (biểu đồ, giao diện, hình khoa học) thành mã SVG, kèm biến thể dots.mocr-svg.\n\nGiúp trích xuất bố cục, văn bản, bảng (HTML) và công thức (LaTeX) từ ảnh hoặc PDF thành JSON/Markdown để đưa vào quy trình xử lý dữ liệu tài liệu.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** rednote-hilab (Xiaohongshu)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT, kèm thỏa thuận giấy phép mô hình)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/rednote-hilab/dots.mocr](https://github.com/rednote-hilab/dots.mocr)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Phân tích bố cục tài liệu: trả về bbox, loại phần tử và nội dung chữ theo thứ tự đọc**\n- **Chuyển đồ họa có cấu trúc (biểu đồ, giao diện, hình khoa học) sang mã SVG**\n- **Các chế độ lời nhắc: phân tích trang web, nhận dạng chữ trong cảnh (scene spotting), hỏi đáp chung**\n- **Công cụ parser.py xử lý ảnh hoặc PDF, xuất JSON, Markdown và ảnh trực quan hóa bố cục**\n- **Triển khai bằng vLLM (tích hợp chính thức từ vLLM 0.11.0) hoặc Hugging Face Transformers**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install -e .\n```\n\nYêu cầu: Python 3.12 (Conda), PyTorch theo phiên bản CUDA; GPU NVIDIA được khuyến nghị (vLLM). Suy luận CPU có hướng dẫn riêng qua issue trên GitHub.\nBước 1: Tạo môi trường: `conda create -n dots_mocr python=3.12`\nBước 2: Tải mã nguồn: `git clone https://github.com/rednote-hilab/dots.mocr.git`\nBước 3: Cài đặt gói (sau khi cài PyTorch phù hợp CUDA): `pip install -e .`\nBước 4: Tải trọng số mô hình: `python3 tools/download_model.py`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi động máy chủ vLLM: `CUDA_VISIBLE_DEVICES=0 vllm serve rednote-hilab/dots.mocr --tensor-parallel-size 1 --gpu-memory-utilization 0.9 --chat-template-content-format string --trust-remote-code`.\nBước 2: Phân tích một ảnh: `python3 dots_mocr/parser.py demo/demo_image1.jpg`; với PDF thêm `--num_thread 64`.\nBước 3: Chỉ phát hiện bố cục với `--prompt prompt_layout_only_en`, chỉ lấy chữ với `--prompt prompt_ocr`.\nBước 4: Dùng Transformers thay vLLM bằng cách thêm `--use_hf true`; kết quả gồm tệp JSON, Markdown và ảnh bố cục.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Phân tích PDF báo cáo này, xuất Markdown kèm bảng dạng HTML và công thức LaTeX.\"\n- \"Chuyển biểu đồ trong ảnh thành mã SVG.\"\n- \"Nhận dạng chữ trên biển hiệu trong ảnh chụp đường phố.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "facebookresearch-sam3",
+    "slug": "facebookresearch-sam3",
+    "name": "SAM 3 — Mô hình phân đoạn và theo dõi đối tượng theo khái niệm cho ảnh, video",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "computer_vision",
+    "categoryNameVi": "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+    "categories": [
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/facebookresearch/sam3",
+    "websiteUrl": "https://ai.meta.com/blog/segment-anything-model-3/",
+    "authorName": "Meta AI (FAIR)",
+    "license": "Giấy phép riêng (SAM License, có giới hạn sử dụng)",
+    "summaryVi": "SAM 3 là mô hình nền tảng của Meta cho phân đoạn theo lời nhắc trên ảnh và video: phát hiện, phân đoạn và theo dõi đối tượng bằng lời nhắc văn bản hoặc điểm, hộp, mặt nạ. So với SAM 2, SAM 3 phân đoạn được mọi thực thể của một khái niệm mở được mô tả bằng cụm từ ngắn; bản SAM 3.1 bổ sung theo dõi nhiều đối tượng nhanh hơn.",
+    "purposeVi": "Giúp gán nhãn dữ liệu, tách đối tượng và theo dõi đối tượng trong video bằng mô tả văn bản, phục vụ các dự án thị giác máy tính.",
+    "featuresVi": [
+      "Phân đoạn theo khái niệm mở: nhập cụm từ văn bản để lấy mặt nạ, hộp bao và điểm tin cậy",
+      "Lời nhắc thị giác: điểm, hộp, mặt nạ",
+      "Theo dõi đối tượng trong video theo phiên (start_session, add_prompt)",
+      "SAM 3.1 Object Multiplex: theo dõi nhiều đối tượng chung bộ nhớ, nhanh hơn",
+      "Bộ dữ liệu SA-Co và notebook ví dụ đi kèm"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.12 trở lên, PyTorch 2.7 trở lên, GPU tương thích CUDA 12.6 trở lên; cần được cấp quyền tải checkpoint trên Hugging Face.\nBước 1: Tạo môi trường Conda: `conda create -n sam3 python=3.12`\nBước 2: Cài đặt PyTorch có CUDA: `pip install torch==2.10.0 torchvision --index-url https://download.pytorch.org/whl/cu128`\nBước 3: Tải mã nguồn: `git clone https://github.com/facebookresearch/sam3.git`\nBước 4: Cài đặt gói (trong thư mục sam3): `pip install -e .`\nBước 5: Tùy chọn, cài đặt phụ thuộc cho notebook: `pip install -e \".[notebooks]\"`\nBước 6: Xin quyền truy cập checkpoint trên Hugging Face rồi đăng nhập: `hf auth login`",
+    "usageGuideVi": "Bước 1: Trong Python, tạo mô hình bằng `build_sam3_image_model()` và `Sam3Processor(model)`.\nBước 2: Gọi `processor.set_image(image)` rồi `processor.set_text_prompt(state=..., prompt=\"<cụm từ>\")` để lấy masks, boxes, scores.\nBước 3: Với video, dùng `build_sam3_video_predictor()` và gửi yêu cầu start_session, add_prompt.\nBước 4: Xem thêm hướng dẫn trong các notebook ví dụ của kho.",
+    "samplePromptsVi": [
+      "Phân đoạn tất cả các con chó trong ảnh này.",
+      "Theo dõi \"cầu thủ mặc áo trắng\" trong suốt đoạn video.",
+      "Tạo mặt nạ cho mọi chiếc xe buýt để gán nhãn dữ liệu huấn luyện."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install -e .",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install -e .\"\n  ],\n  \"nguon\": \"https://github.com/facebookresearch/sam3\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép SAM cấp quyền sử dụng, sửa đổi, phân phối miễn phí bản quyền",
+      "Hỗ trợ cả ảnh và video, lời nhắc văn bản lẫn thị giác",
+      "Được bảo trì tích cực (SAM 3.1 phát hành 03/2026)"
+    ],
+    "consVi": [
+      "Giấy phép SAM riêng của Meta (không phải OSI), cấm dùng cho mục đích quân sự, ITAR và các mục đích bị kiểm soát thương mại",
+      "Phải xin quyền tải checkpoint trên Hugging Face",
+      "Yêu cầu GPU CUDA 12.6 trở lên"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# SAM 3 — Mô hình phân đoạn và theo dõi đối tượng theo khái niệm cho ảnh, video\n\n> SAM 3 is a unified foundation model for promptable segmentation in images and videos.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSAM 3 là mô hình nền tảng của Meta cho phân đoạn theo lời nhắc trên ảnh và video: phát hiện, phân đoạn và theo dõi đối tượng bằng lời nhắc văn bản hoặc điểm, hộp, mặt nạ. So với SAM 2, SAM 3 phân đoạn được mọi thực thể của một khái niệm mở được mô tả bằng cụm từ ngắn; bản SAM 3.1 bổ sung theo dõi nhiều đối tượng nhanh hơn.\n\nGiúp gán nhãn dữ liệu, tách đối tượng và theo dõi đối tượng trong video bằng mô tả văn bản, phục vụ các dự án thị giác máy tính.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Thị giác máy tính & Xử lý ảnh (Vision & OCR)\n- **Tác giả / Nhà phát triển:** Meta AI (FAIR)\n- **Giấy phép bản quyền:** Giấy phép riêng (SAM License, có giới hạn sử dụng)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/facebookresearch/sam3](https://github.com/facebookresearch/sam3)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Phân đoạn theo khái niệm mở: nhập cụm từ văn bản để lấy mặt nạ, hộp bao và điểm tin cậy**\n- **Lời nhắc thị giác: điểm, hộp, mặt nạ**\n- **Theo dõi đối tượng trong video theo phiên (start_session, add_prompt)**\n- **SAM 3.1 Object Multiplex: theo dõi nhiều đối tượng chung bộ nhớ, nhanh hơn**\n- **Bộ dữ liệu SA-Co và notebook ví dụ đi kèm**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install -e .\n```\n\nYêu cầu: Python 3.12 trở lên, PyTorch 2.7 trở lên, GPU tương thích CUDA 12.6 trở lên; cần được cấp quyền tải checkpoint trên Hugging Face.\nBước 1: Tạo môi trường Conda: `conda create -n sam3 python=3.12`\nBước 2: Cài đặt PyTorch có CUDA: `pip install torch==2.10.0 torchvision --index-url https://download.pytorch.org/whl/cu128`\nBước 3: Tải mã nguồn: `git clone https://github.com/facebookresearch/sam3.git`\nBước 4: Cài đặt gói (trong thư mục sam3): `pip install -e .`\nBước 5: Tùy chọn, cài đặt phụ thuộc cho notebook: `pip install -e \".[notebooks]\"`\nBước 6: Xin quyền truy cập checkpoint trên Hugging Face rồi đăng nhập: `hf auth login`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trong Python, tạo mô hình bằng `build_sam3_image_model()` và `Sam3Processor(model)`.\nBước 2: Gọi `processor.set_image(image)` rồi `processor.set_text_prompt(state=..., prompt=\"<cụm từ>\")` để lấy masks, boxes, scores.\nBước 3: Với video, dùng `build_sam3_video_predictor()` và gửi yêu cầu start_session, add_prompt.\nBước 4: Xem thêm hướng dẫn trong các notebook ví dụ của kho.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Phân đoạn tất cả các con chó trong ảnh này.\"\n- \"Theo dõi \"cầu thủ mặc áo trắng\" trong suốt đoạn video.\"\n- \"Tạo mặt nạ cho mọi chiếc xe buýt để gán nhãn dữ liệu huấn luyện.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "roboflow-rf-detr",
+    "slug": "roboflow-rf-detr",
+    "name": "RF-DETR — Phát hiện, phân đoạn đối tượng thời gian thực bằng transformer",
+    "icon": "Box",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "computer_vision",
+    "categoryNameVi": "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+    "categories": [
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/roboflow/rf-detr",
+    "websiteUrl": "https://rfdetr.roboflow.com",
+    "authorName": "Roboflow",
+    "license": "Mã nguồn mở (Apache 2.0; mô hình Plus theo PML 1.0)",
+    "summaryVi": "RF-DETR là kiến trúc transformer thời gian thực của Roboflow cho phát hiện đối tượng, phân đoạn thực thể và phát hiện điểm khóa (bản xem trước), dựa trên backbone DINOv2. Gói Python `rfdetr` cung cấp API thống nhất với nhiều kích cỡ mô hình từ Nano đến 2XLarge, kèm khả năng huấn luyện trên dữ liệu riêng.",
+    "purposeVi": "Giúp xây dựng ứng dụng phát hiện và phân đoạn đối tượng thời gian thực, tinh chỉnh trên bộ dữ liệu riêng với độ trễ thấp.",
+    "featuresVi": [
+      "Phát hiện đối tượng: các lớp RFDETRNano/Small/Medium/Large (Apache 2.0) và Atto/Femto/Pico/XLarge/2XLarge (PML 1.0)",
+      "Phân đoạn thực thể: RFDETRSegNano đến RFDETRSeg2XLarge",
+      "Phát hiện điểm khóa (bản xem trước) với RFDETRKeypointPreview",
+      "Huấn luyện trên dữ liệu riêng, có notebook Google Colab",
+      "Kết hợp với thư viện supervision để vẽ kết quả; chạy được qua thư viện Inference"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10 trở lên.\nBước 1: Cài đặt gói: `pip install rfdetr`\nBước 2: Hoặc cài đặt từ nhánh phát triển: `pip install https://github.com/roboflow/rf-detr/archive/refs/heads/develop.zip`\nBước 3: Tùy chọn, cài đặt phần mở rộng Plus cho các mô hình Atto/Femto/Pico/XL/2XL: `pip install rfdetr[plus]`",
+    "usageGuideVi": "Bước 1: Trong Python: `from rfdetr import RFDETRMedium`, tạo `model = RFDETRMedium()`.\nBước 2: Gọi `model.predict(\"<đường dẫn hoặc URL ảnh>\", threshold=0.5)` để nhận danh sách phát hiện.\nBước 3: Dùng `sv.BoxAnnotator()` / `sv.LabelAnnotator()` của supervision để vẽ khung và nhãn.\nBước 4: Xem hướng dẫn huấn luyện trên trang tài liệu rfdetr.roboflow.com.",
+    "samplePromptsVi": [
+      "Phát hiện người và xe trong ảnh camera giao thông với ngưỡng tin cậy 0.5.",
+      "Tinh chỉnh RF-DETR Small trên bộ dữ liệu ảnh sản phẩm lỗi của nhà máy.",
+      "Phân đoạn thực thể các vật thể trong ảnh và xuất mặt nạ."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install rfdetr",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install rfdetr\"\n  ],\n  \"nguon\": \"https://github.com/roboflow/rf-detr\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Gói rfdetr và các mô hình N/S/M/L theo Apache 2.0, dùng được thương mại",
+      "Cài đặt đơn giản qua pip",
+      "Được bảo trì tích cực, có tài liệu và notebook huấn luyện"
+    ],
+    "consVi": [
+      "Các mô hình Atto/Femto/Pico/XL/2XL và phần mở rộng rfdetr_plus theo giấy phép PML 1.0, không phải Apache",
+      "Phát hiện điểm khóa mới ở bản xem trước",
+      "Tìm kiếm kiến trúc NAS cho dữ liệu riêng chỉ có trên nền tảng Roboflow"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# RF-DETR — Phát hiện, phân đoạn đối tượng thời gian thực bằng transformer\n\n> RF-DETR is a real-time transformer architecture for object detection, instance segmentation, and keypoint detection (preview) developed by Roboflow.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nRF-DETR là kiến trúc transformer thời gian thực của Roboflow cho phát hiện đối tượng, phân đoạn thực thể và phát hiện điểm khóa (bản xem trước), dựa trên backbone DINOv2. Gói Python `rfdetr` cung cấp API thống nhất với nhiều kích cỡ mô hình từ Nano đến 2XLarge, kèm khả năng huấn luyện trên dữ liệu riêng.\n\nGiúp xây dựng ứng dụng phát hiện và phân đoạn đối tượng thời gian thực, tinh chỉnh trên bộ dữ liệu riêng với độ trễ thấp.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Thị giác máy tính & Xử lý ảnh (Vision & OCR)\n- **Tác giả / Nhà phát triển:** Roboflow\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0; mô hình Plus theo PML 1.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/roboflow/rf-detr](https://github.com/roboflow/rf-detr)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Phát hiện đối tượng: các lớp RFDETRNano/Small/Medium/Large (Apache 2.0) và Atto/Femto/Pico/XLarge/2XLarge (PML 1.0)**\n- **Phân đoạn thực thể: RFDETRSegNano đến RFDETRSeg2XLarge**\n- **Phát hiện điểm khóa (bản xem trước) với RFDETRKeypointPreview**\n- **Huấn luyện trên dữ liệu riêng, có notebook Google Colab**\n- **Kết hợp với thư viện supervision để vẽ kết quả; chạy được qua thư viện Inference**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install rfdetr\n```\n\nYêu cầu: Python 3.10 trở lên.\nBước 1: Cài đặt gói: `pip install rfdetr`\nBước 2: Hoặc cài đặt từ nhánh phát triển: `pip install https://github.com/roboflow/rf-detr/archive/refs/heads/develop.zip`\nBước 3: Tùy chọn, cài đặt phần mở rộng Plus cho các mô hình Atto/Femto/Pico/XL/2XL: `pip install rfdetr[plus]`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trong Python: `from rfdetr import RFDETRMedium`, tạo `model = RFDETRMedium()`.\nBước 2: Gọi `model.predict(\"<đường dẫn hoặc URL ảnh>\", threshold=0.5)` để nhận danh sách phát hiện.\nBước 3: Dùng `sv.BoxAnnotator()` / `sv.LabelAnnotator()` của supervision để vẽ khung và nhãn.\nBước 4: Xem hướng dẫn huấn luyện trên trang tài liệu rfdetr.roboflow.com.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Phát hiện người và xe trong ảnh camera giao thông với ngưỡng tin cậy 0.5.\"\n- \"Tinh chỉnh RF-DETR Small trên bộ dữ liệu ảnh sản phẩm lỗi của nhà máy.\"\n- \"Phân đoạn thực thể các vật thể trong ảnh và xuất mặt nạ.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "qwenlm-qwen3-vl",
+    "slug": "qwenlm-qwen3-vl",
+    "name": "Qwen3-VL — Mô hình thị giác - ngôn ngữ đa năng: OCR, video, tác tử giao diện",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "computer_vision",
+    "categoryNameVi": "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+    "categories": [
+      "computer_vision",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/QwenLM/Qwen3-VL",
+    "websiteUrl": "https://huggingface.co/collections/Qwen/qwen3-vl-68d2a7c1b8a8afce4ebd2dbe",
+    "authorName": "Qwen (Alibaba Cloud)",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Qwen3-VL là dòng mô hình thị giác - ngôn ngữ mạnh nhất của Qwen, có kiến trúc Dense và MoE (từ 2B đến 235B-A22B), bản Instruct và Thinking. Mô hình hỗ trợ OCR 32 ngôn ngữ, hiểu video dài, ngữ cảnh gốc 256K, tác tử điều khiển giao diện và sinh mã từ ảnh.",
+    "purposeVi": "Giúp xây dựng ứng dụng hiểu ảnh, tài liệu và video: OCR, hỏi đáp trên tài liệu, phân tích video, tác tử thao tác giao diện, chạy cục bộ hoặc phục vụ qua vLLM/SGLang.",
+    "featuresVi": [
+      "OCR mở rộng: 32 ngôn ngữ, chịu được ảnh thiếu sáng, mờ, nghiêng; phân tích cấu trúc tài liệu dài tốt hơn",
+      "Tác tử thị giác: nhận diện phần tử giao diện PC/di động và hoàn thành tác vụ",
+      "Sinh mã Draw.io/HTML/CSS/JS từ ảnh hoặc video",
+      "Ngữ cảnh gốc 256K, mở rộng đến 1M; hiểu video dài hàng giờ",
+      "Định vị 2D/3D và suy luận không gian",
+      "Triển khai bằng Transformers, vLLM (>=0.11.0), SGLang, Docker và giao diện web demo"
+    ],
+    "installGuideVi": "Yêu cầu: transformers >= 4.57.0; vLLM >= 0.11.0 khi phục vụ; GPU NVIDIA (lệnh mẫu FP8 cho 235B cần H100 trở lên và CUDA 12+).\nBước 1: Cài đặt Transformers: `pip install \"transformers>=4.57.0\"`\nBước 2: Cài đặt công cụ xử lý ảnh/video: `pip install qwen-vl-utils==0.0.14`\nBước 3: Để triển khai, cài đặt vLLM: `uv pip install -U vllm`\nBước 4: Tùy chọn, cài đặt phụ thuộc cho giao diện web: `pip install -r requirements_web_demo.txt`",
+    "usageGuideVi": "Bước 1: Tải mô hình qua `AutoModelForImageTextToText.from_pretrained(\"Qwen/Qwen3-VL-235B-A22B-Instruct\")` hoặc bản nhỏ hơn (2B, 4B, 8B, 32B).\nBước 2: Chạy giao diện web: `python web_demo_mm.py -c /your/path/to/qwen3vl/weight` rồi mở http://127.0.0.1:7860/.\nBước 3: Phục vụ API kiểu OpenAI bằng `vllm serve` theo hướng dẫn trong mục Deployment.\nBước 4: Hoặc dùng Docker: `docker run --gpus all --ipc=host --network=host --rm --name qwen3vl -it qwenllm/qwenvl:qwen3vl-cu128 bash`.",
+    "samplePromptsVi": [
+      "Đọc toàn bộ chữ trong ảnh chụp hóa đơn bị nghiêng này.",
+      "Tóm tắt các sự kiện chính trong video dài một giờ kèm mốc thời gian.",
+      "Tạo mã HTML/CSS tái hiện giao diện trong ảnh chụp màn hình."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install \"transformers>=4.57.0\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install \\\"transformers>=4.57.0\\\"\"\n  ],\n  \"nguon\": \"https://github.com/QwenLM/Qwen3-VL\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Nhiều kích cỡ từ 2B đến 235B, có bản FP8",
+      "Hướng dẫn triển khai đầy đủ: Transformers, vLLM, SGLang, Docker"
+    ],
+    "consVi": [
+      "Mô hình lớn cần GPU mạnh (ví dụ H100 cho bản 235B FP8)",
+      "Dùng API trực tuyến cần khóa DASHSCOPE_API_KEY",
+      "Tính năng đọc video dùng decord có thể khó cài đặt ngoài Linux"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Qwen3-VL — Mô hình thị giác - ngôn ngữ đa năng: OCR, video, tác tử giao diện\n\n> Meet Qwen3-VL — the most powerful vision-language model in the Qwen series to date.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nQwen3-VL là dòng mô hình thị giác - ngôn ngữ mạnh nhất của Qwen, có kiến trúc Dense và MoE (từ 2B đến 235B-A22B), bản Instruct và Thinking. Mô hình hỗ trợ OCR 32 ngôn ngữ, hiểu video dài, ngữ cảnh gốc 256K, tác tử điều khiển giao diện và sinh mã từ ảnh.\n\nGiúp xây dựng ứng dụng hiểu ảnh, tài liệu và video: OCR, hỏi đáp trên tài liệu, phân tích video, tác tử thao tác giao diện, chạy cục bộ hoặc phục vụ qua vLLM/SGLang.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Thị giác máy tính & Xử lý ảnh (Vision & OCR)\n- **Tác giả / Nhà phát triển:** Qwen (Alibaba Cloud)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/QwenLM/Qwen3-VL](https://github.com/QwenLM/Qwen3-VL)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **OCR mở rộng: 32 ngôn ngữ, chịu được ảnh thiếu sáng, mờ, nghiêng; phân tích cấu trúc tài liệu dài tốt hơn**\n- **Tác tử thị giác: nhận diện phần tử giao diện PC/di động và hoàn thành tác vụ**\n- **Sinh mã Draw.io/HTML/CSS/JS từ ảnh hoặc video**\n- **Ngữ cảnh gốc 256K, mở rộng đến 1M; hiểu video dài hàng giờ**\n- **Định vị 2D/3D và suy luận không gian**\n- **Triển khai bằng Transformers, vLLM (>=0.11.0), SGLang, Docker và giao diện web demo**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install \"transformers>=4.57.0\"\n```\n\nYêu cầu: transformers >= 4.57.0; vLLM >= 0.11.0 khi phục vụ; GPU NVIDIA (lệnh mẫu FP8 cho 235B cần H100 trở lên và CUDA 12+).\nBước 1: Cài đặt Transformers: `pip install \"transformers>=4.57.0\"`\nBước 2: Cài đặt công cụ xử lý ảnh/video: `pip install qwen-vl-utils==0.0.14`\nBước 3: Để triển khai, cài đặt vLLM: `uv pip install -U vllm`\nBước 4: Tùy chọn, cài đặt phụ thuộc cho giao diện web: `pip install -r requirements_web_demo.txt`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tải mô hình qua `AutoModelForImageTextToText.from_pretrained(\"Qwen/Qwen3-VL-235B-A22B-Instruct\")` hoặc bản nhỏ hơn (2B, 4B, 8B, 32B).\nBước 2: Chạy giao diện web: `python web_demo_mm.py -c /your/path/to/qwen3vl/weight` rồi mở http://127.0.0.1:7860/.\nBước 3: Phục vụ API kiểu OpenAI bằng `vllm serve` theo hướng dẫn trong mục Deployment.\nBước 4: Hoặc dùng Docker: `docker run --gpus all --ipc=host --network=host --rm --name qwen3vl -it qwenllm/qwenvl:qwen3vl-cu128 bash`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Đọc toàn bộ chữ trong ảnh chụp hóa đơn bị nghiêng này.\"\n- \"Tóm tắt các sự kiện chính trong video dài một giờ kèm mốc thời gian.\"\n- \"Tạo mã HTML/CSS tái hiện giao diện trong ảnh chụp màn hình.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "paddlepaddle-paddlex",
+    "slug": "paddlepaddle-paddlex",
+    "name": "PaddleX — Công cụ ít mã với hơn 200 mô hình OCR và thị giác máy tính",
+    "icon": "Wrench",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "computer_vision",
+    "categoryNameVi": "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+    "categories": [
+      "computer_vision",
+      "office_digital_docs"
+    ],
+    "categoryNamesVi": [
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+      "Văn phòng số & Quản lý văn bản điện tử"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/PaddlePaddle/PaddleX",
+    "websiteUrl": "https://paddlepaddle.github.io/PaddleX/latest/en/",
+    "authorName": "PaddlePaddle (Baidu)",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "PaddleX 3.0 là công cụ phát triển mô hình AI ít mã trên nền PaddlePaddle, tích hợp hơn 200 mô hình huấn luyện sẵn được gom thành 33 pipeline. Công cụ hỗ trợ toàn bộ quy trình từ huấn luyện đến suy luận và triển khai cho OCR, phát hiện đối tượng, phân đoạn, phân tích tài liệu, chuỗi thời gian.",
+    "purposeVi": "Giúp nhà phát triển gọi nhanh các pipeline thị giác máy tính và OCR bằng một lệnh hoặc vài dòng Python, rồi tinh chỉnh và triển khai trên nhiều loại phần cứng.",
+    "featuresVi": [
+      "Pipeline dựng sẵn: OCR, nhận dạng bảng, phân tích bố cục (PP-StructureV3), nhận dạng công thức, con dấu",
+      "Thị giác máy tính: phân loại ảnh, phát hiện đối tượng, phân đoạn, phát hiện bất thường, phát hiện từ vựng mở",
+      "CLI thống nhất `paddlex --pipeline ... --input ... --device ...` và API Python `create_pipeline()`",
+      "Triển khai suy luận hiệu năng cao, phục vụ dịch vụ và triển khai nhẹ",
+      "Hỗ trợ GPU NVIDIA, Kunlun XPU, Ascend NPU, Cambricon MLU"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.8 đến 3.13; PaddlePaddle 3.0.0 trở lên (bản CPU hoặc GPU, GPU cần driver tương ứng).\nBước 1: Cài đặt PaddlePaddle bản CPU: `python -m pip install paddlepaddle==3.3.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/`\nBước 2: Cài đặt PaddleX: `pip install \"paddlex[base]\"`",
+    "usageGuideVi": "Bước 1: Chạy pipeline bằng lệnh `paddlex --pipeline [Pipeline Name] --input [Input Image] --device [Running Device]`.\nBước 2: Ví dụ OCR: `paddlex --pipeline OCR --input <ảnh> --save_path ./output --device gpu:0` (hoặc `--device cpu`).\nBước 3: Trong Python: `from paddlex import create_pipeline`, rồi `pipeline.predict(...)` và lưu kết quả bằng `save_to_json`.\nBước 4: Xem hướng dẫn tham số từng pipeline trong tài liệu PaddleX.",
+    "samplePromptsVi": [
+      "Nhận dạng chữ trong ảnh thẻ lên máy bay và lưu kết quả JSON.",
+      "Nhận dạng bảng trong ảnh chụp báo cáo và xuất ra cấu trúc bảng.",
+      "Phát hiện đối tượng trong ảnh với ngưỡng 0.5 và lưu ảnh kết quả."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install \"paddlex[base]\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install \\\"paddlex[base]\\\"\"\n  ],\n  \"nguon\": \"https://github.com/PaddlePaddle/PaddleX\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Hơn 200 mô hình và 33 pipeline gọi bằng một lệnh",
+      "Chạy được trên CPU và nhiều loại phần cứng tăng tốc"
+    ],
+    "consVi": [
+      "Phụ thuộc framework PaddlePaddle, phải cài đặt đúng phiên bản tương thích",
+      "Hướng dẫn chi tiết từng pipeline nằm ở trang tài liệu riêng"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# PaddleX — Công cụ ít mã với hơn 200 mô hình OCR và thị giác máy tính\n\n> PaddleX 3.0 is a low-code development tool for AI models built on the PaddlePaddle framework.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPaddleX 3.0 là công cụ phát triển mô hình AI ít mã trên nền PaddlePaddle, tích hợp hơn 200 mô hình huấn luyện sẵn được gom thành 33 pipeline. Công cụ hỗ trợ toàn bộ quy trình từ huấn luyện đến suy luận và triển khai cho OCR, phát hiện đối tượng, phân đoạn, phân tích tài liệu, chuỗi thời gian.\n\nGiúp nhà phát triển gọi nhanh các pipeline thị giác máy tính và OCR bằng một lệnh hoặc vài dòng Python, rồi tinh chỉnh và triển khai trên nhiều loại phần cứng.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Thị giác máy tính & Xử lý ảnh (Vision & OCR)\n- **Tác giả / Nhà phát triển:** PaddlePaddle (Baidu)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/PaddlePaddle/PaddleX](https://github.com/PaddlePaddle/PaddleX)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Pipeline dựng sẵn: OCR, nhận dạng bảng, phân tích bố cục (PP-StructureV3), nhận dạng công thức, con dấu**\n- **Thị giác máy tính: phân loại ảnh, phát hiện đối tượng, phân đoạn, phát hiện bất thường, phát hiện từ vựng mở**\n- **CLI thống nhất `paddlex --pipeline ... --input ... --device ...` và API Python `create_pipeline()`**\n- **Triển khai suy luận hiệu năng cao, phục vụ dịch vụ và triển khai nhẹ**\n- **Hỗ trợ GPU NVIDIA, Kunlun XPU, Ascend NPU, Cambricon MLU**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install \"paddlex[base]\"\n```\n\nYêu cầu: Python 3.8 đến 3.13; PaddlePaddle 3.0.0 trở lên (bản CPU hoặc GPU, GPU cần driver tương ứng).\nBước 1: Cài đặt PaddlePaddle bản CPU: `python -m pip install paddlepaddle==3.3.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/`\nBước 2: Cài đặt PaddleX: `pip install \"paddlex[base]\"`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy pipeline bằng lệnh `paddlex --pipeline [Pipeline Name] --input [Input Image] --device [Running Device]`.\nBước 2: Ví dụ OCR: `paddlex --pipeline OCR --input <ảnh> --save_path ./output --device gpu:0` (hoặc `--device cpu`).\nBước 3: Trong Python: `from paddlex import create_pipeline`, rồi `pipeline.predict(...)` và lưu kết quả bằng `save_to_json`.\nBước 4: Xem hướng dẫn tham số từng pipeline trong tài liệu PaddleX.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Nhận dạng chữ trong ảnh thẻ lên máy bay và lưu kết quả JSON.\"\n- \"Nhận dạng bảng trong ảnh chụp báo cáo và xuất ra cấu trúc bảng.\"\n- \"Phát hiện đối tượng trong ảnh với ngưỡng 0.5 và lưu ảnh kết quả.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "stirling-tools-stirling-pdf",
+    "slug": "stirling-tools-stirling-pdf",
+    "name": "Stirling PDF — Nền tảng xử lý PDF tự lưu trữ với OCR và hơn 50 công cụ",
+    "icon": "FolderTree",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/Stirling-Tools/Stirling-PDF",
+    "websiteUrl": "https://stirling.com",
+    "authorName": "Stirling PDF Inc.",
+    "license": "Mã nguồn mở lõi (MIT, open-core có phần độc quyền)",
+    "summaryVi": "Stirling PDF là nền tảng chỉnh sửa PDF mã nguồn mở, chạy dưới dạng ứng dụng máy tính, trên trình duyệt hoặc tự lưu trữ trên máy chủ kèm API riêng. Nền tảng có hơn 50 công cụ PDF như chỉnh sửa, gộp, tách, ký, che thông tin, chuyển đổi, OCR, nén mà không gửi tài liệu ra dịch vụ bên ngoài.",
+    "purposeVi": "Giúp tổ chức tự lưu trữ công cụ xử lý PDF (bao gồm OCR tài liệu scan) để bảo mật dữ liệu và tự động hóa quy trình xử lý tài liệu qua REST API.",
+    "featuresVi": [
+      "Hơn 50 công cụ PDF: chỉnh sửa, gộp, tách, ký, che thông tin, chuyển đổi, OCR, nén",
+      "Chạy dưới dạng ứng dụng máy tính, giao diện trình duyệt hoặc máy chủ tự lưu trữ",
+      "Tự động hóa: pipeline không cần mã ngay trên giao diện",
+      "REST API cho gần như mọi công cụ",
+      "Giao diện hơn 40 ngôn ngữ",
+      "Tính năng doanh nghiệp: SSO, kiểm toán, triển khai tại chỗ"
+    ],
+    "installGuideVi": "Yêu cầu: Docker (cho cách chạy nhanh); cổng 8080.\nBước 1: Cài đặt và chạy bằng Docker: `docker run -p 8080:8080 docker.stirlingpdf.com/stirlingtools/stirling-pdf`\nBước 2: Mở trình duyệt tại http://localhost:8080\nBước 3: Các cách cài đặt khác (ứng dụng máy tính, Kubernetes) xem trong hướng dẫn tại docs.stirlingpdf.com",
+    "usageGuideVi": "Bước 1: Mở http://localhost:8080, chọn công cụ OCR để biến PDF scan thành PDF tìm kiếm được.\nBước 2: Kết hợp nhiều công cụ thành pipeline tự động ngay trên giao diện.\nBước 3: Gọi REST API (xem API Docs) để tích hợp xử lý PDF vào hệ thống hiện có.\nBước 4: Nhà phát triển: chạy `task dev` để khởi động trình soạn thảo ở chế độ phát triển.",
+    "samplePromptsVi": [
+      "OCR tệp PDF scan hợp đồng để có thể tìm kiếm và sao chép chữ.",
+      "Gộp các tệp PDF hóa đơn trong tháng thành một tệp rồi nén lại.",
+      "Che thông tin cá nhân trong tài liệu PDF trước khi chia sẻ."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker run -p 8080:8080 docker.stirlingpdf.com/stirlingtools/stirling-pdf",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker run -p 8080:8080 docker.stirlingpdf.com/stirlingtools/stirling-pdf\"\n  ],\n  \"nguon\": \"https://github.com/Stirling-Tools/Stirling-PDF\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "freemium",
+    "prosVi": [
+      "Phần lõi theo giấy phép MIT, tự lưu trữ được, tài liệu không rời khỏi hạ tầng của bạn",
+      "Khởi chạy bằng một lệnh Docker",
+      "Có REST API và giao diện đa ngôn ngữ"
+    ],
+    "consVi": [
+      "Mô hình open-core: các thư mục như app/proprietary, app/saas, engine theo giấy phép riêng, không phải MIT",
+      "Tính năng doanh nghiệp (SSO, kiểm toán) thuộc gói Server/Enterprise trả phí",
+      "README chỉ có lệnh Docker, hướng dẫn cài đặt khác nằm ở trang tài liệu"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Stirling PDF — Nền tảng xử lý PDF tự lưu trữ với OCR và hơn 50 công cụ\n\n> Stirling PDF is a powerful, open-source PDF editing platform.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nStirling PDF là nền tảng chỉnh sửa PDF mã nguồn mở, chạy dưới dạng ứng dụng máy tính, trên trình duyệt hoặc tự lưu trữ trên máy chủ kèm API riêng. Nền tảng có hơn 50 công cụ PDF như chỉnh sửa, gộp, tách, ký, che thông tin, chuyển đổi, OCR, nén mà không gửi tài liệu ra dịch vụ bên ngoài.\n\nGiúp tổ chức tự lưu trữ công cụ xử lý PDF (bao gồm OCR tài liệu scan) để bảo mật dữ liệu và tự động hóa quy trình xử lý tài liệu qua REST API.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** Stirling PDF Inc.\n- **Giấy phép bản quyền:** Mã nguồn mở lõi (MIT, open-core có phần độc quyền)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/Stirling-Tools/Stirling-PDF](https://github.com/Stirling-Tools/Stirling-PDF)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Hơn 50 công cụ PDF: chỉnh sửa, gộp, tách, ký, che thông tin, chuyển đổi, OCR, nén**\n- **Chạy dưới dạng ứng dụng máy tính, giao diện trình duyệt hoặc máy chủ tự lưu trữ**\n- **Tự động hóa: pipeline không cần mã ngay trên giao diện**\n- **REST API cho gần như mọi công cụ**\n- **Giao diện hơn 40 ngôn ngữ**\n- **Tính năng doanh nghiệp: SSO, kiểm toán, triển khai tại chỗ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker run -p 8080:8080 docker.stirlingpdf.com/stirlingtools/stirling-pdf\n```\n\nYêu cầu: Docker (cho cách chạy nhanh); cổng 8080.\nBước 1: Cài đặt và chạy bằng Docker: `docker run -p 8080:8080 docker.stirlingpdf.com/stirlingtools/stirling-pdf`\nBước 2: Mở trình duyệt tại http://localhost:8080\nBước 3: Các cách cài đặt khác (ứng dụng máy tính, Kubernetes) xem trong hướng dẫn tại docs.stirlingpdf.com\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở http://localhost:8080, chọn công cụ OCR để biến PDF scan thành PDF tìm kiếm được.\nBước 2: Kết hợp nhiều công cụ thành pipeline tự động ngay trên giao diện.\nBước 3: Gọi REST API (xem API Docs) để tích hợp xử lý PDF vào hệ thống hiện có.\nBước 4: Nhà phát triển: chạy `task dev` để khởi động trình soạn thảo ở chế độ phát triển.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"OCR tệp PDF scan hợp đồng để có thể tìm kiếm và sao chép chữ.\"\n- \"Gộp các tệp PDF hóa đơn trong tháng thành một tệp rồi nén lại.\"\n- \"Che thông tin cá nhân trong tài liệu PDF trước khi chia sẻ.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T03:05:02.885Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]

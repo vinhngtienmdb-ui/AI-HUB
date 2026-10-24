@@ -1,0 +1,544 @@
+[
+ {
+  "repo": "deepseek-ai/DeepSeek-OCR",
+  "license": "MIT License",
+  "authorName": "DeepSeek",
+  "websiteUrl": "https://huggingface.co/deepseek-ai/DeepSeek-OCR",
+  "toolType": "model",
+  "taglineEn": "Explore the boundaries of visual-text compression.",
+  "summaryVi": "DeepSeek-OCR là mô hình OCR thị giác - ngôn ngữ của DeepSeek, nghiên cứu vai trò của bộ mã hóa thị giác theo góc nhìn lấy LLM làm trung tâm (nén ngữ cảnh bằng hình ảnh). Kho mã cung cấp mã suy luận bằng vLLM và Hugging Face Transformers cho ảnh và PDF, hỗ trợ chuyển tài liệu sang Markdown.",
+  "purposeVi": "Giúp nhận dạng chữ và chuyển ảnh, PDF tài liệu thành Markdown hoặc văn bản để đưa vào hệ thống xử lý dữ liệu và RAG, chạy cục bộ trên GPU.",
+  "featuresVi": [
+   "Chuyển tài liệu sang Markdown: lời nhắc `<|grounding|>Convert the document to markdown.`",
+   "Nhiều chế độ: OCR có bố cục, OCR thuần (Free OCR), phân tích hình vẽ trong tài liệu, mô tả ảnh, định vị đối tượng theo tham chiếu",
+   "Độ phân giải gốc Tiny/Small/Base/Large (64–400 token thị giác) và chế độ động Gundam",
+   "Suy luận bằng vLLM cho ảnh (xuất dạng luồng) và PDF; đã được hỗ trợ chính thức trong vLLM upstream",
+   "Suy luận bằng Hugging Face Transformers với `trust_remote_code`"
+  ],
+  "requirementsVi": "Môi trường được thử nghiệm: CUDA 11.8 + PyTorch 2.6.0, Python 3.12.9 (Conda); GPU NVIDIA (README nêu tốc độ PDF ~2500 token/s trên A100-40G).",
+  "installStepsVi": [
+   "Tải mã nguồn: `git clone https://github.com/deepseek-ai/DeepSeek-OCR.git`",
+   "Tạo môi trường Conda: `conda create -n deepseek-ocr python=3.12.9 -y`",
+   "Cài đặt PyTorch: `pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu118`",
+   "Tải bản whl vllm-0.8.5 rồi cài đặt: `pip install vllm-0.8.5+cu118-cp38-abi3-manylinux1_x86_64.whl`",
+   "Cài đặt các gói phụ thuộc: `pip install -r requirements.txt`",
+   "Cài đặt flash-attn: `pip install flash-attn==2.7.3 --no-build-isolation`"
+  ],
+  "cliCommand": "pip install -r requirements.txt",
+  "usageStepsVi": [
+   "Sửa INPUT_PATH/OUTPUT_PATH trong DeepSeek-OCR-master/DeepSeek-OCR-vllm/config.py theo hướng dẫn của README.",
+   "Vào thư mục `DeepSeek-OCR-master/DeepSeek-OCR-vllm` và chạy `python run_dpsk_ocr_image.py` để OCR ảnh, hoặc `python run_dpsk_ocr_pdf.py` cho PDF.",
+   "Hoặc dùng Transformers: vào `DeepSeek-OCR-master/DeepSeek-OCR-hf` và chạy `python run_dpsk_ocr.py`.",
+   "Chọn lời nhắc phù hợp, ví dụ `<image>\\nFree OCR.` để lấy văn bản không kèm bố cục."
+  ],
+  "samplePromptsVi": [
+   "Chuyển trang tài liệu scan này sang Markdown, giữ nguyên tiêu đề và bảng.",
+   "OCR toàn bộ chữ trong ảnh chụp này, không cần bố cục.",
+   "Phân tích biểu đồ trong trang tài liệu và mô tả nội dung."
+  ],
+  "prosVi": [
+   "Giấy phép MIT, dùng được cho mục đích thương mại",
+   "Hỗ trợ cả vLLM và Transformers, đã tích hợp vào vLLM upstream",
+   "Có nhiều chế độ độ phân giải để cân bằng tốc độ và chất lượng"
+  ],
+  "consVi": [
+   "Cần GPU NVIDIA và môi trường CUDA cụ thể (CUDA 11.8, torch 2.6.0)",
+   "Phải tự tải tệp whl vLLM 0.8.5 riêng; có thể gặp xung đột phiên bản transformers",
+   "DeepSeek đã ra mắt DeepSeek-OCR2 ở kho riêng, kho này là phiên bản đầu"
+  ],
+  "sourceEvidence": {
+   "git clone https://github.com/deepseek-ai/DeepSeek-OCR.git": "README.md:72",
+   "conda create -n deepseek-ocr python=3.12.9 -y": "README.md:76",
+   "pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu118": "README.md:83",
+   "pip install vllm-0.8.5+cu118-cp38-abi3-manylinux1_x86_64.whl": "README.md:84",
+   "pip install -r requirements.txt": "README.md:85",
+   "pip install flash-attn==2.7.3 --no-build-isolation": "README.md:86"
+  },
+  "meta": {
+   "id": "deepseek-ai-deepseek-ocr",
+   "nameVi": "DeepSeek-OCR — Mô hình OCR nén ngữ cảnh thị giác, chuyển tài liệu sang Markdown",
+   "icon": "Search",
+   "categories": [
+    "office_digital_docs",
+    "computer_vision"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh",
+    "Tiếng Trung"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install -r requirements.txt"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "rednote-hilab/dots.mocr",
+  "license": "MIT License (kèm dots.mocr LICENSE AGREEMENT cho mô hình)",
+  "authorName": "rednote-hilab (Xiaohongshu)",
+  "websiteUrl": "https://dotsocr.xiaohongshu.com",
+  "toolType": "model",
+  "taglineEn": "Designed for comprehensive parsing, dots.mocr seamlessly recognizes both diverse human scripts and structured graphical content.",
+  "summaryVi": "dots.mocr (tên mới của dots.ocr-1.5) là mô hình thị giác - ngôn ngữ phân tích tài liệu đa ngôn ngữ của rednote-hilab. Ngoài phân tích bố cục và nhận dạng chữ, mô hình còn chuyển đồ họa có cấu trúc (biểu đồ, giao diện, hình khoa học) thành mã SVG, kèm biến thể dots.mocr-svg.",
+  "purposeVi": "Giúp trích xuất bố cục, văn bản, bảng (HTML) và công thức (LaTeX) từ ảnh hoặc PDF thành JSON/Markdown để đưa vào quy trình xử lý dữ liệu tài liệu.",
+  "featuresVi": [
+   "Phân tích bố cục tài liệu: trả về bbox, loại phần tử và nội dung chữ theo thứ tự đọc",
+   "Chuyển đồ họa có cấu trúc (biểu đồ, giao diện, hình khoa học) sang mã SVG",
+   "Các chế độ lời nhắc: phân tích trang web, nhận dạng chữ trong cảnh (scene spotting), hỏi đáp chung",
+   "Công cụ parser.py xử lý ảnh hoặc PDF, xuất JSON, Markdown và ảnh trực quan hóa bố cục",
+   "Triển khai bằng vLLM (tích hợp chính thức từ vLLM 0.11.0) hoặc Hugging Face Transformers"
+  ],
+  "requirementsVi": "Python 3.12 (Conda), PyTorch theo phiên bản CUDA; GPU NVIDIA được khuyến nghị (vLLM). Suy luận CPU có hướng dẫn riêng qua issue trên GitHub.",
+  "installStepsVi": [
+   "Tạo môi trường: `conda create -n dots_mocr python=3.12`",
+   "Tải mã nguồn: `git clone https://github.com/rednote-hilab/dots.mocr.git`",
+   "Cài đặt gói (sau khi cài PyTorch phù hợp CUDA): `pip install -e .`",
+   "Tải trọng số mô hình: `python3 tools/download_model.py`"
+  ],
+  "cliCommand": "pip install -e .",
+  "usageStepsVi": [
+   "Khởi động máy chủ vLLM: `CUDA_VISIBLE_DEVICES=0 vllm serve rednote-hilab/dots.mocr --tensor-parallel-size 1 --gpu-memory-utilization 0.9 --chat-template-content-format string --trust-remote-code`.",
+   "Phân tích một ảnh: `python3 dots_mocr/parser.py demo/demo_image1.jpg`; với PDF thêm `--num_thread 64`.",
+   "Chỉ phát hiện bố cục với `--prompt prompt_layout_only_en`, chỉ lấy chữ với `--prompt prompt_ocr`.",
+   "Dùng Transformers thay vLLM bằng cách thêm `--use_hf true`; kết quả gồm tệp JSON, Markdown và ảnh bố cục."
+  ],
+  "samplePromptsVi": [
+   "Phân tích PDF báo cáo này, xuất Markdown kèm bảng dạng HTML và công thức LaTeX.",
+   "Chuyển biểu đồ trong ảnh thành mã SVG.",
+   "Nhận dạng chữ trên biển hiệu trong ảnh chụp đường phố."
+  ],
+  "prosVi": [
+   "Mã nguồn MIT; thỏa thuận giấy phép mô hình cho phép sử dụng miễn phí, không thu phí bản quyền",
+   "Đã được tích hợp chính thức vào vLLM",
+   "Có bản demo trực tuyến để thử trước"
+  ],
+  "consVi": [
+   "README nêu bảng và công thức phức tạp vẫn còn khó, đôi khi phân tích thất bại",
+   "Trọng số chịu thêm dots.mocr LICENSE AGREEMENT (ví dụ: cần sự đồng ý của chủ thể dữ liệu khi dùng đầu ra để huấn luyện mô hình khác)",
+   "Thư mục lưu mô hình không được chứa dấu chấm (giải pháp tạm thời theo README)"
+  ],
+  "sourceEvidence": {
+   "conda create -n dots_mocr python=3.12": "README.md:536",
+   "git clone https://github.com/rednote-hilab/dots.mocr.git": "README.md:539",
+   "pip install -e .": "README.md:545",
+   "python3 tools/download_model.py": "README.md:554"
+  },
+  "meta": {
+   "id": "rednote-hilab-dots-mocr",
+   "nameVi": "dots.mocr — Mô hình phân tích tài liệu đa ngôn ngữ và chuyển đồ họa sang SVG",
+   "icon": "FolderTree",
+   "categories": [
+    "office_digital_docs",
+    "computer_vision"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT, kèm thỏa thuận giấy phép mô hình)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh",
+    "Tiếng Trung"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install -e ."
+    }
+   ]
+  }
+ },
+ {
+  "repo": "facebookresearch/sam3",
+  "license": "SAM License",
+  "authorName": "Meta AI (FAIR)",
+  "websiteUrl": "https://ai.meta.com/blog/segment-anything-model-3/",
+  "toolType": "model",
+  "taglineEn": "SAM 3 is a unified foundation model for promptable segmentation in images and videos.",
+  "summaryVi": "SAM 3 là mô hình nền tảng của Meta cho phân đoạn theo lời nhắc trên ảnh và video: phát hiện, phân đoạn và theo dõi đối tượng bằng lời nhắc văn bản hoặc điểm, hộp, mặt nạ. So với SAM 2, SAM 3 phân đoạn được mọi thực thể của một khái niệm mở được mô tả bằng cụm từ ngắn; bản SAM 3.1 bổ sung theo dõi nhiều đối tượng nhanh hơn.",
+  "purposeVi": "Giúp gán nhãn dữ liệu, tách đối tượng và theo dõi đối tượng trong video bằng mô tả văn bản, phục vụ các dự án thị giác máy tính.",
+  "featuresVi": [
+   "Phân đoạn theo khái niệm mở: nhập cụm từ văn bản để lấy mặt nạ, hộp bao và điểm tin cậy",
+   "Lời nhắc thị giác: điểm, hộp, mặt nạ",
+   "Theo dõi đối tượng trong video theo phiên (start_session, add_prompt)",
+   "SAM 3.1 Object Multiplex: theo dõi nhiều đối tượng chung bộ nhớ, nhanh hơn",
+   "Bộ dữ liệu SA-Co và notebook ví dụ đi kèm"
+  ],
+  "requirementsVi": "Python 3.12 trở lên, PyTorch 2.7 trở lên, GPU tương thích CUDA 12.6 trở lên; cần được cấp quyền tải checkpoint trên Hugging Face.",
+  "installStepsVi": [
+   "Tạo môi trường Conda: `conda create -n sam3 python=3.12`",
+   "Cài đặt PyTorch có CUDA: `pip install torch==2.10.0 torchvision --index-url https://download.pytorch.org/whl/cu128`",
+   "Tải mã nguồn: `git clone https://github.com/facebookresearch/sam3.git`",
+   "Cài đặt gói (trong thư mục sam3): `pip install -e .`",
+   "Tùy chọn, cài đặt phụ thuộc cho notebook: `pip install -e \".[notebooks]\"`",
+   "Xin quyền truy cập checkpoint trên Hugging Face rồi đăng nhập: `hf auth login`"
+  ],
+  "cliCommand": "pip install -e .",
+  "usageStepsVi": [
+   "Trong Python, tạo mô hình bằng `build_sam3_image_model()` và `Sam3Processor(model)`.",
+   "Gọi `processor.set_image(image)` rồi `processor.set_text_prompt(state=..., prompt=\"<cụm từ>\")` để lấy masks, boxes, scores.",
+   "Với video, dùng `build_sam3_video_predictor()` và gửi yêu cầu start_session, add_prompt.",
+   "Xem thêm hướng dẫn trong các notebook ví dụ của kho."
+  ],
+  "samplePromptsVi": [
+   "Phân đoạn tất cả các con chó trong ảnh này.",
+   "Theo dõi \"cầu thủ mặc áo trắng\" trong suốt đoạn video.",
+   "Tạo mặt nạ cho mọi chiếc xe buýt để gán nhãn dữ liệu huấn luyện."
+  ],
+  "prosVi": [
+   "Giấy phép SAM cấp quyền sử dụng, sửa đổi, phân phối miễn phí bản quyền",
+   "Hỗ trợ cả ảnh và video, lời nhắc văn bản lẫn thị giác",
+   "Được bảo trì tích cực (SAM 3.1 phát hành 03/2026)"
+  ],
+  "consVi": [
+   "Giấy phép SAM riêng của Meta (không phải OSI), cấm dùng cho mục đích quân sự, ITAR và các mục đích bị kiểm soát thương mại",
+   "Phải xin quyền tải checkpoint trên Hugging Face",
+   "Yêu cầu GPU CUDA 12.6 trở lên"
+  ],
+  "sourceEvidence": {
+   "conda create -n sam3 python=3.12": "README.md:76",
+   "pip install torch==2.10.0 torchvision --index-url https://download.pytorch.org/whl/cu128": "README.md:84",
+   "git clone https://github.com/facebookresearch/sam3.git": "README.md:90",
+   "pip install -e .": "README.md:92",
+   "pip install -e \".[notebooks]\"": "README.md:99",
+   "hf auth login": "README.md:117"
+  },
+  "meta": {
+   "id": "facebookresearch-sam3",
+   "nameVi": "SAM 3 — Mô hình phân đoạn và theo dõi đối tượng theo khái niệm cho ảnh, video",
+   "icon": "Layers",
+   "categories": [
+    "computer_vision"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Giấy phép riêng (SAM License, có giới hạn sử dụng)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install -e ."
+    }
+   ]
+  }
+ },
+ {
+  "repo": "roboflow/rf-detr",
+  "license": "Apache License 2.0 (thành phần Plus theo PML 1.0)",
+  "authorName": "Roboflow",
+  "websiteUrl": "https://rfdetr.roboflow.com",
+  "toolType": "sdk",
+  "taglineEn": "RF-DETR is a real-time transformer architecture for object detection, instance segmentation, and keypoint detection (preview) developed by Roboflow.",
+  "summaryVi": "RF-DETR là kiến trúc transformer thời gian thực của Roboflow cho phát hiện đối tượng, phân đoạn thực thể và phát hiện điểm khóa (bản xem trước), dựa trên backbone DINOv2. Gói Python `rfdetr` cung cấp API thống nhất với nhiều kích cỡ mô hình từ Nano đến 2XLarge, kèm khả năng huấn luyện trên dữ liệu riêng.",
+  "purposeVi": "Giúp xây dựng ứng dụng phát hiện và phân đoạn đối tượng thời gian thực, tinh chỉnh trên bộ dữ liệu riêng với độ trễ thấp.",
+  "featuresVi": [
+   "Phát hiện đối tượng: các lớp RFDETRNano/Small/Medium/Large (Apache 2.0) và Atto/Femto/Pico/XLarge/2XLarge (PML 1.0)",
+   "Phân đoạn thực thể: RFDETRSegNano đến RFDETRSeg2XLarge",
+   "Phát hiện điểm khóa (bản xem trước) với RFDETRKeypointPreview",
+   "Huấn luyện trên dữ liệu riêng, có notebook Google Colab",
+   "Kết hợp với thư viện supervision để vẽ kết quả; chạy được qua thư viện Inference"
+  ],
+  "requirementsVi": "Python 3.10 trở lên.",
+  "installStepsVi": [
+   "Cài đặt gói: `pip install rfdetr`",
+   "Hoặc cài đặt từ nhánh phát triển: `pip install https://github.com/roboflow/rf-detr/archive/refs/heads/develop.zip`",
+   "Tùy chọn, cài đặt phần mở rộng Plus cho các mô hình Atto/Femto/Pico/XL/2XL: `pip install rfdetr[plus]`"
+  ],
+  "cliCommand": "pip install rfdetr",
+  "usageStepsVi": [
+   "Trong Python: `from rfdetr import RFDETRMedium`, tạo `model = RFDETRMedium()`.",
+   "Gọi `model.predict(\"<đường dẫn hoặc URL ảnh>\", threshold=0.5)` để nhận danh sách phát hiện.",
+   "Dùng `sv.BoxAnnotator()` / `sv.LabelAnnotator()` của supervision để vẽ khung và nhãn.",
+   "Xem hướng dẫn huấn luyện trên trang tài liệu rfdetr.roboflow.com."
+  ],
+  "samplePromptsVi": [
+   "Phát hiện người và xe trong ảnh camera giao thông với ngưỡng tin cậy 0.5.",
+   "Tinh chỉnh RF-DETR Small trên bộ dữ liệu ảnh sản phẩm lỗi của nhà máy.",
+   "Phân đoạn thực thể các vật thể trong ảnh và xuất mặt nạ."
+  ],
+  "prosVi": [
+   "Gói rfdetr và các mô hình N/S/M/L theo Apache 2.0, dùng được thương mại",
+   "Cài đặt đơn giản qua pip",
+   "Được bảo trì tích cực, có tài liệu và notebook huấn luyện"
+  ],
+  "consVi": [
+   "Các mô hình Atto/Femto/Pico/XL/2XL và phần mở rộng rfdetr_plus theo giấy phép PML 1.0, không phải Apache",
+   "Phát hiện điểm khóa mới ở bản xem trước",
+   "Tìm kiếm kiến trúc NAS cho dữ liệu riêng chỉ có trên nền tảng Roboflow"
+  ],
+  "sourceEvidence": {
+   "pip install rfdetr": "README.md:32",
+   "pip install https://github.com/roboflow/rf-detr/archive/refs/heads/develop.zip": "README.md:43",
+   "pip install rfdetr[plus]": "README.md:226"
+  },
+  "meta": {
+   "id": "roboflow-rf-detr",
+   "nameVi": "RF-DETR — Phát hiện, phân đoạn đối tượng thời gian thực bằng transformer",
+   "icon": "Box",
+   "categories": [
+    "computer_vision"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0; mô hình Plus theo PML 1.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install rfdetr"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "QwenLM/Qwen3-VL",
+  "license": "Apache License 2.0",
+  "authorName": "Qwen (Alibaba Cloud)",
+  "websiteUrl": "https://huggingface.co/collections/Qwen/qwen3-vl-68d2a7c1b8a8afce4ebd2dbe",
+  "toolType": "model",
+  "taglineEn": "Meet Qwen3-VL — the most powerful vision-language model in the Qwen series to date.",
+  "summaryVi": "Qwen3-VL là dòng mô hình thị giác - ngôn ngữ mạnh nhất của Qwen, có kiến trúc Dense và MoE (từ 2B đến 235B-A22B), bản Instruct và Thinking. Mô hình hỗ trợ OCR 32 ngôn ngữ, hiểu video dài, ngữ cảnh gốc 256K, tác tử điều khiển giao diện và sinh mã từ ảnh.",
+  "purposeVi": "Giúp xây dựng ứng dụng hiểu ảnh, tài liệu và video: OCR, hỏi đáp trên tài liệu, phân tích video, tác tử thao tác giao diện, chạy cục bộ hoặc phục vụ qua vLLM/SGLang.",
+  "featuresVi": [
+   "OCR mở rộng: 32 ngôn ngữ, chịu được ảnh thiếu sáng, mờ, nghiêng; phân tích cấu trúc tài liệu dài tốt hơn",
+   "Tác tử thị giác: nhận diện phần tử giao diện PC/di động và hoàn thành tác vụ",
+   "Sinh mã Draw.io/HTML/CSS/JS từ ảnh hoặc video",
+   "Ngữ cảnh gốc 256K, mở rộng đến 1M; hiểu video dài hàng giờ",
+   "Định vị 2D/3D và suy luận không gian",
+   "Triển khai bằng Transformers, vLLM (>=0.11.0), SGLang, Docker và giao diện web demo"
+  ],
+  "requirementsVi": "transformers >= 4.57.0; vLLM >= 0.11.0 khi phục vụ; GPU NVIDIA (lệnh mẫu FP8 cho 235B cần H100 trở lên và CUDA 12+).",
+  "installStepsVi": [
+   "Cài đặt Transformers: `pip install \"transformers>=4.57.0\"`",
+   "Cài đặt công cụ xử lý ảnh/video: `pip install qwen-vl-utils==0.0.14`",
+   "Để triển khai, cài đặt vLLM: `uv pip install -U vllm`",
+   "Tùy chọn, cài đặt phụ thuộc cho giao diện web: `pip install -r requirements_web_demo.txt`"
+  ],
+  "cliCommand": "pip install \"transformers>=4.57.0\"",
+  "usageStepsVi": [
+   "Tải mô hình qua `AutoModelForImageTextToText.from_pretrained(\"Qwen/Qwen3-VL-235B-A22B-Instruct\")` hoặc bản nhỏ hơn (2B, 4B, 8B, 32B).",
+   "Chạy giao diện web: `python web_demo_mm.py -c /your/path/to/qwen3vl/weight` rồi mở http://127.0.0.1:7860/.",
+   "Phục vụ API kiểu OpenAI bằng `vllm serve` theo hướng dẫn trong mục Deployment.",
+   "Hoặc dùng Docker: `docker run --gpus all --ipc=host --network=host --rm --name qwen3vl -it qwenllm/qwenvl:qwen3vl-cu128 bash`."
+  ],
+  "samplePromptsVi": [
+   "Đọc toàn bộ chữ trong ảnh chụp hóa đơn bị nghiêng này.",
+   "Tóm tắt các sự kiện chính trong video dài một giờ kèm mốc thời gian.",
+   "Tạo mã HTML/CSS tái hiện giao diện trong ảnh chụp màn hình."
+  ],
+  "prosVi": [
+   "Giấy phép Apache 2.0",
+   "Nhiều kích cỡ từ 2B đến 235B, có bản FP8",
+   "Hướng dẫn triển khai đầy đủ: Transformers, vLLM, SGLang, Docker"
+  ],
+  "consVi": [
+   "Mô hình lớn cần GPU mạnh (ví dụ H100 cho bản 235B FP8)",
+   "Dùng API trực tuyến cần khóa DASHSCOPE_API_KEY",
+   "Tính năng đọc video dùng decord có thể khó cài đặt ngoài Linux"
+  ],
+  "sourceEvidence": {
+   "pip install \"transformers>=4.57.0\"": "README.md:134",
+   "pip install qwen-vl-utils==0.0.14": "README.md:417",
+   "uv pip install -U vllm": "README.md:867",
+   "pip install -r requirements_web_demo.txt": "README.md:832",
+   "python web_demo_mm.py -c /your/path/to/qwen3vl/weight": "README.md:839",
+   "docker run --gpus all --ipc=host --network=host --rm --name qwen3vl -it qwenllm/qwenvl:qwen3vl-cu128 bash": "README.md:1172"
+  },
+  "meta": {
+   "id": "qwenlm-qwen3-vl",
+   "nameVi": "Qwen3-VL — Mô hình thị giác - ngôn ngữ đa năng: OCR, video, tác tử giao diện",
+   "icon": "Brain",
+   "categories": [
+    "computer_vision",
+    "nlp_llm"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh",
+    "Tiếng Trung"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install \"transformers>=4.57.0\""
+    }
+   ]
+  }
+ },
+ {
+  "repo": "PaddlePaddle/PaddleX",
+  "license": "Apache License 2.0",
+  "authorName": "PaddlePaddle (Baidu)",
+  "websiteUrl": "https://paddlepaddle.github.io/PaddleX/latest/en/",
+  "toolType": "sdk",
+  "taglineEn": "PaddleX 3.0 is a low-code development tool for AI models built on the PaddlePaddle framework.",
+  "summaryVi": "PaddleX 3.0 là công cụ phát triển mô hình AI ít mã trên nền PaddlePaddle, tích hợp hơn 200 mô hình huấn luyện sẵn được gom thành 33 pipeline. Công cụ hỗ trợ toàn bộ quy trình từ huấn luyện đến suy luận và triển khai cho OCR, phát hiện đối tượng, phân đoạn, phân tích tài liệu, chuỗi thời gian.",
+  "purposeVi": "Giúp nhà phát triển gọi nhanh các pipeline thị giác máy tính và OCR bằng một lệnh hoặc vài dòng Python, rồi tinh chỉnh và triển khai trên nhiều loại phần cứng.",
+  "featuresVi": [
+   "Pipeline dựng sẵn: OCR, nhận dạng bảng, phân tích bố cục (PP-StructureV3), nhận dạng công thức, con dấu",
+   "Thị giác máy tính: phân loại ảnh, phát hiện đối tượng, phân đoạn, phát hiện bất thường, phát hiện từ vựng mở",
+   "CLI thống nhất `paddlex --pipeline ... --input ... --device ...` và API Python `create_pipeline()`",
+   "Triển khai suy luận hiệu năng cao, phục vụ dịch vụ và triển khai nhẹ",
+   "Hỗ trợ GPU NVIDIA, Kunlun XPU, Ascend NPU, Cambricon MLU"
+  ],
+  "requirementsVi": "Python 3.8 đến 3.13; PaddlePaddle 3.0.0 trở lên (bản CPU hoặc GPU, GPU cần driver tương ứng).",
+  "installStepsVi": [
+   "Cài đặt PaddlePaddle bản CPU: `python -m pip install paddlepaddle==3.3.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/`",
+   "Cài đặt PaddleX: `pip install \"paddlex[base]\"`"
+  ],
+  "cliCommand": "pip install \"paddlex[base]\"",
+  "usageStepsVi": [
+   "Chạy pipeline bằng lệnh `paddlex --pipeline [Pipeline Name] --input [Input Image] --device [Running Device]`.",
+   "Ví dụ OCR: `paddlex --pipeline OCR --input <ảnh> --save_path ./output --device gpu:0` (hoặc `--device cpu`).",
+   "Trong Python: `from paddlex import create_pipeline`, rồi `pipeline.predict(...)` và lưu kết quả bằng `save_to_json`.",
+   "Xem hướng dẫn tham số từng pipeline trong tài liệu PaddleX."
+  ],
+  "samplePromptsVi": [
+   "Nhận dạng chữ trong ảnh thẻ lên máy bay và lưu kết quả JSON.",
+   "Nhận dạng bảng trong ảnh chụp báo cáo và xuất ra cấu trúc bảng.",
+   "Phát hiện đối tượng trong ảnh với ngưỡng 0.5 và lưu ảnh kết quả."
+  ],
+  "prosVi": [
+   "Giấy phép Apache 2.0",
+   "Hơn 200 mô hình và 33 pipeline gọi bằng một lệnh",
+   "Chạy được trên CPU và nhiều loại phần cứng tăng tốc"
+  ],
+  "consVi": [
+   "Phụ thuộc framework PaddlePaddle, phải cài đặt đúng phiên bản tương thích",
+   "Hướng dẫn chi tiết từng pipeline nằm ở trang tài liệu riêng"
+  ],
+  "sourceEvidence": {
+   "python -m pip install paddlepaddle==3.3.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/": "README_en.md:601",
+   "pip install \"paddlex[base]\"": "README_en.md:614"
+  },
+  "meta": {
+   "id": "paddlepaddle-paddlex",
+   "nameVi": "PaddleX — Công cụ ít mã với hơn 200 mô hình OCR và thị giác máy tính",
+   "icon": "Wrench",
+   "categories": [
+    "computer_vision",
+    "office_digital_docs"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh",
+    "Tiếng Trung"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install \"paddlex[base]\""
+    }
+   ]
+  }
+ },
+ {
+  "repo": "Stirling-Tools/Stirling-PDF",
+  "license": "MIT License (open-core: các thư mục proprietary/saas/engine... theo giấy phép riêng)",
+  "authorName": "Stirling PDF Inc.",
+  "websiteUrl": "https://stirling.com",
+  "toolType": "software",
+  "taglineEn": "Stirling PDF is a powerful, open-source PDF editing platform.",
+  "summaryVi": "Stirling PDF là nền tảng chỉnh sửa PDF mã nguồn mở, chạy dưới dạng ứng dụng máy tính, trên trình duyệt hoặc tự lưu trữ trên máy chủ kèm API riêng. Nền tảng có hơn 50 công cụ PDF như chỉnh sửa, gộp, tách, ký, che thông tin, chuyển đổi, OCR, nén mà không gửi tài liệu ra dịch vụ bên ngoài.",
+  "purposeVi": "Giúp tổ chức tự lưu trữ công cụ xử lý PDF (bao gồm OCR tài liệu scan) để bảo mật dữ liệu và tự động hóa quy trình xử lý tài liệu qua REST API.",
+  "featuresVi": [
+   "Hơn 50 công cụ PDF: chỉnh sửa, gộp, tách, ký, che thông tin, chuyển đổi, OCR, nén",
+   "Chạy dưới dạng ứng dụng máy tính, giao diện trình duyệt hoặc máy chủ tự lưu trữ",
+   "Tự động hóa: pipeline không cần mã ngay trên giao diện",
+   "REST API cho gần như mọi công cụ",
+   "Giao diện hơn 40 ngôn ngữ",
+   "Tính năng doanh nghiệp: SSO, kiểm toán, triển khai tại chỗ"
+  ],
+  "requirementsVi": "Docker (cho cách chạy nhanh); cổng 8080.",
+  "installStepsVi": [
+   "Cài đặt và chạy bằng Docker: `docker run -p 8080:8080 docker.stirlingpdf.com/stirlingtools/stirling-pdf`",
+   "Mở trình duyệt tại http://localhost:8080",
+   "Các cách cài đặt khác (ứng dụng máy tính, Kubernetes) xem trong hướng dẫn tại docs.stirlingpdf.com"
+  ],
+  "cliCommand": "docker run -p 8080:8080 docker.stirlingpdf.com/stirlingtools/stirling-pdf",
+  "usageStepsVi": [
+   "Mở http://localhost:8080, chọn công cụ OCR để biến PDF scan thành PDF tìm kiếm được.",
+   "Kết hợp nhiều công cụ thành pipeline tự động ngay trên giao diện.",
+   "Gọi REST API (xem API Docs) để tích hợp xử lý PDF vào hệ thống hiện có.",
+   "Nhà phát triển: chạy `task dev` để khởi động trình soạn thảo ở chế độ phát triển."
+  ],
+  "samplePromptsVi": [
+   "OCR tệp PDF scan hợp đồng để có thể tìm kiếm và sao chép chữ.",
+   "Gộp các tệp PDF hóa đơn trong tháng thành một tệp rồi nén lại.",
+   "Che thông tin cá nhân trong tài liệu PDF trước khi chia sẻ."
+  ],
+  "prosVi": [
+   "Phần lõi theo giấy phép MIT, tự lưu trữ được, tài liệu không rời khỏi hạ tầng của bạn",
+   "Khởi chạy bằng một lệnh Docker",
+   "Có REST API và giao diện đa ngôn ngữ"
+  ],
+  "consVi": [
+   "Mô hình open-core: các thư mục như app/proprietary, app/saas, engine theo giấy phép riêng, không phải MIT",
+   "Tính năng doanh nghiệp (SSO, kiểm toán) thuộc gói Server/Enterprise trả phí",
+   "README chỉ có lệnh Docker, hướng dẫn cài đặt khác nằm ở trang tài liệu"
+  ],
+  "sourceEvidence": {
+   "docker run -p 8080:8080 docker.stirlingpdf.com/stirlingtools/stirling-pdf": "README.md:40",
+   "task dev": "README.md:63"
+  },
+  "meta": {
+   "id": "stirling-tools-stirling-pdf",
+   "nameVi": "Stirling PDF — Nền tảng xử lý PDF tự lưu trữ với OCR và hơn 50 công cụ",
+   "icon": "FolderTree",
+   "categories": [
+    "office_digital_docs"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở lõi (MIT, open-core có phần độc quyền)",
+   "pricingModel": "freemium",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "docker run -p 8080:8080 docker.stirlingpdf.com/stirlingtools/stirling-pdf"
+    }
+   ]
+  }
+ }
+]

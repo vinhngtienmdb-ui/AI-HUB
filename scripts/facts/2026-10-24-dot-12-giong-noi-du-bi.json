@@ -1,0 +1,558 @@
+[
+  {
+    "repo": "livekit/agents",
+    "license": "Apache License 2.0 (mã nguồn); mô hình phát hiện lượt nói theo LiveKit Model License",
+    "authorName": "LiveKit",
+    "websiteUrl": "https://docs.livekit.io/agents/",
+    "toolType": "sdk",
+    "taglineEn": "The Agent Framework is designed for building realtime, programmable participants that run on servers.",
+    "summaryVi": "LiveKit Agents là khung lập trình Python để xây dựng tác tử hội thoại giọng nói thời gian thực, đa phương thức, chạy phía máy chủ và có thể nghe, nhìn, hiểu người dùng. Thư viện cho phép kết hợp tùy ý các nhà cung cấp STT, LLM, TTS và Realtime API, tích hợp điều phối công việc, điện thoại (SIP), MCP và khung kiểm thử tác tử. Toàn bộ ngăn xếp, kể cả máy chủ WebRTC LiveKit, có thể tự triển khai.",
+    "purposeVi": "Công cụ giúp lập trình viên dựng trợ lý giọng nói, tổng đài viên ảo hoặc tác tử gọi điện thoại chạy thời gian thực trên hạ tầng WebRTC.",
+    "featuresVi": [
+      "Tích hợp linh hoạt: phối hợp STT, LLM, TTS và Realtime API từ nhiều nhà cung cấp qua plugin",
+      "Điều phối công việc: lập lịch và phân phối phiên tác tử với dispatch API",
+      "Điện thoại: gọi đi và nhận cuộc gọi qua ngăn xếp telephony (SIP) của LiveKit",
+      "Phát hiện lượt nói ngữ nghĩa: mô hình transformer nhận biết khi người dùng nói xong để giảm ngắt lời",
+      "Hỗ trợ MCP: dùng công cụ từ máy chủ MCP chỉ với một dòng mã",
+      "Khung kiểm thử tích hợp: viết test và dùng LLM làm giám khảo đánh giá tác tử",
+      "Chuyển giao đa tác tử (handoff) và trao đổi dữ liệu với client qua RPC"
+    ],
+    "requirementsVi": "Python; máy chủ LiveKit (LiveKit Cloud hoặc tự triển khai) với biến môi trường LIVEKIT_URL, LIVEKIT_API_KEY, LIVEKIT_API_SECRET; khóa API của nhà cung cấp mô hình (ví dụ OpenAI, Deepgram, Cartesia) hoặc dùng LiveKit Inference.",
+    "installStepsVi": [
+      "Cài đặt thư viện lõi kèm plugin nhà cung cấp mô hình: `pip install \"livekit-agents[openai,deepgram,cartesia]\"`",
+      "Đặt biến môi trường LIVEKIT_URL, LIVEKIT_API_KEY, LIVEKIT_API_SECRET theo hướng dẫn trong README",
+      "Chạy thử tác tử ngay trong terminal với âm thanh cục bộ: `python myagent.py console`"
+    ],
+    "cliCommand": "pip install \"livekit-agents[openai,deepgram,cartesia]\"",
+    "usageStepsVi": [
+      "Viết tệp tác tử với Agent, AgentSession và hàm entrypoint theo ví dụ “Simple voice agent” trong README",
+      "Chạy chế độ phát triển có tải lại nóng và kết nối máy chủ LiveKit: `python myagent.py dev`",
+      "Kết nối bằng LiveKit client SDK, Agents Playground hoặc tích hợp điện thoại",
+      "Chạy chế độ sản xuất: `python myagent.py start`"
+    ],
+    "samplePromptsVi": [
+      "Viết tác tử giọng nói LiveKit dùng Deepgram để nhận dạng, GPT để trả lời và Cartesia để đọc, có công cụ tra cứu thời tiết",
+      "Thêm luồng chuyển giao từ tác tử chào hỏi sang tác tử kể chuyện sau khi thu thập tên và nơi ở của người dùng",
+      "Viết test pytest kiểm tra tác tử gọi đúng hàm start_order khi khách muốn đặt hàng"
+    ],
+    "prosVi": [
+      "Mã nguồn mở Apache 2.0, có thể tự triển khai toàn bộ ngăn xếp",
+      "Hệ sinh thái plugin lớn cho STT, LLM, TTS và client SDK trên mọi nền tảng chính",
+      "Có chế độ console để thử nhanh không cần máy chủ ngoài",
+      "Có bản JS/TS riêng (AgentsJS)"
+    ],
+    "consVi": [
+      "Cần máy chủ LiveKit và khóa API (LiveKit Cloud hoặc tự vận hành) để chạy với client thật",
+      "Mô hình phát hiện lượt nói dùng giấy phép riêng LiveKit Model License, không phải Apache 2.0",
+      "Ví dụ mặc định gọi mô hình qua dịch vụ đám mây của nhà cung cấp, phát sinh chi phí theo nhà cung cấp"
+    ],
+    "sourceEvidence": {
+      "pip install \"livekit-agents[openai,deepgram,cartesia]\"": "README.md:50",
+      "python myagent.py console": "README.md:303",
+      "python myagent.py dev": "README.md:312",
+      "python myagent.py start": "README.md:328"
+    },
+    "meta": {
+      "id": "livekit-agents",
+      "nameVi": "LiveKit Agents — Khung xây dựng tác tử giọng nói thời gian thực",
+      "icon": "MessageSquare",
+      "categories": [
+        "speech_voice",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install \"livekit-agents[openai,deepgram,cartesia]\""
+        }
+      ]
+    }
+  },
+  {
+    "repo": "OHF-Voice/piper1-gpl",
+    "license": "GNU General Public License v3.0 (tệp COPYING); từng giọng đọc có giấy phép riêng trong MODEL_CARD",
+    "authorName": "Open Home Foundation (OHF-Voice)",
+    "websiteUrl": "https://rhasspy.github.io/piper-samples",
+    "toolType": "software",
+    "taglineEn": "A fast and local neural text-to-speech engine that embeds espeak-ng for phonemization.",
+    "summaryVi": "Piper là bộ máy chuyển văn bản thành giọng nói (TTS) bằng mạng nơ-ron, chạy nhanh và hoàn toàn cục bộ, dùng espeak-ng để phiên âm. Các giọng đọc được huấn luyện bằng VITS và xuất sang onnxruntime, có sẵn cho nhiều ngôn ngữ, trong đó có tiếng Việt (vi_VN). Dự án cung cấp giao diện dòng lệnh, máy chủ web, API Python, API C/C++ và hướng dẫn huấn luyện giọng mới; được dùng trong Home Assistant và NVDA.",
+    "purposeVi": "Đọc văn bản thành giọng nói ngoại tuyến cho trợ lý nhà thông minh, phần mềm hỗ trợ người khiếm thị hoặc ứng dụng cần TTS nhẹ chạy trên CPU.",
+    "featuresVi": [
+      "TTS cục bộ: chạy bằng onnxruntime, không cần dịch vụ đám mây",
+      "Nhiều ngôn ngữ: danh sách giọng có tiếng Việt (vi_VN) cùng hàng chục ngôn ngữ khác",
+      "Máy chủ HTTP: giao diện web thử giọng và endpoint /info ở cổng 5000",
+      "Tùy chọn CLI: tăng tốc GPU với --cuda, đọc từ tệp, chèn khoảng lặng, chỉnh âm lượng",
+      "Chèn phiên âm espeak-ng thô bằng khối [[ ... ]]",
+      "API Python, API C/C++ (libpiper) và công cụ huấn luyện giọng đọc mới"
+    ],
+    "requirementsVi": "Python và pip; tệp giọng đọc .onnx kèm .onnx.json (tải bằng piper.download_voices); ffplay nếu muốn phát trực tiếp; gói onnxruntime-gpu nếu dùng --cuda.",
+    "installStepsVi": [
+      "Cài đặt gói: `pip install piper-tts`",
+      "Xem danh sách giọng đọc: `python3 -m piper.download_voices`",
+      "Tải một giọng, ví dụ: `python3 -m piper.download_voices en_US-lessac-medium`",
+      "Chạy thử tạo tệp âm thanh: `python3 -m piper -m en_US-lessac-medium -f test.wav -- 'This is a test.'`"
+    ],
+    "cliCommand": "python3 -m piper -m en_US-lessac-medium -f test.wav -- 'This is a test.'",
+    "usageStepsVi": [
+      "Cài đặt thêm phụ thuộc máy chủ web: `python3 -m pip install piper-tts[http]`",
+      "Chạy máy chủ: `python3 -m piper.http_server -m en_US-lessac-medium` rồi mở http://localhost:5000 để nhập văn bản và nghe",
+      "Đổi sang giọng tiếng Việt (vi_VN) trong danh sách giọng nếu cần đọc văn bản tiếng Việt",
+      "Đọc kỹ MODEL_CARD của từng giọng để biết giấy phép dữ liệu trước khi dùng"
+    ],
+    "samplePromptsVi": [
+      "Cài đặt Piper và tải một giọng tiếng Việt để đọc thông báo trong Home Assistant",
+      "Chạy máy chủ HTTP Piper trên Raspberry Pi và gọi endpoint từ ứng dụng nội bộ",
+      "Viết script đọc hàng loạt tệp văn bản thành WAV bằng tùy chọn --input-file"
+    ],
+    "prosVi": [
+      "Mã nguồn mở, chạy hoàn toàn ngoại tuyến",
+      "Có giọng tiếng Việt trong danh sách giọng hỗ trợ",
+      "Nhiều cách dùng: CLI, máy chủ web, Python, C/C++",
+      "Được dùng rộng rãi (Home Assistant, NVDA, LocalAI)"
+    ],
+    "consVi": [
+      "Giấy phép GPLv3 có tính lan truyền (copyleft) khi phân phối phần mềm dẫn xuất",
+      "Một số giọng đọc có giấy phép hạn chế; tài liệu ghi Piper dành cho mục đích cá nhân và nghiên cứu TTS",
+      "CLI chậm khi gọi lặp lại vì phải nạp mô hình mỗi lần",
+      "README cho biết dự án đang tìm người bảo trì"
+    ],
+    "sourceEvidence": {
+      "pip install piper-tts": "README.md:8",
+      "python3 -m piper.download_voices": "docs/CLI.md:18",
+      "python3 -m piper.download_voices en_US-lessac-medium": "docs/CLI.md:24",
+      "python3 -m piper -m en_US-lessac-medium -f test.wav -- 'This is a test.'": "docs/CLI.md:34",
+      "python3 -m pip install piper-tts[http]": "docs/API_HTTP.md:6",
+      "python3 -m piper.http_server -m en_US-lessac-medium": "docs/API_HTTP.md:18"
+    },
+    "meta": {
+      "id": "ohf-voice-piper1-gpl",
+      "nameVi": "Piper — Bộ máy chuyển văn bản thành giọng nói cục bộ, có giọng tiếng Việt",
+      "icon": "Cpu",
+      "categories": [
+        "speech_voice"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (GPL-3.0); giọng đọc theo giấy phép riêng",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "python3 -m piper -m en_US-lessac-medium -f test.wav -- 'This is a test.'"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "FunAudioLLM/CosyVoice",
+    "license": "Apache License 2.0 (mã nguồn); README không nêu giấy phép trọng số mô hình",
+    "authorName": "FunAudioLLM (Tongyi Lab, Alibaba)",
+    "websiteUrl": "https://funaudiollm.github.io/cosyvoice3/",
+    "toolType": "model",
+    "taglineEn": "Fun-CosyVoice 3.0 is an advanced text-to-speech (TTS) system based on large language models (LLM), surpassing its predecessor (CosyVoice 2.0) in content consistency, speaker similarity, and prosody naturalness.",
+    "summaryVi": "CosyVoice là hệ thống chuyển văn bản thành giọng nói dựa trên mô hình ngôn ngữ lớn, phiên bản Fun-CosyVoice 3.0 (0.5B) hướng tới tổng hợp giọng nói đa ngôn ngữ zero-shot. Mô hình hỗ trợ 9 ngôn ngữ phổ biến và hơn 18 phương ngữ tiếng Trung, phát trực tuyến hai chiều với độ trễ thấp tới 150ms, điều khiển bằng chỉ dẫn về cảm xúc, tốc độ, âm lượng. Kho mã kèm kịch bản huấn luyện, suy luận, giao diện web, máy chủ gRPC/FastAPI và hỗ trợ vLLM, TensorRT-LLM.",
+    "purposeVi": "Tạo giọng nói tự nhiên đa ngôn ngữ cho sản phẩm thuyết minh, trợ lý ảo hoặc nghiên cứu TTS dựa trên LLM, có thể tự triển khai trên GPU.",
+    "featuresVi": [
+      "Đa ngôn ngữ: tiếng Trung, Anh, Nhật, Hàn, Đức, Tây Ban Nha, Pháp, Ý, Nga và hơn 18 phương ngữ tiếng Trung",
+      "Nhân bản giọng zero-shot đa ngôn ngữ và xuyên ngôn ngữ",
+      "Phát trực tuyến hai chiều (văn bản vào, âm thanh ra) với độ trễ thấp tới 150ms",
+      "Điều khiển bằng chỉ dẫn: ngôn ngữ, phương ngữ, cảm xúc, tốc độ, âm lượng",
+      "Chỉnh phát âm bằng Pinyin và âm vị CMU, chuẩn hóa văn bản không cần frontend truyền thống",
+      "Triển khai: web demo, máy chủ gRPC/FastAPI qua Docker, vLLM và TensorRT-LLM"
+    ],
+    "requirementsVi": "Conda với Python 3.10; GPU NVIDIA khuyến nghị (Docker dùng --runtime=nvidia); sox/libsox-dev nếu gặp lỗi tương thích; tải trọng số mô hình từ ModelScope hoặc Hugging Face.",
+    "installStepsVi": [
+      "Tải mã nguồn kèm submodule: `git clone --recursive https://github.com/FunAudioLLM/CosyVoice.git`",
+      "Tạo môi trường Conda: `conda create -n cosyvoice -y python=3.10` rồi `conda activate cosyvoice`",
+      "Cài đặt phụ thuộc: `pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host=mirrors.aliyun.com`",
+      "Tải mô hình Fun-CosyVoice3-0.5B bằng snapshot_download của ModelScope hoặc Hugging Face vào thư mục pretrained_models theo hướng dẫn README",
+      "Chạy ví dụ: `python example.py`"
+    ],
+    "cliCommand": "python example.py",
+    "usageStepsVi": [
+      "Xem example.py để biết cách gọi từng mô hình (SFT, zero-shot, cross-lingual, instruct)",
+      "Mở giao diện web: `python3 webui.py --port 50000 --model_dir pretrained_models/CosyVoice-300M`",
+      "Dựng dịch vụ: `cd runtime/python` rồi `docker build -t cosyvoice:v1.0 .` và chạy máy chủ gRPC hoặc FastAPI ở cổng 50000",
+      "Tăng tốc với vLLM bằng `python vllm_example.py` trong môi trường riêng"
+    ],
+    "samplePromptsVi": [
+      "Cài đặt CosyVoice và tạo giọng đọc tiếng Anh với cảm xúc vui vẻ, tốc độ chậm bằng chế độ instruct",
+      "Dựng máy chủ FastAPI CosyVoice bằng Docker ở cổng 50000 và gọi thử từ client",
+      "Tổng hợp giọng nói phát trực tuyến cho trợ lý ảo với độ trễ thấp bằng Fun-CosyVoice3-0.5B"
+    ],
+    "prosVi": [
+      "Mã nguồn Apache 2.0, kèm kịch bản huấn luyện và suy luận",
+      "Chất lượng cạnh tranh trên bảng đánh giá trong README",
+      "Nhiều lựa chọn triển khai: web demo, gRPC, FastAPI, vLLM, TensorRT-LLM",
+      "Hỗ trợ phát trực tuyến độ trễ thấp"
+    ],
+    "consVi": [
+      "Không hỗ trợ tiếng Việt trong danh sách 9 ngôn ngữ được nêu",
+      "README không nêu giấy phép trọng số; cần kiểm tra model card trên ModelScope/Hugging Face trước khi dùng thương mại",
+      "Tuyên bố miễn trừ cho biết nội dung README chỉ phục vụ mục đích học thuật",
+      "Cài đặt nặng (Conda, submodule, GPU); vLLM có yêu cầu phiên bản khắt khe"
+    ],
+    "sourceEvidence": {
+      "git clone --recursive https://github.com/FunAudioLLM/CosyVoice.git": "README.md:90",
+      "conda create -n cosyvoice -y python=3.10": "README.md:100",
+      "conda activate cosyvoice": "README.md:101",
+      "pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host=mirrors.aliyun.com": "README.md:102",
+      "python example.py": "README.md:151",
+      "python3 webui.py --port 50000 --model_dir pretrained_models/CosyVoice-300M": "README.md:178",
+      "cd runtime/python": "README.md:191",
+      "docker build -t cosyvoice:v1.0 .": "README.md:192",
+      "python vllm_example.py": "README.md:167"
+    },
+    "meta": {
+      "id": "funaudiollm-cosyvoice",
+      "nameVi": "CosyVoice — Mô hình chuyển văn bản thành giọng nói đa ngôn ngữ dựa trên LLM",
+      "icon": "Sparkles",
+      "categories": [
+        "speech_voice",
+        "generative_ai_multimedia"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0); trọng số xem model card",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Trung"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "python example.py"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "snakers4/silero-vad",
+    "license": "MIT License",
+    "authorName": "Silero Team",
+    "websiteUrl": "",
+    "toolType": "model",
+    "taglineEn": "Silero VAD - pre-trained enterprise-grade Voice Activity Detector",
+    "summaryVi": "Silero VAD là mô hình phát hiện hoạt động giọng nói (VAD) đã huấn luyện sẵn, nhỏ gọn (bản JIT khoảng 2MB) và rất nhanh: mỗi đoạn âm thanh 30ms xử lý dưới 1ms trên một luồng CPU. Mô hình được huấn luyện trên dữ liệu hơn 6000 ngôn ngữ, hỗ trợ tần số lấy mẫu 8000 Hz và 16000 Hz, chạy trên PyTorch và ONNX. Phát hành theo giấy phép MIT, không thu thập dữ liệu, không cần khóa hay đăng ký.",
+    "purposeVi": "Tách các đoạn có tiếng nói trong âm thanh để làm sạch dữ liệu, cắt đoạn trước khi nhận dạng giọng nói hoặc làm thành phần nhận biết lượt nói cho bot giọng nói, tổng đài.",
+    "featuresVi": [
+      "Độ chính xác cao trên các bài toán phát hiện tiếng nói",
+      "Nhanh: dưới 1ms cho mỗi đoạn 30ms trên một luồng CPU, ONNX có thể nhanh hơn 4-5 lần",
+      "Nhẹ: mô hình JIT khoảng 2MB",
+      "Tổng quát: huấn luyện trên hơn 6000 ngôn ngữ, chịu được nhiễu nền",
+      "Tần số lấy mẫu 8000 Hz và 16000 Hz",
+      "Di động: PyTorch, ONNX, ví dụ C++, Rust, Go, Java, C#, trình duyệt"
+    ],
+    "requirementsVi": "Python 3.8+, torch>=1.12.0; CPU hiện đại có AVX/AVX2/AVX-512 hoặc AMX; FFmpeg nếu dùng phần đọc/ghi âm thanh qua torchcodec.",
+    "installStepsVi": [
+      "Cài đặt gói kèm công cụ đọc âm thanh: `pip install silero-vad[audio]`",
+      "Hoặc cài đặt bản tối giản nếu tự nạp âm thanh: `pip install silero-vad`",
+      "Gọi load_silero_vad, read_audio và get_speech_timestamps trong Python theo ví dụ README"
+    ],
+    "cliCommand": "pip install silero-vad[audio]",
+    "usageStepsVi": [
+      "Nạp mô hình bằng load_silero_vad()",
+      "Đọc tệp âm thanh bằng read_audio('path_to_audio_file')",
+      "Lấy mốc thời gian các đoạn có tiếng nói bằng get_speech_timestamps(wav, model, return_seconds=True)",
+      "Hoặc nạp qua torch.hub với repo_or_dir='snakers4/silero-vad'"
+    ],
+    "samplePromptsVi": [
+      "Dùng Silero VAD cắt bỏ khoảng lặng trong bộ dữ liệu ghi âm trước khi huấn luyện mô hình nhận dạng giọng nói",
+      "Viết script trả về danh sách đoạn có tiếng nói theo giây cho một tệp ghi âm cuộc gọi",
+      "Tích hợp Silero VAD bản ONNX để phát hiện người dùng bắt đầu nói trong bot giọng nói"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, không telemetry, không khóa, không đăng ký",
+      "Rất nhẹ và nhanh, chạy tốt trên CPU, thiết bị biên và di động",
+      "Nhiều ví dụ đa ngôn ngữ lập trình và ONNX"
+    ],
+    "consVi": [
+      "Chỉ hỗ trợ tần số lấy mẫu 8000 Hz và 16000 Hz",
+      "Khi chỉ dùng onnx-runtime phải tự viết phần đọc/ghi âm thanh và điều chỉnh xử lý hậu kỳ",
+      "Chỉ phát hiện có tiếng nói hay không, không nhận dạng nội dung"
+    ],
+    "sourceEvidence": {
+      "pip install silero-vad[audio]": "README.md:77",
+      "pip install silero-vad": "README.md:77"
+    },
+    "meta": {
+      "id": "snakers4-silero-vad",
+      "nameVi": "Silero VAD — Mô hình phát hiện giọng nói nhẹ và nhanh",
+      "icon": "Cpu",
+      "categories": [
+        "speech_voice"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install silero-vad[audio]"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "pyannote/pyannote-audio",
+    "license": "MIT License (mã nguồn); mô hình community-1 trên Hugging Face yêu cầu chấp nhận điều kiện sử dụng",
+    "authorName": "pyannote (CNRS / pyannoteAI)",
+    "websiteUrl": "https://hf.co/pyannote",
+    "toolType": "sdk",
+    "taglineEn": "pyannote.audio is an open-source toolkit written in Python for speaker diarization.",
+    "summaryVi": "pyannote.audio là bộ công cụ Python mã nguồn mở cho bài toán phân tách người nói (speaker diarization), xác định “ai nói lúc nào” trong tệp ghi âm. Thư viện dựa trên PyTorch, đi kèm các pipeline và mô hình huấn luyện sẵn trên Hugging Face như speaker-diarization-community-1, có thể tinh chỉnh trên dữ liệu riêng. Ngoài ra hỗ trợ sẵn pipeline cao cấp precision-2 chạy trên máy chủ pyannoteAI.",
+    "purposeVi": "Gán nhãn người nói theo mốc thời gian cho biên bản cuộc họp, cuộc gọi tổng đài hoặc podcast, thường kết hợp với công cụ chuyển giọng nói thành văn bản.",
+    "featuresVi": [
+      "Pipeline community-1 mã nguồn mở chạy cục bộ, cải thiện đếm và gán người nói so với bản 3.1",
+      "Pipeline precision-2 cao cấp qua API pyannoteAI",
+      "API Python ưu tiên, chạy được trên GPU",
+      "Huấn luyện đa GPU với pytorch-lightning, tinh chỉnh trên dữ liệu riêng",
+      "Bảng đánh giá DER trên AMI, DIHARD 3, VoxConverse và nhiều bộ dữ liệu khác",
+      "Telemetry tùy chọn, cấu hình bằng PYANNOTE_METRICS_ENABLED"
+    ],
+    "requirementsVi": "Python 3.11+; ffmpeg (cho thư viện giải mã torchcodec); tài khoản Hugging Face, chấp nhận điều kiện của pyannote/speaker-diarization-community-1 và tạo access token; GPU khuyến nghị.",
+    "installStepsVi": [
+      "Cài đặt ffmpeg trên máy",
+      "Cài đặt thư viện: `pip install pyannote.audio` (hoặc dùng uv add)",
+      "Chấp nhận điều kiện sử dụng mô hình pyannote/speaker-diarization-community-1 trên Hugging Face và tạo access token tại hf.co/settings/tokens"
+    ],
+    "cliCommand": "pip install pyannote.audio",
+    "usageStepsVi": [
+      "Nạp pipeline bằng Pipeline.from_pretrained(\"pyannote/speaker-diarization-community-1\", token=...)",
+      "Chuyển pipeline sang GPU nếu có và chạy trên tệp audio.wav (xử lý cục bộ)",
+      "Duyệt output.speaker_diarization để lấy thời điểm bắt đầu, kết thúc và nhãn người nói",
+      "Tắt telemetry nếu muốn: `export PYANNOTE_METRICS_ENABLED=0`"
+    ],
+    "samplePromptsVi": [
+      "Phân tách người nói trong bản ghi cuộc họp 1 giờ và xuất bảng mốc thời gian theo từng người",
+      "Kết hợp pyannote.audio với kết quả phiên âm để tạo biên bản có ghi tên người nói",
+      "Tinh chỉnh pipeline phân tách người nói trên dữ liệu cuộc gọi tổng đài nội bộ"
+    ],
+    "prosVi": [
+      "Mã nguồn MIT, mô hình community-1 chạy cục bộ",
+      "Hiệu năng hàng đầu với bảng đánh giá công khai",
+      "Có thể tinh chỉnh trên dữ liệu riêng"
+    ],
+    "consVi": [
+      "Cần tài khoản Hugging Face, chấp nhận điều kiện mô hình và access token",
+      "Pipeline precision-2 chạy trên máy chủ pyannoteAI và cần khóa API (README nêu có tín dụng miễn phí ban đầu)",
+      "Có telemetry tùy chọn gửi số liệu sử dụng ẩn danh",
+      "Các tutorial được viết cho phiên bản cũ và cần cập nhật"
+    ],
+    "sourceEvidence": {
+      "pip install pyannote.audio": "README.md:25",
+      "export PYANNOTE_METRICS_ENABLED=0": "README.md:150"
+    },
+    "meta": {
+      "id": "pyannote-pyannote-audio",
+      "nameVi": "pyannote.audio — Bộ công cụ phân tách người nói trong âm thanh",
+      "icon": "Layers",
+      "categories": [
+        "speech_voice"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install pyannote.audio"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "idiap/coqui-ai-TTS",
+    "license": "Mozilla Public License 2.0 (mã nguồn); mô hình XTTS theo giấy phép CPML, các mô hình khác theo giấy phép riêng ghi trong TTS/.models.json",
+    "authorName": "Idiap Research Institute (bản fork của Coqui TTS)",
+    "websiteUrl": "https://coqui-tts.readthedocs.io/en/latest/",
+    "toolType": "sdk",
+    "taglineEn": "Coqui TTS is a library for advanced Text-to-Speech generation.",
+    "summaryVi": "Coqui TTS là thư viện Python chuyển văn bản thành giọng nói với mô hình huấn luyện sẵn cho hơn 1100 ngôn ngữ, kèm công cụ huấn luyện, tinh chỉnh mô hình và phân tích bộ dữ liệu. Đây là bản fork được Idiap tiếp tục bảo trì từ kho gốc coqui-ai/TTS đã ngừng phát triển, phát hành gói PyPI mới coqui-tts. Thư viện hỗ trợ XTTS v2 (17 ngôn ngữ, phát trực tuyến dưới 200ms), VITS, Tortoise, Bark và các mô hình chuyển đổi giọng nói như FreeVC, kNN-VC, OpenVoice.",
+    "purposeVi": "Tổng hợp giọng nói đa ngôn ngữ, huấn luyện hoặc tinh chỉnh mô hình TTS riêng và dựng máy chủ TTS tự lưu trữ.",
+    "featuresVi": [
+      "Mô hình huấn luyện sẵn cho hơn 1100 ngôn ngữ (bao gồm mô hình Fairseq MMS)",
+      "XTTS v2: 17 ngôn ngữ, phát trực tuyến độ trễ dưới 200ms, nhân bản giọng từ mẫu âm thanh",
+      "Nhiều kiến trúc: Tacotron2, Glow-TTS, FastPitch, VITS, Tortoise, Bark và các vocoder HiFiGAN, UnivNet",
+      "Chuyển đổi giọng nói: FreeVC, kNN-VC, OpenVoice",
+      "Công cụ huấn luyện, tinh chỉnh và phân tích bộ dữ liệu TTS",
+      "Giao diện dòng lệnh tts, API Python và máy chủ TTS qua Docker ở cổng 5002"
+    ],
+    "requirementsVi": "Python >= 3.10, < 3.15; PyTorch 2.2+, torchaudio (và torchcodec với PyTorch 2.9+) cài riêng; thử nghiệm trên Ubuntu 24.04, cũng chạy trên Mac và Windows.",
+    "installStepsVi": [
+      "Cài đặt PyTorch phù hợp phần cứng: `uv pip install torch torchaudio torchcodec --torch-backend=auto`",
+      "Cài đặt thư viện từ PyPI: `uv pip install coqui-tts`",
+      "Xem danh sách mô hình có sẵn: `tts --list_models`",
+      "Chạy thử tổng hợp giọng nói: `tts --text \"Text for TTS\" --out_path output/path/speech.wav`"
+    ],
+    "cliCommand": "tts --text \"Text for TTS\" --out_path output/path/speech.wav",
+    "usageStepsVi": [
+      "Dùng API Python: TTS(\"tts_models/multilingual/multi-dataset/xtts_v2\") rồi gọi tts_to_file với văn bản và ngôn ngữ",
+      "Chọn mô hình cụ thể bằng tham số --model_name khi chạy lệnh tts",
+      "Chạy máy chủ TTS không cần cài đặt: `docker run --rm -it -p 5002:5002 --entrypoint /bin/bash ghcr.io/idiap/coqui-tts-cpu` rồi mở http://localhost:5002",
+      "Kiểm tra giấy phép của mô hình trong TTS/.models.json trước khi dùng thương mại"
+    ],
+    "samplePromptsVi": [
+      "Cài đặt coqui-tts và tạo tệp WAV đọc một đoạn văn bản tiếng Anh bằng mô hình VITS",
+      "Dùng mô hình Fairseq vits cho một ngôn ngữ ít tài nguyên để đọc văn bản",
+      "Tinh chỉnh XTTS trên bộ dữ liệu giọng đọc riêng theo công thức mẫu trong thư mục recipes"
+    ],
+    "prosVi": [
+      "Mã nguồn MPL 2.0, được bảo trì tích cực thay cho kho gốc",
+      "Kho mô hình rất lớn, hỗ trợ hơn 1100 ngôn ngữ",
+      "Có wheel dựng sẵn cho Linux, macOS, Windows và ảnh Docker",
+      "Đầy đủ công cụ huấn luyện và tinh chỉnh"
+    ],
+    "consVi": [
+      "Mô hình XTTS dùng giấy phép riêng CPML (Coqui Public Model License); cần đọc điều khoản trước khi dùng thương mại",
+      "Từ bản 0.27.4 PyTorch không được cài kèm, phải tự cài",
+      "Một số mô hình Fairseq cần thư viện uroman (extra languages)"
+    ],
+    "sourceEvidence": {
+      "uv pip install torch torchaudio torchcodec --torch-backend=auto": "README.md:136",
+      "uv pip install coqui-tts": "README.md:142",
+      "tts --list_models": "README.md:340",
+      "tts --text \"Text for TTS\" --out_path output/path/speech.wav": "README.md:358",
+      "docker run --rm -it -p 5002:5002 --entrypoint /bin/bash ghcr.io/idiap/coqui-tts-cpu": "README.md:206"
+    },
+    "meta": {
+      "id": "idiap-coqui-ai-tts",
+      "nameVi": "Coqui TTS — Thư viện chuyển văn bản thành giọng nói hơn 1100 ngôn ngữ",
+      "icon": "Layers",
+      "categories": [
+        "speech_voice",
+        "generative_ai_multimedia"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MPL-2.0); mô hình XTTS theo giấy phép riêng CPML",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "tts --text \"Text for TTS\" --out_path output/path/speech.wav"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "2noise/ChatTTS",
+    "license": "GNU Affero General Public License v3.0 trở lên (mã nguồn); mô hình CC BY-NC 4.0 (phi thương mại)",
+    "authorName": "2noise",
+    "websiteUrl": "https://huggingface.co/2Noise/ChatTTS",
+    "toolType": "model",
+    "taglineEn": "A generative speech model for daily dialogue.",
+    "summaryVi": "ChatTTS là mô hình chuyển văn bản thành giọng nói thiết kế riêng cho hội thoại, ví dụ trợ lý LLM, hỗ trợ tiếng Anh và tiếng Trung. Mô hình có thể dự đoán và điều khiển các đặc trưng ngữ điệu chi tiết như tiếng cười, ngắt nghỉ, từ đệm, hỗ trợ nhiều người nói. Bản mã nguồn mở trên Hugging Face là mô hình nền 40.000 giờ chưa SFT, chỉ dành cho mục đích học thuật.",
+    "purposeVi": "Nghiên cứu và thử nghiệm tổng hợp giọng nói tự nhiên cho kịch bản hội thoại, như phần đọc câu trả lời của chatbot.",
+    "featuresVi": [
+      "TTS hội thoại: tối ưu cho đối thoại, hỗ trợ nhiều người nói",
+      "Điều khiển chi tiết: tiếng cười, ngắt nghỉ, từ đệm qua token như [laugh], [uv_break], [lbreak]",
+      "Lấy mẫu người nói ngẫu nhiên và lưu lại để tái tạo âm sắc",
+      "Sinh âm thanh dạng luồng (streaming)",
+      "Giao diện web và dòng lệnh đi kèm, gói PyPI ChatTTS"
+    ],
+    "requirementsVi": "Python (ví dụ Conda với Python 3.11); GPU tối thiểu 4GB VRAM cho đoạn âm thanh 30 giây; vLLM tùy chọn chỉ trên Linux.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/2noise/ChatTTS` rồi `cd ChatTTS`",
+      "Cài đặt phụ thuộc: `pip install --upgrade -r requirements.txt`",
+      "Chạy giao diện web: `python examples/web/webui.py`"
+    ],
+    "cliCommand": "python examples/cmd/run.py \"Your text 1.\" \"Your text 2.\"",
+    "usageStepsVi": [
+      "Suy luận bằng dòng lệnh, âm thanh lưu thành ./output_audio_n.mp3",
+      "Hoặc cài đặt gói `pip install ChatTTS` và gọi ChatTTS.Chat().load() rồi chat.infer(texts) trong Python",
+      "Dùng RefineTextParams với prompt như [oral_2][laugh_0][break_6] để điều khiển ngữ điệu"
+    ],
+    "samplePromptsVi": [
+      "Tạo đoạn hội thoại tiếng Anh có tiếng cười và ngắt nghỉ tự nhiên bằng ChatTTS để demo chatbot",
+      "Lấy mẫu một giọng ngẫu nhiên, lưu embedding và dùng lại cho nhiều câu trả lời",
+      "Chạy giao diện web ChatTTS để thử các tham số temperature, top_P, top_K"
+    ],
+    "prosVi": [
+      "Ngữ điệu tự nhiên cho hội thoại, điều khiển tiếng cười và ngắt nghỉ",
+      "Cài đặt đơn giản qua pip, có WebUI và CLI",
+      "Cộng đồng lớn với danh mục Awesome-ChatTTS"
+    ],
+    "consVi": [
+      "Trọng số mô hình theo CC BY-NC 4.0: chỉ dùng cho giáo dục, nghiên cứu, không được dùng thương mại",
+      "Mã nguồn AGPLv3+ yêu cầu công bố mã khi cung cấp dịch vụ qua mạng",
+      "Chỉ hỗ trợ tiếng Anh và tiếng Trung; tiếng Anh còn thử nghiệm",
+      "Độ ổn định chưa cao (lẫn người nói, chất lượng âm thanh); mô hình được cố ý thêm nhiễu tần số cao và nén chất lượng"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/2noise/ChatTTS": "README.md:88",
+      "cd ChatTTS": "README.md:89",
+      "pip install --upgrade -r requirements.txt": "README.md:95",
+      "python examples/web/webui.py": "README.md:142",
+      "python examples/cmd/run.py \"Your text 1.\" \"Your text 2.\"": "README.md:149",
+      "pip install ChatTTS": "README.md:156"
+    },
+    "meta": {
+      "id": "2noise-chattts",
+      "nameVi": "ChatTTS — Mô hình tổng hợp giọng nói cho hội thoại",
+      "icon": "MessageSquare",
+      "categories": [
+        "speech_voice",
+        "generative_ai_multimedia"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (AGPL-3.0); mô hình phi thương mại (CC BY-NC 4.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Trung"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "python examples/cmd/run.py \"Your text 1.\" \"Your text 2.\""
+        }
+      ]
+    }
+  }
+]

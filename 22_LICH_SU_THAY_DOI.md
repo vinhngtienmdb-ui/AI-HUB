@@ -4,6 +4,14 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.19 (Ngày 24-10-2026)
+- **Loại hình**: Tài nguyên dự bị đa phương tiện: giọng nói, tạo ảnh/video, thị giác & OCR, đợt 12 (21 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-12-*.json`.
+- **Giọng nói**: LiveKit Agents, Piper (GPL-3.0, từng giọng có giấy phép riêng), CosyVoice, Silero VAD, pyannote-audio, Coqui TTS (MPL-2.0; mô hình XTTS theo giấy phép CPML), ChatTTS (mã AGPLv3+, mô hình CC BY-NC 4.0).
+- **Tạo ảnh & video**: Open-Sora, FLUX (chỉ trọng số [schnell] là Apache-2.0, dòng [dev] phi thương mại), SwarmUI, chaiNNer (GPL-3.0), Wan2GP (giấy phép cộng đồng riêng), DiffSynth-Studio, HunyuanImage-2.1 (Tencent Hunyuan Community License).
+- **Thị giác & OCR**: DeepSeek-OCR, dots.mocr (trọng số có thỏa thuận riêng), SAM 3 (giấy phép riêng của Meta, cần xin quyền tải), RF-DETR (một số mô hình PML 1.0), Qwen3-VL, PaddleX, Stirling-PDF (open core).
+- Không thêm: dự án ngừng cập nhật (Forge, Real-ESRGAN, GroundingDINO, mmdetection), bản cũ đã được thay (sam2 → sam3, dots.ocr → dots.mocr, rhasspy/piper → piper1-gpl), Fish Speech (giấy phép giới hạn doanh thu, trọng số chỉ cho nghiên cứu), ComfyUI Desktop (chỉ là bộ cài của ComfyUI đã có).
+- Kho dữ liệu: 2.175 công cụ đang hiển thị, 2.234 cấu hình mẫu.
+
 ### Phiên Bản 2.1.18 (Ngày 24-10-2026)
 - **Loại hình**: Tài nguyên thị trường Việt Nam: chứng khoán, kế toán/thuế, thanh toán, đợt 11 (16 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-vn-dot-11-*.json`.
 - **Chứng khoán**: SSI FastConnect SDK chính thức (Python, Node.js, .NET), vnstock MCP server (bản npm của vietnh, bản PyPI của MaoBui2907; đều phụ thuộc thư viện vnstock có giấy phép riêng).
