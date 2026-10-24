@@ -1,0 +1,834 @@
+[
+  {
+    "repo": "github/github-mcp-server",
+    "license": "MIT",
+    "authorName": "GitHub",
+    "websiteUrl": "",
+    "toolType": "mcp",
+    "taglineEn": "The GitHub MCP Server connects AI tools directly to GitHub's platform.",
+    "summaryVi": "GitHub MCP Server là máy chủ MCP chính thức của GitHub, kết nối các công cụ AI trực tiếp với nền tảng GitHub. Nó cho phép AI agent, trợ lý và chatbot đọc kho mã và tệp mã nguồn, quản lý issue và pull request, phân tích mã và tự động hóa quy trình làm việc thông qua ngôn ngữ tự nhiên. Máy chủ có hai dạng: bản từ xa do GitHub lưu trữ và bản chạy cục bộ (Docker hoặc tự build bằng Go).",
+    "purposeVi": "Dành cho lập trình viên muốn đưa ngữ cảnh và khả năng của GitHub vào công cụ AI, từ truy vấn đơn giản bằng ngôn ngữ tự nhiên đến các luồng agent nhiều bước phức tạp.",
+    "featuresVi": [
+      "Quản lý kho mã: duyệt và truy vấn mã, tìm tệp, phân tích commit và cấu trúc dự án trên mọi repo bạn có quyền truy cập.",
+      "Tự động hóa issue & PR: tạo, cập nhật, quản lý issue và pull request; hỗ trợ phân loại lỗi và review thay đổi mã.",
+      "CI/CD & GitHub Actions: theo dõi workflow run, phân tích lỗi build, quản lý release.",
+      "Phân tích bảo mật mã: xem kết quả code scanning, cảnh báo Dependabot, secret scanning và security advisories.",
+      "Cộng tác nhóm: truy cập discussions, quản lý notifications, xem hoạt động của nhóm và tổ chức.",
+      "Cấu hình toolset: bật/tắt từng nhóm công cụ bằng `--toolsets`/`GITHUB_TOOLSETS` hoặc từng công cụ bằng `--tools` để giảm kích thước ngữ cảnh.",
+      "Chế độ chỉ đọc: cờ `--read-only` chỉ cung cấp công cụ đọc, ngăn mọi thay đổi lên repo.",
+      "Lockdown mode: lọc nội dung từ repo công khai theo quyền push của tác giả để giảm rủi ro prompt injection."
+    ],
+    "requirementsVi": "Bản từ xa cần một MCP host hỗ trợ máy chủ từ xa (VS Code 1.101+, Claude Desktop, Cursor, Windsurf...); bản cục bộ cần cài Docker (hoặc Go để build từ mã nguồn) và xác thực bằng OAuth hoặc GitHub Personal Access Token qua biến `GITHUB_PERSONAL_ACCESS_TOKEN`.",
+    "installStepsVi": [
+      "Cài [Docker](https://www.docker.com/) và đảm bảo Docker đang chạy; image máy chủ là `ghcr.io/github/github-mcp-server` (nếu lỗi khi pull, chạy `docker logout ghcr.io`).",
+      "Tạo GitHub Personal Access Token tại https://github.com/settings/personal-access-tokens/new, chỉ cấp quyền tối thiểu cần thiết (ví dụ `repo`, `read:packages`, `read:org`).",
+      "Lưu token vào biến môi trường: `export GITHUB_PAT=your_token_here` (hoặc ghi vào file `.env` và thêm `.env` vào `.gitignore`).",
+      "Thêm máy chủ vào Claude Code: `claude mcp add github -e GITHUB_PERSONAL_ACCESS_TOKEN=$GITHUB_PAT -- docker run -i --rm -e GITHUB_PERSONAL_ACCESS_TOKEN ghcr.io/github/github-mcp-server`.",
+      "Tùy chọn: giới hạn nhóm công cụ bằng biến `GITHUB_TOOLSETS` (ví dụ `repos,issues,pull_requests,actions,code_security`) hoặc bật chế độ chỉ đọc bằng `GITHUB_READ_ONLY=1`.",
+      "Với Claude Desktop và các host khác, xem hướng dẫn `docs/installation-guides/install-claude.md`; host hỗ trợ MCP từ xa có thể dùng máy chủ do GitHub lưu trữ tại `https://api.githubcopilot.com/mcp/`."
+    ],
+    "cliCommand": "claude mcp add github -e GITHUB_PERSONAL_ACCESS_TOKEN=$GITHUB_PAT -- docker run -i --rm -e GITHUB_PERSONAL_ACCESS_TOKEN ghcr.io/github/github-mcp-server",
+    "mcpJson": "{\n  \"servers\": {\n    \"github\": {\n      \"type\": \"http\",\n      \"url\": \"https://api.githubcopilot.com/mcp/\"\n    }\n  }\n}",
+    "mcpJsonClient": "VS Code (máy chủ từ xa, dùng OAuth; README dùng khóa \"servers\", không có dạng \"mcpServers\")",
+    "usageStepsVi": [
+      "Trong VS Code, bật Agent mode (cạnh ô nhập Copilot Chat) để máy chủ khởi động; trong Claude Code, máy chủ có sẵn sau lệnh `claude mcp add`.",
+      "Yêu cầu agent bằng ngôn ngữ tự nhiên, ví dụ đọc tệp trong repo, liệt kê issue hoặc tạo pull request.",
+      "Chỉ bật những toolset cần thiết (ví dụ `repos,issues,pull_requests`) để giúp LLM chọn công cụ chính xác hơn và giảm ngữ cảnh.",
+      "Dùng `--read-only` hoặc `--lockdown-mode` (Docker: `GITHUB_READ_ONLY=1`, `GITHUB_LOCKDOWN_MODE=1`) khi làm việc với repo nhạy cảm hoặc nội dung công khai không tin cậy."
+    ],
+    "samplePromptsVi": [
+      "Liệt kê các issue đang mở có nhãn \"bug\" trong repo của tôi và đề xuất thứ tự ưu tiên xử lý.",
+      "Xem lần chạy GitHub Actions gần nhất bị lỗi trên nhánh main và giải thích nguyên nhân build thất bại.",
+      "Tạo pull request từ nhánh feature/login vào main kèm mô tả tóm tắt các thay đổi."
+    ],
+    "prosVi": [
+      "Máy chủ chính thức do GitHub phát triển, có bản từ xa hỗ trợ OAuth nên cài đặt nhanh.",
+      "Bao phủ rộng API GitHub (repo, issue, PR, Actions, bảo mật, discussions...) và cho phép chọn toolset để giảm ngữ cảnh.",
+      "Có chế độ chỉ đọc và lockdown mode giúp kiểm soát rủi ro."
+    ],
+    "consVi": [
+      "Bản cục bộ cần Docker (hoặc tự build bằng Go) và token/OAuth; cần cẩn trọng khi cấp quyền cho PAT.",
+      "Lockdown mode chỉ là bộ lọc nội dung best-effort, không phải ranh giới phân quyền.",
+      "Cấu hình và mức hỗ trợ khác nhau tùy MCP host; host muốn dùng OAuth từ xa phải cấu hình GitHub App hoặc OAuth App."
+    ],
+    "sourceEvidence": {
+      "cliCommand": 230,
+      "docker logout ghcr.io": 196,
+      "export GITHUB_PAT=your_token_here": 210,
+      "claude mcp add github -e GITHUB_PERSONAL_ACCESS_TOKEN=$GITHUB_PAT -- docker run -i --rm -e GITHUB_PERSONAL_ACCESS_TOKEN ghcr.io/github/github-mcp-server": 230,
+      "GITHUB_TOOLSETS (repos,issues,pull_requests,actions,code_security)": 465,
+      "GITHUB_READ_ONLY=1": 1698,
+      "docs/installation-guides/install-claude.md": 404,
+      "https://api.githubcopilot.com/mcp/": 59,
+      "mcpJson": "55-62"
+    }
+  },
+  {
+    "repo": "supabase-community/supabase-mcp",
+    "license": "Apache-2.0",
+    "authorName": "Supabase",
+    "websiteUrl": "https://supabase.com/mcp",
+    "toolType": "mcp",
+    "taglineEn": "Connect your Supabase projects to Cursor, Claude, Windsurf, and other AI assistants.",
+    "summaryVi": "Supabase MCP Server kết nối trực tiếp các trợ lý AI như Cursor, Claude, Windsurf với dự án Supabase của bạn thông qua Model Context Protocol. Nó cho phép AI thực hiện các tác vụ như quản lý bảng, lấy cấu hình và truy vấn dữ liệu. Máy chủ được cung cấp dạng HTTP tại `https://mcp.supabase.com/mcp`, đồng thời gói `@supabase/mcp-server-supabase` cho phép dùng với MCP client của AI SDK hoặc tự host endpoint.",
+    "purposeVi": "Giúp lập trình viên dùng Supabase để AI assistant làm việc trực tiếp với dự án (bảng, cấu hình, dữ liệu) mà không phải thao tác thủ công trên dashboard.",
+    "featuresVi": [
+      "Máy chủ HTTP được host: chỉ cần URL `https://mcp.supabase.com/mcp`, client tự nhắc đăng nhập Supabase.",
+      "Thao tác dự án: quản lý bảng, lấy cấu hình và truy vấn dữ liệu.",
+      "Tùy chọn cấu hình qua URL: `project_ref`, `read_only=true`, `features` (ví dụ `database,docs`).",
+      "URL builder tương tác: tài liệu có công cụ tạo URL cấu hình sẵn.",
+      "Tích hợp AI SDK: `createToolSchemas()` cung cấp schema đầu vào/đầu ra và kiểu TypeScript cho MCP client của Vercel AI SDK.",
+      "Tự host endpoint: `createSupabaseMcpHandler()` phục vụ công cụ qua HTTP từ endpoint riêng.",
+      "Observability: truyền `observer` vào `createSupabaseMcpServer` để thu thập kết quả vòng đời request.",
+      "Hỗ trợ Supabase CLI cục bộ và self-hosted: tại `http://localhost:54321/mcp` (bộ công cụ giới hạn, không có OAuth 2.1)."
+    ],
+    "requirementsVi": "Cần tài khoản và dự án Supabase cùng một MCP client hỗ trợ máy chủ HTTP; client sẽ yêu cầu đăng nhập Supabase trong lúc thiết lập.",
+    "installStepsVi": [
+      "Đọc hướng dẫn bảo mật (security best practices) của Supabase để hiểu rủi ro khi kết nối LLM với dự án Supabase.",
+      "Làm theo tài liệu cài đặt cho công cụ AI của bạn tại https://supabase.com/docs/guides/getting-started/mcp#step-2-configure-your-ai-tool, hoặc tạo URL MCP riêng trong tab MCP connection của Supabase dashboard.",
+      "Thêm cấu hình máy chủ vào MCP client: `\"type\": \"http\"`, `\"url\": \"https://mcp.supabase.com/mcp\"` (với client không có trong tài liệu, chuyển thông tin này sang định dạng client yêu cầu).",
+      "Đăng nhập Supabase khi MCP client nhắc trong quá trình thiết lập và chọn organization chứa dự án cần làm việc.",
+      "Nếu chạy Supabase cục bộ bằng Supabase CLI, dùng máy chủ MCP tại `http://localhost:54321/mcp` (chỉ một phần công cụ, không có OAuth 2.1)."
+    ],
+    "cliCommand": "",
+    "mcpJson": "{\n  \"mcpServers\": {\n    \"supabase\": {\n      \"type\": \"http\",\n      \"url\": \"https://mcp.supabase.com/mcp\"\n    }\n  }\n}",
+    "mcpJsonClient": "Hầu hết MCP client (README: \"Most MCP clients require the following information\"); xem tài liệu setup của Supabase cho từng client",
+    "usageStepsVi": [
+      "Sau khi đăng nhập và chọn organization, yêu cầu AI làm việc với dự án Supabase bằng ngôn ngữ tự nhiên (quản lý bảng, lấy cấu hình, truy vấn dữ liệu).",
+      "Giới hạn phạm vi bằng tham số URL, ví dụ `?project_ref=<project-ref>&read_only=true&features=database,docs` để chỉ cho phép một dự án và chế độ chỉ đọc.",
+      "Xem danh sách đầy đủ công cụ và tùy chọn cấu hình tại https://supabase.com/mcp.",
+      "Tham khảo hướng dẫn \"From development to production\" để đưa thay đổi lên môi trường production an toàn."
+    ],
+    "samplePromptsVi": [
+      "Liệt kê các bảng trong dự án Supabase của tôi và mô tả cấu trúc bảng \"orders\".",
+      "Truy vấn 10 người dùng đăng ký gần nhất trong bảng \"profiles\".",
+      "Lấy URL và cấu hình của dự án Supabase hiện tại."
+    ],
+    "prosVi": [
+      "Máy chủ được host sẵn, không cần cài đặt cục bộ; xác thực bằng đăng nhập Supabase thay vì dán token.",
+      "Có chế độ chỉ đọc, giới hạn theo dự án và theo nhóm tính năng.",
+      "Mã nguồn mở Apache-2.0, có thể dùng như thư viện với AI SDK hoặc tự host endpoint."
+    ],
+    "consVi": [
+      "Kết nối LLM với dự án Supabase tiềm ẩn rủi ro bảo mật; Supabase khuyến nghị đọc hướng dẫn bảo mật trước.",
+      "Ở môi trường Supabase CLI cục bộ và self-hosted chỉ có một phần công cụ và không có OAuth 2.1."
+    ],
+    "sourceEvidence": {
+      "cliCommand": "README không có lệnh cài đặt/chạy dạng dòng lệnh cho máy chủ; chỉ có URL https://mcp.supabase.com/mcp (dòng 31)",
+      "https://supabase.com/docs/guides/getting-started/mcp#step-2-configure-your-ai-tool": 20,
+      "\"url\": \"https://mcp.supabase.com/mcp\"": 31,
+      "http://localhost:54321/mcp": 41,
+      "mcpJson": "27-34"
+    }
+  },
+  {
+    "repo": "oraios/serena",
+    "license": "Hỗn hợp theo thành phần: ứng dụng Serena theo GPL-3.0-or-later, thư viện SolidLSP (`src/solidlsp`) theo MIT; bản phân phối kết hợp (gói `serena-agent`) chịu GPL-3.0-or-later. Dòng đầu LICENSE: \"Serena Licensing Overview\". Bản phát hành đến v1.7.0 vẫn là MIT.",
+    "authorName": "Oraios AI (Jain & Panchenko IT-Berater Partnerschaft)",
+    "websiteUrl": "https://oraios.github.io/serena/02-usage/000_intro.html",
+    "toolType": "mcp",
+    "taglineEn": "The IDE for Your Coding Agent",
+    "summaryVi": "Serena cung cấp cho coding agent các công cụ truy xuất, chỉnh sửa, refactor và debug mã ở mức ký hiệu (symbol), tương tự khả năng của một IDE. Serena tích hợp với mọi client/LLM qua Model Context Protocol (MCP), dùng language server (LSP, mặc định, hơn 40 ngôn ngữ) hoặc Serena JetBrains Plugin (trả phí) làm backend. Nhờ thiết kế công cụ hướng agent, agent làm việc nhanh, hiệu quả và đáng tin cậy hơn, nhất là trên codebase lớn.",
+    "purposeVi": "Giúp coding agent như Claude Code, Codex, Gemini CLI hay trợ lý trong IDE hiểu và sửa mã theo ngữ nghĩa thay vì dựa vào số dòng hay tìm kiếm văn bản thô, giảm sai sót và tiết kiệm token trên codebase lớn, phức tạp.",
+    "featuresVi": [
+      "Truy xuất theo symbol: tìm symbol, xem outline tệp, tìm tham chiếu, khai báo, implementation và diagnostics.",
+      "Refactor: đổi tên symbol (JetBrains plugin còn hỗ trợ move, inline, xóa mã không dùng).",
+      "Chỉnh sửa theo symbol: thay thân symbol, chèn trước/sau symbol, xóa an toàn — ít lỗi và tiết kiệm token.",
+      "Debug tương tác: đặt breakpoint, xem biến, đánh giá biểu thức (chỉ với JetBrains plugin).",
+      "Hỗ trợ hơn 40 ngôn ngữ qua language server: Python, Java, TypeScript, Go, Rust, C#, PHP...",
+      "Quản lý bộ nhớ: hệ thống memory cho luồng làm việc agent dài hạn, chia sẻ giữa phiên và dự án.",
+      "Cấu hình nhiều tầng bằng YAML: toàn cục, theo lệnh khởi chạy, theo dự án, theo context và mode.",
+      "Giao diện agent dựa trên REPL: ra mắt trong Serena v2."
+    ],
+    "requirementsVi": "Cần cài uv (điều kiện tiên quyết duy nhất; lệnh cài chỉ định Python 3.13 qua `-p 3.13`); một số ngôn ngữ cần cài thêm phụ thuộc cho language server; backend JetBrains cần JetBrains IDE và plugin trả phí (có bản dùng thử).",
+    "installStepsVi": [
+      "Cài [uv](https://docs.astral.sh/uv/getting-started/installation/) — điều kiện tiên quyết duy nhất (không cài Serena qua MCP/plugin marketplace vì lệnh ở đó đã lỗi thời).",
+      "Cài Serena: `uv tool install -p 3.13 serena-agent`; sau đó lệnh `serena` sẽ có trong shell.",
+      "Khởi tạo và kiểm tra thiết lập: `serena init` (mặc định dùng backend language server; thêm `-b JetBrains` để dùng JetBrains plugin).",
+      "Cấu hình launch command trong MCP client (Claude Code, Codex, Claude Desktop, IDE...) theo hướng dẫn tại https://oraios.github.io/serena/02-usage/030_clients.html."
+    ],
+    "cliCommand": "uv tool install -p 3.13 serena-agent",
+    "mcpJson": "",
+    "mcpJsonClient": "",
+    "usageStepsVi": [
+      "Kết nối Serena với client bằng cách cung cấp launch command để client tự khởi động máy chủ MCP, hoặc tự chạy Serena ở chế độ HTTP và đưa URL cho client.",
+      "Làm theo quy trình làm việc theo dự án (project-based workflow) trong user guide của Serena.",
+      "Yêu cầu agent tìm symbol, tham chiếu, đổi tên hoặc chỉnh sửa mã — agent sẽ dùng công cụ ngữ nghĩa của Serena thay cho tìm-thay văn bản.",
+      "Tinh chỉnh công cụ đang bật, mô tả công cụ, prompt và backend ngôn ngữ bằng vài dòng YAML."
+    ],
+    "samplePromptsVi": [
+      "Tìm tất cả các chỗ tham chiếu đến hàm `calculate_total` trong dự án và đổi tên nó thành `compute_order_total`.",
+      "Cho tôi xem outline các lớp và hàm trong module thanh toán, rồi thay thân hàm xử lý hoàn tiền bằng phiên bản mới.",
+      "Liệt kê các implementation của interface `PaymentGateway` và kiểm tra diagnostics sau khi sửa."
+    ],
+    "prosVi": [
+      "Công cụ ở mức symbol giúp agent thao tác mã chính xác và tiết kiệm token hơn so với tìm-thay văn bản.",
+      "Hỗ trợ hơn 40 ngôn ngữ với backend language server miễn phí, mã nguồn mở.",
+      "Tương thích nhiều client MCP: Claude Code, Codex, Gemini CLI, Cursor, VS Code, JetBrains, Claude Desktop..."
+    ],
+    "consVi": [
+      "Ứng dụng từ v2 theo GPL-3.0-or-later (copyleft), cần lưu ý khi phân phối bản phái sinh.",
+      "Một số tính năng (move, inline, debug, type hierarchy...) chỉ có với JetBrains plugin trả phí.",
+      "Một số ngôn ngữ cần cài thêm phụ thuộc; README khuyến cáo không cài qua MCP/plugin marketplace."
+    ],
+    "sourceEvidence": {
+      "cliCommand": 227,
+      "uv tool install -p 3.13 serena-agent": 227,
+      "serena init": 239,
+      "-b JetBrains": 242,
+      "https://oraios.github.io/serena/02-usage/030_clients.html": 246
+    }
+  },
+  {
+    "repo": "modelcontextprotocol/inspector",
+    "license": "Hỗn hợp: dự án MCP đang chuyển từ MIT sang Apache-2.0 — mã mới theo Apache-2.0, tài liệu (trừ đặc tả) theo CC-BY-4.0, phần đóng góp chưa được đồng ý cấp phép lại vẫn theo MIT. Dòng đầu LICENSE: \"The MCP project is undergoing a licensing transition from the MIT License to the Apache License, Version 2.0 (\\\"Apache-2.0\\\").\"",
+    "authorName": "Model Context Protocol a Series of LF Projects, LLC.",
+    "websiteUrl": "",
+    "toolType": "software",
+    "taglineEn": "A developer tool for inspecting Model Context Protocol (MCP) servers.",
+    "summaryVi": "MCP Inspector là công cụ dành cho lập trình viên để kiểm tra (inspect) các máy chủ Model Context Protocol (MCP). Gói duy nhất `@modelcontextprotocol/inspector` cung cấp bốn cách kiểm tra: giao diện Web (Vite + React + Mantine với backend Node), CLI có thể viết script, TUI tương tác trong terminal và `mcpdo` (thử nghiệm). Đây là dòng v2 của Inspector.",
+    "purposeVi": "Giúp người phát triển máy chủ MCP kết nối, liệt kê, gọi thử và kiểm tra công cụ của server một cách trực quan hoặc tự động trong CI và vòng phản hồi nhanh cho agent.",
+    "featuresVi": [
+      "Giao diện Web: ứng dụng một trang Vite + React + Mantine với backend Node, là chế độ mặc định.",
+      "CLI: client dòng lệnh có thể viết script cho tự động hóa, CI và vòng phản hồi nhanh của agent.",
+      "TUI: giao diện terminal tương tác xây dựng bằng Ink.",
+      "mcpdo (thử nghiệm): kết nối một lần rồi chạy nhiều lệnh trên kết nối có tên thông qua daemon cục bộ.",
+      "Quản lý bí mật: lưu OAuth token, client secret và giá trị `env:` của stdio vào keychain hệ điều hành nếu có.",
+      "Smoke test máy chủ MCP: quy trình connect → list → call → assert với `--format json` và `jq` cho shell/CI.",
+      "Hỗ trợ HTTPS và Docker: phục vụ web UI qua HTTPS và chạy bằng container image."
+    ],
+    "requirementsVi": "README nêu yêu cầu Node `>=22.19.0` (trong phần Quick start cho phát triển); trên máy không có keychain, bí mật được lưu vào `~/.mcp-inspector/secrets.json` (không mã hóa nếu không cung cấp khóa).",
+    "installStepsVi": [
+      "Cài Node.js phiên bản `>=22.19.0` (yêu cầu nêu trong phần Quick start của README).",
+      "Mở giao diện web (mặc định): `npx @modelcontextprotocol/inspector`.",
+      "Hoặc dùng CLI để tự động hóa/CI: `npx @modelcontextprotocol/inspector --cli`; hoặc giao diện terminal: `npx @modelcontextprotocol/inspector --tui`.",
+      "Tùy chọn (thử nghiệm): dùng `mcpdo` để kết nối một lần rồi chạy nhiều lệnh: `npx -p @modelcontextprotocol/inspector mcpdo --help`.",
+      "Nếu cần bản v1 cũ: `npx @modelcontextprotocol/inspector@v1-latest`."
+    ],
+    "cliCommand": "npx @modelcontextprotocol/inspector",
+    "mcpJson": "",
+    "mcpJsonClient": "",
+    "usageStepsVi": [
+      "Chạy `npx @modelcontextprotocol/inspector` để mở web UI, rồi kết nối tới máy chủ MCP cần kiểm tra.",
+      "Dùng chế độ `--cli` để liệt kê và gọi thử công cụ của máy chủ trong script hoặc CI (xem hướng dẫn \"Smoke-testing an MCP server\").",
+      "Dùng `--tui` khi muốn kiểm tra tương tác ngay trong terminal.",
+      "Cấu hình máy chủ cần kết nối và định dạng tệp cấu hình theo tài liệu \"MCP server configuration\" (`--config` / `--catalog`)."
+    ],
+    "samplePromptsVi": [
+      "Dùng MCP Inspector CLI kết nối tới máy chủ MCP của tôi và liệt kê toàn bộ tools kèm schema đầu vào.",
+      "Gọi thử tool `search` của máy chủ MCP qua Inspector CLI với `--format json` và kiểm tra kết quả trả về.",
+      "Viết script smoke test trong CI dùng MCP Inspector để connect, list, call và assert máy chủ MCP của dự án."
+    ],
+    "prosVi": [
+      "Một gói duy nhất cung cấp cả Web UI, CLI, TUI và mcpdo, chạy ngay bằng `npx`.",
+      "CLI phù hợp cho tự động hóa, CI và vòng phản hồi nhanh của agent.",
+      "Lưu bí mật trong keychain hệ điều hành theo mặc định."
+    ],
+    "consVi": [
+      "Trên máy không có keychain (Linux không có libsecret, SSH, container...), bí mật lưu ở `~/.mcp-inspector/secrets.json` không mã hóa nếu không cung cấp khóa.",
+      "Nâng cấp từ v1 cần đọc hướng dẫn di chuyển (đổi cờ CLI, tách `--config`/`--catalog`, tăng phiên bản Node); `mcpdo` vẫn đang thử nghiệm.",
+      "Giấy phép hỗn hợp (Apache-2.0/MIT/CC-BY-4.0) do đang trong giai đoạn chuyển đổi."
+    ],
+    "sourceEvidence": {
+      "cliCommand": 13,
+      ">=22.19.0": 28,
+      "npx @modelcontextprotocol/inspector": 13,
+      "npx @modelcontextprotocol/inspector --cli": 14,
+      "npx @modelcontextprotocol/inspector --tui": 15,
+      "npx -p @modelcontextprotocol/inspector mcpdo --help": 16,
+      "npx @modelcontextprotocol/inspector@v1-latest": 24
+    }
+  },
+  {
+    "repo": "anthropics/skills",
+    "license": "Hỗn hợp (mixed) — không có file LICENSE ở thư mục gốc. Phần lớn skill có skills/<tên>/LICENSE.txt là \"Apache License, Version 2.0\"; riêng skills/docx, skills/pdf, skills/pptx, skills/xlsx là source-available, độc quyền, dòng đầu LICENSE.txt: \"© 2025 Anthropic, PBC. All rights reserved.\"",
+    "authorName": "Anthropic",
+    "websiteUrl": "https://support.claude.com/en/articles/12512176-what-are-skills",
+    "toolType": "skill",
+    "taglineEn": "Skills are folders of instructions, scripts, and resources that Claude loads dynamically to improve performance on specialized tasks.",
+    "summaryVi": "Đây là kho skill chính thức của Anthropic dành cho Claude. Mỗi skill là một thư mục chứa hướng dẫn, script và tài nguyên với tệp `SKILL.md` mà Claude nạp động để làm tốt hơn các tác vụ chuyên biệt. Kho bao gồm các skill từ sáng tạo (nghệ thuật, âm nhạc, thiết kế), kỹ thuật (kiểm thử web app, tạo MCP server) đến quy trình doanh nghiệp, cùng đặc tả Agent Skills và mẫu skill.",
+    "purposeVi": "Giúp Claude hoàn thành các tác vụ cụ thể một cách lặp lại được, ví dụ tạo tài liệu theo bộ nhận diện thương hiệu công ty, phân tích dữ liệu theo quy trình riêng của tổ chức hay tự động hóa việc cá nhân. Dành cho người dùng Claude Code, Claude.ai và Claude API muốn dùng sẵn hoặc học cách tự viết skill.",
+    "featuresVi": [
+      "Kho skill mẫu: các skill về Sáng tạo & Thiết kế, Phát triển & Kỹ thuật, Doanh nghiệp & Truyền thông và Tài liệu.",
+      "Skill tài liệu: các skill `docx`, `pdf`, `pptx`, `xlsx` đang vận hành tính năng tạo và chỉnh sửa tài liệu của Claude.",
+      "Plugin marketplace cho Claude Code: đăng ký kho này làm marketplace và cài bộ `document-skills` hoặc `example-skills`.",
+      "Đặc tả Agent Skills: thư mục `./spec` chứa đặc tả chuẩn Agent Skills.",
+      "Mẫu skill: thư mục `./template` làm điểm khởi đầu để tạo skill mới.",
+      "Định dạng đơn giản: một skill chỉ cần thư mục với tệp `SKILL.md` có YAML frontmatter gồm `name` và `description`.",
+      "Đa nền tảng: dùng được trong Claude Code, Claude.ai (gói trả phí) và qua Claude API."
+    ],
+    "requirementsVi": "Cần Claude Code để cài qua plugin marketplace; trên Claude.ai các skill mẫu có sẵn cho gói trả phí; hoặc dùng qua Claude API.",
+    "installStepsVi": [
+      "Mở Claude Code và đăng ký kho này làm plugin marketplace: `/plugin marketplace add anthropics/skills`",
+      "Chọn `Browse and install plugins`, sau đó chọn `anthropic-agent-skills`.",
+      "Chọn `document-skills` hoặc `example-skills`, rồi chọn `Install now`.",
+      "Hoặc cài trực tiếp plugin: `/plugin install document-skills@anthropic-agent-skills` hoặc `/plugin install example-skills@anthropic-agent-skills`"
+    ],
+    "cliCommand": "/plugin marketplace add anthropics/skills",
+    "mcpJson": "",
+    "mcpJsonClient": "",
+    "usageStepsVi": [
+      "Sau khi cài plugin, chỉ cần nhắc tên skill trong yêu cầu gửi Claude Code để sử dụng.",
+      "Ví dụ với plugin `document-skills`: \"Use the PDF skill to extract the form fields from `path/to/some-file.pdf`\".",
+      "Để tạo skill riêng, tạo một thư mục chứa `SKILL.md` với frontmatter `name` và `description`, có thể bắt đầu từ template-skill.",
+      "Trên Claude.ai hoặc Claude API, làm theo hướng dẫn \"Using skills in Claude\" và \"Skills API Quickstart\" được liên kết trong README."
+    ],
+    "samplePromptsVi": [
+      "Dùng skill PDF để trích xuất các trường biểu mẫu từ tệp `hopdong.pdf`.",
+      "Dùng skill xlsx để tạo bảng tính tổng hợp doanh thu theo quý.",
+      "Dùng skill mcp-builder để giúp tôi tạo một MCP server mới."
+    ],
+    "prosVi": [
+      "Cài nhanh vào Claude Code bằng lệnh plugin marketplace.",
+      "Gồm cả các skill tài liệu đang chạy trong sản phẩm thực tế của Claude, làm tham chiếu cho skill phức tạp.",
+      "Có đặc tả và template giúp tự tạo skill dễ dàng."
+    ],
+    "consVi": [
+      "Các skill chỉ nhằm mục đích minh họa và giáo dục; hành vi thực tế trong Claude có thể khác.",
+      "Các skill tài liệu (docx, pdf, pptx, xlsx) là source-available, không phải mã nguồn mở."
+    ],
+    "sourceEvidence": {
+      "/plugin marketplace add anthropics/skills": "anthropics_skills/README.md:36",
+      "/plugin install document-skills@anthropic-agent-skills": "anthropics_skills/README.md:47",
+      "/plugin install example-skills@anthropic-agent-skills": "anthropics_skills/README.md:48",
+      "Browse and install plugins / anthropic-agent-skills / Install now": "anthropics_skills/README.md:40-43",
+      "license Apache (đa số skill)": "skills/<tên>/LICENSE.txt dòng 2 (git show HEAD), vd skills/skill-creator/LICENSE.txt",
+      "license độc quyền": "skills/docx/LICENSE.txt:1 (cũng pdf, pptx, xlsx); README.md:20"
+    }
+  },
+  {
+    "repo": "anthropics/claude-code",
+    "license": "Độc quyền (proprietary). Dòng đầu LICENSE.md: \"© Anthropic PBC. All rights reserved. Use is subject to Anthropic's [Commercial Terms of Service](https://www.anthropic.com/legal/commercial-terms).\"",
+    "authorName": "Anthropic",
+    "websiteUrl": "https://code.claude.com/docs/en/overview",
+    "toolType": "agent",
+    "taglineEn": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows -- all through natural language commands.",
+    "summaryVi": "Claude Code là công cụ lập trình dạng agent của Anthropic chạy ngay trong terminal, hiểu codebase của bạn. Nó giúp lập trình nhanh hơn bằng cách thực thi các tác vụ thường ngày, giải thích code phức tạp và xử lý quy trình git, tất cả qua lệnh ngôn ngữ tự nhiên. Có thể dùng trong terminal, IDE hoặc gắn thẻ @claude trên GitHub.",
+    "purposeVi": "Dành cho lập trình viên muốn tăng tốc công việc với mã nguồn bằng cách giao các tác vụ lặp lại, giải thích code và thao tác git cho AI qua ngôn ngữ tự nhiên.",
+    "featuresVi": [
+      "Hiểu codebase: đọc và nắm bắt toàn bộ mã nguồn dự án.",
+      "Thực thi tác vụ: tự động làm các công việc lập trình thường ngày.",
+      "Giải thích code: diễn giải các đoạn code phức tạp.",
+      "Quy trình git: xử lý các thao tác git bằng ngôn ngữ tự nhiên.",
+      "Đa môi trường: dùng trong terminal, IDE hoặc tag @claude trên GitHub.",
+      "Plugin: kho có sẵn nhiều plugin mở rộng với lệnh và agent tùy chỉnh.",
+      "Báo lỗi tích hợp: lệnh `/bug` để gửi phản hồi trực tiếp trong Claude Code."
+    ],
+    "requirementsVi": "README chỉ nêu huy hiệu Node.js 18+ (liên quan cách cài qua npm, hiện đã ngừng khuyến nghị); các yêu cầu khác xem tài liệu setup chính thức.",
+    "installStepsVi": [
+      "macOS/Linux (khuyến nghị cài đặt): `curl -fsSL https://claude.ai/install.sh | bash`",
+      "Hoặc dùng Homebrew (macOS/Linux): `brew install --cask claude-code`",
+      "Windows (khuyến nghị): `irm https://claude.ai/install.ps1 | iex`; hoặc WinGet: `winget install Anthropic.ClaudeCode`",
+      "Di chuyển vào thư mục dự án và chạy `claude`."
+    ],
+    "cliCommand": "curl -fsSL https://claude.ai/install.sh | bash",
+    "mcpJson": "",
+    "mcpJsonClient": "",
+    "usageStepsVi": [
+      "Mở terminal, chuyển tới thư mục dự án và chạy `claude`.",
+      "Ra lệnh bằng ngôn ngữ tự nhiên để thực thi tác vụ, giải thích code hoặc xử lý git.",
+      "Mở rộng chức năng bằng các plugin trong thư mục plugins của kho.",
+      "Dùng lệnh `/bug` để báo lỗi trực tiếp từ Claude Code."
+    ],
+    "samplePromptsVi": [
+      "Giải thích cách hoạt động của module xác thực trong dự án này.",
+      "Sửa các test đang lỗi rồi commit thay đổi với thông điệp phù hợp.",
+      "Rebase nhánh hiện tại lên main và xử lý xung đột."
+    ],
+    "prosVi": [
+      "Có nhiều cách cài đặt chính thức cho macOS, Linux và Windows.",
+      "Hoạt động trong terminal, IDE và trên GitHub.",
+      "Có hệ thống plugin mở rộng lệnh và agent."
+    ],
+    "consVi": [
+      "Phần mềm độc quyền, sử dụng theo Điều khoản Dịch vụ Thương mại của Anthropic.",
+      "Thu thập dữ liệu phản hồi và sử dụng (như việc chấp nhận/từ chối code, dữ liệu hội thoại liên quan).",
+      "Cài đặt qua npm đã bị ngừng khuyến nghị (deprecated)."
+    ],
+    "sourceEvidence": {
+      "curl -fsSL https://claude.ai/install.sh | bash": "anthropics_claude-code/README.md:23",
+      "brew install --cask claude-code": "anthropics_claude-code/README.md:28",
+      "irm https://claude.ai/install.ps1 | iex": "anthropics_claude-code/README.md:33",
+      "winget install Anthropic.ClaudeCode": "anthropics_claude-code/README.md:38",
+      "claude": "anthropics_claude-code/README.md:46",
+      "license": "LICENSE.md:1 (git show HEAD:LICENSE.md)"
+    }
+  },
+  {
+    "repo": "openai/codex",
+    "license": "Apache License 2.0",
+    "authorName": "OpenAI",
+    "websiteUrl": "https://developers.openai.com/codex",
+    "toolType": "agent",
+    "taglineEn": "Codex CLI is a coding agent from OpenAI that runs locally on your computer.",
+    "summaryVi": "Codex CLI là agent lập trình của OpenAI chạy cục bộ trên máy tính của bạn. Ngoài bản CLI, Codex còn có bản tích hợp vào trình soạn thảo (VS Code, Cursor, Windsurf), ứng dụng desktop (chạy `codex app`) và agent trên đám mây Codex Web tại chatgpt.com/codex.",
+    "purposeVi": "Dành cho lập trình viên muốn có một agent AI hỗ trợ viết và hiểu code ngay trên máy cục bộ, có thể dùng kèm gói ChatGPT (Plus, Pro, Business, Edu, Enterprise) hoặc API key.",
+    "featuresVi": [
+      "Chạy cục bộ: agent lập trình hoạt động ngay trên máy tính của bạn.",
+      "Đăng nhập bằng ChatGPT: dùng Codex trong gói Plus, Pro, Business, Edu hoặc Enterprise.",
+      "Hỗ trợ API key: có thể dùng với API key sau khi thiết lập thêm.",
+      "Tích hợp IDE: có bản cài cho VS Code, Cursor, Windsurf.",
+      "Ứng dụng desktop: chạy `codex app` để dùng giao diện desktop.",
+      "Chế độ không tương tác: lệnh `codex exec` cho chạy tự động.",
+      "Viết bằng Rust: hỗ trợ cấu hình log qua biến môi trường `RUST_LOG`."
+    ],
+    "requirementsVi": "Theo docs/install.md: macOS 12+, Ubuntu 20.04+/Debian 10+ hoặc Windows 11 qua WSL2; RAM tối thiểu 4 GB (khuyến nghị 8 GB); Git 2.23+ (tùy chọn); cần tài khoản ChatGPT (gói Plus, Pro, Business, Edu hoặc Enterprise) hoặc OpenAI API key.",
+    "installStepsVi": [
+      "Trên Mac hoặc Linux, chạy: `curl -fsSL https://chatgpt.com/codex/install.sh | sh`",
+      "Trên Windows, chạy: `powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"`",
+      "Hoặc cài bằng trình quản lý gói: `npm install -g @openai/codex` hoặc `brew install --cask codex`",
+      "Chạy `codex` để bắt đầu và chọn **Sign in with ChatGPT**."
+    ],
+    "cliCommand": "curl -fsSL https://chatgpt.com/codex/install.sh | sh",
+    "mcpJson": "",
+    "mcpJsonClient": "",
+    "usageStepsVi": [
+      "Chạy `codex` trong terminal để khởi động.",
+      "Chọn **Sign in with ChatGPT** để dùng theo gói ChatGPT, hoặc thiết lập API key theo tài liệu.",
+      "Nhập yêu cầu bằng ngôn ngữ tự nhiên trong giao diện TUI, ví dụ \"explain this codebase to me\".",
+      "Dùng `codex exec` cho chế độ không tương tác, hoặc `codex app` để mở ứng dụng desktop."
+    ],
+    "samplePromptsVi": [
+      "Giải thích cấu trúc codebase này cho tôi.",
+      "Thêm unit test cho hàm xử lý thanh toán trong dự án.",
+      "Tìm và sửa lỗi khiến lệnh build thất bại."
+    ],
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép Apache-2.0.",
+      "Dùng được với gói ChatGPT hiện có, không bắt buộc API key.",
+      "Nhiều cách cài: script, npm, Homebrew, hoặc tải binary từ GitHub Release."
+    ],
+    "consVi": [
+      "Tài liệu yêu cầu hệ thống ghi Windows 11 cần chạy qua WSL2.",
+      "Dùng với API key cần thiết lập bổ sung."
+    ],
+    "sourceEvidence": {
+      "curl -fsSL https://chatgpt.com/codex/install.sh | sh": "openai_codex/README.md:19",
+      "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"": "openai_codex/README.md:25",
+      "npm install -g @openai/codex": "openai_codex/README.md:42",
+      "brew install --cask codex": "openai_codex/README.md:47",
+      "codex / Sign in with ChatGPT": "openai_codex/README.md:50,70",
+      "requirements": "docs/install.md:7-9 (git show HEAD:docs/install.md)",
+      "license": "LICENSE:1-2; README.md:81"
+    }
+  },
+  {
+    "repo": "google-gemini/gemini-cli",
+    "license": "Apache License 2.0",
+    "authorName": "Google",
+    "websiteUrl": "https://geminicli.com/docs/",
+    "toolType": "agent",
+    "taglineEn": "Gemini CLI is an open-source AI agent that brings the power of Gemini directly into your terminal.",
+    "summaryVi": "Gemini CLI là agent AI mã nguồn mở của Google, đưa sức mạnh của Gemini trực tiếp vào terminal. Công cụ cung cấp cách truy cập Gemini gọn nhẹ, là con đường ngắn nhất từ prompt của bạn tới mô hình. Lưu ý: README cho biết người dùng gói miễn phí và Google One đã được chuyển sang Antigravity CLI từ 18/06/2026.",
+    "purposeVi": "Giúp lập trình viên truy vấn, chỉnh sửa codebase lớn, gỡ lỗi và tự động hóa tác vụ vận hành bằng ngôn ngữ tự nhiên ngay trong terminal; bản Vertex AI hướng tới đội ngũ doanh nghiệp.",
+    "featuresVi": [
+      "Hiểu và sinh code: truy vấn và chỉnh sửa codebase lớn.",
+      "Đa phương thức: tạo ứng dụng mới từ PDF, hình ảnh hoặc bản phác thảo.",
+      "Gỡ lỗi: xử lý sự cố bằng ngôn ngữ tự nhiên.",
+      "Tự động hóa: truy vấn pull request, xử lý rebase phức tạp.",
+      "Tích hợp MCP: kết nối MCP server qua `~/.gemini/settings.json`, ví dụ tạo media với Imagen, Veo, Lyria.",
+      "Chế độ không tương tác: chạy trong script với `-p`, xuất `--output-format json` hoặc `stream-json`.",
+      "Ngữ cảnh & checkpoint: tệp GEMINI.md, lưu và khôi phục hội thoại, token caching.",
+      "Nhiều kênh phát hành: preview, stable (latest) và nightly."
+    ],
+    "requirementsVi": "Cần npm/Node.js (hoặc Homebrew, MacPorts, Anaconda) để cài; xác thực bằng tài khoản Google (OAuth), Gemini API key (`GEMINI_API_KEY`) hoặc Vertex AI (`GOOGLE_API_KEY` với `GOOGLE_GENAI_USE_VERTEXAI=true`); giấy phép Code Assist trả phí cần đặt `GOOGLE_CLOUD_PROJECT`.",
+    "installStepsVi": [
+      "Chạy thử ngay không cần cài: `npx @google/gemini-cli`",
+      "Cài toàn cục bằng npm: `npm install -g @google/gemini-cli`",
+      "Hoặc dùng Homebrew (macOS/Linux): `brew install gemini-cli`; hoặc MacPorts (macOS): `sudo port install gemini-cli`",
+      "Thiết lập xác thực, ví dụ với API key: `export GEMINI_API_KEY=\"YOUR_API_KEY\"`",
+      "Chạy `gemini` trong thư mục dự án."
+    ],
+    "cliCommand": "npm install -g @google/gemini-cli",
+    "mcpJson": "",
+    "mcpJsonClient": "",
+    "usageStepsVi": [
+      "Chạy `gemini` trong thư mục hiện tại để bắt đầu phiên tương tác.",
+      "Thêm nhiều thư mục bằng `gemini --include-directories ../lib,../docs` hoặc chọn mô hình với `gemini -m gemini-2.5-flash`.",
+      "Dùng chế độ script: `gemini -p \"Explain the architecture of this codebase\"`, thêm `--output-format json` để có đầu ra có cấu trúc.",
+      "Cấu hình MCP server trong `~/.gemini/settings.json` rồi gọi, ví dụ `@github List my open pull requests`."
+    ],
+    "samplePromptsVi": [
+      "Viết cho tôi một Discord bot trả lời câu hỏi dựa trên tệp FAQ.md tôi cung cấp.",
+      "Tóm tắt tất cả thay đổi được đưa vào ngày hôm qua.",
+      "Giải thích kiến trúc của codebase này."
+    ],
+    "prosVi": [
+      "Mã nguồn mở hoàn toàn theo Apache 2.0.",
+      "Nhiều cách cài đặt và có thể chạy ngay bằng npx.",
+      "Hỗ trợ MCP server và chế độ không tương tác cho tự động hóa."
+    ],
+    "consVi": [
+      "README ghi Gemini CLI chưa được tối ưu cho các mô hình Gemini mới nhất (kể cả Gemini 4 Argon); Google khuyên dùng Antigravity CLI.",
+      "Người dùng gói miễn phí và Google One đã bị chuyển sang Antigravity CLI từ 18/06/2026."
+    ],
+    "sourceEvidence": {
+      "npm install -g @google/gemini-cli": "google-gemini_gemini-cli/README.md:48",
+      "npx @google/gemini-cli": "google-gemini_gemini-cli/README.md:42",
+      "brew install gemini-cli": "google-gemini_gemini-cli/README.md:54",
+      "sudo port install gemini-cli": "google-gemini_gemini-cli/README.md:60",
+      "export GEMINI_API_KEY=\"YOUR_API_KEY\"": "google-gemini_gemini-cli/README.md:149",
+      "gemini": "google-gemini_gemini-cli/README.md:186",
+      "license": "LICENSE:2-3; README.md:358"
+    }
+  },
+  {
+    "repo": "microsoft/markitdown",
+    "license": "MIT License",
+    "authorName": "Microsoft",
+    "websiteUrl": "",
+    "toolType": "software",
+    "taglineEn": "MarkItDown is a lightweight Python utility for converting various files to Markdown for use with LLMs and related text analysis pipelines.",
+    "summaryVi": "MarkItDown là tiện ích Python gọn nhẹ của Microsoft giúp chuyển đổi nhiều loại tệp sang Markdown để dùng với LLM và các pipeline phân tích văn bản. Công cụ tập trung giữ lại cấu trúc tài liệu quan trọng như tiêu đề, danh sách, bảng, liên kết. Hỗ trợ PDF, PowerPoint, Word, Excel, hình ảnh, âm thanh, HTML, CSV/JSON/XML, ZIP, URL YouTube, EPub và nhiều định dạng khác.",
+    "purposeVi": "Giúp nhà phát triển và người xây dựng ứng dụng AI đưa nội dung tài liệu vào LLM dưới dạng Markdown, định dạng mà LLM hiểu tốt và tiết kiệm token.",
+    "featuresVi": [
+      "Đa định dạng: chuyển PDF, PowerPoint, Word, Excel, HTML, CSV, JSON, XML, ZIP, EPub sang Markdown.",
+      "Hình ảnh & âm thanh: trích metadata EXIF, OCR và chuyển giọng nói thành văn bản.",
+      "Dòng lệnh: `markitdown path-to-file.pdf -o document.md` hoặc nhận dữ liệu qua pipe.",
+      "Python API: `MarkItDown().convert(...)` trả về `result.markdown`.",
+      "Phụ thuộc tùy chọn: cài riêng theo định dạng như `[pdf]`, `[docx]`, `[pptx]`, `[xlsx]`, `[outlook]`.",
+      "Plugin bên thứ ba: bật bằng `--use-plugins`, có plugin `markitdown-ocr` dùng LLM Vision.",
+      "Tích hợp Azure: Azure Document Intelligence và Azure Content Understanding cho chất lượng cao hơn.",
+      "Mô tả ảnh bằng LLM: truyền `llm_client` và `llm_model` để mô tả ảnh trong pptx và tệp ảnh."
+    ],
+    "requirementsVi": "Cần Python 3.10 đến 3.14, khuyến nghị dùng môi trường ảo (venv, uv hoặc Anaconda); các tính năng Azure cần endpoint và API key/credential Azure, mô tả ảnh bằng LLM cần client OpenAI hoặc tương thích.",
+    "installStepsVi": [
+      "Tạo môi trường ảo: `python -m venv .venv`",
+      "Kích hoạt môi trường: `source .venv/bin/activate`",
+      "Cài MarkItDown với mọi phụ thuộc tùy chọn: `pip install 'markitdown[all]'`",
+      "Hoặc cài từ mã nguồn: `git clone git@github.com:microsoft/markitdown.git`, `cd markitdown`, `pip install -e 'packages/markitdown[all]'`"
+    ],
+    "cliCommand": "pip install 'markitdown[all]'",
+    "mcpJson": "",
+    "mcpJsonClient": "",
+    "usageStepsVi": [
+      "Chuyển một tệp sang Markdown: `markitdown path-to-file.pdf > document.md`.",
+      "Chỉ định tệp đầu ra bằng `-o`: `markitdown path-to-file.pdf -o document.md`, hoặc pipe: `cat path-to-file.pdf | markitdown`.",
+      "Trong Python: `md = MarkItDown(enable_plugins=False)`, `result = md.convert(\"test.xlsx\")`, rồi `print(result.markdown)`.",
+      "Bật plugin bên thứ ba với `markitdown --use-plugins path-to-file.pdf`."
+    ],
+    "samplePromptsVi": [
+      "Chuyển tệp báo cáo PDF này sang Markdown để đưa vào LLM.",
+      "Chuyển bảng tính Excel doanh thu sang bảng Markdown.",
+      "Trích xuất nội dung bản trình chiếu PowerPoint thành Markdown giữ nguyên tiêu đề và danh sách."
+    ],
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép MIT, cài dễ dàng qua pip.",
+      "Giữ lại cấu trúc tài liệu (tiêu đề, danh sách, bảng, liên kết) ở dạng Markdown thân thiện với LLM và tiết kiệm token.",
+      "Hỗ trợ nhiều định dạng và mở rộng được bằng plugin."
+    ],
+    "consVi": [
+      "Đầu ra hướng tới công cụ phân tích văn bản, có thể không phù hợp cho chuyển đổi tài liệu độ trung thực cao dành cho người đọc.",
+      "Thực hiện I/O với quyền của tiến trình hiện tại, cần làm sạch đầu vào trong môi trường không tin cậy.",
+      "Chuyển đổi qua Azure Content Understanding/Document Intelligence phát sinh chi phí API."
+    ],
+    "sourceEvidence": {
+      "pip install 'markitdown[all]'": "microsoft_markitdown/README.md:62",
+      "python -m venv .venv": "microsoft_markitdown/README.md:41",
+      "source .venv/bin/activate": "microsoft_markitdown/README.md:42",
+      "git clone git@github.com:microsoft/markitdown.git": "microsoft_markitdown/README.md:65",
+      "cd markitdown": "microsoft_markitdown/README.md:66",
+      "pip install -e 'packages/markitdown[all]'": "microsoft_markitdown/README.md:67",
+      "requirements Python 3.10-3.14": "microsoft_markitdown/README.md:36",
+      "license": "LICENSE:1-3"
+    }
+  },
+  {
+    "repo": "docling-project/docling",
+    "license": "MIT License",
+    "authorName": "The Docling Contributors (dự án thuộc LF AI & Data Foundation, khởi xướng bởi nhóm AI for knowledge tại IBM Research Zurich)",
+    "websiteUrl": "https://docling-project.github.io/docling/",
+    "toolType": "sdk",
+    "taglineEn": "Docling simplifies document processing by parsing diverse formats — including advanced PDF understanding — and providing seamless integrations with the generative AI ecosystem.",
+    "summaryVi": "Docling là thư viện Python giúp đơn giản hóa việc xử lý tài liệu bằng cách phân tích nhiều định dạng như PDF, DOCX, PPTX, XLSX, HTML, hình ảnh, âm thanh và nhiều loại khác. Công cụ có khả năng hiểu PDF nâng cao (bố cục trang, thứ tự đọc, cấu trúc bảng, công thức, mã nguồn) và xuất ra Markdown, HTML, DocTags hoặc JSON không mất dữ liệu. Docling có thể chạy cục bộ, đi kèm CLI, MCP server và tích hợp sẵn với LangChain, LlamaIndex, Crew AI, Haystack.",
+    "purposeVi": "Docling giải quyết bài toán chuyển đổi tài liệu đa định dạng (đặc biệt là PDF phức tạp và tài liệu scan) thành dữ liệu có cấu trúc để đưa vào các ứng dụng AI tạo sinh. Phù hợp với lập trình viên xây dựng ứng dụng RAG/agent và tổ chức cần xử lý dữ liệu nhạy cảm trong môi trường cục bộ, không kết nối mạng.",
+    "featuresVi": [
+      "Đa định dạng đầu vào: phân tích PDF, DOCX, PPTX, XLSX, HTML, EPUB, Apple Pages/Numbers/Keynote, WAV, MP3, WebVTT, email (EML, MSG), hình ảnh, LaTeX, văn bản thuần và nhiều định dạng khác",
+      "Hiểu PDF nâng cao: nhận diện bố cục trang, thứ tự đọc, cấu trúc bảng, mã, công thức và phân loại hình ảnh",
+      "Định dạng DoclingDocument: biểu diễn tài liệu thống nhất, giàu thông tin",
+      "Nhiều định dạng xuất: Markdown, HTML, WebVTT, DocLang, DocTags và JSON không mất dữ liệu",
+      "OCR mạnh mẽ: hỗ trợ OCR rộng cho PDF scan và hình ảnh",
+      "Mô hình ngôn ngữ thị giác: hỗ trợ VLM như GraniteDocling",
+      "Âm thanh và video: nhận dạng giọng nói tự động (ASR), phân tích video kèm bản ghi và khung hình đại diện",
+      "Tích hợp hệ sinh thái: LangChain, LlamaIndex, Crew AI, Haystack, MCP server và API server (docling-serve)"
+    ],
+    "requirementsVi": "Cần Python 3.10 trở lên (hỗ trợ Python 3.9 đã bị loại bỏ từ phiên bản 2.70.0); chạy được trên macOS, Linux và Windows với kiến trúc x86_64 và arm64.",
+    "installStepsVi": [
+      "Chuẩn bị môi trường Python 3.10 trở lên trên macOS, Linux hoặc Windows.",
+      "Cài đặt gói Docling bằng lệnh `pip install docling`.",
+      "Kiểm tra cài đặt bằng cách chuyển đổi thử một tài liệu qua CLI: `docling https://arxiv.org/pdf/2206.01062` (lệnh sẽ tạo file .md trong thư mục hiện tại).",
+      "Xem thêm hướng dẫn cài đặt chi tiết tại https://docling-project.github.io/docling/getting_started/installation/."
+    ],
+    "cliCommand": "pip install docling",
+    "mcpJson": "",
+    "mcpJsonClient": "",
+    "usageStepsVi": [
+      "Chuyển đổi nhanh tài liệu qua CLI: `docling https://arxiv.org/pdf/2206.01062` để tạo file Markdown chứa nội dung có cấu trúc.",
+      "Dùng mô hình VLM GraniteDocling qua CLI: `docling --pipeline vlm --vlm-model granite_docling https://arxiv.org/pdf/2206.01062`.",
+      "Trong Python (cách được khuyến nghị): tạo `DocumentConverter()`, gọi `converter.convert(source)` với đường dẫn cục bộ hoặc URL.",
+      "Xuất kết quả sang Markdown bằng `result.document.export_to_markdown()` hoặc các định dạng khác như HTML, JSON.",
+      "Kết nối Docling với agent qua MCP server hoặc chạy như dịch vụ bằng API server (docling-serve) theo tài liệu chính thức."
+    ],
+    "samplePromptsVi": [
+      "Chuyển file báo cáo PDF này sang Markdown, giữ nguyên cấu trúc bảng và thứ tự đọc.",
+      "Trích xuất nội dung từ file PPTX và DOCX trong thư mục này rồi xuất ra JSON để đưa vào hệ thống RAG.",
+      "OCR các trang PDF scan này và xuất văn bản ra định dạng Markdown."
+    ],
+    "prosVi": [
+      "Hỗ trợ rất nhiều định dạng đầu vào (văn bản, bảng tính, trình chiếu, hình ảnh, âm thanh, video) và nhiều định dạng xuất.",
+      "Có thể chạy hoàn toàn cục bộ, phù hợp dữ liệu nhạy cảm và môi trường air-gapped.",
+      "Giấy phép MIT, tích hợp sẵn với LangChain, LlamaIndex, Crew AI, Haystack và có MCP server."
+    ],
+    "consVi": [
+      "Không còn hỗ trợ Python 3.9 (cần Python 3.10 trở lên).",
+      "Mã nguồn theo MIT nhưng các mô hình đi kèm có giấy phép riêng, cần kiểm tra giấy phép của từng mô hình."
+    ],
+    "sourceEvidence": {
+      "pip install docling": "docling-project_docling/README.md:70",
+      "docling https://arxiv.org/pdf/2206.01062": "docling-project_docling/README.md:82"
+    }
+  },
+  {
+    "repo": "openai/openai-agents-python",
+    "license": "MIT License",
+    "authorName": "OpenAI",
+    "websiteUrl": "https://openai.github.io/openai-agents-python/",
+    "toolType": "sdk",
+    "taglineEn": "The OpenAI Agents SDK is a lightweight yet powerful framework for building multi-agent workflows.",
+    "summaryVi": "OpenAI Agents SDK là framework Python gọn nhẹ nhưng mạnh mẽ để xây dựng các quy trình làm việc đa tác tử (multi-agent). SDK không phụ thuộc nhà cung cấp, hỗ trợ OpenAI Responses API, Chat Completions API và hơn 100 LLM khác. Thư viện cung cấp các khái niệm cốt lõi như Agents, Sandbox agents, Realtime/Voice agents, Handoffs, Tools, Guardrails, Sessions và Tracing.",
+    "purposeVi": "SDK giúp lập trình viên Python xây dựng ứng dụng agent và hệ đa tác tử: giao việc giữa các agent, gọi công cụ (hàm, MCP, hosted tools), kiểm soát đầu vào/đầu ra và theo dõi, gỡ lỗi quá trình chạy. Phù hợp cho các nhóm cần xây dựng agent văn bản, agent giọng nói thời gian thực hoặc agent làm việc dài hạn trong sandbox.",
+    "featuresVi": [
+      "Agents: LLM được cấu hình với chỉ dẫn, công cụ, guardrails và handoffs",
+      "Sandbox agents: agent làm việc với container để thực hiện tác vụ dài hạn như xem file, chạy lệnh, áp dụng bản vá",
+      "Realtime agents: xây dựng agent giọng nói độ trễ thấp với `gpt-realtime-2.1` qua WebSocket",
+      "Voice agents: pipeline kết hợp chuyển giọng nói thành văn bản, quy trình agent và chuyển văn bản thành giọng nói",
+      "Agents as tools / Handoffs: ủy quyền cho các agent khác xử lý tác vụ cụ thể",
+      "Tools và Guardrails: công cụ (hàm, MCP, hosted tools) và kiểm tra an toàn đầu vào/đầu ra có thể cấu hình",
+      "Human in the loop và Sessions: cơ chế đưa con người vào quy trình và tự động quản lý lịch sử hội thoại",
+      "Tracing: theo dõi tích hợp các lần chạy agent để xem, gỡ lỗi và tối ưu quy trình"
+    ],
+    "requirementsVi": "Cần Python 3.10 trở lên và phải đặt biến môi trường `OPENAI_API_KEY` trước khi chạy các ví dụ.",
+    "installStepsVi": [
+      "Chuẩn bị Python 3.10 trở lên và tạo môi trường ảo: `python -m venv .venv`.",
+      "Kích hoạt môi trường ảo: `source .venv/bin/activate` (trên Windows: `.venv\\Scripts\\activate`).",
+      "Cài đặt SDK: `pip install openai-agents`.",
+      "Tùy chọn: cài thêm hỗ trợ giọng nói bằng `pip install 'openai-agents[voice]'` hoặc hỗ trợ Redis session bằng `pip install 'openai-agents[redis]'`.",
+      "Cách thay thế với uv: `uv init` rồi `uv add openai-agents`."
+    ],
+    "cliCommand": "pip install openai-agents",
+    "mcpJson": "",
+    "mcpJsonClient": "",
+    "usageStepsVi": [
+      "Đặt biến môi trường `OPENAI_API_KEY`.",
+      "Tạo agent văn bản: `Agent(name=\"Assistant\", instructions=\"You are a helpful assistant\")`.",
+      "Chạy agent bằng `Runner.run_sync(agent, \"Write a haiku about recursion in programming.\")` và in `result.final_output`.",
+      "Với tác vụ cần thao tác file/chạy lệnh, dùng `SandboxAgent` với `UnixLocalSandboxClient` (macOS/Linux) hoặc `DockerSandboxClient` (Windows).",
+      "Với ứng dụng giọng nói, dùng `RealtimeAgent`/`RealtimeRunner` hoặc `VoicePipeline`; xem thêm thư mục examples và tài liệu chính thức."
+    ],
+    "samplePromptsVi": [
+      "Tạo một agent phân loại yêu cầu khách hàng rồi chuyển giao (handoff) cho agent chuyên trách phù hợp.",
+      "Xây dựng sandbox agent đọc README của một repo GitHub và tóm tắt dự án đó làm gì.",
+      "Tạo voice agent trả lời ngắn gọn bằng giọng nói, có guardrail kiểm tra đầu vào."
+    ],
+    "prosVi": [
+      "Không phụ thuộc nhà cung cấp: hỗ trợ OpenAI Responses, Chat Completions và hơn 100 LLM khác.",
+      "Tích hợp sẵn tracing, guardrails, sessions và human-in-the-loop.",
+      "Hỗ trợ nhiều kiểu agent: văn bản, sandbox, realtime và voice; giấy phép MIT."
+    ],
+    "consVi": [
+      "Cần đặt `OPENAI_API_KEY` để chạy các ví dụ trong README.",
+      "`UnixLocalSandboxClient` chỉ hỗ trợ macOS và Linux; trên Windows phải dùng `DockerSandboxClient` hoặc sandbox được lưu trữ.",
+      "Dự án không nhận pull request từ người ngoài nhóm cộng tác viên."
+    ],
+    "sourceEvidence": {
+      "pip install openai-agents": "openai_openai-agents-python/README.md:34",
+      "python -m venv .venv": "openai_openai-agents-python/README.md:32",
+      "source .venv/bin/activate": "openai_openai-agents-python/README.md:33",
+      "pip install 'openai-agents[voice]'": "openai_openai-agents-python/README.md:37",
+      "pip install 'openai-agents[redis]'": "openai_openai-agents-python/README.md:37",
+      "uv init": "openai_openai-agents-python/README.md:44",
+      "uv add openai-agents": "openai_openai-agents-python/README.md:45"
+    }
+  },
+  {
+    "repo": "pydantic/pydantic-ai",
+    "license": "The MIT License (MIT)",
+    "authorName": "Pydantic (Pydantic Services Inc.)",
+    "websiteUrl": "https://pydantic.dev/docs/ai/",
+    "toolType": "sdk",
+    "taglineEn": "Agents, realtime voice, image generation, embeddings. Every model, every interface, typed end to end.",
+    "summaryVi": "Pydantic AI là SDK AI cho Python với vòng lặp agent có kiểu dữ liệu chặt chẽ, có thể mở rộng, cho phép đổi mô hình chỉ bằng một chuỗi. Cùng một agent có thể chạy sau giao diện web, trong terminal, trên cuộc gọi giọng nói, trên hàng đợi nền bền vững (durable) hoặc trong GitHub Actions. Thư viện còn hỗ trợ sinh ảnh và embeddings, và đi kèm Pydantic AI Harness cung cấp các capability như bộ nhớ, guardrails, sub-agent, lập kế hoạch cho đến một coding agent hoàn chỉnh.",
+    "purposeVi": "Pydantic AI giúp lập trình viên Python xây dựng ứng dụng AI và agent đạt chuẩn production, từ trích xuất dữ liệu có kiểu đến cộng tác đa agent dài hạn, với đầu ra được kiểm tra hợp lệ và kiểu dữ liệu nhất quán giữa IDE, type checker và LLM. Phù hợp với đội ngũ cần một API thống nhất cho nhiều nhà cung cấp mô hình kèm khả năng quan sát và thực thi bền vững.",
+    "featuresVi": [
+      "Mọi mô hình, một API: hỗ trợ OpenAI, Anthropic, Google, Bedrock, Azure AI Foundry, Groq, Mistral, xAI, Ollama và nhiều nhà cung cấp khác, đổi bằng một chuỗi",
+      "Kiểu dữ liệu đầu cuối: structured output, dependency injection có kiểu và công cụ có kiểu",
+      "Capability: gom công cụ, chỉ dẫn, hooks và cấu hình mô hình thành các đơn vị tái sử dụng; hỗ trợ MCP và web search",
+      "Thực thi bền vững: chạy trên Temporal, DBOS, Prefect, Restate, AWS Lambda, Airflow, Absurd và pgtask, có phê duyệt human-in-the-loop",
+      "Giọng nói thời gian thực: hỗ trợ OpenAI Realtime, Gemini Live, Azure và xAI Grok Voice",
+      "Sinh ảnh và embeddings: API sinh ảnh độc lập và hỗ trợ embeddings trong cùng gói",
+      "Quan sát và đánh giá: instrumentation chuẩn OpenTelemetry, tích hợp Pydantic Logfire và Pydantic Evals",
+      "Mọi giao diện: chạy agent dưới dạng CLI, web chat tích hợp, luồng sự kiện UI (AG-UI, Vercel AI), ACP hoặc GitHub Agentic Workflows"
+    ],
+    "requirementsVi": "",
+    "installStepsVi": [
+      "Cài đặt gói lõi bằng uv: `uv add pydantic-ai`.",
+      "Tùy chọn: cài thêm Pydantic AI Harness để có coding agent và các capability: `uv add pydantic-ai pydantic-ai-harness`.",
+      "Tùy chọn: cài extra cho thực thi bền vững với Temporal: `uv add \"pydantic-ai[temporal]\"`, hoặc cho giọng nói thời gian thực: `uv add \"pydantic-ai[openai-realtime]\"`.",
+      "Tùy chọn: thiết lập Logfire để quan sát bằng `uvx logfire auth` và `uvx logfire projects new`."
+    ],
+    "cliCommand": "uv add pydantic-ai",
+    "mcpJson": "",
+    "mcpJsonClient": "",
+    "usageStepsVi": [
+      "Tạo agent với mô hình và kiểu đầu ra, ví dụ `Agent('openai:gpt-6.1-sol', output_type=Sentiment)`.",
+      "Khai báo công cụ bằng decorator `@agent.tool`; chữ ký hàm và docstring trở thành schema công cụ.",
+      "Chạy agent bằng `agent.run_sync(...)` và đọc kết quả đã được kiểm tra hợp lệ qua `result.output`.",
+      "Thử coding agent ngay không cần viết code: `uvx --with pydantic-ai-harness clai -a pydantic_ai_harness.coder:coder_agent -m anthropic:claude-fable-5-1`.",
+      "Bật quan sát bằng `logfire.configure()` và `logfire.instrument_pydantic_ai()` trước khi chạy agent."
+    ],
+    "samplePromptsVi": [
+      "Tạo agent trích xuất cảm xúc từ đánh giá sản phẩm và trả về đối tượng Pydantic có nhãn và điểm số.",
+      "Xây dựng agent hỗ trợ khách hàng ngân hàng có tra cứu số dư và đánh giá mức độ rủi ro của yêu cầu.",
+      "Tạo agent nghiên cứu chạy trong workflow Temporal, tìm kiếm web và viết bản tóm tắt có cấu trúc."
+    ],
+    "prosVi": [
+      "Đổi mô hình chỉ bằng một chuỗi, hỗ trợ hầu hết nhà cung cấp và không khóa tính năng chính vào một nhà cung cấp.",
+      "Kiểu dữ liệu chặt chẽ đầu cuối giúp phát hiện lỗi ngay khi viết code thay vì lúc chạy.",
+      "Có thể bắt đầu không cần API key nhờ mô hình `'test'` tích hợp; giấy phép MIT."
+    ],
+    "consVi": [
+      "Nhiều tính năng nâng cao (coding agent, bộ nhớ, lập kế hoạch) nằm trong gói riêng Pydantic AI Harness cần cài thêm.",
+      "README không nêu rõ phiên bản Python tối thiểu; cần xem trang cài đặt trong tài liệu."
+    ],
+    "sourceEvidence": {
+      "uv add pydantic-ai": "pydantic_pydantic-ai/README.md:88 (cũng ở dòng 201)",
+      "uv add pydantic-ai pydantic-ai-harness": "pydantic_pydantic-ai/README.md:45",
+      "uv add \"pydantic-ai[temporal]\"": "pydantic_pydantic-ai/README.md:127",
+      "uv add \"pydantic-ai[openai-realtime]\"": "pydantic_pydantic-ai/README.md:166",
+      "uvx logfire auth": "pydantic_pydantic-ai/README.md:220",
+      "uvx logfire projects new": "pydantic_pydantic-ai/README.md:220"
+    }
+  },
+  {
+    "repo": "open-webui/open-webui",
+    "license": "Open WebUI License (giấy phép tùy chỉnh, dựa trên mẫu BSD-3-Clause cộng thêm điều khoản giữ thương hiệu). Hạn chế chính: điều 4 cấm \"altering, removing, obscuring, or replacing any \"Open WebUI\" branding\", nghĩa là không được thay đổi hay gỡ bỏ thương hiệu Open WebUI, trừ khi triển khai có không quá 50 người dùng cuối trong 30 ngày, có văn bản cho phép trước của chủ bản quyền, hoặc có giấy phép doanh nghiệp.",
+    "authorName": "Open WebUI Inc.",
+    "websiteUrl": "https://docs.openwebui.com/",
+    "toolType": "software",
+    "taglineEn": "Open WebUI is a home for AI, a self-hosted AI platform that's extensible, feature-rich, user-friendly, and built to run entirely offline.",
+    "summaryVi": "Open WebUI là nền tảng AI tự lưu trữ (self-hosted), có thể mở rộng, nhiều tính năng, thân thiện và có thể chạy hoàn toàn ngoại tuyến. Nền tảng hỗ trợ Ollama và các API tương thích OpenAI, cung cấp giao diện độc lập nhà cung cấp cho cả mô hình cục bộ lẫn trên đám mây. Open WebUI tích hợp RAG cục bộ, tìm kiếm web, plugin, MCP, phân quyền RBAC, gọi thoại/video và nhiều công cụ cộng tác.",
+    "purposeVi": "Open WebUI giúp cá nhân, đội nhóm và doanh nghiệp tự vận hành một giao diện chat AI riêng, kết nối mô hình cục bộ (Ollama) hoặc API tương thích OpenAI mà không phụ thuộc dịch vụ bên ngoài. Phù hợp với tổ chức cần kiểm soát dữ liệu, phân quyền người dùng và chạy AI trong môi trường ngoại tuyến.",
+    "featuresVi": [
+      "Cài đặt dễ dàng: qua pip, uv, Docker hoặc Kubernetes (kubectl, kustomize, helm), có image gắn thẻ `:ollama` và `:cuda`",
+      "Tích hợp mô hình rộng: kết nối API tương thích OpenAI cùng mô hình Ollama cục bộ, hỗ trợ LMStudio, GroqCloud, Mistral, OpenRouter, vLLM",
+      "Phân quyền RBAC và nhóm người dùng: quản trị viên định nghĩa vai trò, nhóm và quyền chi tiết",
+      "Plugin và MCP: mở rộng bằng Filters, Actions, Pipes, Tools, Skills; kết nối dịch vụ ngoài qua MCP, MCPO và OpenAPI tool servers",
+      "RAG cục bộ: hỗ trợ 9 cơ sở dữ liệu vector, tìm kiếm lai BM25 + vector có rerank",
+      "Tìm kiếm và duyệt web: hàng chục nhà cung cấp tìm kiếm như SearXNG, Google PSE, Brave Search, Tavily, DuckDuckGo",
+      "Gọi thoại/video rảnh tay: nhiều nhà cung cấp Speech-to-Text và Text-to-Speech",
+      "Xác thực doanh nghiệp: LDAP/Active Directory, SSO, OAuth và SCIM 2.0"
+    ],
+    "requirementsVi": "Cài qua pip cần dùng Python 3.11 để tránh lỗi tương thích; cài qua Docker cần Docker (và Nvidia CUDA container toolkit nếu muốn dùng GPU với image `:cuda`).",
+    "installStepsVi": [
+      "Chuẩn bị Python 3.11.",
+      "Cài đặt Open WebUI bằng pip: `pip install open-webui`.",
+      "Khởi động máy chủ: `open-webui serve`.",
+      "Truy cập giao diện tại http://localhost:8080.",
+      "Cách thay thế bằng Docker (khi Ollama chạy trên máy): `docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main`, sau đó truy cập http://localhost:3000."
+    ],
+    "cliCommand": "pip install open-webui",
+    "mcpJson": "",
+    "mcpJsonClient": "",
+    "usageStepsVi": [
+      "Mở trình duyệt tới http://localhost:8080 (cài qua pip) hoặc http://localhost:3000 (cài qua Docker).",
+      "Kết nối mô hình: dùng Ollama cục bộ hoặc trỏ tới API tương thích OpenAI (ví dụ đặt `OPENAI_API_KEY` hoặc `OLLAMA_BASE_URL` khi chạy Docker).",
+      "Tải tài liệu vào chat hoặc lấy từ thư viện bằng lệnh `#` để dùng RAG; dùng `#` kèm URL để đưa trang web vào cuộc trò chuyện.",
+      "Tạo model/agent tùy chỉnh với chỉ dẫn, công cụ và kiến thức; mở rộng bằng plugin hoặc kết nối MCP/OpenAPI tool servers.",
+      "Nếu chạy ngoại tuyến, đặt `export HF_HUB_OFFLINE=1` để không tải mô hình từ internet."
+    ],
+    "samplePromptsVi": [
+      "Tóm tắt tài liệu PDF tôi vừa tải lên bằng #, liệt kê các ý chính.",
+      "Tìm kiếm web về tin tức AI mới nhất tuần này và tổng hợp lại.",
+      "Tạo ảnh logo tối giản cho quán cà phê, sau đó chỉnh sửa màu nền sang xanh."
+    ],
+    "prosVi": [
+      "Tự lưu trữ và có thể chạy hoàn toàn ngoại tuyến, hỗ trợ cả Ollama và API tương thích OpenAI.",
+      "Rất nhiều tính năng: RAG, tìm kiếm web, plugin, MCP, RBAC, gọi thoại/video, sinh ảnh.",
+      "Nhiều cách cài đặt: pip, uv, Docker, Kubernetes."
+    ],
+    "consVi": [
+      "Giấy phép tùy chỉnh (không phải mã nguồn mở chuẩn OSI): cấm thay đổi/gỡ thương hiệu \"Open WebUI\" khi triển khai vượt 50 người dùng cuối trong 30 ngày nếu không có giấy phép doanh nghiệp hoặc văn bản cho phép.",
+      "Cài qua pip yêu cầu đúng Python 3.11 để tránh lỗi tương thích.",
+      "Khi dùng Docker có thể gặp lỗi kết nối tới Ollama, cần cấu hình thêm (ví dụ `--network=host`)."
+    ],
+    "sourceEvidence": {
+      "pip install open-webui": "open-webui_open-webui/README.md:118",
+      "open-webui serve": "open-webui_open-webui/README.md:125",
+      "docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main": "open-webui_open-webui/README.md:146",
+      "license clause 4": "open-webui_open-webui/LICENSE:19-30"
+    }
+  },
+  {
+    "repo": "getzep/graphiti",
+    "license": "Apache License 2.0",
+    "authorName": "Zep",
+    "websiteUrl": "https://help.getzep.com/graphiti",
+    "toolType": "sdk",
+    "taglineEn": "Graphiti is a framework for building and querying temporal context graphs for AI agents.",
+    "summaryVi": "Graphiti là framework Python mã nguồn mở để xây dựng và truy vấn đồ thị ngữ cảnh theo thời gian (temporal context graph) cho AI agent. Khác với đồ thị tri thức tĩnh, Graphiti theo dõi sự thay đổi của dữ kiện theo thời gian, lưu nguồn gốc dữ liệu (episodes) và hỗ trợ cả ontology định sẵn lẫn tự học. Framework cập nhật dữ liệu tăng dần, truy xuất lai (ngữ nghĩa + từ khóa + duyệt đồ thị) mà không cần tính toán lại toàn bộ đồ thị.",
+    "purposeVi": "Graphiti giải quyết hạn chế của RAG truyền thống (xử lý theo lô, tóm tắt tĩnh) với dữ liệu thay đổi thường xuyên, giúp agent ghi nhớ và truy vấn được điều gì đúng hiện tại và điều gì từng đúng trước đây. Phù hợp với lập trình viên tự xây dựng đồ thị ngữ cảnh trong hệ thống của mình và tự vận hành cơ sở dữ liệu đồ thị.",
+    "featuresVi": [
+      "Quản lý dữ kiện theo thời gian: mỗi dữ kiện có khoảng hiệu lực, dữ kiện cũ bị vô hiệu hóa chứ không bị xóa",
+      "Episodes và nguồn gốc: mọi thực thể và quan hệ đều truy ngược được về dữ liệu gốc",
+      "Ontology định sẵn và tự học: định nghĩa kiểu thực thể/quan hệ bằng Pydantic model hoặc để cấu trúc tự hình thành",
+      "Xây dựng đồ thị tăng dần: dữ liệu mới tích hợp ngay, không cần tính toán lại theo lô",
+      "Truy xuất lai: kết hợp embedding ngữ nghĩa, từ khóa BM25 và duyệt đồ thị, độ trễ thấp",
+      "Nhiều backend đồ thị: Neo4j, FalkorDB, Amazon Neptune (Kuzu đã lỗi thời)",
+      "Nhiều nhà cung cấp LLM: OpenAI, Azure OpenAI, Anthropic, Gemini, Groq và endpoint tương thích OpenAI (Ollama, vLLM...)",
+      "MCP server và REST server tham khảo: cho phép trợ lý AI dùng đồ thị qua giao thức MCP"
+    ],
+    "requirementsVi": "Cần Python 3.10 trở lên; một cơ sở dữ liệu đồ thị (Neo4j 5.26, FalkorDB 1.1.2, Amazon Neptune kèm Amazon OpenSearch Serverless, hoặc Kuzu 0.11.2 đã lỗi thời); và OpenAI API key (mặc định dùng OpenAI cho LLM và embedding), tùy chọn API key Google Gemini, Anthropic hoặc Groq.",
+    "installStepsVi": [
+      "Chuẩn bị Python 3.10 trở lên và đặt biến môi trường `OPENAI_API_KEY`.",
+      "Khởi chạy cơ sở dữ liệu đồ thị, ví dụ FalkorDB qua Docker: `docker run -p 6379:6379 -p 3000:3000 -it --rm falkordb/falkordb:latest` (hoặc dùng Neo4j Desktop).",
+      "Cài thư viện: `pip install graphiti-core` (hoặc `uv add graphiti-core`).",
+      "Nếu dùng FalkorDB, cài kèm extra: `pip install graphiti-core[falkordb]`; với Amazon Neptune: `pip install graphiti-core[neptune]`.",
+      "Tùy chọn: cài thêm nhà cung cấp LLM khác, ví dụ `pip install graphiti-core[anthropic,groq,google-genai]`."
+    ],
+    "cliCommand": "pip install graphiti-core",
+    "mcpJson": "{\n  \"mcpServers\": {\n    \"graphiti-memory\": {\n      \"url\": \"http://localhost:8000/mcp/\"\n    }\n  }\n}",
+    "mcpJsonClient": "Cursor (cấu hình MCP của Cursor, kết nối tới MCP server Graphiti chạy HTTP tại http://localhost:8000/mcp/; JSON lấy từ mcp_server/README.md)",
+    "usageStepsVi": [
+      "Khởi tạo Graphiti với kết nối cơ sở dữ liệu đồ thị (ví dụ Neo4j qua `Neo4jDriver` hoặc FalkorDB qua `FalkorDriver`, truyền vào tham số `graph_driver`).",
+      "Khởi tạo chỉ mục và ràng buộc, sau đó thêm episodes (văn bản hoặc JSON có cấu trúc) vào đồ thị theo ví dụ Quickstart trong `examples/quickstart/README.md`.",
+      "Tìm kiếm quan hệ (edges) bằng truy xuất lai, rerank theo khoảng cách đồ thị, và tìm node bằng các search recipe định sẵn.",
+      "Để dùng với trợ lý AI qua MCP: trong thư mục `mcp_server` chạy `docker compose up`, rồi trỏ MCP client tới `http://localhost:8000/mcp/`.",
+      "Có thể tắt telemetry ẩn danh bằng `export GRAPHITI_TELEMETRY_ENABLED=false`."
+    ],
+    "samplePromptsVi": [
+      "Ghi nhớ rằng khách hàng Kendra thích giày Adidas (tính đến tháng 3/2026) vào đồ thị ngữ cảnh.",
+      "Tìm các dữ kiện về sở thích của người dùng này và cho biết dữ kiện nào đã hết hiệu lực.",
+      "Thêm dữ liệu JSON hồ sơ khách hàng từ CRM vào đồ thị và liệt kê các thực thể được trích xuất."
+    ],
+    "prosVi": [
+      "Theo dõi dữ kiện theo thời gian (bi-temporal) với tự động vô hiệu hóa dữ kiện mâu thuẫn mà vẫn giữ lịch sử.",
+      "Cập nhật tăng dần và truy vấn thường dưới 1 giây, không cần tính toán lại toàn bộ đồ thị.",
+      "Hỗ trợ nhiều backend đồ thị và nhà cung cấp LLM, có MCP server tham khảo; giấy phép Apache 2.0."
+    ],
+    "consVi": [
+      "Phải tự vận hành cơ sở dữ liệu đồ thị, truy xuất và dịch vụ xung quanh (chỉ self-hosted).",
+      "MCP server và REST server chỉ là bản tham khảo, không có xác thực, phân quyền hay chống prompt injection, không dùng cho production.",
+      "Hoạt động tốt nhất với LLM hỗ trợ Structured Output; mô hình nhỏ hoặc dịch vụ khác có thể gây lỗi schema; mặc định thu thập telemetry ẩn danh (có thể tắt)."
+    ],
+    "sourceEvidence": {
+      "pip install graphiti-core": "getzep_graphiti/README.md:187",
+      "uv add graphiti-core": "getzep_graphiti/README.md:193",
+      "docker run -p 6379:6379 -p 3000:3000 -it --rm falkordb/falkordb:latest": "getzep_graphiti/README.md:183",
+      "pip install graphiti-core[falkordb]": "getzep_graphiti/README.md:201",
+      "pip install graphiti-core[neptune]": "getzep_graphiti/README.md:233",
+      "pip install graphiti-core[anthropic,groq,google-genai]": "getzep_graphiti/README.md:252",
+      "mcpJson": "getzep_graphiti mcp_server/README.md:630-638 (git show HEAD:mcp_server/README.md)",
+      "docker compose up (mcp_server)": "getzep_graphiti mcp_server/README.md:70"
+    }
+  }
+]

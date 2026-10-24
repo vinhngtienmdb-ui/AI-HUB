@@ -4,6 +4,17 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.8 (Ngày 24-10-2026)
+- **Loại hình**: Bổ sung 14 tài nguyên còn thiếu, script `scripts/migrations/2026-10-24-bo-sung-14-tai-nguyen.cjs`.
+- **Dữ kiện** trong `scripts/migrations/data/2026-10-24-tai-nguyen-tu-readme.json`, trích từ README và LICENSE của từng repo; trường `sourceEvidence` ghi dòng README chứa từng câu lệnh.
+- **Máy chủ MCP**: GitHub MCP Server, Supabase MCP Server, Serena, MCP Inspector.
+- **Tác tử lập trình**: Claude Code, Codex CLI, Gemini CLI; **skill**: Anthropic Agent Skills.
+- **Xử lý tài liệu**: MarkItDown, Docling. **Khung xây dựng tác tử**: OpenAI Agents SDK, Pydantic AI. **Giao diện LLM**: Open WebUI. **Bộ nhớ tác tử**: Graphiti.
+- Giấy phép ghi đúng theo tệp LICENSE: Claude Code độc quyền; Serena GPL-3.0-or-later; Open WebUI giấy phép riêng có điều khoản giữ thương hiệu; Anthropic Skills hỗn hợp (skill tài liệu là mã công khai, độc quyền).
+- Không thêm Notion MCP Server: README ghi dự án không còn được bảo trì.
+- Cấu hình `"servers"` (VS Code) hiển thị tên tệp `.vscode/mcp.json`.
+- Kho dữ liệu: 1.953 công cụ đang hiển thị, 1.971 cấu hình mẫu.
+
 ### Phiên Bản 2.1.7 (Ngày 24-10-2026)
 - **Loại hình**: Nút sao chép cho các lệnh, giống GitHub.
 - Khối mã (lệnh cài, câu lệnh mẫu, khối mã trong README) có nút sao chép luôn hiển thị ở góc phải, đổi thành dấu ✓ khi đã chép; trước đây nút chỉ hiện khi rê chuột.
