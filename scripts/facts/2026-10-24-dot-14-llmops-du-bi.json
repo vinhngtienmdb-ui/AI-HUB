@@ -1,0 +1,541 @@
+[
+  {
+    "repo": "Helicone/helicone",
+    "license": "Apache License 2.0",
+    "authorName": "Helicone",
+    "websiteUrl": "https://www.helicone.ai",
+    "toolType": "software",
+    "taglineEn": "Helicone is an AI Gateway & LLM Observability Platform for AI Engineers",
+    "summaryVi": "Helicone là cổng AI (AI Gateway) kiêm nền tảng quan sát LLM mã nguồn mở: truy cập hơn 100 mô hình qua một khóa API theo chuẩn OpenAI, có định tuyến thông minh và tự động chuyển dự phòng. Nền tảng ghi lại trace và phiên làm việc của agent, theo dõi chi phí, độ trễ, chất lượng, kèm playground và quản lý prompt. Có thể dùng bản đám mây hoặc tự triển khai bằng Docker.",
+    "purposeVi": "Ghi nhật ký, gỡ lỗi và theo dõi chi phí các lời gọi LLM, đồng thời gom nhiều nhà cung cấp mô hình về một cổng API duy nhất.",
+    "featuresVi": [
+      "AI Gateway: hơn 100 mô hình qua một khóa API theo giao diện OpenAI, định tuyến thông minh và tự động chuyển dự phòng",
+      "Tích hợp một dòng mã: ghi lại mọi yêu cầu từ OpenAI, Anthropic, LangChain, Gemini, Vercel AI SDK...",
+      "Quan sát: kiểm tra trace và phiên (sessions) của agent, chatbot, pipeline xử lý tài liệu",
+      "Phân tích: theo dõi chi phí, độ trễ, chất lượng; xuất sang PostHog để dựng dashboard",
+      "Playground và quản lý prompt: thử nghiệm, đánh phiên bản prompt bằng dữ liệu thật và triển khai qua gateway không cần sửa mã",
+      "Tinh chỉnh mô hình qua đối tác OpenPipe hoặc Autonomi",
+      "Truy xuất dữ liệu qua API hoặc máy chủ MCP của Helicone"
+    ],
+    "requirementsVi": "Docker để tự triển khai (kiến trúc gồm Web NextJS, Worker, Jawn, Supabase, ClickHouse, Minio); hoặc tài khoản Helicone Cloud và HELICONE_API_KEY khi dùng bản đám mây.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/Helicone/helicone.git`",
+      "Vào thư mục docker trong mã nguồn vừa tải: `cd docker`",
+      "Tạo tệp cấu hình môi trường: `cp .env.example .env`",
+      "Cài đặt và khởi động các dịch vụ: `./helicone-compose.sh helicone up`"
+    ],
+    "cliCommand": "./helicone-compose.sh helicone up",
+    "usageStepsVi": [
+      "Với bản đám mây: đăng ký tài khoản, lấy khóa API và nạp credits theo hướng dẫn trong README",
+      "Đổi baseURL của OpenAI SDK sang https://ai-gateway.helicone.ai và dùng HELICONE_API_KEY làm apiKey",
+      "Gọi mô hình như bình thường (gpt-4o-mini, claude-sonnet-4, gemini-2.0-flash...)",
+      "Xem nhật ký, chi phí và trace trên dashboard của Helicone"
+    ],
+    "samplePromptsVi": [
+      "Chuyển ứng dụng chatbot dùng OpenAI SDK sang gọi qua Helicone AI Gateway để ghi lại toàn bộ dữ liệu yêu cầu",
+      "Theo dõi chi phí và độ trễ theo từng phiên của agent xử lý tài liệu trên dashboard Helicone",
+      "Đánh phiên bản prompt hệ thống bằng tính năng Prompt Management và triển khai qua gateway"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0 cho toàn bộ kho mã",
+      "Tự triển khai được bằng Docker Compose",
+      "Kết hợp cổng AI (định tuyến, dự phòng) với quan sát, phân tích chi phí trong một công cụ",
+      "Bản đám mây có gói miễn phí 10.000 yêu cầu/tháng, không cần thẻ tín dụng (theo README)"
+    ],
+    "consVi": [
+      "Kiến trúc tự triển khai gồm nhiều dịch vụ (Supabase, ClickHouse, Minio...)",
+      "Helm chart cho môi trường production chỉ cung cấp khi liên hệ enterprise@helicone.ai",
+      "README không khuyến nghị triển khai thủ công ngoài Docker/Helm",
+      "Dùng bản đám mây cần tài khoản, khóa API và nạp credits"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/Helicone/helicone.git": "README.md:70",
+      "cd docker": "README.md:71",
+      "cp .env.example .env": "README.md:72",
+      "./helicone-compose.sh helicone up": "README.md:75"
+    },
+    "meta": {
+      "id": "helicone-helicone",
+      "nameVi": "Helicone — Cổng AI và nền tảng quan sát, theo dõi chi phí ứng dụng LLM",
+      "icon": "Globe",
+      "categories": [
+        "nlp_llm",
+        "devops_cicd",
+        "backend_api"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "freemium",
+      "pricingText": "Mã nguồn mở, tự triển khai miễn phí; bản đám mây có gói miễn phí 10.000 yêu cầu/tháng (theo README)",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "./helicone-compose.sh helicone up"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "wandb/weave",
+    "license": "Apache License 2.0",
+    "authorName": "Weights & Biases",
+    "websiteUrl": "https://wandb.me/weave",
+    "toolType": "sdk",
+    "taglineEn": "Weave is a toolkit for tracing and evaluating AI agents, built by Weights & Biases.",
+    "summaryVi": "Weave là bộ công cụ của Weights & Biases để ghi trace và đánh giá AI agent cũng như ứng dụng LLM. Chỉ cần gọi weave.init() là các SDK như OpenAI Agents SDK, Claude Agent SDK, Google ADK được tự động ghi lại hội thoại, lượt, lời gọi LLM và công cụ. Ngoài ra có decorator @weave.op để trace hàm bất kỳ và API Conversation cho agent tự viết.",
+    "purposeVi": "Quan sát và đánh giá agent/ứng dụng LLM bằng SDK Python, đẩy dữ liệu trace lên dự án Weights & Biases.",
+    "featuresVi": [
+      "Trace agent: hội thoại, lượt, lời gọi LLM và công cụ hiển thị trong tab Agents",
+      "Tự động vá (autopatch) OpenAI Agents SDK, Claude Agent SDK, Google ADK sau weave.init()",
+      "Agent tự viết: dùng start_conversation, start_turn, start_llm, start_tool",
+      "Trace hàm với @weave.op; lời gọi openai thuần cũng được tự động trace vào tab Calls",
+      "Đánh giá (Evaluations) agent và ứng dụng LLM"
+    ],
+    "requirementsVi": "Python 3.10 trở lên; tài khoản Weights & Biases (có gói miễn phí) và khóa WANDB_API_KEY; ví dụ trong README cần thêm OPENAI_API_KEY.",
+    "installStepsVi": [
+      "Cài đặt Weave cùng OpenAI Agents SDK cho ví dụ trace agent: `pip install weave openai-agents requests`",
+      "Hoặc cài đặt Weave với OpenAI SDK để trace hàm: `pip install weave openai`"
+    ],
+    "cliCommand": "pip install weave openai",
+    "usageStepsVi": [
+      "Đặt biến môi trường WANDB_API_KEY (lấy tại wandb.ai/authorize) và OPENAI_API_KEY",
+      "Gọi weave.init(\"<your-team>/<your-project-name>\") ở đầu chương trình",
+      "Chạy agent hoặc gắn @weave.op vào hàm cần theo dõi",
+      "Mở đường dẫn dự án được in ra, xem tab Agents hoặc Calls"
+    ],
+    "samplePromptsVi": [
+      "Thêm weave.init() vào agent viết bằng OpenAI Agents SDK để xem từng lượt hội thoại và lời gọi công cụ",
+      "Bọc hàm trích xuất dữ liệu JSON bằng @weave.op để theo dõi đầu vào, đầu ra và lời gọi OpenAI",
+      "Ghi trace cho vòng lặp agent tự viết bằng start_conversation, start_turn và start_llm"
+    ],
+    "prosVi": [
+      "SDK theo giấy phép Apache 2.0",
+      "Tích hợp sẵn với OpenAI Agents SDK, Claude Agent SDK và Google ADK chỉ bằng weave.init()",
+      "Hỗ trợ cả trace agent và đánh giá trong một công cụ"
+    ],
+    "consVi": [
+      "Cần tài khoản Weights & Biases và WANDB_API_KEY; README cho biết trace server được phát triển trong wandb/core, không nằm trong kho này",
+      "Phải luôn truyền provider_name khi dùng start_llm vì Weave không tự suy ra từ tên mô hình",
+      "start_session và Session đã bị đánh dấu deprecated",
+      "Mã “Weave engine” và “Weave boards” trong kho đang tạm dừng phát triển"
+    ],
+    "sourceEvidence": {
+      "pip install weave openai-agents requests": "README.md:38",
+      "pip install weave openai": "README.md:134"
+    },
+    "meta": {
+      "id": "wandb-weave",
+      "nameVi": "Weave — Bộ công cụ trace và đánh giá AI agent của Weights & Biases",
+      "icon": "Code2",
+      "categories": [
+        "nlp_llm",
+        "qa_testing",
+        "data_science_analytics"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0); cần tài khoản Weights & Biases",
+      "pricingModel": "freemium",
+      "pricingText": "SDK miễn phí; cần tài khoản Weights & Biases (có gói miễn phí, theo README)",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install weave openai"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "pydantic/logfire",
+    "license": "MIT License (SDK Python và tài liệu); nền tảng Logfire (UI và backend) là mã nguồn đóng",
+    "authorName": "Pydantic Services Inc.",
+    "websiteUrl": "https://pydantic.dev/docs/logfire/",
+    "toolType": "sdk",
+    "taglineEn": "From the team behind Pydantic Validation, **Pydantic Logfire** is an observability platform built on the same belief as our open-source library: that the most powerful tools can be easy to use.",
+    "summaryVi": "Kho này chứa SDK Python và CLI của Pydantic Logfire, một nền tảng quan sát xây dựng trên OpenTelemetry, hỗ trợ đủ traces, metrics và logs. SDK cho phép ghi log, span thủ công hoặc tích hợp tự động với nhiều thư viện phổ biến như FastAPI, đồng thời dùng được cho ứng dụng LLM và agent. Dữ liệu có thể gửi về nền tảng Logfire hoặc bất kỳ backend tương thích OpenTelemetry nào.",
+    "purposeVi": "Đo đạc (instrument) ứng dụng Python, kể cả ứng dụng LLM và agent, để theo dõi trace, log và metric qua OpenTelemetry.",
+    "featuresVi": [
+      "Ghi log và span thủ công: logfire.info, logfire.span",
+      "Tích hợp sẵn nhiều thư viện, ví dụ logfire.instrument_fastapi",
+      "Bọc OpenTelemetry: hỗ trợ đầy đủ traces, metrics và logs",
+      "Truy vấn dữ liệu bằng SQL chuẩn trên nền tảng Logfire",
+      "Tích hợp Pydantic Validation: phân tích dữ liệu qua các model",
+      "Xuất dữ liệu sang bất kỳ backend tương thích OpenTelemetry"
+    ],
+    "requirementsVi": "Python; tài khoản Logfire để xác thực bằng lệnh logfire auth khi gửi dữ liệu lên nền tảng Logfire.",
+    "installStepsVi": [
+      "Cài đặt SDK Python kèm Logfire CLI: `pip install logfire`",
+      "Chỉ cài đặt SDK (không có CLI): `pip install logfire-sdk`",
+      "Xác thực tài khoản: `logfire auth`"
+    ],
+    "cliCommand": "pip install logfire",
+    "usageStepsVi": [
+      "Gọi logfire.configure() trong ứng dụng",
+      "Ghi log hoặc mở span bằng logfire.info và logfire.span",
+      "Bật tích hợp tự động cho framework, ví dụ logfire.instrument_fastapi(app)",
+      "Xem dữ liệu trên dashboard Logfire hoặc backend OpenTelemetry khác"
+    ],
+    "samplePromptsVi": [
+      "Thêm Logfire vào ứng dụng FastAPI gọi LLM để theo dõi từng request và lời gọi mô hình",
+      "Ghi span thủ công quanh bước truy xuất dữ liệu trong pipeline RAG bằng logfire.span",
+      "Cấu hình SDK Logfire để gửi trace sang một backend OpenTelemetry tự quản lý"
+    ],
+    "prosVi": [
+      "SDK theo giấy phép MIT, dựa trên OpenTelemetry nên không bị khóa vào nền tảng",
+      "Có SDK cho Python, TypeScript và Rust (theo README)",
+      "Do đội ngũ Pydantic phát triển, tích hợp tốt với Pydantic"
+    ],
+    "consVi": [
+      "Mô hình open-core: chỉ SDK và tài liệu là mã nguồn mở; nền tảng Logfire (UI và backend) là mã nguồn đóng",
+      "Tự triển khai nền tảng Logfire cần mua giấy phép enterprise",
+      "Gửi dữ liệu lên Logfire cần tài khoản và xác thực"
+    ],
+    "sourceEvidence": {
+      "pip install logfire": "README.md:36",
+      "pip install logfire-sdk": "README.md:40",
+      "logfire auth": "README.md:47"
+    },
+    "meta": {
+      "id": "pydantic-logfire",
+      "nameVi": "Pydantic Logfire SDK — Thư viện quan sát Python dựa trên OpenTelemetry cho ứng dụng và LLM",
+      "icon": "Code2",
+      "categories": [
+        "devops_cicd",
+        "nlp_llm",
+        "backend_api"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Hỗn hợp (SDK MIT; nền tảng Logfire mã nguồn đóng)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install logfire"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "langwatch/langwatch",
+    "license": "Apache License 2.0 cho phần lõi; thư mục enterprise/ theo LangWatch Enterprise License (cần giấy phép thương mại khi bật tính năng enterprise trong production); các SDK theo MIT",
+    "authorName": "LangWatch (Reasoning Engine B.V.)",
+    "websiteUrl": "https://langwatch.ai",
+    "toolType": "software",
+    "taglineEn": "LangWatch is the open-source platform for AI in production: trace, test, route and govern every LLM call in your company, from the agents you build to the coding assistants your engineers use.",
+    "summaryVi": "LangWatch là nền tảng mã nguồn mở cho AI trong môi trường production: ghi trace, kiểm thử, định tuyến và quản trị mọi lời gọi LLM trong doanh nghiệp, từ agent tự xây đến trợ lý lập trình như Claude Code, Codex. Nền tảng gồm bốn mảng: LLM Ops (quan sát, kiểm thử agent, đánh giá, quản lý prompt), Coding Agents, AI Gateway và AI Governance. Có thể dùng LangWatch Cloud hoặc tự triển khai bằng một lệnh npx.",
+    "purposeVi": "Theo dõi, đánh giá và kiểm soát chi phí các ứng dụng LLM, agent và trợ lý lập trình AI trong tổ chức.",
+    "featuresVi": [
+      "LLM Ops: quan sát, kiểm thử agent bằng mô phỏng, đánh giá và quản lý prompt",
+      "Coding Agents: theo dõi phiên, chi phí theo pull request và theo nhóm, kiểm soát quyền riêng tư",
+      "AI Gateway: một endpoint tương thích OpenAI và Anthropic, virtual key, ngân sách, định tuyến",
+      "AI Governance: thống kê mọi công cụ AI trong công ty, người dùng và quy tắc phát hiện bất thường",
+      "Tích hợp Claude Code, Codex, GitHub Copilot, LangChain, LangGraph, Vercel AI SDK, LangFlow, Flowise, n8n..."
+    ],
+    "requirementsVi": "Node.js 24 trở lên (macOS hoặc Linux dùng glibc) để tự triển khai; hoặc tài khoản LangWatch Cloud.",
+    "installStepsVi": [
+      "Cài đặt và chạy máy chủ LangWatch tự triển khai: `npx @langwatch/server`",
+      "Theo dõi trợ lý lập trình (Claude Code, Codex, Copilot, opencode...): `npx langwatch claude`"
+    ],
+    "cliCommand": "npx @langwatch/server",
+    "usageStepsVi": [
+      "Khởi động máy chủ LangWatch hoặc đăng ký LangWatch Cloud",
+      "Kết nối ứng dụng qua SDK hoặc tích hợp framework để gửi trace",
+      "Tạo bài kiểm thử mô phỏng và đánh giá cho agent",
+      "Tạo virtual key có ngân sách qua AI Gateway và theo dõi chi phí trên dashboard"
+    ],
+    "samplePromptsVi": [
+      "Theo dõi chi phí Claude Code theo từng pull request của nhóm bằng LangWatch",
+      "Tạo bài kiểm thử mô phỏng để đánh giá agent chăm sóc khách hàng trước khi phát hành",
+      "Cấp virtual key có giới hạn ngân sách cho từng nhân viên qua AI Gateway của LangWatch"
+    ],
+    "prosVi": [
+      "Phần lõi theo Apache 2.0, SDK theo MIT",
+      "Tự triển khai chỉ cần Node.js 24 và một lệnh npx",
+      "Gộp quan sát, kiểm thử, gateway và quản trị AI trong một nền tảng",
+      "README nêu tuân thủ GDPR và chứng nhận ISO 27001"
+    ],
+    "consVi": [
+      "Mô hình open-core: các module trong enterprise/ (SSO, SCIM, audit log, webhook gateway...) cần giấy phép thương mại khi dùng trong production",
+      "Tự triển khai nhanh chỉ hỗ trợ macOS hoặc Linux glibc; production cần làm theo tài liệu self-hosting riêng"
+    ],
+    "sourceEvidence": {
+      "npx @langwatch/server": "README.md:30",
+      "npx langwatch claude": "README.md:24"
+    },
+    "meta": {
+      "id": "langwatch-langwatch",
+      "nameVi": "LangWatch — Nền tảng quan sát, kiểm thử và quản trị LLM, agent và trợ lý lập trình AI",
+      "icon": "Layers",
+      "categories": [
+        "nlp_llm",
+        "qa_testing",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "web",
+        "claude_code"
+      ],
+      "licenseShort": "Mã nguồn mở hỗn hợp (Apache-2.0 cho lõi; enterprise/ theo giấy phép thương mại; SDK MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npx @langwatch/server"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "mlflow/mlflow",
+    "license": "Apache License 2.0 (Copyright Databricks, Inc.)",
+    "authorName": "MLflow (Databricks và cộng đồng)",
+    "websiteUrl": "https://mlflow.org",
+    "toolType": "software",
+    "taglineEn": "The Open Source AI Engineering Platform for Agents, LLMs & Models",
+    "summaryVi": "MLflow là nền tảng kỹ thuật AI mã nguồn mở cho agent, LLM và mô hình học máy, giúp gỡ lỗi, đánh giá, giám sát và tối ưu ứng dụng AI. Với LLM và agent, MLflow cung cấp tracing dựa trên OpenTelemetry, đánh giá với hơn 50 chỉ số và LLM judge, quản lý và tối ưu prompt, cùng AI Gateway. Với học máy truyền thống, MLflow có theo dõi thí nghiệm, đánh giá mô hình, Model Registry và triển khai.",
+    "purposeVi": "Quản lý toàn bộ vòng đời ứng dụng LLM, agent và mô hình học máy: trace, đánh giá, quản lý prompt và theo dõi thí nghiệm.",
+    "featuresVi": [
+      "Observability: trace đầy đủ ứng dụng LLM và agent dựa trên OpenTelemetry, theo dõi chất lượng, chi phí, an toàn",
+      "Evaluation: hơn 50 chỉ số dựng sẵn và LLM judge, phát hiện hồi quy trước khi lên production",
+      "Prompts & Optimization: quản lý phiên bản prompt và tự động tối ưu prompt",
+      "AI Gateway: API thống nhất tương thích OpenAI, giới hạn tốc độ, dự phòng, guardrails, chia lưu lượng A/B",
+      "Tự động trace một dòng cho hơn 60 framework; hỗ trợ Python, TypeScript/JavaScript, Java",
+      "Huấn luyện mô hình: Experiment Tracking, Model Evaluation, Model Registry, Deployment"
+    ],
+    "requirementsVi": "Công cụ uv (lệnh uvx) để chạy máy chủ MLflow; giao diện mặc định tại http://localhost:5000. Ví dụ trong README dùng OpenAI SDK nên cần khóa API OpenAI.",
+    "installStepsVi": [
+      "Cài đặt và khởi động máy chủ MLflow: `uvx mlflow server`",
+      "Hoặc dùng trình hướng dẫn thiết lập tracing (cần Claude Code, Codex hoặc OpenCode): `curl -LsSf https://mlflow.org/wizard/setup.sh | sh`"
+    ],
+    "cliCommand": "uvx mlflow server",
+    "usageStepsVi": [
+      "Trong mã Python, gọi mlflow.set_tracking_uri(\"http://localhost:5000\")",
+      "Bật tự động ghi log, ví dụ mlflow.openai.autolog()",
+      "Chạy ứng dụng gọi LLM như bình thường",
+      "Mở giao diện MLflow tại http://localhost:5000 để xem trace và chỉ số"
+    ],
+    "samplePromptsVi": [
+      "Bật mlflow.openai.autolog() để ghi trace mọi lời gọi OpenAI trong ứng dụng hỏi đáp",
+      "Đánh giá agent trên bộ dữ liệu kiểm thử bằng LLM judge của MLflow và so sánh giữa các phiên bản",
+      "Đăng ký prompt vào MLflow Prompt Registry và theo dõi lịch sử thay đổi"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, trung lập nhà cung cấp",
+      "Chạy được cục bộ, trên cụm on-premise, cloud hoặc dịch vụ quản lý (Databricks, SageMaker, Azure ML, Nebius, Red Hat OpenShift AI)",
+      "Phủ cả LLMOps lẫn MLOps truyền thống trong một nền tảng",
+      "Hệ sinh thái tích hợp rộng với hơn 60 framework"
+    ],
+    "consVi": [
+      "Phạm vi rất rộng nên nhiều tính năng cần đọc thêm tài liệu",
+      "Trình hướng dẫn setup.sh cần cài sẵn Claude Code, Codex hoặc OpenCode và chạy trong kho Git của dự án"
+    ],
+    "sourceEvidence": {
+      "uvx mlflow server": "README.md:59",
+      "curl -LsSf https://mlflow.org/wizard/setup.sh | sh": "README.md:51"
+    },
+    "meta": {
+      "id": "mlflow-mlflow",
+      "nameVi": "MLflow — Nền tảng mã nguồn mở theo dõi, đánh giá và quản lý vòng đời agent, LLM và mô hình học máy",
+      "icon": "Layers",
+      "categories": [
+        "nlp_llm",
+        "data_science_analytics",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "uvx mlflow server"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "truera/trulens",
+    "license": "MIT License",
+    "authorName": "TruEra, Inc.",
+    "websiteUrl": "https://www.trulens.org",
+    "toolType": "sdk",
+    "taglineEn": "TruLens finds where your agent fails and where you can cut cost without losing quality.",
+    "summaryVi": "TruLens là thư viện mã nguồn mở, dựa trên OpenTelemetry, để trace và đánh giá ứng dụng LLM, RAG và agent. Chỉ cần gắn decorator để ghi lại từng bước (độ trễ, đầu vào, đầu ra, token, chi phí), rồi chấm điểm bằng LLM judge có giải thích và so sánh các phiên bản ứng dụng. Đánh giá chạy được ngay khi trace đổ về hoặc theo lô trên bộ dữ liệu.",
+    "purposeVi": "Tìm điểm lỗi của agent/RAG và cân bằng giữa chất lượng với chi phí khi chọn phiên bản ứng dụng LLM.",
+    "featuresVi": [
+      "Tracing dựa trên OpenTelemetry, xuất được sang Jaeger, Grafana Tempo, Datadog, New Relic hoặc backend OTLP bất kỳ",
+      "Đánh giá agent với 7 bộ đánh giá: LogicalConsistency, ExecutionEfficiency, PlanAdherence, PlanQuality, ToolSelection, ToolCalling, ToolQuality",
+      "RAG Triad và các chỉ số như groundedness, context relevance",
+      "Đánh giá inline khi ứng dụng chạy hoặc theo lô qua Run API",
+      "Hỗ trợ span kiểu MCP để ghi lời gọi công cụ Model Context Protocol",
+      "Bảng xếp hạng so sánh điểm, độ trễ và chi phí giữa các phiên bản"
+    ],
+    "requirementsVi": "Python và pip; khóa API của nhà cung cấp LLM dùng làm judge (OpenAI, LiteLLM, Gemini, Bedrock, Snowflake Cortex, HuggingFace...).",
+    "installStepsVi": [
+      "Cài đặt gói TruLens: `pip install trulens`",
+      "Cài đặt kèm nhà cung cấp LLM để chấm điểm, ví dụ OpenAI: `pip install trulens trulens-providers-openai`",
+      "Cài đặt tích hợp framework, ví dụ LangChain / LangGraph: `pip install trulens trulens-apps-langchain`"
+    ],
+    "cliCommand": "pip install trulens",
+    "usageStepsVi": [
+      "Gắn decorator @instrument vào các hàm truy xuất, sinh câu trả lời hoặc gọi công cụ",
+      "Định nghĩa Metric (ví dụ Context Relevance) với Selector để chọn dữ liệu cần chấm",
+      "Chạy ứng dụng trong tru_recorder hoặc tạo RunConfig để đánh giá theo lô",
+      "So sánh điểm, độ trễ và chi phí giữa các phiên bản trên bảng xếp hạng"
+    ],
+    "samplePromptsVi": [
+      "Gắn TruLens vào pipeline RAG để đo groundedness và context relevance của câu trả lời",
+      "Đánh giá agent bằng ToolSelection và PlanAdherence để tìm bước chọn sai công cụ",
+      "Chạy đánh giá theo lô trên bộ câu hỏi kiểm thử và so sánh hai phiên bản prompt"
+    ],
+    "prosVi": [
+      "Giấy phép MIT",
+      "Dựa trên OpenTelemetry nên trace mang sang được backend khác",
+      "Hỗ trợ nhiều nhà cung cấp LLM làm judge qua các gói providers riêng"
+    ],
+    "consVi": [
+      "Chấm điểm bằng LLM judge cần khóa API và phát sinh chi phí gọi mô hình",
+      "Phải cài thêm gói providers/apps riêng cho từng nhà cung cấp và framework"
+    ],
+    "sourceEvidence": {
+      "pip install trulens": "README.md:61",
+      "pip install trulens trulens-providers-openai": "README.md:67",
+      "pip install trulens trulens-apps-langchain": "README.md:80"
+    },
+    "meta": {
+      "id": "truera-trulens",
+      "nameVi": "TruLens — Thư viện trace và đánh giá ứng dụng LLM, RAG và agent dựa trên OpenTelemetry",
+      "icon": "Search",
+      "categories": [
+        "nlp_llm",
+        "qa_testing",
+        "vector_rag"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install trulens"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "Giskard-AI/giskard-oss",
+    "license": "Apache License 2.0",
+    "authorName": "Giskard AI",
+    "websiteUrl": "https://docs.giskard.ai",
+    "toolType": "sdk",
+    "taglineEn": "Evals, Red Teaming and Test Generation for Agentic Systems",
+    "summaryVi": "Giskard là thư viện Python mã nguồn mở để kiểm thử và đánh giá hệ thống agent. Phiên bản v3 viết lại theo dạng các gói nhỏ: giskard-checks để tạo eval (từ so khớp chuỗi đến LLM-as-judge) và giskard-scan để red teaming, quét lỗ hổng như prompt injection, jailbreak, nội dung độc hại và đánh giá chất lượng RAG. Bản v2 vẫn có nhưng không còn được bảo trì tích cực.",
+    "purposeVi": "Viết bài kiểm thử, đánh giá chất lượng và quét lỗ hổng bảo mật cho agent và ứng dụng LLM trước khi đưa vào sử dụng.",
+    "featuresVi": [
+      "Giskard Checks: kịch bản (Scenario), kiểm tra dựng sẵn, LLM judge như Groundedness, Conformity, LLMJudge",
+      "Đánh giá agent nhiều lượt hội thoại, phát hiện hồi quy, kiểm tra RAG có bám ngữ cảnh",
+      "Giskard Scan: tự sinh bộ kiểm thử đối kháng theo nhóm rủi ro OWASP LLM Top-10",
+      "Bộ dữ liệu prompt injection dựng sẵn và hỗ trợ bộ sinh kịch bản tùy chỉnh",
+      "quality_scan với KnowledgeBase thay cho RAGET của v2",
+      "Kiến trúc async-first, nhẹ, chỉ kéo phụ thuộc cần thiết"
+    ],
+    "requirementsVi": "Python 3.12 trở lên; khóa API của nhà cung cấp LLM (mặc định openai/gpt-4o-mini) cho LLM judge và bộ sinh kịch bản.",
+    "installStepsVi": [
+      "Cài đặt gói chính (checks, agents, llm, core): `pip install giskard`",
+      "Cài đặt thêm bộ quét lỗ hổng và chất lượng: `pip install \"giskard[scan]\"`",
+      "Cài đặt SDK nhà cung cấp cho LLM judge: `pip install \"giskard[openai]\"`"
+    ],
+    "cliCommand": "pip install giskard",
+    "usageStepsVi": [
+      "Khai báo target là hàm (đồng bộ hoặc bất đồng bộ) nhận inputs và trả về outputs",
+      "Tạo Scenario, thêm interact và check (ví dụ Groundedness) rồi chạy scenario.run()",
+      "Chạy vulnerability_scan với mô tả agent bằng ngôn ngữ tự nhiên để red teaming",
+      "Đọc báo cáo kết quả và sửa các lỗi phát hiện được"
+    ],
+    "samplePromptsVi": [
+      "Viết kịch bản Giskard Checks kiểm tra chatbot hỗ trợ khách hàng trả lời bám đúng tài liệu nội bộ",
+      "Chạy vulnerability_scan cho agent thương mại điện tử để tìm lỗ hổng prompt injection và jailbreak",
+      "Tạo bộ kiểm thử hồi quy nhiều lượt hội thoại cho agent trước mỗi lần phát hành"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Kết hợp eval, red teaming và sinh kịch bản kiểm thử trong một thư viện",
+      "Telemetry chỉ gửi thống kê tổng hợp, không gửi prompt hay đầu ra, và tắt được bằng DO_NOT_TRACK=1 hoặc GISKARD_TELEMETRY_DISABLED=1"
+    ],
+    "consVi": [
+      "Yêu cầu Python 3.12 trở lên",
+      "LLM judge và bộ sinh kịch bản cần khóa API nhà cung cấp LLM",
+      "Giskard v2 (scan dữ liệu bảng, RAGET cũ) không còn được bảo trì tích cực; v3 là bản viết lại, khác API"
+    ],
+    "sourceEvidence": {
+      "pip install giskard": "README.md:33",
+      "pip install \"giskard[scan]\"": "README.md:34",
+      "pip install \"giskard[openai]\"": "README.md:35"
+    },
+    "meta": {
+      "id": "giskard-ai-giskard-oss",
+      "nameVi": "Giskard — Thư viện đánh giá, red teaming và sinh kiểm thử cho hệ thống agent",
+      "icon": "Search",
+      "categories": [
+        "qa_testing",
+        "cybersecurity_security",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install giskard"
+        }
+      ]
+    }
+  }
+]
