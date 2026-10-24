@@ -4,6 +4,15 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.2.1 (Ngày 24-10-2026)
+- **Loại hình**: Cổng REST API: tra cứu danh mục công cụ có lọc, phân trang và xem chi tiết.
+- `GET /api/v1/tools`: thêm phân trang (`page`, `limit` 1–100, mặc định 20, trước đây cố định 50 bản ghi), bộ lọc `tool_type`, `platform`, `vietnam=1`, trường `meta` và `detailUrl`; vẫn giữ `total`, `tools` để tương thích.
+- `GET /api/v1/tools/:id` (mã hoặc slug): trả toàn bộ bản ghi của công cụ đang hiển thị; công cụ đã ẩn hoặc không tồn tại trả 404 `TOOL_NOT_FOUND`.
+- Giới hạn 120 yêu cầu/phút/IP cho hai điểm cuối công khai; tham số sai trả 400 `INVALID_QUERY`.
+- Trang Quản lý API: Playground có thêm hai mẫu gọi (lọc + phân trang, chi tiết công cụ).
+- Kiểm thử mới `backend/tests/api-tools.test.js` (4 ca); tài liệu: hướng dẫn MCP/API mục IV.6, `14_DAC_TA_API.md` (hiện trạng triển khai), `19_AN_TOAN_BAO_MAT.md`.
+- Kho dữ liệu: 2.231 công cụ đang hiển thị, 2.298 cấu hình mẫu.
+
 ### Phiên Bản 2.2.0 (Ngày 24-10-2026)
 - **Loại hình**: Tái cấu trúc kho mã: tách frontend, backend, database (npm workspaces), không thay đổi chức năng.
 - **frontend/** (`@aihub/frontend`): giao diện React + Vite (`src/`, `public/`, `index.html`), plugin Vite trong `dev-server/` (trước là `server/`), kiểm thử giao diện và cầu nối lệnh.
