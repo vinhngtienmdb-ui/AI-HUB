@@ -1,0 +1,579 @@
+[
+  {
+    "repo": "Aider-AI/aider",
+    "license": "Apache License 2.0",
+    "authorName": "Aider-AI (Paul Gauthier và cộng đồng)",
+    "websiteUrl": "https://aider.chat/",
+    "toolType": "cli",
+    "taglineEn": "Aider lets you pair program with LLMs to start a new project or build on your existing codebase.",
+    "summaryVi": "Aider là công cụ lập trình cặp với AI chạy ngay trong terminal, giúp bắt đầu dự án mới hoặc phát triển tiếp trên mã nguồn sẵn có. Aider lập bản đồ toàn bộ codebase, làm việc với hơn 100 ngôn ngữ lập trình và tự động commit thay đổi vào git với thông điệp hợp lý. Công cụ kết nối được với hầu hết các LLM, kể cả mô hình chạy cục bộ.",
+    "purposeVi": "Giúp lập trình viên giao việc viết, sửa, kiểm thử mã cho LLM ngay trong kho git của mình, với khả năng xem lại và hoàn tác thay đổi bằng công cụ git quen thuộc.",
+    "featuresVi": [
+      "LLM đám mây và cục bộ: hoạt động tốt với Claude, DeepSeek, các mô hình OpenAI và kết nối được gần như mọi LLM, kể cả mô hình cục bộ",
+      "Bản đồ codebase: tạo bản đồ toàn bộ mã nguồn để làm việc tốt hơn với dự án lớn",
+      "Hơn 100 ngôn ngữ: Python, JavaScript, Rust, Ruby, Go, C++, PHP, HTML, CSS và nhiều ngôn ngữ khác",
+      "Tích hợp git: tự động commit thay đổi kèm thông điệp hợp lý, dễ diff, quản lý và hoàn tác",
+      "Dùng trong IDE: yêu cầu thay đổi bằng cách thêm chú thích vào mã, Aider sẽ tự xử lý",
+      "Hình ảnh và trang web: đưa ảnh chụp màn hình, tài liệu tham khảo vào cuộc trò chuyện làm ngữ cảnh",
+      "Giọng nói thành mã: nói yêu cầu tính năng, test hoặc sửa lỗi bằng giọng nói",
+      "Lint và test: tự chạy linter, bộ test sau mỗi thay đổi và sửa lỗi phát hiện được",
+      "Sao chép/dán với web chat: làm việc với LLM qua giao diện chat trên trình duyệt"
+    ],
+    "requirementsVi": "Python (cài qua pip), git và API key của nhà cung cấp LLM muốn dùng (ví dụ DeepSeek, Anthropic, OpenAI) hoặc một mô hình chạy cục bộ.",
+    "installStepsVi": [
+      "Cài trình cài đặt Aider: `python -m pip install aider-install`",
+      "Chạy trình cài đặt: `aider-install`",
+      "Chuyển vào thư mục mã nguồn của bạn: `cd /to/your/project`"
+    ],
+    "cliCommand": "aider --model sonnet --api-key anthropic=<key>",
+    "usageStepsVi": [
+      "Khởi chạy Aider với mô hình mong muốn, ví dụ DeepSeek: `aider --model deepseek --api-key deepseek=<key>`",
+      "Hoặc dùng Claude 3.7 Sonnet: `aider --model sonnet --api-key anthropic=<key>`",
+      "Mô tả tính năng, lỗi cần sửa hoặc test cần viết; Aider chỉnh sửa tệp và tự động commit vào git",
+      "Dùng git để xem diff hoặc hoàn tác các thay đổi do AI tạo ra"
+    ],
+    "samplePromptsVi": [
+      "Thêm endpoint /health vào ứng dụng Flask này và viết test cho nó",
+      "Đọc lỗi từ bộ test hiện tại và sửa cho tất cả test đều chạy qua",
+      "Tái cấu trúc module xử lý thanh toán thành các hàm nhỏ hơn, giữ nguyên hành vi"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, dùng tự do cả cho mục đích thương mại",
+      "Kết nối được gần như mọi LLM, kể cả mô hình chạy cục bộ",
+      "Tự động commit git giúp dễ theo dõi và hoàn tác thay đổi của AI"
+    ],
+    "consVi": [
+      "Cần API key của nhà cung cấp LLM (trả phí theo nhà cung cấp) hoặc tự chạy mô hình cục bộ",
+      "Chủ yếu làm việc trong terminal; tích hợp IDE dựa trên cơ chế chú thích trong mã"
+    ],
+    "sourceEvidence": {
+      "python -m pip install aider-install": "README.md:106",
+      "aider-install": "README.md:107",
+      "cd /to/your/project": "README.md:110",
+      "aider --model deepseek --api-key deepseek=<key>": "README.md:113",
+      "aider --model sonnet --api-key anthropic=<key>": "README.md:116",
+      "license": "LICENSE.txt:2"
+    },
+    "meta": {
+      "id": "aider-ai-aider",
+      "nameVi": "Aider — Trợ lý lập trình cặp với AI trong terminal",
+      "icon": "Terminal",
+      "categories": [
+        "nlp_llm",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "python -m pip install aider-install"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "anomalyco/opencode",
+    "license": "MIT License",
+    "authorName": "opencode (Anomaly)",
+    "websiteUrl": "https://opencode.ai",
+    "toolType": "agent",
+    "taglineEn": "The open source AI coding agent.",
+    "summaryVi": "OpenCode là tác tử lập trình AI mã nguồn mở với giao diện dòng lệnh dạng TUI, kèm ứng dụng desktop (bản beta) cho macOS, Windows và Linux. Công cụ có sẵn hai tác tử chuyển đổi bằng phím Tab: build (toàn quyền, dùng để phát triển) và plan (chỉ đọc, dùng để phân tích, khám phá mã). Repo trước đây nằm ở sst/opencode, nay chuyển về anomalyco/opencode.",
+    "purposeVi": "Giúp lập trình viên dùng AI để đọc hiểu, lập kế hoạch và chỉnh sửa mã ngay trong terminal hoặc ứng dụng desktop, với nhà cung cấp mô hình tùy chọn.",
+    "featuresVi": [
+      "Tác tử build: tác tử mặc định, toàn quyền cho công việc phát triển",
+      "Tác tử plan: chỉ đọc, mặc định chặn sửa tệp và hỏi trước khi chạy lệnh bash, phù hợp khám phá codebase lạ",
+      "Subagent general: xử lý tìm kiếm phức tạp và tác vụ nhiều bước, gọi bằng @general trong tin nhắn",
+      "Nhiều cách cài đặt: script cài, npm/bun/pnpm/yarn, Homebrew, pacman, AUR, mise, Nix",
+      "Ứng dụng desktop (beta): bản cho macOS (Apple Silicon/Intel), Windows và Linux (.deb, .rpm, .AppImage)",
+      "Chế độ không tương tác: chạy một lệnh với `opencode run` theo tài liệu CLI"
+    ],
+    "requirementsVi": "Terminal trên macOS, Linux hoặc Windows; tài khoản/API key của nhà cung cấp mô hình (cấu hình bằng lệnh /connect trong TUI hoặc `opencode auth login`).",
+    "installStepsVi": [
+      "Cài nhanh bằng script: `curl -fsSL https://opencode.ai/v2/install | bash`",
+      "Hoặc cài qua npm: `npm i -g @opencode/cli@latest`",
+      "Hoặc cài qua Homebrew (macOS/Linux): `brew install anomalyco/tap/opencode-v2`",
+      "Cấu hình API key cho nhà cung cấp mô hình: `opencode auth login`"
+    ],
+    "cliCommand": "curl -fsSL https://opencode.ai/v2/install | bash",
+    "usageStepsVi": [
+      "Chuyển vào thư mục dự án: `cd /path/to/project`",
+      "Khởi động giao diện TUI: `opencode`",
+      "Chạy `/init` để OpenCode phân tích dự án",
+      "Nhấn Tab để chuyển giữa tác tử build và plan; gọi subagent bằng @general khi cần",
+      "Chạy một yêu cầu không tương tác: `opencode run \"Explain how closures work in JavaScript\"`"
+    ],
+    "samplePromptsVi": [
+      "Ở chế độ plan: giải thích kiến trúc của dự án này và các module chính",
+      "Thêm tính năng phân trang cho API danh sách sản phẩm và cập nhật test",
+      "@general tìm tất cả chỗ gọi hàm sendEmail và tóm tắt cách dùng"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, dùng tự do cả cho mục đích thương mại",
+      "Có tác tử plan chỉ đọc, an toàn khi khám phá codebase lạ",
+      "Nhiều kênh cài đặt và có cả ứng dụng desktop"
+    ],
+    "consVi": [
+      "Ứng dụng desktop vẫn đang ở giai đoạn beta",
+      "Cần tài khoản hoặc API key của nhà cung cấp mô hình",
+      "README khuyên gỡ các phiên bản cũ hơn 0.1.x trước khi cài"
+    ],
+    "sourceEvidence": {
+      "curl -fsSL https://opencode.ai/v2/install | bash": "README.md:50",
+      "npm i -g @opencode/cli@latest": "README.md:53",
+      "brew install anomalyco/tap/opencode-v2": "README.md:54",
+      "opencode auth login": "packages/web/src/content/docs/cli.mdx:145",
+      "cd /path/to/project": "packages/web/src/content/docs/index.mdx:176",
+      "opencode": "packages/web/src/content/docs/index.mdx:182",
+      "/init": "packages/web/src/content/docs/index.mdx:188",
+      "opencode run \"Explain how closures work in JavaScript\"": "packages/web/src/content/docs/cli.mdx:17",
+      "license": "LICENSE:1"
+    },
+    "meta": {
+      "id": "anomalyco-opencode",
+      "nameVi": "OpenCode — Tác tử lập trình AI mã nguồn mở trong terminal",
+      "icon": "Terminal",
+      "categories": [
+        "nlp_llm",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "curl -fsSL https://opencode.ai/v2/install | bash"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "QwenLM/qwen-code",
+    "license": "Apache License 2.0",
+    "authorName": "QwenLM (Alibaba Qwen)",
+    "websiteUrl": "https://qwenlm.github.io/qwen-code-docs/",
+    "toolType": "agent",
+    "taglineEn": "The open-source AI coding agent for your terminal, editor, desktop, browser, and chat.",
+    "summaryVi": "Qwen Code là tác tử lập trình AI mã nguồn mở của nhóm Qwen, dùng được trong terminal, trình soạn thảo, ứng dụng desktop, trình duyệt và ứng dụng chat. Công cụ hỗ trợ nhiều giao thức (OpenAI, Anthropic, Gemini, Qwen) cùng nhà cung cấp bên thứ ba hoặc mô hình cục bộ qua Ollama/vLLM, có SubAgents, Agent Teams, Auto-Memory, Auto-Skills và MCP. Dự án khởi đầu từ Gemini CLI v0.8.2 rồi phát triển độc lập.",
+    "purposeVi": "Cung cấp một tác tử lập trình mã nguồn mở, không phụ thuộc nhà cung cấp, để đọc hiểu kho mã, viết và sửa mã, chạy tự động trong CI/CD hoặc tích hợp qua SDK.",
+    "featuresVi": [
+      "Tác tử sẵn dùng: Auto-Memory, Auto-Skills, SubAgents, Agent Teams và MCP",
+      "Đa giao thức: hỗ trợ API OpenAI, Anthropic, Gemini, Qwen, nhà cung cấp bên thứ ba hoặc mô hình cục bộ (Ollama/vLLM), đổi được khi đang chạy",
+      "Nhiều giao diện: terminal, ứng dụng desktop, Web UI (`qwen serve --open`, thử nghiệm), plugin VS Code, Zed, JetBrains",
+      "Kênh chat: kết nối Telegram, DingTalk, WeChat, Feishu",
+      "Chế độ headless: chạy `qwen -p \"...\"` trong script, CI/CD hoặc tác vụ hàng loạt",
+      "SDK: TypeScript, Python và Java",
+      "Kỹ năng có sẵn: /review, /batch, /loop, /bugfix; Plan Mode, LSP, Sandbox, Git Worktrees"
+    ],
+    "requirementsVi": "Linux/macOS hoặc Windows; nếu cài qua NPM cần Node.js 22 trở lên. Cần cấu hình nhà cung cấp mô hình và API key bằng lệnh /auth trong phiên làm việc.",
+    "installStepsVi": [
+      "Linux/macOS: `curl -fsSL https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.sh | bash`",
+      "Windows (PowerShell): `irm https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.ps1 | iex`",
+      "Hoặc cài qua NPM (Node.js 22+): `npm install -g @qwen-code/qwen-code@latest`",
+      "Khởi động lại terminal để biến môi trường có hiệu lực"
+    ],
+    "cliCommand": "npm install -g @qwen-code/qwen-code@latest",
+    "usageStepsVi": [
+      "Chuyển vào thư mục dự án: `cd /path/to/your-project`",
+      "Khởi động Qwen Code: `qwen`",
+      "Trong phiên làm việc, chạy `/auth` để cấu hình nhà cung cấp và API key",
+      "Đặt yêu cầu, ví dụ yêu cầu giải thích kho mã và chỉ chỗ bắt đầu",
+      "Dùng `qwen -p \"...\"` cho script hoặc CI/CD"
+    ],
+    "samplePromptsVi": [
+      "Explain this repository and show me where to start.",
+      "Dùng /review để rà soát các thay đổi chưa commit và chỉ ra lỗi tiềm ẩn",
+      "Lập kế hoạch ở Plan Mode để chuyển module đăng nhập sang dùng JWT"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0; cả framework và mô hình Qwen đều mã nguồn mở",
+      "Hỗ trợ nhiều giao thức và mô hình cục bộ, không bị khóa vào một nhà cung cấp",
+      "Có nhiều giao diện (terminal, desktop, IDE, web, chat) và SDK cho tích hợp"
+    ],
+    "consVi": [
+      "Cài qua NPM yêu cầu Node.js 22 trở lên",
+      "Web UI và chế độ daemon (`qwen serve`) vẫn đang thử nghiệm",
+      "Cần tự cấu hình nhà cung cấp mô hình và API key"
+    ],
+    "sourceEvidence": {
+      "curl -fsSL https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.sh | bash": "README.md:39",
+      "irm https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.ps1 | iex": "README.md:45",
+      "npm install -g @qwen-code/qwen-code@latest": "README.md:56",
+      "cd /path/to/your-project": "README.md:72",
+      "qwen": "README.md:73",
+      "/auth": "README.md:76",
+      "qwen -p \"...\"": "README.md:105",
+      "qwen serve --open": "README.md:99",
+      "license": "LICENSE:2"
+    },
+    "meta": {
+      "id": "qwenlm-qwen-code",
+      "nameVi": "Qwen Code — Tác tử lập trình AI mã nguồn mở đa nền tảng",
+      "icon": "Code2",
+      "categories": [
+        "nlp_llm",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Trung"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npm install -g @qwen-code/qwen-code@latest"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "aaif-goose/goose",
+    "license": "Apache License 2.0",
+    "authorName": "goose (Agentic AI Foundation, Linux Foundation; trước đây do Block phát triển)",
+    "websiteUrl": "https://goose-docs.ai/",
+    "toolType": "agent",
+    "taglineEn": "your native open source AI agent — desktop app, CLI, and API — for code, workflows, and everything in between",
+    "summaryVi": "goose là tác tử AI đa năng chạy trên máy của bạn, không chỉ để viết mã mà còn cho nghiên cứu, viết lách, tự động hóa và phân tích dữ liệu. Dự án có ứng dụng desktop cho macOS, Linux, Windows, một CLI đầy đủ và API để nhúng, được viết bằng Rust. goose hỗ trợ hơn 15 nhà cung cấp mô hình và kết nối hơn 70 tiện ích mở rộng qua Model Context Protocol; repo trước đây là block/goose, nay thuộc Agentic AI Foundation tại Linux Foundation.",
+    "purposeVi": "Cung cấp một tác tử AI chạy cục bộ, dùng mô hình tùy chọn và mở rộng bằng MCP, để thực hiện tác vụ lập trình và quy trình công việc từ desktop, terminal hoặc qua API.",
+    "featuresVi": [
+      "Đa giao diện: ứng dụng desktop (macOS, Linux, Windows), CLI cho terminal và API để nhúng",
+      "Hơn 15 nhà cung cấp: Anthropic, OpenAI, Google, Ollama, OpenRouter, Azure, Bedrock và nhiều hơn",
+      "Dùng gói đăng ký sẵn có: dùng gói Claude, ChatGPT hoặc Gemini hiện có qua ACP",
+      "Mở rộng qua MCP: kết nối hơn 70 tiện ích mở rộng theo chuẩn Model Context Protocol",
+      "Bản phân phối tùy biến: tự đóng gói goose với nhà cung cấp, tiện ích và thương hiệu cấu hình sẵn",
+      "Viết bằng Rust: hướng tới hiệu năng và tính di động"
+    ],
+    "requirementsVi": "macOS, Linux hoặc Windows; API key của một nhà cung cấp mô hình được hỗ trợ hoặc gói đăng ký Claude/ChatGPT/Gemini dùng qua ACP, hoặc mô hình cục bộ qua Ollama.",
+    "installStepsVi": [
+      "Cài CLI: `curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash`",
+      "Hoặc tải ứng dụng desktop tại trang hướng dẫn cài đặt của goose",
+      "Cấu hình nhà cung cấp mô hình: `goose configure` rồi chọn Configure Providers"
+    ],
+    "cliCommand": "curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash",
+    "usageStepsVi": [
+      "Tạo một thư mục trống và chuyển vào thư mục đó trong terminal",
+      "Bắt đầu phiên làm việc mới: `goose session`",
+      "Nhập câu hỏi, tác vụ hoặc hướng dẫn; goose sẽ bắt đầu thực hiện",
+      "Bổ sung tiện ích MCP khi cần mở rộng khả năng của tác tử"
+    ],
+    "samplePromptsVi": [
+      "Tạo một trò chơi tic-tac-toe bằng JavaScript chạy trong trình duyệt",
+      "Phân tích tệp CSV doanh số trong thư mục này và tóm tắt xu hướng theo tháng",
+      "Viết script tự động đổi tên hàng loạt ảnh theo ngày chụp"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, thuộc Agentic AI Foundation tại Linux Foundation",
+      "Hỗ trợ nhiều nhà cung cấp và hơn 70 tiện ích MCP",
+      "Có cả ứng dụng desktop, CLI và API"
+    ],
+    "consVi": [
+      "Cần API key hoặc gói đăng ký của nhà cung cấp mô hình (hoặc tự chạy mô hình cục bộ)",
+      "README ngắn, phần lớn hướng dẫn chi tiết nằm ở trang tài liệu riêng"
+    ],
+    "sourceEvidence": {
+      "curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash": "README.md:38",
+      "goose configure": "documentation/docs/quickstart.md:135",
+      "goose session": "documentation/docs/quickstart.md:230",
+      "license": "LICENSE:1"
+    },
+    "meta": {
+      "id": "aaif-goose-goose",
+      "nameVi": "goose — Tác tử AI mã nguồn mở cho lập trình và quy trình công việc",
+      "icon": "Brain",
+      "categories": [
+        "nlp_llm",
+        "rpa_workflow_automation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "Kilo-Org/kilocode",
+    "license": "MIT License",
+    "authorName": "Kilo Code (Kilo-Org)",
+    "websiteUrl": "https://kilo.ai",
+    "toolType": "agent",
+    "taglineEn": "The open source coding agent for building with AI in VS Code, JetBrains, or the CLI.",
+    "summaryVi": "Kilo Code là tác tử lập trình AI mã nguồn mở dùng được trong VS Code, JetBrains và dòng lệnh. Người dùng chọn trong hơn 500 mô hình, đổi mô hình ngay giữa tác vụ, và trả theo giá của nhà cung cấp mô hình mà không bị cộng thêm phí. Kilo CLI là bản fork của OpenCode, được mở rộng để làm việc trong nền tảng Kilo.",
+    "purposeVi": "Giúp lập trình viên sinh mã, gỡ lỗi, lập kế hoạch kiến trúc và tự động hóa tác vụ (kể cả trong CI/CD) với mô hình tùy chọn, ngay trong IDE hoặc terminal.",
+    "featuresVi": [
+      "Các tác tử chuyên biệt: Code (mặc định), Plan (thiết kế kiến trúc), Ask (hỏi đáp không sửa tệp), Debug (truy lỗi); có thể tự tạo tác tử riêng",
+      "Sinh mã từ ngôn ngữ tự nhiên: chỉnh sửa trên nhiều tệp",
+      "Gợi ý mã nội tuyến: ghost-text, nhấn Tab để chấp nhận",
+      "Tự kiểm tra: tác tử rà soát và sửa lại kết quả của chính nó",
+      "Điều khiển terminal và trình duyệt: chạy lệnh và tự động hóa web",
+      "Kilo Marketplace: cài thêm tác tử, skill, MCP server và plugin",
+      "Hơn 500 mô hình: đổi mô hình giữa tác vụ để cân bằng độ trễ, chi phí và khả năng suy luận",
+      "Chế độ tự động cho CI/CD: `kilo run --auto` chạy không cần xác nhận"
+    ],
+    "requirementsVi": "VS Code, IDE JetBrains hoặc terminal (cài CLI qua npm, pnpm, bun, Homebrew, AUR hoặc script). Cần tạo tài khoản Kilo để dùng các mô hình theo giá nhà cung cấp.",
+    "installStepsVi": [
+      "VS Code: cài tiện ích Kilo Code từ VS Code Marketplace",
+      "JetBrains: cài plugin Kilo Code từ JetBrains Marketplace",
+      "CLI qua npm: `npm install -g @kilocode/cli`",
+      "Hoặc CLI qua script: `curl -fsSL https://kilo.ai/cli/install | bash`",
+      "Hoặc qua Homebrew (macOS/Linux): `brew install Kilo-Org/tap/kilo`"
+    ],
+    "cliCommand": "npm install -g @kilocode/cli",
+    "usageStepsVi": [
+      "Chạy `kilo` trong thư mục dự án bất kỳ để bắt đầu",
+      "Chọn tác tử phù hợp (Code, Plan, Ask, Debug) theo nhiệm vụ",
+      "Chọn mô hình và có thể đổi mô hình giữa chừng",
+      "Trong CI/CD, chạy tự động: `kilo run --auto \"run tests and fix any failures\"`"
+    ],
+    "samplePromptsVi": [
+      "Ở chế độ Plan: thiết kế kiến trúc cho dịch vụ đặt lịch hẹn và viết kế hoạch triển khai",
+      "Ở chế độ Ask: giải thích luồng xác thực người dùng trong codebase này",
+      "run tests and fix any failures"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, được dùng cả cho mục đích thương mại",
+      "Dùng được trong VS Code, JetBrains và CLI",
+      "Trả theo giá nhà cung cấp mô hình, không cộng phí; không cần API key để bắt đầu"
+    ],
+    "consVi": [
+      "Cờ `--auto` tự chấp thuận các yêu cầu quyền; README khuyên chỉ dùng trong môi trường tin cậy",
+      "Để dùng các mô hình qua Kilo cần tạo tài khoản và trả phí sử dụng mô hình",
+      "Một số tính năng (Cloud Agent, Code Reviews) là dịch vụ trên app.kilo.ai"
+    ],
+    "sourceEvidence": {
+      "npm install -g @kilocode/cli": "README.md:46",
+      "curl -fsSL https://kilo.ai/cli/install | bash": "README.md:49",
+      "brew install Kilo-Org/tap/kilo": "README.md:58",
+      "kilo": "README.md:64",
+      "kilo run --auto \"run tests and fix any failures\"": "README.md:137",
+      "license": "LICENSE:1"
+    },
+    "meta": {
+      "id": "kilo-org-kilocode",
+      "nameVi": "Kilo Code — Tác tử lập trình AI cho VS Code, JetBrains và CLI",
+      "icon": "Code2",
+      "categories": [
+        "nlp_llm",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Phần mềm miễn phí; khi dùng mô hình qua Kilo, trả theo giá của nhà cung cấp mô hình, không cộng thêm phí (theo README).",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npm install -g @kilocode/cli"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "charmbracelet/crush",
+    "license": "Functional Source License, Version 1.1, MIT Future License (FSL-1.1-MIT)",
+    "authorName": "Charmbracelet, Inc.",
+    "websiteUrl": "",
+    "toolType": "agent",
+    "taglineEn": "Your new coding bestie, now available in your favourite terminal.",
+    "summaryVi": "Crush là tác tử lập trình AI chạy trong terminal của Charm, kết nối công cụ, mã nguồn và quy trình làm việc với LLM tùy chọn. Crush hỗ trợ nhiều mô hình qua API tương thích OpenAI/Anthropic, đổi mô hình giữa phiên mà vẫn giữ ngữ cảnh, quản lý nhiều phiên theo dự án, dùng LSP để lấy thêm ngữ cảnh và mở rộng bằng MCP (http, stdio, sse).",
+    "purposeVi": "Mang một trợ lý lập trình AI có hiểu biết ngữ cảnh mã (qua LSP) và mở rộng được bằng MCP vào mọi terminal, trên nhiều hệ điều hành.",
+    "featuresVi": [
+      "Đa mô hình: chọn nhiều LLM hoặc thêm mô hình riêng qua API tương thích OpenAI hoặc Anthropic",
+      "Linh hoạt: đổi LLM giữa phiên mà vẫn giữ ngữ cảnh",
+      "Theo phiên: duy trì nhiều phiên làm việc và ngữ cảnh cho mỗi dự án",
+      "Tăng cường bằng LSP: dùng language server để có thêm ngữ cảnh mã",
+      "Mở rộng: thêm khả năng qua MCP (http, stdio, sse), hỗ trợ OAuth cho MCP server",
+      "Chạy mọi nơi: macOS, Linux, Windows (PowerShell và WSL), Android, FreeBSD, OpenBSD, NetBSD",
+      "Mô hình cục bộ: hỗ trợ nhà cung cấp kiểu llamacpp, lmstudio, litellm, ollama",
+      "Agent Skills và Hooks: mở rộng hành vi tác tử"
+    ],
+    "requirementsVi": "Terminal trên macOS, Linux, Windows hoặc BSD; API key của nhà cung cấp mô hình (Anthropic, OpenAI, Gemini, OpenRouter...) qua biến môi trường hoặc model picker, gói Charm Hyper, hoặc mô hình cục bộ.",
+    "installStepsVi": [
+      "Homebrew: `brew install charmbracelet/tap/crush`",
+      "Hoặc NPM (macOS, Linux, Windows): `npm install -g @charmland/crush`",
+      "Windows qua Winget: `winget install charmbracelet.crush`",
+      "Hoặc cài bằng Go: `go install github.com/charmbracelet/crush@latest`",
+      "Đặt API key qua biến môi trường, ví dụ ANTHROPIC_API_KEY hoặc OPENAI_API_KEY"
+    ],
+    "cliCommand": "npm install -g @charmland/crush",
+    "usageStepsVi": [
+      "Chạy lệnh `crush` trong thư mục dự án",
+      "Nhấn Ctrl+L để mở model picker, chọn nhà cung cấp và dán API key (hoặc chọn mô hình Hyper)",
+      "Giao việc lập trình cho Crush; thêm MCP server, LSP trong cấu hình khi cần",
+      "Xem nhật ký khi cần gỡ lỗi: `crush logs`"
+    ],
+    "samplePromptsVi": [
+      "Đọc package main và giải thích luồng xử lý request chính",
+      "Sửa lỗi kiểm thử đang thất bại trong thư mục internal/api",
+      "Thêm cờ dòng lệnh --verbose và cập nhật tài liệu sử dụng"
+    ],
+    "prosVi": [
+      "Hỗ trợ rất nhiều nhà cung cấp và cả mô hình cục bộ",
+      "Chạy trên nhiều hệ điều hành, kể cả Android và các BSD",
+      "Mở rộng tốt qua MCP, LSP, skill và hook"
+    ],
+    "consVi": [
+      "Giấy phép FSL-1.1-MIT không phải mã nguồn mở hoàn toàn: cấm dùng cho sản phẩm thương mại cạnh tranh; mỗi phiên bản chuyển sang MIT sau 2 năm",
+      "Thu thập số liệu sử dụng ẩn danh theo mặc định (tắt bằng CRUSH_DISABLE_METRICS=1 hoặc DO_NOT_TRACK=1)",
+      "Nhà cung cấp chính thức Hyper là dịch vụ trả phí theo gói đăng ký"
+    ],
+    "sourceEvidence": {
+      "brew install charmbracelet/tap/crush": "README.md:30",
+      "npm install -g @charmland/crush": "README.md:33",
+      "winget install charmbracelet.crush": "README.md:49",
+      "go install github.com/charmbracelet/crush@latest": "README.md:166",
+      "crush logs": "README.md:918",
+      "license FSL-1.1-MIT": "LICENSE.md:5",
+      "MIT sau 2 năm": "LICENSE.md:90",
+      "metrics opt-out": "README.md:1004",
+      "crush": "README.md:927"
+    },
+    "meta": {
+      "id": "charmbracelet-crush",
+      "nameVi": "Crush — Tác tử lập trình AI trong terminal của Charm",
+      "icon": "Terminal",
+      "categories": [
+        "nlp_llm",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Nguồn mở có điều kiện (FSL-1.1-MIT, cấm dùng cạnh tranh thương mại; chuyển sang MIT sau 2 năm)",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npm install -g @charmland/crush"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "SWE-agent/mini-swe-agent",
+    "license": "MIT License",
+    "authorName": "SWE-agent (Đại học Princeton và Stanford)",
+    "websiteUrl": "https://mini-swe-agent.com/latest/",
+    "toolType": "agent",
+    "taglineEn": "The minimal AI software engineering agent",
+    "summaryVi": "mini-swe-agent là tác tử kỹ sư phần mềm AI tối giản do nhóm tác giả SWE-bench và SWE-agent (Princeton, Stanford) xây dựng, với lớp tác tử chỉ khoảng 100 dòng Python. Tác tử chỉ dùng bash, có lịch sử tuyến tính và thực thi mỗi hành động độc lập bằng subprocess.run, đạt trên 74% trên SWE-bench verified. Đây là bản kế nhiệm được nhóm khuyến nghị thay cho SWE-agent.",
+    "purposeVi": "Cung cấp một tác tử lập trình đơn giản, dễ hiểu và dễ mở rộng để dùng hằng ngày qua CLI, chạy đánh giá benchmark hoặc làm nền cho nghiên cứu fine-tuning/RL.",
+    "featuresVi": [
+      "Tối giản: lớp tác tử khoảng 100 dòng Python, không có phụ thuộc phức tạp",
+      "Chỉ dùng bash: không cần giao diện tool-calling nên chạy được với mọi mô hình",
+      "Lịch sử tuyến tính: mỗi bước chỉ nối thêm tin nhắn, thuận tiện gỡ lỗi và fine-tuning",
+      "Nhiều môi trường: cục bộ, docker/podman, singularity/apptainer, bubblewrap, contree",
+      "Tương thích mọi mô hình: qua litellm, openrouter, portkey; hỗ trợ endpoint /completion và /response",
+      "Công cụ đi kèm: CLI `mini`, chạy hàng loạt trên SWE-bench, trình duyệt trajectory, Python bindings"
+    ],
+    "requirementsVi": "Python và pip (hoặc uv/pipx); API key của nhà cung cấp mô hình được hỗ trợ qua litellm, openrouter hoặc portkey.",
+    "installStepsVi": [
+      "Dùng thử CLI trong môi trường ảo tạm: `pip install uv && uvx mini-swe-agent`",
+      "Hoặc cài vào môi trường hiện tại: `pip install mini-swe-agent`",
+      "Hoặc cài từ mã nguồn: `git clone https://github.com/SWE-agent/mini-swe-agent.git` rồi `cd mini-swe-agent && pip install -e .`"
+    ],
+    "cliCommand": "pip install mini-swe-agent",
+    "usageStepsVi": [
+      "Chạy CLI: `mini`",
+      "Cấu hình mô hình và API key theo hướng dẫn cấu hình toàn cục trong tài liệu",
+      "Mô tả tác vụ; tác tử thực thi các lệnh bash để hoàn thành và ghi lại trajectory",
+      "Dùng chế độ batch inference để chạy đánh giá trên SWE-bench"
+    ],
+    "samplePromptsVi": [
+      "Write a sudoku game",
+      "Tìm và sửa lỗi khiến test test_parser.py thất bại trong kho mã này",
+      "Thêm tùy chọn xuất kết quả ra tệp JSON cho script phân tích log"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, mã nguồn rất gọn và dễ hiểu",
+      "Hiệu năng cao trên SWE-bench verified (trên 74% theo README)",
+      "Chạy được trong nhiều loại sandbox và với mọi mô hình"
+    ],
+    "consVi": [
+      "Chỉ dùng bash, không có bộ công cụ chuyên biệt như SWE-agent",
+      "Đây là phiên bản v2; người dùng v1 cần xem hướng dẫn chuyển đổi",
+      "Cần API key của nhà cung cấp mô hình"
+    ],
+    "sourceEvidence": {
+      "pip install uv && uvx mini-swe-agent": "README.md:159",
+      "pip install mini-swe-agent": "README.md:167",
+      "mini": "README.md:168",
+      "git clone https://github.com/SWE-agent/mini-swe-agent.git": "README.md:174",
+      "cd mini-swe-agent && pip install -e .": "README.md:175",
+      "license": "LICENSE.md:1"
+    },
+    "meta": {
+      "id": "swe-agent-mini-swe-agent",
+      "nameVi": "mini-swe-agent — Tác tử kỹ sư phần mềm AI tối giản",
+      "icon": "Terminal",
+      "categories": [
+        "nlp_llm",
+        "qa_testing"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install mini-swe-agent"
+        }
+      ]
+    }
+  }
+]

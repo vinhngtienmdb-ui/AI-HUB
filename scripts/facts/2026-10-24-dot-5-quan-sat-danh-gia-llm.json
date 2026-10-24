@@ -1,0 +1,495 @@
+[
+  {
+    "repo": "langfuse/langfuse",
+    "license": "MIT (Expat) cho phần lõi; các thư mục ee/, web/src/ee/, worker/src/ee/, packages/shared/src/server/ee/ theo giấy phép thương mại Langfuse Enterprise (ee/LICENSE)",
+    "authorName": "Langfuse (ClickHouse, Inc.)",
+    "websiteUrl": "https://langfuse.com",
+    "toolType": "software",
+    "taglineEn": "Langfuse is an open source LLM engineering platform.",
+    "summaryVi": "Langfuse là nền tảng kỹ thuật LLM mã nguồn mở giúp các nhóm cùng phát triển, giám sát, đánh giá và gỡ lỗi ứng dụng AI. Nền tảng gom dấu vết (trace) các lời gọi LLM, truy xuất, embedding và hành động của agent, kèm quản lý prompt, bộ dữ liệu, đánh giá và playground. Có thể tự triển khai bằng Docker Compose, Kubernetes (Helm) hoặc dùng bản Langfuse Cloud.",
+    "purposeVi": "Theo dõi và gỡ lỗi ứng dụng LLM trong môi trường thật, quản lý phiên bản prompt và đánh giá chất lượng đầu ra một cách có hệ thống.",
+    "featuresVi": [
+      "Quan sát ứng dụng LLM: ghi trace các lời gọi LLM, truy xuất, embedding, hành động agent; xem phiên người dùng",
+      "Quản lý prompt: quản lý tập trung, kiểm soát phiên bản, có bộ nhớ đệm phía server và client nên không tăng độ trễ",
+      "Đánh giá: LLM-as-a-judge, bộ đánh giá bằng mã, thu thập phản hồi người dùng, gán nhãn thủ công và pipeline tùy chỉnh qua API/SDK",
+      "Bộ dữ liệu (Datasets): tập kiểm thử và benchmark để thử nghiệm trước khi triển khai",
+      "LLM Playground: thử prompt và cấu hình mô hình, nhảy thẳng từ trace lỗi sang playground",
+      "API đầy đủ: OpenAPI spec, Postman collection, SDK có kiểu cho Python và JS/TS",
+      "Tích hợp OpenAI, LangChain, LlamaIndex, Haystack, LiteLLM, Vercel AI SDK, Mastra, Dify, Flowise, CrewAI..."
+    ],
+    "requirementsVi": "Docker và Docker Compose để tự triển khai cục bộ (giao diện web chạy ở cổng 3000 theo docker-compose.yml); hoặc tài khoản Langfuse Cloud. Ứng dụng Python cần khóa API LANGFUSE_SECRET_KEY / LANGFUSE_PUBLIC_KEY tạo trong phần cài đặt dự án.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone --depth=1 https://github.com/langfuse/langfuse.git`",
+      "Vào thư mục: `cd langfuse`",
+      "Chạy toàn bộ nền tảng bằng Docker Compose: `docker compose up`",
+      "Trong ứng dụng Python, cài SDK: `pip install langfuse openai`"
+    ],
+    "cliCommand": "docker compose up",
+    "usageStepsVi": [
+      "Mở giao diện Langfuse, tạo dự án mới và tạo khóa API trong phần cài đặt dự án",
+      "Khai báo LANGFUSE_SECRET_KEY, LANGFUSE_PUBLIC_KEY và LANGFUSE_BASE_URL trong tệp .env",
+      "Gắn decorator @observe() vào hàm và dùng tích hợp langfuse.openai để tự ghi lại tham số mô hình",
+      "Xem trace, chấm điểm, quản lý prompt và tạo dataset trong giao diện Langfuse"
+    ],
+    "samplePromptsVi": [
+      "Thêm @observe() của Langfuse vào pipeline RAG để xem từng bước truy xuất và lời gọi LLM",
+      "Chuyển prompt hệ thống của chatbot sang Langfuse Prompt Management để quản lý phiên bản",
+      "Thiết lập LLM-as-a-judge trong Langfuse để chấm điểm độ chính xác câu trả lời trên dataset kiểm thử"
+    ],
+    "prosVi": [
+      "Phần lõi theo giấy phép MIT, tự triển khai được trên máy cục bộ, VM, Kubernetes hoặc Terraform (AWS, Azure, GCP)",
+      "Gộp tracing, quản lý prompt, đánh giá, dataset và playground trong một nền tảng",
+      "Hệ sinh thái tích hợp rộng với nhiều framework LLM và agent",
+      "Có SDK Python, JS/TS và API mở (OpenAPI)"
+    ],
+    "consVi": [
+      "Giấy phép hỗn hợp (open core): mã trong các thư mục ee/ thuộc giấy phép thương mại Enterprise, không phải MIT",
+      "Bản tự triển khai mặc định gửi thống kê sử dụng cơ bản về PostHog; tắt bằng TELEMETRY_ENABLED=false",
+      "README lưu ý cấu hình xoay vòng log Docker để tránh đầy ổ đĩa",
+      "Cần khóa API của dự án Langfuse để ứng dụng gửi trace"
+    ],
+    "sourceEvidence": {
+      "git clone --depth=1 https://github.com/langfuse/langfuse.git": "README.md:112",
+      "cd langfuse": "README.md:113",
+      "docker compose up": "README.md:116",
+      "pip install langfuse openai": "README.md:193"
+    },
+    "meta": {
+      "id": "langfuse-langfuse",
+      "nameVi": "Langfuse — Nền tảng mã nguồn mở theo dõi, đánh giá và quản lý prompt cho ứng dụng LLM",
+      "icon": "Layers",
+      "categories": ["nlp_llm", "qa_testing", "devops_cicd"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở hỗn hợp (MIT cho lõi; thư mục ee/ theo giấy phép thương mại)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "docker compose up" }
+      ]
+    }
+  },
+  {
+    "repo": "Arize-ai/phoenix",
+    "license": "Elastic License 2.0 (ELv2)",
+    "authorName": "Arize AI",
+    "websiteUrl": "https://arize.com/docs/phoenix",
+    "toolType": "software",
+    "taglineEn": "Arize Phoenix is Arize's open-source AI observability platform designed for experimentation, evaluation, and troubleshooting.",
+    "summaryVi": "Phoenix là nền tảng quan sát AI của Arize dùng để thử nghiệm, đánh giá và xử lý sự cố ứng dụng LLM. Phoenix ghi trace dựa trên OpenTelemetry (OpenInference), hỗ trợ đánh giá bằng LLM, dataset có phiên bản, thí nghiệm, playground và quản lý prompt. Có thể chạy cục bộ bằng pip/uvx, Docker hoặc Kubernetes, kèm CLI, skill và Remote MCP Server cho agent lập trình.",
+    "purposeVi": "Theo dõi, đánh giá và cải thiện ứng dụng LLM/agent bằng trace chuẩn OpenTelemetry, tự host trên hạ tầng của mình.",
+    "featuresVi": [
+      "Tracing: ghi trace thời gian chạy ứng dụng LLM bằng instrumentation dựa trên OpenTelemetry",
+      "Evaluation: dùng LLM để benchmark chất lượng phản hồi và truy xuất",
+      "Datasets và Experiments: dataset có phiên bản, theo dõi thay đổi prompt, LLM và truy xuất",
+      "Playground và Prompt Management: tối ưu prompt, so sánh mô hình, phát lại lời gọi LLM đã trace, quản lý phiên bản và gắn thẻ prompt",
+      "PXI (Phoenix Intelligence): agent kỹ thuật AI tích hợp để gỡ lỗi trace và lặp prompt",
+      "Remote MCP Server: Claude Code, Cursor và các MCP client khác kết nối tới endpoint /mcp để truy vấn trace, dataset, thí nghiệm",
+      "CLI @arizeai/phoenix-cli tự phát hiện framework, cài instrumentation OpenInference và cấu hình xuất trace"
+    ],
+    "requirementsVi": "Python với pip hoặc uv (uvx) để chạy cục bộ; hoặc Docker/Kubernetes (image arizephoenix/phoenix, Helm chart). Node.js nếu dùng `npx @arizeai/phoenix-cli`.",
+    "installStepsVi": [
+      "Cài Phoenix: `pip install arize-phoenix`",
+      "Khởi động máy chủ: `phoenix serve`",
+      "Hoặc chạy không cần cài đặt: `uvx arize-phoenix serve`",
+      "Trong thư mục dự án, tự cấu hình gửi trace: `npx @arizeai/phoenix-cli setup`"
+    ],
+    "cliCommand": "uvx arize-phoenix serve",
+    "usageStepsVi": [
+      "Khởi động Phoenix cục bộ hoặc triển khai bằng Docker/Helm",
+      "Chạy phoenix-cli setup (hoặc tự cấu hình OpenInference) để ứng dụng gửi trace về Phoenix",
+      "Xem trace, tạo dataset và chạy đánh giá, thí nghiệm trong giao diện",
+      "Tùy chọn: kết nối agent lập trình qua Remote MCP Server tại endpoint /mcp của instance"
+    ],
+    "samplePromptsVi": [
+      "Dùng Phoenix để tìm các trace có lỗi gọi công cụ trong agent LangGraph của tôi",
+      "Tạo dataset từ các trace gần đây và chạy thí nghiệm so sánh hai phiên bản prompt",
+      "Chạy đánh giá mức liên quan của tài liệu truy xuất trong pipeline RAG"
+    ],
+    "prosVi": [
+      "Tự host được, chạy nhanh bằng một lệnh uvx",
+      "Dựa trên OpenTelemetry/OpenInference, không phụ thuộc nhà cung cấp, ngôn ngữ hay framework",
+      "Có sẵn CLI, skill và Remote MCP Server cho agent lập trình",
+      "Container image và Helm chart chính thức"
+    ],
+    "consVi": [
+      "Giấy phép Elastic License 2.0 là giấy phép mã nguồn công khai (source-available), không phải giấy phép nguồn mở OSI: cấm cung cấp phần mềm cho bên thứ ba dưới dạng dịch vụ hosted/managed và cấm vô hiệu hóa chức năng license key",
+      "README nêu một phần mã được bảo hộ bằng sáng chế Hoa Kỳ (xem IP_NOTICE)",
+      "Mặc định thu thập phân tích web cơ bản; tắt bằng PHOENIX_TELEMETRY_ENABLED=false",
+      "Bản managed (Arize AX) là sản phẩm thương mại riêng"
+    ],
+    "sourceEvidence": {
+      "pip install arize-phoenix": "README.md:86",
+      "phoenix serve": "README.md:87",
+      "uvx arize-phoenix serve": "README.md:93",
+      "npx @arizeai/phoenix-cli setup": "README.md:101"
+    },
+    "meta": {
+      "id": "arize-ai-phoenix",
+      "nameVi": "Arize Phoenix — Nền tảng quan sát, tracing và đánh giá ứng dụng LLM tự host",
+      "icon": "Search",
+      "categories": ["nlp_llm", "qa_testing", "data_science_analytics"],
+      "platforms": ["web", "claude_code", "cursor"],
+      "licenseShort": "Mã nguồn công khai (Elastic License 2.0) — cấm cung cấp dưới dạng dịch vụ hosted",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "uvx arize-phoenix serve" }
+      ]
+    }
+  },
+  {
+    "repo": "comet-ml/opik",
+    "license": "Apache License 2.0",
+    "authorName": "Comet ML, Inc.",
+    "websiteUrl": "https://www.comet.com/docs/opik/",
+    "toolType": "software",
+    "taglineEn": "Opik: Open-Source LLM Observability, Evaluation & AI Agent Tracing",
+    "summaryVi": "Opik của Comet bao phủ toàn bộ vòng đời ứng dụng LLM, từ trace đầu tiên khi phát triển đến giám sát môi trường thật, dành cho nhóm xây dựng ứng dụng LLM và AI agent. Nền tảng gồm tracing agent, đánh giá với dataset, thí nghiệm và chỉ số LLM-as-a-judge, tối ưu prompt/agent, guardrails và tích hợp PyTest cho CI/CD. Toàn bộ nền tảng (cả backend) theo Apache 2.0 và tự host được.",
+    "purposeVi": "Ghi trace, đánh giá và giám sát ứng dụng LLM và agent ở quy mô lớn, tự host không cần giấy phép thương mại.",
+    "featuresVi": [
+      "Tracing agent: cây trace đầy đủ cho agent nhiều bước, lời gọi công cụ, ghi hội thoại",
+      "Đánh giá LLM: dataset, experiment và chỉ số LLM-as-a-judge cho phát hiện ảo giác, kiểm duyệt, đánh giá RAG",
+      "Tối ưu prompt và agent: Opik Agent Optimizer SDK",
+      "Giám sát production: dashboard, quy tắc đánh giá trực tuyến; README nêu khả năng ghi 40M+ trace/ngày",
+      "Opik Guardrails hỗ trợ AI an toàn và có trách nhiệm",
+      "Đánh giá trong CI/CD qua tích hợp PyTest",
+      "Kết nối agent lập trình (Claude Code, Cursor, VS Code Copilot, Codex, opencode) qua MCP bằng một lệnh"
+    ],
+    "requirementsVi": "Git và Docker để tự host bằng script opik.sh (Linux/Mac) hoặc opik.ps1 (Windows), giao diện tại localhost:5173; hoặc tài khoản Comet.com. Python để dùng SDK; uv để cấu hình MCP.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/comet-ml/opik.git`",
+      "Vào thư mục: `cd opik`",
+      "Khởi động toàn bộ nền tảng (Linux/Mac): `./opik.sh`",
+      "Cài Python SDK: `pip install opik`",
+      "Cấu hình SDK trỏ tới server hoặc Comet.com: `opik configure`",
+      "Tùy chọn, kết nối agent lập trình qua MCP: `uvx opik mcp configure`"
+    ],
+    "cliCommand": "./opik.sh",
+    "usageStepsVi": [
+      "Khởi động Opik và mở localhost:5173 trên trình duyệt",
+      "Chạy opik configure để nhập địa chỉ server tự host hoặc API key và workspace Comet.com",
+      "Gắn decorator @track vào hàm hoặc dùng tích hợp framework để ghi trace",
+      "Tạo dataset, chạy experiment với chỉ số LLM-as-a-judge và theo dõi dashboard"
+    ],
+    "samplePromptsVi": [
+      "Đọc các trace Opik gần nhất của agent và chỉ ra bước gọi công cụ bị lỗi",
+      "Chấm điểm ảo giác cho các câu trả lời trong dataset kiểm thử bằng Opik",
+      "Thêm kiểm thử đánh giá LLM bằng PyTest của Opik vào pipeline CI"
+    ],
+    "prosVi": [
+      "Toàn bộ nền tảng, gồm backend, theo Apache 2.0 và tự host không cần giấy phép thương mại",
+      "Script opik.sh có tùy chọn chạy hạ tầng, backend, guardrails, kiểm tra và dọn dẹp",
+      "Hỗ trợ SDK Python, TypeScript, REST API và OpenTelemetry",
+      "Cấu hình MCP cho agent lập trình bằng một lệnh"
+    ],
+    "consVi": [
+      "Tự host cần Docker và chạy nhiều container (cơ sở dữ liệu, cache, backend)",
+      "Lệnh `./opik.sh --clean` xóa toàn bộ dữ liệu Opik",
+      "Kubernetes/Helm được khuyến nghị cho production quy mô lớn",
+      "Bản dễ dùng nhất là Comet.com Cloud, cần tạo tài khoản"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/comet-ml/opik.git": "README.md:188",
+      "cd opik": "README.md:191",
+      "./opik.sh": "README.md:194",
+      "pip install opik": "README.md:95",
+      "opik configure": "README.md:96",
+      "uvx opik mcp configure": "README.md:116",
+      "./opik.sh --clean": "README.md:239"
+    },
+    "meta": {
+      "id": "comet-ml-opik",
+      "nameVi": "Opik — Nền tảng mã nguồn mở quan sát, đánh giá và tracing AI agent",
+      "icon": "Search",
+      "categories": ["nlp_llm", "qa_testing", "devops_cicd"],
+      "platforms": ["web", "claude_code", "cursor"],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "./opik.sh" },
+        { "platform": "claude_code", "platformName": "Claude Code", "cliCommand": "uvx opik mcp configure" }
+      ]
+    }
+  },
+  {
+    "repo": "confident-ai/deepeval",
+    "license": "Apache License 2.0",
+    "authorName": "Confident AI",
+    "websiteUrl": "https://deepeval.com",
+    "toolType": "sdk",
+    "taglineEn": "DeepEval is a simple-to-use, open-source LLM evaluation framework, for evaluating large-language model systems.",
+    "summaryVi": "DeepEval là framework đánh giá LLM mã nguồn mở, tương tự Pytest nhưng chuyên cho kiểm thử đơn vị ứng dụng LLM. Thư viện có nhiều chỉ số sẵn dùng như G-Eval, DAG, chỉ số cho agent, hội thoại nhiều lượt, voice agent, RAG, MCP và đa phương thức, chạy bằng bất kỳ LLM nào hoặc mô hình NLP cục bộ. Hỗ trợ đánh giá end-to-end và theo từng thành phần qua tracing.",
+    "purposeVi": "Viết kiểm thử tự động cho chatbot, agent, pipeline RAG để chọn mô hình, prompt, kiến trúc tối ưu và ngăn suy giảm chất lượng.",
+    "featuresVi": [
+      "Chỉ số đa năng: JevEval, G-Eval (LLM-as-a-judge theo tiêu chí tùy chọn), DAG (bộ dựng judge xác định dạng đồ thị)",
+      "Chỉ số agent: Task Completion, Tool Correctness, Goal Accuracy, Step Efficiency, Plan Adherence...",
+      "Chỉ số RAG: Answer Relevancy, Faithfulness, Contextual Recall/Precision/Relevancy, RAGAS",
+      "Chỉ số hội thoại nhiều lượt, voice agent, MCP và đa phương thức; Hallucination, Bias, Toxicity, JSON Correctness",
+      "Sinh dataset tổng hợp một lượt và nhiều lượt; tối ưu prompt tự động",
+      "Benchmark LLM trên MMLU, HellaSwag, DROP, BIG-Bench Hard, TruthfulQA, HumanEval, GSM8K",
+      "Tích hợp LangChain, LangGraph, Pydantic AI, CrewAI, Anthropic, OpenAI Agents, LlamaIndex và mọi môi trường CI/CD"
+    ],
+    "requirementsVi": "Python>=3.9. Các chỉ số LLM-as-a-judge cần khóa OPENAI_API_KEY hoặc mô hình tùy chỉnh của bạn. Tài khoản Confident AI là tùy chọn (README khuyến nghị để có báo cáo chia sẻ trên cloud).",
+    "installStepsVi": [
+      "Cài thư viện: `pip install -U deepeval`",
+      "Tùy chọn, đăng nhập nền tảng để lưu báo cáo: `deepeval login`",
+      "Đặt khóa API cho mô hình đánh giá: `export OPENAI_API_KEY=\"...\"`"
+    ],
+    "cliCommand": "pip install -U deepeval",
+    "usageStepsVi": [
+      "Tạo tệp kiểm thử, ví dụ test_ai_agent.py, khai báo LLMTestCase với input, actual_output, expected_output",
+      "Chọn chỉ số như GEval và ngưỡng (threshold), gọi assert_test",
+      "Chạy kiểm thử: `deepeval test run test_ai_agent.py`",
+      "Dùng @observe và evals_iterator() để đánh giá từng thành phần hoặc toàn bộ quỹ đạo agent"
+    ],
+    "samplePromptsVi": [
+      "Viết bộ kiểm thử DeepEval với G-Eval để kiểm tra độ chính xác câu trả lời của chatbot chăm sóc khách hàng",
+      "Đo Faithfulness và Contextual Recall cho pipeline RAG của tôi bằng DeepEval",
+      "Đánh giá agent bằng Task Completion và Tool Correctness trên dataset golden"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Cách viết kiểm thử quen thuộc như Pytest, tích hợp mọi CI/CD",
+      "Bộ chỉ số rất rộng, có giải thích cho từng điểm số; dùng được LLM bất kỳ hoặc mô hình chạy cục bộ",
+      "Có skill cho agent lập trình (vibe-coder quickstart)"
+    ],
+    "consVi": [
+      "Chỉ số LLM-as-a-judge tốn chi phí gọi API mô hình (mặc định cần OPENAI_API_KEY)",
+      "Khi đăng nhập deepeval login, các test case được tự động ghi lên nền tảng Confident AI (dịch vụ thương mại)",
+      "Chỉ hỗ trợ Python"
+    ],
+    "sourceEvidence": {
+      "pip install -U deepeval": "README.md:231",
+      "deepeval login": "README.md:241",
+      "export OPENAI_API_KEY=\"...\"": "README.md:281",
+      "deepeval test run test_ai_agent.py": "README.md:287"
+    },
+    "meta": {
+      "id": "confident-ai-deepeval",
+      "nameVi": "DeepEval — Framework kiểm thử và đánh giá ứng dụng LLM kiểu Pytest",
+      "icon": "Wrench",
+      "categories": ["qa_testing", "nlp_llm", "vector_rag"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "pip install -U deepeval" }
+      ]
+    }
+  },
+  {
+    "repo": "vibrantlabsai/ragas",
+    "license": "Apache License 2.0",
+    "authorName": "VibrantLabs (trước đây là Exploding Gradients)",
+    "websiteUrl": "https://docs.ragas.io",
+    "toolType": "sdk",
+    "taglineEn": "Objective metrics, intelligent test generation, and data-driven insights for LLM apps",
+    "summaryVi": "Ragas là bộ công cụ đánh giá và tối ưu ứng dụng LLM bằng chỉ số khách quan thay cho đánh giá chủ quan tốn thời gian. Thư viện cung cấp chỉ số dựa trên LLM và chỉ số truyền thống, sinh tập kiểm thử bám sát dữ liệu thực tế và tích hợp với LangChain cùng các công cụ quan sát phổ biến. Lệnh ragas quickstart tạo nhanh dự án mẫu đánh giá RAG.",
+    "purposeVi": "Đo lường chất lượng ứng dụng LLM, đặc biệt hệ thống RAG, bằng chỉ số định lượng và tập kiểm thử tự sinh.",
+    "featuresVi": [
+      "Chỉ số khách quan: kết hợp chỉ số dựa trên LLM và chỉ số truyền thống",
+      "Sinh dữ liệu kiểm thử: tự tạo tập kiểm thử bao phủ nhiều tình huống",
+      "Tích hợp: làm việc với LangChain và các công cụ quan sát lớn",
+      "Vòng phản hồi: dùng dữ liệu production để cải thiện ứng dụng liên tục",
+      "Chỉ số tùy chỉnh như DiscreteMetric (Aspect Critique) để chấm bất kỳ khía cạnh nào của đầu ra",
+      "Lệnh ragas quickstart với mẫu rag_eval để dựng dự án đánh giá RAG"
+    ],
+    "requirementsVi": "Python >= 3.9 (theo pyproject.toml). Ví dụ trong README dùng OpenAI nên cần đặt biến môi trường OPENAI_API_KEY.",
+    "installStepsVi": [
+      "Cài từ PyPI: `pip install ragas`",
+      "Hoặc cài từ mã nguồn: `pip install git+https://github.com/vibrantlabsai/ragas`",
+      "Xem danh sách mẫu dự án: `ragas quickstart`",
+      "Tạo dự án đánh giá RAG: `ragas quickstart rag_eval`"
+    ],
+    "cliCommand": "pip install ragas",
+    "usageStepsVi": [
+      "Đặt biến môi trường OPENAI_API_KEY",
+      "Tạo LLM đánh giá bằng llm_factory và định nghĩa chỉ số, ví dụ DiscreteMetric với các giá trị cho phép",
+      "Gọi metric.ascore() trên đầu ra ứng dụng để nhận điểm và lý do",
+      "Hoặc dùng `ragas quickstart rag_eval -o ./my-project` để có dự án mẫu hoàn chỉnh"
+    ],
+    "samplePromptsVi": [
+      "Tạo dự án ragas quickstart rag_eval và chạy đánh giá cho chatbot hỏi đáp tài liệu nội bộ",
+      "Định nghĩa DiscreteMetric của Ragas để chấm bản tóm tắt là accurate hay inaccurate",
+      "Sinh tập kiểm thử tự động từ tài liệu để đánh giá pipeline RAG"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Chuyên sâu cho đánh giá RAG, có lệnh quickstart tạo dự án mẫu",
+      "Tự sinh tập kiểm thử khi chưa có dataset",
+      "Mã thu thập dữ liệu phân tích công khai, có thể tắt"
+    ],
+    "consVi": [
+      "Mặc định thu thập dữ liệu sử dụng ẩn danh; tắt bằng RAGAS_DO_NOT_TRACK=true",
+      "Cần khóa API LLM (ví dụ OPENAI_API_KEY) cho chỉ số dựa trên LLM",
+      "Hiện chỉ có mẫu quickstart rag_eval; các mẫu agent_evals, benchmark_llm, prompt_evals, workflow_eval đang ở trạng thái sắp ra mắt",
+      "Kho đã chuyển từ explodinggradients/ragas sang vibrantlabsai/ragas; commit gần nhất trên nhánh chính là ngày 24/02/2026"
+    ],
+    "sourceEvidence": {
+      "pip install ragas": "README.md:62",
+      "pip install git+https://github.com/vibrantlabsai/ragas": "README.md:68",
+      "ragas quickstart": "README.md:79",
+      "ragas quickstart rag_eval": "README.md:82",
+      "ragas quickstart rag_eval -o ./my-project": "README.md:85"
+    },
+    "meta": {
+      "id": "vibrantlabsai-ragas",
+      "nameVi": "Ragas — Bộ công cụ đánh giá ứng dụng LLM và hệ thống RAG bằng chỉ số khách quan",
+      "icon": "Wrench",
+      "categories": ["vector_rag", "qa_testing", "nlp_llm"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "pip install ragas" }
+      ]
+    }
+  },
+  {
+    "repo": "traceloop/openllmetry",
+    "license": "Apache License 2.0",
+    "authorName": "Traceloop",
+    "websiteUrl": "https://traceloop.com/docs/openllmetry/getting-started-python",
+    "toolType": "sdk",
+    "taglineEn": "OpenLLMetry is a set of extensions built on top of OpenTelemetry that gives you complete observability over your LLM application.",
+    "summaryVi": "OpenLLMetry là bộ mở rộng xây trên OpenTelemetry, giúp quan sát toàn diện ứng dụng LLM và xuất dữ liệu chuẩn OpenTelemetry sang hệ thống giám sát sẵn có như Datadog, Grafana, Honeycomb, New Relic, Sentry, SigNoz. Kho gồm các instrumentation cho nhà cung cấp LLM, vector DB, framework và Traceloop SDK để bắt đầu chỉ với một dòng mã. Quy ước ngữ nghĩa của dự án đã được đưa vào OpenTelemetry.",
+    "purposeVi": "Thêm tracing LLM chuẩn OpenTelemetry vào ứng dụng Python và gửi về công cụ observability mà đội ngũ đang dùng.",
+    "featuresVi": [
+      "Traceloop SDK: khởi tạo tracing bằng Traceloop.init()",
+      "Instrumentation nhà cung cấp LLM: OpenAI/Azure OpenAI, Anthropic, Bedrock, Cohere, Gemini, Groq, Mistral, Ollama, Vertex AI...",
+      "Instrumentation vector DB: Chroma, LanceDB, Milvus, Pinecone, Qdrant, Weaviate, Marqo",
+      "Instrumentation framework: LangChain, LangGraph, LlamaIndex, CrewAI, Haystack, LiteLLM, OpenAI Agents, Agno; giao thức MCP",
+      "Xuất trace tới Traceloop, Datadog, Dynatrace, Grafana, Honeycomb, New Relic, Sentry, SigNoz, Splunk, OpenTelemetry Collector...",
+      "Dùng riêng từng instrumentation nếu đã có OpenTelemetry"
+    ],
+    "requirementsVi": "Python >= 3.10 (theo pyproject.toml của traceloop-sdk) và một đích nhận dữ liệu OpenTelemetry. Bản JS/TS nằm ở kho riêng OpenLLMetry-JS.",
+    "installStepsVi": [
+      "Cài SDK: `pip install traceloop-sdk`",
+      "Thêm vào mã: `from traceloop.sdk import Traceloop` rồi gọi `Traceloop.init()`",
+      "Khi chạy cục bộ, tắt gửi theo lô để thấy trace ngay: `Traceloop.init(disable_batch=True)`"
+    ],
+    "cliCommand": "pip install traceloop-sdk",
+    "usageStepsVi": [
+      "Cài traceloop-sdk và gọi Traceloop.init() khi khởi động ứng dụng",
+      "Cấu hình đích xuất (exporter) theo tài liệu tích hợp của từng nền tảng giám sát",
+      "Chạy ứng dụng; các lời gọi LLM, vector DB và framework được tự động ghi trace",
+      "Xem trace trong công cụ observability đã kết nối"
+    ],
+    "samplePromptsVi": [
+      "Thêm OpenLLMetry vào ứng dụng FastAPI dùng OpenAI để gửi trace về Grafana",
+      "Ghi trace các truy vấn Qdrant và lời gọi Anthropic trong pipeline RAG bằng OpenLLMetry",
+      "Gắn instrumentation LangChain của OpenLLMetry vào hệ thống OpenTelemetry sẵn có"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Chuẩn OpenTelemetry, không khóa vào một nhà cung cấp; hỗ trợ hơn 20 đích xuất đã kiểm thử",
+      "Bắt đầu chỉ với một dòng Traceloop.init()",
+      "Từ v0.49.2 trở lên SDK không còn thu thập telemetry"
+    ],
+    "consVi": [
+      "Kho này chỉ dành cho Python; JS/TS dùng kho OpenLLMetry-JS riêng",
+      "Không kèm giao diện xem trace; cần một backend observability (Traceloop hoặc nền tảng khác)",
+      "Phiên bản SDK cũ hơn v0.49.2 có thu thập telemetry ẩn danh"
+    ],
+    "sourceEvidence": {
+      "pip install traceloop-sdk": "README.md:69",
+      "Traceloop.init()": "README.md:77",
+      "Traceloop.init(disable_batch=True)": "README.md:84",
+      "from traceloop.sdk import Traceloop": "README.md:75"
+    },
+    "meta": {
+      "id": "traceloop-openllmetry",
+      "nameVi": "OpenLLMetry — Bộ instrumentation OpenTelemetry cho ứng dụng LLM",
+      "icon": "Code2",
+      "categories": ["nlp_llm", "devops_cicd", "cloud_infrastructure"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "pip install traceloop-sdk" }
+      ]
+    }
+  },
+  {
+    "repo": "EleutherAI/lm-evaluation-harness",
+    "license": "MIT License",
+    "authorName": "EleutherAI",
+    "websiteUrl": "",
+    "toolType": "cli",
+    "taglineEn": "This project provides a unified framework to test generative language models on a large number of different evaluation tasks.",
+    "summaryVi": "LM Evaluation Harness là framework thống nhất để kiểm tra mô hình ngôn ngữ sinh trên rất nhiều tác vụ đánh giá, với hơn 60 benchmark học thuật chuẩn và hàng trăm tác vụ con. Công cụ hỗ trợ mô hình Hugging Face transformers, vLLM, SGLang, GGUF qua llama.cpp, API thương mại như OpenAI và adapter LoRA. Đây là backend của Open LLM Leaderboard trên Hugging Face.",
+    "purposeVi": "Đo và so sánh năng lực mô hình ngôn ngữ trên các benchmark chuẩn một cách tái lập được.",
+    "featuresVi": [
+      "Hơn 60 benchmark học thuật chuẩn với hàng trăm tác vụ con và biến thể",
+      "Backend mô hình: Hugging Face transformers (kể cả lượng tử hóa GPTQ), vLLM, SGLang, GGUF, NeMo, Megatron, OpenVINO",
+      "Hỗ trợ API thương mại (OpenAI, Anthropic qua extra api) và adapter PEFT/LoRA",
+      "Đánh giá đa GPU với accelerate; tự chọn batch size bằng --batch_size auto",
+      "Tác vụ cấu hình bằng YAML, prompt Jinja2; CLI có lệnh con run, ls, validate và tệp cấu hình --config",
+      "Plugin: đăng ký model backend, filter, metric từ gói riêng mà không cần fork"
+    ],
+    "requirementsVi": "Python >= 3.10 (theo pyproject.toml). Gói cơ bản không gồm transformers/torch; phải cài backend riêng như lm_eval[hf], lm_eval[vllm] hoặc lm_eval[api]. Chạy mô hình Hugging Face thường cần GPU CUDA.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone --depth 1 https://github.com/EleutherAI/lm-evaluation-harness`",
+      "Vào thư mục: `cd lm-evaluation-harness`",
+      "Cài gói: `pip install -e .`",
+      "Cài backend Hugging Face: `pip install \"lm_eval[hf]\"` (hoặc `pip install \"lm_eval[vllm]\"`, `pip install \"lm_eval[api]\"`)",
+      "Liệt kê tác vụ có sẵn: `lm-eval ls tasks`"
+    ],
+    "cliCommand": "lm-eval ls tasks",
+    "usageStepsVi": [
+      "Chọn backend qua --model (ví dụ hf, vllm, gguf) và truyền tham số mô hình bằng --model_args, ví dụ pretrained=EleutherAI/gpt-j-6B",
+      "Chọn tác vụ bằng --tasks (ví dụ hellaswag, lambada_openai), thiết bị bằng --device và --batch_size",
+      "Chạy lệnh lm_eval và đọc bảng kết quả chỉ số",
+      "Dùng `lm-eval run -h` để xem đầy đủ tùy chọn đánh giá"
+    ],
+    "samplePromptsVi": [
+      "Chạy lm_eval với backend hf để đánh giá mô hình EleutherAI/pythia-160m trên hellaswag",
+      "Đánh giá mô hình GGUF đang phục vụ qua llama-server bằng lm_eval --model gguf",
+      "So sánh hai checkpoint fine-tune trên nhóm tác vụ leaderboard"
+    ],
+    "prosVi": [
+      "Giấy phép MIT",
+      "Chuẩn đánh giá được dùng trong hàng trăm bài báo và làm backend cho Open LLM Leaderboard",
+      "Hỗ trợ rất nhiều backend suy luận và mô hình cục bộ",
+      "Prompt công khai giúp kết quả tái lập và so sánh được"
+    ],
+    "consVi": [
+      "Tập trung đánh giá mô hình trên benchmark, không phải công cụ tracing/giám sát ứng dụng",
+      "Cần cài backend mô hình riêng; mô hình lớn cần GPU",
+      "Khi đánh giá GGUF mà không cung cấp tokenizer riêng, việc dựng lại tokenizer có thể mất hàng giờ hoặc treo"
+    ],
+    "sourceEvidence": {
+      "git clone --depth 1 https://github.com/EleutherAI/lm-evaluation-harness": "README.md:64",
+      "cd lm-evaluation-harness": "README.md:65",
+      "pip install -e .": "README.md:66",
+      "pip install \"lm_eval[hf]\"": "README.md:76",
+      "pip install \"lm_eval[vllm]\"": "README.md:82",
+      "pip install \"lm_eval[api]\"": "README.md:88",
+      "lm-eval ls tasks": "README.md:115",
+      "lm-eval run -h": "README.md:110"
+    },
+    "meta": {
+      "id": "eleutherai-lm-evaluation-harness",
+      "nameVi": "LM Evaluation Harness — Công cụ benchmark mô hình ngôn ngữ trên hàng trăm tác vụ chuẩn",
+      "icon": "Cpu",
+      "categories": ["nlp_llm", "qa_testing", "data_science_analytics"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "lm-eval ls tasks" }
+      ]
+    }
+  }
+]
