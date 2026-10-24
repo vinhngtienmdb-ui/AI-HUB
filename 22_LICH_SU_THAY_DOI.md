@@ -4,6 +4,14 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.15 (Ngày 24-10-2026)
+- **Loại hình**: Đa phương tiện: tạo ảnh/video, giọng nói, OCR & thị giác máy tính, đợt 8 (21 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-8-*.json`.
+- **Tạo ảnh & video**: InvokeAI, Diffusers, Wan2.2, LTX-2 (LTX Community License, công ty doanh thu từ 10 triệu USD/năm cần giấy phép thương mại), stable-diffusion.cpp, Upscayl (AGPL-3.0), HunyuanVideo-1.5 (Tencent Hunyuan Community License, không áp dụng tại EU, Anh, Hàn Quốc).
+- **Giọng nói**: whisper.cpp, faster-whisper, WhisperX, Kokoro, sherpa-onnx, Pipecat, Chatterbox (có nhân bản giọng; chỉ dùng giọng của mình hoặc giọng được đồng ý).
+- **OCR & thị giác máy tính**: PaddleOCR, Surya (trọng số mô hình giới hạn thương mại), EasyOCR, docTR, Ultralytics YOLO (AGPL-3.0, dùng thương mại cần giấy phép Enterprise trả phí), Supervision, Tesseract.
+- Không thêm: công cụ đã có trong kho (ComfyUI, openai/whisper), dự án ngừng cập nhật hoặc chuyển sang bảo trì (stable-diffusion-webui, Fooocus), bản cũ đã được thay thế (LTX-Video → LTX-2, HunyuanVideo → HunyuanVideo-1.5).
+- Kho dữ liệu: 2.096 công cụ đang hiển thị, 2.148 cấu hình mẫu.
+
 ### Phiên Bản 2.1.14 (Ngày 24-10-2026)
 - **Loại hình**: Chạy LLM cục bộ, phục vụ suy luận, tinh chỉnh mô hình, đợt 7 (21 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-7-*.json`.
 - **Chạy LLM cục bộ**: llama.cpp, LocalAI, llamafile, Jan, KoboldCpp (AGPL-3.0), mlx-lm, textgen (trước đây là text-generation-webui, AGPL-3.0).
