@@ -1,0 +1,567 @@
+[
+  {
+    "repo": "googleanalytics/google-analytics-mcp",
+    "license": "Apache License 2.0",
+    "authorName": "Google Analytics",
+    "websiteUrl": "https://pypi.org/project/analytics-mcp/",
+    "toolType": "mcp",
+    "taglineEn": "This repo contains the source code for running a local MCP server that interacts with APIs for Google Analytics.",
+    "summaryVi": "MCP server chính thức (đang ở giai đoạn thử nghiệm) của Google Analytics, chạy cục bộ và kết nối trợ lý AI với Google Analytics Admin API và Data API. Trợ lý có thể đọc thông tin tài khoản, thuộc tính, chạy báo cáo, báo cáo phễu và báo cáo thời gian thực của GA4. Gói được phát hành trên PyPI với tên analytics-mcp và chạy qua pipx.",
+    "purposeVi": "Công cụ giúp người làm marketing và SEO hỏi đáp, phân tích dữ liệu Google Analytics bằng ngôn ngữ tự nhiên trong Claude Code, Gemini CLI hoặc Gemini Code Assist.",
+    "featuresVi": [
+      "Thông tin tài khoản: get_account_summaries, get_property_details, list_google_ads_links, list_property_annotations",
+      "Báo cáo cốt lõi: run_report và run_funnel_report qua Google Analytics Data API",
+      "Báo cáo thời gian thực: run_realtime_report",
+      "Chiều và chỉ số tùy chỉnh: get_custom_dimensions_and_metrics",
+      "Công cụ ghi (tùy chọn): create_property_annotation khi bật cờ `--allow-write` và scope analytics.edit"
+    ],
+    "requirementsVi": "Python 3.10+ và pipx; dự án Google Cloud đã bật Google Analytics Admin API và Data API; Application Default Credentials (ADC) có scope analytics.readonly của người dùng có quyền truy cập thuộc tính GA.",
+    "installStepsVi": [
+      "Cài đặt pipx theo hướng dẫn tại pipx.pypa.io",
+      "Bật Google Analytics Admin API và Google Analytics Data API trong dự án Google Cloud",
+      "Cấu hình ADC, ví dụ: `gcloud auth application-default login --scopes https://www.googleapis.com/auth/analytics.readonly,https://www.googleapis.com/auth/cloud-platform --client-id-file=YOUR_CLIENT_JSON_FILE` rồi ghi lại đường dẫn tệp thông tin xác thực",
+      "Cài đặt vào Claude Code: `claude mcp add analytics-mcp \\   --scope user \\   -e \"GOOGLE_APPLICATION_CREDENTIALS=PATH_TO_CREDENTIALS_JSON\" \\   -e \"GOOGLE_PROJECT_ID=YOUR_PROJECT_ID\" \\   -- pipx run analytics-mcp`",
+      "Với Gemini CLI, thêm khối `analytics-mcp` (lệnh `pipx run analytics-mcp`) vào `mcpServers` trong ~/.gemini/settings.json"
+    ],
+    "cliCommand": "claude mcp add analytics-mcp \\\n  --scope user \\\n  -e \"GOOGLE_APPLICATION_CREDENTIALS=PATH_TO_CREDENTIALS_JSON\" \\\n  -e \"GOOGLE_PROJECT_ID=YOUR_PROJECT_ID\" \\\n  -- pipx run analytics-mcp",
+    "usageStepsVi": [
+      "Thay PATH_TO_CREDENTIALS_JSON và YOUR_PROJECT_ID bằng giá trị thực",
+      "Mở trợ lý AI, gõ `/mcp` để kiểm tra analytics-mcp đã được nạp",
+      "Đặt câu hỏi về thuộc tính, sự kiện, người dùng trong Google Analytics"
+    ],
+    "samplePromptsVi": [
+      "Máy chủ analytics-mcp có thể làm được những gì?",
+      "Những sự kiện phổ biến nhất trong thuộc tính Google Analytics của tôi trong 180 ngày qua là gì?",
+      "Trong 6 tháng qua, phần lớn người dùng có đăng nhập không?",
+      "Liệt kê các chiều và chỉ số tùy chỉnh trong thuộc tính của tôi"
+    ],
+    "prosVi": [
+      "Do tổ chức Google Analytics phát hành, giấy phép Apache 2.0",
+      "Mặc định chỉ đọc dữ liệu; công cụ ghi phải bật rõ ràng bằng `--allow-write`",
+      "Có lệnh `claude mcp add` sẵn cho Claude Code"
+    ],
+    "consVi": [
+      "README ghi rõ dự án đang ở trạng thái thử nghiệm (Experimental)",
+      "Cần thiết lập dự án Google Cloud, bật API và cấu hình OAuth/ADC khá nhiều bước",
+      "Chỉ làm việc với dữ liệu Google Analytics mà tài khoản có quyền truy cập"
+    ],
+    "sourceEvidence": {
+      "claude mcp add analytics-mcp \\\n  --scope user \\\n  -e \"GOOGLE_APPLICATION_CREDENTIALS=PATH_TO_CREDENTIALS_JSON\" \\\n  -e \"GOOGLE_PROJECT_ID=YOUR_PROJECT_ID\" \\\n  -- pipx run analytics-mcp": "README.md:174-178",
+      "gcloud auth application-default login --scopes https://www.googleapis.com/auth/analytics.readonly,https://www.googleapis.com/auth/cloud-platform --client-id-file=YOUR_CLIENT_JSON_FILE": "README.md:107-109",
+      "pipx run analytics-mcp": "README.md:150-151",
+      "/mcp": "README.md:183",
+      "jsonConfig mcpServers analytics-mcp": "README.md:146-159",
+      "license Apache-2.0": "LICENSE:1-3"
+    },
+    "meta": {
+      "id": "googleanalytics-google-analytics-mcp",
+      "nameVi": "Google Analytics MCP — MCP server chính thức để phân tích dữ liệu GA4 bằng AI",
+      "icon": "Search",
+      "categories": [
+        "seo_growth",
+        "data_science_analytics"
+      ],
+      "platforms": [
+        "claude_code",
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude mcp add analytics-mcp \\\n  --scope user \\\n  -e \"GOOGLE_APPLICATION_CREDENTIALS=PATH_TO_CREDENTIALS_JSON\" \\\n  -e \"GOOGLE_PROJECT_ID=YOUR_PROJECT_ID\" \\\n  -- pipx run analytics-mcp",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"analytics-mcp\": {\n      \"command\": \"pipx\",\n      \"args\": [\n        \"run\",\n        \"analytics-mcp\"\n      ],\n      \"env\": {\n        \"GOOGLE_APPLICATION_CREDENTIALS\": \"PATH_TO_CREDENTIALS_JSON\",\n        \"GOOGLE_PROJECT_ID\": \"YOUR_PROJECT_ID\"\n      }\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "AminForou/mcp-gsc",
+    "license": "MIT License",
+    "authorName": "Amin Foroutan",
+    "websiteUrl": "",
+    "toolType": "mcp",
+    "taglineEn": "A Model Context Protocol (MCP) server that connects Google Search Console (GSC) to AI assistants, allowing you to analyze your SEO data through natural language conversations.",
+    "summaryVi": "MCP server kết nối Google Search Console với trợ lý AI như Claude Desktop, Cursor, Codex CLI, Gemini CLI để phân tích dữ liệu SEO bằng ngôn ngữ tự nhiên. Hỗ trợ báo cáo truy vấn, so sánh giai đoạn, kiểm tra lập chỉ mục URL và quản lý sitemap. Cài đặt nhanh qua uvx với gói mcp-search-console.",
+    "purposeVi": "Công cụ giúp người làm SEO tra cứu hiệu suất tìm kiếm, phát hiện vấn đề lập chỉ mục và cơ hội nội dung trực tiếp trong trợ lý AI.",
+    "featuresVi": [
+      "Quản lý thuộc tính: liệt kê, xem chi tiết, thêm hoặc xóa thuộc tính GSC",
+      "Phân tích tìm kiếm: truy vấn, trang, lượt nhấp, lượt hiển thị, CTR, vị trí; so sánh hai giai đoạn",
+      "Kiểm tra URL: inspect_url_enhanced, batch_url_inspection (tối đa 10 URL), check_indexing_issues",
+      "Sitemap: xem, gửi hoặc xóa sitemap, kiểm tra lỗi và cảnh báo",
+      "Prompt dựng sẵn: seo-weekly-report, cannibalization-check, indexing-audit, content-opportunities"
+    ],
+    "requirementsVi": "Dự án Google Cloud đã bật Search Console API; OAuth client (Desktop app) hoặc Service Account được thêm vào thuộc tính GSC; công cụ uv/uvx (hoặc Python khi cài từ mã nguồn).",
+    "installStepsVi": [
+      "Tạo thông tin xác thực Google (OAuth client ID dạng Desktop app hoặc Service Account) và bật Search Console API",
+      "Cài đặt uv: `curl -LsSf https://astral.sh/uv/install.sh | sh`",
+      "Thêm khối `gscServer` dùng `uvx` với tham số `mcp-search-console` vào tệp cấu hình Claude Desktop hoặc Cursor (dùng đường dẫn đầy đủ tới uvx)",
+      "Thoát hẳn ứng dụng rồi mở lại; lần đầu dùng OAuth sẽ mở trình duyệt để đăng nhập"
+    ],
+    "cliCommand": "uvx mcp-search-console",
+    "usageStepsVi": [
+      "Hỏi trợ lý \"List my GSC properties\" để kiểm tra kết nối",
+      "Nếu lỗi, yêu cầu gọi get_capabilities để xem trạng thái xác thực",
+      "Đặt GSC_ALLOW_DESTRUCTIVE=true nếu cần công cụ thêm/xóa thuộc tính hoặc sitemap"
+    ],
+    "samplePromptsVi": [
+      "Hiển thị 20 truy vấn hàng đầu của mywebsite.com trong 30 ngày qua, đánh dấu truy vấn có CTR dưới 2% và gợi ý cải thiện tiêu đề",
+      "So sánh hiệu suất trang web giữa tháng 1 và tháng 2, truy vấn nào cải thiện nhiều nhất?",
+      "Kiểm tra keyword cannibalization trên example.com",
+      "Kiểm tra vấn đề lập chỉ mục cho các trang mywebsite.com/product, mywebsite.com/services"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, cài đặt nhanh qua uvx không cần clone",
+      "Hướng dẫn cấu hình cho nhiều client MCP và có video hướng dẫn",
+      "Công cụ phá hủy dữ liệu bị tắt mặc định"
+    ],
+    "consVi": [
+      "Cần tự thiết lập dự án Google Cloud và thông tin xác thực",
+      "Dự án cá nhân; README quảng bá thêm bản hosted trả phí với tính năng nâng cao (GA4)",
+      "Client GUI cần đường dẫn đầy đủ tới uvx"
+    ],
+    "sourceEvidence": {
+      "uvx mcp-search-console": "README.md:25",
+      "curl -LsSf https://astral.sh/uv/install.sh | sh": "README.md:138",
+      "jsonConfig mcpServers gscServer": "README.md:163-175",
+      "GSC_ALLOW_DESTRUCTIVE": "README.md:333",
+      "license MIT": "LICENSE:1"
+    },
+    "meta": {
+      "id": "aminforou-mcp-gsc",
+      "nameVi": "MCP GSC — Kết nối Google Search Console với trợ lý AI cho SEO",
+      "icon": "Search",
+      "categories": [
+        "seo_growth"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "uvx mcp-search-console",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"gscServer\": {\n      \"command\": \"/FULL/PATH/TO/uvx\",\n      \"args\": [\n        \"mcp-search-console\"\n      ],\n      \"env\": {\n        \"GSC_OAUTH_CLIENT_SECRETS_FILE\": \"/full/path/to/client_secrets.json\"\n      }\n    }\n  }\n}"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "cliCommand": "uvx mcp-search-console",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"gscServer\": {\n      \"command\": \"/FULL/PATH/TO/uvx\",\n      \"args\": [\n        \"mcp-search-console\"\n      ],\n      \"env\": {\n        \"GSC_OAUTH_CLIENT_SECRETS_FILE\": \"/full/path/to/client_secrets.json\"\n      }\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "dataforseo/mcp-server-typescript",
+    "license": "Apache License 2.0",
+    "authorName": "DataForSEO",
+    "websiteUrl": "https://mcp.dataforseo.com/v3/mcp",
+    "toolType": "mcp",
+    "taglineEn": "MCP server and CLI for LLM agents to browse DataForSEO API documentation and make authenticated API requests.",
+    "summaryVi": "MCP server và CLI chính thức (bản v3) của DataForSEO, cho phép tác tử AI duyệt tài liệu DataForSEO API và gửi yêu cầu API đã xác thực (SERP, backlink, on-page...). Chạy mặc định qua stdio, hỗ trợ HTTP trên cổng 3000 và có server remote công khai dùng OAuth 2.0.",
+    "purposeVi": "Công cụ giúp người làm SEO lấy dữ liệu SERP, từ khóa, backlink từ DataForSEO ngay trong trợ lý AI để nghiên cứu và phân tích.",
+    "featuresVi": [
+      "Công cụ tài liệu: docs_index, docs_list_sections, docs_search (bộ nhớ đệm 24 giờ)",
+      "api_request: gửi yêu cầu API DataForSEO đã xác thực, mặc định dùng đường dẫn `.ai`",
+      "Ba chế độ: MCP stdio (mặc định), MCP HTTP (`--mode http`, cổng 3000), CLI (`docs`, `request`)",
+      "Server remote công khai https://mcp.dataforseo.com/v3/mcp với OAuth 2.0",
+      "Cấu hình trường: giới hạn trường trả về theo endpoint qua `--configuration`"
+    ],
+    "requirementsVi": "Node.js (dùng npx); tài khoản DataForSEO API với DATAFORSEO_LOGIN/DATAFORSEO_PASSWORD (bắt buộc cho stdio và CLI), hoặc OAuth khi dùng HTTP/remote.",
+    "installStepsVi": [
+      "Đặt biến môi trường: `export DATAFORSEO_LOGIN=\"your_api_login\"` và `export DATAFORSEO_PASSWORD=\"your_api_password\"`",
+      "Cài đặt và chạy MCP server qua stdio: `npx dataforseo-mcp-server@latest`",
+      "Hoặc chạy HTTP (cổng 3000): `npx dataforseo-mcp-server@latest --mode http`",
+      "Hoặc thêm URL server remote https://mcp.dataforseo.com/v3/mcp vào cấu hình `mcpServers` của client"
+    ],
+    "cliCommand": "npx dataforseo-mcp-server@latest",
+    "usageStepsVi": [
+      "Kết nối client MCP (Cursor, Claude Desktop...) với server",
+      "Yêu cầu trợ lý tra cứu tài liệu endpoint rồi gọi api_request",
+      "Dùng CLI để thử nhanh: `npx dataforseo-mcp-server docs index`"
+    ],
+    "samplePromptsVi": [
+      "Liệt kê các endpoint trong mục SERP API của DataForSEO",
+      "Lấy kết quả tìm kiếm Google tự nhiên trực tiếp cho từ khóa \"dataforseo\" tại Mỹ, tiếng Anh",
+      "Xem tóm tắt backlink và số tên miền giới thiệu của example.com"
+    ],
+    "prosVi": [
+      "Do DataForSEO phát hành chính thức, giấy phép Apache 2.0",
+      "Có server remote dùng ngay với OAuth, không cần cài đặt",
+      "Một tệp nhị phân phục vụ cả MCP và CLI"
+    ],
+    "consVi": [
+      "Cần tài khoản DataForSEO API (dịch vụ bên thứ ba) để gửi yêu cầu",
+      "Bản v3 thay thế bản v2 cũ; cấu hình theo tên công cụ của bản cũ không còn dùng được"
+    ],
+    "sourceEvidence": {
+      "npx dataforseo-mcp-server@latest": "README.md:12",
+      "npx dataforseo-mcp-server@latest --mode http": "README.md:18",
+      "export DATAFORSEO_LOGIN=\"your_api_login\"": "README.md:29",
+      "export DATAFORSEO_PASSWORD=\"your_api_password\"": "README.md:30",
+      "npx dataforseo-mcp-server docs index": "README.md:67",
+      "jsonConfig mcpServers dataforseo (remote)": "README.md:76-84",
+      "jsonConfig mcpServers dataforseo (local)": "README.md:88-96",
+      "license Apache-2.0": "LICENSE:1-3"
+    },
+    "meta": {
+      "id": "dataforseo-mcp-server-typescript",
+      "nameVi": "DataForSEO MCP — MCP server chính thức truy vấn dữ liệu SEO DataForSEO",
+      "icon": "Search",
+      "categories": [
+        "seo_growth",
+        "web_scraping_crawling"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "cursor",
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "npx dataforseo-mcp-server@latest",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"dataforseo\": {\n      \"url\": \"https://mcp.dataforseo.com/v3/mcp\"\n    }\n  }\n}"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "cliCommand": "npx dataforseo-mcp-server@latest --mode http",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"dataforseo\": {\n      \"url\": \"http://localhost:3000/mcp\"\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "assafelovic/gpt-researcher",
+    "license": "Apache License 2.0",
+    "authorName": "Assaf Elovic",
+    "websiteUrl": "https://gptr.dev",
+    "toolType": "agent",
+    "taglineEn": "GPT Researcher the first open deep research agent designed for both web and local research on any given task.",
+    "summaryVi": "Tác tử nghiên cứu sâu mã nguồn mở, tạo báo cáo nghiên cứu chi tiết có trích dẫn từ web và tài liệu cục bộ. Dùng mô hình tác tử lập kế hoạch và thực thi, tổng hợp từ hơn 20 nguồn, có thể tạo báo cáo trên 2.000 từ và xuất ra PDF, Word. Có giao diện web, gói PIP, Docker và có thể cài đặt làm Claude Skill.",
+    "purposeVi": "Công cụ giúp người viết nội dung, marketer và nhà nghiên cứu tự động thu thập dữ liệu, tổng hợp và viết báo cáo nghiên cứu dài có nguồn dẫn.",
+    "featuresVi": [
+      "Báo cáo nghiên cứu: tạo báo cáo chi tiết từ web và tài liệu cục bộ, trên 2.000 từ, tổng hợp hơn 20 nguồn",
+      "Deep Research: khám phá đệ quy dạng cây với độ sâu và độ rộng tùy chỉnh",
+      "Lọc ngữ cảnh: dùng Jev khi có TYPESAFE_API_KEY, nếu không thì xếp hạng từ khóa BM25 cục bộ",
+      "MCP client: kết hợp tìm kiếm web với nguồn dữ liệu MCP (RETRIEVER=tavily,mcp)",
+      "Ảnh minh họa AI tùy chọn bằng Google Gemini; xuất báo cáo sang PDF, Word"
+    ],
+    "requirementsVi": "Python 3.12 trở lên; OPENAI_API_KEY và TAVILY_API_KEY (hoặc API tương thích OpenAI qua OPENAI_BASE_URL); Docker nếu chạy bằng docker-compose.",
+    "installStepsVi": [
+      "Cài đặt làm Claude Skill: `npx skills add assafelovic/gpt-researcher`",
+      "Hoặc cài đặt thư viện Python: `pip install gpt-researcher`",
+      "Hoặc chạy giao diện web: `git clone https://github.com/assafelovic/gpt-researcher.git`, đặt OPENAI_API_KEY và TAVILY_API_KEY, rồi `pip install -r requirements.txt` và `python -m uvicorn main:app --reload` (mở http://localhost:8000)",
+      "Hoặc chạy bằng Docker sau khi tạo tệp .env: `docker-compose up --build`"
+    ],
+    "cliCommand": "pip install gpt-researcher",
+    "usageStepsVi": [
+      "Thiết lập khóa API trong biến môi trường hoặc tệp .env",
+      "Trong Python, tạo GPTResearcher(query=...) rồi gọi conduct_research() và write_report()",
+      "Hoặc nhập câu hỏi nghiên cứu trên giao diện web tại http://localhost:8000"
+    ],
+    "samplePromptsVi": [
+      "Nghiên cứu xu hướng tiếp thị nội dung năm nay và viết báo cáo có trích dẫn nguồn",
+      "Vì sao cổ phiếu Nvidia tăng? Tổng hợp thành báo cáo chi tiết",
+      "Những tác tử nghiên cứu web mã nguồn mở hàng đầu hiện nay là gì?"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, nhiều cách triển khai: PIP, web, Docker, Claude Skill",
+      "Báo cáo có trích dẫn nguồn, hỗ trợ nghiên cứu cả web và tài liệu cục bộ",
+      "Hỗ trợ API tương thích OpenAI, kể cả mô hình cục bộ"
+    ],
+    "consVi": [
+      "Cần khóa API của nhà cung cấp LLM và công cụ tìm kiếm (mặc định OpenAI và Tavily), phát sinh chi phí sử dụng",
+      "Deep Research mất khoảng 5 phút mỗi lần (theo README)"
+    ],
+    "sourceEvidence": {
+      "npx skills add assafelovic/gpt-researcher": "README.md:49",
+      "git clone https://github.com/assafelovic/gpt-researcher.git": "README.md:103",
+      "pip install -r requirements.txt": "README.md:130",
+      "python -m uvicorn main:app --reload": "README.md:131",
+      "pip install gpt-researcher": "README.md:140",
+      "docker-compose up --build": "README.md:259",
+      "license Apache-2.0": "LICENSE:1-3"
+    },
+    "meta": {
+      "id": "assafelovic-gpt-researcher",
+      "nameVi": "GPT Researcher — Tác tử nghiên cứu sâu tạo báo cáo có trích dẫn",
+      "icon": "Brain",
+      "categories": [
+        "content_writing",
+        "seo_growth"
+      ],
+      "platforms": [
+        "web",
+        "claude_code"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install gpt-researcher"
+        },
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "npx skills add assafelovic/gpt-researcher"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "umami-software/umami",
+    "license": "MIT License",
+    "authorName": "Umami Software, Inc.",
+    "websiteUrl": "https://umami.is",
+    "toolType": "software",
+    "taglineEn": "Umami is a privacy-first analytics platform. Traffic, campaigns, behavior, conversions, and revenue in one place — no cookies, no surveillance, self-hosted or in the cloud.",
+    "summaryVi": "Nền tảng phân tích website ưu tiên quyền riêng tư, không dùng cookie, tự host hoặc dùng trên cloud. Theo dõi lưu lượng, chiến dịch, hành vi, chuyển đổi và doanh thu tại một nơi. Có endpoint MCP tùy chọn (`/mcp`) để trợ lý AI truy vấn dữ liệu phân tích bằng API key.",
+    "purposeVi": "Công cụ thay thế Google Analytics tự host cho đội marketing/SEO, giữ quyền sở hữu dữ liệu và có thể kết nối với trợ lý AI qua MCP.",
+    "featuresVi": [
+      "Phân tích không cookie: lưu lượng, chiến dịch, hành vi, chuyển đổi, doanh thu",
+      "Tự host bằng Node.js + PostgreSQL hoặc Docker Compose",
+      "Endpoint MCP: bật bằng `MCP_ENABLED=1`, xác thực bằng API key tạo trong Settings → API keys",
+      "Xác thực hai lớp khi đặt TWO_FACTOR_ENCRYPTION_KEY"
+    ],
+    "requirementsVi": "Máy chủ có Node.js 18.18+ và PostgreSQL 12.14+ (khi cài từ mã nguồn), hoặc Docker và Docker Compose.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/umami-software/umami.git` rồi `cd umami` và cài đặt gói bằng `pnpm install`",
+      "Tạo tệp .env với DATABASE_URL trỏ tới PostgreSQL",
+      "Cài đặt và build: `pnpm run build` (tạo bảng dữ liệu và tài khoản admin/umami)",
+      "Khởi chạy: `pnpm run start` (mặc định http://localhost:3000)",
+      "Hoặc cài đặt bằng Docker Compose (kèm PostgreSQL): `docker compose up -d`"
+    ],
+    "cliCommand": "docker compose up -d",
+    "usageStepsVi": [
+      "Đăng nhập bằng tài khoản mặc định admin / umami và đổi mật khẩu",
+      "Thêm website và gắn mã theo dõi theo hướng dẫn tại umami.is/docs",
+      "Đặt MCP_ENABLED=1 và tạo API key nếu muốn trợ lý AI truy vấn dữ liệu qua `/mcp`"
+    ],
+    "samplePromptsVi": [
+      "Tuần này website của tôi có bao nhiêu lượt truy cập và nguồn giới thiệu nào nhiều nhất?",
+      "Chiến dịch nào mang lại nhiều chuyển đổi nhất trong tháng qua?"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, tự host miễn phí và sở hữu dữ liệu",
+      "Không dùng cookie, ưu tiên quyền riêng tư",
+      "Có endpoint MCP tích hợp sẵn cho trợ lý AI"
+    ],
+    "consVi": [
+      "Cần tự vận hành máy chủ và cơ sở dữ liệu PostgreSQL",
+      "MCP tắt mặc định, phải bật và tạo API key",
+      "Cần reverse proxy hoặc đổi cổng để phục vụ công khai"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/umami-software/umami.git": "README.md:36",
+      "pnpm install": "README.md:38",
+      "pnpm run build": "README.md:69",
+      "pnpm run start": "README.md:77",
+      "docker compose up -d": "README.md:97",
+      "MCP_ENABLED=1": "README.md:57",
+      "license MIT": "LICENSE:1"
+    },
+    "meta": {
+      "id": "umami-software-umami",
+      "nameVi": "Umami — Phân tích website tự host, ưu tiên quyền riêng tư, có MCP",
+      "icon": "Globe",
+      "categories": [
+        "seo_growth",
+        "data_science_analytics"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "docker compose up -d"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "knadh/listmonk",
+    "license": "GNU Affero General Public License v3.0",
+    "authorName": "Kailash Nadh (Zerodha)",
+    "websiteUrl": "https://listmonk.app",
+    "toolType": "software",
+    "taglineEn": "listmonk is a standalone, self-hosted, newsletter and mailing list manager. It is fast, feature-rich, and packed into a single binary. It uses a PostgreSQL database as its data store.",
+    "summaryVi": "Phần mềm quản lý bản tin (newsletter) và danh sách email tự host, nhanh, nhiều tính năng và đóng gói trong một tệp nhị phân duy nhất. Dùng PostgreSQL để lưu dữ liệu; backend viết bằng Go, giao diện Vue.",
+    "purposeVi": "Công cụ email marketing tự host giúp doanh nghiệp gửi bản tin, quản lý người đăng ký mà không phụ thuộc dịch vụ SaaS.",
+    "featuresVi": [
+      "Quản lý danh sách và người đăng ký, gửi chiến dịch bản tin",
+      "Một tệp nhị phân duy nhất, dữ liệu lưu trong PostgreSQL",
+      "Triển khai bằng Docker Compose hoặc tệp nhị phân",
+      "Lệnh nâng cấp cơ sở dữ liệu idempotent (`--upgrade`)"
+    ],
+    "requirementsVi": "Docker và Docker Compose, hoặc tệp nhị phân listmonk kèm cơ sở dữ liệu PostgreSQL.",
+    "installStepsVi": [
+      "Tải tệp compose: `curl -LO https://github.com/knadh/listmonk/raw/master/docker-compose.yml`",
+      "Cài đặt và chạy nền: `docker compose up -d`, rồi mở http://localhost:9000",
+      "Hoặc dùng tệp nhị phân: `./listmonk --new-config` để tạo config.toml, `./listmonk --install` để thiết lập PostgreSQL, rồi chạy `./listmonk`"
+    ],
+    "cliCommand": "docker compose up -d",
+    "usageStepsVi": [
+      "Truy cập http://localhost:9000 và hoàn tất thiết lập quản trị",
+      "Tạo danh sách, nhập người đăng ký và soạn chiến dịch",
+      "Xem hướng dẫn cài đặt chi tiết tại listmonk.app/docs/installation"
+    ],
+    "samplePromptsVi": [
+      "Tạo chiến dịch bản tin hàng tháng gửi tới danh sách khách hàng đã đăng ký",
+      "Nhập danh sách người đăng ký từ tệp CSV vào listmonk"
+    ],
+    "prosVi": [
+      "Tự host, gọn nhẹ trong một tệp nhị phân",
+      "Có bản demo trực tuyến tại demo.listmonk.app",
+      "Được Zerodha duy trì, cập nhật thường xuyên"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0: sửa đổi và cung cấp qua mạng phải công khai mã nguồn",
+      "Không có tính năng AI tích hợp; cần tự cấu hình máy chủ SMTP để gửi email",
+      "Cần vận hành PostgreSQL"
+    ],
+    "sourceEvidence": {
+      "curl -LO https://github.com/knadh/listmonk/raw/master/docker-compose.yml": "README.md:21",
+      "docker compose up -d": "README.md:24",
+      "./listmonk --new-config": "README.md:34",
+      "./listmonk --install": "README.md:35",
+      "./listmonk": "README.md:36",
+      "license AGPL-3.0": "LICENSE:1-2"
+    },
+    "meta": {
+      "id": "knadh-listmonk",
+      "nameVi": "listmonk — Quản lý bản tin và danh sách email tự host",
+      "icon": "MessageSquare",
+      "categories": [
+        "seo_growth",
+        "content_writing"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (AGPL-3.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "docker compose up -d"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "mautic/mautic",
+    "license": "GNU General Public License v3.0 or later",
+    "authorName": "Mautic Community",
+    "websiteUrl": "https://mautic.org",
+    "toolType": "software",
+    "taglineEn": "Mautic is the world’s largest open source marketing automation project.",
+    "summaryVi": "Dự án tự động hóa marketing mã nguồn mở lớn nhất thế giới, giúp doanh nghiệp triển khai chiến dịch marketing đa kênh tích hợp, phân khúc và tự động hóa không giới hạn. Tự host miễn phí, dùng cơ sở dữ liệu riêng, tùy biến được cả frontend và backend; được công nhận là Digital Public Good.",
+    "purposeVi": "Công cụ thay thế các nền tảng marketing automation SaaS, giúp tổ chức quản lý chiến dịch, phân khúc khách hàng và giữ quyền sở hữu dữ liệu.",
+    "featuresVi": [
+      "Chiến dịch đa kênh: xây dựng chiến dịch marketing tích hợp không tốn thêm chi phí",
+      "Phân khúc và tự động hóa không giới hạn",
+      "Tự host, dùng cơ sở dữ liệu riêng, không phụ thuộc nhà cung cấp",
+      "Tùy biến 100% frontend và backend, tạo tích hợp theo nhu cầu"
+    ],
+    "requirementsVi": "Máy chủ PHP đáp ứng yêu cầu cài đặt của Mautic; Composer để tải thư viện (hoặc DDEV cho môi trường phát triển).",
+    "installStepsVi": [
+      "Tải mã nguồn (zip hoặc qua Composer) và giải nén vào thư mục web root",
+      "Cài đặt thư viện: `composer install`",
+      "Mở trình duyệt và hoàn tất cài đặt qua trình cài đặt web",
+      "Hoặc với DDEV: chạy `ddev start` để tự cài đặt phụ thuộc và cấu hình"
+    ],
+    "cliCommand": "composer install",
+    "usageStepsVi": [
+      "Với môi trường production, dùng gói đóng sẵn tại mautic.org/download hoặc cài đặt bằng Composer theo hướng dẫn",
+      "Tạo liên hệ, phân khúc và chiến dịch trong giao diện quản trị",
+      "Tham khảo tài liệu người dùng tại docs.mautic.org"
+    ],
+    "samplePromptsVi": [
+      "Tạo chiến dịch email chào mừng tự động cho người mới đăng ký",
+      "Phân khúc liên hệ đã truy cập trang bảng giá trong 30 ngày qua"
+    ],
+    "prosVi": [
+      "Giấy phép GPL-3.0, tự host miễn phí vĩnh viễn",
+      "Cộng đồng lớn, tài liệu người dùng và nhà phát triển đầy đủ",
+      "Tập trung vào quyền riêng tư và khả năng mở rộng"
+    ],
+    "consVi": [
+      "README cảnh báo bản từ GitHub ngoài bản phát hành được gắn tag chỉ là alpha, không nên dùng production",
+      "Cài đặt đòi hỏi kiến thức dòng lệnh và Composer",
+      "Không phải công cụ AI chuyên biệt"
+    ],
+    "sourceEvidence": {
+      "composer install": "README.md:98",
+      "ddev start": "README.md:91",
+      "license GPL-3.0-or-later": "LICENSE.txt:6-8"
+    },
+    "meta": {
+      "id": "mautic-mautic",
+      "nameVi": "Mautic — Nền tảng tự động hóa marketing mã nguồn mở",
+      "icon": "Workflow",
+      "categories": [
+        "seo_growth",
+        "rpa_workflow_automation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (GPL-3.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "composer install"
+        }
+      ]
+    }
+  }
+]
