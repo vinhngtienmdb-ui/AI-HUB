@@ -452,8 +452,8 @@
     "requirementsVi": "Tài khoản PayPal Developer (sandbox) hoặc Business (production), Client ID/Secret để tạo access token; Node 18+ (TypeScript) hoặc Python 3.11+.",
     "installStepsVi": [
       "Tạo app trong PayPal Developer Dashboard để lấy Client ID và Client Secret, rồi tạo access token.",
-      "Cài thư viện TypeScript: `npm install @paypal/agent-toolkit`",
-      "Hoặc cài thư viện Python: `pip install paypal-agent-toolkit`",
+      "Cài đặt thư viện TypeScript: `npm install @paypal/agent-toolkit`",
+      "Hoặc cài đặt thư viện Python: `pip install paypal-agent-toolkit`",
       "Chạy máy chủ MCP: `npx -y @paypal/mcp --tools=all PAYPAL_ACCESS_TOKEN=\"YOUR_ACCESS_TOKEN\" PAYPAL_ENVIRONMENT=\"SANDBOX\"`",
       "Với Claude Desktop: thêm cấu hình mcpServers (npx -y @paypal/mcp --tools=all, biến PAYPAL_ACCESS_TOKEN và PAYPAL_ENVIRONMENT) rồi khởi động lại ứng dụng."
     ],
