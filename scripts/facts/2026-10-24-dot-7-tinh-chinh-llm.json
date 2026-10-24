@@ -1,0 +1,491 @@
+[
+  {
+    "repo": "unslothai/unsloth",
+    "license": "Cấp phép kép: gói lõi Unsloth theo Apache License 2.0 (LICENSE); một số thành phần tùy chọn như giao diện Unsloth Studio theo AGPL-3.0 (studio/LICENSE.AGPL-3.0)",
+    "authorName": "Unsloth AI (Daniel Han, Michael Han và nhóm Unsloth)",
+    "websiteUrl": "https://unsloth.ai",
+    "toolType": "software",
+    "taglineEn": "Unsloth is the first desktop app to run and train models.",
+    "summaryVi": "Unsloth là ứng dụng và thư viện mã nguồn mở để chạy và tinh chỉnh (fine-tuning) mô hình ngôn ngữ lớn ngay trên máy cá nhân. Dự án có ba cách dùng: Unsloth Desktop (ứng dụng máy tính), Unsloth Studio (giao diện web) và Unsloth Core (thư viện Python). README cho biết Unsloth huấn luyện LLM, mô hình diffusion, TTS và embedding nhanh hơn khoảng 2 lần, dùng ít hơn 70% VRAM mà không giảm độ chính xác.",
+    "purposeVi": "Giúp cá nhân và nhóm nhỏ tinh chỉnh LLM (LoRA, QLoRA, full fine-tuning, GRPO, DPO) trên GPU phổ thông, rồi xuất mô hình sang GGUF để chạy cục bộ.",
+    "featuresVi": [
+      "Tinh chỉnh nhanh, tiết kiệm bộ nhớ: huấn luyện LLM, diffusion, TTS, embedding nhanh hơn 2 lần, ít hơn 70% VRAM",
+      "Hỗ trợ đầy đủ phương pháp: LoRA, QLoRA, full fine-tuning, pretraining, học tăng cường (RL, GRPO), DPO và FP8",
+      "Xuất và triển khai: xuất mô hình sang GGUF, NVFP4, FP8 và các định dạng khác",
+      "Data Recipes: tạo bộ dữ liệu huấn luyện từ PDF, CSV, DOCX và nhiều nguồn khác",
+      "Chạy mô hình cục bộ: hỗ trợ tool calling, MCP, tìm kiếm web, RAG và API tương thích OpenAI",
+      "Unsloth Start: kết nối Claude Code, Codex, OpenCode và các agent khác với mô hình cục bộ bằng một lệnh",
+      "Đa nền tảng: Windows, Linux, WSL, macOS; GPU NVIDIA, AMD, Intel, CPU và Vulkan; nhiều GPU",
+      "Sổ tay Colab/Kaggle miễn phí cho Qwen, Gemma, gpt-oss, Llama, Orpheus-TTS..."
+    ],
+    "requirementsVi": "Windows, Linux, WSL hoặc macOS. Bản Unsloth Core cần Python 3.13 và công cụ uv theo hướng dẫn trong README; GPU NVIDIA/AMD/Intel được hỗ trợ (AMD, Intel, Blackwell, DGX Spark có hướng dẫn riêng). Có thể dùng sổ tay Colab miễn phí nếu không có GPU.",
+    "installStepsVi": [
+      "Cài đặt Unsloth Studio trên macOS, Linux, WSL: `curl -fsSL https://unsloth.ai/install.sh | sh`",
+      "Cài đặt trên Windows (PowerShell): `irm https://unsloth.ai/install.ps1 | iex`",
+      "Hoặc cài đặt qua Homebrew: `brew install --cask unsloth`",
+      "Khởi chạy giao diện web: `unsloth studio`",
+      "Cài đặt Unsloth Core (thư viện Python) trên Linux/WSL: tạo môi trường `uv venv unsloth_env --python 3.13`, kích hoạt `source unsloth_env/bin/activate`, rồi chạy `uv pip install unsloth --torch-backend=auto`"
+    ],
+    "cliCommand": "curl -fsSL https://unsloth.ai/install.sh | sh",
+    "usageStepsVi": [
+      "Mở Unsloth Desktop hoặc Unsloth Studio, chọn mô hình gốc (ví dụ Qwen, Gemma, Llama) và tải lên bộ dữ liệu",
+      "Chọn phương pháp huấn luyện (LoRA, QLoRA, full fine-tuning, GRPO...) rồi bắt đầu huấn luyện",
+      "Sau khi huấn luyện, xuất mô hình sang GGUF hoặc định dạng khác để triển khai",
+      "Khi mở Studio ra mạng (--secure hoặc -H 0.0.0.0), đặt mật khẩu quản trị; có thể dùng --disable-tools để tắt công cụ phía máy chủ"
+    ],
+    "samplePromptsVi": [
+      "Tinh chỉnh Qwen3.5 4B bằng QLoRA trên bộ dữ liệu hỏi đáp chăm sóc khách hàng tiếng Việt, rồi xuất sang GGUF",
+      "Tạo bộ dữ liệu huấn luyện từ các tệp PDF quy trình nội bộ bằng Data Recipes",
+      "Huấn luyện GRPO cho mô hình nhỏ để cải thiện khả năng giải toán từng bước"
+    ],
+    "prosVi": [
+      "Gói lõi theo Apache 2.0, dùng miễn phí cả cho mục đích thương mại",
+      "Giảm mạnh yêu cầu VRAM nên tinh chỉnh được trên GPU phổ thông",
+      "Có ứng dụng máy tính và giao diện web, không bắt buộc viết mã",
+      "Nhiều sổ tay Colab/Kaggle miễn phí để bắt đầu nhanh"
+    ],
+    "consVi": [
+      "Giấy phép kép: Unsloth Studio UI theo AGPL-3.0, cần lưu ý nếu tích hợp vào sản phẩm đóng",
+      "README cảnh báo công cụ phía máy chủ bật mặc định, phải cẩn thận khi mở Studio ra mạng",
+      "Cài đặt trên Windows cần cài torchao trước, nếu không có thể cài nhầm phiên bản Unsloth cũ"
+    ],
+    "sourceEvidence": {
+      "curl -fsSL https://unsloth.ai/install.sh | sh": "README.md:64",
+      "irm https://unsloth.ai/install.ps1 | iex": "README.md:69",
+      "brew install --cask unsloth": "README.md:77",
+      "unsloth studio": "README.md:206",
+      "uv venv unsloth_env --python 3.13": "README.md:247",
+      "source unsloth_env/bin/activate": "README.md:248",
+      "uv pip install unsloth --torch-backend=auto": "README.md:249"
+    },
+    "meta": {
+      "id": "unslothai-unsloth",
+      "nameVi": "Unsloth — Ứng dụng tinh chỉnh và chạy LLM cục bộ nhanh, tiết kiệm VRAM",
+      "icon": "Cpu",
+      "categories": ["nlp_llm", "generative_ai_multimedia"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache-2.0 cho lõi; Studio UI theo AGPL-3.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "curl -fsSL https://unsloth.ai/install.sh | sh" }
+      ]
+    }
+  },
+  {
+    "repo": "axolotl-ai-cloud/axolotl",
+    "license": "Apache License 2.0",
+    "authorName": "Axolotl AI",
+    "websiteUrl": "https://docs.axolotl.ai",
+    "toolType": "cli",
+    "taglineEn": "A Free and Open Source LLM Fine-tuning Framework",
+    "summaryVi": "Axolotl là công cụ mã nguồn mở giúp đơn giản hóa hậu huấn luyện (post-training) và tinh chỉnh các mô hình ngôn ngữ lớn mới nhất. Toàn bộ quy trình — tiền xử lý dữ liệu, huấn luyện, đánh giá, lượng tử hóa và suy luận — được cấu hình bằng một tệp YAML duy nhất. Hỗ trợ GPT-OSS, LLaMA, Mistral, Qwen, mô hình đa phương thức và nhiều mô hình trên Hugging Face Hub.",
+    "purposeVi": "Tinh chỉnh LLM bằng LoRA/QLoRA/full fine-tuning, DPO, GRPO trên một hoặc nhiều GPU/nhiều node chỉ bằng tệp cấu hình YAML.",
+    "featuresVi": [
+      "Nhiều mô hình: GPT-OSS, LLaMA, Mistral, Mixtral, Pythia và các mô hình trên Hugging Face Hub",
+      "Huấn luyện đa phương thức: mô hình thị giác-ngôn ngữ (Qwen2-VL, LLaVA, Pixtral...) và âm thanh (Voxtral)",
+      "Phương pháp huấn luyện: full fine-tuning, LoRA, QLoRA, GPTQ, QAT, FP8, DPO, IPO, KTO, ORPO, GRPO, Reward Modelling",
+      "Cấu hình YAML: dùng lại một tệp cho tiền xử lý dữ liệu, huấn luyện, đánh giá, lượng tử hóa và suy luận",
+      "Tối ưu hiệu năng: Multipacking, Flash Attention 2/3/4, Xformers, song song hóa đa GPU và đa node",
+      "Dữ liệu linh hoạt: nạp bộ dữ liệu từ máy cục bộ, Hugging Face và đám mây (S3, Azure, GCP, OCI)",
+      "Xuất GGUF qua `axolotl export` để chạy với llama.cpp và Ollama",
+      "Tài liệu tích hợp cho agent lập trình (Claude Code, Cursor...) qua lệnh `axolotl agent-docs`"
+    ],
+    "requirementsVi": "GPU NVIDIA (Ampere trở lên cho bf16 và Flash Attention) hoặc GPU AMD; Python >= 3.12; PyTorch >= 2.13.0. Có thể dùng ảnh Docker axolotlai/axolotl hoặc Google Colab.",
+    "installStepsVi": [
+      "Cài đặt uv: `curl -LsSf https://astral.sh/uv/install.sh | sh`",
+      "Tạo môi trường ảo: `uv venv --python 3.12` rồi `source .venv/bin/activate`",
+      "Cài đặt PyTorch: `uv pip install torch==2.14.0 torchvision`",
+      "Cài đặt Axolotl: `uv pip install --no-build-isolation axolotl[deepspeed]`",
+      "Tải cấu hình mẫu: `axolotl fetch examples`",
+      "Hoặc chạy bằng Docker: `docker run --gpus '\"all\"' --ipc=host --rm -it axolotlai/axolotl:main-latest`"
+    ],
+    "cliCommand": "axolotl train examples/llama-3/lora-1b.yml",
+    "usageStepsVi": [
+      "Chọn một tệp YAML mẫu trong thư mục examples và chỉnh mô hình gốc, bộ dữ liệu, tham số LoRA",
+      "Chạy huấn luyện bằng lệnh axolotl train kèm đường dẫn tệp cấu hình",
+      "Xem hướng dẫn theo chủ đề (sft, grpo, preference_tuning...) bằng axolotl agent-docs",
+      "Đặt AXOLOTL_DO_NOT_TRACK=1 nếu muốn tắt telemetry"
+    ],
+    "samplePromptsVi": [
+      "Viết tệp cấu hình Axolotl để tinh chỉnh LoRA mô hình Llama 3 1B trên bộ dữ liệu hỏi đáp tiếng Việt",
+      "Thiết lập huấn luyện DPO với Axolotl trên bộ dữ liệu so sánh câu trả lời",
+      "Cấu hình Axolotl huấn luyện QLoRA trên 2 GPU với DeepSpeed"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, miễn phí",
+      "Một tệp YAML điều khiển toàn bộ quy trình, dễ tái lập thí nghiệm",
+      "Có ảnh Docker và gói PyPI, chạy được trên nhiều nhà cung cấp đám mây GPU",
+      "Cập nhật nhanh hỗ trợ mô hình và kỹ thuật huấn luyện mới"
+    ],
+    "consVi": [
+      "Cần GPU NVIDIA (Ampere trở lên để dùng bf16/Flash Attention) hoặc AMD",
+      "Telemetry bật mặc định (thu thập thông tin hệ thống, loại mô hình, tỉ lệ lỗi), phải tự tắt bằng AXOLOTL_DO_NOT_TRACK=1",
+      "Yêu cầu phiên bản Python và PyTorch mới (Python >= 3.12, PyTorch >= 2.13.0)"
+    ],
+    "sourceEvidence": {
+      "curl -LsSf https://astral.sh/uv/install.sh | sh": "README.md:124",
+      "uv venv --python 3.12": "README.md:130",
+      "source .venv/bin/activate": "README.md:131",
+      "uv pip install torch==2.14.0 torchvision": "README.md:133",
+      "uv pip install --no-build-isolation axolotl[deepspeed]": "README.md:134",
+      "axolotl fetch examples": "README.md:137",
+      "docker run --gpus '\"all\"' --ipc=host --rm -it axolotlai/axolotl:main-latest": "README.md:145",
+      "axolotl train examples/llama-3/lora-1b.yml": "README.md:174"
+    },
+    "meta": {
+      "id": "axolotl-ai-cloud-axolotl",
+      "nameVi": "Axolotl — Framework tinh chỉnh và hậu huấn luyện LLM bằng cấu hình YAML",
+      "icon": "Terminal",
+      "categories": ["nlp_llm"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "axolotl train examples/llama-3/lora-1b.yml" }
+      ]
+    }
+  },
+  {
+    "repo": "hiyouga/LlamaFactory",
+    "license": "Apache License 2.0 (trọng số mô hình tuân theo giấy phép riêng của từng mô hình)",
+    "authorName": "hiyouga (Yaowei Zheng) và cộng đồng LlamaFactory",
+    "websiteUrl": "https://llamafactory.readthedocs.io/en/latest/",
+    "toolType": "software",
+    "taglineEn": "Easily fine-tune 100+ large language models with zero-code CLI and Web UI",
+    "summaryVi": "LlamaFactory (trước đây là LLaMA-Factory) là framework tinh chỉnh hơn 100 mô hình ngôn ngữ lớn mà không cần viết mã, qua dòng lệnh hoặc giao diện web LLaMA Board (Gradio). Hỗ trợ tiền huấn luyện tiếp, SFT đa phương thức, reward modeling, PPO, DPO, KTO, ORPO với LoRA, QLoRA 2–8 bit và full-tuning. Sau huấn luyện có thể trò chuyện thử, gộp LoRA và triển khai API kiểu OpenAI với vLLM hoặc SGLang.",
+    "purposeVi": "Cho phép nhà phát triển và nhà nghiên cứu tinh chỉnh LLM (Qwen, Llama, DeepSeek, Gemma, GLM...) trên dữ liệu riêng bằng tệp cấu hình hoặc giao diện web, không cần tự viết vòng lặp huấn luyện.",
+    "featuresVi": [
+      "Nhiều mô hình: LLaMA, LLaVA, Mistral, Mixtral-MoE, Qwen3, Qwen3-VL, DeepSeek, Gemma, GLM, Phi...",
+      "Phương pháp tích hợp: tiền huấn luyện tiếp, SFT (đa phương thức), reward modeling, PPO, DPO, KTO, ORPO",
+      "Tiết kiệm tài nguyên: full-tuning 16-bit, freeze-tuning, LoRA và QLoRA 2/3/4/5/6/8-bit qua AQLM/AWQ/GPTQ/LLM.int8/HQQ/EETQ",
+      "Thuật toán nâng cao: GaLore, BAdam, APOLLO, Adam-mini, Muon...; tăng tốc bằng FlashAttention-2, Unsloth, Liger Kernel",
+      "Giao diện LLaMA Board (Gradio) để huấn luyện không cần viết mã",
+      "Theo dõi thí nghiệm: LlamaBoard, TensorBoard, Wandb, MLflow, SwanLab",
+      "Suy luận nhanh: API kiểu OpenAI, giao diện Gradio và CLI với vLLM hoặc SGLang",
+      "Tải mô hình và dữ liệu từ Hugging Face, ModelScope, Modelers Hub"
+    ],
+    "requirementsVi": "Python >= 3.11, PyTorch >= 2.0.0, transformers >= 4.49.0; CUDA 11.6+ (khuyến nghị 12.2) cho GPU NVIDIA; hỗ trợ cả GPU AMD và Ascend NPU. Bảng phần cứng trong README ước tính QLoRA 4-bit cho mô hình 7B cần khoảng 6GB VRAM.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone --depth 1 https://github.com/hiyouga/LlamaFactory.git`",
+      "Vào thư mục: `cd LlamaFactory`",
+      "Cài đặt gói: `pip install -e .`",
+      "Cài đặt phụ thuộc đo lường: `pip install -r requirements/metrics.txt`",
+      "Hoặc dùng ảnh Docker dựng sẵn: `docker run -it --rm --gpus=all --ipc=host hiyouga/llamafactory:latest`"
+    ],
+    "cliCommand": "llamafactory-cli webui",
+    "usageStepsVi": [
+      "Chuẩn bị bộ dữ liệu theo hướng dẫn data/README.md và khai báo trong data/dataset_info.json",
+      "Huấn luyện LoRA bằng llamafactory-cli train examples/train_lora/qwen3_lora_sft.yaml",
+      "Trò chuyện thử với llamafactory-cli chat và gộp LoRA với llamafactory-cli export",
+      "Hoặc mở giao diện LLaMA Board bằng llamafactory-cli webui để cấu hình và huấn luyện trực quan",
+      "Triển khai API kiểu OpenAI bằng llamafactory-cli api với backend vLLM"
+    ],
+    "samplePromptsVi": [
+      "Tinh chỉnh LoRA Qwen3-4B-Instruct trên bộ dữ liệu hỏi đáp pháp luật tiếng Việt bằng LlamaFactory",
+      "Cấu hình LlamaFactory huấn luyện DPO trên dữ liệu so sánh câu trả lời của chatbot",
+      "Gộp adapter LoRA vào mô hình gốc rồi phục vụ qua API kiểu OpenAI với vLLM"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, miễn phí",
+      "Có giao diện web không cần viết mã bên cạnh CLI",
+      "Hỗ trợ rất nhiều mô hình và phương pháp huấn luyện, có ảnh Docker cho CUDA, NPU và ROCm",
+      "Tài liệu có bảng ước tính VRAM theo phương pháp và kích thước mô hình"
+    ],
+    "consVi": [
+      "Trọng số mô hình phải tuân theo giấy phép riêng của từng mô hình (Llama, Qwen, Gemma...)",
+      "Trên Windows phải tự cài bản PyTorch có CUDA; bitsandbytes cần đúng phiên bản CUDA Toolkit",
+      "README lưu ý chỉ các liên kết chính thức được liệt kê là hợp lệ, các trang khác là bên thứ ba không được ủy quyền"
+    ],
+    "sourceEvidence": {
+      "git clone --depth 1 https://github.com/hiyouga/LlamaFactory.git": "README.md:526",
+      "cd LlamaFactory": "README.md:527",
+      "pip install -e .": "README.md:528",
+      "pip install -r requirements/metrics.txt": "README.md:529",
+      "docker run -it --rm --gpus=all --ipc=host hiyouga/llamafactory:latest": "README.md:539",
+      "llamafactory-cli webui": "README.md:695"
+    },
+    "meta": {
+      "id": "hiyouga-llamafactory",
+      "nameVi": "LlamaFactory — Tinh chỉnh hơn 100 LLM không cần viết mã qua CLI và giao diện web",
+      "icon": "Layers",
+      "categories": ["nlp_llm"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh", "Tiếng Trung"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "llamafactory-cli webui" }
+      ]
+    }
+  },
+  {
+    "repo": "huggingface/trl",
+    "license": "Apache License 2.0",
+    "authorName": "Hugging Face",
+    "websiteUrl": "https://huggingface.co/docs/trl",
+    "toolType": "sdk",
+    "taglineEn": "A comprehensive library to post-train foundation models",
+    "summaryVi": "TRL (Transformers Reinforcement Learning) là thư viện Python của Hugging Face dùng để hậu huấn luyện mô hình nền tảng bằng các kỹ thuật như SFT, GRPO và DPO. Thư viện xây trên hệ sinh thái Transformers, hỗ trợ nhiều kiến trúc mô hình và mở rộng từ một GPU lên cụm nhiều node. Ngoài API Python còn có CLI để tinh chỉnh không cần viết mã.",
+    "purposeVi": "Cung cấp các trainer dựng sẵn (SFTTrainer, GRPOTrainer, DPOTrainer, KTOTrainer, RewardTrainer) để tinh chỉnh và căn chỉnh (alignment) LLM trên bộ dữ liệu riêng.",
+    "featuresVi": [
+      "Trainer dựng sẵn: SFTTrainer, GRPOTrainer, DPOTrainer, KTOTrainer, RewardTrainer",
+      "Mở rộng quy mô: dùng Accelerate để chạy từ một GPU đến cụm nhiều node với DDP, DeepSpeed",
+      "Tích hợp PEFT: huấn luyện mô hình lớn trên phần cứng vừa phải bằng lượng tử hóa và LoRA/QLoRA",
+      "Tích hợp Unsloth để tăng tốc huấn luyện bằng kernel tối ưu",
+      "CLI: lệnh trl sft, trl dpo, trl kto để tinh chỉnh không cần viết mã",
+      "Chạy trên GPU AMD Instinct (ROCm) và AWS Trainium",
+      "Hàm thưởng có sẵn như accuracy_reward cho GRPO"
+    ],
+    "requirementsVi": "Python và PyTorch; các mô hình và bộ dữ liệu lấy từ Hugging Face Hub. GPU được khuyến nghị cho huấn luyện; dùng PEFT/QLoRA để giảm yêu cầu bộ nhớ.",
+    "installStepsVi": [
+      "Cài đặt thư viện: `pip install trl`",
+      "Hoặc cài đặt bản mới nhất từ mã nguồn: `pip install git+https://github.com/huggingface/trl.git`",
+      "Tải kho mã để dùng các ví dụ: `git clone https://github.com/huggingface/trl.git`"
+    ],
+    "cliCommand": "pip install trl",
+    "usageStepsVi": [
+      "Nạp bộ dữ liệu bằng datasets.load_dataset (ví dụ trl-lib/Capybara)",
+      "Khởi tạo trainer phù hợp (SFTTrainer, DPOTrainer, GRPOTrainer...) với tên mô hình và bộ dữ liệu, rồi gọi trainer.train()",
+      "Hoặc dùng CLI: trl sft --model_name_or_path Qwen/Qwen2.5-0.5B --dataset_name trl-lib/Capybara --output_dir Qwen2.5-0.5B-SFT",
+      "Xem thêm hướng dẫn CLI bằng tùy chọn --help"
+    ],
+    "samplePromptsVi": [
+      "Viết mã Python dùng SFTTrainer của TRL để tinh chỉnh Qwen2.5-0.5B trên bộ dữ liệu hội thoại tiếng Việt",
+      "Dùng GRPOTrainer với hàm thưởng accuracy_reward để huấn luyện mô hình giải toán",
+      "Chạy DPO bằng CLI trl dpo trên bộ dữ liệu so sánh câu trả lời"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, do Hugging Face phát triển và bảo trì",
+      "API đơn giản, tích hợp sẵn với Transformers, PEFT, Accelerate",
+      "Hỗ trợ nhiều thuật toán căn chỉnh hiện đại (SFT, GRPO, DPO, KTO, Reward Modeling)"
+    ],
+    "consVi": [
+      "Là thư viện lập trình, không có giao diện web",
+      "Các tính năng trong trl.experimental có thể thay đổi hoặc bị xóa ở bất kỳ phiên bản nào mà không báo trước"
+    ],
+    "sourceEvidence": {
+      "pip install trl": "README.md:55",
+      "pip install git+https://github.com/huggingface/trl.git": "README.md:63",
+      "git clone https://github.com/huggingface/trl.git": "README.md:71"
+    },
+    "meta": {
+      "id": "huggingface-trl",
+      "nameVi": "TRL — Thư viện hậu huấn luyện và căn chỉnh LLM (SFT, GRPO, DPO) của Hugging Face",
+      "icon": "Code2",
+      "categories": ["nlp_llm"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "pip install trl" }
+      ]
+    }
+  },
+  {
+    "repo": "huggingface/peft",
+    "license": "Apache License 2.0",
+    "authorName": "Hugging Face",
+    "websiteUrl": "https://huggingface.co/docs/peft",
+    "toolType": "sdk",
+    "taglineEn": "State-of-the-art Parameter-Efficient Fine-Tuning (PEFT) methods",
+    "summaryVi": "PEFT là thư viện Python của Hugging Face cung cấp các phương pháp tinh chỉnh tiết kiệm tham số như LoRA, chỉ huấn luyện một phần nhỏ tham số (bổ sung) thay vì toàn bộ mô hình. Cách này giảm mạnh chi phí tính toán và lưu trữ, trong khi hiệu năng tương đương tinh chỉnh toàn phần. PEFT tích hợp với Transformers, Diffusers, Accelerate và TRL.",
+    "purposeVi": "Giúp tinh chỉnh mô hình lớn trên phần cứng phổ thông và lưu checkpoint chỉ vài MB cho mỗi tác vụ thay vì vài GB.",
+    "featuresVi": [
+      "Nhiều phương pháp PEFT: LoRA, adapter, soft prompt và các kỹ thuật khác",
+      "Huấn luyện ít tham số: ví dụ với Qwen2.5-3B chỉ khoảng 0,12% tham số được huấn luyện",
+      "Kết hợp lượng tử hóa (QLoRA) để tinh chỉnh mô hình lớn trên GPU 16GB",
+      "Checkpoint nhỏ: mỗi adapter chỉ vài MB, dễ lưu và chuyển đổi giữa các tác vụ",
+      "Tích hợp Transformers (add_adapter, load_adapter, set_adapter) và Diffusers cho Stable Diffusion",
+      "Chạy phân tán với Accelerate và dùng cùng TRL cho RLHF/DPO"
+    ],
+    "requirementsVi": "Python, PyTorch và thư viện transformers; GPU được khuyến nghị cho huấn luyện.",
+    "installStepsVi": [
+      "Cài đặt thư viện: `pip install peft`"
+    ],
+    "cliCommand": "pip install peft",
+    "usageStepsVi": [
+      "Nạp mô hình gốc bằng AutoModelForCausalLM.from_pretrained",
+      "Tạo LoraConfig (r, lora_alpha, task_type) rồi bọc mô hình bằng get_peft_model",
+      "Huấn luyện bằng Trainer của Transformers và lưu adapter bằng save_pretrained",
+      "Khi suy luận, nạp adapter bằng PeftModel.from_pretrained"
+    ],
+    "samplePromptsVi": [
+      "Viết mã dùng PEFT để gắn LoRA vào Qwen2.5-3B-Instruct và in số tham số có thể huấn luyện",
+      "Nạp adapter LoRA đã huấn luyện vào mô hình gốc để sinh văn bản",
+      "Kết hợp PEFT với lượng tử hóa 4-bit để tinh chỉnh mô hình 7B trên GPU 16GB"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, do Hugging Face bảo trì",
+      "Giảm mạnh chi phí tính toán và dung lượng lưu trữ so với tinh chỉnh toàn phần",
+      "Là nền tảng được nhiều framework tinh chỉnh khác sử dụng"
+    ],
+    "consVi": [
+      "Là thư viện lập trình, cần tự viết vòng lặp huấn luyện hoặc kết hợp Trainer/TRL",
+      "Tích hợp trong Transformers không có đủ mọi chức năng của PEFT, ví dụ gộp adapter vào mô hình gốc"
+    ],
+    "sourceEvidence": {
+      "pip install peft": "README.md:36"
+    },
+    "meta": {
+      "id": "huggingface-peft",
+      "nameVi": "PEFT — Thư viện tinh chỉnh tiết kiệm tham số (LoRA, adapter) của Hugging Face",
+      "icon": "Code2",
+      "categories": ["nlp_llm", "generative_ai_multimedia"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "pip install peft" }
+      ]
+    }
+  },
+  {
+    "repo": "verl-project/verl",
+    "license": "Apache License 2.0",
+    "authorName": "ByteDance Seed team và cộng đồng verl",
+    "websiteUrl": "https://verl.readthedocs.io",
+    "toolType": "sdk",
+    "taglineEn": "verl is a flexible, efficient and production-ready RL training library for large language models (LLMs).",
+    "summaryVi": "verl (Volcano Engine Reinforcement Learning) là thư viện huấn luyện học tăng cường (RL) cho mô hình ngôn ngữ lớn, do ByteDance Seed khởi xướng và cộng đồng verl duy trì. Đây là phiên bản mã nguồn mở của bài báo HybridFlow, cho phép xây dựng luồng hậu huấn luyện như PPO, GRPO chỉ với vài dòng mã. Thư viện kết hợp FSDP/Megatron-LM để huấn luyện với vLLM/SGLang để sinh rollout, mở rộng tới mô hình 671B và hàng trăm GPU.",
+    "purposeVi": "Huấn luyện RL quy mô lớn (PPO, GRPO, DAPO, REINFORCE++...) cho LLM, mô hình suy luận và agent dùng công cụ.",
+    "featuresVi": [
+      "Thuật toán RL: PPO, GRPO, GSPO, ReMax, REINFORCE++, DAPO và nhiều công thức khác",
+      "Backend huấn luyện: FSDP, FSDP2 và Megatron-LM; sinh rollout bằng vLLM, SGLang hoặc HF Transformers",
+      "Phần thưởng dựa trên mô hình hoặc hàm (verifiable reward) cho toán, lập trình",
+      "RL đa phương thức với mô hình thị giác-ngôn ngữ (Qwen2.5-VL, Kimi-VL) và RL nhiều lượt có gọi công cụ",
+      "3D-HybridEngine: chia lại trọng số actor giữa huấn luyện và sinh, giảm dư thừa bộ nhớ",
+      "Mở rộng tới mô hình 671B và hàng trăm GPU với expert parallelism; hỗ trợ LoRA RL",
+      "Theo dõi thí nghiệm với wandb, swanlab, mlflow, tensorboard",
+      "Phần cứng: NVIDIA, AMD (ROCm), Ascend"
+    ],
+    "requirementsVi": "Python >= 3.10 và CUDA >= 12.8 theo tài liệu cài đặt; quy trình uv nhắm tới Linux, Python 3.12 trên x86_64 và aarch64. Cần GPU cho huấn luyện; có extra cpu cho kiểm tra nhanh không cần GPU.",
+    "installStepsVi": [
+      "Cài đặt uv: `curl -LsSf https://astral.sh/uv/install.sh | sh`",
+      "Tải mã nguồn: `git clone https://github.com/verl-project/verl.git`",
+      "Vào thư mục: `cd verl`",
+      "Lần chạy uv đầu tiên tự dựng môi trường .venv từ uv.lock (chọn backend vllm + fsdp): `uv run --frozen --all-packages --extra vllm --extra fsdp uv pip list`"
+    ],
+    "cliCommand": "uv run --frozen --all-packages --extra vllm --extra fsdp uv pip list",
+    "usageStepsVi": [
+      "Chuẩn bị dữ liệu hậu huấn luyện và cài đặt hàm thưởng theo hướng dẫn trong tài liệu verl",
+      "Chọn backend suy luận (vllm hoặc sglang) và huấn luyện (fsdp, megatron hoặc veomni) dưới dạng extra của uv",
+      "Chạy các script mẫu trong thư mục examples (ví dụ ppo_trainer, grpo_trainer) qua uv run",
+      "Bật FSDP2 bằng các tùy chọn actor_rollout_ref.actor.strategy=fsdp2 và critic.strategy=fsdp2"
+    ],
+    "samplePromptsVi": [
+      "Thiết lập huấn luyện GRPO với verl cho Qwen3 trên bộ dữ liệu toán GSM8K với hàm thưởng kiểm tra đáp án",
+      "Chạy PPO bằng verl với backend FSDP2 và vLLM trên 8 GPU",
+      "Huấn luyện RL nhiều lượt có gọi công cụ cho agent theo hướng dẫn agent loop của verl"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Được dùng để huấn luyện các mô hình suy luận quy mô lớn, có nhiều công thức thuật toán tái lập được",
+      "Tích hợp với hạ tầng LLM phổ biến (FSDP, Megatron-LM, vLLM, SGLang)"
+    ],
+    "consVi": [
+      "Hướng tới huấn luyện quy mô cụm GPU, đòi hỏi kiến thức RL và hệ thống phân tán",
+      "README không có lệnh cài đặt; hướng dẫn nằm trong tài liệu docs/start/install.rst",
+      "Quy trình uv chỉ nhắm tới Linux; Ascend NPU và AMD ROCm dùng Dockerfile riêng"
+    ],
+    "sourceEvidence": {
+      "curl -LsSf https://astral.sh/uv/install.sh | sh": "docs/start/install.rst:280",
+      "git clone https://github.com/verl-project/verl.git": "docs/start/install.rst:282",
+      "cd verl": "docs/start/install.rst:283",
+      "uv run --frozen --all-packages --extra vllm --extra fsdp uv pip list": "docs/start/install.rst:286"
+    },
+    "meta": {
+      "id": "verl-project-verl",
+      "nameVi": "verl — Thư viện huấn luyện học tăng cường (PPO, GRPO) cho LLM của ByteDance Seed",
+      "icon": "Brain",
+      "categories": ["nlp_llm"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh", "Tiếng Trung"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "uv run --frozen --all-packages --extra vllm --extra fsdp uv pip list" }
+      ]
+    }
+  },
+  {
+    "repo": "modelscope/ms-swift",
+    "license": "Apache License 2.0 (mô hình và bộ dữ liệu tuân theo giấy phép gốc của từng tài nguyên)",
+    "authorName": "ModelScope (Alibaba)",
+    "websiteUrl": "https://swift.readthedocs.io/en/latest/",
+    "toolType": "cli",
+    "taglineEn": "ms-swift is a large model and multimodal large model fine-tuning and deployment framework provided by the ModelScope community.",
+    "summaryVi": "ms-swift (SWIFT) là framework tinh chỉnh và triển khai mô hình lớn và mô hình đa phương thức của cộng đồng ModelScope. Hỗ trợ tiền huấn luyện, tinh chỉnh, căn chỉnh (DPO, KTO, ORPO...), học tăng cường họ GRPO, suy luận, đánh giá, lượng tử hóa và triển khai cho hơn 600 LLM văn bản và hơn 400 mô hình đa phương thức. Có CLI, giao diện Web-UI và API Python.",
+    "purposeVi": "Cung cấp quy trình trọn gói từ huấn luyện đến suy luận, đánh giá, lượng tử hóa và triển khai mô hình lớn (Qwen, DeepSeek, Llama, InternVL...) chỉ bằng vài lệnh.",
+    "featuresVi": [
+      "Mô hình: hơn 600 LLM văn bản, hơn 400 mô hình đa phương thức, hỗ trợ ngày đầu cho mô hình mới",
+      "Bộ dữ liệu: hơn 150 bộ dữ liệu tích hợp sẵn, hỗ trợ dữ liệu tùy chỉnh",
+      "Tinh chỉnh nhẹ: LoRA, QLoRA, DoRA, LoRA+, LongLoRA, ReFT, LISA...; huấn luyện mô hình 7B lượng tử hóa chỉ cần 9GB",
+      "Huấn luyện phân tán: DDP, DeepSpeed ZeRO2/ZeRO3, FSDP/FSDP2 và song song Megatron (TP/PP/CP/EP)",
+      "Học tăng cường: GRPO, DAPO, GSPO, SAPO, CISPO, RLOO, Reinforce++ với tăng tốc vLLM",
+      "Tác vụ khác: DPO, KTO, RM, CPO, SimPO, ORPO, Embedding/Reranker, phân loại chuỗi",
+      "Web-UI (Gradio) cho huấn luyện, suy luận, đánh giá, lượng tử hóa",
+      "Suy luận và triển khai với vLLM, SGLang, LMDeploy; lượng tử hóa AWQ, GPTQ, FP8, BNB; đánh giá bằng EvalScope",
+      "Phần cứng: GPU NVIDIA, AMD, Ascend NPU, Apple MPS và CPU"
+    ],
+    "requirementsVi": "Python >= 3.10 (khuyến nghị 3.12), PyTorch >= 2.0, transformers >= 4.33, modelscope >= 1.23; CUDA 12.8/13.0 khuyến nghị (không cần nếu dùng CPU, NPU, MPS). Mặc định tải mô hình và dữ liệu từ ModelScope, dùng --use_hf true để chuyển sang Hugging Face.",
+    "installStepsVi": [
+      "Cài đặt bằng pip: `pip install ms-swift -U`",
+      "Hoặc cài đặt từ mã nguồn: `git clone https://github.com/modelscope/ms-swift.git`, `cd ms-swift`, rồi `pip install -e .`",
+      "Khởi chạy giao diện web: `SWIFT_UI_LANG=en swift web-ui`"
+    ],
+    "cliCommand": "pip install ms-swift -U",
+    "usageStepsVi": [
+      "Tinh chỉnh bằng lệnh swift sft, chỉ định --model (ví dụ Qwen/Qwen3-4B-Instruct-2507), --tuner_type lora và --dataset",
+      "Suy luận với trọng số đã huấn luyện bằng swift infer --adapters output/vx-xxx/checkpoint-xxx (có thể gộp LoRA và dùng vLLM)",
+      "Đẩy mô hình lên ModelScope hoặc Hugging Face bằng swift export --push_to_hub true",
+      "Hoặc dùng Web-UI để thực hiện toàn bộ quy trình mà không cần viết lệnh"
+    ],
+    "samplePromptsVi": [
+      "Tinh chỉnh LoRA tự nhận thức (self-cognition) cho Qwen3-4B-Instruct trên một GPU 3090 bằng ms-swift",
+      "Huấn luyện GRPO với ms-swift và tăng tốc rollout bằng vLLM",
+      "Lượng tử hóa mô hình sau tinh chỉnh sang AWQ rồi triển khai qua API OpenAI bằng ms-swift"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Quy trình trọn gói: huấn luyện, suy luận, đánh giá, lượng tử hóa, triển khai",
+      "Hỗ trợ số lượng rất lớn mô hình văn bản và đa phương thức, nhiều loại phần cứng",
+      "Có Web-UI cho người không quen dòng lệnh"
+    ],
+    "consVi": [
+      "Mặc định tải mô hình và dữ liệu từ ModelScope; cần thêm --use_hf true để dùng Hugging Face",
+      "Mô hình và bộ dữ liệu phải tuân theo giấy phép gốc của từng tài nguyên",
+      "Nhánh main dành cho swift 4.x; muốn dùng 3.x phải chuyển sang nhánh release/3.12"
+    ],
+    "sourceEvidence": {
+      "pip install ms-swift -U": "README.md:128",
+      "git clone https://github.com/modelscope/ms-swift.git": "README.md:139",
+      "cd ms-swift": "README.md:140",
+      "pip install -e .": "README.md:143",
+      "SWIFT_UI_LANG=en swift web-ui": "README.md:256"
+    },
+    "meta": {
+      "id": "modelscope-ms-swift",
+      "nameVi": "ms-swift — Framework tinh chỉnh, RL và triển khai hơn 1.000 mô hình lớn của ModelScope",
+      "icon": "Layers",
+      "categories": ["nlp_llm", "generative_ai_multimedia"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh", "Tiếng Trung"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "pip install ms-swift -U" }
+      ]
+    }
+  }
+]
