@@ -47,6 +47,8 @@ type ConnectionState =
 const PLAYGROUND_ENDPOINTS = [
   { id: 'dispatch', method: 'POST' as const, path: '/api/v1/dispatch', needsKey: true },
   { id: 'tools', method: 'GET' as const, path: '/api/v1/tools?q=playwright', needsKey: false },
+  { id: 'tools-filter', method: 'GET' as const, path: '/api/v1/tools?tool_type=mcp&vietnam=1&page=1&limit=10', needsKey: false },
+  { id: 'tool-detail', method: 'GET' as const, path: '/api/v1/tools/apache-airflow', needsKey: false },
   { id: 'health', method: 'GET' as const, path: '/api/v1/health', needsKey: false }
 ];
 

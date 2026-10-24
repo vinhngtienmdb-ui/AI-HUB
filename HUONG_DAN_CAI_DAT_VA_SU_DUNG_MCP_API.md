@@ -264,6 +264,38 @@ response = requests.post(url, json=payload, headers=headers)
 print(response.json())
 ```
 
+### 6. Tra Cứu Danh Mục Công Cụ Qua REST API (Công Khai, Không Cần Khóa)
+
+Hai điểm cuối chỉ đọc, trả về công cụ đang hiển thị (bản ghi bị ẩn không xuất hiện). Mỗi địa chỉ IP được gọi tối đa 120 lần/phút; vượt ngưỡng trả HTTP `429`, mã `RATE_LIMITED`.
+
+**Danh sách có lọc và phân trang** `GET /api/v1/tools`
+
+| Tham số | Ý nghĩa | Mặc định |
+|---|---|---|
+| `q` | Từ khóa tìm trong tên, tóm tắt, nhãn | (không lọc) |
+| `category` | Mã lĩnh vực, ví dụ `nlp_llm`, `payment_gateway` | (không lọc) |
+| `tool_type` (hoặc `type`) | Loại công cụ: `mcp`, `skill`, `agent`, `sdk`, `cli`, `software`, `model`, `dataset`, `api`... | (không lọc) |
+| `platform` | Nền tảng trong `platforms` hoặc cấu hình mẫu: `claude_code`, `claude_desktop`, `cursor`, `web`... | (không lọc) |
+| `vietnam` | `1` hoặc `true`: chỉ công cụ cho thị trường Việt Nam | (không lọc) |
+| `page` | Số trang, từ 1 | `1` |
+| `limit` | Số bản ghi mỗi trang, 1–100 | `20` |
+
+Tham số `page`/`limit` sai trả HTTP `400`, mã `INVALID_QUERY`.
+
+```bash
+curl "http://localhost:4000/api/v1/tools?tool_type=mcp&vietnam=1&page=1&limit=10"
+```
+
+Phản hồi gồm `success`, `total`, `meta` (`total`, `page`, `limit`, `totalPages`) và `tools` (mỗi phần tử có `id`, `name`, `toolType`, `category`, `categories`, `platforms`, `isVietnamMarket`, `descriptionVi`, `license`, `pricingModel`, `linkHealth`, `sourceUrl`, `detailUrl`).
+
+**Chi tiết một công cụ** `GET /api/v1/tools/:id` (nhận mã `id` hoặc `slug`)
+
+```bash
+curl http://localhost:4000/api/v1/tools/apache-airflow
+```
+
+Trả về `{ "success": true, "data": { ...toàn bộ bản ghi... } }`, gồm hướng dẫn cài đặt, cách dùng, README tiếng Việt và cấu hình mẫu `configs`. Mã không tồn tại hoặc công cụ đã ẩn trả HTTP `404`, mã `TOOL_NOT_FOUND`.
+
 ---
 
 ## V. Tiêu Chuẩn An Toàn & Bảo Mật Hệ Thống
@@ -276,7 +308,7 @@ Hệ thống được thiết kế theo nguyên tắc "Bảo mật ngay từ thi
    - Hàm so sánh khóa sử dụng `crypto.timingSafeEqual` để triệt tiêu hoàn toàn nguy cơ tấn công phân tích thời gian (Timing Attacks).
 
 2. **Giới Hạn Tần Suất Và Hạn Mức Ngày**:
-   - Mỗi khóa có giới hạn tần suất riêng (mặc định 60 yêu cầu/phút, cho phép 1–1.000). Vượt ngưỡng: HTTP `429`, mã `RATE_LIMITED`, kèm `Retry-After`.
+   - Mỗi khóa có giới hạn tần suất riêng (mặc định 60 yêu cầu/phút, cho phép 1–1.000). Điểm cuối công khai `GET /api/v1/tools` và `GET /api/v1/tools/:id` giới hạn 120 yêu cầu/phút cho mỗi địa chỉ IP. Vượt ngưỡng: HTTP `429`, mã `RATE_LIMITED`, kèm `Retry-After`.
    - Mỗi khóa có hạn mức số lượt `/dispatch` mỗi ngày (mặc định 5.000, cho phép 1–1.000.000), tính theo ngày UTC. Hết hạn mức: HTTP `429`, mã `DAILY_QUOTA_EXCEEDED`.
    - Tham số tạo khóa sai kiểu hoặc ngoài giới hạn (kể cả vai trò khác `developer`/`admin`) bị từ chối với HTTP `400`, mã `INVALID_KEY_OPTIONS`.
 
