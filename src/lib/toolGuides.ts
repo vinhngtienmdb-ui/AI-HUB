@@ -48,7 +48,9 @@ export function buildInstallMarkdown(tool: Pick<AITool, 'configs' | 'installGuid
     if (seen.has(config.cliCommand!)) continue;
     seen.add(config.cliCommand!);
     if (withCommand.length > 1) parts.push(`**${config.platformName}**`);
-    parts.push(fence('bash', config.cliCommand!));
+    // Lệnh dạng mã Python (gán biến, import) hiển thị như khối Python thay vì bash
+    const isPython = /^(?:from |import |[A-Za-z_][\w.]*\s*=)/.test(config.cliCommand!);
+    parts.push(fence(isPython ? 'python' : 'bash', config.cliCommand!));
   }
   if (tool.installGuideVi) parts.push(guideToMarkdown(tool.installGuideVi));
   return parts.join('\n\n');

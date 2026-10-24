@@ -149970,5 +149970,905 @@
       "guideIsTemplate": false,
       "starsVerified": false
     }
+  },
+  {
+    "id": "pnnbao97-vieneu-tts",
+    "slug": "pnnbao97-vieneu-tts",
+    "name": "VieNeu-TTS — Chuyển văn bản thành giọng nói tiếng Việt, nhân bản giọng tức thì",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice",
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/pnnbao97/VieNeu-TTS",
+    "websiteUrl": "https://www.vieneu.io",
+    "authorName": "Phạm Nguyễn Ngọc Bảo (pnnbao97)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "VieNeu-TTS là bộ chuyển văn bản thành giọng nói tiếng Việt chạy trên thiết bị, huấn luyện song ngữ Việt–Anh với hơn 10.000 giờ dữ liệu. Phiên bản mã nguồn mở mới nhất trong repo là v3 Turbo: âm thanh 48 kHz, 25 giọng có sẵn ba miền Bắc – Trung – Nam, nhân bản giọng tức thì từ đoạn ghi âm 3–8 giây. Repo cung cấp SDK Python `vieneu`, giao diện web Gradio và máy chủ API tương thích OpenAI.",
+    "purposeVi": "Tạo giọng đọc tiếng Việt tự nhiên ngay trên máy cá nhân (CPU hoặc GPU) cho ứng dụng đọc văn bản, trợ lý giọng nói, podcast và hội thoại nhiều người nói.",
+    "featuresVi": [
+      "Giọng có sẵn: 25 giọng đọc ba miền Bắc, Trung, Nam, không cần đoạn ghi âm mẫu",
+      "Nhân bản giọng: tạo giọng từ đoạn ghi âm 3–8 giây, tự động khử nhiễu đoạn mẫu",
+      "Thẻ cảm xúc (thử nghiệm): chèn `[cười]`, `[thở dài]`, `[hắng giọng]` trực tiếp vào văn bản",
+      "Chế độ hội thoại: tạo kịch bản nhiều người nói theo lô (tối đa 32)",
+      "Phát trực tuyến thời gian thực: âm thanh đầu tiên khoảng 115 ms trên RTX 3060",
+      "API tương thích OpenAI: `POST /v1/audio/speech`, dùng được với OpenAI SDK, Pipecat, LiveKit",
+      "Chạy không cần PyTorch trên CPU: dùng ONNX Runtime, RTF khoảng 0,5",
+      "Tinh chỉnh LoRA: huấn luyện giọng hoặc phong cách đọc riêng trên một GPU phổ thông"
+    ],
+    "installGuideVi": "Yêu cầu: Công cụ `uv` (khuyến nghị) hoặc Python với `pip`. Chạy được trên CPU/macOS; GPU NVIDIA (CUDA) giúp nhanh hơn khoảng 25 lần. Bản int8 trên CPU cần tập lệnh VNNI (AVX-512 VNNI / AVX-VNNI).\nBước 1: Tải mã nguồn: `git clone https://github.com/pnnbao97/VieNeu-TTS.git` rồi `cd VieNeu-TTS`\nBước 2: Cài phụ thuộc cho CPU/macOS: `uv sync` (hoặc cho GPU: `uv sync --extra cuda`)\nBước 3: Mở giao diện web: `uv run vieneu-web` rồi truy cập http://127.0.0.1:7860\nBước 4: Hoặc chỉ cài SDK Python: `pip install vieneu`",
+    "usageGuideVi": "Bước 1: Trong giao diện web, chọn backbone \"VieNeu-TTS-v3-Turbo\", nhập văn bản và chọn giọng đọc\nBước 2: Dùng SDK: `from vieneu import Vieneu`, tạo `Vieneu()` rồi gọi `vieneu.infer(văn_bản, voice=\"Hải Đăng\")` và `vieneu.save(audio, \"output.wav\")`\nBước 3: Nhân bản giọng: truyền `ref_audio=\"my_voice.wav\"` (đoạn 3–8 giây) vào `infer`\nBước 4: Chạy máy chủ API tương thích OpenAI: `uv run python -m apps.openai_speech` (cổng 8000) rồi trỏ `base_url` của OpenAI SDK tới http://localhost:8000/v1",
+    "samplePromptsVi": [
+      "Xin chào các bạn, hôm nay mình sẽ hướng dẫn cách cài đặt bộ giọng đọc mới.",
+      "Nghe hay quá đi [cười]. Để mình nói tiếp [hắng giọng].",
+      "Bản tin sáng nay."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "uv run vieneu-web",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uv run vieneu-web\"\n  ],\n  \"nguon\": \"https://github.com/pnnbao97/VieNeu-TTS\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, mã nguồn mở (v3 Turbo); bản v4 độc quyền qua VieNeu API",
+    "prosVi": [
+      "Giấy phép Apache 2.0, dùng được cho mục đích thương mại",
+      "Chạy được trên CPU không cần GPU, cài tối giản không cần PyTorch",
+      "Có API tương thích OpenAI và Docker, dễ tích hợp vào ứng dụng sẵn có",
+      "Hỗ trợ song ngữ Việt–Anh và giọng ba miền"
+    ],
+    "consVi": [
+      "Phiên bản v4 (nhân bản giọng chất lượng cao hơn) là độc quyền, chỉ có qua VieNeu API / vieneu.io; repo chỉ mở mã đến v3 Turbo",
+      "Thẻ cảm xúc còn ở mức thử nghiệm",
+      "Các tính năng lồng tiếng, bài giảng, TikTok Reel, sách nói chỉ có trong ứng dụng VieNeu chính thức, không có trong repo",
+      "Nhân bản giọng dễ bị lạm dụng; cần có sự đồng ý của chủ giọng"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# VieNeu-TTS — Chuyển văn bản thành giọng nói tiếng Việt, nhân bản giọng tức thì\n\n> VieNeu-TTS: Advanced Vietnamese Text-to-Speech with Instant Voice Cloning\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nVieNeu-TTS là bộ chuyển văn bản thành giọng nói tiếng Việt chạy trên thiết bị, huấn luyện song ngữ Việt–Anh với hơn 10.000 giờ dữ liệu. Phiên bản mã nguồn mở mới nhất trong repo là v3 Turbo: âm thanh 48 kHz, 25 giọng có sẵn ba miền Bắc – Trung – Nam, nhân bản giọng tức thì từ đoạn ghi âm 3–8 giây. Repo cung cấp SDK Python `vieneu`, giao diện web Gradio và máy chủ API tương thích OpenAI.\n\nTạo giọng đọc tiếng Việt tự nhiên ngay trên máy cá nhân (CPU hoặc GPU) cho ứng dụng đọc văn bản, trợ lý giọng nói, podcast và hội thoại nhiều người nói.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** Phạm Nguyễn Ngọc Bảo (pnnbao97)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/pnnbao97/VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Giọng có sẵn: 25 giọng đọc ba miền Bắc, Trung, Nam, không cần đoạn ghi âm mẫu**\n- **Nhân bản giọng: tạo giọng từ đoạn ghi âm 3–8 giây, tự động khử nhiễu đoạn mẫu**\n- **Thẻ cảm xúc (thử nghiệm): chèn `[cười]`, `[thở dài]`, `[hắng giọng]` trực tiếp vào văn bản**\n- **Chế độ hội thoại: tạo kịch bản nhiều người nói theo lô (tối đa 32)**\n- **Phát trực tuyến thời gian thực: âm thanh đầu tiên khoảng 115 ms trên RTX 3060**\n- **API tương thích OpenAI: `POST /v1/audio/speech`, dùng được với OpenAI SDK, Pipecat, LiveKit**\n- **Chạy không cần PyTorch trên CPU: dùng ONNX Runtime, RTF khoảng 0,5**\n- **Tinh chỉnh LoRA: huấn luyện giọng hoặc phong cách đọc riêng trên một GPU phổ thông**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuv run vieneu-web\n```\n\nYêu cầu: Công cụ `uv` (khuyến nghị) hoặc Python với `pip`. Chạy được trên CPU/macOS; GPU NVIDIA (CUDA) giúp nhanh hơn khoảng 25 lần. Bản int8 trên CPU cần tập lệnh VNNI (AVX-512 VNNI / AVX-VNNI).\nBước 1: Tải mã nguồn: `git clone https://github.com/pnnbao97/VieNeu-TTS.git` rồi `cd VieNeu-TTS`\nBước 2: Cài phụ thuộc cho CPU/macOS: `uv sync` (hoặc cho GPU: `uv sync --extra cuda`)\nBước 3: Mở giao diện web: `uv run vieneu-web` rồi truy cập http://127.0.0.1:7860\nBước 4: Hoặc chỉ cài SDK Python: `pip install vieneu`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trong giao diện web, chọn backbone \"VieNeu-TTS-v3-Turbo\", nhập văn bản và chọn giọng đọc\nBước 2: Dùng SDK: `from vieneu import Vieneu`, tạo `Vieneu()` rồi gọi `vieneu.infer(văn_bản, voice=\"Hải Đăng\")` và `vieneu.save(audio, \"output.wav\")`\nBước 3: Nhân bản giọng: truyền `ref_audio=\"my_voice.wav\"` (đoạn 3–8 giây) vào `infer`\nBước 4: Chạy máy chủ API tương thích OpenAI: `uv run python -m apps.openai_speech` (cổng 8000) rồi trỏ `base_url` của OpenAI SDK tới http://localhost:8000/v1\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Xin chào các bạn, hôm nay mình sẽ hướng dẫn cách cài đặt bộ giọng đọc mới.\"\n- \"Nghe hay quá đi [cười]. Để mình nói tiếp [hắng giọng].\"\n- \"Bản tin sáng nay.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:27:43.848Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "tronghieuit-v-tts",
+    "slug": "tronghieuit-v-tts",
+    "name": "V-TTS — Giọng đọc tiếng Việt siêu nhẹ, nhân bản giọng chạy trên CPU",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice",
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/tronghieuit/v-tts",
+    "websiteUrl": "https://huggingface.co/spaces/v-tts/v-vietnamese-tts",
+    "authorName": "V-TTS (tronghieuit)",
+    "license": "Phi thương mại (CC BY-NC 4.0)",
+    "summaryVi": "V-TTS là mô hình chuyển văn bản thành giọng nói tiếng Việt nhẹ, gồm hai chế độ: đa giọng đọc (5 giọng Bắc/Nam, nam/nữ) và nhân bản giọng zero-shot từ đoạn ghi âm 3–10 giây. Mô hình nhân bản giọng chỉ có 74,8 triệu tham số, chạy hoàn toàn trên CPU nhanh hơn thời gian thực 3–4 lần. Có gói Python, ứng dụng Windows (.exe) và bản demo trên Hugging Face Spaces.",
+    "purposeVi": "Tạo giọng đọc tiếng Việt hoặc nhân bản giọng trên máy không có GPU, phục vụ nghiên cứu và dự án cá nhân phi thương mại.",
+    "featuresVi": [
+      "Đa giọng đọc: 5 giọng có sẵn NF, SF, NM1, SM, NM2 (Bắc/Nam, nam/nữ)",
+      "Nhân bản giọng zero-shot: tạo giọng từ đoạn ghi âm 3–10 giây, không cần tinh chỉnh",
+      "Chuyển ngữ điệu: truyền ngữ điệu, nhịp điệu, cảm xúc từ giọng mẫu",
+      "Chỉ cần CPU: RTF khoảng 0,24 trên CPU, không cần GPU",
+      "Bộ chuyển âm vị tiếng Việt riêng, hỗ trợ giọng Bắc và Nam",
+      "Tự tải mô hình từ Hugging Face ở lần chạy đầu",
+      "Ứng dụng Windows: xử lý hàng loạt từ tệp .txt/.srt, chỉnh tốc độ 0,5x–2,0x"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.8+, PyTorch 2.0+. Không bắt buộc GPU (CUDA tùy chọn để tăng tốc chế độ đa giọng). Khuyến nghị Linux để chuyển âm vị tốt nhất.\nBước 1: Cài trực tiếp từ Git: `pip install git+https://github.com/tronghieuit/v-tts.git`\nBước 2: Hoặc từ mã nguồn: `git clone https://github.com/tronghieuit/v-tts.git`, `cd v-tts`, rồi `pip install -e .`\nBước 3: Người dùng Windows có thể tải ứng dụng VTTS.exe ở mục Releases của repo",
+    "usageGuideVi": "Bước 1: Đa giọng đọc trong Python: `from v_tts import TTS`, `tts = TTS()` rồi `tts.speak(\"Xin chào các bạn\", speaker=\"NF\", output_path=\"hello.wav\")`\nBước 2: Nhân bản giọng: `from v_tts import ZeroShotTTS`, `tts = ZeroShotTTS()` rồi `tts.clone_voice(text=..., reference_audio=\"your_voice.wav\", output_path=\"output.wav\")`\nBước 3: Dòng lệnh (trong thư mục mã nguồn): `python infer.py --text \"Xin chào các bạn\" --speaker NF --output hello.wav` hoặc `python infer.py --interactive`",
+    "samplePromptsVi": [
+      "Xin chào các bạn",
+      "Buổi sáng ở thành phố bắt đầu bằng những âm thanh quen thuộc",
+      "Xin chào, tôi là giọng nói được nhân bản"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install git+https://github.com/tronghieuit/v-tts.git",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install git+https://github.com/tronghieuit/v-tts.git\"\n  ],\n  \"nguon\": \"https://github.com/tronghieuit/v-tts\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí cho mục đích phi thương mại; dùng thương mại cần được tác giả cho phép bằng văn bản",
+    "prosVi": [
+      "Rất nhẹ (74,8 triệu tham số), chạy tốt trên CPU",
+      "Cài đặt đơn giản, API Python chỉ vài dòng",
+      "Có ứng dụng Windows cho người không biết lập trình",
+      "Hỗ trợ triển khai ONNX cho thiết bị biên, web và Android"
+    ],
+    "consVi": [
+      "Giấy phép CC BY-NC 4.0: chỉ dùng phi thương mại; dùng thương mại cần xin phép bằng văn bản",
+      "Chưa tối ưu cho phát trực tuyến thời gian thực",
+      "Một số tệp README nhắc tới (`infer_zeroshot.py`, `app.py`, `app_zeroshot.py`) chưa có trong repo tại thời điểm kiểm tra (24/10/2026), nên dùng gói Python hoặc `infer.py`",
+      "Nhân bản giọng dễ bị lạm dụng; cần có sự đồng ý của chủ giọng"
+    ],
+    "languages": [
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# V-TTS — Giọng đọc tiếng Việt siêu nhẹ, nhân bản giọng chạy trên CPU\n\n> Vietnamese Text-to-Speech with Multi-Speaker TTS and Zero-Shot Voice Cloning.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nV-TTS là mô hình chuyển văn bản thành giọng nói tiếng Việt nhẹ, gồm hai chế độ: đa giọng đọc (5 giọng Bắc/Nam, nam/nữ) và nhân bản giọng zero-shot từ đoạn ghi âm 3–10 giây. Mô hình nhân bản giọng chỉ có 74,8 triệu tham số, chạy hoàn toàn trên CPU nhanh hơn thời gian thực 3–4 lần. Có gói Python, ứng dụng Windows (.exe) và bản demo trên Hugging Face Spaces.\n\nTạo giọng đọc tiếng Việt hoặc nhân bản giọng trên máy không có GPU, phục vụ nghiên cứu và dự án cá nhân phi thương mại.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** V-TTS (tronghieuit)\n- **Giấy phép bản quyền:** Phi thương mại (CC BY-NC 4.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/tronghieuit/v-tts](https://github.com/tronghieuit/v-tts)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Đa giọng đọc: 5 giọng có sẵn NF, SF, NM1, SM, NM2 (Bắc/Nam, nam/nữ)**\n- **Nhân bản giọng zero-shot: tạo giọng từ đoạn ghi âm 3–10 giây, không cần tinh chỉnh**\n- **Chuyển ngữ điệu: truyền ngữ điệu, nhịp điệu, cảm xúc từ giọng mẫu**\n- **Chỉ cần CPU: RTF khoảng 0,24 trên CPU, không cần GPU**\n- **Bộ chuyển âm vị tiếng Việt riêng, hỗ trợ giọng Bắc và Nam**\n- **Tự tải mô hình từ Hugging Face ở lần chạy đầu**\n- **Ứng dụng Windows: xử lý hàng loạt từ tệp .txt/.srt, chỉnh tốc độ 0,5x–2,0x**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install git+https://github.com/tronghieuit/v-tts.git\n```\n\nYêu cầu: Python 3.8+, PyTorch 2.0+. Không bắt buộc GPU (CUDA tùy chọn để tăng tốc chế độ đa giọng). Khuyến nghị Linux để chuyển âm vị tốt nhất.\nBước 1: Cài trực tiếp từ Git: `pip install git+https://github.com/tronghieuit/v-tts.git`\nBước 2: Hoặc từ mã nguồn: `git clone https://github.com/tronghieuit/v-tts.git`, `cd v-tts`, rồi `pip install -e .`\nBước 3: Người dùng Windows có thể tải ứng dụng VTTS.exe ở mục Releases của repo\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đa giọng đọc trong Python: `from v_tts import TTS`, `tts = TTS()` rồi `tts.speak(\"Xin chào các bạn\", speaker=\"NF\", output_path=\"hello.wav\")`\nBước 2: Nhân bản giọng: `from v_tts import ZeroShotTTS`, `tts = ZeroShotTTS()` rồi `tts.clone_voice(text=..., reference_audio=\"your_voice.wav\", output_path=\"output.wav\")`\nBước 3: Dòng lệnh (trong thư mục mã nguồn): `python infer.py --text \"Xin chào các bạn\" --speaker NF --output hello.wav` hoặc `python infer.py --interactive`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Xin chào các bạn\"\n- \"Buổi sáng ở thành phố bắt đầu bằng những âm thanh quen thuộc\"\n- \"Xin chào, tôi là giọng nói được nhân bản\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:27:43.848Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "dangvansam-viet-tts",
+    "slug": "dangvansam-viet-tts",
+    "name": "VietTTS — Máy chủ chuyển văn bản thành giọng nói tiếng Việt, API tương thích OpenAI",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice",
+      "generative_ai_multimedia"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+      "Sinh nội dung & Đa phương tiện (Generative AI)"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/dangvansam/viet-tts",
+    "websiteUrl": "https://huggingface.co/dangvansam/viet-tts",
+    "authorName": "dangvansam",
+    "license": "Mã nguồn mở (Apache-2.0); mô hình CC BY-NC",
+    "summaryVi": "VietTTS là bộ công cụ mã nguồn mở chuyển văn bản thành giọng nói tiếng Việt, có khả năng tổng hợp giọng tự nhiên và nhân bản giọng từ âm thanh mẫu. Dự án cung cấp dòng lệnh `viettts` và máy chủ API tương thích định dạng Text-to-Speech của OpenAI. Mã nguồn kế thừa từ CosyVoice, dùng Vinorm để chuẩn hóa văn bản tiếng Việt.",
+    "purposeVi": "Dựng nhanh một máy chủ TTS tiếng Việt cục bộ có API giống OpenAI, phục vụ nghiên cứu và thử nghiệm công nghệ giọng nói tiếng Việt.",
+    "featuresVi": [
+      "Tổng hợp giọng: tạo giọng nói với bất kỳ giọng nào qua âm thanh mẫu",
+      "Giọng có sẵn: hơn 20 giọng đọc dựng sẵn, xem bằng `viettts show-voices`",
+      "Nhân bản giọng: dùng tệp âm thanh cục bộ làm giọng mẫu",
+      "API tương thích OpenAI: endpoint `/v1/audio/speech`, gọi được bằng OpenAI SDK Python/Node hoặc curl",
+      "Docker: chạy máy chủ ở cổng 8298 bằng docker compose"
+    ],
+    "installGuideVi": "Yêu cầu: Python >= 3.10, hiện chỉ hỗ trợ Linux khi cài bằng Python (Windows/macOS sắp có). Bản Docker cần Docker, driver NVIDIA, NVIDIA Container Toolkit và CUDA.\nBước 1: Tải mã nguồn: `git clone https://github.com/dangvansam/viet-tts.git` rồi `cd viet-tts`\nBước 2: (Tùy chọn) tạo môi trường: `conda create --name viettts python=3.10` và `conda activate viettts`\nBước 3: Cài đặt: `pip install -e . && pip cache purge`\nBước 4: Hoặc dùng Docker: `docker compose build` rồi `docker compose up -d` (máy chủ tại http://localhost:8298)",
+    "usageGuideVi": "Bước 1: Xem danh sách giọng: `viettts show-voices`\nBước 2: Tổng hợp từ văn bản: `viettts synthesis --text \"Xin chào\" --voice 0 --output test.wav`\nBước 3: Nhân bản giọng từ tệp: `viettts synthesis --text \"Xin chào\" --voice Download/voice.wav --output cloned.wav`\nBước 4: Chạy máy chủ API: `viettts server --host 0.0.0.0 --port 8298`, đặt `OPENAI_BASE_URL=http://localhost:8298` rồi gọi bằng OpenAI SDK với `model='tts-1'`",
+    "samplePromptsVi": [
+      "Xin chào Việt Nam.",
+      "Xin chào"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "viettts server --host 0.0.0.0 --port 8298",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"viettts server --host 0.0.0.0 --port 8298\"\n  ],\n  \"nguon\": \"https://github.com/dangvansam/viet-tts\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí; mô hình huấn luyện sẵn chỉ dùng phi thương mại",
+    "prosVi": [
+      "Mã nguồn Apache 2.0",
+      "Có dòng lệnh và API tương thích OpenAI, dễ thay thế dịch vụ TTS đám mây",
+      "Có Docker Compose dựng sẵn"
+    ],
+    "consVi": [
+      "Mô hình huấn luyện sẵn và mẫu âm thanh theo giấy phép CC BY-NC (phi thương mại) do dữ liệu thu thập từ Internet",
+      "Cài bằng Python hiện chỉ hỗ trợ Linux; Docker cần GPU NVIDIA",
+      "README ghi rõ nội dung chỉ nhằm mục đích học thuật; một số giọng mẫu mô phỏng người nổi tiếng, cần tôn trọng quyền đối với giọng nói của người khác"
+    ],
+    "languages": [
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# VietTTS — Máy chủ chuyển văn bản thành giọng nói tiếng Việt, API tương thích OpenAI\n\n> VietTTS: An Open-Source Vietnamese Text to Speech\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nVietTTS là bộ công cụ mã nguồn mở chuyển văn bản thành giọng nói tiếng Việt, có khả năng tổng hợp giọng tự nhiên và nhân bản giọng từ âm thanh mẫu. Dự án cung cấp dòng lệnh `viettts` và máy chủ API tương thích định dạng Text-to-Speech của OpenAI. Mã nguồn kế thừa từ CosyVoice, dùng Vinorm để chuẩn hóa văn bản tiếng Việt.\n\nDựng nhanh một máy chủ TTS tiếng Việt cục bộ có API giống OpenAI, phục vụ nghiên cứu và thử nghiệm công nghệ giọng nói tiếng Việt.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** dangvansam\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0); mô hình CC BY-NC\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/dangvansam/viet-tts](https://github.com/dangvansam/viet-tts)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tổng hợp giọng: tạo giọng nói với bất kỳ giọng nào qua âm thanh mẫu**\n- **Giọng có sẵn: hơn 20 giọng đọc dựng sẵn, xem bằng `viettts show-voices`**\n- **Nhân bản giọng: dùng tệp âm thanh cục bộ làm giọng mẫu**\n- **API tương thích OpenAI: endpoint `/v1/audio/speech`, gọi được bằng OpenAI SDK Python/Node hoặc curl**\n- **Docker: chạy máy chủ ở cổng 8298 bằng docker compose**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nviettts server --host 0.0.0.0 --port 8298\n```\n\nYêu cầu: Python >= 3.10, hiện chỉ hỗ trợ Linux khi cài bằng Python (Windows/macOS sắp có). Bản Docker cần Docker, driver NVIDIA, NVIDIA Container Toolkit và CUDA.\nBước 1: Tải mã nguồn: `git clone https://github.com/dangvansam/viet-tts.git` rồi `cd viet-tts`\nBước 2: (Tùy chọn) tạo môi trường: `conda create --name viettts python=3.10` và `conda activate viettts`\nBước 3: Cài đặt: `pip install -e . && pip cache purge`\nBước 4: Hoặc dùng Docker: `docker compose build` rồi `docker compose up -d` (máy chủ tại http://localhost:8298)\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Xem danh sách giọng: `viettts show-voices`\nBước 2: Tổng hợp từ văn bản: `viettts synthesis --text \"Xin chào\" --voice 0 --output test.wav`\nBước 3: Nhân bản giọng từ tệp: `viettts synthesis --text \"Xin chào\" --voice Download/voice.wav --output cloned.wav`\nBước 4: Chạy máy chủ API: `viettts server --host 0.0.0.0 --port 8298`, đặt `OPENAI_BASE_URL=http://localhost:8298` rồi gọi bằng OpenAI SDK với `model='tts-1'`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Xin chào Việt Nam.\"\n- \"Xin chào\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:27:43.848Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "ekhodzitsky-phostt",
+    "slug": "ekhodzitsky-phostt",
+    "name": "phostt — Máy chủ nhận dạng giọng nói tiếng Việt chạy cục bộ",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "speech_voice",
+    "categoryNameVi": "Nhận dạng & Xử lý giọng nói (Speech & Audio)",
+    "categories": [
+      "speech_voice"
+    ],
+    "categoryNamesVi": [
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/ekhodzitsky/phostt",
+    "websiteUrl": "https://crates.io/crates/phostt",
+    "authorName": "Evgeny Khodzitsky",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "phostt biến bất kỳ máy tính nào thành máy chủ nhận dạng giọng nói tiếng Việt chạy hoàn toàn cục bộ. Dự án dùng mô hình Zipformer-vi RNN-T (khoảng 75 MB, lượng tử hóa INT8) do sherpa-onnx đóng gói, được huấn luyện trên khoảng 70.000 giờ tiếng Việt, WER khoảng 7,7% trên GigaSpeech2-vi. Cung cấp WebSocket phát trực tuyến, REST API, gói Python và cầu nối Android.",
+    "purposeVi": "Chuyển giọng nói tiếng Việt thành văn bản ngay trên thiết bị, không gửi dữ liệu lên đám mây và không cần khóa API.",
+    "featuresVi": [
+      "Phát trực tuyến thời gian thực: nhận văn bản từng phần qua WebSocket khi đang nói",
+      "REST API + SSE: chép lời tệp âm thanh, trả kết quả ngay hoặc theo luồng",
+      "Tăng tốc phần cứng: CoreML (macOS), CUDA (Linux), CPU trên mọi nền tảng",
+      "Đa định dạng âm thanh: WAV, M4A/AAC, MP3, OGG/Vorbis, FLAC",
+      "Tự tải mô hình từ bản phát hành sherpa-onnx ở lần chạy đầu",
+      "Phân tách người nói (tùy chọn) với tính năng `diarization`",
+      "Docker CPU/CUDA và cầu nối Android (C-ABI + Kotlin)"
+    ],
+    "installGuideVi": "Yêu cầu: Rust/Cargo để cài bằng `cargo install`, hoặc Python để cài gói `phostt`, hoặc Docker. Bộ nhớ đỉnh khoảng 1,4 GB; nên có từ 4 GB RAM.\nBước 1: Cài bằng Cargo: `cargo install phostt` (lần chạy đầu tự tải mô hình ~75 MB vào `~/.phostt/models/`)\nBước 2: Hoặc cài gói Python: `pip install phostt`\nBước 3: Hoặc chạy Docker: `docker run -p 9876:9876 ghcr.io/ekhodzitsky/phostt:latest`",
+    "usageGuideVi": "Bước 1: Khởi động máy chủ: `phostt serve` (WebSocket ws://127.0.0.1:9876/v1/ws, REST http://127.0.0.1:9876/v1/transcribe)\nBước 2: Kiểm tra nhanh: `phostt transcribe ~/.phostt/models/test_wavs/0.wav`\nBước 3: Gửi tệp WAV tới REST API `POST http://localhost:9876/v1/transcribe` với `Content-Type: audio/wav`\nBước 4: Trong Python: `from phostt import Engine`, `engine = Engine(\"~/.phostt/models\")` rồi `engine.transcribe_file(\"audio.wav\")`",
+    "samplePromptsVi": [
+      "Chép lời tệp ghi âm cuộc họp audio.wav sang văn bản tiếng Việt",
+      "Nhận dạng giọng nói tiếng Việt theo thời gian thực qua WebSocket"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "phostt serve",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"phostt serve\"\n  ],\n  \"nguon\": \"https://github.com/ekhodzitsky/phostt\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, mã nguồn mở",
+    "prosVi": [
+      "Giấy phép MIT, trọng số mô hình gốc theo Apache 2.0",
+      "Mô hình nhỏ (~75 MB), độ trễ thấp (~61 ms cho 3,7 giây âm thanh trên Apple M2 Pro)",
+      "Hoàn toàn cục bộ, bảo vệ quyền riêng tư",
+      "Dự án đang được phát triển tích cực, có CI và lịch sử benchmark"
+    ],
+    "consVi": [
+      "Âm thanh ngoài miền (từ mượn tiếng Anh, số, tên riêng) có thể bị chép theo phiên âm tiếng Việt",
+      "Bộ nhớ đỉnh khoảng 1,4 GB, có thể quá nặng cho thiết bị dưới 2 GB RAM",
+      "iOS và Windows chưa được kiểm thử trong CI"
+    ],
+    "languages": [
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# phostt — Máy chủ nhận dạng giọng nói tiếng Việt chạy cục bộ\n\n> Local STT server powered by Zipformer-vi RNN-T — no cloud, no API keys, full privacy\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nphostt biến bất kỳ máy tính nào thành máy chủ nhận dạng giọng nói tiếng Việt chạy hoàn toàn cục bộ. Dự án dùng mô hình Zipformer-vi RNN-T (khoảng 75 MB, lượng tử hóa INT8) do sherpa-onnx đóng gói, được huấn luyện trên khoảng 70.000 giờ tiếng Việt, WER khoảng 7,7% trên GigaSpeech2-vi. Cung cấp WebSocket phát trực tuyến, REST API, gói Python và cầu nối Android.\n\nChuyển giọng nói tiếng Việt thành văn bản ngay trên thiết bị, không gửi dữ liệu lên đám mây và không cần khóa API.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Nhận dạng & Xử lý giọng nói (Speech & Audio)\n- **Tác giả / Nhà phát triển:** Evgeny Khodzitsky\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/ekhodzitsky/phostt](https://github.com/ekhodzitsky/phostt)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Phát trực tuyến thời gian thực: nhận văn bản từng phần qua WebSocket khi đang nói**\n- **REST API + SSE: chép lời tệp âm thanh, trả kết quả ngay hoặc theo luồng**\n- **Tăng tốc phần cứng: CoreML (macOS), CUDA (Linux), CPU trên mọi nền tảng**\n- **Đa định dạng âm thanh: WAV, M4A/AAC, MP3, OGG/Vorbis, FLAC**\n- **Tự tải mô hình từ bản phát hành sherpa-onnx ở lần chạy đầu**\n- **Phân tách người nói (tùy chọn) với tính năng `diarization`**\n- **Docker CPU/CUDA và cầu nối Android (C-ABI + Kotlin)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nphostt serve\n```\n\nYêu cầu: Rust/Cargo để cài bằng `cargo install`, hoặc Python để cài gói `phostt`, hoặc Docker. Bộ nhớ đỉnh khoảng 1,4 GB; nên có từ 4 GB RAM.\nBước 1: Cài bằng Cargo: `cargo install phostt` (lần chạy đầu tự tải mô hình ~75 MB vào `~/.phostt/models/`)\nBước 2: Hoặc cài gói Python: `pip install phostt`\nBước 3: Hoặc chạy Docker: `docker run -p 9876:9876 ghcr.io/ekhodzitsky/phostt:latest`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi động máy chủ: `phostt serve` (WebSocket ws://127.0.0.1:9876/v1/ws, REST http://127.0.0.1:9876/v1/transcribe)\nBước 2: Kiểm tra nhanh: `phostt transcribe ~/.phostt/models/test_wavs/0.wav`\nBước 3: Gửi tệp WAV tới REST API `POST http://localhost:9876/v1/transcribe` với `Content-Type: audio/wav`\nBước 4: Trong Python: `from phostt import Engine`, `engine = Engine(\"~/.phostt/models\")` rồi `engine.transcribe_file(\"audio.wav\")`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Chép lời tệp ghi âm cuộc họp audio.wav sang văn bản tiếng Việt\"\n- \"Nhận dạng giọng nói tiếng Việt theo thời gian thực qua WebSocket\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:27:43.848Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "ntphuc149-vilegallm",
+    "slug": "ntphuc149-vilegallm",
+    "name": "ViLegalLM — Mô hình ngôn ngữ cho văn bản pháp luật tiếng Việt",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "legal_public_service",
+    "categoryNameVi": "Pháp luật & Dịch vụ công số",
+    "categories": [
+      "legal_public_service",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Pháp luật & Dịch vụ công số",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/ntphuc149/ViLegalLM",
+    "websiteUrl": "https://aclanthology.org/2026.findings-acl.1801/",
+    "authorName": "Truong-Phuc Nguyen, Quy-Nhan Nguyen, Minh-Tien Nguyen",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "ViLegalLM là bộ mô hình ngôn ngữ được tiền huấn luyện tiếp tục trên kho văn bản pháp luật tiếng Việt 16GB (ViLegalText), gồm ViLegalBERT (encoder RoBERTa, 135M tham số) và hai mô hình decoder ViLegalQwen2.5-1.5B-Base, ViLegalQwen3-1.7B-Base. Kho mã kèm ba bộ dữ liệu tổng hợp ViLegalTF, ViLegalMCQ, ViLegalNLI và notebook tinh chỉnh cho truy xuất thông tin, hỏi đáp, suy luận ngôn ngữ tự nhiên. Công trình được công bố tại Findings of ACL 2026.",
+    "purposeVi": "Cung cấp mô hình nền chuyên biệt cho văn bản pháp luật Việt Nam để nhà nghiên cứu tinh chỉnh cho các bài toán hỏi đáp, phân loại, truy xuất và suy luận pháp lý.",
+    "featuresVi": [
+      "ViLegalBERT: encoder 135M tham số, ngữ cảnh 256 token, dùng ngay cho trích xuất đặc trưng và đo tương đồng ngữ nghĩa",
+      "ViLegalQwen: hai mô hình decoder 1.54B và 1.72B tham số (ngữ cảnh 2.048 và 4.096 token) tiền huấn luyện tiếp tục từ Qwen2.5 và Qwen3",
+      "Kho ngữ liệu 16GB: tiền huấn luyện trên bộ ViLegalText về văn bản pháp luật tiếng Việt",
+      "Ba bộ dữ liệu tổng hợp: ViLegalTF (hỏi đáp Đúng/Sai), ViLegalMCQ (trắc nghiệm), ViLegalNLI (suy luận ngôn ngữ tự nhiên)",
+      "Mã tiền huấn luyện và notebook tinh chỉnh: MLM cho ViLegalBERT, CLM cho ViLegalQwen; tinh chỉnh phân biệt, tinh chỉnh chỉ dẫn QLoRA và kiểm định chéo 5 lần"
+    ],
+    "installGuideVi": "Yêu cầu: Python với thư viện transformers và torch; đầu vào của ViLegalBERT phải được tách từ (PyVi, underthesea hoặc VNCoreNLP), từ nhiều âm tiết nối bằng dấu gạch dưới.\nBước 1: Cài thư viện Hugging Face Transformers và PyTorch trong môi trường Python.\nBước 2: Nạp tokenizer PhoBERT cho ViLegalBERT: `tokenizer = AutoTokenizer.from_pretrained(\"vinai/phobert-base-v2\")`.\nBước 3: Nạp mô hình ViLegalBERT: `model = AutoModel.from_pretrained(\"ntphuc149/ViLegalBERT\")`.\nBước 4: Hoặc nạp mô hình decoder: `model = AutoModelForCausalLM.from_pretrained(\"ntphuc149/ViLegalQwen3-1.7B-Base\")`.",
+    "usageGuideVi": "Bước 1: Tách từ câu pháp lý trước khi đưa vào ViLegalBERT, ví dụ `luật_sư tư_vấn pháp_luật dân_sự .`.\nBước 2: Mã hóa câu bằng tokenizer PhoBERT rồi chạy mô hình để lấy vector đặc trưng phục vụ tìm kiếm ngữ nghĩa.\nBước 3: Với ViLegalQwen, tinh chỉnh hoặc tinh chỉnh chỉ dẫn (QLoRA) trước khi dùng cho tác vụ cụ thể; notebook mẫu nằm trong thư mục `Source codes/Fine-tuning ViLegalLM/`.\nBước 4: Dùng ViLegalTF, ViLegalMCQ, ViLegalNLI trên Hugging Face để huấn luyện và đánh giá.",
+    "samplePromptsVi": [
+      "Lấy vector đặc trưng ViLegalBERT cho câu \"luật_sư tư_vấn pháp_luật dân_sự .\" và so sánh độ tương đồng với các điều luật khác.",
+      "Tinh chỉnh ViLegalQwen3-1.7B-Base bằng QLoRA trên bộ ViLegalMCQ để trả lời câu hỏi trắc nghiệm pháp luật."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Python (Transformers)",
+        "cliCommand": "model = AutoModel.from_pretrained(\"ntphuc149/ViLegalBERT\")",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"model = AutoModel.from_pretrained(\\\"ntphuc149/ViLegalBERT\\\")\"\n  ],\n  \"nguon\": \"https://github.com/ntphuc149/ViLegalLM\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, mã nguồn mở Apache-2.0; mô hình và dữ liệu tải từ Hugging Face",
+    "prosVi": [
+      "Bộ mô hình nền đầu tiên chuyên cho văn bản pháp luật tiếng Việt, công bố tại Findings of ACL 2026",
+      "Giấy phép Apache 2.0, mô hình và dữ liệu công khai trên Hugging Face",
+      "Có cả encoder nhỏ gọn lẫn decoder 1.5B–1.7B, phù hợp phần cứng phổ thông"
+    ],
+    "consVi": [
+      "README ghi rõ chỉ dành cho nghiên cứu, không dùng cho ứng dụng pháp lý thực tế khi chưa có chuyên gia kiểm định",
+      "ViLegalQwen là mô hình base, phải tinh chỉnh trước khi dùng cho tác vụ hạ nguồn",
+      "ViLegalBERT yêu cầu tách từ đầu vào và giới hạn ngữ cảnh 256 token"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# ViLegalLM — Mô hình ngôn ngữ cho văn bản pháp luật tiếng Việt\n\n> This repository contains the source code for ViLegalLM, a suite of language models pre-trained on Vietnamese legal text. Models and datasets are hosted on Hugging Face.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nViLegalLM là bộ mô hình ngôn ngữ được tiền huấn luyện tiếp tục trên kho văn bản pháp luật tiếng Việt 16GB (ViLegalText), gồm ViLegalBERT (encoder RoBERTa, 135M tham số) và hai mô hình decoder ViLegalQwen2.5-1.5B-Base, ViLegalQwen3-1.7B-Base. Kho mã kèm ba bộ dữ liệu tổng hợp ViLegalTF, ViLegalMCQ, ViLegalNLI và notebook tinh chỉnh cho truy xuất thông tin, hỏi đáp, suy luận ngôn ngữ tự nhiên. Công trình được công bố tại Findings of ACL 2026.\n\nCung cấp mô hình nền chuyên biệt cho văn bản pháp luật Việt Nam để nhà nghiên cứu tinh chỉnh cho các bài toán hỏi đáp, phân loại, truy xuất và suy luận pháp lý.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Pháp luật & Dịch vụ công số\n- **Tác giả / Nhà phát triển:** Truong-Phuc Nguyen, Quy-Nhan Nguyen, Minh-Tien Nguyen\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/ntphuc149/ViLegalLM](https://github.com/ntphuc149/ViLegalLM)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **ViLegalBERT: encoder 135M tham số, ngữ cảnh 256 token, dùng ngay cho trích xuất đặc trưng và đo tương đồng ngữ nghĩa**\n- **ViLegalQwen: hai mô hình decoder 1.54B và 1.72B tham số (ngữ cảnh 2.048 và 4.096 token) tiền huấn luyện tiếp tục từ Qwen2.5 và Qwen3**\n- **Kho ngữ liệu 16GB: tiền huấn luyện trên bộ ViLegalText về văn bản pháp luật tiếng Việt**\n- **Ba bộ dữ liệu tổng hợp: ViLegalTF (hỏi đáp Đúng/Sai), ViLegalMCQ (trắc nghiệm), ViLegalNLI (suy luận ngôn ngữ tự nhiên)**\n- **Mã tiền huấn luyện và notebook tinh chỉnh: MLM cho ViLegalBERT, CLM cho ViLegalQwen; tinh chỉnh phân biệt, tinh chỉnh chỉ dẫn QLoRA và kiểm định chéo 5 lần**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nmodel = AutoModel.from_pretrained(\"ntphuc149/ViLegalBERT\")\n```\n\nYêu cầu: Python với thư viện transformers và torch; đầu vào của ViLegalBERT phải được tách từ (PyVi, underthesea hoặc VNCoreNLP), từ nhiều âm tiết nối bằng dấu gạch dưới.\nBước 1: Cài thư viện Hugging Face Transformers và PyTorch trong môi trường Python.\nBước 2: Nạp tokenizer PhoBERT cho ViLegalBERT: `tokenizer = AutoTokenizer.from_pretrained(\"vinai/phobert-base-v2\")`.\nBước 3: Nạp mô hình ViLegalBERT: `model = AutoModel.from_pretrained(\"ntphuc149/ViLegalBERT\")`.\nBước 4: Hoặc nạp mô hình decoder: `model = AutoModelForCausalLM.from_pretrained(\"ntphuc149/ViLegalQwen3-1.7B-Base\")`.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tách từ câu pháp lý trước khi đưa vào ViLegalBERT, ví dụ `luật_sư tư_vấn pháp_luật dân_sự .`.\nBước 2: Mã hóa câu bằng tokenizer PhoBERT rồi chạy mô hình để lấy vector đặc trưng phục vụ tìm kiếm ngữ nghĩa.\nBước 3: Với ViLegalQwen, tinh chỉnh hoặc tinh chỉnh chỉ dẫn (QLoRA) trước khi dùng cho tác vụ cụ thể; notebook mẫu nằm trong thư mục `Source codes/Fine-tuning ViLegalLM/`.\nBước 4: Dùng ViLegalTF, ViLegalMCQ, ViLegalNLI trên Hugging Face để huấn luyện và đánh giá.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Lấy vector đặc trưng ViLegalBERT cho câu \"luật_sư tư_vấn pháp_luật dân_sự .\" và so sánh độ tương đồng với các điều luật khác.\"\n- \"Tinh chỉnh ViLegalQwen3-1.7B-Base bằng QLoRA trên bộ ViLegalMCQ để trả lời câu hỏi trắc nghiệm pháp luật.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:27:43.848Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "cmc-openai-vlegal-bench",
+    "slug": "cmc-openai-vlegal-bench",
+    "name": "VLegal-Bench — Bộ đánh giá năng lực pháp lý tiếng Việt cho LLM",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "dataset",
+    "typeNameVi": "Dataset",
+    "category": "legal_public_service",
+    "categoryNameVi": "Pháp luật & Dịch vụ công số",
+    "categories": [
+      "legal_public_service",
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Pháp luật & Dịch vụ công số",
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/CMC-OPENAI/VLegal-Bench",
+    "websiteUrl": "https://arxiv.org/abs/2512.14554",
+    "authorName": "CMC-OpenAI",
+    "license": "CC BY-NC-ND 4.0 (phi thương mại)",
+    "summaryVi": "VLegal-Bench là bộ benchmark pháp lý tiếng Việt gồm 22 tác vụ chia thành 5 nhóm: nhận diện và ghi nhớ, hiểu và cấu trúc hóa, suy luận, diễn giải và sinh văn bản, đạo đức – công bằng – thiên kiến. Mỗi tác vụ có tệp dữ liệu `.jsonl` và tệp prompt riêng, kèm mã suy luận chạy qua máy chủ vLLM cục bộ hoặc API mô hình (GPT, Gemini, Claude) và tự động chấm điểm.",
+    "purposeVi": "Giúp đội phát triển đo năng lực pháp lý tiếng Việt của LLM trên nhiều dạng tác vụ, từ nhận diện thực thể pháp lý đến dự đoán phán quyết và phát hiện điều khoản hợp đồng bất công.",
+    "featuresVi": [
+      "22 tác vụ pháp lý: nhận diện thực thể, phân loại chủ đề, ghi nhớ điều luật, trích xuất quan hệ, suy luận đồ thị nhiều bước, ước lượng hình phạt…",
+      "5 nhóm năng lực: Recognition & Recall, Understanding & Structuring, Reasoning & Inference, Interpretation & Generation, Ethics, Fairness & Bias",
+      "Hai cách suy luận: máy chủ vLLM cục bộ hoặc API mô hình GPT, Gemini, Claude",
+      "Chấm điểm tự động: Accuracy, Precision, Recall, F1 cho tác vụ trắc nghiệm; BLEU, ROUGE cho tác vụ sinh văn bản",
+      "Biến thể bỏ nội dung: tác vụ 3.3 và 3.4 có phiên bản `USE_REMOVE_CONTENT=true`"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.13 trở lên (theo pyproject.toml) và trình quản lý gói uv; GPU và vLLM nếu chạy mô hình cục bộ, hoặc khóa API nếu dùng mô hình thương mại; tệp `.env` tạo theo `.env_example`.\nBước 1: Cài uv: `pip install uv`.\nBước 2: Tạo môi trường ảo: `uv venv .venv`.\nBước 3: Kích hoạt môi trường: `source .venv/bin/activate`.\nBước 4: Cài phụ thuộc: `uv sync`.\nBước 5: Tạo tệp `.env` theo mẫu `.env_example`.",
+    "usageGuideVi": "Bước 1: Nếu dùng mô hình cục bộ, sửa `MODEL_NAME` trong `vllm_serving.sh` rồi chạy `bash vllm_serving.sh`.\nBước 2: Sửa các biến `TASK`, `MODEL_NAME`, `BATCH_SIZE`, `MAX_MODEL_LEN` trong `infer.sh`, rồi chạy `bash infer.sh`.\nBước 3: Kết quả và điểm số được lưu tại `./<task>/<task>_llm_test_results_<model_name>.json`.\nBước 4: Có thể chấm lại tệp dự đoán bằng lớp `Metrics` trong `src.evaluation`.",
+    "samplePromptsVi": [
+      "Chạy tác vụ 1.1 (nhận diện thực thể pháp lý) với gpt-4o và so sánh F1 với một mô hình mã nguồn mở.",
+      "Đánh giá SeaLLMs-v3-1.5B-Chat trên tác vụ 5.4 phát hiện điều khoản hợp đồng bất công."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "bash infer.sh",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"bash infer.sh\"\n  ],\n  \"nguon\": \"https://github.com/CMC-OPENAI/VLegal-Bench\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí cho mục đích cá nhân, giáo dục và nghiên cứu; dùng thương mại phải liên hệ CMC-OpenAI",
+    "prosVi": [
+      "Phạm vi rộng với 22 tác vụ pháp lý, có bài báo arXiv 2512.14554 mô tả phương pháp",
+      "Dữ liệu và mã đánh giá nằm sẵn trong kho, chạy được với cả mô hình cục bộ và API",
+      "Do tổ chức CMC-OpenAI phát hành"
+    ],
+    "consVi": [
+      "Giấy phép CC BY-NC-ND 4.0: cấm dùng thương mại và cấm tạo sản phẩm phái sinh; cần ghi công \"Dataset created by CMC-OpenAI\"",
+      "Phải sửa tay biến trong `infer.sh` cho từng tác vụ và mô hình",
+      "Yêu cầu Python 3.13; chạy cục bộ cần GPU cho vLLM"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# VLegal-Bench — Bộ đánh giá năng lực pháp lý tiếng Việt cho LLM\n\n> A comprehensive Vietnamese legal benchmark dataset for evaluating Large Language Models (LLMs) on various legal NLP tasks.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nVLegal-Bench là bộ benchmark pháp lý tiếng Việt gồm 22 tác vụ chia thành 5 nhóm: nhận diện và ghi nhớ, hiểu và cấu trúc hóa, suy luận, diễn giải và sinh văn bản, đạo đức – công bằng – thiên kiến. Mỗi tác vụ có tệp dữ liệu `.jsonl` và tệp prompt riêng, kèm mã suy luận chạy qua máy chủ vLLM cục bộ hoặc API mô hình (GPT, Gemini, Claude) và tự động chấm điểm.\n\nGiúp đội phát triển đo năng lực pháp lý tiếng Việt của LLM trên nhiều dạng tác vụ, từ nhận diện thực thể pháp lý đến dự đoán phán quyết và phát hiện điều khoản hợp đồng bất công.\n\n- **Loại hình thành phần:** Dataset\n- **Lĩnh vực chuyên môn:** Pháp luật & Dịch vụ công số\n- **Tác giả / Nhà phát triển:** CMC-OpenAI\n- **Giấy phép bản quyền:** CC BY-NC-ND 4.0 (phi thương mại)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/CMC-OPENAI/VLegal-Bench](https://github.com/CMC-OPENAI/VLegal-Bench)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **22 tác vụ pháp lý: nhận diện thực thể, phân loại chủ đề, ghi nhớ điều luật, trích xuất quan hệ, suy luận đồ thị nhiều bước, ước lượng hình phạt…**\n- **5 nhóm năng lực: Recognition & Recall, Understanding & Structuring, Reasoning & Inference, Interpretation & Generation, Ethics, Fairness & Bias**\n- **Hai cách suy luận: máy chủ vLLM cục bộ hoặc API mô hình GPT, Gemini, Claude**\n- **Chấm điểm tự động: Accuracy, Precision, Recall, F1 cho tác vụ trắc nghiệm; BLEU, ROUGE cho tác vụ sinh văn bản**\n- **Biến thể bỏ nội dung: tác vụ 3.3 và 3.4 có phiên bản `USE_REMOVE_CONTENT=true`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nbash infer.sh\n```\n\nYêu cầu: Python 3.13 trở lên (theo pyproject.toml) và trình quản lý gói uv; GPU và vLLM nếu chạy mô hình cục bộ, hoặc khóa API nếu dùng mô hình thương mại; tệp `.env` tạo theo `.env_example`.\nBước 1: Cài uv: `pip install uv`.\nBước 2: Tạo môi trường ảo: `uv venv .venv`.\nBước 3: Kích hoạt môi trường: `source .venv/bin/activate`.\nBước 4: Cài phụ thuộc: `uv sync`.\nBước 5: Tạo tệp `.env` theo mẫu `.env_example`.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Nếu dùng mô hình cục bộ, sửa `MODEL_NAME` trong `vllm_serving.sh` rồi chạy `bash vllm_serving.sh`.\nBước 2: Sửa các biến `TASK`, `MODEL_NAME`, `BATCH_SIZE`, `MAX_MODEL_LEN` trong `infer.sh`, rồi chạy `bash infer.sh`.\nBước 3: Kết quả và điểm số được lưu tại `./<task>/<task>_llm_test_results_<model_name>.json`.\nBước 4: Có thể chấm lại tệp dự đoán bằng lớp `Metrics` trong `src.evaluation`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Chạy tác vụ 1.1 (nhận diện thực thể pháp lý) với gpt-4o và so sánh F1 với một mô hình mã nguồn mở.\"\n- \"Đánh giá SeaLLMs-v3-1.5B-Chat trên tác vụ 5.4 phát hiện điều khoản hợp đồng bất công.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:27:43.848Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "tamnd-luatdo",
+    "slug": "tamnd-luatdo",
+    "name": "luatdo — Đồ thị tri thức pháp luật Việt Nam có bằng chứng, xuất Neo4j",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "legal_public_service",
+    "categoryNameVi": "Pháp luật & Dịch vụ công số",
+    "categories": [
+      "legal_public_service",
+      "vector_rag"
+    ],
+    "categoryNamesVi": [
+      "Pháp luật & Dịch vụ công số",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/tamnd/luatdo",
+    "websiteUrl": "",
+    "authorName": "Tam Nguyen (tamnd)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "luatdo (luật đồ) là công cụ dòng lệnh viết bằng Go biến văn bản pháp luật Việt Nam thành đồ thị tri thức có phiên bản, mọi phát biểu đều kèm bằng chứng trích nguyên văn, rồi xuất sang Neo4j, RDF hoặc LegalRuleML. Cấu trúc văn bản, mã định danh, trích dẫn và quan hệ sửa đổi được lấy bằng phân tích tất định không dùng mô hình; LLM chỉ bổ sung lớp ngữ nghĩa và phải qua kiểm tra suy diễn trước khi vào đồ thị tin cậy. Nguồn dữ liệu gồm UTS_VLC (306 luật, bộ luật còn hiệu lực) và khoảng 171.000 văn bản từ vbpl.vn.",
+    "purposeVi": "Giúp người làm công nghệ pháp lý có sẵn đồ thị văn bản – trích dẫn – sửa đổi của pháp luật Việt Nam để truy vấn lịch sử sửa đổi, khái niệm, nghĩa vụ và xung đột quy phạm, hoặc dùng làm nền cho hệ thống hỏi đáp có trích dẫn.",
+    "featuresVi": [
+      "Tải đồ thị dựng sẵn: `luatdo neo4j install` tải từ Hugging Face, kiểm tra checksum và nạp vào Neo4j cục bộ",
+      "Phân tích tất định: cấu trúc điều – khoản – điểm, mã định danh ổn định, trích dẫn và quan hệ sửa đổi không cần LLM",
+      "Trích xuất theo ontology đóng: LLM chỉ được phát sinh lớp và vị từ đã đăng ký, phần còn lại vào hàng đợi duyệt",
+      "26 câu hỏi năng lực: hỏi đồ thị bằng `luatdo graph ask` mà không cần viết Cypher",
+      "Truy xuất và trả lời: `luatdo retrieve` và `luatdo answer` trả lời câu hỏi tiếng Việt bằng phát biểu đã kiểm chứng hoặc từ chối",
+      "Phát hiện xung đột và phiên bản theo thời gian: `luatdo conflicts`, `luatdo temporal`",
+      "Xuất đa định dạng: Neo4j, Parquet, N-Triples (RDF), LegalRuleML"
+    ],
+    "installGuideVi": "Yêu cầu: Linux, macOS hoặc Windows; podman hoặc docker và khoảng 20GB dung lượng đĩa để chạy đồ thị Neo4j dựng sẵn; các bước trích xuất bằng LLM cần cấu hình tuyến mô hình (biến môi trường chứa khóa API hoặc Codex CLI).\nBước 1: Trên Linux và macOS: `curl -fsSL https://raw.githubusercontent.com/tamnd/luatdo/main/install.sh | sh`.\nBước 2: Trên Windows (PowerShell): `irm https://raw.githubusercontent.com/tamnd/luatdo/main/install.ps1 | iex`.\nBước 3: Hoặc tự biên dịch bằng Go: `go install github.com/tamnd/luatdo/cmd/luatdo@latest`.",
+    "usageGuideVi": "Bước 1: Dùng đồ thị đã công bố: `luatdo neo4j install`, sau đó mở http://localhost:7474.\nBước 2: Xem danh sách 26 câu hỏi năng lực: `luatdo graph list`.\nBước 3: Hỏi đồ thị một câu hỏi, ví dụ: `luatdo graph ask --question 20`.\nBước 4: Tự dựng đồ thị: `luatdo fetch uts_vlc`, `luatdo parse`, … rồi `luatdo export neo4j`.",
+    "samplePromptsVi": [
+      "Khái niệm nào đã bị định nghĩa lại bởi văn bản sau, và những quy phạm cũ nào nhắc đến nó chưa từng được sửa đổi?",
+      "Hiển thị lịch sử sửa đổi của Bộ luật Lao động 2019 (vn:law:2019:45-2019-qh14)."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Linux/macOS)",
+        "cliCommand": "curl -fsSL https://raw.githubusercontent.com/tamnd/luatdo/main/install.sh | sh",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"curl -fsSL https://raw.githubusercontent.com/tamnd/luatdo/main/install.sh | sh\"\n  ],\n  \"nguon\": \"https://github.com/tamnd/luatdo\"\n}"
+      },
+      {
+        "platform": "web",
+        "platformName": "PowerShell (Windows)",
+        "cliCommand": "irm https://raw.githubusercontent.com/tamnd/luatdo/main/install.ps1 | iex",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"irm https://raw.githubusercontent.com/tamnd/luatdo/main/install.ps1 | iex\"\n  ],\n  \"nguon\": \"https://github.com/tamnd/luatdo\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, mã nguồn mở MIT; bước trích xuất bằng LLM có thể phát sinh chi phí API",
+    "prosVi": [
+      "Thiết kế ưu tiên tất định, mọi phát biểu phải có bằng chứng nguyên văn",
+      "Có đồ thị dựng sẵn trên Hugging Face, không phải tự chạy đường ống tốn kém",
+      "Tệp nhị phân tĩnh cho cả Linux, macOS, Windows; giấy phép MIT; có CI"
+    ],
+    "consVi": [
+      "README tự đánh giá trạng thái còn sớm (Early)",
+      "Chạy toàn bộ đường ống trên cả kho ngữ liệu mất nhiều ngày và vài trăm đô la chi phí gọi mô hình",
+      "Đồ thị dựng sẵn cần podman/docker và khoảng 20GB đĩa; README chủ yếu bằng tiếng Anh"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# luatdo — Đồ thị tri thức pháp luật Việt Nam có bằng chứng, xuất Neo4j\n\n> `luatdo` turns Vietnamese legal documents into a versioned, evidence-grounded knowledge graph and exports it to Neo4j.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nluatdo (luật đồ) là công cụ dòng lệnh viết bằng Go biến văn bản pháp luật Việt Nam thành đồ thị tri thức có phiên bản, mọi phát biểu đều kèm bằng chứng trích nguyên văn, rồi xuất sang Neo4j, RDF hoặc LegalRuleML. Cấu trúc văn bản, mã định danh, trích dẫn và quan hệ sửa đổi được lấy bằng phân tích tất định không dùng mô hình; LLM chỉ bổ sung lớp ngữ nghĩa và phải qua kiểm tra suy diễn trước khi vào đồ thị tin cậy. Nguồn dữ liệu gồm UTS_VLC (306 luật, bộ luật còn hiệu lực) và khoảng 171.000 văn bản từ vbpl.vn.\n\nGiúp người làm công nghệ pháp lý có sẵn đồ thị văn bản – trích dẫn – sửa đổi của pháp luật Việt Nam để truy vấn lịch sử sửa đổi, khái niệm, nghĩa vụ và xung đột quy phạm, hoặc dùng làm nền cho hệ thống hỏi đáp có trích dẫn.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Pháp luật & Dịch vụ công số\n- **Tác giả / Nhà phát triển:** Tam Nguyen (tamnd)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/tamnd/luatdo](https://github.com/tamnd/luatdo)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tải đồ thị dựng sẵn: `luatdo neo4j install` tải từ Hugging Face, kiểm tra checksum và nạp vào Neo4j cục bộ**\n- **Phân tích tất định: cấu trúc điều – khoản – điểm, mã định danh ổn định, trích dẫn và quan hệ sửa đổi không cần LLM**\n- **Trích xuất theo ontology đóng: LLM chỉ được phát sinh lớp và vị từ đã đăng ký, phần còn lại vào hàng đợi duyệt**\n- **26 câu hỏi năng lực: hỏi đồ thị bằng `luatdo graph ask` mà không cần viết Cypher**\n- **Truy xuất và trả lời: `luatdo retrieve` và `luatdo answer` trả lời câu hỏi tiếng Việt bằng phát biểu đã kiểm chứng hoặc từ chối**\n- **Phát hiện xung đột và phiên bản theo thời gian: `luatdo conflicts`, `luatdo temporal`**\n- **Xuất đa định dạng: Neo4j, Parquet, N-Triples (RDF), LegalRuleML**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ncurl -fsSL https://raw.githubusercontent.com/tamnd/luatdo/main/install.sh | sh\n```\n\nYêu cầu: Linux, macOS hoặc Windows; podman hoặc docker và khoảng 20GB dung lượng đĩa để chạy đồ thị Neo4j dựng sẵn; các bước trích xuất bằng LLM cần cấu hình tuyến mô hình (biến môi trường chứa khóa API hoặc Codex CLI).\nBước 1: Trên Linux và macOS: `curl -fsSL https://raw.githubusercontent.com/tamnd/luatdo/main/install.sh | sh`.\nBước 2: Trên Windows (PowerShell): `irm https://raw.githubusercontent.com/tamnd/luatdo/main/install.ps1 | iex`.\nBước 3: Hoặc tự biên dịch bằng Go: `go install github.com/tamnd/luatdo/cmd/luatdo@latest`.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Dùng đồ thị đã công bố: `luatdo neo4j install`, sau đó mở http://localhost:7474.\nBước 2: Xem danh sách 26 câu hỏi năng lực: `luatdo graph list`.\nBước 3: Hỏi đồ thị một câu hỏi, ví dụ: `luatdo graph ask --question 20`.\nBước 4: Tự dựng đồ thị: `luatdo fetch uts_vlc`, `luatdo parse`, … rồi `luatdo export neo4j`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Khái niệm nào đã bị định nghĩa lại bởi văn bản sau, và những quy phạm cũ nào nhắc đến nó chưa từng được sửa đổi?\"\n- \"Hiển thị lịch sử sửa đổi của Bộ luật Lao động 2019 (vn:law:2019:45-2019-qh14).\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:27:43.848Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "xuannghia-vietnam-qr-pay",
+    "slug": "xuannghia-vietnam-qr-pay",
+    "name": "Vietnam QR Pay — Thư viện tạo và đọc mã VietQR, MoMo, ZaloPay, VNPayQR",
+    "icon": "CreditCard",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "payment_gateway",
+    "categoryNameVi": "Cổng thanh toán & Ví điện tử (Payments)",
+    "categories": [
+      "payment_gateway",
+      "fintech_banking"
+    ],
+    "categoryNamesVi": [
+      "Cổng thanh toán & Ví điện tử (Payments)",
+      "Công nghệ tài chính & Ngân hàng"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/xuannghia/vietnam-qr-pay",
+    "websiteUrl": "https://www.npmjs.com/package/vietnam-qr-pay",
+    "authorName": "xuannghia",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Vietnam QR Pay là thư viện JavaScript/TypeScript (gói npm `vietnam-qr-pay`) để tạo (encode) và đọc (decode) nội dung mã QR thanh toán theo chuẩn VietQR và VNPayQR. Thư viện hỗ trợ VietQR tĩnh và động của ngân hàng, QR Đa năng của MoMo và ZaloPay (nhận tiền qua số tài khoản gán tại BVBank) cùng QR của VNPay. Nội dung QR được xây dựng hoặc phân tích hoàn toàn ở phía mã nguồn, không cần gọi API của bên thứ ba.",
+    "purposeVi": "Giúp lập trình viên tạo chuỗi nội dung QR chuyển khoản (kèm số tiền, nội dung) hoặc kiểm tra, trích xuất thông tin từ một mã QR thanh toán Việt Nam có sẵn.",
+    "featuresVi": [
+      "VietQR tĩnh và động: tạo QR từ mã BIN ngân hàng (`BanksObject`), số tài khoản, số tiền và nội dung chuyển tiền",
+      "QR Đa năng MoMo/ZaloPay: tạo QR nhận tiền cho số tài khoản ví được gán tại BVBank, kèm mã tham chiếu MoMo",
+      "VNPayQR: tạo QR với merchantId, merchantName, store và terminal",
+      "Decode: đọc mã QR để lấy nhà cung cấp, mã ngân hàng, số tài khoản, số tiền, nội dung và kiểm tra tính hợp lệ (`isValid`)",
+      "Chỉnh sửa và tạo lại: thay đổi số tiền/nội dung của QR đã đọc rồi gọi `build()` để có mã QR mới"
+    ],
+    "installGuideVi": "Yêu cầu: Môi trường Node.js/JavaScript có trình quản lý gói npm.\nBước 1: Cài gói từ npm: `npm install vietnam-qr-pay`\nBước 2: Nhập lớp cần dùng: `import { QRPay, BanksObject } from 'vietnam-qr-pay';`",
+    "usageGuideVi": "Bước 1: Tạo VietQR: gọi `QRPay.initVietQR({ bankBin: BanksObject.acb.bin, bankNumber: '...', amount: '10000', purpose: 'Chuyen tien' })` rồi `qrPay.build()` để lấy chuỗi nội dung QR.\nBước 2: Tạo QR VNPay: gọi `QRPay.initVNPayQR({ merchantId, merchantName, store, terminal })` rồi `build()`.\nBước 3: Đọc QR: khởi tạo `new QRPay(qrContent)` và đọc các thuộc tính `isValid`, `provider.name`, `consumer.bankNumber`, `amount`, `additionalData.purpose`.\nBước 4: Hiển thị chuỗi kết quả thành hình ảnh bằng thư viện vẽ QR bất kỳ (thư viện này chỉ tạo nội dung chuỗi).",
+    "samplePromptsVi": [
+      "Viết hàm Node.js dùng vietnam-qr-pay tạo VietQR động cho tài khoản ACB với số tiền và nội dung đơn hàng",
+      "Đọc chuỗi QR khách gửi và cho biết ngân hàng, số tài khoản, số tiền bằng vietnam-qr-pay",
+      "Tạo mã QR nhận tiền MoMo cho tài khoản bắt đầu bằng PSP kèm mã tham chiếu MOMOW2W"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm install vietnam-qr-pay",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm install vietnam-qr-pay\"\n  ],\n  \"nguon\": \"https://github.com/xuannghia/vietnam-qr-pay\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, mã nguồn mở theo giấy phép MIT",
+    "prosVi": [
+      "Giấy phép MIT, dùng tự do cho dự án thương mại",
+      "Không cần tài khoản hay khóa API, xử lý hoàn toàn ngoại tuyến",
+      "Hỗ trợ cả encode và decode cho VietQR, MoMo, ZaloPay và VNPayQR",
+      "README tiếng Việt với ví dụ cụ thể cho từng loại QR"
+    ],
+    "consVi": [
+      "Chỉ tạo/đọc nội dung QR, không xác nhận giao dịch hay nhận webhook thanh toán",
+      "Theo README, cách tạo QR MoMo cho tài khoản cũ có thể đã lỗi thời và ý nghĩa một số trường trong QR ZaloPay chưa rõ",
+      "Cấu trúc QR của ví điện tử có thể thay đổi theo nhà cung cấp, cần kiểm tra lại khi triển khai"
+    ],
+    "languages": [
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Vietnam QR Pay — Thư viện tạo và đọc mã VietQR, MoMo, ZaloPay, VNPayQR\n\n> Thư viện hỗ trợ encode/decode mã QR của VietQR (QR Ngân hàng, QR Đa năng Momo/ZaloPay) & VNPayQR\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nVietnam QR Pay là thư viện JavaScript/TypeScript (gói npm `vietnam-qr-pay`) để tạo (encode) và đọc (decode) nội dung mã QR thanh toán theo chuẩn VietQR và VNPayQR. Thư viện hỗ trợ VietQR tĩnh và động của ngân hàng, QR Đa năng của MoMo và ZaloPay (nhận tiền qua số tài khoản gán tại BVBank) cùng QR của VNPay. Nội dung QR được xây dựng hoặc phân tích hoàn toàn ở phía mã nguồn, không cần gọi API của bên thứ ba.\n\nGiúp lập trình viên tạo chuỗi nội dung QR chuyển khoản (kèm số tiền, nội dung) hoặc kiểm tra, trích xuất thông tin từ một mã QR thanh toán Việt Nam có sẵn.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Cổng thanh toán & Ví điện tử (Payments)\n- **Tác giả / Nhà phát triển:** xuannghia\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/xuannghia/vietnam-qr-pay](https://github.com/xuannghia/vietnam-qr-pay)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **VietQR tĩnh và động: tạo QR từ mã BIN ngân hàng (`BanksObject`), số tài khoản, số tiền và nội dung chuyển tiền**\n- **QR Đa năng MoMo/ZaloPay: tạo QR nhận tiền cho số tài khoản ví được gán tại BVBank, kèm mã tham chiếu MoMo**\n- **VNPayQR: tạo QR với merchantId, merchantName, store và terminal**\n- **Decode: đọc mã QR để lấy nhà cung cấp, mã ngân hàng, số tài khoản, số tiền, nội dung và kiểm tra tính hợp lệ (`isValid`)**\n- **Chỉnh sửa và tạo lại: thay đổi số tiền/nội dung của QR đã đọc rồi gọi `build()` để có mã QR mới**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm install vietnam-qr-pay\n```\n\nYêu cầu: Môi trường Node.js/JavaScript có trình quản lý gói npm.\nBước 1: Cài gói từ npm: `npm install vietnam-qr-pay`\nBước 2: Nhập lớp cần dùng: `import { QRPay, BanksObject } from 'vietnam-qr-pay';`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo VietQR: gọi `QRPay.initVietQR({ bankBin: BanksObject.acb.bin, bankNumber: '...', amount: '10000', purpose: 'Chuyen tien' })` rồi `qrPay.build()` để lấy chuỗi nội dung QR.\nBước 2: Tạo QR VNPay: gọi `QRPay.initVNPayQR({ merchantId, merchantName, store, terminal })` rồi `build()`.\nBước 3: Đọc QR: khởi tạo `new QRPay(qrContent)` và đọc các thuộc tính `isValid`, `provider.name`, `consumer.bankNumber`, `amount`, `additionalData.purpose`.\nBước 4: Hiển thị chuỗi kết quả thành hình ảnh bằng thư viện vẽ QR bất kỳ (thư viện này chỉ tạo nội dung chuỗi).\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết hàm Node.js dùng vietnam-qr-pay tạo VietQR động cho tài khoản ACB với số tiền và nội dung đơn hàng\"\n- \"Đọc chuỗi QR khách gửi và cho biết ngân hàng, số tài khoản, số tiền bằng vietnam-qr-pay\"\n- \"Tạo mã QR nhận tiền MoMo cho tài khoản bắt đầu bằng PSP kèm mã tham chiếu MOMOW2W\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:27:43.848Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "mona-software-monapay-mcp",
+    "slug": "mona-software-monapay-mcp",
+    "name": "MONA Pay MCP — Tích hợp thanh toán chuyển khoản, VietQR và webhook MONA Pay cho tác tử AI",
+    "icon": "CreditCard",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "payment_gateway",
+    "categoryNameVi": "Cổng thanh toán & Ví điện tử (Payments)",
+    "categories": [
+      "payment_gateway",
+      "fintech_banking",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Cổng thanh toán & Ví điện tử (Payments)",
+      "Công nghệ tài chính & Ngân hàng",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "claude_code",
+      "claude_desktop",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/mona-software/monapay-mcp",
+    "websiteUrl": "https://monapay.vn/ai-agent",
+    "authorName": "The MONA Group (MONA Software)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "monapay-mcp là MCP server chính thức của MONA Pay (dịch vụ API ngân hàng và xác nhận thanh toán tự động của The MONA Group), phát hành trên npm với tên `monapay-mcp` và trong MCP Registry là `vn.monapay/monapay-mcp`. Server cho phép tác tử lập trình như Claude Code, Cursor, Codex liên kết tài khoản ACB qua OTP, tạo trang checkout và VietQR động, tra cứu giao dịch đến, cấu hình và kiểm thử webhook, thông báo qua email và nhóm Zalo, xác minh chữ ký webhook. Kết nối bằng khóa API (client ID và client secret) tạo trong dashboard MONA Pay.",
+    "purposeVi": "Giúp lập trình viên tích hợp xác nhận chuyển khoản ngân hàng tự động của MONA Pay vào dự án ngay trong lúc code với trợ lý AI, từ sinh mã nhận webhook đến kiểm thử bằng giao dịch sandbox.",
+    "featuresVi": [
+      "Khởi động nhanh: `monapay_quickstart` kiểm tra trạng thái tài khoản (đã liên kết ngân hàng/VA, đã cấu hình webhook) và trả về các bước tiếp theo",
+      "Liên kết ngân hàng: liên kết tài khoản ACB và tạo tài khoản ảo (VA) qua hai bước OTP do người dùng cung cấp",
+      "Checkout và VietQR: tạo, tra cứu, lọc, hủy phiên checkout và tạo/hủy VietQR động cho đơn hàng",
+      "Giao dịch: liệt kê giao dịch đến theo VA, tìm theo `transaction_code`, thống kê theo khoảng ngày và tạo giao dịch giả trong sandbox",
+      "Webhook: tạo/sửa/xóa cấu hình (`NONE`, `API_KEY`, `HMAC_SHA256`), gửi webhook thử, xem log và tỉ lệ thành công / P95",
+      "Thông báo: cấu hình email (1–10 người nhận) và nhóm Zalo cho các sự kiện như `TRANSACTION_IN`, `CHECKOUT_PAID`",
+      "Bảo mật: xác minh chữ ký webhook cục bộ, tạo và xoay vòng `client_secret`",
+      "Sinh mã: `monapay_generate_webhook_snippet` tạo mã nhận webhook cho PHP, Node hoặc Python; prompt `integrate-monapay` lập kế hoạch tích hợp 6 bước"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js 18 trở lên và khóa API MONA Pay (client ID và client secret, tạo trong dashboard MONA Pay).\nBước 1: Tạo khóa API (client ID, client secret) trong dashboard MONA Pay.\nBước 2: Claude Code: chạy `claude mcp add monapay -e MONAPAY_CLIENT_ID=your_client_id -e MONAPAY_CLIENT_SECRET=your_client_secret -- npx -y monapay-mcp` (README viết lệnh trên nhiều dòng).\nBước 3: Cursor (`.cursor/mcp.json`) hoặc Claude Desktop (`claude_desktop_config.json`): thêm khối `mcpServers` với `command` là `npx`, `args` là `[\"-y\", \"monapay-mcp\"]` và hai biến môi trường `MONAPAY_CLIENT_ID`, `MONAPAY_CLIENT_SECRET`.\nBước 4: Có thể chạy thử server qua stdio bằng `npx -y monapay-mcp`.",
+    "usageGuideVi": "Bước 1: Yêu cầu tác tử gọi `monapay_whoami` để kiểm tra kết nối và gói dịch vụ của tài khoản.\nBước 2: Dùng `monapay_quickstart` để biết các bước còn thiếu (liên kết ngân hàng, cấu hình webhook).\nBước 3: Khi liên kết tài khoản ACB, tác tử phải hỏi người dùng mã OTP ở bước 2 và 4, không được tự đoán OTP.\nBước 4: Sinh endpoint nhận webhook, đăng ký bằng `monapay_create_webhook(auth_type=\"HMAC_SHA256\", ...)`, kiểm thử bằng `monapay_test_webhook` và xem `monapay_webhook_logs`.\nBước 5: Tạo checkout cho từng đơn hàng bằng `monapay_create_checkout` và chờ sự kiện `CHECKOUT_PAID`.",
+    "samplePromptsVi": [
+      "Tích hợp xác nhận chuyển khoản ngân hàng tự động vào website Laravel này bằng MONA Pay",
+      "Tạo một giao dịch sandbox để kiểm tra webhook của tôi có trả về 200 không",
+      "Liệt kê các giao dịch đến trong 7 ngày qua của tài khoản ảo để đối soát",
+      "Tạo VietQR động cho đơn hàng DH0001 số tiền 150.000đ"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add monapay \\\n  -e MONAPAY_CLIENT_ID=your_client_id \\\n  -e MONAPAY_CLIENT_SECRET=your_client_secret \\\n  -- npx -y monapay-mcp",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add monapay \\\\\\n  -e MONAPAY_CLIENT_ID=your_client_id \\\\\\n  -e MONAPAY_CLIENT_SECRET=your_client_secret \\\\\\n  -- npx -y monapay-mcp\"\n  ],\n  \"nguon\": \"https://github.com/mona-software/monapay-mcp\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"monapay\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"monapay-mcp\"],\n      \"env\": { \"MONAPAY_CLIENT_ID\": \"client_id\", \"MONAPAY_CLIENT_SECRET\": \"client_secret\" }\n    }\n  }\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"monapay\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"monapay-mcp\"],\n      \"env\": { \"MONAPAY_CLIENT_ID\": \"client_id\", \"MONAPAY_CLIENT_SECRET\": \"client_secret\" }\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "MCP server miễn phí (MIT); cần tài khoản và khóa API MONA Pay, phí dịch vụ theo gói của MONA Pay",
+    "prosVi": [
+      "MCP server chính thức của nhà cung cấp, giấy phép MIT",
+      "Bao quát toàn bộ luồng tích hợp: liên kết ngân hàng, checkout, VietQR, webhook, thông báo",
+      "Có giao dịch sandbox để kiểm thử webhook mà không cần chuyển tiền thật",
+      "Hướng dẫn cấu hình sẵn cho Claude Code, Cursor, Claude Desktop và Codex"
+    ],
+    "consVi": [
+      "Cần tài khoản và khóa API MONA Pay; theo README, liên kết ngân hàng hiện mô tả cho tài khoản ACB",
+      "Đăng nhập bằng username/password là cách cũ và không dùng được với tài khoản bật 2FA",
+      "`monapay_rotate_key` làm secret cũ hết hiệu lực ngay, phải cập nhật cấu hình MCP và khởi động lại client",
+      "Nhóm Zalo nhận thông báo phải có bot MONA do đội MONA thêm vào"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# MONA Pay MCP — Tích hợp thanh toán chuyển khoản, VietQR và webhook MONA Pay cho tác tử AI\n\n> An MCP server that lets AI coding agents such as Claude Code, Cursor and Codex (or any MCP client) work with MONA Pay while coding: link a bank account, create checkout links and VietQR codes, look up incoming transfers, configure and test webhooks, email and Zalo group notifications, and verify webhook signatures.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nmonapay-mcp là MCP server chính thức của MONA Pay (dịch vụ API ngân hàng và xác nhận thanh toán tự động của The MONA Group), phát hành trên npm với tên `monapay-mcp` và trong MCP Registry là `vn.monapay/monapay-mcp`. Server cho phép tác tử lập trình như Claude Code, Cursor, Codex liên kết tài khoản ACB qua OTP, tạo trang checkout và VietQR động, tra cứu giao dịch đến, cấu hình và kiểm thử webhook, thông báo qua email và nhóm Zalo, xác minh chữ ký webhook. Kết nối bằng khóa API (client ID và client secret) tạo trong dashboard MONA Pay.\n\nGiúp lập trình viên tích hợp xác nhận chuyển khoản ngân hàng tự động của MONA Pay vào dự án ngay trong lúc code với trợ lý AI, từ sinh mã nhận webhook đến kiểm thử bằng giao dịch sandbox.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Cổng thanh toán & Ví điện tử (Payments)\n- **Tác giả / Nhà phát triển:** The MONA Group (MONA Software)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `claude_desktop`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/mona-software/monapay-mcp](https://github.com/mona-software/monapay-mcp)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Khởi động nhanh: `monapay_quickstart` kiểm tra trạng thái tài khoản (đã liên kết ngân hàng/VA, đã cấu hình webhook) và trả về các bước tiếp theo**\n- **Liên kết ngân hàng: liên kết tài khoản ACB và tạo tài khoản ảo (VA) qua hai bước OTP do người dùng cung cấp**\n- **Checkout và VietQR: tạo, tra cứu, lọc, hủy phiên checkout và tạo/hủy VietQR động cho đơn hàng**\n- **Giao dịch: liệt kê giao dịch đến theo VA, tìm theo `transaction_code`, thống kê theo khoảng ngày và tạo giao dịch giả trong sandbox**\n- **Webhook: tạo/sửa/xóa cấu hình (`NONE`, `API_KEY`, `HMAC_SHA256`), gửi webhook thử, xem log và tỉ lệ thành công / P95**\n- **Thông báo: cấu hình email (1–10 người nhận) và nhóm Zalo cho các sự kiện như `TRANSACTION_IN`, `CHECKOUT_PAID`**\n- **Bảo mật: xác minh chữ ký webhook cục bộ, tạo và xoay vòng `client_secret`**\n- **Sinh mã: `monapay_generate_webhook_snippet` tạo mã nhận webhook cho PHP, Node hoặc Python; prompt `integrate-monapay` lập kế hoạch tích hợp 6 bước**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add monapay \\\n  -e MONAPAY_CLIENT_ID=your_client_id \\\n  -e MONAPAY_CLIENT_SECRET=your_client_secret \\\n  -- npx -y monapay-mcp\n```\n\nYêu cầu: Node.js 18 trở lên và khóa API MONA Pay (client ID và client secret, tạo trong dashboard MONA Pay).\nBước 1: Tạo khóa API (client ID, client secret) trong dashboard MONA Pay.\nBước 2: Claude Code: chạy `claude mcp add monapay -e MONAPAY_CLIENT_ID=your_client_id -e MONAPAY_CLIENT_SECRET=your_client_secret -- npx -y monapay-mcp` (README viết lệnh trên nhiều dòng).\nBước 3: Cursor (`.cursor/mcp.json`) hoặc Claude Desktop (`claude_desktop_config.json`): thêm khối `mcpServers` với `command` là `npx`, `args` là `[\"-y\", \"monapay-mcp\"]` và hai biến môi trường `MONAPAY_CLIENT_ID`, `MONAPAY_CLIENT_SECRET`.\nBước 4: Có thể chạy thử server qua stdio bằng `npx -y monapay-mcp`.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Yêu cầu tác tử gọi `monapay_whoami` để kiểm tra kết nối và gói dịch vụ của tài khoản.\nBước 2: Dùng `monapay_quickstart` để biết các bước còn thiếu (liên kết ngân hàng, cấu hình webhook).\nBước 3: Khi liên kết tài khoản ACB, tác tử phải hỏi người dùng mã OTP ở bước 2 và 4, không được tự đoán OTP.\nBước 4: Sinh endpoint nhận webhook, đăng ký bằng `monapay_create_webhook(auth_type=\"HMAC_SHA256\", ...)`, kiểm thử bằng `monapay_test_webhook` và xem `monapay_webhook_logs`.\nBước 5: Tạo checkout cho từng đơn hàng bằng `monapay_create_checkout` và chờ sự kiện `CHECKOUT_PAID`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tích hợp xác nhận chuyển khoản ngân hàng tự động vào website Laravel này bằng MONA Pay\"\n- \"Tạo một giao dịch sandbox để kiểm tra webhook của tôi có trả về 200 không\"\n- \"Liệt kê các giao dịch đến trong 7 ngày qua của tài khoản ảo để đối soát\"\n- \"Tạo VietQR động cho đơn hàng DH0001 số tiền 150.000đ\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:27:43.848Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "sepayvn-sepay-pg-php",
+    "slug": "sepayvn-sepay-pg-php",
+    "name": "SePay PHP SDK — SDK chính thức cổng thanh toán SePay (chuyển khoản, VietQR, thẻ)",
+    "icon": "CreditCard",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "payment_gateway",
+    "categoryNameVi": "Cổng thanh toán & Ví điện tử (Payments)",
+    "categories": [
+      "payment_gateway",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Cổng thanh toán & Ví điện tử (Payments)",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/sepayvn/sepay-pg-php",
+    "websiteUrl": "https://developer.sepay.vn",
+    "authorName": "SePay",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "SePay PHP SDK là SDK PHP chính thức cho Cổng thanh toán SePay, phát hành trên Packagist với tên `sepay/sepay-pg`. SDK tạo các trường biểu mẫu checkout có chữ ký (hoặc sinh sẵn HTML form) để chuyển khách hàng sang trang thanh toán SePay, hỗ trợ chuyển khoản ngân hàng, VietQR và thẻ. SDK cũng gọi API đơn hàng để tra cứu, liệt kê và hủy giao dịch, kèm các exception riêng cho từng loại lỗi.",
+    "purposeVi": "Giúp website/ứng dụng PHP tích hợp cổng thanh toán SePay nhanh chóng với môi trường sandbox và production.",
+    "featuresVi": [
+      "CheckoutBuilder: dựng dữ liệu checkout (số tiền, mã hóa đơn, mô tả, URL thành công/lỗi/hủy) theo kiểu builder",
+      "Form có chữ ký: `generateFormHtml()` sinh HTML form hoặc `generateFormFields()` trả về các trường kèm `signature`",
+      "Phương thức thanh toán: chọn `CARD`, `BANK_TRANSFER` hoặc hiển thị tất cả phương thức",
+      "Đơn hàng: `orders()->retrieve()`, `orders()->list()` với bộ lọc và `orders()->voidTransaction()`",
+      "Xử lý lỗi: exception riêng cho xác thực, dữ liệu không hợp lệ, không tìm thấy, giới hạn tốc độ và lỗi máy chủ",
+      "Cấu hình: timeout, số lần thử lại, độ trễ thử lại, chế độ debug và logger tương thích PSR-3"
+    ],
+    "installGuideVi": "Yêu cầu: PHP 7.4 trở lên, ext-json, ext-curl, Guzzle HTTP client; merchant ID và secret key của SePay.\nBước 1: Cài SDK bằng Composer: `composer require sepay/sepay-pg`\nBước 2: Nạp autoload `require_once 'vendor/autoload.php';` và khởi tạo `new SePayClient($merchantId, $secretKey, SePayClient::ENVIRONMENT_SANDBOX)`.",
+    "usageGuideVi": "Bước 1: Tạo dữ liệu checkout bằng `CheckoutBuilder::make()->currency('VND')->orderAmount(100000)->operation('PURCHASE')->orderInvoiceNumber('INV_001')->build()`.\nBước 2: Hiển thị form thanh toán bằng `$sepay->checkout()->generateFormHtml($checkoutData)`.\nBước 3: Tra cứu đơn hàng bằng `$sepay->orders()->retrieve('ORDER_INVOICE_NUMBER')` hoặc liệt kê với bộ lọc trạng thái, ngày tạo.\nBước 4: Chạy ví dụ có sẵn trong repo: `php examples/basic-usage.php`.",
+    "samplePromptsVi": [
+      "Tích hợp SePay vào trang thanh toán PHP của tôi bằng sepay/sepay-pg ở môi trường sandbox",
+      "Viết đoạn PHP liệt kê các đơn hàng SePay có trạng thái CAPTURED trong tháng này",
+      "Xử lý RateLimitException khi gọi API đơn hàng SePay và thử lại sau"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "composer require sepay/sepay-pg",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"composer require sepay/sepay-pg\"\n  ],\n  \"nguon\": \"https://github.com/sepayvn/sepay-pg-php\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "SDK miễn phí (MIT); phí giao dịch theo hợp đồng với SePay",
+    "prosVi": [
+      "SDK chính thức của SePay, giấy phép MIT",
+      "Có môi trường sandbox để thử nghiệm",
+      "README song ngữ Việt/Anh, kèm thư mục ví dụ",
+      "Hỗ trợ PHP từ 7.4, phù hợp cả hệ thống cũ"
+    ],
+    "consVi": [
+      "Cần đăng ký merchant SePay để có merchant ID và secret key",
+      "Theo README, đơn hàng được tạo khi khách hoàn thành checkout, không tạo trực tiếp qua API",
+      "Chỉ dành cho PHP"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# SePay PHP SDK — SDK chính thức cổng thanh toán SePay (chuyển khoản, VietQR, thẻ)\n\n> Official PHP SDK for SePay Payment Gateway. Easy integration for payments, bank transfers, VietQR.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSePay PHP SDK là SDK PHP chính thức cho Cổng thanh toán SePay, phát hành trên Packagist với tên `sepay/sepay-pg`. SDK tạo các trường biểu mẫu checkout có chữ ký (hoặc sinh sẵn HTML form) để chuyển khách hàng sang trang thanh toán SePay, hỗ trợ chuyển khoản ngân hàng, VietQR và thẻ. SDK cũng gọi API đơn hàng để tra cứu, liệt kê và hủy giao dịch, kèm các exception riêng cho từng loại lỗi.\n\nGiúp website/ứng dụng PHP tích hợp cổng thanh toán SePay nhanh chóng với môi trường sandbox và production.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Cổng thanh toán & Ví điện tử (Payments)\n- **Tác giả / Nhà phát triển:** SePay\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/sepayvn/sepay-pg-php](https://github.com/sepayvn/sepay-pg-php)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **CheckoutBuilder: dựng dữ liệu checkout (số tiền, mã hóa đơn, mô tả, URL thành công/lỗi/hủy) theo kiểu builder**\n- **Form có chữ ký: `generateFormHtml()` sinh HTML form hoặc `generateFormFields()` trả về các trường kèm `signature`**\n- **Phương thức thanh toán: chọn `CARD`, `BANK_TRANSFER` hoặc hiển thị tất cả phương thức**\n- **Đơn hàng: `orders()->retrieve()`, `orders()->list()` với bộ lọc và `orders()->voidTransaction()`**\n- **Xử lý lỗi: exception riêng cho xác thực, dữ liệu không hợp lệ, không tìm thấy, giới hạn tốc độ và lỗi máy chủ**\n- **Cấu hình: timeout, số lần thử lại, độ trễ thử lại, chế độ debug và logger tương thích PSR-3**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ncomposer require sepay/sepay-pg\n```\n\nYêu cầu: PHP 7.4 trở lên, ext-json, ext-curl, Guzzle HTTP client; merchant ID và secret key của SePay.\nBước 1: Cài SDK bằng Composer: `composer require sepay/sepay-pg`\nBước 2: Nạp autoload `require_once 'vendor/autoload.php';` và khởi tạo `new SePayClient($merchantId, $secretKey, SePayClient::ENVIRONMENT_SANDBOX)`.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo dữ liệu checkout bằng `CheckoutBuilder::make()->currency('VND')->orderAmount(100000)->operation('PURCHASE')->orderInvoiceNumber('INV_001')->build()`.\nBước 2: Hiển thị form thanh toán bằng `$sepay->checkout()->generateFormHtml($checkoutData)`.\nBước 3: Tra cứu đơn hàng bằng `$sepay->orders()->retrieve('ORDER_INVOICE_NUMBER')` hoặc liệt kê với bộ lọc trạng thái, ngày tạo.\nBước 4: Chạy ví dụ có sẵn trong repo: `php examples/basic-usage.php`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tích hợp SePay vào trang thanh toán PHP của tôi bằng sepay/sepay-pg ở môi trường sandbox\"\n- \"Viết đoạn PHP liệt kê các đơn hàng SePay có trạng thái CAPTURED trong tháng này\"\n- \"Xử lý RateLimitException khi gọi API đơn hàng SePay và thử lại sau\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:27:43.848Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "vinairesearch-phonlp",
+    "slug": "vinairesearch-phonlp",
+    "name": "PhoNLP — Mô hình tiếng Việt gán từ loại, nhận dạng thực thể và phân tích cú pháp",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "model",
+    "typeNameVi": "Model",
+    "category": "nlp_language",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên NLP",
+    "categories": [
+      "nlp_language",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên NLP",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/VinAIResearch/PhoNLP",
+    "websiteUrl": "https://aclanthology.org/2021.naacl-demos.1/",
+    "authorName": "VinAI Research",
+    "license": "Mã nguồn mở (BSD-3-Clause)",
+    "summaryVi": "PhoNLP là mô hình học đa nhiệm dựa trên BERT của VinAI Research, thực hiện đồng thời gán nhãn từ loại (POS), nhận dạng thực thể có tên (NER) và phân tích cú pháp phụ thuộc cho tiếng Việt. Theo README, trên các bộ dữ liệu chuẩn tiếng Việt PhoNLP đạt kết quả state-of-the-art, vượt cách tinh chỉnh PhoBERT riêng lẻ cho từng tác vụ. Thư viện có gói pip `phonlp`, cung cấp mô hình huấn luyện sẵn cho tiếng Việt và dòng lệnh để huấn luyện, đánh giá, gán nhãn kho văn bản.",
+    "purposeVi": "Phân tích ngữ pháp và trích xuất thực thể từ văn bản tiếng Việt đã tách từ, phục vụ nghiên cứu và các hệ thống xử lý ngôn ngữ tự nhiên.",
+    "featuresVi": [
+      "Đa nhiệm: một mô hình cho cả POS tagging, NER và dependency parsing",
+      "Mô hình huấn luyện sẵn: tải tự động bằng `phonlp.download(save_dir=...)`",
+      "Python API: `phonlp.load()`, `model.annotate()` cho câu hoặc cả tệp văn bản, xuất định dạng 6 cột hoặc CoNLL 10 cột",
+      "Dòng lệnh: `run_phonlp.py` với các chế độ `train`, `eval`, `annotate`",
+      "Mở rộng ngôn ngữ khác: có thể huấn luyện với bất kỳ mô hình BERT nào trên transformers (BERT, mBERT, RoBERTa, XLM-RoBERTa)"
+    ],
+    "installGuideVi": "Yêu cầu: Python >= 3.6, PyTorch >= 1.4.0. Văn bản thô cần tách từ trước bằng VnCoreNLP (`py_vncorenlp`).\nBước 1: Cài từ PyPI: `pip3 install phonlp`\nBước 2: Hoặc cài từ mã nguồn: `git clone https://github.com/VinAIResearch/PhoNLP`, `cd PhoNLP`, `pip3 install -e .`\nBước 3: Cài bộ tách từ cho văn bản thô: `pip3 install py_vncorenlp`",
+    "usageGuideVi": "Bước 1: Tải mô hình tiếng Việt: `phonlp.download(save_dir='/absolute/path/to/pretrained_phonlp')`.\nBước 2: Nạp mô hình: `model = phonlp.load(save_dir='/absolute/path/to/pretrained_phonlp')`.\nBước 3: Gán nhãn một câu đã tách từ: `model.print_out(model.annotate(text=\"Tôi đang làm_việc tại VinAI .\"))`.\nBước 4: Gán nhãn cả tệp: `model.annotate(input_file=..., output_file=...)`, thêm `output_type='conll'` để xuất định dạng CoNLL.",
+    "samplePromptsVi": [
+      "Viết script Python dùng PhoNLP trích xuất tên tổ chức và địa danh từ các bài báo tiếng Việt",
+      "Kết hợp VnCoreNLP và PhoNLP để phân tích cú pháp phụ thuộc cho văn bản thô",
+      "Huấn luyện lại PhoNLP với dữ liệu NER riêng dựa trên vinai/phobert-base"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip3 install phonlp",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip3 install phonlp\"\n  ],\n  \"nguon\": \"https://github.com/VinAIResearch/PhoNLP\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, mã nguồn mở theo giấy phép BSD 3-Clause",
+    "prosVi": [
+      "Giấy phép BSD 3-Clause, dùng được cho mục đích thương mại",
+      "Một mô hình xử lý ba tác vụ, gọn hơn dùng ba mô hình riêng",
+      "Có mô hình huấn luyện sẵn cho tiếng Việt và bài báo NAACL 2021 đi kèm"
+    ],
+    "consVi": [
+      "Đầu vào phải là câu đã tách từ; văn bản thô cần chạy VnCoreNLP trước",
+      "Yêu cầu phiên bản Python/PyTorch cũ trong README, có thể cần kiểm tra tương thích",
+      "Repo ít cập nhật (lần commit gần nhất tháng 12/2024)",
+      "README yêu cầu trích dẫn bài báo khi dùng cho kết quả công bố"
+    ],
+    "languages": [
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# PhoNLP — Mô hình tiếng Việt gán từ loại, nhận dạng thực thể và phân tích cú pháp\n\n> PhoNLP is a multi-task learning model for joint part-of-speech (POS) tagging, named entity recognition (NER) and dependency parsing.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPhoNLP là mô hình học đa nhiệm dựa trên BERT của VinAI Research, thực hiện đồng thời gán nhãn từ loại (POS), nhận dạng thực thể có tên (NER) và phân tích cú pháp phụ thuộc cho tiếng Việt. Theo README, trên các bộ dữ liệu chuẩn tiếng Việt PhoNLP đạt kết quả state-of-the-art, vượt cách tinh chỉnh PhoBERT riêng lẻ cho từng tác vụ. Thư viện có gói pip `phonlp`, cung cấp mô hình huấn luyện sẵn cho tiếng Việt và dòng lệnh để huấn luyện, đánh giá, gán nhãn kho văn bản.\n\nPhân tích ngữ pháp và trích xuất thực thể từ văn bản tiếng Việt đã tách từ, phục vụ nghiên cứu và các hệ thống xử lý ngôn ngữ tự nhiên.\n\n- **Loại hình thành phần:** Model\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên NLP\n- **Tác giả / Nhà phát triển:** VinAI Research\n- **Giấy phép bản quyền:** Mã nguồn mở (BSD-3-Clause)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/VinAIResearch/PhoNLP](https://github.com/VinAIResearch/PhoNLP)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Đa nhiệm: một mô hình cho cả POS tagging, NER và dependency parsing**\n- **Mô hình huấn luyện sẵn: tải tự động bằng `phonlp.download(save_dir=...)`**\n- **Python API: `phonlp.load()`, `model.annotate()` cho câu hoặc cả tệp văn bản, xuất định dạng 6 cột hoặc CoNLL 10 cột**\n- **Dòng lệnh: `run_phonlp.py` với các chế độ `train`, `eval`, `annotate`**\n- **Mở rộng ngôn ngữ khác: có thể huấn luyện với bất kỳ mô hình BERT nào trên transformers (BERT, mBERT, RoBERTa, XLM-RoBERTa)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip3 install phonlp\n```\n\nYêu cầu: Python >= 3.6, PyTorch >= 1.4.0. Văn bản thô cần tách từ trước bằng VnCoreNLP (`py_vncorenlp`).\nBước 1: Cài từ PyPI: `pip3 install phonlp`\nBước 2: Hoặc cài từ mã nguồn: `git clone https://github.com/VinAIResearch/PhoNLP`, `cd PhoNLP`, `pip3 install -e .`\nBước 3: Cài bộ tách từ cho văn bản thô: `pip3 install py_vncorenlp`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tải mô hình tiếng Việt: `phonlp.download(save_dir='/absolute/path/to/pretrained_phonlp')`.\nBước 2: Nạp mô hình: `model = phonlp.load(save_dir='/absolute/path/to/pretrained_phonlp')`.\nBước 3: Gán nhãn một câu đã tách từ: `model.print_out(model.annotate(text=\"Tôi đang làm_việc tại VinAI .\"))`.\nBước 4: Gán nhãn cả tệp: `model.annotate(input_file=..., output_file=...)`, thêm `output_type='conll'` để xuất định dạng CoNLL.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết script Python dùng PhoNLP trích xuất tên tổ chức và địa danh từ các bài báo tiếng Việt\"\n- \"Kết hợp VnCoreNLP và PhoNLP để phân tích cú pháp phụ thuộc cho văn bản thô\"\n- \"Huấn luyện lại PhoNLP với dữ liệu NER riêng dựa trên vinai/phobert-base\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:27:43.848Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]

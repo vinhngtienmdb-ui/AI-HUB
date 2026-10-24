@@ -1,0 +1,249 @@
+[
+  {
+    "repo": "ntphuc149/ViLegalLM",
+    "license": "Apache License 2.0",
+    "authorName": "Truong-Phuc Nguyen, Quy-Nhan Nguyen, Minh-Tien Nguyen",
+    "websiteUrl": "https://aclanthology.org/2026.findings-acl.1801/",
+    "toolType": "model",
+    "taglineEn": "This repository contains the source code for ViLegalLM, a suite of language models pre-trained on Vietnamese legal text. Models and datasets are hosted on Hugging Face.",
+    "summaryVi": "ViLegalLM là bộ mô hình ngôn ngữ được tiền huấn luyện tiếp tục trên kho văn bản pháp luật tiếng Việt 16GB (ViLegalText), gồm ViLegalBERT (encoder RoBERTa, 135M tham số) và hai mô hình decoder ViLegalQwen2.5-1.5B-Base, ViLegalQwen3-1.7B-Base. Kho mã kèm ba bộ dữ liệu tổng hợp ViLegalTF, ViLegalMCQ, ViLegalNLI và notebook tinh chỉnh cho truy xuất thông tin, hỏi đáp, suy luận ngôn ngữ tự nhiên. Công trình được công bố tại Findings of ACL 2026.",
+    "purposeVi": "Cung cấp mô hình nền chuyên biệt cho văn bản pháp luật Việt Nam để nhà nghiên cứu tinh chỉnh cho các bài toán hỏi đáp, phân loại, truy xuất và suy luận pháp lý.",
+    "featuresVi": [
+      "ViLegalBERT: encoder 135M tham số, ngữ cảnh 256 token, dùng ngay cho trích xuất đặc trưng và đo tương đồng ngữ nghĩa",
+      "ViLegalQwen: hai mô hình decoder 1.54B và 1.72B tham số (ngữ cảnh 2.048 và 4.096 token) tiền huấn luyện tiếp tục từ Qwen2.5 và Qwen3",
+      "Kho ngữ liệu 16GB: tiền huấn luyện trên bộ ViLegalText về văn bản pháp luật tiếng Việt",
+      "Ba bộ dữ liệu tổng hợp: ViLegalTF (hỏi đáp Đúng/Sai), ViLegalMCQ (trắc nghiệm), ViLegalNLI (suy luận ngôn ngữ tự nhiên)",
+      "Mã tiền huấn luyện và notebook tinh chỉnh: MLM cho ViLegalBERT, CLM cho ViLegalQwen; tinh chỉnh phân biệt, tinh chỉnh chỉ dẫn QLoRA và kiểm định chéo 5 lần"
+    ],
+    "requirementsVi": "Python với thư viện transformers và torch; đầu vào của ViLegalBERT phải được tách từ (PyVi, underthesea hoặc VNCoreNLP), từ nhiều âm tiết nối bằng dấu gạch dưới.",
+    "installStepsVi": [
+      "Cài thư viện Hugging Face Transformers và PyTorch trong môi trường Python.",
+      "Nạp tokenizer PhoBERT cho ViLegalBERT: `tokenizer = AutoTokenizer.from_pretrained(\"vinai/phobert-base-v2\")`.",
+      "Nạp mô hình ViLegalBERT: `model = AutoModel.from_pretrained(\"ntphuc149/ViLegalBERT\")`.",
+      "Hoặc nạp mô hình decoder: `model = AutoModelForCausalLM.from_pretrained(\"ntphuc149/ViLegalQwen3-1.7B-Base\")`."
+    ],
+    "cliCommand": "model = AutoModel.from_pretrained(\"ntphuc149/ViLegalBERT\")",
+    "usageStepsVi": [
+      "Tách từ câu pháp lý trước khi đưa vào ViLegalBERT, ví dụ `luật_sư tư_vấn pháp_luật dân_sự .`.",
+      "Mã hóa câu bằng tokenizer PhoBERT rồi chạy mô hình để lấy vector đặc trưng phục vụ tìm kiếm ngữ nghĩa.",
+      "Với ViLegalQwen, tinh chỉnh hoặc tinh chỉnh chỉ dẫn (QLoRA) trước khi dùng cho tác vụ cụ thể; notebook mẫu nằm trong thư mục `Source codes/Fine-tuning ViLegalLM/`.",
+      "Dùng ViLegalTF, ViLegalMCQ, ViLegalNLI trên Hugging Face để huấn luyện và đánh giá."
+    ],
+    "samplePromptsVi": [
+      "Lấy vector đặc trưng ViLegalBERT cho câu \"luật_sư tư_vấn pháp_luật dân_sự .\" và so sánh độ tương đồng với các điều luật khác.",
+      "Tinh chỉnh ViLegalQwen3-1.7B-Base bằng QLoRA trên bộ ViLegalMCQ để trả lời câu hỏi trắc nghiệm pháp luật."
+    ],
+    "prosVi": [
+      "Bộ mô hình nền đầu tiên chuyên cho văn bản pháp luật tiếng Việt, công bố tại Findings of ACL 2026",
+      "Giấy phép Apache 2.0, mô hình và dữ liệu công khai trên Hugging Face",
+      "Có cả encoder nhỏ gọn lẫn decoder 1.5B–1.7B, phù hợp phần cứng phổ thông"
+    ],
+    "consVi": [
+      "README ghi rõ chỉ dành cho nghiên cứu, không dùng cho ứng dụng pháp lý thực tế khi chưa có chuyên gia kiểm định",
+      "ViLegalQwen là mô hình base, phải tinh chỉnh trước khi dùng cho tác vụ hạ nguồn",
+      "ViLegalBERT yêu cầu tách từ đầu vào và giới hạn ngữ cảnh 256 token"
+    ],
+    "sourceEvidence": {
+      "tokenizer = AutoTokenizer.from_pretrained(\"vinai/phobert-base-v2\")": "README.md:37",
+      "model = AutoModel.from_pretrained(\"ntphuc149/ViLegalBERT\")": "README.md:38",
+      "model = AutoModelForCausalLM.from_pretrained(\"ntphuc149/ViLegalQwen3-1.7B-Base\")": "README.md:62"
+    },
+    "meta": {
+      "id": "ntphuc149-vilegallm",
+      "nameVi": "ViLegalLM — Mô hình ngôn ngữ cho văn bản pháp luật tiếng Việt",
+      "icon": "Brain",
+      "categories": [
+        "legal_public_service",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, mã nguồn mở Apache-2.0; mô hình và dữ liệu tải từ Hugging Face",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Python (Transformers)",
+          "cliCommand": "model = AutoModel.from_pretrained(\"ntphuc149/ViLegalBERT\")"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "CMC-OPENAI/VLegal-Bench",
+    "license": "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)",
+    "authorName": "CMC-OpenAI",
+    "websiteUrl": "https://arxiv.org/abs/2512.14554",
+    "toolType": "dataset",
+    "taglineEn": "A comprehensive Vietnamese legal benchmark dataset for evaluating Large Language Models (LLMs) on various legal NLP tasks.",
+    "summaryVi": "VLegal-Bench là bộ benchmark pháp lý tiếng Việt gồm 22 tác vụ chia thành 5 nhóm: nhận diện và ghi nhớ, hiểu và cấu trúc hóa, suy luận, diễn giải và sinh văn bản, đạo đức – công bằng – thiên kiến. Mỗi tác vụ có tệp dữ liệu `.jsonl` và tệp prompt riêng, kèm mã suy luận chạy qua máy chủ vLLM cục bộ hoặc API mô hình (GPT, Gemini, Claude) và tự động chấm điểm.",
+    "purposeVi": "Giúp đội phát triển đo năng lực pháp lý tiếng Việt của LLM trên nhiều dạng tác vụ, từ nhận diện thực thể pháp lý đến dự đoán phán quyết và phát hiện điều khoản hợp đồng bất công.",
+    "featuresVi": [
+      "22 tác vụ pháp lý: nhận diện thực thể, phân loại chủ đề, ghi nhớ điều luật, trích xuất quan hệ, suy luận đồ thị nhiều bước, ước lượng hình phạt…",
+      "5 nhóm năng lực: Recognition & Recall, Understanding & Structuring, Reasoning & Inference, Interpretation & Generation, Ethics, Fairness & Bias",
+      "Hai cách suy luận: máy chủ vLLM cục bộ hoặc API mô hình GPT, Gemini, Claude",
+      "Chấm điểm tự động: Accuracy, Precision, Recall, F1 cho tác vụ trắc nghiệm; BLEU, ROUGE cho tác vụ sinh văn bản",
+      "Biến thể bỏ nội dung: tác vụ 3.3 và 3.4 có phiên bản `USE_REMOVE_CONTENT=true`"
+    ],
+    "requirementsVi": "Python 3.13 trở lên (theo pyproject.toml) và trình quản lý gói uv; GPU và vLLM nếu chạy mô hình cục bộ, hoặc khóa API nếu dùng mô hình thương mại; tệp `.env` tạo theo `.env_example`.",
+    "installStepsVi": [
+      "Cài uv: `pip install uv`.",
+      "Tạo môi trường ảo: `uv venv .venv`.",
+      "Kích hoạt môi trường: `source .venv/bin/activate`.",
+      "Cài phụ thuộc: `uv sync`.",
+      "Tạo tệp `.env` theo mẫu `.env_example`."
+    ],
+    "cliCommand": "bash infer.sh",
+    "usageStepsVi": [
+      "Nếu dùng mô hình cục bộ, sửa `MODEL_NAME` trong `vllm_serving.sh` rồi chạy `bash vllm_serving.sh`.",
+      "Sửa các biến `TASK`, `MODEL_NAME`, `BATCH_SIZE`, `MAX_MODEL_LEN` trong `infer.sh`, rồi chạy `bash infer.sh`.",
+      "Kết quả và điểm số được lưu tại `./<task>/<task>_llm_test_results_<model_name>.json`.",
+      "Có thể chấm lại tệp dự đoán bằng lớp `Metrics` trong `src.evaluation`."
+    ],
+    "samplePromptsVi": [
+      "Chạy tác vụ 1.1 (nhận diện thực thể pháp lý) với gpt-4o và so sánh F1 với một mô hình mã nguồn mở.",
+      "Đánh giá SeaLLMs-v3-1.5B-Chat trên tác vụ 5.4 phát hiện điều khoản hợp đồng bất công."
+    ],
+    "prosVi": [
+      "Phạm vi rộng với 22 tác vụ pháp lý, có bài báo arXiv 2512.14554 mô tả phương pháp",
+      "Dữ liệu và mã đánh giá nằm sẵn trong kho, chạy được với cả mô hình cục bộ và API",
+      "Do tổ chức CMC-OpenAI phát hành"
+    ],
+    "consVi": [
+      "Giấy phép CC BY-NC-ND 4.0: cấm dùng thương mại và cấm tạo sản phẩm phái sinh; cần ghi công \"Dataset created by CMC-OpenAI\"",
+      "Phải sửa tay biến trong `infer.sh` cho từng tác vụ và mô hình",
+      "Yêu cầu Python 3.13; chạy cục bộ cần GPU cho vLLM"
+    ],
+    "sourceEvidence": {
+      "pip install uv": "README.md:97",
+      "uv venv .venv": "README.md:98",
+      "source .venv/bin/activate": "README.md:99",
+      "uv sync": "README.md:100",
+      "bash vllm_serving.sh": "README.md:117",
+      "bash infer.sh": "README.md:124"
+    },
+    "meta": {
+      "id": "cmc-openai-vlegal-bench",
+      "nameVi": "VLegal-Bench — Bộ đánh giá năng lực pháp lý tiếng Việt cho LLM",
+      "icon": "Database",
+      "categories": [
+        "legal_public_service",
+        "data_science_analytics"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "CC BY-NC-ND 4.0 (phi thương mại)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí cho mục đích cá nhân, giáo dục và nghiên cứu; dùng thương mại phải liên hệ CMC-OpenAI",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "bash infer.sh"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "tamnd/luatdo",
+    "license": "MIT License",
+    "authorName": "Tam Nguyen (tamnd)",
+    "websiteUrl": "",
+    "toolType": "software",
+    "taglineEn": "`luatdo` turns Vietnamese legal documents into a versioned, evidence-grounded knowledge graph and exports it to Neo4j.",
+    "summaryVi": "luatdo (luật đồ) là công cụ dòng lệnh viết bằng Go biến văn bản pháp luật Việt Nam thành đồ thị tri thức có phiên bản, mọi phát biểu đều kèm bằng chứng trích nguyên văn, rồi xuất sang Neo4j, RDF hoặc LegalRuleML. Cấu trúc văn bản, mã định danh, trích dẫn và quan hệ sửa đổi được lấy bằng phân tích tất định không dùng mô hình; LLM chỉ bổ sung lớp ngữ nghĩa và phải qua kiểm tra suy diễn trước khi vào đồ thị tin cậy. Nguồn dữ liệu gồm UTS_VLC (306 luật, bộ luật còn hiệu lực) và khoảng 171.000 văn bản từ vbpl.vn.",
+    "purposeVi": "Giúp người làm công nghệ pháp lý có sẵn đồ thị văn bản – trích dẫn – sửa đổi của pháp luật Việt Nam để truy vấn lịch sử sửa đổi, khái niệm, nghĩa vụ và xung đột quy phạm, hoặc dùng làm nền cho hệ thống hỏi đáp có trích dẫn.",
+    "featuresVi": [
+      "Tải đồ thị dựng sẵn: `luatdo neo4j install` tải từ Hugging Face, kiểm tra checksum và nạp vào Neo4j cục bộ",
+      "Phân tích tất định: cấu trúc điều – khoản – điểm, mã định danh ổn định, trích dẫn và quan hệ sửa đổi không cần LLM",
+      "Trích xuất theo ontology đóng: LLM chỉ được phát sinh lớp và vị từ đã đăng ký, phần còn lại vào hàng đợi duyệt",
+      "26 câu hỏi năng lực: hỏi đồ thị bằng `luatdo graph ask` mà không cần viết Cypher",
+      "Truy xuất và trả lời: `luatdo retrieve` và `luatdo answer` trả lời câu hỏi tiếng Việt bằng phát biểu đã kiểm chứng hoặc từ chối",
+      "Phát hiện xung đột và phiên bản theo thời gian: `luatdo conflicts`, `luatdo temporal`",
+      "Xuất đa định dạng: Neo4j, Parquet, N-Triples (RDF), LegalRuleML"
+    ],
+    "requirementsVi": "Linux, macOS hoặc Windows; podman hoặc docker và khoảng 20GB dung lượng đĩa để chạy đồ thị Neo4j dựng sẵn; các bước trích xuất bằng LLM cần cấu hình tuyến mô hình (biến môi trường chứa khóa API hoặc Codex CLI).",
+    "installStepsVi": [
+      "Trên Linux và macOS: `curl -fsSL https://raw.githubusercontent.com/tamnd/luatdo/main/install.sh | sh`.",
+      "Trên Windows (PowerShell): `irm https://raw.githubusercontent.com/tamnd/luatdo/main/install.ps1 | iex`.",
+      "Hoặc tự biên dịch bằng Go: `go install github.com/tamnd/luatdo/cmd/luatdo@latest`."
+    ],
+    "cliCommand": "curl -fsSL https://raw.githubusercontent.com/tamnd/luatdo/main/install.sh | sh",
+    "usageStepsVi": [
+      "Dùng đồ thị đã công bố: `luatdo neo4j install`, sau đó mở http://localhost:7474.",
+      "Xem danh sách 26 câu hỏi năng lực: `luatdo graph list`.",
+      "Hỏi đồ thị một câu hỏi, ví dụ: `luatdo graph ask --question 20`.",
+      "Tự dựng đồ thị: `luatdo fetch uts_vlc`, `luatdo parse`, … rồi `luatdo export neo4j`."
+    ],
+    "samplePromptsVi": [
+      "Khái niệm nào đã bị định nghĩa lại bởi văn bản sau, và những quy phạm cũ nào nhắc đến nó chưa từng được sửa đổi?",
+      "Hiển thị lịch sử sửa đổi của Bộ luật Lao động 2019 (vn:law:2019:45-2019-qh14)."
+    ],
+    "prosVi": [
+      "Thiết kế ưu tiên tất định, mọi phát biểu phải có bằng chứng nguyên văn",
+      "Có đồ thị dựng sẵn trên Hugging Face, không phải tự chạy đường ống tốn kém",
+      "Tệp nhị phân tĩnh cho cả Linux, macOS, Windows; giấy phép MIT; có CI"
+    ],
+    "consVi": [
+      "README tự đánh giá trạng thái còn sớm (Early)",
+      "Chạy toàn bộ đường ống trên cả kho ngữ liệu mất nhiều ngày và vài trăm đô la chi phí gọi mô hình",
+      "Đồ thị dựng sẵn cần podman/docker và khoảng 20GB đĩa; README chủ yếu bằng tiếng Anh"
+    ],
+    "sourceEvidence": {
+      "curl -fsSL https://raw.githubusercontent.com/tamnd/luatdo/main/install.sh | sh": "README.md:63",
+      "irm https://raw.githubusercontent.com/tamnd/luatdo/main/install.ps1 | iex": "README.md:69",
+      "go install github.com/tamnd/luatdo/cmd/luatdo@latest": "README.md:74",
+      "luatdo neo4j install": "README.md:82",
+      "luatdo fetch uts_vlc": "README.md:134",
+      "luatdo parse": "README.md:135",
+      "luatdo export neo4j": "README.md:141",
+      "luatdo graph list": "README.md:147",
+      "luatdo graph ask --question 20": "README.md:148"
+    },
+    "meta": {
+      "id": "tamnd-luatdo",
+      "nameVi": "luatdo — Đồ thị tri thức pháp luật Việt Nam có bằng chứng, xuất Neo4j",
+      "icon": "Database",
+      "categories": [
+        "legal_public_service",
+        "vector_rag"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, mã nguồn mở MIT; bước trích xuất bằng LLM có thể phát sinh chi phí API",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Linux/macOS)",
+          "cliCommand": "curl -fsSL https://raw.githubusercontent.com/tamnd/luatdo/main/install.sh | sh"
+        },
+        {
+          "platform": "web",
+          "platformName": "PowerShell (Windows)",
+          "cliCommand": "irm https://raw.githubusercontent.com/tamnd/luatdo/main/install.ps1 | iex"
+        }
+      ]
+    }
+  }
+]

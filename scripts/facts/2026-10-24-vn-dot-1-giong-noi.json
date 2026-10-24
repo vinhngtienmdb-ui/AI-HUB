@@ -1,0 +1,336 @@
+[
+  {
+    "repo": "pnnbao97/VieNeu-TTS",
+    "license": "Apache License 2.0",
+    "authorName": "Phạm Nguyễn Ngọc Bảo (pnnbao97)",
+    "websiteUrl": "https://www.vieneu.io",
+    "toolType": "model",
+    "taglineEn": "VieNeu-TTS: Advanced Vietnamese Text-to-Speech with Instant Voice Cloning",
+    "summaryVi": "VieNeu-TTS là bộ chuyển văn bản thành giọng nói tiếng Việt chạy trên thiết bị, huấn luyện song ngữ Việt–Anh với hơn 10.000 giờ dữ liệu. Phiên bản mã nguồn mở mới nhất trong repo là v3 Turbo: âm thanh 48 kHz, 25 giọng có sẵn ba miền Bắc – Trung – Nam, nhân bản giọng tức thì từ đoạn ghi âm 3–8 giây. Repo cung cấp SDK Python `vieneu`, giao diện web Gradio và máy chủ API tương thích OpenAI.",
+    "purposeVi": "Tạo giọng đọc tiếng Việt tự nhiên ngay trên máy cá nhân (CPU hoặc GPU) cho ứng dụng đọc văn bản, trợ lý giọng nói, podcast và hội thoại nhiều người nói.",
+    "featuresVi": [
+      "Giọng có sẵn: 25 giọng đọc ba miền Bắc, Trung, Nam, không cần đoạn ghi âm mẫu",
+      "Nhân bản giọng: tạo giọng từ đoạn ghi âm 3–8 giây, tự động khử nhiễu đoạn mẫu",
+      "Thẻ cảm xúc (thử nghiệm): chèn `[cười]`, `[thở dài]`, `[hắng giọng]` trực tiếp vào văn bản",
+      "Chế độ hội thoại: tạo kịch bản nhiều người nói theo lô (tối đa 32)",
+      "Phát trực tuyến thời gian thực: âm thanh đầu tiên khoảng 115 ms trên RTX 3060",
+      "API tương thích OpenAI: `POST /v1/audio/speech`, dùng được với OpenAI SDK, Pipecat, LiveKit",
+      "Chạy không cần PyTorch trên CPU: dùng ONNX Runtime, RTF khoảng 0,5",
+      "Tinh chỉnh LoRA: huấn luyện giọng hoặc phong cách đọc riêng trên một GPU phổ thông"
+    ],
+    "requirementsVi": "Công cụ `uv` (khuyến nghị) hoặc Python với `pip`. Chạy được trên CPU/macOS; GPU NVIDIA (CUDA) giúp nhanh hơn khoảng 25 lần. Bản int8 trên CPU cần tập lệnh VNNI (AVX-512 VNNI / AVX-VNNI).",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/pnnbao97/VieNeu-TTS.git` rồi `cd VieNeu-TTS`",
+      "Cài phụ thuộc cho CPU/macOS: `uv sync` (hoặc cho GPU: `uv sync --extra cuda`)",
+      "Mở giao diện web: `uv run vieneu-web` rồi truy cập http://127.0.0.1:7860",
+      "Hoặc chỉ cài SDK Python: `pip install vieneu`"
+    ],
+    "cliCommand": "uv run vieneu-web",
+    "usageStepsVi": [
+      "Trong giao diện web, chọn backbone \"VieNeu-TTS-v3-Turbo\", nhập văn bản và chọn giọng đọc",
+      "Dùng SDK: `from vieneu import Vieneu`, tạo `Vieneu()` rồi gọi `vieneu.infer(văn_bản, voice=\"Hải Đăng\")` và `vieneu.save(audio, \"output.wav\")`",
+      "Nhân bản giọng: truyền `ref_audio=\"my_voice.wav\"` (đoạn 3–8 giây) vào `infer`",
+      "Chạy máy chủ API tương thích OpenAI: `uv run python -m apps.openai_speech` (cổng 8000) rồi trỏ `base_url` của OpenAI SDK tới http://localhost:8000/v1"
+    ],
+    "samplePromptsVi": [
+      "Xin chào các bạn, hôm nay mình sẽ hướng dẫn cách cài đặt bộ giọng đọc mới.",
+      "Nghe hay quá đi [cười]. Để mình nói tiếp [hắng giọng].",
+      "Bản tin sáng nay."
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, dùng được cho mục đích thương mại",
+      "Chạy được trên CPU không cần GPU, cài tối giản không cần PyTorch",
+      "Có API tương thích OpenAI và Docker, dễ tích hợp vào ứng dụng sẵn có",
+      "Hỗ trợ song ngữ Việt–Anh và giọng ba miền"
+    ],
+    "consVi": [
+      "Phiên bản v4 (nhân bản giọng chất lượng cao hơn) là độc quyền, chỉ có qua VieNeu API / vieneu.io; repo chỉ mở mã đến v3 Turbo",
+      "Thẻ cảm xúc còn ở mức thử nghiệm",
+      "Các tính năng lồng tiếng, bài giảng, TikTok Reel, sách nói chỉ có trong ứng dụng VieNeu chính thức, không có trong repo",
+      "Nhân bản giọng dễ bị lạm dụng; cần có sự đồng ý của chủ giọng"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/pnnbao97/VieNeu-TTS.git": "README.md:105",
+      "uv sync": "README.md:115",
+      "uv sync --extra cuda": "README.md:120",
+      "uv run vieneu-web": "README.md:125",
+      "pip install vieneu": "README.md:144",
+      "uv run python -m apps.openai_speech": "README.md:233",
+      "http://127.0.0.1:7860": "README.md:127",
+      "license Apache 2.0": "README.md:579"
+    },
+    "meta": {
+      "id": "pnnbao97-vieneu-tts",
+      "nameVi": "VieNeu-TTS — Chuyển văn bản thành giọng nói tiếng Việt, nhân bản giọng tức thì",
+      "icon": "Sparkles",
+      "categories": [
+        "speech_voice",
+        "generative_ai_multimedia"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, mã nguồn mở (v3 Turbo); bản v4 độc quyền qua VieNeu API",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "uv run vieneu-web"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "tronghieuit/v-tts",
+    "license": "Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)",
+    "authorName": "V-TTS (tronghieuit)",
+    "websiteUrl": "https://huggingface.co/spaces/v-tts/v-vietnamese-tts",
+    "toolType": "model",
+    "taglineEn": "Vietnamese Text-to-Speech with Multi-Speaker TTS and Zero-Shot Voice Cloning.",
+    "summaryVi": "V-TTS là mô hình chuyển văn bản thành giọng nói tiếng Việt nhẹ, gồm hai chế độ: đa giọng đọc (5 giọng Bắc/Nam, nam/nữ) và nhân bản giọng zero-shot từ đoạn ghi âm 3–10 giây. Mô hình nhân bản giọng chỉ có 74,8 triệu tham số, chạy hoàn toàn trên CPU nhanh hơn thời gian thực 3–4 lần. Có gói Python, ứng dụng Windows (.exe) và bản demo trên Hugging Face Spaces.",
+    "purposeVi": "Tạo giọng đọc tiếng Việt hoặc nhân bản giọng trên máy không có GPU, phục vụ nghiên cứu và dự án cá nhân phi thương mại.",
+    "featuresVi": [
+      "Đa giọng đọc: 5 giọng có sẵn NF, SF, NM1, SM, NM2 (Bắc/Nam, nam/nữ)",
+      "Nhân bản giọng zero-shot: tạo giọng từ đoạn ghi âm 3–10 giây, không cần tinh chỉnh",
+      "Chuyển ngữ điệu: truyền ngữ điệu, nhịp điệu, cảm xúc từ giọng mẫu",
+      "Chỉ cần CPU: RTF khoảng 0,24 trên CPU, không cần GPU",
+      "Bộ chuyển âm vị tiếng Việt riêng, hỗ trợ giọng Bắc và Nam",
+      "Tự tải mô hình từ Hugging Face ở lần chạy đầu",
+      "Ứng dụng Windows: xử lý hàng loạt từ tệp .txt/.srt, chỉnh tốc độ 0,5x–2,0x"
+    ],
+    "requirementsVi": "Python 3.8+, PyTorch 2.0+. Không bắt buộc GPU (CUDA tùy chọn để tăng tốc chế độ đa giọng). Khuyến nghị Linux để chuyển âm vị tốt nhất.",
+    "installStepsVi": [
+      "Cài trực tiếp từ Git: `pip install git+https://github.com/tronghieuit/v-tts.git`",
+      "Hoặc từ mã nguồn: `git clone https://github.com/tronghieuit/v-tts.git`, `cd v-tts`, rồi `pip install -e .`",
+      "Người dùng Windows có thể tải ứng dụng VTTS.exe ở mục Releases của repo"
+    ],
+    "cliCommand": "pip install git+https://github.com/tronghieuit/v-tts.git",
+    "usageStepsVi": [
+      "Đa giọng đọc trong Python: `from v_tts import TTS`, `tts = TTS()` rồi `tts.speak(\"Xin chào các bạn\", speaker=\"NF\", output_path=\"hello.wav\")`",
+      "Nhân bản giọng: `from v_tts import ZeroShotTTS`, `tts = ZeroShotTTS()` rồi `tts.clone_voice(text=..., reference_audio=\"your_voice.wav\", output_path=\"output.wav\")`",
+      "Dòng lệnh (trong thư mục mã nguồn): `python infer.py --text \"Xin chào các bạn\" --speaker NF --output hello.wav` hoặc `python infer.py --interactive`"
+    ],
+    "samplePromptsVi": [
+      "Xin chào các bạn",
+      "Buổi sáng ở thành phố bắt đầu bằng những âm thanh quen thuộc",
+      "Xin chào, tôi là giọng nói được nhân bản"
+    ],
+    "prosVi": [
+      "Rất nhẹ (74,8 triệu tham số), chạy tốt trên CPU",
+      "Cài đặt đơn giản, API Python chỉ vài dòng",
+      "Có ứng dụng Windows cho người không biết lập trình",
+      "Hỗ trợ triển khai ONNX cho thiết bị biên, web và Android"
+    ],
+    "consVi": [
+      "Giấy phép CC BY-NC 4.0: chỉ dùng phi thương mại; dùng thương mại cần xin phép bằng văn bản",
+      "Chưa tối ưu cho phát trực tuyến thời gian thực",
+      "Một số tệp README nhắc tới (`infer_zeroshot.py`, `app.py`, `app_zeroshot.py`) chưa có trong repo tại thời điểm kiểm tra (24/10/2026), nên dùng gói Python hoặc `infer.py`",
+      "Nhân bản giọng dễ bị lạm dụng; cần có sự đồng ý của chủ giọng"
+    ],
+    "sourceEvidence": {
+      "pip install git+https://github.com/tronghieuit/v-tts.git": "README.md:162",
+      "git clone https://github.com/tronghieuit/v-tts.git": "README.md:165",
+      "pip install -e .": "README.md:167",
+      "python infer.py --text \"Xin chào các bạn\" --speaker NF --output hello.wav": "README.md:231",
+      "python infer.py --interactive": "README.md:232",
+      "license CC BY-NC 4.0": "README.md:410"
+    },
+    "meta": {
+      "id": "tronghieuit-v-tts",
+      "nameVi": "V-TTS — Giọng đọc tiếng Việt siêu nhẹ, nhân bản giọng chạy trên CPU",
+      "icon": "Sparkles",
+      "categories": [
+        "speech_voice",
+        "generative_ai_multimedia"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Phi thương mại (CC BY-NC 4.0)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí cho mục đích phi thương mại; dùng thương mại cần được tác giả cho phép bằng văn bản",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install git+https://github.com/tronghieuit/v-tts.git"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "dangvansam/viet-tts",
+    "license": "Apache License 2.0 (mã nguồn); mô hình huấn luyện sẵn và mẫu âm thanh theo CC BY-NC",
+    "authorName": "dangvansam",
+    "websiteUrl": "https://huggingface.co/dangvansam/viet-tts",
+    "toolType": "software",
+    "taglineEn": "VietTTS: An Open-Source Vietnamese Text to Speech",
+    "summaryVi": "VietTTS là bộ công cụ mã nguồn mở chuyển văn bản thành giọng nói tiếng Việt, có khả năng tổng hợp giọng tự nhiên và nhân bản giọng từ âm thanh mẫu. Dự án cung cấp dòng lệnh `viettts` và máy chủ API tương thích định dạng Text-to-Speech của OpenAI. Mã nguồn kế thừa từ CosyVoice, dùng Vinorm để chuẩn hóa văn bản tiếng Việt.",
+    "purposeVi": "Dựng nhanh một máy chủ TTS tiếng Việt cục bộ có API giống OpenAI, phục vụ nghiên cứu và thử nghiệm công nghệ giọng nói tiếng Việt.",
+    "featuresVi": [
+      "Tổng hợp giọng: tạo giọng nói với bất kỳ giọng nào qua âm thanh mẫu",
+      "Giọng có sẵn: hơn 20 giọng đọc dựng sẵn, xem bằng `viettts show-voices`",
+      "Nhân bản giọng: dùng tệp âm thanh cục bộ làm giọng mẫu",
+      "API tương thích OpenAI: endpoint `/v1/audio/speech`, gọi được bằng OpenAI SDK Python/Node hoặc curl",
+      "Docker: chạy máy chủ ở cổng 8298 bằng docker compose"
+    ],
+    "requirementsVi": "Python >= 3.10, hiện chỉ hỗ trợ Linux khi cài bằng Python (Windows/macOS sắp có). Bản Docker cần Docker, driver NVIDIA, NVIDIA Container Toolkit và CUDA.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/dangvansam/viet-tts.git` rồi `cd viet-tts`",
+      "(Tùy chọn) tạo môi trường: `conda create --name viettts python=3.10` và `conda activate viettts`",
+      "Cài đặt: `pip install -e . && pip cache purge`",
+      "Hoặc dùng Docker: `docker compose build` rồi `docker compose up -d` (máy chủ tại http://localhost:8298)"
+    ],
+    "cliCommand": "viettts server --host 0.0.0.0 --port 8298",
+    "usageStepsVi": [
+      "Xem danh sách giọng: `viettts show-voices`",
+      "Tổng hợp từ văn bản: `viettts synthesis --text \"Xin chào\" --voice 0 --output test.wav`",
+      "Nhân bản giọng từ tệp: `viettts synthesis --text \"Xin chào\" --voice Download/voice.wav --output cloned.wav`",
+      "Chạy máy chủ API: `viettts server --host 0.0.0.0 --port 8298`, đặt `OPENAI_BASE_URL=http://localhost:8298` rồi gọi bằng OpenAI SDK với `model='tts-1'`"
+    ],
+    "samplePromptsVi": [
+      "Xin chào Việt Nam.",
+      "Xin chào"
+    ],
+    "prosVi": [
+      "Mã nguồn Apache 2.0",
+      "Có dòng lệnh và API tương thích OpenAI, dễ thay thế dịch vụ TTS đám mây",
+      "Có Docker Compose dựng sẵn"
+    ],
+    "consVi": [
+      "Mô hình huấn luyện sẵn và mẫu âm thanh theo giấy phép CC BY-NC (phi thương mại) do dữ liệu thu thập từ Internet",
+      "Cài bằng Python hiện chỉ hỗ trợ Linux; Docker cần GPU NVIDIA",
+      "README ghi rõ nội dung chỉ nhằm mục đích học thuật; một số giọng mẫu mô phỏng người nổi tiếng, cần tôn trọng quyền đối với giọng nói của người khác"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/dangvansam/viet-tts.git": "README.md:31",
+      "conda create --name viettts python=3.10": "README.md:35",
+      "pip install -e . && pip cache purge": "README.md:39",
+      "docker compose build": "README.md:52",
+      "docker compose up -d": "README.md:55",
+      "viettts server --host 0.0.0.0 --port 8298": "README.md:106",
+      "viettts show-voices": "README.md:109",
+      "viettts synthesis --text \"Xin chào\" --voice 0 --output test.wav": "README.md:112",
+      "viettts synthesis --text \"Xin chào\" --voice Download/voice.wav --output cloned.wav": "README.md:115",
+      "license Apache 2.0 / CC BY-NC": "README.md:197"
+    },
+    "meta": {
+      "id": "dangvansam-viet-tts",
+      "nameVi": "VietTTS — Máy chủ chuyển văn bản thành giọng nói tiếng Việt, API tương thích OpenAI",
+      "icon": "Sparkles",
+      "categories": [
+        "speech_voice",
+        "generative_ai_multimedia"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0); mô hình CC BY-NC",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí; mô hình huấn luyện sẵn chỉ dùng phi thương mại",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "viettts server --host 0.0.0.0 --port 8298"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "ekhodzitsky/phostt",
+    "license": "MIT License",
+    "authorName": "Evgeny Khodzitsky",
+    "websiteUrl": "https://crates.io/crates/phostt",
+    "toolType": "software",
+    "taglineEn": "Local STT server powered by Zipformer-vi RNN-T — no cloud, no API keys, full privacy",
+    "summaryVi": "phostt biến bất kỳ máy tính nào thành máy chủ nhận dạng giọng nói tiếng Việt chạy hoàn toàn cục bộ. Dự án dùng mô hình Zipformer-vi RNN-T (khoảng 75 MB, lượng tử hóa INT8) do sherpa-onnx đóng gói, được huấn luyện trên khoảng 70.000 giờ tiếng Việt, WER khoảng 7,7% trên GigaSpeech2-vi. Cung cấp WebSocket phát trực tuyến, REST API, gói Python và cầu nối Android.",
+    "purposeVi": "Chuyển giọng nói tiếng Việt thành văn bản ngay trên thiết bị, không gửi dữ liệu lên đám mây và không cần khóa API.",
+    "featuresVi": [
+      "Phát trực tuyến thời gian thực: nhận văn bản từng phần qua WebSocket khi đang nói",
+      "REST API + SSE: chép lời tệp âm thanh, trả kết quả ngay hoặc theo luồng",
+      "Tăng tốc phần cứng: CoreML (macOS), CUDA (Linux), CPU trên mọi nền tảng",
+      "Đa định dạng âm thanh: WAV, M4A/AAC, MP3, OGG/Vorbis, FLAC",
+      "Tự tải mô hình từ bản phát hành sherpa-onnx ở lần chạy đầu",
+      "Phân tách người nói (tùy chọn) với tính năng `diarization`",
+      "Docker CPU/CUDA và cầu nối Android (C-ABI + Kotlin)"
+    ],
+    "requirementsVi": "Rust/Cargo để cài bằng `cargo install`, hoặc Python để cài gói `phostt`, hoặc Docker. Bộ nhớ đỉnh khoảng 1,4 GB; nên có từ 4 GB RAM.",
+    "installStepsVi": [
+      "Cài bằng Cargo: `cargo install phostt` (lần chạy đầu tự tải mô hình ~75 MB vào `~/.phostt/models/`)",
+      "Hoặc cài gói Python: `pip install phostt`",
+      "Hoặc chạy Docker: `docker run -p 9876:9876 ghcr.io/ekhodzitsky/phostt:latest`"
+    ],
+    "cliCommand": "phostt serve",
+    "usageStepsVi": [
+      "Khởi động máy chủ: `phostt serve` (WebSocket ws://127.0.0.1:9876/v1/ws, REST http://127.0.0.1:9876/v1/transcribe)",
+      "Kiểm tra nhanh: `phostt transcribe ~/.phostt/models/test_wavs/0.wav`",
+      "Gửi tệp WAV tới REST API `POST http://localhost:9876/v1/transcribe` với `Content-Type: audio/wav`",
+      "Trong Python: `from phostt import Engine`, `engine = Engine(\"~/.phostt/models\")` rồi `engine.transcribe_file(\"audio.wav\")`"
+    ],
+    "samplePromptsVi": [
+      "Chép lời tệp ghi âm cuộc họp audio.wav sang văn bản tiếng Việt",
+      "Nhận dạng giọng nói tiếng Việt theo thời gian thực qua WebSocket"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, trọng số mô hình gốc theo Apache 2.0",
+      "Mô hình nhỏ (~75 MB), độ trễ thấp (~61 ms cho 3,7 giây âm thanh trên Apple M2 Pro)",
+      "Hoàn toàn cục bộ, bảo vệ quyền riêng tư",
+      "Dự án đang được phát triển tích cực, có CI và lịch sử benchmark"
+    ],
+    "consVi": [
+      "Âm thanh ngoài miền (từ mượn tiếng Anh, số, tên riêng) có thể bị chép theo phiên âm tiếng Việt",
+      "Bộ nhớ đỉnh khoảng 1,4 GB, có thể quá nặng cho thiết bị dưới 2 GB RAM",
+      "iOS và Windows chưa được kiểm thử trong CI"
+    ],
+    "sourceEvidence": {
+      "cargo install phostt": "README.md:125",
+      "pip install phostt": "README.md:133",
+      "phostt serve": "README.md:150",
+      "phostt transcribe ~/.phostt/models/test_wavs/0.wav": "README.md:158",
+      "docker run -p 9876:9876 ghcr.io/ekhodzitsky/phostt:latest": "README.md:230",
+      "port 9876": "README.md:151",
+      "license MIT": "README.md:349"
+    },
+    "meta": {
+      "id": "ekhodzitsky-phostt",
+      "nameVi": "phostt — Máy chủ nhận dạng giọng nói tiếng Việt chạy cục bộ",
+      "icon": "Cpu",
+      "categories": [
+        "speech_voice"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, mã nguồn mở",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "phostt serve"
+        }
+      ]
+    }
+  }
+]

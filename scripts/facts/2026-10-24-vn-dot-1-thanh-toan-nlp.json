@@ -1,0 +1,329 @@
+[
+  {
+    "repo": "xuannghia/vietnam-qr-pay",
+    "license": "MIT License — Copyright (c) xuannghia <xuannghia.dev@gmail.com> (https://xuannghia.dev)",
+    "authorName": "xuannghia",
+    "websiteUrl": "https://www.npmjs.com/package/vietnam-qr-pay",
+    "toolType": "sdk",
+    "taglineEn": "Thư viện hỗ trợ encode/decode mã QR của VietQR (QR Ngân hàng, QR Đa năng Momo/ZaloPay) & VNPayQR",
+    "summaryVi": "Vietnam QR Pay là thư viện JavaScript/TypeScript (gói npm `vietnam-qr-pay`) để tạo (encode) và đọc (decode) nội dung mã QR thanh toán theo chuẩn VietQR và VNPayQR. Thư viện hỗ trợ VietQR tĩnh và động của ngân hàng, QR Đa năng của MoMo và ZaloPay (nhận tiền qua số tài khoản gán tại BVBank) cùng QR của VNPay. Nội dung QR được xây dựng hoặc phân tích hoàn toàn ở phía mã nguồn, không cần gọi API của bên thứ ba.",
+    "purposeVi": "Giúp lập trình viên tạo chuỗi nội dung QR chuyển khoản (kèm số tiền, nội dung) hoặc kiểm tra, trích xuất thông tin từ một mã QR thanh toán Việt Nam có sẵn.",
+    "featuresVi": [
+      "VietQR tĩnh và động: tạo QR từ mã BIN ngân hàng (`BanksObject`), số tài khoản, số tiền và nội dung chuyển tiền",
+      "QR Đa năng MoMo/ZaloPay: tạo QR nhận tiền cho số tài khoản ví được gán tại BVBank, kèm mã tham chiếu MoMo",
+      "VNPayQR: tạo QR với merchantId, merchantName, store và terminal",
+      "Decode: đọc mã QR để lấy nhà cung cấp, mã ngân hàng, số tài khoản, số tiền, nội dung và kiểm tra tính hợp lệ (`isValid`)",
+      "Chỉnh sửa và tạo lại: thay đổi số tiền/nội dung của QR đã đọc rồi gọi `build()` để có mã QR mới"
+    ],
+    "requirementsVi": "Môi trường Node.js/JavaScript có trình quản lý gói npm.",
+    "installStepsVi": [
+      "Cài gói từ npm: `npm install vietnam-qr-pay`",
+      "Nhập lớp cần dùng: `import { QRPay, BanksObject } from 'vietnam-qr-pay';`"
+    ],
+    "cliCommand": "npm install vietnam-qr-pay",
+    "usageStepsVi": [
+      "Tạo VietQR: gọi `QRPay.initVietQR({ bankBin: BanksObject.acb.bin, bankNumber: '...', amount: '10000', purpose: 'Chuyen tien' })` rồi `qrPay.build()` để lấy chuỗi nội dung QR.",
+      "Tạo QR VNPay: gọi `QRPay.initVNPayQR({ merchantId, merchantName, store, terminal })` rồi `build()`.",
+      "Đọc QR: khởi tạo `new QRPay(qrContent)` và đọc các thuộc tính `isValid`, `provider.name`, `consumer.bankNumber`, `amount`, `additionalData.purpose`.",
+      "Hiển thị chuỗi kết quả thành hình ảnh bằng thư viện vẽ QR bất kỳ (thư viện này chỉ tạo nội dung chuỗi)."
+    ],
+    "samplePromptsVi": [
+      "Viết hàm Node.js dùng vietnam-qr-pay tạo VietQR động cho tài khoản ACB với số tiền và nội dung đơn hàng",
+      "Đọc chuỗi QR khách gửi và cho biết ngân hàng, số tài khoản, số tiền bằng vietnam-qr-pay",
+      "Tạo mã QR nhận tiền MoMo cho tài khoản bắt đầu bằng PSP kèm mã tham chiếu MOMOW2W"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, dùng tự do cho dự án thương mại",
+      "Không cần tài khoản hay khóa API, xử lý hoàn toàn ngoại tuyến",
+      "Hỗ trợ cả encode và decode cho VietQR, MoMo, ZaloPay và VNPayQR",
+      "README tiếng Việt với ví dụ cụ thể cho từng loại QR"
+    ],
+    "consVi": [
+      "Chỉ tạo/đọc nội dung QR, không xác nhận giao dịch hay nhận webhook thanh toán",
+      "Theo README, cách tạo QR MoMo cho tài khoản cũ có thể đã lỗi thời và ý nghĩa một số trường trong QR ZaloPay chưa rõ",
+      "Cấu trúc QR của ví điện tử có thể thay đổi theo nhà cung cấp, cần kiểm tra lại khi triển khai"
+    ],
+    "sourceEvidence": {
+      "npm install vietnam-qr-pay": "README.md:12",
+      "import { QRPay, BanksObject } from 'vietnam-qr-pay';": "README.md:21"
+    },
+    "meta": {
+      "id": "xuannghia-vietnam-qr-pay",
+      "nameVi": "Vietnam QR Pay — Thư viện tạo và đọc mã VietQR, MoMo, ZaloPay, VNPayQR",
+      "icon": "CreditCard",
+      "categories": [
+        "payment_gateway",
+        "fintech_banking"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, mã nguồn mở theo giấy phép MIT",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npm install vietnam-qr-pay"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "mona-software/monapay-mcp",
+    "license": "MIT License — Copyright (c) 2026 The MONA Group",
+    "authorName": "The MONA Group (MONA Software)",
+    "websiteUrl": "https://monapay.vn/ai-agent",
+    "toolType": "mcp",
+    "taglineEn": "An MCP server that lets AI coding agents such as Claude Code, Cursor and Codex (or any MCP client) work with MONA Pay while coding: link a bank account, create checkout links and VietQR codes, look up incoming transfers, configure and test webhooks, email and Zalo group notifications, and verify webhook signatures.",
+    "summaryVi": "monapay-mcp là MCP server chính thức của MONA Pay (dịch vụ API ngân hàng và xác nhận thanh toán tự động của The MONA Group), phát hành trên npm với tên `monapay-mcp` và trong MCP Registry là `vn.monapay/monapay-mcp`. Server cho phép tác tử lập trình như Claude Code, Cursor, Codex liên kết tài khoản ACB qua OTP, tạo trang checkout và VietQR động, tra cứu giao dịch đến, cấu hình và kiểm thử webhook, thông báo qua email và nhóm Zalo, xác minh chữ ký webhook. Kết nối bằng khóa API (client ID và client secret) tạo trong dashboard MONA Pay.",
+    "purposeVi": "Giúp lập trình viên tích hợp xác nhận chuyển khoản ngân hàng tự động của MONA Pay vào dự án ngay trong lúc code với trợ lý AI, từ sinh mã nhận webhook đến kiểm thử bằng giao dịch sandbox.",
+    "featuresVi": [
+      "Khởi động nhanh: `monapay_quickstart` kiểm tra trạng thái tài khoản (đã liên kết ngân hàng/VA, đã cấu hình webhook) và trả về các bước tiếp theo",
+      "Liên kết ngân hàng: liên kết tài khoản ACB và tạo tài khoản ảo (VA) qua hai bước OTP do người dùng cung cấp",
+      "Checkout và VietQR: tạo, tra cứu, lọc, hủy phiên checkout và tạo/hủy VietQR động cho đơn hàng",
+      "Giao dịch: liệt kê giao dịch đến theo VA, tìm theo `transaction_code`, thống kê theo khoảng ngày và tạo giao dịch giả trong sandbox",
+      "Webhook: tạo/sửa/xóa cấu hình (`NONE`, `API_KEY`, `HMAC_SHA256`), gửi webhook thử, xem log và tỉ lệ thành công / P95",
+      "Thông báo: cấu hình email (1–10 người nhận) và nhóm Zalo cho các sự kiện như `TRANSACTION_IN`, `CHECKOUT_PAID`",
+      "Bảo mật: xác minh chữ ký webhook cục bộ, tạo và xoay vòng `client_secret`",
+      "Sinh mã: `monapay_generate_webhook_snippet` tạo mã nhận webhook cho PHP, Node hoặc Python; prompt `integrate-monapay` lập kế hoạch tích hợp 6 bước"
+    ],
+    "requirementsVi": "Node.js 18 trở lên và khóa API MONA Pay (client ID và client secret, tạo trong dashboard MONA Pay).",
+    "installStepsVi": [
+      "Tạo khóa API (client ID, client secret) trong dashboard MONA Pay.",
+      "Claude Code: chạy `claude mcp add monapay -e MONAPAY_CLIENT_ID=your_client_id -e MONAPAY_CLIENT_SECRET=your_client_secret -- npx -y monapay-mcp` (README viết lệnh trên nhiều dòng).",
+      "Cursor (`.cursor/mcp.json`) hoặc Claude Desktop (`claude_desktop_config.json`): thêm khối `mcpServers` với `command` là `npx`, `args` là `[\"-y\", \"monapay-mcp\"]` và hai biến môi trường `MONAPAY_CLIENT_ID`, `MONAPAY_CLIENT_SECRET`.",
+      "Có thể chạy thử server qua stdio bằng `npx -y monapay-mcp`."
+    ],
+    "cliCommand": "claude mcp add monapay \\\n  -e MONAPAY_CLIENT_ID=your_client_id \\\n  -e MONAPAY_CLIENT_SECRET=your_client_secret \\\n  -- npx -y monapay-mcp",
+    "usageStepsVi": [
+      "Yêu cầu tác tử gọi `monapay_whoami` để kiểm tra kết nối và gói dịch vụ của tài khoản.",
+      "Dùng `monapay_quickstart` để biết các bước còn thiếu (liên kết ngân hàng, cấu hình webhook).",
+      "Khi liên kết tài khoản ACB, tác tử phải hỏi người dùng mã OTP ở bước 2 và 4, không được tự đoán OTP.",
+      "Sinh endpoint nhận webhook, đăng ký bằng `monapay_create_webhook(auth_type=\"HMAC_SHA256\", ...)`, kiểm thử bằng `monapay_test_webhook` và xem `monapay_webhook_logs`.",
+      "Tạo checkout cho từng đơn hàng bằng `monapay_create_checkout` và chờ sự kiện `CHECKOUT_PAID`."
+    ],
+    "samplePromptsVi": [
+      "Tích hợp xác nhận chuyển khoản ngân hàng tự động vào website Laravel này bằng MONA Pay",
+      "Tạo một giao dịch sandbox để kiểm tra webhook của tôi có trả về 200 không",
+      "Liệt kê các giao dịch đến trong 7 ngày qua của tài khoản ảo để đối soát",
+      "Tạo VietQR động cho đơn hàng DH0001 số tiền 150.000đ"
+    ],
+    "prosVi": [
+      "MCP server chính thức của nhà cung cấp, giấy phép MIT",
+      "Bao quát toàn bộ luồng tích hợp: liên kết ngân hàng, checkout, VietQR, webhook, thông báo",
+      "Có giao dịch sandbox để kiểm thử webhook mà không cần chuyển tiền thật",
+      "Hướng dẫn cấu hình sẵn cho Claude Code, Cursor, Claude Desktop và Codex"
+    ],
+    "consVi": [
+      "Cần tài khoản và khóa API MONA Pay; theo README, liên kết ngân hàng hiện mô tả cho tài khoản ACB",
+      "Đăng nhập bằng username/password là cách cũ và không dùng được với tài khoản bật 2FA",
+      "`monapay_rotate_key` làm secret cũ hết hiệu lực ngay, phải cập nhật cấu hình MCP và khởi động lại client",
+      "Nhóm Zalo nhận thông báo phải có bot MONA do đội MONA thêm vào"
+    ],
+    "sourceEvidence": {
+      "npx -y monapay-mcp": "README.md:14",
+      "claude mcp add monapay -e MONAPAY_CLIENT_ID=your_client_id -e MONAPAY_CLIENT_SECRET=your_client_secret -- npx -y monapay-mcp": "README.md:20-23",
+      "mcpServers JSON (Cursor / Claude Desktop)": "README.md:28-38"
+    },
+    "meta": {
+      "id": "mona-software-monapay-mcp",
+      "nameVi": "MONA Pay MCP — Tích hợp thanh toán chuyển khoản, VietQR và webhook MONA Pay cho tác tử AI",
+      "icon": "CreditCard",
+      "categories": [
+        "payment_gateway",
+        "fintech_banking",
+        "backend_api"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "MCP server miễn phí (MIT); cần tài khoản và khóa API MONA Pay, phí dịch vụ theo gói của MONA Pay",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude mcp add monapay \\\n  -e MONAPAY_CLIENT_ID=your_client_id \\\n  -e MONAPAY_CLIENT_SECRET=your_client_secret \\\n  -- npx -y monapay-mcp"
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"monapay\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"monapay-mcp\"],\n      \"env\": { \"MONAPAY_CLIENT_ID\": \"client_id\", \"MONAPAY_CLIENT_SECRET\": \"client_secret\" }\n    }\n  }\n}"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"monapay\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"monapay-mcp\"],\n      \"env\": { \"MONAPAY_CLIENT_ID\": \"client_id\", \"MONAPAY_CLIENT_SECRET\": \"client_secret\" }\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "sepayvn/sepay-pg-php",
+    "license": "MIT License — Copyright (c) 2025 Ngô Quốc Đạt",
+    "authorName": "SePay",
+    "websiteUrl": "https://developer.sepay.vn",
+    "toolType": "sdk",
+    "taglineEn": "Official PHP SDK for SePay Payment Gateway. Easy integration for payments, bank transfers, VietQR.",
+    "summaryVi": "SePay PHP SDK là SDK PHP chính thức cho Cổng thanh toán SePay, phát hành trên Packagist với tên `sepay/sepay-pg`. SDK tạo các trường biểu mẫu checkout có chữ ký (hoặc sinh sẵn HTML form) để chuyển khách hàng sang trang thanh toán SePay, hỗ trợ chuyển khoản ngân hàng, VietQR và thẻ. SDK cũng gọi API đơn hàng để tra cứu, liệt kê và hủy giao dịch, kèm các exception riêng cho từng loại lỗi.",
+    "purposeVi": "Giúp website/ứng dụng PHP tích hợp cổng thanh toán SePay nhanh chóng với môi trường sandbox và production.",
+    "featuresVi": [
+      "CheckoutBuilder: dựng dữ liệu checkout (số tiền, mã hóa đơn, mô tả, URL thành công/lỗi/hủy) theo kiểu builder",
+      "Form có chữ ký: `generateFormHtml()` sinh HTML form hoặc `generateFormFields()` trả về các trường kèm `signature`",
+      "Phương thức thanh toán: chọn `CARD`, `BANK_TRANSFER` hoặc hiển thị tất cả phương thức",
+      "Đơn hàng: `orders()->retrieve()`, `orders()->list()` với bộ lọc và `orders()->voidTransaction()`",
+      "Xử lý lỗi: exception riêng cho xác thực, dữ liệu không hợp lệ, không tìm thấy, giới hạn tốc độ và lỗi máy chủ",
+      "Cấu hình: timeout, số lần thử lại, độ trễ thử lại, chế độ debug và logger tương thích PSR-3"
+    ],
+    "requirementsVi": "PHP 7.4 trở lên, ext-json, ext-curl, Guzzle HTTP client; merchant ID và secret key của SePay.",
+    "installStepsVi": [
+      "Cài SDK bằng Composer: `composer require sepay/sepay-pg`",
+      "Nạp autoload `require_once 'vendor/autoload.php';` và khởi tạo `new SePayClient($merchantId, $secretKey, SePayClient::ENVIRONMENT_SANDBOX)`."
+    ],
+    "cliCommand": "composer require sepay/sepay-pg",
+    "usageStepsVi": [
+      "Tạo dữ liệu checkout bằng `CheckoutBuilder::make()->currency('VND')->orderAmount(100000)->operation('PURCHASE')->orderInvoiceNumber('INV_001')->build()`.",
+      "Hiển thị form thanh toán bằng `$sepay->checkout()->generateFormHtml($checkoutData)`.",
+      "Tra cứu đơn hàng bằng `$sepay->orders()->retrieve('ORDER_INVOICE_NUMBER')` hoặc liệt kê với bộ lọc trạng thái, ngày tạo.",
+      "Chạy ví dụ có sẵn trong repo: `php examples/basic-usage.php`."
+    ],
+    "samplePromptsVi": [
+      "Tích hợp SePay vào trang thanh toán PHP của tôi bằng sepay/sepay-pg ở môi trường sandbox",
+      "Viết đoạn PHP liệt kê các đơn hàng SePay có trạng thái CAPTURED trong tháng này",
+      "Xử lý RateLimitException khi gọi API đơn hàng SePay và thử lại sau"
+    ],
+    "prosVi": [
+      "SDK chính thức của SePay, giấy phép MIT",
+      "Có môi trường sandbox để thử nghiệm",
+      "README song ngữ Việt/Anh, kèm thư mục ví dụ",
+      "Hỗ trợ PHP từ 7.4, phù hợp cả hệ thống cũ"
+    ],
+    "consVi": [
+      "Cần đăng ký merchant SePay để có merchant ID và secret key",
+      "Theo README, đơn hàng được tạo khi khách hoàn thành checkout, không tạo trực tiếp qua API",
+      "Chỉ dành cho PHP"
+    ],
+    "sourceEvidence": {
+      "composer require sepay/sepay-pg": "README.vi.md:17 (README.md:18)",
+      "php examples/basic-usage.php": "README.vi.md:69"
+    },
+    "meta": {
+      "id": "sepayvn-sepay-pg-php",
+      "nameVi": "SePay PHP SDK — SDK chính thức cổng thanh toán SePay (chuyển khoản, VietQR, thẻ)",
+      "icon": "CreditCard",
+      "categories": [
+        "payment_gateway",
+        "backend_api"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "SDK miễn phí (MIT); phí giao dịch theo hợp đồng với SePay",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "composer require sepay/sepay-pg"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "VinAIResearch/PhoNLP",
+    "license": "BSD 3-Clause License — Copyright (c) 2021, VinAI",
+    "authorName": "VinAI Research",
+    "websiteUrl": "https://aclanthology.org/2021.naacl-demos.1/",
+    "toolType": "model",
+    "taglineEn": "PhoNLP is a multi-task learning model for joint part-of-speech (POS) tagging, named entity recognition (NER) and dependency parsing.",
+    "summaryVi": "PhoNLP là mô hình học đa nhiệm dựa trên BERT của VinAI Research, thực hiện đồng thời gán nhãn từ loại (POS), nhận dạng thực thể có tên (NER) và phân tích cú pháp phụ thuộc cho tiếng Việt. Theo README, trên các bộ dữ liệu chuẩn tiếng Việt PhoNLP đạt kết quả state-of-the-art, vượt cách tinh chỉnh PhoBERT riêng lẻ cho từng tác vụ. Thư viện có gói pip `phonlp`, cung cấp mô hình huấn luyện sẵn cho tiếng Việt và dòng lệnh để huấn luyện, đánh giá, gán nhãn kho văn bản.",
+    "purposeVi": "Phân tích ngữ pháp và trích xuất thực thể từ văn bản tiếng Việt đã tách từ, phục vụ nghiên cứu và các hệ thống xử lý ngôn ngữ tự nhiên.",
+    "featuresVi": [
+      "Đa nhiệm: một mô hình cho cả POS tagging, NER và dependency parsing",
+      "Mô hình huấn luyện sẵn: tải tự động bằng `phonlp.download(save_dir=...)`",
+      "Python API: `phonlp.load()`, `model.annotate()` cho câu hoặc cả tệp văn bản, xuất định dạng 6 cột hoặc CoNLL 10 cột",
+      "Dòng lệnh: `run_phonlp.py` với các chế độ `train`, `eval`, `annotate`",
+      "Mở rộng ngôn ngữ khác: có thể huấn luyện với bất kỳ mô hình BERT nào trên transformers (BERT, mBERT, RoBERTa, XLM-RoBERTa)"
+    ],
+    "requirementsVi": "Python >= 3.6, PyTorch >= 1.4.0. Văn bản thô cần tách từ trước bằng VnCoreNLP (`py_vncorenlp`).",
+    "installStepsVi": [
+      "Cài từ PyPI: `pip3 install phonlp`",
+      "Hoặc cài từ mã nguồn: `git clone https://github.com/VinAIResearch/PhoNLP`, `cd PhoNLP`, `pip3 install -e .`",
+      "Cài bộ tách từ cho văn bản thô: `pip3 install py_vncorenlp`"
+    ],
+    "cliCommand": "pip3 install phonlp",
+    "usageStepsVi": [
+      "Tải mô hình tiếng Việt: `phonlp.download(save_dir='/absolute/path/to/pretrained_phonlp')`.",
+      "Nạp mô hình: `model = phonlp.load(save_dir='/absolute/path/to/pretrained_phonlp')`.",
+      "Gán nhãn một câu đã tách từ: `model.print_out(model.annotate(text=\"Tôi đang làm_việc tại VinAI .\"))`.",
+      "Gán nhãn cả tệp: `model.annotate(input_file=..., output_file=...)`, thêm `output_type='conll'` để xuất định dạng CoNLL."
+    ],
+    "samplePromptsVi": [
+      "Viết script Python dùng PhoNLP trích xuất tên tổ chức và địa danh từ các bài báo tiếng Việt",
+      "Kết hợp VnCoreNLP và PhoNLP để phân tích cú pháp phụ thuộc cho văn bản thô",
+      "Huấn luyện lại PhoNLP với dữ liệu NER riêng dựa trên vinai/phobert-base"
+    ],
+    "prosVi": [
+      "Giấy phép BSD 3-Clause, dùng được cho mục đích thương mại",
+      "Một mô hình xử lý ba tác vụ, gọn hơn dùng ba mô hình riêng",
+      "Có mô hình huấn luyện sẵn cho tiếng Việt và bài báo NAACL 2021 đi kèm"
+    ],
+    "consVi": [
+      "Đầu vào phải là câu đã tách từ; văn bản thô cần chạy VnCoreNLP trước",
+      "Yêu cầu phiên bản Python/PyTorch cũ trong README, có thể cần kiểm tra tương thích",
+      "Repo ít cập nhật (lần commit gần nhất tháng 12/2024)",
+      "README yêu cầu trích dẫn bài báo khi dùng cho kết quả công bố"
+    ],
+    "sourceEvidence": {
+      "pip3 install phonlp": "README.md:37",
+      "git clone https://github.com/VinAIResearch/PhoNLP": "README.md:40",
+      "pip3 install -e .": "README.md:42",
+      "pip3 install py_vncorenlp": "README.md:184"
+    },
+    "meta": {
+      "id": "vinairesearch-phonlp",
+      "nameVi": "PhoNLP — Mô hình tiếng Việt gán từ loại, nhận dạng thực thể và phân tích cú pháp",
+      "icon": "Brain",
+      "categories": [
+        "nlp_language",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (BSD-3-Clause)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, mã nguồn mở theo giấy phép BSD 3-Clause",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip3 install phonlp"
+        }
+      ]
+    }
+  }
+]
