@@ -1,0 +1,575 @@
+[
+  {
+    "repo": "awslabs/mcp",
+    "license": "Apache License 2.0",
+    "authorName": "AWS Labs (Amazon Web Services)",
+    "websiteUrl": "https://awslabs.github.io/mcp/",
+    "toolType": "mcp",
+    "taglineEn": "A suite of specialized MCP servers that help you get the most out of AWS, wherever you use MCP.",
+    "summaryVi": "Bộ sưu tập các MCP server mã nguồn mở chính thức của AWS, mỗi server chuyên cho một mảng: tài liệu AWS, gọi AWS API, hạ tầng dưới dạng mã (CDK, Terraform), Bedrock Knowledge Base, cơ sở dữ liệu, chi phí và vận hành. Các server chạy cục bộ qua stdio và được phát hành dưới dạng gói Python, khởi chạy bằng uvx.",
+    "purposeVi": "Giúp trợ lý AI có ngữ cảnh chính xác, cập nhật về dịch vụ AWS và thực hiện các tác vụ hạ tầng, dữ liệu, chi phí trên tài khoản AWS của bạn.",
+    "featuresVi": [
+      "Tài liệu AWS thời gian thực: AWS Documentation MCP Server lấy tài liệu và API reference mới nhất",
+      "AWS API: gọi các API AWS từ trợ lý AI qua aws-api-mcp-server",
+      "Hạ tầng dưới dạng mã: server cho CDK, Terraform và CloudFormation (aws-iac-mcp-server)",
+      "AI/ML: truy vấn Amazon Bedrock Knowledge Base (bedrock-kb-retrieval-mcp-server)",
+      "Dữ liệu và phân tích: server cho Aurora DSQL, Valkey, xử lý dữ liệu và nhiều cơ sở dữ liệu SQL/NoSQL",
+      "Chi phí và vận hành: tra cứu giá AWS (aws-pricing-mcp-server), AWS Support",
+      "Có hướng dẫn cấu hình cho Kiro, Cline, Cursor, Windsurf, VS Code và Claude Code"
+    ],
+    "requirementsVi": "Cài uv của Astral, Python 3.10 (qua `uv python install 3.10`) và thông tin xác thực AWS có quyền với các dịch vụ cần dùng.",
+    "installStepsVi": [
+      "Cài uv theo hướng dẫn của Astral, sau đó cài Python: `uv python install 3.10`",
+      "Cấu hình thông tin xác thực AWS (AWS credentials) có quyền với các dịch vụ cần dùng",
+      "Thêm server tài liệu AWS vào Claude Code: `claude mcp add aws-docs uvx awslabs.aws-documentation-mcp-server@latest`",
+      "Thêm server gọi AWS API: `claude mcp add aws-api uvx awslabs.aws-api-mcp-server@latest`",
+      "Kiểm tra danh sách server đã cài: `claude mcp list`"
+    ],
+    "cliCommand": "claude mcp add aws-docs uvx awslabs.aws-documentation-mcp-server@latest",
+    "usageStepsVi": [
+      "Chọn server phù hợp trong bảng danh mục của README (tài liệu, IaC, dữ liệu, chi phí...)",
+      "Thêm server bằng lệnh `claude mcp add` hoặc khai báo trong tệp `.mcp.json` ở thư mục dự án",
+      "Đặt câu hỏi hoặc giao việc liên quan đến AWS cho trợ lý AI; server sẽ cung cấp tài liệu hoặc thao tác tương ứng"
+    ],
+    "samplePromptsVi": [
+      "Tra tài liệu AWS mới nhất và giải thích cách cấu hình vòng đời (lifecycle) cho bucket S3",
+      "Viết stack CDK tạo hàm Lambda kèm API Gateway theo thực hành tốt của AWS",
+      "Ước tính chi phí hằng tháng khi chạy 2 instance EC2 m7g.large ở region ap-southeast-1"
+    ],
+    "prosVi": [
+      "Do AWS Labs phát hành và duy trì, cập nhật thường xuyên",
+      "Giấy phép Apache 2.0, dùng tự do cả cho mục đích thương mại",
+      "Nhiều server chuyên biệt, có hướng dẫn cho nhiều MCP client kể cả Claude Code"
+    ],
+    "consVi": [
+      "Các server trong repo chỉ hỗ trợ stdio; hỗ trợ SSE đã bị gỡ từ ngày 26/5/2025",
+      "Cần tài khoản AWS và thông tin xác thực; một số thao tác có thể phát sinh chi phí AWS",
+      "README khuyến nghị Agent Toolkit for AWS cho môi trường sản xuất; các dự án hữu ích sẽ dần chuyển sang đó"
+    ],
+    "sourceEvidence": {
+      "uv python install 3.10": "README.md:484",
+      "claude mcp add aws-docs uvx awslabs.aws-documentation-mcp-server@latest": "README.md:987",
+      "claude mcp add aws-api uvx awslabs.aws-api-mcp-server@latest": "README.md:985",
+      "claude mcp list": "README.md:1000",
+      "jsonConfig .mcp.json": "README.md:1012"
+    },
+    "meta": {
+      "id": "awslabs-mcp",
+      "nameVi": "AWS MCP Servers — Bộ MCP server chính thức của AWS",
+      "icon": "Layers",
+      "categories": [
+        "cloud_infrastructure",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude mcp add aws-docs uvx awslabs.aws-documentation-mcp-server@latest",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"awslabs.aws-iac-mcp-server\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"awslabs.aws-iac-mcp-server@latest\"\n      ],\n      \"env\": {\n        \"FASTMCP_LOG_LEVEL\": \"ERROR\"\n      }\n    },\n    \"awslabs.aws-documentation-mcp-server\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"awslabs.aws-documentation-mcp-server@latest\"\n      ],\n      \"env\": {\n        \"FASTMCP_LOG_LEVEL\": \"ERROR\",\n        \"AWS_DOCUMENTATION_PARTITION\": \"aws\"\n      }\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "microsoft/mcp",
+    "license": "MIT License",
+    "authorName": "Microsoft",
+    "websiteUrl": "https://learn.microsoft.com/azure/developer/azure-mcp-server/",
+    "toolType": "mcp",
+    "taglineEn": "Azure MCP Server supercharges your agents with Azure context across numerous Azure services.",
+    "summaryVi": "Kho chính thức của Microsoft chứa mã nguồn Azure MCP Server và Microsoft Fabric MCP Server. Azure MCP Server gom toàn bộ công cụ Azure vào một server, cho phép trợ lý AI làm việc với Storage, Cosmos DB, Key Vault, AKS, Azure Monitor, Microsoft Foundry và nhiều dịch vụ khác.",
+    "purposeVi": "Kết nối tác tử AI với tài nguyên Azure của bạn để truy vấn, quản lý và triển khai bằng ngôn ngữ tự nhiên.",
+    "featuresVi": [
+      "Một server cho mọi công cụ Azure: Storage, Cosmos DB, Key Vault, AKS, Container Apps, Event Hubs, Azure Monitor...",
+      "Microsoft Foundry: liệt kê, triển khai mô hình và tạo, đánh giá agent",
+      "Nhiều cách cài: plugin Claude Code, .NET (dnx), Node.js (npx), Python (uvx), Docker, MCPB",
+      "Hỗ trợ đám mây chủ quyền: Azure China Cloud, Azure US Government qua tùy chọn --cloud",
+      "Có thể tự host dạng remote trên Azure Container Apps bằng mẫu azd"
+    ],
+    "requirementsVi": "Đã đăng nhập Azure trước khi chạy server (ví dụ `az login`); Node.js LTS nếu dùng npx, hoặc .NET 10 SDK nếu dùng dnx.",
+    "installStepsVi": [
+      "Đăng nhập Azure, ví dụ bằng Azure CLI: `az login`",
+      "Claude Code: cài plugin Azure từ marketplace chính thức bằng lệnh `/plugin install azure@claude-plugins-official`",
+      "Hoặc chạy server trực tiếp bằng Node.js: `npx -y @azure/mcp@latest server start`",
+      "Xem danh sách công cụ có sẵn: `npx -y @azure/mcp@latest tools list`"
+    ],
+    "cliCommand": "npx -y @azure/mcp@latest server start",
+    "usageStepsVi": [
+      "Thêm khối cấu hình `azure-mcp-server` vào tệp mcp.json của MCP client",
+      "Khởi động lại client và làm mới danh sách công cụ để thấy Azure MCP Server",
+      "Gõ yêu cầu liên quan đến Azure, ví dụ liệt kê container trong Azure Storage"
+    ],
+    "samplePromptsVi": [
+      "List my Azure Storage containers",
+      "Liệt kê các khuyến nghị Azure Advisor cho subscription của tôi",
+      "Liệt kê các model deployment trong Microsoft Foundry"
+    ],
+    "prosVi": [
+      "Server chính thức của Microsoft, giấy phép MIT",
+      "Bao phủ rất nhiều dịch vụ Azure trong một server duy nhất",
+      "Có plugin cài một lệnh cho Claude Code và nhiều gói cài đặt (npm, NuGet, PyPI, Docker)"
+    ],
+    "consVi": [
+      "Bắt buộc xác thực Azure; thao tác trên tài nguyên có thể phát sinh chi phí",
+      "README chính của kho chỉ là trang tổng quan; hướng dẫn chi tiết nằm ở servers/Azure.Mcp.Server/README.md"
+    ],
+    "sourceEvidence": {
+      "az login": "servers/Azure.Mcp.Server/README.md:932",
+      "/plugin install azure@claude-plugins-official": "servers/Azure.Mcp.Server/README.md:190",
+      "npx -y @azure/mcp@latest server start": "servers/Azure.Mcp.Server/README.md:742",
+      "npx -y @azure/mcp@latest tools list": "servers/Azure.Mcp.Server/README.md:747",
+      "jsonConfig mcpServers (npx)": "servers/Azure.Mcp.Server/README.md:238"
+    },
+    "meta": {
+      "id": "microsoft-mcp",
+      "nameVi": "Azure MCP Server — MCP server chính thức của Microsoft cho Azure",
+      "icon": "Layers",
+      "categories": [
+        "cloud_infrastructure",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "/plugin install azure@claude-plugins-official"
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "npx -y @azure/mcp@latest server start",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"azure-mcp-server\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@azure/mcp@latest\",\n        \"server\",\n        \"start\"\n      ]\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "googleapis/mcp-toolbox",
+    "license": "Apache License 2.0",
+    "authorName": "Google (googleapis)",
+    "websiteUrl": "https://mcp-toolbox.dev/",
+    "toolType": "mcp",
+    "taglineEn": "MCP Toolbox for Databases is an open source Model Context Protocol (MCP) server that connects your AI agents, IDEs, and applications directly to your enterprise databases.",
+    "summaryVi": "MCP Toolbox for Databases (trước đây là genai-toolbox) là MCP server mã nguồn mở của Google kết nối tác tử AI và IDE với cơ sở dữ liệu doanh nghiệp. Có bộ công cụ dựng sẵn (prebuilt) cho AlloyDB, BigQuery, Cloud SQL, Spanner, PostgreSQL, MySQL, MongoDB, Redis... và framework định nghĩa công cụ tùy biến bằng tệp tools.yaml.",
+    "purposeVi": "Cho phép hỏi dữ liệu bằng ngôn ngữ tự nhiên, khám phá lược đồ và xây công cụ truy vấn an toàn cho tác tử AI chạy thực tế.",
+    "featuresVi": [
+      "Công cụ dựng sẵn: chạy với cờ `--prebuilt=<database>` để có ngay list_tables, execute_sql...",
+      "Hỗ trợ Google Cloud: AlloyDB, BigQuery, Cloud SQL, Spanner, Firestore, Knowledge Catalog",
+      "Hỗ trợ CSDL khác: PostgreSQL, MySQL, SQL Server, Oracle, MongoDB, Redis, Elasticsearch, Neo4j, Snowflake...",
+      "Framework công cụ tùy biến: khai báo sources, tools, toolsets, prompts trong tools.yaml",
+      "Connection pooling, xác thực tích hợp (IAM) và quan sát qua OpenTelemetry",
+      "SDK cho Python, JS/TS, Go, Java để tích hợp vào ADK, LangChain, LlamaIndex"
+    ],
+    "requirementsVi": "Node.js (để chạy npx) hoặc tải binary/ảnh container; thông tin kết nối tới cơ sở dữ liệu cần dùng qua biến môi trường.",
+    "installStepsVi": [
+      "Thêm cấu hình MCP dùng gói `@toolbox-sdk/server` với cờ `--prebuilt=postgres --stdio` vào mcp.json hoặc claude_desktop_config.json",
+      "Đặt biến môi trường kết nối cơ sở dữ liệu theo Prebuilt Tools Reference",
+      "Hoặc cài bằng Homebrew: `brew install mcp-toolbox`",
+      "Với công cụ tùy biến, chạy server bằng tệp cấu hình: `npx @toolbox-sdk/server --config tools.yaml`"
+    ],
+    "cliCommand": "npx @toolbox-sdk/server --config tools.yaml",
+    "usageStepsVi": [
+      "Chọn cơ sở dữ liệu và bộ công cụ dựng sẵn bằng `--prebuilt=<database>` hoặc `--prebuilt=<database>/<toolset>`",
+      "Khởi động lại MCP client để nạp các công cụ",
+      "Hỏi dữ liệu, khám phá lược đồ hoặc sinh mã truy vấn bằng ngôn ngữ tự nhiên"
+    ],
+    "samplePromptsVi": [
+      "Liệt kê các bảng trong cơ sở dữ liệu PostgreSQL và mô tả cột của bảng orders",
+      "Viết và chạy truy vấn SQL đếm số đơn hàng theo tháng trong năm nay",
+      "Tạo tools.yaml định nghĩa công cụ tìm khách hàng theo email với truy vấn có tham số"
+    ],
+    "prosVi": [
+      "Dự án chính thức của Google, giấy phép Apache 2.0",
+      "Hỗ trợ rất nhiều cơ sở dữ liệu, cả Google Cloud lẫn bên ngoài",
+      "Vừa dùng ngay trong IDE vừa làm framework công cụ cho tác tử chạy thực tế"
+    ],
+    "consVi": [
+      "Kho đã đổi tên từ genai-toolbox sang mcp-toolbox, tài liệu cũ có thể còn dùng tên cũ",
+      "README lưu ý cách chạy bằng npx ưu tiên tiện lợi hơn hiệu năng; nên dùng binary hoặc container cho môi trường ổn định",
+      "Cần tự cấu hình thông tin kết nối và quyền truy cập cơ sở dữ liệu"
+    ],
+    "sourceEvidence": {
+      "npx @toolbox-sdk/server --config tools.yaml": "README.md:251",
+      "brew install mcp-toolbox": "README.md:381",
+      "jsonConfig mcpServers toolbox-postgres": "README.md:80"
+    },
+    "meta": {
+      "id": "googleapis-mcp-toolbox",
+      "nameVi": "MCP Toolbox for Databases — MCP server cơ sở dữ liệu của Google",
+      "icon": "Database",
+      "categories": [
+        "database_sql_nosql",
+        "cloud_infrastructure"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"toolbox-postgres\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@toolbox-sdk/server\",\n        \"--prebuilt=postgres\",\n        \"--stdio\"\n      ]\n    }\n  }\n}"
+        },
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npx @toolbox-sdk/server --config tools.yaml"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "cloudflare/mcp",
+    "license": "Apache License 2.0",
+    "authorName": "Cloudflare",
+    "websiteUrl": "https://mcp.cloudflare.com/mcp",
+    "toolType": "mcp",
+    "taglineEn": "A token-efficient MCP server for the entire Cloudflare API. 2500 endpoints in 1k tokens, powered by Code Mode.",
+    "summaryVi": "MCP server chính thức của Cloudflare (dạng remote) phủ toàn bộ Cloudflare API khoảng 2.500 endpoint nhưng chỉ tốn khoảng 1.000 token ngữ cảnh nhờ mô hình Code Mode: tác tử viết JavaScript để tìm endpoint trong đặc tả OpenAPI và gọi API ngay trên server. Server còn có công cụ tra tài liệu Cloudflare và phục vụ bộ Cloudflare skills.",
+    "purposeVi": "Quản lý Workers, KV, R2, D1, DNS, Firewall và các dịch vụ Cloudflare khác bằng ngôn ngữ tự nhiên mà không làm tràn ngữ cảnh mô hình.",
+    "featuresVi": [
+      "Code Mode: 4 công cụ docs, search, execute, whoami thay cho hàng nghìn công cụ riêng lẻ",
+      "Phủ toàn bộ Cloudflare API: Workers, KV, R2, D1, Pages, DNS, Firewall, Load Balancers, AI Gateway, Vectorize...",
+      "Xác thực OAuth (khuyến nghị) hoặc API token dạng Bearer cho CI/CD",
+      "Tùy chọn `?codemode=false` để đăng ký mỗi endpoint thành một công cụ riêng",
+      "Giới hạn kết quả mỗi lần gọi khoảng 6.000 token, có thể tắt bằng `?truncateToolResult=false`",
+      "Hỗ trợ GraphQL Analytics API qua cùng công cụ execute"
+    ],
+    "requirementsVi": "Tài khoản Cloudflare; MCP client hỗ trợ remote server (HTTP). Nếu dùng API token thì token không được bật lọc địa chỉ IP.",
+    "installStepsVi": [
+      "Thêm server remote với URL `https://mcp.cloudflare.com/mcp` vào cấu hình MCP client (khối `cloudflare-api`, type http)",
+      "Kết nối lần đầu sẽ chuyển sang Cloudflare để ủy quyền OAuth và chọn quyền",
+      "Hoặc tạo Cloudflare API token và cấu hình làm Bearer Token cho client"
+    ],
+    "usageStepsVi": [
+      "Sau khi kết nối, yêu cầu trợ lý AI làm việc với tài khoản Cloudflare",
+      "Tác tử dùng công cụ search để tìm endpoint, rồi execute để gọi API",
+      "Dùng công cụ docs để tra tài liệu Cloudflare khi cần"
+    ],
+    "samplePromptsVi": [
+      "List all my Workers",
+      "Create a KV namespace called 'my-cache'",
+      "Thêm bản ghi A cho api.example.com trỏ tới 192.0.2.1"
+    ],
+    "prosVi": [
+      "Server chính thức của Cloudflare, giấy phép Apache 2.0",
+      "Tiết kiệm ngữ cảnh rất lớn so với MCP thông thường (khoảng 1.100 token so với hơn 244.000)",
+      "Không cần cài đặt cục bộ, chỉ cần URL remote và OAuth"
+    ],
+    "consVi": [
+      "Cần tài khoản Cloudflare; một số tính năng yêu cầu gói Workers trả phí",
+      "API token có bật lọc địa chỉ IP (Client IP Address Filtering) hiện chưa được hỗ trợ",
+      "Tắt Code Mode làm chi phí token tăng mạnh (khoảng 244k token)"
+    ],
+    "sourceEvidence": {
+      "https://mcp.cloudflare.com/mcp": "README.md:16",
+      "jsonConfig mcpServers cloudflare-api": "README.md:24"
+    },
+    "meta": {
+      "id": "cloudflare-mcp",
+      "nameVi": "Cloudflare API MCP Server — MCP chính thức cho toàn bộ Cloudflare API",
+      "icon": "Globe",
+      "categories": [
+        "cloud_infrastructure",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"cloudflare-api\": {\n      \"type\": \"http\",\n      \"url\": \"https://mcp.cloudflare.com/mcp\"\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "grafana/mcp-grafana",
+    "license": "Apache License 2.0",
+    "authorName": "Grafana Labs",
+    "websiteUrl": "",
+    "toolType": "mcp",
+    "taglineEn": "A Model Context Protocol (MCP) server for Grafana.",
+    "summaryVi": "MCP server chính thức của Grafana Labs cho phép trợ lý AI truy cập phiên bản Grafana (tự host hoặc Grafana Cloud) và hệ sinh thái xung quanh: dashboard, datasource, Prometheus, Loki, cảnh báo, sự cố, OnCall. Viết bằng Go, chạy bằng uvx, Docker hoặc binary.",
+    "purposeVi": "Giúp kỹ sư vận hành tra cứu dashboard, truy vấn số liệu và log, xử lý cảnh báo và sự cố ngay trong trợ lý AI.",
+    "featuresVi": [
+      "Dashboard: tìm kiếm, xem tóm tắt, trích thuộc tính bằng JSONPath, tạo/sửa và vá (patch) dashboard",
+      "Truy vấn Prometheus, Loki, InfluxDB, SQL, CloudWatch, Elasticsearch/OpenSearch, Graphite...",
+      "Cảnh báo (Alerting), Sự cố (Incidents) và Grafana OnCall",
+      "Annotations, snapshots, render ảnh panel và provisioning",
+      "Chế độ chỉ đọc với cờ `--disable-write` cho môi trường sản xuất",
+      "Hỗ trợ nhiều tổ chức, header HTTP tùy chỉnh, SOCKS5 proxy, TLS và transport streamable-http"
+    ],
+    "requirementsVi": "Grafana 9.0 trở lên; service account token có đủ quyền; uv (nếu chạy bằng uvx) hoặc Docker.",
+    "installStepsVi": [
+      "Tạo service account trong Grafana và sinh service account token",
+      "Chạy bằng uvx (khuyến nghị): `uvx mcp-grafana`",
+      "Hoặc chạy bằng Docker (stdio): `docker run --rm -i -e GRAFANA_URL=http://localhost:3000 -e GRAFANA_SERVICE_ACCOUNT_TOKEN=<your service account token> grafana/mcp-grafana -t stdio`",
+      "Hoặc cài binary bằng Go: `GOBIN=\"$HOME/go/bin\" go install github.com/grafana/mcp-grafana/v2/cmd/mcp-grafana@latest`",
+      "Thêm khối cấu hình `grafana` (GRAFANA_URL, GRAFANA_SERVICE_ACCOUNT_TOKEN) vào MCP client"
+    ],
+    "cliCommand": "uvx mcp-grafana",
+    "usageStepsVi": [
+      "Đặt GRAFANA_URL là địa chỉ Grafana của bạn (với Grafana Cloud dùng URL instance)",
+      "Khởi động lại MCP client để nạp công cụ",
+      "Yêu cầu trợ lý AI tìm dashboard, chạy truy vấn hoặc xem cảnh báo"
+    ],
+    "samplePromptsVi": [
+      "Tìm dashboard có tag \"production\" và tóm tắt các panel trong đó",
+      "Truy vấn Prometheus tỷ lệ lỗi HTTP 5xx của dịch vụ checkout trong 1 giờ qua",
+      "Liệt kê các quy tắc cảnh báo đang ở trạng thái firing"
+    ],
+    "prosVi": [
+      "Server chính thức của Grafana Labs, giấy phép Apache 2.0",
+      "Hỗ trợ rất nhiều loại datasource và cả Grafana Cloud",
+      "Có chế độ chỉ đọc và lọc công cụ để giới hạn quyền"
+    ],
+    "consVi": [
+      "Cần Grafana 9.0 trở lên; một số thao tác datasource không chạy trên bản cũ",
+      "Cần service account token; dùng vai trò Editor tiện nhưng cấp quyền rộng",
+      "Dashboard lớn có thể tốn nhiều ngữ cảnh mô hình"
+    ],
+    "sourceEvidence": {
+      "uvx mcp-grafana": "README.md:818",
+      "docker run --rm -i -e GRAFANA_URL=http://localhost:3000 -e GRAFANA_SERVICE_ACCOUNT_TOKEN=<your service account token> grafana/mcp-grafana -t stdio": "README.md:830",
+      "GOBIN=\"$HOME/go/bin\" go install github.com/grafana/mcp-grafana/v2/cmd/mcp-grafana@latest": "README.md:873",
+      "jsonConfig mcpServers grafana": "README.md:18"
+    },
+    "meta": {
+      "id": "grafana-mcp-grafana",
+      "nameVi": "Grafana MCP — MCP server chính thức cho Grafana và giám sát",
+      "icon": "Cpu",
+      "categories": [
+        "devops_cicd",
+        "cloud_infrastructure",
+        "data_science_analytics"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "uvx mcp-grafana",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"grafana\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"mcp-grafana\"\n      ],\n      \"env\": {\n        \"GRAFANA_URL\": \"http://localhost:3000\",\n        \"GRAFANA_SERVICE_ACCOUNT_TOKEN\": \"<your service account token>\"\n      }\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "hashicorp/terraform-mcp-server",
+    "license": "Mozilla Public License 2.0",
+    "authorName": "HashiCorp (IBM)",
+    "websiteUrl": "https://developer.hashicorp.com/terraform/docs/tools/mcp-server",
+    "toolType": "mcp",
+    "taglineEn": "The Terraform MCP Server is a Model Context Protocol (MCP) server that integrates seamlessly with Terraform Registry and HCP Terraform APIs, enabling advanced automation and interaction capabilities for Infrastructure as Code (IaC) development.",
+    "summaryVi": "MCP server chính thức của HashiCorp tích hợp Terraform Registry và HCP Terraform/Terraform Enterprise API. Trợ lý AI có thể tra tài liệu provider, module, policy và quản lý workspace, biến, tag, run. Hỗ trợ cả transport stdio và streamable HTTP, phát hành dạng ảnh Docker.",
+    "purposeVi": "Giúp viết mã Terraform chính xác hơn nhờ tài liệu Registry cập nhật và thao tác HCP Terraform từ trợ lý AI.",
+    "featuresVi": [
+      "Tích hợp Terraform Registry công khai: provider, module, policy",
+      "HCP Terraform và Terraform Enterprise: quản lý workspace, liệt kê tổ chức/dự án, private registry",
+      "Thao tác workspace: tạo, sửa, xóa, biến, tag và quản lý run",
+      "Hai transport stdio và streamable HTTP, có giới hạn tốc độ, CORS, TLS",
+      "Lọc công cụ theo nhóm `--toolsets` (registry, registry-private, terraform) hoặc từng công cụ `--tools`",
+      "Số liệu OpenTelemetry cho lượt gọi, độ trễ và lỗi công cụ"
+    ],
+    "requirementsVi": "Docker đã cài và đang chạy; MCP client hỗ trợ MCP. TFE_TOKEN và TFE_ADDRESS khi dùng HCP Terraform/Terraform Enterprise.",
+    "installStepsVi": [
+      "Cài và chạy Docker",
+      "Thêm vào Claude Code (stdio): `claude mcp add terraform -s user -t stdio -- docker run -i --rm hashicorp/terraform-mcp-server`",
+      "Hoặc cài từ mã nguồn: `go install github.com/hashicorp/terraform-mcp-server/cmd/terraform-mcp-server@latest`",
+      "Với HCP Terraform/TFE, truyền biến TFE_ADDRESS và TFE_TOKEN vào container"
+    ],
+    "cliCommand": "claude mcp add terraform -s user -t stdio -- docker run -i --rm hashicorp/terraform-mcp-server",
+    "usageStepsVi": [
+      "Mặc định chỉ bật nhóm công cụ registry; bật thêm nhóm terraform để thao tác workspace",
+      "Hỏi trợ lý AI về provider/module hoặc yêu cầu thao tác trên HCP Terraform",
+      "Rà soát kỹ mọi đề xuất trước khi áp dụng theo khuyến cáo của README"
+    ],
+    "samplePromptsVi": [
+      "Tra tài liệu provider AWS mới nhất và viết resource aws_s3_bucket có bật versioning",
+      "Tìm module Terraform Registry để tạo VPC trên Google Cloud và giải thích các biến đầu vào",
+      "Liệt kê các workspace trong tổ chức HCP Terraform của tôi"
+    ],
+    "prosVi": [
+      "Server chính thức của HashiCorp, cập nhật thường xuyên",
+      "Giấy phép MPL 2.0, mã nguồn mở",
+      "Có hướng dẫn cho VS Code, Cursor, Claude Desktop, Claude Code, Codex, Gemini"
+    ],
+    "consVi": [
+      "Cần Docker để chạy theo cách khuyến nghị",
+      "README cảnh báo server có thể đưa dữ liệu Terraform tới MCP client và LLM; không dùng với client không tin cậy",
+      "Các công cụ cần phê duyệt chỉ bật khi đặt ENABLE_TF_OPERATIONS"
+    ],
+    "sourceEvidence": {
+      "claude mcp add terraform -s user -t stdio -- docker run -i --rm hashicorp/terraform-mcp-server": "README.md:396",
+      "go install github.com/hashicorp/terraform-mcp-server/cmd/terraform-mcp-server@latest": "README.md:509",
+      "jsonConfig mcpServers terraform": "README.md:350"
+    },
+    "meta": {
+      "id": "hashicorp-terraform-mcp-server",
+      "nameVi": "Terraform MCP Server — MCP chính thức của HashiCorp cho Terraform",
+      "icon": "Box",
+      "categories": [
+        "cloud_infrastructure",
+        "devops_cicd"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (MPL-2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude mcp add terraform -s user -t stdio -- docker run -i --rm hashicorp/terraform-mcp-server"
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"terraform\": {\n      \"command\": \"docker\",\n      \"args\": [\n        \"run\",\n        \"-i\",\n        \"--rm\",\n        \"-e\",\n        \"TFE_ADDRESS=<<PASTE_TFE_ADDRESS_HERE>>\",\n        \"-e\",\n        \"TFE_TOKEN=<<PASTE_TFE_TOKEN_HERE>>\",\n        \"hashicorp/terraform-mcp-server:1.4.1\"\n      ]\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "docker/mcp-gateway",
+    "license": "MIT License",
+    "authorName": "Docker",
+    "websiteUrl": "https://docs.docker.com/ai/mcp-catalog-and-toolkit/toolkit/",
+    "toolType": "cli",
+    "taglineEn": "The main feature of this CLI is the Docker MCP Gateway which allows easy and secure running and deployment of MCP servers.",
+    "summaryVi": "Mã nguồn plugin Docker CLI `docker-mcp`, nền tảng của MCP Toolkit trong Docker Desktop. Docker MCP Gateway chạy mỗi MCP server trong container cách ly, gom chúng sau một cổng duy nhất và quản lý bí mật, OAuth, catalog và profile cho nhiều MCP client.",
+    "purposeVi": "Chạy và triển khai MCP server một cách an toàn, nhất quán cho mọi client như Claude Code, Cursor, VS Code từ một cấu hình chung.",
+    "featuresVi": [
+      "Server chạy trong container: mỗi MCP server được cách ly trong Docker container",
+      "Cổng thống nhất: các client kết nối chung một Gateway",
+      "Quản lý bí mật qua Docker Desktop và luồng OAuth tích hợp",
+      "Catalog OCI: dùng Docker MCP Catalog, tự tạo catalog hoặc nhập từ MCP Registry cộng đồng",
+      "Profile: nhóm server, cấu hình, danh sách công cụ cho phép; xuất/nhập và đẩy lên OCI registry",
+      "Ghi log và truy vết lời gọi công cụ"
+    ],
+    "requirementsVi": "Docker Desktop 4.59+ có bật MCP Toolkit; Go 1.24+ nếu tự build plugin.",
+    "installStepsVi": [
+      "Dùng Docker Desktop bản mới (plugin đã cài sẵn) hoặc tự build: `make docker-mcp`",
+      "Tải catalog mặc định: `docker mcp catalog pull mcp/docker-mcp-catalog`",
+      "Tạo profile với server mong muốn rồi kết nối Claude Code: `docker mcp client connect claude-code --profile dev-tools --global`",
+      "Chạy gateway: `docker mcp gateway run`"
+    ],
+    "cliCommand": "docker mcp gateway run",
+    "usageStepsVi": [
+      "Tạo profile chứa các server từ catalog bằng lệnh `docker mcp profile create` (ví dụ profile dev-tools với server GitHub)",
+      "Bật/tắt công cụ cụ thể trong profile bằng `docker mcp profile tools`",
+      "Kết nối client vào profile, sau đó dùng công cụ MCP như bình thường trong client"
+    ],
+    "samplePromptsVi": [
+      "Dùng server GitHub qua Docker MCP Gateway để liệt kê issue đang mở của repo của tôi",
+      "Kiểm tra các công cụ MCP đang được bật trong profile dev-tools",
+      "Tạo issue mới trên GitHub với tiêu đề và mô tả lỗi tôi vừa gặp"
+    ],
+    "prosVi": [
+      "Dự án chính thức của Docker, giấy phép MIT",
+      "Cách ly MCP server trong container, giữ bí mật ngoài biến môi trường",
+      "Một cấu hình dùng chung cho nhiều MCP client"
+    ],
+    "consVi": [
+      "Cần Docker Desktop 4.59+ có bật MCP Toolkit; ngoài Desktop phải bật feature profiles thủ công",
+      "Đây là công cụ dòng lệnh/cổng, không tự cung cấp công cụ nghiệp vụ; cần chọn server từ catalog"
+    ],
+    "sourceEvidence": {
+      "make docker-mcp": "README.md:58",
+      "docker mcp catalog pull mcp/docker-mcp-catalog": "README.md:97",
+      "docker mcp client connect claude-code --profile dev-tools --global": "README.md:310",
+      "docker mcp gateway run": "README.md:223"
+    },
+    "meta": {
+      "id": "docker-mcp-gateway",
+      "nameVi": "Docker MCP Gateway — Cổng chạy MCP server trong container của Docker",
+      "icon": "Box",
+      "categories": [
+        "devops_cicd",
+        "cloud_infrastructure"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "docker mcp gateway run"
+        },
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "docker mcp client connect claude-code --profile dev-tools --global"
+        }
+      ]
+    }
+  }
+]

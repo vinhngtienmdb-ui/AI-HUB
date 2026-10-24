@@ -1,0 +1,609 @@
+[
+  {
+    "repo": "brave/brave-search-mcp-server",
+    "license": "MIT License",
+    "authorName": "Brave Software",
+    "websiteUrl": "https://brave.com/search/api/",
+    "toolType": "mcp",
+    "taglineEn": "An MCP server implementation that integrates the Brave Search API, providing comprehensive search capabilities including web search, local business search, place search, image search, video search, news search, LLM context, and AI-powered summarization.",
+    "summaryVi": "Brave Search MCP Server là máy chủ MCP chính thức của Brave, kết nối trợ lý AI với Brave Search API để tìm kiếm web, tin tức, hình ảnh, video, địa điểm và doanh nghiệp địa phương. Máy chủ hỗ trợ hai kiểu truyền tải STDIO (mặc định) và HTTP, chạy qua npx hoặc Docker.",
+    "purposeVi": "Giúp agent AI tra cứu thông tin thời gian thực trên web và lấy nội dung đã trích xuất sẵn để làm ngữ cảnh cho LLM/RAG.",
+    "featuresVi": [
+      "Tìm kiếm web (brave_web_search): lọc theo quốc gia, ngôn ngữ, độ mới, safesearch, goggles tùy chỉnh xếp hạng",
+      "Tìm kiếm chuyên biệt: tin tức, hình ảnh, video, doanh nghiệp địa phương và điểm đến (brave_place_search)",
+      "LLM Context (brave_llm_context): trả về nội dung web đã trích xuất, tối ưu cho grounding và pipeline RAG",
+      "Tóm tắt bằng AI (brave_summarizer): tạo bản tóm tắt từ kết quả tìm kiếm có bật summary",
+      "Hai kiểu truyền tải STDIO/HTTP, bật/tắt công cụ qua BRAVE_MCP_ENABLED_TOOLS và BRAVE_MCP_DISABLED_TOOLS"
+    ],
+    "requirementsVi": "Khóa Brave Search API (đăng ký tại brave.com/search/api); Node.js 22 trở lên khi build từ mã nguồn, hoặc Docker.",
+    "installStepsVi": [
+      "Đăng ký tài khoản Brave Search API, chọn gói và tạo API key trong developer dashboard.",
+      "Thêm cấu hình mcpServers (Docker image mcp/brave-search hoặc npx @brave/brave-search-mcp-server) kèm biến BRAVE_API_KEY vào claude_desktop_config.json.",
+      "Build từ mã nguồn: `npm install` rồi `npm run build`",
+      "Hoặc build image Docker: `docker build -t mcp/brave-search:latest .`",
+      "Chạy cục bộ bằng Docker Compose (đặt BRAVE_API_KEY trong shell hoặc tệp .env): `docker-compose up --build`"
+    ],
+    "cliCommand": "docker-compose up --build",
+    "usageStepsVi": [
+      "Khởi động lại Claude Desktop sau khi thêm cấu hình; các công cụ brave_* sẽ xuất hiện.",
+      "Đặt câu hỏi cần thông tin mới; với tóm tắt AI, tìm kiếm web với summary: true rồi dùng brave_summarizer với khóa trả về.",
+      "Muốn dùng HTTP, đặt BRAVE_MCP_TRANSPORT=http (cổng mặc định 8080, chỉ bind 127.0.0.1)."
+    ],
+    "samplePromptsVi": [
+      "Tìm các tin tức mới nhất trong 24 giờ qua về quy định AI của EU và tóm tắt lại.",
+      "Tìm 5 quán cà phê được đánh giá cao gần trung tâm Tokyo, kèm giờ mở cửa.",
+      "Lấy ngữ cảnh web về \"Model Context Protocol\" để tôi viết bài giới thiệu ngắn."
+    ],
+    "prosVi": [
+      "Máy chủ chính thức do Brave phát hành, giấy phép MIT",
+      "Bao quát nhiều loại tìm kiếm: web, tin tức, ảnh, video, địa điểm, LLM context",
+      "Có sẵn Docker image và gói npm, hỗ trợ cả STDIO và HTTP"
+    ],
+    "consVi": [
+      "Cần tài khoản và API key Brave Search (gói trả phí theo kế hoạch)",
+      "Một số tính năng như extra_snippets và tìm kiếm địa phương đầy đủ yêu cầu gói Pro",
+      "Endpoint HTTP không có xác thực, chỉ nên mở ra ngoài trên mạng tin cậy"
+    ],
+    "sourceEvidence": {
+      "npm install": "README.md:347",
+      "npm run build": "README.md:348",
+      "docker build -t mcp/brave-search:latest .": "README.md:341",
+      "docker-compose up --build": "README.md:436",
+      "claude_desktop jsonConfig (Docker)": "README.md:212-222",
+      "claude_desktop jsonConfig (NPX)": "README.md:228-238"
+    },
+    "meta": {
+      "id": "brave-brave-search-mcp-server",
+      "nameVi": "Brave Search MCP — Máy chủ MCP tìm kiếm web chính thức của Brave",
+      "icon": "Search",
+      "categories": [
+        "web_scraping_crawling",
+        "vector_rag"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"brave-search\": {\n      \"command\": \"docker\",\n      \"args\": [\"run\", \"-i\", \"--rm\", \"-e\", \"BRAVE_API_KEY\", \"docker.io/mcp/brave-search\"],\n      \"env\": {\n        \"BRAVE_API_KEY\": \"YOUR_API_KEY_HERE\"\n      }\n    }\n  }\n}"
+        },
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "docker-compose up --build"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "apify/apify-mcp-server",
+    "license": "MIT License",
+    "authorName": "Apify",
+    "websiteUrl": "https://mcp.apify.com",
+    "toolType": "mcp",
+    "taglineEn": "The Apify MCP Server allows an AI assistant to use any Apify Actor as a tool to perform a specific task.",
+    "summaryVi": "Apify MCP Server là máy chủ MCP chính thức của Apify, cho phép agent AI dùng hàng nghìn Actor (scraper, crawler, công cụ tự động hóa) trên Apify Store để trích xuất dữ liệu từ mạng xã hội, công cụ tìm kiếm, bản đồ, sàn thương mại điện tử và mọi website. Có bản hosted tại mcp.apify.com (OAuth, Streamable HTTP) và bản chạy cục bộ qua stdio bằng npx.",
+    "purposeVi": "Giúp agent tự tìm và chạy Actor phù hợp để thu thập dữ liệu web, rồi đọc kết quả từ dataset và key-value store của Apify.",
+    "featuresVi": [
+      "Khám phá công cụ động: search-actors, fetch-actor-details, call-actor để tìm và chạy Actor bất kỳ",
+      "Actor mặc định: apify/rag-web-browser (tìm và đọc top kết quả web) và apify/web-fetch (lấy nội dung URL dạng Markdown/HTML)",
+      "Quản lý Apify: lần chạy, log, dataset, key-value store, task, lịch chạy, build và phiên bản Actor",
+      "Tra cứu tài liệu Apify và Apify API (search-apify-docs, apify-api-search, apify-api-read/write)",
+      "Thanh toán agentic không cần token: AGI, x402 (USDC trên Base) hoặc Skyfire"
+    ],
+    "requirementsVi": "Tài khoản Apify và APIFY_TOKEN (hoặc OAuth khi dùng bản hosted); Node.js để chạy npx cục bộ (v22 trở lên khi phát triển).",
+    "installStepsVi": [
+      "Cách khuyến nghị: thêm URL https://mcp.apify.com vào ứng dụng MCP (Claude.ai, VS Code...) và đăng nhập qua OAuth.",
+      "Chạy cục bộ qua stdio: đặt biến môi trường APIFY_TOKEN rồi dùng lệnh `npx @apify/actors-mcp-server`",
+      "Chỉ định rõ bộ công cụ cho môi trường production: `npx @apify/actors-mcp-server --tools actors,docs,apify/rag-web-browser,apify/web-fetch`",
+      "Tắt telemetry nếu cần: `npx @apify/actors-mcp-server --telemetry-enabled=false`"
+    ],
+    "cliCommand": "npx @apify/actors-mcp-server",
+    "usageStepsVi": [
+      "Yêu cầu trợ lý tìm Actor phù hợp với nguồn dữ liệu cần lấy (ví dụ Google Maps, Instagram).",
+      "Trợ lý xem input schema bằng fetch-actor-details rồi chạy bằng call-actor.",
+      "Lấy kết quả bằng get-dataset-items với datasetId trả về, có thể phân trang."
+    ],
+    "samplePromptsVi": [
+      "Tìm tin tức mới nhất về AI agent tự động và tóm tắt các diễn biến chính.",
+      "Lấy 10 nhà hàng hàng đầu ở Prague trên Google Maps kèm thông tin liên hệ.",
+      "Cho tôi xem 10 kết quả tiếp theo của lần chạy scraping vừa rồi."
+    ],
+    "prosVi": [
+      "Máy chủ chính thức của Apify, giấy phép MIT",
+      "Truy cập hàng nghìn Actor dựng sẵn trên Apify Store",
+      "Có bản hosted hỗ trợ OAuth, không cần cài đặt"
+    ],
+    "consVi": [
+      "Cần tài khoản Apify; chạy Actor tính phí theo Apify (hoặc thanh toán agentic)",
+      "Bản stdio cục bộ thiếu một số tính năng của bản hosted (ví dụ suy luận output schema, Actor cho thuê)",
+      "Telemetry bật mặc định, phải tắt thủ công"
+    ],
+    "sourceEvidence": {
+      "npx @apify/actors-mcp-server": "README.md:415",
+      "npx @apify/actors-mcp-server --tools actors,docs,apify/rag-web-browser,apify/web-fetch": "README.md:368",
+      "npx @apify/actors-mcp-server --telemetry-enabled=false": "README.md:495"
+    },
+    "meta": {
+      "id": "apify-apify-mcp-server",
+      "nameVi": "Apify MCP Server — Máy chủ MCP chạy hàng nghìn scraper Apify cho agent AI",
+      "icon": "Globe",
+      "categories": [
+        "web_scraping_crawling",
+        "rpa_workflow_automation"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "claude_code",
+        "cursor",
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npx @apify/actors-mcp-server --tools actors,docs,apify/rag-web-browser,apify/web-fetch"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "brightdata/brightdata-mcp",
+    "license": "MIT License",
+    "authorName": "Bright Data",
+    "websiteUrl": "https://brightdata.com/pricing/mcp-server",
+    "toolType": "mcp",
+    "taglineEn": "The Bright Data MCP server gives AI agents real-time access to public web data.",
+    "summaryVi": "Bright Data MCP là máy chủ MCP chính thức của Bright Data với 32 công cụ: tìm kiếm Google/Bing/Yandex, lấy trang web dạng Markdown/HTML, chạy hơn 1.200 scraper dựng sẵn trả JSON, tự động hóa trình duyệt từ xa và thu thập câu trả lời của ChatGPT/Perplexity. Mọi yêu cầu đi qua hạ tầng vượt chặn (CAPTCHA, phát hiện bot, giới hạn địa lý) của Bright Data.",
+    "purposeVi": "Cho agent AI truy cập dữ liệu web công khai theo thời gian thực mà không phải tự lo proxy, trình duyệt headless hay logic thử lại.",
+    "featuresVi": [
+      "Tìm kiếm và scraping: search_engine, scrape_as_markdown, scrape_as_html, chạy lô tới 10 truy vấn/URL",
+      "Web Scraper API: search_scrapers → get_scraper_details → run_scraper với 1.200+ scraper (Amazon, LinkedIn, TikTok, npm, PyPI...)",
+      "Tự động hóa trình duyệt: 14 công cụ scraping_browser_* (điều hướng, click, gõ, chụp màn hình)",
+      "GEO: chatgpt_ai_insights và perplexity_ai_insights thu câu trả lời của LLM",
+      "Lọc nhóm công cụ qua GROUPS/TOOLS; content gate hỏi người dùng khi nội dung trang trông như lệnh đổi cấu hình MCP"
+    ],
+    "requirementsVi": "Tài khoản và API token Bright Data; Node.js khi chạy cục bộ bằng npx.",
+    "installStepsVi": [
+      "Lấy API token trong phần account settings của Bright Data (tài khoản mới có 5.000 yêu cầu miễn phí mỗi tháng).",
+      "Claude Code (bản hosted): `claude mcp add --transport http brightdata \"https://mcp.brightdata.com/mcp?token=YOUR_API_TOKEN\"`",
+      "Hoặc chạy cục bộ: thêm cấu hình mcpServers với command npx, args @brightdata/mcp và biến API_TOKEN vào claude_desktop_config.json.",
+      "Tùy chọn: đặt GROUPS (ví dụ scrapers,browser) hoặc TOOLS để giới hạn số công cụ nạp vào."
+    ],
+    "cliCommand": "claude mcp add --transport http brightdata \"https://mcp.brightdata.com/mcp?token=YOUR_API_TOKEN\"",
+    "usageStepsVi": [
+      "Dùng search_engine để tìm thông tin, scrape_as_markdown để đọc một URL cụ thể.",
+      "Với nền tảng phổ biến, tìm scraper bằng search_scrapers rồi chạy run_scraper để nhận JSON có cấu trúc.",
+      "Với trang cần tương tác (đăng nhập, cuộn vô hạn), dùng nhóm công cụ browser."
+    ],
+    "samplePromptsVi": [
+      "So sánh giá chiếc laptop này trên Amazon, Walmart và Best Buy.",
+      "Phiên bản mới nhất của express trên npm là gì?",
+      "Phân tích Notion như một đối thủ: giá, gọi vốn, trọng tâm tuyển dụng và khách hàng phàn nàn điều gì."
+    ],
+    "prosVi": [
+      "Máy chủ chính thức của Bright Data, giấy phép MIT",
+      "Có gói miễn phí 5.000 yêu cầu/tháng, không cần thẻ tín dụng",
+      "Có cả bản hosted (một URL) và bản cục bộ qua npx"
+    ],
+    "consVi": [
+      "Cần tài khoản Bright Data; vượt gói miễn phí tính phí theo mức dùng ($1.50/1K kết quả, $8/GB duyệt trình duyệt)",
+      "Kết quả scraper có thể rất lớn, cần giới hạn limit_per_input",
+      "Ứng dụng không hỗ trợ MCP elicitation sẽ bị giữ lại nội dung bị content gate đánh dấu"
+    ],
+    "sourceEvidence": {
+      "claude mcp add --transport http brightdata \"https://mcp.brightdata.com/mcp?token=YOUR_API_TOKEN\"": "README.md:96",
+      "claude_desktop jsonConfig": "README.md:77-87",
+      "cursor jsonConfig": "README.md:107-113",
+      "npx @brightdata/mcp": "README.md:45"
+    },
+    "meta": {
+      "id": "brightdata-brightdata-mcp",
+      "nameVi": "Bright Data MCP — Máy chủ MCP truy cập dữ liệu web thời gian thực",
+      "icon": "Globe",
+      "categories": [
+        "web_scraping_crawling",
+        "data_engineering"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "5.000 yêu cầu miễn phí/tháng; sau đó trả theo mức dùng",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude mcp add --transport http brightdata \"https://mcp.brightdata.com/mcp?token=YOUR_API_TOKEN\""
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "npx @brightdata/mcp",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"Bright Data\": {\n      \"command\": \"npx\",\n      \"args\": [\"@brightdata/mcp\"],\n      \"env\": {\n        \"API_TOKEN\": \"<your-api-token-here>\"\n      }\n    }\n  }\n}"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"brightdata\": {\n      \"url\": \"https://mcp.brightdata.com/mcp?token=YOUR_API_TOKEN\"\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "perplexityai/modelcontextprotocol",
+    "license": "MIT License",
+    "authorName": "Perplexity AI",
+    "websiteUrl": "https://docs.perplexity.ai/docs/getting-started/integrations/mcp-server",
+    "toolType": "mcp",
+    "taglineEn": "The official MCP server implementation for the Perplexity API Platform, providing AI assistants with real-time web search, reasoning, and research capabilities through the Agent API and the Search API.",
+    "summaryVi": "Đây là máy chủ MCP chính thức cho nền tảng Perplexity API, cung cấp cho trợ lý AI khả năng tìm kiếm web thời gian thực, suy luận và nghiên cứu chuyên sâu qua Agent API và Search API. Có bản remote do Perplexity host tại api.perplexity.ai/mcp và bản cục bộ chạy bằng npx, Docker hoặc chế độ HTTP tự host.",
+    "purposeVi": "Giúp agent lấy kết quả tìm kiếm web có xếp hạng và nhận câu trả lời, báo cáo nghiên cứu có nguồn từ Perplexity ngay trong Claude, Cursor, VS Code.",
+    "featuresVi": [
+      "perplexity_search: tìm kiếm web trực tiếp qua Search API, lọc theo độ mới và tên miền, hỗ trợ Fast Search",
+      "perplexity_ask: hỏi đáp có tìm kiếm web, dùng preset fast của Agent API",
+      "perplexity_research: nghiên cứu chuyên sâu (preset high), có báo cáo tiến độ cho lần chạy dài",
+      "perplexity_reason: suy luận và giải quyết vấn đề phức tạp (preset medium)",
+      "Hỗ trợ proxy doanh nghiệp (PERPLEXITY_PROXY) và chế độ HTTP tự host qua Docker/Node.js"
+    ],
+    "requirementsVi": "API key Perplexity (lấy tại console.perplexity.ai); Node.js để chạy npx, hoặc Docker cho chế độ HTTP.",
+    "installStepsVi": [
+      "Lấy API key tại API Portal console.perplexity.ai.",
+      "Claude Code (bản cục bộ): `claude mcp add perplexity --env PERPLEXITY_API_KEY=\"your_key_here\" -- npx -y @perplexity-ai/mcp-server`",
+      "Hoặc dùng bản remote: `claude mcp add --transport http perplexity https://api.perplexity.ai/mcp --header \"Authorization: Bearer YOUR_API_KEY\"`",
+      "Với Cursor, Claude Desktop, Windsurf: thêm cấu hình mcpServers (npx -y @perplexity-ai/mcp-server, biến PERPLEXITY_API_KEY).",
+      "Tự host HTTP bằng Docker: `docker build -t perplexity-mcp-server .` rồi `docker run -p 8080:8080 -e PERPLEXITY_API_KEY=your_key_here perplexity-mcp-server`"
+    ],
+    "cliCommand": "claude mcp add perplexity --env PERPLEXITY_API_KEY=\"your_key_here\" -- npx -y @perplexity-ai/mcp-server",
+    "usageStepsVi": [
+      "Dùng perplexity_search khi cần danh sách kết quả, perplexity_ask cho câu hỏi nhanh.",
+      "Dùng perplexity_research cho báo cáo chi tiết; với truy vấn dài, tăng PERPLEXITY_TIMEOUT_MS.",
+      "Nếu ứng dụng MCP báo lỗi EOF khi khởi tạo, dùng npx -yq thay cho npx -y."
+    ],
+    "samplePromptsVi": [
+      "Tìm các bài viết trong tuần qua về chip AI mới, chỉ lấy từ các trang tin công nghệ lớn.",
+      "Nghiên cứu chuyên sâu về xu hướng thanh toán số ở Đông Nam Á và viết báo cáo có trích nguồn.",
+      "Phân tích ưu nhược điểm của việc chuyển hệ thống từ REST sang GraphQL."
+    ],
+    "prosVi": [
+      "Máy chủ chính thức của Perplexity, giấy phép MIT",
+      "Có bản remote không cần cài đặt và bản cục bộ qua npx",
+      "Có lệnh claude mcp add và plugin Claude Code sẵn"
+    ],
+    "consVi": [
+      "Cần API key Perplexity; dùng API tính phí theo Perplexity",
+      "Nghiên cứu chuyên sâu có thể mất vài phút mỗi lần chạy",
+      "Một số ứng dụng MCP nghiêm ngặt lỗi khởi tạo do npx in thông báo ra stdout"
+    ],
+    "sourceEvidence": {
+      "claude mcp add perplexity --env PERPLEXITY_API_KEY=\"your_key_here\" -- npx -y @perplexity-ai/mcp-server": "README.md:42",
+      "claude mcp add --transport http perplexity https://api.perplexity.ai/mcp --header \"Authorization: Bearer YOUR_API_KEY\"": "README.md:24",
+      "docker build -t perplexity-mcp-server .": "README.md:140",
+      "docker run -p 8080:8080 -e PERPLEXITY_API_KEY=your_key_here perplexity-mcp-server": "README.md:141",
+      "cursor/claude_desktop jsonConfig": "README.md:78-88"
+    },
+    "meta": {
+      "id": "perplexityai-modelcontextprotocol",
+      "nameVi": "Perplexity MCP — Máy chủ MCP tìm kiếm và nghiên cứu web chính thức của Perplexity",
+      "icon": "Search",
+      "categories": [
+        "nlp_llm",
+        "web_scraping_crawling"
+      ],
+      "platforms": [
+        "claude_code",
+        "claude_desktop",
+        "cursor"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude mcp add perplexity --env PERPLEXITY_API_KEY=\"your_key_here\" -- npx -y @perplexity-ai/mcp-server"
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"perplexity\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@perplexity-ai/mcp-server\"],\n      \"env\": {\n        \"PERPLEXITY_API_KEY\": \"your_key_here\"\n      }\n    }\n  }\n}"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"perplexity\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@perplexity-ai/mcp-server\"],\n      \"env\": {\n        \"PERPLEXITY_API_KEY\": \"your_key_here\"\n      }\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "stripe/ai",
+    "license": "MIT License",
+    "authorName": "Stripe",
+    "websiteUrl": "https://docs.stripe.com/mcp",
+    "toolType": "mcp",
+    "taglineEn": "This repo is the one-stop shop for building AI-powered products and businesses on top of Stripe.",
+    "summaryVi": "Stripe AI là kho chính thức của Stripe gom máy chủ MCP Stripe (@stripe/mcp), Agent Toolkit cho Python/TypeScript, các SDK tính phí theo token (@stripe/ai-sdk, @stripe/token-meter) và bộ agent skill. Máy chủ MCP cho phép agent gọi Stripe API qua function calling; Stripe cũng host bản remote tại mcp.stripe.com với OAuth.",
+    "purposeVi": "Giúp lập trình viên cho agent AI thao tác với Stripe (khách hàng, sản phẩm, thanh toán...) và áp dụng best practice khi tích hợp Stripe.",
+    "featuresVi": [
+      "Máy chủ MCP cục bộ @stripe/mcp chạy bằng npx hoặc Docker, hỗ trợ tài khoản Connect (--stripe-account)",
+      "Máy chủ MCP remote tại https://mcp.stripe.com với OAuth",
+      "Agent Toolkit cho OpenAI Agent SDK, LangChain, CrewAI, Vercel AI SDK (Python và TypeScript)",
+      "Quyền công cụ được kiểm soát bằng Restricted API Key (RAK)",
+      "Agent skill và plugin chính thức cho Claude Code, Codex, Cursor"
+    ],
+    "requirementsVi": "Tài khoản Stripe và secret key (khuyến nghị Restricted API Key); Node.js 18 trở lên cho @stripe/mcp; Python 3.11+ cho bản Python của Agent Toolkit.",
+    "installStepsVi": [
+      "Tạo Restricted API Key với quyền mong muốn tại dashboard.stripe.com/apikeys.",
+      "Chạy MCP cục bộ: `npx -y @stripe/mcp --api-key=YOUR_STRIPE_SECRET_KEY`",
+      "Hoặc thêm cấu hình mcpServers (npx -y @stripe/mcp --api-key=...) vào claude_desktop_config.json.",
+      "Cài plugin Stripe cho Claude Code: `claude plugin install stripe@claude-plugins-official`",
+      "Dùng Agent Toolkit trong mã: `pip install stripe-agent-toolkit` hoặc `npm install @stripe/agent-toolkit`"
+    ],
+    "cliCommand": "npx -y @stripe/mcp --api-key=YOUR_STRIPE_SECRET_KEY",
+    "usageStepsVi": [
+      "Khởi động lại Claude Desktop sau khi thêm cấu hình; các công cụ Stripe xuất hiện theo quyền của khóa.",
+      "Yêu cầu trợ lý tạo hoặc tra cứu đối tượng Stripe bằng ngôn ngữ tự nhiên.",
+      "Dùng khóa test (rk_test_...) khi thử nghiệm để tránh thao tác trên dữ liệu thật."
+    ],
+    "samplePromptsVi": [
+      "Tạo một sản phẩm \"Gói Pro\" giá 20 USD/tháng trong tài khoản Stripe test của tôi.",
+      "Liệt kê các khách hàng mới tạo gần đây trong Stripe.",
+      "Tạo payment link cho sản phẩm vừa tạo."
+    ],
+    "prosVi": [
+      "Kho chính thức của Stripe, giấy phép MIT",
+      "Có cả MCP remote (OAuth) và cục bộ (npx/Docker)",
+      "Phân quyền chi tiết qua Restricted API Key"
+    ],
+    "consVi": [
+      "Cần tài khoản Stripe và secret key",
+      "Danh sách công cụ không được liệt kê trong README, phải xem tài liệu Stripe MCP",
+      "Agent Toolkit không bao phủ toàn bộ Stripe API"
+    ],
+    "sourceEvidence": {
+      "npx -y @stripe/mcp --api-key=YOUR_STRIPE_SECRET_KEY": "tools/modelcontextprotocol/README.md:15",
+      "claude plugin install stripe@claude-plugins-official": "README.md:29",
+      "pip install stripe-agent-toolkit": "tools/README.md:36",
+      "npm install @stripe/agent-toolkit": "tools/README.md:100",
+      "claude_desktop jsonConfig": "tools/modelcontextprotocol/README.md:30-37"
+    },
+    "meta": {
+      "id": "stripe-ai",
+      "nameVi": "Stripe AI — Máy chủ MCP và Agent Toolkit chính thức của Stripe",
+      "icon": "CreditCard",
+      "categories": [
+        "payment_gateway",
+        "fintech_banking"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "claude_code",
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "npx -y @stripe/mcp --api-key=YOUR_STRIPE_SECRET_KEY",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"stripe\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@stripe/mcp\", \"--api-key=STRIPE_SECRET_KEY\"]\n    }\n  }\n}"
+        },
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude plugin install stripe@claude-plugins-official"
+        },
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npx -y @stripe/mcp --api-key=YOUR_STRIPE_SECRET_KEY"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "paypal/agent-toolkit",
+    "license": "Apache License 2.0",
+    "authorName": "PayPal",
+    "websiteUrl": "https://developer.paypal.com/dashboard/",
+    "toolType": "sdk",
+    "taglineEn": "The PayPal Agent Toolkit enables popular agent frameworks including OpenAI's Agent SDK, LangChain, Vercel's AI SDK, and Model Context Protocol (MCP) to integrate with PayPal APIs through function calling.",
+    "summaryVi": "PayPal Agent Toolkit là bộ công cụ chính thức của PayPal giúp các framework agent (OpenAI Agent SDK, LangChain, Vercel AI SDK, MCP) gọi PayPal API qua function calling. Bộ công cụ có bản TypeScript và Python, kèm máy chủ MCP @paypal/mcp dùng được với Claude Desktop, Cursor, Cline.",
+    "purposeVi": "Cho agent AI thực hiện nghiệp vụ PayPal như tạo hóa đơn, đơn hàng, hoàn tiền, quản lý tranh chấp, gói đăng ký và báo cáo giao dịch.",
+    "featuresVi": [
+      "Hóa đơn: tạo, gửi, nhắc, hủy, tạo mã QR, chuỗi hóa đơn định kỳ, ghi nhận thanh toán/hoàn tiền",
+      "Thanh toán: tạo và lấy đơn hàng, thanh toán đơn đã ủy quyền, hoàn tiền",
+      "Tranh chấp và vận chuyển: liệt kê/chấp nhận tranh chấp, tạo và cập nhật mã theo dõi vận đơn",
+      "Danh mục sản phẩm và gói đăng ký: tạo sản phẩm, gói, đăng ký, hủy đăng ký",
+      "Báo cáo: liệt kê giao dịch và chỉ số kinh doanh của merchant; hỗ trợ chế độ SANDBOX/PRODUCTION"
+    ],
+    "requirementsVi": "Tài khoản PayPal Developer (sandbox) hoặc Business (production), Client ID/Secret để tạo access token; Node 18+ (TypeScript) hoặc Python 3.11+.",
+    "installStepsVi": [
+      "Tạo app trong PayPal Developer Dashboard để lấy Client ID và Client Secret, rồi tạo access token.",
+      "Cài thư viện TypeScript: `npm install @paypal/agent-toolkit`",
+      "Hoặc cài thư viện Python: `pip install paypal-agent-toolkit`",
+      "Chạy máy chủ MCP: `npx -y @paypal/mcp --tools=all PAYPAL_ACCESS_TOKEN=\"YOUR_ACCESS_TOKEN\" PAYPAL_ENVIRONMENT=\"SANDBOX\"`",
+      "Với Claude Desktop: thêm cấu hình mcpServers (npx -y @paypal/mcp --tools=all, biến PAYPAL_ACCESS_TOKEN và PAYPAL_ENVIRONMENT) rồi khởi động lại ứng dụng."
+    ],
+    "cliCommand": "npx -y @paypal/mcp --tools=all PAYPAL_ACCESS_TOKEN=\"YOUR_ACCESS_TOKEN\" PAYPAL_ENVIRONMENT=\"SANDBOX\"",
+    "usageStepsVi": [
+      "Đặt PAYPAL_ENVIRONMENT=SANDBOX khi thử nghiệm, PRODUCTION khi dùng thật.",
+      "Hỏi trợ lý thực hiện tác vụ PayPal, ví dụ liệt kê hóa đơn.",
+      "Làm mới access token trước khi hết hạn (sandbox 3-8 giờ, production 8 giờ)."
+    ],
+    "samplePromptsVi": [
+      "Liệt kê các hóa đơn PayPal của tôi.",
+      "Tạo đơn hàng 50 USD cho một sản phẩm thủ công và lấy link thanh toán.",
+      "Liệt kê các tranh chấp đang mở và cho tôi xem chi tiết tranh chấp mới nhất."
+    ],
+    "prosVi": [
+      "Bộ công cụ chính thức của PayPal, giấy phép Apache 2.0",
+      "Hỗ trợ nhiều framework agent và cả MCP",
+      "Có chế độ sandbox để thử nghiệm an toàn"
+    ],
+    "consVi": [
+      "Cần tài khoản PayPal Developer/Business và access token",
+      "Access token hết hạn sau vài giờ, phải tự làm mới",
+      "PayPal lưu ý nội dung do AI tạo có thể không chính xác, người dùng tự chịu trách nhiệm kiểm tra"
+    ],
+    "sourceEvidence": {
+      "npm install @paypal/agent-toolkit": "README.md:84",
+      "pip install paypal-agent-toolkit": "python/README.md:84",
+      "npx -y @paypal/mcp --tools=all PAYPAL_ACCESS_TOKEN=\"YOUR_ACCESS_TOKEN\" PAYPAL_ENVIRONMENT=\"SANDBOX\"": "typescript/README.md:223",
+      "claude_desktop jsonConfig": "typescript/README.md:283-298"
+    },
+    "meta": {
+      "id": "paypal-agent-toolkit",
+      "nameVi": "PayPal Agent Toolkit — Bộ công cụ agent và máy chủ MCP chính thức của PayPal",
+      "icon": "CreditCard",
+      "categories": [
+        "payment_gateway",
+        "accounting_finance"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "cursor",
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "jsonConfig": "{\n   \"mcpServers\": {\n     \"paypal\": {\n       \"command\": \"npx\",\n       \"args\": [\n         \"-y\",\n         \"@paypal/mcp\",\n         \"--tools=all\"\n       ],\n       \"env\": {\n         \"PAYPAL_ACCESS_TOKEN\": \"YOUR_PAYPAL_ACCESS_TOKEN\",\n         \"PAYPAL_ENVIRONMENT\": \"SANDBOX\"\n       }\n     }\n   }\n}"
+        },
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npx -y @paypal/mcp --tools=all PAYPAL_ACCESS_TOKEN=\"YOUR_ACCESS_TOKEN\" PAYPAL_ENVIRONMENT=\"SANDBOX\""
+        }
+      ]
+    }
+  },
+  {
+    "repo": "makeplane/plane-mcp-server",
+    "license": "MIT License",
+    "authorName": "Plane",
+    "websiteUrl": "https://plane.so",
+    "toolType": "mcp",
+    "taglineEn": "A Model Context Protocol server for Plane. Gives an AI agent tools to read and manage projects, work items, cycles, modules, releases, customers and more.",
+    "summaryVi": "Plane MCP Server là máy chủ MCP chính thức của Plane (công cụ quản lý dự án mã nguồn mở), viết bằng Python trên FastMCP và plane-sdk. Máy chủ có 30 công cụ, mỗi công cụ ứng với một tài nguyên Plane, bao phủ 207 thao tác; chạy cục bộ qua stdio hoặc dùng bản hosted qua HTTP với OAuth hay personal access token.",
+    "purposeVi": "Giúp agent AI đọc và quản lý dự án, work item, cycle, module, release trong Plane bằng ngôn ngữ tự nhiên.",
+    "featuresVi": [
+      "30 công cụ theo tài nguyên (workitem, cycle, module...), chọn thao tác bằng tham số action",
+      "Truy vấn work item bằng PQL (ngôn ngữ truy vấn của Plane), có get_pql_reference",
+      "Ba kiểu kết nối: stdio cục bộ, HTTP hosted với OAuth, HTTP hosted với personal access token",
+      "Hỗ trợ Plane tự host qua PLANE_BASE_URL",
+      "Tương thích ngược: 169/177 tên công cụ cũ vẫn hoạt động"
+    ],
+    "requirementsVi": "Python 3.10+ và uvx (chế độ stdio); API key và workspace slug của Plane; Node.js 22+ nếu dùng mcp-remote cho bản hosted.",
+    "installStepsVi": [
+      "Lấy API key trong Plane: Workspace Settings → API tokens.",
+      "Thêm cấu hình mcpServers (command uvx, args plane-mcp-server stdio, biến PLANE_API_KEY và PLANE_WORKSPACE_SLUG) vào ứng dụng MCP.",
+      "Hoặc chạy trực tiếp: `PLANE_API_KEY=... PLANE_WORKSPACE_SLUG=... uvx plane-mcp-server stdio`",
+      "Phát triển từ mã nguồn: `git clone https://github.com/makeplane/plane-mcp-server`, `cd plane-mcp-server`, `uv pip install -e \".[dev]\"`"
+    ],
+    "cliCommand": "PLANE_API_KEY=... PLANE_WORKSPACE_SLUG=... uvx plane-mcp-server stdio",
+    "usageStepsVi": [
+      "Với Plane tự host, thêm biến PLANE_BASE_URL trỏ tới máy chủ của bạn.",
+      "Yêu cầu trợ lý tạo, liệt kê hoặc lọc work item; có thể dùng PQL để lọc theo trạng thái, độ ưu tiên.",
+      "Muốn không lưu khóa trong cấu hình, dùng bản hosted https://mcp.plane.so/http/mcp với OAuth."
+    ],
+    "samplePromptsVi": [
+      "Liệt kê các work item đang ở trạng thái started và có độ ưu tiên urgent trong dự án Web.",
+      "Tạo work item \"Sửa lỗi đăng nhập\" trong dự án hiện tại.",
+      "Đếm số work item được giao cho từng thành viên, nhóm theo trạng thái."
+    ],
+    "prosVi": [
+      "Máy chủ chính thức của Plane, giấy phép MIT",
+      "Chạy bằng uvx không cần bước cài đặt",
+      "Hỗ trợ cả Plane Cloud và Plane tự host"
+    ],
+    "consVi": [
+      "Cần tài khoản/workspace Plane và API key",
+      "Bản Node.js cũ @makeplane/plane-mcp-server đã ngừng bảo trì, phải chuyển sang bản Python",
+      "Transport SSE đã bị đánh dấu lỗi thời"
+    ],
+    "sourceEvidence": {
+      "PLANE_API_KEY=... PLANE_WORKSPACE_SLUG=... uvx plane-mcp-server stdio": "README.md:47",
+      "git clone https://github.com/makeplane/plane-mcp-server": "README.md:201",
+      "cd plane-mcp-server": "README.md:202",
+      "uv pip install -e \".[dev]\"": "README.md:203",
+      "claude_desktop jsonConfig": "README.md:21-32"
+    },
+    "meta": {
+      "id": "makeplane-plane-mcp-server",
+      "nameVi": "Plane MCP Server — Máy chủ MCP quản lý dự án Plane cho agent AI",
+      "icon": "Workflow",
+      "categories": [
+        "erp_enterprise",
+        "office_digital_docs"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "cursor",
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"plane\": {\n      \"command\": \"uvx\",\n      \"args\": [\"plane-mcp-server\", \"stdio\"],\n      \"env\": {\n        \"PLANE_API_KEY\": \"<your-api-key>\",\n        \"PLANE_WORKSPACE_SLUG\": \"<your-workspace-slug>\"\n      }\n    }\n  }\n}"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"plane\": {\n      \"command\": \"uvx\",\n      \"args\": [\"plane-mcp-server\", \"stdio\"],\n      \"env\": {\n        \"PLANE_API_KEY\": \"<your-api-key>\",\n        \"PLANE_WORKSPACE_SLUG\": \"<your-workspace-slug>\"\n      }\n    }\n  }\n}"
+        },
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "PLANE_API_KEY=... PLANE_WORKSPACE_SLUG=... uvx plane-mcp-server stdio"
+        }
+      ]
+    }
+  }
+]
