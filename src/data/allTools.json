@@ -156507,5 +156507,1700 @@
       "guideIsTemplate": false,
       "starsVerified": false
     }
+  },
+  {
+    "id": "qdrant-qdrant",
+    "slug": "qdrant-qdrant",
+    "name": "Qdrant — Cơ sở dữ liệu vector hiệu năng cao viết bằng Rust",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "vector_rag",
+    "categoryNameVi": "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+    "categories": [
+      "vector_rag",
+      "database_sql_nosql"
+    ],
+    "categoryNamesVi": [
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Cơ sở dữ liệu SQL & NoSQL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/qdrant/qdrant",
+    "websiteUrl": "https://qdrant.tech",
+    "authorName": "Qdrant",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Qdrant là công cụ tìm kiếm tương đồng vector và cơ sở dữ liệu vector viết bằng Rust, cung cấp dịch vụ sẵn sàng cho môi trường production với API tiện lợi để lưu, tìm kiếm và quản lý các điểm (vector kèm payload). Qdrant hỗ trợ lọc mở rộng trên payload, tìm kiếm lai (hybrid), lượng tử hóa vector và triển khai phân tán. Có thể tự chạy bằng Docker hoặc dùng bản Qdrant Cloud có gói miễn phí.",
+    "purposeVi": "Lưu trữ và truy vấn embedding cho tìm kiếm ngữ nghĩa, gợi ý và hệ thống RAG, kết hợp lọc dữ liệu theo payload.",
+    "featuresVi": [
+      "Tìm kiếm vector dày, thưa và đa vector: hỗ trợ vector thưa cho tìm kiếm toàn văn và mô hình late interaction như ColBERT",
+      "Lọc theo payload: gắn JSON vào vector và lọc bằng từ khóa, toàn văn, khoảng số, vị trí địa lý với mệnh đề should/must/must_not",
+      "Tìm kiếm lai: kết hợp nhiều vector trong một truy vấn, gộp kết quả bằng RRF hoặc DBSF",
+      "Lượng tử hóa và lưu trên đĩa: giảm RAM tới 97% theo README",
+      "Triển khai phân tán: sharding, replication, thay đổi kích thước collection không gián đoạn",
+      "Giao diện Web UI, API REST và gRPC; thư viện client chính thức cho Python, Go, Rust, JS/TS, .NET, Java",
+      "Hỗ trợ GPU (NVIDIA, AMD) cho lập chỉ mục, faceting, recommendation, multitenancy"
+    ],
+    "installGuideVi": "Yêu cầu: Docker để chạy máy chủ cục bộ (cổng 6333); thư viện client tương ứng với ngôn ngữ lập trình (ví dụ qdrant_client cho Python).\nBước 1: Cài đặt và khởi chạy máy chủ Qdrant bằng Docker: `docker run -p 6333:6333 qdrant/qdrant`\nBước 2: Kết nối bằng client, ví dụ Python: QdrantClient(url=\"http://localhost:6333\")\nBước 3: Đọc hướng dẫn cài đặt và bảo mật trên trang tài liệu trước khi đưa vào production",
+    "usageGuideVi": "Bước 1: Tạo collection và nạp các điểm dữ liệu gồm vector embedding và payload JSON\nBước 2: Truy vấn tìm kiếm tương đồng, kết hợp bộ lọc payload hoặc tìm kiếm lai\nBước 3: Dùng Web UI để duyệt collection, quản lý dữ liệu và theo dõi tình trạng triển khai",
+    "samplePromptsVi": [
+      "Viết mã Python dùng qdrant_client để tạo collection và nạp embedding của các bài viết kèm payload chuyên mục",
+      "Tìm 10 sản phẩm tương tự nhất với vector truy vấn nhưng chỉ lấy sản phẩm có giá dưới 500.000 đồng",
+      "Thiết lập tìm kiếm lai kết hợp vector dày và vector thưa, gộp kết quả bằng RRF"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker run -p 6333:6333 qdrant/qdrant",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker run -p 6333:6333 qdrant/qdrant\"\n  ],\n  \"nguon\": \"https://github.com/qdrant/qdrant\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép Apache 2.0",
+      "Viết bằng Rust, có benchmark công khai, hỗ trợ GPU và io_uring",
+      "Nhiều thư viện client chính thức và Web UI tích hợp",
+      "Có bản Qdrant Cloud được quản lý với gói miễn phí"
+    ],
+    "consVi": [
+      "Lệnh Docker mặc định khởi chạy bản không xác thực, mở trên mọi giao diện mạng; cần cấu hình bảo mật trước khi dùng thật",
+      "Cần tự tạo embedding bằng mô hình bên ngoài trước khi nạp dữ liệu"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Qdrant — Cơ sở dữ liệu vector hiệu năng cao viết bằng Rust\n\n> Qdrant (read: quadrant) is a vector similarity search engine and vector database.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nQdrant là công cụ tìm kiếm tương đồng vector và cơ sở dữ liệu vector viết bằng Rust, cung cấp dịch vụ sẵn sàng cho môi trường production với API tiện lợi để lưu, tìm kiếm và quản lý các điểm (vector kèm payload). Qdrant hỗ trợ lọc mở rộng trên payload, tìm kiếm lai (hybrid), lượng tử hóa vector và triển khai phân tán. Có thể tự chạy bằng Docker hoặc dùng bản Qdrant Cloud có gói miễn phí.\n\nLưu trữ và truy vấn embedding cho tìm kiếm ngữ nghĩa, gợi ý và hệ thống RAG, kết hợp lọc dữ liệu theo payload.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Dữ liệu Vector & Tìm kiếm tri thức (RAG)\n- **Tác giả / Nhà phát triển:** Qdrant\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/qdrant/qdrant](https://github.com/qdrant/qdrant)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tìm kiếm vector dày, thưa và đa vector: hỗ trợ vector thưa cho tìm kiếm toàn văn và mô hình late interaction như ColBERT**\n- **Lọc theo payload: gắn JSON vào vector và lọc bằng từ khóa, toàn văn, khoảng số, vị trí địa lý với mệnh đề should/must/must_not**\n- **Tìm kiếm lai: kết hợp nhiều vector trong một truy vấn, gộp kết quả bằng RRF hoặc DBSF**\n- **Lượng tử hóa và lưu trên đĩa: giảm RAM tới 97% theo README**\n- **Triển khai phân tán: sharding, replication, thay đổi kích thước collection không gián đoạn**\n- **Giao diện Web UI, API REST và gRPC; thư viện client chính thức cho Python, Go, Rust, JS/TS, .NET, Java**\n- **Hỗ trợ GPU (NVIDIA, AMD) cho lập chỉ mục, faceting, recommendation, multitenancy**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker run -p 6333:6333 qdrant/qdrant\n```\n\nYêu cầu: Docker để chạy máy chủ cục bộ (cổng 6333); thư viện client tương ứng với ngôn ngữ lập trình (ví dụ qdrant_client cho Python).\nBước 1: Cài đặt và khởi chạy máy chủ Qdrant bằng Docker: `docker run -p 6333:6333 qdrant/qdrant`\nBước 2: Kết nối bằng client, ví dụ Python: QdrantClient(url=\"http://localhost:6333\")\nBước 3: Đọc hướng dẫn cài đặt và bảo mật trên trang tài liệu trước khi đưa vào production\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo collection và nạp các điểm dữ liệu gồm vector embedding và payload JSON\nBước 2: Truy vấn tìm kiếm tương đồng, kết hợp bộ lọc payload hoặc tìm kiếm lai\nBước 3: Dùng Web UI để duyệt collection, quản lý dữ liệu và theo dõi tình trạng triển khai\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết mã Python dùng qdrant_client để tạo collection và nạp embedding của các bài viết kèm payload chuyên mục\"\n- \"Tìm 10 sản phẩm tương tự nhất với vector truy vấn nhưng chỉ lấy sản phẩm có giá dưới 500.000 đồng\"\n- \"Thiết lập tìm kiếm lai kết hợp vector dày và vector thưa, gộp kết quả bằng RRF\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "chroma-core-chroma",
+    "slug": "chroma-core-chroma",
+    "name": "Chroma — Cơ sở dữ liệu embedding mã nguồn mở cho ứng dụng AI",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "vector_rag",
+    "categoryNameVi": "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+    "categories": [
+      "vector_rag",
+      "database_sql_nosql"
+    ],
+    "categoryNamesVi": [
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Cơ sở dữ liệu SQL & NoSQL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/chroma-core/chroma",
+    "websiteUrl": "https://www.trychroma.com",
+    "authorName": "Chroma",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Chroma là hạ tầng dữ liệu mã nguồn mở cho AI, hoạt động như cơ sở dữ liệu embedding với API lõi chỉ gồm 4 hàm. Chroma tự xử lý tách từ, tạo embedding và lập chỉ mục khi thêm tài liệu, hỗ trợ lọc theo metadata và nội dung. Có client Python và JavaScript, chạy trong bộ nhớ để thử nghiệm hoặc ở chế độ client-server.",
+    "purposeVi": "Xây dựng nhanh kho tài liệu có thể tìm kiếm ngữ nghĩa cho ứng dụng RAG và chatbot mà không cần tự quản lý pipeline embedding.",
+    "featuresVi": [
+      "API tối giản: tạo collection, thêm tài liệu, truy vấn và lấy theo id",
+      "Tự động embedding: Chroma xử lý tách từ, embedding và lập chỉ mục; cũng cho phép đưa embedding riêng",
+      "Lọc metadata và nội dung: tham số where và where_document khi truy vấn",
+      "Chạy trong bộ nhớ để làm mẫu nhanh, có thể bật lưu trữ bền vững",
+      "Chế độ client-server qua lệnh chroma run",
+      "Client Python (chromadb) và JavaScript (npm chromadb)"
+    ],
+    "installGuideVi": "Yêu cầu: Python với pip (gói chromadb) hoặc Node.js với npm cho client JavaScript.\nBước 1: Cài đặt client Python: `pip install chromadb`\nBước 2: Với JavaScript, cài đặt gói chromadb qua npm theo hướng dẫn trong README\nBước 3: Để chạy chế độ client-server: `chroma run --path /chroma_db_path`",
+    "usageGuideVi": "Bước 1: Khởi tạo client bằng chromadb.Client() và tạo collection\nBước 2: Thêm tài liệu kèm metadata và id bằng collection.add()\nBước 3: Truy vấn các kết quả tương tự nhất bằng collection.query(), có thể lọc theo metadata",
+    "samplePromptsVi": [
+      "Tạo collection Chroma chứa các tài liệu hướng dẫn nội bộ và tìm 2 đoạn liên quan nhất tới câu hỏi của nhân viên",
+      "Thêm tài liệu từ Notion và Google Docs vào Chroma với metadata nguồn, rồi chỉ truy vấn tài liệu có source là notion",
+      "Chạy Chroma ở chế độ client-server để nhiều dịch vụ cùng dùng chung kho dữ liệu embedding"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install chromadb",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install chromadb\"\n  ],\n  \"nguon\": \"https://github.com/chroma-core/chroma\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép Apache 2.0",
+      "API rất đơn giản, phù hợp làm mẫu nhanh",
+      "Tự động xử lý embedding và lập chỉ mục",
+      "Phát hành phiên bản mới đều đặn hằng tuần trên pypi và npm"
+    ],
+    "consVi": [
+      "Bản dịch vụ Chroma Cloud là dịch vụ trả phí riêng (có tín dụng dùng thử), không thuộc mã nguồn mở"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Chroma — Cơ sở dữ liệu embedding mã nguồn mở cho ứng dụng AI\n\n> Chroma - the open-source data infrastructure for AI.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nChroma là hạ tầng dữ liệu mã nguồn mở cho AI, hoạt động như cơ sở dữ liệu embedding với API lõi chỉ gồm 4 hàm. Chroma tự xử lý tách từ, tạo embedding và lập chỉ mục khi thêm tài liệu, hỗ trợ lọc theo metadata và nội dung. Có client Python và JavaScript, chạy trong bộ nhớ để thử nghiệm hoặc ở chế độ client-server.\n\nXây dựng nhanh kho tài liệu có thể tìm kiếm ngữ nghĩa cho ứng dụng RAG và chatbot mà không cần tự quản lý pipeline embedding.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Dữ liệu Vector & Tìm kiếm tri thức (RAG)\n- **Tác giả / Nhà phát triển:** Chroma\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/chroma-core/chroma](https://github.com/chroma-core/chroma)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **API tối giản: tạo collection, thêm tài liệu, truy vấn và lấy theo id**\n- **Tự động embedding: Chroma xử lý tách từ, embedding và lập chỉ mục; cũng cho phép đưa embedding riêng**\n- **Lọc metadata và nội dung: tham số where và where_document khi truy vấn**\n- **Chạy trong bộ nhớ để làm mẫu nhanh, có thể bật lưu trữ bền vững**\n- **Chế độ client-server qua lệnh chroma run**\n- **Client Python (chromadb) và JavaScript (npm chromadb)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install chromadb\n```\n\nYêu cầu: Python với pip (gói chromadb) hoặc Node.js với npm cho client JavaScript.\nBước 1: Cài đặt client Python: `pip install chromadb`\nBước 2: Với JavaScript, cài đặt gói chromadb qua npm theo hướng dẫn trong README\nBước 3: Để chạy chế độ client-server: `chroma run --path /chroma_db_path`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi tạo client bằng chromadb.Client() và tạo collection\nBước 2: Thêm tài liệu kèm metadata và id bằng collection.add()\nBước 3: Truy vấn các kết quả tương tự nhất bằng collection.query(), có thể lọc theo metadata\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo collection Chroma chứa các tài liệu hướng dẫn nội bộ và tìm 2 đoạn liên quan nhất tới câu hỏi của nhân viên\"\n- \"Thêm tài liệu từ Notion và Google Docs vào Chroma với metadata nguồn, rồi chỉ truy vấn tài liệu có source là notion\"\n- \"Chạy Chroma ở chế độ client-server để nhiều dịch vụ cùng dùng chung kho dữ liệu embedding\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "milvus-io-milvus",
+    "slug": "milvus-io-milvus",
+    "name": "Milvus — Cơ sở dữ liệu vector phân tán cho quy mô hàng tỷ vector",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "vector_rag",
+    "categoryNameVi": "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+    "categories": [
+      "vector_rag",
+      "database_sql_nosql",
+      "cloud_infrastructure"
+    ],
+    "categoryNamesVi": [
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Cơ sở dữ liệu SQL & NoSQL",
+      "Điện toán đám mây & Hạ tầng số"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/milvus-io/milvus",
+    "websiteUrl": "https://milvus.io",
+    "authorName": "Milvus (LF AI & Data, Zilliz)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Milvus là cơ sở dữ liệu vector hiệu năng cao, viết bằng Go và C++, có kiến trúc phân tán, chạy tốt trên Kubernetes và mở rộng theo chiều ngang tới hàng tỷ vector. Milvus hỗ trợ nhiều loại chỉ mục (HNSW, IVF, FLAT, SCANN, DiskANN), tăng tốc GPU, đa người thuê và tìm kiếm toàn văn BM25. Có chế độ Standalone cho một máy và Milvus Lite chạy cục bộ qua pip.",
+    "purposeVi": "Tổ chức và tìm kiếm khối lượng lớn dữ liệu phi cấu trúc (văn bản, hình ảnh, đa phương thức) cho ứng dụng GenAI và RAG ở quy mô lớn.",
+    "featuresVi": [
+      "Kiến trúc phân tán: tách tính toán và lưu trữ, microservice không trạng thái trên K8s, hỗ trợ replica",
+      "Nhiều loại chỉ mục vector: HNSW, IVF, FLAT, SCANN, DiskANN, biến thể lượng tử hóa và mmap; chỉ mục GPU CAGRA",
+      "Đa người thuê: cô lập ở cấp database, collection, partition hoặc partition key; lưu trữ nóng/lạnh",
+      "Tìm kiếm lai: toàn văn BM25, embedding thưa (SPLADE, BGE-M3) và vector dày trong cùng collection",
+      "Milvus Lite: tạo cơ sở dữ liệu vector cục bộ chỉ với một tệp",
+      "Hệ sinh thái: tích hợp LangChain, LlamaIndex, OpenAI, HuggingFace; giao diện quản trị Attu"
+    ],
+    "installGuideVi": "Yêu cầu: Python với pip để dùng SDK pymilvus (Milvus Lite chạy cục bộ); hoặc máy chủ Milvus tự triển khai (Docker/Kubernetes) hay Zilliz Cloud.\nBước 1: Cài đặt SDK Python: `pip install -U pymilvus`\nBước 2: Để thử nhanh cục bộ, cài đặt thêm Milvus Lite (gói pymilvus[milvus-lite]) và tạo client với tên tệp như milvus_demo.db\nBước 3: Hoặc kết nối tới máy chủ Milvus tự triển khai/Zilliz Cloud bằng uri và token",
+    "usageGuideVi": "Bước 1: Tạo client bằng MilvusClient\nBước 2: Tạo collection với số chiều vector, ví dụ 768\nBước 3: Nạp dữ liệu bằng client.insert() và tìm kiếm vector bằng client.search() với limit (topK) và output_fields",
+    "samplePromptsVi": [
+      "Viết mã Python dùng Milvus Lite tạo collection 768 chiều và nạp embedding của bộ dữ liệu câu hỏi thường gặp",
+      "Thiết lập tìm kiếm lai trong Milvus kết hợp BM25 toàn văn và vector dày cho kho văn bản pháp lý",
+      "Tìm 2 đoạn văn liên quan nhất tới câu hỏi 'Who is Alan Turing?' trong collection demo_collection"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install -U pymilvus",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install -U pymilvus\"\n  ],\n  \"nguon\": \"https://github.com/milvus-io/milvus\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép Apache 2.0",
+      "Mở rộng tới hàng tỷ vector, kiến trúc gốc Kubernetes",
+      "Milvus Lite cho phép bắt đầu chỉ với pip, không cần máy chủ",
+      "Hỗ trợ nhiều loại chỉ mục và tăng tốc GPU"
+    ],
+    "consVi": [
+      "Triển khai phân tán đầy đủ đòi hỏi vận hành Kubernetes",
+      "Bản được quản lý hoàn toàn là dịch vụ Zilliz Cloud bên ngoài"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Milvus — Cơ sở dữ liệu vector phân tán cho quy mô hàng tỷ vector\n\n> Milvus is a high-performance vector database built for scale.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMilvus là cơ sở dữ liệu vector hiệu năng cao, viết bằng Go và C++, có kiến trúc phân tán, chạy tốt trên Kubernetes và mở rộng theo chiều ngang tới hàng tỷ vector. Milvus hỗ trợ nhiều loại chỉ mục (HNSW, IVF, FLAT, SCANN, DiskANN), tăng tốc GPU, đa người thuê và tìm kiếm toàn văn BM25. Có chế độ Standalone cho một máy và Milvus Lite chạy cục bộ qua pip.\n\nTổ chức và tìm kiếm khối lượng lớn dữ liệu phi cấu trúc (văn bản, hình ảnh, đa phương thức) cho ứng dụng GenAI và RAG ở quy mô lớn.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Dữ liệu Vector & Tìm kiếm tri thức (RAG)\n- **Tác giả / Nhà phát triển:** Milvus (LF AI & Data, Zilliz)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/milvus-io/milvus](https://github.com/milvus-io/milvus)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Kiến trúc phân tán: tách tính toán và lưu trữ, microservice không trạng thái trên K8s, hỗ trợ replica**\n- **Nhiều loại chỉ mục vector: HNSW, IVF, FLAT, SCANN, DiskANN, biến thể lượng tử hóa và mmap; chỉ mục GPU CAGRA**\n- **Đa người thuê: cô lập ở cấp database, collection, partition hoặc partition key; lưu trữ nóng/lạnh**\n- **Tìm kiếm lai: toàn văn BM25, embedding thưa (SPLADE, BGE-M3) và vector dày trong cùng collection**\n- **Milvus Lite: tạo cơ sở dữ liệu vector cục bộ chỉ với một tệp**\n- **Hệ sinh thái: tích hợp LangChain, LlamaIndex, OpenAI, HuggingFace; giao diện quản trị Attu**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install -U pymilvus\n```\n\nYêu cầu: Python với pip để dùng SDK pymilvus (Milvus Lite chạy cục bộ); hoặc máy chủ Milvus tự triển khai (Docker/Kubernetes) hay Zilliz Cloud.\nBước 1: Cài đặt SDK Python: `pip install -U pymilvus`\nBước 2: Để thử nhanh cục bộ, cài đặt thêm Milvus Lite (gói pymilvus[milvus-lite]) và tạo client với tên tệp như milvus_demo.db\nBước 3: Hoặc kết nối tới máy chủ Milvus tự triển khai/Zilliz Cloud bằng uri và token\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo client bằng MilvusClient\nBước 2: Tạo collection với số chiều vector, ví dụ 768\nBước 3: Nạp dữ liệu bằng client.insert() và tìm kiếm vector bằng client.search() với limit (topK) và output_fields\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết mã Python dùng Milvus Lite tạo collection 768 chiều và nạp embedding của bộ dữ liệu câu hỏi thường gặp\"\n- \"Thiết lập tìm kiếm lai trong Milvus kết hợp BM25 toàn văn và vector dày cho kho văn bản pháp lý\"\n- \"Tìm 2 đoạn văn liên quan nhất tới câu hỏi 'Who is Alan Turing?' trong collection demo_collection\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "pgvector-pgvector",
+    "slug": "pgvector-pgvector",
+    "name": "pgvector — Phần mở rộng tìm kiếm vector cho PostgreSQL",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "vector_rag",
+    "categoryNameVi": "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+    "categories": [
+      "vector_rag",
+      "database_sql_nosql",
+      "database"
+    ],
+    "categoryNamesVi": [
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Cơ sở dữ liệu SQL & NoSQL",
+      "Cơ sở dữ liệu & Quản lý tri thức"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/pgvector/pgvector",
+    "websiteUrl": "",
+    "authorName": "pgvector",
+    "license": "Mã nguồn mở (PostgreSQL License)",
+    "summaryVi": "pgvector là phần mở rộng PostgreSQL cho tìm kiếm tương đồng vector, cho phép lưu vector cùng với phần dữ liệu còn lại trong Postgres. Hỗ trợ tìm kiếm láng giềng gần nhất chính xác và xấp xỉ (HNSW, IVFFlat), vector độ chính xác đơn, bán chính xác, nhị phân và thưa. Kế thừa toàn bộ tính năng của Postgres như ACID, khôi phục theo thời điểm và JOIN.",
+    "purposeVi": "Thêm khả năng tìm kiếm vector cho ứng dụng đang dùng PostgreSQL, không cần vận hành cơ sở dữ liệu vector riêng.",
+    "featuresVi": [
+      "Tìm kiếm chính xác và xấp xỉ: chỉ mục HNSW và IVFFlat",
+      "Nhiều kiểu vector: vector, halfvec, bit (nhị phân) và sparsevec",
+      "Nhiều hàm khoảng cách: L2, tích vô hướng, cosine, L1, Hamming, Jaccard",
+      "Lọc, đa người thuê, iterative index scan và tìm kiếm lai cùng full-text search của Postgres",
+      "Lượng tử hóa nhị phân và chỉ mục vector con để mở rộng quy mô",
+      "Dùng được với mọi ngôn ngữ có client Postgres"
+    ],
+    "installGuideVi": "Yêu cầu: PostgreSQL 13 trở lên; trình biên dịch (make trên Linux/Mac, Visual Studio C++ với nmake trên Windows); hoặc dùng Docker, Homebrew, APT, Yum, conda-forge.\nBước 1: Vào thư mục tạm: `cd /tmp`\nBước 2: Tải mã nguồn: `git clone --branch v0.8.7 https://github.com/pgvector/pgvector.git`\nBước 3: Vào thư mục: `cd pgvector`\nBước 4: Biên dịch: `make`\nBước 5: Cài đặt phần mở rộng (có thể cần sudo): `make install`\nBước 6: Hoặc cài đặt bằng Homebrew: `brew install pgvector`; hoặc dùng Docker: `docker pull pgvector/pgvector:pg18-trixie`\nBước 7: Bật phần mở rộng trong mỗi cơ sở dữ liệu: `CREATE EXTENSION vector;`",
+    "usageGuideVi": "Bước 1: Tạo bảng có cột vector, ví dụ embedding vector(3)\nBước 2: Chèn vector bằng câu lệnh INSERT\nBước 3: Truy vấn láng giềng gần nhất bằng toán tử <-> (L2), <#> (tích vô hướng), <=> (cosine)\nBước 4: Tạo chỉ mục HNSW hoặc IVFFlat khi dữ liệu lớn để tăng tốc",
+    "samplePromptsVi": [
+      "Viết câu lệnh SQL tạo bảng sản phẩm có cột embedding vector(1536) và chỉ mục HNSW theo cosine",
+      "Tìm 5 tài liệu gần nhất với vector truy vấn trong bảng items và chỉ lấy tài liệu thuộc danh mục 'hợp đồng'",
+      "Hướng dẫn cài đặt pgvector bằng Docker cho Postgres 18 và bật phần mở rộng vector"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "CREATE EXTENSION vector;",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"CREATE EXTENSION vector;\"\n  ],\n  \"nguon\": \"https://github.com/pgvector/pgvector\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép PostgreSQL, rất dễ dãi",
+      "Lưu vector cùng dữ liệu nghiệp vụ, hưởng ACID, JOIN và khôi phục theo thời điểm",
+      "Có sẵn trong Postgres.app và nhiều nhà cung cấp Postgres được quản lý",
+      "Nhiều cách cài đặt: mã nguồn, Docker, Homebrew, PGXN, APT, Yum, conda-forge"
+    ],
+    "consVi": [
+      "Phải biên dịch hoặc cài đặt phần mở rộng vào máy chủ Postgres; trên Windows cần Visual Studio C++",
+      "Gói Homebrew chỉ thêm vào các formula postgresql@18 và postgresql@17"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# pgvector — Phần mở rộng tìm kiếm vector cho PostgreSQL\n\n> Open-source vector similarity search for Postgres\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\npgvector là phần mở rộng PostgreSQL cho tìm kiếm tương đồng vector, cho phép lưu vector cùng với phần dữ liệu còn lại trong Postgres. Hỗ trợ tìm kiếm láng giềng gần nhất chính xác và xấp xỉ (HNSW, IVFFlat), vector độ chính xác đơn, bán chính xác, nhị phân và thưa. Kế thừa toàn bộ tính năng của Postgres như ACID, khôi phục theo thời điểm và JOIN.\n\nThêm khả năng tìm kiếm vector cho ứng dụng đang dùng PostgreSQL, không cần vận hành cơ sở dữ liệu vector riêng.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Dữ liệu Vector & Tìm kiếm tri thức (RAG)\n- **Tác giả / Nhà phát triển:** pgvector\n- **Giấy phép bản quyền:** Mã nguồn mở (PostgreSQL License)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/pgvector/pgvector](https://github.com/pgvector/pgvector)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tìm kiếm chính xác và xấp xỉ: chỉ mục HNSW và IVFFlat**\n- **Nhiều kiểu vector: vector, halfvec, bit (nhị phân) và sparsevec**\n- **Nhiều hàm khoảng cách: L2, tích vô hướng, cosine, L1, Hamming, Jaccard**\n- **Lọc, đa người thuê, iterative index scan và tìm kiếm lai cùng full-text search của Postgres**\n- **Lượng tử hóa nhị phân và chỉ mục vector con để mở rộng quy mô**\n- **Dùng được với mọi ngôn ngữ có client Postgres**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nCREATE EXTENSION vector;\n```\n\nYêu cầu: PostgreSQL 13 trở lên; trình biên dịch (make trên Linux/Mac, Visual Studio C++ với nmake trên Windows); hoặc dùng Docker, Homebrew, APT, Yum, conda-forge.\nBước 1: Vào thư mục tạm: `cd /tmp`\nBước 2: Tải mã nguồn: `git clone --branch v0.8.7 https://github.com/pgvector/pgvector.git`\nBước 3: Vào thư mục: `cd pgvector`\nBước 4: Biên dịch: `make`\nBước 5: Cài đặt phần mở rộng (có thể cần sudo): `make install`\nBước 6: Hoặc cài đặt bằng Homebrew: `brew install pgvector`; hoặc dùng Docker: `docker pull pgvector/pgvector:pg18-trixie`\nBước 7: Bật phần mở rộng trong mỗi cơ sở dữ liệu: `CREATE EXTENSION vector;`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo bảng có cột vector, ví dụ embedding vector(3)\nBước 2: Chèn vector bằng câu lệnh INSERT\nBước 3: Truy vấn láng giềng gần nhất bằng toán tử <-> (L2), <#> (tích vô hướng), <=> (cosine)\nBước 4: Tạo chỉ mục HNSW hoặc IVFFlat khi dữ liệu lớn để tăng tốc\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết câu lệnh SQL tạo bảng sản phẩm có cột embedding vector(1536) và chỉ mục HNSW theo cosine\"\n- \"Tìm 5 tài liệu gần nhất với vector truy vấn trong bảng items và chỉ lấy tài liệu thuộc danh mục 'hợp đồng'\"\n- \"Hướng dẫn cài đặt pgvector bằng Docker cho Postgres 18 và bật phần mở rộng vector\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "lancedb-lancedb",
+    "slug": "lancedb-lancedb",
+    "name": "LanceDB — Cơ sở dữ liệu vector nhúng cho dữ liệu đa phương thức",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "vector_rag",
+    "categoryNameVi": "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+    "categories": [
+      "vector_rag",
+      "database_sql_nosql",
+      "data_engineering"
+    ],
+    "categoryNamesVi": [
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Cơ sở dữ liệu SQL & NoSQL",
+      "Kỹ thuật dữ liệu & Đường ống ETL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/lancedb/lancedb",
+    "websiteUrl": "https://lancedb.com",
+    "authorName": "LanceDB",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "LanceDB là cơ sở dữ liệu vector nhúng (chạy cục bộ hoặc trên đám mây của bạn) xây dựng trên định dạng cột Lance, dành cho tìm kiếm vector nhanh và có khả năng mở rộng. Hỗ trợ tìm kiếm tương đồng vector, toàn văn và SQL trên dữ liệu đa phương thức (văn bản, hình ảnh, video, đám mây điểm). Có SDK Python, TypeScript, Rust và REST API.",
+    "purposeVi": "Lưu, lập chỉ mục và tìm kiếm dữ liệu đa phương thức cùng vector cho ứng dụng AI/ML mà không cần vận hành máy chủ riêng.",
+    "featuresVi": [
+      "Tìm kiếm vector nhanh: tìm kiếm hàng tỷ vector trong mili giây theo README",
+      "Tìm kiếm toàn diện: tương đồng vector, toàn văn và SQL",
+      "Đa phương thức: lưu, truy vấn, lọc vector, metadata và dữ liệu văn bản, hình ảnh, video, đám mây điểm",
+      "Zero-copy và tự động quản lý phiên bản dữ liệu; hỗ trợ GPU khi xây chỉ mục",
+      "Lưu trữ dạng cột Lance; tích hợp LangChain, LlamaIndex, Apache Arrow, Pandas, Polars, DuckDB",
+      "SDK Python, Node.js/TypeScript, Rust và REST API"
+    ],
+    "installGuideVi": "Yêu cầu: Python với pip (gói lancedb) hoặc Node.js với npm (gói @lancedb/lancedb). Nếu không có wheel cho nền tảng, cần Rust toolchain và protoc để build từ mã nguồn; CPU x86_64 đời trước Haswell dùng gói lancedb-compat.\nBước 1: Cài đặt SDK Python: `pip install lancedb`\nBước 2: Trên CPU x86_64 đời trước Haswell, cài đặt gói tương thích thay thế: `pip install lancedb-compat`\nBước 3: Với Node.js, cài đặt: `npm install @lancedb/lancedb`",
+    "usageGuideVi": "Bước 1: Kết nối tới thư mục dữ liệu bằng lancedb.connect('<PATH_TO_LANCEDB_DATASET>')\nBước 2: Mở bảng bằng db.open_table('my_table')\nBước 3: Tìm kiếm vector bằng table.search([...]).limit(20).to_list()",
+    "samplePromptsVi": [
+      "Viết mã Python tạo bảng LanceDB chứa embedding hình ảnh sản phẩm và tìm 20 ảnh tương tự nhất",
+      "Kết hợp tìm kiếm toàn văn và tìm kiếm vector trong LanceDB cho kho tài liệu hướng dẫn kỹ thuật",
+      "Dùng LanceDB làm vector store cục bộ cho pipeline RAG với LlamaIndex"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install lancedb",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install lancedb\"\n  ],\n  \"nguon\": \"https://github.com/lancedb/lancedb\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép Apache 2.0, chạy cục bộ, không phụ thuộc nhà cung cấp",
+      "Không cần máy chủ: nhúng trực tiếp vào ứng dụng Python/Node.js",
+      "Hỗ trợ dữ liệu đa phương thức và quản lý phiên bản dữ liệu",
+      "Bản ổn định phát hành khoảng 2 tuần một lần"
+    ],
+    "consVi": [
+      "Wheel mặc định yêu cầu CPU hỗ trợ AVX2 (Haswell trở lên); máy cũ phải dùng lancedb-compat",
+      "Build từ mã nguồn cần Rust và protoc, có thể mất nhiều thời gian",
+      "README gốc chủ yếu dẫn tới tài liệu bên ngoài cho phần hướng dẫn chi tiết"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# LanceDB — Cơ sở dữ liệu vector nhúng cho dữ liệu đa phương thức\n\n> The ultimate multimodal data platform for AI/ML applications.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nLanceDB là cơ sở dữ liệu vector nhúng (chạy cục bộ hoặc trên đám mây của bạn) xây dựng trên định dạng cột Lance, dành cho tìm kiếm vector nhanh và có khả năng mở rộng. Hỗ trợ tìm kiếm tương đồng vector, toàn văn và SQL trên dữ liệu đa phương thức (văn bản, hình ảnh, video, đám mây điểm). Có SDK Python, TypeScript, Rust và REST API.\n\nLưu, lập chỉ mục và tìm kiếm dữ liệu đa phương thức cùng vector cho ứng dụng AI/ML mà không cần vận hành máy chủ riêng.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Dữ liệu Vector & Tìm kiếm tri thức (RAG)\n- **Tác giả / Nhà phát triển:** LanceDB\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/lancedb/lancedb](https://github.com/lancedb/lancedb)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tìm kiếm vector nhanh: tìm kiếm hàng tỷ vector trong mili giây theo README**\n- **Tìm kiếm toàn diện: tương đồng vector, toàn văn và SQL**\n- **Đa phương thức: lưu, truy vấn, lọc vector, metadata và dữ liệu văn bản, hình ảnh, video, đám mây điểm**\n- **Zero-copy và tự động quản lý phiên bản dữ liệu; hỗ trợ GPU khi xây chỉ mục**\n- **Lưu trữ dạng cột Lance; tích hợp LangChain, LlamaIndex, Apache Arrow, Pandas, Polars, DuckDB**\n- **SDK Python, Node.js/TypeScript, Rust và REST API**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install lancedb\n```\n\nYêu cầu: Python với pip (gói lancedb) hoặc Node.js với npm (gói @lancedb/lancedb). Nếu không có wheel cho nền tảng, cần Rust toolchain và protoc để build từ mã nguồn; CPU x86_64 đời trước Haswell dùng gói lancedb-compat.\nBước 1: Cài đặt SDK Python: `pip install lancedb`\nBước 2: Trên CPU x86_64 đời trước Haswell, cài đặt gói tương thích thay thế: `pip install lancedb-compat`\nBước 3: Với Node.js, cài đặt: `npm install @lancedb/lancedb`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Kết nối tới thư mục dữ liệu bằng lancedb.connect('<PATH_TO_LANCEDB_DATASET>')\nBước 2: Mở bảng bằng db.open_table('my_table')\nBước 3: Tìm kiếm vector bằng table.search([...]).limit(20).to_list()\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết mã Python tạo bảng LanceDB chứa embedding hình ảnh sản phẩm và tìm 20 ảnh tương tự nhất\"\n- \"Kết hợp tìm kiếm toàn văn và tìm kiếm vector trong LanceDB cho kho tài liệu hướng dẫn kỹ thuật\"\n- \"Dùng LanceDB làm vector store cục bộ cho pipeline RAG với LlamaIndex\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "hkuds-lightrag",
+    "slug": "hkuds-lightrag",
+    "name": "LightRAG — Framework RAG dựa trên đồ thị tri thức, nhanh và gọn nhẹ",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "vector_rag",
+    "categoryNameVi": "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+    "categories": [
+      "vector_rag",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/HKUDS/LightRAG",
+    "websiteUrl": "",
+    "authorName": "HKUDS (LightRAG Team)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "LightRAG là framework RAG dựa trên đồ thị tri thức gọn nhẹ, thay thế hiệu quả cho Microsoft GraphRAG, quản lý đồng thời đồ thị tri thức và vector embedding. Hỗ trợ cập nhật tăng dần, xóa chọn lọc, nhiều bộ phân tích tài liệu (MinerU, Docling, Native) và xử lý đa phương thức. Đi kèm LightRAG Server có giao diện web và REST API.",
+    "purposeVi": "Xây dựng hệ thống hỏi đáp trên kho tài liệu riêng với chất lượng truy xuất cao nhờ đồ thị tri thức, giảm số lần gọi LLM so với GraphRAG truyền thống.",
+    "featuresVi": [
+      "Kiến trúc hai lớp: đồ thị tri thức kết hợp vector embedding",
+      "Năm chế độ truy vấn: local, global, hybrid, naive và mix (mặc định)",
+      "Cập nhật tăng dần và xóa chọn lọc tài liệu, tái tạo thực thể/quan hệ nhờ bộ đệm LLM",
+      "Nhiều bộ phân tích tài liệu: MinerU, Docling, Native; xử lý hình ảnh, bảng, công thức trong Word và Markdown",
+      "Bốn chiến lược chia đoạn văn bản: Fixed-length, Recursive character, Vector semantic, Paragraph semantic",
+      "Nhiều backend lưu trữ (khuyến nghị PostgreSQL cho production); hỗ trợ reranking",
+      "LightRAG Server: giao diện web và REST API, có route tương thích Ollama"
+    ],
+    "installGuideVi": "Yêu cầu: Python với uv (khuyến nghị) hoặc pip; hoặc Docker Compose. Cần cấu hình LLM, mô hình embedding (ví dụ BAAI/bge-m3) trong tệp .env; máy chủ Docker mặc định dùng cổng 9621.\nBước 1: Cài đặt LightRAG Server bằng uv: `uv tool install \"lightrag-hku[api]\"`\nBước 2: Tạo tệp cấu hình và cập nhật thông tin LLM, embedding: `cp env.example .env`\nBước 3: Khởi chạy máy chủ: `lightrag-server`\nBước 4: Hoặc chạy bằng Docker Compose: `git clone https://github.com/HKUDS/LightRAG.git`, `cd LightRAG`, sao chép env.example thành .env rồi `docker compose up`",
+    "usageGuideVi": "Bước 1: Cấu hình các mô hình theo vai trò (trích xuất, truy vấn, từ khóa, VLM) và mô hình embedding trong .env\nBước 2: Mở giao diện web của LightRAG Server để tải tài liệu lên và xem đồ thị tri thức\nBước 3: Đặt câu hỏi với chế độ truy vấn mix hoặc gọi REST API từ ứng dụng",
+    "samplePromptsVi": [
+      "Tải bộ văn bản pháp luật lên LightRAG và hỏi mối quan hệ giữa các điều khoản liên quan tới hợp đồng lao động",
+      "Dùng chế độ global để tóm tắt các chủ đề chính xuyên suốt nhiều báo cáo tài chính",
+      "Cấu hình LightRAG dùng PostgreSQL làm backend lưu trữ và bge-m3 làm mô hình embedding"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "uv tool install \"lightrag-hku[api]\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uv tool install \\\"lightrag-hku[api]\\\"\"\n  ],\n  \"nguon\": \"https://github.com/HKUDS/LightRAG\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở theo giấy phép MIT",
+      "Giảm số lần gọi LLM so với cách tiếp cận dựa trên community report",
+      "Hỗ trợ cập nhật tăng dần và xóa tài liệu",
+      "Có giao diện web, REST API và ảnh Docker chính thức được ký Cosign"
+    ],
+    "consVi": [
+      "Máy chủ mặc định lắng nghe trên mọi giao diện (0.0.0.0) và không xác thực; cần cấu hình LIGHTRAG_API_KEY hoặc AUTH_ACCOUNTS",
+      "Backend lưu trữ mặc định chỉ phù hợp thử nghiệm quy mô nhỏ, không dùng cho production",
+      "Yêu cầu LLM có năng lực cao cho bước trích xuất thực thể–quan hệ; đổi mô hình embedding phải embed lại toàn bộ"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# LightRAG — Framework RAG dựa trên đồ thị tri thức, nhanh và gọn nhẹ\n\n> LightRAG: Simple and Fast Retrieval-Augmented Generation\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nLightRAG là framework RAG dựa trên đồ thị tri thức gọn nhẹ, thay thế hiệu quả cho Microsoft GraphRAG, quản lý đồng thời đồ thị tri thức và vector embedding. Hỗ trợ cập nhật tăng dần, xóa chọn lọc, nhiều bộ phân tích tài liệu (MinerU, Docling, Native) và xử lý đa phương thức. Đi kèm LightRAG Server có giao diện web và REST API.\n\nXây dựng hệ thống hỏi đáp trên kho tài liệu riêng với chất lượng truy xuất cao nhờ đồ thị tri thức, giảm số lần gọi LLM so với GraphRAG truyền thống.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Dữ liệu Vector & Tìm kiếm tri thức (RAG)\n- **Tác giả / Nhà phát triển:** HKUDS (LightRAG Team)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/HKUDS/LightRAG](https://github.com/HKUDS/LightRAG)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Kiến trúc hai lớp: đồ thị tri thức kết hợp vector embedding**\n- **Năm chế độ truy vấn: local, global, hybrid, naive và mix (mặc định)**\n- **Cập nhật tăng dần và xóa chọn lọc tài liệu, tái tạo thực thể/quan hệ nhờ bộ đệm LLM**\n- **Nhiều bộ phân tích tài liệu: MinerU, Docling, Native; xử lý hình ảnh, bảng, công thức trong Word và Markdown**\n- **Bốn chiến lược chia đoạn văn bản: Fixed-length, Recursive character, Vector semantic, Paragraph semantic**\n- **Nhiều backend lưu trữ (khuyến nghị PostgreSQL cho production); hỗ trợ reranking**\n- **LightRAG Server: giao diện web và REST API, có route tương thích Ollama**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuv tool install \"lightrag-hku[api]\"\n```\n\nYêu cầu: Python với uv (khuyến nghị) hoặc pip; hoặc Docker Compose. Cần cấu hình LLM, mô hình embedding (ví dụ BAAI/bge-m3) trong tệp .env; máy chủ Docker mặc định dùng cổng 9621.\nBước 1: Cài đặt LightRAG Server bằng uv: `uv tool install \"lightrag-hku[api]\"`\nBước 2: Tạo tệp cấu hình và cập nhật thông tin LLM, embedding: `cp env.example .env`\nBước 3: Khởi chạy máy chủ: `lightrag-server`\nBước 4: Hoặc chạy bằng Docker Compose: `git clone https://github.com/HKUDS/LightRAG.git`, `cd LightRAG`, sao chép env.example thành .env rồi `docker compose up`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Cấu hình các mô hình theo vai trò (trích xuất, truy vấn, từ khóa, VLM) và mô hình embedding trong .env\nBước 2: Mở giao diện web của LightRAG Server để tải tài liệu lên và xem đồ thị tri thức\nBước 3: Đặt câu hỏi với chế độ truy vấn mix hoặc gọi REST API từ ứng dụng\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tải bộ văn bản pháp luật lên LightRAG và hỏi mối quan hệ giữa các điều khoản liên quan tới hợp đồng lao động\"\n- \"Dùng chế độ global để tóm tắt các chủ đề chính xuyên suốt nhiều báo cáo tài chính\"\n- \"Cấu hình LightRAG dùng PostgreSQL làm backend lưu trữ và bge-m3 làm mô hình embedding\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "weaviate-weaviate",
+    "slug": "weaviate-weaviate",
+    "name": "Weaviate — Cơ sở dữ liệu vector cloud-native tích hợp RAG và tìm kiếm lai",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "vector_rag",
+    "categoryNameVi": "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+    "categories": [
+      "vector_rag",
+      "database_sql_nosql"
+    ],
+    "categoryNamesVi": [
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Cơ sở dữ liệu SQL & NoSQL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/weaviate/weaviate",
+    "websiteUrl": "https://weaviate.io",
+    "authorName": "Weaviate B.V.",
+    "license": "Mã nguồn mở hỗn hợp (BSD-3-Clause cho lõi; thư mục wl/ theo giấy phép doanh nghiệp)",
+    "summaryVi": "Weaviate là cơ sở dữ liệu vector cloud-native viết bằng Go, lưu cả đối tượng lẫn vector, kết hợp tìm kiếm tương đồng vector với lọc từ khóa, RAG và reranking trong một giao diện truy vấn. Có thể tự động tạo vector khi nhập dữ liệu bằng các mô hình tích hợp (OpenAI, Cohere, HuggingFace...) hoặc nhập embedding có sẵn. Hỗ trợ đa người thuê, replication và phân quyền RBAC cho production.",
+    "purposeVi": "Xây dựng hệ thống RAG, tìm kiếm ngữ nghĩa và hình ảnh, gợi ý và chatbot trên cùng một cơ sở dữ liệu vector.",
+    "featuresVi": [
+      "Tự động vector hóa khi nhập dữ liệu bằng các mô hình tích hợp, hoặc nhập vector tự tạo",
+      "Tìm kiếm lai và hình ảnh: kết hợp tìm kiếm ngữ nghĩa với BM25, tìm kiếm ảnh và bộ lọc nâng cao",
+      "RAG và reranking tích hợp: tìm kiếm sinh (generative search) ngay trong cơ sở dữ liệu",
+      "Sẵn sàng production: mở rộng ngang, đa người thuê, replication, RBAC",
+      "Nén vector và lượng tử hóa giảm bộ nhớ; Object TTL tự xóa dữ liệu cũ",
+      "API REST, gRPC, GraphQL; client Python, JS/TS, Java, Go, C#/.NET"
+    ],
+    "installGuideVi": "Yêu cầu: Docker và Docker Compose (cổng 8080 và 50051 theo ví dụ docker-compose.yml trong README), hoặc Kubernetes, hoặc Weaviate Cloud; Python với pip cho client.\nBước 1: Tạo tệp docker-compose.yml gồm dịch vụ weaviate và mô hình embedding text2vec-model2vec theo README\nBước 2: Cài đặt và khởi động Weaviate cùng dịch vụ embedding: `docker compose up -d`\nBước 3: Cài đặt client Python: `pip install -U weaviate-client`",
+    "usageGuideVi": "Bước 1: Kết nối bằng weaviate.connect_to_local()\nBước 2: Tạo collection với vectorizer (ví dụ text2vec_model2vec) hoặc self_provided cho vector tự tạo\nBước 3: Nhập dữ liệu bằng insert_many và tìm kiếm ngữ nghĩa bằng query.near_text",
+    "samplePromptsVi": [
+      "Tạo collection Article trong Weaviate và tìm bài viết gần nghĩa nhất với câu 'cơ sở dữ liệu vector'",
+      "Thiết lập tìm kiếm lai BM25 kết hợp vector cho kho sản phẩm thương mại điện tử",
+      "Dùng generative search của Weaviate để tóm tắt các tài liệu liên quan tới câu hỏi của khách hàng"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker compose up -d",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker compose up -d\"\n  ],\n  \"nguon\": \"https://github.com/weaviate/weaviate\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Phần lõi mã nguồn mở theo giấy phép BSD-3-Clause",
+      "Tích hợp sẵn vector hóa, RAG và reranking trong cơ sở dữ liệu",
+      "Nhiều client chính thức và ba loại API (REST, gRPC, GraphQL)",
+      "Có bộ Agent Skills cho Claude Code, Cursor và các agent lập trình khác"
+    ],
+    "consVi": [
+      "Giấy phép hỗn hợp: mã trong thư mục wl/ chỉ dùng theo giấy phép doanh nghiệp, tính năng doanh nghiệp bật bằng license key",
+      "Tự động vector hóa qua nhà cung cấp bên ngoài (OpenAI, Cohere...) cần khóa API của họ"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Weaviate — Cơ sở dữ liệu vector cloud-native tích hợp RAG và tìm kiếm lai\n\n> Weaviate is a cloud-native vector database that stores both objects and vectors, enabling semantic search at scale.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nWeaviate là cơ sở dữ liệu vector cloud-native viết bằng Go, lưu cả đối tượng lẫn vector, kết hợp tìm kiếm tương đồng vector với lọc từ khóa, RAG và reranking trong một giao diện truy vấn. Có thể tự động tạo vector khi nhập dữ liệu bằng các mô hình tích hợp (OpenAI, Cohere, HuggingFace...) hoặc nhập embedding có sẵn. Hỗ trợ đa người thuê, replication và phân quyền RBAC cho production.\n\nXây dựng hệ thống RAG, tìm kiếm ngữ nghĩa và hình ảnh, gợi ý và chatbot trên cùng một cơ sở dữ liệu vector.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Dữ liệu Vector & Tìm kiếm tri thức (RAG)\n- **Tác giả / Nhà phát triển:** Weaviate B.V.\n- **Giấy phép bản quyền:** Mã nguồn mở hỗn hợp (BSD-3-Clause cho lõi; thư mục wl/ theo giấy phép doanh nghiệp)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/weaviate/weaviate](https://github.com/weaviate/weaviate)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tự động vector hóa khi nhập dữ liệu bằng các mô hình tích hợp, hoặc nhập vector tự tạo**\n- **Tìm kiếm lai và hình ảnh: kết hợp tìm kiếm ngữ nghĩa với BM25, tìm kiếm ảnh và bộ lọc nâng cao**\n- **RAG và reranking tích hợp: tìm kiếm sinh (generative search) ngay trong cơ sở dữ liệu**\n- **Sẵn sàng production: mở rộng ngang, đa người thuê, replication, RBAC**\n- **Nén vector và lượng tử hóa giảm bộ nhớ; Object TTL tự xóa dữ liệu cũ**\n- **API REST, gRPC, GraphQL; client Python, JS/TS, Java, Go, C#/.NET**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker compose up -d\n```\n\nYêu cầu: Docker và Docker Compose (cổng 8080 và 50051 theo ví dụ docker-compose.yml trong README), hoặc Kubernetes, hoặc Weaviate Cloud; Python với pip cho client.\nBước 1: Tạo tệp docker-compose.yml gồm dịch vụ weaviate và mô hình embedding text2vec-model2vec theo README\nBước 2: Cài đặt và khởi động Weaviate cùng dịch vụ embedding: `docker compose up -d`\nBước 3: Cài đặt client Python: `pip install -U weaviate-client`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Kết nối bằng weaviate.connect_to_local()\nBước 2: Tạo collection với vectorizer (ví dụ text2vec_model2vec) hoặc self_provided cho vector tự tạo\nBước 3: Nhập dữ liệu bằng insert_many và tìm kiếm ngữ nghĩa bằng query.near_text\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo collection Article trong Weaviate và tìm bài viết gần nghĩa nhất với câu 'cơ sở dữ liệu vector'\"\n- \"Thiết lập tìm kiếm lai BM25 kết hợp vector cho kho sản phẩm thương mại điện tử\"\n- \"Dùng generative search của Weaviate để tóm tắt các tài liệu liên quan tới câu hỏi của khách hàng\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "unstructured-io-unstructured",
+    "slug": "unstructured-io-unstructured",
+    "name": "unstructured — Thư viện tiền xử lý tài liệu phi cấu trúc cho LLM",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs",
+      "data_engineering",
+      "vector_rag"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử",
+      "Kỹ thuật dữ liệu & Đường ống ETL",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/Unstructured-IO/unstructured",
+    "websiteUrl": "https://docs.unstructured.io",
+    "authorName": "Unstructured-IO",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "unstructured là thư viện Python mã nguồn mở để nạp và tiền xử lý tài liệu phi cấu trúc như PDF, HTML, Word, email, ảnh… thành các phần tử có cấu trúc. Mục tiêu của thư viện là tối ưu quy trình xử lý dữ liệu cho LLM; hàm partition tự nhận diện loại tệp và chuyển tới hàm phân tách phù hợp.",
+    "purposeVi": "Chuyển tài liệu phi cấu trúc thành dữ liệu có cấu trúc (danh sách phần tử) để đưa vào pipeline LLM và RAG.",
+    "featuresVi": [
+      "Hàm partition tự động: nhận diện loại tệp và gọi hàm phân tách tương ứng",
+      "Hàm riêng theo định dạng: partition_pdf, partition_text, email (.eml), docx, pptx…",
+      "Cài đặt theo nhóm phụ thuộc: unstructured[all-docs] hoặc chỉ các extra cần thiết như [docx,pptx]",
+      "Ảnh Docker đa nền tảng (x86_64 và Apple silicon) dựng sẵn từ nhánh main",
+      "Có thể tắt telemetry bằng biến môi trường DO_NOT_TRACK hoặc SCARF_NO_ANALYTICS"
+    ],
+    "installGuideVi": "Yêu cầu: Python. Tùy loại tài liệu cần thêm các gói hệ thống: libmagic-dev (nhận diện loại tệp), poppler-utils (ảnh và PDF), tesseract-ocr (OCR ảnh/PDF), libreoffice (tài liệu MS Office). Hoặc dùng Docker.\nBước 1: Cài đặt đầy đủ hỗ trợ mọi loại tài liệu: `pip install \"unstructured[all-docs]\"`\nBước 2: Hoặc cài đặt bản tối thiểu cho text, HTML, XML, JSON, email: `pip install unstructured`\nBước 3: Hoặc chỉ cài đặt phụ thuộc cho định dạng cần dùng, ví dụ: `pip install \"unstructured[docx,pptx]\"`\nBước 4: Cài đặt các gói hệ thống libmagic-dev, poppler-utils, tesseract-ocr, libreoffice nếu xử lý PDF, ảnh hoặc tài liệu Office\nBước 5: Cách khác — chạy bằng Docker: `docker pull downloads.unstructured.io/unstructured-io/unstructured:latest`, rồi `docker run -dt --name unstructured downloads.unstructured.io/unstructured-io/unstructured:latest` và `docker exec -it unstructured bash`",
+    "usageGuideVi": "Bước 1: Trong Python, gọi `from unstructured.partition.auto import partition` rồi `elements = partition(filename=\"...\")` để phân tách một tệp bất kỳ\nBước 2: Với PDF có thể dùng trực tiếp `partition_pdf`, với văn bản dùng `partition_text`\nBước 3: Duyệt danh sách elements trả về để lấy dữ liệu có cấu trúc, rồi đưa vào bước chia nhỏ (chunking) hoặc nhúng cho hệ thống RAG\nBước 4: Xem hướng dẫn partitioning trên trang tài liệu để biết hàm riêng cho từng định dạng",
+    "samplePromptsVi": [
+      "Dùng partition để tách tệp hợp đồng PDF thành các phần tử tiêu đề, đoạn văn, bảng",
+      "Tiền xử lý thư mục email .eml thành dữ liệu có cấu trúc để nạp vào cơ sở dữ liệu vector",
+      "Trích xuất nội dung từ tệp Word và PowerPoint cho pipeline RAG nội bộ"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install \"unstructured[all-docs]\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install \\\"unstructured[all-docs]\\\"\"\n  ],\n  \"nguon\": \"https://github.com/Unstructured-IO/unstructured\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0; README cam kết thư viện mã nguồn mở sẽ luôn miễn phí",
+      "Hỗ trợ nhiều định dạng: PDF, HTML, Word, email, ảnh và nhiều loại khác",
+      "Có ảnh Docker dựng sẵn cho x86_64 và Apple silicon",
+      "Dự án được cập nhật thường xuyên"
+    ],
+    "consVi": [
+      "Cần cài đặt nhiều gói hệ thống (poppler, tesseract, libreoffice…) tùy loại tài liệu",
+      "Theo bảng so sánh trong README, chất lượng bảng và văn bản của bản mã nguồn mở thấp hơn dịch vụ trả phí Transform API của cùng hãng",
+      "Mặc định gửi telemetry nhẹ; phải đặt DO_NOT_TRACK hoặc SCARF_NO_ANALYTICS để tắt"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# unstructured — Thư viện tiền xử lý tài liệu phi cấu trúc cho LLM\n\n> The `unstructured` library provides open-source components for ingesting and pre-processing images and text documents, such as PDFs, HTML, Word docs, and many more.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nunstructured là thư viện Python mã nguồn mở để nạp và tiền xử lý tài liệu phi cấu trúc như PDF, HTML, Word, email, ảnh… thành các phần tử có cấu trúc. Mục tiêu của thư viện là tối ưu quy trình xử lý dữ liệu cho LLM; hàm partition tự nhận diện loại tệp và chuyển tới hàm phân tách phù hợp.\n\nChuyển tài liệu phi cấu trúc thành dữ liệu có cấu trúc (danh sách phần tử) để đưa vào pipeline LLM và RAG.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** Unstructured-IO\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/Unstructured-IO/unstructured](https://github.com/Unstructured-IO/unstructured)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Hàm partition tự động: nhận diện loại tệp và gọi hàm phân tách tương ứng**\n- **Hàm riêng theo định dạng: partition_pdf, partition_text, email (.eml), docx, pptx…**\n- **Cài đặt theo nhóm phụ thuộc: unstructured[all-docs] hoặc chỉ các extra cần thiết như [docx,pptx]**\n- **Ảnh Docker đa nền tảng (x86_64 và Apple silicon) dựng sẵn từ nhánh main**\n- **Có thể tắt telemetry bằng biến môi trường DO_NOT_TRACK hoặc SCARF_NO_ANALYTICS**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install \"unstructured[all-docs]\"\n```\n\nYêu cầu: Python. Tùy loại tài liệu cần thêm các gói hệ thống: libmagic-dev (nhận diện loại tệp), poppler-utils (ảnh và PDF), tesseract-ocr (OCR ảnh/PDF), libreoffice (tài liệu MS Office). Hoặc dùng Docker.\nBước 1: Cài đặt đầy đủ hỗ trợ mọi loại tài liệu: `pip install \"unstructured[all-docs]\"`\nBước 2: Hoặc cài đặt bản tối thiểu cho text, HTML, XML, JSON, email: `pip install unstructured`\nBước 3: Hoặc chỉ cài đặt phụ thuộc cho định dạng cần dùng, ví dụ: `pip install \"unstructured[docx,pptx]\"`\nBước 4: Cài đặt các gói hệ thống libmagic-dev, poppler-utils, tesseract-ocr, libreoffice nếu xử lý PDF, ảnh hoặc tài liệu Office\nBước 5: Cách khác — chạy bằng Docker: `docker pull downloads.unstructured.io/unstructured-io/unstructured:latest`, rồi `docker run -dt --name unstructured downloads.unstructured.io/unstructured-io/unstructured:latest` và `docker exec -it unstructured bash`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trong Python, gọi `from unstructured.partition.auto import partition` rồi `elements = partition(filename=\"...\")` để phân tách một tệp bất kỳ\nBước 2: Với PDF có thể dùng trực tiếp `partition_pdf`, với văn bản dùng `partition_text`\nBước 3: Duyệt danh sách elements trả về để lấy dữ liệu có cấu trúc, rồi đưa vào bước chia nhỏ (chunking) hoặc nhúng cho hệ thống RAG\nBước 4: Xem hướng dẫn partitioning trên trang tài liệu để biết hàm riêng cho từng định dạng\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Dùng partition để tách tệp hợp đồng PDF thành các phần tử tiêu đề, đoạn văn, bảng\"\n- \"Tiền xử lý thư mục email .eml thành dữ liệu có cấu trúc để nạp vào cơ sở dữ liệu vector\"\n- \"Trích xuất nội dung từ tệp Word và PowerPoint cho pipeline RAG nội bộ\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "datalab-to-marker",
+    "slug": "datalab-to-marker",
+    "name": "Marker — Chuyển PDF và tài liệu sang Markdown, JSON nhanh, chính xác",
+    "icon": "FolderTree",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs",
+      "vector_rag",
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/datalab-to/marker",
+    "websiteUrl": "https://www.datalab.to",
+    "authorName": "Datalab",
+    "license": "Hỗn hợp (mã nguồn Apache 2.0; trọng số mô hình Open Rail-M sửa đổi, giới hạn thương mại trên 5 triệu USD)",
+    "summaryVi": "Marker chuyển đổi tài liệu PDF, ảnh, PPTX, DOCX, XLSX, HTML, EPUB sang Markdown, JSON, chunk và HTML nhanh và chính xác. Công cụ định dạng bảng, biểu mẫu, phương trình, công thức nội dòng, liên kết, khối mã, tự loại bỏ header/footer và có thể dùng thêm LLM (Gemini, Claude, OpenAI, Ollama…) để tăng độ chính xác.",
+    "purposeVi": "Chuyển PDF và tài liệu văn phòng thành Markdown/JSON sạch để đưa vào LLM, RAG hoặc lưu trữ tri thức.",
+    "featuresVi": [
+      "Đa định dạng đầu vào: PDF, ảnh, PPTX, DOCX, XLSX, HTML, EPUB ở mọi ngôn ngữ",
+      "Đầu ra: markdown, json, html, chunks; trích xuất và lưu ảnh",
+      "Xử lý bảng, biểu mẫu, phương trình, toán nội dòng (LaTeX), liên kết, tham chiếu, khối mã",
+      "Hai chế độ balanced (GPU) và fast (CPU); tùy chọn --disable_ocr, --force_ocr, --page_range",
+      "Chế độ lai --use_llm với Gemini, Claude, OpenAI-compatible, Azure, Vertex, OpenRouter hoặc Ollama",
+      "Ứng dụng Streamlit marker_gui và API server FastAPI marker_server"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10+ và PyTorch. Cần backend suy luận: vLLM qua Docker + NVIDIA Container Toolkit (GPU NVIDIA) hoặc llama-server của llama.cpp (CPU / Apple Silicon). Chế độ --use_llm cần khóa API của dịch vụ LLM tương ứng.\nBước 1: Cài đặt gói: `pip install marker-pdf`\nBước 2: Để xử lý tài liệu ngoài PDF, cài đặt thêm phụ thuộc: `pip install marker-pdf[full]`\nBước 3: Trên macOS (CPU / Apple Silicon), cài đặt llama.cpp: `brew install llama.cpp`; trên GPU NVIDIA cần Docker và NVIDIA Container Toolkit\nBước 4: Chuyển đổi thử một tệp: `marker_single /path/to/file.pdf`",
+    "usageGuideVi": "Bước 1: Chuyển một tệp: `marker_single /path/to/file.pdf` kèm --output_format [markdown|json|html|chunks] và --output_dir\nBước 2: Chuyển cả thư mục: `marker /path/to/input/folder`\nBước 3: Thêm --use_llm (và --llm_service, khóa API) để gộp bảng qua nhiều trang, xử lý toán nội dòng và trích giá trị biểu mẫu\nBước 4: Giao diện thử nghiệm: `pip install -U streamlit streamlit-ace` rồi chạy `marker_gui`\nBước 5: API server: `pip install -U uvicorn fastapi python-multipart` rồi `marker_server --port 8001`, xem tài liệu endpoint tại localhost:8001/docs",
+    "samplePromptsVi": [
+      "Chuyển bài báo khoa học PDF sang Markdown, giữ công thức dưới dạng LaTeX",
+      "Chuyển thư mục báo cáo PDF thành JSON chunk để nạp vào hệ thống RAG",
+      "Dùng --use_llm với Claude để định dạng lại bảng trải qua nhiều trang"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "marker_single /path/to/file.pdf",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"marker_single /path/to/file.pdf\"\n  ],\n  \"nguon\": \"https://github.com/datalab-to/marker\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn Apache 2.0, dùng thương mại được",
+      "Hỗ trợ nhiều định dạng đầu vào và đầu ra, chạy trên GPU, CPU hoặc MPS",
+      "Tùy chọn kết hợp nhiều nhà cung cấp LLM kể cả mô hình cục bộ qua Ollama",
+      "Dự án được cập nhật thường xuyên"
+    ],
+    "consVi": [
+      "Trọng số mô hình theo giấy phép Open Rail-M sửa đổi: chỉ miễn phí cho nghiên cứu, cá nhân và tổ chức dưới 5 triệu USD doanh thu/gọi vốn; vượt ngưỡng hoặc sản phẩm cạnh tranh với Datalab phải mua giấy phép thương mại",
+      "Cần cài đặt backend suy luận (vLLM qua Docker trên GPU NVIDIA hoặc llama.cpp)",
+      "Chế độ --use_llm cần khóa API và phát sinh chi phí dịch vụ LLM bên ngoài"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Marker — Chuyển PDF và tài liệu sang Markdown, JSON nhanh, chính xác\n\n> Marker converts documents to markdown, JSON, chunks, and HTML quickly and accurately.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMarker chuyển đổi tài liệu PDF, ảnh, PPTX, DOCX, XLSX, HTML, EPUB sang Markdown, JSON, chunk và HTML nhanh và chính xác. Công cụ định dạng bảng, biểu mẫu, phương trình, công thức nội dòng, liên kết, khối mã, tự loại bỏ header/footer và có thể dùng thêm LLM (Gemini, Claude, OpenAI, Ollama…) để tăng độ chính xác.\n\nChuyển PDF và tài liệu văn phòng thành Markdown/JSON sạch để đưa vào LLM, RAG hoặc lưu trữ tri thức.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** Datalab\n- **Giấy phép bản quyền:** Hỗn hợp (mã nguồn Apache 2.0; trọng số mô hình Open Rail-M sửa đổi, giới hạn thương mại trên 5 triệu USD)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/datalab-to/marker](https://github.com/datalab-to/marker)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Đa định dạng đầu vào: PDF, ảnh, PPTX, DOCX, XLSX, HTML, EPUB ở mọi ngôn ngữ**\n- **Đầu ra: markdown, json, html, chunks; trích xuất và lưu ảnh**\n- **Xử lý bảng, biểu mẫu, phương trình, toán nội dòng (LaTeX), liên kết, tham chiếu, khối mã**\n- **Hai chế độ balanced (GPU) và fast (CPU); tùy chọn --disable_ocr, --force_ocr, --page_range**\n- **Chế độ lai --use_llm với Gemini, Claude, OpenAI-compatible, Azure, Vertex, OpenRouter hoặc Ollama**\n- **Ứng dụng Streamlit marker_gui và API server FastAPI marker_server**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nmarker_single /path/to/file.pdf\n```\n\nYêu cầu: Python 3.10+ và PyTorch. Cần backend suy luận: vLLM qua Docker + NVIDIA Container Toolkit (GPU NVIDIA) hoặc llama-server của llama.cpp (CPU / Apple Silicon). Chế độ --use_llm cần khóa API của dịch vụ LLM tương ứng.\nBước 1: Cài đặt gói: `pip install marker-pdf`\nBước 2: Để xử lý tài liệu ngoài PDF, cài đặt thêm phụ thuộc: `pip install marker-pdf[full]`\nBước 3: Trên macOS (CPU / Apple Silicon), cài đặt llama.cpp: `brew install llama.cpp`; trên GPU NVIDIA cần Docker và NVIDIA Container Toolkit\nBước 4: Chuyển đổi thử một tệp: `marker_single /path/to/file.pdf`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chuyển một tệp: `marker_single /path/to/file.pdf` kèm --output_format [markdown|json|html|chunks] và --output_dir\nBước 2: Chuyển cả thư mục: `marker /path/to/input/folder`\nBước 3: Thêm --use_llm (và --llm_service, khóa API) để gộp bảng qua nhiều trang, xử lý toán nội dòng và trích giá trị biểu mẫu\nBước 4: Giao diện thử nghiệm: `pip install -U streamlit streamlit-ace` rồi chạy `marker_gui`\nBước 5: API server: `pip install -U uvicorn fastapi python-multipart` rồi `marker_server --port 8001`, xem tài liệu endpoint tại localhost:8001/docs\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Chuyển bài báo khoa học PDF sang Markdown, giữ công thức dưới dạng LaTeX\"\n- \"Chuyển thư mục báo cáo PDF thành JSON chunk để nạp vào hệ thống RAG\"\n- \"Dùng --use_llm với Claude để định dạng lại bảng trải qua nhiều trang\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "opendatalab-mineru",
+    "slug": "opendatalab-mineru",
+    "name": "MinerU — Phân tích PDF, Office sang Markdown cho agent và LLM",
+    "icon": "FolderTree",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs",
+      "vector_rag",
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/opendatalab/MinerU",
+    "websiteUrl": "https://opendatalab.github.io/MinerU/",
+    "authorName": "OpenDataLab (MinerU Team)",
+    "license": "Mã nguồn mở (Apache 2.0 kèm điều khoản bổ sung: giấy phép thương mại khi vượt ngưỡng, bắt buộc ghi nguồn cho dịch vụ trực tuyến)",
+    "summaryVi": "MinerU là công cụ phân tích tài liệu kèm thư viện tài liệu cục bộ, hỗ trợ PDF, ảnh, Office, OpenDocument, EPUB, OFD, HTML, CSV với bốn mức chất lượng Flash, Basic, Standard, Advanced. Công cụ xuất Markdown, HTML, LaTeX, DOCX… và cung cấp CLI, Python SDK, API, WebUI cùng skill cho agent đọc tài liệu theo trang/khối có locator trích dẫn ổn định.",
+    "purposeVi": "Chuyển tài liệu phức tạp (bảng, công thức, ảnh, bản scan) thành Markdown và nội dung có cấu trúc để agent và ứng dụng LLM đọc, tìm kiếm, trích dẫn.",
+    "featuresVi": [
+      "Bốn mức phân tích: Flash (xem nhanh, lập chỉ mục), Basic (OCR và mô hình), Standard / Advanced cho bố cục khó",
+      "Đầu vào: PDF, ảnh, DOC/DOCX, PPT/PPTX, XLS/XLSX, RTF, ODT/ODS/ODP, EPUB, OFD, HTML/MHTML, CSV/TSV",
+      "Thư viện tài liệu cục bộ: lưu cache, tìm kiếm nội dung, đọc tiếp theo trang/khối với locator doc:…",
+      "Cấu hình mô hình độc lập: ONNX hoặc Torch cho mô hình nhỏ; llama.cpp, vLLM hoặc LMDeploy cho VLM",
+      "Công cụ thống nhất: Python SDK (DoclibClient), V1 API, chuyển đổi hàng loạt mineru-kit, Router đa dịch vụ, WebUI Gradio",
+      "Skill mineru cho agent, cài đặt bằng npx skills add"
+    ],
+    "installGuideVi": "Yêu cầu: Python >=3.10,<3.15. Bản mặc định chạy ONNX trên CPU và VLM bằng llama.cpp (Vulkan); máy có GPU NVIDIA nên cài mineru[full] để đạt thông lượng tốt nhất. Tài liệu không tự tải lên dịch vụ chính thức; phân tích từ xa phải cấu hình rõ ràng.\nBước 1: Cài đặt uv: `pip install uv`\nBước 2: Tạo môi trường ảo: `uv venv .mineru --python 3.12`\nBước 3: Kích hoạt môi trường (Linux/macOS): `source .mineru/bin/activate`\nBước 4: Cài đặt MinerU 4.0: `uv pip install -U \"mineru>=4.0,<5\"`\nBước 5: Chuyển đổi thử: `mineru-kit parse document.pdf -o document.md --tier standard`\nBước 6: Tùy chọn cho agent: cài đặt skill bằng `npx skills add opendatalab/MinerU --skill mineru --global --yes`",
+    "usageGuideVi": "Bước 1: Chuyển đổi không trạng thái một tệp sang Markdown bằng `mineru-kit parse` (mặc định xử lý toàn bộ trang)\nBước 2: Mở giao diện web bằng `mineru-kit webui`\nBước 3: Dùng thư viện tài liệu cho agent: `mineru parse \"document.pdf\" --json` (mặc định 10 trang PDF đầu), rồi đọc tiếp bằng `mineru read <locator>`\nBước 4: Dùng Python SDK: khởi động `mineru server start`, sau đó gọi DoclibClient để gửi yêu cầu phân tích và đọc nội dung",
+    "samplePromptsVi": [
+      "Đọc tệp báo cáo PDF scan bằng MinerU và tóm tắt các bảng số liệu chính",
+      "Phân tích sách EPUB rồi tìm đoạn nói về một điều khoản cụ thể và trích dẫn locator",
+      "Chuyển bài báo có nhiều công thức sang Markdown với mức chất lượng standard"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "mineru-kit parse document.pdf -o document.md --tier standard",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"mineru-kit parse document.pdf -o document.md --tier standard\"\n  ],\n  \"nguon\": \"https://github.com/opendatalab/MinerU\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Hỗ trợ rất nhiều định dạng đầu vào, kể cả OFD và tài liệu scan",
+      "Chạy cục bộ, không tự động tải tài liệu lên dịch vụ bên ngoài",
+      "Dùng thương mại được không cần giấy phép riêng dưới ngưỡng quy định",
+      "Có skill và CLI thiết kế riêng cho agent đọc tài liệu dài"
+    ],
+    "consVi": [
+      "Giấy phép bổ sung: cần giấy phép thương mại riêng nếu trên 100 triệu MAU hoặc doanh thu trên 20 triệu USD/tháng; dịch vụ trực tuyến dựa trên MinerU phải ghi rõ có sử dụng MinerU",
+      "Định dạng Office, EPUB, HTML… chỉ được phân tích ở mức Flash",
+      "Hướng dẫn Docker cho thiết bị không phải NVIDIA đang chờ cập nhật"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# MinerU — Phân tích PDF, Office sang Markdown cho agent và LLM\n\n> MinerU 4.0 brings document parsing, a local document library, and service tools into one workflow for document conversion, application integration, and agent reading.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMinerU là công cụ phân tích tài liệu kèm thư viện tài liệu cục bộ, hỗ trợ PDF, ảnh, Office, OpenDocument, EPUB, OFD, HTML, CSV với bốn mức chất lượng Flash, Basic, Standard, Advanced. Công cụ xuất Markdown, HTML, LaTeX, DOCX… và cung cấp CLI, Python SDK, API, WebUI cùng skill cho agent đọc tài liệu theo trang/khối có locator trích dẫn ổn định.\n\nChuyển tài liệu phức tạp (bảng, công thức, ảnh, bản scan) thành Markdown và nội dung có cấu trúc để agent và ứng dụng LLM đọc, tìm kiếm, trích dẫn.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** OpenDataLab (MinerU Team)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0 kèm điều khoản bổ sung: giấy phép thương mại khi vượt ngưỡng, bắt buộc ghi nguồn cho dịch vụ trực tuyến)\n- **Nền tảng hỗ trợ:** `web`, `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/opendatalab/MinerU](https://github.com/opendatalab/MinerU)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Bốn mức phân tích: Flash (xem nhanh, lập chỉ mục), Basic (OCR và mô hình), Standard / Advanced cho bố cục khó**\n- **Đầu vào: PDF, ảnh, DOC/DOCX, PPT/PPTX, XLS/XLSX, RTF, ODT/ODS/ODP, EPUB, OFD, HTML/MHTML, CSV/TSV**\n- **Thư viện tài liệu cục bộ: lưu cache, tìm kiếm nội dung, đọc tiếp theo trang/khối với locator doc:…**\n- **Cấu hình mô hình độc lập: ONNX hoặc Torch cho mô hình nhỏ; llama.cpp, vLLM hoặc LMDeploy cho VLM**\n- **Công cụ thống nhất: Python SDK (DoclibClient), V1 API, chuyển đổi hàng loạt mineru-kit, Router đa dịch vụ, WebUI Gradio**\n- **Skill mineru cho agent, cài đặt bằng npx skills add**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nmineru-kit parse document.pdf -o document.md --tier standard\n```\n\nYêu cầu: Python >=3.10,<3.15. Bản mặc định chạy ONNX trên CPU và VLM bằng llama.cpp (Vulkan); máy có GPU NVIDIA nên cài mineru[full] để đạt thông lượng tốt nhất. Tài liệu không tự tải lên dịch vụ chính thức; phân tích từ xa phải cấu hình rõ ràng.\nBước 1: Cài đặt uv: `pip install uv`\nBước 2: Tạo môi trường ảo: `uv venv .mineru --python 3.12`\nBước 3: Kích hoạt môi trường (Linux/macOS): `source .mineru/bin/activate`\nBước 4: Cài đặt MinerU 4.0: `uv pip install -U \"mineru>=4.0,<5\"`\nBước 5: Chuyển đổi thử: `mineru-kit parse document.pdf -o document.md --tier standard`\nBước 6: Tùy chọn cho agent: cài đặt skill bằng `npx skills add opendatalab/MinerU --skill mineru --global --yes`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chuyển đổi không trạng thái một tệp sang Markdown bằng `mineru-kit parse` (mặc định xử lý toàn bộ trang)\nBước 2: Mở giao diện web bằng `mineru-kit webui`\nBước 3: Dùng thư viện tài liệu cho agent: `mineru parse \"document.pdf\" --json` (mặc định 10 trang PDF đầu), rồi đọc tiếp bằng `mineru read <locator>`\nBước 4: Dùng Python SDK: khởi động `mineru server start`, sau đó gọi DoclibClient để gửi yêu cầu phân tích và đọc nội dung\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Đọc tệp báo cáo PDF scan bằng MinerU và tóm tắt các bảng số liệu chính\"\n- \"Phân tích sách EPUB rồi tìm đoạn nói về một điều khoản cụ thể và trích dẫn locator\"\n- \"Chuyển bài báo có nhiều công thức sang Markdown với mức chất lượng standard\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "allenai-olmocr",
+    "slug": "allenai-olmocr",
+    "name": "olmOCR — Chuyển PDF và ảnh tài liệu sang Markdown bằng VLM",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs",
+      "computer_vision",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử",
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/allenai/olmocr",
+    "websiteUrl": "https://olmocr.allenai.org",
+    "authorName": "Allen Institute for AI (Ai2)",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "olmOCR là bộ công cụ của Ai2 chuyển PDF và tài liệu dạng ảnh (PNG, JPEG) thành Markdown sạch, giữ thứ tự đọc tự nhiên kể cả bố cục nhiều cột. Công cụ dựa trên mô hình ngôn ngữ thị giác 7B, hỗ trợ phương trình, bảng, chữ viết tay và kèm bộ benchmark olmOCR-Bench.",
+    "purposeVi": "Chuyển khối lượng lớn PDF thành văn bản Markdown sạch để huấn luyện hoặc đưa vào pipeline LLM.",
+    "featuresVi": [
+      "Chuyển PDF, PNG, JPEG sang Markdown sạch",
+      "Hỗ trợ phương trình, bảng, chữ viết tay và định dạng phức tạp",
+      "Tự loại bỏ header và footer; giữ thứ tự đọc tự nhiên với hình, bố cục nhiều cột",
+      "Dùng server vLLM cục bộ hoặc máy chủ/nhà cung cấp tương thích OpenAI API qua --server",
+      "Chạy cụm nhiều node, hỗ trợ Beaker; có ảnh Docker kèm sẵn mô hình",
+      "Bộ benchmark olmOCR-Bench với hơn 7.000 ca kiểm thử trên 1.400 tài liệu"
+    ],
+    "installGuideVi": "Yêu cầu: Ubuntu/Debian với poppler-utils và các gói font; môi trường conda Python 3.11. Suy luận cục bộ cần GPU NVIDIA tối thiểu 12 GB VRAM (đã thử RTX 4090, L40S, A100, H100) và 30 GB đĩa trống; hoặc dùng server vLLM từ xa.\nBước 1: Cài đặt phụ thuộc hệ thống: `sudo apt-get install poppler-utils ttf-mscorefonts-installer msttcorefonts fonts-crosextra-caladea fonts-crosextra-carlito gsfonts lcdf-typetools`\nBước 2: Tạo môi trường: `conda create -n olmocr python=3.11` rồi `conda activate olmocr`\nBước 3: Cài đặt bản suy luận GPU cục bộ: `pip install olmocr[gpu] --extra-index-url https://download.pytorch.org/whl/cu128`\nBước 4: Hoặc cài đặt bản nhẹ dùng server từ xa: `pip install olmocr`\nBước 5: Cách khác — Docker: `docker pull alleninstituteforai/olmocr:latest-with-model`",
+    "usageGuideVi": "Bước 1: Tải tệp mẫu: `curl -o olmocr-sample.pdf https://olmocr.allenai.org/papers/olmocr_3pg_sample.pdf`\nBước 2: Chuyển sang Markdown: `olmocr ./localworkspace --markdown --pdfs olmocr-sample.pdf`; kết quả nằm trong ./localworkspace/markdown/\nBước 3: Có thể truyền ảnh hoặc nhiều PDF bằng ký tự đại diện cho --pdfs\nBước 4: Dùng server vLLM có sẵn bằng --server và --model allenai/olmOCR-2-7B-1025-FP8, ví dụ khởi chạy server bằng `vllm serve allenai/olmOCR-2-7B-1025-FP8 --max-model-len 16384`",
+    "samplePromptsVi": [
+      "Chuyển thư mục PDF bài báo cũ được scan sang Markdown để làm dữ liệu huấn luyện",
+      "Trích văn bản từ ảnh chụp trang tài liệu có bảng và công thức",
+      "Chạy olmOCR với server vLLM từ xa để xử lý hàng loạt tài liệu"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "olmocr ./localworkspace --markdown --pdfs olmocr-sample.pdf",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"olmocr ./localworkspace --markdown --pdfs olmocr-sample.pdf\"\n  ],\n  \"nguon\": \"https://github.com/allenai/olmocr\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Theo README chi phí dưới 200 USD cho mỗi triệu trang",
+      "Có ảnh Docker kèm sẵn mô hình và hỗ trợ máy chủ tương thích OpenAI API",
+      "Kèm bộ benchmark công khai olmOCR-Bench"
+    ],
+    "consVi": [
+      "Dựa trên VLM 7B nên suy luận cục bộ bắt buộc GPU NVIDIA từ 12 GB VRAM và 30 GB đĩa",
+      "README khuyến nghị dùng môi trường Python sạch vì phụ thuộc khó cài đặt",
+      "Đầu vào giới hạn ở PDF và ảnh (PNG, JPEG)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# olmOCR — Chuyển PDF và ảnh tài liệu sang Markdown bằng VLM\n\n> A toolkit for converting PDFs and other image-based document formats into clean, readable, plain text format.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nolmOCR là bộ công cụ của Ai2 chuyển PDF và tài liệu dạng ảnh (PNG, JPEG) thành Markdown sạch, giữ thứ tự đọc tự nhiên kể cả bố cục nhiều cột. Công cụ dựa trên mô hình ngôn ngữ thị giác 7B, hỗ trợ phương trình, bảng, chữ viết tay và kèm bộ benchmark olmOCR-Bench.\n\nChuyển khối lượng lớn PDF thành văn bản Markdown sạch để huấn luyện hoặc đưa vào pipeline LLM.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** Allen Institute for AI (Ai2)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/allenai/olmocr](https://github.com/allenai/olmocr)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Chuyển PDF, PNG, JPEG sang Markdown sạch**\n- **Hỗ trợ phương trình, bảng, chữ viết tay và định dạng phức tạp**\n- **Tự loại bỏ header và footer; giữ thứ tự đọc tự nhiên với hình, bố cục nhiều cột**\n- **Dùng server vLLM cục bộ hoặc máy chủ/nhà cung cấp tương thích OpenAI API qua --server**\n- **Chạy cụm nhiều node, hỗ trợ Beaker; có ảnh Docker kèm sẵn mô hình**\n- **Bộ benchmark olmOCR-Bench với hơn 7.000 ca kiểm thử trên 1.400 tài liệu**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nolmocr ./localworkspace --markdown --pdfs olmocr-sample.pdf\n```\n\nYêu cầu: Ubuntu/Debian với poppler-utils và các gói font; môi trường conda Python 3.11. Suy luận cục bộ cần GPU NVIDIA tối thiểu 12 GB VRAM (đã thử RTX 4090, L40S, A100, H100) và 30 GB đĩa trống; hoặc dùng server vLLM từ xa.\nBước 1: Cài đặt phụ thuộc hệ thống: `sudo apt-get install poppler-utils ttf-mscorefonts-installer msttcorefonts fonts-crosextra-caladea fonts-crosextra-carlito gsfonts lcdf-typetools`\nBước 2: Tạo môi trường: `conda create -n olmocr python=3.11` rồi `conda activate olmocr`\nBước 3: Cài đặt bản suy luận GPU cục bộ: `pip install olmocr[gpu] --extra-index-url https://download.pytorch.org/whl/cu128`\nBước 4: Hoặc cài đặt bản nhẹ dùng server từ xa: `pip install olmocr`\nBước 5: Cách khác — Docker: `docker pull alleninstituteforai/olmocr:latest-with-model`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tải tệp mẫu: `curl -o olmocr-sample.pdf https://olmocr.allenai.org/papers/olmocr_3pg_sample.pdf`\nBước 2: Chuyển sang Markdown: `olmocr ./localworkspace --markdown --pdfs olmocr-sample.pdf`; kết quả nằm trong ./localworkspace/markdown/\nBước 3: Có thể truyền ảnh hoặc nhiều PDF bằng ký tự đại diện cho --pdfs\nBước 4: Dùng server vLLM có sẵn bằng --server và --model allenai/olmOCR-2-7B-1025-FP8, ví dụ khởi chạy server bằng `vllm serve allenai/olmOCR-2-7B-1025-FP8 --max-model-len 16384`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Chuyển thư mục PDF bài báo cũ được scan sang Markdown để làm dữ liệu huấn luyện\"\n- \"Trích văn bản từ ảnh chụp trang tài liệu có bảng và công thức\"\n- \"Chạy olmOCR với server vLLM từ xa để xử lý hàng loạt tài liệu\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "filimoa-open-parse",
+    "slug": "filimoa-open-parse",
+    "name": "Open Parse — Thư viện chia nhỏ tài liệu theo bố cục cho RAG",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "vector_rag",
+    "categoryNameVi": "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+    "categories": [
+      "vector_rag",
+      "office_digital_docs",
+      "data_engineering"
+    ],
+    "categoryNamesVi": [
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Văn phòng số & Quản lý văn bản điện tử",
+      "Kỹ thuật dữ liệu & Đường ống ETL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/Filimoa/open-parse",
+    "websiteUrl": "https://filimoa.github.io/open-parse/",
+    "authorName": "Sergey Filimonov",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Open Parse là thư viện Python phân tích bố cục tài liệu bằng thị giác để chia nhỏ (chunk) tài liệu phức tạp như con người, phục vụ hệ thống RAG. Thư viện hỗ trợ Markdown cơ bản, trích bảng sang Markdown, pipeline ngữ nghĩa dùng embedding để gom nhóm nút và tuần tự hóa kết quả bằng pydantic.",
+    "purposeVi": "Chia nhỏ tài liệu PDF phức tạp theo cấu trúc trực quan để tạo đầu vào chất lượng cao cho LLM và RAG.",
+    "featuresVi": [
+      "Phân tích trực quan bố cục tài liệu thay vì cắt văn bản thô",
+      "Hỗ trợ Markdown cơ bản: tiêu đề, in đậm, in nghiêng",
+      "Trích bảng sang Markdown bằng PyMuPDF, Table Transformer hoặc unitable",
+      "SemanticIngestionPipeline: nhúng văn bản từng nút (OpenAI embedding) để gom các nút tương đồng",
+      "Kết quả dựa trên pydantic, xuất được dict hoặc JSON",
+      "Hỗ trợ OCR qua PyMuPDF khi đã cài đặt Tesseract"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.8+. OCR cần cài đặt Tesseract và đặt biến TESSDATA_PREFIX. Pipeline ngữ nghĩa cần khóa API OpenAI. Trích bảng bằng mô hình học sâu cần cài đặt thêm openparse[ml].\nBước 1: Cài đặt thư viện lõi: `pip install openparse`\nBước 2: Tùy chọn trích bảng bằng học sâu: `pip install \"openparse[ml]\"`\nBước 3: Tải trọng số mô hình cho trích bảng: `openparse-download`\nBước 4: Nếu cần OCR: cài đặt Tesseract và đặt biến môi trường TESSDATA_PREFIX tới thư mục tessdata",
+    "usageGuideVi": "Bước 1: Trong Python: `import openparse`, tạo `parser = openparse.DocumentParser()` rồi `parser.parse(\"tai-lieu.pdf\")`\nBước 2: Duyệt `parsed.nodes` để lấy các khối nội dung đã chia nhỏ\nBước 3: Truyền table_args (ví dụ parsing_algorithm unitable) để trích bảng chất lượng cao\nBước 4: Dùng SemanticIngestionPipeline với khóa OpenAI để gom nhóm nút theo ngữ nghĩa, rồi xuất bằng `.json()`",
+    "samplePromptsVi": [
+      "Chia nhỏ sổ tay hướng dẫn PDF thành các khối theo tiêu đề để nạp vào cơ sở dữ liệu vector",
+      "Trích các bảng trong báo cáo tài chính PDF sang Markdown",
+      "Gom nhóm các đoạn liên quan theo ngữ nghĩa với giới hạn 64–1024 token mỗi khối"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install openparse",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install openparse\"\n  ],\n  \"nguon\": \"https://github.com/Filimoa/open-parse\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT",
+      "Chạy cục bộ, không bắt buộc chia sẻ dữ liệu với nhà cung cấp",
+      "API Python đơn giản, dễ mở rộng bằng bước hậu xử lý riêng"
+    ],
+    "consVi": [
+      "PyMuPDF dùng cho phát hiện bảng có giấy phép riêng (README khuyên xem điều khoản thương mại của MuPDF)",
+      "README thừa nhận mô hình phát hiện bảng table-transformers cho kết quả chưa tốt",
+      "Pipeline ngữ nghĩa cần khóa API OpenAI; hỗ trợ Markdown chỉ ở mức cơ bản"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Open Parse — Thư viện chia nhỏ tài liệu theo bố cục cho RAG\n\n> Easily chunk complex documents the same way a human would.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nOpen Parse là thư viện Python phân tích bố cục tài liệu bằng thị giác để chia nhỏ (chunk) tài liệu phức tạp như con người, phục vụ hệ thống RAG. Thư viện hỗ trợ Markdown cơ bản, trích bảng sang Markdown, pipeline ngữ nghĩa dùng embedding để gom nhóm nút và tuần tự hóa kết quả bằng pydantic.\n\nChia nhỏ tài liệu PDF phức tạp theo cấu trúc trực quan để tạo đầu vào chất lượng cao cho LLM và RAG.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Dữ liệu Vector & Tìm kiếm tri thức (RAG)\n- **Tác giả / Nhà phát triển:** Sergey Filimonov\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/Filimoa/open-parse](https://github.com/Filimoa/open-parse)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Phân tích trực quan bố cục tài liệu thay vì cắt văn bản thô**\n- **Hỗ trợ Markdown cơ bản: tiêu đề, in đậm, in nghiêng**\n- **Trích bảng sang Markdown bằng PyMuPDF, Table Transformer hoặc unitable**\n- **SemanticIngestionPipeline: nhúng văn bản từng nút (OpenAI embedding) để gom các nút tương đồng**\n- **Kết quả dựa trên pydantic, xuất được dict hoặc JSON**\n- **Hỗ trợ OCR qua PyMuPDF khi đã cài đặt Tesseract**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install openparse\n```\n\nYêu cầu: Python 3.8+. OCR cần cài đặt Tesseract và đặt biến TESSDATA_PREFIX. Pipeline ngữ nghĩa cần khóa API OpenAI. Trích bảng bằng mô hình học sâu cần cài đặt thêm openparse[ml].\nBước 1: Cài đặt thư viện lõi: `pip install openparse`\nBước 2: Tùy chọn trích bảng bằng học sâu: `pip install \"openparse[ml]\"`\nBước 3: Tải trọng số mô hình cho trích bảng: `openparse-download`\nBước 4: Nếu cần OCR: cài đặt Tesseract và đặt biến môi trường TESSDATA_PREFIX tới thư mục tessdata\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trong Python: `import openparse`, tạo `parser = openparse.DocumentParser()` rồi `parser.parse(\"tai-lieu.pdf\")`\nBước 2: Duyệt `parsed.nodes` để lấy các khối nội dung đã chia nhỏ\nBước 3: Truyền table_args (ví dụ parsing_algorithm unitable) để trích bảng chất lượng cao\nBước 4: Dùng SemanticIngestionPipeline với khóa OpenAI để gom nhóm nút theo ngữ nghĩa, rồi xuất bằng `.json()`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Chia nhỏ sổ tay hướng dẫn PDF thành các khối theo tiêu đề để nạp vào cơ sở dữ liệu vector\"\n- \"Trích các bảng trong báo cáo tài chính PDF sang Markdown\"\n- \"Gom nhóm các đoạn liên quan theo ngữ nghĩa với giới hạn 64–1024 token mỗi khối\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "opendataloader-project-opendataloader-pdf",
+    "slug": "opendataloader-project-opendataloader-pdf",
+    "name": "OpenDataLoader PDF — Phân tích PDF thành Markdown, JSON có tọa độ cho RAG",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs",
+      "vector_rag",
+      "data_engineering"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Kỹ thuật dữ liệu & Đường ống ETL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/opendataloader-project/opendataloader-pdf",
+    "websiteUrl": "https://opendataloader.org",
+    "authorName": "Hancom Inc. (OpenDataLoader Project)",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "OpenDataLoader PDF là bộ phân tích PDF trích xuất Markdown, JSON (kèm bounding box) và HTML cho dữ liệu AI, với chế độ cục bộ tất định và chế độ lai (hybrid) dùng AI cho trang phức tạp. Công cụ có SDK Python, Node.js, Java, tích hợp LangChain, OCR hơn 80 ngôn ngữ ở chế độ lai và tự động gắn thẻ PDF (Tagged PDF) cho khả năng tiếp cận.",
+    "purposeVi": "Chuyển PDF thành dữ liệu có cấu trúc kèm tọa độ để chia nhỏ và trích dẫn nguồn trong pipeline RAG/LLM.",
+    "featuresVi": [
+      "Trích văn bản đúng thứ tự đọc (XY-Cut++), bounding box cho mọi phần tử, phát hiện tiêu đề, danh sách, ảnh",
+      "Chế độ lai (hybrid) cho bảng phức tạp, PDF scan (OCR), công thức LaTeX, mô tả biểu đồ bằng AI",
+      "Bảo vệ prompt injection: lọc văn bản ẩn, nội dung ngoài trang; tùy chọn --sanitize che email, URL, số điện thoại",
+      "SDK Python, Node.js, Java và gói langchain-opendataloader-pdf",
+      "Tự động gắn thẻ PDF chưa có thẻ thành Tagged PDF (miễn phí)",
+      "Không cần GPU"
+    ],
+    "installGuideVi": "Yêu cầu: Java 11+ và Python 3.10+ (hoặc Node.js / Java). Chế độ lai cần cài đặt opendataloader-pdf[hybrid] và chạy server backend riêng.\nBước 1: Kiểm tra Java: `java -version` (cần JDK 11+)\nBước 2: Cài đặt gói Python: `pip install -U opendataloader-pdf`\nBước 3: Hoặc cài đặt cho Node.js: `npm install @opendataloader/pdf`\nBước 4: Tùy chọn chế độ lai: `pip install -U \"opendataloader-pdf[hybrid]\"` rồi khởi động backend `opendataloader-pdf-hybrid --port 5002`\nBước 5: Tùy chọn tích hợp LangChain: `pip install -U langchain-opendataloader-pdf`",
+    "usageGuideVi": "Bước 1: Trong Python: gọi `opendataloader_pdf.convert(input_path=[...], output_dir=\"output/\", format=\"markdown,json\")`; nên gom nhiều tệp vào một lần gọi vì mỗi lần gọi khởi tạo một tiến trình JVM\nBước 2: Với PDF phức tạp: chạy backend lai rồi xử lý bằng `opendataloader-pdf --hybrid docling-fast file1.pdf file2.pdf folder/`\nBước 3: Thêm --sanitize để thay thông tin nhạy cảm bằng placeholder: `opendataloader-pdf file1.pdf file2.pdf folder/ --sanitize`\nBước 4: Dùng JSON có bounding box để trích dẫn vị trí nguồn trong câu trả lời RAG",
+    "samplePromptsVi": [
+      "Chuyển thư mục PDF hợp đồng sang Markdown và JSON có tọa độ để làm RAG có trích dẫn",
+      "Xử lý PDF scan tiếng Hàn bằng chế độ lai kèm OCR",
+      "Lọc nội dung ẩn có thể chứa prompt injection trước khi đưa PDF vào LLM"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install -U opendataloader-pdf",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install -U opendataloader-pdf\"\n  ],\n  \"nguon\": \"https://github.com/opendataloader-project/opendataloader-pdf\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Chế độ mặc định chạy cục bộ, tất định, không cần GPU",
+      "Có SDK cho Python, Node.js, Java và tích hợp LangChain",
+      "Tính năng an toàn AI lọc prompt injection ẩn trong PDF"
+    ],
+    "consVi": [
+      "Chỉ xử lý PDF, không hỗ trợ Word/Excel/PowerPoint",
+      "Cần Java 11+; mỗi lần gọi convert khởi tạo tiến trình JVM nên gọi lặp lại sẽ chậm",
+      "Xuất PDF/UA-1, PDF/UA-2 và trình chỉnh sửa trực quan là tiện ích bổ sung bản doanh nghiệp"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# OpenDataLoader PDF — Phân tích PDF thành Markdown, JSON có tọa độ cho RAG\n\n> PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nOpenDataLoader PDF là bộ phân tích PDF trích xuất Markdown, JSON (kèm bounding box) và HTML cho dữ liệu AI, với chế độ cục bộ tất định và chế độ lai (hybrid) dùng AI cho trang phức tạp. Công cụ có SDK Python, Node.js, Java, tích hợp LangChain, OCR hơn 80 ngôn ngữ ở chế độ lai và tự động gắn thẻ PDF (Tagged PDF) cho khả năng tiếp cận.\n\nChuyển PDF thành dữ liệu có cấu trúc kèm tọa độ để chia nhỏ và trích dẫn nguồn trong pipeline RAG/LLM.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** Hancom Inc. (OpenDataLoader Project)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/opendataloader-project/opendataloader-pdf](https://github.com/opendataloader-project/opendataloader-pdf)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Trích văn bản đúng thứ tự đọc (XY-Cut++), bounding box cho mọi phần tử, phát hiện tiêu đề, danh sách, ảnh**\n- **Chế độ lai (hybrid) cho bảng phức tạp, PDF scan (OCR), công thức LaTeX, mô tả biểu đồ bằng AI**\n- **Bảo vệ prompt injection: lọc văn bản ẩn, nội dung ngoài trang; tùy chọn --sanitize che email, URL, số điện thoại**\n- **SDK Python, Node.js, Java và gói langchain-opendataloader-pdf**\n- **Tự động gắn thẻ PDF chưa có thẻ thành Tagged PDF (miễn phí)**\n- **Không cần GPU**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install -U opendataloader-pdf\n```\n\nYêu cầu: Java 11+ và Python 3.10+ (hoặc Node.js / Java). Chế độ lai cần cài đặt opendataloader-pdf[hybrid] và chạy server backend riêng.\nBước 1: Kiểm tra Java: `java -version` (cần JDK 11+)\nBước 2: Cài đặt gói Python: `pip install -U opendataloader-pdf`\nBước 3: Hoặc cài đặt cho Node.js: `npm install @opendataloader/pdf`\nBước 4: Tùy chọn chế độ lai: `pip install -U \"opendataloader-pdf[hybrid]\"` rồi khởi động backend `opendataloader-pdf-hybrid --port 5002`\nBước 5: Tùy chọn tích hợp LangChain: `pip install -U langchain-opendataloader-pdf`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trong Python: gọi `opendataloader_pdf.convert(input_path=[...], output_dir=\"output/\", format=\"markdown,json\")`; nên gom nhiều tệp vào một lần gọi vì mỗi lần gọi khởi tạo một tiến trình JVM\nBước 2: Với PDF phức tạp: chạy backend lai rồi xử lý bằng `opendataloader-pdf --hybrid docling-fast file1.pdf file2.pdf folder/`\nBước 3: Thêm --sanitize để thay thông tin nhạy cảm bằng placeholder: `opendataloader-pdf file1.pdf file2.pdf folder/ --sanitize`\nBước 4: Dùng JSON có bounding box để trích dẫn vị trí nguồn trong câu trả lời RAG\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Chuyển thư mục PDF hợp đồng sang Markdown và JSON có tọa độ để làm RAG có trích dẫn\"\n- \"Xử lý PDF scan tiếng Hàn bằng chế độ lai kèm OCR\"\n- \"Lọc nội dung ẩn có thể chứa prompt injection trước khi đưa PDF vào LLM\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "apache-tika",
+    "slug": "apache-tika",
+    "name": "Apache Tika — Bộ công cụ trích văn bản, siêu dữ liệu từ hơn nghìn định dạng tệp",
+    "icon": "Box",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs",
+      "data_engineering",
+      "vector_rag"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử",
+      "Kỹ thuật dữ liệu & Đường ống ETL",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/apache/tika",
+    "websiteUrl": "https://tika.apache.org/",
+    "authorName": "Apache Software Foundation",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Apache Tika phát hiện và trích xuất siêu dữ liệu, văn bản từ hơn một nghìn loại tệp. Từ bản 4.0, Tika xuất Markdown mặc định cho pipeline LLM và RAG, phân tích trong tiến trình tách biệt để chống sập, và bổ sung bộ phân tích dùng mô hình thị giác–ngôn ngữ (Claude, Gemini, OpenAI) cho tài liệu OCR khó đọc.",
+    "purposeVi": "Trích văn bản và siêu dữ liệu từ hầu hết mọi định dạng tệp thành Markdown/JSON để đưa vào agent và hệ thống RAG.",
+    "featuresVi": [
+      "Hỗ trợ hơn một nghìn loại tệp, phát hiện loại tệp và trích siêu dữ liệu",
+      "Bản 4.x xuất Markdown mặc định; -J xuất JSON đệ quy gồm cả nội dung nhúng bên trong tài liệu",
+      "Phân tích trong tiến trình fork tách biệt: tài liệu độc hại chỉ làm sập tiến trình con",
+      "Bộ phân tích VLM (Claude, Gemini, OpenAI) cho tài liệu OCR không đọc được",
+      "Skill dựng sẵn cho agent trong thư mục .skills: file-to-markdown và file-to-markdown-docker",
+      "Dùng như thư viện Java (Maven/Gradle), tika-app dòng lệnh hoặc tika-server"
+    ],
+    "installGuideVi": "Yêu cầu: Java 17 (Tika 4.x). Dựng từ mã nguồn dùng Maven wrapper có sẵn; Docker chỉ cần cho một số kiểm thử tích hợp.\nBước 1: Cài đặt Java 17, sau đó tải bản dựng sẵn tika-app từ https://tika.apache.org/download.html, giải nén tệp zip vào một thư mục (jar cần thư mục lib/ đi kèm)\nBước 2: Hoặc thêm phụ thuộc Maven org.apache.tika:tika-parsers-standard-package vào dự án Java\nBước 3: Hoặc dựng từ mã nguồn: `./mvnw clean install`\nBước 4: Chạy thử trong thư mục đã giải nén: `java -jar tika-app-<version>.jar document.pdf`",
+    "usageGuideVi": "Bước 1: Trích Markdown (mặc định 4.x): `java -jar tika-app-<version>.jar document.pdf`\nBước 2: Trích văn bản thuần bằng --text, hoặc JSON có cấu trúc (siêu dữ liệu và nội dung nhúng) bằng -J\nBước 3: Trong Java: tạo `new Tika()` và gọi `parseToString(new File(\"document.pdf\"))`\nBước 4: Sao chép skill file-to-markdown trong .skills vào thư mục skill của agent để agent tự chuyển tệp sang Markdown",
+    "samplePromptsVi": [
+      "Trích toàn bộ văn bản và siêu dữ liệu từ thư mục tệp hỗn hợp PDF, DOCX, email",
+      "Chuyển tệp lưu trữ có tài liệu nhúng thành JSON đệ quy để lập chỉ mục",
+      "Dùng skill file-to-markdown để agent đọc tệp đính kèm dưới dạng Markdown"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "java -jar tika-app-<version>.jar document.pdf",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"java -jar tika-app-<version>.jar document.pdf\"\n  ],\n  \"nguon\": \"https://github.com/apache/tika\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Dự án Apache Software Foundation, giấy phép Apache 2.0, bảo trì tích cực",
+      "Phạm vi định dạng rất rộng (hơn một nghìn loại tệp)",
+      "Phân tích cách ly tiến trình, phù hợp chạy dịch vụ xử lý tệp không tin cậy",
+      "Có skill dựng sẵn cho agent"
+    ],
+    "consVi": [
+      "Cần Java 17; tika-app phải chạy cùng thư mục lib/, jar đơn lẻ sẽ lỗi NoClassDefFoundError",
+      "Nâng cấp từ 3.x lên 4.x cần thay đổi mã và cấu hình (cấu hình JSON, khóa siêu dữ liệu có namespace)",
+      "Bộ phân tích VLM cần khóa API của Claude, Gemini hoặc OpenAI"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Apache Tika — Bộ công cụ trích văn bản, siêu dữ liệu từ hơn nghìn định dạng tệp\n\n> Apache Tika(TM) detects and extracts metadata and text from over a thousand file types.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nApache Tika phát hiện và trích xuất siêu dữ liệu, văn bản từ hơn một nghìn loại tệp. Từ bản 4.0, Tika xuất Markdown mặc định cho pipeline LLM và RAG, phân tích trong tiến trình tách biệt để chống sập, và bổ sung bộ phân tích dùng mô hình thị giác–ngôn ngữ (Claude, Gemini, OpenAI) cho tài liệu OCR khó đọc.\n\nTrích văn bản và siêu dữ liệu từ hầu hết mọi định dạng tệp thành Markdown/JSON để đưa vào agent và hệ thống RAG.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** Apache Software Foundation\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/apache/tika](https://github.com/apache/tika)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Hỗ trợ hơn một nghìn loại tệp, phát hiện loại tệp và trích siêu dữ liệu**\n- **Bản 4.x xuất Markdown mặc định; -J xuất JSON đệ quy gồm cả nội dung nhúng bên trong tài liệu**\n- **Phân tích trong tiến trình fork tách biệt: tài liệu độc hại chỉ làm sập tiến trình con**\n- **Bộ phân tích VLM (Claude, Gemini, OpenAI) cho tài liệu OCR không đọc được**\n- **Skill dựng sẵn cho agent trong thư mục .skills: file-to-markdown và file-to-markdown-docker**\n- **Dùng như thư viện Java (Maven/Gradle), tika-app dòng lệnh hoặc tika-server**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\njava -jar tika-app-<version>.jar document.pdf\n```\n\nYêu cầu: Java 17 (Tika 4.x). Dựng từ mã nguồn dùng Maven wrapper có sẵn; Docker chỉ cần cho một số kiểm thử tích hợp.\nBước 1: Cài đặt Java 17, sau đó tải bản dựng sẵn tika-app từ https://tika.apache.org/download.html, giải nén tệp zip vào một thư mục (jar cần thư mục lib/ đi kèm)\nBước 2: Hoặc thêm phụ thuộc Maven org.apache.tika:tika-parsers-standard-package vào dự án Java\nBước 3: Hoặc dựng từ mã nguồn: `./mvnw clean install`\nBước 4: Chạy thử trong thư mục đã giải nén: `java -jar tika-app-<version>.jar document.pdf`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trích Markdown (mặc định 4.x): `java -jar tika-app-<version>.jar document.pdf`\nBước 2: Trích văn bản thuần bằng --text, hoặc JSON có cấu trúc (siêu dữ liệu và nội dung nhúng) bằng -J\nBước 3: Trong Java: tạo `new Tika()` và gọi `parseToString(new File(\"document.pdf\"))`\nBước 4: Sao chép skill file-to-markdown trong .skills vào thư mục skill của agent để agent tự chuyển tệp sang Markdown\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Trích toàn bộ văn bản và siêu dữ liệu từ thư mục tệp hỗn hợp PDF, DOCX, email\"\n- \"Chuyển tệp lưu trữ có tài liệu nhúng thành JSON đệ quy để lập chỉ mục\"\n- \"Dùng skill file-to-markdown để agent đọc tệp đính kèm dưới dạng Markdown\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "firecrawl-firecrawl",
+    "slug": "firecrawl-firecrawl",
+    "name": "Firecrawl — API thu thập, tìm kiếm và chuyển web thành dữ liệu cho AI agent",
+    "icon": "Globe",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "api",
+    "typeNameVi": "API",
+    "category": "web_scraping_crawling",
+    "categoryNameVi": "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+    "categories": [
+      "web_scraping_crawling",
+      "vector_rag",
+      "data_engineering"
+    ],
+    "categoryNamesVi": [
+      "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Kỹ thuật dữ liệu & Đường ống ETL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/firecrawl/firecrawl",
+    "websiteUrl": "https://firecrawl.dev",
+    "authorName": "Firecrawl",
+    "license": "Mã nguồn mở (AGPL-3.0; SDK theo MIT)",
+    "summaryVi": "Firecrawl là API mã nguồn mở để tìm kiếm, thu thập (scrape) và tương tác với web ở quy mô lớn, được thiết kế làm nguồn ngữ cảnh cho AI agent. Công cụ chuyển bất kỳ URL nào thành Markdown, HTML, ảnh chụp màn hình hoặc JSON có cấu trúc, hỗ trợ crawl cả website, lập bản đồ URL và phân tích tài liệu PDF/DOCX. Có thể dùng bản cloud tại firecrawl.dev hoặc tự triển khai bằng Docker Compose theo SELF_HOST.md.",
+    "purposeVi": "Cung cấp dữ liệu web sạch, sẵn sàng cho LLM (Markdown/JSON) để xây dựng ứng dụng RAG, agent và pipeline thu thập dữ liệu.",
+    "featuresVi": [
+      "Search: tìm kiếm web và lấy nội dung đầy đủ của các trang kết quả",
+      "Scrape: chuyển URL thành Markdown, HTML, ảnh chụp màn hình hoặc JSON có cấu trúc",
+      "Interact/Actions: nhấp, cuộn, gõ, chờ trước khi trích xuất nội dung",
+      "Crawl, Map, Batch Scrape: thu thập toàn bộ URL của website, khám phá URL, scrape hàng nghìn URL bất đồng bộ",
+      "Parse: chuyển PDF, DOCX và tài liệu khác thành Markdown hoặc JSON",
+      "SDK đa ngôn ngữ: Python, Node.js, Go, Java, Rust, Ruby, .NET, PHP, Elixir",
+      "Kết nối agent: skill cho Claude Code và máy chủ MCP firecrawl-mcp"
+    ],
+    "installGuideVi": "Yêu cầu: Bản cloud cần khóa API từ firecrawl.dev (dạng fc-...). Bản tự triển khai dùng Docker Compose (API mở ở cổng 3002, mặc định không xác thực); các tính năng AI cần kết nối OpenAI, endpoint tương thích OpenAI hoặc Ollama.\nBước 1: Cài đặt SDK Python: `pip install firecrawl`\nBước 2: Hoặc cài đặt SDK Node.js: `npm install firecrawl`\nBước 3: Cài đặt skill/CLI cho AI agent (Claude Code, OpenCode...): `npx -y firecrawl-cli@latest init --all --browser`",
+    "usageGuideVi": "Bước 1: Đăng ký tại firecrawl.dev để lấy khóa API, hoặc tự triển khai theo hướng dẫn SELF_HOST.md\nBước 2: Khởi tạo client: Firecrawl(api_key=\"fc-YOUR_API_KEY\")\nBước 3: Gọi app.scrape(url, formats=[\"markdown\"]), app.crawl(url, limit=50) hoặc app.search(query) để lấy dữ liệu\nBước 4: Đưa kết quả Markdown/JSON vào pipeline RAG hoặc agent",
+    "samplePromptsVi": [
+      "Dùng Firecrawl crawl toàn bộ trang tài liệu docs.example.com (tối đa 50 trang) và lưu nội dung dạng Markdown",
+      "Scrape trang sản phẩm này và trả về JSON gồm tên, giá, mô tả",
+      "Tìm kiếm web về 'công cụ dữ liệu AI' và lấy nội dung đầy đủ 5 kết quả đầu"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install firecrawl",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install firecrawl\"\n  ],\n  \"nguon\": \"https://github.com/firecrawl/firecrawl\"\n}"
+      },
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "npx -y firecrawl-cli@latest init --all --browser",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx -y firecrawl-cli@latest init --all --browser\"\n  ],\n  \"nguon\": \"https://github.com/firecrawl/firecrawl\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở, có thể tự triển khai bằng Docker Compose hoặc Kubernetes/Helm",
+      "Đầu ra Markdown/JSON sạch, tiết kiệm token cho LLM",
+      "SDK cho nhiều ngôn ngữ và tích hợp sẵn MCP, skill cho agent",
+      "Hỗ trợ cả trang nặng JavaScript và tài liệu PDF/DOCX"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0 cho phần chính: cung cấp dịch vụ qua mạng dựa trên bản sửa đổi phải công bố mã nguồn",
+      "Bản cloud có thêm tính năng không có trong bản mã nguồn mở và cần khóa API",
+      "Bản tự triển khai mặc định không xác thực API; tự chịu trách nhiệm bảo mật, sao lưu và vận hành"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Firecrawl — API thu thập, tìm kiếm và chuyển web thành dữ liệu cho AI agent\n\n> The API to search, scrape, and interact with the web at scale. Firecrawl is the context API for AI agents.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nFirecrawl là API mã nguồn mở để tìm kiếm, thu thập (scrape) và tương tác với web ở quy mô lớn, được thiết kế làm nguồn ngữ cảnh cho AI agent. Công cụ chuyển bất kỳ URL nào thành Markdown, HTML, ảnh chụp màn hình hoặc JSON có cấu trúc, hỗ trợ crawl cả website, lập bản đồ URL và phân tích tài liệu PDF/DOCX. Có thể dùng bản cloud tại firecrawl.dev hoặc tự triển khai bằng Docker Compose theo SELF_HOST.md.\n\nCung cấp dữ liệu web sạch, sẵn sàng cho LLM (Markdown/JSON) để xây dựng ứng dụng RAG, agent và pipeline thu thập dữ liệu.\n\n- **Loại hình thành phần:** API\n- **Lĩnh vực chuyên môn:** Thu thập dữ liệu web & Cào dữ liệu (Scraping)\n- **Tác giả / Nhà phát triển:** Firecrawl\n- **Giấy phép bản quyền:** Mã nguồn mở (AGPL-3.0; SDK theo MIT)\n- **Nền tảng hỗ trợ:** `web`, `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/firecrawl/firecrawl](https://github.com/firecrawl/firecrawl)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Search: tìm kiếm web và lấy nội dung đầy đủ của các trang kết quả**\n- **Scrape: chuyển URL thành Markdown, HTML, ảnh chụp màn hình hoặc JSON có cấu trúc**\n- **Interact/Actions: nhấp, cuộn, gõ, chờ trước khi trích xuất nội dung**\n- **Crawl, Map, Batch Scrape: thu thập toàn bộ URL của website, khám phá URL, scrape hàng nghìn URL bất đồng bộ**\n- **Parse: chuyển PDF, DOCX và tài liệu khác thành Markdown hoặc JSON**\n- **SDK đa ngôn ngữ: Python, Node.js, Go, Java, Rust, Ruby, .NET, PHP, Elixir**\n- **Kết nối agent: skill cho Claude Code và máy chủ MCP firecrawl-mcp**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install firecrawl\n```\n\nYêu cầu: Bản cloud cần khóa API từ firecrawl.dev (dạng fc-...). Bản tự triển khai dùng Docker Compose (API mở ở cổng 3002, mặc định không xác thực); các tính năng AI cần kết nối OpenAI, endpoint tương thích OpenAI hoặc Ollama.\nBước 1: Cài đặt SDK Python: `pip install firecrawl`\nBước 2: Hoặc cài đặt SDK Node.js: `npm install firecrawl`\nBước 3: Cài đặt skill/CLI cho AI agent (Claude Code, OpenCode...): `npx -y firecrawl-cli@latest init --all --browser`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đăng ký tại firecrawl.dev để lấy khóa API, hoặc tự triển khai theo hướng dẫn SELF_HOST.md\nBước 2: Khởi tạo client: Firecrawl(api_key=\"fc-YOUR_API_KEY\")\nBước 3: Gọi app.scrape(url, formats=[\"markdown\"]), app.crawl(url, limit=50) hoặc app.search(query) để lấy dữ liệu\nBước 4: Đưa kết quả Markdown/JSON vào pipeline RAG hoặc agent\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Dùng Firecrawl crawl toàn bộ trang tài liệu docs.example.com (tối đa 50 trang) và lưu nội dung dạng Markdown\"\n- \"Scrape trang sản phẩm này và trả về JSON gồm tên, giá, mô tả\"\n- \"Tìm kiếm web về 'công cụ dữ liệu AI' và lấy nội dung đầy đủ 5 kết quả đầu\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "scrapegraphai-scrapegraph-ai",
+    "slug": "scrapegraphai-scrapegraph-ai",
+    "name": "ScrapeGraphAI — Thư viện Python thu thập dữ liệu web bằng LLM theo câu lệnh tự nhiên",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "web_scraping_crawling",
+    "categoryNameVi": "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+    "categories": [
+      "web_scraping_crawling",
+      "nlp_llm",
+      "data_engineering"
+    ],
+    "categoryNamesVi": [
+      "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Kỹ thuật dữ liệu & Đường ống ETL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/ScrapeGraphAI/Scrapegraph-ai",
+    "websiteUrl": "https://scrapegraphai.com",
+    "authorName": "ScrapeGraphAI",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "ScrapeGraphAI là thư viện Python thu thập dữ liệu web dùng LLM và logic đồ thị để tạo pipeline trích xuất từ website và tài liệu cục bộ (XML, HTML, JSON, Markdown...). Người dùng chỉ cần mô tả thông tin muốn lấy bằng câu lệnh tự nhiên, thư viện sẽ tự trích xuất. Hỗ trợ LLM qua API (OpenAI, Groq, Azure, Gemini, MiniMax...) hoặc mô hình chạy cục bộ bằng Ollama.",
+    "purposeVi": "Trích xuất dữ liệu có cấu trúc từ trang web bằng câu lệnh ngôn ngữ tự nhiên thay vì viết bộ chọn CSS/XPath thủ công.",
+    "featuresVi": [
+      "SmartScraperGraph: trích xuất thông tin từ một trang chỉ với prompt và URL nguồn",
+      "SearchGraph: lấy thông tin từ n kết quả đầu của công cụ tìm kiếm",
+      "SpeechGraph: trích xuất thông tin và tạo tệp âm thanh",
+      "ScriptCreatorGraph: sinh script Python để trích xuất dữ liệu",
+      "Phiên bản Multi: gọi LLM song song cho nhiều trang/nguồn",
+      "Hỗ trợ LLM qua API hoặc mô hình cục bộ qua Ollama"
+    ],
+    "installGuideVi": "Yêu cầu: Python (khuyến nghị dùng môi trường ảo); Playwright để tải nội dung trang; khóa API của nhà cung cấp LLM (ví dụ OpenAI) hoặc Ollama cài sẵn với mô hình đã tải bằng ollama pull.\nBước 1: Cài đặt thư viện: `pip install scrapegraphai`\nBước 2: Cài đặt trình duyệt cho Playwright (bắt buộc để tải nội dung website): `playwright install`",
+    "usageGuideVi": "Bước 1: Khai báo graph_config với mô hình LLM (ví dụ ollama/llama3.2 hoặc openai/gpt-4o-mini kèm api_key)\nBước 2: Tạo SmartScraperGraph với prompt mô tả dữ liệu cần lấy và source là URL\nBước 3: Gọi smart_scraper_graph.run() để nhận kết quả dạng dictionary/JSON",
+    "samplePromptsVi": [
+      "Trích xuất mô tả công ty, danh sách nhà sáng lập và liên kết mạng xã hội từ trang chủ này",
+      "Lấy tên sản phẩm và giá từ danh sách các trang sau bằng SmartScraperMultiGraph",
+      "Sinh script Python trích xuất tiêu đề bài viết từ trang tin tức này"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install scrapegraphai",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install scrapegraphai\"\n  ],\n  \"nguon\": \"https://github.com/ScrapeGraphAI/Scrapegraph-ai\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, tự chạy trên hạ tầng riêng",
+      "Chạy được hoàn toàn cục bộ với Ollama, không cần gửi dữ liệu ra ngoài",
+      "Nhiều pipeline dựng sẵn cho một trang, nhiều trang và tìm kiếm"
+    ],
+    "consVi": [
+      "Tự quản lý trình duyệt (Playwright), proxy và mở rộng quy mô",
+      "Tốn chi phí token LLM cho mỗi lần trích xuất khi dùng mô hình qua API",
+      "Một số tính năng như Crawl, Monitor chỉ có ở API trả phí của ScrapeGraphAI"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# ScrapeGraphAI — Thư viện Python thu thập dữ liệu web bằng LLM theo câu lệnh tự nhiên\n\n> ScrapeGraphAI is a web scraping python library that uses LLM and direct graph logic to create scraping pipelines for websites and local documents (XML, HTML, JSON, Markdown, etc.).\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nScrapeGraphAI là thư viện Python thu thập dữ liệu web dùng LLM và logic đồ thị để tạo pipeline trích xuất từ website và tài liệu cục bộ (XML, HTML, JSON, Markdown...). Người dùng chỉ cần mô tả thông tin muốn lấy bằng câu lệnh tự nhiên, thư viện sẽ tự trích xuất. Hỗ trợ LLM qua API (OpenAI, Groq, Azure, Gemini, MiniMax...) hoặc mô hình chạy cục bộ bằng Ollama.\n\nTrích xuất dữ liệu có cấu trúc từ trang web bằng câu lệnh ngôn ngữ tự nhiên thay vì viết bộ chọn CSS/XPath thủ công.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Thu thập dữ liệu web & Cào dữ liệu (Scraping)\n- **Tác giả / Nhà phát triển:** ScrapeGraphAI\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/ScrapeGraphAI/Scrapegraph-ai](https://github.com/ScrapeGraphAI/Scrapegraph-ai)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **SmartScraperGraph: trích xuất thông tin từ một trang chỉ với prompt và URL nguồn**\n- **SearchGraph: lấy thông tin từ n kết quả đầu của công cụ tìm kiếm**\n- **SpeechGraph: trích xuất thông tin và tạo tệp âm thanh**\n- **ScriptCreatorGraph: sinh script Python để trích xuất dữ liệu**\n- **Phiên bản Multi: gọi LLM song song cho nhiều trang/nguồn**\n- **Hỗ trợ LLM qua API hoặc mô hình cục bộ qua Ollama**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install scrapegraphai\n```\n\nYêu cầu: Python (khuyến nghị dùng môi trường ảo); Playwright để tải nội dung trang; khóa API của nhà cung cấp LLM (ví dụ OpenAI) hoặc Ollama cài sẵn với mô hình đã tải bằng ollama pull.\nBước 1: Cài đặt thư viện: `pip install scrapegraphai`\nBước 2: Cài đặt trình duyệt cho Playwright (bắt buộc để tải nội dung website): `playwright install`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khai báo graph_config với mô hình LLM (ví dụ ollama/llama3.2 hoặc openai/gpt-4o-mini kèm api_key)\nBước 2: Tạo SmartScraperGraph với prompt mô tả dữ liệu cần lấy và source là URL\nBước 3: Gọi smart_scraper_graph.run() để nhận kết quả dạng dictionary/JSON\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Trích xuất mô tả công ty, danh sách nhà sáng lập và liên kết mạng xã hội từ trang chủ này\"\n- \"Lấy tên sản phẩm và giá từ danh sách các trang sau bằng SmartScraperMultiGraph\"\n- \"Sinh script Python trích xuất tiêu đề bài viết từ trang tin tức này\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "apify-crawlee",
+    "slug": "apify-crawlee",
+    "name": "Crawlee — Thư viện Node.js thu thập dữ liệu web và tự động hóa trình duyệt",
+    "icon": "Globe",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "web_scraping_crawling",
+    "categoryNameVi": "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+    "categories": [
+      "web_scraping_crawling",
+      "data_engineering"
+    ],
+    "categoryNamesVi": [
+      "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+      "Kỹ thuật dữ liệu & Đường ống ETL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/apify/crawlee",
+    "websiteUrl": "https://crawlee.dev",
+    "authorName": "Apify",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Crawlee là thư viện thu thập dữ liệu web và tự động hóa trình duyệt cho Node.js/TypeScript do Apify phát triển. Thư viện cung cấp một giao diện thống nhất cho crawl qua HTTP (Cheerio, JSDOM) và trình duyệt không giao diện (Playwright, Puppeteer), kèm hàng đợi URL bền vững, lưu trữ dữ liệu và tự mở rộng theo tài nguyên hệ thống. Có phiên bản Python riêng tại apify/crawlee-python.",
+    "purposeVi": "Xây dựng công cụ crawl và scrape ổn định để thu thập liên kết, trích xuất dữ liệu và lưu ra định dạng máy đọc được.",
+    "featuresVi": [
+      "Giao diện chung cho crawl qua HTTP và trình duyệt không giao diện",
+      "Hàng đợi URL bền vững (theo chiều rộng và chiều sâu)",
+      "Lưu trữ dữ liệu dạng bảng và tệp, mặc định vào thư mục ./storage",
+      "Tự động mở rộng theo tài nguyên hệ thống, luân chuyển proxy và quản lý phiên",
+      "Dùng Playwright hoặc Puppeteer với cùng một giao diện; hỗ trợ Chrome, Firefox, WebKit",
+      "CLI tạo dự án mẫu và Dockerfile sẵn để triển khai"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js 22.13 trở lên; cài đặt Playwright riêng nếu dùng PlaywrightCrawler.\nBước 1: Cài đặt nhanh bằng Crawlee CLI và chọn mẫu Getting started: `npx crawlee create my-crawler`\nBước 2: Vào thư mục dự án: `cd my-crawler`\nBước 3: Chạy crawler mẫu: `npm start`\nBước 4: Hoặc cài đặt vào dự án có sẵn: `npm install crawlee playwright`",
+    "usageGuideVi": "Bước 1: Tạo PlaywrightCrawler (hoặc CheerioCrawler) với requestHandler xử lý từng trang\nBước 2: Dùng Dataset.pushData() để lưu dữ liệu và enqueueLinks() để thêm liên kết vào hàng đợi\nBước 3: Gọi crawler.run([...URL bắt đầu]) và xem kết quả JSON trong ./storage/datasets/default",
+    "samplePromptsVi": [
+      "Viết PlaywrightCrawler bằng Crawlee thu thập tiêu đề mọi trang trong crawlee.dev và lưu vào Dataset",
+      "Tạo CheerioCrawler lấy danh sách bài viết từ trang blog và chỉ crawl các liên kết cùng tên miền",
+      "Cấu hình Crawlee giới hạn số yêu cầu tối đa và chạy với trình duyệt có giao diện để gỡ lỗi"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npx crawlee create my-crawler",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx crawlee create my-crawler\"\n  ],\n  \"nguon\": \"https://github.com/apify/crawlee\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, chạy ở mọi nơi",
+      "Có cả bản TypeScript và Python",
+      "Tích hợp sẵn retry, xử lý lỗi, định tuyến yêu cầu và hàng đợi bền vững"
+    ],
+    "consVi": [
+      "Yêu cầu Node.js 22.13 trở lên",
+      "Playwright không đi kèm, phải cài đặt riêng",
+      "Là thư viện cho lập trình viên, không có giao diện không cần viết mã"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Crawlee — Thư viện Node.js thu thập dữ liệu web và tự động hóa trình duyệt\n\n> Crawlee covers your crawling and scraping end-to-end and helps you build reliable scrapers. Fast.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nCrawlee là thư viện thu thập dữ liệu web và tự động hóa trình duyệt cho Node.js/TypeScript do Apify phát triển. Thư viện cung cấp một giao diện thống nhất cho crawl qua HTTP (Cheerio, JSDOM) và trình duyệt không giao diện (Playwright, Puppeteer), kèm hàng đợi URL bền vững, lưu trữ dữ liệu và tự mở rộng theo tài nguyên hệ thống. Có phiên bản Python riêng tại apify/crawlee-python.\n\nXây dựng công cụ crawl và scrape ổn định để thu thập liên kết, trích xuất dữ liệu và lưu ra định dạng máy đọc được.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Thu thập dữ liệu web & Cào dữ liệu (Scraping)\n- **Tác giả / Nhà phát triển:** Apify\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/apify/crawlee](https://github.com/apify/crawlee)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Giao diện chung cho crawl qua HTTP và trình duyệt không giao diện**\n- **Hàng đợi URL bền vững (theo chiều rộng và chiều sâu)**\n- **Lưu trữ dữ liệu dạng bảng và tệp, mặc định vào thư mục ./storage**\n- **Tự động mở rộng theo tài nguyên hệ thống, luân chuyển proxy và quản lý phiên**\n- **Dùng Playwright hoặc Puppeteer với cùng một giao diện; hỗ trợ Chrome, Firefox, WebKit**\n- **CLI tạo dự án mẫu và Dockerfile sẵn để triển khai**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx crawlee create my-crawler\n```\n\nYêu cầu: Node.js 22.13 trở lên; cài đặt Playwright riêng nếu dùng PlaywrightCrawler.\nBước 1: Cài đặt nhanh bằng Crawlee CLI và chọn mẫu Getting started: `npx crawlee create my-crawler`\nBước 2: Vào thư mục dự án: `cd my-crawler`\nBước 3: Chạy crawler mẫu: `npm start`\nBước 4: Hoặc cài đặt vào dự án có sẵn: `npm install crawlee playwright`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo PlaywrightCrawler (hoặc CheerioCrawler) với requestHandler xử lý từng trang\nBước 2: Dùng Dataset.pushData() để lưu dữ liệu và enqueueLinks() để thêm liên kết vào hàng đợi\nBước 3: Gọi crawler.run([...URL bắt đầu]) và xem kết quả JSON trong ./storage/datasets/default\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết PlaywrightCrawler bằng Crawlee thu thập tiêu đề mọi trang trong crawlee.dev và lưu vào Dataset\"\n- \"Tạo CheerioCrawler lấy danh sách bài viết từ trang blog và chỉ crawl các liên kết cùng tên miền\"\n- \"Cấu hình Crawlee giới hạn số yêu cầu tối đa và chạy với trình duyệt có giao diện để gỡ lỗi\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "jina-ai-reader",
+    "slug": "jina-ai-reader",
+    "name": "Jina Reader — Chuyển URL và kết quả tìm kiếm thành Markdown thân thiện với LLM",
+    "icon": "Globe",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "api",
+    "typeNameVi": "API",
+    "category": "web_scraping_crawling",
+    "categoryNameVi": "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+    "categories": [
+      "web_scraping_crawling",
+      "vector_rag",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/jina-ai/reader",
+    "websiteUrl": "https://jina.ai/reader",
+    "authorName": "Jina AI",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Reader là nhánh mã nguồn mở của dịch vụ r.jina.ai và s.jina.ai, chuyển bất kỳ URL nào thành đầu vào thân thiện với LLM và tìm kiếm web trả về nội dung Markdown. Công cụ đọc được trang web (qua Chrome không giao diện hoặc curl), PDF, tài liệu Word/Excel/PowerPoint và chú thích hình ảnh bằng mô hình thị giác. Có thể tự chạy bằng ảnh Docker ở chế độ không trạng thái hoặc có bộ nhớ đệm S3.",
+    "purposeVi": "Biến trang web và tài liệu thành văn bản Markdown sạch để đưa vào agent và hệ thống RAG.",
+    "featuresVi": [
+      "Read: thêm tiền tố https://r.jina.ai/ trước URL để nhận nội dung thân thiện với LLM",
+      "Search: https://s.jina.ai/ tìm kiếm web, lấy 5 kết quả đầu và chuyển từng trang thành Markdown",
+      "Đọc PDF (PDF.js), tài liệu MS Office (qua LibreOffice) và chú thích ảnh bằng VLM",
+      "Điều khiển bằng header: định dạng đầu ra, bộ chọn CSS, thời gian chờ, giới hạn token, chia đoạn Markdown",
+      "Hỗ trợ trang SPA nhờ Puppeteer và Chrome không giao diện",
+      "Ảnh Docker dựng sẵn kèm Chrome, LibreOffice và font CJK"
+    ],
+    "installGuideVi": "Yêu cầu: Docker để tự chạy ảnh ghcr.io/jina-ai/reader:oss (cổng 8080 HTTP/2 h2c và 8081 HTTP/1.1); tùy chọn bucket tương thích S3 để lưu đệm. Phát triển cục bộ cần Node.js (nvm).\nBước 1: Tải ảnh Docker mã nguồn mở: `docker pull ghcr.io/jina-ai/reader:oss`\nBước 2: Chạy Reader, ánh xạ cổng HTTP/1.1 ra cổng 3000: `docker run --rm -p 3000:8081 ghcr.io/jina-ai/reader:oss`",
+    "usageGuideVi": "Bước 1: Gửi yêu cầu tới http://localhost:3000/<URL cần đọc>, ví dụ http://localhost:3000/https://example.com\nBước 2: Thêm header như x-respond-with (markdown, html, text, screenshot) hoặc x-target-selector để tinh chỉnh kết quả\nBước 3: Hoặc dùng trực tiếp dịch vụ công khai https://r.jina.ai/ và https://s.jina.ai/",
+    "samplePromptsVi": [
+      "Đọc trang https://en.wikipedia.org/wiki/Artificial_intelligence qua Reader và tóm tắt nội dung",
+      "Chuyển tệp PDF tại URL này thành Markdown để đưa vào cơ sở dữ liệu vector",
+      "Tìm kiếm 'Jina AI thành lập năm nào' chỉ trong trang jina.ai bằng s.jina.ai"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker run --rm -p 3000:8081 ghcr.io/jina-ai/reader:oss",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker run --rm -p 3000:8081 ghcr.io/jina-ai/reader:oss\"\n  ],\n  \"nguon\": \"https://github.com/jina-ai/reader\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, tự chạy được bằng một lệnh Docker",
+      "Đọc nhiều loại nguồn: trang web, SPA, PDF, Office, hình ảnh",
+      "Nhiều tùy chọn kiểm soát token và định dạng đầu ra cho LLM"
+    ],
+    "consVi": [
+      "Bản mã nguồn mở không gồm lớp lưu trữ MongoDB của bản SaaS; mặc định không có cache và giới hạn tốc độ",
+      "Một số tài nguyên có giấy phép riêng (GeoLite2, font, danh sách user-agent) phải tải bổ sung khi tự build",
+      "Dịch vụ công khai có giới hạn tốc độ cho truy cập không dùng khóa API"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Jina Reader — Chuyển URL và kết quả tìm kiếm thành Markdown thân thiện với LLM\n\n> Your LLMs deserve better input.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nReader là nhánh mã nguồn mở của dịch vụ r.jina.ai và s.jina.ai, chuyển bất kỳ URL nào thành đầu vào thân thiện với LLM và tìm kiếm web trả về nội dung Markdown. Công cụ đọc được trang web (qua Chrome không giao diện hoặc curl), PDF, tài liệu Word/Excel/PowerPoint và chú thích hình ảnh bằng mô hình thị giác. Có thể tự chạy bằng ảnh Docker ở chế độ không trạng thái hoặc có bộ nhớ đệm S3.\n\nBiến trang web và tài liệu thành văn bản Markdown sạch để đưa vào agent và hệ thống RAG.\n\n- **Loại hình thành phần:** API\n- **Lĩnh vực chuyên môn:** Thu thập dữ liệu web & Cào dữ liệu (Scraping)\n- **Tác giả / Nhà phát triển:** Jina AI\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/jina-ai/reader](https://github.com/jina-ai/reader)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Read: thêm tiền tố https://r.jina.ai/ trước URL để nhận nội dung thân thiện với LLM**\n- **Search: https://s.jina.ai/ tìm kiếm web, lấy 5 kết quả đầu và chuyển từng trang thành Markdown**\n- **Đọc PDF (PDF.js), tài liệu MS Office (qua LibreOffice) và chú thích ảnh bằng VLM**\n- **Điều khiển bằng header: định dạng đầu ra, bộ chọn CSS, thời gian chờ, giới hạn token, chia đoạn Markdown**\n- **Hỗ trợ trang SPA nhờ Puppeteer và Chrome không giao diện**\n- **Ảnh Docker dựng sẵn kèm Chrome, LibreOffice và font CJK**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker run --rm -p 3000:8081 ghcr.io/jina-ai/reader:oss\n```\n\nYêu cầu: Docker để tự chạy ảnh ghcr.io/jina-ai/reader:oss (cổng 8080 HTTP/2 h2c và 8081 HTTP/1.1); tùy chọn bucket tương thích S3 để lưu đệm. Phát triển cục bộ cần Node.js (nvm).\nBước 1: Tải ảnh Docker mã nguồn mở: `docker pull ghcr.io/jina-ai/reader:oss`\nBước 2: Chạy Reader, ánh xạ cổng HTTP/1.1 ra cổng 3000: `docker run --rm -p 3000:8081 ghcr.io/jina-ai/reader:oss`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Gửi yêu cầu tới http://localhost:3000/<URL cần đọc>, ví dụ http://localhost:3000/https://example.com\nBước 2: Thêm header như x-respond-with (markdown, html, text, screenshot) hoặc x-target-selector để tinh chỉnh kết quả\nBước 3: Hoặc dùng trực tiếp dịch vụ công khai https://r.jina.ai/ và https://s.jina.ai/\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Đọc trang https://en.wikipedia.org/wiki/Artificial_intelligence qua Reader và tóm tắt nội dung\"\n- \"Chuyển tệp PDF tại URL này thành Markdown để đưa vào cơ sở dữ liệu vector\"\n- \"Tìm kiếm 'Jina AI thành lập năm nào' chỉ trong trang jina.ai bằng s.jina.ai\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "skyvern-ai-skyvern",
+    "slug": "skyvern-ai-skyvern",
+    "name": "Skyvern — Agent tự động hóa quy trình trình duyệt bằng LLM và thị giác máy tính",
+    "icon": "Workflow",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "web_scraping_crawling",
+    "categoryNameVi": "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+    "categories": [
+      "web_scraping_crawling",
+      "rpa_workflow_automation",
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/Skyvern-AI/skyvern",
+    "websiteUrl": "https://www.skyvern.com",
+    "authorName": "Skyvern",
+    "license": "Mã nguồn mở (AGPL-3.0; chống bot chỉ có ở bản cloud)",
+    "summaryVi": "Skyvern tự động hóa quy trình trên trình duyệt bằng LLM và thị giác máy tính, thay vì dựa vào XPath/DOM dễ hỏng khi giao diện thay đổi. Công cụ cung cấp SDK mở rộng Playwright với các lệnh AI (act, extract, validate, prompt), trình tạo workflow không cần code, hỗ trợ điền form, trích xuất dữ liệu, tải tệp và xác thực 2FA. Có thể chạy cục bộ qua pip hoặc Docker Compose, hoặc dùng Skyvern Cloud.",
+    "purposeVi": "Tự động hóa các tác vụ web lặp lại (điền biểu mẫu, trích xuất dữ liệu, tải tệp) trên cả những website chưa từng gặp bằng câu lệnh tự nhiên.",
+    "featuresVi": [
+      "Lệnh AI trên trang: page.act, page.extract (kèm JSON schema), page.validate, page.prompt",
+      "Hành động Playwright tăng cường AI: click, fill, select, upload bằng mô tả tự nhiên, có cơ chế dự phòng",
+      "Tác vụ và workflow nhiều bước, trình tạo workflow không cần code",
+      "Trích xuất dữ liệu, điền form, tải tệp, livestream trình duyệt",
+      "Xác thực: hỗ trợ 2FA (TOTP) và tích hợp trình quản lý mật khẩu (Bitwarden, 1Password)",
+      "Hỗ trợ OpenAI, Anthropic, Azure OpenAI, AWS Bedrock, Gemini, Ollama, OpenRouter và endpoint tương thích OpenAI",
+      "Hỗ trợ Model Context Protocol (MCP)"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.11, 3.12 hoặc 3.13 (Windows cần thêm Rust và VS Code có C++ dev tools) cho cách cài đặt pip; hoặc Docker Desktop cho Docker Compose. Cần khóa API của nhà cung cấp LLM. Giao diện web chạy tại http://localhost:8080; mặc định dùng SQLite tại ~/.skyvern/data.db.\nBước 1: Cài đặt Skyvern kèm máy chủ và giao diện: `pip install \"skyvern[all]\"`\nBước 2: Chạy trình cài đặt nhanh: `skyvern quickstart`\nBước 3: Hoặc dùng Docker Compose — tải mã nguồn: `git clone https://github.com/skyvern-ai/skyvern.git && cd skyvern`\nBước 4: Tạo tệp cấu hình và thêm khóa API của LLM: `cp .env.example .env`\nBước 5: Khởi động toàn bộ dịch vụ (Postgres, API, UI): `docker compose up -d`",
+    "usageGuideVi": "Bước 1: Chạy `skyvern run all` rồi mở http://localhost:8080 để giao tác vụ qua giao diện web\nBước 2: Hoặc dùng SDK Python: Skyvern.local(), mở trang và gọi page.act(...) / page.extract(...)\nBước 3: Tạo workflow nhiều bước cho các quy trình lặp lại và chạy lại khi cần",
+    "samplePromptsVi": [
+      "Mở trang này, điền biểu mẫu liên hệ với thông tin sau và bấm Gửi",
+      "Trích xuất chi tiết đơn hàng gồm mã đơn, tổng tiền và danh sách sản phẩm theo schema JSON",
+      "Kiểm tra xem người dùng đã đăng nhập thành công hay chưa"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "skyvern quickstart",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"skyvern quickstart\"\n  ],\n  \"nguon\": \"https://github.com/Skyvern-AI/skyvern\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Không phụ thuộc XPath nên chịu được thay đổi bố cục website",
+      "Tương thích Playwright: kết hợp lệnh truyền thống và lệnh AI trong cùng script",
+      "Hỗ trợ nhiều nhà cung cấp LLM, kể cả mô hình cục bộ qua Ollama"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0; các biện pháp chống bot chỉ có trong bản cloud trả phí",
+      "Mặc định thu thập thống kê sử dụng; tắt bằng SKYVERN_TELEMETRY=false",
+      "Cần khóa API LLM và chịu chi phí token khi chạy tác vụ"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Skyvern — Agent tự động hóa quy trình trình duyệt bằng LLM và thị giác máy tính\n\n> Automate Browser-based workflows using LLMs and Computer Vision\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSkyvern tự động hóa quy trình trên trình duyệt bằng LLM và thị giác máy tính, thay vì dựa vào XPath/DOM dễ hỏng khi giao diện thay đổi. Công cụ cung cấp SDK mở rộng Playwright với các lệnh AI (act, extract, validate, prompt), trình tạo workflow không cần code, hỗ trợ điền form, trích xuất dữ liệu, tải tệp và xác thực 2FA. Có thể chạy cục bộ qua pip hoặc Docker Compose, hoặc dùng Skyvern Cloud.\n\nTự động hóa các tác vụ web lặp lại (điền biểu mẫu, trích xuất dữ liệu, tải tệp) trên cả những website chưa từng gặp bằng câu lệnh tự nhiên.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Thu thập dữ liệu web & Cào dữ liệu (Scraping)\n- **Tác giả / Nhà phát triển:** Skyvern\n- **Giấy phép bản quyền:** Mã nguồn mở (AGPL-3.0; chống bot chỉ có ở bản cloud)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/Skyvern-AI/skyvern](https://github.com/Skyvern-AI/skyvern)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Lệnh AI trên trang: page.act, page.extract (kèm JSON schema), page.validate, page.prompt**\n- **Hành động Playwright tăng cường AI: click, fill, select, upload bằng mô tả tự nhiên, có cơ chế dự phòng**\n- **Tác vụ và workflow nhiều bước, trình tạo workflow không cần code**\n- **Trích xuất dữ liệu, điền form, tải tệp, livestream trình duyệt**\n- **Xác thực: hỗ trợ 2FA (TOTP) và tích hợp trình quản lý mật khẩu (Bitwarden, 1Password)**\n- **Hỗ trợ OpenAI, Anthropic, Azure OpenAI, AWS Bedrock, Gemini, Ollama, OpenRouter và endpoint tương thích OpenAI**\n- **Hỗ trợ Model Context Protocol (MCP)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nskyvern quickstart\n```\n\nYêu cầu: Python 3.11, 3.12 hoặc 3.13 (Windows cần thêm Rust và VS Code có C++ dev tools) cho cách cài đặt pip; hoặc Docker Desktop cho Docker Compose. Cần khóa API của nhà cung cấp LLM. Giao diện web chạy tại http://localhost:8080; mặc định dùng SQLite tại ~/.skyvern/data.db.\nBước 1: Cài đặt Skyvern kèm máy chủ và giao diện: `pip install \"skyvern[all]\"`\nBước 2: Chạy trình cài đặt nhanh: `skyvern quickstart`\nBước 3: Hoặc dùng Docker Compose — tải mã nguồn: `git clone https://github.com/skyvern-ai/skyvern.git && cd skyvern`\nBước 4: Tạo tệp cấu hình và thêm khóa API của LLM: `cp .env.example .env`\nBước 5: Khởi động toàn bộ dịch vụ (Postgres, API, UI): `docker compose up -d`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy `skyvern run all` rồi mở http://localhost:8080 để giao tác vụ qua giao diện web\nBước 2: Hoặc dùng SDK Python: Skyvern.local(), mở trang và gọi page.act(...) / page.extract(...)\nBước 3: Tạo workflow nhiều bước cho các quy trình lặp lại và chạy lại khi cần\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Mở trang này, điền biểu mẫu liên hệ với thông tin sau và bấm Gửi\"\n- \"Trích xuất chi tiết đơn hàng gồm mã đơn, tổng tiền và danh sách sản phẩm theo schema JSON\"\n- \"Kiểm tra xem người dùng đã đăng nhập thành công hay chưa\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "lightpanda-io-browser",
+    "slug": "lightpanda-io-browser",
+    "name": "Lightpanda — Trình duyệt không giao diện siêu nhẹ cho AI agent và tự động hóa",
+    "icon": "Globe",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "web_scraping_crawling",
+    "categoryNameVi": "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+    "categories": [
+      "web_scraping_crawling",
+      "rpa_workflow_automation"
+    ],
+    "categoryNamesVi": [
+      "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+      "Tự động hóa quy trình & RPA (Automation)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_desktop"
+    ],
+    "sourceUrl": "https://github.com/lightpanda-io/browser",
+    "websiteUrl": "https://lightpanda.io",
+    "authorName": "Lightpanda",
+    "license": "Mã nguồn mở (AGPL-3.0)",
+    "summaryVi": "Lightpanda là trình duyệt không giao diện viết mới hoàn toàn bằng Zig (không phải bản fork Chromium hay WebKit) dành cho AI agent và tự động hóa. Theo benchmark trong README, trình duyệt dùng ít bộ nhớ hơn khoảng 16 lần và nhanh hơn khoảng 9 lần so với Chrome không giao diện. Lightpanda có máy chủ CDP tương thích Puppeteer/Playwright, chế độ agent điều khiển bằng ngôn ngữ tự nhiên và máy chủ MCP tích hợp sẵn.",
+    "purposeVi": "Cung cấp trình duyệt nhẹ, nhanh để agent và script crawl, trích xuất dữ liệu hoặc tự động hóa web với chi phí tài nguyên thấp.",
+    "featuresVi": [
+      "Lệnh fetch: xuất trang ra HTML, Markdown, PNG, PDF hoặc dữ liệu cấu trúc (JSON-LD, OpenGraph)",
+      "Máy chủ CDP và WebDriver BiDi: dùng với Puppeteer, Playwright qua browserWSEndpoint",
+      "Chế độ agent: điều khiển trình duyệt bằng tiếng Anh tự nhiên, xuất script PandaScript để chạy lại không cần LLM",
+      "Máy chủ MCP tích hợp qua stdio hoặc HTTP, mỗi kết nối có phiên duyệt riêng",
+      "Hỗ trợ JavaScript (V8), DOM API, XHR/Fetch, cookie, proxy, chặn quảng cáo",
+      "Tôn trọng robots.txt với tùy chọn --obey-robots"
+    ],
+    "installGuideVi": "Yêu cầu: Linux (x86_64/aarch64, glibc) hoặc macOS; Windows dùng qua WSL2; hoặc Docker. Máy chủ CDP mặc định ở cổng 9222. Chế độ agent cần khóa API LLM (Anthropic, OpenAI, Gemini...) hoặc mô hình cục bộ qua Ollama/llama.cpp.\nBước 1: Cài đặt bản nightly qua Homebrew: `brew install lightpanda-io/browser/lightpanda`\nBước 2: Hoặc chạy bằng Docker, mở máy chủ CDP ở cổng 9222: `docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:latest`\nBước 3: Kiểm tra bằng cách xuất một trang ra HTML: `./lightpanda fetch --obey-robots --dump html --log-format pretty  --log-level info https://demo-browser.lightpanda.io/campfire-commerce/`",
+    "usageGuideVi": "Bước 1: Kết nối Puppeteer/Playwright tới ws://127.0.0.1:9222 và giữ nguyên phần còn lại của script\nBước 2: Dùng tùy chọn --dump markdown để chuyển trang trực tiếp thành Markdown cho LLM\nBước 3: Thêm Lightpanda vào cấu hình MCP (command là đường dẫn tới lightpanda, args là [\"mcp\"]) để agent duyệt web\nBước 4: Tắt telemetry bằng biến môi trường LIGHTPANDA_DISABLE_TELEMETRY=true nếu cần",
+    "samplePromptsVi": [
+      "Dùng Lightpanda MCP mở trang này và trích xuất toàn bộ liên kết",
+      "Lấy dữ liệu cấu trúc (JSON-LD, OpenGraph) của trang sản phẩm này",
+      "Tìm tin nổi bật nhất trên news.ycombinator.com bằng lightpanda agent"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:latest",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:latest\"\n  ],\n  \"nguon\": \"https://github.com/lightpanda-io/browser\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"lightpanda\": {\n      \"command\": \"/path/to/lightpanda\",\n      \"args\": [\"mcp\"]\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Rất nhẹ và nhanh so với Chrome không giao diện theo benchmark của dự án",
+      "Tương thích CDP nên dùng lại được script Puppeteer/Playwright",
+      "Có sẵn MCP và chế độ agent, hỗ trợ cả mô hình cục bộ"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0-only",
+      "Mặc định gửi telemetry; tắt bằng LIGHTPANDA_DISABLE_TELEMETRY=true",
+      "Không có bản Windows gốc (dùng WSL2), không chạy trên Linux musl (Alpine) hay Android",
+      "Bản cài đặt nhanh là bản nightly; Web API chưa đầy đủ như trình duyệt lớn"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Lightpanda — Trình duyệt không giao diện siêu nhẹ cho AI agent và tự động hóa\n\n> The headless browser built from scratch for AI agents and automation.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nLightpanda là trình duyệt không giao diện viết mới hoàn toàn bằng Zig (không phải bản fork Chromium hay WebKit) dành cho AI agent và tự động hóa. Theo benchmark trong README, trình duyệt dùng ít bộ nhớ hơn khoảng 16 lần và nhanh hơn khoảng 9 lần so với Chrome không giao diện. Lightpanda có máy chủ CDP tương thích Puppeteer/Playwright, chế độ agent điều khiển bằng ngôn ngữ tự nhiên và máy chủ MCP tích hợp sẵn.\n\nCung cấp trình duyệt nhẹ, nhanh để agent và script crawl, trích xuất dữ liệu hoặc tự động hóa web với chi phí tài nguyên thấp.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Thu thập dữ liệu web & Cào dữ liệu (Scraping)\n- **Tác giả / Nhà phát triển:** Lightpanda\n- **Giấy phép bản quyền:** Mã nguồn mở (AGPL-3.0)\n- **Nền tảng hỗ trợ:** `web`, `claude_desktop`\n- **Kho lưu trữ chính thức:** [https://github.com/lightpanda-io/browser](https://github.com/lightpanda-io/browser)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Lệnh fetch: xuất trang ra HTML, Markdown, PNG, PDF hoặc dữ liệu cấu trúc (JSON-LD, OpenGraph)**\n- **Máy chủ CDP và WebDriver BiDi: dùng với Puppeteer, Playwright qua browserWSEndpoint**\n- **Chế độ agent: điều khiển trình duyệt bằng tiếng Anh tự nhiên, xuất script PandaScript để chạy lại không cần LLM**\n- **Máy chủ MCP tích hợp qua stdio hoặc HTTP, mỗi kết nối có phiên duyệt riêng**\n- **Hỗ trợ JavaScript (V8), DOM API, XHR/Fetch, cookie, proxy, chặn quảng cáo**\n- **Tôn trọng robots.txt với tùy chọn --obey-robots**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:latest\n```\n\nYêu cầu: Linux (x86_64/aarch64, glibc) hoặc macOS; Windows dùng qua WSL2; hoặc Docker. Máy chủ CDP mặc định ở cổng 9222. Chế độ agent cần khóa API LLM (Anthropic, OpenAI, Gemini...) hoặc mô hình cục bộ qua Ollama/llama.cpp.\nBước 1: Cài đặt bản nightly qua Homebrew: `brew install lightpanda-io/browser/lightpanda`\nBước 2: Hoặc chạy bằng Docker, mở máy chủ CDP ở cổng 9222: `docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:latest`\nBước 3: Kiểm tra bằng cách xuất một trang ra HTML: `./lightpanda fetch --obey-robots --dump html --log-format pretty  --log-level info https://demo-browser.lightpanda.io/campfire-commerce/`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Kết nối Puppeteer/Playwright tới ws://127.0.0.1:9222 và giữ nguyên phần còn lại của script\nBước 2: Dùng tùy chọn --dump markdown để chuyển trang trực tiếp thành Markdown cho LLM\nBước 3: Thêm Lightpanda vào cấu hình MCP (command là đường dẫn tới lightpanda, args là [\"mcp\"]) để agent duyệt web\nBước 4: Tắt telemetry bằng biến môi trường LIGHTPANDA_DISABLE_TELEMETRY=true nếu cần\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Dùng Lightpanda MCP mở trang này và trích xuất toàn bộ liên kết\"\n- \"Lấy dữ liệu cấu trúc (JSON-LD, OpenGraph) của trang sản phẩm này\"\n- \"Tìm tin nổi bật nhất trên news.ycombinator.com bằng lightpanda agent\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "browserbase-stagehand",
+    "slug": "browserbase-stagehand",
+    "name": "Stagehand — Framework tự động hóa trình duyệt bằng AI cho TypeScript, Python, Go",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "web_scraping_crawling",
+    "categoryNameVi": "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+    "categories": [
+      "web_scraping_crawling",
+      "rpa_workflow_automation",
+      "qa_testing"
+    ],
+    "categoryNamesVi": [
+      "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Kiểm thử phần mềm & QA/QC"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/browserbase/stagehand",
+    "websiteUrl": "https://docs.stagehand.dev",
+    "authorName": "Browserbase",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Stagehand là framework tự động hóa trình duyệt bằng AI của Browserbase, kết hợp API kiểu Playwright (goto, click, locator, screenshot) với ba lệnh AI: act, observe và extract. Lệnh extract trả về dữ liệu đã kiểm tra theo schema (Zod/Pydantic), còn act và observe tự thích ứng khi giao diện website thay đổi. SDK có cho TypeScript, Python và Go, chạy với Chrome cục bộ hoặc trình duyệt cloud Browserbase.",
+    "purposeVi": "Viết script tự động hóa và trích xuất dữ liệu web bằng câu lệnh tự nhiên, ổn định hơn khi website đổi giao diện.",
+    "featuresVi": [
+      "act(): thực hiện hành động bằng câu lệnh tự nhiên, tự phục hồi khi website đổi thiết kế",
+      "observe(): trả về bộ chọn thật để thông tin đăng nhập không phải gửi cho mô hình",
+      "extract(): trích xuất dữ liệu theo schema Zod (TS) hoặc Pydantic (Python)",
+      "API quen thuộc kiểu Playwright, cắt gọn cây accessibility để tiết kiệm token",
+      "Hỗ trợ WebMCP, iframe lồng nhau, Shadow DOM đóng, OTel traces",
+      "Một bộ điều khiển trình duyệt cho TypeScript, Python và Go"
+    ],
+    "installGuideVi": "Yêu cầu: Chạy cục bộ cần cài Chrome; khóa API của nhà cung cấp mô hình (ví dụ OPENAI_API_KEY). Chạy trên cloud cần BROWSERBASE_API_KEY.\nBước 1: Cài đặt SDK TypeScript: `pnpm add @browserbasehq/stagehand 'zod@~4.4.3'`\nBước 2: Hoặc cài đặt SDK Python: `pip install stagehand`\nBước 3: Hoặc cài đặt SDK Go: `go get github.com/browserbase/stagehand/packages/sdk-go/v4@v4.0.0`",
+    "usageGuideVi": "Bước 1: Khởi chạy trình duyệt cục bộ bằng localBrowser.launch({ userDataDir: \"./browser-data\" }) để giữ phiên đăng nhập\nBước 2: Tạo Stagehand.create({ browser, model: {...} }) với tên mô hình và khóa API\nBước 3: Dùng stagehand.act(), stagehand.observe() và stagehand.extract() kết hợp với API trang kiểu Playwright\nBước 4: Đóng stagehand và trình duyệt khi hoàn tất",
+    "samplePromptsVi": [
+      "Mở trang thanh toán và trích xuất mọi hóa đơn trong bảng gồm số hóa đơn, số tiền, trạng thái đã trả",
+      "Tìm ô nhập email và mật khẩu rồi bấm nút đăng nhập",
+      "Viết script Stagehand bằng Python lấy danh sách sản phẩm theo schema Pydantic"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pnpm add @browserbasehq/stagehand 'zod@~4.4.3'",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pnpm add @browserbasehq/stagehand 'zod@~4.4.3'\"\n  ],\n  \"nguon\": \"https://github.com/browserbase/stagehand\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT",
+      "SDK cho ba ngôn ngữ: TypeScript, Python, Go",
+      "Chạy cục bộ với Chrome hoặc chuyển sang Browserbase mà không đổi script"
+    ],
+    "consVi": [
+      "Cần khóa API mô hình LLM khi chạy cục bộ",
+      "Các tính năng như proxy dân cư, ghi lại phiên, Model Gateway, cache phía server cần tài khoản Browserbase",
+      "Chạy cục bộ yêu cầu cài sẵn Chrome"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Stagehand — Framework tự động hóa trình duyệt bằng AI cho TypeScript, Python, Go\n\n> AI that uses the browser like humans.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nStagehand là framework tự động hóa trình duyệt bằng AI của Browserbase, kết hợp API kiểu Playwright (goto, click, locator, screenshot) với ba lệnh AI: act, observe và extract. Lệnh extract trả về dữ liệu đã kiểm tra theo schema (Zod/Pydantic), còn act và observe tự thích ứng khi giao diện website thay đổi. SDK có cho TypeScript, Python và Go, chạy với Chrome cục bộ hoặc trình duyệt cloud Browserbase.\n\nViết script tự động hóa và trích xuất dữ liệu web bằng câu lệnh tự nhiên, ổn định hơn khi website đổi giao diện.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Thu thập dữ liệu web & Cào dữ liệu (Scraping)\n- **Tác giả / Nhà phát triển:** Browserbase\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/browserbase/stagehand](https://github.com/browserbase/stagehand)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **act(): thực hiện hành động bằng câu lệnh tự nhiên, tự phục hồi khi website đổi thiết kế**\n- **observe(): trả về bộ chọn thật để thông tin đăng nhập không phải gửi cho mô hình**\n- **extract(): trích xuất dữ liệu theo schema Zod (TS) hoặc Pydantic (Python)**\n- **API quen thuộc kiểu Playwright, cắt gọn cây accessibility để tiết kiệm token**\n- **Hỗ trợ WebMCP, iframe lồng nhau, Shadow DOM đóng, OTel traces**\n- **Một bộ điều khiển trình duyệt cho TypeScript, Python và Go**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npnpm add @browserbasehq/stagehand 'zod@~4.4.3'\n```\n\nYêu cầu: Chạy cục bộ cần cài Chrome; khóa API của nhà cung cấp mô hình (ví dụ OPENAI_API_KEY). Chạy trên cloud cần BROWSERBASE_API_KEY.\nBước 1: Cài đặt SDK TypeScript: `pnpm add @browserbasehq/stagehand 'zod@~4.4.3'`\nBước 2: Hoặc cài đặt SDK Python: `pip install stagehand`\nBước 3: Hoặc cài đặt SDK Go: `go get github.com/browserbase/stagehand/packages/sdk-go/v4@v4.0.0`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi chạy trình duyệt cục bộ bằng localBrowser.launch({ userDataDir: \"./browser-data\" }) để giữ phiên đăng nhập\nBước 2: Tạo Stagehand.create({ browser, model: {...} }) với tên mô hình và khóa API\nBước 3: Dùng stagehand.act(), stagehand.observe() và stagehand.extract() kết hợp với API trang kiểu Playwright\nBước 4: Đóng stagehand và trình duyệt khi hoàn tất\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Mở trang thanh toán và trích xuất mọi hóa đơn trong bảng gồm số hóa đơn, số tiền, trạng thái đã trả\"\n- \"Tìm ô nhập email và mật khẩu rồi bấm nút đăng nhập\"\n- \"Viết script Stagehand bằng Python lấy danh sách sản phẩm theo schema Pydantic\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T01:51:22.856Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]
