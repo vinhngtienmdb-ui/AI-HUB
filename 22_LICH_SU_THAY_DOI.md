@@ -4,6 +4,17 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.4 (Ngày 24-10-2026)
+- **Loại hình**: Bổ sung tài nguyên theo yêu cầu, script `scripts/migrations/2026-10-24-bo-sung-agent-office-postiz-everything.cjs`.
+- **3 tài nguyên mới** (nội dung, câu lệnh, cổng, tài khoản mặc định lấy từ README và tệp cấu hình trong repo gốc):
+  - `tung1998-agent-office`: agent-office, đội tác tử AI chạy trên máy, nhận việc qua chat, duyệt diff trước khi áp dụng (MIT, có giao diện tiếng Việt).
+  - `gitroomhq-postiz-app`: Postiz, quản lý, lên lịch và phân tích bài đăng mạng xã hội, tự lưu trữ bằng Docker Compose (AGPL-3.0).
+  - `heyputer-everything`: Everything của Puter, 51 ứng dụng mã nguồn mở thay thế phần mềm thương mại (MIT).
+- Repo `HeyPuter/everythingc` trong yêu cầu không tồn tại nên không thêm.
+- Chưa có số sao; workflow `cap-nhat-so-sao.yml` sẽ lấy số thật. Kiểm định trực tuyến: nguồn của cả 3 tồn tại.
+- **Trang chi tiết**: mục "Ngôn ngữ hỗ trợ" trước đây luôn hiển thị "Tiếng Việt, Tiếng Anh" cho mọi công cụ; nay chỉ hiển thị khi dữ liệu có ghi ngôn ngữ.
+- Kho dữ liệu: 1.939 công cụ đang hiển thị, 1.955 cấu hình mẫu.
+
 ### Phiên Bản 2.1.3 (Ngày 23-10-2026)
 - **Loại hình**: Rà soát phần Quản lý API (Cổng REST API và trang `#/api`).
 - **Trang Quản lý API viết lại, nối với máy chủ thật**: trước đây khóa được sinh bằng `Math.random` trong trình duyệt, chỉ lưu `localStorage`, không đăng ký với máy chủ nên không dùng được; trang có 2 khóa mẫu, 3 dòng nhật ký mẫu, số liệu "99.8%", "42ms" ghi cứng; khu thử nghiệm tự dựng kết quả "PASSED (HMAC-SHA256 verified)" khi không gọi được máy chủ; mã mẫu trỏ tới `https://gateway.aihub.vn`, địa chỉ không có cấu hình triển khai nào trong kho mã. Nay trang kết nối máy chủ bằng địa chỉ và khóa admin người dùng nhập, tạo/thu hồi khóa, đọc số liệu và nhật ký từ máy chủ, gửi yêu cầu thật và báo lỗi khi không kết nối được.

@@ -266,12 +266,15 @@ export const DetailPage: React.FC<DetailPageProps> = ({
                 </a>
               </div>
 
-              <div>
-                <span className="text-slate-400 block mb-0.5">Ngôn ngữ hỗ trợ</span>
-                <span className="text-slate-700 dark:text-slate-300 font-medium">
-                  Tiếng Việt, Tiếng Anh
-                </span>
-              </div>
+              {/* Chỉ hiển thị khi dữ liệu có ghi ngôn ngữ, không mặc định "Tiếng Việt, Tiếng Anh" cho mọi công cụ */}
+              {tool.languages && tool.languages.length > 0 && (
+                <div>
+                  <span className="text-slate-400 block mb-0.5">Ngôn ngữ hỗ trợ</span>
+                  <span className="text-slate-700 dark:text-slate-300 font-medium">
+                    {tool.languages.join(', ')}
+                  </span>
+                </div>
+              )}
 
               <div>
                 <span className="text-slate-400 block mb-0.5">Nền tảng tương thích</span>

@@ -148556,5 +148556,254 @@
       "starsVerified": false
     },
     "reviewNote": "[Kiểm định dữ liệu 2026-10-23] Gói cài đặt @haravan/marketing-mcp không tồn tại trên npm và nguồn chỉ là trang chủ https://www.haravan.com, không có mã nguồn của công cụ được mô tả."
+  },
+  {
+    "id": "tung1998-agent-office",
+    "slug": "tung1998-agent-office",
+    "name": "agent-office — Văn Phòng AI Chạy Trên Máy: Đội Tác Tử Nhận Việc Qua Chat, Duyệt Diff Trước Khi Áp Dụng",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "rpa_workflow_automation",
+    "categoryNameVi": "Tự động hóa quy trình & RPA (Automation)",
+    "categories": [
+      "rpa_workflow_automation",
+      "devops_cicd",
+      "customer_support"
+    ],
+    "categoryNamesVi": [
+      "Tự động hóa quy trình & RPA (Automation)",
+      "DevOps & Tự động hóa CI/CD",
+      "Chăm sóc khách hàng & Trợ lý ảo CS"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/tung1998/agent-office",
+    "websiteUrl": "https://tung1998.github.io/agent-office/guide/vi.html",
+    "authorName": "tung1998",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Biến các tài khoản AI bạn đang có (Claude Code, Codex, API Anthropic/OpenAI hoặc hơn 18 nhà cung cấp tương thích) thành một \"văn phòng\" gồm nhiều tác tử: mỗi dự án có trưởng nhóm, kỹ sư, QA, reviewer làm việc qua chat, mỗi tác tử sửa mã trong git worktree riêng và trả về diff để người dùng duyệt. Chạy cục bộ bằng một tệp Go cùng dashboard Nuxt, dữ liệu lưu trong SQLite trên máy. Giao diện có tiếng Việt.",
+    "purposeVi": "Giải quyết việc công cụ AI viết mã chỉ làm được từng cuộc chat riêng lẻ, trong khi công việc thật gồm nhiều repo, máy chủ dev cần giám sát, kế hoạch tuần, tin nhắn Discord, webhook. agent-office cho phép giao việc cho cả đội tác tử, đặt quyền theo từng hành động (đọc, sửa, chạy lệnh, git push, khởi động lại container) và chỉ áp dụng thay đổi sau khi người dùng duyệt.",
+    "featuresVi": [
+      "Chat với cả đội tác tử: @tên để kéo tác tử vào nhóm, gọi /skill, đính kèm ảnh/PDF/log, tìm lại chat cũ",
+      "Mô hình đội Solo, Team, Council (biểu quyết + phủ quyết) hoặc tự tạo; workflow /handoff, /advisor, /council, /feature",
+      "Duyệt trước khi áp dụng: mỗi chat có git worktree riêng; diff, hành động và thay đổi cấu hình chờ Approve / Reject / Skip",
+      "Vận hành: nhận diện lệnh dự án, chạy/dừng/tự khởi động lại như pm2, log trực tiếp, CPU/RAM/cổng, docker compose",
+      "Tự động hóa: lịch cron theo múi giờ, webhook, tin nhắn Discord/Telegram; chạy script miễn phí và chỉ gọi AI khi thất bại",
+      "Burn: tác tử tự tìm và làm việc trong dự án, mỗi việc một worktree, tạm dừng/tiếp tục được",
+      "Cổng MCP chung: quản lý máy chủ MCP (HTTP, stdio, OAuth) và chuyển cho mọi AI với quyền theo từng công cụ và nhật ký gọi",
+      "Chi phí & giới hạn: ghi chi phí từng lần gọi AI, ngân sách ngày theo văn phòng/dự án/automation, kết nối dự phòng"
+    ],
+    "installGuideVi": "Yêu cầu: git và ít nhất một tài khoản AI (Claude Code / Codex CLI đã đăng nhập, hoặc khóa API). Script `scripts/install.sh` tự kiểm tra và cài Go ≥ 1.27, Node 22, pnpm nếu thiếu (vào `~/.local`, không cần sudo). Chạy trên macOS và Linux; Windows dùng `scripts\\install.ps1` (tự cài WSL2 + Ubuntu).\nBước 1: Tải mã nguồn: `git clone https://github.com/tung1998/agent-office.git && cd agent-office`.\nBước 2: Cài công cụ và đóng gói: `scripts/install.sh` (tạo `bin/office` và dashboard). Muốn cài xong chạy luôn: `scripts/install.sh --run`.\nBước 3: Khởi chạy: `./bin/office run` (API cổng 8787, dashboard http://localhost:2704).\nBước 4: Mở http://localhost:2704, đăng nhập `admin` / `admin`; văn phòng yêu cầu đặt email và mật khẩu riêng ngay lập tức.\nBước 5: Chạy như dịch vụ cùng phiên đăng nhập: `./bin/office service install --now` (LaunchAgent trên macOS, systemd user unit trên Linux).\nBước 6: Hoặc dùng Docker: `cp .env.example .env` rồi `docker compose up -d --build`.",
+    "usageGuideVi": "Bước 1: Trên trang Overview, vào **AI connections** để thêm Claude Code, Codex hoặc khóa API và bấm kiểm tra kết nối.\nBước 2: Vào **Projects** để thêm thư mục, clone một git URL, hoặc tạo trợ lý không gắn thư mục.\nBước 3: Chọn **Starter pack** (Solo / Team / Council) hoặc dùng *Set up with AI* để tác tử đọc repo và đề xuất đội.\nBước 4: Mở **Chat** của dự án và giao việc đầu tiên; duyệt các thẻ diff/hành động bằng Approve / Reject / Skip.\nBước 5: Dữ liệu nằm ở `~/.agent-office`; dùng `office init --local` trong repo để lưu vào `<repo>/.office`.",
+    "samplePromptsVi": [
+      "Thêm kênh Zalo OA bên cạnh Telegram cho văn phòng",
+      "Sửa lỗi đăng nhập ở dự án web, chạy test rồi gửi diff cho tôi duyệt",
+      "Lập kế hoạch tuần cho dự án từ các issue đang mở",
+      "Mỗi sáng 8 giờ chạy build, chỉ gọi AI phân tích khi build lỗi"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "git clone https://github.com/tung1998/agent-office.git && cd agent-office && scripts/install.sh --run",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"git clone https://github.com/tung1998/agent-office.git && cd agent-office && scripts/install.sh --run\"\n  ],\n  \"nguon\": \"https://github.com/tung1998/agent-office\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "open_source",
+    "pricingText": "Miễn phí mã nguồn mở (MIT); dùng tài khoản AI sẵn có của bạn (Claude Code, Codex hoặc khóa API)",
+    "prosVi": [
+      "Mọi thay đổi của tác tử nằm trong worktree riêng và phải được duyệt trước khi áp dụng",
+      "Dùng tài khoản AI sẵn có, dữ liệu nằm trên máy (SQLite), giao diện tiếng Việt",
+      "Một cổng MCP chung với quyền theo từng công cụ và nhật ký gọi"
+    ],
+    "consVi": [
+      "Cần cài Go, Node 22, pnpm (script tự cài) và tự vận hành trên máy hoặc máy chủ riêng",
+      "Tài khoản mặc định admin / admin phải được đổi ngay sau lần đăng nhập đầu"
+    ],
+    "languages": [
+      "Tiếng Việt",
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# agent-office — Văn Phòng AI Chạy Trên Máy: Đội Tác Tử Nhận Việc Qua Chat, Duyệt Diff Trước Khi Áp Dụng\n\n> Văn phòng AI của riêng bạn: một đội agent AI chạy trên máy bạn, nhận việc qua chat, và chỉ hỏi bạn khi cần duyệt.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nGiải quyết việc công cụ AI viết mã chỉ làm được từng cuộc chat riêng lẻ, trong khi công việc thật gồm nhiều repo, máy chủ dev cần giám sát, kế hoạch tuần, tin nhắn Discord, webhook. agent-office cho phép giao việc cho cả đội tác tử, đặt quyền theo từng hành động (đọc, sửa, chạy lệnh, git push, khởi động lại container) và chỉ áp dụng thay đổi sau khi người dùng duyệt.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Tự động hóa quy trình & RPA (Automation)\n- **Tác giả / Nhà phát triển:** tung1998\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `web`\n- **Kho lưu trữ chính thức:** [https://github.com/tung1998/agent-office](https://github.com/tung1998/agent-office)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Chat với cả đội tác tử: @tên để kéo tác tử vào nhóm, gọi /skill, đính kèm ảnh/PDF/log, tìm lại chat cũ**\n- **Mô hình đội Solo, Team, Council (biểu quyết + phủ quyết) hoặc tự tạo; workflow /handoff, /advisor, /council, /feature**\n- **Duyệt trước khi áp dụng: mỗi chat có git worktree riêng; diff, hành động và thay đổi cấu hình chờ Approve / Reject / Skip**\n- **Vận hành: nhận diện lệnh dự án, chạy/dừng/tự khởi động lại như pm2, log trực tiếp, CPU/RAM/cổng, docker compose**\n- **Tự động hóa: lịch cron theo múi giờ, webhook, tin nhắn Discord/Telegram; chạy script miễn phí và chỉ gọi AI khi thất bại**\n- **Burn: tác tử tự tìm và làm việc trong dự án, mỗi việc một worktree, tạm dừng/tiếp tục được**\n- **Cổng MCP chung: quản lý máy chủ MCP (HTTP, stdio, OAuth) và chuyển cho mọi AI với quyền theo từng công cụ và nhật ký gọi**\n- **Chi phí & giới hạn: ghi chi phí từng lần gọi AI, ngân sách ngày theo văn phòng/dự án/automation, kết nối dự phòng**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ngit clone https://github.com/tung1998/agent-office.git && cd agent-office && scripts/install.sh --run\n```\n\nYêu cầu: git và ít nhất một tài khoản AI (Claude Code / Codex CLI đã đăng nhập, hoặc khóa API). Script `scripts/install.sh` tự kiểm tra và cài Go ≥ 1.27, Node 22, pnpm nếu thiếu (vào `~/.local`, không cần sudo). Chạy trên macOS và Linux; Windows dùng `scripts\\install.ps1` (tự cài WSL2 + Ubuntu).\nBước 1: Tải mã nguồn: `git clone https://github.com/tung1998/agent-office.git && cd agent-office`.\nBước 2: Cài công cụ và đóng gói: `scripts/install.sh` (tạo `bin/office` và dashboard). Muốn cài xong chạy luôn: `scripts/install.sh --run`.\nBước 3: Khởi chạy: `./bin/office run` (API cổng 8787, dashboard http://localhost:2704).\nBước 4: Mở http://localhost:2704, đăng nhập `admin` / `admin`; văn phòng yêu cầu đặt email và mật khẩu riêng ngay lập tức.\nBước 5: Chạy như dịch vụ cùng phiên đăng nhập: `./bin/office service install --now` (LaunchAgent trên macOS, systemd user unit trên Linux).\nBước 6: Hoặc dùng Docker: `cp .env.example .env` rồi `docker compose up -d --build`.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trên trang Overview, vào **AI connections** để thêm Claude Code, Codex hoặc khóa API và bấm kiểm tra kết nối.\nBước 2: Vào **Projects** để thêm thư mục, clone một git URL, hoặc tạo trợ lý không gắn thư mục.\nBước 3: Chọn **Starter pack** (Solo / Team / Council) hoặc dùng *Set up with AI* để tác tử đọc repo và đề xuất đội.\nBước 4: Mở **Chat** của dự án và giao việc đầu tiên; duyệt các thẻ diff/hành động bằng Approve / Reject / Skip.\nBước 5: Dữ liệu nằm ở `~/.agent-office`; dùng `office init --local` trong repo để lưu vào `<repo>/.office`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Thêm kênh Zalo OA bên cạnh Telegram cho văn phòng\"\n- \"Sửa lỗi đăng nhập ở dự án web, chạy test rồi gửi diff cho tôi duyệt\"\n- \"Lập kế hoạch tuần cho dự án từ các issue đang mở\"\n- \"Mỗi sáng 8 giờ chạy build, chỉ gọi AI phân tích khi build lỗi\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T00:22:03.874Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "gitroomhq-postiz-app",
+    "slug": "gitroomhq-postiz-app",
+    "name": "Postiz — Nền Tảng Quản Lý, Lên Lịch & Phân Tích Bài Đăng Mạng Xã Hội Mã Nguồn Mở (Tự Lưu Trữ)",
+    "icon": "Globe",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "content_writing",
+    "categoryNameVi": "Sáng tạo nội dung & Biên tập",
+    "categories": [
+      "content_writing",
+      "seo_growth",
+      "rpa_workflow_automation"
+    ],
+    "categoryNamesVi": [
+      "Sáng tạo nội dung & Biên tập",
+      "Tối ưu hóa công cụ tìm kiếm SEO",
+      "Tự động hóa quy trình & RPA (Automation)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/gitroomhq/postiz-app",
+    "websiteUrl": "https://postiz.com",
+    "authorName": "Gitroom (gitroomhq)",
+    "license": "Mã nguồn mở (AGPL-3.0)",
+    "summaryVi": "Nền tảng quản lý mạng xã hội để lên lịch, tự động hóa và phân tích bài đăng trên Instagram, YouTube, LinkedIn, Reddit, TikTok, Facebook, Pinterest, Threads, X, Slack, Discord, Mastodon, Bluesky, Dribbble. Có trợ lý AI tạo nội dung, cộng tác nhóm, API công khai, webhook và kết nối với tác tử AI qua MCP. Bản mã nguồn mở tự lưu trữ có cùng tính năng với bản Cloud.",
+    "purposeVi": "Hỗ trợ đội nội dung và doanh nghiệp lên lịch bài đăng cho nhiều kênh mạng xã hội từ một nơi, đo hiệu quả bằng phân tích, mời thành viên cùng bình luận và duyệt bài, và tự động hóa qua API với N8N, Make.com, Zapier. Bản tự lưu trữ giữ dữ liệu trên máy chủ riêng, không giới hạn kênh, bài đăng và thành viên.",
+    "featuresVi": [
+      "Lên lịch bài đăng cho nhiều mạng xã hội, xem theo lịch, đăng chéo, bài lặp lại, bình luận và độ trễ",
+      "Phân tích hiệu quả bài đăng (bản tự lưu trữ cần ứng dụng nhà phát triển có quyền analytics)",
+      "Cộng tác nhóm: mời thành viên bình luận, duyệt và lên lịch bài",
+      "AI Copilot, sinh ảnh và video bằng AI (bản tự lưu trữ dùng khóa OpenAI hoặc nhà cung cấp khác của bạn)",
+      "API công khai, webhook, SDK Node.js (@postiz/node), node N8N, tích hợp Make.com",
+      "Kết nối tác tử AI: MCP, CLI, Claude, ChatGPT, Codex, Cursor trỏ tới máy chủ của bạn",
+      "Tự động đăng từ RSS, nhóm khách hàng, chữ ký, bộ bài đăng (sets)"
+    ],
+    "installGuideVi": "Yêu cầu: Docker và Docker Compose (hoặc Coolify / Railway / VPS). Mỗi mạng xã hội cần tạo ứng dụng nhà phát triển riêng và qua bước duyệt của nền tảng (Meta, YouTube, TikTok có thể mất vài tuần), rồi điền khóa vào biến môi trường.\nBước 1: Tải mã nguồn: `git clone https://github.com/gitroomhq/postiz-app.git && cd postiz-app`.\nBước 2: Mở `docker-compose.yaml`, đổi `JWT_SECRET` thành chuỗi ngẫu nhiên riêng; điền khóa ứng dụng của các mạng xã hội cần dùng (ví dụ `LINKEDIN_CLIENT_ID`, `LINKEDIN_CLIENT_SECRET`) và `OPENAI_API_KEY` nếu dùng tính năng AI.\nBước 3: Khởi chạy: `docker compose up -d` (gồm Postiz, PostgreSQL, Redis và Temporal).\nBước 4: Mở http://localhost:4007 (giá trị `MAIN_URL` mặc định) và tạo tài khoản.\nBước 5: Hướng dẫn triển khai đầy đủ: https://docs.postiz.com/quickstart.",
+    "usageGuideVi": "Bước 1: Kết nối các kênh mạng xã hội đã cấu hình khóa ứng dụng.\nBước 2: Soạn bài (có thể dùng AI Copilot), chọn kênh và thời điểm đăng trên lịch.\nBước 3: Mời thành viên vào nhóm để bình luận, duyệt và lên lịch bài.\nBước 4: Xem phân tích hiệu quả bài đăng; tự động hóa qua Public API (https://docs.postiz.com/public-api), webhook hoặc N8N/Make.com.",
+    "samplePromptsVi": [
+      "Lên lịch bài giới thiệu sản phẩm mới đăng đồng thời lên LinkedIn, Facebook và X lúc 9 giờ sáng thứ Hai",
+      "Tạo chuỗi bài đăng hằng tuần từ nguồn RSS blog của công ty",
+      "Dùng API Postiz từ quy trình N8N để đăng bài khi có bài blog mới"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "git clone https://github.com/gitroomhq/postiz-app.git && cd postiz-app && docker compose up -d",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"git clone https://github.com/gitroomhq/postiz-app.git && cd postiz-app && docker compose up -d\"\n  ],\n  \"nguon\": \"https://github.com/gitroomhq/postiz-app\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "open_source",
+    "pricingText": "Bản tự lưu trữ miễn phí (AGPL-3.0, tự trả chi phí hạ tầng); Postiz Cloud thu phí theo gói, dùng thử 7 ngày",
+    "prosVi": [
+      "Bản tự lưu trữ không giới hạn kênh, bài đăng, thành viên và không khóa tính năng",
+      "Hỗ trợ nhiều mạng xã hội, có API công khai, webhook và kết nối tác tử AI qua MCP"
+    ],
+    "consVi": [
+      "Tự lưu trữ phải tự tạo ứng dụng nhà phát triển cho từng mạng xã hội và chờ duyệt",
+      "Cần vận hành PostgreSQL, Redis, Temporal, tự cập nhật và sao lưu",
+      "Giấy phép AGPL-3.0: sửa đổi và cung cấp qua mạng phải công bố mã nguồn"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Postiz — Nền Tảng Quản Lý, Lên Lịch & Phân Tích Bài Đăng Mạng Xã Hội Mã Nguồn Mở (Tự Lưu Trữ)\n\n> Postiz is a social media management platform for scheduling, automating, and analyzing your content.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nHỗ trợ đội nội dung và doanh nghiệp lên lịch bài đăng cho nhiều kênh mạng xã hội từ một nơi, đo hiệu quả bằng phân tích, mời thành viên cùng bình luận và duyệt bài, và tự động hóa qua API với N8N, Make.com, Zapier. Bản tự lưu trữ giữ dữ liệu trên máy chủ riêng, không giới hạn kênh, bài đăng và thành viên.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Sáng tạo nội dung & Biên tập\n- **Tác giả / Nhà phát triển:** Gitroom (gitroomhq)\n- **Giấy phép bản quyền:** Mã nguồn mở (AGPL-3.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/gitroomhq/postiz-app](https://github.com/gitroomhq/postiz-app)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Lên lịch bài đăng cho nhiều mạng xã hội, xem theo lịch, đăng chéo, bài lặp lại, bình luận và độ trễ**\n- **Phân tích hiệu quả bài đăng (bản tự lưu trữ cần ứng dụng nhà phát triển có quyền analytics)**\n- **Cộng tác nhóm: mời thành viên bình luận, duyệt và lên lịch bài**\n- **AI Copilot, sinh ảnh và video bằng AI (bản tự lưu trữ dùng khóa OpenAI hoặc nhà cung cấp khác của bạn)**\n- **API công khai, webhook, SDK Node.js (@postiz/node), node N8N, tích hợp Make.com**\n- **Kết nối tác tử AI: MCP, CLI, Claude, ChatGPT, Codex, Cursor trỏ tới máy chủ của bạn**\n- **Tự động đăng từ RSS, nhóm khách hàng, chữ ký, bộ bài đăng (sets)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ngit clone https://github.com/gitroomhq/postiz-app.git && cd postiz-app && docker compose up -d\n```\n\nYêu cầu: Docker và Docker Compose (hoặc Coolify / Railway / VPS). Mỗi mạng xã hội cần tạo ứng dụng nhà phát triển riêng và qua bước duyệt của nền tảng (Meta, YouTube, TikTok có thể mất vài tuần), rồi điền khóa vào biến môi trường.\nBước 1: Tải mã nguồn: `git clone https://github.com/gitroomhq/postiz-app.git && cd postiz-app`.\nBước 2: Mở `docker-compose.yaml`, đổi `JWT_SECRET` thành chuỗi ngẫu nhiên riêng; điền khóa ứng dụng của các mạng xã hội cần dùng (ví dụ `LINKEDIN_CLIENT_ID`, `LINKEDIN_CLIENT_SECRET`) và `OPENAI_API_KEY` nếu dùng tính năng AI.\nBước 3: Khởi chạy: `docker compose up -d` (gồm Postiz, PostgreSQL, Redis và Temporal).\nBước 4: Mở http://localhost:4007 (giá trị `MAIN_URL` mặc định) và tạo tài khoản.\nBước 5: Hướng dẫn triển khai đầy đủ: https://docs.postiz.com/quickstart.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Kết nối các kênh mạng xã hội đã cấu hình khóa ứng dụng.\nBước 2: Soạn bài (có thể dùng AI Copilot), chọn kênh và thời điểm đăng trên lịch.\nBước 3: Mời thành viên vào nhóm để bình luận, duyệt và lên lịch bài.\nBước 4: Xem phân tích hiệu quả bài đăng; tự động hóa qua Public API (https://docs.postiz.com/public-api), webhook hoặc N8N/Make.com.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Lên lịch bài giới thiệu sản phẩm mới đăng đồng thời lên LinkedIn, Facebook và X lúc 9 giờ sáng thứ Hai\"\n- \"Tạo chuỗi bài đăng hằng tuần từ nguồn RSS blog của công ty\"\n- \"Dùng API Postiz từ quy trình N8N để đăng bài khi có bài blog mới\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T00:22:03.874Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "heyputer-everything",
+    "slug": "heyputer-everything",
+    "name": "Everything (Puter) — Bộ 51 Ứng Dụng Mã Nguồn Mở Thay Thế Phần Mềm Thương Mại: Văn Phòng, Sáng Tạo, Kỹ Thuật, Tài Chính",
+    "icon": "Box",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs",
+      "generative_ai_multimedia",
+      "accounting_finance",
+      "erp_enterprise"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử",
+      "Sinh nội dung & Đa phương tiện (Generative AI)",
+      "Kế toán doanh nghiệp & Báo cáo tài chính",
+      "Quản trị tổng thể doanh nghiệp (ERP)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/HeyPuter/everything",
+    "websiteUrl": "",
+    "authorName": "Puter Technologies Inc.",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Dự án Everything của Puter xây lại từ đầu và mở mã các phần mềm thương mại phổ biến, gom trong một kho mã gồm 51 ứng dụng: văn phòng (bảng tính, văn bản, trình chiếu, PDF, ghi chú), cộng tác (họp, chat nhóm, email, lịch, ký số), sáng tạo (ảnh, video, vector, âm thanh, nhạc, 3D), kỹ thuật (CAD, mạch điện, thiết kế công trình), năng suất, tài chính, kinh doanh (CRM, help desk, POS, kho, tuyển dụng), công cụ lập trình (API Client) và trò chơi.",
+    "purposeVi": "Cung cấp các ứng dụng thay thế miễn phí, mã nguồn mở cho phần mềm thương mại như Microsoft Office, Slack, Photoshop, AutoCAD, QuickBooks, Salesforce, Postman. Doanh nghiệp và nhà phát triển có thể tự chạy, sửa đổi và phát triển tiếp từng ứng dụng theo giấy phép MIT.",
+    "featuresVi": [
+      "Văn phòng: Spreadsheet, Documents, Presentation, Whiteboard, PDF, Notes, Records (thay Excel, Word, PowerPoint, Miro, Acrobat, OneNote, Airtable)",
+      "Cộng tác: Meetings, Teamchat, Email, Contacts, Calendar, Signatures (thay Zoom, Slack, Gmail, DocuSign)",
+      "Sáng tạo: Photo Studio, Video Studio, Vector Studio, Audio Studio, Music Studio, 3D Studio (thay Photoshop, Premiere Pro, Illustrator, FL Studio, Maya)",
+      "Kỹ thuật: CAD, Parametric, Circuits, Building Design (thay AutoCAD, SolidWorks, Altium Designer, Revit)",
+      "Năng suất: Tasks, Projects, Wiki, Time Tracking, Surveys (thay Todoist, Trello, Notion, Toggl, SurveyMonkey)",
+      "Tài chính: Accounting, Invoicing, Expenses, Cap Table (thay QuickBooks, FreshBooks, Expensify, Carta)",
+      "Kinh doanh: CRM, Help Desk, Contracts, Point of Sale, Inventory, Assets, Hiring, Shifts, Childcare, Field Service, Legal, Fleet, Property Management",
+      "Công cụ lập trình: API Client (thay Postman, Insomnia, Hoppscotch); trò chơi: Chess, Backgammon, Checkers, Solitaire, Sudoku"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js 22.12 trở lên.\nBước 1: Tải mã nguồn: `git clone https://github.com/HeyPuter/everything.git`.\nBước 2: Vào thư mục ứng dụng cần chạy trong `src/` (ví dụ `cd everything/src/spreadsheet`).\nBước 3: Cài gói: `npm install`.\nBước 4: Chạy bản phát triển: `npm run dev`.",
+    "usageGuideVi": "Bước 1: Mỗi ứng dụng là một thư mục riêng trong `src/` (ví dụ `spreadsheet`, `documents`, `cad`, `accounting`, `api-client`); chạy từng ứng dụng độc lập theo các bước cài đặt.\nBước 2: Bảng ứng dụng trong README liệt kê ứng dụng thương mại tương ứng và liên kết bản chạy thử trên các tên miền puter.com (ví dụ https://spreadsheet.puter.com/).\nBước 3: Sửa đổi và phân phối lại theo giấy phép MIT; thư viện bên thứ ba giữ giấy phép riêng.",
+    "samplePromptsVi": [
+      "Chạy ứng dụng Spreadsheet của dự án Everything trên máy để thay Excel",
+      "Tìm ứng dụng mã nguồn mở thay thế Postman trong dự án Everything",
+      "Tùy biến ứng dụng Invoicing của Everything cho hóa đơn doanh nghiệp"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "git clone https://github.com/HeyPuter/everything.git && cd everything/src/spreadsheet && npm install && npm run dev",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"git clone https://github.com/HeyPuter/everything.git && cd everything/src/spreadsheet && npm install && npm run dev\"\n  ],\n  \"nguon\": \"https://github.com/HeyPuter/everything\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "open_source",
+    "pricingText": "Miễn phí mã nguồn mở (MIT)",
+    "prosVi": [
+      "Một kho mã MIT với 51 ứng dụng, mỗi ứng dụng chạy độc lập bằng npm",
+      "Có bản chạy thử trực tuyến cho nhiều ứng dụng"
+    ],
+    "consVi": [
+      "Không phải công cụ AI: là bộ ứng dụng văn phòng và nghiệp vụ mã nguồn mở",
+      "Mỗi ứng dụng phải cài và chạy riêng; độ hoàn thiện so với phần mềm thương mại cần tự đánh giá"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Everything (Puter) — Bộ 51 Ứng Dụng Mã Nguồn Mở Thay Thế Phần Mềm Thương Mại: Văn Phòng, Sáng Tạo, Kỹ Thuật, Tài Chính\n\n> The world’s software. Rebuilt, open-sourced, and MIT-licensed.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nCung cấp các ứng dụng thay thế miễn phí, mã nguồn mở cho phần mềm thương mại như Microsoft Office, Slack, Photoshop, AutoCAD, QuickBooks, Salesforce, Postman. Doanh nghiệp và nhà phát triển có thể tự chạy, sửa đổi và phát triển tiếp từng ứng dụng theo giấy phép MIT.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** Puter Technologies Inc.\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/HeyPuter/everything](https://github.com/HeyPuter/everything)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Văn phòng: Spreadsheet, Documents, Presentation, Whiteboard, PDF, Notes, Records (thay Excel, Word, PowerPoint, Miro, Acrobat, OneNote, Airtable)**\n- **Cộng tác: Meetings, Teamchat, Email, Contacts, Calendar, Signatures (thay Zoom, Slack, Gmail, DocuSign)**\n- **Sáng tạo: Photo Studio, Video Studio, Vector Studio, Audio Studio, Music Studio, 3D Studio (thay Photoshop, Premiere Pro, Illustrator, FL Studio, Maya)**\n- **Kỹ thuật: CAD, Parametric, Circuits, Building Design (thay AutoCAD, SolidWorks, Altium Designer, Revit)**\n- **Năng suất: Tasks, Projects, Wiki, Time Tracking, Surveys (thay Todoist, Trello, Notion, Toggl, SurveyMonkey)**\n- **Tài chính: Accounting, Invoicing, Expenses, Cap Table (thay QuickBooks, FreshBooks, Expensify, Carta)**\n- **Kinh doanh: CRM, Help Desk, Contracts, Point of Sale, Inventory, Assets, Hiring, Shifts, Childcare, Field Service, Legal, Fleet, Property Management**\n- **Công cụ lập trình: API Client (thay Postman, Insomnia, Hoppscotch); trò chơi: Chess, Backgammon, Checkers, Solitaire, Sudoku**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ngit clone https://github.com/HeyPuter/everything.git && cd everything/src/spreadsheet && npm install && npm run dev\n```\n\nYêu cầu: Node.js 22.12 trở lên.\nBước 1: Tải mã nguồn: `git clone https://github.com/HeyPuter/everything.git`.\nBước 2: Vào thư mục ứng dụng cần chạy trong `src/` (ví dụ `cd everything/src/spreadsheet`).\nBước 3: Cài gói: `npm install`.\nBước 4: Chạy bản phát triển: `npm run dev`.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mỗi ứng dụng là một thư mục riêng trong `src/` (ví dụ `spreadsheet`, `documents`, `cad`, `accounting`, `api-client`); chạy từng ứng dụng độc lập theo các bước cài đặt.\nBước 2: Bảng ứng dụng trong README liệt kê ứng dụng thương mại tương ứng và liên kết bản chạy thử trên các tên miền puter.com (ví dụ https://spreadsheet.puter.com/).\nBước 3: Sửa đổi và phân phối lại theo giấy phép MIT; thư viện bên thứ ba giữ giấy phép riêng.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Chạy ứng dụng Spreadsheet của dự án Everything trên máy để thay Excel\"\n- \"Tìm ứng dụng mã nguồn mở thay thế Postman trong dự án Everything\"\n- \"Tùy biến ứng dụng Invoicing của Everything cho hóa đơn doanh nghiệp\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T00:22:03.874Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]
