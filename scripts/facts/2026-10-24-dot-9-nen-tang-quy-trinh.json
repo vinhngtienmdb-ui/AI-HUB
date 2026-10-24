@@ -1,0 +1,560 @@
+[
+ {
+  "repo": "activepieces/activepieces",
+  "license": "MIT (Expat) cho Community Edition; mã trong packages/ee/ và packages/server/api/src/app/ee theo Activepieces Enterprise License (thương mại)",
+  "authorName": "Activepieces Inc.",
+  "websiteUrl": "https://www.activepieces.com",
+  "toolType": "software",
+  "taglineEn": "An open source replacement for Zapier",
+  "summaryVi": "Activepieces là nền tảng tự động hóa quy trình bằng AI, mã nguồn mở, thay thế Zapier, với trình dựng luồng không cần viết mã cho người dùng phổ thông. Các tích hợp (gọi là pieces) được viết bằng TypeScript, phát hành trên npm và tự động khả dụng dưới dạng MCP server cho Claude Desktop, Cursor hoặc Windsurf. Dự án có thể tự lưu trữ, kể cả trong mạng tách biệt.",
+  "purposeVi": "Công cụ giúp doanh nghiệp tự động hóa công việc giữa hơn 200 dịch vụ (Google Sheets, OpenAI, Discord, RSS...) bằng trình dựng luồng trực quan, tự lưu trữ để giữ dữ liệu nội bộ.",
+  "featuresVi": [
+   "Trình dựng luồng: vòng lặp, rẽ nhánh, tự động thử lại, HTTP, bước mã với NPM",
+   "Hơn 200 pieces tích hợp mã nguồn mở, 60% do cộng đồng đóng góp, phát hành trên npmjs.com",
+   "Bộ công cụ MCP: toàn bộ pieces (280+) dùng được như MCP với Claude Desktop, Cursor, Windsurf",
+   "AI-First: pieces AI gốc và AI SDK để tự tạo tác tử ngay trong trình dựng",
+   "Con người trong vòng lặp: trì hoãn thực thi hoặc yêu cầu phê duyệt; giao diện Chat và Form làm trình kích hoạt",
+   "Luồng được quản lý phiên bản đầy đủ, hỗ trợ dịch giao diện và mẫu tùy chỉnh"
+  ],
+  "requirementsVi": "Docker (bản Hobby một container); bản tự lưu trữ đầy đủ cần Docker Compose v2, tối thiểu 2 vCPU và 4 GB RAM.",
+  "installStepsVi": [
+   "Cài đặt bản Hobby một container (cơ sở dữ liệu nhúng PGLite): `docker run -d --name activepieces -p 8080:80 -v ~/.activepieces:/root/.activepieces -e AP_DB_TYPE=PGLITE -e AP_REDIS_TYPE=MEMORY -e AP_FRONTEND_URL=\"http://localhost:8080\" activepieces/activepieces:latest`",
+   "Hoặc cài đặt bản tự lưu trữ với PostgreSQL và Redis bằng một lệnh: `curl -fsSL https://get.activepieces.com | sh`",
+   "Kiểm tra trạng thái các container: `docker compose -p activepieces ps`"
+  ],
+  "cliCommand": "docker run -d --name activepieces -p 8080:80 -v ~/.activepieces:/root/.activepieces -e AP_DB_TYPE=PGLITE -e AP_REDIS_TYPE=MEMORY -e AP_FRONTEND_URL=\"http://localhost:8080\" activepieces/activepieces:latest",
+  "usageStepsVi": [
+   "Mở http://localhost:8080; tài khoản đầu tiên được tạo sẽ trở thành quản trị viên",
+   "Tạo luồng mới, chọn trình kích hoạt (webhook, lịch, Chat, Form...) và thêm các bước pieces",
+   "Nếu cần nhận webhook từ bên ngoài trên máy cá nhân, mở đường hầm bằng `ngrok http 8080` rồi đặt AP_FRONTEND_URL theo URL ngrok",
+   "Tham khảo hướng dẫn tạo piece riêng bằng TypeScript khi cần tích hợp dịch vụ chưa có sẵn"
+  ],
+  "samplePromptsVi": [
+   "Tạo luồng: khi có dòng mới trong Google Sheets thì gọi OpenAI tóm tắt và gửi kết quả lên Discord",
+   "Dựng biểu mẫu nhận yêu cầu nội bộ, chờ quản lý phê duyệt rồi mới chạy bước tiếp theo",
+   "Theo dõi một nguồn RSS và lưu bài mới vào bảng dữ liệu"
+  ],
+  "prosVi": [
+   "Community Edition mã nguồn mở theo giấy phép MIT",
+   "Tự lưu trữ được, kể cả trong mạng tách biệt",
+   "Pieces dùng được như MCP server cho Claude Desktop, Cursor",
+   "Bản Hobby chỉ cần Docker, không phải cài PostgreSQL hay Redis"
+  ],
+  "consVi": [
+   "Tính năng doanh nghiệp nằm dưới giấy phép thương mại riêng, dùng trong sản xuất cần giấy phép Enterprise",
+   "Bản Hobby dùng cơ sở dữ liệu nhúng: không mở rộng được và không nâng cấp lên Enterprise",
+   "Webhook cần địa chỉ công khai (hoặc đường hầm như ngrok)"
+  ],
+  "sourceEvidence": {
+   "docker run -d --name activepieces -p 8080:80 -v ~/.activepieces:/root/.activepieces -e AP_DB_TYPE=PGLITE -e AP_REDIS_TYPE=MEMORY -e AP_FRONTEND_URL=\"http://localhost:8080\" activepieces/activepieces:latest": "docs/install/options/docker.mdx:29",
+   "curl -fsSL https://get.activepieces.com | sh": "docs/install/options/docker-compose.mdx:15",
+   "docker compose -p activepieces ps": "docs/install/options/docker-compose.mdx:114",
+   "ngrok http 8080": "docs/install/options/docker.mdx:52"
+  },
+  "meta": {
+   "id": "activepieces-activepieces",
+   "nameVi": "Activepieces — Nền tảng tự động hóa quy trình AI mã nguồn mở thay thế Zapier",
+   "icon": "Workflow",
+   "categories": [
+    "rpa_workflow_automation"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT) + tính năng Enterprise thương mại",
+   "pricingModel": "freemium",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "docker run -d --name activepieces -p 8080:80 -v ~/.activepieces:/root/.activepieces -e AP_DB_TYPE=PGLITE -e AP_REDIS_TYPE=MEMORY -e AP_FRONTEND_URL=\"http://localhost:8080\" activepieces/activepieces:latest"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "windmill-labs/windmill",
+  "license": "AGPLv3 (backend/, frontend/), Apache 2.0 (các client python/deno/go/powershell và đặc tả OpenAPI/OpenFlow); mã enterprise theo giấy phép độc quyền thương mại",
+  "authorName": "Windmill Labs, Inc.",
+  "websiteUrl": "https://www.windmill.dev",
+  "toolType": "software",
+  "taglineEn": "Open-source developer platform for internal code: APIs, background jobs, workflows and UIs.",
+  "summaryVi": "Windmill là nền tảng dành cho lập trình viên để chạy mã nội bộ: API, tác vụ nền, quy trình và giao diện. Script viết bằng Python, TypeScript, Go, Bash, SQL, GraphQL, PowerShell, Rust... được tự động sinh giao diện, ghép thành flow hoặc dựng thành ứng dụng low-code. Dự án tự lưu trữ được, thay thế Retool, Pipedream, Superblocks và một Temporal đơn giản hóa.",
+  "purposeVi": "Biến các script rời rạc thành quy trình tự động, tác vụ định kỳ và công cụ nội bộ có giao diện, chạy trên hạ tầng do doanh nghiệp tự quản lý.",
+  "featuresVi": [
+   "Đa ngôn ngữ: Python, TypeScript, Go, Bash, SQL, GraphQL, PowerShell, Rust, C#, Java, Ansible",
+   "Tự sinh giao diện từ tham số script và trình dựng ứng dụng low-code",
+   "Flow editor ghép script thành quy trình; dùng lại script cộng đồng trên WindmillHub",
+   "Kích hoạt bằng lịch, webhook, HTTP route, Kafka và nhiều nguồn sự kiện",
+   "Phát triển cục bộ qua CLI, tiện ích VS Code, Git Sync và Claude Code",
+   "Cách ly bằng nsjail và PID namespace; độ trễ hàng đợi khoảng 50ms mỗi tác vụ"
+  ],
+  "requirementsVi": "Docker và Docker Compose (hoặc Kubernetes với Helm); PostgreSQL đi kèm hoặc dùng cơ sở dữ liệu ngoài qua DATABASE_URL.",
+  "installStepsVi": [
+   "Tải tệp cấu hình: `curl https://raw.githubusercontent.com/windmill-labs/windmill/main/docker-compose.yml -o docker-compose.yml`",
+   "Tải Caddyfile: `curl https://raw.githubusercontent.com/windmill-labs/windmill/main/Caddyfile -o Caddyfile`",
+   "Tải tệp môi trường: `curl https://raw.githubusercontent.com/windmill-labs/windmill/main/.env -o .env`",
+   "Cài đặt và khởi chạy: `docker compose up -d`",
+   "Hoặc cài đặt trên Kubernetes: `helm repo add windmill https://windmill-labs.github.io/windmill-helm-charts/` rồi `helm install windmill-chart windmill/windmill --namespace=windmill --create-namespace`"
+  ],
+  "cliCommand": "docker compose up -d",
+  "usageStepsVi": [
+   "Mở http://localhost và đăng nhập bằng tài khoản mặc định admin@windmill.dev / changeme (nên đổi ngay)",
+   "Viết script trong Web IDE; tham số được phân tích để sinh giao diện chạy tự động",
+   "Ghép script thành flow, gắn lịch hoặc webhook để tự động hóa",
+   "Dựng ứng dụng nội bộ trên script và flow bằng trình dựng UI"
+  ],
+  "samplePromptsVi": [
+   "Viết script Python đọc dữ liệu từ PostgreSQL và tạo flow chạy mỗi sáng gửi báo cáo lên Slack",
+   "Tạo HTTP route nhận webhook rồi gọi script TypeScript xử lý dữ liệu",
+   "Dựng ứng dụng nội bộ có biểu mẫu kích hoạt flow phê duyệt"
+  ],
+  "prosVi": [
+   "Mã nguồn có thể biên dịch không kèm tính năng enterprise là mã nguồn mở AGPLv3",
+   "Community Edition dùng miễn phí trong nội bộ tổ chức",
+   "Hỗ trợ rất nhiều ngôn ngữ lập trình và nhiều cách kích hoạt",
+   "Triển khai bằng Docker Compose với 3 tệp hoặc Helm chart"
+  ],
+  "consVi": [
+   "Ảnh Docker Community Edition chứa cả mã độc quyền; không được bán lại, cung cấp dạng dịch vụ quản lý hay đóng gói lại khi chưa có thỏa thuận",
+   "Một số tính năng (ví dụ số liệu Prometheus) chỉ có ở bản Enterprise cần LICENSE_KEY",
+   "Dự án hiện không nhận đóng góp mã lớn từ bên ngoài"
+  ],
+  "sourceEvidence": {
+   "curl https://raw.githubusercontent.com/windmill-labs/windmill/main/docker-compose.yml -o docker-compose.yml": "README.md:203",
+   "curl https://raw.githubusercontent.com/windmill-labs/windmill/main/Caddyfile -o Caddyfile": "README.md:204",
+   "curl https://raw.githubusercontent.com/windmill-labs/windmill/main/.env -o .env": "README.md:205",
+   "docker compose up -d": "README.md:207",
+   "helm repo add windmill https://windmill-labs.github.io/windmill-helm-charts/": "README.md:217",
+   "helm install windmill-chart windmill/windmill --namespace=windmill --create-namespace": "README.md:218"
+  },
+  "meta": {
+   "id": "windmill-labs-windmill",
+   "nameVi": "Windmill — Nền tảng chạy script, quy trình và ứng dụng nội bộ tự lưu trữ",
+   "icon": "Workflow",
+   "categories": [
+    "rpa_workflow_automation",
+    "devops_cicd"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (AGPLv3/Apache 2.0) + mã Enterprise độc quyền",
+   "pricingModel": "freemium",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "docker compose up -d"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "kestra-io/kestra",
+  "license": "Apache License 2.0",
+  "authorName": "Kestra Technologies",
+  "websiteUrl": "https://kestra.io",
+  "toolType": "software",
+  "taglineEn": "Open-source orchestration platform for data, AI, and infrastructure workflows",
+  "summaryVi": "Kestra là nền tảng điều phối hướng sự kiện, mã nguồn mở, cho quy trình dữ liệu, AI và hạ tầng. Quy trình được khai báo bằng YAML và có thể xây bằng trình soạn YAML, trình soạn No-Code hoặc AI Copilot, cả ba luôn đồng bộ. Kestra có hàng trăm plugin, tác tử AI, quy trình RAG và MCP server tích hợp sẵn.",
+  "purposeVi": "Tự động hóa cả quy trình định kỳ lẫn quy trình theo sự kiện thời gian thực theo cách Infrastructure as Code, có giao diện trực quan và quản lý phiên bản bằng Git.",
+  "featuresVi": [
+   "Ba cách xây cùng một flow: YAML, No-Code editor và AI Copilot (Ask, Edit, Plan)",
+   "Điều phối AI: tác tử AI, quy trình RAG và MCP server cung cấp flow làm công cụ cho tác tử",
+   "Trình kích hoạt theo lịch và sự kiện: Kafka, Redis, Pulsar, AMQP, MQTT, NATS, SQS, Pub/Sub...",
+   "Hàng trăm plugin: cơ sở dữ liệu, lưu trữ đám mây, API, chạy script Python, Node.js, R, Go, Shell",
+   "Khả năng chịu lỗi: subflow, thử lại, timeout, xử lý lỗi, phân nhánh có điều kiện",
+   "Tích hợp Git, CI/CD, Terraform provider, CLI kestractl và SDK Python/JavaScript"
+  ],
+  "requirementsVi": "Docker đang chạy; ảnh -slim tải plugin từ Maven Central khi cần.",
+  "installStepsVi": [
+   "Cài đặt và khởi chạy Kestra bằng một lệnh Docker: `docker run --pull=always --rm -it -p 8080:8080 --user=root \\\n  --name kestra \\\n  -v kestra_data:/app/storage \\\n  -v kestra_db:/app/data \\\n  -v /var/run/docker.sock:/var/run/docker.sock \\\n  -v /tmp:/tmp \\\n  -e KESTRA_PLUGINS_AUTO_INSTALL_ENABLED=true \\\n  kestra/kestra:latest-slim server local`",
+   "Mở giao diện tại http://localhost:8080",
+   "Tham khảo hướng dẫn cài đặt chính thức cho Docker Compose, Kubernetes, AWS, GCP, Azure"
+  ],
+  "cliCommand": "docker run --pull=always --rm -it -p 8080:8080 --user=root \\\n  --name kestra \\\n  -v kestra_data:/app/storage \\\n  -v kestra_db:/app/data \\\n  -v /var/run/docker.sock:/var/run/docker.sock \\\n  -v /tmp:/tmp \\\n  -e KESTRA_PLUGINS_AUTO_INSTALL_ENABLED=true \\\n  kestra/kestra:latest-slim server local",
+  "usageStepsVi": [
+   "Tạo flow mới với id, namespace và danh sách tasks (ví dụ task io.kestra.plugin.core.log.Log)",
+   "Chạy flow và xem đầu ra, nhật ký, sơ đồ DAG trong giao diện",
+   "Thêm trigger theo lịch hoặc sự kiện để tự động hóa",
+   "Đẩy flow lên nhánh Git để quản lý phiên bản và CI/CD"
+  ],
+  "samplePromptsVi": [
+   "Viết flow Kestra bằng YAML chạy script Python trích xuất dữ liệu mỗi giờ rồi nạp vào BigQuery",
+   "Tạo flow kích hoạt khi có tin nhắn Kafka mới và gửi cảnh báo Slack khi lỗi",
+   "Dựng quy trình RAG nạp tài liệu vào kho vector bằng tác vụ AI của Kestra"
+  ],
+  "prosVi": [
+   "Mã nguồn mở theo giấy phép Apache 2.0",
+   "Chạy thử chỉ với một lệnh Docker",
+   "Quy trình luôn được lưu dạng mã YAML dù chỉnh từ giao diện hay API",
+   "Có MCP server và Agent Skills cho trợ lý lập trình AI"
+  ],
+  "consVi": [
+   "Một số tính năng quản trị (RBAC theo hành động, Policies, Cases) chỉ có ở Enterprise Edition",
+   "Lệnh chạy nhanh gắn docker.sock và chạy với quyền root, chỉ phù hợp thử nghiệm cục bộ",
+   "Kestra 2.0 có thay đổi phá vỡ tương thích, cần xem hướng dẫn di chuyển khi nâng cấp"
+  ],
+  "sourceEvidence": {
+   "docker run --pull=always --rm -it -p 8080:8080 --user=root \\\n  --name kestra \\\n  -v kestra_data:/app/storage \\\n  -v kestra_db:/app/data \\\n  -v /var/run/docker.sock:/var/run/docker.sock \\\n  -v /tmp:/tmp \\\n  -e KESTRA_PLUGINS_AUTO_INSTALL_ENABLED=true \\\n  kestra/kestra:latest-slim server local": "README.md:133-140"
+  },
+  "meta": {
+   "id": "kestra-io-kestra",
+   "nameVi": "Kestra — Nền tảng điều phối quy trình dữ liệu, AI và hạ tầng bằng YAML",
+   "icon": "Workflow",
+   "categories": [
+    "rpa_workflow_automation",
+    "data_engineering"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "docker run --pull=always --rm -it -p 8080:8080 --user=root \\\n  --name kestra \\\n  -v kestra_data:/app/storage \\\n  -v kestra_db:/app/data \\\n  -v /var/run/docker.sock:/var/run/docker.sock \\\n  -v /tmp:/tmp \\\n  -e KESTRA_PLUGINS_AUTO_INSTALL_ENABLED=true \\\n  kestra/kestra:latest-slim server local"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "triggerdotdev/trigger.dev",
+  "license": "Apache License 2.0",
+  "authorName": "Trigger.dev",
+  "websiteUrl": "https://trigger.dev",
+  "toolType": "sdk",
+  "taglineEn": "Trigger.dev is the open-source platform for building AI workflows in TypeScript.",
+  "summaryVi": "Trigger.dev là nền tảng mã nguồn mở để xây dựng quy trình AI và tác vụ nền bằng TypeScript, với tác vụ chạy dài không giới hạn thời gian, thử lại, hàng đợi, khả năng quan sát và tự mở rộng. Tác vụ được viết ngay trong mã nguồn dự án bằng SDK và triển khai lên Trigger.dev Cloud hoặc máy chủ tự lưu trữ (Docker Compose, Kubernetes).",
+  "purposeVi": "Giúp lập trình viên chạy tác tử AI và tác vụ nền bền vững, có hàng đợi và theo dõi, mà không phải tự quản lý hạ tầng.",
+  "featuresVi": [
+   "Tác vụ chạy dài không timeout, khác với AWS Lambda hay Vercel",
+   "Độ bền: thử lại tự động, hàng đợi, idempotency, checkpoint",
+   "Con người trong vòng lặp: tạm dừng tác vụ chờ phê duyệt (waitpoints)",
+   "Realtime và streaming phản hồi LLM tới ứng dụng, có React hooks",
+   "Lịch cron bền vững, batch trigger, nhiều môi trường DEV/PREVIEW/STAGING/PROD",
+   "Theo dõi, nhật ký và trace đầy đủ cho từng lần chạy; cảnh báo lỗi"
+  ],
+  "requirementsVi": "Node.js 18.20+ (hoặc Bun), TypeScript 5.0.4+; tài khoản Trigger.dev Cloud hoặc một phiên bản tự lưu trữ.",
+  "installStepsVi": [
+   "Tạo tài khoản và dự án trên Trigger.dev Cloud (hoặc tự lưu trữ)",
+   "Cài đặt vào dự án hiện có bằng CLI: `npx trigger.dev@latest init`",
+   "Hoặc cài đặt thủ công gói SDK: `npm add @trigger.dev/sdk@latest` và `npm add --save-dev @trigger.dev/build@latest`",
+   "Với máy chủ tự lưu trữ, đăng nhập CLI: `npx trigger.dev@latest login --api-url https://your-trigger-instance.com`"
+  ],
+  "cliCommand": "npx trigger.dev@latest init",
+  "usageStepsVi": [
+   "Viết tác vụ trong thư mục /trigger bằng hàm task() của @trigger.dev/sdk",
+   "Chạy máy chủ phát triển: `npx trigger.dev@latest dev`",
+   "Chạy thử tác vụ trên trang test của dashboard và xem trace",
+   "Đặt TRIGGER_SECRET_KEY trong .env để kích hoạt tác vụ từ mã ứng dụng"
+  ],
+  "samplePromptsVi": [
+   "Viết tác vụ Trigger.dev chạy dài để tóm tắt hàng loạt tài liệu bằng LLM, có thử lại khi lỗi",
+   "Tạo lịch cron hằng ngày đồng bộ dữ liệu và gửi cảnh báo khi thất bại",
+   "Thêm bước chờ người duyệt trước khi tác tử AI gửi email cho khách hàng"
+  ],
+  "prosVi": [
+   "Mã nguồn mở theo giấy phép Apache 2.0",
+   "Viết tác vụ ngay trong mã nguồn, quản lý phiên bản như mã thông thường",
+   "Tự lưu trữ được bằng Docker Compose hoặc Helm chart",
+   "Có MCP server và agent skills cho trợ lý AI"
+  ],
+  "consVi": [
+   "Cần tài khoản Trigger.dev Cloud hoặc tự vận hành một phiên bản tự lưu trữ",
+   "Chỉ hỗ trợ viết tác vụ bằng JavaScript/TypeScript",
+   "Hướng dẫn cài đặt chi tiết nằm trong thư mục docs, README chỉ dẫn liên kết"
+  ],
+  "sourceEvidence": {
+   "npx trigger.dev@latest init": "docs/snippets/step-cli-init.mdx:10",
+   "npm add @trigger.dev/sdk@latest": "docs/manual-setup.mdx:35",
+   "npm add --save-dev @trigger.dev/build@latest": "docs/manual-setup.mdx:36",
+   "npx trigger.dev@latest login --api-url https://your-trigger-instance.com": "docs/manual-setup.mdx:23",
+   "npx trigger.dev@latest dev": "docs/snippets/step-cli-dev.mdx:10"
+  },
+  "meta": {
+   "id": "triggerdotdev-trigger-dev",
+   "nameVi": "Trigger.dev — Nền tảng tác vụ nền và quy trình AI bền vững cho TypeScript",
+   "icon": "Code2",
+   "categories": [
+    "rpa_workflow_automation",
+    "backend_api"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "npx trigger.dev@latest init"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "simstudioai/sim",
+  "license": "Apache License 2.0",
+  "authorName": "Sim Studio",
+  "websiteUrl": "https://sim.ai",
+  "toolType": "agent",
+  "taglineEn": "A workspace to build, deploy and manage AI agents and workflows.",
+  "summaryVi": "Sim là không gian làm việc để xây dựng, triển khai và quản lý tác tử AI và quy trình, có bản đám mây sim.ai, bản tự lưu trữ và ứng dụng macOS. Người dùng xây tác tử trực quan, bằng hội thoại hoặc bằng mã, kết nối hơn 270 tích hợp và mọi LLM lớn. Bảng dữ liệu, tệp và kho tri thức nằm chung trong một không gian làm việc.",
+  "purposeVi": "Công cụ dựng tác tử AI và quy trình tự động kết nối Slack, Notion, HubSpot, Salesforce, cơ sở dữ liệu... với dữ liệu nội bộ, tự lưu trữ được.",
+  "featuresVi": [
+   "Hơn 270 tích hợp (5.400+ hành động, 520+ trình kích hoạt) và mọi LLM lớn",
+   "Xây tác tử trực quan, bằng hội thoại hoặc bằng mã",
+   "Nạp tệp, kho tri thức và bảng dữ liệu có cấu trúc; bảng là cơ sở dữ liệu tích hợp sẵn",
+   "Theo dõi lần chạy, nhật ký, lịch và hoạt động quy trình",
+   "MCP server tại https://mcp.sim.ai/mcp cho Claude, Claude Code, Codex",
+   "Hỗ trợ mô hình cục bộ qua Ollama và vLLM khi tự lưu trữ"
+  ],
+  "requirementsVi": "Node.js 20+ và Docker để tự lưu trữ; Chat là dịch vụ do Sim quản lý, cần Chat API key (trình cài đặt tự kết nối).",
+  "installStepsVi": [
+   "Cài đặt bản tự lưu trữ bằng trình hướng dẫn tương tác: `npx sim-setup`",
+   "Kiểm tra trạng thái các dịch vụ: `npx sim-setup status`",
+   "Bổ sung tính năng tùy chọn, ví dụ kho tri thức: `npx sim-setup add knowledge`",
+   "Kết nối Claude Code với Sim Cloud qua MCP: `claude mcp add --transport http sim https://mcp.sim.ai/mcp`"
+  ],
+  "cliCommand": "npx sim-setup",
+  "usageStepsVi": [
+   "Mở http://localhost:3000 sau khi trình cài đặt hoàn tất",
+   "Tạo quy trình hoặc tác tử, thêm tích hợp và chọn mô hình LLM",
+   "Nạp tài liệu vào kho tri thức để tác tử tra cứu",
+   "Theo dõi nhật ký với `npx sim-setup logs` và chẩn đoán cấu hình bằng `npx sim-setup doctor`"
+  ],
+  "samplePromptsVi": [
+   "Dựng tác tử đọc tin nhắn Slack, tra kho tri thức nội bộ và trả lời câu hỏi của nhân viên",
+   "Tạo quy trình đồng bộ khách hàng mới từ HubSpot vào bảng dữ liệu của Sim mỗi ngày",
+   "Từ Claude Code, chạy và triển khai một workflow Sim qua MCP server"
+  ],
+  "prosVi": [
+   "Mã nguồn mở theo giấy phép Apache 2.0",
+   "Trình cài đặt npx sim-setup tự tạo cơ sở dữ liệu, bí mật và chạy Docker Compose",
+   "Có MCP server và ứng dụng macOS",
+   "Hỗ trợ mô hình cục bộ qua Ollama, vLLM"
+  ],
+  "consVi": [
+   "Tính năng Chat là dịch vụ do Sim quản lý, cần đăng nhập để lấy Chat API key",
+   "MCP server chính thức trỏ tới Sim Cloud; bản tự lưu trữ cần URL riêng",
+   "Ứng dụng desktop chỉ có cho macOS 12+"
+  ],
+  "sourceEvidence": {
+   "npx sim-setup": "README.md:30",
+   "npx sim-setup status": "README.md:123",
+   "npx sim-setup add knowledge": "README.md:107",
+   "claude mcp add --transport http sim https://mcp.sim.ai/mcp": "README.md:82",
+   "npx sim-setup logs": "README.md:124",
+   "npx sim-setup doctor": "README.md:125"
+  },
+  "meta": {
+   "id": "simstudioai-sim",
+   "nameVi": "Sim — Không gian xây dựng và triển khai tác tử AI, quy trình tự động",
+   "icon": "Sparkles",
+   "categories": [
+    "rpa_workflow_automation",
+    "nlp_llm"
+   ],
+   "platforms": [
+    "web",
+    "claude_code"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "npx sim-setup"
+    },
+    {
+     "platform": "claude_code",
+     "platformName": "Claude Code",
+     "cliCommand": "claude mcp add --transport http sim https://mcp.sim.ai/mcp"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "huginn/huginn",
+  "license": "MIT License",
+  "authorName": "Huginn (Andrew Cantino, duy trì bởi Akinori Musha)",
+  "websiteUrl": "",
+  "toolType": "software",
+  "taglineEn": "Huginn is a system for building agents that perform automated tasks for you online.",
+  "summaryVi": "Huginn là hệ thống tạo các agent thực hiện tác vụ tự động trên mạng: đọc web, theo dõi sự kiện và hành động thay bạn. Các agent tạo và tiêu thụ sự kiện, truyền theo một đồ thị có hướng — giống phiên bản IFTTT hay Zapier có thể tùy biến, chạy trên máy chủ của chính bạn nên dữ liệu do bạn nắm giữ.",
+  "purposeVi": "Tự động theo dõi trang web, RSS, hộp thư, webhook và gửi thông báo, tóm tắt hoặc chuyển dữ liệu sang dịch vụ khác trên máy chủ tự quản lý.",
+  "featuresVi": [
+   "Thu thập trang web và gửi email khi nội dung thay đổi",
+   "Theo dõi RSS, hộp thư IMAP, webhook và chủ đề MQTT",
+   "Phát hiện đỉnh và khoảng trống trong luồng sự kiện để cảnh báo tức thì",
+   "Gửi tới Slack, Telegram, Pushover, Jabber hoặc SMS/cuộc gọi qua Twilio",
+   "Tóm tắt, phân loại, dịch văn bản và tạo ảnh, giọng nói qua API tương thích OpenAI",
+   "Logic tùy chỉnh bằng JavaScript, Liquid hoặc jq; xuất feed và endpoint JSON riêng"
+  ],
+  "requirementsVi": "Docker để chạy thử; triển khai sản xuất cần tiến trình web, worker và MySQL hoặc PostgreSQL.",
+  "installStepsVi": [
+   "Cài đặt và chạy thử bằng ảnh Docker chính thức (mọi tiến trình trong một container): `docker run -it -p 3000:3000 ghcr.io/huginn/huginn`",
+   "Với môi trường sản xuất, dùng tệp Docker Compose mẫu cho MySQL/PostgreSQL trong thư mục docker/single-process/",
+   "Để phát triển cục bộ: sao chép `cp .env.example .env`, cập nhật APP_SECRET_TOKEN rồi chạy `bundle exec rake db:create`, `bundle exec rake db:migrate`, `bundle exec rake db:seed` và `bundle exec foreman start`"
+  ],
+  "cliCommand": "docker run -it -p 3000:3000 ghcr.io/huginn/huginn",
+  "usageStepsVi": [
+   "Mở http://localhost:3000 và đăng nhập bằng tài khoản admin với mật khẩu in ra một lần trong nhật ký container",
+   "Tạo agent mới (ví dụ WebsiteAgent, RSS, Email) và nối chúng thành chuỗi sự kiện",
+   "Xem sơ đồ luồng sự kiện và danh sách sự kiện agent đã tạo",
+   "Tham khảo wiki để có ví dụ và hướng dẫn viết agent mới"
+  ],
+  "samplePromptsVi": [
+   "Tạo agent theo dõi trang khuyến mãi và gửi email khi giá thay đổi",
+   "Gom tin từ nhiều nguồn RSS và gửi email tóm tắt lúc 8 giờ sáng mỗi ngày",
+   "Nhận webhook, dùng API tương thích OpenAI để phân loại nội dung rồi đẩy vào Slack"
+  ],
+  "prosVi": [
+   "Mã nguồn mở theo giấy phép MIT",
+   "Tự lưu trữ hoàn toàn, dữ liệu do bạn nắm giữ",
+   "Có ảnh Docker chính thức trên ghcr.io, chạy thử chỉ với một lệnh",
+   "Mở rộng bằng agent gem bên ngoài qua ADDITIONAL_GEMS"
+  ],
+  "consVi": [
+   "Dự án được duy trì bởi một người trong thời gian rảnh",
+   "Sản xuất cần chạy thêm worker và MySQL/PostgreSQL",
+   "Viết agent mới cần kiến thức Ruby"
+  ],
+  "sourceEvidence": {
+   "docker run -it -p 3000:3000 ghcr.io/huginn/huginn": "README.md:60",
+   "cp .env.example .env": "README.md:70",
+   "bundle exec rake db:create": "README.md:73",
+   "bundle exec rake db:migrate": "README.md:73",
+   "bundle exec rake db:seed": "README.md:73",
+   "bundle exec foreman start": "README.md:74"
+  },
+  "meta": {
+   "id": "huginn-huginn",
+   "nameVi": "Huginn — Hệ thống agent tự động hóa tác vụ trực tuyến tự lưu trữ",
+   "icon": "Workflow",
+   "categories": [
+    "rpa_workflow_automation",
+    "web_scraping_crawling"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "docker run -it -p 3000:3000 ghcr.io/huginn/huginn"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "PrefectHQ/prefect",
+  "license": "Apache License 2.0",
+  "authorName": "Prefect Technologies (PrefectHQ)",
+  "websiteUrl": "https://www.prefect.io",
+  "toolType": "sdk",
+  "taglineEn": "Prefect is a workflow orchestration framework for building data pipelines in Python.",
+  "summaryVi": "Prefect là framework điều phối quy trình để xây dựng đường ống dữ liệu bằng Python, cách đơn giản nhất để nâng một script thành quy trình sản xuất. Chỉ với vài dòng mã, nhóm dữ liệu có thể tự động hóa bằng lập lịch, cache, thử lại và tự động hóa theo sự kiện. Hoạt động được theo dõi qua Prefect server tự lưu trữ hoặc Prefect Cloud.",
+  "purposeVi": "Biến script Python thành quy trình dữ liệu bền vững có lịch chạy, thử lại và giao diện theo dõi.",
+  "featuresVi": [
+   "Decorator flow và task để điều phối, quan sát quy trình Python",
+   "Lập lịch cron qua deployment với hàm serve()",
+   "Thử lại, cache, phụ thuộc và phân nhánh phức tạp",
+   "Tự động hóa theo sự kiện, chạy thủ công từ UI hoặc CLI",
+   "Prefect server tự lưu trữ với giao diện tại cổng 4200",
+   "Kết nối tác tử AI qua plugin hoặc MCP; gói nhẹ prefect-client"
+  ],
+  "requirementsVi": "Python 3.11 trở lên.",
+  "installStepsVi": [
+   "Cài đặt bằng pip: `pip install -U prefect`",
+   "Hoặc cài đặt bằng uv: `uv add prefect`",
+   "Khởi chạy máy chủ và giao diện tại http://localhost:4200: `prefect server start`"
+  ],
+  "cliCommand": "prefect server start",
+  "usageStepsVi": [
+   "Viết hàm Python với decorator @task và @flow rồi chạy script",
+   "Mở giao diện http://localhost:4200 để xem lần chạy và nhật ký",
+   "Gọi .serve() với tham số cron để tạo deployment chạy theo lịch",
+   "Chạy deployment thủ công từ UI, CLI hoặc theo sự kiện"
+  ],
+  "samplePromptsVi": [
+   "Viết flow Prefect lấy dữ liệu từ API mỗi giờ, thử lại 3 lần khi lỗi và lưu vào cơ sở dữ liệu",
+   "Chuyển script ETL Python hiện có thành deployment chạy theo lịch cron",
+   "Tạo flow có cache cho bước tính toán tốn thời gian"
+  ],
+  "prosVi": [
+   "Mã nguồn mở theo giấy phép Apache 2.0",
+   "Cài đặt đơn giản bằng pip hoặc uv",
+   "Có máy chủ tự lưu trữ kèm giao diện theo dõi",
+   "Thuần Python, dễ áp dụng cho script có sẵn"
+  ],
+  "consVi": [
+   "Yêu cầu Python 3.11+",
+   "Tính năng cộng tác nhóm và quản trị doanh nghiệp gắn với Prefect Cloud",
+   "Chỉ dành cho quy trình viết bằng Python"
+  ],
+  "sourceEvidence": {
+   "pip install -U prefect": "README.md:72",
+   "uv add prefect": "README.md:76",
+   "prefect server start": "README.md:107"
+  },
+  "meta": {
+   "id": "prefecthq-prefect",
+   "nameVi": "Prefect — Framework điều phối quy trình và đường ống dữ liệu bằng Python",
+   "icon": "Layers",
+   "categories": [
+    "rpa_workflow_automation",
+    "data_engineering"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "prefect server start"
+    }
+   ]
+  }
+ }
+]

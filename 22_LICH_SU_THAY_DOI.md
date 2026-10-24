@@ -4,6 +4,14 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.16 (Ngày 24-10-2026)
+- **Loại hình**: Nền tảng quy trình tự động, khung tác tử AI, công cụ phát triển MCP, đợt 9 (21 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-9-*.json`.
+- **Nền tảng quy trình**: Activepieces (bản Community MIT, thư mục ee giấy phép thương mại), Windmill (AGPLv3 + mã doanh nghiệp độc quyền), Kestra, Trigger.dev, Sim, Huginn, Prefect.
+- **Khung tác tử AI**: smolagents, Agno, Microsoft Agent Framework, Google ADK, Strands Agents, DSPy, Mastra (Apache-2.0, thư mục ee/ theo Mastra Enterprise License).
+- **Công cụ phát triển MCP**: MCP Python SDK, MCP TypeScript SDK, MCP Go SDK, FastMCP, mcp-proxy, ContextForge MCP Gateway (IBM), mcp-use.
+- Không thêm: công cụ đã có trong kho (Dify, Flowise, Langflow, n8n, LangGraph, AutoGen, CrewAI, PydanticAI, OpenAI Agents SDK, Mem0, Graphiti, MCP Inspector), repo README chuyển sang repo khác (letta), FastMCP bản TypeScript (README ghi chỉ hỗ trợ đặc tả MCP cũ).
+- Kho dữ liệu: 2.117 công cụ đang hiển thị, 2.171 cấu hình mẫu.
+
 ### Phiên Bản 2.1.15 (Ngày 24-10-2026)
 - **Loại hình**: Đa phương tiện: tạo ảnh/video, giọng nói, OCR & thị giác máy tính, đợt 8 (21 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-8-*.json`.
 - **Tạo ảnh & video**: InvokeAI, Diffusers, Wan2.2, LTX-2 (LTX Community License, công ty doanh thu từ 10 triệu USD/năm cần giấy phép thương mại), stable-diffusion.cpp, Upscayl (AGPL-3.0), HunyuanVideo-1.5 (Tencent Hunyuan Community License, không áp dụng tại EU, Anh, Hàn Quốc).

@@ -1,0 +1,477 @@
+[
+  {
+    "repo": "modelcontextprotocol/python-sdk",
+    "license": "MIT License",
+    "authorName": "Model Context Protocol",
+    "websiteUrl": "https://py.sdk.modelcontextprotocol.io/",
+    "toolType": "sdk",
+    "taglineEn": "Python implementation of the Model Context Protocol (MCP)",
+    "summaryVi": "MCP Python SDK là bộ công cụ chính thức để triển khai Model Context Protocol bằng Python. Thư viện cho phép xây dựng máy chủ MCP cung cấp tools, resources, prompts cho mọi ứng dụng LLM, đồng thời xây dựng client kết nối tới bất kỳ máy chủ MCP nào. SDK hỗ trợ đủ các transport chuẩn: stdio, Streamable HTTP và SSE.",
+    "purposeVi": "Giúp lập trình viên Python tạo máy chủ và client MCP chỉ bằng các hàm có type hint, không cần tự viết JSON Schema hay xử lý giao thức.",
+    "featuresVi": [
+      "Xây dựng máy chủ MCP: khai báo tool, resource, prompt bằng decorator trên hàm Python",
+      "Xây dựng client MCP: lớp Client kết nối máy chủ qua URL (Streamable HTTP) hoặc chạy máy chủ cục bộ qua stdio",
+      "Đủ transport chuẩn: stdio, Streamable HTTP và SSE",
+      "Tự sinh schema: type hint của tham số chính là schema, không cần viết JSON Schema hay mã kiểm tra dữ liệu",
+      "Công cụ dòng lệnh mcp: các lệnh mcp dev, mcp run, mcp install (gói phụ cli)"
+    ],
+    "requirementsVi": "Python 3.11 trở lên; khuyến nghị dùng uv để quản lý dự án.",
+    "installStepsVi": [
+      "Cài đặt SDK kèm công cụ dòng lệnh vào dự án bằng uv: `uv add \"mcp[cli]\"`",
+      "Hoặc cài đặt bằng pip: `pip install \"mcp[cli]\"`",
+      "Tạo tệp server.py theo ví dụ trong README rồi mở máy chủ trong MCP Inspector để kiểm thử: `uv run mcp dev server.py`",
+      "Chạy máy chủ qua Streamable HTTP để client kết nối: `uv run mcp run server.py --transport streamable-http`"
+    ],
+    "cliCommand": "uv add \"mcp[cli]\"",
+    "usageStepsVi": [
+      "Khởi tạo MCPServer(\"Demo\") và đánh dấu hàm bằng @mcp.tool() hoặc @mcp.resource(...)",
+      "Chạy `uv run mcp dev server.py` để mở MCP Inspector, gọi thử tool add với a=1, b=2",
+      "Dùng `Client(\"http://localhost:8000/mcp\")` để gọi tool từ mã Python khi máy chủ chạy Streamable HTTP",
+      "Tra cứu hướng dẫn chi tiết và tài liệu API tại py.sdk.modelcontextprotocol.io"
+    ],
+    "samplePromptsVi": [
+      "Viết máy chủ MCP bằng Python SDK có tool tra cứu dữ liệu tồn kho từ tệp CSV",
+      "Hướng dẫn tôi chạy máy chủ MCP Python qua Streamable HTTP và kết nối bằng lớp Client",
+      "Chuyển hàm Python có type hint thành tool MCP và kiểm thử bằng mcp dev"
+    ],
+    "prosVi": [
+      "SDK chính thức của dự án Model Context Protocol, giấy phép MIT",
+      "Một gói duy nhất dùng được cho cả máy chủ lẫn client",
+      "Hỗ trợ đủ stdio, Streamable HTTP và SSE",
+      "Được bảo trì rất tích cực, có tài liệu và hướng dẫn chuyển đổi lên v2"
+    ],
+    "consVi": [
+      "Yêu cầu Python 3.11 trở lên",
+      "README ngắn; hướng dẫn chi tiết nằm ở trang tài liệu riêng",
+      "Phiên bản v2 có thay đổi API, dự án cũ cần làm theo hướng dẫn chuyển đổi"
+    ],
+    "sourceEvidence": {
+      "uv add \"mcp[cli]\"": "README.md:37",
+      "pip install \"mcp[cli]\"": "README.md:37",
+      "uv run mcp dev server.py": "README.md:71",
+      "uv run mcp run server.py --transport streamable-http": "README.md:85"
+    },
+    "meta": {
+      "id": "modelcontextprotocol-python-sdk",
+      "nameVi": "MCP Python SDK — Bộ công cụ chính thức xây dựng máy chủ và client MCP bằng Python",
+      "icon": "Code2",
+      "categories": ["backend_api", "nlp_llm"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "uv add \"mcp[cli]\"" }
+      ]
+    }
+  },
+  {
+    "repo": "modelcontextprotocol/typescript-sdk",
+    "license": "Apache License 2.0 (mã mới) và MIT License (mã cũ chưa chuyển giấy phép); tài liệu CC-BY-4.0",
+    "authorName": "Model Context Protocol",
+    "websiteUrl": "https://ts.sdk.modelcontextprotocol.io/v2/",
+    "toolType": "sdk",
+    "taglineEn": "This repository contains the TypeScript SDK implementation of the MCP specification.",
+    "summaryVi": "MCP TypeScript SDK là bộ công cụ chính thức để triển khai đặc tả Model Context Protocol bằng TypeScript, chạy trên Node.js, Bun và Deno. Nhánh main là v2 (gói @modelcontextprotocol/server và @modelcontextprotocol/client) theo đặc tả MCP 2026-07-28. Kèm các gói middleware mỏng cho Express, Fastify, Hono và Node.js HTTP.",
+    "purposeVi": "Xây dựng máy chủ và client MCP bằng TypeScript/JavaScript, hỗ trợ stdio, Streamable HTTP và các tiện ích xác thực OAuth.",
+    "featuresVi": [
+      "Thư viện máy chủ: đăng ký tools, resources, prompts; transport Streamable HTTP, stdio; tiện ích xác thực",
+      "Thư viện client: transport, hàm tiện ích cấp cao, tiện ích OAuth",
+      "Standard Schema: định nghĩa schema bằng Zod v4, Valibot, ArkType hoặc thư viện tương thích",
+      "Middleware tùy chọn: @modelcontextprotocol/node, express, fastify, hono",
+      "Đa runtime: chạy trên Node.js, Bun và Deno",
+      "Ví dụ chạy được: các cặp client/máy chủ trong thư mục examples/"
+    ],
+    "requirementsVi": "Node.js, Bun hoặc Deno. Dự án dùng v1 (@modelcontextprotocol/sdk) tiếp tục ở nhánh v1.x.",
+    "installStepsVi": [
+      "Cài đặt gói máy chủ: `npm install @modelcontextprotocol/server`",
+      "Cài đặt gói client khi cần kết nối máy chủ MCP: `npm install @modelcontextprotocol/client`",
+      "(Tùy chọn) Cài đặt middleware cho Express: `npm install @modelcontextprotocol/express express`"
+    ],
+    "cliCommand": "npm install @modelcontextprotocol/server",
+    "usageStepsVi": [
+      "Tạo McpServer({ name, version }) và gọi registerTool với inputSchema viết bằng Zod",
+      "Kết nối máy chủ với StdioServerTransport để chạy qua stdio",
+      "Làm theo hướng dẫn docs/get-started/first-server.md và first-client.md để dựng ví dụ đầu tiên",
+      "Dự án đang dùng v1 thì đọc hướng dẫn chuyển đổi lên v2 trên trang tài liệu"
+    ],
+    "samplePromptsVi": [
+      "Viết máy chủ MCP bằng TypeScript SDK v2 có tool greet nhận tham số name",
+      "Hướng dẫn tôi gắn máy chủ MCP vào ứng dụng Express bằng @modelcontextprotocol/express",
+      "Chuyển máy chủ MCP từ @modelcontextprotocol/sdk v1 sang v2"
+    ],
+    "prosVi": [
+      "SDK chính thức của dự án Model Context Protocol, hỗ trợ đặc tả 2026-07-28",
+      "Chạy được trên Node.js, Bun và Deno",
+      "Có middleware sẵn cho Express, Fastify, Hono",
+      "v1.x vẫn nhận bản vá lỗi và bảo mật ít nhất sáu tháng sau khi v2 phát hành"
+    ],
+    "consVi": [
+      "Giấy phép hỗn hợp trong giai đoạn chuyển từ MIT sang Apache 2.0",
+      "v2 tách gói và đổi API so với v1, cần chuyển đổi mã cũ",
+      "Người đóng góp không có quyền ghi chỉ được mở một pull request cùng lúc"
+    ],
+    "sourceEvidence": {
+      "npm install @modelcontextprotocol/server": "README.md:67",
+      "npm install @modelcontextprotocol/client": "README.md:77",
+      "npm install @modelcontextprotocol/express express": "README.md:95"
+    },
+    "meta": {
+      "id": "modelcontextprotocol-typescript-sdk",
+      "nameVi": "MCP TypeScript SDK — Bộ công cụ chính thức xây dựng máy chủ và client MCP bằng TypeScript",
+      "icon": "Code2",
+      "categories": ["backend_api", "nlp_llm"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache 2.0 / MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "npm install @modelcontextprotocol/server" }
+      ]
+    }
+  },
+  {
+    "repo": "modelcontextprotocol/go-sdk",
+    "license": "Apache License 2.0 (mã mới) và MIT License (mã cũ chưa chuyển giấy phép); tài liệu CC-BY-4.0",
+    "authorName": "Model Context Protocol",
+    "websiteUrl": "https://pkg.go.dev/github.com/modelcontextprotocol/go-sdk",
+    "toolType": "sdk",
+    "taglineEn": "This repository contains an implementation of the official Go software development kit (SDK) for the Model Context Protocol (MCP).",
+    "summaryVi": "MCP Go SDK là bộ công cụ phát triển chính thức cho Model Context Protocol bằng Go. SDK gồm gói mcp để dựng máy chủ và client, gói jsonrpc cho transport tự viết, cùng các gói auth và oauthex hỗ trợ OAuth. Từ v1.7.0 SDK hỗ trợ đặc tả MCP 2026-07-28 và các phiên bản trước đó.",
+    "purposeVi": "Xây dựng máy chủ và client MCP bằng Go, với tool có kiểu dữ liệu vào/ra rõ ràng và schema sinh từ struct.",
+    "featuresVi": [
+      "Gói mcp: API chính để tạo mcp.Server, mcp.Client, thêm tool và chạy qua transport",
+      "Tool có kiểu: khai báo struct Input/Output kèm thẻ jsonschema",
+      "Transport: StdioTransport cho máy chủ, CommandTransport để client chạy máy chủ con",
+      "Gói jsonrpc: dành cho người tự triển khai transport riêng",
+      "Hỗ trợ OAuth: gói auth và oauthex (ProtectedResourceMetadata)",
+      "Tương thích nhiều phiên bản đặc tả: 2026-07-28, 2025-11-25, 2025-06-18, 2025-03-26, 2024-11-05"
+    ],
+    "requirementsVi": "Go phiên bản còn được hỗ trợ theo chính sách phát hành của Go.",
+    "installStepsVi": [
+      "Cài đặt gói mcp vào module Go: `go get github.com/modelcontextprotocol/go-sdk/mcp`",
+      "Tạo máy chủ bằng mcp.NewServer, thêm tool bằng mcp.AddTool và chạy với mcp.StdioTransport theo ví dụ trong README"
+    ],
+    "cliCommand": "go get github.com/modelcontextprotocol/go-sdk/mcp",
+    "usageStepsVi": [
+      "Định nghĩa struct Input/Output và hàm xử lý tool trả về *mcp.CallToolResult",
+      "Gọi server.Run(ctx, &mcp.StdioTransport{}) để phục vụ client qua stdin/stdout",
+      "Phía client: mcp.NewClient rồi client.Connect với mcp.CommandTransport, sau đó session.CallTool",
+      "Xem thêm thư mục examples/ và docs/ để hướng dẫn từng tính năng của đặc tả"
+    ],
+    "samplePromptsVi": [
+      "Viết máy chủ MCP bằng Go SDK có tool greet nhận tên và trả lời chào",
+      "Viết client Go kết nối máy chủ MCP qua CommandTransport và gọi một tool",
+      "Giải thích phiên bản Go SDK nào hỗ trợ đặc tả MCP 2026-07-28"
+    ],
+    "prosVi": [
+      "SDK chính thức của dự án Model Context Protocol",
+      "Hỗ trợ đặc tả mới nhất 2026-07-28 và tương thích ngược nhiều phiên bản",
+      "Được bảo trì tích cực, có tài liệu trên pkg.go.dev"
+    ],
+    "consVi": [
+      "Giấy phép hỗn hợp trong giai đoạn chuyển từ MIT sang Apache 2.0",
+      "OAuth phía client còn ở mức thử nghiệm với đặc tả 2025-11-25",
+      "Roots, sampling, logging đã bị đánh dấu ngừng dùng từ đặc tả 2026-07-28"
+    ],
+    "sourceEvidence": {
+      "go get github.com/modelcontextprotocol/go-sdk/mcp": "docs/quick_start.md:10"
+    },
+    "meta": {
+      "id": "modelcontextprotocol-go-sdk",
+      "nameVi": "MCP Go SDK — Bộ công cụ chính thức xây dựng máy chủ và client MCP bằng Go",
+      "icon": "Code2",
+      "categories": ["backend_api", "nlp_llm"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache 2.0 / MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "go get github.com/modelcontextprotocol/go-sdk/mcp" }
+      ]
+    }
+  },
+  {
+    "repo": "PrefectHQ/fastmcp",
+    "license": "Apache License 2.0",
+    "authorName": "Prefect",
+    "websiteUrl": "https://gofastmcp.com",
+    "toolType": "sdk",
+    "taglineEn": "FastMCP is a full MCP application framework for servers, clients, and interactive apps.",
+    "summaryVi": "FastMCP là framework Python hoàn chỉnh để xây dựng ứng dụng MCP gồm máy chủ, client và ứng dụng có giao diện tương tác. Chỉ cần khai báo hàm Python, FastMCP tự sinh schema, kiểm tra dữ liệu và tài liệu; phía client tự xử lý thương lượng transport, xác thực và vòng đời giao thức. FastMCP 1.0 từng được đưa vào MCP Python SDK chính thức năm 2024.",
+    "purposeVi": "Rút ngắn thời gian xây dựng máy chủ và client MCP bằng Python với các thực hành tốt được tích hợp sẵn.",
+    "featuresVi": [
+      "Servers: biến hàm Python thành tools, resources, prompts chuẩn MCP",
+      "Clients: kết nối tới mọi máy chủ MCP cục bộ hoặc từ xa, bằng mã hoặc dòng lệnh",
+      "Apps: gắn giao diện tương tác cho tool, hiển thị ngay trong cuộc hội thoại",
+      "CLI fastmcp: chạy máy chủ qua stdio hoặc HTTP bằng lệnh fastmcp run",
+      "Tài liệu dạng llms.txt cho trợ lý lập trình"
+    ],
+    "requirementsVi": "Python; khuyến nghị dùng uv để cài đặt và quản lý FastMCP.",
+    "installStepsVi": [
+      "Cài đặt FastMCP vào dự án bằng uv: `uv add fastmcp`",
+      "Hoặc cài đặt bằng pip: `pip install fastmcp`",
+      "Kiểm tra cài đặt: `fastmcp version`",
+      "Chạy máy chủ đã viết (biến mcp trong my_server.py) qua stdio: `fastmcp run my_server.py:mcp`",
+      "Hoặc chạy qua HTTP ở cổng 8000: `fastmcp run my_server.py:mcp --transport http --port 8000`"
+    ],
+    "cliCommand": "uv add fastmcp",
+    "usageStepsVi": [
+      "Tạo FastMCP(\"Demo\") và đánh dấu hàm bằng @mcp.tool",
+      "Gọi mcp.run() hoặc dùng `fastmcp run` để khởi động máy chủ",
+      "Kết nối bằng Client(\"http://localhost:8000/mcp\") và gọi call_tool khi máy chủ chạy HTTP",
+      "Tra cứu hướng dẫn đầy đủ tại gofastmcp.com"
+    ],
+    "samplePromptsVi": [
+      "Viết máy chủ FastMCP có tool tính tổng hai số và chạy qua HTTP cổng 8000",
+      "Hướng dẫn tôi dùng FastMCP Client gọi tool greet trên máy chủ từ xa",
+      "Nâng cấp máy chủ từ MCP Python SDK sang FastMCP theo hướng dẫn chính thức"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, dùng thương mại được",
+      "API gọn: schema, kiểm tra dữ liệu và tài liệu tự sinh từ hàm Python",
+      "Hỗ trợ cả máy chủ, client và ứng dụng có giao diện",
+      "Được bảo trì rất tích cực, có hướng dẫn nâng cấp từ các phiên bản trước"
+    ],
+    "consVi": [
+      "Tính năng gateway doanh nghiệp (Prefect Horizon) là sản phẩm riêng, không nằm trong mã nguồn mở",
+      "Phụ thuộc Cyclopts v4 kéo theo docutils có giấy phép phức tạp, có thể cần rà soát tuân thủ",
+      "README ngắn; chi tiết nằm ở trang tài liệu gofastmcp.com"
+    ],
+    "sourceEvidence": {
+      "uv add fastmcp": "README.md:100",
+      "pip install fastmcp": "docs/getting-started/installation.mdx:17",
+      "fastmcp version": "docs/getting-started/installation.mdx:35",
+      "fastmcp run my_server.py:mcp": "docs/getting-started/quickstart.mdx:89",
+      "fastmcp run my_server.py:mcp --transport http --port 8000": "docs/getting-started/quickstart.mdx:94"
+    },
+    "meta": {
+      "id": "prefecthq-fastmcp",
+      "nameVi": "FastMCP — Framework Python xây dựng máy chủ, client và ứng dụng MCP nhanh chóng",
+      "icon": "Code2",
+      "categories": ["backend_api", "nlp_llm"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "uv add fastmcp" }
+      ]
+    }
+  },
+  {
+    "repo": "sparfenyuk/mcp-proxy",
+    "license": "MIT License",
+    "authorName": "Sergey Parfenyuk",
+    "websiteUrl": "https://pypi.org/project/mcp-proxy/",
+    "toolType": "cli",
+    "taglineEn": "The `mcp-proxy` is a tool that lets you switch between server transports.",
+    "summaryVi": "mcp-proxy là công cụ dòng lệnh chuyển đổi transport của máy chủ MCP. Chế độ thứ nhất cho client chỉ hỗ trợ stdio (như Claude Desktop) kết nối tới máy chủ MCP từ xa qua SSE hoặc Streamable HTTP. Chế độ thứ hai mở một cổng HTTP để client từ xa dùng máy chủ MCP stdio cục bộ, kể cả nhiều máy chủ có tên cùng lúc.",
+    "purposeVi": "Nối các client và máy chủ MCP dùng transport khác nhau mà không phải sửa mã máy chủ.",
+    "featuresVi": [
+      "stdio sang SSE/Streamable HTTP: Claude Desktop gọi máy chủ MCP từ xa qua proxy",
+      "SSE/HTTP sang stdio: công bố máy chủ stdio cục bộ ra mạng qua một cổng",
+      "Named servers: chạy nhiều máy chủ stdio dưới đường dẫn /servers/<tên>/, khai báo bằng tham số hoặc tệp JSON",
+      "Xác thực: header tùy chỉnh, OAuth2 client credentials, basic/digest",
+      "Tùy chọn CORS, chế độ stateless, truyền biến môi trường cho máy chủ con",
+      "Có image container đa nền tảng linux/amd64 và linux/arm64"
+    ],
+    "requirementsVi": "Python với uv hoặc pipx; hoặc Docker để chạy image container.",
+    "installStepsVi": [
+      "Cài đặt bằng uv (khuyến nghị): `uv tool install mcp-proxy`",
+      "Hoặc cài đặt bằng pipx: `pipx install mcp-proxy`",
+      "Hoặc chạy bằng container: `docker run --rm -t ghcr.io/sparfenyuk/mcp-proxy:v0.12.0 --help`",
+      "Công bố máy chủ stdio cục bộ qua cổng 8080: `mcp-proxy --port=8080 uvx mcp-server-fetch`"
+    ],
+    "cliCommand": "mcp-proxy --port=8080 uvx mcp-server-fetch",
+    "usageStepsVi": [
+      "Để Claude Desktop dùng máy chủ SSE từ xa: thêm cấu hình mcpServers với command mcp-proxy và URL SSE làm tham số",
+      "Với máy chủ Streamable HTTP, thêm --transport=streamablehttp",
+      "Để chạy nhiều máy chủ, dùng --named-server hoặc --named-server-config trỏ tới tệp JSON",
+      "Kiểm tra trạng thái chung tại endpoint /status"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn tôi cấu hình Claude Desktop dùng mcp-proxy để kết nối máy chủ MCP SSE từ xa",
+      "Công bố máy chủ mcp-server-fetch cục bộ ra cổng 8080 bằng mcp-proxy",
+      "Viết tệp JSON named-server-config chạy hai máy chủ MCP sau một proxy"
+    ],
+    "prosVi": [
+      "Giấy phép MIT",
+      "Giải quyết khác biệt transport giữa client và máy chủ mà không sửa mã",
+      "Có gói PyPI và image container chính thức"
+    ],
+    "consVi": [
+      "Chỉ là lớp chuyển tiếp, không tự cung cấp tool nào",
+      "Trường timeout và transportType trong tệp cấu hình named server hiện bị bỏ qua",
+      "Tham số --sse-port và --sse-host đã bị đánh dấu ngừng dùng"
+    ],
+    "sourceEvidence": {
+      "uv tool install mcp-proxy": "README.md:230",
+      "pipx install mcp-proxy": "README.md:233",
+      "docker run --rm -t ghcr.io/sparfenyuk/mcp-proxy:v0.12.0 --help": "README.md:259",
+      "mcp-proxy --port=8080 uvx mcp-server-fetch": "README.md:150"
+    },
+    "meta": {
+      "id": "sparfenyuk-mcp-proxy",
+      "nameVi": "mcp-proxy — Công cụ chuyển đổi transport stdio và SSE/Streamable HTTP cho máy chủ MCP",
+      "icon": "Wrench",
+      "categories": ["backend_api", "devops_cicd"],
+      "platforms": ["web", "claude_desktop"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "mcp-proxy --port=8080 uvx mcp-server-fetch" },
+        { "platform": "claude_desktop", "platformName": "Claude Desktop", "jsonConfig": "{\n  \"mcpServers\": {\n    \"mcp-proxy\": {\n      \"command\": \"mcp-proxy\",\n      \"args\": [\n        \"http://example.io/sse\"\n      ],\n      \"env\": {\n        \"API_ACCESS_TOKEN\": \"access-token\"\n      }\n    }\n  }\n}" }
+      ]
+    }
+  },
+  {
+    "repo": "IBM/mcp-context-forge",
+    "license": "Apache License 2.0",
+    "authorName": "IBM",
+    "websiteUrl": "https://ibm.github.io/mcp-context-forge/",
+    "toolType": "software",
+    "taglineEn": "An open source registry and proxy that federates MCP, A2A, and REST/gRPC APIs with centralized governance, discovery, and observability.",
+    "summaryVi": "ContextForge là registry và proxy mã nguồn mở của IBM, gom các máy chủ MCP, agent A2A và API REST/gRPC về một endpoint duy nhất cho client AI. Công cụ cung cấp quản trị tập trung, khám phá dịch vụ, xác thực, giới hạn tần suất và quan sát bằng OpenTelemetry. Bản thân gateway chạy như một máy chủ MCP chuẩn, triển khai qua PyPI, Docker hoặc Kubernetes.",
+    "purposeVi": "Làm cổng MCP (gateway) cho doanh nghiệp: hợp nhất, bảo mật và giám sát nhiều máy chủ MCP và API từ một nơi.",
+    "featuresVi": [
+      "Tools Gateway: MCP, REST, chuyển gRPC sang MCP và nén TOON",
+      "Agent Gateway: giao thức A2A, định tuyến agent tương thích OpenAI và Anthropic",
+      "API Gateway: giới hạn tần suất, xác thực, thử lại và reverse proxy cho dịch vụ REST",
+      "Máy chủ ảo: gói các tool đã đăng ký thành virtual server riêng",
+      "Admin UI: quản lý, cấu hình và xem nhật ký thời gian thực",
+      "Quan sát: tracing OpenTelemetry với Phoenix, Jaeger, Zipkin và backend OTLP khác",
+      "Hơn 40 plugin mở rộng transport, giao thức và tích hợp"
+    ],
+    "requirementsVi": "Python 3.11 trở lên (hoặc Docker); bắt buộc đặt JWT_SECRET_KEY và AUTH_ENCRYPTION_SECRET ở mọi môi trường. Gateway mặc định trong hướng dẫn chạy ở cổng 4444.",
+    "installStepsVi": [
+      "Tạo môi trường Python riêng: `python3 -m venv .venv && source .venv/bin/activate`",
+      "Cài đặt gói từ PyPI: `pip install mcp-contextforge-gateway`",
+      "Tải tệp cấu hình mẫu: `curl -O https://raw.githubusercontent.com/IBM/mcp-context-forge/main/.env.example`",
+      "Sao chép thành .env: `cp .env.example .env`",
+      "Sinh khóa bí mật an toàn: `python3 -m mcpgateway.scripts.init_secrets`",
+      "Ghi khóa vào .env: `python3 -m mcpgateway.scripts.init_secrets --patch-env .env`",
+      "Khởi động gateway ở cổng 4444: `mcpgateway --host 0.0.0.0 --port 4444`"
+    ],
+    "cliCommand": "mcpgateway --host 0.0.0.0 --port 4444",
+    "usageStepsVi": [
+      "Tạo bearer token bằng mcpgateway.utils.create_jwt_token rồi gọi http://127.0.0.1:4444/version để kiểm tra",
+      "Đăng ký máy chủ MCP (ví dụ qua mcpgateway.translate từ stdio sang SSE) bằng POST /gateways",
+      "Xem danh mục tool tại /tools và tạo virtual server bằng POST /servers",
+      "Kết nối client MCP tới http://localhost:4444/servers/<UUID>/mcp kèm header Authorization"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn tôi cài đặt ContextForge và đăng ký một máy chủ MCP stdio vào gateway",
+      "Tạo virtual server trong ContextForge gom các tool đã đăng ký cho một nhóm",
+      "Cấu hình tracing OpenTelemetry của ContextForge gửi dữ liệu tới Jaeger"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, do IBM phát triển và bảo trì tích cực",
+      "Hợp nhất MCP, A2A, REST và gRPC sau một endpoint",
+      "Có Admin UI, xác thực, giới hạn tần suất và quan sát tích hợp",
+      "Triển khai linh hoạt: PyPI, Docker, Kubernetes"
+    ],
+    "consVi": [
+      "Bắt buộc cấu hình JWT_SECRET_KEY và AUTH_ENCRYPTION_SECRET trước khi chạy, kể cả môi trường cục bộ",
+      "Hệ thống lớn, nhiều thành phần; triển khai đa cụm cần Redis",
+      "Bước kiểm thử nhanh cần thêm curl và jq"
+    ],
+    "sourceEvidence": {
+      "python3 -m venv .venv && source .venv/bin/activate": "README.md:196",
+      "pip install mcp-contextforge-gateway": "README.md:198",
+      "curl -O https://raw.githubusercontent.com/IBM/mcp-context-forge/main/.env.example": "README.md:201",
+      "cp .env.example .env": "README.md:202",
+      "python3 -m mcpgateway.scripts.init_secrets": "README.md:205",
+      "python3 -m mcpgateway.scripts.init_secrets --patch-env .env": "README.md:208",
+      "mcpgateway --host 0.0.0.0 --port 4444": "README.md:211"
+    },
+    "meta": {
+      "id": "ibm-mcp-context-forge",
+      "nameVi": "ContextForge — Gateway và registry MCP, A2A, REST/gRPC có quản trị tập trung của IBM",
+      "icon": "Layers",
+      "categories": ["backend_api", "cloud_infrastructure", "devops_cicd"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "mcpgateway --host 0.0.0.0 --port 4444" }
+      ]
+    }
+  },
+  {
+    "repo": "mcp-use/mcp-use",
+    "license": "MIT License",
+    "authorName": "mcp-use (Manufact)",
+    "websiteUrl": "https://mcp-use.com",
+    "toolType": "sdk",
+    "taglineEn": "The TypeScript framework for MCP",
+    "summaryVi": "mcp-use là framework TypeScript để xây dựng, kiểm thử và phát hành máy chủ MCP, plugin ChatGPT và connector Claude. Framework dựa trên TypeScript SDK chính thức v2, bổ sung kiểu dữ liệu đầy đủ, React Views gắn trực tiếp với tool, Inspector tích hợp và CLI hướng agent. Hệ sinh thái còn có gói client, agent, inspector, tunnel và phiên bản Python.",
+    "purposeVi": "Rút ngắn vòng phát triển máy chủ và ứng dụng MCP có giao diện, từ tạo khung dự án đến kiểm thử và triển khai.",
+    "featuresVi": [
+      "Kiểu đầy đủ: schema Zod đi xuyên từ tool tới kết quả có cấu trúc, props của View và lời gọi tool",
+      "Native Views: gắn React View vào tool để tạo ứng dụng tương tác",
+      "Inspector tích hợp tại /mcp/inspector khi chạy chế độ phát triển",
+      "CLI không giao diện: kết nối, liệt kê, gọi tool và chụp ảnh View từ terminal",
+      "Tunnel: tạo URL công khai cho máy chủ cục bộ để thử với ChatGPT và Claude",
+      "Công cụ tạo dự án create-mcp-use-app"
+    ],
+    "requirementsVi": "Node.js và npm. Máy chủ phát triển mặc định chạy ở http://localhost:3000/mcp.",
+    "installStepsVi": [
+      "Cài đặt khung dự án mới: `npx -y create-mcp-use-app@latest`",
+      "Trong thư mục dự án vừa tạo, chạy chế độ phát triển: `npm run dev`",
+      "Tạo bản build production: `npm run build`"
+    ],
+    "cliCommand": "npx -y create-mcp-use-app@latest",
+    "usageStepsVi": [
+      "Mở http://localhost:3000/mcp/inspector để gọi thử tool và xem View",
+      "Thay index.ts bằng tool khai báo inputSchema, outputSchema và view",
+      "Kiểm thử từ terminal: `npx mcp-use client connect local http://localhost:3000/mcp` rồi `npx mcp-use client local tools list`",
+      "Chạy `mcp-use dev --tunnel` để có URL công khai thử với ChatGPT, Claude"
+    ],
+    "samplePromptsVi": [
+      "Tạo máy chủ MCP bằng mcp-use có tool get-weather kèm React View hiển thị thẻ thời tiết",
+      "Hướng dẫn tôi gọi tool get-weather từ terminal bằng CLI mcp-use",
+      "Chuyển dự án mcp-use v1 sang v2 theo hướng dẫn chuyển đổi"
+    ],
+    "prosVi": [
+      "Giấy phép MIT",
+      "Có Inspector, tunnel và CLI chụp ảnh View tích hợp",
+      "Dựa trên TypeScript SDK chính thức v2, hỗ trợ giao thức MCP 2026",
+      "Được bảo trì tích cực, có cả phiên bản Python"
+    ],
+    "consVi": [
+      "Lệnh npm run deploy triển khai lên nền tảng Manufact; tự vận hành cần làm theo hướng dẫn self-hosting riêng",
+      "Tunnel đi qua relay được quản lý của nhà phát triển",
+      "Dự án v1 cần chuyển đổi sang v2"
+    ],
+    "sourceEvidence": {
+      "npx -y create-mcp-use-app@latest": "README.md:71",
+      "npm run dev": "README.md:239",
+      "npm run build": "README.md:231",
+      "npx mcp-use client connect local http://localhost:3000/mcp": "README.md:254",
+      "npx mcp-use client local tools list": "README.md:255"
+    },
+    "meta": {
+      "id": "mcp-use-mcp-use",
+      "nameVi": "mcp-use — Framework TypeScript xây dựng, kiểm thử và phát hành máy chủ MCP có giao diện",
+      "icon": "Code2",
+      "categories": ["backend_api", "frontend_ui", "nlp_llm"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "npx -y create-mcp-use-app@latest" }
+      ]
+    }
+  }
+]

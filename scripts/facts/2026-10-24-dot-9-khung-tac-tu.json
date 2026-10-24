@@ -1,0 +1,549 @@
+[
+ {
+  "repo": "huggingface/smolagents",
+  "license": "Apache License 2.0",
+  "authorName": "Hugging Face",
+  "websiteUrl": "https://huggingface.co/docs/smolagents",
+  "toolType": "sdk",
+  "taglineEn": "`smolagents` is a library that enables you to run powerful agents in a few lines of code.",
+  "summaryVi": "smolagents là thư viện Python của Hugging Face giúp chạy tác tử AI mạnh chỉ với vài dòng mã; phần logic tác tử gói gọn trong khoảng 1.000 dòng. Điểm nổi bật là CodeAgent viết hành động dưới dạng mã Python thay vì JSON, hỗ trợ mọi LLM và công cụ từ MCP, LangChain hoặc Hugging Face Hub.",
+  "purposeVi": "Thư viện giúp lập trình viên dựng nhanh tác tử AI biết dùng công cụ (tìm kiếm web, duyệt web, xử lý dữ liệu) với bất kỳ mô hình ngôn ngữ nào, chạy mã trong môi trường sandbox.",
+  "featuresVi": [
+   "CodeAgent: tác tử viết hành động bằng mã Python, chạy trong sandbox Blaxel, E2B, Modal hoặc Docker",
+   "ToolCallingAgent: tác tử gọi công cụ kiểu JSON/văn bản truyền thống",
+   "Không phụ thuộc mô hình: transformers, Ollama, nhà cung cấp trên Hub, OpenAI, Anthropic và nhiều mô hình khác qua LiteLLM",
+   "Không phụ thuộc công cụ: dùng công cụ từ máy chủ MCP, LangChain hoặc Hub Space",
+   "Chia sẻ công cụ và tác tử lên Hugging Face Hub (push_to_hub / from_hub)",
+   "Dòng lệnh: smolagent (tác tử đa bước tổng quát) và webagent (tác tử duyệt web dùng helium)",
+   "Đa phương thức: đầu vào văn bản, hình ảnh, video và âm thanh"
+  ],
+  "requirementsVi": "Python 3.10 trở lên; khóa API hoặc token của nhà cung cấp mô hình đã chọn (ví dụ Hugging Face Inference Providers, OpenAI, Anthropic).",
+  "installStepsVi": [
+   "Cài đặt gói kèm bộ công cụ mặc định: `pip install \"smolagents[toolkit]\"`",
+   "Cấu hình khóa API cho nhà cung cấp mô hình (ví dụ biến môi trường ANTHROPIC_API_KEY khi dùng LiteLLMModel).",
+   "Chạy công cụ dòng lệnh ở chế độ tương tác (trình hướng dẫn thiết lập): `smolagent`"
+  ],
+  "cliCommand": "pip install \"smolagents[toolkit]\"",
+  "usageStepsVi": [
+   "Trong Python, tạo mô hình (ví dụ InferenceClientModel) và CodeAgent với danh sách công cụ như WebSearchTool, rồi gọi agent.run(\"...\").",
+   "Hoặc dùng dòng lệnh smolagent với câu lệnh trực tiếp và các tùy chọn --model-type, --model-id, --tools.",
+   "Dùng webagent khi cần tác tử tự duyệt trang web và trích xuất thông tin.",
+   "Luôn chạy mã của tác tử trong sandbox (E2B, Blaxel, Modal hoặc Docker) để bảo đảm an toàn."
+  ],
+  "samplePromptsVi": [
+   "Lập kế hoạch du lịch Tokyo, Kyoto và Osaka từ 28/3 đến 7/4, có tìm kiếm thông tin trên web.",
+   "Tìm kiếm web và cho biết một con báo chạy hết tốc lực qua cầu Pont des Arts mất bao nhiêu giây.",
+   "Vào trang sản phẩm của một cửa hàng trực tuyến, mở mục giảm giá và trả về tên, giá của sản phẩm đầu tiên."
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0, do Hugging Face phát triển",
+   "Thư viện gọn, logic tác tử khoảng 1.000 dòng mã, dễ đọc và tùy biến",
+   "Hỗ trợ cả mô hình mở chạy cục bộ lẫn API thương mại",
+   "Có sẵn hai công cụ dòng lệnh smolagent và webagent"
+  ],
+  "consVi": [
+   "LocalPythonExecutor tích hợp không phải sandbox bảo mật; cần E2B, Blaxel, Modal hoặc Docker khi chạy mã không tin cậy",
+   "Cần khóa API hoặc tài nguyên GPU tùy theo mô hình sử dụng"
+  ],
+  "sourceEvidence": {
+   "pip install \"smolagents[toolkit]\"": "README.md:57",
+   "smolagent": "README.md:186"
+  },
+  "meta": {
+   "id": "huggingface-smolagents",
+   "nameVi": "smolagents — Thư viện tác tử AI viết hành động bằng mã Python",
+   "icon": "Code2",
+   "categories": [
+    "nlp_llm",
+    "rpa_workflow_automation"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install \"smolagents[toolkit]\""
+    }
+   ]
+  }
+ },
+ {
+  "repo": "agno-agi/agno",
+  "license": "Apache License 2.0",
+  "authorName": "Agno (agno-agi)",
+  "websiteUrl": "https://docs.agno.com",
+  "toolType": "sdk",
+  "taglineEn": "Agno is a framework and runtime for agent platforms. Build agents, run them as a service, manage your platform using a web UI.",
+  "summaryVi": "Agno là framework và môi trường chạy (AgentOS) cho nền tảng tác tử AI: dựng tác tử bằng Agno SDK, chạy chúng như một dịch vụ và quản lý qua giao diện web AgentOS UI. Bạn tự chủ dữ liệu, bộ nhớ và bảo mật (RBAC dựa trên JWT) trong hạ tầng của mình.",
+  "purposeVi": "Giúp doanh nghiệp tự xây và vận hành nền tảng tác tử AI riêng, có API sản xuất, lưu trữ phiên/bộ nhớ trong cơ sở dữ liệu của mình và hơn 100 tích hợp công cụ.",
+  "featuresVi": [
+   "API sản xuất: hơn 50 endpoint, hỗ trợ SSE và websocket",
+   "Lưu trữ: phiên, bộ nhớ, tri thức và trace trong cơ sở dữ liệu riêng",
+   "Hơn 100 tích hợp: GitHub, Slack, Postgres và nhiều bộ công cụ dựng sẵn",
+   "Phê duyệt của con người: tạm dừng lượt chạy để người dùng xác nhận, chặn công cụ cần quản trị viên duyệt",
+   "Quan sát: tracing OpenTelemetry, lịch sử chạy và nhật ký kiểm toán",
+   "Bảo mật: RBAC dựa trên JWT, cách ly đa người dùng, đa tenant",
+   "Giao diện: đưa tác tử lên Slack, Telegram, WhatsApp, Discord, AG-UI, A2A",
+   "Lập lịch: chạy theo cron và tác vụ nền không cần hạ tầng ngoài"
+  ],
+  "requirementsVi": "Python 3.9 trở lên; khóa API của nhà cung cấp mô hình (ví dụ GOOGLE_API_KEY cho quickstart dùng Gemini). Mẫu nền tảng AgentOS chạy cục bộ bằng Docker.",
+  "installStepsVi": [
+   "Sao chép kho mã agno-agi/agno, từ thư mục gốc tạo môi trường ảo: `uv venv .venvs/quickstart --python 3.12`",
+   "Kích hoạt môi trường: `source .venvs/quickstart/bin/activate`",
+   "Cài đặt thư viện cho phần quickstart: `uv pip install -r cookbook/00_quickstart/requirements.txt`",
+   "Đặt khóa API: `export GOOGLE_API_KEY=your-google-api-key`",
+   "Chạy ví dụ đầu tiên: `python cookbook/00_quickstart/agent_with_tools.py`",
+   "Hoặc cài đặt trực tiếp vào dự án của bạn (theo hướng dẫn cookbook bộ nhớ): `pip install -U psycopg sqlalchemy openai agno`"
+  ],
+  "cliCommand": "pip install -U psycopg sqlalchemy openai agno",
+  "usageStepsVi": [
+   "Tạo Agent với mô hình (ví dụ Gemini) và bộ công cụ (ví dụ YFinanceTools), rồi gọi agent.print_response(...).",
+   "Lần lượt bổ sung đầu ra có kiểu, phiên, bộ nhớ, tri thức, nhóm tác tử và workflow theo cookbook 00_quickstart.",
+   "Để dựng cả nền tảng, đưa cho tác tử lập trình (Claude Code, Cursor, Codex) lời nhắc trong README để nó sao chép mẫu agentos-railway và chạy cục bộ bằng Docker (REST API, Postgres, máy chủ MCP, control plane).",
+   "Tắt telemetry bằng biến môi trường AGNO_TELEMETRY=false nếu cần."
+  ],
+  "samplePromptsVi": [
+   "Giá cổ phiếu AAPL hiện tại là bao nhiêu?",
+   "Help me set up my agent platform. (lời nhắc README dùng cho tác tử lập trình để dựng nền tảng AgentOS)",
+   "Hãy nhớ rằng tôi thích báo cáo ngắn gọn, rồi tóm tắt tin tức thị trường hôm nay theo phong cách đó."
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0, tự chủ dữ liệu và hạ tầng",
+   "Bộ cookbook phong phú, mỗi ví dụ chạy độc lập",
+   "Có máy chủ MCP tài liệu (docs.agno.com/mcp) để dùng với tác tử lập trình",
+   "Triển khai lên Docker, Railway, AWS, GCP, Azure, Fly, Render, Modal, Helm"
+  ],
+  "consVi": [
+   "Mặc định gửi sự kiện telemetry mỗi lượt chạy (không gồm prompt/đầu ra); tắt bằng AGNO_TELEMETRY=false",
+   "README chính không có lệnh cài đặt; hướng dẫn chi tiết nằm ở docs.agno.com và cookbook",
+   "Cần khóa API của nhà cung cấp mô hình"
+  ],
+  "sourceEvidence": {
+   "uv venv .venvs/quickstart --python 3.12": "cookbook/00_quickstart/README.md:20",
+   "source .venvs/quickstart/bin/activate": "cookbook/00_quickstart/README.md:21",
+   "uv pip install -r cookbook/00_quickstart/requirements.txt": "cookbook/00_quickstart/README.md:22",
+   "export GOOGLE_API_KEY=your-google-api-key": "cookbook/00_quickstart/README.md:23",
+   "python cookbook/00_quickstart/agent_with_tools.py": "cookbook/00_quickstart/README.md:24",
+   "pip install -U psycopg sqlalchemy openai agno": "cookbook/11_memory/README.md:25"
+  },
+  "meta": {
+   "id": "agno-agi-agno",
+   "nameVi": "Agno — Framework và runtime xây nền tảng tác tử AI tự vận hành",
+   "icon": "Layers",
+   "categories": [
+    "nlp_llm",
+    "rpa_workflow_automation",
+    "backend_api"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install -U psycopg sqlalchemy openai agno"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "microsoft/agent-framework",
+  "license": "MIT License",
+  "authorName": "Microsoft",
+  "websiteUrl": "https://learn.microsoft.com/en-us/agent-framework/",
+  "toolType": "sdk",
+  "taglineEn": "Microsoft Agent Framework (MAF) is an open, multi-language framework for building production-grade AI agents and multi-agent workflows in .NET and Python.",
+  "summaryVi": "Microsoft Agent Framework (MAF) là framework mã nguồn mở đa ngôn ngữ của Microsoft để xây dựng tác tử AI và workflow đa tác tử cấp sản xuất bằng Python và .NET (Go có SDK riêng). Đây là hướng chuyển tiếp chính thức từ Semantic Kernel và AutoGen, hỗ trợ Microsoft Foundry, Azure OpenAI, OpenAI và GitHub Copilot SDK.",
+  "purposeVi": "Dành cho đội ngũ đưa tác tử từ nguyên mẫu lên môi trường sản xuất, cần điều phối nhiều tác tử, khả năng phục hồi, quan sát và con người tham gia vào vòng lặp.",
+  "featuresVi": [
+   "Python và C#/.NET: API nhất quán giữa hai ngôn ngữ",
+   "Nhiều nhà cung cấp mô hình: Microsoft Foundry, Azure OpenAI, OpenAI và hơn nữa",
+   "Workflow dạng đồ thị: tuần tự, song song, handoff, cộng tác nhóm; có checkpoint, streaming, human-in-the-loop, time-travel",
+   "Middleware: xử lý yêu cầu/phản hồi, ngoại lệ và pipeline tùy biến",
+   "Quan sát: tích hợp sẵn OpenTelemetry",
+   "Declarative Agents: định nghĩa tác tử bằng YAML",
+   "Foundry Hosted Agents: triển khai tác tử lên hạ tầng Foundry chỉ với 2 dòng mã",
+   "DevUI: giao diện phát triển để thử nghiệm và gỡ lỗi workflow"
+  ],
+  "requirementsVi": "Python 3.10 trở lên hoặc .NET; tài khoản Azure và Azure CLI (az login) cho ví dụ dùng Microsoft Foundry, hoặc khóa API của nhà cung cấp khác.",
+  "installStepsVi": [
+   "Cài đặt gói Python: `pip install agent-framework`",
+   "Với .NET, cài đặt gói NuGet: `dotnet add package Microsoft.Agents.AI`",
+   "Đăng nhập Azure CLI trước khi chạy ví dụ Foundry: `az login`",
+   "(Tùy chọn) Cài đặt skill hướng dẫn cho tác tử lập trình: `npx skills add microsoft/agent-framework --skill agent-framework-builder-python`"
+  ],
+  "cliCommand": "pip install agent-framework",
+  "usageStepsVi": [
+   "Tạo Agent với FoundryChatClient (hoặc client của nhà cung cấp khác), đặt name và instructions.",
+   "Gọi await agent.run(\"...\") để nhận phản hồi.",
+   "Ghép nhiều tác tử thành workflow đồ thị theo các mẫu trong python/samples/03-workflows.",
+   "Tham khảo hướng dẫn di chuyển nếu đang dùng Semantic Kernel hoặc AutoGen."
+  ],
+  "samplePromptsVi": [
+   "Viết một bài haiku về Microsoft Agent Framework.",
+   "Xây workflow gồm tác tử nghiên cứu và tác tử biên tập chạy tuần tự để soạn báo cáo thị trường.",
+   "Tạo tác tử hỗ trợ khách hàng có bước chờ con người phê duyệt trước khi hoàn tiền."
+  ],
+  "prosVi": [
+   "Mã nguồn mở MIT, do Microsoft phát triển và cập nhật thường xuyên",
+   "Hỗ trợ cả Python và .NET với API nhất quán",
+   "Có hướng dẫn di chuyển từ Semantic Kernel và AutoGen",
+   "Có skill cho tác tử lập trình (gh skill / npx skills)"
+  ],
+  "consVi": [
+   "Ví dụ quickstart dựa trên Microsoft Foundry/Azure, cần tài khoản Azure",
+   "Gói agent-framework-lab là thử nghiệm, phải cài riêng",
+   "README lưu ý người dùng tự chịu rủi ro khi kết nối hệ thống bên thứ ba ngoài Azure"
+  ],
+  "sourceEvidence": {
+   "pip install agent-framework": "README.md:84",
+   "dotnet add package Microsoft.Agents.AI": "README.md:92",
+   "az login": "README.md:215",
+   "npx skills add microsoft/agent-framework --skill agent-framework-builder-python": "README.md:179"
+  },
+  "meta": {
+   "id": "microsoft-agent-framework",
+   "nameVi": "Microsoft Agent Framework — Framework tác tử AI đa ngôn ngữ cho Python và .NET",
+   "icon": "Workflow",
+   "categories": [
+    "nlp_llm",
+    "rpa_workflow_automation",
+    "cloud_infrastructure"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install agent-framework"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "google/adk-python",
+  "license": "Apache License 2.0",
+  "authorName": "Google",
+  "websiteUrl": "https://adk.dev/",
+  "toolType": "sdk",
+  "taglineEn": "An open-source, code-first Python framework for building, evaluating, and deploying sophisticated AI agents with flexibility and control.",
+  "summaryVi": "Agent Development Kit (ADK) là framework Python mã nguồn mở của Google, theo hướng viết mã trước, để xây dựng, đánh giá và triển khai tác tử AI. ADK được tối ưu cho Gemini nhưng không phụ thuộc mô hình hay nơi triển khai, có Workflow Runtime dạng đồ thị và giao diện web phát triển.",
+  "purposeVi": "Giúp lập trình viên áp dụng nguyên tắc phát triển phần mềm vào việc tạo tác tử AI: định nghĩa tác tử, công cụ và điều phối bằng Python, chạy thử, đánh giá rồi triển khai lên Cloud Run hoặc Vertex AI Agent Engine.",
+  "featuresVi": [
+   "Workflow Runtime: engine đồ thị hỗ trợ định tuyến, fan-out/fan-in, vòng lặp, thử lại, quản lý trạng thái, human-in-the-loop",
+   "Task API: ủy quyền có cấu trúc giữa các tác tử",
+   "Hệ đa tác tử dạng mô-đun theo phân cấp",
+   "Hệ sinh thái công cụ: công cụ dựng sẵn, hàm tùy biến, OpenAPI, công cụ MCP",
+   "Agent Config: tạo tác tử không cần viết mã",
+   "Tool Confirmation: xác nhận trước khi thực thi công cụ",
+   "Đánh giá tác tử bằng lệnh adk eval",
+   "Triển khai bằng Docker, Cloud Run hoặc Vertex AI Agent Engine"
+  ],
+  "requirementsVi": "Python 3.11 trở lên; khóa API Gemini hoặc tài khoản Google Cloud (khi triển khai Cloud Run/Vertex AI).",
+  "installStepsVi": [
+   "Cài đặt bản ổn định: `pip install google-adk`",
+   "(Tùy chọn) Cài đặt các tích hợp mở rộng: `pip install \"google-adk[extensions]\"`",
+   "Tạo thư mục tác tử chứa root_agent (Agent hoặc Workflow) theo ví dụ Quick Start.",
+   "Chạy giao diện web phát triển: `adk web path/to/agents_dir`"
+  ],
+  "cliCommand": "pip install google-adk",
+  "usageStepsVi": [
+   "Chạy tác tử trong dòng lệnh tương tác: adk run path/to/my_agent.",
+   "Dùng adk web để thử nghiệm, đánh giá và gỡ lỗi tác tử trên giao diện web.",
+   "Đánh giá tác tử với bộ evalset bằng lệnh adk eval.",
+   "Triển khai: adk deploy docker --with_ui <agent-folder> hoặc adk deploy cloud_run --with_ui <agent-folder>."
+  ],
+  "samplePromptsVi": [
+   "Xin chào, hãy chào tôi thật nồng nhiệt.",
+   "Cho tôi tên một loại trái cây ngẫu nhiên rồi nêu một lợi ích sức khỏe của nó (workflow hai tác tử).",
+   "Bật đèn phòng khách và chỉnh nhiệt độ về 24 độ (ví dụ tác tử tự động hóa nhà trong bộ đánh giá)."
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0, do Google phát triển, phát hành khoảng hai tuần một lần",
+   "Không phụ thuộc mô hình và nơi triển khai dù tối ưu cho Gemini",
+   "Có sẵn giao diện web phát triển và công cụ đánh giá",
+   "Có phiên bản Java, Kotlin, Go và TypeScript"
+  ],
+  "consVi": [
+   "Yêu cầu Python 3.11 trở lên",
+   "Một số tính năng triển khai gắn với Google Cloud (Cloud Run, Vertex AI Agent Engine)",
+   "Bản phát triển từ nhánh main có thể chứa thay đổi thử nghiệm"
+  ],
+  "sourceEvidence": {
+   "pip install google-adk": "README.md:74",
+   "pip install \"google-adk[extensions]\"": "README.md:94",
+   "adk web path/to/agents_dir": "README.md:155"
+  },
+  "meta": {
+   "id": "google-adk-python",
+   "nameVi": "Google ADK — Bộ công cụ phát triển tác tử AI bằng Python của Google",
+   "icon": "Cpu",
+   "categories": [
+    "nlp_llm",
+    "rpa_workflow_automation",
+    "cloud_infrastructure"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install google-adk"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "strands-agents/harness-sdk",
+  "license": "Apache License 2.0",
+  "authorName": "Strands Agents",
+  "websiteUrl": "https://strandsagents.com",
+  "toolType": "sdk",
+  "taglineEn": "A model-driven approach to building AI agents in just a few lines of code.",
+  "summaryVi": "Strands Agents là SDK mã nguồn mở để xây dựng và chạy tác tử AI bằng Python và TypeScript, chạy ngay trong tiến trình của bạn mà không cần control plane lưu trữ. Monorepo gồm Strands harness (tác tử lắp sẵn), SDK Python/TypeScript, CLI strands và máy chủ MCP hỗ trợ tác tử lập trình.",
+  "purposeVi": "Thay thế việc tự viết vòng lặp tác tử: cung cấp sẵn kiểm soát vòng đời, công cụ, đầu ra có cấu trúc, MCP, đa tác tử, bộ nhớ, phiên, guardrail, tracing và đánh giá.",
+  "featuresVi": [
+   "Strands harness: create_harness() / createHarness() cho tác tử dựng sẵn với cấu hình mặc định đã được đo kiểm",
+   "Kiểm soát vòng đời: giới hạn lượt, ngân sách token, hủy, lý do dừng",
+   "Không phụ thuộc mô hình: Amazon Bedrock, Anthropic, OpenAI, Gemini, Ollama và nhà cung cấp tùy biến",
+   "Hooks: chặn bất kỳ bước nào để ghi log, kiểm tra hoặc điều hướng",
+   "Guardrails và steering handlers giúp tác tử tự sửa lỗi",
+   "Tích hợp sẵn MCP, streaming, đa tác tử và đầu ra có cấu trúc",
+   "Plugin cho Claude Code, Codex, Cursor và máy chủ MCP strands-mcp"
+  ],
+  "requirementsVi": "Python 3.10 trở lên (SDK Python) hoặc Node.js 22 trở lên với dự án ESM (SDK TypeScript); thông tin xác thực AWS khi dùng Amazon Bedrock mặc định, hoặc khóa API nhà cung cấp khác.",
+  "installStepsVi": [
+   "Cài đặt Strands harness cho Python: `pip install strands-harness`",
+   "Hoặc cài đặt harness cho TypeScript: `npm install @strands-agents/harness`",
+   "Khi muốn tự điều khiển vòng lặp, cài đặt SDK Python kèm bộ công cụ: `pip install strands-agents strands-agents-tools`",
+   "Hoặc SDK TypeScript: `npm install @strands-agents/sdk`",
+   "Cấu hình thông tin xác thực AWS (Bedrock mặc định) hoặc truyền mô hình khác."
+  ],
+  "cliCommand": "pip install strands-agents strands-agents-tools",
+  "usageStepsVi": [
+   "Với harness: agent = create_harness() rồi gọi agent(\"...\").",
+   "Với SDK: tạo Agent(tools=[calculator]) và gọi agent(\"...\").",
+   "Thêm hooks, guardrails, công cụ MCP và mẫu đa tác tử theo hướng dẫn tại strandsagents.com."
+  ],
+  "samplePromptsVi": [
+   "Tìm bài kiểm thử chạy chậm nhất trong kho mã này và giải thích vì sao nó chậm.",
+   "Căn bậc hai của 1764 là bao nhiêu?",
+   "Kết nối máy chủ MCP của hệ thống nội bộ và tổng hợp các ticket mở trong tuần."
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0",
+   "Chạy trong tiến trình, không cần control plane lưu trữ",
+   "Hỗ trợ cả Python và TypeScript, có CLI và máy chủ MCP",
+   "Tracing mọi quyết định của vòng lặp tác tử theo mặc định"
+  ],
+  "consVi": [
+   "new Agent() trong TypeScript mặc định dùng Amazon Bedrock nên cần cấu hình AWS hoặc chọn mô hình khác",
+   "Kho mã đã đổi tên từ strands-agents/sdk-python sang strands-agents/harness-sdk (monorepo)"
+  ],
+  "sourceEvidence": {
+   "pip install strands-harness": "README.md:79",
+   "npm install @strands-agents/harness": "README.md:92",
+   "pip install strands-agents strands-agents-tools": "README.md:115",
+   "npm install @strands-agents/sdk": "README.md:133"
+  },
+  "meta": {
+   "id": "strands-agents-harness-sdk",
+   "nameVi": "Strands Agents — SDK xây tác tử AI hướng mô hình cho Python và TypeScript",
+   "icon": "Brain",
+   "categories": [
+    "nlp_llm",
+    "rpa_workflow_automation"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install strands-agents strands-agents-tools"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "stanfordnlp/dspy",
+  "license": "MIT License",
+  "authorName": "Stanford NLP (Stanford Future Data Systems)",
+  "websiteUrl": "https://dspy.ai",
+  "toolType": "sdk",
+  "taglineEn": "DSPy is the framework for programming—rather than prompting—language models.",
+  "summaryVi": "DSPy (Declarative Self-improving Python) là framework để lập trình thay vì viết prompt cho mô hình ngôn ngữ. Bạn viết mã Python dạng mô-đun và dùng các thuật toán của DSPy để tối ưu prompt và trọng số, từ bộ phân loại đơn giản, pipeline RAG đến vòng lặp tác tử.",
+  "purposeVi": "Giúp xây dựng hệ thống AI dạng mô-đun ổn định hơn so với prompt viết tay, đồng thời tự động tối ưu prompt và trọng số mô hình dựa trên dữ liệu.",
+  "featuresVi": [
+   "Lập trình mô-đun: ghép các thành phần Python thay cho prompt rời rạc",
+   "Tối ưu tự động: thuật toán tối ưu prompt và trọng số mô hình",
+   "Phạm vi ứng dụng: bộ phân loại, pipeline RAG, vòng lặp tác tử",
+   "Nền tảng nghiên cứu: dựa trên các bài báo như DSPy (ICLR 2024) và GEPA"
+  ],
+  "requirementsVi": "Python 3.10 trở lên; khóa API hoặc máy chủ của mô hình ngôn ngữ cần dùng.",
+  "installStepsVi": [
+   "Cài đặt bản phát hành: `pip install dspy`",
+   "Hoặc cài đặt bản mới nhất từ nhánh main: `pip install git+https://github.com/stanfordnlp/dspy.git`"
+  ],
+  "cliCommand": "pip install dspy",
+  "usageStepsVi": [
+   "Đọc hướng dẫn tại dspy.ai để cấu hình mô hình ngôn ngữ.",
+   "Định nghĩa chương trình DSPy bằng các mô-đun Python cho bài toán (phân loại, RAG, tác tử).",
+   "Chạy bộ tối ưu của DSPy trên dữ liệu mẫu để cải thiện prompt hoặc trọng số."
+  ],
+  "samplePromptsVi": [
+   "Xây pipeline RAG trả lời câu hỏi từ kho tài liệu nội bộ và tối ưu prompt bằng bộ dữ liệu hỏi đáp mẫu.",
+   "Tạo bộ phân loại phản hồi khách hàng thành tích cực, tiêu cực, trung tính và tự tối ưu độ chính xác."
+  ],
+  "prosVi": [
+   "Mã nguồn mở MIT, phát triển bởi nhóm nghiên cứu Stanford",
+   "Có nền tảng nghiên cứu vững với nhiều bài báo khoa học",
+   "Cài đặt đơn giản qua pip"
+  ],
+  "consVi": [
+   "README ngắn gọn; hướng dẫn sử dụng chi tiết nằm trên trang dspy.ai",
+   "Một số phụ thuộc (litellm, gepa) chưa hỗ trợ Python 3.15"
+  ],
+  "sourceEvidence": {
+   "pip install dspy": "README.md:31",
+   "pip install git+https://github.com/stanfordnlp/dspy.git": "README.md:37"
+  },
+  "meta": {
+   "id": "stanfordnlp-dspy",
+   "nameVi": "DSPy — Framework lập trình thay vì viết prompt cho mô hình ngôn ngữ",
+   "icon": "Sparkles",
+   "categories": [
+    "nlp_llm",
+    "vector_rag"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install dspy"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "mastra-ai/mastra",
+  "license": "Apache License 2.0 (riêng thư mục ee/ theo Mastra Enterprise License)",
+  "authorName": "Mastra (Kepler Software, Inc.)",
+  "websiteUrl": "https://mastra.ai/docs",
+  "toolType": "sdk",
+  "taglineEn": "Mastra is a framework for building AI-powered applications and agents with a modern TypeScript stack.",
+  "summaryVi": "Mastra là framework TypeScript để xây ứng dụng và tác tử AI, từ nguyên mẫu đến sản phẩm. Mastra tích hợp với React, Next.js, Node hoặc chạy như máy chủ độc lập, kèm Mastra Studio để xây dựng, thử nghiệm và quản lý tác tử, workflow và công cụ.",
+  "purposeVi": "Giúp lập trình viên TypeScript dựng tác tử, workflow đồ thị, RAG và máy chủ MCP trong cùng một framework, có sẵn đánh giá và quan sát cho môi trường sản xuất.",
+  "featuresVi": [
+   "Model routing: kết nối hơn 40 nhà cung cấp (OpenAI, Anthropic, Gemini...) qua một giao diện chuẩn",
+   "Agents: tác tử tự suy luận, chọn công cụ và lặp đến khi có câu trả lời",
+   "Workflows: engine workflow dạng đồ thị với .then(), .branch(), .parallel()",
+   "Human-in-the-loop: tạm dừng tác tử/workflow chờ người dùng phê duyệt rồi tiếp tục",
+   "Quản lý ngữ cảnh: lịch sử hội thoại, truy xuất dữ liệu (RAG), bộ nhớ",
+   "Tạo máy chủ MCP để chia sẻ tác tử và công cụ",
+   "Evals và observability tích hợp sẵn"
+  ],
+  "requirementsVi": "Node.js và npm; khóa API của nhà cung cấp mô hình (openai, anthropic, google hoặc xai khi tạo dự án).",
+  "installStepsVi": [
+   "Cài đặt và tạo dự án mới bằng lệnh khuyến nghị: `npm create mastra@latest`",
+   "Hoặc chỉ định tên dự án và nhà cung cấp: `npm create mastra@latest <project-name> -- --llm <provider>`",
+   "Vào thư mục dự án, khởi động máy chủ phát triển rồi mở Mastra Studio tại http://localhost:4111."
+  ],
+  "cliCommand": "npm create mastra@latest",
+  "usageStepsVi": [
+   "Định nghĩa tác tử với mô hình và công cụ trong dự án Mastra.",
+   "Dùng Mastra Studio (cổng 4111) để thử nghiệm và quản lý tác tử, workflow, công cụ.",
+   "Nhúng tác tử vào ứng dụng React, Next.js, Node hoặc triển khai thành endpoint độc lập."
+  ],
+  "samplePromptsVi": [
+   "Tạo tác tử thời tiết trả lời dự báo cho Hà Nội và gợi ý hoạt động phù hợp.",
+   "Xây workflow nhiều bước tóm tắt tài liệu, chờ người duyệt rồi gửi kết quả."
+  ],
+  "prosVi": [
+   "Lõi framework mã nguồn mở Apache 2.0",
+   "Thuần TypeScript, tích hợp tốt với React/Next.js/Node",
+   "Lệnh create tự cài skill Mastra cho tác tử lập trình được phát hiện"
+  ],
+  "consVi": [
+   "Giấy phép hỗn hợp: mã trong thư mục ee/ theo Mastra Enterprise License, cần giấy phép doanh nghiệp khi dùng sản xuất (miễn phí cho phát triển và thử nghiệm)",
+   "Pull request chỉ giới hạn cho cộng tác viên; cộng đồng đóng góp qua issue"
+  ],
+  "sourceEvidence": {
+   "npm create mastra@latest": "README.md:42",
+   "npm create mastra@latest <project-name> -- --llm <provider>": "README.md:61"
+  },
+  "meta": {
+   "id": "mastra-ai-mastra",
+   "nameVi": "Mastra — Framework TypeScript xây ứng dụng và tác tử AI",
+   "icon": "Workflow",
+   "categories": [
+    "nlp_llm",
+    "rpa_workflow_automation",
+    "backend_api"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0), riêng thư mục ee/ theo giấy phép doanh nghiệp",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "npm create mastra@latest"
+    }
+   ]
+  }
+ }
+]
