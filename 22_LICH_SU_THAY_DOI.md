@@ -4,6 +4,14 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.17 (Ngày 24-10-2026)
+- **Loại hình**: An toàn AI, phân tích dữ liệu bằng AI, kiểm thử phần mềm với AI, đợt 10 (21 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-10-*.json`.
+- **An toàn AI (công cụ kiểm thử, bảo vệ hệ thống của chính mình)**: garak, promptfoo, NeMo Guardrails, PyRIT, Presidio, Guardrails AI, Cisco MCP Scanner.
+- **Phân tích dữ liệu**: Vanna, WrenAI (open core), PandasAI (thư mục ee riêng giấy phép), Apache Superset, marimo, Data Formulator, Jupyter AI.
+- **Kiểm thử & review mã**: PR-Agent, Keploy, Schemathesis, TestZeus Hercules (AGPL-3.0), Midscene, Kodus (AGPL-3.0 + giấy phép doanh nghiệp; README nêu giá gói Teams), Playwright CLI.
+- Không thêm: dự án README ghi đã lưu trữ hoặc ngừng duy trì (LLM Guard, Qodo Cover), dự án chuyển hướng (Sweep), công cụ không có tính năng AI (danger-js, reviewdog, taiko, Datasette).
+- Kho dữ liệu: 2.138 công cụ đang hiển thị, 2.195 cấu hình mẫu.
+
 ### Phiên Bản 2.1.16 (Ngày 24-10-2026)
 - **Loại hình**: Nền tảng quy trình tự động, khung tác tử AI, công cụ phát triển MCP, đợt 9 (21 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-9-*.json`.
 - **Nền tảng quy trình**: Activepieces (bản Community MIT, thư mục ee giấy phép thương mại), Windmill (AGPLv3 + mã doanh nghiệp độc quyền), Kestra, Trigger.dev, Sim, Huginn, Prefect.

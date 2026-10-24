@@ -163174,5 +163174,1662 @@
       "guideIsTemplate": false,
       "starsVerified": false
     }
+  },
+  {
+    "id": "nvidia-garak",
+    "slug": "nvidia-garak",
+    "name": "garak — Quét lỗ hổng bảo mật cho mô hình ngôn ngữ lớn",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security",
+      "nlp_llm",
+      "qa_testing"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Kiểm thử phần mềm & QA/QC"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/NVIDIA/garak",
+    "websiteUrl": "https://garak.ai/",
+    "authorName": "NVIDIA",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "garak (Generative AI Red-teaming & Assessment Kit) là công cụ dòng lệnh quét lỗ hổng cho mô hình ngôn ngữ lớn, do NVIDIA phát triển. Công cụ dò các điểm yếu như ảo giác, rò rỉ dữ liệu, prompt injection, thông tin sai lệch, sinh nội dung độc hại và jailbreak — tương tự nmap hay Metasploit nhưng dành cho LLM.",
+    "purposeVi": "Giúp đội bảo mật và nhà phát triển kiểm thử red team chính hệ thống LLM của mình trước khi triển khai, phát hiện các cách khiến mô hình hoạt động sai ngoài mong muốn.",
+    "featuresVi": [
+      "Bộ probe đa dạng: prompt injection, jailbreak (DAN), mã hóa (encoding), nội dung độc hại, rò rỉ dữ liệu, ảo giác",
+      "Kết hợp probe tĩnh, động và thích ứng; mỗi probe đi kèm detector đánh giá kết quả PASS/FAIL và tỷ lệ lỗi",
+      "Hỗ trợ nhiều generator: Hugging Face (cục bộ, Inference API, Endpoint), OpenAI, Replicate, AWS Bedrock, LiteLLM, REST, mô hình gguf qua llama.cpp",
+      "Chọn phạm vi quét bằng `--spec` theo họ plugin hoặc plugin cụ thể",
+      "Ghi log chi tiết dạng `.jsonl` và có script phân tích `analyse/analyse_log.py`"
+    ],
+    "installGuideVi": "Yêu cầu: Python (môi trường conda mẫu dùng python>=3.11,<=3.14); phát triển trên Linux và macOS. Một số generator cần khóa API (ví dụ OPENAI_API_KEY, REPLICATE_API_TOKEN, HF_INFERENCE_TOKEN).\nBước 1: Cài đặt từ PyPI: `python -m pip install -U garak`\nBước 2: Hoặc cài đặt bản phát triển mới nhất từ GitHub: `python -m pip install -U git+https://github.com/NVIDIA/garak.git@main`\nBước 3: Kiểm tra danh sách probe có sẵn: `garak --list_probes`",
+    "usageGuideVi": "Bước 1: Chọn mô hình cần kiểm thử bằng `--target_type` (ví dụ huggingface, openai) và `--target_name`\nBước 2: Đặt khóa API qua biến môi trường nếu generator yêu cầu, ví dụ `export OPENAI_API_KEY=...`\nBước 3: Chạy thử với một nhóm probe, ví dụ: `python3 -m garak --target_type huggingface --target_name gpt2 --spec probes.dan.Dan_11_0`\nBước 4: Đọc bảng kết quả theo từng detector; hướng dẫn chi tiết lỗi nằm trong `garak.log` và tệp `.jsonl` của lần chạy",
+    "samplePromptsVi": [
+      "Quét mô hình chatbot nội bộ của tôi bằng các probe prompt injection dựa trên mã hóa và tóm tắt tỷ lệ FAIL.",
+      "Kiểm tra xem mô hình Hugging Face gpt2 có bị jailbreak bằng DAN 11.0 không.",
+      "Liệt kê các probe của garak liên quan đến rò rỉ dữ liệu để đưa vào quy trình kiểm thử."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "python -m pip install -U garak",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"python -m pip install -U garak\"\n  ],\n  \"nguon\": \"https://github.com/NVIDIA/garak\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, miễn phí",
+      "Do NVIDIA phát triển, cập nhật thường xuyên",
+      "Hỗ trợ rất nhiều loại mô hình và nhà cung cấp"
+    ],
+    "consVi": [
+      "README ghi công cụ được phát triển trên Linux và macOS",
+      "Quét mô hình thương mại tốn chi phí API do mỗi prompt sinh nhiều lần (mặc định 10)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# garak — Quét lỗ hổng bảo mật cho mô hình ngôn ngữ lớn\n\n> `garak` checks if an LLM-backed application can be made to fail in a way we don't want.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\ngarak (Generative AI Red-teaming & Assessment Kit) là công cụ dòng lệnh quét lỗ hổng cho mô hình ngôn ngữ lớn, do NVIDIA phát triển. Công cụ dò các điểm yếu như ảo giác, rò rỉ dữ liệu, prompt injection, thông tin sai lệch, sinh nội dung độc hại và jailbreak — tương tự nmap hay Metasploit nhưng dành cho LLM.\n\nGiúp đội bảo mật và nhà phát triển kiểm thử red team chính hệ thống LLM của mình trước khi triển khai, phát hiện các cách khiến mô hình hoạt động sai ngoài mong muốn.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** NVIDIA\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/NVIDIA/garak](https://github.com/NVIDIA/garak)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Bộ probe đa dạng: prompt injection, jailbreak (DAN), mã hóa (encoding), nội dung độc hại, rò rỉ dữ liệu, ảo giác**\n- **Kết hợp probe tĩnh, động và thích ứng; mỗi probe đi kèm detector đánh giá kết quả PASS/FAIL và tỷ lệ lỗi**\n- **Hỗ trợ nhiều generator: Hugging Face (cục bộ, Inference API, Endpoint), OpenAI, Replicate, AWS Bedrock, LiteLLM, REST, mô hình gguf qua llama.cpp**\n- **Chọn phạm vi quét bằng `--spec` theo họ plugin hoặc plugin cụ thể**\n- **Ghi log chi tiết dạng `.jsonl` và có script phân tích `analyse/analyse_log.py`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npython -m pip install -U garak\n```\n\nYêu cầu: Python (môi trường conda mẫu dùng python>=3.11,<=3.14); phát triển trên Linux và macOS. Một số generator cần khóa API (ví dụ OPENAI_API_KEY, REPLICATE_API_TOKEN, HF_INFERENCE_TOKEN).\nBước 1: Cài đặt từ PyPI: `python -m pip install -U garak`\nBước 2: Hoặc cài đặt bản phát triển mới nhất từ GitHub: `python -m pip install -U git+https://github.com/NVIDIA/garak.git@main`\nBước 3: Kiểm tra danh sách probe có sẵn: `garak --list_probes`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn mô hình cần kiểm thử bằng `--target_type` (ví dụ huggingface, openai) và `--target_name`\nBước 2: Đặt khóa API qua biến môi trường nếu generator yêu cầu, ví dụ `export OPENAI_API_KEY=...`\nBước 3: Chạy thử với một nhóm probe, ví dụ: `python3 -m garak --target_type huggingface --target_name gpt2 --spec probes.dan.Dan_11_0`\nBước 4: Đọc bảng kết quả theo từng detector; hướng dẫn chi tiết lỗi nằm trong `garak.log` và tệp `.jsonl` của lần chạy\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Quét mô hình chatbot nội bộ của tôi bằng các probe prompt injection dựa trên mã hóa và tóm tắt tỷ lệ FAIL.\"\n- \"Kiểm tra xem mô hình Hugging Face gpt2 có bị jailbreak bằng DAN 11.0 không.\"\n- \"Liệt kê các probe của garak liên quan đến rò rỉ dữ liệu để đưa vào quy trình kiểm thử.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "promptfoo-promptfoo",
+    "slug": "promptfoo-promptfoo",
+    "name": "promptfoo — Đánh giá và red team ứng dụng LLM",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security",
+      "qa_testing",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)",
+      "Kiểm thử phần mềm & QA/QC",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/promptfoo/promptfoo",
+    "websiteUrl": "https://www.promptfoo.dev",
+    "authorName": "Promptfoo",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "promptfoo là công cụ dòng lệnh và thư viện để đánh giá (eval) và red team các ứng dụng dựa trên LLM. Công cụ cho phép kiểm thử prompt và mô hình tự động, quét lỗ hổng bảo mật, so sánh mô hình song song và tích hợp vào CI/CD. README cho biết Promptfoo nay thuộc OpenAI nhưng vẫn là mã nguồn mở theo giấy phép MIT.",
+    "purposeVi": "Giúp đội phát triển kiểm thử chất lượng và độ an toàn của ứng dụng LLM, agent của chính mình bằng số liệu thay vì thử-sai thủ công.",
+    "featuresVi": [
+      "Đánh giá tự động: kiểm thử prompt và mô hình với bộ test case",
+      "Red team và quét lỗ hổng: sinh báo cáo lỗ hổng bảo mật cho ứng dụng LLM",
+      "So sánh mô hình song song: OpenAI, Anthropic, Azure, Bedrock, Ollama và nhiều nhà cung cấp khác",
+      "Tích hợp CI/CD và quét mã trong pull request để tìm vấn đề bảo mật, tuân thủ liên quan đến LLM",
+      "Giao diện web xem kết quả (`promptfoo view`); eval chạy 100% cục bộ"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js (package.json yêu cầu node >=22.22.0) hoặc cài đặt qua brew/pip; khóa API của nhà cung cấp LLM cần kiểm thử (ví dụ OPENAI_API_KEY).\nBước 1: Cài đặt toàn cục bằng npm: `npm install -g promptfoo`\nBước 2: Hoặc dùng `brew install promptfoo` / `pip install promptfoo`, hoặc chạy không cần cài đặt với `npx promptfoo@latest`\nBước 3: Khởi tạo dự án mẫu: `promptfoo init --example getting-started`",
+    "usageGuideVi": "Bước 1: Đặt khóa API của nhà cung cấp, ví dụ `export OPENAI_API_KEY=sk-abc123`\nBước 2: Vào thư mục dự án mẫu (`cd getting-started`) và chạy đánh giá: `promptfoo eval`\nBước 3: Mở giao diện web xem kết quả: `promptfoo view`\nBước 4: Xem hướng dẫn Red Teaming trên trang tài liệu để quét lỗ hổng ứng dụng",
+    "samplePromptsVi": [
+      "Tạo cấu hình promptfoo so sánh hai mô hình trên bộ câu hỏi chăm sóc khách hàng của tôi.",
+      "Thiết lập bước promptfoo eval trong pipeline CI để chặn merge khi điểm đánh giá giảm.",
+      "Chạy red team cho chatbot nội bộ và tổng hợp báo cáo lỗ hổng."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm install -g promptfoo",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm install -g promptfoo\"\n  ],\n  \"nguon\": \"https://github.com/promptfoo/promptfoo\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, mã nguồn mở",
+      "Eval chạy cục bộ, prompt không rời khỏi máy",
+      "Nhiều cách cài đặt: npm, brew, pip, npx"
+    ],
+    "consVi": [
+      "Hầu hết nhà cung cấp LLM cần khóa API",
+      "Yêu cầu Node.js phiên bản mới (>=22.22.0)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# promptfoo — Đánh giá và red team ứng dụng LLM\n\n> `promptfoo` is a CLI and library for evaluating and red-teaming LLM-based apps.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\npromptfoo là công cụ dòng lệnh và thư viện để đánh giá (eval) và red team các ứng dụng dựa trên LLM. Công cụ cho phép kiểm thử prompt và mô hình tự động, quét lỗ hổng bảo mật, so sánh mô hình song song và tích hợp vào CI/CD. README cho biết Promptfoo nay thuộc OpenAI nhưng vẫn là mã nguồn mở theo giấy phép MIT.\n\nGiúp đội phát triển kiểm thử chất lượng và độ an toàn của ứng dụng LLM, agent của chính mình bằng số liệu thay vì thử-sai thủ công.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** Promptfoo\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/promptfoo/promptfoo](https://github.com/promptfoo/promptfoo)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Đánh giá tự động: kiểm thử prompt và mô hình với bộ test case**\n- **Red team và quét lỗ hổng: sinh báo cáo lỗ hổng bảo mật cho ứng dụng LLM**\n- **So sánh mô hình song song: OpenAI, Anthropic, Azure, Bedrock, Ollama và nhiều nhà cung cấp khác**\n- **Tích hợp CI/CD và quét mã trong pull request để tìm vấn đề bảo mật, tuân thủ liên quan đến LLM**\n- **Giao diện web xem kết quả (`promptfoo view`); eval chạy 100% cục bộ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm install -g promptfoo\n```\n\nYêu cầu: Node.js (package.json yêu cầu node >=22.22.0) hoặc cài đặt qua brew/pip; khóa API của nhà cung cấp LLM cần kiểm thử (ví dụ OPENAI_API_KEY).\nBước 1: Cài đặt toàn cục bằng npm: `npm install -g promptfoo`\nBước 2: Hoặc dùng `brew install promptfoo` / `pip install promptfoo`, hoặc chạy không cần cài đặt với `npx promptfoo@latest`\nBước 3: Khởi tạo dự án mẫu: `promptfoo init --example getting-started`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đặt khóa API của nhà cung cấp, ví dụ `export OPENAI_API_KEY=sk-abc123`\nBước 2: Vào thư mục dự án mẫu (`cd getting-started`) và chạy đánh giá: `promptfoo eval`\nBước 3: Mở giao diện web xem kết quả: `promptfoo view`\nBước 4: Xem hướng dẫn Red Teaming trên trang tài liệu để quét lỗ hổng ứng dụng\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo cấu hình promptfoo so sánh hai mô hình trên bộ câu hỏi chăm sóc khách hàng của tôi.\"\n- \"Thiết lập bước promptfoo eval trong pipeline CI để chặn merge khi điểm đánh giá giảm.\"\n- \"Chạy red team cho chatbot nội bộ và tổng hợp báo cáo lỗ hổng.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "nvidia-nemo-guardrails",
+    "slug": "nvidia-nemo-guardrails",
+    "name": "NeMo Guardrails — Rào chắn lập trình được cho chatbot LLM",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/NVIDIA-NeMo/Guardrails",
+    "websiteUrl": "https://docs.nvidia.com/nemo/guardrails",
+    "authorName": "NVIDIA",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "NeMo Guardrails là bộ công cụ mã nguồn mở của NVIDIA để thêm “rào chắn có thể lập trình” (guardrails) vào ứng dụng hội thoại dùng LLM. Thư viện hỗ trợ năm loại rail (input, dialog, retrieval, execution, output) và ngôn ngữ Colang để mô hình hóa luồng hội thoại, giúp chống jailbreak, prompt injection và kiểm soát nội dung đầu ra.",
+    "purposeVi": "Giúp nhà phát triển chatbot, ứng dụng RAG và endpoint LLM giữ hội thoại đúng chủ đề, che dữ liệu nhạy cảm và chặn nội dung không mong muốn.",
+    "featuresVi": [
+      "Năm loại rail: input, dialog, retrieval, execution và output",
+      "Colang 1.0 và 2.0: ngôn ngữ mô hình hóa luồng hội thoại",
+      "Thư viện guardrail dựng sẵn: tự kiểm tra (moderation, fact-checking, phát hiện ảo giác), mô hình an toàn của NVIDIA, phát hiện jailbreak và injection",
+      "CLI với các lệnh `chat`, `server`, `actions-server`, `evaluate`",
+      "Guardrails server cung cấp HTTP API `/v1/chat/completions`; có Dockerfile để đóng gói",
+      "Tích hợp tùy chọn với LangChain"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10, 3.11, 3.12 hoặc 3.13; mô hình LLM (ví dụ OpenAI) cấu hình trong `config.yml`.\nBước 1: Cài đặt bằng pip: `pip install nemoguardrails`\nBước 2: Tạo thư mục cấu hình gồm `config.yml`, các tệp Colang `.co` và tùy chọn `actions.py`/`config.py` theo hướng dẫn trong README",
+    "usageGuideVi": "Bước 1: Trong Python: nạp cấu hình bằng `RailsConfig.from_path(...)`, tạo `LLMRails` và gọi `generate`/`generate_async`\nBước 2: Hoặc khởi động server: `nemoguardrails server [--config PATH/TO/CONFIGS] [--port PORT]` rồi gọi `POST /v1/chat/completions` với `config_id`\nBước 3: Dùng `nemoguardrails evaluate` để đánh giá topical rails, fact-checking, moderation và ảo giác",
+    "samplePromptsVi": [
+      "Viết config.yml cho NeMo Guardrails bật input rail kiểm tra jailbreak và che PERSON, EMAIL_ADDRESS.",
+      "Tạo luồng Colang để chatbot từ chối bàn về chính trị và quay về chủ đề hỗ trợ khách hàng.",
+      "Thêm output rail kiểm tra ảo giác cho ứng dụng RAG của tôi."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install nemoguardrails",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install nemoguardrails\"\n  ],\n  \"nguon\": \"https://github.com/NVIDIA-NeMo/Guardrails\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, do NVIDIA phát triển",
+      "Hỗ trợ cả Python API lẫn server HTTP",
+      "Có công cụ đánh giá tích hợp"
+    ],
+    "consVi": [
+      "README lưu ý guardrail dựng sẵn có thể không phù hợp mọi trường hợp sản xuất, cần tự kiểm chứng",
+      "Cần học cú pháp Colang để xây dựng dialog rail"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# NeMo Guardrails — Rào chắn lập trình được cho chatbot LLM\n\n> NVIDIA NeMo Guardrails library is an open-source toolkit for easily adding *programmable guardrails* to LLM-based conversational applications.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nNeMo Guardrails là bộ công cụ mã nguồn mở của NVIDIA để thêm “rào chắn có thể lập trình” (guardrails) vào ứng dụng hội thoại dùng LLM. Thư viện hỗ trợ năm loại rail (input, dialog, retrieval, execution, output) và ngôn ngữ Colang để mô hình hóa luồng hội thoại, giúp chống jailbreak, prompt injection và kiểm soát nội dung đầu ra.\n\nGiúp nhà phát triển chatbot, ứng dụng RAG và endpoint LLM giữ hội thoại đúng chủ đề, che dữ liệu nhạy cảm và chặn nội dung không mong muốn.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** NVIDIA\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/NVIDIA-NeMo/Guardrails](https://github.com/NVIDIA-NeMo/Guardrails)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Năm loại rail: input, dialog, retrieval, execution và output**\n- **Colang 1.0 và 2.0: ngôn ngữ mô hình hóa luồng hội thoại**\n- **Thư viện guardrail dựng sẵn: tự kiểm tra (moderation, fact-checking, phát hiện ảo giác), mô hình an toàn của NVIDIA, phát hiện jailbreak và injection**\n- **CLI với các lệnh `chat`, `server`, `actions-server`, `evaluate`**\n- **Guardrails server cung cấp HTTP API `/v1/chat/completions`; có Dockerfile để đóng gói**\n- **Tích hợp tùy chọn với LangChain**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install nemoguardrails\n```\n\nYêu cầu: Python 3.10, 3.11, 3.12 hoặc 3.13; mô hình LLM (ví dụ OpenAI) cấu hình trong `config.yml`.\nBước 1: Cài đặt bằng pip: `pip install nemoguardrails`\nBước 2: Tạo thư mục cấu hình gồm `config.yml`, các tệp Colang `.co` và tùy chọn `actions.py`/`config.py` theo hướng dẫn trong README\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trong Python: nạp cấu hình bằng `RailsConfig.from_path(...)`, tạo `LLMRails` và gọi `generate`/`generate_async`\nBước 2: Hoặc khởi động server: `nemoguardrails server [--config PATH/TO/CONFIGS] [--port PORT]` rồi gọi `POST /v1/chat/completions` với `config_id`\nBước 3: Dùng `nemoguardrails evaluate` để đánh giá topical rails, fact-checking, moderation và ảo giác\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết config.yml cho NeMo Guardrails bật input rail kiểm tra jailbreak và che PERSON, EMAIL_ADDRESS.\"\n- \"Tạo luồng Colang để chatbot từ chối bàn về chính trị và quay về chủ đề hỗ trợ khách hàng.\"\n- \"Thêm output rail kiểm tra ảo giác cho ứng dụng RAG của tôi.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "microsoft-pyrit",
+    "slug": "microsoft-pyrit",
+    "name": "PyRIT — Framework red team cho hệ thống AI tạo sinh",
+    "icon": "Wrench",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security",
+      "nlp_llm",
+      "qa_testing"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Kiểm thử phần mềm & QA/QC"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/microsoft/PyRIT",
+    "websiteUrl": "https://microsoft.github.io/PyRIT/",
+    "authorName": "Microsoft",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "PyRIT (Python Risk Identification Tool) là framework mã nguồn mở của Microsoft giúp chuyên gia bảo mật và kỹ sư chủ động nhận diện rủi ro trong hệ thống AI tạo sinh. Framework hỗ trợ red team tự động và do con người dẫn dắt, với các chiến lược tấn công nhiều lượt, kịch bản đánh giá chuẩn hóa và bộ nhớ lưu kết quả.",
+    "purposeVi": "Giúp đội bảo mật đánh giá độ an toàn của mô hình và ứng dụng AI tạo sinh của tổ chức mình ở quy mô lớn, có thể lặp lại.",
+    "featuresVi": [
+      "Red team tự động: chiến lược tấn công một lượt và nhiều lượt như Crescendo, TAP, Skeleton Key",
+      "Scenario Framework: kịch bản đánh giá chuẩn hóa về nội dung có hại, rủi ro tâm lý xã hội, rò rỉ dữ liệu",
+      "CoPyRIT: giao diện web cho red team do con người dẫn dắt",
+      "Nhiều target: OpenAI, Azure, Anthropic, Google, HuggingFace, endpoint HTTP/WebSocket tùy chỉnh, web app qua Playwright",
+      "Bộ nhớ tích hợp: lưu hội thoại, điểm và kết quả tấn công bằng SQLite hoặc Azure SQL",
+      "CLI `pyrit_scan` cho đánh giá tự động"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.11, 3.12, 3.13 hoặc 3.14; endpoint và khóa API của hệ thống AI cần kiểm thử (ví dụ OPENAI_CHAT_ENDPOINT, OPENAI_CHAT_KEY, OPENAI_CHAT_MODEL).\nBước 1: Cài đặt bằng pip: `pip install pyrit`\nBước 2: Hoặc cài đặt bằng uv: `uv pip install pyrit`\nBước 3: Cấu hình endpoint AI qua biến môi trường hoặc tệp `~/.pyrit/.pyrit_conf` theo hướng dẫn Configure PyRIT",
+    "usageGuideVi": "Bước 1: Khởi tạo framework trong Python bằng `initialize_pyrit_async` với các initializer target và scorer\nBước 2: Liệt kê kịch bản đánh giá: `pyrit_scan --config-file ./.pyrit_conf list-scenarios`\nBước 3: Chạy một kịch bản, ví dụ: `pyrit_scan run airt.scam --config-file ./my_project_config.yaml`\nBước 4: Xem và xuất kết quả lưu trong bộ nhớ (SQLite/Azure SQL) để phân tích",
+    "samplePromptsVi": [
+      "Thiết lập PyRIT để chạy tấn công nhiều lượt Crescendo vào endpoint chatbot nội bộ của tôi.",
+      "Liệt kê các kịch bản pyrit_scan có sẵn và chạy kịch bản phù hợp để kiểm tra rò rỉ dữ liệu.",
+      "Tổng hợp kết quả chấm điểm từ bộ nhớ PyRIT thành báo cáo cho đội bảo mật."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install pyrit",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install pyrit\"\n  ],\n  \"nguon\": \"https://github.com/microsoft/PyRIT\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, do Microsoft phát triển",
+      "Hỗ trợ cả red team tự động và thủ công qua giao diện web",
+      "Kết nối nhiều loại target khác nhau"
+    ],
+    "consVi": [
+      "Cần cấu hình endpoint và khóa API trước khi dùng",
+      "Notebook mẫu phải khớp phiên bản PyRIT đã cài đặt"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# PyRIT — Framework red team cho hệ thống AI tạo sinh\n\n> The Python Risk Identification Tool for generative AI (PyRIT) is an open source framework built to empower security professionals and engineers to proactively identify risks in generative AI systems.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPyRIT (Python Risk Identification Tool) là framework mã nguồn mở của Microsoft giúp chuyên gia bảo mật và kỹ sư chủ động nhận diện rủi ro trong hệ thống AI tạo sinh. Framework hỗ trợ red team tự động và do con người dẫn dắt, với các chiến lược tấn công nhiều lượt, kịch bản đánh giá chuẩn hóa và bộ nhớ lưu kết quả.\n\nGiúp đội bảo mật đánh giá độ an toàn của mô hình và ứng dụng AI tạo sinh của tổ chức mình ở quy mô lớn, có thể lặp lại.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** Microsoft\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/microsoft/PyRIT](https://github.com/microsoft/PyRIT)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Red team tự động: chiến lược tấn công một lượt và nhiều lượt như Crescendo, TAP, Skeleton Key**\n- **Scenario Framework: kịch bản đánh giá chuẩn hóa về nội dung có hại, rủi ro tâm lý xã hội, rò rỉ dữ liệu**\n- **CoPyRIT: giao diện web cho red team do con người dẫn dắt**\n- **Nhiều target: OpenAI, Azure, Anthropic, Google, HuggingFace, endpoint HTTP/WebSocket tùy chỉnh, web app qua Playwright**\n- **Bộ nhớ tích hợp: lưu hội thoại, điểm và kết quả tấn công bằng SQLite hoặc Azure SQL**\n- **CLI `pyrit_scan` cho đánh giá tự động**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install pyrit\n```\n\nYêu cầu: Python 3.11, 3.12, 3.13 hoặc 3.14; endpoint và khóa API của hệ thống AI cần kiểm thử (ví dụ OPENAI_CHAT_ENDPOINT, OPENAI_CHAT_KEY, OPENAI_CHAT_MODEL).\nBước 1: Cài đặt bằng pip: `pip install pyrit`\nBước 2: Hoặc cài đặt bằng uv: `uv pip install pyrit`\nBước 3: Cấu hình endpoint AI qua biến môi trường hoặc tệp `~/.pyrit/.pyrit_conf` theo hướng dẫn Configure PyRIT\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi tạo framework trong Python bằng `initialize_pyrit_async` với các initializer target và scorer\nBước 2: Liệt kê kịch bản đánh giá: `pyrit_scan --config-file ./.pyrit_conf list-scenarios`\nBước 3: Chạy một kịch bản, ví dụ: `pyrit_scan run airt.scam --config-file ./my_project_config.yaml`\nBước 4: Xem và xuất kết quả lưu trong bộ nhớ (SQLite/Azure SQL) để phân tích\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Thiết lập PyRIT để chạy tấn công nhiều lượt Crescendo vào endpoint chatbot nội bộ của tôi.\"\n- \"Liệt kê các kịch bản pyrit_scan có sẵn và chạy kịch bản phù hợp để kiểm tra rò rỉ dữ liệu.\"\n- \"Tổng hợp kết quả chấm điểm từ bộ nhớ PyRIT thành báo cáo cho đội bảo mật.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "data-privacy-stack-presidio",
+    "slug": "data-privacy-stack-presidio",
+    "name": "Presidio — Phát hiện và ẩn danh hóa dữ liệu cá nhân (PII)",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security",
+      "nlp_language",
+      "data_engineering"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)",
+      "Xử lý ngôn ngữ tự nhiên NLP",
+      "Kỹ thuật dữ liệu & Đường ống ETL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/data-privacy-stack/presidio",
+    "websiteUrl": "https://data-privacy-stack.github.io/presidio",
+    "authorName": "Presidio Contributors (data-privacy-stack)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Presidio là SDK nhận diện và ẩn danh hóa dữ liệu cá nhân (PII) trong văn bản và hình ảnh, ví dụ số thẻ tín dụng, tên, địa điểm, số an sinh xã hội, ví bitcoin, số điện thoại Mỹ. Dự án vốn do Microsoft khởi xướng và nay đã chuyển sang tổ chức data-privacy-stack.",
+    "purposeVi": "Giúp tổ chức phát hiện và che dữ liệu nhạy cảm trước khi đưa vào LLM, lưu trữ hay chia sẻ, phục vụ quản trị dữ liệu và quyền riêng tư.",
+    "featuresVi": [
+      "Recognizer PII dựng sẵn hoặc tùy chỉnh dựa trên NER, biểu thức chính quy, luật và checksum, hỗ trợ nhiều ngôn ngữ",
+      "Kết nối mô hình phát hiện PII bên ngoài; chọn NLP engine spaCy, transformers hoặc stanza",
+      "Nhiều cách triển khai: Python, PySpark, Docker, Kubernetes",
+      "Module che PII trong ảnh (ảnh thường và ảnh y tế DICOM)",
+      "Gói Presidio Structured cho dữ liệu có cấu trúc"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.10–3.14; mô hình NLP (ví dụ spaCy `en_core_web_lg`); hoặc Docker để chạy dạng dịch vụ.\nBước 1: Cài đặt gói phân tích: `pip install presidio_analyzer`\nBước 2: Cài đặt gói ẩn danh hóa: `pip install presidio_anonymizer`\nBước 3: Tải mô hình spaCy: `python -m spacy download en_core_web_lg`\nBước 4: Hoặc chạy bằng Docker: `docker run -d -p 5002:3000 ghcr.io/data-privacy-stack/presidio-analyzer:latest` và `docker run -d -p 5001:3000 ghcr.io/data-privacy-stack/presidio-anonymizer:latest`",
+    "usageGuideVi": "Bước 1: Dùng Analyzer để phát hiện thực thể PII trong văn bản\nBước 2: Dùng Anonymizer để thay thế, che hoặc mã hóa các thực thể đã phát hiện\nBước 3: Với Docker: gọi dịch vụ analyzer ở cổng 5002 và anonymizer ở cổng 5001\nBước 4: Xem hướng dẫn PII de-identification trong tài liệu để tùy chỉnh recognizer",
+    "samplePromptsVi": [
+      "Viết đoạn Python dùng Presidio phát hiện và che email, số điện thoại trong log chat trước khi gửi cho LLM.",
+      "Thêm recognizer tùy chỉnh bằng regex để nhận diện mã nhân viên nội bộ.",
+      "Triển khai Presidio analyzer và anonymizer bằng Docker cho pipeline dữ liệu."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install presidio_analyzer",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install presidio_analyzer\"\n  ],\n  \"nguon\": \"https://github.com/data-privacy-stack/presidio\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT",
+      "Có cả gói Python lẫn image Docker",
+      "Hỗ trợ cả văn bản, dữ liệu có cấu trúc và hình ảnh"
+    ],
+    "consVi": [
+      "README cảnh báo không đảm bảo phát hiện toàn bộ thông tin nhạy cảm, cần thêm biện pháp bảo vệ khác"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Presidio — Phát hiện và ẩn danh hóa dữ liệu cá nhân (PII)\n\n> Context aware, pluggable and customizable PII de-identification service for text and images.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPresidio là SDK nhận diện và ẩn danh hóa dữ liệu cá nhân (PII) trong văn bản và hình ảnh, ví dụ số thẻ tín dụng, tên, địa điểm, số an sinh xã hội, ví bitcoin, số điện thoại Mỹ. Dự án vốn do Microsoft khởi xướng và nay đã chuyển sang tổ chức data-privacy-stack.\n\nGiúp tổ chức phát hiện và che dữ liệu nhạy cảm trước khi đưa vào LLM, lưu trữ hay chia sẻ, phục vụ quản trị dữ liệu và quyền riêng tư.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** Presidio Contributors (data-privacy-stack)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/data-privacy-stack/presidio](https://github.com/data-privacy-stack/presidio)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Recognizer PII dựng sẵn hoặc tùy chỉnh dựa trên NER, biểu thức chính quy, luật và checksum, hỗ trợ nhiều ngôn ngữ**\n- **Kết nối mô hình phát hiện PII bên ngoài; chọn NLP engine spaCy, transformers hoặc stanza**\n- **Nhiều cách triển khai: Python, PySpark, Docker, Kubernetes**\n- **Module che PII trong ảnh (ảnh thường và ảnh y tế DICOM)**\n- **Gói Presidio Structured cho dữ liệu có cấu trúc**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install presidio_analyzer\n```\n\nYêu cầu: Python 3.10–3.14; mô hình NLP (ví dụ spaCy `en_core_web_lg`); hoặc Docker để chạy dạng dịch vụ.\nBước 1: Cài đặt gói phân tích: `pip install presidio_analyzer`\nBước 2: Cài đặt gói ẩn danh hóa: `pip install presidio_anonymizer`\nBước 3: Tải mô hình spaCy: `python -m spacy download en_core_web_lg`\nBước 4: Hoặc chạy bằng Docker: `docker run -d -p 5002:3000 ghcr.io/data-privacy-stack/presidio-analyzer:latest` và `docker run -d -p 5001:3000 ghcr.io/data-privacy-stack/presidio-anonymizer:latest`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Dùng Analyzer để phát hiện thực thể PII trong văn bản\nBước 2: Dùng Anonymizer để thay thế, che hoặc mã hóa các thực thể đã phát hiện\nBước 3: Với Docker: gọi dịch vụ analyzer ở cổng 5002 và anonymizer ở cổng 5001\nBước 4: Xem hướng dẫn PII de-identification trong tài liệu để tùy chỉnh recognizer\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết đoạn Python dùng Presidio phát hiện và che email, số điện thoại trong log chat trước khi gửi cho LLM.\"\n- \"Thêm recognizer tùy chỉnh bằng regex để nhận diện mã nhân viên nội bộ.\"\n- \"Triển khai Presidio analyzer và anonymizer bằng Docker cho pipeline dữ liệu.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "guardrails-ai-guardrails",
+    "slug": "guardrails-ai-guardrails",
+    "name": "Guardrails AI — Kiểm soát đầu vào, đầu ra của LLM",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/guardrails-ai/guardrails",
+    "websiteUrl": "https://guardrailsai.com/guardrails/docs",
+    "authorName": "Guardrails AI",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Guardrails là framework Python giúp xây dựng ứng dụng AI đáng tin cậy với hai chức năng chính: chạy Input/Output Guard để phát hiện, định lượng và giảm thiểu rủi ro, và sinh dữ liệu có cấu trúc từ LLM. Các validator từ Guardrails Hub (ví dụ kiểm tra regex, đối thủ cạnh tranh, ngôn từ độc hại) có thể kết hợp thành một Guard.",
+    "purposeVi": "Giúp nhà phát triển kiểm soát đầu vào/đầu ra của LLM trong ứng dụng của mình và ép đầu ra theo schema Pydantic.",
+    "featuresVi": [
+      "Input/Output Guard: chặn hoặc báo lỗi khi đầu vào/đầu ra vi phạm validator",
+      "Guardrails Hub: bộ validator dựng sẵn, cài đặt như gói PyPI (ví dụ `guardrails-ai-regex-match`)",
+      "Sinh dữ liệu có cấu trúc từ LLM theo mô hình Pydantic (function calling hoặc tối ưu prompt)",
+      "Guardrails Server: chạy dạng dịch vụ REST (Flask) bằng `guardrails start`, tương thích OpenAI SDK"
+    ],
+    "installGuideVi": "Yêu cầu: Python >=3.10,<3.14 (theo pyproject.toml); khóa API LLM khi dùng chức năng gọi mô hình.\nBước 1: Cài đặt thư viện: `pip install guardrails-ai`\nBước 2: Cấu hình CLI Guardrails Hub: `guardrails configure`\nBước 3: Cài đặt validator cần dùng, ví dụ: `pip install guardrails-ai-regex-match`",
+    "usageGuideVi": "Bước 1: Tạo `Guard().use(...)` với các validator đã cài đặt và gọi `guard.validate(...)`\nBước 2: Dùng `Guard.for_pydantic(...)` để sinh đầu ra có cấu trúc từ LLM\nBước 3: Chạy server: `guardrails create --validators=hub://guardrails/two_words --guard-name=two-word-guard` rồi `guardrails start --config=./config.py`",
+    "samplePromptsVi": [
+      "Tạo Guard kiểm tra đầu ra chatbot không nhắc tên đối thủ và không có ngôn từ độc hại.",
+      "Dùng Guardrails ép LLM trả về JSON theo mô hình Pydantic cho đơn hàng.",
+      "Triển khai Guardrails Server và gọi guard qua OpenAI SDK."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install guardrails-ai",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install guardrails-ai\"\n  ],\n  \"nguon\": \"https://github.com/guardrails-ai/guardrails\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Validator cài đặt như gói pip thông thường",
+      "Vừa kiểm soát rủi ro vừa hỗ trợ đầu ra có cấu trúc"
+    ],
+    "consVi": [
+      "README thông báo dừng dịch vụ suy luận từ xa (hosted remote inferencing) với mốc dự kiến 25/8/2026; người dùng cũ cần làm theo hướng dẫn di chuyển",
+      "Một số validator/chức năng cần gọi LLM bên ngoài"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Guardrails AI — Kiểm soát đầu vào, đầu ra của LLM\n\n> Guardrails is a Python framework that helps build reliable AI applications by performing two key functions:\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nGuardrails là framework Python giúp xây dựng ứng dụng AI đáng tin cậy với hai chức năng chính: chạy Input/Output Guard để phát hiện, định lượng và giảm thiểu rủi ro, và sinh dữ liệu có cấu trúc từ LLM. Các validator từ Guardrails Hub (ví dụ kiểm tra regex, đối thủ cạnh tranh, ngôn từ độc hại) có thể kết hợp thành một Guard.\n\nGiúp nhà phát triển kiểm soát đầu vào/đầu ra của LLM trong ứng dụng của mình và ép đầu ra theo schema Pydantic.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** Guardrails AI\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/guardrails-ai/guardrails](https://github.com/guardrails-ai/guardrails)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Input/Output Guard: chặn hoặc báo lỗi khi đầu vào/đầu ra vi phạm validator**\n- **Guardrails Hub: bộ validator dựng sẵn, cài đặt như gói PyPI (ví dụ `guardrails-ai-regex-match`)**\n- **Sinh dữ liệu có cấu trúc từ LLM theo mô hình Pydantic (function calling hoặc tối ưu prompt)**\n- **Guardrails Server: chạy dạng dịch vụ REST (Flask) bằng `guardrails start`, tương thích OpenAI SDK**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install guardrails-ai\n```\n\nYêu cầu: Python >=3.10,<3.14 (theo pyproject.toml); khóa API LLM khi dùng chức năng gọi mô hình.\nBước 1: Cài đặt thư viện: `pip install guardrails-ai`\nBước 2: Cấu hình CLI Guardrails Hub: `guardrails configure`\nBước 3: Cài đặt validator cần dùng, ví dụ: `pip install guardrails-ai-regex-match`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo `Guard().use(...)` với các validator đã cài đặt và gọi `guard.validate(...)`\nBước 2: Dùng `Guard.for_pydantic(...)` để sinh đầu ra có cấu trúc từ LLM\nBước 3: Chạy server: `guardrails create --validators=hub://guardrails/two_words --guard-name=two-word-guard` rồi `guardrails start --config=./config.py`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tạo Guard kiểm tra đầu ra chatbot không nhắc tên đối thủ và không có ngôn từ độc hại.\"\n- \"Dùng Guardrails ép LLM trả về JSON theo mô hình Pydantic cho đơn hàng.\"\n- \"Triển khai Guardrails Server và gọi guard qua OpenAI SDK.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "cisco-ai-defense-mcp-scanner",
+    "slug": "cisco-ai-defense-mcp-scanner",
+    "name": "Cisco MCP Scanner — Quét bảo mật MCP server và công cụ",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security",
+      "qa_testing"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)",
+      "Kiểm thử phần mềm & QA/QC"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/cisco-ai-defense/mcp-scanner",
+    "websiteUrl": "",
+    "authorName": "Cisco AI Defense",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "MCP Scanner là công cụ Python của Cisco AI Defense để quét MCP server và công cụ nhằm tìm vấn đề bảo mật tiềm ẩn. Công cụ kết hợp ba engine — luật YARA, phân tích bằng LLM và Cisco AI Defense inspect API — có thể dùng riêng hoặc cùng nhau, chạy dạng CLI hoặc REST API server.",
+    "purposeVi": "Giúp nhà phát triển và đội bảo mật kiểm tra MCP server mình cài đặt hoặc phát triển để phát hiện công cụ độc hại, prompt injection trước khi dùng với agent AI.",
+    "featuresVi": [
+      "Ba engine phân tích: YARA (không cần khóa API), LLM và Cisco AI Defense API",
+      "Quét tools, prompts, resources và server instructions; quét cấu hình MCP có sẵn trên máy (`--scan-known-configs`)",
+      "Quét mã nguồn theo hành vi, quét gói Python có lỗ hổng qua pip-audit, quét tệp nhị phân qua VirusTotal (tùy chọn)",
+      "Quét tĩnh/ngoại tuyến từ tệp JSON cho CI/CD và môi trường cách ly",
+      "Chạy dạng REST API server (`mcp-scanner-api`); hỗ trợ OAuth cho SSE và streamable HTTP"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.11+ và uv; khóa Cisco AI Defense API, khóa LLM, khóa VirusTotal đều là tùy chọn tùy engine sử dụng.\nBước 1: Cài đặt dạng công cụ CLI: `uv tool install --python 3.13 cisco-ai-mcp-scanner`\nBước 2: Hoặc cài đặt từ mã nguồn: `uv tool install --python 3.13 --from git+https://github.com/cisco-ai-defense/mcp-scanner cisco-ai-mcp-scanner`\nBước 3: Đặt biến môi trường như MCP_SCANNER_API_KEY hoặc MCP_SCANNER_LLM_API_KEY nếu dùng engine API/LLM",
+    "usageGuideVi": "Bước 1: Quét các cấu hình MCP đã biết trên máy bằng YARA: `mcp-scanner --scan-known-configs --analyzers yara --format summary`\nBước 2: Quét một MCP server từ xa: `mcp-scanner --server-url https://mcp.deepwiki.com/mcp --analyzers yara --format summary`\nBước 3: Chạy dạng REST API: `mcp-scanner-api --host 0.0.0.0 --port 8080`",
+    "samplePromptsVi": [
+      "Quét tất cả MCP server trong cấu hình Claude Desktop và Cursor của tôi bằng engine YARA và tóm tắt kết quả.",
+      "Kiểm tra MCP server nội bộ tại http://127.0.0.1:8000/mcp bằng phân tích LLM cho phần prompts.",
+      "Thêm bước quét tĩnh mcp-scanner vào pipeline CI cho MCP server chúng tôi phát triển."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "uv tool install --python 3.13 cisco-ai-mcp-scanner",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uv tool install --python 3.13 cisco-ai-mcp-scanner\"\n  ],\n  \"nguon\": \"https://github.com/cisco-ai-defense/mcp-scanner\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Engine YARA hoạt động không cần khóa API",
+      "Hỗ trợ quét ngoại tuyến cho CI/CD"
+    ],
+    "consVi": [
+      "Engine Cisco AI Defense cần khóa API của Cisco; engine LLM cần khóa nhà cung cấp LLM",
+      "Quét MCP server stdio sẽ khởi chạy tiến trình server trên máy"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Cisco MCP Scanner — Quét bảo mật MCP server và công cụ\n\n> A Python tool for scanning MCP (Model Context Protocol) servers and tools for potential security findings.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMCP Scanner là công cụ Python của Cisco AI Defense để quét MCP server và công cụ nhằm tìm vấn đề bảo mật tiềm ẩn. Công cụ kết hợp ba engine — luật YARA, phân tích bằng LLM và Cisco AI Defense inspect API — có thể dùng riêng hoặc cùng nhau, chạy dạng CLI hoặc REST API server.\n\nGiúp nhà phát triển và đội bảo mật kiểm tra MCP server mình cài đặt hoặc phát triển để phát hiện công cụ độc hại, prompt injection trước khi dùng với agent AI.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** Cisco AI Defense\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/cisco-ai-defense/mcp-scanner](https://github.com/cisco-ai-defense/mcp-scanner)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Ba engine phân tích: YARA (không cần khóa API), LLM và Cisco AI Defense API**\n- **Quét tools, prompts, resources và server instructions; quét cấu hình MCP có sẵn trên máy (`--scan-known-configs`)**\n- **Quét mã nguồn theo hành vi, quét gói Python có lỗ hổng qua pip-audit, quét tệp nhị phân qua VirusTotal (tùy chọn)**\n- **Quét tĩnh/ngoại tuyến từ tệp JSON cho CI/CD và môi trường cách ly**\n- **Chạy dạng REST API server (`mcp-scanner-api`); hỗ trợ OAuth cho SSE và streamable HTTP**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuv tool install --python 3.13 cisco-ai-mcp-scanner\n```\n\nYêu cầu: Python 3.11+ và uv; khóa Cisco AI Defense API, khóa LLM, khóa VirusTotal đều là tùy chọn tùy engine sử dụng.\nBước 1: Cài đặt dạng công cụ CLI: `uv tool install --python 3.13 cisco-ai-mcp-scanner`\nBước 2: Hoặc cài đặt từ mã nguồn: `uv tool install --python 3.13 --from git+https://github.com/cisco-ai-defense/mcp-scanner cisco-ai-mcp-scanner`\nBước 3: Đặt biến môi trường như MCP_SCANNER_API_KEY hoặc MCP_SCANNER_LLM_API_KEY nếu dùng engine API/LLM\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Quét các cấu hình MCP đã biết trên máy bằng YARA: `mcp-scanner --scan-known-configs --analyzers yara --format summary`\nBước 2: Quét một MCP server từ xa: `mcp-scanner --server-url https://mcp.deepwiki.com/mcp --analyzers yara --format summary`\nBước 3: Chạy dạng REST API: `mcp-scanner-api --host 0.0.0.0 --port 8080`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Quét tất cả MCP server trong cấu hình Claude Desktop và Cursor của tôi bằng engine YARA và tóm tắt kết quả.\"\n- \"Kiểm tra MCP server nội bộ tại http://127.0.0.1:8000/mcp bằng phân tích LLM cho phần prompts.\"\n- \"Thêm bước quét tĩnh mcp-scanner vào pipeline CI cho MCP server chúng tôi phát triển.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "vanna-ai-vanna",
+    "slug": "vanna-ai-vanna",
+    "name": "Vanna — Thư viện Python hỏi đáp dữ liệu bằng ngôn ngữ tự nhiên, chuyển câu hỏi thành SQL",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "data_science_analytics",
+    "categoryNameVi": "Khoa học dữ liệu & Phân tích kinh doanh",
+    "categories": [
+      "data_science_analytics",
+      "database_sql_nosql"
+    ],
+    "categoryNamesVi": [
+      "Khoa học dữ liệu & Phân tích kinh doanh",
+      "Cơ sở dữ liệu SQL & NoSQL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/vanna-ai/vanna",
+    "websiteUrl": "https://vanna.ai",
+    "authorName": "Vanna.AI",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Vanna 2.0 là thư viện Python mã nguồn mở biến câu hỏi bằng ngôn ngữ tự nhiên thành câu lệnh SQL, chạy trên cơ sở dữ liệu của bạn và trả về bảng dữ liệu, biểu đồ Plotly cùng phần tóm tắt. Phiên bản 2.0 viết lại theo mô hình Agent, nhận biết người dùng ở mọi tầng (lọc theo quyền, bảo mật mức dòng, nhật ký kiểm toán) và kèm sẵn thành phần web <vanna-chat> để nhúng vào trang có sẵn.",
+    "purposeVi": "Giúp đội ngũ phát triển xây dựng giao diện hỏi đáp dữ liệu bằng ngôn ngữ tự nhiên (text-to-SQL) cho ứng dụng phân tích, có phân quyền theo người dùng và tích hợp với hệ thống xác thực sẵn có.",
+    "featuresVi": [
+      "Text-to-SQL: hỏi bằng ngôn ngữ tự nhiên, nhận câu SQL, bảng dữ liệu tương tác, biểu đồ Plotly và tóm tắt",
+      "Nhận biết người dùng: danh tính đi qua system prompt, công cụ và bộ lọc SQL; hỗ trợ bảo mật mức dòng, nhật ký kiểm toán, giới hạn tần suất",
+      "Thành phần web <vanna-chat>: nhúng vào React, Vue hoặc HTML thuần, phản hồi dạng streaming",
+      "Nhiều LLM: OpenAI, Anthropic, Ollama, Azure, Google Gemini, AWS Bedrock, Mistral",
+      "Nhiều cơ sở dữ liệu: PostgreSQL, MySQL, Snowflake, BigQuery, Redshift, SQLite, Oracle, SQL Server, DuckDB, ClickHouse",
+      "Mở rộng: tự viết công cụ kế thừa lớp Tool, lifecycle hooks, LLM middleware, tích hợp FastAPI/Flask"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.9 trở lên (theo pyproject.toml); khóa API của nhà cung cấp LLM (ví dụ Anthropic, OpenAI) hoặc mô hình cục bộ qua Ollama; một cơ sở dữ liệu SQL để truy vấn.\nBước 1: Cài đặt Vanna 2.0 kèm tích hợp Flask và Anthropic: `pip install 'vanna[flask,anthropic]'`\nBước 2: Tạo Agent với dịch vụ LLM (ví dụ AnthropicLlmService), đăng ký RunSqlTool trỏ tới cơ sở dữ liệu và khai báo UserResolver theo hệ thống xác thực của bạn\nBước 3: Gắn các route chat vào ứng dụng FastAPI bằng register_chat_routes, sau đó nhúng thẻ <vanna-chat sse-endpoint=\"/api/vanna/v2/chat_sse\"> vào giao diện",
+    "usageGuideVi": "Bước 1: Người dùng đặt câu hỏi về dữ liệu trong khung <vanna-chat>\nBước 2: Agent sinh câu SQL, chạy qua công cụ SQL có kiểm tra quyền và áp dụng bảo mật mức dòng\nBước 3: Kết quả được stream về giao diện: tiến trình, câu SQL (mặc định chỉ hiện cho nhóm admin), bảng, biểu đồ và tóm tắt\nBước 4: Dự án dùng Vanna 0.x có thể bọc bằng LegacyVannaAdapter theo hướng dẫn chuyển đổi MIGRATION_GUIDE.md",
+    "samplePromptsVi": [
+      "Cho tôi xem doanh số quý 4 theo từng khu vực",
+      "Top 10 khách hàng có giá trị đơn hàng cao nhất năm nay là ai?",
+      "Vẽ biểu đồ số lượng đơn hàng theo tháng trong 12 tháng gần nhất"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install 'vanna[flask,anthropic]'",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install 'vanna[flask,anthropic]'\"\n  ],\n  \"nguon\": \"https://github.com/vanna-ai/vanna\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, dùng tự do cho mục đích thương mại",
+      "Có sẵn giao diện chat dạng web component, không cần tự xây dựng",
+      "Hỗ trợ nhiều LLM và nhiều loại cơ sở dữ liệu phổ biến",
+      "Tính năng phân quyền theo người dùng, bảo mật mức dòng và nhật ký kiểm toán phục vụ môi trường doanh nghiệp"
+    ],
+    "consVi": [
+      "README không có lệnh cài đặt trực tiếp; hướng dẫn chi tiết nằm ở trang tài liệu vanna.ai và MIGRATION_GUIDE.md",
+      "Phiên bản 2.0 là bản viết lại hoàn toàn, mã dùng VannaBase 0.x cần chuyển đổi",
+      "Cần khóa API của nhà cung cấp LLM hoặc tự chạy mô hình cục bộ"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Vanna — Thư viện Python hỏi đáp dữ liệu bằng ngôn ngữ tự nhiên, chuyển câu hỏi thành SQL\n\n> Natural language → SQL → Answers. Now with enterprise security and user-aware permissions.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nVanna 2.0 là thư viện Python mã nguồn mở biến câu hỏi bằng ngôn ngữ tự nhiên thành câu lệnh SQL, chạy trên cơ sở dữ liệu của bạn và trả về bảng dữ liệu, biểu đồ Plotly cùng phần tóm tắt. Phiên bản 2.0 viết lại theo mô hình Agent, nhận biết người dùng ở mọi tầng (lọc theo quyền, bảo mật mức dòng, nhật ký kiểm toán) và kèm sẵn thành phần web <vanna-chat> để nhúng vào trang có sẵn.\n\nGiúp đội ngũ phát triển xây dựng giao diện hỏi đáp dữ liệu bằng ngôn ngữ tự nhiên (text-to-SQL) cho ứng dụng phân tích, có phân quyền theo người dùng và tích hợp với hệ thống xác thực sẵn có.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Khoa học dữ liệu & Phân tích kinh doanh\n- **Tác giả / Nhà phát triển:** Vanna.AI\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/vanna-ai/vanna](https://github.com/vanna-ai/vanna)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Text-to-SQL: hỏi bằng ngôn ngữ tự nhiên, nhận câu SQL, bảng dữ liệu tương tác, biểu đồ Plotly và tóm tắt**\n- **Nhận biết người dùng: danh tính đi qua system prompt, công cụ và bộ lọc SQL; hỗ trợ bảo mật mức dòng, nhật ký kiểm toán, giới hạn tần suất**\n- **Thành phần web <vanna-chat>: nhúng vào React, Vue hoặc HTML thuần, phản hồi dạng streaming**\n- **Nhiều LLM: OpenAI, Anthropic, Ollama, Azure, Google Gemini, AWS Bedrock, Mistral**\n- **Nhiều cơ sở dữ liệu: PostgreSQL, MySQL, Snowflake, BigQuery, Redshift, SQLite, Oracle, SQL Server, DuckDB, ClickHouse**\n- **Mở rộng: tự viết công cụ kế thừa lớp Tool, lifecycle hooks, LLM middleware, tích hợp FastAPI/Flask**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install 'vanna[flask,anthropic]'\n```\n\nYêu cầu: Python 3.9 trở lên (theo pyproject.toml); khóa API của nhà cung cấp LLM (ví dụ Anthropic, OpenAI) hoặc mô hình cục bộ qua Ollama; một cơ sở dữ liệu SQL để truy vấn.\nBước 1: Cài đặt Vanna 2.0 kèm tích hợp Flask và Anthropic: `pip install 'vanna[flask,anthropic]'`\nBước 2: Tạo Agent với dịch vụ LLM (ví dụ AnthropicLlmService), đăng ký RunSqlTool trỏ tới cơ sở dữ liệu và khai báo UserResolver theo hệ thống xác thực của bạn\nBước 3: Gắn các route chat vào ứng dụng FastAPI bằng register_chat_routes, sau đó nhúng thẻ <vanna-chat sse-endpoint=\"/api/vanna/v2/chat_sse\"> vào giao diện\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Người dùng đặt câu hỏi về dữ liệu trong khung <vanna-chat>\nBước 2: Agent sinh câu SQL, chạy qua công cụ SQL có kiểm tra quyền và áp dụng bảo mật mức dòng\nBước 3: Kết quả được stream về giao diện: tiến trình, câu SQL (mặc định chỉ hiện cho nhóm admin), bảng, biểu đồ và tóm tắt\nBước 4: Dự án dùng Vanna 0.x có thể bọc bằng LegacyVannaAdapter theo hướng dẫn chuyển đổi MIGRATION_GUIDE.md\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Cho tôi xem doanh số quý 4 theo từng khu vực\"\n- \"Top 10 khách hàng có giá trị đơn hàng cao nhất năm nay là ai?\"\n- \"Vẽ biểu đồ số lượng đơn hàng theo tháng trong 12 tháng gần nhất\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "canner-wrenai",
+    "slug": "canner-wrenai",
+    "name": "WrenAI — Công cụ GenBI mã nguồn mở: lớp ngữ nghĩa và text-to-SQL có quản trị cho tác tử AI",
+    "icon": "Database",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "data_science_analytics",
+    "categoryNameVi": "Khoa học dữ liệu & Phân tích kinh doanh",
+    "categories": [
+      "data_science_analytics",
+      "database_sql_nosql"
+    ],
+    "categoryNamesVi": [
+      "Khoa học dữ liệu & Phân tích kinh doanh",
+      "Cơ sở dữ liệu SQL & NoSQL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/Canner/WrenAI",
+    "websiteUrl": "https://getwren.ai",
+    "authorName": "Canner",
+    "license": "Mã nguồn mở (Apache-2.0), mô hình open core",
+    "summaryVi": "WrenAI là bộ máy GenBI (BI tạo sinh) mã nguồn mở, cung cấp lớp ngữ nghĩa có quản trị (MDL) và lớp ngữ cảnh AI cho các tác tử như Claude Code, Cursor, Cline, Codex hay client MCP. Nhờ đó tác tử sinh SQL đúng định nghĩa nghiệp vụ, truy vấn trên hơn 22 nguồn dữ liệu và triển khai dashboard; mọi định nghĩa được lưu dưới dạng YAML/Markdown trong Git.",
+    "purposeVi": "Giúp tác tử AI trả lời câu hỏi kinh doanh bằng SQL có kiểm soát và dựng dashboard từ dữ liệu doanh nghiệp, với định nghĩa chỉ số được quản lý và review như mã nguồn.",
+    "featuresVi": [
+      "Lớp ngữ nghĩa MDL: mô hình, cột, quan hệ, view, cube và metric được định nghĩa một lần, dùng thống nhất",
+      "Text-to-SQL có quản trị: truy xuất theo schema, lập kế hoạch MDL, kiểm tra dry-plan, giới hạn số dòng, lỗi có gợi ý",
+      "Engine Apache DataFusion: BigQuery, Snowflake, PostgreSQL, ClickHouse, Redshift, Databricks, DuckDB và hơn 22 nguồn",
+      "Dashboard GenBI: tác tử dựng ứng dụng chạy phía trình duyệt (wren-core-wasm), triển khai lên Vercel hoặc Cloudflare Pages",
+      "Tri thức và bộ nhớ: instructions.md, queries.yml quản lý phiên bản cùng chỉ mục bộ nhớ LanceDB cục bộ",
+      "SDK cho tác tử: wren-langchain (LangChain/LangGraph), wren-pydantic"
+    ],
+    "installGuideVi": "Yêu cầu: Python và pip; Node.js (npx) để cài đặt skill cho tác tử; một tác tử AI như Claude Code, Cursor, Cline hoặc Codex; cơ sở dữ liệu cần kết nối (có thể dùng mẫu jaffle_shop đi kèm).\nBước 1: Cài đặt công cụ dòng lệnh: `pip install wrenai`\nBước 2: Thêm connector khi cần, ví dụ: `pip install \"wrenai[postgres,memory]\"`\nBước 3: Cài đặt skill hướng dẫn cho tác tử của bạn: `npx skills add Canner/WrenAI`\nBước 4: Mở tác tử trong thư mục dự án và yêu cầu: \"Use Wren to set up my Postgres database.\"",
+    "usageGuideVi": "Bước 1: Lấy hướng dẫn quy trình khởi tạo dự án và truy vấn đầu tiên: `wren skills get onboarding`\nBước 2: Bổ sung ngữ cảnh nghiệp vụ (định nghĩa, ví dụ) bằng quy trình `wren skills get enrich-context`\nBước 3: Truy vấn qua lớp ngữ nghĩa MDL: `wren query --sql '...'`\nBước 4: Dựng và triển khai dashboard bằng quy trình `wren skills get genbi`",
+    "samplePromptsVi": [
+      "Use Wren to set up my Postgres database",
+      "Ai là 10 khách hàng có doanh số cao nhất quý này?",
+      "Biến kết quả đó thành dashboard có bộ lọc để chia sẻ, triển khai lên Vercel"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install wrenai",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install wrenai\"\n  ],\n  \"nguon\": \"https://github.com/Canner/WrenAI\"\n}"
+      },
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "npx skills add Canner/WrenAI",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx skills add Canner/WrenAI\"\n  ],\n  \"nguon\": \"https://github.com/Canner/WrenAI\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Lõi engine, SDK và skill theo giấy phép Apache-2.0, tự host được",
+      "Làm việc qua các tác tử sẵn có (Claude Code, Cursor, client MCP), không bắt buộc dùng giao diện riêng",
+      "Định nghĩa chỉ số lưu trong Git, review được qua pull request",
+      "Hỗ trợ hơn 22 nguồn dữ liệu trên một engine",
+      "Được bảo trì rất tích cực"
+    ],
+    "consVi": [
+      "Mô hình open core: bảo mật mức dòng/cột, giao diện GenBI, dashboard nhúng và API là tính năng thương mại (Wren AI Cloud / Enterprise Plus)",
+      "Ứng dụng GenBI dạng Docker trước đây đã chuyển sang nhánh legacy/v1 (Wren GenBI Classic)",
+      "Cần có tác tử AI và tài khoản LLM tương ứng để dùng hiệu quả"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# WrenAI — Công cụ GenBI mã nguồn mở: lớp ngữ nghĩa và text-to-SQL có quản trị cho tác tử AI\n\n> Open-source GenBI for AI agents\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nWrenAI là bộ máy GenBI (BI tạo sinh) mã nguồn mở, cung cấp lớp ngữ nghĩa có quản trị (MDL) và lớp ngữ cảnh AI cho các tác tử như Claude Code, Cursor, Cline, Codex hay client MCP. Nhờ đó tác tử sinh SQL đúng định nghĩa nghiệp vụ, truy vấn trên hơn 22 nguồn dữ liệu và triển khai dashboard; mọi định nghĩa được lưu dưới dạng YAML/Markdown trong Git.\n\nGiúp tác tử AI trả lời câu hỏi kinh doanh bằng SQL có kiểm soát và dựng dashboard từ dữ liệu doanh nghiệp, với định nghĩa chỉ số được quản lý và review như mã nguồn.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Khoa học dữ liệu & Phân tích kinh doanh\n- **Tác giả / Nhà phát triển:** Canner\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0), mô hình open core\n- **Nền tảng hỗ trợ:** `web`, `claude_code`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/Canner/WrenAI](https://github.com/Canner/WrenAI)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Lớp ngữ nghĩa MDL: mô hình, cột, quan hệ, view, cube và metric được định nghĩa một lần, dùng thống nhất**\n- **Text-to-SQL có quản trị: truy xuất theo schema, lập kế hoạch MDL, kiểm tra dry-plan, giới hạn số dòng, lỗi có gợi ý**\n- **Engine Apache DataFusion: BigQuery, Snowflake, PostgreSQL, ClickHouse, Redshift, Databricks, DuckDB và hơn 22 nguồn**\n- **Dashboard GenBI: tác tử dựng ứng dụng chạy phía trình duyệt (wren-core-wasm), triển khai lên Vercel hoặc Cloudflare Pages**\n- **Tri thức và bộ nhớ: instructions.md, queries.yml quản lý phiên bản cùng chỉ mục bộ nhớ LanceDB cục bộ**\n- **SDK cho tác tử: wren-langchain (LangChain/LangGraph), wren-pydantic**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install wrenai\n```\n\nYêu cầu: Python và pip; Node.js (npx) để cài đặt skill cho tác tử; một tác tử AI như Claude Code, Cursor, Cline hoặc Codex; cơ sở dữ liệu cần kết nối (có thể dùng mẫu jaffle_shop đi kèm).\nBước 1: Cài đặt công cụ dòng lệnh: `pip install wrenai`\nBước 2: Thêm connector khi cần, ví dụ: `pip install \"wrenai[postgres,memory]\"`\nBước 3: Cài đặt skill hướng dẫn cho tác tử của bạn: `npx skills add Canner/WrenAI`\nBước 4: Mở tác tử trong thư mục dự án và yêu cầu: \"Use Wren to set up my Postgres database.\"\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Lấy hướng dẫn quy trình khởi tạo dự án và truy vấn đầu tiên: `wren skills get onboarding`\nBước 2: Bổ sung ngữ cảnh nghiệp vụ (định nghĩa, ví dụ) bằng quy trình `wren skills get enrich-context`\nBước 3: Truy vấn qua lớp ngữ nghĩa MDL: `wren query --sql '...'`\nBước 4: Dựng và triển khai dashboard bằng quy trình `wren skills get genbi`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Use Wren to set up my Postgres database\"\n- \"Ai là 10 khách hàng có doanh số cao nhất quý này?\"\n- \"Biến kết quả đó thành dashboard có bộ lọc để chia sẻ, triển khai lên Vercel\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "sinaptik-ai-pandas-ai",
+    "slug": "sinaptik-ai-pandas-ai",
+    "name": "PandasAI — Thư viện Python hỏi đáp và vẽ biểu đồ dữ liệu bằng ngôn ngữ tự nhiên",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "data_science_analytics",
+    "categoryNameVi": "Khoa học dữ liệu & Phân tích kinh doanh",
+    "categories": [
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/sinaptik-ai/pandas-ai",
+    "websiteUrl": "https://docs.pandas-ai.com/",
+    "authorName": "Sinaptik GmbH",
+    "license": "Mã nguồn mở (MIT, trừ thư mục ee)",
+    "summaryVi": "PandasAI là thư viện Python cho phép đặt câu hỏi về dữ liệu (CSV, DataFrame) bằng ngôn ngữ tự nhiên và nhận câu trả lời hoặc biểu đồ. Thư viện hỗ trợ hỏi trên nhiều DataFrame cùng lúc, kết nối LLM qua gói pandasai-litellm và có thể chạy mã trong sandbox Docker để tăng an toàn.",
+    "purposeVi": "Giúp người không chuyên kỹ thuật tương tác với dữ liệu tự nhiên hơn, đồng thời giúp người làm dữ liệu tiết kiệm thời gian khi phân tích bằng pandas.",
+    "featuresVi": [
+      "Hỏi đáp dữ liệu: gọi df.chat(\"...\") để hỏi bằng ngôn ngữ tự nhiên trên DataFrame",
+      "Vẽ biểu đồ: yêu cầu tạo histogram, biểu đồ cột... trực tiếp bằng câu lệnh tự nhiên",
+      "Nhiều DataFrame: hỏi câu hỏi liên kết nhiều bảng bằng pai.chat(...)",
+      "Kết nối LLM qua LiteLLM (pandasai-litellm), ví dụ mô hình OpenAI",
+      "Sandbox Docker (pandasai-docker): chạy mã sinh ra trong môi trường cô lập"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.8 đến 3.11; khóa API của nhà cung cấp LLM (ví dụ OpenAI) dùng qua LiteLLM; Docker nếu dùng sandbox.\nBước 1: Cài đặt thư viện chính: `pip install pandasai`\nBước 2: Cài đặt bộ kết nối LLM: `pip install pandasai-litellm`\nBước 3: Hoặc cài đặt bằng poetry: `poetry add pandasai`\nBước 4: (Tùy chọn) Cài đặt sandbox Docker để chạy mã an toàn: `pip install \"pandasai-docker\"`",
+    "usageGuideVi": "Bước 1: Khởi tạo LiteLLM(model=\"gpt-4.1-mini\", api_key=...) và cấu hình bằng pai.config.set({\"llm\": llm})\nBước 2: Nạp dữ liệu: df = pai.read_csv(\"data/companies.csv\")\nBước 3: Đặt câu hỏi: df.chat(\"What is the average revenue by region?\")\nBước 4: Với dữ liệu nhạy cảm, khởi tạo DockerSandbox() và truyền sandbox=sandbox vào pai.chat",
+    "samplePromptsVi": [
+      "Doanh thu trung bình theo từng khu vực là bao nhiêu?",
+      "Tổng doanh số của 3 quốc gia bán chạy nhất là bao nhiêu?",
+      "Vẽ histogram GDP theo quốc gia, mỗi cột một màu"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install pandasai",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install pandasai\"\n  ],\n  \"nguon\": \"https://github.com/sinaptik-ai/pandas-ai\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Phần lõi theo giấy phép MIT",
+      "API đơn giản, tích hợp trực tiếp với quy trình pandas",
+      "Có sandbox Docker để cô lập mã do LLM sinh ra",
+      "Kết nối được nhiều LLM qua LiteLLM"
+    ],
+    "consVi": [
+      "Thư mục pandasai/ee theo giấy phép riêng, không phải MIT",
+      "Chỉ hỗ trợ Python 3.8 đến 3.11",
+      "Cần khóa API LLM",
+      "Commit gần nhất trên nhánh chính là 28/10/2025, nhịp cập nhật chậm hơn các dự án khác"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# PandasAI — Thư viện Python hỏi đáp và vẽ biểu đồ dữ liệu bằng ngôn ngữ tự nhiên\n\n> PandasAI is a Python library that makes it easy to ask questions to your data in natural language.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPandasAI là thư viện Python cho phép đặt câu hỏi về dữ liệu (CSV, DataFrame) bằng ngôn ngữ tự nhiên và nhận câu trả lời hoặc biểu đồ. Thư viện hỗ trợ hỏi trên nhiều DataFrame cùng lúc, kết nối LLM qua gói pandasai-litellm và có thể chạy mã trong sandbox Docker để tăng an toàn.\n\nGiúp người không chuyên kỹ thuật tương tác với dữ liệu tự nhiên hơn, đồng thời giúp người làm dữ liệu tiết kiệm thời gian khi phân tích bằng pandas.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Khoa học dữ liệu & Phân tích kinh doanh\n- **Tác giả / Nhà phát triển:** Sinaptik GmbH\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT, trừ thư mục ee)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/sinaptik-ai/pandas-ai](https://github.com/sinaptik-ai/pandas-ai)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Hỏi đáp dữ liệu: gọi df.chat(\"...\") để hỏi bằng ngôn ngữ tự nhiên trên DataFrame**\n- **Vẽ biểu đồ: yêu cầu tạo histogram, biểu đồ cột... trực tiếp bằng câu lệnh tự nhiên**\n- **Nhiều DataFrame: hỏi câu hỏi liên kết nhiều bảng bằng pai.chat(...)**\n- **Kết nối LLM qua LiteLLM (pandasai-litellm), ví dụ mô hình OpenAI**\n- **Sandbox Docker (pandasai-docker): chạy mã sinh ra trong môi trường cô lập**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install pandasai\n```\n\nYêu cầu: Python 3.8 đến 3.11; khóa API của nhà cung cấp LLM (ví dụ OpenAI) dùng qua LiteLLM; Docker nếu dùng sandbox.\nBước 1: Cài đặt thư viện chính: `pip install pandasai`\nBước 2: Cài đặt bộ kết nối LLM: `pip install pandasai-litellm`\nBước 3: Hoặc cài đặt bằng poetry: `poetry add pandasai`\nBước 4: (Tùy chọn) Cài đặt sandbox Docker để chạy mã an toàn: `pip install \"pandasai-docker\"`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi tạo LiteLLM(model=\"gpt-4.1-mini\", api_key=...) và cấu hình bằng pai.config.set({\"llm\": llm})\nBước 2: Nạp dữ liệu: df = pai.read_csv(\"data/companies.csv\")\nBước 3: Đặt câu hỏi: df.chat(\"What is the average revenue by region?\")\nBước 4: Với dữ liệu nhạy cảm, khởi tạo DockerSandbox() và truyền sandbox=sandbox vào pai.chat\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Doanh thu trung bình theo từng khu vực là bao nhiêu?\"\n- \"Tổng doanh số của 3 quốc gia bán chạy nhất là bao nhiêu?\"\n- \"Vẽ histogram GDP theo quốc gia, mỗi cột một màu\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "apache-superset",
+    "slug": "apache-superset",
+    "name": "Apache Superset — Nền tảng BI mã nguồn mở trực quan hóa dữ liệu, có dịch vụ MCP cho tác tử AI",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "data_science_analytics",
+    "categoryNameVi": "Khoa học dữ liệu & Phân tích kinh doanh",
+    "categories": [
+      "data_science_analytics",
+      "database_sql_nosql"
+    ],
+    "categoryNamesVi": [
+      "Khoa học dữ liệu & Phân tích kinh doanh",
+      "Cơ sở dữ liệu SQL & NoSQL"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_desktop"
+    ],
+    "sourceUrl": "https://github.com/apache/superset",
+    "websiteUrl": "https://superset.apache.org",
+    "authorName": "Apache Software Foundation",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Apache Superset là nền tảng khám phá và trực quan hóa dữ liệu (BI) trên web, có trình tạo biểu đồ không cần viết mã, trình soạn SQL mạnh mẽ và lớp ngữ nghĩa gọn nhẹ. Superset kết nối hầu hết cơ sở dữ liệu nói SQL có driver DB-API và dialect SQLAlchemy, và đi kèm dịch vụ MCP để tác tử AI như Claude Desktop truy vấn dữ liệu, tạo biểu đồ, quản lý dashboard.",
+    "purposeVi": "Thay thế hoặc bổ sung cho công cụ BI thương mại: xây dựng dashboard, phân tích dữ liệu bằng SQL và cho phép tác tử AI thao tác với dữ liệu qua MCP.",
+    "featuresVi": [
+      "Trình tạo biểu đồ không cần viết mã cùng thư viện trực quan hóa phong phú, đến cả biểu đồ địa lý",
+      "SQL Lab: trình soạn SQL trên web cho truy vấn nâng cao",
+      "Lớp ngữ nghĩa gọn nhẹ để định nghĩa chiều và chỉ số tùy chỉnh",
+      "Kết nối hầu hết cơ sở dữ liệu SQL (Presto, Trino, Athena...) qua SQLAlchemy",
+      "Phân quyền, xác thực mở rộng được, lớp cache và REST API",
+      "Dịch vụ MCP: cho phép tác tử AI truy vấn dữ liệu, tạo biểu đồ và quản lý dashboard bằng ngôn ngữ tự nhiên"
+    ],
+    "installGuideVi": "Yêu cầu: Docker, Docker Compose và Git cho cách chạy nhanh; Python 3.11 hoặc 3.12 nếu cài đặt thủ công. Môi trường sản xuất nên triển khai trên Kubernetes.\nBước 1: Tải mã nguồn: `git clone https://github.com/apache/superset`\nBước 2: Vào thư mục superset và chuyển sang bản phát hành chính thức: `git checkout tags/6.0.0`\nBước 3: Cài đặt và khởi động bằng Docker Compose: `docker compose -f docker-compose-image-tag.yml up`\nBước 4: Mở http://localhost:8088 và đăng nhập bằng tài khoản mặc định admin/admin\nBước 5: (Tùy chọn) Chạy dịch vụ MCP khi cài đặt thủ công: `superset mcp run --port 5008 --debug`",
+    "usageGuideVi": "Bước 1: Kết nối cơ sở dữ liệu trong giao diện, tạo dataset\nBước 2: Dùng trình tạo biểu đồ hoặc SQL Lab để khám phá dữ liệu, rồi ghép thành dashboard\nBước 3: Để dùng với Claude Desktop, khai báo máy chủ MCP trong claude_desktop_config.json theo hướng dẫn superset/mcp_service/README.md\nBước 4: Dừng môi trường bằng docker compose down khi không dùng",
+    "samplePromptsVi": [
+      "Liệt kê các dashboard hiện có trên Superset",
+      "Tạo biểu đồ cột doanh thu theo tháng từ dataset sales",
+      "Truy vấn 10 sản phẩm bán chạy nhất trong dataset orders"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "docker compose -f docker-compose-image-tag.yml up",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"docker compose -f docker-compose-image-tag.yml up\"\n  ],\n  \"nguon\": \"https://github.com/apache/superset\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "cliCommand": "superset mcp run --port 5008 --debug",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"Superset MCP Proxy\": {\n      \"command\": \"/<superset folder>/superset/mcp_service/run_proxy.sh\",\n      \"args\": [],\n      \"env\": {}\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Dự án Apache, giấy phép Apache-2.0",
+      "Hỗ trợ gần như mọi cơ sở dữ liệu SQL",
+      "Có dịch vụ MCP tích hợp sẵn cho tác tử AI",
+      "Cộng đồng lớn, được bảo trì rất tích cực"
+    ],
+    "consVi": [
+      "README không chứa lệnh cài đặt; cần xem trang quickstart trong thư mục docs",
+      "Cấu hình Docker Compose dùng để thử nghiệm, không khuyến nghị cho môi trường sản xuất",
+      "Dịch vụ MCP yêu cầu Superset đang chạy và cấu hình thêm (proxy cho Claude Desktop)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Apache Superset — Nền tảng BI mã nguồn mở trực quan hóa dữ liệu, có dịch vụ MCP cho tác tử AI\n\n> A modern, enterprise-ready business intelligence web application.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nApache Superset là nền tảng khám phá và trực quan hóa dữ liệu (BI) trên web, có trình tạo biểu đồ không cần viết mã, trình soạn SQL mạnh mẽ và lớp ngữ nghĩa gọn nhẹ. Superset kết nối hầu hết cơ sở dữ liệu nói SQL có driver DB-API và dialect SQLAlchemy, và đi kèm dịch vụ MCP để tác tử AI như Claude Desktop truy vấn dữ liệu, tạo biểu đồ, quản lý dashboard.\n\nThay thế hoặc bổ sung cho công cụ BI thương mại: xây dựng dashboard, phân tích dữ liệu bằng SQL và cho phép tác tử AI thao tác với dữ liệu qua MCP.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Khoa học dữ liệu & Phân tích kinh doanh\n- **Tác giả / Nhà phát triển:** Apache Software Foundation\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`, `claude_desktop`\n- **Kho lưu trữ chính thức:** [https://github.com/apache/superset](https://github.com/apache/superset)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Trình tạo biểu đồ không cần viết mã cùng thư viện trực quan hóa phong phú, đến cả biểu đồ địa lý**\n- **SQL Lab: trình soạn SQL trên web cho truy vấn nâng cao**\n- **Lớp ngữ nghĩa gọn nhẹ để định nghĩa chiều và chỉ số tùy chỉnh**\n- **Kết nối hầu hết cơ sở dữ liệu SQL (Presto, Trino, Athena...) qua SQLAlchemy**\n- **Phân quyền, xác thực mở rộng được, lớp cache và REST API**\n- **Dịch vụ MCP: cho phép tác tử AI truy vấn dữ liệu, tạo biểu đồ và quản lý dashboard bằng ngôn ngữ tự nhiên**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndocker compose -f docker-compose-image-tag.yml up\n```\n\nYêu cầu: Docker, Docker Compose và Git cho cách chạy nhanh; Python 3.11 hoặc 3.12 nếu cài đặt thủ công. Môi trường sản xuất nên triển khai trên Kubernetes.\nBước 1: Tải mã nguồn: `git clone https://github.com/apache/superset`\nBước 2: Vào thư mục superset và chuyển sang bản phát hành chính thức: `git checkout tags/6.0.0`\nBước 3: Cài đặt và khởi động bằng Docker Compose: `docker compose -f docker-compose-image-tag.yml up`\nBước 4: Mở http://localhost:8088 và đăng nhập bằng tài khoản mặc định admin/admin\nBước 5: (Tùy chọn) Chạy dịch vụ MCP khi cài đặt thủ công: `superset mcp run --port 5008 --debug`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Kết nối cơ sở dữ liệu trong giao diện, tạo dataset\nBước 2: Dùng trình tạo biểu đồ hoặc SQL Lab để khám phá dữ liệu, rồi ghép thành dashboard\nBước 3: Để dùng với Claude Desktop, khai báo máy chủ MCP trong claude_desktop_config.json theo hướng dẫn superset/mcp_service/README.md\nBước 4: Dừng môi trường bằng docker compose down khi không dùng\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Liệt kê các dashboard hiện có trên Superset\"\n- \"Tạo biểu đồ cột doanh thu theo tháng từ dataset sales\"\n- \"Truy vấn 10 sản phẩm bán chạy nhất trong dataset orders\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "marimo-team-marimo",
+    "slug": "marimo-team-marimo",
+    "name": "marimo — Notebook Python phản ứng cho phân tích dữ liệu, có SQL và trợ lý AI tích hợp",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "data_science_analytics",
+    "categoryNameVi": "Khoa học dữ liệu & Phân tích kinh doanh",
+    "categories": [
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/marimo-team/marimo",
+    "websiteUrl": "https://marimo.io",
+    "authorName": "marimo",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "marimo là notebook Python phản ứng (reactive): chạy một ô hoặc tương tác với phần tử giao diện thì các ô phụ thuộc tự chạy lại, giữ mã và kết quả luôn nhất quán. Notebook lưu dưới dạng tệp .py thuần, hỗ trợ SQL, chạy như script hoặc triển khai thành ứng dụng web, kèm trợ lý AI hiểu dữ liệu trong bộ nhớ và khả năng cộng tác với tác tử như Claude Code.",
+    "purposeVi": "Thay thế Jupyter, Streamlit và các công cụ liên quan cho công việc phân tích dữ liệu: notebook tái lập được, thân thiện với Git và chia sẻ được dưới dạng ứng dụng.",
+    "featuresVi": [
+      "Phản ứng tự động: chạy lại các ô phụ thuộc hoặc đánh dấu stale, không còn trạng thái ẩn",
+      "Tương tác: gắn slider, bảng, biểu đồ vào Python mà không cần callback",
+      "Thiết kế cho dữ liệu: truy vấn DataFrame, cơ sở dữ liệu, kho dữ liệu bằng ô SQL; lọc và tìm kiếm DataFrame",
+      "AI tích hợp: sinh ô mã với trợ lý hiểu biến trong bộ nhớ, dùng khóa API riêng hoặc mô hình cục bộ; cộng tác với Claude Code qua marimo pair",
+      "Lưu dạng .py, chạy như script, triển khai thành ứng dụng web, slide hoặc chạy trong trình duyệt qua WASM",
+      "Chuyển đổi notebook Jupyter sang marimo bằng CLI"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.11 trở lên (theo pyproject.toml); pip hoặc conda.\nBước 1: Cài đặt marimo và mở hướng dẫn: `pip install marimo && marimo tutorial intro`\nBước 2: Cài đặt kèm phụ thuộc mở khóa ô SQL, AI completion: `pip install \"marimo[recommended]\"`\nBước 3: Tạo hoặc sửa notebook: `marimo edit`",
+    "usageGuideVi": "Bước 1: Mở trình soạn bằng `marimo edit`, viết ô Python hoặc ô SQL để khám phá dữ liệu\nBước 2: Dùng trợ lý AI trong trình soạn để sinh mã phân tích dựa trên biến hiện có\nBước 3: Chạy notebook dưới dạng ứng dụng web ẩn mã: `marimo run your_notebook.py`\nBước 4: Chuyển notebook Jupyter cũ: `marimo convert your_notebook.ipynb > your_notebook.py`",
+    "samplePromptsVi": [
+      "Viết ô SQL truy vấn DataFrame doanh số và lọc theo giá trị của slider",
+      "Sinh mã vẽ biểu đồ phân phối cột price từ DataFrame df đang có trong bộ nhớ",
+      "Tạo ứng dụng dashboard từ notebook phân tích này"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install marimo && marimo tutorial intro",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install marimo && marimo tutorial intro\"\n  ],\n  \"nguon\": \"https://github.com/marimo-team/marimo\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache-2.0",
+      "Notebook là tệp Python thuần, dễ quản lý bằng Git và chạy như script",
+      "Trợ lý AI chuyên cho dữ liệu, hỗ trợ khóa API riêng hoặc mô hình cục bộ",
+      "Được bảo trì rất tích cực, có tiện ích VS Code/Cursor và PyCharm"
+    ],
+    "consVi": [
+      "Mô hình phản ứng khác Jupyter, cần làm quen với cách tổ chức ô",
+      "Tính năng AI cần khóa API của nhà cung cấp hoặc mô hình cục bộ"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# marimo — Notebook Python phản ứng cho phân tích dữ liệu, có SQL và trợ lý AI tích hợp\n\n> A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nmarimo là notebook Python phản ứng (reactive): chạy một ô hoặc tương tác với phần tử giao diện thì các ô phụ thuộc tự chạy lại, giữ mã và kết quả luôn nhất quán. Notebook lưu dưới dạng tệp .py thuần, hỗ trợ SQL, chạy như script hoặc triển khai thành ứng dụng web, kèm trợ lý AI hiểu dữ liệu trong bộ nhớ và khả năng cộng tác với tác tử như Claude Code.\n\nThay thế Jupyter, Streamlit và các công cụ liên quan cho công việc phân tích dữ liệu: notebook tái lập được, thân thiện với Git và chia sẻ được dưới dạng ứng dụng.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Khoa học dữ liệu & Phân tích kinh doanh\n- **Tác giả / Nhà phát triển:** marimo\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/marimo-team/marimo](https://github.com/marimo-team/marimo)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Phản ứng tự động: chạy lại các ô phụ thuộc hoặc đánh dấu stale, không còn trạng thái ẩn**\n- **Tương tác: gắn slider, bảng, biểu đồ vào Python mà không cần callback**\n- **Thiết kế cho dữ liệu: truy vấn DataFrame, cơ sở dữ liệu, kho dữ liệu bằng ô SQL; lọc và tìm kiếm DataFrame**\n- **AI tích hợp: sinh ô mã với trợ lý hiểu biến trong bộ nhớ, dùng khóa API riêng hoặc mô hình cục bộ; cộng tác với Claude Code qua marimo pair**\n- **Lưu dạng .py, chạy như script, triển khai thành ứng dụng web, slide hoặc chạy trong trình duyệt qua WASM**\n- **Chuyển đổi notebook Jupyter sang marimo bằng CLI**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install marimo && marimo tutorial intro\n```\n\nYêu cầu: Python 3.11 trở lên (theo pyproject.toml); pip hoặc conda.\nBước 1: Cài đặt marimo và mở hướng dẫn: `pip install marimo && marimo tutorial intro`\nBước 2: Cài đặt kèm phụ thuộc mở khóa ô SQL, AI completion: `pip install \"marimo[recommended]\"`\nBước 3: Tạo hoặc sửa notebook: `marimo edit`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở trình soạn bằng `marimo edit`, viết ô Python hoặc ô SQL để khám phá dữ liệu\nBước 2: Dùng trợ lý AI trong trình soạn để sinh mã phân tích dựa trên biến hiện có\nBước 3: Chạy notebook dưới dạng ứng dụng web ẩn mã: `marimo run your_notebook.py`\nBước 4: Chuyển notebook Jupyter cũ: `marimo convert your_notebook.ipynb > your_notebook.py`\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết ô SQL truy vấn DataFrame doanh số và lọc theo giá trị của slider\"\n- \"Sinh mã vẽ biểu đồ phân phối cột price từ DataFrame df đang có trong bộ nhớ\"\n- \"Tạo ứng dụng dashboard từ notebook phân tích này\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "microsoft-data-formulator",
+    "slug": "microsoft-data-formulator",
+    "name": "Data Formulator — Công cụ khám phá và trực quan hóa dữ liệu bằng tác tử AI của Microsoft",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "data_science_analytics",
+    "categoryNameVi": "Khoa học dữ liệu & Phân tích kinh doanh",
+    "categories": [
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/microsoft/data-formulator",
+    "websiteUrl": "https://data-formulator.ai",
+    "authorName": "Microsoft",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Data Formulator là dự án của Microsoft Research giúp khám phá dữ liệu bằng biểu đồ với sự hỗ trợ của tác tử AI. Công cụ kết hợp thao tác giao diện với ngôn ngữ tự nhiên, cho phép tải dữ liệu từ tệp, ảnh chụp màn hình, văn bản hoặc cơ sở dữ liệu, rồi phân nhánh phân tích trong Data Thread và tổng hợp thành báo cáo.",
+    "purposeVi": "Giúp nhà phân tích nhanh chóng đi từ dữ liệu thô đến biểu đồ và báo cáo bằng cách mô tả ý định bằng lời, đồng thời giữ được lịch sử và các nhánh phân tích.",
+    "featuresVi": [
+      "Kết nối dữ liệu: CSV, TSV, Excel, JSON, ảnh chụp màn hình, văn bản, cơ sở dữ liệu và nền tảng như Databricks",
+      "Data Thread: đặt câu hỏi, xem giải thích, bảng và biểu đồ trong một lịch sử, phân nhánh từ bất kỳ bước nào",
+      "Tác tử phân tích: tìm và đề xuất kế hoạch nạp dữ liệu, cho phép xem lại trước khi đưa vào không gian làm việc",
+      "Hơn 30 loại biểu đồ dựa trên ngôn ngữ trực quan hóa Flint, có gợi ý và tùy chỉnh giao diện",
+      "Hỗ trợ mô hình OpenAI, Azure, Ollama, Anthropic qua LiteLLM",
+      "Soạn kết quả thành báo cáo để chia sẻ"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.11 trở lên (theo pyproject.toml) hoặc uv; Docker nếu chạy bằng container; khóa API của nhà cung cấp LLM hoặc Ollama.\nBước 1: Cài đặt và chạy ngay bằng uv (khuyến nghị): `uvx data_formulator`\nBước 2: Hoặc cài đặt bằng pip: `pip install data_formulator`, rồi chạy: `python -m data_formulator`\nBước 3: Hoặc chạy bằng Docker: `docker compose up --build`\nBước 4: Mở trình duyệt tại http://localhost:5567",
+    "usageGuideVi": "Bước 1: Tải lên tệp dữ liệu hoặc kết nối cơ sở dữ liệu, hoặc nhờ tác tử tìm dữ liệu cần thiết\nBước 2: Đặt câu hỏi bằng ngôn ngữ tự nhiên trong Data Thread và xem biểu đồ, bảng, giải thích\nBước 3: Chỉnh sửa biểu đồ trực tiếp hoặc phân nhánh từ bước trước để thử hướng khác\nBước 4: Tổng hợp kết quả thành báo cáo để chia sẻ",
+    "samplePromptsVi": [
+      "So sánh doanh thu theo vùng giữa hai năm gần nhất bằng biểu đồ cột",
+      "Trích xuất bảng dữ liệu từ ảnh chụp màn hình này và vẽ biểu đồ xu hướng",
+      "Tìm 5 sản phẩm tăng trưởng nhanh nhất và giải thích nguyên nhân có thể"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "uvx data_formulator",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uvx data_formulator\"\n  ],\n  \"nguon\": \"https://github.com/microsoft/data-formulator\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, dự án của Microsoft Research",
+      "Cài đặt nhanh bằng một lệnh uvx, có cả Docker và bản desktop thử nghiệm",
+      "Hỗ trợ nhiều nguồn dữ liệu và nhiều nhà cung cấp LLM qua LiteLLM",
+      "Đang được phát triển tích cực (bản 0.8 beta tháng 8/2026)"
+    ],
+    "consVi": [
+      "Bản desktop là bản dựng thử nghiệm chưa ký số, hệ điều hành sẽ cảnh báo khi mở",
+      "Cần khóa API LLM hoặc mô hình cục bộ qua Ollama",
+      "Là dự án nghiên cứu, giao diện và tính năng thay đổi nhanh giữa các phiên bản"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Data Formulator — Công cụ khám phá và trực quan hóa dữ liệu bằng tác tử AI của Microsoft\n\n> Explore data with visualizations, powered by AI agents.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nData Formulator là dự án của Microsoft Research giúp khám phá dữ liệu bằng biểu đồ với sự hỗ trợ của tác tử AI. Công cụ kết hợp thao tác giao diện với ngôn ngữ tự nhiên, cho phép tải dữ liệu từ tệp, ảnh chụp màn hình, văn bản hoặc cơ sở dữ liệu, rồi phân nhánh phân tích trong Data Thread và tổng hợp thành báo cáo.\n\nGiúp nhà phân tích nhanh chóng đi từ dữ liệu thô đến biểu đồ và báo cáo bằng cách mô tả ý định bằng lời, đồng thời giữ được lịch sử và các nhánh phân tích.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Khoa học dữ liệu & Phân tích kinh doanh\n- **Tác giả / Nhà phát triển:** Microsoft\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/microsoft/data-formulator](https://github.com/microsoft/data-formulator)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Kết nối dữ liệu: CSV, TSV, Excel, JSON, ảnh chụp màn hình, văn bản, cơ sở dữ liệu và nền tảng như Databricks**\n- **Data Thread: đặt câu hỏi, xem giải thích, bảng và biểu đồ trong một lịch sử, phân nhánh từ bất kỳ bước nào**\n- **Tác tử phân tích: tìm và đề xuất kế hoạch nạp dữ liệu, cho phép xem lại trước khi đưa vào không gian làm việc**\n- **Hơn 30 loại biểu đồ dựa trên ngôn ngữ trực quan hóa Flint, có gợi ý và tùy chỉnh giao diện**\n- **Hỗ trợ mô hình OpenAI, Azure, Ollama, Anthropic qua LiteLLM**\n- **Soạn kết quả thành báo cáo để chia sẻ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuvx data_formulator\n```\n\nYêu cầu: Python 3.11 trở lên (theo pyproject.toml) hoặc uv; Docker nếu chạy bằng container; khóa API của nhà cung cấp LLM hoặc Ollama.\nBước 1: Cài đặt và chạy ngay bằng uv (khuyến nghị): `uvx data_formulator`\nBước 2: Hoặc cài đặt bằng pip: `pip install data_formulator`, rồi chạy: `python -m data_formulator`\nBước 3: Hoặc chạy bằng Docker: `docker compose up --build`\nBước 4: Mở trình duyệt tại http://localhost:5567\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tải lên tệp dữ liệu hoặc kết nối cơ sở dữ liệu, hoặc nhờ tác tử tìm dữ liệu cần thiết\nBước 2: Đặt câu hỏi bằng ngôn ngữ tự nhiên trong Data Thread và xem biểu đồ, bảng, giải thích\nBước 3: Chỉnh sửa biểu đồ trực tiếp hoặc phân nhánh từ bước trước để thử hướng khác\nBước 4: Tổng hợp kết quả thành báo cáo để chia sẻ\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"So sánh doanh thu theo vùng giữa hai năm gần nhất bằng biểu đồ cột\"\n- \"Trích xuất bảng dữ liệu từ ảnh chụp màn hình này và vẽ biểu đồ xu hướng\"\n- \"Tìm 5 sản phẩm tăng trưởng nhanh nhất và giải thích nguyên nhân có thể\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "jupyterlab-jupyter-ai",
+    "slug": "jupyterlab-jupyter-ai",
+    "name": "Jupyter AI — Tiện ích đưa tác tử AI vào JupyterLab để phân tích dữ liệu trên notebook",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "data_science_analytics",
+    "categoryNameVi": "Khoa học dữ liệu & Phân tích kinh doanh",
+    "categories": [
+      "data_science_analytics",
+      "nlp_llm"
+    ],
+    "categoryNamesVi": [
+      "Khoa học dữ liệu & Phân tích kinh doanh",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/jupyterlab/jupyter-ai",
+    "websiteUrl": "https://jupyter-ai.readthedocs.io",
+    "authorName": "Project Jupyter (JupyterLab)",
+    "license": "Mã nguồn mở (BSD-3-Clause)",
+    "summaryVi": "Jupyter AI là tiện ích mở rộng mã nguồn mở đưa AI dạng tác tử vào JupyterLab. Tiện ích cung cấp giao diện chat gốc để cộng tác với các tác tử như Claude, Codex, GitHub Copilot, Gemini, Goose, Kiro, Mistral Vibe, OpenCode thông qua Agent Client Protocol (ACP); tác tử đọc ghi tệp, chạy lệnh và thao tác notebook qua máy chủ MCP Jupyter tích hợp.",
+    "purposeVi": "Giúp nhà khoa học dữ liệu làm việc cùng tác tử AI ngay trong JupyterLab để phân tích dữ liệu và chỉnh sửa notebook, có cơ chế xin phép trước khi tác tử ghi tệp hay chạy lệnh.",
+    "featuresVi": [
+      "Chat gốc trong JupyterLab với nhiều tác tử qua Agent Client Protocol (ACP)",
+      "Tự phát hiện tác tử đã cài đặt trong môi trường",
+      "Máy chủ MCP Jupyter tích hợp: tác tử đọc ghi tệp, chạy lệnh terminal, tương tác với notebook",
+      "Hệ thống phân quyền: tác tử xin phép trước khi ghi tệp hoặc thực thi lệnh",
+      "Nhiều cuộc chat đồng thời, kéo thả tệp hoặc ô notebook làm ngữ cảnh, cộng tác thời gian thực",
+      "Thêm máy chủ MCP tùy chỉnh và tự xây dựng AI persona qua entry points API"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.9 trở lên (theo pyproject.toml) và JupyterLab; cài đặt thêm ít nhất một tác tử (ví dụ Claude Code, Codex CLI) cùng gói adapter ACP nếu cần; Node.js cho adapter dạng npm.\nBước 1: Cài đặt Jupyter AI: `pip install jupyter-ai` (hoặc `uv pip install jupyter-ai`)\nBước 2: Cài đặt tác tử theo tài liệu chính thức của tác tử đó (ví dụ Claude Code)\nBước 3: Với Claude Code, cài đặt thêm adapter ACP: `npm install -g @agentclientprotocol/claude-agent-acp`\nBước 4: Khởi động JupyterLab: `jupyter lab`",
+    "usageGuideVi": "Bước 1: Tạo chat bằng thẻ Chat trên trang launcher hoặc nút + trong thanh chat\nBước 2: Chọn AI persona (tác tử) trong menu của thanh nhập liệu\nBước 3: Gõ yêu cầu; tác tử có thể đọc ghi tệp, chạy lệnh và chỉnh notebook qua Jupyter MCP Server, kèm yêu cầu phê duyệt\nBước 4: Điều chỉnh mô hình, chế độ phân quyền và mức nỗ lực trong menu do từng tác tử cung cấp",
+    "samplePromptsVi": [
+      "Đọc tệp sales.csv, làm sạch dữ liệu và thêm ô vẽ biểu đồ doanh thu theo tháng vào notebook này",
+      "Giải thích lỗi ở ô đang chọn và đề xuất cách sửa",
+      "Tạo notebook mới phân tích phân phối giá trong tệp dữ liệu products.csv"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install jupyter-ai",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install jupyter-ai\"\n  ],\n  \"nguon\": \"https://github.com/jupyterlab/jupyter-ai\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép BSD 3-Clause, thuộc tổ chức JupyterLab",
+      "Không khóa nhà cung cấp: dựa trên chuẩn mở ACP và MCP",
+      "Có cơ chế phê duyệt trước khi tác tử ghi tệp hoặc chạy lệnh",
+      "Được bảo trì tích cực"
+    ],
+    "consVi": [
+      "Không đi kèm tác tử nào; người dùng phải tự cài đặt và đăng nhập tác tử",
+      "README ngắn; hướng dẫn cài đặt nằm trong tài liệu docs",
+      "Dự án đang trong giai đoạn ươm tạo (incubation) của tổ chức JupyterLab"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Jupyter AI — Tiện ích đưa tác tử AI vào JupyterLab để phân tích dữ liệu trên notebook\n\n> An open source extension that connects AI agents to computational notebooks in JupyterLab.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nJupyter AI là tiện ích mở rộng mã nguồn mở đưa AI dạng tác tử vào JupyterLab. Tiện ích cung cấp giao diện chat gốc để cộng tác với các tác tử như Claude, Codex, GitHub Copilot, Gemini, Goose, Kiro, Mistral Vibe, OpenCode thông qua Agent Client Protocol (ACP); tác tử đọc ghi tệp, chạy lệnh và thao tác notebook qua máy chủ MCP Jupyter tích hợp.\n\nGiúp nhà khoa học dữ liệu làm việc cùng tác tử AI ngay trong JupyterLab để phân tích dữ liệu và chỉnh sửa notebook, có cơ chế xin phép trước khi tác tử ghi tệp hay chạy lệnh.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Khoa học dữ liệu & Phân tích kinh doanh\n- **Tác giả / Nhà phát triển:** Project Jupyter (JupyterLab)\n- **Giấy phép bản quyền:** Mã nguồn mở (BSD-3-Clause)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/jupyterlab/jupyter-ai](https://github.com/jupyterlab/jupyter-ai)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Chat gốc trong JupyterLab với nhiều tác tử qua Agent Client Protocol (ACP)**\n- **Tự phát hiện tác tử đã cài đặt trong môi trường**\n- **Máy chủ MCP Jupyter tích hợp: tác tử đọc ghi tệp, chạy lệnh terminal, tương tác với notebook**\n- **Hệ thống phân quyền: tác tử xin phép trước khi ghi tệp hoặc thực thi lệnh**\n- **Nhiều cuộc chat đồng thời, kéo thả tệp hoặc ô notebook làm ngữ cảnh, cộng tác thời gian thực**\n- **Thêm máy chủ MCP tùy chỉnh và tự xây dựng AI persona qua entry points API**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install jupyter-ai\n```\n\nYêu cầu: Python 3.9 trở lên (theo pyproject.toml) và JupyterLab; cài đặt thêm ít nhất một tác tử (ví dụ Claude Code, Codex CLI) cùng gói adapter ACP nếu cần; Node.js cho adapter dạng npm.\nBước 1: Cài đặt Jupyter AI: `pip install jupyter-ai` (hoặc `uv pip install jupyter-ai`)\nBước 2: Cài đặt tác tử theo tài liệu chính thức của tác tử đó (ví dụ Claude Code)\nBước 3: Với Claude Code, cài đặt thêm adapter ACP: `npm install -g @agentclientprotocol/claude-agent-acp`\nBước 4: Khởi động JupyterLab: `jupyter lab`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo chat bằng thẻ Chat trên trang launcher hoặc nút + trong thanh chat\nBước 2: Chọn AI persona (tác tử) trong menu của thanh nhập liệu\nBước 3: Gõ yêu cầu; tác tử có thể đọc ghi tệp, chạy lệnh và chỉnh notebook qua Jupyter MCP Server, kèm yêu cầu phê duyệt\nBước 4: Điều chỉnh mô hình, chế độ phân quyền và mức nỗ lực trong menu do từng tác tử cung cấp\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Đọc tệp sales.csv, làm sạch dữ liệu và thêm ô vẽ biểu đồ doanh thu theo tháng vào notebook này\"\n- \"Giải thích lỗi ở ô đang chọn và đề xuất cách sửa\"\n- \"Tạo notebook mới phân tích phân phối giá trong tệp dữ liệu products.csv\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "the-pr-agent-pr-agent",
+    "slug": "the-pr-agent-pr-agent",
+    "name": "PR-Agent — Agent AI mã nguồn mở tự động review pull request",
+    "icon": "GitPullRequest",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "qa_testing",
+    "categoryNameVi": "Kiểm thử phần mềm & QA/QC",
+    "categories": [
+      "qa_testing",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Kiểm thử phần mềm & QA/QC",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/the-pr-agent/pr-agent",
+    "websiteUrl": "https://docs.pr-agent.ai/",
+    "authorName": "PR-Agent community (khởi tạo bởi Qodo)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "PR-Agent là agent review mã nguồn mở dùng AI, do Qodo khởi tạo và nay được cộng đồng duy trì trong tổ chức PR-Agent trên GitHub. Công cụ tự động mô tả, review, đề xuất cải tiến và trả lời câu hỏi về pull request, chạy qua GitHub Action, CLI, Docker hoặc webhook.",
+    "purposeVi": "Giúp đội phát triển tự động hóa khâu review pull request bằng LLM, giảm tải cho người review và phát hiện vấn đề sớm trước khi merge.",
+    "featuresVi": [
+      "Các lệnh trên PR: /describe, /review, /improve, /ask để mô tả, review, gợi ý sửa và hỏi đáp về thay đổi",
+      "Lệnh theo issue: /similar_issue tìm issue tương tự trong kho mã",
+      "Nhanh và rẻ: mỗi công cụ chỉ dùng một lần gọi LLM (khoảng 30 giây)",
+      "Chiến lược nén PR giúp xử lý cả PR nhỏ lẫn PR lớn",
+      "Đa nền tảng Git: GitHub, GitLab, BitBucket, Azure DevOps, Gitea",
+      "Đa mô hình: OpenAI GPT, Anthropic Claude, Google Gemini, DeepSeek, Mistral và mọi mô hình qua LiteLLM (kể cả Ollama)",
+      "Tùy biến prompt và hạng mục review qua tệp cấu hình configuration.toml"
+    ],
+    "installGuideVi": "Yêu cầu: Khóa API của nhà cung cấp LLM (ví dụ OPENAI_KEY) và token của nền tảng Git (ví dụ GITHUB_TOKEN); Python/pip khi chạy CLI cục bộ.\nBước 1: Cách khuyến nghị: tạo tệp .github/workflows/pr-agent.yml dùng action `the-pr-agent/pr-agent@main` với biến OPENAI_KEY và GITHUB_TOKEN từ secrets.\nBước 2: Hoặc cài đặt CLI qua pip: `pip install \"pr-agent[github]\"`\nBước 3: Đặt khóa API cho LLM: `export OPENAI_KEY=your_key_here`\nBước 4: Với GitLab, BitBucket, Azure DevOps: làm theo hướng dẫn cài đặt webhook/app trong tài liệu docs.pr-agent.ai.",
+    "usageGuideVi": "Bước 1: Chạy review một PR từ dòng lệnh: `pr-agent --pr_url https://github.com/owner/repo/pull/123 review`\nBước 2: Hoặc bình luận /describe, /review, /improve, /ask \"...\" trực tiếp trên PR để công cụ trả lời.\nBước 3: Dùng `pr-agent --issue_url <ISSUE_URL> similar_issue` để tìm issue tương tự.",
+    "samplePromptsVi": [
+      "/ask \"PR này thay đổi những gì và có rủi ro gì với phần xác thực?\"",
+      "/review để nhận đánh giá tổng quan, các vấn đề tiềm ẩn và mức độ dễ review của PR",
+      "/improve để nhận gợi ý sửa mã cụ thể cho các tệp đã thay đổi"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pr-agent --pr_url https://github.com/owner/repo/pull/123 review",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pr-agent --pr_url https://github.com/owner/repo/pull/123 review\"\n  ],\n  \"nguon\": \"https://github.com/the-pr-agent/pr-agent\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, dự án do cộng đồng sở hữu",
+      "Hỗ trợ nhiều nền tảng Git và nhiều nhà cung cấp LLM qua LiteLLM",
+      "Tự host được: toàn quyền kiểm soát dữ liệu và hạ tầng"
+    ],
+    "consVi": [
+      "Cần khóa API LLM riêng; chi phí gọi mô hình do người dùng chi trả",
+      "Lệnh /help_docs tạm thời bị tắt từ v0.36.1 do lỗi lộ thông tin xác thực đang chờ sửa",
+      "Image Docker đã chuyển sang namespace pragent/pr-agent từ bản 0.34.2, cần cập nhật tham chiếu cũ codiumai/pr-agent"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# PR-Agent — Agent AI mã nguồn mở tự động review pull request\n\n> PR-Agent is an open-source, AI-powered code review agent and a community-maintained legacy project of Qodo.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPR-Agent là agent review mã nguồn mở dùng AI, do Qodo khởi tạo và nay được cộng đồng duy trì trong tổ chức PR-Agent trên GitHub. Công cụ tự động mô tả, review, đề xuất cải tiến và trả lời câu hỏi về pull request, chạy qua GitHub Action, CLI, Docker hoặc webhook.\n\nGiúp đội phát triển tự động hóa khâu review pull request bằng LLM, giảm tải cho người review và phát hiện vấn đề sớm trước khi merge.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Kiểm thử phần mềm & QA/QC\n- **Tác giả / Nhà phát triển:** PR-Agent community (khởi tạo bởi Qodo)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/the-pr-agent/pr-agent](https://github.com/the-pr-agent/pr-agent)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Các lệnh trên PR: /describe, /review, /improve, /ask để mô tả, review, gợi ý sửa và hỏi đáp về thay đổi**\n- **Lệnh theo issue: /similar_issue tìm issue tương tự trong kho mã**\n- **Nhanh và rẻ: mỗi công cụ chỉ dùng một lần gọi LLM (khoảng 30 giây)**\n- **Chiến lược nén PR giúp xử lý cả PR nhỏ lẫn PR lớn**\n- **Đa nền tảng Git: GitHub, GitLab, BitBucket, Azure DevOps, Gitea**\n- **Đa mô hình: OpenAI GPT, Anthropic Claude, Google Gemini, DeepSeek, Mistral và mọi mô hình qua LiteLLM (kể cả Ollama)**\n- **Tùy biến prompt và hạng mục review qua tệp cấu hình configuration.toml**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npr-agent --pr_url https://github.com/owner/repo/pull/123 review\n```\n\nYêu cầu: Khóa API của nhà cung cấp LLM (ví dụ OPENAI_KEY) và token của nền tảng Git (ví dụ GITHUB_TOKEN); Python/pip khi chạy CLI cục bộ.\nBước 1: Cách khuyến nghị: tạo tệp .github/workflows/pr-agent.yml dùng action `the-pr-agent/pr-agent@main` với biến OPENAI_KEY và GITHUB_TOKEN từ secrets.\nBước 2: Hoặc cài đặt CLI qua pip: `pip install \"pr-agent[github]\"`\nBước 3: Đặt khóa API cho LLM: `export OPENAI_KEY=your_key_here`\nBước 4: Với GitLab, BitBucket, Azure DevOps: làm theo hướng dẫn cài đặt webhook/app trong tài liệu docs.pr-agent.ai.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy review một PR từ dòng lệnh: `pr-agent --pr_url https://github.com/owner/repo/pull/123 review`\nBước 2: Hoặc bình luận /describe, /review, /improve, /ask \"...\" trực tiếp trên PR để công cụ trả lời.\nBước 3: Dùng `pr-agent --issue_url <ISSUE_URL> similar_issue` để tìm issue tương tự.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"/ask \"PR này thay đổi những gì và có rủi ro gì với phần xác thực?\"\"\n- \"/review để nhận đánh giá tổng quan, các vấn đề tiềm ẩn và mức độ dễ review của PR\"\n- \"/improve để nhận gợi ý sửa mã cụ thể cho các tệp đã thay đổi\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "keploy-keploy",
+    "slug": "keploy-keploy",
+    "name": "Keploy — Tự sinh test API và mock dữ liệu từ lưu lượng thật",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "qa_testing",
+    "categoryNameVi": "Kiểm thử phần mềm & QA/QC",
+    "categories": [
+      "qa_testing",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Kiểm thử phần mềm & QA/QC",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/keploy/keploy",
+    "websiteUrl": "https://keploy.io",
+    "authorName": "Keploy",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Keploy là công cụ kiểm thử API và tích hợp hướng tới lập trình viên, tự động sinh test và mock dữ liệu từ lưu lượng thật. Keploy ghi lại các lời gọi API, truy vấn cơ sở dữ liệu và sự kiện streaming rồi phát lại thành test, dùng eBPF ở tầng mạng nên không cần sửa mã hay thêm SDK.",
+    "purposeVi": "Giúp tạo bộ test API/tích hợp nhanh từ luồng thực tế và chạy lại mà không cần dựng lại hạ tầng phụ thuộc.",
+    "featuresVi": [
+      "Không cần sửa mã: chạy ứng dụng với keploy record để tự ghi test và mock",
+      "Ghi và phát lại các luồng API phân tán phức tạp dưới dạng mock/stub",
+      "Ảo hóa hạ tầng: ghi cả Postgres, MySQL, MongoDB, Kafka, RabbitMQ và API bên ngoài",
+      "Đo độ bao phủ kết hợp: statement/branch cho dev, schema API và use-case cho QA",
+      "Mở rộng độ bao phủ API bằng AI dựa trên bản ghi và Swagger/OpenAPI (giá trị biên, sai kiểu, thiếu trường...)",
+      "Tích hợp CI/CD (Jenkins, GitHub Actions), cố định thời gian khi phát lại, báo cáo hợp nhất"
+    ],
+    "installGuideVi": "Yêu cầu: Máy chạy được script cài đặt Keploy (curl); ứng dụng cần kiểm thử chạy được bằng một lệnh; Keploy dùng eBPF để bắt lưu lượng ở tầng mạng.\nBước 1: Cài đặt Keploy Agent: `curl --silent -O -L https://keploy.io/install.sh && source install.sh`\nBước 2: Ghi test case bằng cách chạy ứng dụng dưới Keploy: `keploy record -c \"CMD_TO_RUN_APP\"` (ví dụ Python: `keploy record -c \"python main.py\"`)",
+    "usageGuideVi": "Bước 1: Gửi các request thật tới ứng dụng trong lúc keploy record đang chạy để công cụ ghi lại test và mock dữ liệu.\nBước 2: Chạy lại test offline không cần phụ thuộc bên ngoài: `keploy test -c \"CMD_TO_RUN_APP\" --delay 10`\nBước 3: Đưa lệnh keploy test vào pipeline CI để kiểm thử hồi quy mỗi lần đẩy mã.",
+    "samplePromptsVi": [
+      "Ghi lại luồng đăng ký – đăng nhập của API Python rồi phát lại thành test hồi quy không cần cơ sở dữ liệu thật.",
+      "Tạo mock cho các truy vấn Postgres và Kafka để chạy test tích hợp trong CI.",
+      "Dùng tệp OpenAPI để tìm thêm ca kiểm thử giá trị biên và trường thiếu cho API."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "keploy test -c \"CMD_TO_RUN_APP\" --delay 10",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"keploy test -c \\\"CMD_TO_RUN_APP\\\" --delay 10\"\n  ],\n  \"nguon\": \"https://github.com/keploy/keploy\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép Apache 2.0, dự án hoạt động tích cực",
+      "Không cần SDK hay sửa mã, độc lập ngôn ngữ và framework",
+      "Mock được cả cơ sở dữ liệu và hàng đợi, không chỉ HTTP"
+    ],
+    "consVi": [
+      "README ghi chú một số phụ thuộc không phải mã nguồn mở do giao thức/parser không công khai",
+      "Một số tính năng (mở rộng coverage bằng AI, Mock Registry, Time Freezing) dẫn tới tài liệu Keploy Cloud/app.keploy.io",
+      "Cài đặt qua script tải từ keploy.io"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Keploy — Tự sinh test API và mock dữ liệu từ lưu lượng thật\n\n> API tests faster than unit tests, from user traffic\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nKeploy là công cụ kiểm thử API và tích hợp hướng tới lập trình viên, tự động sinh test và mock dữ liệu từ lưu lượng thật. Keploy ghi lại các lời gọi API, truy vấn cơ sở dữ liệu và sự kiện streaming rồi phát lại thành test, dùng eBPF ở tầng mạng nên không cần sửa mã hay thêm SDK.\n\nGiúp tạo bộ test API/tích hợp nhanh từ luồng thực tế và chạy lại mà không cần dựng lại hạ tầng phụ thuộc.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Kiểm thử phần mềm & QA/QC\n- **Tác giả / Nhà phát triển:** Keploy\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/keploy/keploy](https://github.com/keploy/keploy)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Không cần sửa mã: chạy ứng dụng với keploy record để tự ghi test và mock**\n- **Ghi và phát lại các luồng API phân tán phức tạp dưới dạng mock/stub**\n- **Ảo hóa hạ tầng: ghi cả Postgres, MySQL, MongoDB, Kafka, RabbitMQ và API bên ngoài**\n- **Đo độ bao phủ kết hợp: statement/branch cho dev, schema API và use-case cho QA**\n- **Mở rộng độ bao phủ API bằng AI dựa trên bản ghi và Swagger/OpenAPI (giá trị biên, sai kiểu, thiếu trường...)**\n- **Tích hợp CI/CD (Jenkins, GitHub Actions), cố định thời gian khi phát lại, báo cáo hợp nhất**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nkeploy test -c \"CMD_TO_RUN_APP\" --delay 10\n```\n\nYêu cầu: Máy chạy được script cài đặt Keploy (curl); ứng dụng cần kiểm thử chạy được bằng một lệnh; Keploy dùng eBPF để bắt lưu lượng ở tầng mạng.\nBước 1: Cài đặt Keploy Agent: `curl --silent -O -L https://keploy.io/install.sh && source install.sh`\nBước 2: Ghi test case bằng cách chạy ứng dụng dưới Keploy: `keploy record -c \"CMD_TO_RUN_APP\"` (ví dụ Python: `keploy record -c \"python main.py\"`)\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Gửi các request thật tới ứng dụng trong lúc keploy record đang chạy để công cụ ghi lại test và mock dữ liệu.\nBước 2: Chạy lại test offline không cần phụ thuộc bên ngoài: `keploy test -c \"CMD_TO_RUN_APP\" --delay 10`\nBước 3: Đưa lệnh keploy test vào pipeline CI để kiểm thử hồi quy mỗi lần đẩy mã.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Ghi lại luồng đăng ký – đăng nhập của API Python rồi phát lại thành test hồi quy không cần cơ sở dữ liệu thật.\"\n- \"Tạo mock cho các truy vấn Postgres và Kafka để chạy test tích hợp trong CI.\"\n- \"Dùng tệp OpenAPI để tìm thêm ca kiểm thử giá trị biên và trường thiếu cho API.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "schemathesis-schemathesis",
+    "slug": "schemathesis-schemathesis",
+    "name": "Schemathesis — Kiểm thử fuzz tự động cho API OpenAPI và GraphQL",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "qa_testing",
+    "categoryNameVi": "Kiểm thử phần mềm & QA/QC",
+    "categories": [
+      "qa_testing",
+      "backend_api"
+    ],
+    "categoryNamesVi": [
+      "Kiểm thử phần mềm & QA/QC",
+      "Backend & Kiến trúc API"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/schemathesis/schemathesis",
+    "websiteUrl": "https://schemathesis.readthedocs.io/en/stable/",
+    "authorName": "Schemathesis",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Schemathesis là công cụ kiểm thử API tự động cho OpenAPI và GraphQL, sinh dữ liệu đầu vào từ schema, thích ứng theo phản hồi của máy chủ và nối các thao tác thành luồng thực tế. Công cụ xây dựng trên thư viện property-based testing Hypothesis, chạy được qua CLI, pytest hoặc GitHub Action.",
+    "purposeVi": "Phát hiện lỗi 500, sai lệch schema, bỏ qua kiểm tra dữ liệu và lỗi phân quyền đối tượng trước khi người dùng gặp phải.",
+    "featuresVi": [
+      "Sinh dữ liệu kiểm thử từ schema OpenAPI/GraphQL, gồm ca biên và dữ liệu không hợp lệ",
+      "Kiểm thử có trạng thái: tự suy ra liên kết thao tác (tạo → lấy → xóa) từ schema",
+      "Kiểm thử thích ứng: học ràng buộc, id và xác thực từ phản hồi trong lúc chạy",
+      "Fuzz dictionary: trộn id thật, wordlist hoặc payload do LLM sinh vào dữ liệu",
+      "Báo cáo HTML offline kèm lệnh curl, JUnit, VCR, HAR, NDJSON, JSON, Allure",
+      "Báo cáo độ bao phủ schema, phát lại lỗi cũ và baseline chỉ fail CI với lỗi mới"
+    ],
+    "installGuideVi": "Yêu cầu: Python với công cụ uv (uvx/uv tool); một API có schema OpenAPI hoặc GraphQL chạy ở môi trường dev/staging.\nBước 1: Thử nhanh không cần cài đặt: `uvx schemathesis run https://example.schemathesis.io/openapi.json`\nBước 2: Cài đặt CLI: `uv tool install schemathesis`\nBước 3: Hoặc thêm vào dự án Python để dùng với pytest: `uv add --dev schemathesis`",
+    "usageGuideVi": "Bước 1: Chạy kiểm thử với API của bạn: `schemathesis run https://your-api.com/openapi.json`\nBước 2: Cấu hình xác thực, giới hạn tốc độ và số mẫu trong tệp schemathesis.toml (không cần viết Python).\nBước 3: Trong CI, dùng GitHub Action schemathesis/action@v3 với tham số schema.",
+    "samplePromptsVi": [
+      "Fuzz toàn bộ endpoint trong openapi.json của môi trường staging và xuất báo cáo HTML.",
+      "Kiểm thử luồng tạo người dùng → lấy người dùng → xóa người dùng theo kiểu có trạng thái.",
+      "Kiểm tra xem người dùng A có đọc được đối tượng của người dùng B hay không."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "uvx schemathesis run https://example.schemathesis.io/openapi.json",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"uvx schemathesis run https://example.schemathesis.io/openapi.json\"\n  ],\n  \"nguon\": \"https://github.com/schemathesis/schemathesis\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, dự án hoạt động tích cực",
+      "Không cần viết test thủ công, chỉ cần schema",
+      "Được dùng bởi các đội tại Spotify, WordPress, JetBrains, Red Hat (theo README)"
+    ],
+    "consVi": [
+      "Gửi request thật có thể tạo, sửa, xóa dữ liệu — README khuyên chỉ chạy ở dev/staging, không chạy trên production",
+      "Chỉ hỗ trợ API mô tả bằng OpenAPI hoặc GraphQL"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Schemathesis — Kiểm thử fuzz tự động cho API OpenAPI và GraphQL\n\n> Schemathesis tests OpenAPI and GraphQL APIs by generating inputs from your schema, adapting to server responses, and chaining operations into realistic workflows.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSchemathesis là công cụ kiểm thử API tự động cho OpenAPI và GraphQL, sinh dữ liệu đầu vào từ schema, thích ứng theo phản hồi của máy chủ và nối các thao tác thành luồng thực tế. Công cụ xây dựng trên thư viện property-based testing Hypothesis, chạy được qua CLI, pytest hoặc GitHub Action.\n\nPhát hiện lỗi 500, sai lệch schema, bỏ qua kiểm tra dữ liệu và lỗi phân quyền đối tượng trước khi người dùng gặp phải.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Kiểm thử phần mềm & QA/QC\n- **Tác giả / Nhà phát triển:** Schemathesis\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/schemathesis/schemathesis](https://github.com/schemathesis/schemathesis)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Sinh dữ liệu kiểm thử từ schema OpenAPI/GraphQL, gồm ca biên và dữ liệu không hợp lệ**\n- **Kiểm thử có trạng thái: tự suy ra liên kết thao tác (tạo → lấy → xóa) từ schema**\n- **Kiểm thử thích ứng: học ràng buộc, id và xác thực từ phản hồi trong lúc chạy**\n- **Fuzz dictionary: trộn id thật, wordlist hoặc payload do LLM sinh vào dữ liệu**\n- **Báo cáo HTML offline kèm lệnh curl, JUnit, VCR, HAR, NDJSON, JSON, Allure**\n- **Báo cáo độ bao phủ schema, phát lại lỗi cũ và baseline chỉ fail CI với lỗi mới**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nuvx schemathesis run https://example.schemathesis.io/openapi.json\n```\n\nYêu cầu: Python với công cụ uv (uvx/uv tool); một API có schema OpenAPI hoặc GraphQL chạy ở môi trường dev/staging.\nBước 1: Thử nhanh không cần cài đặt: `uvx schemathesis run https://example.schemathesis.io/openapi.json`\nBước 2: Cài đặt CLI: `uv tool install schemathesis`\nBước 3: Hoặc thêm vào dự án Python để dùng với pytest: `uv add --dev schemathesis`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy kiểm thử với API của bạn: `schemathesis run https://your-api.com/openapi.json`\nBước 2: Cấu hình xác thực, giới hạn tốc độ và số mẫu trong tệp schemathesis.toml (không cần viết Python).\nBước 3: Trong CI, dùng GitHub Action schemathesis/action@v3 với tham số schema.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Fuzz toàn bộ endpoint trong openapi.json của môi trường staging và xuất báo cáo HTML.\"\n- \"Kiểm thử luồng tạo người dùng → lấy người dùng → xóa người dùng theo kiểu có trạng thái.\"\n- \"Kiểm tra xem người dùng A có đọc được đối tượng của người dùng B hay không.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "test-zeus-ai-testzeus-hercules",
+    "slug": "test-zeus-ai-testzeus-hercules",
+    "name": "TestZeus Hercules — Agent AI kiểm thử end-to-end từ kịch bản Gherkin",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "qa_testing",
+    "categoryNameVi": "Kiểm thử phần mềm & QA/QC",
+    "categories": [
+      "qa_testing"
+    ],
+    "categoryNamesVi": [
+      "Kiểm thử phần mềm & QA/QC"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/test-zeus-ai/testzeus-hercules",
+    "websiteUrl": "https://www.testzeus.com",
+    "authorName": "TestZeus",
+    "license": "Mã nguồn mở (AGPL-3.0)",
+    "summaryVi": "Hercules là agent kiểm thử mã nguồn mở của TestZeus, biến các bước Gherkin viết bằng ngôn ngữ tự nhiên thành bài kiểm thử end-to-end tự động mà không cần viết mã. Agent dùng LangGraph với planner và các trợ lý điều hướng cho trình duyệt (Playwright), API, bảo mật, SQL và MCP, xuất kết quả JUnit XML, báo cáo HTML kèm video, ảnh chụp và log mạng.",
+    "purposeVi": "Giúp đội QA tự động hóa kiểm thử end-to-end ứng dụng web phức tạp từ kịch bản BDD mà không cần kỹ năng lập trình.",
+    "featuresVi": [
+      "Kiểm thử từ Gherkin: viết kịch bản bằng tiếng Anh tự nhiên, agent tự thực thi",
+      "Nhiều trợ lý điều hướng: trình duyệt, API, bảo mật, SQL, MCP, executor",
+      "Kiểm tra trực quan bằng khả năng vision và kiểm thử nội dung đa ngôn ngữ",
+      "Python sandbox: chạy script Python tùy chỉnh với toàn quyền Playwright API từ bước Gherkin",
+      "Bằng chứng thực thi: video, ảnh chụp từng sự kiện, log mạng; kết quả JUnit XML và HTML",
+      "Hỗ trợ OpenAI, Anthropic, Gemini qua LiteLLM, Groq, Mistral, Ollama, DeepSeek, Bedrock, Azure (cần hỗ trợ tool calling)"
+    ],
+    "installGuideVi": "Yêu cầu: Python và pip (hoặc Docker); trình duyệt Playwright; khóa API của mô hình LLM có hỗ trợ gọi công cụ (tool calling).\nBước 1: Cài đặt gói từ PyPI: `pip install testzeus-hercules`\nBước 2: Cài đặt Playwright và các phụ thuộc trình duyệt: `playwright install --with-deps`\nBước 3: Hoặc dùng Docker: `docker pull testzeus/hercules:latest`\nBước 4: Đặt biến môi trường LLM_MODEL_NAME, LLM_MODEL_API_KEY, LLM_MODEL_BASE_URL (hoặc dùng tệp agents_llm_config.json).",
+    "usageGuideVi": "Bước 1: Viết tệp .feature theo cú pháp Gherkin và đặt dữ liệu kiểm thử vào thư mục test_data.\nBước 2: Chạy: `testzeus-hercules --input-file opt/input/test.feature --output-path opt/output --test-data-path opt/test_data`\nBước 3: Mở báo cáo HTML/JUnit XML trong thư mục output và xem video, ảnh chụp trong thư mục proofs.",
+    "samplePromptsVi": [
+      "Given I am on the demo store home page / When I enter \"wireless headphones\" in the search field / Then I should see the product details page",
+      "Kiểm thử luồng tạo lead trên CRM doanh nghiệp bằng kịch bản Gherkin không cần mã.",
+      "Kiểm tra endpoint API trả về đúng mã trạng thái trong cùng một kịch bản end-to-end."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "testzeus-hercules --input-file opt/input/test.feature --output-path opt/output --test-data-path opt/test_data",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"testzeus-hercules --input-file opt/input/test.feature --output-path opt/output --test-data-path opt/test_data\"\n  ],\n  \"nguon\": \"https://github.com/test-zeus-ai/testzeus-hercules\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Mã nguồn mở, có cả gói PyPI và image Docker",
+      "Không cần viết mã, dùng kịch bản BDD quen thuộc",
+      "Hỗ trợ nhiều nhà cung cấp LLM, kể cả mô hình chạy cục bộ qua Ollama"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0: cung cấp dịch vụ qua mạng dựa trên bản sửa đổi phải công bố mã nguồn",
+      "Cần mô hình LLM hỗ trợ tool calling tốt; planner cần mạnh về suy luận JSON có cấu trúc",
+      "Tốn chi phí gọi LLM cho mỗi lần chạy kiểm thử"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# TestZeus Hercules — Agent AI kiểm thử end-to-end từ kịch bản Gherkin\n\n> Hercules is the world's first open-source testing agent, built to handle the toughest testing tasks so you don't have to.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nHercules là agent kiểm thử mã nguồn mở của TestZeus, biến các bước Gherkin viết bằng ngôn ngữ tự nhiên thành bài kiểm thử end-to-end tự động mà không cần viết mã. Agent dùng LangGraph với planner và các trợ lý điều hướng cho trình duyệt (Playwright), API, bảo mật, SQL và MCP, xuất kết quả JUnit XML, báo cáo HTML kèm video, ảnh chụp và log mạng.\n\nGiúp đội QA tự động hóa kiểm thử end-to-end ứng dụng web phức tạp từ kịch bản BDD mà không cần kỹ năng lập trình.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Kiểm thử phần mềm & QA/QC\n- **Tác giả / Nhà phát triển:** TestZeus\n- **Giấy phép bản quyền:** Mã nguồn mở (AGPL-3.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/test-zeus-ai/testzeus-hercules](https://github.com/test-zeus-ai/testzeus-hercules)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Kiểm thử từ Gherkin: viết kịch bản bằng tiếng Anh tự nhiên, agent tự thực thi**\n- **Nhiều trợ lý điều hướng: trình duyệt, API, bảo mật, SQL, MCP, executor**\n- **Kiểm tra trực quan bằng khả năng vision và kiểm thử nội dung đa ngôn ngữ**\n- **Python sandbox: chạy script Python tùy chỉnh với toàn quyền Playwright API từ bước Gherkin**\n- **Bằng chứng thực thi: video, ảnh chụp từng sự kiện, log mạng; kết quả JUnit XML và HTML**\n- **Hỗ trợ OpenAI, Anthropic, Gemini qua LiteLLM, Groq, Mistral, Ollama, DeepSeek, Bedrock, Azure (cần hỗ trợ tool calling)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ntestzeus-hercules --input-file opt/input/test.feature --output-path opt/output --test-data-path opt/test_data\n```\n\nYêu cầu: Python và pip (hoặc Docker); trình duyệt Playwright; khóa API của mô hình LLM có hỗ trợ gọi công cụ (tool calling).\nBước 1: Cài đặt gói từ PyPI: `pip install testzeus-hercules`\nBước 2: Cài đặt Playwright và các phụ thuộc trình duyệt: `playwright install --with-deps`\nBước 3: Hoặc dùng Docker: `docker pull testzeus/hercules:latest`\nBước 4: Đặt biến môi trường LLM_MODEL_NAME, LLM_MODEL_API_KEY, LLM_MODEL_BASE_URL (hoặc dùng tệp agents_llm_config.json).\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Viết tệp .feature theo cú pháp Gherkin và đặt dữ liệu kiểm thử vào thư mục test_data.\nBước 2: Chạy: `testzeus-hercules --input-file opt/input/test.feature --output-path opt/output --test-data-path opt/test_data`\nBước 3: Mở báo cáo HTML/JUnit XML trong thư mục output và xem video, ảnh chụp trong thư mục proofs.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Given I am on the demo store home page / When I enter \"wireless headphones\" in the search field / Then I should see the product details page\"\n- \"Kiểm thử luồng tạo lead trên CRM doanh nghiệp bằng kịch bản Gherkin không cần mã.\"\n- \"Kiểm tra endpoint API trả về đúng mã trạng thái trong cùng một kịch bản end-to-end.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "web-infra-dev-midscene",
+    "slug": "web-infra-dev-midscene",
+    "name": "Midscene.js — Kiểm thử E2E bằng ngôn ngữ tự nhiên với thị giác AI",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "sdk",
+    "typeNameVi": "SDK",
+    "category": "qa_testing",
+    "categoryNameVi": "Kiểm thử phần mềm & QA/QC",
+    "categories": [
+      "qa_testing",
+      "computer_vision"
+    ],
+    "categoryNamesVi": [
+      "Kiểm thử phần mềm & QA/QC",
+      "Thị giác máy tính & Xử lý ảnh (Vision & OCR)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/web-infra-dev/midscene",
+    "websiteUrl": "https://midscenejs.com",
+    "authorName": "Bytedance (web-infra-dev)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Midscene.js đưa thị giác AI vào kiểm thử end-to-end: mô tả bước thao tác và kết quả mong đợi bằng ngôn ngữ tự nhiên, GUI Agent sẽ nhìn ảnh chụp màn hình để thực hiện và xác minh. Công cụ có Midscene Test (test case YAML) và Agent API tích hợp với Playwright, Puppeteer, hỗ trợ web, Android, iOS, HarmonyOS và desktop.",
+    "purposeVi": "Giúp viết test E2E không phụ thuộc selector, xác minh đúng những gì người dùng nhìn thấy trên giao diện web, di động và máy tính.",
+    "featuresVi": [
+      "API ngôn ngữ tự nhiên: aiAct, aiTap, aiInput, aiAssert, aiWaitFor, aiQuery",
+      "Định vị phần tử theo hình ảnh: nút chỉ có icon, canvas, iframe khác nguồn mà không cần selector",
+      "Midscene Test: viết test case bằng YAML, mở rộng bằng TypeScript Node dùng chung",
+      "Một API cho nhiều nền tảng: Web (Playwright/Puppeteer/Chrome), Android (ADB), iOS (WebDriverAgent), HarmonyOS, desktop",
+      "Báo cáo HTML tương tác với ảnh chụp, vị trí phần tử và quá trình ra quyết định của AI",
+      "Hỗ trợ nhiều mô hình: Qwen3.x, Doubao-Seed-2.1, DeepSeek V4 Flash, GLM-4.6V, Gemini, UI-TARS (có lựa chọn tự host)"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js ^20.19.0 || ^22.12.0 || >=24.0.0 và pnpm; một dịch vụ mô hình thị giác (cấu hình base URL, API key, tên mô hình trong .env).\nBước 1: Tạo dự án Midscene Test cho web và cài đặt phụ thuộc: `pnpm dlx @midscene/test create my-tests --platform web --package-manager pnpm`\nBước 2: Sao chép .env.example thành .env, điền tên mô hình, URL dịch vụ và API key, rồi kiểm tra kết nối: `pnpm exec midscene-test model verify`\nBước 3: Cài đặt trình duyệt Chromium cho web: `pnpm exec playwright install chromium`",
+    "usageGuideVi": "Bước 1: Chạy ví dụ mẫu đã được sinh: `pnpm test`\nBước 2: Viết test case YAML với các bước aiAct, aiWaitFor, aiAssert mô tả bằng ngôn ngữ tự nhiên.\nBước 3: Hoặc dùng PlaywrightAgent trong test Playwright có sẵn, sau đó mở báo cáo HTML để xem ảnh chụp và kết quả xác minh.",
+    "samplePromptsVi": [
+      "aiAct: Search for headphones and filter the results to prices under $100",
+      "aiAssert: The selected plan has a blue border and a checkmark",
+      "aiAssert: The error message is visible below the email field"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pnpm dlx @midscene/test create my-tests --platform web --package-manager pnpm",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pnpm dlx @midscene/test create my-tests --platform web --package-manager pnpm\"\n  ],\n  \"nguon\": \"https://github.com/web-infra-dev/midscene\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Giấy phép MIT, phát triển tích cực bởi Bytedance",
+      "Không cần duy trì selector, kiểm tra được cả nội dung vẽ trên canvas và ứng dụng native",
+      "Hỗ trợ mô hình mã nguồn mở tự host, chi phí mô hình thấp theo benchmark công bố"
+    ],
+    "consVi": [
+      "Cần cấu hình và trả phí dịch vụ mô hình thị giác (hoặc tự host mô hình)",
+      "Hướng dẫn cài đặt chi tiết nằm trong tài liệu trang midscenejs.com, README chỉ có ví dụ ngắn",
+      "Mỗi nền tảng di động/desktop cần thiết lập môi trường riêng (ADB, WebDriverAgent, HDC)"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Midscene.js — Kiểm thử E2E bằng ngôn ngữ tự nhiên với thị giác AI\n\n> See interfaces like a human. E2E testing in natural language.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nMidscene.js đưa thị giác AI vào kiểm thử end-to-end: mô tả bước thao tác và kết quả mong đợi bằng ngôn ngữ tự nhiên, GUI Agent sẽ nhìn ảnh chụp màn hình để thực hiện và xác minh. Công cụ có Midscene Test (test case YAML) và Agent API tích hợp với Playwright, Puppeteer, hỗ trợ web, Android, iOS, HarmonyOS và desktop.\n\nGiúp viết test E2E không phụ thuộc selector, xác minh đúng những gì người dùng nhìn thấy trên giao diện web, di động và máy tính.\n\n- **Loại hình thành phần:** SDK\n- **Lĩnh vực chuyên môn:** Kiểm thử phần mềm & QA/QC\n- **Tác giả / Nhà phát triển:** Bytedance (web-infra-dev)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/web-infra-dev/midscene](https://github.com/web-infra-dev/midscene)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **API ngôn ngữ tự nhiên: aiAct, aiTap, aiInput, aiAssert, aiWaitFor, aiQuery**\n- **Định vị phần tử theo hình ảnh: nút chỉ có icon, canvas, iframe khác nguồn mà không cần selector**\n- **Midscene Test: viết test case bằng YAML, mở rộng bằng TypeScript Node dùng chung**\n- **Một API cho nhiều nền tảng: Web (Playwright/Puppeteer/Chrome), Android (ADB), iOS (WebDriverAgent), HarmonyOS, desktop**\n- **Báo cáo HTML tương tác với ảnh chụp, vị trí phần tử và quá trình ra quyết định của AI**\n- **Hỗ trợ nhiều mô hình: Qwen3.x, Doubao-Seed-2.1, DeepSeek V4 Flash, GLM-4.6V, Gemini, UI-TARS (có lựa chọn tự host)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npnpm dlx @midscene/test create my-tests --platform web --package-manager pnpm\n```\n\nYêu cầu: Node.js ^20.19.0 || ^22.12.0 || >=24.0.0 và pnpm; một dịch vụ mô hình thị giác (cấu hình base URL, API key, tên mô hình trong .env).\nBước 1: Tạo dự án Midscene Test cho web và cài đặt phụ thuộc: `pnpm dlx @midscene/test create my-tests --platform web --package-manager pnpm`\nBước 2: Sao chép .env.example thành .env, điền tên mô hình, URL dịch vụ và API key, rồi kiểm tra kết nối: `pnpm exec midscene-test model verify`\nBước 3: Cài đặt trình duyệt Chromium cho web: `pnpm exec playwright install chromium`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy ví dụ mẫu đã được sinh: `pnpm test`\nBước 2: Viết test case YAML với các bước aiAct, aiWaitFor, aiAssert mô tả bằng ngôn ngữ tự nhiên.\nBước 3: Hoặc dùng PlaywrightAgent trong test Playwright có sẵn, sau đó mở báo cáo HTML để xem ảnh chụp và kết quả xác minh.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"aiAct: Search for headphones and filter the results to prices under $100\"\n- \"aiAssert: The selected plan has a blue border and a checkmark\"\n- \"aiAssert: The error message is visible below the email field\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "kodustech-kodus-ai",
+    "slug": "kodustech-kodus-ai",
+    "name": "Kodus — Nền tảng AI review mã nguồn tự host với quy tắc tùy chỉnh",
+    "icon": "GitPullRequest",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "qa_testing",
+    "categoryNameVi": "Kiểm thử phần mềm & QA/QC",
+    "categories": [
+      "qa_testing",
+      "devops_cicd"
+    ],
+    "categoryNamesVi": [
+      "Kiểm thử phần mềm & QA/QC",
+      "DevOps & Tự động hóa CI/CD"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/kodustech/kodus-ai",
+    "websiteUrl": "https://kodus.io",
+    "authorName": "Kodus",
+    "license": "Mã nguồn mở hỗn hợp (AGPL-3.0 cho lõi; mã Enterprise theo giấy phép riêng)",
+    "summaryVi": "Kodus là nền tảng review mã bằng AI với agent Kody, tự động review pull request trên GitHub, GitLab, Bitbucket, Azure DevOps và Forgejo. Có thể tự host bằng Docker hoặc dùng Kodus Cloud, kèm CLI để review ngay trên máy và trong pipeline CI/CD.",
+    "purposeVi": "Giúp đội phát triển áp dụng quy tắc review riêng bằng ngôn ngữ tự nhiên và phát hiện rủi ro (bảo mật, kiến trúc) trước khi merge, với chi phí LLM trả trực tiếp cho nhà cung cấp.",
+    "featuresVi": [
+      "Không phụ thuộc mô hình: Claude, GPT-5, Gemini, Llama, GLM, Kimi hoặc endpoint tương thích OpenAI (BYOK)",
+      "Kody Rules: định nghĩa quy tắc review bằng ngôn ngữ tự nhiên theo tổ chức, repo, đường dẫn",
+      "Kody Issues: theo dõi gợi ý chưa được xử lý từ PR đã đóng",
+      "CLI: kodus review cho working tree, staged, theo nhánh, tự sửa với --fix, xuất cho AI agent với --prompt-only",
+      "Skill cho Claude Code, Cursor, Windsurf để agent tự review thay đổi",
+      "Theo dõi token, Cockpit đo hiệu quả review và chỉ số giao hàng (bản Teams trở lên)"
+    ],
+    "installGuideVi": "Yêu cầu: CLI: Yarn (hoặc script cài đặt). Tự host: Docker trên máy ảo tối thiểu 2 CPU, 8 GB RAM, 60 GB đĩa trống; khóa API của nhà cung cấp LLM.\nBước 1: Cài đặt CLI: `yarn global add @kodus/cli`\nBước 2: Hoặc cài đặt CLI kèm skill cho các agent lập trình: `curl -fsSL https://raw.githubusercontent.com/kodustech/cli/main/install.sh | bash`\nBước 3: Xác thực (hoặc bỏ qua để dùng chế độ dùng thử): `kodus auth login`\nBước 4: Tự host nền tảng: làm theo hướng dẫn Self-Host Guide tại docs.kodus.io.",
+    "usageGuideVi": "Bước 1: Review thay đổi trong thư mục làm việc: `kodus review` (hoặc `kodus review --staged` chỉ với tệp đã stage).\nBước 2: Tự áp dụng mọi bản sửa được với `kodus review --fix`.\nBước 3: Kết nối repo trên GitHub/GitLab/Bitbucket/Azure DevOps/Forgejo để Kody tự review từng pull request.",
+    "samplePromptsVi": [
+      "Review các thay đổi đã stage và chỉ ra rủi ro bảo mật theo mức độ nghiêm trọng.",
+      "Tạo Kody Rule: mọi endpoint mới phải kiểm tra organizationId của người dùng hiện tại.",
+      "So sánh nhánh hiện tại với main và tự sửa các lỗi có thể sửa tự động."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "yarn global add @kodus/cli",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"yarn global add @kodus/cli\"\n  ],\n  \"nguon\": \"https://github.com/kodustech/kodus-ai\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "freemium",
+    "pricingText": "Community miễn phí (tự host hoặc Kodus host, dùng khóa API riêng); Teams $10/dev/tháng hoặc $8/dev trả năm (+ token); Enterprise giá tùy chỉnh",
+    "prosVi": [
+      "Có thể tự host, dùng khóa LLM riêng không bị cộng phí (zero markup)",
+      "Hỗ trợ 5 nền tảng Git, kể cả GitLab và Forgejo tự quản",
+      "Bản Community miễn phí, không giới hạn người dùng và PR khi dùng khóa riêng"
+    ],
+    "consVi": [
+      "Giấy phép hỗn hợp: phần lõi AGPL-3.0, mã Enterprise (.ee., ee/) theo giấy phép riêng, không được sửa",
+      "Bản Community giới hạn 10 Kody Rules và 3 plugin; Cockpit, SSO, RBAC chỉ có ở bản trả phí",
+      "Bản tự host gửi một heartbeat ẩn danh mỗi ngày (tắt bằng KODUS_TELEMETRY_DISABLED=true)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Kodus — Nền tảng AI review mã nguồn tự host với quy tắc tùy chỉnh\n\n> Kodus reviews pull requests on GitHub, GitLab, Bitbucket, Azure DevOps, and Forgejo.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nKodus là nền tảng review mã bằng AI với agent Kody, tự động review pull request trên GitHub, GitLab, Bitbucket, Azure DevOps và Forgejo. Có thể tự host bằng Docker hoặc dùng Kodus Cloud, kèm CLI để review ngay trên máy và trong pipeline CI/CD.\n\nGiúp đội phát triển áp dụng quy tắc review riêng bằng ngôn ngữ tự nhiên và phát hiện rủi ro (bảo mật, kiến trúc) trước khi merge, với chi phí LLM trả trực tiếp cho nhà cung cấp.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Kiểm thử phần mềm & QA/QC\n- **Tác giả / Nhà phát triển:** Kodus\n- **Giấy phép bản quyền:** Mã nguồn mở hỗn hợp (AGPL-3.0 cho lõi; mã Enterprise theo giấy phép riêng)\n- **Nền tảng hỗ trợ:** `web`, `claude_code`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/kodustech/kodus-ai](https://github.com/kodustech/kodus-ai)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Không phụ thuộc mô hình: Claude, GPT-5, Gemini, Llama, GLM, Kimi hoặc endpoint tương thích OpenAI (BYOK)**\n- **Kody Rules: định nghĩa quy tắc review bằng ngôn ngữ tự nhiên theo tổ chức, repo, đường dẫn**\n- **Kody Issues: theo dõi gợi ý chưa được xử lý từ PR đã đóng**\n- **CLI: kodus review cho working tree, staged, theo nhánh, tự sửa với --fix, xuất cho AI agent với --prompt-only**\n- **Skill cho Claude Code, Cursor, Windsurf để agent tự review thay đổi**\n- **Theo dõi token, Cockpit đo hiệu quả review và chỉ số giao hàng (bản Teams trở lên)**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nyarn global add @kodus/cli\n```\n\nYêu cầu: CLI: Yarn (hoặc script cài đặt). Tự host: Docker trên máy ảo tối thiểu 2 CPU, 8 GB RAM, 60 GB đĩa trống; khóa API của nhà cung cấp LLM.\nBước 1: Cài đặt CLI: `yarn global add @kodus/cli`\nBước 2: Hoặc cài đặt CLI kèm skill cho các agent lập trình: `curl -fsSL https://raw.githubusercontent.com/kodustech/cli/main/install.sh | bash`\nBước 3: Xác thực (hoặc bỏ qua để dùng chế độ dùng thử): `kodus auth login`\nBước 4: Tự host nền tảng: làm theo hướng dẫn Self-Host Guide tại docs.kodus.io.\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Review thay đổi trong thư mục làm việc: `kodus review` (hoặc `kodus review --staged` chỉ với tệp đã stage).\nBước 2: Tự áp dụng mọi bản sửa được với `kodus review --fix`.\nBước 3: Kết nối repo trên GitHub/GitLab/Bitbucket/Azure DevOps/Forgejo để Kody tự review từng pull request.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Review các thay đổi đã stage và chỉ ra rủi ro bảo mật theo mức độ nghiêm trọng.\"\n- \"Tạo Kody Rule: mọi endpoint mới phải kiểm tra organizationId của người dùng hiện tại.\"\n- \"So sánh nhánh hiện tại với main và tự sửa các lỗi có thể sửa tự động.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "microsoft-playwright-cli",
+    "slug": "microsoft-playwright-cli",
+    "name": "Playwright CLI — Công cụ dòng lệnh Playwright kèm skill cho agent lập trình",
+    "icon": "Terminal",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "qa_testing",
+    "categoryNameVi": "Kiểm thử phần mềm & QA/QC",
+    "categories": [
+      "qa_testing",
+      "frontend_ui"
+    ],
+    "categoryNamesVi": [
+      "Kiểm thử phần mềm & QA/QC",
+      "Frontend & Giao diện người dùng"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/microsoft/playwright-cli",
+    "websiteUrl": "https://playwright.dev/agent-cli/introduction",
+    "authorName": "Microsoft",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Playwright CLI là giao diện dòng lệnh của Playwright dành cho agent lập trình (Claude Code, GitHub Copilot...), kèm skill hướng dẫn agent điều khiển trình duyệt. So với Playwright MCP, CLI tiết kiệm token hơn vì không nạp schema công cụ lớn và cây accessibility vào ngữ cảnh mô hình.",
+    "purposeVi": "Giúp agent AI kiểm thử giao diện web, chạy và gỡ lỗi test Playwright, sinh test từ đặc tả bằng các lệnh ngắn gọn.",
+    "featuresVi": [
+      "Lệnh điều khiển trình duyệt: open, goto, click, fill, type, press, check, snapshot, screenshot, pdf",
+      "Skill cài sẵn cho agent: chạy/gỡ lỗi test Playwright, mock request, sinh test (plan / generate / heal)",
+      "Quản lý phiên trình duyệt riêng theo dự án (-s=), lưu hồ sơ bền vững với --persistent",
+      "Bảng điều khiển playwright-cli show xem trực tiếp và điều khiển các phiên đang chạy",
+      "Ghi trace, quay video có chú thích thao tác, mock mạng bằng route",
+      "Tiết kiệm token: không ép dữ liệu trang vào LLM"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js 18 trở lên; Claude Code, GitHub Copilot hoặc agent lập trình khác.\nBước 1: Cài đặt CLI toàn cục: `npm install -g @playwright/cli@latest`\nBước 2: Cài đặt skill cho các agent lập trình (Claude Code, Copilot...): `playwright-cli install --skills`",
+    "usageGuideVi": "Bước 1: Giao nhiệm vụ cho agent, ví dụ kiểm thử luồng \"add todo\" trên demo TodoMVC bằng playwright-cli.\nBước 2: Hoặc tự chạy lệnh: `playwright-cli open https://demo.playwright.dev/todomvc/ --headed` rồi type, press, screenshot.\nBước 3: Theo dõi các phiên agent đang chạy bằng `playwright-cli show`.",
+    "samplePromptsVi": [
+      "Test the \"add todo\" flow on https://demo.playwright.dev/todomvc using playwright-cli. Take screenshots for all successful and failing scenarios.",
+      "Dùng playwright-cli sinh bộ test Playwright cho trang đăng nhập từ đặc tả này rồi chạy thử.",
+      "Chạy bộ test Playwright hiện có, gỡ lỗi các test thất bại và đính kèm ảnh chụp vào pull request."
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm install -g @playwright/cli@latest",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm install -g @playwright/cli@latest\"\n  ],\n  \"nguon\": \"https://github.com/microsoft/playwright-cli\"\n}"
+      },
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "playwright-cli install --skills",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"playwright-cli install --skills\"\n  ],\n  \"nguon\": \"https://github.com/microsoft/playwright-cli\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "prosVi": [
+      "Dự án chính thức của Microsoft, giấy phép Apache 2.0",
+      "Tiết kiệm token hơn MCP, phù hợp agent lập trình làm việc với codebase lớn",
+      "Có skill sẵn cho kiểm thử, sinh test và gỡ lỗi"
+    ],
+    "consVi": [
+      "Chỉ là công cụ điều khiển trình duyệt; phần suy luận do agent lập trình bên ngoài đảm nhận",
+      "Phiên headless tự tắt sau một giờ không có lệnh (chỉnh bằng --idle-timeout)",
+      "Với vòng lặp agent cần trạng thái liên tục, README khuyến nghị dùng Playwright MCP"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-24",
+    "readmeVi": "# Playwright CLI — Công cụ dòng lệnh Playwright kèm skill cho agent lập trình\n\n> Playwright CLI with SKILLS\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nPlaywright CLI là giao diện dòng lệnh của Playwright dành cho agent lập trình (Claude Code, GitHub Copilot...), kèm skill hướng dẫn agent điều khiển trình duyệt. So với Playwright MCP, CLI tiết kiệm token hơn vì không nạp schema công cụ lớn và cây accessibility vào ngữ cảnh mô hình.\n\nGiúp agent AI kiểm thử giao diện web, chạy và gỡ lỗi test Playwright, sinh test từ đặc tả bằng các lệnh ngắn gọn.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** Kiểm thử phần mềm & QA/QC\n- **Tác giả / Nhà phát triển:** Microsoft\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `web`, `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/microsoft/playwright-cli](https://github.com/microsoft/playwright-cli)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Lệnh điều khiển trình duyệt: open, goto, click, fill, type, press, check, snapshot, screenshot, pdf**\n- **Skill cài sẵn cho agent: chạy/gỡ lỗi test Playwright, mock request, sinh test (plan / generate / heal)**\n- **Quản lý phiên trình duyệt riêng theo dự án (-s=), lưu hồ sơ bền vững với --persistent**\n- **Bảng điều khiển playwright-cli show xem trực tiếp và điều khiển các phiên đang chạy**\n- **Ghi trace, quay video có chú thích thao tác, mock mạng bằng route**\n- **Tiết kiệm token: không ép dữ liệu trang vào LLM**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm install -g @playwright/cli@latest\n```\n\nYêu cầu: Node.js 18 trở lên; Claude Code, GitHub Copilot hoặc agent lập trình khác.\nBước 1: Cài đặt CLI toàn cục: `npm install -g @playwright/cli@latest`\nBước 2: Cài đặt skill cho các agent lập trình (Claude Code, Copilot...): `playwright-cli install --skills`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Giao nhiệm vụ cho agent, ví dụ kiểm thử luồng \"add todo\" trên demo TodoMVC bằng playwright-cli.\nBước 2: Hoặc tự chạy lệnh: `playwright-cli open https://demo.playwright.dev/todomvc/ --headed` rồi type, press, screenshot.\nBước 3: Theo dõi các phiên agent đang chạy bằng `playwright-cli show`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Test the \"add todo\" flow on https://demo.playwright.dev/todomvc using playwright-cli. Take screenshots for all successful and failing scenarios.\"\n- \"Dùng playwright-cli sinh bộ test Playwright cho trang đăng nhập từ đặc tả này rồi chạy thử.\"\n- \"Chạy bộ test Playwright hiện có, gỡ lỗi các test thất bại và đính kèm ảnh chụp vào pull request.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-24T02:09:14.397Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]
