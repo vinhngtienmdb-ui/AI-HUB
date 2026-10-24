@@ -1,0 +1,163 @@
+[
+  {
+    "repo": "kaylode/vietnamese-ocr-toolbox",
+    "license": "Apache License 2.0",
+    "authorName": "Minh-Khoi Pham, Thang-Long Nguyen-Ho (kaylode)",
+    "websiteUrl": "https://doi.org/10.5281/zenodo.22748432",
+    "toolType": "software",
+    "taglineEn": "This toolbox provides a pipeline to do OCR in Vietnamese documents (such as receipts, personal id, licenses,...).",
+    "summaryVi": "Vietnamese OCR Toolbox là bộ công cụ Python cung cấp pipeline OCR cho tài liệu tiếng Việt như hóa đơn, chứng minh nhân dân, giấy phép. Pipeline gồm phát hiện và nắn thẳng tài liệu bằng Canny/contour, phát hiện vùng chữ bằng Pixel Aggregation Network (PAN), nhận dạng chữ bằng VietOCR kèm sửa lỗi từ, rồi trích xuất thông tin theo lớp.",
+    "purposeVi": "Giúp số hóa và trích xuất thông tin từ ảnh hóa đơn, giấy tờ tùy thân tiếng Việt, đồng thời có sẵn notebook để huấn luyện lại cho bài toán riêng.",
+    "featuresVi": [
+      "Nắn tài liệu: phát hiện cạnh Canny, tìm contour, cắt và chuẩn hóa ảnh hóa đơn",
+      "Phát hiện vùng chữ: Pixel Aggregation Network (PAN), có trọng số huấn luyện sẵn trên SROIE19",
+      "Nhận dạng chữ tiếng Việt: Transformer OCR (VietOCR) huấn luyện trên MCOCR2021, kèm sửa lỗi từ",
+      "Trích xuất thông tin: phân loại trường bằng PhoBERT huấn luyện trên MCOCR2021",
+      "Hai giai đoạn: tùy chọn tìm hướng xoay tốt nhất trước khi chạy toàn bộ pipeline",
+      "Notebook Colab để huấn luyện PAN, Transformer OCR, PhoBERT và chạy suy luận"
+    ],
+    "requirementsVi": "Python 3.7 trở lên; tải trọng số huấn luyện sẵn (PAN, Transformer OCR, PhoBERT) từ các liên kết Google Drive trong README.",
+    "installStepsVi": [
+      "Tải mã nguồn repo kaylode/vietnamese-ocr-toolbox từ GitHub.",
+      "Cài thư viện: `pip install -r requirements.txt`",
+      "Tải trọng số huấn luyện sẵn từ các liên kết trong mục Pretrained weights của README.",
+      "Chạy toàn bộ pipeline: `python run.py --input=<input image> --output=<output folder>`"
+    ],
+    "cliCommand": "python run.py --input=<input image> --output=<output folder>",
+    "usageStepsVi": [
+      "Đưa ảnh hóa đơn hoặc giấy tờ vào tham số --input và chọn thư mục kết quả bằng --output.",
+      "Thêm --find_best_rotation để tìm hướng xoay tốt nhất trước khi nhận dạng.",
+      "Thêm --do_retrieve để trích xuất thông tin theo lớp định nghĩa trong cấu hình, hoặc bỏ đi để chỉ OCR.",
+      "Thêm --debug để lưu kết quả trung gian của từng bước."
+    ],
+    "samplePromptsVi": [
+      "Chạy OCR cho ảnh hóa đơn siêu thị và trích xuất tên cửa hàng, ngày giờ, tổng tiền.",
+      "Nhận dạng chữ trên ảnh chụp chứng minh nhân dân bị nghiêng, tự tìm hướng xoay phù hợp.",
+      "Huấn luyện lại mô hình Transformer OCR trên bộ ảnh hóa đơn của công ty bằng notebook Colab."
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, dùng được cho mục đích thương mại",
+      "Pipeline đầy đủ từ nắn ảnh đến trích xuất thông tin, có trọng số huấn luyện sẵn",
+      "Có notebook Colab cho huấn luyện và suy luận, có DOI Zenodo để trích dẫn"
+    ],
+    "consVi": [
+      "Trọng số và dữ liệu tải thủ công từ Google Drive",
+      "Mô hình huấn luyện trên SROIE19 và MCOCR2021 nên cần huấn luyện lại cho mẫu giấy tờ khác",
+      "Chỉ có giao diện dòng lệnh, không có API hay giao diện web"
+    ],
+    "sourceEvidence": {
+      "pip install -r requirements.txt": "README.md:88",
+      "python run.py --input=<input image> --output=<output folder>": "README.md:92"
+    },
+    "meta": {
+      "id": "kaylode-vietnamese-ocr-toolbox",
+      "nameVi": "Vietnamese OCR Toolbox — Pipeline OCR và trích xuất thông tin hóa đơn, giấy tờ tiếng Việt",
+      "icon": "Search",
+      "categories": [
+        "computer_vision",
+        "office_digital_docs"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, mã nguồn mở",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "python run.py --input=<input image> --output=<output folder>"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "VinAIResearch/dict-guided",
+    "license": "GNU Affero General Public License v3.0 (bộ dữ liệu VinText chỉ dùng cho nghiên cứu/giáo dục)",
+    "authorName": "VinAI Research",
+    "websiteUrl": "https://www3.cs.stonybrook.edu/~minhhoai/papers/vintext_CVPR21.pdf",
+    "toolType": "model",
+    "taglineEn": "We propose a novel dictionary-guided sense text recognition approach that could be used to improve many state-of-the-art models.",
+    "summaryVi": "Dict-Guided là mã nguồn chính thức của bài báo CVPR 2021 \"Dictionary-guided Scene Text Recognition\" của VinAI Research, nhận dạng chữ trong ảnh cảnh thực có dùng từ điển để cải thiện độ chính xác. Repo đồng thời giới thiệu bộ dữ liệu VinText cho nhận dạng chữ tiếng Việt trong ảnh cảnh thực (2.000 ảnh, khoảng 56.000 vùng chữ).",
+    "purposeVi": "Dùng để phát hiện và đọc chữ tiếng Việt có dấu trên biển hiệu, bảng quảng cáo, ảnh đường phố, hoặc làm chuẩn đánh giá cho nghiên cứu scene text tiếng Việt.",
+    "featuresVi": [
+      "Nhận dạng scene text có hướng dẫn từ điển, có thể áp dụng để cải thiện nhiều mô hình hiện có",
+      "Bộ dữ liệu VinText: 2.000 ảnh, khoảng 56.000 vùng chữ tiếng Việt, có bản chuyển sang định dạng COCO",
+      "Mô hình huấn luyện sẵn trên VinText để chạy thử",
+      "Script demo, huấn luyện và đánh giá dựa trên ABCNet/Detectron2"
+    ],
+    "requirementsVi": "Python 3.7, torch 1.4.0, detectron2 0.2, CUDA 10.0 (theo README); Conda.",
+    "installStepsVi": [
+      "Tạo môi trường: `conda create -n dict-guided -y python=3.7`",
+      "Kích hoạt môi trường: `conda activate dict-guided`",
+      "Cài PyTorch: `conda install -y pytorch torchvision cudatoolkit=10.0 -c pytorch`",
+      "Cài thư viện phụ trợ: `python -m pip install ninja yacs cython matplotlib tqdm opencv-python shapely scipy tensorboardX pyclipper Polygon3 weighted-levenshtein editdistance`",
+      "Cài Detectron2 0.2 theo lệnh trong README (wheel cu100/torch1.4).",
+      "Tải mã nguồn và build: `python setup.py build develop`",
+      "Tải mô hình huấn luyện sẵn trên VinText từ liên kết trong README."
+    ],
+    "cliCommand": "python demo/demo.py --config-file configs/BAText/VinText/attn_R_50.yaml --input sample_input/ --output sample_output/ --opts MODEL.WEIGHTS path-to-trained_model-checkpoint",
+    "usageStepsVi": [
+      "Tạo thư mục sample_input và sample_output, chép ảnh cần nhận dạng vào sample_input.",
+      "Chạy script demo với cấu hình VinText và đường dẫn trọng số đã tải.",
+      "Xem ảnh kết quả có khung và chữ nhận dạng trong sample_output.",
+      "Huấn luyện lại hoặc đánh giá bằng tools/train_net.py (thêm --eval-only để đánh giá)."
+    ],
+    "samplePromptsVi": [
+      "Đọc chữ tiếng Việt trên ảnh chụp biển hiệu cửa hàng ngoài đường.",
+      "Đánh giá mô hình nhận dạng scene text của tôi trên bộ dữ liệu VinText.",
+      "Huấn luyện lại mô hình từ trọng số tt_attn_R_50 của ABCNet trên dữ liệu VinText."
+    ],
+    "prosVi": [
+      "Mã nguồn chính thức của bài báo CVPR 2021 từ VinAI Research",
+      "Kèm bộ dữ liệu chuẩn VinText dành riêng cho chữ tiếng Việt trong ảnh cảnh thực",
+      "Có mô hình huấn luyện sẵn và script huấn luyện/đánh giá đầy đủ"
+    ],
+    "consVi": [
+      "Giấy phép AGPL-3.0: phải công khai mã nguồn khi cung cấp dịch vụ qua mạng",
+      "Bộ dữ liệu VinText chỉ được dùng cho nghiên cứu hoặc giáo dục, không được phân phối lại",
+      "Phụ thuộc phiên bản cũ (Python 3.7, torch 1.4.0, detectron2 0.2, CUDA 10.0)",
+      "Lệnh git clone trong README trỏ tới bản fork nguyennm1024/dict-guided"
+    ],
+    "sourceEvidence": {
+      "conda create -n dict-guided -y python=3.7": "README.md:81",
+      "conda activate dict-guided": "README.md:82",
+      "conda install -y pytorch torchvision cudatoolkit=10.0 -c pytorch": "README.md:83",
+      "python -m pip install ninja yacs cython matplotlib tqdm opencv-python shapely scipy tensorboardX pyclipper Polygon3 weighted-levenshtein editdistance": "README.md:84",
+      "python setup.py build develop": "README.md:94",
+      "python demo/demo.py --config-file configs/BAText/VinText/attn_R_50.yaml --input sample_input/ --output sample_output/ --opts MODEL.WEIGHTS path-to-trained_model-checkpoint": "README.md:110"
+    },
+    "meta": {
+      "id": "vinairesearch-dict-guided",
+      "nameVi": "Dict-Guided (VinText) — Nhận dạng chữ tiếng Việt trong ảnh cảnh thực của VinAI",
+      "icon": "Search",
+      "categories": [
+        "computer_vision"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (AGPL-3.0); dữ liệu VinText chỉ cho nghiên cứu/giáo dục",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí; dữ liệu VinText giới hạn mục đích nghiên cứu, giáo dục",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "python demo/demo.py --config-file configs/BAText/VinText/attn_R_50.yaml --input sample_input/ --output sample_output/ --opts MODEL.WEIGHTS path-to-trained_model-checkpoint"
+        }
+      ]
+    }
+  }
+]

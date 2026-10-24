@@ -4,6 +4,16 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.10 (Ngày 24-10-2026)
+- **Loại hình**: Tài nguyên thị trường Việt Nam, đợt 2–3 (27 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-vn-dot-2-*.json` và `vn-dot-3-*.json`.
+- **Thương mại điện tử & vận chuyển**: Sapo-MCP, shopee-sdk, shopee-php, tiktokshop-php, lazada-php, kiotviet-client-sdk, giaohangnhanh (đều là dự án cộng đồng, không phải SDK chính thức của sàn).
+- **Dữ liệu hành chính**: vn-skills (MCP, dự án mới 0.x), vietnamese-provinces-database, vietnamadminunits, chiecthuyenngoaixa, vn-telco-phonenumber (GPL-3.0).
+- **OCR**: vietnamese-ocr-toolbox, dict-guided (AGPL-3.0; bộ dữ liệu VinText chỉ dùng cho nghiên cứu/giáo dục).
+- **Zalo**: zalo-php-sdk (chính thức, cập nhật lần cuối 12-2023), zaui-market (Mini App), zalo-bot-mcp, hermes-plugin-zalo, go-zalo-bot-api, zalo-bot-sdk. Chỉ dùng Zalo Bot API / OA API chính thức, không tự động hóa tài khoản cá nhân.
+- **LLM & đánh giá**: VMLU, Vistral-V, SEA-HELM, MELT. **Y tế & văn bản**: ViHealthBERT, ViSoLex, vietnormalizer.
+- Không thêm: repo không có tệp giấy phép, repo ngừng cập nhật trước 06-2024, gói npm không tồn tại (Haravan-MCP), dự án cá nhân nhỏ (nhận dạng biển số, ViAG), mã chỉ để đánh giá (sailor-llm), bộ dữ liệu không có lệnh chạy (NomNaOCR).
+- Kho dữ liệu: 1.991 công cụ đang hiển thị, 2.017 cấu hình mẫu.
+
 ### Phiên Bản 2.1.9 (Ngày 24-10-2026)
 - **Loại hình**: Tài nguyên thị trường Việt Nam, đợt 1 (11 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-vn-dot-1-*.json`, nhập bằng `scripts/add-tools-from-facts.cjs`.
 - **Giọng nói**: VieNeu-TTS (mã nguồn mở đến v3 Turbo), V-TTS (CC BY-NC, phi thương mại), VietTTS (mô hình huấn luyện sẵn CC BY-NC), phostt (nhận dạng giọng nói chạy cục bộ).

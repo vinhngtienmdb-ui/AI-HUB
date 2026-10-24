@@ -1,0 +1,523 @@
+[
+  {
+    "repo": "nguyennguyenit/Sapo-MCP",
+    "license": "MIT License",
+    "authorName": "Plateau Nguyen (nguyennguyenit)",
+    "websiteUrl": "https://www.npmjs.com/package/sapo-mcp",
+    "toolType": "mcp",
+    "taglineEn": "Model Context Protocol server for Sapo.vn POS & e-commerce platform.",
+    "summaryVi": "Sapo-MCP là máy chủ MCP kết nối trợ lý AI (Claude Desktop, Cursor) với nền tảng bán hàng Sapo.vn, gồm 105 công cụ chia thành 4 chế độ: pos-online, web, pos-counter và analytics. Máy chủ chạy qua stdio hoặc Streamable HTTP, dùng thông tin Private App của một cửa hàng.",
+    "purposeVi": "Giúp chủ shop dùng Sapo tra cứu đơn hàng, khách hàng, sản phẩm, tồn kho và báo cáo doanh thu bằng ngôn ngữ tự nhiên thông qua trợ lý AI.",
+    "featuresVi": [
+      "105 công cụ, 4 chế độ: pos-online (51), web (31), pos-counter (15), analytics (10)",
+      "Hai kiểu truyền tải: stdio cho Claude Desktop/Cursor và Streamable HTTP (mặc định cổng 3333) cho Docker",
+      "An toàn mặc định: thao tác phá hủy (hủy, xóa, hoàn tiền...) bị chặn trừ khi bật qua SAPO_ALLOW_OPS và phải truyền confirm: true",
+      "Báo cáo tổng hợp: doanh thu, sản phẩm/khách hàng hàng đầu, LTV, thuế, so sánh online và tại quầy, tồn kho thấp",
+      "Kiểm tra endpoint: lệnh probe chỉ đọc và canary phát hiện thay đổi schema"
+    ],
+    "requirementsVi": "Node.js 20 trở lên; Private App tạo tại developers.sapo.vn (tên cửa hàng, API Key, API Secret).",
+    "installStepsVi": [
+      "Tạo Private App tại developers.sapo.vn để lấy tên cửa hàng, API Key và API Secret.",
+      "Chạy thử không cần cài đặt: `npx -y sapo-mcp@latest --version`",
+      "Hoặc cài toàn cục: `npm install -g sapo-mcp`",
+      "Thêm cấu hình mcpServers (command npx, args sapo-mcp --mode=...) cùng biến môi trường SAPO_STORE, SAPO_API_KEY, SAPO_API_SECRET vào claude_desktop_config.json hoặc ~/.cursor/mcp.json, rồi khởi động lại ứng dụng.",
+      "Chạy chế độ HTTP cục bộ: `sapo-mcp --mode=pos-online --transport=http --port=3333`"
+    ],
+    "cliCommand": "npx sapo-mcp --mode=pos-online",
+    "usageStepsVi": [
+      "Chọn các chế độ cần dùng bằng cờ --mode (ví dụ pos-online,web,analytics).",
+      "Hỏi trợ lý AI về đơn hàng, khách hàng, tồn kho hoặc báo cáo; các công cụ Sapo xuất hiện trong ứng dụng MCP.",
+      "Chỉ bật SAPO_ALLOW_OPS (ví dụ cancel,delete) khi thực sự cần thao tác hủy/xóa."
+    ],
+    "samplePromptsVi": [
+      "Tổng hợp doanh thu cửa hàng Sapo của tôi trong tháng này và liệt kê 10 sản phẩm bán chạy nhất.",
+      "Tìm khách hàng có số điện thoại 0901234567 và cho tôi xem các đơn hàng của họ.",
+      "Những sản phẩm nào đang sắp hết hàng trong kho?"
+    ],
+    "prosVi": [
+      "Mã nguồn mở MIT, cài nhanh bằng npx",
+      "Thao tác phá hủy bị chặn mặc định và cần xác nhận confirm: true",
+      "Hỗ trợ cả stdio và HTTP, có ví dụ Dockerfile"
+    ],
+    "consVi": [
+      "Dự án cộng đồng, không phải sản phẩm chính thức của Sapo",
+      "Phiên bản trước 1.0: tên công cụ và schema có thể thay đổi giữa các bản nhỏ",
+      "Mỗi máy chủ chỉ phục vụ một cửa hàng (single-tenant Private App); 5 endpoint nội bộ của pos-counter cần OAuth Partner App",
+      "README ghi nhận 2 công cụ ca POS (list_pos_shifts, get_pos_shift) đang lỗi"
+    ],
+    "sourceEvidence": {
+      "npx -y sapo-mcp@latest --version": "README.md:26",
+      "npm install -g sapo-mcp": "README.md:32",
+      "npx sapo-mcp --mode=pos-online": "README.md:41",
+      "sapo-mcp --mode=pos-online --transport=http --port=3333": "README.md:356",
+      "claude_desktop jsonConfig": "README.md:58-72",
+      "cursor jsonConfig": "README.md:80-94"
+    },
+    "meta": {
+      "id": "nguyennguyenit-sapo-mcp",
+      "nameVi": "Sapo MCP — Máy chủ MCP kết nối AI với cửa hàng Sapo.vn",
+      "icon": "Layers",
+      "categories": [
+        "erp_enterprise",
+        "backend_api"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "cursor",
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, cần tài khoản Sapo có Private App",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "cliCommand": "npx -y sapo-mcp --mode=pos-online,web,analytics",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"sapo\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"sapo-mcp\",\n        \"--mode=pos-online,web,analytics\"\n      ],\n      \"env\": {\n        \"SAPO_STORE\": \"mystorename\",\n        \"SAPO_API_KEY\": \"xxx\",\n        \"SAPO_API_SECRET\": \"yyy\"\n      }\n    }\n  }\n}"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "cliCommand": "npx -y sapo-mcp --mode=pos-online,web",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"sapo\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"sapo-mcp\",\n        \"--mode=pos-online,web\"\n      ],\n      \"env\": {\n        \"SAPO_STORE\": \"mystorename\",\n        \"SAPO_API_KEY\": \"xxx\",\n        \"SAPO_API_SECRET\": \"yyy\"\n      }\n    }\n  }\n}"
+        },
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npx sapo-mcp --mode=pos-online"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "congminh1254/shopee-sdk",
+    "license": "MIT License",
+    "authorName": "Minh Nguyen Cong (congminh1254)",
+    "websiteUrl": "https://www.npmjs.com/package/@congminh1254/shopee-sdk",
+    "toolType": "sdk",
+    "taglineEn": "The most complete, production-ready TypeScript SDK for Shopee Open API",
+    "summaryVi": "Shopee SDK là thư viện TypeScript cho Shopee Open API, bao phủ 30 nhóm API (manager) như sản phẩm, đơn hàng, vận chuyển, thanh toán, voucher, quảng cáo, trả hàng, livestream. SDK tự động ký request, làm mới token và hỗ trợ nhiều khu vực Shopee.",
+    "purposeVi": "Giúp lập trình viên xây dựng hệ thống quản lý bán hàng đa kênh, đồng bộ tồn kho, xử lý đơn và tích hợp ERP với gian hàng Shopee.",
+    "featuresVi": [
+      "30 API manager: Product, Order, Logistics, Payment, Voucher, Push, Ads, Returns, Livestream, Video...",
+      "Xác thực OAuth và tự động làm mới token, lưu token bằng tệp hoặc tùy biến",
+      "Định nghĩa TypeScript đầy đủ cho request/response",
+      "Hỗ trợ đa khu vực Shopee và cấu hình proxy HTTP/HTTPS",
+      "Bộ kiểm thử đơn vị và kiểm thử tích hợp với Shopee Sandbox"
+    ],
+    "requirementsVi": "Node.js >= 20.0.0; tài khoản Shopee Open Platform (partner_id, partner_key).",
+    "installStepsVi": [
+      "Cài thư viện: `npm install @congminh1254/shopee-sdk`",
+      "Khởi tạo ShopeeSDK với partner_id, partner_key, region (và shop_id nếu cần).",
+      "Tạo URL ủy quyền bằng getAuthorizationUrl, sau đó gọi authenticateWithCode với mã nhận được từ callback."
+    ],
+    "cliCommand": "npm install @congminh1254/shopee-sdk",
+    "usageStepsVi": [
+      "Gọi sdk.product.getItemList để lấy danh sách sản phẩm.",
+      "Gọi sdk.order.getOrderList để lấy đơn hàng theo khoảng thời gian.",
+      "Dùng sdk.logistics và sdk.returns để xử lý vận chuyển và trả hàng."
+    ],
+    "samplePromptsVi": [
+      "Viết script Node.js dùng @congminh1254/shopee-sdk lấy toàn bộ đơn hàng Shopee trong 24 giờ qua.",
+      "Tạo hàm đồng bộ số lượng tồn kho từ hệ thống của tôi lên các sản phẩm Shopee bằng ProductManager.",
+      "Hướng dẫn tôi triển khai luồng OAuth Shopee với getAuthorizationUrl và authenticateWithCode."
+    ],
+    "prosVi": [
+      "Mã nguồn mở MIT, cập nhật thường xuyên (phát hành tự động qua Release Please)",
+      "README công bố bao phủ toàn bộ endpoint Shopee với 30 manager",
+      "Có tài liệu riêng cho AI agent (llms.txt)"
+    ],
+    "consVi": [
+      "SDK cộng đồng, không phải SDK chính thức của Shopee",
+      "Cần đăng ký Shopee Open Platform để có partner_id/partner_key",
+      "Yêu cầu Node.js 20 trở lên"
+    ],
+    "sourceEvidence": {
+      "npm install @congminh1254/shopee-sdk": "README.md:66"
+    },
+    "meta": {
+      "id": "congminh1254-shopee-sdk",
+      "nameVi": "Shopee SDK — Thư viện TypeScript đầy đủ cho Shopee Open API",
+      "icon": "Code2",
+      "categories": [
+        "erp_enterprise",
+        "backend_api"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, cần tài khoản Shopee Open Platform",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npm install @congminh1254/shopee-sdk"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "EcomPHP/shopee-php",
+    "license": "Apache License 2.0",
+    "authorName": "EcomPHP",
+    "websiteUrl": "https://packagist.org/packages/ecomphp/shopee-php",
+    "toolType": "sdk",
+    "taglineEn": "A powerful, lightweight, and developer-friendly Shopee API PHP SDK designed to integrate Shopee Open Platform v2 into vanilla PHP applications, Laravel, or Symfony projects.",
+    "summaryVi": "ecomphp/shopee-php là thư viện PHP cho Shopee Open Platform v2, dùng được với PHP thuần, Laravel hoặc Symfony. Thư viện hỗ trợ xác thực OAuth2, lấy và làm mới access token, đồng bộ sản phẩm và lấy đơn hàng.",
+    "purposeVi": "Giúp các website/hệ thống PHP kết nối gian hàng Shopee để quản lý sản phẩm và đơn hàng.",
+    "featuresVi": [
+      "Lớp Auth: tạo URL ủy quyền, đổi mã lấy token, làm mới token",
+      "Gọi API sản phẩm (getItemList) và đơn hàng (getOrderList)",
+      "Tương thích PHP thuần, Laravel, Symfony"
+    ],
+    "requirementsVi": "PHP ^7.2 hoặc ^8.0, Composer; partner_id và partner_key từ Shopee Open Platform.",
+    "installStepsVi": [
+      "Cài qua Composer: `composer require ecomphp/shopee-php`",
+      "Khởi tạo EcomPHP\\Shopee\\Client với partner_id và partner_key.",
+      "Dùng $client->auth() để tạo URL ủy quyền, đổi mã lấy access_token và lưu shop_id."
+    ],
+    "cliCommand": "composer require ecomphp/shopee-php",
+    "usageStepsVi": [
+      "Gắn token cho cửa hàng bằng $client->setAccessToken($shop_id, $access_token).",
+      "Gọi $client->Product->getItemList hoặc $client->Order->getOrderList.",
+      "Làm mới token định kỳ bằng $auth->refreshNewToken."
+    ],
+    "samplePromptsVi": [
+      "Viết controller Laravel dùng ecomphp/shopee-php để lấy các đơn Shopee ở trạng thái READY_TO_SHIP.",
+      "Hướng dẫn lưu và tự động làm mới access token Shopee với ecomphp/shopee-php."
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Cài nhanh qua Composer, hỗ trợ Laravel/Symfony"
+    ],
+    "consVi": [
+      "Thư viện không chính thức của Shopee",
+      "Cần tài khoản Shopee Open Platform",
+      "README chỉ minh họa một số API cơ bản"
+    ],
+    "sourceEvidence": {
+      "composer require ecomphp/shopee-php": "README.md:20"
+    },
+    "meta": {
+      "id": "ecomphp-shopee-php",
+      "nameVi": "Shopee PHP SDK — Thư viện PHP cho Shopee Open Platform v2",
+      "icon": "Code2",
+      "categories": [
+        "erp_enterprise",
+        "backend_api"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, cần tài khoản Shopee Open Platform",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "composer require ecomphp/shopee-php"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "EcomPHP/tiktokshop-php",
+    "license": "Apache License 2.0",
+    "authorName": "EcomPHP",
+    "websiteUrl": "https://packagist.org/packages/ecomphp/tiktokshop-php",
+    "toolType": "sdk",
+    "taglineEn": "Tiktok Shop API Client is a simple SDK implementation of Tiktok Shop API.",
+    "summaryVi": "ecomphp/tiktokshop-php là thư viện PHP gọi TikTok Shop API, từ v2.x dùng API phiên bản 202309 trở lên. Thư viện hỗ trợ ủy quyền OAuth, lấy shop cipher, gọi API sản phẩm/đơn hàng, đổi phiên bản API và nhận webhook.",
+    "purposeVi": "Giúp hệ thống PHP của người bán tích hợp gian hàng TikTok Shop để quản lý sản phẩm, đơn hàng và nhận thông báo.",
+    "featuresVi": [
+      "Ủy quyền OAuth: tạo yêu cầu ủy quyền, lấy và làm mới token",
+      "Lấy danh sách shop đã ủy quyền và shop cipher",
+      "Gọi API sản phẩm (getProductList), đơn hàng (getOrderList)",
+      "Đổi phiên bản API bằng useVersion",
+      "Xác minh và đọc webhook từ TikTok Shop"
+    ],
+    "requirementsVi": "PHP ^7.2 hoặc ^8.0, Composer; app key và app secret của TikTok Shop.",
+    "installStepsVi": [
+      "Cài qua Composer: `composer require ecomphp/tiktokshop-php`",
+      "Khởi tạo EcomPHP\\TiktokShop\\Client với app_key và app_secret.",
+      "Dùng $client->auth() để lấy access token, sau đó lấy shop cipher qua $client->Authorization->getAuthorizedShop()."
+    ],
+    "cliCommand": "composer require ecomphp/tiktokshop-php",
+    "usageStepsVi": [
+      "Gọi setAccessToken và setShopCipher trên client.",
+      "Gọi $client->Product->getProductList hoặc $client->Order->getOrderList.",
+      "Tạo $client->webhook() để xác minh và xử lý thông báo."
+    ],
+    "samplePromptsVi": [
+      "Viết đoạn PHP dùng ecomphp/tiktokshop-php lấy các đơn TikTok Shop chưa thanh toán.",
+      "Hướng dẫn xây endpoint nhận webhook TikTok Shop và ghi log loại sự kiện cùng shop ID."
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Hỗ trợ API TikTok Shop 202309 trở lên, có webhook"
+    ],
+    "consVi": [
+      "Thư viện không chính thức của TikTok Shop",
+      "Cần app key/secret của TikTok Shop",
+      "API phiên bản cũ phải dùng v1.x"
+    ],
+    "sourceEvidence": {
+      "composer require ecomphp/tiktokshop-php": "README.md:18"
+    },
+    "meta": {
+      "id": "ecomphp-tiktokshop-php",
+      "nameVi": "TikTok Shop PHP SDK — Thư viện PHP cho TikTok Shop API",
+      "icon": "Code2",
+      "categories": [
+        "erp_enterprise",
+        "backend_api"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, cần tài khoản TikTok Shop Partner",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "composer require ecomphp/tiktokshop-php"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "EcomPHP/lazada-php",
+    "license": "Apache License 2.0",
+    "authorName": "EcomPHP",
+    "websiteUrl": "https://packagist.org/packages/ecomphp/lazada-php",
+    "toolType": "sdk",
+    "taglineEn": "A powerful, lightweight, and developer-friendly Lazada API PHP SDK designed to integrate Lazada Open Platform into vanilla PHP applications, Laravel, or Symfony projects.",
+    "summaryVi": "ecomphp/lazada-php là thư viện PHP cho Lazada Open Platform, hỗ trợ các khu vực vn, sg, my, th, ph, id. Thư viện xử lý OAuth, token, và cung cấp nhiều nhóm API như Order, Product, Finance, Logistic, ReturnAndRefund, SellerVoucher.",
+    "purposeVi": "Giúp hệ thống PHP của người bán Lazada (bao gồm Lazada Việt Nam) đồng bộ sản phẩm, lấy đơn hàng và cập nhật trạng thái giao hàng.",
+    "featuresVi": [
+      "Hỗ trợ khu vực Lazada: vn, sg, my, th, ph, id",
+      "Lớp Auth: tạo URL ủy quyền theo quốc gia, lấy và làm mới token",
+      "Hơn 20 nhóm API: System, Seller, Order, Finance, Product, Logistic, Fulfillment, Wallet, LazLive...",
+      "Ví dụ cập nhật đơn sang trạng thái Ready to Ship"
+    ],
+    "requirementsVi": "PHP >= 7.4, Composer; app key, app secret và callback URL từ Lazada Open Platform.",
+    "installStepsVi": [
+      "Cài qua Composer: `composer require ecomphp/lazada-php`",
+      "Khởi tạo EcomPHP\\Lazada\\Client với app_key, app_secret và callback_url.",
+      "Tạo URL ủy quyền (ví dụ country = 'vn'), đổi mã lấy token rồi gọi setAccessToken($access_token, 'vn')."
+    ],
+    "cliCommand": "composer require ecomphp/lazada-php",
+    "usageStepsVi": [
+      "Gọi $client->Product->GetProducts để lấy sản phẩm.",
+      "Gọi các API nhóm Order để lấy đơn hàng và chi tiết đơn.",
+      "Làm mới token bằng $auth->refreshNewToken khi hết hạn."
+    ],
+    "samplePromptsVi": [
+      "Viết script PHP dùng ecomphp/lazada-php lấy 50 sản phẩm của shop Lazada Việt Nam.",
+      "Hướng dẫn lưu access token, refresh token và region của người bán Lazada vào cơ sở dữ liệu."
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Hỗ trợ trực tiếp khu vực Lazada Việt Nam (vn)",
+      "Bao phủ nhiều nhóm API"
+    ],
+    "consVi": [
+      "Thư viện không chính thức của Lazada",
+      "Cần tài khoản Lazada Open Platform"
+    ],
+    "sourceEvidence": {
+      "composer require ecomphp/lazada-php": "README.md:19"
+    },
+    "meta": {
+      "id": "ecomphp-lazada-php",
+      "nameVi": "Lazada PHP SDK — Thư viện PHP cho Lazada Open Platform",
+      "icon": "Code2",
+      "categories": [
+        "erp_enterprise",
+        "backend_api"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, cần tài khoản Lazada Open Platform",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "composer require ecomphp/lazada-php"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "epoxyteam/kiotviet-client-sdk",
+    "license": "MIT License",
+    "authorName": "Epoxy Team (Phong H.)",
+    "websiteUrl": "https://www.npmjs.com/package/kiotviet-client-sdk",
+    "toolType": "sdk",
+    "taglineEn": "A TypeScript/JavaScript SDK for interacting with KiotViet's Public API Retail platform.",
+    "summaryVi": "KiotViet Retail SDK là thư viện TypeScript/JavaScript cho Public API bán lẻ của KiotViet, quản lý sản phẩm, khách hàng, đơn hàng, hóa đơn, chi nhánh, nhà cung cấp, voucher, webhook và hóa đơn điện tử. SDK tự lấy và làm mới access token theo chuẩn OAuth 2.0.",
+    "purposeVi": "Giúp lập trình viên tích hợp hệ thống bán lẻ KiotViet với website, ứng dụng hoặc công cụ tự động hóa.",
+    "featuresVi": [
+      "Quản lý token tự động bằng client credentials (token hiệu lực 1 giờ, tự làm mới)",
+      "Hỗ trợ TypeScript đầy đủ, API dạng Promise",
+      "Nhiều nhóm API: sản phẩm, khách hàng, đơn hàng, đơn đặt hàng, hóa đơn, chi nhánh, nhà cung cấp, dòng tiền, phụ thu, thuế, hóa đơn điện tử",
+      "Webhook: tạo, bật/tắt và xác thực chữ ký"
+    ],
+    "requirementsVi": "Node.js >= 14; clientId, clientSecret và retailerName lấy từ cổng nhà phát triển KiotViet.",
+    "installStepsVi": [
+      "Cài thư viện: `npm install kiotviet-client-sdk`",
+      "Khởi tạo KiotVietClient với clientId, clientSecret, retailerName."
+    ],
+    "cliCommand": "npm install kiotviet-client-sdk",
+    "usageStepsVi": [
+      "Gọi client.products.list để lấy sản phẩm kèm tồn kho.",
+      "Dùng client.webhooks.create và verifySignature để nhận sự kiện từ KiotViet."
+    ],
+    "samplePromptsVi": [
+      "Viết script TypeScript dùng kiotviet-client-sdk liệt kê sản phẩm kèm tồn kho của cửa hàng KiotViet.",
+      "Tạo webhook KiotViet và hàm xác thực chữ ký payload bằng kiotviet-client-sdk."
+    ],
+    "prosVi": [
+      "Mã nguồn mở MIT",
+      "Tài liệu tiếng Việt chi tiết",
+      "Tự động quản lý token"
+    ],
+    "consVi": [
+      "Thư viện cộng đồng, không phải SDK chính thức của KiotViet",
+      "Cần đăng ký Public API KiotViet",
+      "Tự động thử lại khi bị giới hạn tần suất vẫn đang \"coming soon\""
+    ],
+    "sourceEvidence": {
+      "npm install kiotviet-client-sdk": "README.en.md:20"
+    },
+    "meta": {
+      "id": "epoxyteam-kiotviet-client-sdk",
+      "nameVi": "KiotViet Client SDK — Thư viện TypeScript cho Public API KiotViet",
+      "icon": "Code2",
+      "categories": [
+        "erp_enterprise",
+        "backend_api"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, cần tài khoản KiotViet có Public API",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npm install kiotviet-client-sdk"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "lehuygiang28/giaohangnhanh",
+    "license": "MIT License",
+    "authorName": "Lê Huy Giang",
+    "websiteUrl": "https://www.npmjs.com/package/giaohangnhanh",
+    "toolType": "sdk",
+    "taglineEn": "Thư viện mã nguồn mở hỗ trợ quản lý giao hàng với giaohangnhanh (ghn).",
+    "summaryVi": "giaohangnhanh là thư viện Node.js/TypeScript gọi API của Giao Hàng Nhanh (GHN). Thư viện hỗ trợ tra cứu địa giới hành chính, tính phí và thời gian giao, tạo/xem trước/hủy đơn và lấy URL theo dõi đơn.",
+    "purposeVi": "Giúp website bán hàng tích hợp vận chuyển GHN: tính phí ship, tạo vận đơn và theo dõi đơn hàng.",
+    "featuresVi": [
+      "Địa chỉ: truy vấn tỉnh/thành, quận/huyện, phường/xã",
+      "Tính phí: danh sách dịch vụ theo địa chỉ và phí giao hàng",
+      "Đơn hàng: dự kiến thời gian giao, ca lấy hàng, xem trước, tạo, xem chi tiết, hủy đơn, lấy URL theo dõi",
+      "Chế độ test chuyển toàn bộ host sang môi trường sandbox"
+    ],
+    "requirementsVi": "Node.js; token và shopId của tài khoản GHN.",
+    "installStepsVi": [
+      "Cài đặt bằng npm: `npm install giaohangnhanh`",
+      "Hoặc yarn: `yarn add giaohangnhanh`",
+      "Hoặc pnpm: `pnpm install giaohangnhanh`",
+      "Khởi tạo new Ghn({ token, shopId, host, trackingHost, testMode })."
+    ],
+    "cliCommand": "npm install giaohangnhanh",
+    "usageStepsVi": [
+      "Bật testMode: true để thử trên sandbox GHN.",
+      "Gọi các phương thức address, calculateFee và order (ví dụ createOrder, cancelOrder)."
+    ],
+    "samplePromptsVi": [
+      "Viết hàm TypeScript dùng thư viện giaohangnhanh tính phí ship GHN từ quận 1 TP.HCM đến Hà Nội.",
+      "Tạo đơn GHN trên môi trường sandbox rồi lấy URL theo dõi đơn."
+    ],
+    "prosVi": [
+      "Mã nguồn mở MIT",
+      "README tiếng Việt, có chế độ sandbox"
+    ],
+    "consVi": [
+      "Thư viện cộng đồng, không phải SDK chính thức của GHN",
+      "Lần cập nhật gần nhất tháng 7/2024",
+      "Chỉ bao phủ một phần API GHN (địa chỉ, phí, đơn hàng)"
+    ],
+    "sourceEvidence": {
+      "npm install giaohangnhanh": "README.md:21",
+      "yarn add giaohangnhanh": "README.md:27",
+      "pnpm install giaohangnhanh": "README.md:33"
+    },
+    "meta": {
+      "id": "lehuygiang28-giaohangnhanh",
+      "nameVi": "giaohangnhanh — Thư viện Node.js tích hợp API Giao Hàng Nhanh (GHN)",
+      "icon": "Box",
+      "categories": [
+        "backend_api",
+        "erp_enterprise"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, cần tài khoản GHN",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "npm install giaohangnhanh"
+        }
+      ]
+    }
+  }
+]

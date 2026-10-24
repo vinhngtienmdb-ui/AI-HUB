@@ -1,0 +1,405 @@
+[
+  {
+    "repo": "zaloplatform/zalo-php-sdk",
+    "license": "MIT License",
+    "authorName": "Zalo Platform Team",
+    "websiteUrl": "https://developers.zalo.me/",
+    "toolType": "sdk",
+    "taglineEn": "Zalo SDK for PHP (v4.0.4)",
+    "summaryVi": "SDK PHP chính thức của Zalo Platform, bao bọc Social API và Official Account Open API. Hỗ trợ đăng nhập OAuth (code verifier/code challenge), lấy access token của người dùng hoặc OA và gửi các loại tin nhắn từ Official Account.",
+    "purposeVi": "Giúp backend PHP tích hợp Zalo Official Account để gửi tin tư vấn, tin giao dịch, tin truyền thông và quản lý người quan tâm.",
+    "featuresVi": [
+      "Social API: tạo link đăng nhập Zalo, lấy access token và thông tin người dùng",
+      "Xác thực OA: tạo link để quản trị viên OA ủy quyền cho ứng dụng và lấy OA access token",
+      "Tin Tư vấn: gửi văn bản, hình ảnh, file, sticker, tin trích dẫn và tin yêu cầu thông tin người dùng",
+      "Tin Giao dịch và tin Truyền thông cá nhân qua MessageBuilder",
+      "Upload hình, ảnh GIF và file PDF",
+      "Quản lý nhãn và người quan tâm; lấy thông tin OA, danh sách tin nhắn gần nhất",
+      "Hỗ trợ bật xác thực API với appsecret_proof"
+    ],
+    "requirementsVi": "PHP >= 5.4 và Composer; cần ứng dụng Zalo (app_id, app_secret) và Official Account đã ủy quyền cho ứng dụng.",
+    "installStepsVi": [
+      "Cài đặt SDK qua Composer: `composer require zaloplatform/zalo-php-sdk`",
+      "Nạp autoload của Composer và khởi tạo `new Zalo($config)` với app_id, app_secret",
+      "Tạo link ủy quyền OA, lấy OA access token rồi gọi các endpoint gửi tin"
+    ],
+    "cliCommand": "composer require zaloplatform/zalo-php-sdk",
+    "usageStepsVi": [
+      "Đăng ký ứng dụng trên developers.zalo.me để có app_id và app_secret",
+      "Dùng getLoginUrlByOA() để quản trị viên OA cấp quyền, sau đó getZaloTokenByOA() để lấy access token",
+      "Dùng MessageBuilder để dựng tin nhắn và gửi qua $zalo->post(ZaloEndPoint::API_OA_SEND_CONSULTATION_MESSAGE_V3, ...)"
+    ],
+    "samplePromptsVi": [
+      "Viết controller Laravel dùng zalo-php-sdk để gửi tin tư vấn kèm hình ảnh cho người quan tâm OA",
+      "Tạo luồng OAuth với code verifier/code challenge để OA ủy quyền cho ứng dụng PHP của tôi",
+      "Viết script gán nhãn \"khách VIP\" cho danh sách người quan tâm của OA"
+    ],
+    "prosVi": [
+      "SDK chính thức do đội ngũ Zalo Platform phát hành",
+      "Giấy phép MIT, dùng tự do cả cho mục đích thương mại",
+      "README có ví dụ mã tiếng Việt cho từng loại tin nhắn OA"
+    ],
+    "consVi": [
+      "Commit gần nhất từ tháng 12/2023, cần đối chiếu với tài liệu API mới nhất của Zalo",
+      "Cần ứng dụng Zalo và Official Account được ủy quyền mới gọi được API",
+      "Chỉ dành cho PHP"
+    ],
+    "sourceEvidence": {
+      "composer require zaloplatform/zalo-php-sdk": "README.md:14"
+    },
+    "meta": {
+      "id": "zaloplatform-zalo-php-sdk",
+      "nameVi": "Zalo PHP SDK — Thư viện PHP chính thức cho Zalo Official Account và Social API",
+      "icon": "MessageSquare",
+      "categories": ["customer_support", "backend_api"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí (MIT); cần tài khoản Zalo Official Account",
+      "isVietnamMarket": true,
+      "languages": ["Tiếng Việt", "Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "composer require zaloplatform/zalo-php-sdk" }
+      ]
+    }
+  },
+  {
+    "repo": "Zalo-MiniApp/zaui-market",
+    "license": "Apache License 2.0",
+    "authorName": "Zalo Group (Zalo Mini App)",
+    "websiteUrl": "https://mini.zalo.me/",
+    "toolType": "software",
+    "taglineEn": "A template for vendors to sale their products on the online market. It provides full features such as product viewing, shopping cart, payment, order management, profile management, etc.",
+    "summaryVi": "Mẫu Zalo Mini App chính thức (ZaUI Market) cho người bán hàng trên chợ trực tuyến, xây dựng bằng React, zmp-ui, zmp-sdk, Jotai, Tailwind CSS và Vite. Có sẵn xem sản phẩm, giỏ hàng, thanh toán, quản lý đơn hàng, hồ sơ và widget theo dõi Official Account.",
+    "purposeVi": "Giúp doanh nghiệp nhanh chóng dựng Mini App bán hàng chạy trong Zalo và kết nối với API của mình.",
+    "featuresVi": [
+      "Đầy đủ luồng bán hàng: xem sản phẩm, giỏ hàng, thanh toán, quản lý đơn hàng, hồ sơ",
+      "Kết nối server riêng: đặt template.apiUrl trong app-config.json, server cung cấp /categories, /products, /banners, /stations, /orders",
+      "Widget theo dõi OA: tích hợp showOAWidget để người dùng theo dõi Official Account",
+      "Tùy biến giao diện qua biến CSS trong src/css/tailwind.scss",
+      "Dữ liệu mẫu JSON trong src/mock để thử giao diện"
+    ],
+    "requirementsVi": "Node.js, Zalo Mini App CLI (zmp-cli) hoặc VS Code với Zalo Mini App Extension; cần Zalo Mini App ID để triển khai. Không tương thích Zalo Mini App Studio (dùng Vite 5.x).",
+    "installStepsVi": [
+      "Cài Node.js và Zalo Mini App CLI, sau đó tải hoặc clone repo",
+      "Cài phụ thuộc: `npm install`",
+      "Chạy máy chủ phát triển: `zmp start` rồi mở localhost:3000",
+      "Triển khai lên Zalo: `zmp login` rồi `zmp deploy`"
+    ],
+    "cliCommand": "zmp start",
+    "usageStepsVi": [
+      "Tạo Zalo Mini App ID theo hướng dẫn Coffee Shop Tutorial",
+      "Đặt template.apiUrl trong app-config.json trỏ tới API của bạn",
+      "Triển khai rồi quét mã QR bằng Zalo để xem trước Mini App"
+    ],
+    "samplePromptsVi": [
+      "Thêm trang khuyến mãi vào mẫu ZaUI Market và đăng ký nó trong src/router.ts",
+      "Viết API Express trả về /products và /categories đúng cấu trúc src/mock của ZaUI Market",
+      "Đổi màu chủ đạo của Mini App sang màu thương hiệu bằng biến CSS --primary"
+    ],
+    "prosVi": [
+      "Mẫu chính thức từ tổ chức Zalo-MiniApp",
+      "Giấy phép Apache 2.0, cho phép dùng thương mại",
+      "Hướng dẫn cài đặt, triển khai và tích hợp API rõ ràng"
+    ],
+    "consVi": [
+      "Không tương thích Zalo Mini App Studio do dùng Vite 5.x",
+      "Cần Zalo Mini App ID và tài khoản Zalo để triển khai",
+      "Phần backend (API sản phẩm, đơn hàng) phải tự xây dựng"
+    ],
+    "sourceEvidence": {
+      "npm install": "README.md:33",
+      "zmp start": "README.md:37",
+      "zmp login": "README.md:56",
+      "zmp deploy": "README.md:57"
+    },
+    "meta": {
+      "id": "zalo-miniapp-zaui-market",
+      "nameVi": "ZaUI Market — Mẫu Zalo Mini App bán hàng chính thức",
+      "icon": "Box",
+      "categories": ["mobile_app", "frontend_ui"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí (Apache 2.0); cần Zalo Mini App ID để triển khai",
+      "isVietnamMarket": true,
+      "languages": ["Tiếng Việt", "Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "zmp start" }
+      ]
+    }
+  },
+  {
+    "repo": "trongnguyenbinh/zalo-bot-mcp",
+    "license": "MIT License",
+    "authorName": "trongnguyenbinh",
+    "websiteUrl": "https://pypi.org/project/zalo-bot-mcp/",
+    "toolType": "mcp",
+    "taglineEn": "An MCP channel server for the Zalo Bot API. Messages sent to your Zalo bot arrive in an MCP client session; the session replies through a tool call.",
+    "summaryVi": "MCP channel server dùng Zalo Bot API chính thức: tin nhắn gửi tới bot Zalo được đưa vào phiên Claude Code và phiên trả lời qua công cụ reply. Máy chủ lấy tin bằng getUpdates nên không cần URL công khai, webhook hay tunnel.",
+    "purposeVi": "Cho phép trò chuyện với AI agent từ tin nhắn trực tiếp hoặc nhóm Zalo, có cổng kiểm soát truy cập chặt chẽ.",
+    "featuresVi": [
+      "Long-polling getUpdates: chạy được trên laptop sau NAT, không cần public URL",
+      "Chính sách DM: pairing, allowlist hoặc disabled",
+      "Nhóm phải cấu hình theo ID; có thể giới hạn thành viên được kích hoạt bot",
+      "Không tin nhắn Zalo nào được đổi cấu hình truy cập; từ chối khởi động nếu allowlist có wildcard",
+      "Cài dạng plugin Claude Code (skill /zalo:*) hoặc gói Python với CLI zalo-bot-mcp-admin"
+    ],
+    "requirementsVi": "uv, Claude Code, một bot Zalo tạo qua OA Zalo Bot Manager (token bot). Phải khởi động Claude Code với cờ --dangerously-load-development-channels.",
+    "installStepsVi": [
+      "Cách A (plugin): trong Claude Code chạy `/plugin marketplace add trongnguyenbinh/zalo-bot-mcp` và `/plugin install zalo@zalo-bot-mcp`",
+      "Cách B (gói Python): `uv tool install zalo-bot-mcp`",
+      "Tạo .mcp.json trong thư mục dự án với nội dung `{ \"mcpServers\": { \"zalo\": { \"command\": \"zalo-bot-mcp\" } } }`",
+      "Cài token (nhập ẩn): `zalo-bot-mcp-admin set-token`",
+      "Khởi động Claude Code với cờ channel: `claude --dangerously-load-development-channels server:zalo`",
+      "Duyệt mã pairing: `zalo-bot-mcp-admin approve a1b2c3`, sau đó khóa lại bằng `zalo-bot-mcp-admin policy allowlist`"
+    ],
+    "cliCommand": "uv tool install zalo-bot-mcp",
+    "usageStepsVi": [
+      "Tạo bot trong ứng dụng Zalo qua OA Zalo Bot Manager (tên bot bắt đầu bằng \"Bot\") và nhận token",
+      "Nhắn tin cho bot trên Zalo để nhận mã pairing, duyệt mã trong Claude Code hoặc bằng CLI",
+      "Trong nhóm, bot chỉ nhận tin khi được nhắc tên (mention) hoặc khi có người trả lời tin của bot"
+    ],
+    "samplePromptsVi": [
+      "Khi có tin nhắn Zalo hỏi tình trạng build, hãy kiểm tra log và trả lời qua công cụ reply",
+      "Tóm tắt các thay đổi trong repo hôm nay rồi gửi vào nhóm Zalo đã cấu hình",
+      "Trả lời tin nhắn Zalo vừa nhận, chia nhỏ nếu dài quá 2000 ký tự"
+    ],
+    "prosVi": [
+      "Dùng Zalo Bot API chính thức, không tự động hóa tài khoản cá nhân",
+      "Thiết kế an toàn: pairing, allowlist, cấu hình truy cập không thể đổi qua tin nhắn",
+      "Giấy phép MIT, phụ thuộc runtime chỉ gồm httpx và mcp"
+    ],
+    "consVi": [
+      "Đang ở giai đoạn phát triển sớm; MCP channel là tính năng thử nghiệm của Claude Code",
+      "Phải chạy Claude Code với cờ --dangerously-load-development-channels",
+      "Dự án cá nhân, không liên kết với Zalo/VNG; gói Basic miễn phí của Zalo giới hạn 3.000 tin gửi đi mỗi tháng",
+      "Zalo Bot API không hỗ trợ sửa tin nhắn hay reaction, tin tối đa 2000 ký tự"
+    ],
+    "sourceEvidence": {
+      "/plugin marketplace add trongnguyenbinh/zalo-bot-mcp": "docs/getting-started.md:52",
+      "/plugin install zalo@zalo-bot-mcp": "docs/getting-started.md:53",
+      "uv tool install zalo-bot-mcp": "docs/getting-started.md:106",
+      "{ \"mcpServers\": { \"zalo\": { \"command\": \"zalo-bot-mcp\" } } }": "docs/getting-started.md:130",
+      "zalo-bot-mcp-admin set-token": "docs/getting-started.md:138",
+      "claude --dangerously-load-development-channels server:zalo": "docs/getting-started.md:157",
+      "zalo-bot-mcp-admin approve a1b2c3": "docs/getting-started.md:168",
+      "zalo-bot-mcp-admin policy allowlist": "docs/getting-started.md:178"
+    },
+    "meta": {
+      "id": "trongnguyenbinh-zalo-bot-mcp",
+      "nameVi": "Zalo Bot MCP — Kết nối bot Zalo với phiên Claude Code qua MCP channel",
+      "icon": "MessageSquare",
+      "categories": ["customer_support", "nlp_llm"],
+      "platforms": ["claude_code"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí (MIT); Zalo Bot có gói Basic miễn phí với hạn mức",
+      "isVietnamMarket": true,
+      "languages": ["Tiếng Việt", "Tiếng Anh"],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "uv tool install zalo-bot-mcp",
+          "jsonConfig": "{ \"mcpServers\": { \"zalo\": { \"command\": \"zalo-bot-mcp\" } } }"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "moken627-hub/hermes-plugin-zalo",
+    "license": "MIT License",
+    "authorName": "Moken",
+    "websiteUrl": "",
+    "toolType": "agent",
+    "taglineEn": "Connect Hermes Agent to Zalo Bot Platform via official Bot API.",
+    "summaryVi": "Plugin nền tảng cho Hermes Agent (NousResearch) bổ sung kênh nhắn tin Zalo qua Zalo Bot API chính thức, không cần sửa lõi Hermes. Hỗ trợ long-polling hoặc webhook, chính sách truy cập pairing/allowlist/open, quản lý nhóm, chống spam và danh bạ CRM.",
+    "purposeVi": "Đưa AI agent Hermes vào tin nhắn trực tiếp và nhóm Zalo để chăm sóc khách hàng, quản trị cộng đồng hoặc gửi thông báo định kỳ.",
+    "featuresVi": [
+      "Gửi/nhận tin văn bản (chia khối 2000 ký tự), gửi ảnh từ URL, hiển thị trạng thái đang gõ",
+      "Long-polling (getUpdates) hoặc webhook qua aiohttp cho môi trường production",
+      "Chính sách truy cập: pairing (mã captcha 6 số + duyệt bằng Hermes), allowlist, open",
+      "Gửi tác vụ cron tới Zalo (deliver=zalo)",
+      "Quản lý nhóm và lệnh slash (/menu, /warn, /kick, /promote, /poll, /pin...)",
+      "Chống spam không tốn token, đồng bộ lịch sử chat (JSONL) và danh bạ CRM (nhập/xuất CSV, tìm theo số điện thoại)"
+    ],
+    "requirementsVi": "Hermes Agent >= 0.13.0, Python 3.11+, token bot tạo tại bot.zaloplatforms.com.",
+    "installStepsVi": [
+      "Clone plugin vào thư mục plugin của Hermes: `git clone https://github.com/moken627-hub/hermes-plugin-zalo.git ~/.hermes/plugins/zalo`",
+      "Tạo bot tại bot.zaloplatforms.com và đặt token: `export ZALO_BOT_TOKEN=\"your_bot_token_here\"` (hoặc chạy `hermes gateway setup zalo`)",
+      "Bật plugin: `hermes plugins enable zalo-platform` rồi `hermes gateway restart`",
+      "Kiểm tra: `hermes gateway status`"
+    ],
+    "cliCommand": "hermes plugins enable zalo-platform",
+    "usageStepsVi": [
+      "Người dùng mới nhắn bot sẽ nhận mã captcha; duyệt bằng lệnh pairing của Hermes",
+      "Với production, cấu hình webhook_url và webhook_secret trong ~/.hermes/config.yaml, đặt sau reverse proxy TLS",
+      "Dùng biến ZALO_ALLOWED_USERS hoặc ZALO_HOME_CHANNEL để giới hạn người dùng và kênh nhận cron"
+    ],
+    "samplePromptsVi": [
+      "Mỗi sáng 8 giờ gửi tóm tắt đơn hàng hôm qua vào nhóm Zalo của cửa hàng",
+      "Trả lời khách hỏi giờ mở cửa và giá dịch vụ qua tin nhắn Zalo",
+      "Tìm khách trong danh bạ CRM theo số điện thoại và gửi lời nhắc lịch hẹn"
+    ],
+    "prosVi": [
+      "Dùng Zalo Bot API chính thức, không tự động hóa tài khoản cá nhân",
+      "Không thêm phụ thuộc (dùng httpx sẵn có của Hermes)",
+      "Giấy phép MIT"
+    ],
+    "consVi": [
+      "Chỉ dùng được với Hermes Agent",
+      "Chưa hỗ trợ sticker, upload file multipart, tin nhắn thoại (nằm trong roadmap)",
+      "Dự án cộng đồng, không phải sản phẩm chính thức của Zalo"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/moken627-hub/hermes-plugin-zalo.git ~/.hermes/plugins/zalo": "README.md:55-56",
+      "export ZALO_BOT_TOKEN=\"your_bot_token_here\"": "README.md:69",
+      "hermes gateway setup zalo": "README.md:72",
+      "hermes plugins enable zalo-platform": "README.md:91",
+      "hermes gateway restart": "README.md:92",
+      "hermes gateway status": "README.md:98"
+    },
+    "meta": {
+      "id": "moken627-hub-hermes-plugin-zalo",
+      "nameVi": "Hermes Zalo Plugin — Kết nối Hermes Agent với Zalo Bot API",
+      "icon": "MessageSquare",
+      "categories": ["customer_support", "nlp_llm"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí (MIT); cần token Zalo Bot",
+      "isVietnamMarket": true,
+      "languages": ["Tiếng Việt", "Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "hermes plugins enable zalo-platform" }
+      ]
+    }
+  },
+  {
+    "repo": "nduyhai/go-zalo-bot-api",
+    "license": "MIT License",
+    "authorName": "nduyhai",
+    "websiteUrl": "",
+    "toolType": "sdk",
+    "taglineEn": "A batteries-included Go client for the Zalo Bot API.",
+    "summaryVi": "Thư viện Go cho Zalo Bot API, bao bọc các endpoint HTTP bằng model request/response có kiểu, transport có retry và các helper tiện dụng. Có helper long-polling dạng iterator và giao diện logging có cấu trúc.",
+    "purposeVi": "Giúp lập trình viên Go xây dựng bot Zalo (gửi tin, sticker, quản lý webhook) mà không phải tự viết lớp gọi HTTP.",
+    "featuresVi": [
+      "Client nhẹ, an toàn đồng thời, cấu hình được base URL, HTTP client và user agent",
+      "Helper endpoint: lấy thông tin bot, quản lý webhook, gửi tin nhắn, sticker, chat action",
+      "Long-polling dạng iterator, xử lý phân trang và lỗi tạm thời",
+      "Logging cắm được, hỗ trợ slog có cấu trúc",
+      "Tùy chọn theo từng lời gọi như timeout"
+    ],
+    "requirementsVi": "Go (go.mod khai báo go 1.25.0) và token bot Zalo; ví dụ dùng biến BOT_TOKEN, CHAT_ID.",
+    "installStepsVi": [
+      "Cài đặt thư viện: `go get github.com/nduyhai/go-zalo-bot-api`",
+      "Đặt biến môi trường BOT_TOKEN và CHAT_ID (hoặc tệp .env)",
+      "Chạy bot ví dụ: `make run`"
+    ],
+    "cliCommand": "go get github.com/nduyhai/go-zalo-bot-api",
+    "usageStepsVi": [
+      "Tạo client bằng zalobotapi.New(botToken, ...) kèm logger và user agent",
+      "Gọi endpoints.SendMessage(ctx, client, ...) để gửi tin",
+      "Xem cmd/example/main.go cho ví dụ retry và long-polling"
+    ],
+    "samplePromptsVi": [
+      "Viết bot Go dùng go-zalo-bot-api trả lời \"Xin chào\" mỗi khi có tin nhắn mới qua long-polling",
+      "Thêm timeout 5 giây và logging slog cho lời gọi SendMessage",
+      "Viết handler đăng ký webhook cho bot Zalo bằng thư viện này"
+    ],
+    "prosVi": [
+      "Kiểu dữ liệu rõ ràng, có retry và long-polling sẵn",
+      "Giấy phép MIT",
+      "Có chương trình ví dụ đầy đủ"
+    ],
+    "consVi": [
+      "Thư viện cộng đồng, không phải SDK chính thức của Zalo",
+      "Cần token bot Zalo",
+      "Chỉ dành cho Go"
+    ],
+    "sourceEvidence": {
+      "go get github.com/nduyhai/go-zalo-bot-api": "README.md:15",
+      "make run": "README.md:73"
+    },
+    "meta": {
+      "id": "nduyhai-go-zalo-bot-api",
+      "nameVi": "go-zalo-bot-api — Thư viện Go cho Zalo Bot API",
+      "icon": "Code2",
+      "categories": ["customer_support", "backend_api"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí (MIT); cần token Zalo Bot",
+      "isVietnamMarket": true,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "go get github.com/nduyhai/go-zalo-bot-api" }
+      ]
+    }
+  },
+  {
+    "repo": "nhanchaukp/zalo-bot-sdk",
+    "license": "MIT License",
+    "authorName": "Châu Thái Nhân (NhanChauKP)",
+    "websiteUrl": "https://packagist.org/packages/nhanchaukp/zalo-bot-sdk",
+    "toolType": "sdk",
+    "taglineEn": "Zalo Bot SDK for Laravel",
+    "summaryVi": "SDK xây dựng Zalo Bot trên Laravel, thiết kế tương tự Telegram Bot SDK. Hỗ trợ nhiều bot cùng lúc, hệ thống command mở rộng, Facade Laravel và xử lý webhook.",
+    "purposeVi": "Giúp ứng dụng Laravel tạo bot Zalo chăm sóc khách hàng với các lệnh và webhook.",
+    "featuresVi": [
+      "Nhiều bot cùng lúc: cấu hình trong config/zalo-bot.php",
+      "Hệ thống command: command groups, shared commands, auto-discovery",
+      "Gửi tin nhắn, hình ảnh, sticker và trạng thái đang gõ (sendChatAction)",
+      "Quản lý webhook: setWebhook, deleteWebhook, getWebhookInfo",
+      "HTTP client tùy chỉnh (mặc định GuzzlePHP) và Laravel Facade"
+    ],
+    "requirementsVi": "PHP ^8.2, Laravel, Composer và token Zalo Bot.",
+    "installStepsVi": [
+      "Cài đặt package: `composer require nhanchaukp/zalo-bot-sdk`",
+      "Publish file cấu hình: `php artisan vendor:publish --tag=\"zalo-bot-config\"`",
+      "Thêm ZALO_BOT_TOKEN, ZALO_WEBHOOK_URL vào .env"
+    ],
+    "cliCommand": "composer require nhanchaukp/zalo-bot-sdk",
+    "usageStepsVi": [
+      "Gửi tin bằng ZaloBot::sendMessage('chat_id', 'Xin chào!') hoặc chọn bot cụ thể với ZaloBot::bot('support_bot')",
+      "Tạo class Command (ví dụ StartCommand) và đăng ký trong cấu hình bot",
+      "Tạo controller và route nhận webhook từ Zalo"
+    ],
+    "samplePromptsVi": [
+      "Tạo command /giohang cho bot Zalo Laravel trả về trạng thái đơn hàng của khách",
+      "Cấu hình hai bot bán hàng và hỗ trợ trong config/zalo-bot.php",
+      "Viết controller nhận webhook Zalo và chuyển tin nhắn tới hệ thống ticket"
+    ],
+    "prosVi": [
+      "Tích hợp sâu với Laravel (Facade, publish config)",
+      "README tiếng Việt chi tiết",
+      "Giấy phép MIT"
+    ],
+    "consVi": [
+      "Thư viện cộng đồng, không phải SDK chính thức của Zalo",
+      "Yêu cầu PHP 8.2+ và Laravel",
+      "Cần token Zalo Bot"
+    ],
+    "sourceEvidence": {
+      "composer require nhanchaukp/zalo-bot-sdk": "README.md:25",
+      "php artisan vendor:publish --tag=\"zalo-bot-config\"": "README.md:33"
+    },
+    "meta": {
+      "id": "nhanchaukp-zalo-bot-sdk",
+      "nameVi": "Zalo Bot SDK for Laravel — Xây dựng bot Zalo trên Laravel",
+      "icon": "Code2",
+      "categories": ["customer_support", "backend_api"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí (MIT); cần token Zalo Bot",
+      "isVietnamMarket": true,
+      "languages": ["Tiếng Việt"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "composer require nhanchaukp/zalo-bot-sdk" }
+      ]
+    }
+  }
+]

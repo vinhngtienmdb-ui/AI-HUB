@@ -1,0 +1,313 @@
+[
+  {
+    "repo": "demdecuong/vihealthbert",
+    "license": "MIT License — Copyright (c) 2023 VihealthBERT development team",
+    "authorName": "Nguyen Minh, Vu Hoang Tran, Vu Hoang, Huy Duc Ta, Trung Huu Bui, Steven Quoc Hung Truong (nhóm ViHealthBERT)",
+    "websiteUrl": "https://aclanthology.org/2022.lrec-1.35/",
+    "toolType": "model",
+    "taglineEn": "ViHealthBERT is a strong baseline language models for Vietnamese in Healthcare domain.",
+    "summaryVi": "ViHealthBERT là mô hình ngôn ngữ huấn luyện sẵn dành riêng cho lĩnh vực y tế tiếng Việt, công bố tại hội nghị LREC 2022. Theo README, mô hình đạt kết quả state-of-the-art trên 3 tác vụ: nhận dạng thực thể (bộ COVID-19 và ViMQ), phân giải từ viết tắt (Acronym Disambiguation) và tóm tắt. Repo còn công bố hai bộ dữ liệu y tế tiếng Việt: acrDrAid (từ viết tắt, 135 bộ từ khóa) và bộ tóm tắt câu hỏi thường gặp (FAQ summarization).",
+    "purposeVi": "Làm mô hình nền cho các bài toán NLP y tế tiếng Việt như trích xuất thực thể từ câu hỏi bệnh nhân, giải nghĩa từ viết tắt trong văn bản y khoa và tóm tắt câu hỏi.",
+    "featuresVi": [
+      "Mô hình trên Hugging Face: `demdecuong/vihealthbert-base-word` (mức từ) và `demdecuong/vihealthbert-base-syllable` (mức âm tiết), 135M tham số",
+      "Bộ dữ liệu acrDrAid: phân giải từ viết tắt y khoa tiếng Việt, kèm từ điển và tệp đáp án",
+      "Bộ dữ liệu FAQ summarization: tóm tắt câu hỏi thường gặp trong lĩnh vực y tế",
+      "Mã tinh chỉnh NER: tái lập kết quả trên PhoNER COVID-19 và ViMQ",
+      "Mã tiền huấn luyện và phân giải từ viết tắt (AcrBERT) đi kèm trong thư mục `code`"
+    ],
+    "requirementsVi": "Python >= 3.6, PyTorch >= 1.4.0 (theo code/finetune/ner/src/README.md). Dữ liệu COVID-19 và ViMQ cần tải riêng.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/demdecuong/vihealthbert.git`",
+      "Vào thư mục mã NER: `cd code/finetune/ner/src`, rồi cài thư viện: `pip3 install -r requirements.txt`",
+      "Chép dữ liệu COVID-19 và ViMQ vào thư mục data/vinai_covid_word và data/vimq_word, rồi chuyển sang định dạng IOB: `python preprocess.py`",
+      "Huấn luyện và đánh giá NER: `bash main.sh`"
+    ],
+    "cliCommand": "git clone https://github.com/demdecuong/vihealthbert.git",
+    "usageStepsVi": [
+      "Dùng trực tiếp mô hình `demdecuong/vihealthbert-base-word` hoặc `demdecuong/vihealthbert-base-syllable` từ Hugging Face làm bộ mã hóa cho tác vụ y tế tiếng Việt.",
+      "Để tái lập kết quả NER, tải bộ COVID-19 (bản tách từ) và ViMQ, chạy `python preprocess.py` rồi `bash main.sh` trong `code/finetune/ner/src`.",
+      "Để thử phân giải từ viết tắt, dùng dữ liệu trong `dataset/acrDrAid` với mã trong `code/finetune/wsd/src`."
+    ],
+    "samplePromptsVi": [
+      "Viết script tinh chỉnh demdecuong/vihealthbert-base-word để nhận dạng triệu chứng và tên thuốc trong câu hỏi của bệnh nhân",
+      "So sánh ViHealthBERT với PhoBERT trên bộ ViMQ theo hướng dẫn trong repo",
+      "Dùng bộ acrDrAid để huấn luyện mô hình giải nghĩa từ viết tắt trong hồ sơ y khoa tiếng Việt"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, dùng được cho mục đích thương mại",
+      "Mô hình chuyên ngành y tế tiếng Việt đầu tiên, có bài báo LREC 2022 đi kèm",
+      "Kèm hai bộ dữ liệu y tế tiếng Việt mới (acrDrAid và FAQ summarization)"
+    ],
+    "consVi": [
+      "README chính không có hướng dẫn cài đặt; lệnh nằm trong README con của từng thư mục mã",
+      "Dữ liệu COVID-19 và ViMQ phải tải riêng; README tác vụ từ viết tắt để trống đường dẫn tải",
+      "Yêu cầu phiên bản Python/PyTorch cũ, có thể cần kiểm tra tương thích",
+      "README đề nghị trích dẫn bài báo khi dùng cho kết quả công bố"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/demdecuong/vihealthbert.git": "code/finetune/ner/src/README.md:8",
+      "cd code/finetune/ner/src": "code/finetune/ner/src/README.md:9",
+      "pip3 install -r requirements.txt": "code/finetune/ner/src/README.md:10",
+      "python preprocess.py": "code/finetune/ner/src/README.md:17",
+      "bash main.sh": "code/finetune/ner/src/README.md:22"
+    },
+    "meta": {
+      "id": "demdecuong-vihealthbert",
+      "nameVi": "ViHealthBERT — Mô hình ngôn ngữ y tế tiếng Việt kèm bộ dữ liệu từ viết tắt và tóm tắt",
+      "icon": "Brain",
+      "categories": [
+        "pharmacy_wellness",
+        "nlp_language",
+        "nlp_llm"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, mã nguồn mở theo giấy phép MIT",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "git clone https://github.com/demdecuong/vihealthbert.git"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "AnhHoang0529/ViSoLex",
+    "license": "MIT License — Copyright (c) 2024 HaDung2002",
+    "authorName": "Anh Hoang, HaDung2002 (nhóm ViSoLex)",
+    "websiteUrl": "https://www.youtube.com/watch?v=XBIAogDpF3o",
+    "toolType": "software",
+    "taglineEn": "ViSoLex is an open-source project for normalizing Non-Standard Words (NSWs) in Vietnamese social media texts.",
+    "summaryVi": "ViSoLex là dự án mã nguồn mở chuẩn hóa từ không chuẩn (NSW) trong văn bản mạng xã hội tiếng Việt như viết tắt, teencode, sai chính tả. Repo cung cấp khung học bán giám sát (weakly supervised) cho chuẩn hóa từ vựng, gồm huấn luyện, suy luận và phát hiện NSW, hỗ trợ mô hình ViSoBERT và BARTpho. Có demo dòng lệnh, notebook Colab và giao diện web Flask cho người không chuyên.",
+    "purposeVi": "Làm sạch, chuẩn hóa bình luận và tin nhắn tiếng Việt trên mạng xã hội trước khi đưa vào các hệ thống phân tích hoặc mô hình ngôn ngữ.",
+    "featuresVi": [
+      "Phát hiện từ không chuẩn: bộ dự đoán nhị phân NSW (`nsw_detector.py`)",
+      "Chuẩn hóa bằng mô hình: hỗ trợ ViSoBERT và BARTpho",
+      "Học bán giám sát: mạng rule attention và mô hình teacher–student",
+      "Từ điển NSW: `dict/dictionary.json` với diễn giải tạo bằng GPT-4o, có thể tra cứu qua OpenAI API (`chatgpt.py`)",
+      "Giao diện: demo dòng lệnh `demo.py`, notebook `demo.ipynb` và ứng dụng web Flask `app.py`"
+    ],
+    "requirementsVi": "Conda, Python 3.10. Phần cứng tối thiểu để huấn luyện: ViSoBERT cần 55GB RAM CPU và 12GB RAM GPU; BARTpho cần 120GB RAM CPU và 32GB RAM GPU. Checkpoint tải qua Google Drive, dữ liệu thí nghiệm ở repo ViSoLex-Resources.",
+    "installStepsVi": [
+      "Tạo môi trường: `conda create -n visolex python=3.10` rồi `conda activate visolex`",
+      "Cài thư viện: `pip install -r requirements.txt`",
+      "Huấn luyện (tùy chọn): `python main.py --student_name visobert --training_mode weakly_supervised --num_epochs 5 --num_unsup_epochs 5 --eval_batch_size 16 --unsup_batch_size 16 --num_iter 10 --lower_case --hard_student_rule --soft_labels --append_n_mask --nsw_detect --rm_accent_ratio 1.0`"
+    ],
+    "cliCommand": "python demo.py",
+    "usageStepsVi": [
+      "Tải checkpoint mô hình từ Google Drive theo đường dẫn trong README.",
+      "Chạy demo nhanh trên terminal: `python demo.py`.",
+      "Hoặc chạy giao diện web Flask: `python app.py` (có thể triển khai trên Google Colab theo `demo.ipynb`)."
+    ],
+    "samplePromptsVi": [
+      "Chuẩn hóa bình luận \"ko bít đi đâu h\" thành tiếng Việt chuẩn bằng ViSoLex",
+      "Huấn luyện lại mô hình ViSoBERT của ViSoLex với dữ liệu bình luận riêng",
+      "Tích hợp bước chuẩn hóa ViSoLex trước mô hình phân loại cảm xúc bình luận"
+    ],
+    "prosVi": [
+      "Giấy phép MIT",
+      "Có cả giao diện web Flask cho người không chuyên lẫn công cụ huấn luyện cho nhà nghiên cứu",
+      "Hỗ trợ hai mô hình tiếng Việt phổ biến là ViSoBERT và BARTpho"
+    ],
+    "consVi": [
+      "Huấn luyện đòi hỏi phần cứng lớn (tối thiểu 55–120GB RAM CPU và 12–32GB RAM GPU)",
+      "Checkpoint và dữ liệu thí nghiệm nằm ngoài repo (Google Drive, repo ViSoLex-Resources)",
+      "Tra cứu NSW qua `chatgpt.py` dùng OpenAI API nên cần khóa API riêng"
+    ],
+    "sourceEvidence": {
+      "conda create -n visolex python=3.10": "README.md:63",
+      "conda activate visolex": "README.md:66",
+      "pip install -r requirements.txt": "README.md:71",
+      "python main.py --student_name visobert --training_mode weakly_supervised --num_epochs 5 --num_unsup_epochs 5 --eval_batch_size 16 --unsup_batch_size 16 --num_iter 10 --lower_case --hard_student_rule --soft_labels --append_n_mask --nsw_detect --rm_accent_ratio 1.0": "README.md:76",
+      "python demo.py": "README.md:86",
+      "python app.py": "README.md:102"
+    },
+    "meta": {
+      "id": "anhhoang0529-visolex",
+      "nameVi": "ViSoLex — Chuẩn hóa từ viết tắt, teencode trong văn bản mạng xã hội tiếng Việt",
+      "icon": "Wrench",
+      "categories": [
+        "nlp_language",
+        "content_writing"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, mã nguồn mở theo giấy phép MIT",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "python demo.py"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "nghimestudio/vietnormalizer",
+    "license": "MIT License — Copyright (c) 2024 Vietnamese Normalizer Contributors",
+    "authorName": "nghimestudio",
+    "websiteUrl": "https://pypi.org/project/vietnormalizer/",
+    "toolType": "sdk",
+    "taglineEn": "A Python library for normalizing Vietnamese text, designed for Text-to-Speech (TTS) and Natural Language Processing (NLP) applications.",
+    "summaryVi": "vietnormalizer là thư viện Python chuẩn hóa văn bản tiếng Việt cho ứng dụng chuyển văn bản thành giọng nói (TTS) và xử lý ngôn ngữ tự nhiên. Thư viện đổi số, ngày giờ, tiền tệ, phần trăm, đơn vị đo, số điện thoại sang chữ tiếng Việt, mở rộng từ viết tắt và phiên âm từ nước ngoài theo từ điển hoặc theo quy tắc. Không cần thư viện ngoài, khoảng 0,6ms mỗi lần gọi với hơn 17 nghìn mục từ điển.",
+    "purposeVi": "Chuẩn bị văn bản tiếng Việt \"đọc được\" cho hệ thống TTS, trợ lý giọng nói hoặc bước tiền xử lý NLP.",
+    "featuresVi": [
+      "Chuyển số và ngày giờ: `25/12/2023` thành \"ngày hai mươi lăm tháng mười hai năm hai nghìn không trăm hai mươi ba\"",
+      "Tiền tệ, phần trăm, đơn vị: `50.000đ`, `3-5%`, `120km/h` sang chữ tiếng Việt",
+      "Từ viết tắt và từ nước ngoài: thay theo từ điển CSV (`TV` → \"ti vi\", `container` → \"công-tê-nơ\"), hỗ trợ từ điển tùy chỉnh",
+      "Phiên âm theo quy tắc: từ không có trong từ điển được phiên âm sang tiếng Việt, có thể tắt",
+      "Nhận diện từ tiếng Việt: hàm `is_vietnamese_word` để bỏ qua từ thuần Việt khi phiên âm",
+      "Làm sạch văn bản: bỏ emoji, URL, email, chuẩn hóa Unicode và dấu câu"
+    ],
+    "requirementsVi": "Python 3.8+, không phụ thuộc thư viện ngoài (chỉ dùng thư viện chuẩn).",
+    "installStepsVi": [
+      "Cài từ PyPI: `pip install vietnormalizer`",
+      "Hoặc cài từ mã nguồn: `git clone https://github.com/nghimestudio/vietnormalizer.git`, `cd vietnormalizer`, `pip install -e .`"
+    ],
+    "cliCommand": "pip install vietnormalizer",
+    "usageStepsVi": [
+      "Nhập thư viện: `from vietnormalizer import VietnameseNormalizer`.",
+      "Tạo đối tượng `normalizer = VietnameseNormalizer()` rồi gọi `normalizer.normalize(\"Giá 50.000đ cho mỗi người\")`.",
+      "Tắt phiên âm khi cần: `VietnameseNormalizer(enable_transliteration=False)`; dùng từ điển riêng qua `acronyms_path`, `non_vietnamese_words_path` hoặc `data_dir`."
+    ],
+    "samplePromptsVi": [
+      "Viết hàm Python dùng vietnormalizer chuẩn hóa bản tin trước khi đưa vào mô hình TTS tiếng Việt",
+      "Thêm từ điển viết tắt riêng của công ty vào vietnormalizer bằng tệp acronyms.csv",
+      "Chuẩn hóa hóa đơn có số tiền, ngày tháng và đơn vị đo thành câu đọc được"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, dùng được cho mục đích thương mại",
+      "Có gói PyPI, cài một lệnh, không phụ thuộc thư viện ngoài",
+      "Nhanh (khoảng 0,6ms mỗi lần gọi theo README) và đang được cập nhật (2026)"
+    ],
+    "consVi": [
+      "Dựa trên quy tắc và từ điển, không dùng mô hình học máy nên phiên âm từ lạ có thể chưa chuẩn",
+      "Tập trung cho TTS: kết quả viết thường và đổi số thành chữ, không phù hợp nếu cần giữ nguyên định dạng"
+    ],
+    "sourceEvidence": {
+      "pip install vietnormalizer": "README.md:29",
+      "git clone https://github.com/nghimestudio/vietnormalizer.git": "README.md:35",
+      "cd vietnormalizer": "README.md:36",
+      "pip install -e .": "README.md:37"
+    },
+    "meta": {
+      "id": "nghimestudio-vietnormalizer",
+      "nameVi": "vietnormalizer — Thư viện chuẩn hóa văn bản tiếng Việt cho TTS và NLP",
+      "icon": "Code2",
+      "categories": [
+        "nlp_language",
+        "speech_voice"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, mã nguồn mở theo giấy phép MIT",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install vietnormalizer"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "stair-lab/melt",
+    "license": "MIT License — Copyright (c) 2023-2025 Sang T. Truong et al.",
+    "authorName": "Stanford STAIR Lab & ĐH Bách khoa TP.HCM (Sang T. Truong, Duc Q. Nguyen, Tho Quan, Sanmi Koyejo và cộng sự)",
+    "websiteUrl": "https://ai.stanford.edu/~sttruong/villm/",
+    "toolType": "cli",
+    "taglineEn": "A Python package for evaluating Vietnamese LLMs",
+    "summaryVi": "MELT (Multilingual Evaluation Toolkits) là bộ công cụ đánh giá mô hình ngôn ngữ lớn đa ngôn ngữ, hỗ trợ đầy đủ nhất cho tiếng Việt. Bộ công cụ gồm 10 kịch bản: tóm tắt, hỏi đáp, kiến thức, phân tích cảm xúc, phân loại văn bản, phát hiện độc hại, mô hình ngôn ngữ, suy luận, toán học và truy hồi thông tin, cùng các đánh giá thiên kiến, độc hại, công bằng và độ bền. Bộ dữ liệu ví dụ gồm đọc hiểu trắc nghiệm ViMMRC, MATH, VSFC, ViHSD; bảng xếp hạng công bố tại trang ViLLM.",
+    "purposeVi": "Đo năng lực mô hình ngôn ngữ lớn trên tiếng Việt (gồm đọc hiểu, toán, kiến thức) để chọn hoặc cải thiện mô hình cho ứng dụng giáo dục và nghiệp vụ.",
+    "featuresVi": [
+      "10 kịch bản đánh giá: tóm tắt, hỏi đáp, kiến thức mở và trắc nghiệm, cảm xúc, phân loại, độc hại, dịch, suy luận, toán, truy hồi thông tin",
+      "Đánh giá có trách nhiệm: thiên kiến, độc hại, công bằng, độ bền trước nhiễu",
+      "Nhiều kiểu triển khai mô hình: Hugging Face (`hf`), vLLM, TGI, OpenAI/Azure, Gemini",
+      "Bộ dữ liệu tiếng Việt: ViMMRC (đọc hiểu trắc nghiệm), MATH, zalo_e2eqa, VSFC, ViHSD trên Hugging Face `ura-hcmut`",
+      "Mở rộng ngôn ngữ và dữ liệu: cấu hình qua `config/<mã ngôn ngữ>/` và `datasets_info.json`, hỗ trợ dữ liệu cục bộ",
+      "Few-shot và bootstrap: tham số `--num_fs`, `--fewshot_prompting`, `--n_bootstrap`"
+    ],
+    "requirementsVi": "Python >= 3.8 (theo pyproject.toml). Cần khóa API tương ứng (OPENAI_API_KEY, GEMINI_KEY, TGI_ENDPOINT...) trong tệp `.env` nếu đánh giá mô hình qua API; GPU nếu chạy mô hình Hugging Face cục bộ.",
+    "installStepsVi": [
+      "Tải mã nguồn repo và cài gói ở chế độ phát triển: `pip install -e .`",
+      "Đổi tên tệp .env.template thành .env và điền biến môi trường cho trình bao mô hình đã chọn (OpenAI, AzureGPT, TGI, Gemini)"
+    ],
+    "cliCommand": "pip install -e .",
+    "usageStepsVi": [
+      "Chạy đánh giá một mô hình Hugging Face trên bộ zalo_e2eqa tiếng Việt, ví dụ trong README: `melt --wtype hf --model_name meta-llama/Meta-Llama-3.1-8B-Instruct --dataset_name zalo_e2eqa --lang vi`.",
+      "Các ví dụ chi tiết hơn trong README dùng lệnh `vieval` với các tham số `--num_fs`, `--fewshot_prompting`, `--ptemplate`, `--seed`.",
+      "Thêm bộ dữ liệu riêng bằng cách khai báo trong `config/vi/datasets_info.json` và đặt tệp vào thư mục `datasets`.",
+      "Xem kết quả trong `results/generation` và điểm số trong `results/evaluation`."
+    ],
+    "samplePromptsVi": [
+      "Dùng MELT đánh giá một mô hình Llama tiếng Việt trên bộ đọc hiểu trắc nghiệm ViMMRC",
+      "So sánh điểm toán (MATH) tiếng Việt của GPT-4 và Gemini bằng MELT",
+      "Thêm bộ câu hỏi ôn thi của trường vào MELT để đo độ chính xác của chatbot học tập"
+    ],
+    "prosVi": [
+      "Giấy phép MIT",
+      "Phát triển bởi Stanford và ĐH Bách khoa TP.HCM, có bảng xếp hạng ViLLM công khai",
+      "Hỗ trợ nhiều cách triển khai mô hình (Hugging Face, vLLM, TGI, OpenAI, Gemini)",
+      "Bao quát cả năng lực lẫn đánh giá thiên kiến, độc hại cho tiếng Việt"
+    ],
+    "consVi": [
+      "Đánh giá mô hình thương mại cần khóa API trả phí (OpenAI, Gemini)",
+      "README dùng hai tên lệnh khác nhau (`melt` và `vieval`); `pyproject.toml` khai báo lệnh `melt`",
+      "Phiên bản 0.0.1, lần commit gần nhất tháng 9/2024; tiếng Indonesia và Hàn Quốc chỉ hỗ trợ một phần tác vụ"
+    ],
+    "sourceEvidence": {
+      "pip install -e .": "README.md:79",
+      "melt --wtype hf --model_name meta-llama/Meta-Llama-3.1-8B-Instruct --dataset_name zalo_e2eqa --lang vi": "README.md:70"
+    },
+    "meta": {
+      "id": "stair-lab-melt",
+      "nameVi": "MELT — Bộ công cụ đánh giá mô hình ngôn ngữ lớn tiếng Việt",
+      "icon": "Terminal",
+      "categories": [
+        "nlp_llm",
+        "data_science_analytics",
+        "nlp_language"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, mã nguồn mở theo giấy phép MIT; đánh giá mô hình qua API (OpenAI, Gemini) tốn phí theo nhà cung cấp",
+      "isVietnamMarket": true,
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install -e ."
+        }
+      ]
+    }
+  }
+]
