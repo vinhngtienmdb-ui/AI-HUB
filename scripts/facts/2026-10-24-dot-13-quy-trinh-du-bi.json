@@ -1,0 +1,734 @@
+[
+  {
+    "repo": "temporalio/temporal",
+    "license": "MIT License",
+    "authorName": "Temporal Technologies",
+    "websiteUrl": "https://temporal.io",
+    "toolType": "software",
+    "taglineEn": "Temporal is a durable execution platform that enables developers to build scalable applications without sacrificing productivity or reliability.",
+    "summaryVi": "Temporal là nền tảng thực thi bền vững (durable execution): máy chủ Temporal chạy các đơn vị logic gọi là Workflow một cách bền bỉ, tự xử lý lỗi gián đoạn và thử lại các thao tác thất bại. Dự án bắt nguồn từ bản fork Cadence của Uber và do Temporal Technologies phát triển. Kho này chứa mã nguồn máy chủ; Workflow, Activity và Worker được viết bằng SDK của các ngôn ngữ được hỗ trợ.",
+    "purposeVi": "Công cụ giúp lập trình viên xây dựng quy trình nghiệp vụ chạy dài, đáng tin cậy, tự động thử lại khi lỗi mà không phải tự viết cơ chế hàng đợi và khôi phục trạng thái.",
+    "featuresVi": [
+      "Thực thi bền vững: Workflow tiếp tục chạy đúng trạng thái dù gặp lỗi gián đoạn",
+      "Tự động thử lại: các thao tác thất bại được thử lại tự động",
+      "Máy chủ phát triển cục bộ: khởi chạy nhanh bằng `temporal server start-dev`",
+      "Temporal CLI: liệt kê namespace và workflow từ dòng lệnh",
+      "Temporal Web UI: theo dõi workflow đang chạy tại http://localhost:8233",
+      "Mẫu Go và Java: bộ ví dụ HelloWorld và nâng cao để chạy với máy chủ cục bộ"
+    ],
+    "requirementsVi": "Homebrew (hoặc phương thức cài Temporal CLI khác theo tài liệu); SDK Temporal của ngôn ngữ bạn dùng (ví dụ Go, Java) để viết Workflow và Worker.",
+    "installStepsVi": [
+      "Cài đặt Temporal CLI: `brew install temporal`",
+      "Khởi chạy máy chủ Temporal cục bộ cùng các phụ thuộc: `temporal server start-dev`"
+    ],
+    "cliCommand": "brew install temporal",
+    "usageStepsVi": [
+      "Tải bộ mẫu Go (temporalio/samples-go) hoặc Java (temporalio/samples-java) và chạy với máy chủ cục bộ theo hướng dẫn trong README",
+      "Kiểm tra namespace bằng CLI: `temporal operator namespace list`",
+      "Liệt kê các workflow: `temporal workflow list`",
+      "Mở Temporal Web UI tại http://localhost:8233 để xem workflow mẫu đang thực thi"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn tôi chạy máy chủ Temporal cục bộ và mở Web UI để xem workflow",
+      "Viết workflow Go có activity gọi API thanh toán và tự thử lại khi lỗi mạng",
+      "Giải thích khác biệt giữa Workflow, Activity và Worker trong Temporal"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, dùng tự do cả cho mục đích thương mại",
+      "Công nghệ trưởng thành, phát triển từ Cadence của Uber",
+      "Có máy chủ phát triển cục bộ, CLI và Web UI đi kèm"
+    ],
+    "consVi": [
+      "Kho này chỉ chứa máy chủ; cần SDK riêng cho từng ngôn ngữ để viết Workflow",
+      "README chỉ nêu cách cài bằng Homebrew, các cách khác phải xem tài liệu ngoài"
+    ],
+    "sourceEvidence": {
+      "brew install temporal": "README.md:38",
+      "temporal server start-dev": "README.md:39",
+      "temporal operator namespace list": "README.md:54",
+      "temporal workflow list": "README.md:55"
+    },
+    "meta": {
+      "id": "temporalio-temporal",
+      "nameVi": "Temporal — Nền tảng thực thi quy trình bền vững, tự thử lại khi lỗi",
+      "icon": "Workflow",
+      "categories": [
+        "rpa_workflow_automation",
+        "backend_api"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "brew install temporal"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "apache/airflow",
+    "license": "Apache License 2.0",
+    "authorName": "Apache Software Foundation",
+    "websiteUrl": "https://airflow.apache.org",
+    "toolType": "software",
+    "taglineEn": "Apache Airflow (or simply Airflow) is a platform to programmatically author, schedule, and monitor workflows.",
+    "summaryVi": "Apache Airflow là nền tảng để viết, lập lịch và giám sát quy trình bằng mã. Quy trình được định nghĩa thành các Dag điều phối tác vụ; bộ lập lịch của Airflow thực thi tác vụ trên nhiều worker theo đúng phụ thuộc. Ngoài pipeline dữ liệu truyền thống, Airflow còn được dùng để điều phối quy trình học máy và các tác vụ dựa trên LLM.",
+    "purposeVi": "Công cụ giúp đội kỹ thuật dữ liệu lập lịch và điều phối pipeline xử lý dữ liệu theo lô, có giao diện web để theo dõi và chạy lại.",
+    "featuresVi": [
+      "Định nghĩa bằng mã: pipeline viết bằng Python, sinh Dag động và tham số hóa",
+      "Mở rộng: bộ operator dựng sẵn phong phú, có thể tự mở rộng",
+      "Linh hoạt: dùng Jinja để tùy biến mẫu",
+      "Giao diện người dùng: xem Dags, Assets, Grid, Graph, Backfill và mã nguồn Dag",
+      "Cài đặt lặp lại được: tệp constraint cố định phiên bản phụ thuộc",
+      "Ảnh Docker và Helm Chart chính thức cho Kubernetes"
+    ],
+    "requirementsVi": "Python 3.10–3.14 (bản ổn định 3.3.2); hệ điều hành POSIX (Linux, macOS; Windows qua WSL2 hoặc container); PostgreSQL 14–18 hoặc MySQL 8.0/8.4 cho môi trường thật (SQLite chỉ dùng phát triển).",
+    "installStepsVi": [
+      "Cài đặt Airflow từ PyPI kèm tệp constraint: `pip install 'apache-airflow==3.3.2' --constraint \"https://raw.githubusercontent.com/apache/airflow/constraints-3.3.2/constraints-3.10.txt\"`",
+      "Hoặc cài đặt kèm gói mở rộng (postgres, google): `pip install 'apache-airflow[postgres,google]==3.3.2' --constraint \"https://raw.githubusercontent.com/apache/airflow/constraints-3.3.2/constraints-3.10.txt\"`",
+      "Làm theo hướng dẫn cài đặt và getting started trên tài liệu chính thức để khởi tạo cơ sở dữ liệu và chạy Airflow"
+    ],
+    "cliCommand": "pip install 'apache-airflow==3.3.2' --constraint \"https://raw.githubusercontent.com/apache/airflow/constraints-3.3.2/constraints-3.10.txt\"",
+    "usageStepsVi": [
+      "Viết Dag bằng Python mô tả các tác vụ và phụ thuộc giữa chúng",
+      "Bộ lập lịch thực thi tác vụ trên các worker theo phụ thuộc đã khai báo",
+      "Dùng giao diện web (Grid, Graph, Backfill) để theo dõi trạng thái, chạy bù theo khoảng ngày và xem mã Dag"
+    ],
+    "samplePromptsVi": [
+      "Viết Dag Airflow chạy hằng ngày: tải dữ liệu từ API, làm sạch và ghi vào PostgreSQL",
+      "Hướng dẫn cài đặt Airflow 3.3.2 bằng pip với tệp constraint cho Python 3.10",
+      "Cách backfill một Dag cho khoảng ngày cụ thể trên giao diện Airflow"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, dự án của Apache Software Foundation",
+      "Hệ sinh thái operator và provider lớn",
+      "Có ảnh Docker và Helm Chart chính thức"
+    ],
+    "consVi": [
+      "Không phải giải pháp streaming; phù hợp nhất với quy trình tĩnh, ít thay đổi",
+      "Chỉ hỗ trợ Linux cho môi trường production; Windows phải qua WSL2 hoặc container",
+      "`pip install` không dùng constraint có thể thất bại do xung đột phụ thuộc"
+    ],
+    "sourceEvidence": {
+      "pip install 'apache-airflow==3.3.2' --constraint \"https://raw.githubusercontent.com/apache/airflow/constraints-3.3.2/constraints-3.10.txt\"": "README.md:177",
+      "pip install 'apache-airflow[postgres,google]==3.3.2' --constraint \"https://raw.githubusercontent.com/apache/airflow/constraints-3.3.2/constraints-3.10.txt\"": "README.md:184"
+    },
+    "meta": {
+      "id": "apache-airflow",
+      "nameVi": "Apache Airflow — Nền tảng lập lịch và điều phối pipeline dữ liệu bằng mã",
+      "icon": "Workflow",
+      "categories": [
+        "data_engineering",
+        "rpa_workflow_automation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "pip install 'apache-airflow==3.3.2' --constraint \"https://raw.githubusercontent.com/apache/airflow/constraints-3.3.2/constraints-3.10.txt\""
+        }
+      ]
+    }
+  },
+  {
+    "repo": "dagster-io/dagster",
+    "license": "Apache License 2.0",
+    "authorName": "Dagster Labs",
+    "websiteUrl": "https://dagster.io",
+    "toolType": "software",
+    "taglineEn": "Dagster is a cloud-native data pipeline orchestrator for the whole development lifecycle, with integrated lineage and observability, a declarative programming model, and best-in-class testability.",
+    "summaryVi": "Dagster là bộ điều phối pipeline dữ liệu cloud-native cho toàn bộ vòng đời phát triển, tích hợp lineage, khả năng quan sát và mô hình lập trình khai báo. Người dùng khai báo tài sản dữ liệu (bảng, tập dữ liệu, mô hình học máy, báo cáo) dưới dạng hàm Python, Dagster sẽ chạy chúng đúng lúc và giữ cho tài sản luôn cập nhật. Dagster dùng được từ phát triển cục bộ, kiểm thử đến production.",
+    "purposeVi": "Công cụ giúp kỹ sư dữ liệu xây dựng và duy trì tài sản dữ liệu, theo dõi lineage và chất lượng dữ liệu trên một giao diện điều khiển thống nhất.",
+    "featuresVi": [
+      "Tài sản khai báo: định nghĩa tài sản dữ liệu bằng decorator `@dg.asset` trong Python",
+      "Giao diện web: hiển thị đồ thị tài sản và lineage",
+      "Bộ điều phối mạnh: đa người thuê, đa công cụ, mở rộng được cho production",
+      "Mặt phẳng điều khiển thống nhất: tập trung metadata, quan sát, chẩn đoán, danh mục và lineage",
+      "Kiểm thử tốt: hỗ trợ unit test, integration test và môi trường staging",
+      "Thư viện tích hợp với các công cụ dữ liệu phổ biến"
+    ],
+    "requirementsVi": "Python 3.9–3.14; trình quản lý gói uv (theo lệnh trong README) hoặc pip.",
+    "installStepsVi": [
+      "Cài đặt Dagster, web server và CLI vào dự án: `uv add dagster dagster-webserver dagster-dg-cli`",
+      "Làm theo hướng dẫn Quickstart hoặc tutorial ETL trên docs.dagster.io để tạo dự án đầu tiên"
+    ],
+    "cliCommand": "uv add dagster dagster-webserver dagster-dg-cli",
+    "usageStepsVi": [
+      "Khai báo các tài sản dữ liệu bằng hàm Python gắn `@dg.asset`, khai báo phụ thuộc qua tham số hàm",
+      "Mở giao diện web của Dagster để xem đồ thị tài sản và lineage",
+      "Chạy và lập lịch vật chất hóa tài sản, theo dõi chất lượng dữ liệu"
+    ],
+    "samplePromptsVi": [
+      "Viết ba asset Dagster: tải dữ liệu dân số, huấn luyện mô hình hồi quy và tổng hợp theo châu lục",
+      "Giải thích mô hình asset của Dagster khác gì so với task-based orchestration",
+      "Hướng dẫn cài đặt Dagster bằng uv và mở giao diện web"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Mô hình khai báo tài sản kèm lineage và quan sát tích hợp",
+      "Hỗ trợ Python 3.9 đến 3.14"
+    ],
+    "consVi": [
+      "README chỉ có lệnh cài đặt; hướng dẫn chạy chi tiết nằm ở tài liệu ngoài docs.dagster.io",
+      "Chỉ dành cho hệ sinh thái Python"
+    ],
+    "sourceEvidence": {
+      "uv add dagster dagster-webserver dagster-dg-cli": "python_modules/dagster/README.md:84"
+    },
+    "meta": {
+      "id": "dagster-io-dagster",
+      "nameVi": "Dagster — Bộ điều phối pipeline dữ liệu theo tài sản, có lineage",
+      "icon": "Layers",
+      "categories": [
+        "data_engineering"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "uv add dagster dagster-webserver dagster-dg-cli"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "appsmithorg/appsmith",
+    "license": "Apache License 2.0",
+    "authorName": "Appsmith",
+    "websiteUrl": "https://www.appsmith.com",
+    "toolType": "software",
+    "taglineEn": "Appsmith is an open-source low-code platform that streamlines custom application development, deployment, and maintenance.",
+    "summaryVi": "Appsmith là nền tảng low-code mã nguồn mở giúp xây dựng, triển khai và bảo trì ứng dụng nội bộ như dashboard, trang quản trị, customer 360, tự động hóa IT và công cụ quản lý dịch vụ. Có thể dùng Appsmith Cloud hoặc tự triển khai bằng Docker, Kubernetes, AWS. Ảnh Docker chứa đủ mọi thành phần trong một container.",
+    "purposeVi": "Công cụ giúp doanh nghiệp tự dựng nhanh ứng dụng nội bộ (bảng điều khiển, trang quản trị) kết nối dữ liệu sẵn có mà không phải viết toàn bộ giao diện từ đầu.",
+    "featuresVi": [
+      "Low-code: dựng dashboard, trang quản trị, customer 360, công cụ IT",
+      "Tự triển khai: một container Docker chứa đủ thành phần",
+      "Nhiều cách cài đặt: Docker, Kubernetes, AWS AMI",
+      "Tự động cập nhật: tùy chọn bật Watchtower trong docker-compose",
+      "Appsmith Cloud: dùng bản lưu trữ sẵn nếu không muốn tự cài"
+    ],
+    "requirementsVi": "Docker và Docker Compose; cổng 80 và 443 trống trên máy chủ.",
+    "installStepsVi": [
+      "Cài đặt Docker và Docker Compose, kiểm tra bằng `docker --version`",
+      "Tạo thư mục `appsmith` và tệp `docker-compose.yml` dùng ảnh `appsmith/appsmith-ce` theo hướng dẫn trong deploy/docker/README.md",
+      "Khởi chạy Appsmith: `docker-compose up -d`"
+    ],
+    "cliCommand": "docker-compose up -d",
+    "usageStepsVi": [
+      "Chờ tải ảnh và khởi tạo, sau đó mở http://localhost",
+      "Kiểm tra container đang chạy bằng `docker ps`",
+      "Tạo ứng dụng, kết nối nguồn dữ liệu và dựng giao diện bằng các widget"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn tự triển khai Appsmith bằng docker-compose trên máy chủ Ubuntu",
+      "Dựng trang quản trị đơn hàng trên Appsmith kết nối PostgreSQL",
+      "Bật tự động cập nhật Appsmith bằng Watchtower"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0",
+      "Triển khai đơn giản bằng một container Docker",
+      "Có lựa chọn Appsmith Cloud"
+    ],
+    "consVi": [
+      "README chính không có lệnh cài đặt; hướng dẫn Docker nằm trong deploy/docker/README.md và tài liệu ngoài",
+      "Cần cổng 80/443 cho container mặc định"
+    ],
+    "sourceEvidence": {
+      "docker-compose up -d": "deploy/docker/README.md:70",
+      "docker --version": "deploy/docker/README.md:28",
+      "docker ps": "deploy/docker/README.md:78"
+    },
+    "meta": {
+      "id": "appsmithorg-appsmith",
+      "nameVi": "Appsmith — Nền tảng low-code dựng ứng dụng nội bộ, trang quản trị",
+      "icon": "Box",
+      "categories": [
+        "frontend_ui",
+        "rpa_workflow_automation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "docker-compose up -d"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "ToolJet/ToolJet",
+    "license": "GNU Affero General Public License v3.0 (mã nguồn trong kho); tính năng ToolJet AI (Enterprise) nằm ở submodule riêng frontend/ee và server/ee",
+    "authorName": "ToolJet Solutions Inc",
+    "websiteUrl": "https://tooljet.com",
+    "toolType": "software",
+    "taglineEn": "ToolJet is an open-source platform for building internal tools: admin panels, dashboards, and operational apps that run on your existing databases, APIs, and SaaS systems.",
+    "summaryVi": "ToolJet là nền tảng mã nguồn mở để xây dựng công cụ nội bộ như trang quản trị, dashboard và ứng dụng vận hành chạy trên cơ sở dữ liệu, API và dịch vụ SaaS sẵn có. Bản Community có trình dựng ứng dụng trực quan với hơn 80 thành phần, cơ sở dữ liệu no-code tích hợp và hơn 90 nguồn dữ liệu. ToolJet còn cung cấp máy chủ MCP (beta) để tác tử lập trình như Claude Code, Cursor dựng ứng dụng ToolJet từ câu lệnh.",
+    "purposeVi": "Công cụ giúp đội vận hành và kỹ thuật dựng nhanh ứng dụng nội bộ kết nối dữ liệu doanh nghiệp, có thể tự triển khai.",
+    "featuresVi": [
+      "Trình dựng trực quan: hơn 80 thành phần (bảng, biểu đồ, biểu mẫu, danh sách)",
+      "ToolJet Database: cơ sở dữ liệu no-code tích hợp",
+      "Hơn 90 nguồn dữ liệu: cơ sở dữ liệu, API, lưu trữ đám mây, SaaS",
+      "Chỉnh sửa nhiều người, ứng dụng nhiều trang",
+      "Chạy JavaScript và Python trong ứng dụng",
+      "Máy chủ MCP (beta) cho Claude Code, Codex, Cursor",
+      "Bản Enterprise: sinh ứng dụng bằng AI, Workflows, Agent Builder, GitSync, RBAC"
+    ],
+    "requirementsVi": "Docker (lệnh thử nhanh dùng nền tảng linux/amd64); để tự triển khai production xem tài liệu cho Kubernetes, AWS, GCP, Azure.",
+    "installStepsVi": [
+      "Cài đặt Docker, sau đó chạy thử ToolJet cục bộ: `docker run --name tooljet --restart unless-stopped -p 80:80 --platform linux/amd64 -v tooljet_data:/var/lib/postgresql/13/main tooljet/try:ee-lts-latest`",
+      "Để tự triển khai lâu dài, làm theo hướng dẫn triển khai trên docs.tooljet.com (Docker, Helm, Kubernetes, AWS ECS…); README khuyến nghị chọn bản LTS"
+    ],
+    "cliCommand": "docker run --name tooljet --restart unless-stopped -p 80:80 --platform linux/amd64 -v tooljet_data:/var/lib/postgresql/13/main tooljet/try:ee-lts-latest",
+    "usageStepsVi": [
+      "Mở trình duyệt tới máy chủ (cổng 80) và tạo tài khoản quản trị",
+      "Kết nối nguồn dữ liệu và kéo thả thành phần để dựng ứng dụng",
+      "Tùy chọn: thiết lập máy chủ MCP theo hướng dẫn ToolJet MCP để tác tử lập trình dựng ứng dụng"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn chạy thử ToolJet bằng Docker trên máy cá nhân",
+      "Dựng dashboard theo dõi tồn kho trên ToolJet kết nối MySQL",
+      "So sánh tính năng ToolJet Community và ToolJet AI (Enterprise)"
+    ],
+    "prosVi": [
+      "Bản Community theo AGPL-3.0, tự triển khai được",
+      "Nhiều thành phần và nguồn dữ liệu dựng sẵn",
+      "Có máy chủ MCP cho tác tử lập trình"
+    ],
+    "consVi": [
+      "Các tính năng AI, Workflows, Agent Builder thuộc bản Enterprise trả phí, mã nằm ở submodule riêng",
+      "Lệnh thử nhanh dùng ảnh `tooljet/try:ee-lts-latest` và nền tảng linux/amd64",
+      "AGPL-3.0 yêu cầu công bố mã khi sửa đổi và cung cấp qua mạng",
+      "Máy chủ MCP đang ở giai đoạn beta"
+    ],
+    "sourceEvidence": {
+      "docker run --name tooljet --restart unless-stopped -p 80:80 --platform linux/amd64 -v tooljet_data:/var/lib/postgresql/13/main tooljet/try:ee-lts-latest": "README.md:43"
+    },
+    "meta": {
+      "id": "tooljet-tooljet",
+      "nameVi": "ToolJet — Nền tảng dựng công cụ nội bộ low-code có máy chủ MCP",
+      "icon": "Box",
+      "categories": [
+        "frontend_ui",
+        "rpa_workflow_automation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (AGPL-3.0) + bản Enterprise thương mại",
+      "pricingModel": "freemium",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "docker run --name tooljet --restart unless-stopped -p 80:80 --platform linux/amd64 -v tooljet_data:/var/lib/postgresql/13/main tooljet/try:ee-lts-latest"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "Budibase/budibase",
+    "license": "GPL v3 (mặc định); thư viện client và thành phần theo MPL 2.0; tính năng trả phí (packages/pro) theo Business Source License; kèm Structured Query Server theo SQS_LICENSE",
+    "authorName": "Budibase",
+    "websiteUrl": "https://budibase.com",
+    "toolType": "software",
+    "taglineEn": "Budibase is an open-source operations platform that saves engineers 100s of hours building Agents, Apps and Automations, securely.",
+    "summaryVi": "Budibase là nền tảng vận hành mã nguồn mở giúp xây dựng tác tử AI, ứng dụng và tự động hóa quy trình một cách an toàn. Tác tử Budibase tiếp nhận yêu cầu, phê duyệt, báo lỗi của nhân viên rồi tự chạy quy trình: tạo bản ghi, chuyển phê duyệt, cập nhật ứng dụng và thông báo cho nhóm. Có thể tự triển khai bằng Docker, Kubernetes, DigitalOcean hoặc dùng Budibase Cloud.",
+    "purposeVi": "Công cụ giúp doanh nghiệp gom yêu cầu nội bộ, phê duyệt và tự động hóa quy trình vận hành trên một nền tảng tự triển khai.",
+    "featuresVi": [
+      "Tác tử AI hành động: tạo bản ghi, chuyển phê duyệt, cập nhật ứng dụng, gửi thông báo",
+      "Dựng ứng dụng và tự động hóa quy trình",
+      "Kết nối cơ sở dữ liệu, mô hình AI và ứng dụng doanh nghiệp",
+      "Public API: dùng Budibase làm backend, tương tác qua REST",
+      "Tự triển khai: quản lý người dùng, SMTP, nhóm, giao diện tập trung",
+      "Helm Chart chính thức cho Kubernetes"
+    ],
+    "requirementsVi": "Với Helm Chart: helm v3 trở lên, cụm Kubernetes; tùy chọn storage controller, ingress controller, metrics-server.",
+    "installStepsVi": [
+      "Cài đặt Helm và thêm kho chart Budibase: `helm repo add budibase https://budibase.github.io/budibase/`",
+      "Cập nhật danh sách chart: `helm repo update`",
+      "Cài đặt Budibase vào namespace riêng: `helm install --create-namespace --namespace budibase budibase budibase/budibase`"
+    ],
+    "cliCommand": "helm install --create-namespace --namespace budibase budibase budibase/budibase",
+    "usageStepsVi": [
+      "Truy cập Budibase qua ingress hoặc service đã cấu hình trong cụm",
+      "Tạo ứng dụng, kết nối nguồn dữ liệu và thiết lập tự động hóa",
+      "Cấu hình tác tử AI để xử lý yêu cầu, phê duyệt của nhân viên"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn cài đặt Budibase lên Kubernetes bằng Helm",
+      "Dựng quy trình phê duyệt nghỉ phép trên Budibase có gửi thông báo cho quản lý",
+      "Dùng Budibase Public API để thêm bản ghi từ hệ thống khác"
+    ],
+    "prosVi": [
+      "Lõi GPL v3; ứng dụng dựng ra không bị ràng buộc GPL nhờ thư viện client theo MPL",
+      "Nhiều cách tự triển khai: Docker, Kubernetes, DigitalOcean, Portainer",
+      "Có Public API"
+    ],
+    "consVi": [
+      "Tính năng trả phí theo Business Source License, không được gỡ kiểm tra giấy phép để dùng production",
+      "README chính không có lệnh cài đặt; lệnh Helm nằm ở charts/budibase/README.md",
+      "Giấy phép phân tách theo từng gói, cần kiểm tra khi tái sử dụng mã"
+    ],
+    "sourceEvidence": {
+      "helm install --create-namespace --namespace budibase budibase budibase/budibase": "charts/budibase/README.md:50",
+      "helm repo add budibase https://budibase.github.io/budibase/": "charts/budibase/README.md:48",
+      "helm repo update": "charts/budibase/README.md:49"
+    },
+    "meta": {
+      "id": "budibase-budibase",
+      "nameVi": "Budibase — Nền tảng tác tử AI, ứng dụng và tự động hóa vận hành nội bộ",
+      "icon": "Box",
+      "categories": [
+        "rpa_workflow_automation",
+        "frontend_ui"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (GPL v3 + MPL 2.0) + tính năng trả phí theo BSL",
+      "pricingModel": "freemium",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "helm install --create-namespace --namespace budibase budibase budibase/budibase"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "nocodb/nocodb",
+    "license": "Sustainable Use License 1.0 (fair-code, không phải giấy phép nguồn mở OSI): chỉ dùng/sửa cho mục đích kinh doanh nội bộ, phi thương mại hoặc cá nhân; chỉ phân phối miễn phí cho mục đích phi thương mại",
+    "authorName": "NocoDB",
+    "websiteUrl": "https://nocodb.com",
+    "toolType": "software",
+    "taglineEn": "NocoDB is the fastest and easiest way to build databases online.",
+    "summaryVi": "NocoDB là cách nhanh và dễ nhất để xây dựng cơ sở dữ liệu trực tuyến với giao diện dạng bảng tính. Hỗ trợ các kiểu xem Grid, Gallery, Form, Kanban, Calendar, phân quyền chi tiết, chia sẻ công khai hoặc có mật khẩu, cùng App Store tích hợp chat, email, lưu trữ cho tự động hóa quy trình. Người dùng truy cập bằng REST API hoặc NocoDB SDK.",
+    "purposeVi": "Công cụ giúp nhóm không chuyên lập trình quản lý dữ liệu như bảng tính nhưng chạy trên cơ sở dữ liệu thật, tự triển khai trong nội bộ.",
+    "featuresVi": [
+      "Giao diện bảng tính: tạo, đọc, sửa, xóa bảng, cột, dòng; sắp xếp, lọc, nhóm",
+      "Nhiều kiểu xem: Grid, Gallery, Form, Kanban, Calendar",
+      "Kiểu ô đa dạng: Links, Lookup, Rollup, Formula, Attachment, Currency…",
+      "Phân quyền theo vai trò ở nhiều cấp",
+      "App Store tự động hóa: Slack, Discord, AWS SES, SMTP, S3, MinIO…",
+      "Truy cập lập trình: REST API và NocoDB SDK"
+    ],
+    "requirementsVi": "Docker (SQLite hoặc PostgreSQL); với Auto-upstall cần máy chủ có tên miền để cấp SSL.",
+    "installStepsVi": [
+      "Cài đặt nhanh bằng Docker với SQLite: `docker run -d --name noco -v \"$(pwd)\"/nocodb:/usr/app/data/ -p 8080:8080 nocodb/nocodb:latest`",
+      "Hoặc cài đặt cho production bằng Auto-upstall (tự cài Docker Compose, PostgreSQL, Redis, Traefik, SSL): `bash <(curl -sSL http://install.nocodb.com/noco.sh) <(mktemp)`"
+    ],
+    "cliCommand": "docker run -d --name noco -v \"$(pwd)\"/nocodb:/usr/app/data/ -p 8080:8080 nocodb/nocodb:latest",
+    "usageStepsVi": [
+      "Mở http://localhost:8080/dashboard khi chạy cục bộ",
+      "Tạo base, bảng và chọn kiểu xem phù hợp (Grid, Kanban, Form…)",
+      "Kết nối tích hợp trong App Store hoặc gọi REST API bằng token"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn chạy NocoDB bằng Docker với PostgreSQL",
+      "Thiết kế bảng quản lý khách hàng trên NocoDB có Kanban theo trạng thái",
+      "Gọi REST API của NocoDB để thêm bản ghi mới"
+    ],
+    "prosVi": [
+      "Cài đặt rất nhanh bằng một lệnh Docker",
+      "Auto-upstall tự cấu hình production và gia hạn SSL",
+      "Có REST API và SDK"
+    ],
+    "consVi": [
+      "Sustainable Use License không phải nguồn mở OSI: không được cung cấp lại cho người khác vì mục đích thương mại",
+      "Chỉ nội dung nhánh master và develop được cấp phép",
+      "Bản nhị phân chỉ dùng để thử nghiệm cục bộ"
+    ],
+    "sourceEvidence": {
+      "docker run -d --name noco -v \"$(pwd)\"/nocodb:/usr/app/data/ -p 8080:8080 nocodb/nocodb:latest": "README.md:59",
+      "bash <(curl -sSL http://install.nocodb.com/noco.sh) <(mktemp)": "README.md:82"
+    },
+    "meta": {
+      "id": "nocodb-nocodb",
+      "nameVi": "NocoDB — Cơ sở dữ liệu giao diện bảng tính, thay thế Airtable tự triển khai",
+      "icon": "Database",
+      "categories": [
+        "database_sql_nosql",
+        "rpa_workflow_automation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Fair-code (Sustainable Use License) — chỉ dùng nội bộ/phi thương mại",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "docker run -d --name noco -v \"$(pwd)\"/nocodb:/usr/app/data/ -p 8080:8080 nocodb/nocodb:latest"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "automatisch/automatisch",
+    "license": "AGPL-3.0 (Community Edition) cho mọi tệp, trừ các tệp có \".ee.\" trong tên thuộc Automatisch Enterprise License (cần giấy phép trả phí để dùng production)",
+    "authorName": "AB Software GmbH (Automatisch)",
+    "websiteUrl": "https://automatisch.io",
+    "toolType": "software",
+    "taglineEn": "Automatisch is a business automation tool that lets you connect different services like Twitter, Slack, and more to automate your business processes.",
+    "summaryVi": "Automatisch là công cụ tự động hóa nghiệp vụ mã nguồn mở thay thế Zapier, cho phép kết nối các dịch vụ như Twitter, Slack để tự động hóa quy trình mà không cần biết lập trình. Điểm mạnh là lưu dữ liệu trên máy chủ của chính bạn, phù hợp ngành y tế, tài chính và doanh nghiệp phải tuân thủ GDPR.",
+    "purposeVi": "Công cụ giúp doanh nghiệp tự động hóa quy trình giữa các dịch vụ trực tuyến mà vẫn giữ dữ liệu trên hạ tầng riêng.",
+    "featuresVi": [
+      "Kết nối dịch vụ: liên kết Twitter, Slack và các dịch vụ khác thành luồng tự động",
+      "Không cần lập trình",
+      "Tự lưu trữ dữ liệu: phù hợp dữ liệu nhạy cảm và yêu cầu GDPR",
+      "Không phụ thuộc nhà cung cấp: dễ chuyển đổi vì nắm toàn bộ dữ liệu",
+      "Cài đặt bằng Docker Compose"
+    ],
+    "requirementsVi": "Git và Docker (Docker Compose).",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/automatisch/automatisch.git`",
+      "Vào thư mục dự án: `cd automatisch`",
+      "Cài đặt và khởi chạy bằng Docker Compose: `docker compose up`"
+    ],
+    "cliCommand": "docker compose up",
+    "usageStepsVi": [
+      "Đăng nhập bằng email `user@automatisch.io` và mật khẩu `sample`",
+      "Đổi ngay email và mật khẩu trong trang cài đặt",
+      "Tạo luồng tự động kết nối các dịch vụ cần dùng"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn tự triển khai Automatisch bằng Docker Compose",
+      "Tạo luồng Automatisch gửi tin nhắn Slack khi có sự kiện mới",
+      "So sánh Automatisch Community Edition và Enterprise Edition"
+    ],
+    "prosVi": [
+      "Lõi AGPL-3.0, tự lưu trữ dữ liệu",
+      "Cài đặt đơn giản bằng ba lệnh",
+      "Phù hợp yêu cầu GDPR"
+    ],
+    "consVi": [
+      "Các tệp \".ee.\" thuộc giấy phép Enterprise, cần mua giấy phép theo số người dùng để dùng production",
+      "Tài khoản mặc định cần đổi ngay sau khi cài",
+      "Commit gần nhất ngày 2026-01-15, nhịp cập nhật chậm hơn các dự án cùng loại"
+    ],
+    "sourceEvidence": {
+      "docker compose up": "README.md:33",
+      "git clone https://github.com/automatisch/automatisch.git": "README.md:27",
+      "cd automatisch": "README.md:30"
+    },
+    "meta": {
+      "id": "automatisch-automatisch",
+      "nameVi": "Automatisch — Công cụ tự động hóa nghiệp vụ mã nguồn mở thay thế Zapier",
+      "icon": "Workflow",
+      "categories": [
+        "rpa_workflow_automation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (AGPL-3.0) + tệp Enterprise thương mại",
+      "pricingModel": "freemium",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "docker compose up"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "node-red/node-red",
+    "license": "Apache License 2.0",
+    "authorName": "OpenJS Foundation",
+    "websiteUrl": "https://nodered.org",
+    "toolType": "software",
+    "taglineEn": "Low-code programming for event-driven applications",
+    "summaryVi": "Node-RED là công cụ lập trình low-code cho ứng dụng hướng sự kiện, dựng luồng xử lý bằng cách nối các node trên trình duyệt. Thư viện cộng đồng có rất nhiều node tùy chỉnh, luồng chia sẻ và bộ sưu tập tích hợp. Dự án thuộc OpenJS Foundation.",
+    "purposeVi": "Công cụ giúp kết nối thiết bị, API và dịch vụ trực tuyến thành luồng tự động hóa bằng giao diện kéo thả.",
+    "featuresVi": [
+      "Lập trình luồng low-code trên trình duyệt",
+      "Hướng sự kiện: phù hợp IoT, tích hợp API, tự động hóa",
+      "Thư viện node tùy chỉnh và luồng chia sẻ từ cộng đồng",
+      "Cài đặt toàn cục bằng npm, chạy bằng lệnh `node-red`",
+      "Có thể chạy từ mã nguồn mới nhất trên git"
+    ],
+    "requirementsVi": "Node.js và npm.",
+    "installStepsVi": [
+      "Cài đặt Node-RED toàn cục: `sudo npm install -g --unsafe-perm node-red`",
+      "Khởi chạy: `node-red`"
+    ],
+    "cliCommand": "sudo npm install -g --unsafe-perm node-red",
+    "usageStepsVi": [
+      "Mở trình soạn luồng tại http://localhost:1880",
+      "Kéo thả node, nối dây và triển khai luồng",
+      "Cài thêm node tùy chỉnh từ Node-RED Library khi cần tích hợp mới"
+    ],
+    "samplePromptsVi": [
+      "Tạo luồng Node-RED nhận dữ liệu cảm biến qua MQTT và lưu vào cơ sở dữ liệu",
+      "Hướng dẫn cài đặt Node-RED và mở trình soạn luồng",
+      "Dựng luồng Node-RED gọi HTTP API định kỳ và gửi cảnh báo"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, thuộc OpenJS Foundation",
+      "Cài đặt bằng một lệnh npm",
+      "Hệ sinh thái node cộng đồng lớn"
+    ],
+    "consVi": [
+      "Lệnh cài đặt trong README dùng sudo và cờ --unsafe-perm",
+      "Hướng dẫn chi tiết nằm ở tài liệu ngoài nodered.org"
+    ],
+    "sourceEvidence": {
+      "sudo npm install -g --unsafe-perm node-red": "README.md:22",
+      "node-red": "README.md:23"
+    },
+    "meta": {
+      "id": "node-red-node-red",
+      "nameVi": "Node-RED — Lập trình luồng low-code cho ứng dụng hướng sự kiện",
+      "icon": "Workflow",
+      "categories": [
+        "rpa_workflow_automation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "sudo npm install -g --unsafe-perm node-red"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "apache/nifi",
+    "license": "Apache License 2.0",
+    "authorName": "Apache Software Foundation",
+    "websiteUrl": "https://nifi.apache.org",
+    "toolType": "software",
+    "taglineEn": "Apache NiFi is an easy to use, powerful, and reliable system to process and distribute data.",
+    "summaryVi": "Apache NiFi là hệ thống dễ dùng, mạnh và tin cậy để xử lý và phân phối dữ liệu, tự động hóa pipeline cho an ninh mạng, quan sát hệ thống, luồng sự kiện và AI tạo sinh. NiFi có giao diện trình duyệt để thiết kế, điều khiển và giám sát, đảm bảo giao nhận dữ liệu, mở rộng theo cụm và truy vết nguồn gốc dữ liệu. Kho gồm cả NiFi Registry và MiNiFi.",
+    "purposeVi": "Công cụ giúp đội dữ liệu dựng luồng thu thập, chuyển đổi và phân phối dữ liệu giữa các hệ thống bằng giao diện trực quan.",
+    "featuresVi": [
+      "Giao diện trình duyệt: thiết kế, điều khiển, giám sát; pipeline có phiên bản",
+      "Xử lý mở rộng: ưu tiên thông lượng/độ trễ, đảm bảo giao nhận có thử lại, mở rộng theo cụm",
+      "Truy vết nguồn gốc (provenance): lịch sử tìm kiếm được và đồ thị lineage dữ liệu",
+      "Mở rộng: plugin Processor, Controller Service, Processor viết bằng Python",
+      "REST API để điều phối và giám sát",
+      "Bảo mật: SSO OpenID Connect/SAML 2, phân quyền theo vai trò, TLS"
+    ],
+    "requirementsVi": "Java 21; tùy chọn Python 3.10 trở lên cho Processor Python.",
+    "installStepsVi": [
+      "Cài đặt Java 21, sau đó build bản phân phối nhị phân: `./mvnw install -T1C -am -pl :nifi-assembly`",
+      "Vào thư mục bản phân phối: `cd nifi-assembly/target/nifi-*-bin/nifi-*/`",
+      "Khởi chạy NiFi: `./bin/nifi.sh start`"
+    ],
+    "cliCommand": "./mvnw install -T1C -am -pl :nifi-assembly",
+    "usageStepsVi": [
+      "Lấy tên đăng nhập và mật khẩu sinh ngẫu nhiên: `grep Generated logs/nifi-app*log`",
+      "Tùy chọn đặt thông tin đăng nhập riêng: `./bin/nifi.sh set-single-user-credentials <username> <password>`",
+      "Mở https://localhost:8443/nifi để thiết kế luồng dữ liệu"
+    ],
+    "samplePromptsVi": [
+      "Hướng dẫn build và khởi chạy Apache NiFi từ mã nguồn",
+      "Thiết kế luồng NiFi đọc tệp CSV, chuyển sang JSON và gửi vào Kafka",
+      "Cách tìm mật khẩu mặc định sau khi khởi động NiFi lần đầu"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, dự án của Apache Software Foundation",
+      "Truy vết nguồn gốc dữ liệu chi tiết",
+      "Bảo mật mặc định với HTTPS"
+    ],
+    "consVi": [
+      "README chỉ hướng dẫn build từ mã nguồn bằng Maven; bản nhị phân tải ở trang chính thức",
+      "Yêu cầu Java 21",
+      "Chứng chỉ tự ký mặc định gây cảnh báo trình duyệt; production cần chứng chỉ tin cậy"
+    ],
+    "sourceEvidence": {
+      "./mvnw install -T1C -am -pl :nifi-assembly": "README.md:138",
+      "cd nifi-assembly/target/nifi-*-bin/nifi-*/": "README.md:152",
+      "./bin/nifi.sh start": "README.md:166",
+      "grep Generated logs/nifi-app*log": "README.md:177",
+      "./bin/nifi.sh set-single-user-credentials <username> <password>": "README.md:192"
+    },
+    "meta": {
+      "id": "apache-nifi",
+      "nameVi": "Apache NiFi — Hệ thống xử lý và phân phối luồng dữ liệu trực quan",
+      "icon": "Layers",
+      "categories": [
+        "data_engineering"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "./mvnw install -T1C -am -pl :nifi-assembly"
+        }
+      ]
+    }
+  }
+]

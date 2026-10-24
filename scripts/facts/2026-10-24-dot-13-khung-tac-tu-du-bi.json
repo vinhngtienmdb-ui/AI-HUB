@@ -1,0 +1,534 @@
+[
+ {
+  "repo": "camel-ai/camel",
+  "license": "Apache License 2.0",
+  "authorName": "CAMEL-AI",
+  "websiteUrl": "https://www.camel-ai.org/",
+  "toolType": "sdk",
+  "taglineEn": "CAMEL is an open-source community dedicated to finding the scaling laws of agents.",
+  "summaryVi": "CAMEL là khung Python mã nguồn mở dành cho hệ thống đa tác tử, do cộng đồng nghiên cứu CAMEL-AI phát triển. Khung hỗ trợ tác tử có bộ nhớ trạng thái, xã hội tác tử (role playing, workforce), sinh dữ liệu tổng hợp và tích hợp nhiều công cụ, mô phỏng tới hàng triệu tác tử.",
+  "purposeVi": "Thư viện giúp nhà nghiên cứu và lập trình viên xây dựng, mô phỏng và đánh giá hệ thống đa tác tử, đồng thời tự động sinh dữ liệu tổng hợp quy mô lớn.",
+  "featuresVi": [
+   "ChatAgent: tác tử hội thoại có bộ nhớ trạng thái, gắn được công cụ như tìm kiếm DuckDuckGo",
+   "Agent Societies: dựng hệ đa tác tử cộng tác (role playing, workforce)",
+   "Sinh dữ liệu: CoT, Self-Instruct, Source2Synth, Self-Improving CoT",
+   "Mô-đun đầy đủ: Models, Tools, Memory, Storage, Retrievers (RAG), Interpreters, Data Loaders, Benchmarks",
+   "Human-in-the-Loop: con người giám sát và phê duyệt lệnh gọi công cụ",
+   "Ghi log yêu cầu/phản hồi mô hình dạng JSON qua biến môi trường CAMEL_MODEL_LOG_ENABLED"
+  ],
+  "requirementsVi": "Python và pip; khóa API của nhà cung cấp mô hình (ví dụ OPENAI_API_KEY cho ví dụ mặc định).",
+  "installStepsVi": [
+   "Cài đặt gói lõi từ PyPI: `pip install camel-ai`",
+   "Cài đặt thêm bộ công cụ web để dùng tìm kiếm: `pip install 'camel-ai[web_tools]'`",
+   "Cấu hình khóa API OpenAI: `export OPENAI_API_KEY='your_openai_api_key'` (hoặc ghi vào tệp .env)"
+  ],
+  "cliCommand": "pip install camel-ai",
+  "usageStepsVi": [
+   "Tạo mô hình bằng ModelFactory.create (chọn nền tảng và loại mô hình).",
+   "Khởi tạo ChatAgent với danh sách công cụ, ví dụ SearchToolkit().search_duckduckgo.",
+   "Gọi agent.step(\"...\") để hỏi đáp nhiều lượt; tác tử giữ ngữ cảnh hội thoại.",
+   "Xem thêm hướng dẫn và cookbook tại docs.camel-ai.org để dựng xã hội tác tử, RAG hoặc sinh dữ liệu."
+  ],
+  "samplePromptsVi": [
+   "CAMEL-AI là gì? Hãy tìm kiếm trên web rồi tóm tắt.",
+   "Cho hai tác tử đóng vai lập trình viên Python và nhà giao dịch chứng khoán cùng thiết kế một bot giao dịch.",
+   "Sinh bộ dữ liệu chuỗi suy luận (CoT) cho các bài toán số học cơ bản."
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0",
+   "Cộng đồng nghiên cứu hơn 100 nhà nghiên cứu, có nhiều dự án đi kèm (OWL, OASIS, CRAB)",
+   "Cài đặt đơn giản qua PyPI, có tài liệu và cookbook phong phú"
+  ],
+  "consVi": [
+   "Cần khóa API hoặc mô hình riêng để chạy tác tử",
+   "Ví dụ mặc định trong README dùng OpenAI"
+  ],
+  "sourceEvidence": {
+   "pip install camel-ai": "README.md:237",
+   "pip install 'camel-ai[web_tools]'": "README.md:247",
+   "export OPENAI_API_KEY='your_openai_api_key'": "README.md:253"
+  },
+  "meta": {
+   "id": "camel-ai-camel",
+   "nameVi": "CAMEL — Khung đa tác tử và sinh dữ liệu tổng hợp",
+   "icon": "Brain",
+   "categories": [
+    "nlp_llm",
+    "rpa_workflow_automation"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install camel-ai"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "VoltAgent/voltagent",
+  "license": "MIT License",
+  "authorName": "VoltAgent Inc.",
+  "websiteUrl": "https://voltagent.dev",
+  "toolType": "sdk",
+  "taglineEn": "VoltAgent is an end-to-end AI Agent Engineering Platform that consists of two main parts:",
+  "summaryVi": "VoltAgent là nền tảng kỹ thuật tác tử AI gồm khung TypeScript mã nguồn mở (bộ nhớ, RAG, guardrails, công cụ, MCP, giọng nói, workflow) và bảng điều khiển VoltOps cho quan sát, tự động hóa và triển khai. Lập trình viên định nghĩa tác tử, tác tử con dưới supervisor và workflow có bước chờ con người phê duyệt.",
+  "purposeVi": "Giúp đội ngũ TypeScript/Node.js xây dựng tác tử và hệ đa tác tử với toàn quyền kiểm soát mã, rồi theo dõi, gỡ lỗi và triển khai lên môi trường production.",
+  "featuresVi": [
+   "Core Runtime (@voltagent/core): định nghĩa tác tử với vai trò, công cụ, bộ nhớ và nhà cung cấp mô hình",
+   "Workflow Engine: tự động hóa nhiều bước kiểu khai báo, hỗ trợ tạm dừng/tiếp tục (human-in-the-loop)",
+   "Supervisor & Sub-Agents: điều phối đội tác tử chuyên biệt",
+   "Tool Registry & MCP: công cụ có kiểu Zod, kết nối máy chủ Model Context Protocol",
+   "Đổi nhà cung cấp LLM (OpenAI, Anthropic, Google...) bằng cấu hình",
+   "Bộ nhớ bền vững, RAG, giọng nói (TTS/STT), guardrails và evals",
+   "VoltOps Console (cloud hoặc tự lưu trữ): tracing, dashboard, log, prompt builder, triển khai"
+  ],
+  "requirementsVi": "Node.js và npm; khóa API của nhà cung cấp mô hình (ví dụ OpenAI trong mã mẫu).",
+  "installStepsVi": [
+   "Cài đặt và tạo dự án mới bằng công cụ dòng lệnh, làm theo hướng dẫn tương tác: `npm create voltagent-app@latest`",
+   "Vào thư mục dự án và chạy máy chủ phát triển: `npm run dev` (máy chủ HTTP mặc định tại http://localhost:3141)"
+  ],
+  "cliCommand": "npm create voltagent-app@latest",
+  "usageStepsVi": [
+   "Chỉnh mã khởi tạo trong src/index.ts: khai báo Agent với instructions, model, tools và memory.",
+   "Mở VoltOps Console từ đường dẫn in ra ở terminal, chọn tác tử và trò chuyện thử.",
+   "Vào trang Workflows để chạy workflow mẫu Expense Approval với dữ liệu JSON đầu vào.",
+   "Tùy chọn: dùng máy chủ MCP @voltagent/mcp-docs-server để trợ lý lập trình đọc tài liệu VoltAgent."
+  ],
+  "samplePromptsVi": [
+   "Xin chào, thời tiết hôm nay thế nào? (gọi công cụ weatherTool trong dự án mẫu)",
+   "Duyệt báo cáo chi phí 250 USD mua chuột và bàn phím văn phòng.",
+   "Chuyển video YouTube này thành bài blog Markdown."
+  ],
+  "prosVi": [
+   "Mã nguồn mở MIT",
+   "Có công cụ dòng lệnh tạo dự án nhanh",
+   "Hỗ trợ MCP, nhiều nhà cung cấp LLM và workflow có con người phê duyệt"
+  ],
+  "consVi": [
+   "VoltOps Console là nền tảng riêng (cloud hoặc tự lưu trữ), README không nêu giá",
+   "Chỉ dành cho hệ sinh thái TypeScript/Node.js",
+   "Cần khóa API nhà cung cấp mô hình"
+  ],
+  "sourceEvidence": {
+   "npm create voltagent-app@latest": "README.md:80",
+   "npm run dev": "README.md:132"
+  },
+  "meta": {
+   "id": "voltagent-voltagent",
+   "nameVi": "VoltAgent — Nền tảng xây dựng tác tử AI bằng TypeScript",
+   "icon": "Workflow",
+   "categories": [
+    "nlp_llm",
+    "rpa_workflow_automation"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "npm create voltagent-app@latest"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "boundaryml/baml",
+  "license": "Apache License 2.0",
+  "authorName": "Boundary (BoundaryML)",
+  "websiteUrl": "https://www.boundaryml.com/",
+  "toolType": "sdk",
+  "taglineEn": "BAML is the programming language for agents.",
+  "summaryVi": "BAML (Basically A Made-up Language) là ngôn ngữ lập trình dành cho tác tử AI, cú pháp giống TypeScript nhưng có hệ kiểu như Rust, kiểu được giữ ở runtime và lỗi được phân tích tĩnh. BAML có sẵn khung kiểm thử/đánh giá, thư viện chuẩn cho tác tử và có thể gọi hàm BAML từ TS, Python, Go, C#, Java.",
+  "purposeVi": "Giúp lập trình viên viết logic tác tử và lệnh gọi LLM có kiểu chặt chẽ, ít lỗi, chạy độc lập hoặc tích hợp dần vào dự án sẵn có.",
+  "featuresVi": [
+   "Hệ kiểu giống Rust, biên dịch nhanh; không có kiểu any",
+   "Kiểu tồn tại ở runtime, lỗi có kiểu và được phân tích tĩnh",
+   "Đồng thời kiểu green thread như Go",
+   "Khung kiểm thử và đánh giá (eval) tích hợp sẵn",
+   "Thư viện chuẩn dành cho tác tử",
+   "Gọi hàm BAML từ TypeScript, Python, Go, C#, Java"
+  ],
+  "requirementsVi": "Homebrew (theo lệnh trong README); trình soạn thảo hỗ trợ tiện ích BAML nếu muốn cài IDE.",
+  "installStepsVi": [
+   "Cài đặt BAML: `brew install baml`",
+   "Cài đặt thành phần tác tử: `baml agent install`",
+   "Khởi tạo dự án: `baml init`",
+   "Cài đặt tiện ích IDE: `baml ide install --code`"
+  ],
+  "cliCommand": "brew install baml",
+  "usageStepsVi": [
+   "Viết hàm và kiểu dữ liệu bằng BAML; cấu trúc thư mục quyết định module/namespace.",
+   "Chạy kiểm thử/eval tích hợp để đánh giá hàm gọi LLM.",
+   "Gọi hàm BAML từ mã TypeScript, Python, Go, C# hoặc Java hiện có.",
+   "Xem quickstart tại boundaryml.com/quickstart để có hướng dẫn chi tiết."
+  ],
+  "samplePromptsVi": [
+   "Viết hàm BAML trích xuất dữ liệu hóa đơn thành kiểu có cấu trúc.",
+   "Tạo bộ kiểm thử eval cho hàm phân loại email.",
+   "Gọi hàm BAML từ ứng dụng Python có sẵn."
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0",
+   "Áp dụng dần được, tương tác với nhiều ngôn ngữ",
+   "Kiểm thử và eval tích hợp sẵn"
+  ],
+  "consVi": [
+   "Phải học một ngôn ngữ mới",
+   "README hiện tại ngắn, hướng dẫn chi tiết nằm trên trang quickstart bên ngoài",
+   "Lệnh cài đặt trong README dùng Homebrew"
+  ],
+  "sourceEvidence": {
+   "brew install baml": "README.md:36",
+   "baml agent install": "README.md:37",
+   "baml init": "README.md:38",
+   "baml ide install --code": "README.md:39"
+  },
+  "meta": {
+   "id": "boundaryml-baml",
+   "nameVi": "BAML — Ngôn ngữ lập trình có kiểu chặt chẽ cho tác tử AI",
+   "icon": "Code2",
+   "categories": [
+    "nlp_llm",
+    "backend_api"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "brew install baml"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "letta-ai/letta-code",
+  "license": "Apache License 2.0",
+  "authorName": "Letta",
+  "websiteUrl": "https://docs.letta.com/letta-code/cli",
+  "toolType": "agent",
+  "taglineEn": "Letta Code is a stateful agent harness for creating agents that are more like people than tools.",
+  "summaryVi": "Letta Code là bộ khung tác tử có trạng thái của đội ngũ tạo ra MemGPT: tác tử có bộ nhớ, danh tính và tự học bằng cách viết lại bộ nhớ, kỹ năng và prompt của chính mình. Có thể dùng qua CLI cục bộ, trình duyệt (chat.letta.com) hoặc Telegram, Slack, Discord.",
+  "purposeVi": "Công cụ cho người dùng và lập trình viên chạy tác tử AI lâu dài, tự cải thiện, làm việc tương tác hoặc chủ động theo lịch trên nhiều máy tính.",
+  "featuresVi": [
+   "Tự học: tác tử viết lại memory block, kỹ năng và prompt hệ thống",
+   "MemFS: toàn bộ ngữ cảnh được theo dõi bằng git, đồng bộ lên kho GitHub riêng",
+   "Skills: kỹ năng toàn cục, theo dự án (.agents/skills) và theo tác tử; cài từ GitHub bằng letta skills install",
+   "Subagents & đa tác tử chạy nền",
+   "Tích hợp nhắn tin Slack, Telegram, Discord, trình duyệt kể cả di động",
+   "Hooks, phân quyền, cron và lịch trình tự quản",
+   "Máy tính từ xa và secrets (yêu cầu đăng nhập Letta)"
+  ],
+  "requirementsVi": "Node.js/npm, hoặc uv/pipx với Python 3.9+ (Node.js đi kèm); hỗ trợ Linux glibc 2.28+, macOS 14+, Windows x64. Khóa API LLM riêng hoặc tài khoản Letta Cloud.",
+  "installStepsVi": [
+   "Cài đặt qua npm: `npm install -g @letta-ai/letta-code`",
+   "Hoặc cài đặt bằng uv: `uv tool install letta`",
+   "Chạy tác tử hướng dẫn trong thư mục dự án: `letta --new-agent --personality tutorial`",
+   "Trong CLI, dùng /connect để cấu hình khóa API (OpenAI, Anthropic...) và /model để đổi mô hình."
+  ],
+  "cliCommand": "npm install -g @letta-ai/letta-code",
+  "usageStepsVi": [
+   "Vào thư mục dự án và chạy letta; lần đầu chọn đăng nhập Letta Cloud hoặc chạy cục bộ.",
+   "Dùng /search để tìm trong tin nhắn, /skills để xem kỹ năng, /memory-repository để đồng bộ bộ nhớ lên git.",
+   "Cài kỹ năng ngoài: letta skills install https://github.com/owner/repo.",
+   "Kết nối máy khác làm máy tính từ xa bằng letta server --computer-name \"...\" (cần Letta Cloud)."
+  ],
+  "samplePromptsVi": [
+   "Hãy tự cấu hình hook để chạy kiểm thử sau mỗi lần sửa tệp.",
+   "Tìm lại cuộc trò chuyện tuần trước về lỗi đăng nhập.",
+   "Lập lịch mỗi sáng tóm tắt các issue mới trong dự án."
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0",
+   "Bộ nhớ dài hạn và tự học, do nhóm tác giả MemGPT phát triển",
+   "Nhiều cách cài đặt: npm, uv, pipx, AUR, Nix"
+  ],
+  "consVi": [
+   "Letta Cloud là mặc định; máy tính từ xa và secrets yêu cầu đăng nhập Letta",
+   "Không hỗ trợ Alpine/musl, hệ 32-bit và Windows ARM64",
+   "Định dạng AgentFile (.af) đã bị loại bỏ"
+  ],
+  "sourceEvidence": {
+   "npm install -g @letta-ai/letta-code": "README.md:42",
+   "uv tool install letta": "README.md:48",
+   "letta --new-agent --personality tutorial": "README.md:59"
+  },
+  "meta": {
+   "id": "letta-ai-letta-code",
+   "nameVi": "Letta Code — Tác tử AI có bộ nhớ dài hạn và tự học",
+   "icon": "Terminal",
+   "categories": [
+    "nlp_llm",
+    "rpa_workflow_automation"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "npm install -g @letta-ai/letta-code"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "langchain-ai/deepagents",
+  "license": "MIT License",
+  "authorName": "LangChain",
+  "websiteUrl": "https://docs.langchain.com/oss/python/deepagents/overview",
+  "toolType": "sdk",
+  "taglineEn": "Deep Agents is an open source agent harness — an opinionated agent that runs out of the box.",
+  "summaryVi": "Deep Agents là bộ khung tác tử mã nguồn mở của LangChain, chạy ngay với các mặc định tối ưu cho công việc dài, nhiều bước. Xây trên LangGraph, có sẵn tác tử con, hệ thống tệp, quản lý ngữ cảnh, shell, bộ nhớ bền vững, human-in-the-loop và kỹ năng.",
+  "purposeVi": "Giúp lập trình viên Python dựng nhanh tác tử nghiên cứu, lập kế hoạch và xử lý tệp với bất kỳ LLM hỗ trợ gọi công cụ, rồi mở rộng hoặc thay thế từng phần.",
+  "featuresVi": [
+   "Sub-agents: giao việc cho tác tử con có cửa sổ ngữ cảnh riêng",
+   "Filesystem: đọc, ghi, sửa, tìm kiếm trên backend cục bộ, sandbox hoặc từ xa",
+   "Quản lý ngữ cảnh: tóm tắt luồng dài, đẩy kết quả công cụ ra đĩa",
+   "Shell trong sandbox tự chọn; bộ nhớ bền vững xuyên phiên",
+   "Human-in-the-loop: duyệt, sửa hoặc từ chối lệnh gọi công cụ",
+   "Skills và công cụ tự viết hoặc từ máy chủ MCP",
+   "Không phụ thuộc mô hình: API thương mại hoặc mô hình cục bộ qua Ollama, vLLM, llama.cpp"
+  ],
+  "requirementsVi": "Python và uv; mô hình hỗ trợ gọi công cụ (khóa API hoặc mô hình cục bộ).",
+  "installStepsVi": [
+   "Cài đặt thư viện vào dự án: `uv add deepagents`",
+   "Tùy chọn: cài đặt tác tử lập trình Deep Agents Code trên terminal: `curl -LsSf https://langch.in/dcode | bash`"
+  ],
+  "cliCommand": "uv add deepagents",
+  "usageStepsVi": [
+   "Gọi create_deep_agent(model=..., system_prompt=...) để tạo tác tử.",
+   "Gọi agent.invoke({\"messages\": \"...\"}) để giao nhiệm vụ; tác tử tự lập kế hoạch, đọc/ghi tệp và quản lý ngữ cảnh.",
+   "Thêm công cụ riêng, đổi mô hình, cấu hình tác tử con theo tài liệu.",
+   "Kết hợp LangSmith để tracing, đánh giá và giám sát khi lên production."
+  ],
+  "samplePromptsVi": [
+   "Nghiên cứu LangGraph và viết bản tóm tắt.",
+   "Đọc toàn bộ tài liệu trong thư mục docs và lập danh sách các API đã lỗi thời.",
+   "Giao cho tác tử con tìm số liệu, sau đó tổng hợp thành báo cáo Markdown."
+  ],
+  "prosVi": [
+   "Mã nguồn mở MIT, do LangChain phát triển",
+   "Chạy ngay với mặc định hợp lý, vẫn mở rộng được",
+   "Dùng được với mô hình mở và mô hình cục bộ"
+  ],
+  "consVi": [
+   "Mô hình bảo mật “trust the LLM”: cần tự giới hạn quyền ở tầng công cụ/sandbox",
+   "Tracing và triển khai đầy đủ gắn với LangSmith"
+  ],
+  "sourceEvidence": {
+   "uv add deepagents": "README.md:52",
+   "curl -LsSf https://langch.in/dcode | bash": "README.md:47"
+  },
+  "meta": {
+   "id": "langchain-ai-deepagents",
+   "nameVi": "Deep Agents — Bộ khung tác tử dựng sẵn của LangChain",
+   "icon": "Layers",
+   "categories": [
+    "nlp_llm",
+    "rpa_workflow_automation"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (MIT)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "uv add deepagents"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "i-am-bee/beeai-framework",
+  "license": "Apache License 2.0",
+  "authorName": "BeeAI (Linux Foundation AI & Data, khởi xướng bởi IBM)",
+  "websiteUrl": "https://framework.beeai.dev/introduction/welcome",
+  "toolType": "sdk",
+  "taglineEn": "Build production-ready multi-agent systems in Python or TypeScript.",
+  "summaryVi": "BeeAI Framework là bộ công cụ xây dựng tác tử tự trị và hệ đa tác tử bằng Python hoặc TypeScript, thuộc chương trình Linux Foundation AI & Data. Điểm nổi bật là Requirement Agent cho phép đặt quy tắc để tác tử hành xử ổn định trên nhiều LLM, cùng hỗ trợ giao thức A2A và MCP.",
+  "purposeVi": "Giúp lập trình viên dựng hệ đa tác tử sẵn sàng production, kết nối nhiều nhà cung cấp LLM (kể cả Ollama cục bộ) và phục vụ tác tử qua A2A/MCP.",
+  "featuresVi": [
+   "Requirement Agent: đặt quy tắc ràng buộc hành vi tác tử",
+   "Backend: giao diện thống nhất cho mọi nhà cung cấp LLM",
+   "Tools: công cụ dựng sẵn (tìm kiếm web, thời tiết, chạy mã) và công cụ tùy chỉnh",
+   "RAG với vector store và xử lý tài liệu",
+   "Memory, Cache, Serialization lưu và nạp trạng thái tác tử",
+   "Serve: phục vụ tác tử qua A2A và MCP",
+   "Workflows điều phối hệ đa tác tử; HandoffTool chuyển giao giữa tác tử"
+  ],
+  "requirementsVi": "Python (pip) hoặc Node.js (npm); ví dụ đa tác tử cần Ollama với mô hình granite4.1:8b.",
+  "installStepsVi": [
+   "Cài đặt thư viện Python: `pip install beeai-framework`",
+   "Hoặc cài đặt thư viện TypeScript: `npm install beeai-framework`",
+   "Chạy ví dụ: `python [project_name].py`"
+  ],
+  "cliCommand": "pip install beeai-framework",
+  "usageStepsVi": [
+   "Tạo RequirementAgent với ChatModel.from_name(...), danh sách công cụ và quy tắc ConditionalRequirement.",
+   "Dùng HandoffTool để tác tử chính chuyển câu hỏi cho tác tử chuyên trách.",
+   "Gọi await main_agent.run(question) và đọc response.last_message.text.",
+   "Tham khảo mẫu khởi đầu beeai-framework-py-starter hoặc beeai-framework-ts-starter."
+  ],
+  "samplePromptsVi": [
+   "Nếu tôi đi Rome cuối tuần tới, thời tiết sẽ thế nào và có địa danh lịch sử nổi tiếng nào?",
+   "Tra cứu Wikipedia và giải thích ngắn gọn về lịch sử Hội An.",
+   "Dự báo thời tiết Đà Nẵng ba ngày tới."
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0, thuộc Linux Foundation AI & Data",
+   "Hỗ trợ cả Python lẫn TypeScript",
+   "Chạy được với mô hình cục bộ qua Ollama"
+  ],
+  "consVi": [
+   "IBM không cam kết hỗ trợ hay cập nhật (theo thông báo pháp lý)",
+   "Requirement Agent vẫn được đánh dấu thử nghiệm trong một số ví dụ"
+  ],
+  "sourceEvidence": {
+   "pip install beeai-framework": "README.md:66",
+   "npm install beeai-framework": "README.md:72",
+   "python [project_name].py": "README.md:154"
+  },
+  "meta": {
+   "id": "i-am-bee-beeai-framework",
+   "nameVi": "BeeAI Framework — Khung đa tác tử Python và TypeScript",
+   "icon": "Workflow",
+   "categories": [
+    "nlp_llm",
+    "rpa_workflow_automation"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install beeai-framework"
+    }
+   ]
+  }
+ },
+ {
+  "repo": "griptape-ai/griptape",
+  "license": "Apache License 2.0",
+  "authorName": "Griptape",
+  "websiteUrl": "https://docs.griptape.ai/",
+  "toolType": "sdk",
+  "taglineEn": "Griptape is a Python framework designed to simplify the development of generative AI (genAI) applications.",
+  "summaryVi": "Griptape là khung Python đơn giản hóa việc phát triển ứng dụng AI tạo sinh, với các trừu tượng gọn cho LLM, RAG và hơn thế. Ứng dụng được dựng từ Structures (Agent, Pipeline, Workflow chạy song song), Tasks, Memory, Drivers và Engines.",
+  "purposeVi": "Giúp lập trình viên Python xây dựng tác tử, pipeline và workflow AI, kết nối dữ liệu doanh nghiệp, cơ sở dữ liệu vector và công cụ web mà không phụ thuộc một nhà cung cấp.",
+  "featuresVi": [
+   "Structures: Agent, Pipeline tuần tự và Workflow song song",
+   "Memory: Conversation Memory, Task Memory (giữ dữ liệu lớn/nhạy cảm ngoài prompt), Meta Memory",
+   "Drivers: prompt, embedding, rerank, vector store, SQL, tạo ảnh, chuyển văn bản thành giọng nói, phiên âm",
+   "Web Search và Web Scraper Drivers",
+   "Engines: RAG, Extraction (JSON/CSV), Summary, Eval",
+   "Rulesets điều hướng LLM với ít prompt engineering",
+   "Observability Drivers gửi trace tới nền tảng quan sát"
+  ],
+  "requirementsVi": "Python, pip hoặc uv; mặc định dùng OpenAI nên cần OPENAI_API_KEY (có thể đổi bằng Prompt Driver khác).",
+  "installStepsVi": [
+   "Cấu hình khóa API OpenAI: `export OPENAI_API_KEY=\"your-api-key\"`",
+   "Cài đặt bằng uv trong dự án: `uv add \"griptape[all]\"`",
+   "Hoặc cài đặt bằng pip: `pip install \"griptape[all]\" -U`"
+  ],
+  "cliCommand": "pip install \"griptape[all]\" -U",
+  "usageStepsVi": [
+   "Tạo PromptTask với prompt_driver (ví dụ OpenAiChatPromptDriver) và rules, rồi gọi task.run(\"...\").",
+   "Ghép nhiều PromptTask và TextSummaryTask thành Workflow để chạy song song rồi tổng hợp.",
+   "Gắn công cụ WebSearchTool, WebScraperTool cho task cần tra cứu web.",
+   "Dùng StructureVisualizer để xem sơ đồ workflow."
+  ],
+  "samplePromptsVi": [
+   "Giới thiệu các dự án mã nguồn mở griptape, langchain, crew-ai, pydantic-ai và tóm tắt tính năng chính.",
+   "Trích xuất dữ liệu dạng CSV từ đoạn văn bản hợp đồng này.",
+   "Tóm tắt nội dung trang web sau trong vài câu."
+  ],
+  "prosVi": [
+   "Mã nguồn mở Apache 2.0",
+   "Tuân theo Semantic Versioning",
+   "Có khóa học miễn phí Griptape Trade School và bản no-code Griptape Nodes"
+  ],
+  "consVi": [
+   "Mặc định dùng OpenAI, cần khóa API",
+   "README không có lệnh cài đặt; hướng dẫn nằm trong thư mục tài liệu"
+  ],
+  "sourceEvidence": {
+   "export OPENAI_API_KEY=\"your-api-key\"": "docs/griptape-framework/index.md:23",
+   "uv add \"griptape[all]\"": "docs/griptape-framework/index.md:61",
+   "pip install \"griptape[all]\" -U": "docs/griptape-framework/index.md:89"
+  },
+  "meta": {
+   "id": "griptape-ai-griptape",
+   "nameVi": "Griptape — Khung Python xây dựng ứng dụng AI tạo sinh",
+   "icon": "Layers",
+   "categories": [
+    "nlp_llm",
+    "vector_rag"
+   ],
+   "platforms": [
+    "web"
+   ],
+   "licenseShort": "Mã nguồn mở (Apache 2.0)",
+   "pricingModel": "free",
+   "isVietnamMarket": false,
+   "languages": [
+    "Tiếng Anh"
+   ],
+   "configs": [
+    {
+     "platform": "web",
+     "platformName": "Dòng lệnh (Terminal)",
+     "cliCommand": "pip install \"griptape[all]\" -U"
+    }
+   ]
+  }
+ }
+]
