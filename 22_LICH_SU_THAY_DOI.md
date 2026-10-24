@@ -4,6 +4,14 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.20 (Ngày 24-10-2026)
+- **Loại hình**: Tài nguyên dự bị: nền tảng quy trình & low-code, khung tác tử, công cụ MCP, đợt 13 (30 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-13-*.json`.
+- **Quy trình & low-code**: Temporal, Airflow, Dagster, Appsmith, ToolJet (AGPL-3.0 + bản Enterprise), Budibase (GPLv3/MPL, gói pro theo BSL), NocoDB (Sustainable Use License, fair-code, không phải mã nguồn mở), Automatisch (AGPL-3.0, tệp .ee. theo giấy phép Enterprise), Node-RED, NiFi.
+- **Khung tác tử**: CAMEL, VoltAgent, BAML, Letta Code, Deep Agents, BeeAI Framework, Griptape.
+- **Công cụ MCP**: MCP SDK cho Java, C#, Rust, Kotlin, Swift, Ruby, PHP; MCP Registry (bản preview); mcp-agent; MetaMCP; Snyk Agent Scan (cần tài khoản Snyk, gửi dữ liệu thành phần lên API của Snyk); MCPJungle (MPL-2.0); Cloudflare Agents SDK.
+- Không thêm: dự án ngừng cập nhật (SuperAGI), giấy phép tách Polyform Shield (AutoGPT platform), dự án ít hoạt động (TaskWeaver), docker/mcp-registry (danh mục, không phải công cụ cài đặt).
+- Kho dữ liệu: 2.205 công cụ đang hiển thị, 2.268 cấu hình mẫu.
+
 ### Phiên Bản 2.1.19 (Ngày 24-10-2026)
 - **Loại hình**: Tài nguyên dự bị đa phương tiện: giọng nói, tạo ảnh/video, thị giác & OCR, đợt 12 (21 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-dot-12-*.json`.
 - **Giọng nói**: LiveKit Agents, Piper (GPL-3.0, từng giọng có giấy phép riêng), CosyVoice, Silero VAD, pyannote-audio, Coqui TTS (MPL-2.0; mô hình XTTS theo giấy phép CPML), ChatTTS (mã AGPLv3+, mô hình CC BY-NC 4.0).
