@@ -24,6 +24,7 @@ import {
   Workflow
 } from 'lucide-react';
 import { getAllToolsFrontend, runGatewayToolFrontend, CORE_INTENTS } from '../lib/mcpClient';
+import { copyText } from '../lib/clipboard';
 
 // Số công cụ lấy từ kho dữ liệu thực tế, định dạng tiếng Việt (ví dụ 2.222)
 const TOOL_COUNT_LABEL = getAllToolsFrontend().length.toLocaleString('vi-VN');
@@ -58,7 +59,7 @@ export const McpServerPage: React.FC<McpServerPageProps> = ({
   const [inspectorLatency, setInspectorLatency] = useState<number | null>(null);
 
   const handleCopy = (text: string, id: string) => {
-    navigator.clipboard.writeText(text);
+    copyText(text);
     setCopiedId(id);
     setTimeout(() => setCopiedId(null), 2500);
   };

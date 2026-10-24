@@ -14,6 +14,7 @@ import { VisualDiagramViewer } from './VisualDiagramViewer';
 import { getVerifiedStars } from '../lib/verification';
 import { VerificationNotice } from './VerificationNotice';
 import { useToolDetails } from '../lib/toolDetails';
+import { copyText } from '../lib/clipboard';
 
 interface ToolDetailModalProps {
   tool: AITool | null;
@@ -63,7 +64,7 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool: baseTool
   const currentConfig: ConfigTemplate | undefined = tool.configs[activePlatformTab] || tool.configs[0];
 
   const handleCopyPrompt = (prompt: string, index: number) => {
-    navigator.clipboard.writeText(prompt);
+    copyText(prompt);
     setCopiedPromptIndex(index);
     setTimeout(() => setCopiedPromptIndex(null), 2000);
   };

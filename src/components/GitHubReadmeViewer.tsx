@@ -9,6 +9,7 @@ import {
   parseGithubSource,
   renderGithubMarkdown
 } from '../lib/githubMarkdown';
+import { copyText } from '../lib/clipboard';
 
 interface GitHubReadmeViewerProps {
   markdown: string;
@@ -73,7 +74,7 @@ export const GitHubReadmeViewer: React.FC<GitHubReadmeViewerProps> = ({
 
   const handleCopyAll = () => {
     if (!activeMarkdown) return;
-    navigator.clipboard.writeText(activeMarkdown);
+    copyText(activeMarkdown);
     setCopiedAll(true);
     setTimeout(() => setCopiedAll(false), 2000);
   };
