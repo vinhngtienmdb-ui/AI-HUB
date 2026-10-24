@@ -4,6 +4,16 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.1.9 (Ngày 24-10-2026)
+- **Loại hình**: Tài nguyên thị trường Việt Nam, đợt 1 (11 tài nguyên), tệp dữ kiện `scripts/facts/2026-10-24-vn-dot-1-*.json`, nhập bằng `scripts/add-tools-from-facts.cjs`.
+- **Giọng nói**: VieNeu-TTS (mã nguồn mở đến v3 Turbo), V-TTS (CC BY-NC, phi thương mại), VietTTS (mô hình huấn luyện sẵn CC BY-NC), phostt (nhận dạng giọng nói chạy cục bộ).
+- **Thanh toán**: vietnam-qr-pay (mã QR VietQR/MoMo/ZaloPay/VNPayQR), MONA Pay MCP, SePay PHP SDK. **NLP**: PhoNLP.
+- **Pháp luật**: ViLegalLM, VLegal-Bench (CC BY-NC-ND), luatdo.
+- Dữ kiện trích từ README/LICENSE, có dòng nguồn cho từng lệnh; nguồn đã kiểm định trực tuyến.
+- Không thêm: repo không có tệp giấy phép, bản mẫu hàng loạt đòi khóa bí mật thanh toán, công cụ tự động hóa tài khoản Zalo cá nhân, dự án chưa chạy được hoặc chỉ là mã huấn luyện/đánh giá.
+- Thêm `scripts/add-tools-from-facts.cjs` và định dạng tệp dữ kiện `scripts/facts/README.md` để bổ sung tài nguyên theo đợt.
+- Kho dữ liệu: 1.964 công cụ đang hiển thị, 1.985 cấu hình mẫu.
+
 ### Phiên Bản 2.1.8 (Ngày 24-10-2026)
 - **Loại hình**: Bổ sung 14 tài nguyên còn thiếu, script `scripts/migrations/2026-10-24-bo-sung-14-tai-nguyen.cjs`.
 - **Dữ kiện** trong `scripts/migrations/data/2026-10-24-tai-nguyen-tu-readme.json`, trích từ README và LICENSE của từng repo; trường `sourceEvidence` ghi dòng README chứa từng câu lệnh.
