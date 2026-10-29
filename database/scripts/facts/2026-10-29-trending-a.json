@@ -1,0 +1,392 @@
+[
+  {
+    "repo": "cloudflare/security-audit-skill",
+    "license": "MIT License",
+    "authorName": "Cloudflare",
+    "websiteUrl": "",
+    "toolType": "skill",
+    "taglineEn": "A coding-agent skill that turns your agent into a security auditor.",
+    "summaryVi": "security-audit là skill dành cho trợ lý lập trình AI do Cloudflare phát hành, biến trợ lý thành một chuyên gia kiểm định bảo mật mã nguồn. Skill điều phối nhiều tác tử độc lập qua sáu giai đoạn: trinh sát, săn lỗ hổng theo sổ phủ sóng, xác minh ứng viên, xuất kết quả có cấu trúc, xác minh lại từng bản ghi và viết báo cáo. Đây là điểm khởi đầu của hệ thống tìm lỗ hổng mà Cloudflare mô tả trong bài viết \"Build your own vulnerability harness\".",
+    "purposeVi": "Giúp lập trình viên và đội bảo mật tự kiểm định một kho mã bằng trợ lý lập trình AI, nhận danh sách lỗ hổng đã được xác minh chéo thay vì một loạt cảnh báo chưa kiểm chứng.",
+    "featuresVi": [
+      "Sáu giai đoạn kiểm định: trinh sát, săn lỗ hổng, xác minh ứng viên, xuất kết quả, xác minh bản ghi, viết báo cáo",
+      "Xác minh đối kháng: tác tử kiểm tra một phát hiện không bao giờ là tác tử đã tìm ra nó",
+      "Ba loại kết luận rõ ràng: confirmed (có dấu vết mã nguồn đầy đủ), needs_validation (còn một dữ kiện chưa rõ), rejected (đã bị bác bỏ)",
+      "Sổ phủ sóng: ghi lại phần mã đã được kiểm tra trong `coverage-ledger.json`, dùng các tác tử phản biện để tìm chỗ còn sót",
+      "Bộ lớp tấn công phong phú: bộ nhớ và mã nhị phân, ứng dụng LLM (prompt injection), web và xác thực, phía trình duyệt, chuỗi cung ứng, đám mây, giao thức, cạn kiệt tài nguyên, cô lập dữ liệu, ứng dụng máy tính và di động",
+      "Kết quả có cấu trúc: `findings.json` kiểm tra theo `report-schema.json` bằng trình kiểm tra không phụ thuộc thư viện",
+      "Báo cáo trung lập: sinh `REPORT.md`, `FINDINGS-DETAIL.md` và `NEEDS-VALIDATION.md` từ các bản ghi đã xác minh",
+      "Chạy nhiều lần cộng dồn: lần sau dùng sổ phủ sóng và kết quả lần trước để nhắm vào phần còn thiếu"
+    ],
+    "requirementsVi": "Trợ lý lập trình có mô hình hỗ trợ gọi công cụ và chạy tác tử con song song; Node.js cho hai trình kiểm tra kết quả; một môi trường cách ly (sandbox) do hệ điều hành thực thi, tắt mạng ngoài và giới hạn tài nguyên nếu muốn chạy mã của dự án được kiểm định.",
+    "installStepsVi": [
+      "Cài skill vào dự án hiện tại bằng Skills CLI: `npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit`",
+      "Hoặc cài cho cả người dùng (mọi dự án): `npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit --global`",
+      "Xem các tùy chọn chọn trợ lý và chế độ không tương tác: `npx skills --help`",
+      "Chuẩn bị Node.js và một sandbox cách ly mạng nếu muốn skill chạy thử mã của dự án; không có sandbox, các nghi vấn sẽ được giữ ở trạng thái needs_validation"
+    ],
+    "cliCommand": "npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit",
+    "usageStepsVi": [
+      "Mở trợ lý lập trình trong thư mục mã nguồn cần kiểm định (hoặc trỏ trợ lý tới thư mục đó).",
+      "Yêu cầu kiểm định bằng câu lệnh tự nhiên, ví dụ `security audit this codebase`; skill tự kích hoạt khi yêu cầu nói về kiểm định bảo mật, tìm lỗ hổng hay pen-test.",
+      "Chỉ định thư mục kết quả nếu cần, ví dụ `do a security review, output to ~/audits/my-project`; mặc định kết quả nằm ở `~/security-audit-skill/<repo-name>/run-<N>`.",
+      "Đọc `REPORT.md` và `NEEDS-VALIDATION.md`, sửa các lỗi đã xác nhận rồi chạy lại để mở rộng phạm vi kiểm tra."
+    ],
+    "samplePromptsVi": [
+      "Kiểm định bảo mật toàn bộ mã nguồn của ứng dụng ví điện tử này, xuất báo cáo vào ~/audits/vi-dien-tu",
+      "Tìm lỗ hổng bảo mật trong thư mục ./src, tập trung vào xác thực người dùng và phân quyền giữa các khách hàng",
+      "Rà soát nguy cơ prompt injection và lạm dụng công cụ trong chatbot chăm sóc khách hàng dùng LLM của công ty"
+    ],
+    "prosVi": [
+      "Do Cloudflare phát hành, giấy phép MIT",
+      "Giảm báo động giả nhờ mỗi phát hiện được một tác tử độc lập cố gắng bác bỏ",
+      "Kết quả có cấu trúc JSON và báo cáo Markdown, dễ đưa vào quy trình nội bộ",
+      "Không ghi vào kho mã đang kiểm định trừ khi người dùng chọn thư mục được bỏ qua bởi hệ thống quản lý phiên bản"
+    ],
+    "consVi": [
+      "Cần mô hình mạnh hỗ trợ tác tử con song song, tốn nhiều lượt gọi mô hình",
+      "Muốn chạy thử mã của dự án phải tự dựng sandbox cách ly mạng và giới hạn tài nguyên",
+      "Một lần chạy chỉ tìm được khoảng một nửa số lỗ hổng so với chạy lặp lại nhiều lần (theo thử nghiệm của tác giả)",
+      "README không nêu tên trợ lý lập trình cụ thể được hỗ trợ",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "sourceEvidence": {
+      "npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit": "README.md:54-55",
+      "npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit --global": "README.md:61-63",
+      "npx skills --help": "README.md:66",
+      "security audit this codebase": "README.md:73",
+      "do a security review, output to ~/audits/my-project": "README.md:81",
+      "license MIT": "LICENSE:1, README.md:106"
+    },
+    "meta": {
+      "id": "cloudflare-security-audit-skill",
+      "nameVi": "Cloudflare security-audit — Skill biến trợ lý lập trình AI thành chuyên gia kiểm định bảo mật mã nguồn",
+      "icon": "Code2",
+      "categories": ["cybersecurity_security", "qa_testing"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí; chi phí sử dụng mô hình AI tùy trợ lý lập trình",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit" }
+      ]
+    }
+  },
+  {
+    "repo": "AgriciDaniel/claude-seo",
+    "license": "MIT License",
+    "authorName": "Agrici Daniel",
+    "websiteUrl": "https://claude-seo.md",
+    "toolType": "skill",
+    "taglineEn": "Claude SEO is a free SEO plugin for Claude Code.",
+    "summaryVi": "Claude SEO là plugin SEO miễn phí, mã nguồn mở cho Claude Code: đưa vào một trang web, plugin chạy kiểm định SEO đầy đủ trong khoảng 10 đến 15 phút rồi trả về kế hoạch hành động xếp theo mức độ ưu tiên. Plugin gồm 26 skill con và 19 tác tử chuyên trách, tối đa 17 tác tử làm việc song song. Phạm vi kiểm tra gồm SEO kỹ thuật, Core Web Vitals, chất lượng nội dung E-E-A-T, dữ liệu có cấu trúc Schema.org, khả năng được AI trích dẫn (GEO), SEO địa phương, thương mại điện tử và đa quốc gia.",
+    "purposeVi": "Giúp agency, đội SEO nội bộ và người làm SEO tự do chạy kiểm định SEO chuyên sâu ngay trong Claude Code, có thêm phần tối ưu cho tìm kiếm bằng AI như Google AI Overviews, ChatGPT, Perplexity.",
+    "featuresVi": [
+      "Kiểm định toàn trang: `/seo audit <url>` chạy nhiều tác tử song song và trả về kế hoạch ưu tiên",
+      "SEO kỹ thuật: khả năng thu thập, lập chỉ mục, sitemap, robots.txt, chuyển hướng, tốc độ trang và Core Web Vitals",
+      "Nội dung và E-E-A-T: đánh giá chất lượng, trang mỏng, độ phủ chủ đề, tạo content brief và phân cụm từ khóa theo SERP",
+      "Schema.org: phát hiện, kiểm tra và sinh mã dữ liệu có cấu trúc cho kết quả tìm kiếm nhiều định dạng",
+      "Tìm kiếm bằng AI (GEO): chấm điểm khả năng được Google AI Overviews, AI Mode, ChatGPT, Perplexity, Gemini trích dẫn; kiểm tra mức sẵn sàng cho tác tử AI với `/seo agentic`",
+      "SEO địa phương và thương mại điện tử: Google Business Profile, đánh giá, map pack, trang sản phẩm, hreflang",
+      "Dữ liệu Google tùy chọn: kết nối Search Console, PageSpeed, CrUX, GA4 miễn phí bằng `/seo google setup`, xuất báo cáo PDF",
+      "Theo dõi thay đổi: `/seo drift` lưu ảnh chụp SEO bằng SQLite để so sánh theo thời gian"
+    ],
+    "requirementsVi": "Claude Code 1.0.33 trở lên và Python 3.11 đến 3.14. `/seo setup` tự cài môi trường Python riêng và trình duyệt headless. Khóa API Google là tùy chọn; một số tiện ích mở rộng kết nối dịch vụ trả phí bằng tài khoản riêng của bạn.",
+    "installStepsVi": [
+      "Trong Claude Code, thêm marketplace: `/plugin marketplace add AgriciDaniel/claude-seo`",
+      "Cài plugin: `/plugin install claude-seo@agricidaniel-claude-seo`",
+      "Chuẩn bị môi trường Python và trình duyệt headless: `/seo setup`; kiểm tra lại bất cứ lúc nào bằng `/seo doctor`",
+      "Cài thủ công trên macOS và Linux: `git clone --depth 1 https://github.com/AgriciDaniel/claude-seo.git` rồi `bash claude-seo/install.sh`",
+      "Cài thủ công trên Windows (PowerShell): sau khi clone, chạy `powershell -ExecutionPolicy Bypass -File claude-seo\\install.ps1`"
+    ],
+    "cliCommand": "/plugin marketplace add AgriciDaniel/claude-seo",
+    "usageStepsVi": [
+      "Khởi động Claude Code bằng lệnh `claude`, gõ `/seo` để xem toàn bộ lệnh.",
+      "Kiểm định toàn trang: `/seo audit https://example.com`; phân tích sâu một trang: `/seo page https://example.com/pricing`.",
+      "Kiểm tra mức sẵn sàng cho tìm kiếm bằng AI với `/seo geo https://example.com`, dữ liệu có cấu trúc với `/seo schema https://example.com`, SEO địa phương với `/seo local https://example.com`.",
+      "Đọc báo cáo Markdown được lưu trên máy, dùng `/seo google report` để xuất PDF gửi khách hàng."
+    ],
+    "samplePromptsVi": [
+      "/seo audit https://cuahangcaphe.vn rồi tóm tắt 10 việc cần sửa trước tiên bằng tiếng Việt",
+      "/seo local https://nhakhoa-danang.vn, kiểm tra hồ sơ Google Business Profile và khả năng lên map pack ở Đà Nẵng",
+      "/seo geo https://blogtaichinh.vn, cho biết vì sao bài viết chưa được ChatGPT và Google AI Overviews trích dẫn"
+    ],
+    "prosVi": [
+      "Miễn phí, giấy phép MIT, không giới hạn số trang web",
+      "Bao quát nhiều mảng SEO và có phần riêng cho tìm kiếm bằng AI",
+      "Báo cáo lưu trên máy dưới dạng Markdown, PDF, JSON; không cần khóa API để bắt đầu",
+      "Mỗi khuyến nghị kèm lý do và cách kiểm tra đã sửa thành công"
+    ],
+    "consVi": [
+      "Chỉ chạy trong Claude Code, cần gói Claude; một lần kiểm định đầy đủ dùng mô hình Opus và Sonnet nên tốn hạn mức",
+      "Nội dung trang được gửi tới mô hình Claude của Anthropic để phân tích",
+      "Không có khóa API Google thì Core Web Vitals chỉ là ước tính phòng thí nghiệm, trạng thái lập chỉ mục chỉ là suy luận",
+      "Trang chỉ tải nội dung sau khi cuộn hoặc bấm có thể cho kết quả nhiễu",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "sourceEvidence": {
+      "/plugin marketplace add AgriciDaniel/claude-seo": "README.md:200",
+      "/plugin install claude-seo@agricidaniel-claude-seo": "README.md:201",
+      "/seo setup": "README.md:202",
+      "/seo doctor": "README.md:205",
+      "git clone --depth 1 https://github.com/AgriciDaniel/claude-seo.git": "README.md:214",
+      "bash claude-seo/install.sh": "README.md:215",
+      "powershell -ExecutionPolicy Bypass -File claude-seo\\install.ps1": "README.md:237",
+      "/seo audit https://example.com": "README.md:257",
+      "/seo page https://example.com/pricing": "README.md:258",
+      "/seo geo https://example.com": "README.md:259",
+      "/seo schema https://example.com": "README.md:260",
+      "/seo local https://example.com": "README.md:261",
+      "/seo google setup": "README.md:286",
+      "/seo google report": "README.md:167",
+      "license MIT": "LICENSE:1, README.md:377"
+    },
+    "meta": {
+      "id": "agricidaniel-claude-seo",
+      "nameVi": "Claude SEO — Plugin kiểm định SEO và tối ưu cho tìm kiếm bằng AI trong Claude Code",
+      "icon": "Search",
+      "categories": ["web_scraping_crawling", "data_science_analytics"],
+      "platforms": ["claude_code"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, dùng kèm gói Claude Code; một số tiện ích mở rộng tùy chọn kết nối dịch vụ trả phí",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "claude_code", "platformName": "Claude Code", "cliCommand": "/plugin marketplace add AgriciDaniel/claude-seo" }
+      ]
+    }
+  },
+  {
+    "repo": "pbakaus/impeccable",
+    "license": "Apache License 2.0",
+    "authorName": "Paul Bakaus",
+    "websiteUrl": "https://impeccable.style",
+    "toolType": "skill",
+    "taglineEn": "The design vocabulary for your coding agent.",
+    "summaryVi": "Impeccable là bộ từ vựng thiết kế cho trợ lý lập trình AI: điều chỉnh giao diện bằng các lệnh như `polish`, `bolder`, rà soát bằng `critique` và `audit`, và bắt các dấu hiệu \"AI slop\" trước khi phát hành. Skill có 24 lệnh, chế độ live để chọn phần tử trong trình duyệt và đổi qua các biến thể, cùng bộ phát hiện với 62 quy tắc xác định chạy không cần LLM hay khóa API. Hỗ trợ nhiều công cụ như Claude Code, Cursor, Codex CLI, GitHub Copilot, Gemini CLI, Google Antigravity, OpenCode.",
+    "purposeVi": "Giúp lập trình viên dùng trợ lý AI nâng chất lượng thiết kế giao diện có sẵn, tránh các mẫu rập khuôn như font Inter khắp nơi, gradient tím xanh, thẻ lồng trong thẻ.",
+    "featuresVi": [
+      "24 lệnh thiết kế: nhóm điều chỉnh (bolder, quieter, distill, colorize, typeset, layout, animate, delight, overdrive), rà soát (critique, audit), hoàn thiện (polish, harden, clarify, adapt, optimize, onboard)",
+      "Ngữ cảnh dự án: `/impeccable init` viết `PRODUCT.md`, `/impeccable document` ghi hệ thống hình ảnh hiện có vào `DESIGN.md`",
+      "Rà soát có chấm điểm: critique theo các nguyên tắc khả dụng, audit kiểm tra khả năng tiếp cận, hiệu năng, theme và hiển thị đáp ứng, xếp mức P0 đến P3",
+      "Bộ phát hiện slop: 62 quy tắc xác định, không cần LLM hay khóa API",
+      "Hook thiết kế: tự quét mọi tệp giao diện trợ lý vừa sửa trên Claude Code, Cursor, Codex, GitHub Copilot, Grok Build, Hermes Agent",
+      "CLI cho CI: `npx impeccable detect` quét thư mục hoặc URL, có đầu ra JSON và chú thích GitHub Actions",
+      "Chế độ live: chọn phần tử trên máy chủ dev, đổi qua các biến thể và ghi lại vào mã nguồn; hỗ trợ Vite, Next, SvelteKit, Astro, Nuxt và HTML thuần",
+      "Tiện ích Chrome: phủ kết quả phát hiện lên bất kỳ trang web nào"
+    ],
+    "requirementsVi": "Node.js chỉ cần cho `npx`; skill chạy một tệp thực thi engine đi kèm hoặc tải một lần vào `~/.impeccable/bin/`. Quét URL cần Chrome hoặc Edge đã cài. Có thể chép thủ công mà không cần Node.",
+    "installStepsVi": [
+      "Từ thư mục gốc dự án, chạy trình cài: `npx impeccable install`; trình cài tự phát hiện công cụ lập trình, hỏi cài cho dự án hay toàn cục và đề nghị cài hook thiết kế",
+      "Tải lại công cụ lập trình, rồi chạy `/impeccable init` trong trợ lý (`$impeccable init` trên Codex)",
+      "Hoặc cài plugin trong Claude Code: `/plugin marketplace add pbakaus/impeccable`, sau đó mở `/plugin` và cài Impeccable",
+      "Ghim phiên bản cho cả nhóm bằng git submodule: `git submodule add https://github.com/pbakaus/impeccable vendor/impeccable` rồi `npx impeccable link --source=vendor/impeccable --providers=claude,cursor`",
+      "Cập nhật bản cài đặt: `npx impeccable update`"
+    ],
+    "cliCommand": "npx impeccable install",
+    "usageStepsVi": [
+      "Chọn một thành phần cụ thể và gọi lệnh, ví dụ `/impeccable critique the pricing cards`.",
+      "Gọi lệnh kèm mục tiêu như `/impeccable polish settings` hoặc mô tả tự do; mục tiêu càng hẹp kết quả càng tốt.",
+      "Lặp trực tiếp trên trình duyệt với `/impeccable live` khi máy chủ dev đang chạy.",
+      "Quét trong CI hoặc terminal: `npx impeccable detect src/`, hoặc `npx impeccable detect --github src/` để có chú thích GitHub Actions."
+    ],
+    "samplePromptsVi": [
+      "/impeccable critique trang thanh toán của cửa hàng thời trang, xếp hạng những gì cần sửa trước",
+      "/impeccable bolder phần hero của trang giới thiệu homestay ở Hội An",
+      "/impeccable harden form đăng ký, xử lý lỗi, chữ tiếng Việt dài bị tràn và màn hình điện thoại nhỏ"
+    ],
+    "prosVi": [
+      "Hỗ trợ rất nhiều trợ lý lập trình, trong đó có Claude Code, Cursor, Google Antigravity",
+      "Bộ phát hiện chạy không cần LLM, dùng được trong CI",
+      "Hook tự động kiểm tra mỗi lần trợ lý sửa tệp giao diện",
+      "Giấy phép Apache 2.0, có tài liệu chi tiết trên trang web"
+    ],
+    "consVi": [
+      "Có telemetry ẩn danh về hướng thiết kế được chọn (tắt được bằng `npx impeccable telemetry off`), và vẫn tải danh mục hướng thiết kế từ impeccable.style",
+      "Hook trong Claude Code chạy ngoài phần phê duyệt của mô hình; nên kiểm tra hook trước khi chạy không giám sát",
+      "Codex, Grok Build, Hermes Agent cần thêm bước cho phép hook",
+      "Mạnh nhất với giao diện đã có; dựng trang mới là chế độ khó hơn",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "sourceEvidence": {
+      "npx impeccable install": "README.md:8, README.md:95",
+      "/impeccable init": "README.md:11",
+      "$impeccable init": "README.md:11",
+      "/plugin marketplace add pbakaus/impeccable": "README.md:107",
+      "git submodule add https://github.com/pbakaus/impeccable vendor/impeccable": "README.md:119",
+      "npx impeccable link --source=vendor/impeccable --providers=claude,cursor": "README.md:120",
+      "npx impeccable update": "README.md:98",
+      "/impeccable critique the pricing cards": "README.md:34",
+      "/impeccable polish settings": "README.md:46",
+      "/impeccable live": "README.md:68",
+      "npx impeccable detect src/": "README.md:79",
+      "npx impeccable detect --github src/": "README.md:82",
+      "npx impeccable telemetry off": "README.md:209",
+      "license Apache-2.0": "LICENSE:2, README.md:219"
+    },
+    "meta": {
+      "id": "pbakaus-impeccable",
+      "nameVi": "Impeccable — Bộ lệnh thiết kế và phát hiện giao diện rập khuôn cho trợ lý lập trình AI",
+      "icon": "Sparkles",
+      "categories": ["frontend_ui", "qa_testing"],
+      "platforms": ["claude_code", "cursor", "antigravity"],
+      "licenseShort": "Mã nguồn mở (Apache 2.0)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "claude_code", "platformName": "Claude Code", "cliCommand": "/plugin marketplace add pbakaus/impeccable" },
+        { "platform": "cursor", "platformName": "Cursor", "cliCommand": "npx impeccable install" },
+        { "platform": "antigravity", "platformName": "Google Antigravity", "cliCommand": "npx impeccable install" }
+      ]
+    }
+  },
+  {
+    "repo": "Leonxlnx/taste-skill",
+    "license": "MIT License",
+    "authorName": "Leonxlnx",
+    "websiteUrl": "https://tasteskill.dev",
+    "toolType": "skill",
+    "taglineEn": "It gives the agent an art direction, real pictures and a way to check its own work in a real browser.",
+    "summaryVi": "Taste Skill là Agent Skill giúp trợ lý lập trình AI thiết kế trang web và màn hình ứng dụng có định hướng nghệ thuật thay vì lắp ráp một trang đích trung bình. Skill được xây từ nghiên cứu 247 trang web chọn lọc: rút ba trong 20 hướng thiết kế, dùng ảnh thật từ kho mở có ghi nguồn, kiểm tra trang trong trình duyệt thật ở ba độ rộng và tự sửa ba lỗi lớn nhất qua tối đa ba vòng. Từ bản 2.1 skill còn dựng dashboard, trang quản trị và màn hình cài đặt theo quy tắc riêng cho ứng dụng.",
+    "purposeVi": "Giúp người dùng trợ lý lập trình AI tạo trang web và màn hình ứng dụng trông như được thiết kế thật, có ảnh thật và được kiểm tra trực quan trước khi giao.",
+    "featuresVi": [
+      "Định hướng nghệ thuật: một script rút ba trong 20 hướng thiết kế đã nghiên cứu để trợ lý chọn một",
+      "Ảnh thật có giấy phép: lấy từ Wikimedia Commons, Openverse, the Met; chỉ dùng public domain, CC0, CC BY, CC BY-SA và ghi nguồn trên trang",
+      "Tự kiểm tra trong trình duyệt: xem trang ở ba độ rộng, đánh trượt nếu có dấu hiệu slop",
+      "Tự sửa lỗi: xem ảnh chụp màn hình của chính mình và sửa ba vấn đề lớn nhất, tối đa ba vòng",
+      "Dashboard và màn hình ứng dụng (v2.1): bảng điều khiển gọn, số liệu căn thẳng, màu dành cho dữ liệu, bố cục điện thoại gập điều hướng",
+      "Thiết kế lại trang có sẵn: rà soát trang hiện tại trong trình duyệt thật trước khi thay đổi",
+      "Không phụ thuộc framework: dùng được với React, Vue, Svelte hay HTML thuần"
+    ],
+    "requirementsVi": "Node 22 trở lên và Chrome, Edge hoặc Chromium đã cài. Không cần khóa API; chỉ cần mạng để tìm ảnh.",
+    "installStepsVi": [
+      "Cài bằng Skills CLI: `npx skills add https://github.com/Leonxlnx/taste-skill --skill \"design-taste-frontend\"`",
+      "Hoặc cài plugin trong Claude Code: `/plugin marketplace add Leonxlnx/taste-skill` rồi `/plugin install taste-skill@taste-skill`",
+      "Hoặc cài plugin cho Codex: `codex plugin marketplace add Leonxlnx/taste-skill` rồi `codex plugin add taste-skill@taste-skill`, sau đó mở phiên Codex mới",
+      "Đảm bảo máy có Node 22 trở lên và Chrome, Edge hoặc Chromium"
+    ],
+    "cliCommand": "npx skills add https://github.com/Leonxlnx/taste-skill --skill \"design-taste-frontend\"",
+    "usageStepsVi": [
+      "Mô tả trang hoặc màn hình cần dựng cho trợ lý lập trình, kèm những gì riêng có của khách hàng (sản phẩm, câu chuyện, tư liệu).",
+      "Chọn một trong ba hướng thiết kế skill đề xuất.",
+      "Chờ skill dựng trang, chụp màn hình và tự sửa; một lần dựng mất khoảng 30 đến 45 phút và vài trăm nghìn token.",
+      "Thay ảnh từ kho mở bằng ảnh của bạn khi có, giữ phần ghi nguồn cho ảnh còn lại."
+    ],
+    "samplePromptsVi": [
+      "Dựng trang giới thiệu cho quán cà phê rang xay ở Đà Lạt, nhấn vào quy trình rang và vùng trồng",
+      "Thiết kế dashboard quản lý đơn hàng cho cửa hàng online, có bảng, biểu đồ doanh thu và giao diện điện thoại",
+      "Thiết kế lại trang chủ hiện tại của studio kiến trúc, kiểm tra trong trình duyệt trước rồi mới sửa"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, không cần khóa API",
+      "Ảnh thật có giấy phép mở và được ghi nguồn tự động",
+      "Tự kiểm tra và sửa trong trình duyệt thật trước khi giao",
+      "Cài được qua Skills CLI, plugin Claude Code hoặc plugin Codex"
+    ],
+    "consVi": [
+      "Một lần dựng tốn khoảng 30 đến 45 phút và vài trăm nghìn token",
+      "Cần Node 22 trở lên và một trình duyệt Chromium trên máy",
+      "Các skill cũ đã chuyển sang repo khác, dễ nhầm khi cài theo hướng dẫn cũ",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "sourceEvidence": {
+      "npx skills add https://github.com/Leonxlnx/taste-skill --skill \"design-taste-frontend\"": "README.md:81",
+      "/plugin marketplace add Leonxlnx/taste-skill": "README.md:94",
+      "/plugin install taste-skill@taste-skill": "README.md:95",
+      "codex plugin marketplace add Leonxlnx/taste-skill": "README.md:106",
+      "codex plugin add taste-skill@taste-skill": "README.md:107",
+      "license MIT": "LICENSE:1, README.md:234"
+    },
+    "meta": {
+      "id": "leonxlnx-taste-skill",
+      "nameVi": "Taste Skill — Skill giúp trợ lý lập trình AI thiết kế trang web và màn hình ứng dụng có gu",
+      "icon": "Sparkles",
+      "categories": ["frontend_ui"],
+      "platforms": ["claude_code"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "claude_code", "platformName": "Claude Code", "cliCommand": "/plugin marketplace add Leonxlnx/taste-skill" }
+      ]
+    }
+  },
+  {
+    "repo": "jakubkrehel/skills",
+    "license": "MIT License",
+    "authorName": "Jakub Krehel",
+    "websiteUrl": "",
+    "toolType": "skill",
+    "taglineEn": "A collection of agent skills that cover UI, typography, colors, accessibility, layout, product writing and help you build a great interface.",
+    "summaryVi": "Đây là bộ 14 skill cho trợ lý lập trình AI của Jakub Krehel, tác giả tạp chí kỹ thuật thiết kế Interfaces, bao quát giao diện, kiểu chữ, màu sắc, khả năng tiếp cận, bố cục và câu chữ sản phẩm. Các skill có thể rà soát cả một giao diện thành một báo cáo xếp hạng, đánh bóng chi tiết với giá trị cụ thể, dựng giao diện từ Figma hoặc ảnh thiết kế, và hiển thị mọi trạng thái của một component để kiểm thử.",
+    "purposeVi": "Giúp lập trình viên giao diện dùng trợ lý AI rà soát và hoàn thiện sản phẩm theo các nguyên tắc thiết kế cụ thể, từ độ bo góc, bóng đổ đến WCAG 2.2.",
+    "featuresVi": [
+      "better-interface: rà soát màn hình, luồng hoặc toàn bộ giao diện về khả năng tiếp cận, bố cục, câu chữ, kiểu chữ, màu và độ tinh chỉnh, trả về một báo cáo xếp hạng",
+      "better-ui và better-typography: giá trị cụ thể cho bo góc, căn chỉnh quang học, bóng đổ, trạng thái icon, chuyển động; thang chữ, khoảng cách, ngắt dòng, cắt chữ",
+      "better-colors: tạo bảng màu, đặt tên token ngữ nghĩa, chuyển đổi định dạng và đo độ tương phản",
+      "better-accessibility: bàn phím và focus, ARIA, tên truy cập, form, thông báo cho trình đọc màn hình, theo WCAG 2.2",
+      "better-layout và better-writing: bố cục chịu được thay đổi kích thước, dịch và lật chiều; câu chữ cho nhãn, lỗi, trạng thái trống, xác nhận",
+      "interface-review: rà soát một nhánh, pull request hoặc thay đổi chưa commit để tìm lỗi giao diện mới phát sinh",
+      "build-design: dựng giao diện từ tệp Figma hoặc ảnh thiết kế bằng token và component sẵn có của dự án",
+      "break, state-machine, variant: kiểm thử component dưới mọi tình huống, hiển thị mọi trạng thái, tạo nhiều biến thể để chọn"
+    ],
+    "requirementsVi": "Một trợ lý lập trình hỗ trợ Agent Skills; Node.js để chạy `npx skills`.",
+    "installStepsVi": [
+      "Cài toàn bộ skill bằng Skills CLI: `npx skills add jakubkrehel/skills`",
+      "Hoặc trong Claude Code, thêm marketplace: `/plugin marketplace add jakubkrehel/skills`",
+      "Sau đó cài plugin: `/plugin install interfaces@interfaces`"
+    ],
+    "cliCommand": "npx skills add jakubkrehel/skills",
+    "usageStepsVi": [
+      "Yêu cầu trợ lý rà soát một màn hình hoặc luồng; skill phù hợp như better-interface hay better-accessibility sẽ được dùng.",
+      "Gọi trực tiếp các skill do người dùng kích hoạt như interface-review, explain-interface, break, state-machine, variant khi cần.",
+      "Đưa tệp Figma hoặc ảnh thiết kế để build-design dựng giao diện theo token của dự án.",
+      "Áp dụng các sửa đổi theo báo cáo xếp hạng, rồi chạy interface-review trên nhánh trước khi tạo pull request."
+    ],
+    "samplePromptsVi": [
+      "Rà soát màn hình đăng nhập của ứng dụng ngân hàng theo WCAG 2.2, ưu tiên điều hướng bằng bàn phím và trình đọc màn hình",
+      "Viết lại các thông báo lỗi và trạng thái trống trong trang giỏ hàng cho rõ ràng, nói người dùng cần làm gì tiếp theo",
+      "Hiển thị mọi trạng thái của component thẻ sản phẩm với dữ liệu giả, kể cả tên sản phẩm tiếng Việt rất dài"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, cài được bằng một lệnh",
+      "Bao quát nhiều khía cạnh thiết kế giao diện với giá trị và quy tắc cụ thể",
+      "Có skill rà soát pull request và kiểm thử component",
+      "Tác giả viết chuyên sâu về kỹ thuật thiết kế giao diện"
+    ],
+    "consVi": [
+      "README rất ngắn, phải đọc từng tệp SKILL.md để hiểu chi tiết",
+      "README chỉ nêu cách cài cho Claude Code, không nêu trợ lý khác",
+      "Chỉ tập trung vào giao diện, không hỗ trợ phần backend",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "sourceEvidence": {
+      "npx skills add jakubkrehel/skills": "README.md:31",
+      "/plugin marketplace add jakubkrehel/skills": "README.md:37",
+      "/plugin install interfaces@interfaces": "README.md:38",
+      "license MIT": "LICENSE:1"
+    },
+    "meta": {
+      "id": "jakubkrehel-skills",
+      "nameVi": "Interfaces Skills — Bộ skill rà soát và hoàn thiện giao diện, kiểu chữ, màu sắc, khả năng tiếp cận",
+      "icon": "Layers",
+      "categories": ["frontend_ui", "qa_testing"],
+      "platforms": ["claude_code"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "claude_code", "platformName": "Claude Code", "cliCommand": "/plugin marketplace add jakubkrehel/skills" }
+      ]
+    }
+  }
+]
