@@ -174366,5 +174366,434 @@
       "guideIsTemplate": false,
       "starsVerified": false
     }
+  },
+  {
+    "id": "tianyu199509-deskbox",
+    "slug": "tianyu199509-deskbox",
+    "name": "DeskBox — Sắp xếp màn hình Desktop Windows bằng widget (không có AI)",
+    "icon": "FolderTree",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/Tianyu199509/DeskBox",
+    "websiteUrl": "https://deskbox.fun",
+    "authorName": "Tianyu Zhu",
+    "license": "Mã nguồn mở (GPL-3.0)",
+    "summaryVi": "DeskBox là phần mềm mã nguồn mở sắp xếp màn hình Desktop trên Windows 10/11, dùng các widget WinUI 3 trông như thành phần gốc của Windows. Mỗi widget tệp gắn với một thư mục thật (tạo mới hoặc ánh xạ thư mục có sẵn), nên tệp vẫn là tệp bình thường và Explorer không bị thay thế. Ngoài sắp xếp tệp còn có các widget việc cần làm, ghi chú nhanh, tìm kiếm, thời tiết, điều khiển nhạc. Lưu ý: DeskBox không có tính năng AI; được đưa vào AI HUB như phần mềm tiện ích văn phòng.",
+    "purposeVi": "Giúp người dùng Windows dọn gọn màn hình Desktop và gom công cụ dùng hằng ngày vào các widget, với dữ liệu lưu hoàn toàn trên máy, không cần tài khoản hay đồng bộ đám mây.",
+    "featuresVi": [
+      "Widget tệp gắn thư mục thật: tạo thư mục quản lý mới hoặc ánh xạ thư mục có sẵn mà không di chuyển tệp; bố cục biểu tượng hoặc danh sách, sắp xếp thủ công hoặc theo quy tắc",
+      "Kéo thả kiểu Windows: kéo tệp và lối tắt vào/ra, sao chép, cắt, dán, đổi tên, xóa; thả tệp lên lối tắt ứng dụng để mở bằng ứng dụng đó; xem nhanh bằng phím Space qua QuickLook",
+      "Nhóm widget và sắp xếp Desktop: gộp widget tệp thành nhóm, xem trước cách phân loại tệp trên Desktop trước khi di chuyển, tùy chọn tự sắp xếp tệp mới",
+      "Todo và Quick Capture: việc cần làm có hạn, nhắc nhở, lặp lại, ghi chú Markdown, tệp đính kèm; lưu nhanh văn bản, liên kết, ảnh, tệp",
+      "Tìm kiếm Desktop: tìm tệp, thư mục, ứng dụng, cài đặt, ghi chú, việc cần làm trong một cửa sổ; kết quả tệp lấy từ chỉ mục của Everything (cài riêng)",
+      "Glance, thời tiết, nhạc: ngày tháng, âm lịch, thời tiết MSN/Open-Meteo, điều khiển phiên phát nhạc và âm lượng hệ thống",
+      "Chế độ viên nang (capsule) thu gọn widget, phím tắt hiện/ẩn toàn bộ widget, vật liệu Mica/Acrylic, bố cục riêng cho từng màn hình",
+      "Sao lưu và khôi phục cài đặt cục bộ hoặc lên máy chủ WebDAV của chính bạn; giao diện 13 ngôn ngữ"
+    ],
+    "installGuideVi": "Yêu cầu: Windows 10 phiên bản 2004 (build 19041) trở lên, Windows 11 22H2 trở lên để có đầy đủ hiệu ứng; bộ xử lý x64 hoặc ARM64 khớp với bộ cài. Bộ cài Full đã kèm Windows App Runtime 2.5.1, không cần cài riêng .NET 10.\nBước 1: Tải bộ cài từ GitHub Releases: bản x64 (đa số máy Intel/AMD) `https://github.com/Tianyu199509/DeskBox/releases/download/v1.5.9/DeskBox_Setup_1.5.9_x64.exe`, hoặc bản ARM64 (máy Snapdragon, Surface Pro X) `https://github.com/Tianyu199509/DeskBox/releases/download/v1.5.9/DeskBox_Setup_1.5.9_arm64.exe`\nBước 2: Đối chiếu mã băm với tệp `.sha256` đi kèm mỗi bộ cài trước khi chạy (bộ cài chưa được ký số cho tới khi có chứng chỉ SignPath)\nBước 3: Chạy bộ cài: mặc định cài cho người dùng hiện tại, cài đè giữ nguyên cài đặt, cấu hình widget và thư mục quản lý\nBước 4: Không chạy DeskBox bằng quyền quản trị viên: khi đó kéo thả với Explorer bị Windows chặn\nBước 5: Dành cho nhà phát triển (cần .NET 10 SDK, Windows 11): `dotnet restore .\\DeskBox.sln -p:Platform=x64` rồi `dotnet build .\\src\\DeskBox\\DeskBox.csproj --configuration Debug --no-restore -p:Platform=x64 -v:minimal`",
+    "usageGuideVi": "Bước 1: Tạo widget tệp mới hoặc ánh xạ một thư mục có sẵn, rồi kéo tệp từ Desktop vào widget.\nBước 2: Dùng tính năng sắp xếp Desktop để xem trước cách phân loại tệp theo nhóm, chọn tạo thư mục mới hay dùng widget có sẵn cho từng nhóm.\nBước 3: Bật các widget chức năng (Todo, Quick Capture, Tìm kiếm, Thời tiết, Nhạc) trong Settings; cài thêm Everything nếu muốn tìm tệp.\nBước 4: Hiện/ẩn toàn bộ widget bằng biểu tượng khay hệ thống hoặc phím F7; thu gọn widget thành viên nang khi cần thêm chỗ trống.",
+    "samplePromptsVi": [
+      "Tình huống: gom toàn bộ tệp tải về trên Desktop vào một widget Downloads ánh xạ tới thư mục có sẵn",
+      "Tình huống: phân loại Desktop lộn xộn thành các nhóm Tài liệu, Hình ảnh, Lối tắt trước khi họp chia sẻ màn hình",
+      "Tình huống: đặt widget Todo có nhắc hạn và widget Quick Capture để lưu nhanh đường dẫn, ảnh chụp màn hình trong ngày làm việc"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Bộ cài Windows (x64 / ARM64)",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"https://github.com/Tianyu199509/DeskBox/releases/download/v1.5.9/DeskBox_Setup_1.5.9_x64.exe\",\n    \"https://github.com/Tianyu199509/DeskBox/releases/download/v1.5.9/DeskBox_Setup_1.5.9_arm64.exe\"\n  ],\n  \"nguon\": \"https://github.com/Tianyu199509/DeskBox\"\n}"
+      },
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (PowerShell, dành cho nhà phát triển)",
+        "cliCommand": "dotnet restore .\\DeskBox.sln -p:Platform=x64",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"dotnet restore .\\\\DeskBox.sln -p:Platform=x64\"\n  ],\n  \"nguon\": \"https://github.com/Tianyu199509/DeskBox\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Miễn phí, mã nguồn mở GPL-3.0, không cần tài khoản; dữ liệu lưu cục bộ, WebDAV chỉ kết nối máy chủ của bạn",
+      "Tệp vẫn là tệp và thư mục bình thường, không thay thế Explorer",
+      "Có bản cho x64 và ARM64, bộ cài kèm sẵn runtime nên cài được khi không có mạng",
+      "Cập nhật rất thường xuyên, tài liệu và nhật ký thay đổi chi tiết"
+    ],
+    "consVi": [
+      "Không có tính năng AI",
+      "Chỉ chạy trên Windows 10/11",
+      "Giao diện chưa có tiếng Việt (13 ngôn ngữ gồm Anh, Trung giản thể, Trung phồn thể, Nhật, Hàn...)",
+      "Tìm kiếm tệp cần cài riêng Everything; bộ cài chưa được ký số, cần tự kiểm tra mã băm",
+      "Do một người phát triển, hiện không nhận pull request từ bên ngoài"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# DeskBox — Sắp xếp màn hình Desktop Windows bằng widget (không có AI)\n\n> A free, open-source, local-first Windows desktop organizer with native-feeling WinUI 3 widgets.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nDeskBox là phần mềm mã nguồn mở sắp xếp màn hình Desktop trên Windows 10/11, dùng các widget WinUI 3 trông như thành phần gốc của Windows. Mỗi widget tệp gắn với một thư mục thật (tạo mới hoặc ánh xạ thư mục có sẵn), nên tệp vẫn là tệp bình thường và Explorer không bị thay thế. Ngoài sắp xếp tệp còn có các widget việc cần làm, ghi chú nhanh, tìm kiếm, thời tiết, điều khiển nhạc. Lưu ý: DeskBox không có tính năng AI; được đưa vào AI HUB như phần mềm tiện ích văn phòng.\n\nGiúp người dùng Windows dọn gọn màn hình Desktop và gom công cụ dùng hằng ngày vào các widget, với dữ liệu lưu hoàn toàn trên máy, không cần tài khoản hay đồng bộ đám mây.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** Tianyu Zhu\n- **Giấy phép bản quyền:** Mã nguồn mở (GPL-3.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/Tianyu199509/DeskBox](https://github.com/Tianyu199509/DeskBox)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Widget tệp gắn thư mục thật: tạo thư mục quản lý mới hoặc ánh xạ thư mục có sẵn mà không di chuyển tệp; bố cục biểu tượng hoặc danh sách, sắp xếp thủ công hoặc theo quy tắc**\n- **Kéo thả kiểu Windows: kéo tệp và lối tắt vào/ra, sao chép, cắt, dán, đổi tên, xóa; thả tệp lên lối tắt ứng dụng để mở bằng ứng dụng đó; xem nhanh bằng phím Space qua QuickLook**\n- **Nhóm widget và sắp xếp Desktop: gộp widget tệp thành nhóm, xem trước cách phân loại tệp trên Desktop trước khi di chuyển, tùy chọn tự sắp xếp tệp mới**\n- **Todo và Quick Capture: việc cần làm có hạn, nhắc nhở, lặp lại, ghi chú Markdown, tệp đính kèm; lưu nhanh văn bản, liên kết, ảnh, tệp**\n- **Tìm kiếm Desktop: tìm tệp, thư mục, ứng dụng, cài đặt, ghi chú, việc cần làm trong một cửa sổ; kết quả tệp lấy từ chỉ mục của Everything (cài riêng)**\n- **Glance, thời tiết, nhạc: ngày tháng, âm lịch, thời tiết MSN/Open-Meteo, điều khiển phiên phát nhạc và âm lượng hệ thống**\n- **Chế độ viên nang (capsule) thu gọn widget, phím tắt hiện/ẩn toàn bộ widget, vật liệu Mica/Acrylic, bố cục riêng cho từng màn hình**\n- **Sao lưu và khôi phục cài đặt cục bộ hoặc lên máy chủ WebDAV của chính bạn; giao diện 13 ngôn ngữ**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ndotnet restore .\\DeskBox.sln -p:Platform=x64\n```\n\nYêu cầu: Windows 10 phiên bản 2004 (build 19041) trở lên, Windows 11 22H2 trở lên để có đầy đủ hiệu ứng; bộ xử lý x64 hoặc ARM64 khớp với bộ cài. Bộ cài Full đã kèm Windows App Runtime 2.5.1, không cần cài riêng .NET 10.\nBước 1: Tải bộ cài từ GitHub Releases: bản x64 (đa số máy Intel/AMD) `https://github.com/Tianyu199509/DeskBox/releases/download/v1.5.9/DeskBox_Setup_1.5.9_x64.exe`, hoặc bản ARM64 (máy Snapdragon, Surface Pro X) `https://github.com/Tianyu199509/DeskBox/releases/download/v1.5.9/DeskBox_Setup_1.5.9_arm64.exe`\nBước 2: Đối chiếu mã băm với tệp `.sha256` đi kèm mỗi bộ cài trước khi chạy (bộ cài chưa được ký số cho tới khi có chứng chỉ SignPath)\nBước 3: Chạy bộ cài: mặc định cài cho người dùng hiện tại, cài đè giữ nguyên cài đặt, cấu hình widget và thư mục quản lý\nBước 4: Không chạy DeskBox bằng quyền quản trị viên: khi đó kéo thả với Explorer bị Windows chặn\nBước 5: Dành cho nhà phát triển (cần .NET 10 SDK, Windows 11): `dotnet restore .\\DeskBox.sln -p:Platform=x64` rồi `dotnet build .\\src\\DeskBox\\DeskBox.csproj --configuration Debug --no-restore -p:Platform=x64 -v:minimal`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Tạo widget tệp mới hoặc ánh xạ một thư mục có sẵn, rồi kéo tệp từ Desktop vào widget.\nBước 2: Dùng tính năng sắp xếp Desktop để xem trước cách phân loại tệp theo nhóm, chọn tạo thư mục mới hay dùng widget có sẵn cho từng nhóm.\nBước 3: Bật các widget chức năng (Todo, Quick Capture, Tìm kiếm, Thời tiết, Nhạc) trong Settings; cài thêm Everything nếu muốn tìm tệp.\nBước 4: Hiện/ẩn toàn bộ widget bằng biểu tượng khay hệ thống hoặc phím F7; thu gọn widget thành viên nang khi cần thêm chỗ trống.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tình huống: gom toàn bộ tệp tải về trên Desktop vào một widget Downloads ánh xạ tới thư mục có sẵn\"\n- \"Tình huống: phân loại Desktop lộn xộn thành các nhóm Tài liệu, Hình ảnh, Lối tắt trước khi họp chia sẻ màn hình\"\n- \"Tình huống: đặt widget Todo có nhắc hạn và widget Quick Capture để lưu nhanh đường dẫn, ảnh chụp màn hình trong ngày làm việc\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T10:42:44.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "nutlope-hallmark",
+    "slug": "nutlope-hallmark",
+    "name": "Hallmark — Skill thiết kế giao diện cho Claude Code, Codex, Cursor, không trông như AI tạo",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "skill",
+    "typeNameVi": "Skill",
+    "category": "frontend_ui",
+    "categoryNameVi": "Frontend & Giao diện người dùng",
+    "categories": [
+      "frontend_ui"
+    ],
+    "categoryNamesVi": [
+      "Frontend & Giao diện người dùng"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/Nutlope/hallmark",
+    "websiteUrl": "https://www.usehallmark.com",
+    "authorName": "Together AI (Hallmark contributors)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Hallmark là skill thiết kế giao diện cho các trợ lý lập trình AI (Claude Code, Codex, Cursor, OpenCode), giúp trang web do AI tạo ra trông như được thiết kế thật thay vì rập khuôn. Skill chọn 3 chủ đề từ thư viện 50 chủ đề, dựng trang theo đúng mục đích của khách truy cập, rồi kiểm tra kết quả trong trình duyệt thật để bắt các dấu hiệu 'AI slop'. Cuối cùng một subagent với ngữ cảnh mới rà soát lại trang.",
+    "purposeVi": "Giúp người dùng trợ lý lập trình AI tạo, thiết kế lại hoặc rà soát trang web có chất lượng thiết kế cao, đạt chuẩn tối thiểu về độ tương phản, focus, giảm chuyển động và hiển thị trên điện thoại, không bịa số liệu.",
+    "featuresVi": [
+      "50 chủ đề: mỗi chủ đề là một chất liệu (giấy, chữ, màu, bề mặt, thành phần riêng) kèm ảnh trang mẫu",
+      "Dựng theo mục đích trang: trang đặt lịch thì đặt lịch, cửa hàng thì bán hàng; nút hành động nằm đúng chỗ",
+      "Chế độ custom: thiết kế chỉ từ prompt, vẫn qua cùng bộ quy tắc và kiểm tra",
+      "Chụp sản phẩm thật: trỏ tới URL, máy chủ dev hoặc ứng dụng để skill tự chụp ảnh màn hình",
+      "Ảnh thật: 755 ảnh có giấy phép mở trên Wikimedia Commons, ghi nguồn trên trang",
+      "Thiết kế lại và rà soát: `/hallmark redesign <đường dẫn>` giữ nội dung và liên kết, `/hallmark audit <đường dẫn>` chỉ báo cáo",
+      "sloplint: kiểm tra trang ở 8 độ rộng màn hình, phân tầng Floor (không bao giờ phát hành), Reflex, Finish"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js 18 trở lên. Kiểm tra trên trình duyệt (`sloplint --render`, chụp màn hình) cần thêm `npm i -g puppeteer-core` và Chrome; không có thì vẫn chạy được kiểm tra tĩnh.\nBước 1: Cài cho mọi dự án: `npx skills add nutlope/hallmark -g` (bỏ `-g` để chỉ cài vào dự án hiện tại)\nBước 2: Chỉ cài cho một công cụ: `npx skills add nutlope/hallmark -g --agent claude-code` (hoặc codex, opencode, cursor, github-copilot)\nBước 3: Hoặc cài dạng plugin Claude Code: `/plugin marketplace add nutlope/hallmark`, rồi `/plugin install hallmark@hallmark`\nBước 4: Tùy chọn để kiểm tra trên trình duyệt: `npm i -g puppeteer-core` và cài Chrome",
+    "usageGuideVi": "Bước 1: Trong Claude Code hoặc Cursor gõ `/hallmark <mô tả trang>` (Codex dùng `$hallmark`), hoặc mô tả trang cần dựng.\nBước 2: Cung cấp tư liệu thật khi được hỏi (ảnh, ảnh chụp màn hình, số liệu); skill không tự bịa.\nBước 3: Chọn một trong ba chủ đề được đề xuất, hoặc nói 'custom' để thiết kế riêng.\nBước 4: Thiết kế lại trang có sẵn bằng `/hallmark redesign ./src/app`, rà soát bằng `/hallmark audit ./index.html`.\nBước 5: Kiểm tra bất kỳ trang nào: `node skills/hallmark/scripts/sloplint.mjs <tệp-hoặc-thư-mục> --render`.",
+    "samplePromptsVi": [
+      "/hallmark Trang đặt lịch cho phòng khám nha khoa ở Đà Nẵng, khách đặt lịch ngay trên trang",
+      "/hallmark audit ./index.html",
+      "/hallmark redesign ./src/app, giữ bố cục, chỉ sửa các dấu hiệu trông như AI tạo"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "npx skills add nutlope/hallmark -g --agent claude-code",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx skills add nutlope/hallmark -g --agent claude-code\"\n  ],\n  \"nguon\": \"https://github.com/Nutlope/hallmark\"\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "cliCommand": "npx skills add nutlope/hallmark -g --agent cursor",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx skills add nutlope/hallmark -g --agent cursor\"\n  ],\n  \"nguon\": \"https://github.com/Nutlope/hallmark\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Giấy phép MIT, dùng được với nhiều trợ lý lập trình AI",
+      "Có bộ kiểm tra tự động trong trình duyệt và bước rà soát độc lập",
+      "Thiết kế lại có kiểm tra không làm mất liên kết, trường nhập, trình xử lý sự kiện",
+      "Ảnh dùng giấy phép mở và được ghi nguồn"
+    ],
+    "consVi": [
+      "Kiểm tra trên trình duyệt cần cài thêm puppeteer-core và Chrome",
+      "Tạo ra trang HTML và CSS độc lập, không sinh mã theo framework của dự án",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# Hallmark — Skill thiết kế giao diện cho Claude Code, Codex, Cursor, không trông như AI tạo\n\n> A design skill for Claude Code, Codex, Cursor and OpenCode that refuses to look AI-generated.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nHallmark là skill thiết kế giao diện cho các trợ lý lập trình AI (Claude Code, Codex, Cursor, OpenCode), giúp trang web do AI tạo ra trông như được thiết kế thật thay vì rập khuôn. Skill chọn 3 chủ đề từ thư viện 50 chủ đề, dựng trang theo đúng mục đích của khách truy cập, rồi kiểm tra kết quả trong trình duyệt thật để bắt các dấu hiệu 'AI slop'. Cuối cùng một subagent với ngữ cảnh mới rà soát lại trang.\n\nGiúp người dùng trợ lý lập trình AI tạo, thiết kế lại hoặc rà soát trang web có chất lượng thiết kế cao, đạt chuẩn tối thiểu về độ tương phản, focus, giảm chuyển động và hiển thị trên điện thoại, không bịa số liệu.\n\n- **Loại hình thành phần:** Skill\n- **Lĩnh vực chuyên môn:** Frontend & Giao diện người dùng\n- **Tác giả / Nhà phát triển:** Together AI (Hallmark contributors)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/Nutlope/hallmark](https://github.com/Nutlope/hallmark)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **50 chủ đề: mỗi chủ đề là một chất liệu (giấy, chữ, màu, bề mặt, thành phần riêng) kèm ảnh trang mẫu**\n- **Dựng theo mục đích trang: trang đặt lịch thì đặt lịch, cửa hàng thì bán hàng; nút hành động nằm đúng chỗ**\n- **Chế độ custom: thiết kế chỉ từ prompt, vẫn qua cùng bộ quy tắc và kiểm tra**\n- **Chụp sản phẩm thật: trỏ tới URL, máy chủ dev hoặc ứng dụng để skill tự chụp ảnh màn hình**\n- **Ảnh thật: 755 ảnh có giấy phép mở trên Wikimedia Commons, ghi nguồn trên trang**\n- **Thiết kế lại và rà soát: `/hallmark redesign <đường dẫn>` giữ nội dung và liên kết, `/hallmark audit <đường dẫn>` chỉ báo cáo**\n- **sloplint: kiểm tra trang ở 8 độ rộng màn hình, phân tầng Floor (không bao giờ phát hành), Reflex, Finish**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx skills add nutlope/hallmark -g --agent claude-code\n```\n\nYêu cầu: Node.js 18 trở lên. Kiểm tra trên trình duyệt (`sloplint --render`, chụp màn hình) cần thêm `npm i -g puppeteer-core` và Chrome; không có thì vẫn chạy được kiểm tra tĩnh.\nBước 1: Cài cho mọi dự án: `npx skills add nutlope/hallmark -g` (bỏ `-g` để chỉ cài vào dự án hiện tại)\nBước 2: Chỉ cài cho một công cụ: `npx skills add nutlope/hallmark -g --agent claude-code` (hoặc codex, opencode, cursor, github-copilot)\nBước 3: Hoặc cài dạng plugin Claude Code: `/plugin marketplace add nutlope/hallmark`, rồi `/plugin install hallmark@hallmark`\nBước 4: Tùy chọn để kiểm tra trên trình duyệt: `npm i -g puppeteer-core` và cài Chrome\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trong Claude Code hoặc Cursor gõ `/hallmark <mô tả trang>` (Codex dùng `$hallmark`), hoặc mô tả trang cần dựng.\nBước 2: Cung cấp tư liệu thật khi được hỏi (ảnh, ảnh chụp màn hình, số liệu); skill không tự bịa.\nBước 3: Chọn một trong ba chủ đề được đề xuất, hoặc nói 'custom' để thiết kế riêng.\nBước 4: Thiết kế lại trang có sẵn bằng `/hallmark redesign ./src/app`, rà soát bằng `/hallmark audit ./index.html`.\nBước 5: Kiểm tra bất kỳ trang nào: `node skills/hallmark/scripts/sloplint.mjs <tệp-hoặc-thư-mục> --render`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"/hallmark Trang đặt lịch cho phòng khám nha khoa ở Đà Nẵng, khách đặt lịch ngay trên trang\"\n- \"/hallmark audit ./index.html\"\n- \"/hallmark redesign ./src/app, giữ bố cục, chỉ sửa các dấu hiệu trông như AI tạo\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T10:45:16.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "huungcs-dochub-opensource",
+    "slug": "huungcs-dochub-opensource",
+    "name": "DocHub — Quản lý, lưu trữ và phân quyền tài liệu trên Supabase và Google Drive (không có AI)",
+    "icon": "FolderTree",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "software",
+    "typeNameVi": "Phần mềm",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/huungcs/DocHub-OpenSource",
+    "websiteUrl": "",
+    "authorName": "huungcs",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "DocHub là hệ thống quản lý, lưu trữ và phân quyền tài liệu đa người dùng do tác giả Việt Nam phát triển, giao diện tiếng Việt. Đăng nhập và phân quyền dùng Supabase (PostgreSQL với Row Level Security), tệp lưu trên Google Drive, triển khai được lên Vercel. Bản chia sẻ cộng đồng đã làm sạch, không chứa khóa bí mật; người dùng tự tạo dự án Supabase và Google Cloud của mình. Lưu ý: DocHub không có tính năng AI; được đưa vào AI HUB như phần mềm văn phòng số.",
+    "purposeVi": "Giúp tổ chức, phòng ban tự dựng kho tài liệu dùng chung có thư mục, phân quyền theo thành viên và lưu tệp trên Google Drive của chính mình.",
+    "featuresVi": [
+      "Quản lý tài liệu theo thư mục, nhiều người dùng, giao diện tiếng Việt trên máy tính và điện thoại",
+      "Phân quyền tổ chức và thành viên trên PostgreSQL Row Level Security (Supabase), có lời mời và liên kết mời",
+      "Lưu tệp trên Google Drive, đồng bộ quyền và cây thư mục với Drive",
+      "Đăng nhập bằng Google qua Supabase Auth",
+      "Lược đồ cơ sở dữ liệu quản lý bằng migration có thứ tự, chạy bằng `npm run db:migrate`",
+      "Triển khai Vercel với `vercel.json` cấu hình sẵn"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js 20+, tài khoản Supabase, dự án Google Cloud (bật Google Drive API và OAuth client); Vercel nếu muốn triển khai.\nBước 1: Cài gói phụ thuộc: `npm install`\nBước 2: Tạo tệp cấu hình: `cp .env.example .env` (Windows: `copy .env.example .env`), điền Supabase URL/keys, mật khẩu cơ sở dữ liệu, Google OAuth client\nBước 3: Sửa `src/config/client-config.js`: điền SUPABASE_URL và anon key (không đưa service role key vào mã trình duyệt); thay tên miền mẫu trong các tệp mà hướng dẫn liệt kê\nBước 4: Tạo cơ sở dữ liệu: `npm run db:migrate`; trong Supabase bật nhà cung cấp Google, trong Google Cloud bật Google Drive API và thêm redirect URI của Supabase\nBước 5: Chạy: `npm run build && node server.js`, mở http://localhost:3000",
+    "usageGuideVi": "Bước 1: Đăng nhập bằng tài khoản Google, tạo tổ chức và mời thành viên.\nBước 2: Tạo thư mục theo phòng ban, tải tài liệu lên; tệp được lưu trên Google Drive.\nBước 3: Phân quyền thư mục cho thành viên; quyền được đồng bộ sang Drive.\nBước 4: Kiểm thử toàn bộ trước khi triển khai: `npm run check`; triển khai bằng cách import repo vào Vercel và khai báo biến môi trường giống `.env`.",
+    "samplePromptsVi": [
+      "Tình huống: dựng kho tài liệu nội bộ cho công ty, mỗi phòng ban một thư mục riêng có phân quyền",
+      "Tình huống: chia sẻ hồ sơ dự án cho khách hàng qua liên kết mời, tệp vẫn nằm trên Google Drive của công ty",
+      "Tình huống: tự host hệ thống quản lý văn bản miễn phí trên Vercel và Supabase"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npm run build && node server.js",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npm run build && node server.js\"\n  ],\n  \"nguon\": \"https://github.com/huungcs/DocHub-OpenSource\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, tự host; chi phí Supabase, Vercel tùy gói",
+    "prosVi": [
+      "Giấy phép MIT, được dùng, sửa và thương mại hóa tự do",
+      "Giao diện và tài liệu tiếng Việt",
+      "Dữ liệu và tệp nằm trong dự án Supabase và Google Drive của chính bạn",
+      "Phân quyền bằng Row Level Security ở tầng cơ sở dữ liệu"
+    ],
+    "consVi": [
+      "Không có tính năng AI",
+      "Cài đặt cần tự cấu hình Supabase, Google Cloud OAuth và thay nhiều tên miền mẫu bằng tay",
+      "Repo còn tài liệu của bản 2.2 cũ (chạy bằng Python server) dễ gây nhầm với cách cài hiện tại bằng Node.js",
+      "Dự án cá nhân, chưa có nhiều người đóng góp"
+    ],
+    "languages": [
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# DocHub — Quản lý, lưu trữ và phân quyền tài liệu trên Supabase và Google Drive (không có AI)\n\n> Hệ thống quản lý, lưu trữ và phân quyền tài liệu đa người dùng, tích hợp Supabase và Google Drive.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nDocHub là hệ thống quản lý, lưu trữ và phân quyền tài liệu đa người dùng do tác giả Việt Nam phát triển, giao diện tiếng Việt. Đăng nhập và phân quyền dùng Supabase (PostgreSQL với Row Level Security), tệp lưu trên Google Drive, triển khai được lên Vercel. Bản chia sẻ cộng đồng đã làm sạch, không chứa khóa bí mật; người dùng tự tạo dự án Supabase và Google Cloud của mình. Lưu ý: DocHub không có tính năng AI; được đưa vào AI HUB như phần mềm văn phòng số.\n\nGiúp tổ chức, phòng ban tự dựng kho tài liệu dùng chung có thư mục, phân quyền theo thành viên và lưu tệp trên Google Drive của chính mình.\n\n- **Loại hình thành phần:** Phần mềm\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** huungcs\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/huungcs/DocHub-OpenSource](https://github.com/huungcs/DocHub-OpenSource)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Quản lý tài liệu theo thư mục, nhiều người dùng, giao diện tiếng Việt trên máy tính và điện thoại**\n- **Phân quyền tổ chức và thành viên trên PostgreSQL Row Level Security (Supabase), có lời mời và liên kết mời**\n- **Lưu tệp trên Google Drive, đồng bộ quyền và cây thư mục với Drive**\n- **Đăng nhập bằng Google qua Supabase Auth**\n- **Lược đồ cơ sở dữ liệu quản lý bằng migration có thứ tự, chạy bằng `npm run db:migrate`**\n- **Triển khai Vercel với `vercel.json` cấu hình sẵn**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpm run build && node server.js\n```\n\nYêu cầu: Node.js 20+, tài khoản Supabase, dự án Google Cloud (bật Google Drive API và OAuth client); Vercel nếu muốn triển khai.\nBước 1: Cài gói phụ thuộc: `npm install`\nBước 2: Tạo tệp cấu hình: `cp .env.example .env` (Windows: `copy .env.example .env`), điền Supabase URL/keys, mật khẩu cơ sở dữ liệu, Google OAuth client\nBước 3: Sửa `src/config/client-config.js`: điền SUPABASE_URL và anon key (không đưa service role key vào mã trình duyệt); thay tên miền mẫu trong các tệp mà hướng dẫn liệt kê\nBước 4: Tạo cơ sở dữ liệu: `npm run db:migrate`; trong Supabase bật nhà cung cấp Google, trong Google Cloud bật Google Drive API và thêm redirect URI của Supabase\nBước 5: Chạy: `npm run build && node server.js`, mở http://localhost:3000\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đăng nhập bằng tài khoản Google, tạo tổ chức và mời thành viên.\nBước 2: Tạo thư mục theo phòng ban, tải tài liệu lên; tệp được lưu trên Google Drive.\nBước 3: Phân quyền thư mục cho thành viên; quyền được đồng bộ sang Drive.\nBước 4: Kiểm thử toàn bộ trước khi triển khai: `npm run check`; triển khai bằng cách import repo vào Vercel và khai báo biến môi trường giống `.env`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tình huống: dựng kho tài liệu nội bộ cho công ty, mỗi phòng ban một thư mục riêng có phân quyền\"\n- \"Tình huống: chia sẻ hồ sơ dự án cho khách hàng qua liên kết mời, tệp vẫn nằm trên Google Drive của công ty\"\n- \"Tình huống: tự host hệ thống quản lý văn bản miễn phí trên Vercel và Supabase\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T10:45:16.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "msitarzewski-agency-agents",
+    "slug": "msitarzewski-agency-agents",
+    "name": "The Agency — Hơn 230 tác tử AI chuyên biệt cho Claude Code, Cursor, Codex",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "rpa_workflow_automation"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Tự động hóa quy trình & RPA (Automation)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/msitarzewski/agency-agents",
+    "websiteUrl": "https://agencyagents.app",
+    "authorName": "Michael Sitarzewski và cộng đồng AgentLand Contributors",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "The Agency là bộ sưu tập hơn 230 tác tử AI chuyên biệt (subagent) dạng tệp Markdown, chia theo các bộ phận như một công ty: Kỹ thuật, Thiết kế, Marketing, Bán hàng, Sản phẩm, Kiểm thử, Bảo mật, Tài chính, Y tế, Nghiên cứu... Mỗi tác tử có tính cách, quy trình làm việc, sản phẩm đầu ra và chỉ số thành công riêng. Script cài đặt đưa các tác tử vào Claude Code và nhiều công cụ khác (Cursor, Codex, Gemini CLI, OpenCode, GitHub Copilot, Antigravity, Windsurf, Aider...); ngoài ra có ứng dụng desktop để duyệt và cài bằng một cú nhấp.",
+    "purposeVi": "Giúp người dùng trợ lý lập trình AI có sẵn một đội ngũ chuyên gia ảo cho từng việc (dựng frontend, thiết kế API, chạy chiến dịch marketing, kiểm thử, rà soát bảo mật...) thay vì tự viết prompt chung chung.",
+    "featuresVi": [
+      "Hơn 230 tác tử chia theo bộ phận: Kỹ thuật, Thiết kế, Quảng cáo trả phí, Bán hàng, Marketing, Sản phẩm, Quản lý dự án, Kiểm thử, Bảo mật, Hỗ trợ, Tài chính, Phát triển game, Học thuật, GIS, Y tế, Nghiên cứu",
+      "Mỗi tác tử gồm tính cách, nhiệm vụ cốt lõi, quy trình, sản phẩm đầu ra kèm ví dụ mã và chỉ số thành công",
+      "Script cài đặt cho Claude Code và hơn 10 công cụ khác, có trình hướng dẫn tương tác tự phát hiện công cụ đã cài",
+      "Cài chọn lọc theo bộ phận (`--division`) hoặc theo từng tác tử (`--agent`), xem trước bằng `--dry-run`",
+      "Ứng dụng desktop Agency Agents (macOS, Linux, Windows) duyệt danh sách và cài tác tử bằng một cú nhấp, tự cập nhật",
+      "Kịch bản mẫu ghép đội: làm MVP khởi nghiệp, ra mắt chiến dịch marketing, phát triển tính năng doanh nghiệp"
+    ],
+    "installGuideVi": "Yêu cầu: Một công cụ lập trình AI hỗ trợ subagent hoặc quy tắc tùy chỉnh (Claude Code, Cursor, Codex, Gemini CLI, OpenCode...). Cài bằng script cần tải mã nguồn repo về máy và chạy trong thư mục repo (bash).\nBước 1: Cách nhanh nhất: tải ứng dụng Agency Agents tại https://agencyagents.app, hoặc trên macOS chạy `brew install --cask msitarzewski/agency-agents/agency-agents`\nBước 2: Hoặc tải mã nguồn repo về máy, trong thư mục repo cài toàn bộ tác tử cho Claude Code: `./scripts/install.sh --tool claude-code`\nBước 3: Chỉ cài một bộ phận bằng tay: `cp engineering/*.md ~/.claude/agents/`\nBước 4: Cho công cụ khác: chạy `./scripts/convert.sh`, rồi `./scripts/install.sh` (trình hướng dẫn tương tác) hoặc `./scripts/install.sh --tool cursor` (thay bằng antigravity, gemini-cli, opencode, copilot, windsurf, codex...)\nBước 5: Cài chọn lọc: `./scripts/install.sh --tool claude-code --division engineering,security`; xem danh sách đội: `./scripts/install.sh --list teams`",
+    "usageGuideVi": "Bước 1: Mở phiên Claude Code (hoặc công cụ đã cài) trong dự án của bạn.\nBước 2: Gọi tác tử theo tên, ví dụ: \"Hey Claude, activate Frontend Developer mode and help me build a React component\".\nBước 3: Ghép nhiều tác tử thành đội cho một việc lớn, ví dụ Frontend Developer, Backend Architect, Growth Hacker, Reality Checker cho một MVP.\nBước 4: Với OpenCode, chỉ cài một phần bằng `--division` vì OpenCode hiện chỉ nhận khoảng 119 tác tử.",
+    "samplePromptsVi": [
+      "Kích hoạt Frontend Developer và dựng trang đăng ký bằng React, tối ưu Core Web Vitals",
+      "Dùng Backend Architect thiết kế API và cơ sở dữ liệu cho ứng dụng đặt lịch khám",
+      "Nhờ Reality Checker rà soát toàn bộ sản phẩm trước khi ra mắt và liệt kê rủi ro"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "./scripts/install.sh --tool claude-code",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"./scripts/install.sh --tool claude-code\"\n  ],\n  \"nguon\": \"https://github.com/msitarzewski/agency-agents\"\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "cliCommand": "./scripts/install.sh --tool cursor",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"./scripts/install.sh --tool cursor\"\n  ],\n  \"nguon\": \"https://github.com/msitarzewski/agency-agents\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Giấy phép MIT, miễn phí",
+      "Số lượng tác tử lớn, phủ cả lĩnh vực ngoài lập trình (marketing, bán hàng, tài chính, y tế)",
+      "Hỗ trợ nhiều công cụ lập trình AI, cài chọn lọc được",
+      "Có ứng dụng desktop cài bằng một cú nhấp, cập nhật thường xuyên"
+    ],
+    "consVi": [
+      "Tác tử là prompt hệ thống dạng Markdown, chất lượng phụ thuộc mô hình AI bạn dùng",
+      "Cài toàn bộ có thể vượt giới hạn số tác tử của một số công cụ (OpenCode khoảng 119)",
+      "Script cài đặt dùng bash; trên Windows nên dùng ứng dụng desktop",
+      "Nội dung tiếng Anh (có tài liệu đóng góp tiếng Trung)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# The Agency — Hơn 230 tác tử AI chuyên biệt cho Claude Code, Cursor, Codex\n\n> A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nThe Agency là bộ sưu tập hơn 230 tác tử AI chuyên biệt (subagent) dạng tệp Markdown, chia theo các bộ phận như một công ty: Kỹ thuật, Thiết kế, Marketing, Bán hàng, Sản phẩm, Kiểm thử, Bảo mật, Tài chính, Y tế, Nghiên cứu... Mỗi tác tử có tính cách, quy trình làm việc, sản phẩm đầu ra và chỉ số thành công riêng. Script cài đặt đưa các tác tử vào Claude Code và nhiều công cụ khác (Cursor, Codex, Gemini CLI, OpenCode, GitHub Copilot, Antigravity, Windsurf, Aider...); ngoài ra có ứng dụng desktop để duyệt và cài bằng một cú nhấp.\n\nGiúp người dùng trợ lý lập trình AI có sẵn một đội ngũ chuyên gia ảo cho từng việc (dựng frontend, thiết kế API, chạy chiến dịch marketing, kiểm thử, rà soát bảo mật...) thay vì tự viết prompt chung chung.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Michael Sitarzewski và cộng đồng AgentLand Contributors\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Hơn 230 tác tử chia theo bộ phận: Kỹ thuật, Thiết kế, Quảng cáo trả phí, Bán hàng, Marketing, Sản phẩm, Quản lý dự án, Kiểm thử, Bảo mật, Hỗ trợ, Tài chính, Phát triển game, Học thuật, GIS, Y tế, Nghiên cứu**\n- **Mỗi tác tử gồm tính cách, nhiệm vụ cốt lõi, quy trình, sản phẩm đầu ra kèm ví dụ mã và chỉ số thành công**\n- **Script cài đặt cho Claude Code và hơn 10 công cụ khác, có trình hướng dẫn tương tác tự phát hiện công cụ đã cài**\n- **Cài chọn lọc theo bộ phận (`--division`) hoặc theo từng tác tử (`--agent`), xem trước bằng `--dry-run`**\n- **Ứng dụng desktop Agency Agents (macOS, Linux, Windows) duyệt danh sách và cài tác tử bằng một cú nhấp, tự cập nhật**\n- **Kịch bản mẫu ghép đội: làm MVP khởi nghiệp, ra mắt chiến dịch marketing, phát triển tính năng doanh nghiệp**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n./scripts/install.sh --tool claude-code\n```\n\nYêu cầu: Một công cụ lập trình AI hỗ trợ subagent hoặc quy tắc tùy chỉnh (Claude Code, Cursor, Codex, Gemini CLI, OpenCode...). Cài bằng script cần tải mã nguồn repo về máy và chạy trong thư mục repo (bash).\nBước 1: Cách nhanh nhất: tải ứng dụng Agency Agents tại https://agencyagents.app, hoặc trên macOS chạy `brew install --cask msitarzewski/agency-agents/agency-agents`\nBước 2: Hoặc tải mã nguồn repo về máy, trong thư mục repo cài toàn bộ tác tử cho Claude Code: `./scripts/install.sh --tool claude-code`\nBước 3: Chỉ cài một bộ phận bằng tay: `cp engineering/*.md ~/.claude/agents/`\nBước 4: Cho công cụ khác: chạy `./scripts/convert.sh`, rồi `./scripts/install.sh` (trình hướng dẫn tương tác) hoặc `./scripts/install.sh --tool cursor` (thay bằng antigravity, gemini-cli, opencode, copilot, windsurf, codex...)\nBước 5: Cài chọn lọc: `./scripts/install.sh --tool claude-code --division engineering,security`; xem danh sách đội: `./scripts/install.sh --list teams`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở phiên Claude Code (hoặc công cụ đã cài) trong dự án của bạn.\nBước 2: Gọi tác tử theo tên, ví dụ: \"Hey Claude, activate Frontend Developer mode and help me build a React component\".\nBước 3: Ghép nhiều tác tử thành đội cho một việc lớn, ví dụ Frontend Developer, Backend Architect, Growth Hacker, Reality Checker cho một MVP.\nBước 4: Với OpenCode, chỉ cài một phần bằng `--division` vì OpenCode hiện chỉ nhận khoảng 119 tác tử.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Kích hoạt Frontend Developer và dựng trang đăng ký bằng React, tối ưu Core Web Vitals\"\n- \"Dùng Backend Architect thiết kế API và cơ sở dữ liệu cho ứng dụng đặt lịch khám\"\n- \"Nhờ Reality Checker rà soát toàn bộ sản phẩm trước khi ra mắt và liệt kê rủi ro\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T10:52:38.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "cursortouch-windows-mcp",
+    "slug": "cursortouch-windows-mcp",
+    "name": "Windows-MCP — Máy chủ MCP cho AI điều khiển Windows: ứng dụng, chuột, bàn phím, tệp, PowerShell",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "rpa_workflow_automation",
+    "categoryNameVi": "Tự động hóa quy trình & RPA (Automation)",
+    "categories": [
+      "rpa_workflow_automation",
+      "qa_testing"
+    ],
+    "categoryNamesVi": [
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Kiểm thử phần mềm & QA/QC"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/CursorTouch/Windows-MCP",
+    "websiteUrl": "https://pypi.org/project/windows-mcp/",
+    "authorName": "CursorTouch (Jeomon George)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Windows-MCP là máy chủ MCP mã nguồn mở cho phép tác tử AI điều khiển hệ điều hành Windows 10/11: mở và chuyển ứng dụng, thao tác chuột, bàn phím, đọc trạng thái giao diện, chụp màn hình, quản lý tệp, chạy PowerShell, kiểm thử giao diện (QA). Dùng được với mọi mô hình LLM, không cần mô hình thị giác chuyên biệt. Có hơn 2 triệu người dùng qua Claude Desktop Extensions và đã có trên PyPI, MCP Registry.",
+    "purposeVi": "Giúp Claude Desktop, Claude Code và các ứng dụng MCP khác (Gemini CLI, Codex...) tự động hóa công việc trên máy Windows như một người dùng thật: điều hướng tệp, điều khiển ứng dụng, điền biểu mẫu, kiểm thử giao diện.",
+    "featuresVi": [
+      "Tích hợp Windows gốc: tương tác với thành phần giao diện, mở ứng dụng, điều khiển cửa sổ, giả lập thao tác người dùng",
+      "Dùng với mọi LLM, thị giác tùy chọn: không dựa vào kỹ thuật thị giác máy tính hay mô hình tinh chỉnh riêng",
+      "Bộ công cụ: Click, Type, Scroll, Move, Shortcut, Screenshot, Snapshot, App, PowerShell, FileSystem, Clipboard, Process, Registry, Scrape, Notification...",
+      "Độ trễ giữa các thao tác khoảng 0,2 đến 0,5 giây",
+      "Chế độ DOM (`use_dom=True`) cho tự động hóa trình duyệt Chrome, Edge, Firefox",
+      "Bảo mật khi truy cập từ xa: khóa xác thực, danh sách IP, CORS, TLS, OAuth 2.0 + PKCE; bật/tắt từng công cụ bằng `--tools`, `--exclude-tools`",
+      "Người dùng giành lại quyền điều khiển bằng cách di chuột hoặc nhấn `Ctrl+Alt+Shift+Backspace`"
+    ],
+    "installGuideVi": "Yêu cầu: Windows 10 hoặc 11, Python 3.14+, trình quản lý gói UV (cài bằng `pip install uv`). Lần chạy đầu có thể mất 1 đến 2 phút để cài phụ thuộc, máy chủ có thể hết thời gian chờ, khởi động lại là được.\nBước 1: Cài UV: `pip install uv`\nBước 2: Claude Desktop: thêm vào `claude_desktop_config.json` mục `\"windows-mcp\": { \"command\": \"uvx\", \"args\": [\"windows-mcp\", \"serve\"] }`; bản Claude Desktop từ Microsoft Store cần đường dẫn đầy đủ tới `uvx.exe`\nBước 3: Claude Code: `claude mcp add --transport stdio windows-mcp -- uvx windows-mcp serve`; kiểm tra bằng `claude mcp list`\nBước 4: Chạy độc lập: `uvx windows-mcp serve` (stdio), hoặc `uvx windows-mcp serve --transport sse --host localhost --port 8000` để truy cập qua mạng\nBước 5: Tùy chọn tự chạy khi đăng nhập: `windows-mcp install` (gỡ bằng `windows-mcp uninstall`)",
+    "usageGuideVi": "Bước 1: Khởi động lại Claude Desktop (Tray → Quit rồi mở lại) hoặc kiểm tra `/mcp` trong Claude Code để thấy máy chủ windows-mcp.\nBước 2: Yêu cầu tác tử thao tác trên Windows bằng ngôn ngữ tự nhiên; tác tử gọi Screenshot hoặc Snapshot để xem màn hình rồi Click, Type, App...\nBước 3: Giới hạn công cụ khi cần an toàn: `windows-mcp serve --exclude-tools \"PowerShell,Registry\"`.\nBước 4: Khi truy cập từ xa, luôn bật khóa xác thực: `windows-mcp serve --transport sse --host 0.0.0.0 --auth-key \"your_token\"`.",
+    "samplePromptsVi": [
+      "Mở Notepad, gõ biên bản họp hôm nay rồi lưu vào thư mục Documents",
+      "Mở Excel, tạo bảng chi tiêu tháng 10 với 3 cột Ngày, Nội dung, Số tiền",
+      "Kiểm thử luồng đăng nhập của ứng dụng desktop và chụp màn hình từng bước"
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"windows-mcp\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"windows-mcp\",\n        \"serve\"\n      ]\n    }\n  }\n}"
+      },
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add --transport stdio windows-mcp -- uvx windows-mcp serve",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add --transport stdio windows-mcp -- uvx windows-mcp serve\"\n  ],\n  \"nguon\": \"https://github.com/CursorTouch/Windows-MCP\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Giấy phép MIT, cài một dòng qua uvx, có trên PyPI và MCP Registry",
+      "Dùng được với mọi LLM, không cần mô hình thị giác",
+      "Bộ công cụ đầy đủ cho tự động hóa desktop và kiểm thử giao diện",
+      "Nhiều lớp bảo mật cho truy cập từ xa, bật/tắt từng công cụ"
+    ],
+    "consVi": [
+      "Có toàn quyền hệ thống và có thể thực hiện thao tác không đảo ngược được (README cảnh báo); nên tắt PowerShell, Registry khi không cần",
+      "Chỉ chạy trên Windows 10/11, cần Python 3.14+",
+      "Lần chạy đầu cài phụ thuộc chậm, có thể hết thời gian chờ",
+      "Quyền giành lại điều khiển của người dùng chỉ là nỗ lực tốt nhất, không phải ranh giới bảo mật"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# Windows-MCP — Máy chủ MCP cho AI điều khiển Windows: ứng dụng, chuột, bàn phím, tệp, PowerShell\n\n> Windows-MCP is a lightweight, open-source project that enables seamless integration between AI agents and the Windows operating system.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nWindows-MCP là máy chủ MCP mã nguồn mở cho phép tác tử AI điều khiển hệ điều hành Windows 10/11: mở và chuyển ứng dụng, thao tác chuột, bàn phím, đọc trạng thái giao diện, chụp màn hình, quản lý tệp, chạy PowerShell, kiểm thử giao diện (QA). Dùng được với mọi mô hình LLM, không cần mô hình thị giác chuyên biệt. Có hơn 2 triệu người dùng qua Claude Desktop Extensions và đã có trên PyPI, MCP Registry.\n\nGiúp Claude Desktop, Claude Code và các ứng dụng MCP khác (Gemini CLI, Codex...) tự động hóa công việc trên máy Windows như một người dùng thật: điều hướng tệp, điều khiển ứng dụng, điền biểu mẫu, kiểm thử giao diện.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Tự động hóa quy trình & RPA (Automation)\n- **Tác giả / Nhà phát triển:** CursorTouch (Jeomon George)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/CursorTouch/Windows-MCP](https://github.com/CursorTouch/Windows-MCP)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tích hợp Windows gốc: tương tác với thành phần giao diện, mở ứng dụng, điều khiển cửa sổ, giả lập thao tác người dùng**\n- **Dùng với mọi LLM, thị giác tùy chọn: không dựa vào kỹ thuật thị giác máy tính hay mô hình tinh chỉnh riêng**\n- **Bộ công cụ: Click, Type, Scroll, Move, Shortcut, Screenshot, Snapshot, App, PowerShell, FileSystem, Clipboard, Process, Registry, Scrape, Notification...**\n- **Độ trễ giữa các thao tác khoảng 0,2 đến 0,5 giây**\n- **Chế độ DOM (`use_dom=True`) cho tự động hóa trình duyệt Chrome, Edge, Firefox**\n- **Bảo mật khi truy cập từ xa: khóa xác thực, danh sách IP, CORS, TLS, OAuth 2.0 + PKCE; bật/tắt từng công cụ bằng `--tools`, `--exclude-tools`**\n- **Người dùng giành lại quyền điều khiển bằng cách di chuột hoặc nhấn `Ctrl+Alt+Shift+Backspace`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add --transport stdio windows-mcp -- uvx windows-mcp serve\n```\n\nYêu cầu: Windows 10 hoặc 11, Python 3.14+, trình quản lý gói UV (cài bằng `pip install uv`). Lần chạy đầu có thể mất 1 đến 2 phút để cài phụ thuộc, máy chủ có thể hết thời gian chờ, khởi động lại là được.\nBước 1: Cài UV: `pip install uv`\nBước 2: Claude Desktop: thêm vào `claude_desktop_config.json` mục `\"windows-mcp\": { \"command\": \"uvx\", \"args\": [\"windows-mcp\", \"serve\"] }`; bản Claude Desktop từ Microsoft Store cần đường dẫn đầy đủ tới `uvx.exe`\nBước 3: Claude Code: `claude mcp add --transport stdio windows-mcp -- uvx windows-mcp serve`; kiểm tra bằng `claude mcp list`\nBước 4: Chạy độc lập: `uvx windows-mcp serve` (stdio), hoặc `uvx windows-mcp serve --transport sse --host localhost --port 8000` để truy cập qua mạng\nBước 5: Tùy chọn tự chạy khi đăng nhập: `windows-mcp install` (gỡ bằng `windows-mcp uninstall`)\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi động lại Claude Desktop (Tray → Quit rồi mở lại) hoặc kiểm tra `/mcp` trong Claude Code để thấy máy chủ windows-mcp.\nBước 2: Yêu cầu tác tử thao tác trên Windows bằng ngôn ngữ tự nhiên; tác tử gọi Screenshot hoặc Snapshot để xem màn hình rồi Click, Type, App...\nBước 3: Giới hạn công cụ khi cần an toàn: `windows-mcp serve --exclude-tools \"PowerShell,Registry\"`.\nBước 4: Khi truy cập từ xa, luôn bật khóa xác thực: `windows-mcp serve --transport sse --host 0.0.0.0 --auth-key \"your_token\"`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Mở Notepad, gõ biên bản họp hôm nay rồi lưu vào thư mục Documents\"\n- \"Mở Excel, tạo bảng chi tiêu tháng 10 với 3 cột Ngày, Nội dung, Số tiền\"\n- \"Kiểm thử luồng đăng nhập của ứng dụng desktop và chụp màn hình từng bước\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T10:52:38.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]
