@@ -9,7 +9,8 @@
  *   node database/scripts/validate-data.cjs --online --write
  *                                              Ghi kết quả vào trường `verification`, cập nhật `linkHealth`
  *   GITHUB_TOKEN=... node database/scripts/validate-data.cjs --online --write
- *                                              Lấy thêm số sao thật từ GitHub API, đánh dấu starsVerified
+ *                                              Lấy thêm số sao thật từ GitHub API, đánh dấu starsVerified,
+ *                                              và thời điểm repo được push gần nhất (repoPushedAt)
  *
  * Nguyên tắc: không xóa bản ghi nào. Bản ghi không xác minh được chỉ bị gắn nhãn.
  * Báo cáo chi tiết được ghi ra database/scripts/data-validation-report.json.
@@ -165,7 +166,8 @@ function urlReachable(url) {
   });
 }
 
-async function githubStars({ owner, repo }) {
+// Số sao và thời điểm push gần nhất của repo, lấy trong cùng một lần gọi GitHub API
+async function githubRepoInfo({ owner, repo }) {
   try {
     const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
       headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, 'User-Agent': 'AI-HUB-validator' },
@@ -173,7 +175,10 @@ async function githubStars({ owner, repo }) {
     });
     if (!res.ok) return null;
     const body = await res.json();
-    return typeof body.stargazers_count === 'number' ? body.stargazers_count : null;
+    return {
+      stars: typeof body.stargazers_count === 'number' ? body.stargazers_count : null,
+      pushedAt: typeof body.pushed_at === 'string' ? body.pushed_at : null
+    };
   } catch (_) {
     return null;
   }
@@ -207,6 +212,7 @@ async function main() {
   const sourceStatus = new Map();
   const missingPackagesByTool = new Map();
   const starsByTool = new Map();
+  const pushedAtByTool = new Map();
   if (ONLINE) {
     const repoKeys = [...new Set(tools.map(t => parseGithubRepo(t.sourceUrl)).filter(Boolean).map(r => `${r.owner}/${r.repo}`))];
     process.stderr.write(`Kiểm tra ${repoKeys.length} repo GitHub...\n`);
@@ -256,21 +262,21 @@ async function main() {
     }
 
     if (GITHUB_TOKEN) {
-      const rootRepoKeys = new Set(tools.filter(t => !GITHUB_PATH_RE.test(t.sourceUrl || ''))
-        .map(t => parseGithubRepo(t.sourceUrl)).filter(Boolean).map(r => `${r.owner}/${r.repo}`));
-      const okRepos = repoKeys.filter(k => repoResults.get(k) === 'ok' && rootRepoKeys.has(k));
-      process.stderr.write(`Lấy số sao thật của ${okRepos.length} repo từ GitHub API...\n`);
-      const starResults = await runPool(okRepos, key => {
+      const okRepos = repoKeys.filter(k => repoResults.get(k) === 'ok');
+      process.stderr.write(`Lấy số sao và thời điểm cập nhật của ${okRepos.length} repo từ GitHub API...\n`);
+      const infoResults = await runPool(okRepos, key => {
         const [owner, repo] = key.split('/');
-        return githubStars({ owner, repo });
+        return githubRepoInfo({ owner, repo });
       });
       for (const t of tools) {
+        const gh = parseGithubRepo(t.sourceUrl);
+        const info = gh ? infoResults.get(`${gh.owner}/${gh.repo}`) : null;
+        if (!info) continue;
+        // Thời điểm push áp dụng cho mọi công cụ nằm trong repo, kể cả thành phần trong thư mục con
+        if (info.pushedAt) pushedAtByTool.set(t.id, info.pushedAt);
         // Chỉ gán số sao cho công cụ trỏ tới gốc repo. Thành phần nằm trong một repo lớn (ví dụ
         // claude-code-templates/cli-tool/components/...) không mang số sao của cả repo.
-        if (GITHUB_PATH_RE.test(t.sourceUrl || '')) continue;
-        const gh = parseGithubRepo(t.sourceUrl);
-        const stars = gh ? starResults.get(`${gh.owner}/${gh.repo}`) : null;
-        if (typeof stars === 'number') starsByTool.set(t.id, stars);
+        if (!GITHUB_PATH_RE.test(t.sourceUrl || '') && typeof info.stars === 'number') starsByTool.set(t.id, info.stars);
       }
     }
   }
@@ -292,6 +298,8 @@ async function main() {
       const status = sourceStatus.get(t.id) || 'unknown';
       const verifiedStars = starsByTool.get(t.id);
       if (typeof verifiedStars === 'number') t.stars = verifiedStars;
+      const pushedAt = pushedAtByTool.get(t.id);
+      if (pushedAt) t.repoPushedAt = pushedAt;
       t.linkHealth = status === 'ok' ? 'healthy' : status === 'missing' ? 'broken' : 'unchecked';
       t.verification = {
         checkedAt: report.checkedAt,

@@ -4,6 +4,13 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.3.0 (Ngày 29-10-2026)
+- **Loại hình**: Sắp xếp lại giao diện trang chủ.
+- Thêm mục **Repo mới cập nhật** ngay dưới Hero (`frontend/src/components/RecentlyUpdated.tsx`): 8 công cụ có repo cập nhật gần nhất, mới nhất đứng đầu.
+- Thứ tự trang chủ mới: Hero → Repo mới cập nhật → Tài nguyên nổi bật → 3 nhóm tài nguyên chính → Chọn theo nhu cầu → Kho công cụ.
+- Thẻ công cụ hiển thị thời gian cập nhật gần nhất ("5 ngày trước").
+- Trường dữ liệu mới `repoPushedAt`; `database/scripts/validate-data.cjs` lấy thêm `pushed_at` từ GitHub API (workflow `cap-nhat-so-sao.yml` hằng tuần tự cập nhật).
+
 ### Phiên Bản 2.2.3 (Ngày 29-10-2026)
 - **Loại hình**: Thêm 2 tài nguyên, tệp dữ kiện `database/scripts/facts/2026-10-29-opc-vn-business-law.json` và `2026-10-29-deeptutor.json`.
 - **OPC VN Business Law** (`diginno-net/opc-vn-business-law`, nội dung CC BY 4.0, script MIT): skill tham khảo pháp lý, thuế, kế toán cho doanh nghiệp một người tại Việt Nam (chọn mô hình hộ kinh doanh / DNTN / TNHH MTV, chuyển đổi hộ kinh doanh lên công ty, kế toán siêu nhỏ, thuế TNDN/GTGT, dự thảo Luật Phát triển DNNVV 2026). Lĩnh vực: pháp lý & dịch vụ công, hóa đơn điện tử & thuế, kế toán.

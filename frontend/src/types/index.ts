@@ -152,6 +152,7 @@ export interface AITool {
   contributedBy?: string; // Email người đóng góp
   contributedAt?: string; // Thời gian gửi đóng góp
   updatedAt?: string; // Thời gian cập nhật công cụ gần nhất
+  repoPushedAt?: string; // Thời điểm repo GitHub nguồn được push gần nhất (lấy từ GitHub API khi kiểm định dữ liệu)
   reviewNote?: string; // Ghi chú xét duyệt của Quản trị viên
   stars?: number;
   featured?: boolean;
