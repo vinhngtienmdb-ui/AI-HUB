@@ -174192,5 +174192,179 @@
       "starsVerified": true
     },
     "stars": 3406
+  },
+  {
+    "id": "diginno-net-opc-vn-business-law",
+    "slug": "diginno-net-opc-vn-business-law",
+    "name": "OPC VN Business Law — Skill AI pháp lý, thuế, kế toán cho doanh nghiệp một người tại Việt Nam",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "skill",
+    "typeNameVi": "Skill",
+    "category": "legal_public_service",
+    "categoryNameVi": "Pháp luật & Dịch vụ công số",
+    "categories": [
+      "legal_public_service",
+      "e_invoice_tax",
+      "accounting_finance"
+    ],
+    "categoryNamesVi": [
+      "Pháp luật & Dịch vụ công số",
+      "Hóa đơn điện tử, Thuế & Chữ ký số (e-Tax)",
+      "Kế toán doanh nghiệp & Báo cáo tài chính"
+    ],
+    "isVietnamMarket": true,
+    "platforms": [
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/diginno-net/opc-vn-business-law",
+    "websiteUrl": "",
+    "authorName": "Diginno",
+    "license": "Mã nguồn mở (nội dung CC BY 4.0, script MIT)",
+    "summaryVi": "OPC VN Business Law là skill AI (SKILL.md + thư mục references/, assets/, scripts/) giúp Claude Code, Codex, OpenCode trả lời câu hỏi pháp lý, thuế và kế toán cho doanh nghiệp một người tại Việt Nam: chọn mô hình hộ kinh doanh, doanh nghiệp tư nhân hay TNHH một thành viên, chuyển hộ kinh doanh lên công ty, Chủ tịch công ty, kế toán trưởng, chế độ kế toán siêu nhỏ và thuế TNDN/GTGT. Skill có tệp `references/00-legal-status.md` làm nguồn sự thật về văn bản nào đang hiệu lực, văn bản nào còn là dự thảo (như dự thảo Luật Phát triển DNNVV 2026), kèm script Python so sánh thuế theo % doanh thu với kê khai.",
+    "purposeVi": "Dành cho chủ hộ kinh doanh, freelancer, người mới thành lập công ty, kế toán dịch vụ và consultant cần trả lời nhanh nên kinh doanh dưới mô hình nào, chuyển đổi cần gì và chọn cách nộp thuế nào; là tài liệu tham khảo, không thay thế tư vấn pháp lý.",
+    "featuresVi": [
+      "So sánh mô hình kinh doanh: hộ kinh doanh, DNTN, TNHH MTV, TNHH 2TV, cổ phần",
+      "Quy trình 12 bước chuyển đổi hộ kinh doanh lên công ty, kèm checklist chuyển đổi",
+      "Quản trị công ty TNHH một thành viên: Chủ tịch công ty, Giám đốc, người đại diện, mẫu điều lệ tối giản",
+      "Kế toán: kế toán trưởng, Thông tư 58/2026, chế độ kế toán siêu nhỏ, lựa chọn TT99/TT133",
+      "Thuế TNDN/GTGT: chọn phương pháp, lịch kê khai; script `so_sanh_thue.py` sàng lọc điều kiện trước rồi mới mô phỏng thuế % doanh thu với kê khai",
+      "Dự thảo Luật Phát triển DNNVV 2026 (Điều 20 khoản 8) được tách riêng, ghi rõ trạng thái dự thảo",
+      "Rủi ro và cờ đỏ: chỉ ra khi nào cần chuyển luật sư/kế toán hành nghề; bộ câu hỏi tư vấn 30 phút",
+      "Bộ kiểm thử: unit test, eval CLI tự động và rubric chấm câu trả lời"
+    ],
+    "installGuideVi": "Yêu cầu: Công cụ AI đọc được skill dạng SKILL.md (Claude Code, Codex, OpenCode hoặc harness khác có thư mục skills/). Python 3 nếu muốn chạy script so sánh thuế và bộ kiểm thử.\nBước 1: Cài đặt cho Claude Code bằng Git: `git clone https://github.com/diginno-net/opc-vn-business-law.git ~/.claude/skills/opc-vn-business-law`\nBước 2: Hoặc sao chép thư mục repo vào `~/.codex/skills/opc-vn-business-law/` (Codex), `~/.config/opencode/skills/opc-vn-business-law/` (OpenCode) hoặc thư mục `skills/` của harness khác; giữ nguyên cấu trúc, SKILL.md phải nằm ở gốc\nBước 3: Kiểm tra từ repo clone: `python3 scripts/so_sanh_thue.py --self-test`, `python3 -m unittest discover -s tests -v` và `python3 scripts/run_evals.py`",
+    "usageGuideVi": "Bước 1: Đọc `DISCLAIMER.md` trước khi dùng: nội dung là tham khảo, không phải tư vấn pháp lý.\nBước 2: Đặt câu hỏi bằng ngôn ngữ tự nhiên; agent đọc SKILL.md, mở tệp chuyên đề tương ứng trong `references/` và trả lời theo mẫu có miễn trừ trách nhiệm.\nBước 3: Để so sánh thuế, chạy `python3 scripts/so_sanh_thue.py` với doanh thu, doanh thu căn cứ, ngành, khả năng xác định chi phí và ngoại lệ; tỷ lệ nhập dạng thập phân (1,5% là `0.015`).\nBước 4: Kiểm tra văn bản gốc và hỏi luật sư/kế toán hành nghề trước khi quyết định.",
+    "samplePromptsVi": [
+      "Tôi đang là hộ kinh doanh bán hàng online, doanh thu 6 tỷ/năm. Có nên lên công ty TNHH một thành viên?",
+      "Công ty TNHH một thành viên có bắt buộc Chủ tịch công ty không?",
+      "Doanh nghiệp siêu nhỏ có cần kế toán trưởng không?",
+      "So sánh giúp tôi thuế theo % doanh thu và kê khai, doanh thu 8 tỷ, lợi nhuận 1,2 tỷ.",
+      "Soạn checklist chuyển đổi hộ kinh doanh lên công ty cho tôi."
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "git clone https://github.com/diginno-net/opc-vn-business-law.git ~/.claude/skills/opc-vn-business-law",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"git clone https://github.com/diginno-net/opc-vn-business-law.git ~/.claude/skills/opc-vn-business-law\"\n  ],\n  \"nguon\": \"https://github.com/diginno-net/opc-vn-business-law\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Nội dung CC BY 4.0 và script MIT, dùng được cả mục đích thương mại khi ghi công và giữ miễn trừ trách nhiệm",
+      "Tách rõ văn bản đang hiệu lực và dự thảo, ghi mốc rà soát pháp lý",
+      "Script thuế không tự gán tỷ lệ mặc định, trả về thiếu dữ kiện thay vì đưa số sai",
+      "Có unit test, eval và rubric chấm câu trả lời; nội dung 100% tiếng Việt"
+    ],
+    "consVi": [
+      "Chỉ là tài liệu tham khảo, không thay thế tư vấn của luật sư/kế toán hành nghề",
+      "Không bao gồm tranh chấp, tố tụng, M&A, đầu tư nước ngoài, phá sản, ngành nghề có điều kiện phức tạp",
+      "Rà soát pháp lý mới một phần (thuế/kế toán ngày 28/10/2026); script chưa tính miễn/giảm thuế theo NQ43/2026",
+      "Bản 1.1.0 mới có trên nhánh main, gói tải trong Releases vẫn là 1.0.2"
+    ],
+    "languages": [
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# OPC VN Business Law — Skill AI pháp lý, thuế, kế toán cho doanh nghiệp một người tại Việt Nam\n\n> Skill tham khảo pháp lý – thuế – kế toán cho doanh nghiệp một người tại Việt Nam.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nOPC VN Business Law là skill AI (SKILL.md + thư mục references/, assets/, scripts/) giúp Claude Code, Codex, OpenCode trả lời câu hỏi pháp lý, thuế và kế toán cho doanh nghiệp một người tại Việt Nam: chọn mô hình hộ kinh doanh, doanh nghiệp tư nhân hay TNHH một thành viên, chuyển hộ kinh doanh lên công ty, Chủ tịch công ty, kế toán trưởng, chế độ kế toán siêu nhỏ và thuế TNDN/GTGT. Skill có tệp `references/00-legal-status.md` làm nguồn sự thật về văn bản nào đang hiệu lực, văn bản nào còn là dự thảo (như dự thảo Luật Phát triển DNNVV 2026), kèm script Python so sánh thuế theo % doanh thu với kê khai.\n\nDành cho chủ hộ kinh doanh, freelancer, người mới thành lập công ty, kế toán dịch vụ và consultant cần trả lời nhanh nên kinh doanh dưới mô hình nào, chuyển đổi cần gì và chọn cách nộp thuế nào; là tài liệu tham khảo, không thay thế tư vấn pháp lý.\n\n- **Loại hình thành phần:** Skill\n- **Lĩnh vực chuyên môn:** Pháp luật & Dịch vụ công số\n- **Tác giả / Nhà phát triển:** Diginno\n- **Giấy phép bản quyền:** Mã nguồn mở (nội dung CC BY 4.0, script MIT)\n- **Nền tảng hỗ trợ:** `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/diginno-net/opc-vn-business-law](https://github.com/diginno-net/opc-vn-business-law)\n- **Thị trường tối ưu:** Thị trường Việt Nam\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **So sánh mô hình kinh doanh: hộ kinh doanh, DNTN, TNHH MTV, TNHH 2TV, cổ phần**\n- **Quy trình 12 bước chuyển đổi hộ kinh doanh lên công ty, kèm checklist chuyển đổi**\n- **Quản trị công ty TNHH một thành viên: Chủ tịch công ty, Giám đốc, người đại diện, mẫu điều lệ tối giản**\n- **Kế toán: kế toán trưởng, Thông tư 58/2026, chế độ kế toán siêu nhỏ, lựa chọn TT99/TT133**\n- **Thuế TNDN/GTGT: chọn phương pháp, lịch kê khai; script `so_sanh_thue.py` sàng lọc điều kiện trước rồi mới mô phỏng thuế % doanh thu với kê khai**\n- **Dự thảo Luật Phát triển DNNVV 2026 (Điều 20 khoản 8) được tách riêng, ghi rõ trạng thái dự thảo**\n- **Rủi ro và cờ đỏ: chỉ ra khi nào cần chuyển luật sư/kế toán hành nghề; bộ câu hỏi tư vấn 30 phút**\n- **Bộ kiểm thử: unit test, eval CLI tự động và rubric chấm câu trả lời**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ngit clone https://github.com/diginno-net/opc-vn-business-law.git ~/.claude/skills/opc-vn-business-law\n```\n\nYêu cầu: Công cụ AI đọc được skill dạng SKILL.md (Claude Code, Codex, OpenCode hoặc harness khác có thư mục skills/). Python 3 nếu muốn chạy script so sánh thuế và bộ kiểm thử.\nBước 1: Cài đặt cho Claude Code bằng Git: `git clone https://github.com/diginno-net/opc-vn-business-law.git ~/.claude/skills/opc-vn-business-law`\nBước 2: Hoặc sao chép thư mục repo vào `~/.codex/skills/opc-vn-business-law/` (Codex), `~/.config/opencode/skills/opc-vn-business-law/` (OpenCode) hoặc thư mục `skills/` của harness khác; giữ nguyên cấu trúc, SKILL.md phải nằm ở gốc\nBước 3: Kiểm tra từ repo clone: `python3 scripts/so_sanh_thue.py --self-test`, `python3 -m unittest discover -s tests -v` và `python3 scripts/run_evals.py`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Đọc `DISCLAIMER.md` trước khi dùng: nội dung là tham khảo, không phải tư vấn pháp lý.\nBước 2: Đặt câu hỏi bằng ngôn ngữ tự nhiên; agent đọc SKILL.md, mở tệp chuyên đề tương ứng trong `references/` và trả lời theo mẫu có miễn trừ trách nhiệm.\nBước 3: Để so sánh thuế, chạy `python3 scripts/so_sanh_thue.py` với doanh thu, doanh thu căn cứ, ngành, khả năng xác định chi phí và ngoại lệ; tỷ lệ nhập dạng thập phân (1,5% là `0.015`).\nBước 4: Kiểm tra văn bản gốc và hỏi luật sư/kế toán hành nghề trước khi quyết định.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tôi đang là hộ kinh doanh bán hàng online, doanh thu 6 tỷ/năm. Có nên lên công ty TNHH một thành viên?\"\n- \"Công ty TNHH một thành viên có bắt buộc Chủ tịch công ty không?\"\n- \"Doanh nghiệp siêu nhỏ có cần kế toán trưởng không?\"\n- \"So sánh giúp tôi thuế theo % doanh thu và kê khai, doanh thu 8 tỷ, lợi nhuận 1,2 tỷ.\"\n- \"Soạn checklist chuyển đổi hộ kinh doanh lên công ty cho tôi.\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T09:27:10.843Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "hkuds-deeptutor",
+    "slug": "hkuds-deeptutor",
+    "name": "DeepTutor — Gia sư AI cá nhân hóa: hỏi đáp, giải bài, tạo quiz, học từ tài liệu và video",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "education_edtech",
+    "categoryNameVi": "Giáo dục trực tuyến & Quản lý đào tạo (EdTech)",
+    "categories": [
+      "education_edtech",
+      "nlp_llm",
+      "vector_rag"
+    ],
+    "categoryNamesVi": [
+      "Giáo dục trực tuyến & Quản lý đào tạo (EdTech)",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/HKUDS/DeepTutor",
+    "websiteUrl": "https://deeptutor.info",
+    "authorName": "HKUDS (Data Intelligence Lab, Đại học Hồng Kông)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "DeepTutor là không gian học tập dựa trên tác tử AI, gộp gia sư hỏi đáp, giải bài, tạo câu hỏi trắc nghiệm, nghiên cứu, trực quan hóa và luyện tập theo lộ trình thành thạo trong một hệ thống mở rộng được. Ứng dụng gồm Web app và CLI, chạy cục bộ hoặc bằng Docker, dùng mô hình của nhà cung cấp LLM bạn chọn (kể cả Ollama, LM Studio, llama.cpp chạy cục bộ). Kho tri thức RAG hỗ trợ nhiều engine (LlamaIndex, PageIndex, GraphRAG, LightRAG...) và bộ nhớ cá nhân hóa xem và chỉnh được.",
+    "purposeVi": "Giúp người học có một gia sư AI cá nhân hóa lâu dài: học từ tài liệu, sách và video của chính mình, luyện tập có theo dõi lỗi sai và lặp lại theo lịch, trong khi dữ liệu nằm trên máy hoặc máy chủ tự host.",
+    "featuresVi": [
+      "Một runtime cho mọi chế độ: Chat, đặt câu hỏi, Quiz, Research, Visualize, Solve, Mastery Path, Immersive Reading, Audio Overview dùng chung ngữ cảnh phiên",
+      "Kho tri thức đa engine: thư viện RAG có phiên bản trên LlamaIndex, PageIndex, GraphRAG, LightRAG, WeKnora, vault Obsidian, kèm bộ phân tích tài liệu tùy chọn",
+      "Học qua video: thêm link YouTube hoặc Bilibili để xem, tìm trong phụ đề, hỏi gia sư theo mốc thời gian và lưu ghi chú",
+      "Sách học tương tác: mỗi chương gồm khối văn bản, quiz, flash card, dòng thời gian, mã, hình, đồ thị khái niệm, kèm Page Chat riêng",
+      "Subagent và Partner: từ Chat hỏi trực tiếp Claude Code, Codex, opencode, Antigravity, Hermes, OpenClaw...; chạy bạn đồng hành trên các kênh nhắn tin",
+      "Công cụ và skill mở rộng: công cụ sẵn có, máy chủ MCP, CLI app, mô hình sinh ảnh/video/giọng nói, skill cộng đồng cài từ EduHub",
+      "Bộ nhớ minh bạch: các tầng L1/L2/L3 và Memory Graph cho thấy và cho phép sửa thông tin cá nhân hóa",
+      "Bảng nhiệm vụ học tập (To do, In progress, Done), ngân hàng câu hỏi, luyện tập theo dõi lỗi sai và lặp lại ngắt quãng"
+    ],
+    "installGuideVi": "Yêu cầu: Docker (cách nhanh nhất); hoặc Python 3.11–3.14 và Node.js 20+ trên PATH để cài bằng pip. Cần khóa API của một nhà cung cấp LLM hoặc mô hình chạy cục bộ (Ollama, LM Studio, llama.cpp); embedding tùy chọn cho kho tri thức RAG.\nBước 1: Chạy thử bằng Docker: `docker run --rm --name deeptutor -p 127.0.0.1:3782:3782 -v deeptutor-data:/app/data ghcr.io/hkuds/deeptutor:latest`, rồi mở http://127.0.0.1:3782\nBước 2: Hoặc cài bằng pip: tạo thư mục `mkdir -p my-deeptutor && cd my-deeptutor`, chạy `pip install -U \"deeptutor[full]\"`\nBước 3: Khởi tạo cấu hình: `deeptutor init` (hỏi cổng backend 8001, cổng frontend 3782, nhà cung cấp LLM, embedding và tìm kiếm tùy chọn)\nBước 4: Khởi động backend và frontend: `deeptutor start`, mở địa chỉ in ra trong terminal (mặc định http://127.0.0.1:3782)\nBước 5: Tùy chọn cài engine LightRAG: `pip install 'deeptutor[rag-lightrag]'`",
+    "usageGuideVi": "Bước 1: Vào Settings → Providers và Language models để cấu hình nhà cung cấp và mô hình LLM.\nBước 2: Tạo kho tri thức từ tài liệu (ví dụ `deeptutor kb create my-kb --doc textbook.pdf`) hoặc thêm sách, link video vào mục Reading.\nBước 3: Chọn chế độ trong Chat (Solve, Quiz, Research, Visualize...) và đặt câu hỏi; gia sư tự gọi công cụ khi cần.\nBước 4: Dùng CLI không cần giao diện: `deeptutor chat`, `deeptutor run deep_solve \"Solve x^2 = 4\" --kb my-kb`.",
+    "samplePromptsVi": [
+      "Giải thích biến đổi Fourier cho người mới bắt đầu, kèm ví dụ trực quan",
+      "Dựa trên giáo trình trong kho tri thức my-kb, tạo 10 câu trắc nghiệm chương 3 và chấm điểm bài làm của tôi",
+      "Lập lộ trình học xác suất thống kê trong 4 tuần và theo dõi tiến độ trên bảng nhiệm vụ"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install -U \"deeptutor[full]\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install -U \\\"deeptutor[full]\\\"\"\n  ],\n  \"nguon\": \"https://github.com/HKUDS/DeepTutor\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, tự host; chi phí gọi API LLM tùy nhà cung cấp",
+    "prosVi": [
+      "Giấy phép Apache 2.0, tự host, dữ liệu học tập lưu trong thư mục runtime hoặc volume Docker của bạn",
+      "Dùng được nhiều nhà cung cấp LLM và mô hình chạy cục bộ",
+      "Nhiều chế độ học trong một ứng dụng, có cả Web app lẫn CLI và skill SKILL.md cho agent",
+      "Cập nhật rất thường xuyên, tài liệu hướng dẫn chi tiết tại deeptutor.info"
+    ],
+    "consVi": [
+      "Hệ thống lớn, nhiều tùy chọn; cài từ mã nguồn cần cả Python và Node.js",
+      "Cần khóa API LLM hoặc máy đủ mạnh để chạy mô hình cục bộ; RAG cần thêm embedding",
+      "Một số tính năng cần cài thêm (LightRAG, GraphRAG, Manim, giọng nói), có tính năng cần LaTeX/ffmpeg",
+      "README chưa có bản tiếng Việt (có tiếng Anh, Trung, Nhật, Tây Ban Nha, Pháp, Thái...)"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# DeepTutor — Gia sư AI cá nhân hóa: hỏi đáp, giải bài, tạo quiz, học từ tài liệu và video\n\n> DeepTutor is an agent-native learning workspace that connects tutoring, problem solving, quiz generation, research, visualization, and mastery practice in one extensible system.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nDeepTutor là không gian học tập dựa trên tác tử AI, gộp gia sư hỏi đáp, giải bài, tạo câu hỏi trắc nghiệm, nghiên cứu, trực quan hóa và luyện tập theo lộ trình thành thạo trong một hệ thống mở rộng được. Ứng dụng gồm Web app và CLI, chạy cục bộ hoặc bằng Docker, dùng mô hình của nhà cung cấp LLM bạn chọn (kể cả Ollama, LM Studio, llama.cpp chạy cục bộ). Kho tri thức RAG hỗ trợ nhiều engine (LlamaIndex, PageIndex, GraphRAG, LightRAG...) và bộ nhớ cá nhân hóa xem và chỉnh được.\n\nGiúp người học có một gia sư AI cá nhân hóa lâu dài: học từ tài liệu, sách và video của chính mình, luyện tập có theo dõi lỗi sai và lặp lại theo lịch, trong khi dữ liệu nằm trên máy hoặc máy chủ tự host.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Giáo dục trực tuyến & Quản lý đào tạo (EdTech)\n- **Tác giả / Nhà phát triển:** HKUDS (Data Intelligence Lab, Đại học Hồng Kông)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`, `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Một runtime cho mọi chế độ: Chat, đặt câu hỏi, Quiz, Research, Visualize, Solve, Mastery Path, Immersive Reading, Audio Overview dùng chung ngữ cảnh phiên**\n- **Kho tri thức đa engine: thư viện RAG có phiên bản trên LlamaIndex, PageIndex, GraphRAG, LightRAG, WeKnora, vault Obsidian, kèm bộ phân tích tài liệu tùy chọn**\n- **Học qua video: thêm link YouTube hoặc Bilibili để xem, tìm trong phụ đề, hỏi gia sư theo mốc thời gian và lưu ghi chú**\n- **Sách học tương tác: mỗi chương gồm khối văn bản, quiz, flash card, dòng thời gian, mã, hình, đồ thị khái niệm, kèm Page Chat riêng**\n- **Subagent và Partner: từ Chat hỏi trực tiếp Claude Code, Codex, opencode, Antigravity, Hermes, OpenClaw...; chạy bạn đồng hành trên các kênh nhắn tin**\n- **Công cụ và skill mở rộng: công cụ sẵn có, máy chủ MCP, CLI app, mô hình sinh ảnh/video/giọng nói, skill cộng đồng cài từ EduHub**\n- **Bộ nhớ minh bạch: các tầng L1/L2/L3 và Memory Graph cho thấy và cho phép sửa thông tin cá nhân hóa**\n- **Bảng nhiệm vụ học tập (To do, In progress, Done), ngân hàng câu hỏi, luyện tập theo dõi lỗi sai và lặp lại ngắt quãng**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install -U \"deeptutor[full]\"\n```\n\nYêu cầu: Docker (cách nhanh nhất); hoặc Python 3.11–3.14 và Node.js 20+ trên PATH để cài bằng pip. Cần khóa API của một nhà cung cấp LLM hoặc mô hình chạy cục bộ (Ollama, LM Studio, llama.cpp); embedding tùy chọn cho kho tri thức RAG.\nBước 1: Chạy thử bằng Docker: `docker run --rm --name deeptutor -p 127.0.0.1:3782:3782 -v deeptutor-data:/app/data ghcr.io/hkuds/deeptutor:latest`, rồi mở http://127.0.0.1:3782\nBước 2: Hoặc cài bằng pip: tạo thư mục `mkdir -p my-deeptutor && cd my-deeptutor`, chạy `pip install -U \"deeptutor[full]\"`\nBước 3: Khởi tạo cấu hình: `deeptutor init` (hỏi cổng backend 8001, cổng frontend 3782, nhà cung cấp LLM, embedding và tìm kiếm tùy chọn)\nBước 4: Khởi động backend và frontend: `deeptutor start`, mở địa chỉ in ra trong terminal (mặc định http://127.0.0.1:3782)\nBước 5: Tùy chọn cài engine LightRAG: `pip install 'deeptutor[rag-lightrag]'`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Vào Settings → Providers và Language models để cấu hình nhà cung cấp và mô hình LLM.\nBước 2: Tạo kho tri thức từ tài liệu (ví dụ `deeptutor kb create my-kb --doc textbook.pdf`) hoặc thêm sách, link video vào mục Reading.\nBước 3: Chọn chế độ trong Chat (Solve, Quiz, Research, Visualize...) và đặt câu hỏi; gia sư tự gọi công cụ khi cần.\nBước 4: Dùng CLI không cần giao diện: `deeptutor chat`, `deeptutor run deep_solve \"Solve x^2 = 4\" --kb my-kb`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Giải thích biến đổi Fourier cho người mới bắt đầu, kèm ví dụ trực quan\"\n- \"Dựa trên giáo trình trong kho tri thức my-kb, tạo 10 câu trắc nghiệm chương 3 và chấm điểm bài làm của tôi\"\n- \"Lập lộ trình học xác suất thống kê trong 4 tuần và theo dõi tiến độ trên bảng nhiệm vụ\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T09:32:27.528Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]

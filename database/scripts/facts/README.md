@@ -22,7 +22,7 @@ hoặc tự động hóa tài khoản cá nhân trái điều khoản dịch v�
   "meta": {
     "id": "owner-name", "nameVi": "Tên — Mô tả ngắn tiếng Việt",
     "icon": "Brain | Sparkles | Terminal | Workflow | Globe | Database | Search | Code2 | Layers | Box | FolderTree | GitPullRequest | CreditCard | Cpu | Wrench | MessageSquare",
-    "categories": ["mã lĩnh vực có trong kho, ví dụ speech_voice, nlp_llm, payment_gateway, legal_public_service"],
+    "categories": ["mã lĩnh vực có trong kho hoặc CATEGORIES của giao diện, ví dụ speech_voice, nlp_llm, payment_gateway, legal_public_service"],
     "platforms": ["web", "claude_code", "claude_desktop", "cursor"],
     "licenseShort": "Mã nguồn mở (MIT)", "pricingModel": "free", "pricingText": "...",
     "isVietnamMarket": true, "languages": ["Tiếng Việt", "Tiếng Anh"],

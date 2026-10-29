@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { MainCategoryCards } from './components/MainCategoryCards';
 import { FeaturedResources } from './components/FeaturedResources';
+import { RecentlyUpdated } from './components/RecentlyUpdated';
 import { BrowseByNeeds } from './components/BrowseByNeeds';
 import { ToolCard } from './components/ToolCard';
 import { ToolDetailModal } from './components/ToolDetailModal';
@@ -39,6 +40,7 @@ import {
   Maximize2, Minimize2, PanelLeftClose, PanelLeft, Star, ExternalLink, ArrowRight 
 } from 'lucide-react';
 import { formatStars, getVerifiedStars } from './lib/verification';
+import { compareByLastUpdatedDesc } from './lib/recency';
 
 const PAGE_SIZE = 24;
 
@@ -514,18 +516,10 @@ export const App: React.FC = () => {
       return matchQuery && matchCategory && matchType && matchPlatform && matchVietnamMarket;
     });
 
-    // Tự động sắp xếp đưa công cụ mới cập nhật lên đầu danh sách
+    // Tự động sắp xếp đưa công cụ có repo mới cập nhật lên đầu danh sách
     return list.sort((a, b) => {
       if (sortBy === 'newest') {
-        const dateA = a.updatedAt || a.contributedAt || '';
-        const dateB = b.updatedAt || b.contributedAt || '';
-        if (dateA && dateB) {
-          const cmp = dateB.localeCompare(dateA);
-          if (cmp !== 0) return cmp;
-        }
-        if (dateA && !dateB) return -1;
-        if (!dateA && dateB) return 1;
-        return 0;
+        return compareByLastUpdatedDesc(a, b);
       }
       if (sortBy === 'stars') {
         return (b.stars || 0) - (a.stars || 0);
@@ -742,9 +736,16 @@ export const App: React.FC = () => {
             }}
           />
 
-          {/* 3 THẺ NHÓM TÀI NGUYÊN CHÍNH */}
-          <MainCategoryCards
-            onSelectType={(type) => navigateTo({ name: 'category', toolType: type })}
+          {/* REPO MỚI CẬP NHẬT: LUÔN ĐỨNG ĐẦU TRANG CHỦ */}
+          <RecentlyUpdated
+            tools={publishedTools}
+            onSelectTool={(tool) => navigateTo({ name: 'detail', toolId: tool.id })}
+            onViewAll={() => {
+              setSortBy('newest');
+              setCurrentPage(1);
+              const el = document.getElementById('browse-section');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
             isExpanded={isExpandedCanvas}
           />
 
@@ -753,6 +754,12 @@ export const App: React.FC = () => {
             tools={publishedTools}
             onSelectTool={(tool) => navigateTo({ name: 'detail', toolId: tool.id })}
             onViewAll={() => navigateTo({ name: 'category', toolType: 'all' })}
+            isExpanded={isExpandedCanvas}
+          />
+
+          {/* 3 THẺ NHÓM TÀI NGUYÊN CHÍNH */}
+          <MainCategoryCards
+            onSelectType={(type) => navigateTo({ name: 'category', toolType: type })}
             isExpanded={isExpandedCanvas}
           />
 

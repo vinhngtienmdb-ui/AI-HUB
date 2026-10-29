@@ -31,8 +31,13 @@ const TYPE_NAMES = {
 const ICONS = ['Brain', 'Sparkles', 'Terminal', 'Workflow', 'Globe', 'Database', 'Search', 'Code2', 'Layers', 'Box', 'FolderTree', 'GitPullRequest', 'CreditCard', 'Cpu', 'Wrench', 'MessageSquare'];
 
 const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf-8'));
-// Tên lĩnh vực lấy từ chính kho dữ liệu để luôn khớp với giao diện
-const CATEGORY_NAMES = Object.fromEntries(data.map((t) => [t.category, t.categoryNameVi]));
+// Tên lĩnh vực: ưu tiên tên trong kho dữ liệu, bổ sung lĩnh vực giao diện đã khai báo (CATEGORIES) nhưng chưa có công cụ
+const UI_CATEGORIES_FILE = path.join(__dirname, '../../frontend/src/data/mockTools.ts');
+const UI_CATEGORY_NAMES = fs.existsSync(UI_CATEGORIES_FILE)
+  ? Object.fromEntries([...fs.readFileSync(UI_CATEGORIES_FILE, 'utf-8').matchAll(/\{ id: '([a-z_]+)', nameVi: '([^']+)'/g)].map((m) => [m[1], m[2]]))
+  : {};
+delete UI_CATEGORY_NAMES.all;
+const CATEGORY_NAMES = { ...UI_CATEGORY_NAMES, ...Object.fromEntries(data.map((t) => [t.category, t.categoryNameVi])) };
 
 function fail(repo, message) {
   throw new Error(`${repo}: ${message}`);

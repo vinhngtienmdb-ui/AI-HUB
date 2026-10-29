@@ -1,5 +1,30 @@
 # Nhật Ký Dự Án
 
+## [2026-10-29]
+### Mục tiêu trong ngày
+- Sắp xếp lại giao diện trang chủ, đưa repo mới cập nhật lên đầu trang.
+
+### Các công việc đã thực hiện
+- Thêm `frontend/src/lib/recency.ts` (ngày cập nhật gần nhất, so sánh, hiển thị thời gian tương đối tiếng Việt) và `frontend/src/components/RecentlyUpdated.tsx`.
+- Đổi thứ tự các khối trang chủ trong `frontend/src/App.tsx`; thứ tự "Mới cập nhật" của kho công cụ dùng chung hàm so sánh mới.
+- `frontend/src/components/ToolCard.tsx`: hiển thị thời gian cập nhật ở chân thẻ.
+- `database/scripts/validate-data.cjs`: lấy `pushed_at` từ GitHub API, ghi vào trường `repoPushedAt`.
+
+### Quyết định kỹ thuật
+- "Mới cập nhật" ưu tiên thời điểm push thật của repo (`repoPushedAt`), vì `updatedAt` chỉ phản ánh ngày sửa dữ liệu trong kho và chỉ có ở 387/2.538 bản ghi.
+- Lấy `pushed_at` trong cùng lần gọi API lấy số sao nên không tốn thêm lượt gọi; mở rộng lần gọi sang cả repo của thành phần trong thư mục con (số sao vẫn chỉ gán cho công cụ trỏ tới gốc repo).
+
+### Lỗi phát sinh và giải pháp
+- **Vấn đề:** Phiên làm việc không gọi được GitHub API cho repo bên ngoài nên chưa nạp được `repoPushedAt`.
+- **Giải pháp:** Giao diện tạm dùng `updatedAt`; dữ liệu thật được nạp ở lần chạy kế tiếp của workflow `cap-nhat-so-sao.yml` (hoặc chạy tay trong tab Actions).
+- **Vấn đề:** Hai repo thêm hôm nay (DeepTutor, OPC VN Business Law) không xuất hiện ở đầu trang.
+- **Nguyên nhân:** Hai repo nằm ở nhánh `claude/friendly-maxwell-55lxhc`, chưa hợp nhất vào `main`. Khi ghép thử, cả hai hiện đúng ở đầu với nhãn "Hôm nay". Ngoài ra, cách ưu tiên `repoPushedAt` sẽ đẩy repo vừa thêm nhưng lâu không push xuống dưới.
+- **Giải pháp:** Lấy ngày muộn nhất trong `repoPushedAt`, `updatedAt`, `contributedAt`.
+
+### Kết quả đạt được và bước tiếp theo
+- Kết quả: kiểm thử tự động đạt, kiểm tra kiểu TypeScript đạt, đóng gói thành công; đã chụp ảnh trang chủ trên máy tính và điện thoại.
+- Kế hoạch tiếp theo: chạy workflow cập nhật số sao để nạp `repoPushedAt` cho toàn bộ repo GitHub.
+
 ## [2026-10-23]
 ### Mục tiêu trong ngày
 - Rà soát toàn bộ dự án (bảo mật, chất lượng mã nguồn, mức tuân thủ quy trình VibeCode) và xử lý các lỗi bảo mật nghiêm trọng.

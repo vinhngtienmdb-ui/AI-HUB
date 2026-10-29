@@ -108,6 +108,7 @@
 - [x] Dịch thuật và bản địa hóa 100% nội dung mô tả, công dụng, hướng dẫn sử dụng tiếng Anh sang tiếng Việt chuẩn kỹ thuật
 - [x] Xây dựng Cầu nối thực thi lệnh cục bộ an toàn (`frontend/dev-server/commandBridge.js`) kèm danh sách trắng bảo mật
 - [x] Xây dựng Giao diện Thiết bị đầu cuối tương tác (`TerminalDrawer.tsx`) với tính năng truyền luồng kết quả (SSE), lịch sử lệnh và nút chạy lệnh trực tiếp trên từng công cụ
+- [x] Sắp xếp lại trang chủ: mục "Repo mới cập nhật" đứng đầu sau Hero, thẻ công cụ hiển thị thời gian cập nhật, trường `repoPushedAt` lấy từ GitHub API (2026-10-29)
 
 ## Giai Đoạn 10: Kiểm Thử Và Kiểm Soát Chất Lượng
 - [x] Lập kế hoạch kiểm thử (`17_KE_HOACH_KIEM_THU.md`)
