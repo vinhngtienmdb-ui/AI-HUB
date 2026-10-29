@@ -5,10 +5,13 @@
 ## 1. Nhật Ký Phiên Bản
 
 ### Phiên Bản 2.3.1 (Ngày 29-10-2026)
-- **Loại hình**: Thêm 1 tài nguyên, tệp dữ kiện `database/scripts/facts/2026-10-29-deskbox.json`.
+- **Loại hình**: Thêm 3 tài nguyên, tệp dữ kiện `database/scripts/facts/2026-10-29-deskbox.json` và `2026-10-29-hallmark-dochub.json`.
+- **Hallmark** (`Nutlope/hallmark`, MIT, Together AI): skill thiết kế giao diện cho Claude Code, Codex, Cursor, OpenCode; 50 chủ đề, thiết kế lại và rà soát trang, kiểm tra "AI slop" trong trình duyệt thật. Cài bằng `npx skills add nutlope/hallmark -g`. Lĩnh vực: Frontend.
+- **DocHub** (`huungcs/DocHub-OpenSource`, MIT, tác giả Việt Nam): quản lý, lưu trữ, phân quyền tài liệu đa người dùng trên Supabase và Google Drive, triển khai Vercel. Lĩnh vực: Văn phòng số. Không có tính năng AI.
 - **DeskBox** (`Tianyu199509/DeskBox`, GPL-3.0-only): phần mềm sắp xếp màn hình Desktop Windows 10/11 bằng widget WinUI 3 gắn thư mục thật, kèm Todo, Quick Capture, tìm kiếm (qua Everything), thời tiết, điều khiển nhạc; dữ liệu lưu cục bộ. Lĩnh vực: Văn phòng số. Cài bằng bộ cài x64/ARM64 trên GitHub Releases (bản 1.5.9, đã kiểm tra tải được).
-- Ngoại lệ có chủ đích: DeskBox **không có tính năng AI** (các đợt trước loại công cụ không có AI); thêm theo yêu cầu của quản trị viên, tên và mục nhược điểm ghi rõ điều này.
-- Kho dữ liệu: 2.255 công cụ đang hiển thị, 2.335 cấu hình mẫu.
+- Ngoại lệ có chủ đích: DeskBox và DocHub **không có tính năng AI** (các đợt trước loại công cụ không có AI); thêm theo yêu cầu của quản trị viên, tên và mục nhược điểm ghi rõ điều này.
+- Không thêm (đã có trong kho): Postiz (`gitroomhq/postiz-app`), Find Skills (`vercel-labs/skills`, lệnh cài vẫn khớp README).
+- Kho dữ liệu: 2.257 công cụ đang hiển thị, 2.338 cấu hình mẫu.
 
 ### Phiên Bản 2.3.0 (Ngày 29-10-2026)
 - **Loại hình**: Sắp xếp lại giao diện trang chủ.
