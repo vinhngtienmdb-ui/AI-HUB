@@ -4,6 +4,11 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.2.3 (Ngày 29-10-2026)
+- **Loại hình**: Thêm skill pháp lý cho doanh nghiệp một người, tệp dữ kiện `database/scripts/facts/2026-10-29-opc-vn-business-law.json`.
+- **OPC VN Business Law** (`diginno-net/opc-vn-business-law`, nội dung CC BY 4.0, script MIT): skill tham khảo pháp lý, thuế, kế toán cho doanh nghiệp một người tại Việt Nam (chọn mô hình hộ kinh doanh / DNTN / TNHH MTV, chuyển đổi hộ kinh doanh lên công ty, kế toán siêu nhỏ, thuế TNDN/GTGT, dự thảo Luật Phát triển DNNVV 2026). Lĩnh vực: pháp lý & dịch vụ công, hóa đơn điện tử & thuế, kế toán.
+- Kho dữ liệu: 2.253 công cụ đang hiển thị, 2.332 cấu hình mẫu.
+
 ### Phiên Bản 2.2.2 (Ngày 24-10-2026)
 - **Loại hình**: An ninh mạng, SEO & nội dung, nhân sự / pháp lý / văn phòng, đợt 15 (21 tài nguyên), tệp dữ kiện `database/scripts/facts/2026-10-24-dot-15-*.json`.
 - **An ninh mạng (chỉ dùng cho hệ thống của mình hoặc được phép kiểm thử)**: Trivy MCP, GhidraMCP, PentestGPT (chỉ cho giáo dục và kiểm thử được cấp phép), Nuclei, ModelScan, TruffleHog (AGPL-3.0), Gitleaks.
