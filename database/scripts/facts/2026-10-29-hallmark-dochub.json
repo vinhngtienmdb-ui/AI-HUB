@@ -1,0 +1,153 @@
+[
+  {
+    "repo": "Nutlope/hallmark",
+    "license": "MIT License",
+    "authorName": "Together AI (Hallmark contributors)",
+    "websiteUrl": "https://www.usehallmark.com",
+    "toolType": "skill",
+    "taglineEn": "A design skill for Claude Code, Codex, Cursor and OpenCode that refuses to look AI-generated.",
+    "summaryVi": "Hallmark là skill thiết kế giao diện cho các trợ lý lập trình AI (Claude Code, Codex, Cursor, OpenCode), giúp trang web do AI tạo ra trông như được thiết kế thật thay vì rập khuôn. Skill chọn 3 chủ đề từ thư viện 50 chủ đề, dựng trang theo đúng mục đích của khách truy cập, rồi kiểm tra kết quả trong trình duyệt thật để bắt các dấu hiệu 'AI slop'. Cuối cùng một subagent với ngữ cảnh mới rà soát lại trang.",
+    "purposeVi": "Giúp người dùng trợ lý lập trình AI tạo, thiết kế lại hoặc rà soát trang web có chất lượng thiết kế cao, đạt chuẩn tối thiểu về độ tương phản, focus, giảm chuyển động và hiển thị trên điện thoại, không bịa số liệu.",
+    "featuresVi": [
+      "50 chủ đề: mỗi chủ đề là một chất liệu (giấy, chữ, màu, bề mặt, thành phần riêng) kèm ảnh trang mẫu",
+      "Dựng theo mục đích trang: trang đặt lịch thì đặt lịch, cửa hàng thì bán hàng; nút hành động nằm đúng chỗ",
+      "Chế độ custom: thiết kế chỉ từ prompt, vẫn qua cùng bộ quy tắc và kiểm tra",
+      "Chụp sản phẩm thật: trỏ tới URL, máy chủ dev hoặc ứng dụng để skill tự chụp ảnh màn hình",
+      "Ảnh thật: 755 ảnh có giấy phép mở trên Wikimedia Commons, ghi nguồn trên trang",
+      "Thiết kế lại và rà soát: `/hallmark redesign <đường dẫn>` giữ nội dung và liên kết, `/hallmark audit <đường dẫn>` chỉ báo cáo",
+      "sloplint: kiểm tra trang ở 8 độ rộng màn hình, phân tầng Floor (không bao giờ phát hành), Reflex, Finish"
+    ],
+    "requirementsVi": "Node.js 18 trở lên. Kiểm tra trên trình duyệt (`sloplint --render`, chụp màn hình) cần thêm `npm i -g puppeteer-core` và Chrome; không có thì vẫn chạy được kiểm tra tĩnh.",
+    "installStepsVi": [
+      "Cài cho mọi dự án: `npx skills add nutlope/hallmark -g` (bỏ `-g` để chỉ cài vào dự án hiện tại)",
+      "Chỉ cài cho một công cụ: `npx skills add nutlope/hallmark -g --agent claude-code` (hoặc codex, opencode, cursor, github-copilot)",
+      "Hoặc cài dạng plugin Claude Code: `/plugin marketplace add nutlope/hallmark`, rồi `/plugin install hallmark@hallmark`",
+      "Tùy chọn để kiểm tra trên trình duyệt: `npm i -g puppeteer-core` và cài Chrome"
+    ],
+    "cliCommand": "npx skills add nutlope/hallmark -g",
+    "usageStepsVi": [
+      "Trong Claude Code hoặc Cursor gõ `/hallmark <mô tả trang>` (Codex dùng `$hallmark`), hoặc mô tả trang cần dựng.",
+      "Cung cấp tư liệu thật khi được hỏi (ảnh, ảnh chụp màn hình, số liệu); skill không tự bịa.",
+      "Chọn một trong ba chủ đề được đề xuất, hoặc nói 'custom' để thiết kế riêng.",
+      "Thiết kế lại trang có sẵn bằng `/hallmark redesign ./src/app`, rà soát bằng `/hallmark audit ./index.html`.",
+      "Kiểm tra bất kỳ trang nào: `node skills/hallmark/scripts/sloplint.mjs <tệp-hoặc-thư-mục> --render`."
+    ],
+    "samplePromptsVi": [
+      "/hallmark Trang đặt lịch cho phòng khám nha khoa ở Đà Nẵng, khách đặt lịch ngay trên trang",
+      "/hallmark audit ./index.html",
+      "/hallmark redesign ./src/app, giữ bố cục, chỉ sửa các dấu hiệu trông như AI tạo"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, dùng được với nhiều trợ lý lập trình AI",
+      "Có bộ kiểm tra tự động trong trình duyệt và bước rà soát độc lập",
+      "Thiết kế lại có kiểm tra không làm mất liên kết, trường nhập, trình xử lý sự kiện",
+      "Ảnh dùng giấy phép mở và được ghi nguồn"
+    ],
+    "consVi": [
+      "Kiểm tra trên trình duyệt cần cài thêm puppeteer-core và Chrome",
+      "Tạo ra trang HTML và CSS độc lập, không sinh mã theo framework của dự án",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "sourceEvidence": {
+      "npx skills add nutlope/hallmark -g": "README.md:88",
+      "npm i -g puppeteer-core": "README.md:91",
+      "npx skills add nutlope/hallmark -g --agent claude-code": "README.md:100",
+      "/plugin marketplace add nutlope/hallmark": "README.md:101",
+      "/plugin install hallmark@hallmark": "README.md:101",
+      "/hallmark redesign ./src/app": "README.md:79",
+      "/hallmark audit ./index.html": "README.md:80",
+      "node skills/hallmark/scripts/sloplint.mjs <file-or-dir> --render": "README.md:103",
+      "license MIT": "LICENSE:1, README.md:112"
+    },
+    "meta": {
+      "id": "nutlope-hallmark",
+      "nameVi": "Hallmark — Skill thiết kế giao diện cho Claude Code, Codex, Cursor, không trông như AI tạo",
+      "icon": "Sparkles",
+      "categories": ["frontend_ui"],
+      "platforms": ["claude_code", "cursor"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "claude_code", "platformName": "Claude Code", "cliCommand": "npx skills add nutlope/hallmark -g --agent claude-code" },
+        { "platform": "cursor", "platformName": "Cursor", "cliCommand": "npx skills add nutlope/hallmark -g --agent cursor" }
+      ]
+    }
+  },
+  {
+    "repo": "huungcs/DocHub-OpenSource",
+    "license": "MIT License",
+    "authorName": "huungcs",
+    "websiteUrl": "",
+    "toolType": "software",
+    "taglineEn": "Hệ thống quản lý, lưu trữ và phân quyền tài liệu đa người dùng, tích hợp Supabase và Google Drive.",
+    "summaryVi": "DocHub là hệ thống quản lý, lưu trữ và phân quyền tài liệu đa người dùng do tác giả Việt Nam phát triển, giao diện tiếng Việt. Đăng nhập và phân quyền dùng Supabase (PostgreSQL với Row Level Security), tệp lưu trên Google Drive, triển khai được lên Vercel. Bản chia sẻ cộng đồng đã làm sạch, không chứa khóa bí mật; người dùng tự tạo dự án Supabase và Google Cloud của mình. Lưu ý: DocHub không có tính năng AI; được đưa vào AI HUB như phần mềm văn phòng số.",
+    "purposeVi": "Giúp tổ chức, phòng ban tự dựng kho tài liệu dùng chung có thư mục, phân quyền theo thành viên và lưu tệp trên Google Drive của chính mình.",
+    "featuresVi": [
+      "Quản lý tài liệu theo thư mục, nhiều người dùng, giao diện tiếng Việt trên máy tính và điện thoại",
+      "Phân quyền tổ chức và thành viên trên PostgreSQL Row Level Security (Supabase), có lời mời và liên kết mời",
+      "Lưu tệp trên Google Drive, đồng bộ quyền và cây thư mục với Drive",
+      "Đăng nhập bằng Google qua Supabase Auth",
+      "Lược đồ cơ sở dữ liệu quản lý bằng migration có thứ tự, chạy bằng `npm run db:migrate`",
+      "Triển khai Vercel với `vercel.json` cấu hình sẵn"
+    ],
+    "requirementsVi": "Node.js 20+, tài khoản Supabase, dự án Google Cloud (bật Google Drive API và OAuth client); Vercel nếu muốn triển khai.",
+    "installStepsVi": [
+      "Cài gói phụ thuộc: `npm install`",
+      "Tạo tệp cấu hình: `cp .env.example .env` (Windows: `copy .env.example .env`), điền Supabase URL/keys, mật khẩu cơ sở dữ liệu, Google OAuth client",
+      "Sửa `src/config/client-config.js`: điền SUPABASE_URL và anon key (không đưa service role key vào mã trình duyệt); thay tên miền mẫu trong các tệp mà hướng dẫn liệt kê",
+      "Tạo cơ sở dữ liệu: `npm run db:migrate`; trong Supabase bật nhà cung cấp Google, trong Google Cloud bật Google Drive API và thêm redirect URI của Supabase",
+      "Chạy: `npm run build && node server.js`, mở http://localhost:3000"
+    ],
+    "cliCommand": "npm run build && node server.js",
+    "usageStepsVi": [
+      "Đăng nhập bằng tài khoản Google, tạo tổ chức và mời thành viên.",
+      "Tạo thư mục theo phòng ban, tải tài liệu lên; tệp được lưu trên Google Drive.",
+      "Phân quyền thư mục cho thành viên; quyền được đồng bộ sang Drive.",
+      "Kiểm thử toàn bộ trước khi triển khai: `npm run check`; triển khai bằng cách import repo vào Vercel và khai báo biến môi trường giống `.env`."
+    ],
+    "samplePromptsVi": [
+      "Tình huống: dựng kho tài liệu nội bộ cho công ty, mỗi phòng ban một thư mục riêng có phân quyền",
+      "Tình huống: chia sẻ hồ sơ dự án cho khách hàng qua liên kết mời, tệp vẫn nằm trên Google Drive của công ty",
+      "Tình huống: tự host hệ thống quản lý văn bản miễn phí trên Vercel và Supabase"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, được dùng, sửa và thương mại hóa tự do",
+      "Giao diện và tài liệu tiếng Việt",
+      "Dữ liệu và tệp nằm trong dự án Supabase và Google Drive của chính bạn",
+      "Phân quyền bằng Row Level Security ở tầng cơ sở dữ liệu"
+    ],
+    "consVi": [
+      "Không có tính năng AI",
+      "Cài đặt cần tự cấu hình Supabase, Google Cloud OAuth và thay nhiều tên miền mẫu bằng tay",
+      "Repo còn tài liệu của bản 2.2 cũ (chạy bằng Python server) dễ gây nhầm với cách cài hiện tại bằng Node.js",
+      "Dự án cá nhân, chưa có nhiều người đóng góp"
+    ],
+    "sourceEvidence": {
+      "npm install": "HUONG-DAN-CAI-DAT.md:15",
+      "cp .env.example .env": "HUONG-DAN-CAI-DAT.md:16",
+      "copy .env.example .env": "HUONG-DAN-CAI-DAT.md:16",
+      "npm run db:migrate": "HUONG-DAN-CAI-DAT.md:33",
+      "npm run build && node server.js": "HUONG-DAN-CAI-DAT.md:40",
+      "npm run check": "HUONG-DAN-CAI-DAT.md:41, README.md:12",
+      "license MIT": "LICENSE:1, HUONG-DAN-CAI-DAT.md:5"
+    },
+    "meta": {
+      "id": "huungcs-dochub-opensource",
+      "nameVi": "DocHub — Quản lý, lưu trữ và phân quyền tài liệu trên Supabase và Google Drive (không có AI)",
+      "icon": "FolderTree",
+      "categories": ["office_digital_docs"],
+      "platforms": ["web"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, tự host; chi phí Supabase, Vercel tùy gói",
+      "isVietnamMarket": true,
+      "languages": ["Tiếng Việt"],
+      "configs": [
+        { "platform": "web", "platformName": "Dòng lệnh (Terminal)", "cliCommand": "npm run build && node server.js" }
+      ]
+    }
+  }
+]

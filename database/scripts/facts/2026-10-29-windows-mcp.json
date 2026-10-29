@@ -1,0 +1,99 @@
+[
+  {
+    "repo": "CursorTouch/Windows-MCP",
+    "license": "MIT License",
+    "authorName": "CursorTouch (Jeomon George)",
+    "websiteUrl": "https://pypi.org/project/windows-mcp/",
+    "toolType": "mcp",
+    "taglineEn": "Windows-MCP is a lightweight, open-source project that enables seamless integration between AI agents and the Windows operating system.",
+    "summaryVi": "Windows-MCP là máy chủ MCP mã nguồn mở cho phép tác tử AI điều khiển hệ điều hành Windows 10/11: mở và chuyển ứng dụng, thao tác chuột, bàn phím, đọc trạng thái giao diện, chụp màn hình, quản lý tệp, chạy PowerShell, kiểm thử giao diện (QA). Dùng được với mọi mô hình LLM, không cần mô hình thị giác chuyên biệt. Có hơn 2 triệu người dùng qua Claude Desktop Extensions và đã có trên PyPI, MCP Registry.",
+    "purposeVi": "Giúp Claude Desktop, Claude Code và các ứng dụng MCP khác (Gemini CLI, Codex...) tự động hóa công việc trên máy Windows như một người dùng thật: điều hướng tệp, điều khiển ứng dụng, điền biểu mẫu, kiểm thử giao diện.",
+    "featuresVi": [
+      "Tích hợp Windows gốc: tương tác với thành phần giao diện, mở ứng dụng, điều khiển cửa sổ, giả lập thao tác người dùng",
+      "Dùng với mọi LLM, thị giác tùy chọn: không dựa vào kỹ thuật thị giác máy tính hay mô hình tinh chỉnh riêng",
+      "Bộ công cụ: Click, Type, Scroll, Move, Shortcut, Screenshot, Snapshot, App, PowerShell, FileSystem, Clipboard, Process, Registry, Scrape, Notification...",
+      "Độ trễ giữa các thao tác khoảng 0,2 đến 0,5 giây",
+      "Chế độ DOM (`use_dom=True`) cho tự động hóa trình duyệt Chrome, Edge, Firefox",
+      "Bảo mật khi truy cập từ xa: khóa xác thực, danh sách IP, CORS, TLS, OAuth 2.0 + PKCE; bật/tắt từng công cụ bằng `--tools`, `--exclude-tools`",
+      "Người dùng giành lại quyền điều khiển bằng cách di chuột hoặc nhấn `Ctrl+Alt+Shift+Backspace`"
+    ],
+    "requirementsVi": "Windows 10 hoặc 11, Python 3.14+, trình quản lý gói UV (cài bằng `pip install uv`). Lần chạy đầu có thể mất 1 đến 2 phút để cài phụ thuộc, máy chủ có thể hết thời gian chờ, khởi động lại là được.",
+    "installStepsVi": [
+      "Cài UV: `pip install uv`",
+      "Claude Desktop: thêm vào `claude_desktop_config.json` mục `\"windows-mcp\": { \"command\": \"uvx\", \"args\": [\"windows-mcp\", \"serve\"] }`; bản Claude Desktop từ Microsoft Store cần đường dẫn đầy đủ tới `uvx.exe`",
+      "Claude Code: `claude mcp add --transport stdio windows-mcp -- uvx windows-mcp serve`; kiểm tra bằng `claude mcp list`",
+      "Chạy độc lập: `uvx windows-mcp serve` (stdio), hoặc `uvx windows-mcp serve --transport sse --host localhost --port 8000` để truy cập qua mạng",
+      "Tùy chọn tự chạy khi đăng nhập: `windows-mcp install` (gỡ bằng `windows-mcp uninstall`)"
+    ],
+    "cliCommand": "claude mcp add --transport stdio windows-mcp -- uvx windows-mcp serve",
+    "usageStepsVi": [
+      "Khởi động lại Claude Desktop (Tray → Quit rồi mở lại) hoặc kiểm tra `/mcp` trong Claude Code để thấy máy chủ windows-mcp.",
+      "Yêu cầu tác tử thao tác trên Windows bằng ngôn ngữ tự nhiên; tác tử gọi Screenshot hoặc Snapshot để xem màn hình rồi Click, Type, App...",
+      "Giới hạn công cụ khi cần an toàn: `windows-mcp serve --exclude-tools \"PowerShell,Registry\"`.",
+      "Khi truy cập từ xa, luôn bật khóa xác thực: `windows-mcp serve --transport sse --host 0.0.0.0 --auth-key \"your_token\"`."
+    ],
+    "samplePromptsVi": [
+      "Mở Notepad, gõ biên bản họp hôm nay rồi lưu vào thư mục Documents",
+      "Mở Excel, tạo bảng chi tiêu tháng 10 với 3 cột Ngày, Nội dung, Số tiền",
+      "Kiểm thử luồng đăng nhập của ứng dụng desktop và chụp màn hình từng bước"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, cài một dòng qua uvx, có trên PyPI và MCP Registry",
+      "Dùng được với mọi LLM, không cần mô hình thị giác",
+      "Bộ công cụ đầy đủ cho tự động hóa desktop và kiểm thử giao diện",
+      "Nhiều lớp bảo mật cho truy cập từ xa, bật/tắt từng công cụ"
+    ],
+    "consVi": [
+      "Có toàn quyền hệ thống và có thể thực hiện thao tác không đảo ngược được (README cảnh báo); nên tắt PowerShell, Registry khi không cần",
+      "Chỉ chạy trên Windows 10/11, cần Python 3.14+",
+      "Lần chạy đầu cài phụ thuộc chậm, có thể hết thời gian chờ",
+      "Quyền giành lại điều khiển của người dùng chỉ là nỗ lực tốt nhất, không phải ranh giới bảo mật"
+    ],
+    "sourceEvidence": {
+      "pip install uv": "README.md:78",
+      "uvx windows-mcp serve": "README.md:86",
+      "uvx windows-mcp serve --transport sse --host localhost --port 8000": "README.md:87",
+      "windows-mcp install": "README.md:94",
+      "windows-mcp uninstall": "README.md:101",
+      "claude_desktop_config.json uvx windows-mcp serve": "README.md:120-131",
+      "claude mcp add --transport stdio windows-mcp -- uvx windows-mcp serve": "README.md:372",
+      "claude mcp list": "README.md:398",
+      "windows-mcp serve --transport sse --host 0.0.0.0 --auth-key \"your_token\"": "README.md:463",
+      "windows-mcp serve --exclude-tools \"PowerShell,Registry\"": "README.md:490",
+      "full system access, irreversible operations": "README.md:908",
+      "license MIT": "LICENSE.md:1"
+    },
+    "meta": {
+      "id": "cursortouch-windows-mcp",
+      "nameVi": "Windows-MCP — Máy chủ MCP cho AI điều khiển Windows: ứng dụng, chuột, bàn phím, tệp, PowerShell",
+      "icon": "Cpu",
+      "categories": [
+        "rpa_workflow_automation",
+        "qa_testing"
+      ],
+      "platforms": [
+        "claude_desktop",
+        "claude_code"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"windows-mcp\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"windows-mcp\",\n        \"serve\"\n      ]\n    }\n  }\n}"
+        },
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude mcp add --transport stdio windows-mcp -- uvx windows-mcp serve"
+        }
+      ]
+    }
+  }
+]
