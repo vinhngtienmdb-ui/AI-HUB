@@ -1,0 +1,82 @@
+[
+  {
+    "repo": "msitarzewski/agency-agents",
+    "license": "MIT License",
+    "authorName": "Michael Sitarzewski và cộng đồng AgentLand Contributors",
+    "websiteUrl": "https://agencyagents.app",
+    "toolType": "agent",
+    "taglineEn": "A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.",
+    "summaryVi": "The Agency là bộ sưu tập hơn 230 tác tử AI chuyên biệt (subagent) dạng tệp Markdown, chia theo các bộ phận như một công ty: Kỹ thuật, Thiết kế, Marketing, Bán hàng, Sản phẩm, Kiểm thử, Bảo mật, Tài chính, Y tế, Nghiên cứu... Mỗi tác tử có tính cách, quy trình làm việc, sản phẩm đầu ra và chỉ số thành công riêng. Script cài đặt đưa các tác tử vào Claude Code và nhiều công cụ khác (Cursor, Codex, Gemini CLI, OpenCode, GitHub Copilot, Antigravity, Windsurf, Aider...); ngoài ra có ứng dụng desktop để duyệt và cài bằng một cú nhấp.",
+    "purposeVi": "Giúp người dùng trợ lý lập trình AI có sẵn một đội ngũ chuyên gia ảo cho từng việc (dựng frontend, thiết kế API, chạy chiến dịch marketing, kiểm thử, rà soát bảo mật...) thay vì tự viết prompt chung chung.",
+    "featuresVi": [
+      "Hơn 230 tác tử chia theo bộ phận: Kỹ thuật, Thiết kế, Quảng cáo trả phí, Bán hàng, Marketing, Sản phẩm, Quản lý dự án, Kiểm thử, Bảo mật, Hỗ trợ, Tài chính, Phát triển game, Học thuật, GIS, Y tế, Nghiên cứu",
+      "Mỗi tác tử gồm tính cách, nhiệm vụ cốt lõi, quy trình, sản phẩm đầu ra kèm ví dụ mã và chỉ số thành công",
+      "Script cài đặt cho Claude Code và hơn 10 công cụ khác, có trình hướng dẫn tương tác tự phát hiện công cụ đã cài",
+      "Cài chọn lọc theo bộ phận (`--division`) hoặc theo từng tác tử (`--agent`), xem trước bằng `--dry-run`",
+      "Ứng dụng desktop Agency Agents (macOS, Linux, Windows) duyệt danh sách và cài tác tử bằng một cú nhấp, tự cập nhật",
+      "Kịch bản mẫu ghép đội: làm MVP khởi nghiệp, ra mắt chiến dịch marketing, phát triển tính năng doanh nghiệp"
+    ],
+    "requirementsVi": "Một công cụ lập trình AI hỗ trợ subagent hoặc quy tắc tùy chỉnh (Claude Code, Cursor, Codex, Gemini CLI, OpenCode...). Cài bằng script cần tải mã nguồn repo về máy và chạy trong thư mục repo (bash).",
+    "installStepsVi": [
+      "Cách nhanh nhất: tải ứng dụng Agency Agents tại https://agencyagents.app, hoặc trên macOS chạy `brew install --cask msitarzewski/agency-agents/agency-agents`",
+      "Hoặc tải mã nguồn repo về máy, trong thư mục repo cài toàn bộ tác tử cho Claude Code: `./scripts/install.sh --tool claude-code`",
+      "Chỉ cài một bộ phận bằng tay: `cp engineering/*.md ~/.claude/agents/`",
+      "Cho công cụ khác: chạy `./scripts/convert.sh`, rồi `./scripts/install.sh` (trình hướng dẫn tương tác) hoặc `./scripts/install.sh --tool cursor` (thay bằng antigravity, gemini-cli, opencode, copilot, windsurf, codex...)",
+      "Cài chọn lọc: `./scripts/install.sh --tool claude-code --division engineering,security`; xem danh sách đội: `./scripts/install.sh --list teams`"
+    ],
+    "cliCommand": "./scripts/install.sh --tool claude-code",
+    "usageStepsVi": [
+      "Mở phiên Claude Code (hoặc công cụ đã cài) trong dự án của bạn.",
+      "Gọi tác tử theo tên, ví dụ: \"Hey Claude, activate Frontend Developer mode and help me build a React component\".",
+      "Ghép nhiều tác tử thành đội cho một việc lớn, ví dụ Frontend Developer, Backend Architect, Growth Hacker, Reality Checker cho một MVP.",
+      "Với OpenCode, chỉ cài một phần bằng `--division` vì OpenCode hiện chỉ nhận khoảng 119 tác tử."
+    ],
+    "samplePromptsVi": [
+      "Kích hoạt Frontend Developer và dựng trang đăng ký bằng React, tối ưu Core Web Vitals",
+      "Dùng Backend Architect thiết kế API và cơ sở dữ liệu cho ứng dụng đặt lịch khám",
+      "Nhờ Reality Checker rà soát toàn bộ sản phẩm trước khi ra mắt và liệt kê rủi ro"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, miễn phí",
+      "Số lượng tác tử lớn, phủ cả lĩnh vực ngoài lập trình (marketing, bán hàng, tài chính, y tế)",
+      "Hỗ trợ nhiều công cụ lập trình AI, cài chọn lọc được",
+      "Có ứng dụng desktop cài bằng một cú nhấp, cập nhật thường xuyên"
+    ],
+    "consVi": [
+      "Tác tử là prompt hệ thống dạng Markdown, chất lượng phụ thuộc mô hình AI bạn dùng",
+      "Cài toàn bộ có thể vượt giới hạn số tác tử của một số công cụ (OpenCode khoảng 119)",
+      "Script cài đặt dùng bash; trên Windows nên dùng ứng dụng desktop",
+      "Nội dung tiếng Anh (có tài liệu đóng góp tiếng Trung)"
+    ],
+    "sourceEvidence": {
+      "brew install --cask msitarzewski/agency-agents/agency-agents": "README.md:41",
+      "./scripts/install.sh --tool claude-code": "README.md:50",
+      "cp engineering/*.md ~/.claude/agents/": "README.md:53",
+      "Hey Claude, activate Frontend Developer mode and help me build a React component": "README.md:56",
+      "./scripts/convert.sh": "README.md:73",
+      "./scripts/install.sh": "README.md:76",
+      "./scripts/install.sh --tool cursor": "README.md:84",
+      "./scripts/install.sh --tool claude-code --division engineering,security": "README.md:99",
+      "./scripts/install.sh --list teams": "README.md:101",
+      "OpenCode ~119 agents": "README.md:114",
+      "230+ Specialized Agents": "README.md:730",
+      "license MIT": "LICENSE:1"
+    },
+    "meta": {
+      "id": "msitarzewski-agency-agents",
+      "nameVi": "The Agency — Hơn 230 tác tử AI chuyên biệt cho Claude Code, Cursor, Codex",
+      "icon": "Brain",
+      "categories": ["nlp_llm", "rpa_workflow_automation"],
+      "platforms": ["claude_code", "cursor"],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí",
+      "isVietnamMarket": false,
+      "languages": ["Tiếng Anh"],
+      "configs": [
+        { "platform": "claude_code", "platformName": "Claude Code", "cliCommand": "./scripts/install.sh --tool claude-code" },
+        { "platform": "cursor", "platformName": "Cursor", "cliCommand": "./scripts/install.sh --tool cursor" }
+      ]
+    }
+  }
+]

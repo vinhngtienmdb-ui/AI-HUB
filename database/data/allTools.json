@@ -174619,5 +174619,181 @@
       "guideIsTemplate": false,
       "starsVerified": false
     }
+  },
+  {
+    "id": "msitarzewski-agency-agents",
+    "slug": "msitarzewski-agency-agents",
+    "name": "The Agency — Hơn 230 tác tử AI chuyên biệt cho Claude Code, Cursor, Codex",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "rpa_workflow_automation"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Tự động hóa quy trình & RPA (Automation)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "cursor"
+    ],
+    "sourceUrl": "https://github.com/msitarzewski/agency-agents",
+    "websiteUrl": "https://agencyagents.app",
+    "authorName": "Michael Sitarzewski và cộng đồng AgentLand Contributors",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "The Agency là bộ sưu tập hơn 230 tác tử AI chuyên biệt (subagent) dạng tệp Markdown, chia theo các bộ phận như một công ty: Kỹ thuật, Thiết kế, Marketing, Bán hàng, Sản phẩm, Kiểm thử, Bảo mật, Tài chính, Y tế, Nghiên cứu... Mỗi tác tử có tính cách, quy trình làm việc, sản phẩm đầu ra và chỉ số thành công riêng. Script cài đặt đưa các tác tử vào Claude Code và nhiều công cụ khác (Cursor, Codex, Gemini CLI, OpenCode, GitHub Copilot, Antigravity, Windsurf, Aider...); ngoài ra có ứng dụng desktop để duyệt và cài bằng một cú nhấp.",
+    "purposeVi": "Giúp người dùng trợ lý lập trình AI có sẵn một đội ngũ chuyên gia ảo cho từng việc (dựng frontend, thiết kế API, chạy chiến dịch marketing, kiểm thử, rà soát bảo mật...) thay vì tự viết prompt chung chung.",
+    "featuresVi": [
+      "Hơn 230 tác tử chia theo bộ phận: Kỹ thuật, Thiết kế, Quảng cáo trả phí, Bán hàng, Marketing, Sản phẩm, Quản lý dự án, Kiểm thử, Bảo mật, Hỗ trợ, Tài chính, Phát triển game, Học thuật, GIS, Y tế, Nghiên cứu",
+      "Mỗi tác tử gồm tính cách, nhiệm vụ cốt lõi, quy trình, sản phẩm đầu ra kèm ví dụ mã và chỉ số thành công",
+      "Script cài đặt cho Claude Code và hơn 10 công cụ khác, có trình hướng dẫn tương tác tự phát hiện công cụ đã cài",
+      "Cài chọn lọc theo bộ phận (`--division`) hoặc theo từng tác tử (`--agent`), xem trước bằng `--dry-run`",
+      "Ứng dụng desktop Agency Agents (macOS, Linux, Windows) duyệt danh sách và cài tác tử bằng một cú nhấp, tự cập nhật",
+      "Kịch bản mẫu ghép đội: làm MVP khởi nghiệp, ra mắt chiến dịch marketing, phát triển tính năng doanh nghiệp"
+    ],
+    "installGuideVi": "Yêu cầu: Một công cụ lập trình AI hỗ trợ subagent hoặc quy tắc tùy chỉnh (Claude Code, Cursor, Codex, Gemini CLI, OpenCode...). Cài bằng script cần tải mã nguồn repo về máy và chạy trong thư mục repo (bash).\nBước 1: Cách nhanh nhất: tải ứng dụng Agency Agents tại https://agencyagents.app, hoặc trên macOS chạy `brew install --cask msitarzewski/agency-agents/agency-agents`\nBước 2: Hoặc tải mã nguồn repo về máy, trong thư mục repo cài toàn bộ tác tử cho Claude Code: `./scripts/install.sh --tool claude-code`\nBước 3: Chỉ cài một bộ phận bằng tay: `cp engineering/*.md ~/.claude/agents/`\nBước 4: Cho công cụ khác: chạy `./scripts/convert.sh`, rồi `./scripts/install.sh` (trình hướng dẫn tương tác) hoặc `./scripts/install.sh --tool cursor` (thay bằng antigravity, gemini-cli, opencode, copilot, windsurf, codex...)\nBước 5: Cài chọn lọc: `./scripts/install.sh --tool claude-code --division engineering,security`; xem danh sách đội: `./scripts/install.sh --list teams`",
+    "usageGuideVi": "Bước 1: Mở phiên Claude Code (hoặc công cụ đã cài) trong dự án của bạn.\nBước 2: Gọi tác tử theo tên, ví dụ: \"Hey Claude, activate Frontend Developer mode and help me build a React component\".\nBước 3: Ghép nhiều tác tử thành đội cho một việc lớn, ví dụ Frontend Developer, Backend Architect, Growth Hacker, Reality Checker cho một MVP.\nBước 4: Với OpenCode, chỉ cài một phần bằng `--division` vì OpenCode hiện chỉ nhận khoảng 119 tác tử.",
+    "samplePromptsVi": [
+      "Kích hoạt Frontend Developer và dựng trang đăng ký bằng React, tối ưu Core Web Vitals",
+      "Dùng Backend Architect thiết kế API và cơ sở dữ liệu cho ứng dụng đặt lịch khám",
+      "Nhờ Reality Checker rà soát toàn bộ sản phẩm trước khi ra mắt và liệt kê rủi ro"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "./scripts/install.sh --tool claude-code",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"./scripts/install.sh --tool claude-code\"\n  ],\n  \"nguon\": \"https://github.com/msitarzewski/agency-agents\"\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "cliCommand": "./scripts/install.sh --tool cursor",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"./scripts/install.sh --tool cursor\"\n  ],\n  \"nguon\": \"https://github.com/msitarzewski/agency-agents\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Giấy phép MIT, miễn phí",
+      "Số lượng tác tử lớn, phủ cả lĩnh vực ngoài lập trình (marketing, bán hàng, tài chính, y tế)",
+      "Hỗ trợ nhiều công cụ lập trình AI, cài chọn lọc được",
+      "Có ứng dụng desktop cài bằng một cú nhấp, cập nhật thường xuyên"
+    ],
+    "consVi": [
+      "Tác tử là prompt hệ thống dạng Markdown, chất lượng phụ thuộc mô hình AI bạn dùng",
+      "Cài toàn bộ có thể vượt giới hạn số tác tử của một số công cụ (OpenCode khoảng 119)",
+      "Script cài đặt dùng bash; trên Windows nên dùng ứng dụng desktop",
+      "Nội dung tiếng Anh (có tài liệu đóng góp tiếng Trung)"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# The Agency — Hơn 230 tác tử AI chuyên biệt cho Claude Code, Cursor, Codex\n\n> A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nThe Agency là bộ sưu tập hơn 230 tác tử AI chuyên biệt (subagent) dạng tệp Markdown, chia theo các bộ phận như một công ty: Kỹ thuật, Thiết kế, Marketing, Bán hàng, Sản phẩm, Kiểm thử, Bảo mật, Tài chính, Y tế, Nghiên cứu... Mỗi tác tử có tính cách, quy trình làm việc, sản phẩm đầu ra và chỉ số thành công riêng. Script cài đặt đưa các tác tử vào Claude Code và nhiều công cụ khác (Cursor, Codex, Gemini CLI, OpenCode, GitHub Copilot, Antigravity, Windsurf, Aider...); ngoài ra có ứng dụng desktop để duyệt và cài bằng một cú nhấp.\n\nGiúp người dùng trợ lý lập trình AI có sẵn một đội ngũ chuyên gia ảo cho từng việc (dựng frontend, thiết kế API, chạy chiến dịch marketing, kiểm thử, rà soát bảo mật...) thay vì tự viết prompt chung chung.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Michael Sitarzewski và cộng đồng AgentLand Contributors\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `cursor`\n- **Kho lưu trữ chính thức:** [https://github.com/msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Hơn 230 tác tử chia theo bộ phận: Kỹ thuật, Thiết kế, Quảng cáo trả phí, Bán hàng, Marketing, Sản phẩm, Quản lý dự án, Kiểm thử, Bảo mật, Hỗ trợ, Tài chính, Phát triển game, Học thuật, GIS, Y tế, Nghiên cứu**\n- **Mỗi tác tử gồm tính cách, nhiệm vụ cốt lõi, quy trình, sản phẩm đầu ra kèm ví dụ mã và chỉ số thành công**\n- **Script cài đặt cho Claude Code và hơn 10 công cụ khác, có trình hướng dẫn tương tác tự phát hiện công cụ đã cài**\n- **Cài chọn lọc theo bộ phận (`--division`) hoặc theo từng tác tử (`--agent`), xem trước bằng `--dry-run`**\n- **Ứng dụng desktop Agency Agents (macOS, Linux, Windows) duyệt danh sách và cài tác tử bằng một cú nhấp, tự cập nhật**\n- **Kịch bản mẫu ghép đội: làm MVP khởi nghiệp, ra mắt chiến dịch marketing, phát triển tính năng doanh nghiệp**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n./scripts/install.sh --tool claude-code\n```\n\nYêu cầu: Một công cụ lập trình AI hỗ trợ subagent hoặc quy tắc tùy chỉnh (Claude Code, Cursor, Codex, Gemini CLI, OpenCode...). Cài bằng script cần tải mã nguồn repo về máy và chạy trong thư mục repo (bash).\nBước 1: Cách nhanh nhất: tải ứng dụng Agency Agents tại https://agencyagents.app, hoặc trên macOS chạy `brew install --cask msitarzewski/agency-agents/agency-agents`\nBước 2: Hoặc tải mã nguồn repo về máy, trong thư mục repo cài toàn bộ tác tử cho Claude Code: `./scripts/install.sh --tool claude-code`\nBước 3: Chỉ cài một bộ phận bằng tay: `cp engineering/*.md ~/.claude/agents/`\nBước 4: Cho công cụ khác: chạy `./scripts/convert.sh`, rồi `./scripts/install.sh` (trình hướng dẫn tương tác) hoặc `./scripts/install.sh --tool cursor` (thay bằng antigravity, gemini-cli, opencode, copilot, windsurf, codex...)\nBước 5: Cài chọn lọc: `./scripts/install.sh --tool claude-code --division engineering,security`; xem danh sách đội: `./scripts/install.sh --list teams`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở phiên Claude Code (hoặc công cụ đã cài) trong dự án của bạn.\nBước 2: Gọi tác tử theo tên, ví dụ: \"Hey Claude, activate Frontend Developer mode and help me build a React component\".\nBước 3: Ghép nhiều tác tử thành đội cho một việc lớn, ví dụ Frontend Developer, Backend Architect, Growth Hacker, Reality Checker cho một MVP.\nBước 4: Với OpenCode, chỉ cài một phần bằng `--division` vì OpenCode hiện chỉ nhận khoảng 119 tác tử.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Kích hoạt Frontend Developer và dựng trang đăng ký bằng React, tối ưu Core Web Vitals\"\n- \"Dùng Backend Architect thiết kế API và cơ sở dữ liệu cho ứng dụng đặt lịch khám\"\n- \"Nhờ Reality Checker rà soát toàn bộ sản phẩm trước khi ra mắt và liệt kê rủi ro\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T10:52:38.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "cursortouch-windows-mcp",
+    "slug": "cursortouch-windows-mcp",
+    "name": "Windows-MCP — Máy chủ MCP cho AI điều khiển Windows: ứng dụng, chuột, bàn phím, tệp, PowerShell",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "rpa_workflow_automation",
+    "categoryNameVi": "Tự động hóa quy trình & RPA (Automation)",
+    "categories": [
+      "rpa_workflow_automation",
+      "qa_testing"
+    ],
+    "categoryNamesVi": [
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Kiểm thử phần mềm & QA/QC"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_desktop",
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/CursorTouch/Windows-MCP",
+    "websiteUrl": "https://pypi.org/project/windows-mcp/",
+    "authorName": "CursorTouch (Jeomon George)",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Windows-MCP là máy chủ MCP mã nguồn mở cho phép tác tử AI điều khiển hệ điều hành Windows 10/11: mở và chuyển ứng dụng, thao tác chuột, bàn phím, đọc trạng thái giao diện, chụp màn hình, quản lý tệp, chạy PowerShell, kiểm thử giao diện (QA). Dùng được với mọi mô hình LLM, không cần mô hình thị giác chuyên biệt. Có hơn 2 triệu người dùng qua Claude Desktop Extensions và đã có trên PyPI, MCP Registry.",
+    "purposeVi": "Giúp Claude Desktop, Claude Code và các ứng dụng MCP khác (Gemini CLI, Codex...) tự động hóa công việc trên máy Windows như một người dùng thật: điều hướng tệp, điều khiển ứng dụng, điền biểu mẫu, kiểm thử giao diện.",
+    "featuresVi": [
+      "Tích hợp Windows gốc: tương tác với thành phần giao diện, mở ứng dụng, điều khiển cửa sổ, giả lập thao tác người dùng",
+      "Dùng với mọi LLM, thị giác tùy chọn: không dựa vào kỹ thuật thị giác máy tính hay mô hình tinh chỉnh riêng",
+      "Bộ công cụ: Click, Type, Scroll, Move, Shortcut, Screenshot, Snapshot, App, PowerShell, FileSystem, Clipboard, Process, Registry, Scrape, Notification...",
+      "Độ trễ giữa các thao tác khoảng 0,2 đến 0,5 giây",
+      "Chế độ DOM (`use_dom=True`) cho tự động hóa trình duyệt Chrome, Edge, Firefox",
+      "Bảo mật khi truy cập từ xa: khóa xác thực, danh sách IP, CORS, TLS, OAuth 2.0 + PKCE; bật/tắt từng công cụ bằng `--tools`, `--exclude-tools`",
+      "Người dùng giành lại quyền điều khiển bằng cách di chuột hoặc nhấn `Ctrl+Alt+Shift+Backspace`"
+    ],
+    "installGuideVi": "Yêu cầu: Windows 10 hoặc 11, Python 3.14+, trình quản lý gói UV (cài bằng `pip install uv`). Lần chạy đầu có thể mất 1 đến 2 phút để cài phụ thuộc, máy chủ có thể hết thời gian chờ, khởi động lại là được.\nBước 1: Cài UV: `pip install uv`\nBước 2: Claude Desktop: thêm vào `claude_desktop_config.json` mục `\"windows-mcp\": { \"command\": \"uvx\", \"args\": [\"windows-mcp\", \"serve\"] }`; bản Claude Desktop từ Microsoft Store cần đường dẫn đầy đủ tới `uvx.exe`\nBước 3: Claude Code: `claude mcp add --transport stdio windows-mcp -- uvx windows-mcp serve`; kiểm tra bằng `claude mcp list`\nBước 4: Chạy độc lập: `uvx windows-mcp serve` (stdio), hoặc `uvx windows-mcp serve --transport sse --host localhost --port 8000` để truy cập qua mạng\nBước 5: Tùy chọn tự chạy khi đăng nhập: `windows-mcp install` (gỡ bằng `windows-mcp uninstall`)",
+    "usageGuideVi": "Bước 1: Khởi động lại Claude Desktop (Tray → Quit rồi mở lại) hoặc kiểm tra `/mcp` trong Claude Code để thấy máy chủ windows-mcp.\nBước 2: Yêu cầu tác tử thao tác trên Windows bằng ngôn ngữ tự nhiên; tác tử gọi Screenshot hoặc Snapshot để xem màn hình rồi Click, Type, App...\nBước 3: Giới hạn công cụ khi cần an toàn: `windows-mcp serve --exclude-tools \"PowerShell,Registry\"`.\nBước 4: Khi truy cập từ xa, luôn bật khóa xác thực: `windows-mcp serve --transport sse --host 0.0.0.0 --auth-key \"your_token\"`.",
+    "samplePromptsVi": [
+      "Mở Notepad, gõ biên bản họp hôm nay rồi lưu vào thư mục Documents",
+      "Mở Excel, tạo bảng chi tiêu tháng 10 với 3 cột Ngày, Nội dung, Số tiền",
+      "Kiểm thử luồng đăng nhập của ứng dụng desktop và chụp màn hình từng bước"
+    ],
+    "configs": [
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"windows-mcp\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"windows-mcp\",\n        \"serve\"\n      ]\n    }\n  }\n}"
+      },
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add --transport stdio windows-mcp -- uvx windows-mcp serve",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add --transport stdio windows-mcp -- uvx windows-mcp serve\"\n  ],\n  \"nguon\": \"https://github.com/CursorTouch/Windows-MCP\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Giấy phép MIT, cài một dòng qua uvx, có trên PyPI và MCP Registry",
+      "Dùng được với mọi LLM, không cần mô hình thị giác",
+      "Bộ công cụ đầy đủ cho tự động hóa desktop và kiểm thử giao diện",
+      "Nhiều lớp bảo mật cho truy cập từ xa, bật/tắt từng công cụ"
+    ],
+    "consVi": [
+      "Có toàn quyền hệ thống và có thể thực hiện thao tác không đảo ngược được (README cảnh báo); nên tắt PowerShell, Registry khi không cần",
+      "Chỉ chạy trên Windows 10/11, cần Python 3.14+",
+      "Lần chạy đầu cài phụ thuộc chậm, có thể hết thời gian chờ",
+      "Quyền giành lại điều khiển của người dùng chỉ là nỗ lực tốt nhất, không phải ranh giới bảo mật"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# Windows-MCP — Máy chủ MCP cho AI điều khiển Windows: ứng dụng, chuột, bàn phím, tệp, PowerShell\n\n> Windows-MCP is a lightweight, open-source project that enables seamless integration between AI agents and the Windows operating system.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nWindows-MCP là máy chủ MCP mã nguồn mở cho phép tác tử AI điều khiển hệ điều hành Windows 10/11: mở và chuyển ứng dụng, thao tác chuột, bàn phím, đọc trạng thái giao diện, chụp màn hình, quản lý tệp, chạy PowerShell, kiểm thử giao diện (QA). Dùng được với mọi mô hình LLM, không cần mô hình thị giác chuyên biệt. Có hơn 2 triệu người dùng qua Claude Desktop Extensions và đã có trên PyPI, MCP Registry.\n\nGiúp Claude Desktop, Claude Code và các ứng dụng MCP khác (Gemini CLI, Codex...) tự động hóa công việc trên máy Windows như một người dùng thật: điều hướng tệp, điều khiển ứng dụng, điền biểu mẫu, kiểm thử giao diện.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Tự động hóa quy trình & RPA (Automation)\n- **Tác giả / Nhà phát triển:** CursorTouch (Jeomon George)\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_desktop`, `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/CursorTouch/Windows-MCP](https://github.com/CursorTouch/Windows-MCP)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Tích hợp Windows gốc: tương tác với thành phần giao diện, mở ứng dụng, điều khiển cửa sổ, giả lập thao tác người dùng**\n- **Dùng với mọi LLM, thị giác tùy chọn: không dựa vào kỹ thuật thị giác máy tính hay mô hình tinh chỉnh riêng**\n- **Bộ công cụ: Click, Type, Scroll, Move, Shortcut, Screenshot, Snapshot, App, PowerShell, FileSystem, Clipboard, Process, Registry, Scrape, Notification...**\n- **Độ trễ giữa các thao tác khoảng 0,2 đến 0,5 giây**\n- **Chế độ DOM (`use_dom=True`) cho tự động hóa trình duyệt Chrome, Edge, Firefox**\n- **Bảo mật khi truy cập từ xa: khóa xác thực, danh sách IP, CORS, TLS, OAuth 2.0 + PKCE; bật/tắt từng công cụ bằng `--tools`, `--exclude-tools`**\n- **Người dùng giành lại quyền điều khiển bằng cách di chuột hoặc nhấn `Ctrl+Alt+Shift+Backspace`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add --transport stdio windows-mcp -- uvx windows-mcp serve\n```\n\nYêu cầu: Windows 10 hoặc 11, Python 3.14+, trình quản lý gói UV (cài bằng `pip install uv`). Lần chạy đầu có thể mất 1 đến 2 phút để cài phụ thuộc, máy chủ có thể hết thời gian chờ, khởi động lại là được.\nBước 1: Cài UV: `pip install uv`\nBước 2: Claude Desktop: thêm vào `claude_desktop_config.json` mục `\"windows-mcp\": { \"command\": \"uvx\", \"args\": [\"windows-mcp\", \"serve\"] }`; bản Claude Desktop từ Microsoft Store cần đường dẫn đầy đủ tới `uvx.exe`\nBước 3: Claude Code: `claude mcp add --transport stdio windows-mcp -- uvx windows-mcp serve`; kiểm tra bằng `claude mcp list`\nBước 4: Chạy độc lập: `uvx windows-mcp serve` (stdio), hoặc `uvx windows-mcp serve --transport sse --host localhost --port 8000` để truy cập qua mạng\nBước 5: Tùy chọn tự chạy khi đăng nhập: `windows-mcp install` (gỡ bằng `windows-mcp uninstall`)\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi động lại Claude Desktop (Tray → Quit rồi mở lại) hoặc kiểm tra `/mcp` trong Claude Code để thấy máy chủ windows-mcp.\nBước 2: Yêu cầu tác tử thao tác trên Windows bằng ngôn ngữ tự nhiên; tác tử gọi Screenshot hoặc Snapshot để xem màn hình rồi Click, Type, App...\nBước 3: Giới hạn công cụ khi cần an toàn: `windows-mcp serve --exclude-tools \"PowerShell,Registry\"`.\nBước 4: Khi truy cập từ xa, luôn bật khóa xác thực: `windows-mcp serve --transport sse --host 0.0.0.0 --auth-key \"your_token\"`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Mở Notepad, gõ biên bản họp hôm nay rồi lưu vào thư mục Documents\"\n- \"Mở Excel, tạo bảng chi tiêu tháng 10 với 3 cột Ngày, Nội dung, Số tiền\"\n- \"Kiểm thử luồng đăng nhập của ứng dụng desktop và chụp màn hình từng bước\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T10:52:38.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]
