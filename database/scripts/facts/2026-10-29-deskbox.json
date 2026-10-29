@@ -1,0 +1,96 @@
+[
+  {
+    "repo": "Tianyu199509/DeskBox",
+    "license": "GNU General Public License v3.0 (GPL-3.0-only)",
+    "authorName": "Tianyu Zhu",
+    "websiteUrl": "https://deskbox.fun",
+    "toolType": "software",
+    "taglineEn": "A free, open-source, local-first Windows desktop organizer with native-feeling WinUI 3 widgets.",
+    "summaryVi": "DeskBox là phần mềm mã nguồn mở sắp xếp màn hình Desktop trên Windows 10/11, dùng các widget WinUI 3 trông như thành phần gốc của Windows. Mỗi widget tệp gắn với một thư mục thật (tạo mới hoặc ánh xạ thư mục có sẵn), nên tệp vẫn là tệp bình thường và Explorer không bị thay thế. Ngoài sắp xếp tệp còn có các widget việc cần làm, ghi chú nhanh, tìm kiếm, thời tiết, điều khiển nhạc. Lưu ý: DeskBox không có tính năng AI; được đưa vào AI HUB như phần mềm tiện ích văn phòng.",
+    "purposeVi": "Giúp người dùng Windows dọn gọn màn hình Desktop và gom công cụ dùng hằng ngày vào các widget, với dữ liệu lưu hoàn toàn trên máy, không cần tài khoản hay đồng bộ đám mây.",
+    "featuresVi": [
+      "Widget tệp gắn thư mục thật: tạo thư mục quản lý mới hoặc ánh xạ thư mục có sẵn mà không di chuyển tệp; bố cục biểu tượng hoặc danh sách, sắp xếp thủ công hoặc theo quy tắc",
+      "Kéo thả kiểu Windows: kéo tệp và lối tắt vào/ra, sao chép, cắt, dán, đổi tên, xóa; thả tệp lên lối tắt ứng dụng để mở bằng ứng dụng đó; xem nhanh bằng phím Space qua QuickLook",
+      "Nhóm widget và sắp xếp Desktop: gộp widget tệp thành nhóm, xem trước cách phân loại tệp trên Desktop trước khi di chuyển, tùy chọn tự sắp xếp tệp mới",
+      "Todo và Quick Capture: việc cần làm có hạn, nhắc nhở, lặp lại, ghi chú Markdown, tệp đính kèm; lưu nhanh văn bản, liên kết, ảnh, tệp",
+      "Tìm kiếm Desktop: tìm tệp, thư mục, ứng dụng, cài đặt, ghi chú, việc cần làm trong một cửa sổ; kết quả tệp lấy từ chỉ mục của Everything (cài riêng)",
+      "Glance, thời tiết, nhạc: ngày tháng, âm lịch, thời tiết MSN/Open-Meteo, điều khiển phiên phát nhạc và âm lượng hệ thống",
+      "Chế độ viên nang (capsule) thu gọn widget, phím tắt hiện/ẩn toàn bộ widget, vật liệu Mica/Acrylic, bố cục riêng cho từng màn hình",
+      "Sao lưu và khôi phục cài đặt cục bộ hoặc lên máy chủ WebDAV của chính bạn; giao diện 13 ngôn ngữ"
+    ],
+    "requirementsVi": "Windows 10 phiên bản 2004 (build 19041) trở lên, Windows 11 22H2 trở lên để có đầy đủ hiệu ứng; bộ xử lý x64 hoặc ARM64 khớp với bộ cài. Bộ cài Full đã kèm Windows App Runtime 2.5.1, không cần cài riêng .NET 10.",
+    "installStepsVi": [
+      "Tải bộ cài từ GitHub Releases: bản x64 (đa số máy Intel/AMD) `https://github.com/Tianyu199509/DeskBox/releases/download/v1.5.9/DeskBox_Setup_1.5.9_x64.exe`, hoặc bản ARM64 (máy Snapdragon, Surface Pro X) `https://github.com/Tianyu199509/DeskBox/releases/download/v1.5.9/DeskBox_Setup_1.5.9_arm64.exe`",
+      "Đối chiếu mã băm với tệp `.sha256` đi kèm mỗi bộ cài trước khi chạy (bộ cài chưa được ký số cho tới khi có chứng chỉ SignPath)",
+      "Chạy bộ cài: mặc định cài cho người dùng hiện tại, cài đè giữ nguyên cài đặt, cấu hình widget và thư mục quản lý",
+      "Không chạy DeskBox bằng quyền quản trị viên: khi đó kéo thả với Explorer bị Windows chặn",
+      "Dành cho nhà phát triển (cần .NET 10 SDK, Windows 11): `dotnet restore .\\DeskBox.sln -p:Platform=x64` rồi `dotnet build .\\src\\DeskBox\\DeskBox.csproj --configuration Debug --no-restore -p:Platform=x64 -v:minimal`"
+    ],
+    "cliCommand": "dotnet restore .\\DeskBox.sln -p:Platform=x64",
+    "usageStepsVi": [
+      "Tạo widget tệp mới hoặc ánh xạ một thư mục có sẵn, rồi kéo tệp từ Desktop vào widget.",
+      "Dùng tính năng sắp xếp Desktop để xem trước cách phân loại tệp theo nhóm, chọn tạo thư mục mới hay dùng widget có sẵn cho từng nhóm.",
+      "Bật các widget chức năng (Todo, Quick Capture, Tìm kiếm, Thời tiết, Nhạc) trong Settings; cài thêm Everything nếu muốn tìm tệp.",
+      "Hiện/ẩn toàn bộ widget bằng biểu tượng khay hệ thống hoặc phím F7; thu gọn widget thành viên nang khi cần thêm chỗ trống."
+    ],
+    "samplePromptsVi": [
+      "Tình huống: gom toàn bộ tệp tải về trên Desktop vào một widget Downloads ánh xạ tới thư mục có sẵn",
+      "Tình huống: phân loại Desktop lộn xộn thành các nhóm Tài liệu, Hình ảnh, Lối tắt trước khi họp chia sẻ màn hình",
+      "Tình huống: đặt widget Todo có nhắc hạn và widget Quick Capture để lưu nhanh đường dẫn, ảnh chụp màn hình trong ngày làm việc"
+    ],
+    "prosVi": [
+      "Miễn phí, mã nguồn mở GPL-3.0, không cần tài khoản; dữ liệu lưu cục bộ, WebDAV chỉ kết nối máy chủ của bạn",
+      "Tệp vẫn là tệp và thư mục bình thường, không thay thế Explorer",
+      "Có bản cho x64 và ARM64, bộ cài kèm sẵn runtime nên cài được khi không có mạng",
+      "Cập nhật rất thường xuyên, tài liệu và nhật ký thay đổi chi tiết"
+    ],
+    "consVi": [
+      "Không có tính năng AI",
+      "Chỉ chạy trên Windows 10/11",
+      "Giao diện chưa có tiếng Việt (13 ngôn ngữ gồm Anh, Trung giản thể, Trung phồn thể, Nhật, Hàn...)",
+      "Tìm kiếm tệp cần cài riêng Everything; bộ cài chưa được ký số, cần tự kiểm tra mã băm",
+      "Do một người phát triển, hiện không nhận pull request từ bên ngoài"
+    ],
+    "sourceEvidence": {
+      "https://github.com/Tianyu199509/DeskBox/releases/download/v1.5.9/DeskBox_Setup_1.5.9_x64.exe": "README.md:46",
+      "https://github.com/Tianyu199509/DeskBox/releases/download/v1.5.9/DeskBox_Setup_1.5.9_arm64.exe": "README.md:47",
+      ".sha256 sidecar, SignPath": "README.md:51",
+      "system requirements": "README.md:205-207",
+      "dotnet restore .\\DeskBox.sln -p:Platform=x64": "README.md:253",
+      "dotnet build .\\src\\DeskBox\\DeskBox.csproj --configuration Debug --no-restore -p:Platform=x64 -v:minimal": "README.md:255",
+      "deskbox.fun": "README.md:303",
+      "license GPL-3.0-only": "README.md:309, LICENSE:2"
+    },
+    "meta": {
+      "id": "tianyu199509-deskbox",
+      "nameVi": "DeskBox — Sắp xếp màn hình Desktop Windows bằng widget (không có AI)",
+      "icon": "FolderTree",
+      "categories": [
+        "office_digital_docs"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (GPL-3.0)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Trung"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Bộ cài Windows (x64 / ARM64)",
+          "jsonConfig": "{\n  \"caiDat\": [\n    \"https://github.com/Tianyu199509/DeskBox/releases/download/v1.5.9/DeskBox_Setup_1.5.9_x64.exe\",\n    \"https://github.com/Tianyu199509/DeskBox/releases/download/v1.5.9/DeskBox_Setup_1.5.9_arm64.exe\"\n  ],\n  \"nguon\": \"https://github.com/Tianyu199509/DeskBox\"\n}"
+        },
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (PowerShell, dành cho nhà phát triển)",
+          "cliCommand": "dotnet restore .\\DeskBox.sln -p:Platform=x64"
+        }
+      ]
+    }
+  }
+]

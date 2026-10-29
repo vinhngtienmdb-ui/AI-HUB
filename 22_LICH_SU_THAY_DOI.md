@@ -4,6 +4,12 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.3.1 (Ngày 29-10-2026)
+- **Loại hình**: Thêm 1 tài nguyên, tệp dữ kiện `database/scripts/facts/2026-10-29-deskbox.json`.
+- **DeskBox** (`Tianyu199509/DeskBox`, GPL-3.0-only): phần mềm sắp xếp màn hình Desktop Windows 10/11 bằng widget WinUI 3 gắn thư mục thật, kèm Todo, Quick Capture, tìm kiếm (qua Everything), thời tiết, điều khiển nhạc; dữ liệu lưu cục bộ. Lĩnh vực: Văn phòng số. Cài bằng bộ cài x64/ARM64 trên GitHub Releases (bản 1.5.9, đã kiểm tra tải được).
+- Ngoại lệ có chủ đích: DeskBox **không có tính năng AI** (các đợt trước loại công cụ không có AI); thêm theo yêu cầu của quản trị viên, tên và mục nhược điểm ghi rõ điều này.
+- Kho dữ liệu: 2.255 công cụ đang hiển thị, 2.335 cấu hình mẫu.
+
 ### Phiên Bản 2.3.0 (Ngày 29-10-2026)
 - **Loại hình**: Sắp xếp lại giao diện trang chủ.
 - Thêm mục **Repo mới cập nhật** ngay dưới Hero (`frontend/src/components/RecentlyUpdated.tsx`): 8 công cụ có repo cập nhật gần nhất, mới nhất đứng đầu.
