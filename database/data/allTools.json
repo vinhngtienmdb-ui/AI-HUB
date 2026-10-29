@@ -174795,5 +174795,1284 @@
       "guideIsTemplate": false,
       "starsVerified": false
     }
+  },
+  {
+    "id": "cloudflare-security-audit-skill",
+    "slug": "cloudflare-security-audit-skill",
+    "name": "Cloudflare security-audit — Skill biến trợ lý lập trình AI thành chuyên gia kiểm định bảo mật mã nguồn",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "skill",
+    "typeNameVi": "Skill",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security",
+      "qa_testing"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)",
+      "Kiểm thử phần mềm & QA/QC"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/cloudflare/security-audit-skill",
+    "websiteUrl": "",
+    "authorName": "Cloudflare",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "security-audit là skill dành cho trợ lý lập trình AI do Cloudflare phát hành, biến trợ lý thành một chuyên gia kiểm định bảo mật mã nguồn. Skill điều phối nhiều tác tử độc lập qua sáu giai đoạn: trinh sát, săn lỗ hổng theo sổ phủ sóng, xác minh ứng viên, xuất kết quả có cấu trúc, xác minh lại từng bản ghi và viết báo cáo. Đây là điểm khởi đầu của hệ thống tìm lỗ hổng mà Cloudflare mô tả trong bài viết \"Build your own vulnerability harness\".",
+    "purposeVi": "Giúp lập trình viên và đội bảo mật tự kiểm định một kho mã bằng trợ lý lập trình AI, nhận danh sách lỗ hổng đã được xác minh chéo thay vì một loạt cảnh báo chưa kiểm chứng.",
+    "featuresVi": [
+      "Sáu giai đoạn kiểm định: trinh sát, săn lỗ hổng, xác minh ứng viên, xuất kết quả, xác minh bản ghi, viết báo cáo",
+      "Xác minh đối kháng: tác tử kiểm tra một phát hiện không bao giờ là tác tử đã tìm ra nó",
+      "Ba loại kết luận rõ ràng: confirmed (có dấu vết mã nguồn đầy đủ), needs_validation (còn một dữ kiện chưa rõ), rejected (đã bị bác bỏ)",
+      "Sổ phủ sóng: ghi lại phần mã đã được kiểm tra trong `coverage-ledger.json`, dùng các tác tử phản biện để tìm chỗ còn sót",
+      "Bộ lớp tấn công phong phú: bộ nhớ và mã nhị phân, ứng dụng LLM (prompt injection), web và xác thực, phía trình duyệt, chuỗi cung ứng, đám mây, giao thức, cạn kiệt tài nguyên, cô lập dữ liệu, ứng dụng máy tính và di động",
+      "Kết quả có cấu trúc: `findings.json` kiểm tra theo `report-schema.json` bằng trình kiểm tra không phụ thuộc thư viện",
+      "Báo cáo trung lập: sinh `REPORT.md`, `FINDINGS-DETAIL.md` và `NEEDS-VALIDATION.md` từ các bản ghi đã xác minh",
+      "Chạy nhiều lần cộng dồn: lần sau dùng sổ phủ sóng và kết quả lần trước để nhắm vào phần còn thiếu"
+    ],
+    "installGuideVi": "Yêu cầu: Trợ lý lập trình có mô hình hỗ trợ gọi công cụ và chạy tác tử con song song; Node.js cho hai trình kiểm tra kết quả; một môi trường cách ly (sandbox) do hệ điều hành thực thi, tắt mạng ngoài và giới hạn tài nguyên nếu muốn chạy mã của dự án được kiểm định.\nBước 1: Cài skill vào dự án hiện tại bằng Skills CLI: `npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit`\nBước 2: Hoặc cài cho cả người dùng (mọi dự án): `npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit --global`\nBước 3: Xem các tùy chọn chọn trợ lý và chế độ không tương tác: `npx skills --help`\nBước 4: Chuẩn bị Node.js và một sandbox cách ly mạng nếu muốn skill chạy thử mã của dự án; không có sandbox, các nghi vấn sẽ được giữ ở trạng thái needs_validation",
+    "usageGuideVi": "Bước 1: Mở trợ lý lập trình trong thư mục mã nguồn cần kiểm định (hoặc trỏ trợ lý tới thư mục đó).\nBước 2: Yêu cầu kiểm định bằng câu lệnh tự nhiên, ví dụ `security audit this codebase`; skill tự kích hoạt khi yêu cầu nói về kiểm định bảo mật, tìm lỗ hổng hay pen-test.\nBước 3: Chỉ định thư mục kết quả nếu cần, ví dụ `do a security review, output to ~/audits/my-project`; mặc định kết quả nằm ở `~/security-audit-skill/<repo-name>/run-<N>`.\nBước 4: Đọc `REPORT.md` và `NEEDS-VALIDATION.md`, sửa các lỗi đã xác nhận rồi chạy lại để mở rộng phạm vi kiểm tra.",
+    "samplePromptsVi": [
+      "Kiểm định bảo mật toàn bộ mã nguồn của ứng dụng ví điện tử này, xuất báo cáo vào ~/audits/vi-dien-tu",
+      "Tìm lỗ hổng bảo mật trong thư mục ./src, tập trung vào xác thực người dùng và phân quyền giữa các khách hàng",
+      "Rà soát nguy cơ prompt injection và lạm dụng công cụ trong chatbot chăm sóc khách hàng dùng LLM của công ty"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit\"\n  ],\n  \"nguon\": \"https://github.com/cloudflare/security-audit-skill\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí; chi phí sử dụng mô hình AI tùy trợ lý lập trình",
+    "prosVi": [
+      "Do Cloudflare phát hành, giấy phép MIT",
+      "Giảm báo động giả nhờ mỗi phát hiện được một tác tử độc lập cố gắng bác bỏ",
+      "Kết quả có cấu trúc JSON và báo cáo Markdown, dễ đưa vào quy trình nội bộ",
+      "Không ghi vào kho mã đang kiểm định trừ khi người dùng chọn thư mục được bỏ qua bởi hệ thống quản lý phiên bản"
+    ],
+    "consVi": [
+      "Cần mô hình mạnh hỗ trợ tác tử con song song, tốn nhiều lượt gọi mô hình",
+      "Muốn chạy thử mã của dự án phải tự dựng sandbox cách ly mạng và giới hạn tài nguyên",
+      "Một lần chạy chỉ tìm được khoảng một nửa số lỗ hổng so với chạy lặp lại nhiều lần (theo thử nghiệm của tác giả)",
+      "README không nêu tên trợ lý lập trình cụ thể được hỗ trợ",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# Cloudflare security-audit — Skill biến trợ lý lập trình AI thành chuyên gia kiểm định bảo mật mã nguồn\n\n> A coding-agent skill that turns your agent into a security auditor.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nsecurity-audit là skill dành cho trợ lý lập trình AI do Cloudflare phát hành, biến trợ lý thành một chuyên gia kiểm định bảo mật mã nguồn. Skill điều phối nhiều tác tử độc lập qua sáu giai đoạn: trinh sát, săn lỗ hổng theo sổ phủ sóng, xác minh ứng viên, xuất kết quả có cấu trúc, xác minh lại từng bản ghi và viết báo cáo. Đây là điểm khởi đầu của hệ thống tìm lỗ hổng mà Cloudflare mô tả trong bài viết \"Build your own vulnerability harness\".\n\nGiúp lập trình viên và đội bảo mật tự kiểm định một kho mã bằng trợ lý lập trình AI, nhận danh sách lỗ hổng đã được xác minh chéo thay vì một loạt cảnh báo chưa kiểm chứng.\n\n- **Loại hình thành phần:** Skill\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** Cloudflare\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Sáu giai đoạn kiểm định: trinh sát, săn lỗ hổng, xác minh ứng viên, xuất kết quả, xác minh bản ghi, viết báo cáo**\n- **Xác minh đối kháng: tác tử kiểm tra một phát hiện không bao giờ là tác tử đã tìm ra nó**\n- **Ba loại kết luận rõ ràng: confirmed (có dấu vết mã nguồn đầy đủ), needs_validation (còn một dữ kiện chưa rõ), rejected (đã bị bác bỏ)**\n- **Sổ phủ sóng: ghi lại phần mã đã được kiểm tra trong `coverage-ledger.json`, dùng các tác tử phản biện để tìm chỗ còn sót**\n- **Bộ lớp tấn công phong phú: bộ nhớ và mã nhị phân, ứng dụng LLM (prompt injection), web và xác thực, phía trình duyệt, chuỗi cung ứng, đám mây, giao thức, cạn kiệt tài nguyên, cô lập dữ liệu, ứng dụng máy tính và di động**\n- **Kết quả có cấu trúc: `findings.json` kiểm tra theo `report-schema.json` bằng trình kiểm tra không phụ thuộc thư viện**\n- **Báo cáo trung lập: sinh `REPORT.md`, `FINDINGS-DETAIL.md` và `NEEDS-VALIDATION.md` từ các bản ghi đã xác minh**\n- **Chạy nhiều lần cộng dồn: lần sau dùng sổ phủ sóng và kết quả lần trước để nhắm vào phần còn thiếu**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit\n```\n\nYêu cầu: Trợ lý lập trình có mô hình hỗ trợ gọi công cụ và chạy tác tử con song song; Node.js cho hai trình kiểm tra kết quả; một môi trường cách ly (sandbox) do hệ điều hành thực thi, tắt mạng ngoài và giới hạn tài nguyên nếu muốn chạy mã của dự án được kiểm định.\nBước 1: Cài skill vào dự án hiện tại bằng Skills CLI: `npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit`\nBước 2: Hoặc cài cho cả người dùng (mọi dự án): `npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit --global`\nBước 3: Xem các tùy chọn chọn trợ lý và chế độ không tương tác: `npx skills --help`\nBước 4: Chuẩn bị Node.js và một sandbox cách ly mạng nếu muốn skill chạy thử mã của dự án; không có sandbox, các nghi vấn sẽ được giữ ở trạng thái needs_validation\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mở trợ lý lập trình trong thư mục mã nguồn cần kiểm định (hoặc trỏ trợ lý tới thư mục đó).\nBước 2: Yêu cầu kiểm định bằng câu lệnh tự nhiên, ví dụ `security audit this codebase`; skill tự kích hoạt khi yêu cầu nói về kiểm định bảo mật, tìm lỗ hổng hay pen-test.\nBước 3: Chỉ định thư mục kết quả nếu cần, ví dụ `do a security review, output to ~/audits/my-project`; mặc định kết quả nằm ở `~/security-audit-skill/<repo-name>/run-<N>`.\nBước 4: Đọc `REPORT.md` và `NEEDS-VALIDATION.md`, sửa các lỗi đã xác nhận rồi chạy lại để mở rộng phạm vi kiểm tra.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Kiểm định bảo mật toàn bộ mã nguồn của ứng dụng ví điện tử này, xuất báo cáo vào ~/audits/vi-dien-tu\"\n- \"Tìm lỗ hổng bảo mật trong thư mục ./src, tập trung vào xác thực người dùng và phân quyền giữa các khách hàng\"\n- \"Rà soát nguy cơ prompt injection và lạm dụng công cụ trong chatbot chăm sóc khách hàng dùng LLM của công ty\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T11:03:02.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "agricidaniel-claude-seo",
+    "slug": "agricidaniel-claude-seo",
+    "name": "Claude SEO — Plugin kiểm định SEO và tối ưu cho tìm kiếm bằng AI trong Claude Code",
+    "icon": "Search",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "skill",
+    "typeNameVi": "Skill",
+    "category": "web_scraping_crawling",
+    "categoryNameVi": "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+    "categories": [
+      "web_scraping_crawling",
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Thu thập dữ liệu web & Cào dữ liệu (Scraping)",
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/AgriciDaniel/claude-seo",
+    "websiteUrl": "https://claude-seo.md",
+    "authorName": "Agrici Daniel",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Claude SEO là plugin SEO miễn phí, mã nguồn mở cho Claude Code: đưa vào một trang web, plugin chạy kiểm định SEO đầy đủ trong khoảng 10 đến 15 phút rồi trả về kế hoạch hành động xếp theo mức độ ưu tiên. Plugin gồm 26 skill con và 19 tác tử chuyên trách, tối đa 17 tác tử làm việc song song. Phạm vi kiểm tra gồm SEO kỹ thuật, Core Web Vitals, chất lượng nội dung E-E-A-T, dữ liệu có cấu trúc Schema.org, khả năng được AI trích dẫn (GEO), SEO địa phương, thương mại điện tử và đa quốc gia.",
+    "purposeVi": "Giúp agency, đội SEO nội bộ và người làm SEO tự do chạy kiểm định SEO chuyên sâu ngay trong Claude Code, có thêm phần tối ưu cho tìm kiếm bằng AI như Google AI Overviews, ChatGPT, Perplexity.",
+    "featuresVi": [
+      "Kiểm định toàn trang: `/seo audit <url>` chạy nhiều tác tử song song và trả về kế hoạch ưu tiên",
+      "SEO kỹ thuật: khả năng thu thập, lập chỉ mục, sitemap, robots.txt, chuyển hướng, tốc độ trang và Core Web Vitals",
+      "Nội dung và E-E-A-T: đánh giá chất lượng, trang mỏng, độ phủ chủ đề, tạo content brief và phân cụm từ khóa theo SERP",
+      "Schema.org: phát hiện, kiểm tra và sinh mã dữ liệu có cấu trúc cho kết quả tìm kiếm nhiều định dạng",
+      "Tìm kiếm bằng AI (GEO): chấm điểm khả năng được Google AI Overviews, AI Mode, ChatGPT, Perplexity, Gemini trích dẫn; kiểm tra mức sẵn sàng cho tác tử AI với `/seo agentic`",
+      "SEO địa phương và thương mại điện tử: Google Business Profile, đánh giá, map pack, trang sản phẩm, hreflang",
+      "Dữ liệu Google tùy chọn: kết nối Search Console, PageSpeed, CrUX, GA4 miễn phí bằng `/seo google setup`, xuất báo cáo PDF",
+      "Theo dõi thay đổi: `/seo drift` lưu ảnh chụp SEO bằng SQLite để so sánh theo thời gian"
+    ],
+    "installGuideVi": "Yêu cầu: Claude Code 1.0.33 trở lên và Python 3.11 đến 3.14. `/seo setup` tự cài môi trường Python riêng và trình duyệt headless. Khóa API Google là tùy chọn; một số tiện ích mở rộng kết nối dịch vụ trả phí bằng tài khoản riêng của bạn.\nBước 1: Trong Claude Code, thêm marketplace: `/plugin marketplace add AgriciDaniel/claude-seo`\nBước 2: Cài plugin: `/plugin install claude-seo@agricidaniel-claude-seo`\nBước 3: Chuẩn bị môi trường Python và trình duyệt headless: `/seo setup`; kiểm tra lại bất cứ lúc nào bằng `/seo doctor`\nBước 4: Cài thủ công trên macOS và Linux: `git clone --depth 1 https://github.com/AgriciDaniel/claude-seo.git` rồi `bash claude-seo/install.sh`\nBước 5: Cài thủ công trên Windows (PowerShell): sau khi clone, chạy `powershell -ExecutionPolicy Bypass -File claude-seo\\install.ps1`",
+    "usageGuideVi": "Bước 1: Khởi động Claude Code bằng lệnh `claude`, gõ `/seo` để xem toàn bộ lệnh.\nBước 2: Kiểm định toàn trang: `/seo audit https://example.com`; phân tích sâu một trang: `/seo page https://example.com/pricing`.\nBước 3: Kiểm tra mức sẵn sàng cho tìm kiếm bằng AI với `/seo geo https://example.com`, dữ liệu có cấu trúc với `/seo schema https://example.com`, SEO địa phương với `/seo local https://example.com`.\nBước 4: Đọc báo cáo Markdown được lưu trên máy, dùng `/seo google report` để xuất PDF gửi khách hàng.",
+    "samplePromptsVi": [
+      "/seo audit https://cuahangcaphe.vn rồi tóm tắt 10 việc cần sửa trước tiên bằng tiếng Việt",
+      "/seo local https://nhakhoa-danang.vn, kiểm tra hồ sơ Google Business Profile và khả năng lên map pack ở Đà Nẵng",
+      "/seo geo https://blogtaichinh.vn, cho biết vì sao bài viết chưa được ChatGPT và Google AI Overviews trích dẫn"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "/plugin marketplace add AgriciDaniel/claude-seo",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"/plugin marketplace add AgriciDaniel/claude-seo\"\n  ],\n  \"nguon\": \"https://github.com/AgriciDaniel/claude-seo\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, dùng kèm gói Claude Code; một số tiện ích mở rộng tùy chọn kết nối dịch vụ trả phí",
+    "prosVi": [
+      "Miễn phí, giấy phép MIT, không giới hạn số trang web",
+      "Bao quát nhiều mảng SEO và có phần riêng cho tìm kiếm bằng AI",
+      "Báo cáo lưu trên máy dưới dạng Markdown, PDF, JSON; không cần khóa API để bắt đầu",
+      "Mỗi khuyến nghị kèm lý do và cách kiểm tra đã sửa thành công"
+    ],
+    "consVi": [
+      "Chỉ chạy trong Claude Code, cần gói Claude; một lần kiểm định đầy đủ dùng mô hình Opus và Sonnet nên tốn hạn mức",
+      "Nội dung trang được gửi tới mô hình Claude của Anthropic để phân tích",
+      "Không có khóa API Google thì Core Web Vitals chỉ là ước tính phòng thí nghiệm, trạng thái lập chỉ mục chỉ là suy luận",
+      "Trang chỉ tải nội dung sau khi cuộn hoặc bấm có thể cho kết quả nhiễu",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# Claude SEO — Plugin kiểm định SEO và tối ưu cho tìm kiếm bằng AI trong Claude Code\n\n> Claude SEO is a free SEO plugin for Claude Code.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nClaude SEO là plugin SEO miễn phí, mã nguồn mở cho Claude Code: đưa vào một trang web, plugin chạy kiểm định SEO đầy đủ trong khoảng 10 đến 15 phút rồi trả về kế hoạch hành động xếp theo mức độ ưu tiên. Plugin gồm 26 skill con và 19 tác tử chuyên trách, tối đa 17 tác tử làm việc song song. Phạm vi kiểm tra gồm SEO kỹ thuật, Core Web Vitals, chất lượng nội dung E-E-A-T, dữ liệu có cấu trúc Schema.org, khả năng được AI trích dẫn (GEO), SEO địa phương, thương mại điện tử và đa quốc gia.\n\nGiúp agency, đội SEO nội bộ và người làm SEO tự do chạy kiểm định SEO chuyên sâu ngay trong Claude Code, có thêm phần tối ưu cho tìm kiếm bằng AI như Google AI Overviews, ChatGPT, Perplexity.\n\n- **Loại hình thành phần:** Skill\n- **Lĩnh vực chuyên môn:** Thu thập dữ liệu web & Cào dữ liệu (Scraping)\n- **Tác giả / Nhà phát triển:** Agrici Daniel\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/AgriciDaniel/claude-seo](https://github.com/AgriciDaniel/claude-seo)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Kiểm định toàn trang: `/seo audit <url>` chạy nhiều tác tử song song và trả về kế hoạch ưu tiên**\n- **SEO kỹ thuật: khả năng thu thập, lập chỉ mục, sitemap, robots.txt, chuyển hướng, tốc độ trang và Core Web Vitals**\n- **Nội dung và E-E-A-T: đánh giá chất lượng, trang mỏng, độ phủ chủ đề, tạo content brief và phân cụm từ khóa theo SERP**\n- **Schema.org: phát hiện, kiểm tra và sinh mã dữ liệu có cấu trúc cho kết quả tìm kiếm nhiều định dạng**\n- **Tìm kiếm bằng AI (GEO): chấm điểm khả năng được Google AI Overviews, AI Mode, ChatGPT, Perplexity, Gemini trích dẫn; kiểm tra mức sẵn sàng cho tác tử AI với `/seo agentic`**\n- **SEO địa phương và thương mại điện tử: Google Business Profile, đánh giá, map pack, trang sản phẩm, hreflang**\n- **Dữ liệu Google tùy chọn: kết nối Search Console, PageSpeed, CrUX, GA4 miễn phí bằng `/seo google setup`, xuất báo cáo PDF**\n- **Theo dõi thay đổi: `/seo drift` lưu ảnh chụp SEO bằng SQLite để so sánh theo thời gian**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n/plugin marketplace add AgriciDaniel/claude-seo\n```\n\nYêu cầu: Claude Code 1.0.33 trở lên và Python 3.11 đến 3.14. `/seo setup` tự cài môi trường Python riêng và trình duyệt headless. Khóa API Google là tùy chọn; một số tiện ích mở rộng kết nối dịch vụ trả phí bằng tài khoản riêng của bạn.\nBước 1: Trong Claude Code, thêm marketplace: `/plugin marketplace add AgriciDaniel/claude-seo`\nBước 2: Cài plugin: `/plugin install claude-seo@agricidaniel-claude-seo`\nBước 3: Chuẩn bị môi trường Python và trình duyệt headless: `/seo setup`; kiểm tra lại bất cứ lúc nào bằng `/seo doctor`\nBước 4: Cài thủ công trên macOS và Linux: `git clone --depth 1 https://github.com/AgriciDaniel/claude-seo.git` rồi `bash claude-seo/install.sh`\nBước 5: Cài thủ công trên Windows (PowerShell): sau khi clone, chạy `powershell -ExecutionPolicy Bypass -File claude-seo\\install.ps1`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Khởi động Claude Code bằng lệnh `claude`, gõ `/seo` để xem toàn bộ lệnh.\nBước 2: Kiểm định toàn trang: `/seo audit https://example.com`; phân tích sâu một trang: `/seo page https://example.com/pricing`.\nBước 3: Kiểm tra mức sẵn sàng cho tìm kiếm bằng AI với `/seo geo https://example.com`, dữ liệu có cấu trúc với `/seo schema https://example.com`, SEO địa phương với `/seo local https://example.com`.\nBước 4: Đọc báo cáo Markdown được lưu trên máy, dùng `/seo google report` để xuất PDF gửi khách hàng.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"/seo audit https://cuahangcaphe.vn rồi tóm tắt 10 việc cần sửa trước tiên bằng tiếng Việt\"\n- \"/seo local https://nhakhoa-danang.vn, kiểm tra hồ sơ Google Business Profile và khả năng lên map pack ở Đà Nẵng\"\n- \"/seo geo https://blogtaichinh.vn, cho biết vì sao bài viết chưa được ChatGPT và Google AI Overviews trích dẫn\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T11:03:02.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "pbakaus-impeccable",
+    "slug": "pbakaus-impeccable",
+    "name": "Impeccable — Bộ lệnh thiết kế và phát hiện giao diện rập khuôn cho trợ lý lập trình AI",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "skill",
+    "typeNameVi": "Skill",
+    "category": "frontend_ui",
+    "categoryNameVi": "Frontend & Giao diện người dùng",
+    "categories": [
+      "frontend_ui",
+      "qa_testing"
+    ],
+    "categoryNamesVi": [
+      "Frontend & Giao diện người dùng",
+      "Kiểm thử phần mềm & QA/QC"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "cursor",
+      "antigravity"
+    ],
+    "sourceUrl": "https://github.com/pbakaus/impeccable",
+    "websiteUrl": "https://impeccable.style",
+    "authorName": "Paul Bakaus",
+    "license": "Mã nguồn mở (Apache 2.0)",
+    "summaryVi": "Impeccable là bộ từ vựng thiết kế cho trợ lý lập trình AI: điều chỉnh giao diện bằng các lệnh như `polish`, `bolder`, rà soát bằng `critique` và `audit`, và bắt các dấu hiệu \"AI slop\" trước khi phát hành. Skill có 24 lệnh, chế độ live để chọn phần tử trong trình duyệt và đổi qua các biến thể, cùng bộ phát hiện với 62 quy tắc xác định chạy không cần LLM hay khóa API. Hỗ trợ nhiều công cụ như Claude Code, Cursor, Codex CLI, GitHub Copilot, Gemini CLI, Google Antigravity, OpenCode.",
+    "purposeVi": "Giúp lập trình viên dùng trợ lý AI nâng chất lượng thiết kế giao diện có sẵn, tránh các mẫu rập khuôn như font Inter khắp nơi, gradient tím xanh, thẻ lồng trong thẻ.",
+    "featuresVi": [
+      "24 lệnh thiết kế: nhóm điều chỉnh (bolder, quieter, distill, colorize, typeset, layout, animate, delight, overdrive), rà soát (critique, audit), hoàn thiện (polish, harden, clarify, adapt, optimize, onboard)",
+      "Ngữ cảnh dự án: `/impeccable init` viết `PRODUCT.md`, `/impeccable document` ghi hệ thống hình ảnh hiện có vào `DESIGN.md`",
+      "Rà soát có chấm điểm: critique theo các nguyên tắc khả dụng, audit kiểm tra khả năng tiếp cận, hiệu năng, theme và hiển thị đáp ứng, xếp mức P0 đến P3",
+      "Bộ phát hiện slop: 62 quy tắc xác định, không cần LLM hay khóa API",
+      "Hook thiết kế: tự quét mọi tệp giao diện trợ lý vừa sửa trên Claude Code, Cursor, Codex, GitHub Copilot, Grok Build, Hermes Agent",
+      "CLI cho CI: `npx impeccable detect` quét thư mục hoặc URL, có đầu ra JSON và chú thích GitHub Actions",
+      "Chế độ live: chọn phần tử trên máy chủ dev, đổi qua các biến thể và ghi lại vào mã nguồn; hỗ trợ Vite, Next, SvelteKit, Astro, Nuxt và HTML thuần",
+      "Tiện ích Chrome: phủ kết quả phát hiện lên bất kỳ trang web nào"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js chỉ cần cho `npx`; skill chạy một tệp thực thi engine đi kèm hoặc tải một lần vào `~/.impeccable/bin/`. Quét URL cần Chrome hoặc Edge đã cài. Có thể chép thủ công mà không cần Node.\nBước 1: Từ thư mục gốc dự án, chạy trình cài: `npx impeccable install`; trình cài tự phát hiện công cụ lập trình, hỏi cài cho dự án hay toàn cục và đề nghị cài hook thiết kế\nBước 2: Tải lại công cụ lập trình, rồi chạy `/impeccable init` trong trợ lý (`$impeccable init` trên Codex)\nBước 3: Hoặc cài plugin trong Claude Code: `/plugin marketplace add pbakaus/impeccable`, sau đó mở `/plugin` và cài Impeccable\nBước 4: Ghim phiên bản cho cả nhóm bằng git submodule: `git submodule add https://github.com/pbakaus/impeccable vendor/impeccable` rồi `npx impeccable link --source=vendor/impeccable --providers=claude,cursor`\nBước 5: Cập nhật bản cài đặt: `npx impeccable update`",
+    "usageGuideVi": "Bước 1: Chọn một thành phần cụ thể và gọi lệnh, ví dụ `/impeccable critique the pricing cards`.\nBước 2: Gọi lệnh kèm mục tiêu như `/impeccable polish settings` hoặc mô tả tự do; mục tiêu càng hẹp kết quả càng tốt.\nBước 3: Lặp trực tiếp trên trình duyệt với `/impeccable live` khi máy chủ dev đang chạy.\nBước 4: Quét trong CI hoặc terminal: `npx impeccable detect src/`, hoặc `npx impeccable detect --github src/` để có chú thích GitHub Actions.",
+    "samplePromptsVi": [
+      "/impeccable critique trang thanh toán của cửa hàng thời trang, xếp hạng những gì cần sửa trước",
+      "/impeccable bolder phần hero của trang giới thiệu homestay ở Hội An",
+      "/impeccable harden form đăng ký, xử lý lỗi, chữ tiếng Việt dài bị tràn và màn hình điện thoại nhỏ"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "/plugin marketplace add pbakaus/impeccable",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"/plugin marketplace add pbakaus/impeccable\"\n  ],\n  \"nguon\": \"https://github.com/pbakaus/impeccable\"\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "cliCommand": "npx impeccable install",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx impeccable install\"\n  ],\n  \"nguon\": \"https://github.com/pbakaus/impeccable\"\n}"
+      },
+      {
+        "platform": "antigravity",
+        "platformName": "Google Antigravity",
+        "cliCommand": "npx impeccable install",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx impeccable install\"\n  ],\n  \"nguon\": \"https://github.com/pbakaus/impeccable\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Hỗ trợ rất nhiều trợ lý lập trình, trong đó có Claude Code, Cursor, Google Antigravity",
+      "Bộ phát hiện chạy không cần LLM, dùng được trong CI",
+      "Hook tự động kiểm tra mỗi lần trợ lý sửa tệp giao diện",
+      "Giấy phép Apache 2.0, có tài liệu chi tiết trên trang web"
+    ],
+    "consVi": [
+      "Có telemetry ẩn danh về hướng thiết kế được chọn (tắt được bằng `npx impeccable telemetry off`), và vẫn tải danh mục hướng thiết kế từ impeccable.style",
+      "Hook trong Claude Code chạy ngoài phần phê duyệt của mô hình; nên kiểm tra hook trước khi chạy không giám sát",
+      "Codex, Grok Build, Hermes Agent cần thêm bước cho phép hook",
+      "Mạnh nhất với giao diện đã có; dựng trang mới là chế độ khó hơn",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# Impeccable — Bộ lệnh thiết kế và phát hiện giao diện rập khuôn cho trợ lý lập trình AI\n\n> The design vocabulary for your coding agent.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nImpeccable là bộ từ vựng thiết kế cho trợ lý lập trình AI: điều chỉnh giao diện bằng các lệnh như `polish`, `bolder`, rà soát bằng `critique` và `audit`, và bắt các dấu hiệu \"AI slop\" trước khi phát hành. Skill có 24 lệnh, chế độ live để chọn phần tử trong trình duyệt và đổi qua các biến thể, cùng bộ phát hiện với 62 quy tắc xác định chạy không cần LLM hay khóa API. Hỗ trợ nhiều công cụ như Claude Code, Cursor, Codex CLI, GitHub Copilot, Gemini CLI, Google Antigravity, OpenCode.\n\nGiúp lập trình viên dùng trợ lý AI nâng chất lượng thiết kế giao diện có sẵn, tránh các mẫu rập khuôn như font Inter khắp nơi, gradient tím xanh, thẻ lồng trong thẻ.\n\n- **Loại hình thành phần:** Skill\n- **Lĩnh vực chuyên môn:** Frontend & Giao diện người dùng\n- **Tác giả / Nhà phát triển:** Paul Bakaus\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache 2.0)\n- **Nền tảng hỗ trợ:** `claude_code`, `cursor`, `antigravity`\n- **Kho lưu trữ chính thức:** [https://github.com/pbakaus/impeccable](https://github.com/pbakaus/impeccable)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **24 lệnh thiết kế: nhóm điều chỉnh (bolder, quieter, distill, colorize, typeset, layout, animate, delight, overdrive), rà soát (critique, audit), hoàn thiện (polish, harden, clarify, adapt, optimize, onboard)**\n- **Ngữ cảnh dự án: `/impeccable init` viết `PRODUCT.md`, `/impeccable document` ghi hệ thống hình ảnh hiện có vào `DESIGN.md`**\n- **Rà soát có chấm điểm: critique theo các nguyên tắc khả dụng, audit kiểm tra khả năng tiếp cận, hiệu năng, theme và hiển thị đáp ứng, xếp mức P0 đến P3**\n- **Bộ phát hiện slop: 62 quy tắc xác định, không cần LLM hay khóa API**\n- **Hook thiết kế: tự quét mọi tệp giao diện trợ lý vừa sửa trên Claude Code, Cursor, Codex, GitHub Copilot, Grok Build, Hermes Agent**\n- **CLI cho CI: `npx impeccable detect` quét thư mục hoặc URL, có đầu ra JSON và chú thích GitHub Actions**\n- **Chế độ live: chọn phần tử trên máy chủ dev, đổi qua các biến thể và ghi lại vào mã nguồn; hỗ trợ Vite, Next, SvelteKit, Astro, Nuxt và HTML thuần**\n- **Tiện ích Chrome: phủ kết quả phát hiện lên bất kỳ trang web nào**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n/plugin marketplace add pbakaus/impeccable\n```\n\nYêu cầu: Node.js chỉ cần cho `npx`; skill chạy một tệp thực thi engine đi kèm hoặc tải một lần vào `~/.impeccable/bin/`. Quét URL cần Chrome hoặc Edge đã cài. Có thể chép thủ công mà không cần Node.\nBước 1: Từ thư mục gốc dự án, chạy trình cài: `npx impeccable install`; trình cài tự phát hiện công cụ lập trình, hỏi cài cho dự án hay toàn cục và đề nghị cài hook thiết kế\nBước 2: Tải lại công cụ lập trình, rồi chạy `/impeccable init` trong trợ lý (`$impeccable init` trên Codex)\nBước 3: Hoặc cài plugin trong Claude Code: `/plugin marketplace add pbakaus/impeccable`, sau đó mở `/plugin` và cài Impeccable\nBước 4: Ghim phiên bản cho cả nhóm bằng git submodule: `git submodule add https://github.com/pbakaus/impeccable vendor/impeccable` rồi `npx impeccable link --source=vendor/impeccable --providers=claude,cursor`\nBước 5: Cập nhật bản cài đặt: `npx impeccable update`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chọn một thành phần cụ thể và gọi lệnh, ví dụ `/impeccable critique the pricing cards`.\nBước 2: Gọi lệnh kèm mục tiêu như `/impeccable polish settings` hoặc mô tả tự do; mục tiêu càng hẹp kết quả càng tốt.\nBước 3: Lặp trực tiếp trên trình duyệt với `/impeccable live` khi máy chủ dev đang chạy.\nBước 4: Quét trong CI hoặc terminal: `npx impeccable detect src/`, hoặc `npx impeccable detect --github src/` để có chú thích GitHub Actions.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"/impeccable critique trang thanh toán của cửa hàng thời trang, xếp hạng những gì cần sửa trước\"\n- \"/impeccable bolder phần hero của trang giới thiệu homestay ở Hội An\"\n- \"/impeccable harden form đăng ký, xử lý lỗi, chữ tiếng Việt dài bị tràn và màn hình điện thoại nhỏ\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T11:03:02.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "leonxlnx-taste-skill",
+    "slug": "leonxlnx-taste-skill",
+    "name": "Taste Skill — Skill giúp trợ lý lập trình AI thiết kế trang web và màn hình ứng dụng có gu",
+    "icon": "Sparkles",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "skill",
+    "typeNameVi": "Skill",
+    "category": "frontend_ui",
+    "categoryNameVi": "Frontend & Giao diện người dùng",
+    "categories": [
+      "frontend_ui"
+    ],
+    "categoryNamesVi": [
+      "Frontend & Giao diện người dùng"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/Leonxlnx/taste-skill",
+    "websiteUrl": "https://tasteskill.dev",
+    "authorName": "Leonxlnx",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Taste Skill là Agent Skill giúp trợ lý lập trình AI thiết kế trang web và màn hình ứng dụng có định hướng nghệ thuật thay vì lắp ráp một trang đích trung bình. Skill được xây từ nghiên cứu 247 trang web chọn lọc: rút ba trong 20 hướng thiết kế, dùng ảnh thật từ kho mở có ghi nguồn, kiểm tra trang trong trình duyệt thật ở ba độ rộng và tự sửa ba lỗi lớn nhất qua tối đa ba vòng. Từ bản 2.1 skill còn dựng dashboard, trang quản trị và màn hình cài đặt theo quy tắc riêng cho ứng dụng.",
+    "purposeVi": "Giúp người dùng trợ lý lập trình AI tạo trang web và màn hình ứng dụng trông như được thiết kế thật, có ảnh thật và được kiểm tra trực quan trước khi giao.",
+    "featuresVi": [
+      "Định hướng nghệ thuật: một script rút ba trong 20 hướng thiết kế đã nghiên cứu để trợ lý chọn một",
+      "Ảnh thật có giấy phép: lấy từ Wikimedia Commons, Openverse, the Met; chỉ dùng public domain, CC0, CC BY, CC BY-SA và ghi nguồn trên trang",
+      "Tự kiểm tra trong trình duyệt: xem trang ở ba độ rộng, đánh trượt nếu có dấu hiệu slop",
+      "Tự sửa lỗi: xem ảnh chụp màn hình của chính mình và sửa ba vấn đề lớn nhất, tối đa ba vòng",
+      "Dashboard và màn hình ứng dụng (v2.1): bảng điều khiển gọn, số liệu căn thẳng, màu dành cho dữ liệu, bố cục điện thoại gập điều hướng",
+      "Thiết kế lại trang có sẵn: rà soát trang hiện tại trong trình duyệt thật trước khi thay đổi",
+      "Không phụ thuộc framework: dùng được với React, Vue, Svelte hay HTML thuần"
+    ],
+    "installGuideVi": "Yêu cầu: Node 22 trở lên và Chrome, Edge hoặc Chromium đã cài. Không cần khóa API; chỉ cần mạng để tìm ảnh.\nBước 1: Cài bằng Skills CLI: `npx skills add https://github.com/Leonxlnx/taste-skill --skill \"design-taste-frontend\"`\nBước 2: Hoặc cài plugin trong Claude Code: `/plugin marketplace add Leonxlnx/taste-skill` rồi `/plugin install taste-skill@taste-skill`\nBước 3: Hoặc cài plugin cho Codex: `codex plugin marketplace add Leonxlnx/taste-skill` rồi `codex plugin add taste-skill@taste-skill`, sau đó mở phiên Codex mới\nBước 4: Đảm bảo máy có Node 22 trở lên và Chrome, Edge hoặc Chromium",
+    "usageGuideVi": "Bước 1: Mô tả trang hoặc màn hình cần dựng cho trợ lý lập trình, kèm những gì riêng có của khách hàng (sản phẩm, câu chuyện, tư liệu).\nBước 2: Chọn một trong ba hướng thiết kế skill đề xuất.\nBước 3: Chờ skill dựng trang, chụp màn hình và tự sửa; một lần dựng mất khoảng 30 đến 45 phút và vài trăm nghìn token.\nBước 4: Thay ảnh từ kho mở bằng ảnh của bạn khi có, giữ phần ghi nguồn cho ảnh còn lại.",
+    "samplePromptsVi": [
+      "Dựng trang giới thiệu cho quán cà phê rang xay ở Đà Lạt, nhấn vào quy trình rang và vùng trồng",
+      "Thiết kế dashboard quản lý đơn hàng cho cửa hàng online, có bảng, biểu đồ doanh thu và giao diện điện thoại",
+      "Thiết kế lại trang chủ hiện tại của studio kiến trúc, kiểm tra trong trình duyệt trước rồi mới sửa"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "/plugin marketplace add Leonxlnx/taste-skill",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"/plugin marketplace add Leonxlnx/taste-skill\"\n  ],\n  \"nguon\": \"https://github.com/Leonxlnx/taste-skill\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Giấy phép MIT, không cần khóa API",
+      "Ảnh thật có giấy phép mở và được ghi nguồn tự động",
+      "Tự kiểm tra và sửa trong trình duyệt thật trước khi giao",
+      "Cài được qua Skills CLI, plugin Claude Code hoặc plugin Codex"
+    ],
+    "consVi": [
+      "Một lần dựng tốn khoảng 30 đến 45 phút và vài trăm nghìn token",
+      "Cần Node 22 trở lên và một trình duyệt Chromium trên máy",
+      "Các skill cũ đã chuyển sang repo khác, dễ nhầm khi cài theo hướng dẫn cũ",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# Taste Skill — Skill giúp trợ lý lập trình AI thiết kế trang web và màn hình ứng dụng có gu\n\n> It gives the agent an art direction, real pictures and a way to check its own work in a real browser.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nTaste Skill là Agent Skill giúp trợ lý lập trình AI thiết kế trang web và màn hình ứng dụng có định hướng nghệ thuật thay vì lắp ráp một trang đích trung bình. Skill được xây từ nghiên cứu 247 trang web chọn lọc: rút ba trong 20 hướng thiết kế, dùng ảnh thật từ kho mở có ghi nguồn, kiểm tra trang trong trình duyệt thật ở ba độ rộng và tự sửa ba lỗi lớn nhất qua tối đa ba vòng. Từ bản 2.1 skill còn dựng dashboard, trang quản trị và màn hình cài đặt theo quy tắc riêng cho ứng dụng.\n\nGiúp người dùng trợ lý lập trình AI tạo trang web và màn hình ứng dụng trông như được thiết kế thật, có ảnh thật và được kiểm tra trực quan trước khi giao.\n\n- **Loại hình thành phần:** Skill\n- **Lĩnh vực chuyên môn:** Frontend & Giao diện người dùng\n- **Tác giả / Nhà phát triển:** Leonxlnx\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Định hướng nghệ thuật: một script rút ba trong 20 hướng thiết kế đã nghiên cứu để trợ lý chọn một**\n- **Ảnh thật có giấy phép: lấy từ Wikimedia Commons, Openverse, the Met; chỉ dùng public domain, CC0, CC BY, CC BY-SA và ghi nguồn trên trang**\n- **Tự kiểm tra trong trình duyệt: xem trang ở ba độ rộng, đánh trượt nếu có dấu hiệu slop**\n- **Tự sửa lỗi: xem ảnh chụp màn hình của chính mình và sửa ba vấn đề lớn nhất, tối đa ba vòng**\n- **Dashboard và màn hình ứng dụng (v2.1): bảng điều khiển gọn, số liệu căn thẳng, màu dành cho dữ liệu, bố cục điện thoại gập điều hướng**\n- **Thiết kế lại trang có sẵn: rà soát trang hiện tại trong trình duyệt thật trước khi thay đổi**\n- **Không phụ thuộc framework: dùng được với React, Vue, Svelte hay HTML thuần**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n/plugin marketplace add Leonxlnx/taste-skill\n```\n\nYêu cầu: Node 22 trở lên và Chrome, Edge hoặc Chromium đã cài. Không cần khóa API; chỉ cần mạng để tìm ảnh.\nBước 1: Cài bằng Skills CLI: `npx skills add https://github.com/Leonxlnx/taste-skill --skill \"design-taste-frontend\"`\nBước 2: Hoặc cài plugin trong Claude Code: `/plugin marketplace add Leonxlnx/taste-skill` rồi `/plugin install taste-skill@taste-skill`\nBước 3: Hoặc cài plugin cho Codex: `codex plugin marketplace add Leonxlnx/taste-skill` rồi `codex plugin add taste-skill@taste-skill`, sau đó mở phiên Codex mới\nBước 4: Đảm bảo máy có Node 22 trở lên và Chrome, Edge hoặc Chromium\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mô tả trang hoặc màn hình cần dựng cho trợ lý lập trình, kèm những gì riêng có của khách hàng (sản phẩm, câu chuyện, tư liệu).\nBước 2: Chọn một trong ba hướng thiết kế skill đề xuất.\nBước 3: Chờ skill dựng trang, chụp màn hình và tự sửa; một lần dựng mất khoảng 30 đến 45 phút và vài trăm nghìn token.\nBước 4: Thay ảnh từ kho mở bằng ảnh của bạn khi có, giữ phần ghi nguồn cho ảnh còn lại.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Dựng trang giới thiệu cho quán cà phê rang xay ở Đà Lạt, nhấn vào quy trình rang và vùng trồng\"\n- \"Thiết kế dashboard quản lý đơn hàng cho cửa hàng online, có bảng, biểu đồ doanh thu và giao diện điện thoại\"\n- \"Thiết kế lại trang chủ hiện tại của studio kiến trúc, kiểm tra trong trình duyệt trước rồi mới sửa\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T11:03:02.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "jakubkrehel-skills",
+    "slug": "jakubkrehel-skills",
+    "name": "Interfaces Skills — Bộ skill rà soát và hoàn thiện giao diện, kiểu chữ, màu sắc, khả năng tiếp cận",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "skill",
+    "typeNameVi": "Skill",
+    "category": "frontend_ui",
+    "categoryNameVi": "Frontend & Giao diện người dùng",
+    "categories": [
+      "frontend_ui",
+      "qa_testing"
+    ],
+    "categoryNamesVi": [
+      "Frontend & Giao diện người dùng",
+      "Kiểm thử phần mềm & QA/QC"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/jakubkrehel/skills",
+    "websiteUrl": "",
+    "authorName": "Jakub Krehel",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Đây là bộ 14 skill cho trợ lý lập trình AI của Jakub Krehel, tác giả tạp chí kỹ thuật thiết kế Interfaces, bao quát giao diện, kiểu chữ, màu sắc, khả năng tiếp cận, bố cục và câu chữ sản phẩm. Các skill có thể rà soát cả một giao diện thành một báo cáo xếp hạng, đánh bóng chi tiết với giá trị cụ thể, dựng giao diện từ Figma hoặc ảnh thiết kế, và hiển thị mọi trạng thái của một component để kiểm thử.",
+    "purposeVi": "Giúp lập trình viên giao diện dùng trợ lý AI rà soát và hoàn thiện sản phẩm theo các nguyên tắc thiết kế cụ thể, từ độ bo góc, bóng đổ đến WCAG 2.2.",
+    "featuresVi": [
+      "better-interface: rà soát màn hình, luồng hoặc toàn bộ giao diện về khả năng tiếp cận, bố cục, câu chữ, kiểu chữ, màu và độ tinh chỉnh, trả về một báo cáo xếp hạng",
+      "better-ui và better-typography: giá trị cụ thể cho bo góc, căn chỉnh quang học, bóng đổ, trạng thái icon, chuyển động; thang chữ, khoảng cách, ngắt dòng, cắt chữ",
+      "better-colors: tạo bảng màu, đặt tên token ngữ nghĩa, chuyển đổi định dạng và đo độ tương phản",
+      "better-accessibility: bàn phím và focus, ARIA, tên truy cập, form, thông báo cho trình đọc màn hình, theo WCAG 2.2",
+      "better-layout và better-writing: bố cục chịu được thay đổi kích thước, dịch và lật chiều; câu chữ cho nhãn, lỗi, trạng thái trống, xác nhận",
+      "interface-review: rà soát một nhánh, pull request hoặc thay đổi chưa commit để tìm lỗi giao diện mới phát sinh",
+      "build-design: dựng giao diện từ tệp Figma hoặc ảnh thiết kế bằng token và component sẵn có của dự án",
+      "break, state-machine, variant: kiểm thử component dưới mọi tình huống, hiển thị mọi trạng thái, tạo nhiều biến thể để chọn"
+    ],
+    "installGuideVi": "Yêu cầu: Một trợ lý lập trình hỗ trợ Agent Skills; Node.js để chạy `npx skills`.\nBước 1: Cài toàn bộ skill bằng Skills CLI: `npx skills add jakubkrehel/skills`\nBước 2: Hoặc trong Claude Code, thêm marketplace: `/plugin marketplace add jakubkrehel/skills`\nBước 3: Sau đó cài plugin: `/plugin install interfaces@interfaces`",
+    "usageGuideVi": "Bước 1: Yêu cầu trợ lý rà soát một màn hình hoặc luồng; skill phù hợp như better-interface hay better-accessibility sẽ được dùng.\nBước 2: Gọi trực tiếp các skill do người dùng kích hoạt như interface-review, explain-interface, break, state-machine, variant khi cần.\nBước 3: Đưa tệp Figma hoặc ảnh thiết kế để build-design dựng giao diện theo token của dự án.\nBước 4: Áp dụng các sửa đổi theo báo cáo xếp hạng, rồi chạy interface-review trên nhánh trước khi tạo pull request.",
+    "samplePromptsVi": [
+      "Rà soát màn hình đăng nhập của ứng dụng ngân hàng theo WCAG 2.2, ưu tiên điều hướng bằng bàn phím và trình đọc màn hình",
+      "Viết lại các thông báo lỗi và trạng thái trống trong trang giỏ hàng cho rõ ràng, nói người dùng cần làm gì tiếp theo",
+      "Hiển thị mọi trạng thái của component thẻ sản phẩm với dữ liệu giả, kể cả tên sản phẩm tiếng Việt rất dài"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "/plugin marketplace add jakubkrehel/skills",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"/plugin marketplace add jakubkrehel/skills\"\n  ],\n  \"nguon\": \"https://github.com/jakubkrehel/skills\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Giấy phép MIT, cài được bằng một lệnh",
+      "Bao quát nhiều khía cạnh thiết kế giao diện với giá trị và quy tắc cụ thể",
+      "Có skill rà soát pull request và kiểm thử component",
+      "Tác giả viết chuyên sâu về kỹ thuật thiết kế giao diện"
+    ],
+    "consVi": [
+      "README rất ngắn, phải đọc từng tệp SKILL.md để hiểu chi tiết",
+      "README chỉ nêu cách cài cho Claude Code, không nêu trợ lý khác",
+      "Chỉ tập trung vào giao diện, không hỗ trợ phần backend",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# Interfaces Skills — Bộ skill rà soát và hoàn thiện giao diện, kiểu chữ, màu sắc, khả năng tiếp cận\n\n> A collection of agent skills that cover UI, typography, colors, accessibility, layout, product writing and help you build a great interface.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nĐây là bộ 14 skill cho trợ lý lập trình AI của Jakub Krehel, tác giả tạp chí kỹ thuật thiết kế Interfaces, bao quát giao diện, kiểu chữ, màu sắc, khả năng tiếp cận, bố cục và câu chữ sản phẩm. Các skill có thể rà soát cả một giao diện thành một báo cáo xếp hạng, đánh bóng chi tiết với giá trị cụ thể, dựng giao diện từ Figma hoặc ảnh thiết kế, và hiển thị mọi trạng thái của một component để kiểm thử.\n\nGiúp lập trình viên giao diện dùng trợ lý AI rà soát và hoàn thiện sản phẩm theo các nguyên tắc thiết kế cụ thể, từ độ bo góc, bóng đổ đến WCAG 2.2.\n\n- **Loại hình thành phần:** Skill\n- **Lĩnh vực chuyên môn:** Frontend & Giao diện người dùng\n- **Tác giả / Nhà phát triển:** Jakub Krehel\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/jakubkrehel/skills](https://github.com/jakubkrehel/skills)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **better-interface: rà soát màn hình, luồng hoặc toàn bộ giao diện về khả năng tiếp cận, bố cục, câu chữ, kiểu chữ, màu và độ tinh chỉnh, trả về một báo cáo xếp hạng**\n- **better-ui và better-typography: giá trị cụ thể cho bo góc, căn chỉnh quang học, bóng đổ, trạng thái icon, chuyển động; thang chữ, khoảng cách, ngắt dòng, cắt chữ**\n- **better-colors: tạo bảng màu, đặt tên token ngữ nghĩa, chuyển đổi định dạng và đo độ tương phản**\n- **better-accessibility: bàn phím và focus, ARIA, tên truy cập, form, thông báo cho trình đọc màn hình, theo WCAG 2.2**\n- **better-layout và better-writing: bố cục chịu được thay đổi kích thước, dịch và lật chiều; câu chữ cho nhãn, lỗi, trạng thái trống, xác nhận**\n- **interface-review: rà soát một nhánh, pull request hoặc thay đổi chưa commit để tìm lỗi giao diện mới phát sinh**\n- **build-design: dựng giao diện từ tệp Figma hoặc ảnh thiết kế bằng token và component sẵn có của dự án**\n- **break, state-machine, variant: kiểm thử component dưới mọi tình huống, hiển thị mọi trạng thái, tạo nhiều biến thể để chọn**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n/plugin marketplace add jakubkrehel/skills\n```\n\nYêu cầu: Một trợ lý lập trình hỗ trợ Agent Skills; Node.js để chạy `npx skills`.\nBước 1: Cài toàn bộ skill bằng Skills CLI: `npx skills add jakubkrehel/skills`\nBước 2: Hoặc trong Claude Code, thêm marketplace: `/plugin marketplace add jakubkrehel/skills`\nBước 3: Sau đó cài plugin: `/plugin install interfaces@interfaces`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Yêu cầu trợ lý rà soát một màn hình hoặc luồng; skill phù hợp như better-interface hay better-accessibility sẽ được dùng.\nBước 2: Gọi trực tiếp các skill do người dùng kích hoạt như interface-review, explain-interface, break, state-machine, variant khi cần.\nBước 3: Đưa tệp Figma hoặc ảnh thiết kế để build-design dựng giao diện theo token của dự án.\nBước 4: Áp dụng các sửa đổi theo báo cáo xếp hạng, rồi chạy interface-review trên nhánh trước khi tạo pull request.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Rà soát màn hình đăng nhập của ứng dụng ngân hàng theo WCAG 2.2, ưu tiên điều hướng bằng bàn phím và trình đọc màn hình\"\n- \"Viết lại các thông báo lỗi và trạng thái trống trong trang giỏ hàng cho rõ ràng, nói người dùng cần làm gì tiếp theo\"\n- \"Hiển thị mọi trạng thái của component thẻ sản phẩm với dữ liệu giả, kể cả tên sản phẩm tiếng Việt rất dài\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T11:03:02.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "mattpocock-skills",
+    "slug": "mattpocock-skills",
+    "name": "Skills For Real Engineers — Bộ skill kỹ thuật phần mềm cho tác tử lập trình của Matt Pocock",
+    "icon": "Wrench",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "skill",
+    "typeNameVi": "Skill",
+    "category": "qa_testing",
+    "categoryNameVi": "Kiểm thử phần mềm & QA/QC",
+    "categories": [
+      "qa_testing"
+    ],
+    "categoryNamesVi": [
+      "Kiểm thử phần mềm & QA/QC"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "cursor",
+      "windsurf"
+    ],
+    "sourceUrl": "https://github.com/mattpocock/skills",
+    "websiteUrl": "",
+    "authorName": "Matt Pocock",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Skills For Real Engineers là bộ skill cho tác tử lập trình AI mà Matt Pocock dùng hằng ngày để làm kỹ thuật phần mềm thực thụ thay vì lập trình theo cảm hứng. Các skill nhỏ, dễ chỉnh sửa, kết hợp được với nhau, dùng được với mọi mô hình và chia thành hai nhóm: Engineering (đặc tả, ticket, TDD, gỡ lỗi, rà soát mã, kiến trúc) và Productivity (phỏng vấn làm rõ kế hoạch, bàn giao, dạy học). Bộ skill cài được cho Claude Code, Codex, GitHub Copilot, Gemini CLI và các tác tử khác qua skills.sh.",
+    "purposeVi": "Khắc phục các lỗi thường gặp khi làm việc với tác tử lập trình: tác tử hiểu sai yêu cầu, trả lời dài dòng, mã không chạy và mã nguồn ngày càng rối, bằng các quy trình kỹ thuật phần mềm có thể lặp lại.",
+    "featuresVi": [
+      "Phỏng vấn làm rõ yêu cầu: `/grill-me` và `/grill-with-docs` để tác tử hỏi chi tiết trước khi bắt tay vào làm",
+      "Ngôn ngữ chung của dự án: `/grill-with-docs` xây dựng và cập nhật `GLOSSARY.md` cùng các ADR ngay trong phiên làm việc",
+      "Phát triển hướng kiểm thử: skill `/tdd` theo vòng lặp red-green-refactor, làm từng lát cắt dọc",
+      "Gỡ lỗi có kỷ luật: `/diagnosing-bugs` dựng vòng phản hồi, thu nhỏ, đặt giả thuyết, đo đạc, sửa và viết kiểm thử hồi quy",
+      "Cải thiện kiến trúc: `/improve-codebase-architecture` khảo sát mã nguồn và trình bày các cơ hội cải thiện dưới dạng báo cáo HTML",
+      "Từ đặc tả đến ticket: `/to-spec`, `/to-tickets`, `/implement` và `/implement-spec` biến cuộc trò chuyện thành đặc tả, ticket và mã",
+      "Rà soát mã hai trục: `code-review` kiểm tra theo chuẩn mã của repo và theo đặc tả gốc bằng các subagent song song",
+      "Năng suất: `/handoff` tóm tắt phiên để tác tử khác làm tiếp, `/teach` dạy một kỹ năng qua nhiều phiên"
+    ],
+    "installGuideVi": "Yêu cầu: Một tác tử lập trình AI như Claude Code, Codex, GitHub Copilot, Gemini CLI hoặc tác tử khác được skills.sh hỗ trợ; Node.js nếu cài bằng `npx`.\nBước 1: Claude Code (tự cập nhật): `claude plugin install mattpocock-skills@claude-plugins-official`\nBước 2: Codex: `codex plugin marketplace add mattpocock/skills`, rồi `codex plugin add mattpocock-skills@mattpocock`\nBước 3: GitHub Copilot: `copilot plugin marketplace add mattpocock/skills`, rồi `copilot plugin install mattpocock-skills@mattpocock`\nBước 4: Tác tử khác (Cursor, Windsurf, OpenCode...): `npx skills@latest add mattpocock/skills -a <agent>`, nhớ chọn skill `setup-matt-pocock-skills`; cập nhật bằng `npx skills@latest update`\nBước 5: Chạy `/setup-matt-pocock-skills` một lần cho mỗi repo để chọn trình theo dõi issue, nhãn phân loại và nơi lưu tài liệu",
+    "usageGuideVi": "Bước 1: Trước mỗi thay đổi, gõ `/grill-me` hoặc `/grill-with-docs` để tác tử phỏng vấn bạn cho đến khi thống nhất yêu cầu.\nBước 2: Biến kết quả thảo luận thành đặc tả và ticket bằng `/to-spec` và `/to-tickets`, sau đó triển khai bằng `/implement`.\nBước 3: Khi viết tính năng hoặc sửa lỗi, để tác tử dùng `/tdd`; gặp lỗi khó thì dùng `/diagnosing-bugs`.\nBước 4: Vài ngày một lần chạy `/improve-codebase-architecture` để tìm chỗ cần cải thiện thiết kế mã nguồn.",
+    "samplePromptsVi": [
+      "/grill-me Tôi muốn thêm chức năng thanh toán định kỳ cho ứng dụng quản lý phòng gym, hãy hỏi tôi cho đến khi mọi chi tiết rõ ràng",
+      "/tdd Viết hàm tính phí vận chuyển theo cân nặng và khu vực, làm từng bước red-green-refactor",
+      "/diagnosing-bugs Trang danh sách đơn hàng thỉnh thoảng hiển thị trùng bản ghi sau khi phân trang"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude plugin install mattpocock-skills@claude-plugins-official",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude plugin install mattpocock-skills@claude-plugins-official\"\n  ],\n  \"nguon\": \"https://github.com/mattpocock/skills\"\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "cliCommand": "npx skills@latest add mattpocock/skills -a cursor",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx skills@latest add mattpocock/skills -a cursor\"\n  ],\n  \"nguon\": \"https://github.com/mattpocock/skills\"\n}"
+      },
+      {
+        "platform": "windsurf",
+        "platformName": "Windsurf",
+        "cliCommand": "npx skills@latest add mattpocock/skills -a windsurf",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx skills@latest add mattpocock/skills -a windsurf\"\n  ],\n  \"nguon\": \"https://github.com/mattpocock/skills\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Giấy phép MIT, skill nhỏ gọn, dễ chỉnh sửa theo nhu cầu",
+      "Cài được trên nhiều tác tử: Claude Code, Codex, GitHub Copilot, Gemini CLI và các tác tử qua skills.sh",
+      "Dựa trên các nguyên tắc kỹ thuật phần mềm kinh điển (TDD, Domain-Driven Design, thiết kế module sâu)",
+      "Bản plugin trên Claude Code, Codex và Copilot tự cập nhật"
+    ],
+    "consVi": [
+      "Cần chạy `/setup-matt-pocock-skills` cho từng repo trước khi dùng nhóm skill Engineering",
+      "Không nên cài cả plugin lẫn skills.sh cho cùng một tác tử vì sẽ bị trùng skill",
+      "Bản cài qua skills.sh và Gemini CLI phải tự cập nhật thủ công",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# Skills For Real Engineers — Bộ skill kỹ thuật phần mềm cho tác tử lập trình của Matt Pocock\n\n> My agent skills that I use every day to do real engineering - not vibe coding.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nSkills For Real Engineers là bộ skill cho tác tử lập trình AI mà Matt Pocock dùng hằng ngày để làm kỹ thuật phần mềm thực thụ thay vì lập trình theo cảm hứng. Các skill nhỏ, dễ chỉnh sửa, kết hợp được với nhau, dùng được với mọi mô hình và chia thành hai nhóm: Engineering (đặc tả, ticket, TDD, gỡ lỗi, rà soát mã, kiến trúc) và Productivity (phỏng vấn làm rõ kế hoạch, bàn giao, dạy học). Bộ skill cài được cho Claude Code, Codex, GitHub Copilot, Gemini CLI và các tác tử khác qua skills.sh.\n\nKhắc phục các lỗi thường gặp khi làm việc với tác tử lập trình: tác tử hiểu sai yêu cầu, trả lời dài dòng, mã không chạy và mã nguồn ngày càng rối, bằng các quy trình kỹ thuật phần mềm có thể lặp lại.\n\n- **Loại hình thành phần:** Skill\n- **Lĩnh vực chuyên môn:** Kiểm thử phần mềm & QA/QC\n- **Tác giả / Nhà phát triển:** Matt Pocock\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `cursor`, `windsurf`\n- **Kho lưu trữ chính thức:** [https://github.com/mattpocock/skills](https://github.com/mattpocock/skills)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Phỏng vấn làm rõ yêu cầu: `/grill-me` và `/grill-with-docs` để tác tử hỏi chi tiết trước khi bắt tay vào làm**\n- **Ngôn ngữ chung của dự án: `/grill-with-docs` xây dựng và cập nhật `GLOSSARY.md` cùng các ADR ngay trong phiên làm việc**\n- **Phát triển hướng kiểm thử: skill `/tdd` theo vòng lặp red-green-refactor, làm từng lát cắt dọc**\n- **Gỡ lỗi có kỷ luật: `/diagnosing-bugs` dựng vòng phản hồi, thu nhỏ, đặt giả thuyết, đo đạc, sửa và viết kiểm thử hồi quy**\n- **Cải thiện kiến trúc: `/improve-codebase-architecture` khảo sát mã nguồn và trình bày các cơ hội cải thiện dưới dạng báo cáo HTML**\n- **Từ đặc tả đến ticket: `/to-spec`, `/to-tickets`, `/implement` và `/implement-spec` biến cuộc trò chuyện thành đặc tả, ticket và mã**\n- **Rà soát mã hai trục: `code-review` kiểm tra theo chuẩn mã của repo và theo đặc tả gốc bằng các subagent song song**\n- **Năng suất: `/handoff` tóm tắt phiên để tác tử khác làm tiếp, `/teach` dạy một kỹ năng qua nhiều phiên**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude plugin install mattpocock-skills@claude-plugins-official\n```\n\nYêu cầu: Một tác tử lập trình AI như Claude Code, Codex, GitHub Copilot, Gemini CLI hoặc tác tử khác được skills.sh hỗ trợ; Node.js nếu cài bằng `npx`.\nBước 1: Claude Code (tự cập nhật): `claude plugin install mattpocock-skills@claude-plugins-official`\nBước 2: Codex: `codex plugin marketplace add mattpocock/skills`, rồi `codex plugin add mattpocock-skills@mattpocock`\nBước 3: GitHub Copilot: `copilot plugin marketplace add mattpocock/skills`, rồi `copilot plugin install mattpocock-skills@mattpocock`\nBước 4: Tác tử khác (Cursor, Windsurf, OpenCode...): `npx skills@latest add mattpocock/skills -a <agent>`, nhớ chọn skill `setup-matt-pocock-skills`; cập nhật bằng `npx skills@latest update`\nBước 5: Chạy `/setup-matt-pocock-skills` một lần cho mỗi repo để chọn trình theo dõi issue, nhãn phân loại và nơi lưu tài liệu\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Trước mỗi thay đổi, gõ `/grill-me` hoặc `/grill-with-docs` để tác tử phỏng vấn bạn cho đến khi thống nhất yêu cầu.\nBước 2: Biến kết quả thảo luận thành đặc tả và ticket bằng `/to-spec` và `/to-tickets`, sau đó triển khai bằng `/implement`.\nBước 3: Khi viết tính năng hoặc sửa lỗi, để tác tử dùng `/tdd`; gặp lỗi khó thì dùng `/diagnosing-bugs`.\nBước 4: Vài ngày một lần chạy `/improve-codebase-architecture` để tìm chỗ cần cải thiện thiết kế mã nguồn.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"/grill-me Tôi muốn thêm chức năng thanh toán định kỳ cho ứng dụng quản lý phòng gym, hãy hỏi tôi cho đến khi mọi chi tiết rõ ràng\"\n- \"/tdd Viết hàm tính phí vận chuyển theo cân nặng và khu vực, làm từng bước red-green-refactor\"\n- \"/diagnosing-bugs Trang danh sách đơn hàng thỉnh thoảng hiển thị trùng bản ghi sau khi phân trang\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T11:03:02.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "addyosmani-agent-skills",
+    "slug": "addyosmani-agent-skills",
+    "name": "Agent Skills — 25 skill kỹ thuật phần mềm cấp sản phẩm cho tác tử lập trình AI của Addy Osmani",
+    "icon": "Code2",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "skill",
+    "typeNameVi": "Skill",
+    "category": "qa_testing",
+    "categoryNameVi": "Kiểm thử phần mềm & QA/QC",
+    "categories": [
+      "qa_testing",
+      "frontend_ui",
+      "devops_cicd",
+      "cybersecurity_security"
+    ],
+    "categoryNamesVi": [
+      "Kiểm thử phần mềm & QA/QC",
+      "Frontend & Giao diện người dùng",
+      "DevOps & Tự động hóa CI/CD",
+      "An toàn thông tin & Bảo mật (Security)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "cursor",
+      "antigravity",
+      "windsurf"
+    ],
+    "sourceUrl": "https://github.com/addyosmani/agent-skills",
+    "websiteUrl": "",
+    "authorName": "Addy Osmani",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "Agent Skills là bộ 25 skill kỹ thuật phần mềm cấp sản phẩm cho tác tử lập trình AI, đóng gói quy trình, cổng kiểm soát chất lượng và thực hành tốt của kỹ sư cấp cao để tác tử làm theo nhất quán qua mọi giai đoạn phát triển. Bộ skill đi kèm 9 lệnh slash theo vòng đời (`/spec`, `/plan`, `/build`, `/test`, `/review`, `/ship`...), 4 persona chuyên gia rà soát và 7 checklist tham chiếu. Cài được cho Claude Code, Cursor, Antigravity CLI, Gemini CLI, Codex, GitHub Copilot và nhiều tác tử khác.",
+    "purposeVi": "Ngăn tác tử lập trình AI đi đường tắt (bỏ qua đặc tả, kiểm thử, rà soát bảo mật) bằng các quy trình có bước, điểm kiểm tra và yêu cầu bằng chứng, dựa trên thực hành kỹ thuật của Google.",
+    "featuresVi": [
+      "Lệnh theo vòng đời: `/spec`, `/plan`, `/build`, `/test`, `/constraints`, `/review`, `/webperf`, `/code-simplify`, `/ship`",
+      "Chế độ tự động: `/build auto` sinh kế hoạch và triển khai mọi tác vụ sau một lần duyệt, mỗi tác vụ vẫn theo kiểm thử và commit riêng",
+      "25 skill theo giai đoạn: Define, Plan, Build, Verify, Review, Ship, tự kích hoạt theo việc bạn đang làm",
+      "Kiểm thử và gỡ lỗi: phát triển hướng kiểm thử, kiểm thử trình duyệt qua Chrome DevTools MCP, quy trình gỡ lỗi năm bước",
+      "Rà soát chất lượng: rà soát mã năm trục, đơn giản hóa mã, bảo mật theo OWASP Top 10, tối ưu hiệu năng theo Core Web Vitals",
+      "Phát hành: quy trình git, CI/CD, ngưng hỗ trợ và di chuyển hệ thống, ADR, quan sát hệ thống, checklist ra mắt",
+      "Persona chuyên gia: code-reviewer, test-engineer, security-auditor, web-performance-auditor",
+      "Chống biện minh: mỗi skill có bảng các lý do tác tử hay viện ra để bỏ bước, kèm phản bác và yêu cầu bằng chứng xác minh"
+    ],
+    "installGuideVi": "Yêu cầu: Một tác tử lập trình AI (Claude Code, Cursor, Codex, Gemini CLI, Antigravity CLI, GitHub Copilot...); Node.js để cài bằng `npx skills`; Codex CLI v0.122 trở lên nếu cài dạng plugin Codex.\nBước 1: Cài cho mọi tác tử bằng một lệnh: `npx skills add addyosmani/agent-skills` (xem trước bằng `npx skills add addyosmani/agent-skills --list`)\nBước 2: Hoặc cài từng skill: `npx skills add addyosmani/agent-skills --skill test-driven-development`\nBước 3: Claude Code: `/plugin marketplace add addyosmani/agent-skills`, rồi `/plugin install agent-skills@addy-agent-skills`\nBước 4: Antigravity CLI: `agy plugin install https://github.com/addyosmani/agent-skills.git`; Gemini CLI: `gemini skills install https://github.com/addyosmani/agent-skills.git --path skills`\nBước 5: Codex: `codex plugin marketplace add addyosmani/agent-skills`, rồi `codex plugin add agent-skills@agent-skills`",
+    "usageGuideVi": "Bước 1: Bắt đầu tính năng mới bằng `/spec` để viết đặc tả, rồi `/plan` để chia thành các tác vụ nhỏ có tiêu chí nghiệm thu.\nBước 2: Triển khai bằng `/build` (hoặc `/build auto`), chứng minh bằng `/test`.\nBước 3: Trước khi merge chạy `/review` (trong Claude Code dùng `/agent-skills:review` vì trùng lệnh có sẵn), sau đó `/ship` để phát hành.\nBước 4: Có thể gọi trực tiếp bất kỳ skill nào theo tên, ví dụ `/spec-driven-development`.",
+    "samplePromptsVi": [
+      "/spec Xây dựng API đặt lịch khám bệnh cho phòng khám, có xác thực người dùng và gửi thông báo nhắc lịch",
+      "/review Rà soát thay đổi trong nhánh hiện tại theo năm trục: đúng đắn, dễ đọc, kiến trúc, bảo mật, hiệu năng",
+      "/webperf Kiểm tra Core Web Vitals của trang chủ và đề xuất cải thiện"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "/plugin marketplace add addyosmani/agent-skills",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"/plugin marketplace add addyosmani/agent-skills\"\n  ],\n  \"nguon\": \"https://github.com/addyosmani/agent-skills\"\n}"
+      },
+      {
+        "platform": "antigravity",
+        "platformName": "Antigravity CLI",
+        "cliCommand": "agy plugin install https://github.com/addyosmani/agent-skills.git",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"agy plugin install https://github.com/addyosmani/agent-skills.git\"\n  ],\n  \"nguon\": \"https://github.com/addyosmani/agent-skills\"\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "cliCommand": "npx skills add addyosmani/agent-skills",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx skills add addyosmani/agent-skills\"\n  ],\n  \"nguon\": \"https://github.com/addyosmani/agent-skills\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Giấy phép MIT, skill là tệp Markdown thuần, dùng được với mọi tác tử nhận tệp hướng dẫn",
+      "Bao phủ toàn bộ vòng đời phát triển, từ đặc tả đến phát hành",
+      "Hỗ trợ cài đặt gốc cho nhiều công cụ: Claude Code, Antigravity CLI, Gemini CLI, Codex, Command Code",
+      "Mỗi skill yêu cầu bằng chứng xác minh (kiểm thử chạy qua, kết quả build), không chấp nhận 'có vẻ đúng'"
+    ],
+    "consVi": [
+      "Cài từng skill bằng `npx` không kèm thư mục `references/` chung, các checklist bổ trợ sẽ không có",
+      "Cursor, Windsurf, OpenCode cần sao chép skill hoặc cấu hình quy tắc thủ công",
+      "Lệnh slash vòng đời là lệnh của Claude Code, không có trong GitHub Copilot",
+      "Cài qua marketplace Claude Code có thể gặp lỗi SSH nếu chưa cấu hình khóa SSH với GitHub",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# Agent Skills — 25 skill kỹ thuật phần mềm cấp sản phẩm cho tác tử lập trình AI của Addy Osmani\n\n> Production-grade engineering skills for AI coding agents.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nAgent Skills là bộ 25 skill kỹ thuật phần mềm cấp sản phẩm cho tác tử lập trình AI, đóng gói quy trình, cổng kiểm soát chất lượng và thực hành tốt của kỹ sư cấp cao để tác tử làm theo nhất quán qua mọi giai đoạn phát triển. Bộ skill đi kèm 9 lệnh slash theo vòng đời (`/spec`, `/plan`, `/build`, `/test`, `/review`, `/ship`...), 4 persona chuyên gia rà soát và 7 checklist tham chiếu. Cài được cho Claude Code, Cursor, Antigravity CLI, Gemini CLI, Codex, GitHub Copilot và nhiều tác tử khác.\n\nNgăn tác tử lập trình AI đi đường tắt (bỏ qua đặc tả, kiểm thử, rà soát bảo mật) bằng các quy trình có bước, điểm kiểm tra và yêu cầu bằng chứng, dựa trên thực hành kỹ thuật của Google.\n\n- **Loại hình thành phần:** Skill\n- **Lĩnh vực chuyên môn:** Kiểm thử phần mềm & QA/QC\n- **Tác giả / Nhà phát triển:** Addy Osmani\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `cursor`, `antigravity`, `windsurf`\n- **Kho lưu trữ chính thức:** [https://github.com/addyosmani/agent-skills](https://github.com/addyosmani/agent-skills)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Lệnh theo vòng đời: `/spec`, `/plan`, `/build`, `/test`, `/constraints`, `/review`, `/webperf`, `/code-simplify`, `/ship`**\n- **Chế độ tự động: `/build auto` sinh kế hoạch và triển khai mọi tác vụ sau một lần duyệt, mỗi tác vụ vẫn theo kiểm thử và commit riêng**\n- **25 skill theo giai đoạn: Define, Plan, Build, Verify, Review, Ship, tự kích hoạt theo việc bạn đang làm**\n- **Kiểm thử và gỡ lỗi: phát triển hướng kiểm thử, kiểm thử trình duyệt qua Chrome DevTools MCP, quy trình gỡ lỗi năm bước**\n- **Rà soát chất lượng: rà soát mã năm trục, đơn giản hóa mã, bảo mật theo OWASP Top 10, tối ưu hiệu năng theo Core Web Vitals**\n- **Phát hành: quy trình git, CI/CD, ngưng hỗ trợ và di chuyển hệ thống, ADR, quan sát hệ thống, checklist ra mắt**\n- **Persona chuyên gia: code-reviewer, test-engineer, security-auditor, web-performance-auditor**\n- **Chống biện minh: mỗi skill có bảng các lý do tác tử hay viện ra để bỏ bước, kèm phản bác và yêu cầu bằng chứng xác minh**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\n/plugin marketplace add addyosmani/agent-skills\n```\n\nYêu cầu: Một tác tử lập trình AI (Claude Code, Cursor, Codex, Gemini CLI, Antigravity CLI, GitHub Copilot...); Node.js để cài bằng `npx skills`; Codex CLI v0.122 trở lên nếu cài dạng plugin Codex.\nBước 1: Cài cho mọi tác tử bằng một lệnh: `npx skills add addyosmani/agent-skills` (xem trước bằng `npx skills add addyosmani/agent-skills --list`)\nBước 2: Hoặc cài từng skill: `npx skills add addyosmani/agent-skills --skill test-driven-development`\nBước 3: Claude Code: `/plugin marketplace add addyosmani/agent-skills`, rồi `/plugin install agent-skills@addy-agent-skills`\nBước 4: Antigravity CLI: `agy plugin install https://github.com/addyosmani/agent-skills.git`; Gemini CLI: `gemini skills install https://github.com/addyosmani/agent-skills.git --path skills`\nBước 5: Codex: `codex plugin marketplace add addyosmani/agent-skills`, rồi `codex plugin add agent-skills@agent-skills`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Bắt đầu tính năng mới bằng `/spec` để viết đặc tả, rồi `/plan` để chia thành các tác vụ nhỏ có tiêu chí nghiệm thu.\nBước 2: Triển khai bằng `/build` (hoặc `/build auto`), chứng minh bằng `/test`.\nBước 3: Trước khi merge chạy `/review` (trong Claude Code dùng `/agent-skills:review` vì trùng lệnh có sẵn), sau đó `/ship` để phát hành.\nBước 4: Có thể gọi trực tiếp bất kỳ skill nào theo tên, ví dụ `/spec-driven-development`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"/spec Xây dựng API đặt lịch khám bệnh cho phòng khám, có xác thực người dùng và gửi thông báo nhắc lịch\"\n- \"/review Rà soát thay đổi trong nhánh hiện tại theo năm trục: đúng đắn, dễ đọc, kiến trúc, bảo mật, hiệu năng\"\n- \"/webperf Kiểm tra Core Web Vitals của trang chủ và đề xuất cải thiện\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T11:03:02.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "anthropics-knowledge-work-plugins",
+    "slug": "anthropics-knowledge-work-plugins",
+    "name": "Knowledge Work Plugins — Plugin biến Claude thành chuyên gia theo vai trò: bán hàng, pháp lý, tài chính, dữ liệu",
+    "icon": "Layers",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "skill",
+    "typeNameVi": "Skill",
+    "category": "office_digital_docs",
+    "categoryNameVi": "Văn phòng số & Quản lý văn bản điện tử",
+    "categories": [
+      "office_digital_docs",
+      "crm_sales",
+      "legal_public_service",
+      "accounting_finance",
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Văn phòng số & Quản lý văn bản điện tử",
+      "Quản lý quan hệ khách hàng (CRM) & Bán hàng",
+      "Pháp luật & Dịch vụ công số",
+      "Kế toán doanh nghiệp & Báo cáo tài chính",
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/anthropics/knowledge-work-plugins",
+    "websiteUrl": "https://claude.com/plugins/",
+    "authorName": "Anthropic",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Knowledge Work Plugins là bộ plugin mã nguồn mở của Anthropic giúp Claude trở thành chuyên gia theo vai trò công việc: năng suất, bán hàng, chăm sóc khách hàng, quản lý sản phẩm, marketing, pháp lý, tài chính, dữ liệu, tìm kiếm doanh nghiệp và nghiên cứu sinh học. Mỗi plugin gói sẵn skill, connector (máy chủ MCP), lệnh slash và subagent cho một chức năng nghiệp vụ. Plugin được xây dựng cho Claude Cowork và tương thích với Claude Code.",
+    "purposeVi": "Giúp đội ngũ cho Claude biết cách làm việc của công ty: dùng công cụ và dữ liệu nào, xử lý quy trình quan trọng ra sao và lệnh nào được dùng, để kết quả tốt và nhất quán hơn.",
+    "featuresVi": [
+      "11 plugin theo vai trò: productivity, sales, customer-support, product-management, marketing, legal, finance, data, enterprise-search, bio-research, cowork-plugin-management",
+      "Connector qua MCP: kết nối Slack, Notion, Jira, HubSpot, Snowflake, BigQuery, Figma, Microsoft 365, PubMed và nhiều công cụ khác",
+      "Lệnh slash theo nghiệp vụ: ví dụ `/sales:call-prep`, `/data:write-query`, `/finance:reconciliation`, `/product-management:write-spec`",
+      "Skill tự kích hoạt: chứa chuyên môn, thực hành tốt và quy trình từng bước, Claude tự dùng khi phù hợp",
+      "Không cần mã: mọi thành phần là tệp Markdown và JSON, không cần hạ tầng hay bước build",
+      "Tùy biến cho công ty: sửa `.mcp.json` để đổi connector, thêm thuật ngữ, cơ cấu tổ chức và quy trình vào tệp skill",
+      "Tạo plugin mới: plugin `cowork-plugin-management` giúp tạo hoặc tùy biến plugin cho công cụ và quy trình riêng"
+    ],
+    "installGuideVi": "Yêu cầu: Claude Cowork hoặc Claude Code; tài khoản ở các dịch vụ muốn kết nối (Slack, HubSpot, Snowflake...) nếu dùng connector.\nBước 1: Trên Cowork: cài plugin từ trang claude.com/plugins\nBước 2: Trên Claude Code, thêm marketplace: `claude plugin marketplace add anthropics/knowledge-work-plugins`\nBước 3: Cài plugin cần dùng, ví dụ: `claude plugin install sales@knowledge-work-plugins`\nBước 4: Tùy chọn: sửa `.mcp.json` của plugin để trỏ tới bộ công cụ của công ty bạn",
+    "usageGuideVi": "Bước 1: Sau khi cài, plugin tự kích hoạt; skill được Claude dùng khi phù hợp với yêu cầu.\nBước 2: Gọi lệnh slash của plugin khi cần thao tác cụ thể, ví dụ `/sales:call-prep` hoặc `/data:write-query`.\nBước 3: Bổ sung thuật ngữ, cơ cấu tổ chức và quy trình của công ty vào tệp skill để Claude làm việc đúng cách của đội.\nBước 4: Chia sẻ plugin đã tùy biến cho cả đội để mọi người có kết quả nhất quán.",
+    "samplePromptsVi": [
+      "/sales:call-prep Chuẩn bị cho cuộc gọi với khách hàng tiềm năng là chuỗi bán lẻ điện máy, tóm tắt thông tin công ty và các câu hỏi nên hỏi",
+      "/data:write-query Viết truy vấn SQL tính doanh thu theo tháng và theo kênh bán hàng trong năm nay",
+      "Rà soát hợp đồng bảo mật thông tin (NDA) này và chỉ ra các điều khoản rủi ro cho bên chúng tôi"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude plugin marketplace add anthropics/knowledge-work-plugins",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude plugin marketplace add anthropics/knowledge-work-plugins\"\n  ],\n  \"nguon\": \"https://github.com/anthropics/knowledge-work-plugins\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Plugin miễn phí; cần gói Claude có Cowork hoặc Claude Code",
+    "prosVi": [
+      "Do Anthropic phát hành, giấy phép Apache 2.0",
+      "Bao phủ nhiều phòng ban: bán hàng, chăm sóc khách hàng, pháp lý, tài chính, dữ liệu, marketing",
+      "Chỉ gồm tệp Markdown và JSON, dễ đọc, dễ sửa, không cần lập trình",
+      "Tích hợp sẵn connector MCP tới nhiều công cụ doanh nghiệp phổ biến"
+    ],
+    "consVi": [
+      "Plugin là điểm khởi đầu chung chung, cần tùy biến thêm mới thật sự phù hợp với công ty",
+      "Connector cần tài khoản và quyền truy cập ở từng dịch vụ bên ngoài",
+      "Xây dựng chủ yếu cho Claude Cowork và Claude Code, không dùng cho trợ lý AI khác",
+      "Tài liệu chỉ có tiếng Anh, chưa có ví dụ cho quy trình nghiệp vụ tại Việt Nam"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# Knowledge Work Plugins — Plugin biến Claude thành chuyên gia theo vai trò: bán hàng, pháp lý, tài chính, dữ liệu\n\n> Plugins that turn Claude into a specialist for your role, team, and company.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nKnowledge Work Plugins là bộ plugin mã nguồn mở của Anthropic giúp Claude trở thành chuyên gia theo vai trò công việc: năng suất, bán hàng, chăm sóc khách hàng, quản lý sản phẩm, marketing, pháp lý, tài chính, dữ liệu, tìm kiếm doanh nghiệp và nghiên cứu sinh học. Mỗi plugin gói sẵn skill, connector (máy chủ MCP), lệnh slash và subagent cho một chức năng nghiệp vụ. Plugin được xây dựng cho Claude Cowork và tương thích với Claude Code.\n\nGiúp đội ngũ cho Claude biết cách làm việc của công ty: dùng công cụ và dữ liệu nào, xử lý quy trình quan trọng ra sao và lệnh nào được dùng, để kết quả tốt và nhất quán hơn.\n\n- **Loại hình thành phần:** Skill\n- **Lĩnh vực chuyên môn:** Văn phòng số & Quản lý văn bản điện tử\n- **Tác giả / Nhà phát triển:** Anthropic\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **11 plugin theo vai trò: productivity, sales, customer-support, product-management, marketing, legal, finance, data, enterprise-search, bio-research, cowork-plugin-management**\n- **Connector qua MCP: kết nối Slack, Notion, Jira, HubSpot, Snowflake, BigQuery, Figma, Microsoft 365, PubMed và nhiều công cụ khác**\n- **Lệnh slash theo nghiệp vụ: ví dụ `/sales:call-prep`, `/data:write-query`, `/finance:reconciliation`, `/product-management:write-spec`**\n- **Skill tự kích hoạt: chứa chuyên môn, thực hành tốt và quy trình từng bước, Claude tự dùng khi phù hợp**\n- **Không cần mã: mọi thành phần là tệp Markdown và JSON, không cần hạ tầng hay bước build**\n- **Tùy biến cho công ty: sửa `.mcp.json` để đổi connector, thêm thuật ngữ, cơ cấu tổ chức và quy trình vào tệp skill**\n- **Tạo plugin mới: plugin `cowork-plugin-management` giúp tạo hoặc tùy biến plugin cho công cụ và quy trình riêng**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude plugin marketplace add anthropics/knowledge-work-plugins\n```\n\nYêu cầu: Claude Cowork hoặc Claude Code; tài khoản ở các dịch vụ muốn kết nối (Slack, HubSpot, Snowflake...) nếu dùng connector.\nBước 1: Trên Cowork: cài plugin từ trang claude.com/plugins\nBước 2: Trên Claude Code, thêm marketplace: `claude plugin marketplace add anthropics/knowledge-work-plugins`\nBước 3: Cài plugin cần dùng, ví dụ: `claude plugin install sales@knowledge-work-plugins`\nBước 4: Tùy chọn: sửa `.mcp.json` của plugin để trỏ tới bộ công cụ của công ty bạn\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Sau khi cài, plugin tự kích hoạt; skill được Claude dùng khi phù hợp với yêu cầu.\nBước 2: Gọi lệnh slash của plugin khi cần thao tác cụ thể, ví dụ `/sales:call-prep` hoặc `/data:write-query`.\nBước 3: Bổ sung thuật ngữ, cơ cấu tổ chức và quy trình của công ty vào tệp skill để Claude làm việc đúng cách của đội.\nBước 4: Chia sẻ plugin đã tùy biến cho cả đội để mọi người có kết quả nhất quán.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"/sales:call-prep Chuẩn bị cho cuộc gọi với khách hàng tiềm năng là chuỗi bán lẻ điện máy, tóm tắt thông tin công ty và các câu hỏi nên hỏi\"\n- \"/data:write-query Viết truy vấn SQL tính doanh thu theo tháng và theo kênh bán hàng trong năm nay\"\n- \"Rà soát hợp đồng bảo mật thông tin (NDA) này và chỉ ra các điều khoản rủi ro cho bên chúng tôi\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T11:03:02.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "kajisho5-ffmpeg-skill",
+    "slug": "kajisho5-ffmpeg-skill",
+    "name": "ffmpeg-skill — Skill biên tập video bằng FFmpeg cục bộ cho Claude Code, Cursor, Codex và client MCP",
+    "icon": "Wrench",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "skill",
+    "typeNameVi": "Skill",
+    "category": "generative_ai_multimedia",
+    "categoryNameVi": "Sinh nội dung & Đa phương tiện (Generative AI)",
+    "categories": [
+      "generative_ai_multimedia",
+      "speech_voice"
+    ],
+    "categoryNamesVi": [
+      "Sinh nội dung & Đa phương tiện (Generative AI)",
+      "Nhận dạng & Xử lý giọng nói (Speech & Audio)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "cursor",
+      "claude_desktop"
+    ],
+    "sourceUrl": "https://github.com/kajisho5/ffmpeg-skill",
+    "websiteUrl": "",
+    "authorName": "kajisho5",
+    "license": "Mã nguồn mở (MIT)",
+    "summaryVi": "ffmpeg-skill là Agent Skill giúp Claude Code, Cursor, Codex hoặc bất kỳ client MCP nào biên tập video bằng FFmpeg chạy cục bộ, rồi tự kiểm tra kết quả. Skill dạy tác tử quy trình cố định (đo tệp, sửa không mất chất lượng khi có thể, kiểm tra, xác minh) và cung cấp 42 công cụ Python: cắt, ghép, bỏ khoảng lặng, chỉnh khung hình, phụ đề, chuẩn hóa âm lượng, xuất theo nền tảng mạng xã hội. Không cần đám mây, không cần khóa API, chỉ dùng thư viện chuẩn Python.",
+    "purposeVi": "Giúp tác tử lập trình AI biên tập video và âm thanh chính xác trên máy của bạn thay vì đoán tham số FFmpeg, phù hợp với tư liệu bạn không muốn tải lên đám mây.",
+    "featuresVi": [
+      "Đo tệp trước khi làm: `probe.py` đo thời lượng, fps, độ phân giải, HDR, màu và mọi luồng âm thanh",
+      "Biên tập: cắt không nén lại, ghép có chuyển cảnh, bỏ khoảng lặng, đổi tỉ lệ khung hình 9:16, ổn định hình, làm mờ vùng chỉ định",
+      "Âm thanh: làm sạch giọng nói, chuẩn hóa âm lượng EBU R128, đồng bộ nhiều nguồn ghi bằng tương quan âm thanh",
+      "Phụ đề và đồ họa: chèn phụ đề có hiệu ứng karaoke, logo, lower-third, giữ trong vùng an toàn của từng nền tảng",
+      "Xuất theo nền tảng: mẫu cho TikTok, Reels, Shorts, YouTube, X, LinkedIn, Facebook, podcast, kèm kiểm tra PASS/WARN/FAIL",
+      "Tự xác minh: đo lại tệp đầu ra và tạo ảnh contact sheet bằng `look.py` để tác tử tự xem kết quả",
+      "Máy chủ MCP: `mcp/server.py` cung cấp các công cụ cho Claude Desktop, Cursor và client MCP khác",
+      "An toàn với tệp gốc: không công cụ nào ghi đè tệp đầu vào, mọi công cụ có `--dry-run`"
+    ],
+    "installGuideVi": "Yêu cầu: FFmpeg 5.0 trở lên (khuyến nghị 6.1+), Python 3.10 trở lên (chỉ thư viện chuẩn), Node.js 16 trở lên nếu cài bằng `npx`. Tạo phụ đề từ giọng nói cần cài thêm một engine nhận dạng giọng nói cục bộ như faster-whisper.\nBước 1: Cài FFmpeg: Ubuntu/Debian `sudo apt install ffmpeg`, macOS `brew install ffmpeg-full` (rồi đưa vào PATH), Windows `winget install Gyan.FFmpeg`\nBước 2: Cài skill cho Claude Code: `npx ffmpeg-skill` (Cursor: `npx ffmpeg-skill --cursor`, Codex: `npx ffmpeg-skill --codex`, cả ba: `npx ffmpeg-skill --all`)\nBước 3: Hoặc cài dạng plugin Claude Code: `claude plugin marketplace add kajisho5/ffmpeg-skill`, rồi `claude plugin install ffmpeg-skill@ffmpeg-skill`\nBước 4: Kiểm tra máy: `npx ffmpeg-skill doctor`\nBước 5: Tùy chọn tạo phụ đề từ giọng nói: `pip install faster-whisper`",
+    "usageGuideVi": "Bước 1: Mô tả việc cần làm cho tác tử bằng ngôn ngữ tự nhiên, ví dụ cắt đoạn, đổi tỉ lệ khung hình, xuất cho Reels.\nBước 2: Tác tử tự chạy `probe.py`, các công cụ cắt, chỉnh, xuất, rồi `check.py` và `look.py` để xác minh trước khi báo cáo.\nBước 3: Xuất cho một nền tảng bằng mẫu có sẵn: `python3 $S/render.py talk.mp4 --template tiktok --cues cues.txt`.\nBước 4: Với client MCP như Claude Desktop, thêm cấu hình `mcpServers` trỏ tới `mcp/server.py`.",
+    "samplePromptsVi": [
+      "Lấy tệp phongvan.mp4, giữ đoạn 0:45–3:10 và 5:00–6:30, rồi làm thành video đúng 60 giây cho Reels",
+      "Bỏ các khoảng lặng trong bài giảng.mp4 và chuẩn hóa âm lượng về -14 LUFS",
+      "Chèn phụ đề từ tệp phude.srt vào video và xuất bản dọc 9:16 cho TikTok"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "npx ffmpeg-skill",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx ffmpeg-skill\"\n  ],\n  \"nguon\": \"https://github.com/kajisho5/ffmpeg-skill\"\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "cliCommand": "npx ffmpeg-skill --cursor",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx ffmpeg-skill --cursor\"\n  ],\n  \"nguon\": \"https://github.com/kajisho5/ffmpeg-skill\"\n}"
+      },
+      {
+        "platform": "claude_desktop",
+        "platformName": "Claude Desktop (MCP)",
+        "jsonConfig": "{\"mcpServers\": {\"ffmpeg-skill\": {\"command\": \"python3\", \"args\": [\"/Users/you/.claude/skills/ffmpeg-skill/mcp/server.py\"]}}}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, chạy cục bộ",
+    "prosVi": [
+      "Giấy phép MIT, chạy hoàn toàn cục bộ, không cần khóa API hay tài khoản",
+      "Không phụ thuộc thư viện Python bên ngoài, chỉ cần FFmpeg và Python",
+      "Có bước tự xác minh kết quả và kiểm tra theo thông số từng nền tảng",
+      "Dùng được dạng skill cho Claude Code, Cursor, Codex và dạng máy chủ MCP"
+    ],
+    "consVi": [
+      "Cần cài FFmpeg đủ bộ lọc; bản FFmpeg mặc định của Homebrew thiếu một số bộ lọc như subtitles, drawtext",
+      "Không tự nhận diện khuôn mặt hay bám theo chủ thể khi đổi khung hình, không xóa được phụ đề hoặc logo chuyển động",
+      "Tác tử không tự quyết định nên cắt đoạn nào; người dùng phải chỉ rõ yêu cầu",
+      "Tăng tốc mã hóa bằng GPU chỉ hỗ trợ Apple VideoToolbox trên Apple Silicon",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# ffmpeg-skill — Skill biên tập video bằng FFmpeg cục bộ cho Claude Code, Cursor, Codex và client MCP\n\n> Give your coding agent a video editor.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nffmpeg-skill là Agent Skill giúp Claude Code, Cursor, Codex hoặc bất kỳ client MCP nào biên tập video bằng FFmpeg chạy cục bộ, rồi tự kiểm tra kết quả. Skill dạy tác tử quy trình cố định (đo tệp, sửa không mất chất lượng khi có thể, kiểm tra, xác minh) và cung cấp 42 công cụ Python: cắt, ghép, bỏ khoảng lặng, chỉnh khung hình, phụ đề, chuẩn hóa âm lượng, xuất theo nền tảng mạng xã hội. Không cần đám mây, không cần khóa API, chỉ dùng thư viện chuẩn Python.\n\nGiúp tác tử lập trình AI biên tập video và âm thanh chính xác trên máy của bạn thay vì đoán tham số FFmpeg, phù hợp với tư liệu bạn không muốn tải lên đám mây.\n\n- **Loại hình thành phần:** Skill\n- **Lĩnh vực chuyên môn:** Sinh nội dung & Đa phương tiện (Generative AI)\n- **Tác giả / Nhà phát triển:** kajisho5\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `cursor`, `claude_desktop`\n- **Kho lưu trữ chính thức:** [https://github.com/kajisho5/ffmpeg-skill](https://github.com/kajisho5/ffmpeg-skill)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Đo tệp trước khi làm: `probe.py` đo thời lượng, fps, độ phân giải, HDR, màu và mọi luồng âm thanh**\n- **Biên tập: cắt không nén lại, ghép có chuyển cảnh, bỏ khoảng lặng, đổi tỉ lệ khung hình 9:16, ổn định hình, làm mờ vùng chỉ định**\n- **Âm thanh: làm sạch giọng nói, chuẩn hóa âm lượng EBU R128, đồng bộ nhiều nguồn ghi bằng tương quan âm thanh**\n- **Phụ đề và đồ họa: chèn phụ đề có hiệu ứng karaoke, logo, lower-third, giữ trong vùng an toàn của từng nền tảng**\n- **Xuất theo nền tảng: mẫu cho TikTok, Reels, Shorts, YouTube, X, LinkedIn, Facebook, podcast, kèm kiểm tra PASS/WARN/FAIL**\n- **Tự xác minh: đo lại tệp đầu ra và tạo ảnh contact sheet bằng `look.py` để tác tử tự xem kết quả**\n- **Máy chủ MCP: `mcp/server.py` cung cấp các công cụ cho Claude Desktop, Cursor và client MCP khác**\n- **An toàn với tệp gốc: không công cụ nào ghi đè tệp đầu vào, mọi công cụ có `--dry-run`**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx ffmpeg-skill\n```\n\nYêu cầu: FFmpeg 5.0 trở lên (khuyến nghị 6.1+), Python 3.10 trở lên (chỉ thư viện chuẩn), Node.js 16 trở lên nếu cài bằng `npx`. Tạo phụ đề từ giọng nói cần cài thêm một engine nhận dạng giọng nói cục bộ như faster-whisper.\nBước 1: Cài FFmpeg: Ubuntu/Debian `sudo apt install ffmpeg`, macOS `brew install ffmpeg-full` (rồi đưa vào PATH), Windows `winget install Gyan.FFmpeg`\nBước 2: Cài skill cho Claude Code: `npx ffmpeg-skill` (Cursor: `npx ffmpeg-skill --cursor`, Codex: `npx ffmpeg-skill --codex`, cả ba: `npx ffmpeg-skill --all`)\nBước 3: Hoặc cài dạng plugin Claude Code: `claude plugin marketplace add kajisho5/ffmpeg-skill`, rồi `claude plugin install ffmpeg-skill@ffmpeg-skill`\nBước 4: Kiểm tra máy: `npx ffmpeg-skill doctor`\nBước 5: Tùy chọn tạo phụ đề từ giọng nói: `pip install faster-whisper`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Mô tả việc cần làm cho tác tử bằng ngôn ngữ tự nhiên, ví dụ cắt đoạn, đổi tỉ lệ khung hình, xuất cho Reels.\nBước 2: Tác tử tự chạy `probe.py`, các công cụ cắt, chỉnh, xuất, rồi `check.py` và `look.py` để xác minh trước khi báo cáo.\nBước 3: Xuất cho một nền tảng bằng mẫu có sẵn: `python3 $S/render.py talk.mp4 --template tiktok --cues cues.txt`.\nBước 4: Với client MCP như Claude Desktop, thêm cấu hình `mcpServers` trỏ tới `mcp/server.py`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Lấy tệp phongvan.mp4, giữ đoạn 0:45–3:10 và 5:00–6:30, rồi làm thành video đúng 60 giây cho Reels\"\n- \"Bỏ các khoảng lặng trong bài giảng.mp4 và chuẩn hóa âm lượng về -14 LUFS\"\n- \"Chèn phụ đề từ tệp phude.srt vào video và xuất bản dọc 9:16 cho TikTok\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T11:03:02.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "tauricresearch-tradingagents",
+    "slug": "tauricresearch-tradingagents",
+    "name": "TradingAgents — Framework đa tác tử LLM mô phỏng công ty giao dịch để nghiên cứu quyết định đầu tư",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "investment_securities",
+    "categoryNameVi": "Đầu tư, Chứng khoán & FinTech",
+    "categories": [
+      "investment_securities",
+      "nlp_llm",
+      "data_science_analytics"
+    ],
+    "categoryNamesVi": [
+      "Đầu tư, Chứng khoán & FinTech",
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Khoa học dữ liệu & Phân tích kinh doanh"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/TauricResearch/TradingAgents",
+    "websiteUrl": "",
+    "authorName": "Tauric Research",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "TradingAgents là framework giao dịch đa tác tử dùng mô hình ngôn ngữ lớn, mô phỏng cách vận hành của một công ty giao dịch thực: nhóm phân tích (cơ bản, tâm lý thị trường, tin tức, kỹ thuật), nhóm nghiên cứu tranh luận lạc quan và bi quan, tác tử giao dịch, nhóm quản trị rủi ro và quản lý danh mục. Framework xây dựng trên LangGraph, hỗ trợ nhiều nhà cung cấp LLM (OpenAI, Google, Anthropic, DeepSeek, Qwen, Ollama...) và có CLI tương tác lẫn gói Python. Kèm công cụ backtest để chấm điểm quyết định theo thời gian.",
+    "purposeVi": "Phục vụ nghiên cứu cách các tác tử LLM phối hợp phân tích thị trường và đưa ra quyết định giao dịch cho một mã chứng khoán hoặc tiền mã hóa tại một ngày cụ thể.",
+    "featuresVi": [
+      "Nhóm phân tích chạy song song: phân tích cơ bản, tâm lý thị trường (tin tức, StockTwits, Reddit), tin tức vĩ mô, chỉ báo kỹ thuật như MACD và RSI",
+      "Tranh luận nghiên cứu: các nhà nghiên cứu lạc quan và bi quan tranh luận có cấu trúc để cân bằng lợi nhuận và rủi ro",
+      "Quản trị rủi ro và danh mục: nhóm rủi ro đánh giá biến động, thanh khoản; quản lý danh mục duyệt hoặc từ chối đề xuất",
+      "Nhiều nhà cung cấp LLM: OpenAI, Google, Anthropic, xAI, DeepSeek, Qwen, GLM, MiniMax, OpenRouter, Ollama, Azure OpenAI, AWS Bedrock",
+      "Nhiều thị trường: mọi thị trường Yahoo Finance hỗ trợ (Mỹ, Hồng Kông, Nhật, Ấn Độ, Trung Quốc...) và tiền mã hóa",
+      "Báo cáo tài chính theo thời điểm nộp: dữ liệu SEC EDGAR đúng như tại ngày phân tích, tránh nhìn trước tương lai",
+      "Backtest: chạy trên lưới mã và ngày, chấm điểm theo alpha so với chỉ số chuẩn của từng thị trường",
+      "Bộ nhớ quyết định và khôi phục: nhật ký quyết định luôn bật, tùy chọn `--checkpoint` để chạy tiếp khi bị gián đoạn"
+    ],
+    "installGuideVi": "Yêu cầu: Python 3.11 trở lên (hoặc Docker); khóa API của ít nhất một nhà cung cấp LLM, hoặc gói ChatGPT Plus/Pro, hoặc mô hình chạy cục bộ qua Ollama; khóa Alpha Vantage và FRED tùy chọn cho dữ liệu.\nBước 1: Tải mã nguồn: `git clone https://github.com/TauricResearch/TradingAgents.git`, rồi `cd TradingAgents`\nBước 2: Tạo môi trường ảo: `conda create -n tradingagents python=3.13` và `conda activate tradingagents` (hoặc `uv venv --python 3.13`)\nBước 3: Cài gói: `pip install .`\nBước 4: Khai báo khóa API, ví dụ `export OPENAI_API_KEY=...`, hoặc sao chép `cp .env.example .env` rồi điền khóa\nBước 5: Hoặc chạy bằng Docker: `docker compose run --rm tradingagents` (mô hình cục bộ: `docker compose --profile ollama run --rm tradingagents-ollama`)",
+    "usageGuideVi": "Bước 1: Chạy CLI tương tác bằng `tradingagents`, chọn mã, ngày phân tích, nhà cung cấp LLM và độ sâu nghiên cứu.\nBước 2: Chạy không hỏi đáp cho tác vụ định kỳ: `tradingagents --ticker NVDA --date 2026-09-23 --analysts market,news,fundamentals --save --no-show`.\nBước 3: Dùng trong mã Python: khởi tạo `TradingAgentsGraph()` và gọi `.propagate(\"NVDA\", \"2026-09-01\")` để nhận quyết định.\nBước 4: Đánh giá theo thời gian bằng backtest: `tradingagents backtest NVDA,AAPL --start 2026-06-01 --end 2026-08-01 --every 7`.",
+    "samplePromptsVi": [
+      "Tình huống: phân tích mã NVDA tại ngày 2026-09-23 với nhóm phân tích thị trường, tin tức và cơ bản, lưu báo cáo HTML",
+      "Tình huống: so sánh quyết định của các tác tử cho cổ phiếu 0700.HK khi dùng mô hình chạy cục bộ qua Ollama",
+      "Tình huống: backtest quyết định cho NVDA và AAPL mỗi tuần từ tháng 6 đến tháng 8 để nghiên cứu độ ổn định của hệ thống"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "git clone https://github.com/TauricResearch/TradingAgents.git",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"git clone https://github.com/TauricResearch/TradingAgents.git\"\n  ],\n  \"nguon\": \"https://github.com/TauricResearch/TradingAgents\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, tự host; chi phí gọi API LLM và dữ liệu (Alpha Vantage) tùy nhà cung cấp",
+    "prosVi": [
+      "Giấy phép Apache 2.0, có bài báo khoa học trên arXiv đi kèm",
+      "Hỗ trợ rất nhiều nhà cung cấp LLM, kể cả mô hình chạy cục bộ và endpoint tương thích OpenAI",
+      "Chú trọng tính toàn vẹn theo thời điểm, hạn chế dùng dữ liệu tương lai khi backtest",
+      "Có cả CLI tương tác, gói Python và Docker; cập nhật phiên bản thường xuyên"
+    ],
+    "consVi": [
+      "Chỉ dành cho mục đích nghiên cứu, README nêu rõ không phải lời khuyên tài chính, đầu tư hay giao dịch",
+      "Kết quả không lặp lại được hoàn toàn do mô hình ngôn ngữ và dữ liệu trực tiếp thay đổi; backtest không đảm bảo khớp số liệu công bố",
+      "Tốn chi phí gọi API LLM cho mỗi lần phân tích vì nhiều tác tử cùng chạy và tranh luận",
+      "Chưa hỗ trợ trực tiếp thị trường chứng khoán Việt Nam trong danh sách thị trường README nêu",
+      "Lệnh được gửi tới sàn giao dịch mô phỏng, không phải hệ thống giao dịch thật"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# TradingAgents — Framework đa tác tử LLM mô phỏng công ty giao dịch để nghiên cứu quyết định đầu tư\n\n> TradingAgents is a multi-agent trading framework that mirrors the dynamics of real-world trading firms.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nTradingAgents là framework giao dịch đa tác tử dùng mô hình ngôn ngữ lớn, mô phỏng cách vận hành của một công ty giao dịch thực: nhóm phân tích (cơ bản, tâm lý thị trường, tin tức, kỹ thuật), nhóm nghiên cứu tranh luận lạc quan và bi quan, tác tử giao dịch, nhóm quản trị rủi ro và quản lý danh mục. Framework xây dựng trên LangGraph, hỗ trợ nhiều nhà cung cấp LLM (OpenAI, Google, Anthropic, DeepSeek, Qwen, Ollama...) và có CLI tương tác lẫn gói Python. Kèm công cụ backtest để chấm điểm quyết định theo thời gian.\n\nPhục vụ nghiên cứu cách các tác tử LLM phối hợp phân tích thị trường và đưa ra quyết định giao dịch cho một mã chứng khoán hoặc tiền mã hóa tại một ngày cụ thể.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Đầu tư, Chứng khoán & FinTech\n- **Tác giả / Nhà phát triển:** Tauric Research\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Nhóm phân tích chạy song song: phân tích cơ bản, tâm lý thị trường (tin tức, StockTwits, Reddit), tin tức vĩ mô, chỉ báo kỹ thuật như MACD và RSI**\n- **Tranh luận nghiên cứu: các nhà nghiên cứu lạc quan và bi quan tranh luận có cấu trúc để cân bằng lợi nhuận và rủi ro**\n- **Quản trị rủi ro và danh mục: nhóm rủi ro đánh giá biến động, thanh khoản; quản lý danh mục duyệt hoặc từ chối đề xuất**\n- **Nhiều nhà cung cấp LLM: OpenAI, Google, Anthropic, xAI, DeepSeek, Qwen, GLM, MiniMax, OpenRouter, Ollama, Azure OpenAI, AWS Bedrock**\n- **Nhiều thị trường: mọi thị trường Yahoo Finance hỗ trợ (Mỹ, Hồng Kông, Nhật, Ấn Độ, Trung Quốc...) và tiền mã hóa**\n- **Báo cáo tài chính theo thời điểm nộp: dữ liệu SEC EDGAR đúng như tại ngày phân tích, tránh nhìn trước tương lai**\n- **Backtest: chạy trên lưới mã và ngày, chấm điểm theo alpha so với chỉ số chuẩn của từng thị trường**\n- **Bộ nhớ quyết định và khôi phục: nhật ký quyết định luôn bật, tùy chọn `--checkpoint` để chạy tiếp khi bị gián đoạn**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ngit clone https://github.com/TauricResearch/TradingAgents.git\n```\n\nYêu cầu: Python 3.11 trở lên (hoặc Docker); khóa API của ít nhất một nhà cung cấp LLM, hoặc gói ChatGPT Plus/Pro, hoặc mô hình chạy cục bộ qua Ollama; khóa Alpha Vantage và FRED tùy chọn cho dữ liệu.\nBước 1: Tải mã nguồn: `git clone https://github.com/TauricResearch/TradingAgents.git`, rồi `cd TradingAgents`\nBước 2: Tạo môi trường ảo: `conda create -n tradingagents python=3.13` và `conda activate tradingagents` (hoặc `uv venv --python 3.13`)\nBước 3: Cài gói: `pip install .`\nBước 4: Khai báo khóa API, ví dụ `export OPENAI_API_KEY=...`, hoặc sao chép `cp .env.example .env` rồi điền khóa\nBước 5: Hoặc chạy bằng Docker: `docker compose run --rm tradingagents` (mô hình cục bộ: `docker compose --profile ollama run --rm tradingagents-ollama`)\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Chạy CLI tương tác bằng `tradingagents`, chọn mã, ngày phân tích, nhà cung cấp LLM và độ sâu nghiên cứu.\nBước 2: Chạy không hỏi đáp cho tác vụ định kỳ: `tradingagents --ticker NVDA --date 2026-09-23 --analysts market,news,fundamentals --save --no-show`.\nBước 3: Dùng trong mã Python: khởi tạo `TradingAgentsGraph()` và gọi `.propagate(\"NVDA\", \"2026-09-01\")` để nhận quyết định.\nBước 4: Đánh giá theo thời gian bằng backtest: `tradingagents backtest NVDA,AAPL --start 2026-06-01 --end 2026-08-01 --every 7`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tình huống: phân tích mã NVDA tại ngày 2026-09-23 với nhóm phân tích thị trường, tin tức và cơ bản, lưu báo cáo HTML\"\n- \"Tình huống: so sánh quyết định của các tác tử cho cổ phiếu 0700.HK khi dùng mô hình chạy cục bộ qua Ollama\"\n- \"Tình huống: backtest quyết định cho NVDA và AAPL mỗi tuần từ tháng 6 đến tháng 8 để nghiên cứu độ ổn định của hệ thống\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T11:03:02.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "chromedevtools-chrome-devtools-mcp",
+    "slug": "chromedevtools-chrome-devtools-mcp",
+    "name": "Chrome DevTools MCP — Cho tác tử AI điều khiển, gỡ lỗi và đo hiệu năng trên Chrome thật",
+    "icon": "Globe",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "qa_testing",
+    "categoryNameVi": "Kiểm thử phần mềm & QA/QC",
+    "categories": [
+      "qa_testing",
+      "frontend_ui",
+      "web_scraping_crawling"
+    ],
+    "categoryNamesVi": [
+      "Kiểm thử phần mềm & QA/QC",
+      "Frontend & Giao diện người dùng",
+      "Thu thập dữ liệu web & Cào dữ liệu (Scraping)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "cursor",
+      "windsurf",
+      "antigravity"
+    ],
+    "sourceUrl": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+    "websiteUrl": "",
+    "authorName": "ChromeDevTools (Google)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Chrome DevTools for agents (gói `chrome-devtools-mcp`) là máy chủ MCP kèm công cụ dòng lệnh, cho phép tác tử lập trình như Claude, Cursor, Antigravity hay Copilot điều khiển và kiểm tra một trình duyệt Chrome đang chạy. Tác tử được dùng toàn bộ sức mạnh của Chrome DevTools: ghi lại trace hiệu năng, phân tích yêu cầu mạng, chụp màn hình, đọc thông báo console có stack trace đã ánh xạ nguồn. Gói còn đi kèm bộ skill hướng dẫn tác tử gỡ lỗi khả năng truy cập, cookie, LCP và rò rỉ bộ nhớ.",
+    "purposeVi": "Giúp lập trình viên giao cho trợ lý AI việc tự động hóa trình duyệt đáng tin cậy, gỡ lỗi chuyên sâu và phân tích hiệu năng trang web trực tiếp trên Chrome thật thay vì chỉ đọc mã nguồn.",
+    "featuresVi": [
+      "Phân tích hiệu năng: ghi trace bằng Chrome DevTools và rút ra các gợi ý cải thiện hiệu năng có thể hành động ngay",
+      "Gỡ lỗi trình duyệt nâng cao: phân tích yêu cầu mạng, chụp màn hình, đọc thông báo console kèm stack trace đã ánh xạ nguồn",
+      "Tự động hóa ổn định: dùng Puppeteer để thao tác trên Chrome và tự động chờ kết quả của từng hành động",
+      "Công cụ dòng lệnh `chrome-devtools`: điều khiển trình duyệt từ terminal mà không cần MCP, viết được kịch bản shell",
+      "Bộ skill đi kèm: chrome-devtools, chrome-devtools-cli, a11y-debugging, cookie-debugging, debug-optimize-lcp, memory-leak-debugging, troubleshooting",
+      "Tùy chọn cấu hình: chế độ `--headless`, `--isolated`, `--slim` (bộ công cụ rút gọn cho tác vụ trình duyệt cơ bản), kết nối WebSocket",
+      "Sử dụng nâng cao: nhiều phiên đồng thời, thư mục dữ liệu người dùng cố định, kết nối tới Chrome đang chạy, gỡ lỗi trên Android"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js bản LTS, npm và Google Chrome bản ổn định hiện hành trở lên. Chính thức chỉ hỗ trợ Google Chrome và Chrome for Testing; các trình duyệt Chromium khác có thể chạy nhưng không được đảm bảo.\nBước 1: Cài Node.js bản LTS, npm và Google Chrome bản ổn định mới nhất\nBước 2: Thêm cấu hình chuẩn vào ứng dụng MCP (Cursor, Windsurf...): mục `\"chrome-devtools\": { \"command\": \"npx\", \"args\": [\"-y\", \"chrome-devtools-mcp@latest\"] }` trong `mcpServers`\nBước 3: Claude Code (chỉ MCP): `claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest`\nBước 4: Claude Code (MCP kèm skill): `/plugin marketplace add ChromeDevTools/chrome-devtools-mcp` rồi `/plugin install chrome-devtools-mcp@chrome-devtools-plugins`, sau đó khởi động lại Claude Code\nBước 5: Dùng công cụ dòng lệnh: `npm i chrome-devtools-mcp@latest -g`, rồi chạy `chrome-devtools navigate_page 1 --url \"https://developers.chrome.com\"`",
+    "usageGuideVi": "Bước 1: Kiểm tra cài đặt bằng câu lệnh mẫu trong ứng dụng MCP: `Check the performance of https://developers.chrome.com`; trình duyệt sẽ mở và ghi trace hiệu năng.\nBước 2: Máy chủ chỉ tự khởi động Chrome khi tác tử gọi một công cụ cần trình duyệt; sau đó yêu cầu bằng ngôn ngữ tự nhiên để điều hướng, chụp màn hình, xem mạng và console.\nBước 3: Muốn tắt gửi URL trace tới Google CrUX API thì thêm cờ `--no-performance-crux`; muốn tắt thống kê sử dụng thì thêm `--no-usage-statistics` vào `args`.\nBước 4: Từ terminal có thể chạy `chrome-devtools take_screenshot 1 --filePath screenshot.png` và dừng bằng `chrome-devtools stop`.",
+    "samplePromptsVi": [
+      "Kiểm tra hiệu năng trang chủ của tôi ở http://localhost:3000 và đề xuất cách giảm thời gian LCP",
+      "Mở trang đăng nhập, điền thử tài khoản test, rồi cho tôi biết các yêu cầu mạng nào bị lỗi và thông báo lỗi trong console",
+      "Rà soát khả năng truy cập của trang thanh toán, liệt kê các phần tử thiếu nhãn và sửa mã giúp tôi"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest\"\n  ],\n  \"nguon\": \"https://github.com/ChromeDevTools/chrome-devtools-mcp\"\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"chrome-devtools\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"chrome-devtools-mcp@latest\"]\n    }\n  }\n}"
+      },
+      {
+        "platform": "windsurf",
+        "platformName": "Windsurf",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"chrome-devtools\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"chrome-devtools-mcp@latest\"]\n    }\n  }\n}"
+      },
+      {
+        "platform": "antigravity",
+        "platformName": "Antigravity",
+        "jsonConfig": "{\n  \"mcpServers\": {\n    \"chrome-devtools\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"chrome-devtools-mcp@latest\",\n        \"--browser-url=http://127.0.0.1:9222\"\n      ]\n    }\n  }\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Do nhóm Chrome DevTools phát triển, giấy phép Apache-2.0, cài một dòng qua npx",
+      "Dùng được cả dưới dạng máy chủ MCP lẫn công cụ dòng lệnh, kèm bộ skill chuyên sâu",
+      "Hướng dẫn cấu hình cho nhiều ứng dụng: Claude Code, Cursor, Windsurf, Antigravity, Gemini CLI, VS Code",
+      "Tận dụng trace và dữ liệu thực tế từ CrUX để phân tích hiệu năng toàn diện"
+    ],
+    "consVi": [
+      "Ứng dụng MCP có thể xem, gỡ lỗi và sửa mọi dữ liệu trong trình duyệt; README khuyên không để lộ thông tin nhạy cảm hoặc cá nhân",
+      "Google thu thập thống kê sử dụng theo mặc định, phải chủ động tắt bằng `--no-usage-statistics`",
+      "Công cụ hiệu năng có thể gửi URL trace tới Google CrUX API nếu không tắt",
+      "Chính thức chỉ hỗ trợ Google Chrome và Chrome for Testing",
+      "Skill phải cập nhật lại mỗi lần nâng cấp máy chủ, nếu không tác tử có thể dùng sai công cụ hoặc tham số"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# Chrome DevTools MCP — Cho tác tử AI điều khiển, gỡ lỗi và đo hiệu năng trên Chrome thật\n\n> Chrome DevTools for agents (`chrome-devtools-mcp`) lets your coding agent (such as Antigravity, Claude, Cursor or Copilot) control and inspect a live Chrome browser.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nChrome DevTools for agents (gói `chrome-devtools-mcp`) là máy chủ MCP kèm công cụ dòng lệnh, cho phép tác tử lập trình như Claude, Cursor, Antigravity hay Copilot điều khiển và kiểm tra một trình duyệt Chrome đang chạy. Tác tử được dùng toàn bộ sức mạnh của Chrome DevTools: ghi lại trace hiệu năng, phân tích yêu cầu mạng, chụp màn hình, đọc thông báo console có stack trace đã ánh xạ nguồn. Gói còn đi kèm bộ skill hướng dẫn tác tử gỡ lỗi khả năng truy cập, cookie, LCP và rò rỉ bộ nhớ.\n\nGiúp lập trình viên giao cho trợ lý AI việc tự động hóa trình duyệt đáng tin cậy, gỡ lỗi chuyên sâu và phân tích hiệu năng trang web trực tiếp trên Chrome thật thay vì chỉ đọc mã nguồn.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Kiểm thử phần mềm & QA/QC\n- **Tác giả / Nhà phát triển:** ChromeDevTools (Google)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_code`, `cursor`, `windsurf`, `antigravity`\n- **Kho lưu trữ chính thức:** [https://github.com/ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Phân tích hiệu năng: ghi trace bằng Chrome DevTools và rút ra các gợi ý cải thiện hiệu năng có thể hành động ngay**\n- **Gỡ lỗi trình duyệt nâng cao: phân tích yêu cầu mạng, chụp màn hình, đọc thông báo console kèm stack trace đã ánh xạ nguồn**\n- **Tự động hóa ổn định: dùng Puppeteer để thao tác trên Chrome và tự động chờ kết quả của từng hành động**\n- **Công cụ dòng lệnh `chrome-devtools`: điều khiển trình duyệt từ terminal mà không cần MCP, viết được kịch bản shell**\n- **Bộ skill đi kèm: chrome-devtools, chrome-devtools-cli, a11y-debugging, cookie-debugging, debug-optimize-lcp, memory-leak-debugging, troubleshooting**\n- **Tùy chọn cấu hình: chế độ `--headless`, `--isolated`, `--slim` (bộ công cụ rút gọn cho tác vụ trình duyệt cơ bản), kết nối WebSocket**\n- **Sử dụng nâng cao: nhiều phiên đồng thời, thư mục dữ liệu người dùng cố định, kết nối tới Chrome đang chạy, gỡ lỗi trên Android**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest\n```\n\nYêu cầu: Node.js bản LTS, npm và Google Chrome bản ổn định hiện hành trở lên. Chính thức chỉ hỗ trợ Google Chrome và Chrome for Testing; các trình duyệt Chromium khác có thể chạy nhưng không được đảm bảo.\nBước 1: Cài Node.js bản LTS, npm và Google Chrome bản ổn định mới nhất\nBước 2: Thêm cấu hình chuẩn vào ứng dụng MCP (Cursor, Windsurf...): mục `\"chrome-devtools\": { \"command\": \"npx\", \"args\": [\"-y\", \"chrome-devtools-mcp@latest\"] }` trong `mcpServers`\nBước 3: Claude Code (chỉ MCP): `claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest`\nBước 4: Claude Code (MCP kèm skill): `/plugin marketplace add ChromeDevTools/chrome-devtools-mcp` rồi `/plugin install chrome-devtools-mcp@chrome-devtools-plugins`, sau đó khởi động lại Claude Code\nBước 5: Dùng công cụ dòng lệnh: `npm i chrome-devtools-mcp@latest -g`, rồi chạy `chrome-devtools navigate_page 1 --url \"https://developers.chrome.com\"`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Kiểm tra cài đặt bằng câu lệnh mẫu trong ứng dụng MCP: `Check the performance of https://developers.chrome.com`; trình duyệt sẽ mở và ghi trace hiệu năng.\nBước 2: Máy chủ chỉ tự khởi động Chrome khi tác tử gọi một công cụ cần trình duyệt; sau đó yêu cầu bằng ngôn ngữ tự nhiên để điều hướng, chụp màn hình, xem mạng và console.\nBước 3: Muốn tắt gửi URL trace tới Google CrUX API thì thêm cờ `--no-performance-crux`; muốn tắt thống kê sử dụng thì thêm `--no-usage-statistics` vào `args`.\nBước 4: Từ terminal có thể chạy `chrome-devtools take_screenshot 1 --filePath screenshot.png` và dừng bằng `chrome-devtools stop`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Kiểm tra hiệu năng trang chủ của tôi ở http://localhost:3000 và đề xuất cách giảm thời gian LCP\"\n- \"Mở trang đăng nhập, điền thử tài khoản test, rồi cho tôi biết các yêu cầu mạng nào bị lỗi và thông báo lỗi trong console\"\n- \"Rà soát khả năng truy cập của trang thanh toán, liệt kê các phần tử thiếu nhãn và sửa mã giúp tôi\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T11:03:02.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "thedotmack-claude-mem",
+    "slug": "thedotmack-claude-mem",
+    "name": "Claude-Mem — Bộ nhớ lâu dài, tự tóm tắt ngữ cảnh qua các phiên cho Claude Code",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "skill",
+    "typeNameVi": "Skill",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "vector_rag"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "antigravity"
+    ],
+    "sourceUrl": "https://github.com/thedotmack/claude-mem",
+    "websiteUrl": "https://docs.claude-mem.ai/",
+    "authorName": "Alex Newman (thedotmack)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "Claude-Mem là hệ thống bộ nhớ nén lâu dài cho Claude Code: tự động ghi lại các quan sát khi tác tử dùng công cụ, tạo bản tóm tắt ngữ nghĩa và đưa chúng vào các phiên làm việc sau. Plugin gồm các lifecycle hook, một dịch vụ worker cục bộ có giao diện web, cơ sở dữ liệu SQLite và tìm kiếm lai với cơ sở dữ liệu vector Chroma. Ngoài Claude Code, trình cài đặt còn hỗ trợ OpenCode, T3 Code, Antigravity CLI, OMP, Pi, DeepSeek Harness, Grok Bot và cổng OpenClaw.",
+    "purposeVi": "Giúp Claude duy trì kiến thức liên tục về dự án ngay cả khi phiên kết thúc hoặc kết nối lại, nhờ đó không phải giải thích lại bối cảnh và tiết kiệm token khi tra cứu lịch sử làm việc.",
+    "featuresVi": [
+      "Bộ nhớ lâu dài: ngữ cảnh được giữ lại qua nhiều phiên, tự động chèn vào phiên mới",
+      "Truy xuất theo lớp: quy trình 3 bước `search`, `timeline`, `get_observations` qua công cụ MCP, tiết kiệm khoảng 10 lần token nhờ lọc trước khi lấy chi tiết",
+      "Tìm kiếm thông minh: skill mem-search truy vấn lịch sử dự án bằng ngôn ngữ tự nhiên, kết hợp tìm kiếm ngữ nghĩa và từ khóa",
+      "Giao diện web cục bộ: trang My Work hiển thị yêu cầu, tiến độ, hàng đợi xem lại; bộ nhớ, phiên và cài đặt ở `/viewer`",
+      "Kiểm soát riêng tư: dùng thẻ `<private>` để loại nội dung nhạy cảm khỏi bộ nhớ",
+      "Chế độ và ngôn ngữ: thiết lập `CLAUDE_MEM_MODE` theo mẫu `code--[lang]` để quan sát được sinh bằng ngôn ngữ mong muốn",
+      "TeamBrain tùy chọn: không gian làm việc nhóm dùng chung, mỗi người tự chọn nội dung chia sẻ",
+      "Trích dẫn: tham chiếu các quan sát cũ theo mã số qua API của worker hoặc giao diện web"
+    ],
+    "installGuideVi": "Yêu cầu: Node.js 20.0.0 trở lên, Claude Code bản mới nhất có hỗ trợ plugin. Bun và uv được tự động cài nếu chưa có; SQLite 3 đi kèm sẵn.\nBước 1: Cài Node.js 20 trở lên và Claude Code bản mới nhất\nBước 2: Cài bằng một lệnh: `npx claude-mem install`; trình cài đặt mời đăng nhập claude-mem qua trình duyệt (bỏ qua bằng cờ `--provider` hoặc đặt `CLAUDE_MEM_ONLINE_OPTIN=false`)\nBước 3: Hoặc cài từ marketplace trong Claude Code: `/plugin marketplace add thedotmack/claude-mem` rồi `/plugin install claude-mem`, sau đó khởi động lại Claude Code\nBước 4: Cài cho công cụ khác: `npx claude-mem install --ide opencode` hoặc `npx claude-mem install --ide antigravity`\nBước 5: Lưu ý: `npm install -g claude-mem` chỉ cài thư viện SDK, không đăng ký hook và worker",
+    "usageGuideVi": "Bước 1: Làm việc bình thường với Claude Code; plugin tự ghi quan sát và ngữ cảnh từ các phiên trước tự xuất hiện trong phiên mới.\nBước 2: Hỏi Claude về lịch sử dự án; Claude dùng `search` để lấy chỉ mục, `timeline` để xem bối cảnh và `get_observations` để lấy chi tiết.\nBước 3: Mở địa chỉ worker in ra khi khởi động để xem My Work, hoặc `/viewer` để xem bộ nhớ, phiên và cài đặt.\nBước 4: Chỉnh cấu hình trong `~/.claude-mem/settings.json` (mô hình AI, cổng worker, thư mục dữ liệu, chế độ `CLAUDE_MEM_MODE`), rồi khởi động lại Claude Code.",
+    "samplePromptsVi": [
+      "Tuần trước mình đã sửa lỗi xác thực trong dự án này như thế nào? Tìm trong bộ nhớ giúp mình",
+      "Tóm tắt các quyết định kiến trúc quan trọng đã đưa ra trong dự án này từ đầu tháng",
+      "Trước khi sửa module thanh toán, hãy xem lại các lỗi từng gặp ở module này và những gì đã thử"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "npx claude-mem install",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx claude-mem install\"\n  ],\n  \"nguon\": \"https://github.com/thedotmack/claude-mem\"\n}"
+      },
+      {
+        "platform": "antigravity",
+        "platformName": "Antigravity CLI",
+        "cliCommand": "npx claude-mem install --ide antigravity",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"npx claude-mem install --ide antigravity\"\n  ],\n  \"nguon\": \"https://github.com/thedotmack/claude-mem\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "freemium",
+    "pricingText": "Plugin miễn phí; có thể dùng khóa OpenRouter, Gemini hoặc gói Anthropic của bạn. Bộ quan sát lưu trữ claude-mem (CMEM Pro) có 30 ngày dùng thử miễn phí, sau đó cần đăng ký",
+    "prosVi": [
+      "Giấy phép Apache-2.0, cài bằng một lệnh hoặc qua marketplace plugin của Claude Code",
+      "Tự động hoàn toàn, không cần thao tác thủ công",
+      "Truy xuất theo lớp giúp tiết kiệm token đáng kể",
+      "Dữ liệu lưu trong SQLite cục bộ, có thẻ `<private>` để loại nội dung nhạy cảm",
+      "Hỗ trợ nhiều công cụ ngoài Claude Code và có chế độ sinh quan sát bằng nhiều ngôn ngữ, trong đó có tiếng Việt"
+    ],
+    "consVi": [
+      "Trình cài đặt mặc định mời đăng nhập dịch vụ lưu trữ claude-mem; sau 30 ngày dùng thử, bộ nhớ chuyển sang dùng gói Anthropic của bạn nếu không đăng ký",
+      "Kiến trúc nhiều thành phần (hook, worker Bun, SQLite, Chroma, uv) nên việc khắc phục sự cố phức tạp hơn",
+      "Việc ghi và tóm tắt quan sát tiêu tốn thêm lượt gọi mô hình",
+      "Gói npm `claude-mem` cài toàn cục chỉ là SDK, dễ cài nhầm",
+      "README có quảng bá một token tiền mã hóa (CMEM) do bên thứ ba tạo ra"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Việt"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# Claude-Mem — Bộ nhớ lâu dài, tự tóm tắt ngữ cảnh qua các phiên cho Claude Code\n\n> Claude-Mem seamlessly preserves context across sessions by automatically capturing tool usage observations, generating semantic summaries, and making them available to future sessions.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nClaude-Mem là hệ thống bộ nhớ nén lâu dài cho Claude Code: tự động ghi lại các quan sát khi tác tử dùng công cụ, tạo bản tóm tắt ngữ nghĩa và đưa chúng vào các phiên làm việc sau. Plugin gồm các lifecycle hook, một dịch vụ worker cục bộ có giao diện web, cơ sở dữ liệu SQLite và tìm kiếm lai với cơ sở dữ liệu vector Chroma. Ngoài Claude Code, trình cài đặt còn hỗ trợ OpenCode, T3 Code, Antigravity CLI, OMP, Pi, DeepSeek Harness, Grok Bot và cổng OpenClaw.\n\nGiúp Claude duy trì kiến thức liên tục về dự án ngay cả khi phiên kết thúc hoặc kết nối lại, nhờ đó không phải giải thích lại bối cảnh và tiết kiệm token khi tra cứu lịch sử làm việc.\n\n- **Loại hình thành phần:** Skill\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** Alex Newman (thedotmack)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `claude_code`, `antigravity`\n- **Kho lưu trữ chính thức:** [https://github.com/thedotmack/claude-mem](https://github.com/thedotmack/claude-mem)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Bộ nhớ lâu dài: ngữ cảnh được giữ lại qua nhiều phiên, tự động chèn vào phiên mới**\n- **Truy xuất theo lớp: quy trình 3 bước `search`, `timeline`, `get_observations` qua công cụ MCP, tiết kiệm khoảng 10 lần token nhờ lọc trước khi lấy chi tiết**\n- **Tìm kiếm thông minh: skill mem-search truy vấn lịch sử dự án bằng ngôn ngữ tự nhiên, kết hợp tìm kiếm ngữ nghĩa và từ khóa**\n- **Giao diện web cục bộ: trang My Work hiển thị yêu cầu, tiến độ, hàng đợi xem lại; bộ nhớ, phiên và cài đặt ở `/viewer`**\n- **Kiểm soát riêng tư: dùng thẻ `<private>` để loại nội dung nhạy cảm khỏi bộ nhớ**\n- **Chế độ và ngôn ngữ: thiết lập `CLAUDE_MEM_MODE` theo mẫu `code--[lang]` để quan sát được sinh bằng ngôn ngữ mong muốn**\n- **TeamBrain tùy chọn: không gian làm việc nhóm dùng chung, mỗi người tự chọn nội dung chia sẻ**\n- **Trích dẫn: tham chiếu các quan sát cũ theo mã số qua API của worker hoặc giao diện web**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nnpx claude-mem install\n```\n\nYêu cầu: Node.js 20.0.0 trở lên, Claude Code bản mới nhất có hỗ trợ plugin. Bun và uv được tự động cài nếu chưa có; SQLite 3 đi kèm sẵn.\nBước 1: Cài Node.js 20 trở lên và Claude Code bản mới nhất\nBước 2: Cài bằng một lệnh: `npx claude-mem install`; trình cài đặt mời đăng nhập claude-mem qua trình duyệt (bỏ qua bằng cờ `--provider` hoặc đặt `CLAUDE_MEM_ONLINE_OPTIN=false`)\nBước 3: Hoặc cài từ marketplace trong Claude Code: `/plugin marketplace add thedotmack/claude-mem` rồi `/plugin install claude-mem`, sau đó khởi động lại Claude Code\nBước 4: Cài cho công cụ khác: `npx claude-mem install --ide opencode` hoặc `npx claude-mem install --ide antigravity`\nBước 5: Lưu ý: `npm install -g claude-mem` chỉ cài thư viện SDK, không đăng ký hook và worker\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Làm việc bình thường với Claude Code; plugin tự ghi quan sát và ngữ cảnh từ các phiên trước tự xuất hiện trong phiên mới.\nBước 2: Hỏi Claude về lịch sử dự án; Claude dùng `search` để lấy chỉ mục, `timeline` để xem bối cảnh và `get_observations` để lấy chi tiết.\nBước 3: Mở địa chỉ worker in ra khi khởi động để xem My Work, hoặc `/viewer` để xem bộ nhớ, phiên và cài đặt.\nBước 4: Chỉnh cấu hình trong `~/.claude-mem/settings.json` (mô hình AI, cổng worker, thư mục dữ liệu, chế độ `CLAUDE_MEM_MODE`), rồi khởi động lại Claude Code.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Tuần trước mình đã sửa lỗi xác thực trong dự án này như thế nào? Tìm trong bộ nhớ giúp mình\"\n- \"Tóm tắt các quyết định kiến trúc quan trọng đã đưa ra trong dự án này từ đầu tháng\"\n- \"Trước khi sửa module thanh toán, hãy xem lại các lỗi từng gặp ở module này và những gì đã thử\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T11:03:02.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "nvidia-openshell",
+    "slug": "nvidia-openshell",
+    "name": "OpenShell — Môi trường sandbox an toàn, có chính sách cho đội tác tử AI tự hành của NVIDIA",
+    "icon": "Box",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "cli",
+    "typeNameVi": "CLI",
+    "category": "cybersecurity_security",
+    "categoryNameVi": "An toàn thông tin & Bảo mật (Security)",
+    "categories": [
+      "cybersecurity_security",
+      "devops_cicd",
+      "cloud_infrastructure"
+    ],
+    "categoryNamesVi": [
+      "An toàn thông tin & Bảo mật (Security)",
+      "DevOps & Tự động hóa CI/CD",
+      "Điện toán đám mây & Hạ tầng số"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web"
+    ],
+    "sourceUrl": "https://github.com/NVIDIA/OpenShell",
+    "websiteUrl": "https://docs.nvidia.com/openshell/latest/index.html",
+    "authorName": "NVIDIA",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "OpenShell là môi trường chạy an toàn, riêng tư cho các đội tác tử AI tự hành của NVIDIA: tác tử vẫn đọc tệp, cài gói, gọi API và dùng thông tin xác thực nhưng không có quyền truy cập không giới hạn vào dữ liệu, bí mật hay mạng của bạn. Bạn khai báo trong chính sách những gì mỗi tác tử được chạm tới, OpenShell thực thi ở mức nhân hệ điều hành cho từng truy cập tệp, lời gọi hệ thống và kết nối mạng. Mọi thay đổi chính sách được kiểm tra bằng xác minh hình thức để gắn cờ quyền truy cập rủi ro trước khi con người phê duyệt.",
+    "purposeVi": "Giúp chạy các tác tử lập trình như OpenCode hay Claude Code trong sandbox cô lập, cấp quyền dần theo nhu cầu và không bao giờ để tác tử nhìn thấy thông tin xác thực thật.",
+    "featuresVi": [
+      "Thực thi ở mức nhân: mỗi tác tử chạy trong sandbox cô lập, giới hạn tệp và lời gọi hệ thống, mọi kết nối mạng đi qua kiểm tra chính sách",
+      "Bảo vệ thông tin xác thực: tác tử không thấy khóa thật, OpenShell chỉ gắn khóa vào yêu cầu tới điểm cuối đã được phê duyệt",
+      "Xác minh hình thức chính sách: bộ prover gắn cờ quyền truy cập mới có rủi ro để chờ con người xem xét",
+      "Bộ cố vấn chính sách: khi bị chặn, OpenShell soạn sẵn quy tắc hẹp để bạn duyệt hoặc từ chối; quy tắc được nạp nóng không cần khởi động lại",
+      "Gateway và Kubernetes: mặt phẳng điều khiển cho sandbox, chính sách và quyền truy cập, triển khai bằng Helm",
+      "SDK đa ngôn ngữ: Python, TypeScript, Go, Rust để ứng dụng kết nối tới gateway",
+      "Skill cho tác tử lập trình: dạy tác tử dùng CLI OpenShell, viết chính sách sandbox, gỡ lỗi gateway và định tuyến suy luận",
+      "Mở rộng: middleware, interceptor, compute driver; hỗ trợ GPU trong sandbox"
+    ],
+    "installGuideVi": "Yêu cầu: Linux, macOS trên Apple Silicon hoặc Windows với WSL 2 (thử nghiệm), cùng Docker, Podman hoặc ảo hóa trên máy chủ. Khi triển khai trên Kubernetes, CNI phải thực thi `NetworkPolicy`.\nBước 1: Chuẩn bị Linux, macOS Apple Silicon hoặc Windows WSL 2 cùng Docker, Podman hoặc ảo hóa phần cứng\nBước 2: Cài CLI, bộ prover chính sách và gateway cục bộ: `curl -LsSf https://raw.githubusercontent.com/NVIDIA/OpenShell/main/install.sh | sh`\nBước 3: Kiểm tra CLI kết nối được gateway: `openshell status`\nBước 4: Tạo sandbox thử: `openshell sandbox create --name demo` (ảnh mặc định là Ubuntu tối giản, chưa có tác tử)\nBước 5: Tùy chọn cài skill cho tác tử lập trình: `npx skills add NVIDIA/OpenShell`; hoặc SDK Python: `uv add openshell`",
+    "usageGuideVi": "Bước 1: Nhập hồ sơ nhà cung cấp và tạo provider lưu khóa: `openshell profile import --url https://raw.githubusercontent.com/NVIDIA/OpenShell/main/providers/openrouter.yaml`, rồi `openshell provider create --name openrouter --type openrouter --from-existing` (đặt `OPENROUTER_API_KEY` trước).\nBước 2: Tạo sandbox chạy tác tử: `openshell sandbox create --name my-agent --from ghcr.io/anomalyco/opencode:latest --provider openrouter -- opencode -m openrouter/nvidia/nemotron-3.5-lightning:free`.\nBước 3: Khi tác tử bị chặn, xem đề xuất quy tắc bằng `openshell rule get my-agent --status pending` và duyệt bằng `openshell rule approve my-agent --chunk-id <chunk-id>`.\nBước 4: Kết nối vào sandbox để làm việc trực tiếp: `openshell sandbox connect my-sandbox`.",
+    "samplePromptsVi": [
+      "Viết chính sách sandbox OpenShell chỉ cho phép tác tử truy cập github.com và registry.npmjs.org, chặn mọi đích khác",
+      "Sandbox của tôi báo lỗi kết nối tới API suy luận, hãy kiểm tra log gateway và định tuyến suy luận giúp tôi",
+      "Tạo sandbox chạy Claude Code với quyền đẩy mã lên GitHub nhưng không đọc được thư mục chứa khóa bí mật"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "curl -LsSf https://raw.githubusercontent.com/NVIDIA/OpenShell/main/install.sh | sh",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"curl -LsSf https://raw.githubusercontent.com/NVIDIA/OpenShell/main/install.sh | sh\"\n  ],\n  \"nguon\": \"https://github.com/NVIDIA/OpenShell\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí",
+    "prosVi": [
+      "Do NVIDIA phát triển, giấy phép Apache-2.0, cài bằng một lệnh",
+      "Cô lập mạnh ở mức nhân và không để lộ thông tin xác thực thật cho tác tử",
+      "Xác minh hình thức giúp phát hiện quyền truy cập rủi ro trước khi áp dụng",
+      "Có SDK nhiều ngôn ngữ, hỗ trợ Kubernetes và skill cho tác tử lập trình"
+    ],
+    "consVi": [
+      "Hỗ trợ Windows qua WSL 2 vẫn đang ở mức thử nghiệm; macOS chỉ hỗ trợ Apple Silicon",
+      "Cần Docker, Podman hoặc ảo hóa phần cứng; ảnh sandbox mặc định chưa có sẵn tác tử",
+      "Thu thập dữ liệu đo lường ẩn danh theo mặc định, phải tắt bằng `OPENSHELL_TELEMETRY_ENABLED=false`",
+      "Phần mềm tự truy xuất tài nguyên bên ngoài, người dùng tự chịu trách nhiệm về điều khoản và độ an toàn của chúng",
+      "Dòng 0.1.x có thay đổi lớn, cần đọc hướng dẫn nâng cấp khi chuyển phiên bản"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# OpenShell — Môi trường sandbox an toàn, có chính sách cho đội tác tử AI tự hành của NVIDIA\n\n> OpenShell is the safe, private runtime for fleets of autonomous AI agents.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nOpenShell là môi trường chạy an toàn, riêng tư cho các đội tác tử AI tự hành của NVIDIA: tác tử vẫn đọc tệp, cài gói, gọi API và dùng thông tin xác thực nhưng không có quyền truy cập không giới hạn vào dữ liệu, bí mật hay mạng của bạn. Bạn khai báo trong chính sách những gì mỗi tác tử được chạm tới, OpenShell thực thi ở mức nhân hệ điều hành cho từng truy cập tệp, lời gọi hệ thống và kết nối mạng. Mọi thay đổi chính sách được kiểm tra bằng xác minh hình thức để gắn cờ quyền truy cập rủi ro trước khi con người phê duyệt.\n\nGiúp chạy các tác tử lập trình như OpenCode hay Claude Code trong sandbox cô lập, cấp quyền dần theo nhu cầu và không bao giờ để tác tử nhìn thấy thông tin xác thực thật.\n\n- **Loại hình thành phần:** CLI\n- **Lĩnh vực chuyên môn:** An toàn thông tin & Bảo mật (Security)\n- **Tác giả / Nhà phát triển:** NVIDIA\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`\n- **Kho lưu trữ chính thức:** [https://github.com/NVIDIA/OpenShell](https://github.com/NVIDIA/OpenShell)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Thực thi ở mức nhân: mỗi tác tử chạy trong sandbox cô lập, giới hạn tệp và lời gọi hệ thống, mọi kết nối mạng đi qua kiểm tra chính sách**\n- **Bảo vệ thông tin xác thực: tác tử không thấy khóa thật, OpenShell chỉ gắn khóa vào yêu cầu tới điểm cuối đã được phê duyệt**\n- **Xác minh hình thức chính sách: bộ prover gắn cờ quyền truy cập mới có rủi ro để chờ con người xem xét**\n- **Bộ cố vấn chính sách: khi bị chặn, OpenShell soạn sẵn quy tắc hẹp để bạn duyệt hoặc từ chối; quy tắc được nạp nóng không cần khởi động lại**\n- **Gateway và Kubernetes: mặt phẳng điều khiển cho sandbox, chính sách và quyền truy cập, triển khai bằng Helm**\n- **SDK đa ngôn ngữ: Python, TypeScript, Go, Rust để ứng dụng kết nối tới gateway**\n- **Skill cho tác tử lập trình: dạy tác tử dùng CLI OpenShell, viết chính sách sandbox, gỡ lỗi gateway và định tuyến suy luận**\n- **Mở rộng: middleware, interceptor, compute driver; hỗ trợ GPU trong sandbox**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\ncurl -LsSf https://raw.githubusercontent.com/NVIDIA/OpenShell/main/install.sh | sh\n```\n\nYêu cầu: Linux, macOS trên Apple Silicon hoặc Windows với WSL 2 (thử nghiệm), cùng Docker, Podman hoặc ảo hóa trên máy chủ. Khi triển khai trên Kubernetes, CNI phải thực thi `NetworkPolicy`.\nBước 1: Chuẩn bị Linux, macOS Apple Silicon hoặc Windows WSL 2 cùng Docker, Podman hoặc ảo hóa phần cứng\nBước 2: Cài CLI, bộ prover chính sách và gateway cục bộ: `curl -LsSf https://raw.githubusercontent.com/NVIDIA/OpenShell/main/install.sh | sh`\nBước 3: Kiểm tra CLI kết nối được gateway: `openshell status`\nBước 4: Tạo sandbox thử: `openshell sandbox create --name demo` (ảnh mặc định là Ubuntu tối giản, chưa có tác tử)\nBước 5: Tùy chọn cài skill cho tác tử lập trình: `npx skills add NVIDIA/OpenShell`; hoặc SDK Python: `uv add openshell`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Nhập hồ sơ nhà cung cấp và tạo provider lưu khóa: `openshell profile import --url https://raw.githubusercontent.com/NVIDIA/OpenShell/main/providers/openrouter.yaml`, rồi `openshell provider create --name openrouter --type openrouter --from-existing` (đặt `OPENROUTER_API_KEY` trước).\nBước 2: Tạo sandbox chạy tác tử: `openshell sandbox create --name my-agent --from ghcr.io/anomalyco/opencode:latest --provider openrouter -- opencode -m openrouter/nvidia/nemotron-3.5-lightning:free`.\nBước 3: Khi tác tử bị chặn, xem đề xuất quy tắc bằng `openshell rule get my-agent --status pending` và duyệt bằng `openshell rule approve my-agent --chunk-id <chunk-id>`.\nBước 4: Kết nối vào sandbox để làm việc trực tiếp: `openshell sandbox connect my-sandbox`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Viết chính sách sandbox OpenShell chỉ cho phép tác tử truy cập github.com và registry.npmjs.org, chặn mọi đích khác\"\n- \"Sandbox của tôi báo lỗi kết nối tới API suy luận, hãy kiểm tra log gateway và định tuyến suy luận giúp tôi\"\n- \"Tạo sandbox chạy Claude Code với quyền đẩy mã lên GitHub nhưng không đọc được thư mục chứa khóa bí mật\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T11:03:02.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
+  },
+  {
+    "id": "trycua-cua",
+    "slug": "trycua-cua",
+    "name": "Cua — Máy tính cho tác tử AI: điều khiển desktop qua MCP, sandbox, máy ảo và bộ đánh giá",
+    "icon": "Cpu",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "mcp",
+    "typeNameVi": "MCP Server",
+    "category": "rpa_workflow_automation",
+    "categoryNameVi": "Tự động hóa quy trình & RPA (Automation)",
+    "categories": [
+      "rpa_workflow_automation",
+      "cloud_infrastructure",
+      "qa_testing"
+    ],
+    "categoryNamesVi": [
+      "Tự động hóa quy trình & RPA (Automation)",
+      "Điện toán đám mây & Hạ tầng số",
+      "Kiểm thử phần mềm & QA/QC"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "claude_code",
+      "cursor",
+      "web"
+    ],
+    "sourceUrl": "https://github.com/trycua/cua",
+    "websiteUrl": "https://cua.ai",
+    "authorName": "Cua AI, Inc.",
+    "license": "Mã nguồn mở (MIT; Cua Spaces theo FSL-1.1-MIT)",
+    "summaryVi": "Cua là bộ công cụ cung cấp máy tính cho tác tử AI sử dụng: Cua Driver cho tác tử kiểm tra và điều khiển ứng dụng desktop, trình duyệt trên macOS, Windows, Linux qua CLI, MCP hoặc SDK; Cua Spaces cho tác tử cả một desktop riêng (máy ảo macOS, Linux) trên máy của bạn. Kho còn gồm Cua SDK và CLI `cua` để tạo sandbox, Lume quản lý máy ảo trên Apple Silicon, mô hình CUA-S1 và Cua Bench để đánh giá tác tử dùng máy tính.",
+    "purposeVi": "Giúp các tác tử như Claude Code, Codex, Cursor tự động thao tác trên ứng dụng desktop thật hoặc trong máy ảo, sandbox cô lập, đồng thời đánh giá và huấn luyện tác tử dùng máy tính.",
+    "featuresVi": [
+      "Cua Driver: công cụ để tác tử kiểm tra và điều khiển ứng dụng gốc, trình duyệt trên macOS, Windows, Linux; chạy nền không chiếm con trỏ khi nền tảng hỗ trợ",
+      "Cua Spaces: ứng dụng desktop cấp cho tác tử desktop đầy đủ (máy ảo macOS dựng cục bộ, ảnh Linux hoặc Omarchy), chạy trên máy bạn hoặc tài khoản đám mây riêng",
+      "Teleport và Multiplayer: chuyển ứng dụng đã đăng nhập vào Space, người và tác tử cùng làm trên một desktop với con trỏ riêng",
+      "Cua SDK và CLI: lệnh `cua sb` tạo, chạy lệnh, chụp màn hình, xóa sandbox; SDK Python, TypeScript, Rust",
+      "Lume: tạo và quản lý máy ảo macOS, Linux trên Apple Silicon bằng Virtualization.Framework",
+      "CUA-S1: họ mô hình nhỏ chuyên ra quyết định nhanh cho tác vụ dùng máy tính, bản đầu tập trung vào biểu mẫu",
+      "Cua Bench: tạo tác vụ, đánh giá tác tử và xuất quỹ đạo để huấn luyện, có tác vụ mô phỏng không cần máy ảo hay khóa API"
+    ],
+    "installGuideVi": "Yêu cầu: Cua Spaces cần macOS 26 trở lên; Lume cần Apple Silicon; Cua Driver chạy trên macOS, Windows, Linux; Cua Bench cần Python 3.12 hoặc 3.13 và uv. Tác tử và mô hình do bạn tự chọn.\nBước 1: Cài CLI `cua` (kèm tùy chọn Cua Spaces, Cua Driver) trên macOS hoặc Linux: `curl -fsSL https://cua.ai/install.sh | sh`; trên Windows PowerShell: `irm https://cua.ai/install.ps1 | iex`\nBước 2: Chỉ cài Cua Driver trên macOS hoặc Linux: `/bin/bash -c \"$(curl -fsSL https://cua.ai/driver/install.sh)\"`; trên Windows: `irm https://cua.ai/driver/install.ps1 | iex`\nBước 3: Đăng ký Cua Driver với Claude Code: `claude mcp add --transport stdio cua-driver -- cua-driver mcp`; với ứng dụng khác dùng `cua-driver mcp-config --client <client>` (ví dụ `--client cursor`)\nBước 4: Tùy chọn cài Lume: `/bin/bash -c \"$(curl -fsSL https://cua.ai/lume/install.sh)\"`; SDK Python: `pip install cua`\nBước 5: Tùy chọn cài Cua Bench: `uv tool install 'cua-bench[browser]'`",
+    "usageGuideVi": "Bước 1: Sau khi đăng ký Cua Driver, khởi động lại ứng dụng tác tử rồi yêu cầu thao tác trên ứng dụng desktop, ví dụ tính 6 × 7 bằng Calculator và kiểm tra kết quả 42.\nBước 2: Tạo sandbox cô lập: `cua sb create ubuntu --name dev`, chạy lệnh `cua sb exec dev uname -a`, chụp màn hình `cua sb screenshot dev`, xóa bằng `cua sb rm dev`.\nBước 3: Muốn dùng máy khác của mình làm nơi chạy, chạy `cua host setup` để máy truy cập được qua relay cua.ai mà không cần mở cổng.\nBước 4: Với Cua Bench, tạo một tác vụ nhỏ, chạy lời giải tham chiếu và kiểm tra bộ đánh giá trả về điểm thưởng `1.0`.",
+    "samplePromptsVi": [
+      "Mở LibreOffice Calc, nhập bảng doanh thu 3 tháng gần nhất và tạo biểu đồ cột",
+      "Trong sandbox Ubuntu, cài Python, tải kho mã của tôi về và chạy bộ kiểm thử, rồi chụp màn hình kết quả",
+      "Điền biểu mẫu đăng ký trên ứng dụng desktop này bằng thông tin trong tệp khach_hang.csv và kiểm tra lại từng trường"
+    ],
+    "configs": [
+      {
+        "platform": "claude_code",
+        "platformName": "Claude Code",
+        "cliCommand": "claude mcp add --transport stdio cua-driver -- cua-driver mcp",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"claude mcp add --transport stdio cua-driver -- cua-driver mcp\"\n  ],\n  \"nguon\": \"https://github.com/trycua/cua\"\n}"
+      },
+      {
+        "platform": "cursor",
+        "platformName": "Cursor",
+        "cliCommand": "cua-driver mcp-config --client cursor",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"cua-driver mcp-config --client cursor\"\n  ],\n  \"nguon\": \"https://github.com/trycua/cua\"\n}"
+      },
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "curl -fsSL https://cua.ai/install.sh | sh",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"curl -fsSL https://cua.ai/install.sh | sh\"\n  ],\n  \"nguon\": \"https://github.com/trycua/cua\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "freemium",
+    "pricingText": "Phần lớn mã nguồn MIT miễn phí; Cua Spaces miễn phí cho cá nhân, gói Pro 18 USD/tháng, Teams 30 USD/người/tháng",
+    "prosVi": [
+      "Phần lớn kho theo giấy phép MIT; Cua Spaces miễn phí cho cá nhân",
+      "Cua Driver chạy được trên cả macOS, Windows và Linux, kết nối qua CLI, MCP hoặc SDK",
+      "Tự mang tác tử và mô hình của mình, không bị khóa vào nhà cung cấp",
+      "Hệ sinh thái đầy đủ: sandbox, máy ảo, mô hình chuyên biệt và bộ đánh giá"
+    ],
+    "consVi": [
+      "Cua Spaces và Cua Driver Bench theo giấy phép FSL-1.1-MIT (mã nguồn khả dụng, không được dùng cho dịch vụ lưu trữ cạnh tranh), không phải MIT",
+      "Cua Spaces cần macOS 26 trở lên, Lume chỉ chạy trên Apple Silicon",
+      "Tiện ích `cua-perception` tùy chọn kèm mô hình theo AGPL-3.0, có thể phát sinh nghĩa vụ công bố mã nguồn khi phân phối lại",
+      "CUA-S1 mới là bản nghiên cứu giai đoạn đầu, chỉ có mã nguồn",
+      "Một số gói cũ như `cua-agent`, `cua-computer` đã ngừng bảo trì; `cuabot` có lỗ hổng bảo mật đã biết và không nên chạy"
+    ],
+    "languages": [
+      "Tiếng Anh"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# Cua — Máy tính cho tác tử AI: điều khiển desktop qua MCP, sandbox, máy ảo và bộ đánh giá\n\n> Give AI agents computers they can use.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nCua là bộ công cụ cung cấp máy tính cho tác tử AI sử dụng: Cua Driver cho tác tử kiểm tra và điều khiển ứng dụng desktop, trình duyệt trên macOS, Windows, Linux qua CLI, MCP hoặc SDK; Cua Spaces cho tác tử cả một desktop riêng (máy ảo macOS, Linux) trên máy của bạn. Kho còn gồm Cua SDK và CLI `cua` để tạo sandbox, Lume quản lý máy ảo trên Apple Silicon, mô hình CUA-S1 và Cua Bench để đánh giá tác tử dùng máy tính.\n\nGiúp các tác tử như Claude Code, Codex, Cursor tự động thao tác trên ứng dụng desktop thật hoặc trong máy ảo, sandbox cô lập, đồng thời đánh giá và huấn luyện tác tử dùng máy tính.\n\n- **Loại hình thành phần:** MCP Server\n- **Lĩnh vực chuyên môn:** Tự động hóa quy trình & RPA (Automation)\n- **Tác giả / Nhà phát triển:** Cua AI, Inc.\n- **Giấy phép bản quyền:** Mã nguồn mở (MIT; Cua Spaces theo FSL-1.1-MIT)\n- **Nền tảng hỗ trợ:** `claude_code`, `cursor`, `web`\n- **Kho lưu trữ chính thức:** [https://github.com/trycua/cua](https://github.com/trycua/cua)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Cua Driver: công cụ để tác tử kiểm tra và điều khiển ứng dụng gốc, trình duyệt trên macOS, Windows, Linux; chạy nền không chiếm con trỏ khi nền tảng hỗ trợ**\n- **Cua Spaces: ứng dụng desktop cấp cho tác tử desktop đầy đủ (máy ảo macOS dựng cục bộ, ảnh Linux hoặc Omarchy), chạy trên máy bạn hoặc tài khoản đám mây riêng**\n- **Teleport và Multiplayer: chuyển ứng dụng đã đăng nhập vào Space, người và tác tử cùng làm trên một desktop với con trỏ riêng**\n- **Cua SDK và CLI: lệnh `cua sb` tạo, chạy lệnh, chụp màn hình, xóa sandbox; SDK Python, TypeScript, Rust**\n- **Lume: tạo và quản lý máy ảo macOS, Linux trên Apple Silicon bằng Virtualization.Framework**\n- **CUA-S1: họ mô hình nhỏ chuyên ra quyết định nhanh cho tác vụ dùng máy tính, bản đầu tập trung vào biểu mẫu**\n- **Cua Bench: tạo tác vụ, đánh giá tác tử và xuất quỹ đạo để huấn luyện, có tác vụ mô phỏng không cần máy ảo hay khóa API**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\nclaude mcp add --transport stdio cua-driver -- cua-driver mcp\n```\n\nYêu cầu: Cua Spaces cần macOS 26 trở lên; Lume cần Apple Silicon; Cua Driver chạy trên macOS, Windows, Linux; Cua Bench cần Python 3.12 hoặc 3.13 và uv. Tác tử và mô hình do bạn tự chọn.\nBước 1: Cài CLI `cua` (kèm tùy chọn Cua Spaces, Cua Driver) trên macOS hoặc Linux: `curl -fsSL https://cua.ai/install.sh | sh`; trên Windows PowerShell: `irm https://cua.ai/install.ps1 | iex`\nBước 2: Chỉ cài Cua Driver trên macOS hoặc Linux: `/bin/bash -c \"$(curl -fsSL https://cua.ai/driver/install.sh)\"`; trên Windows: `irm https://cua.ai/driver/install.ps1 | iex`\nBước 3: Đăng ký Cua Driver với Claude Code: `claude mcp add --transport stdio cua-driver -- cua-driver mcp`; với ứng dụng khác dùng `cua-driver mcp-config --client <client>` (ví dụ `--client cursor`)\nBước 4: Tùy chọn cài Lume: `/bin/bash -c \"$(curl -fsSL https://cua.ai/lume/install.sh)\"`; SDK Python: `pip install cua`\nBước 5: Tùy chọn cài Cua Bench: `uv tool install 'cua-bench[browser]'`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Sau khi đăng ký Cua Driver, khởi động lại ứng dụng tác tử rồi yêu cầu thao tác trên ứng dụng desktop, ví dụ tính 6 × 7 bằng Calculator và kiểm tra kết quả 42.\nBước 2: Tạo sandbox cô lập: `cua sb create ubuntu --name dev`, chạy lệnh `cua sb exec dev uname -a`, chụp màn hình `cua sb screenshot dev`, xóa bằng `cua sb rm dev`.\nBước 3: Muốn dùng máy khác của mình làm nơi chạy, chạy `cua host setup` để máy truy cập được qua relay cua.ai mà không cần mở cổng.\nBước 4: Với Cua Bench, tạo một tác vụ nhỏ, chạy lời giải tham chiếu và kiểm tra bộ đánh giá trả về điểm thưởng `1.0`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Mở LibreOffice Calc, nhập bảng doanh thu 3 tháng gần nhất và tạo biểu đồ cột\"\n- \"Trong sandbox Ubuntu, cài Python, tải kho mã của tôi về và chạy bộ kiểm thử, rồi chụp màn hình kết quả\"\n- \"Điền biểu mẫu đăng ký trên ứng dụng desktop này bằng thông tin trong tệp khach_hang.csv và kiểm tra lại từng trường\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T11:03:02.000Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]

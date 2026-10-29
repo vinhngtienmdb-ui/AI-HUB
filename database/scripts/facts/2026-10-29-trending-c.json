@@ -1,0 +1,435 @@
+[
+  {
+    "repo": "ChromeDevTools/chrome-devtools-mcp",
+    "license": "Apache License 2.0",
+    "authorName": "ChromeDevTools (Google)",
+    "websiteUrl": "",
+    "toolType": "mcp",
+    "taglineEn": "Chrome DevTools for agents (`chrome-devtools-mcp`) lets your coding agent (such as Antigravity, Claude, Cursor or Copilot) control and inspect a live Chrome browser.",
+    "summaryVi": "Chrome DevTools for agents (gói `chrome-devtools-mcp`) là máy chủ MCP kèm công cụ dòng lệnh, cho phép tác tử lập trình như Claude, Cursor, Antigravity hay Copilot điều khiển và kiểm tra một trình duyệt Chrome đang chạy. Tác tử được dùng toàn bộ sức mạnh của Chrome DevTools: ghi lại trace hiệu năng, phân tích yêu cầu mạng, chụp màn hình, đọc thông báo console có stack trace đã ánh xạ nguồn. Gói còn đi kèm bộ skill hướng dẫn tác tử gỡ lỗi khả năng truy cập, cookie, LCP và rò rỉ bộ nhớ.",
+    "purposeVi": "Giúp lập trình viên giao cho trợ lý AI việc tự động hóa trình duyệt đáng tin cậy, gỡ lỗi chuyên sâu và phân tích hiệu năng trang web trực tiếp trên Chrome thật thay vì chỉ đọc mã nguồn.",
+    "featuresVi": [
+      "Phân tích hiệu năng: ghi trace bằng Chrome DevTools và rút ra các gợi ý cải thiện hiệu năng có thể hành động ngay",
+      "Gỡ lỗi trình duyệt nâng cao: phân tích yêu cầu mạng, chụp màn hình, đọc thông báo console kèm stack trace đã ánh xạ nguồn",
+      "Tự động hóa ổn định: dùng Puppeteer để thao tác trên Chrome và tự động chờ kết quả của từng hành động",
+      "Công cụ dòng lệnh `chrome-devtools`: điều khiển trình duyệt từ terminal mà không cần MCP, viết được kịch bản shell",
+      "Bộ skill đi kèm: chrome-devtools, chrome-devtools-cli, a11y-debugging, cookie-debugging, debug-optimize-lcp, memory-leak-debugging, troubleshooting",
+      "Tùy chọn cấu hình: chế độ `--headless`, `--isolated`, `--slim` (bộ công cụ rút gọn cho tác vụ trình duyệt cơ bản), kết nối WebSocket",
+      "Sử dụng nâng cao: nhiều phiên đồng thời, thư mục dữ liệu người dùng cố định, kết nối tới Chrome đang chạy, gỡ lỗi trên Android"
+    ],
+    "requirementsVi": "Node.js bản LTS, npm và Google Chrome bản ổn định hiện hành trở lên. Chính thức chỉ hỗ trợ Google Chrome và Chrome for Testing; các trình duyệt Chromium khác có thể chạy nhưng không được đảm bảo.",
+    "installStepsVi": [
+      "Cài Node.js bản LTS, npm và Google Chrome bản ổn định mới nhất",
+      "Thêm cấu hình chuẩn vào ứng dụng MCP (Cursor, Windsurf...): mục `\"chrome-devtools\": { \"command\": \"npx\", \"args\": [\"-y\", \"chrome-devtools-mcp@latest\"] }` trong `mcpServers`",
+      "Claude Code (chỉ MCP): `claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest`",
+      "Claude Code (MCP kèm skill): `/plugin marketplace add ChromeDevTools/chrome-devtools-mcp` rồi `/plugin install chrome-devtools-mcp@chrome-devtools-plugins`, sau đó khởi động lại Claude Code",
+      "Dùng công cụ dòng lệnh: `npm i chrome-devtools-mcp@latest -g`, rồi chạy `chrome-devtools navigate_page 1 --url \"https://developers.chrome.com\"`"
+    ],
+    "cliCommand": "claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest",
+    "usageStepsVi": [
+      "Kiểm tra cài đặt bằng câu lệnh mẫu trong ứng dụng MCP: `Check the performance of https://developers.chrome.com`; trình duyệt sẽ mở và ghi trace hiệu năng.",
+      "Máy chủ chỉ tự khởi động Chrome khi tác tử gọi một công cụ cần trình duyệt; sau đó yêu cầu bằng ngôn ngữ tự nhiên để điều hướng, chụp màn hình, xem mạng và console.",
+      "Muốn tắt gửi URL trace tới Google CrUX API thì thêm cờ `--no-performance-crux`; muốn tắt thống kê sử dụng thì thêm `--no-usage-statistics` vào `args`.",
+      "Từ terminal có thể chạy `chrome-devtools take_screenshot 1 --filePath screenshot.png` và dừng bằng `chrome-devtools stop`."
+    ],
+    "samplePromptsVi": [
+      "Kiểm tra hiệu năng trang chủ của tôi ở http://localhost:3000 và đề xuất cách giảm thời gian LCP",
+      "Mở trang đăng nhập, điền thử tài khoản test, rồi cho tôi biết các yêu cầu mạng nào bị lỗi và thông báo lỗi trong console",
+      "Rà soát khả năng truy cập của trang thanh toán, liệt kê các phần tử thiếu nhãn và sửa mã giúp tôi"
+    ],
+    "prosVi": [
+      "Do nhóm Chrome DevTools phát triển, giấy phép Apache-2.0, cài một dòng qua npx",
+      "Dùng được cả dưới dạng máy chủ MCP lẫn công cụ dòng lệnh, kèm bộ skill chuyên sâu",
+      "Hướng dẫn cấu hình cho nhiều ứng dụng: Claude Code, Cursor, Windsurf, Antigravity, Gemini CLI, VS Code",
+      "Tận dụng trace và dữ liệu thực tế từ CrUX để phân tích hiệu năng toàn diện"
+    ],
+    "consVi": [
+      "Ứng dụng MCP có thể xem, gỡ lỗi và sửa mọi dữ liệu trong trình duyệt; README khuyên không để lộ thông tin nhạy cảm hoặc cá nhân",
+      "Google thu thập thống kê sử dụng theo mặc định, phải chủ động tắt bằng `--no-usage-statistics`",
+      "Công cụ hiệu năng có thể gửi URL trace tới Google CrUX API nếu không tắt",
+      "Chính thức chỉ hỗ trợ Google Chrome và Chrome for Testing",
+      "Skill phải cập nhật lại mỗi lần nâng cấp máy chủ, nếu không tác tử có thể dùng sai công cụ hoặc tham số"
+    ],
+    "sourceEvidence": {
+      "chrome-devtools-mcp@latest": "README.md:77",
+      "mcpServers chrome-devtools npx": "README.md:72-81",
+      "claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest": "docs/client-configurations.md:74",
+      "/plugin marketplace add ChromeDevTools/chrome-devtools-mcp": "README.md:134",
+      "/plugin install chrome-devtools-mcp@chrome-devtools-plugins": "README.md:134",
+      "npm i chrome-devtools-mcp@latest -g": "README.md:108",
+      "chrome-devtools navigate_page 1 --url \"https://developers.chrome.com\"": "README.md:109",
+      "chrome-devtools take_screenshot 1 --filePath screenshot.png": "README.md:110",
+      "chrome-devtools stop": "README.md:111",
+      "Check the performance of https://developers.chrome.com": "README.md:95",
+      "--no-performance-crux": "README.md:39",
+      "--no-usage-statistics": "README.md:45",
+      "exposes content of the browser instance": "README.md:26",
+      "Cursor Settings": "docs/client-configurations.md:223",
+      "Windsurf": "docs/client-configurations.md:441",
+      "antigravity config --browser-url=http://127.0.0.1:9222": "docs/client-configurations.md:23-35",
+      "license Apache 2.0": "LICENSE:2"
+    },
+    "meta": {
+      "id": "chromedevtools-chrome-devtools-mcp",
+      "nameVi": "Chrome DevTools MCP — Cho tác tử AI điều khiển, gỡ lỗi và đo hiệu năng trên Chrome thật",
+      "icon": "Globe",
+      "categories": [
+        "qa_testing",
+        "frontend_ui",
+        "web_scraping_crawling"
+      ],
+      "platforms": [
+        "claude_code",
+        "cursor",
+        "windsurf",
+        "antigravity"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"chrome-devtools\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"chrome-devtools-mcp@latest\"]\n    }\n  }\n}"
+        },
+        {
+          "platform": "windsurf",
+          "platformName": "Windsurf",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"chrome-devtools\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"chrome-devtools-mcp@latest\"]\n    }\n  }\n}"
+        },
+        {
+          "platform": "antigravity",
+          "platformName": "Antigravity",
+          "jsonConfig": "{\n  \"mcpServers\": {\n    \"chrome-devtools\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"chrome-devtools-mcp@latest\",\n        \"--browser-url=http://127.0.0.1:9222\"\n      ]\n    }\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "thedotmack/claude-mem",
+    "license": "Apache License 2.0",
+    "authorName": "Alex Newman (thedotmack)",
+    "websiteUrl": "https://docs.claude-mem.ai/",
+    "toolType": "skill",
+    "taglineEn": "Claude-Mem seamlessly preserves context across sessions by automatically capturing tool usage observations, generating semantic summaries, and making them available to future sessions.",
+    "summaryVi": "Claude-Mem là hệ thống bộ nhớ nén lâu dài cho Claude Code: tự động ghi lại các quan sát khi tác tử dùng công cụ, tạo bản tóm tắt ngữ nghĩa và đưa chúng vào các phiên làm việc sau. Plugin gồm các lifecycle hook, một dịch vụ worker cục bộ có giao diện web, cơ sở dữ liệu SQLite và tìm kiếm lai với cơ sở dữ liệu vector Chroma. Ngoài Claude Code, trình cài đặt còn hỗ trợ OpenCode, T3 Code, Antigravity CLI, OMP, Pi, DeepSeek Harness, Grok Bot và cổng OpenClaw.",
+    "purposeVi": "Giúp Claude duy trì kiến thức liên tục về dự án ngay cả khi phiên kết thúc hoặc kết nối lại, nhờ đó không phải giải thích lại bối cảnh và tiết kiệm token khi tra cứu lịch sử làm việc.",
+    "featuresVi": [
+      "Bộ nhớ lâu dài: ngữ cảnh được giữ lại qua nhiều phiên, tự động chèn vào phiên mới",
+      "Truy xuất theo lớp: quy trình 3 bước `search`, `timeline`, `get_observations` qua công cụ MCP, tiết kiệm khoảng 10 lần token nhờ lọc trước khi lấy chi tiết",
+      "Tìm kiếm thông minh: skill mem-search truy vấn lịch sử dự án bằng ngôn ngữ tự nhiên, kết hợp tìm kiếm ngữ nghĩa và từ khóa",
+      "Giao diện web cục bộ: trang My Work hiển thị yêu cầu, tiến độ, hàng đợi xem lại; bộ nhớ, phiên và cài đặt ở `/viewer`",
+      "Kiểm soát riêng tư: dùng thẻ `<private>` để loại nội dung nhạy cảm khỏi bộ nhớ",
+      "Chế độ và ngôn ngữ: thiết lập `CLAUDE_MEM_MODE` theo mẫu `code--[lang]` để quan sát được sinh bằng ngôn ngữ mong muốn",
+      "TeamBrain tùy chọn: không gian làm việc nhóm dùng chung, mỗi người tự chọn nội dung chia sẻ",
+      "Trích dẫn: tham chiếu các quan sát cũ theo mã số qua API của worker hoặc giao diện web"
+    ],
+    "requirementsVi": "Node.js 20.0.0 trở lên, Claude Code bản mới nhất có hỗ trợ plugin. Bun và uv được tự động cài nếu chưa có; SQLite 3 đi kèm sẵn.",
+    "installStepsVi": [
+      "Cài Node.js 20 trở lên và Claude Code bản mới nhất",
+      "Cài bằng một lệnh: `npx claude-mem install`; trình cài đặt mời đăng nhập claude-mem qua trình duyệt (bỏ qua bằng cờ `--provider` hoặc đặt `CLAUDE_MEM_ONLINE_OPTIN=false`)",
+      "Hoặc cài từ marketplace trong Claude Code: `/plugin marketplace add thedotmack/claude-mem` rồi `/plugin install claude-mem`, sau đó khởi động lại Claude Code",
+      "Cài cho công cụ khác: `npx claude-mem install --ide opencode` hoặc `npx claude-mem install --ide antigravity`",
+      "Lưu ý: `npm install -g claude-mem` chỉ cài thư viện SDK, không đăng ký hook và worker"
+    ],
+    "cliCommand": "npx claude-mem install",
+    "usageStepsVi": [
+      "Làm việc bình thường với Claude Code; plugin tự ghi quan sát và ngữ cảnh từ các phiên trước tự xuất hiện trong phiên mới.",
+      "Hỏi Claude về lịch sử dự án; Claude dùng `search` để lấy chỉ mục, `timeline` để xem bối cảnh và `get_observations` để lấy chi tiết.",
+      "Mở địa chỉ worker in ra khi khởi động để xem My Work, hoặc `/viewer` để xem bộ nhớ, phiên và cài đặt.",
+      "Chỉnh cấu hình trong `~/.claude-mem/settings.json` (mô hình AI, cổng worker, thư mục dữ liệu, chế độ `CLAUDE_MEM_MODE`), rồi khởi động lại Claude Code."
+    ],
+    "samplePromptsVi": [
+      "Tuần trước mình đã sửa lỗi xác thực trong dự án này như thế nào? Tìm trong bộ nhớ giúp mình",
+      "Tóm tắt các quyết định kiến trúc quan trọng đã đưa ra trong dự án này từ đầu tháng",
+      "Trước khi sửa module thanh toán, hãy xem lại các lỗi từng gặp ở module này và những gì đã thử"
+    ],
+    "prosVi": [
+      "Giấy phép Apache-2.0, cài bằng một lệnh hoặc qua marketplace plugin của Claude Code",
+      "Tự động hoàn toàn, không cần thao tác thủ công",
+      "Truy xuất theo lớp giúp tiết kiệm token đáng kể",
+      "Dữ liệu lưu trong SQLite cục bộ, có thẻ `<private>` để loại nội dung nhạy cảm",
+      "Hỗ trợ nhiều công cụ ngoài Claude Code và có chế độ sinh quan sát bằng nhiều ngôn ngữ, trong đó có tiếng Việt"
+    ],
+    "consVi": [
+      "Trình cài đặt mặc định mời đăng nhập dịch vụ lưu trữ claude-mem; sau 30 ngày dùng thử, bộ nhớ chuyển sang dùng gói Anthropic của bạn nếu không đăng ký",
+      "Kiến trúc nhiều thành phần (hook, worker Bun, SQLite, Chroma, uv) nên việc khắc phục sự cố phức tạp hơn",
+      "Việc ghi và tóm tắt quan sát tiêu tốn thêm lượt gọi mô hình",
+      "Gói npm `claude-mem` cài toàn cục chỉ là SDK, dễ cài nhầm",
+      "README có quảng bá một token tiền mã hóa (CMEM) do bên thứ ba tạo ra"
+    ],
+    "sourceEvidence": {
+      "npx claude-mem install": "README.md:150",
+      "CLAUDE_MEM_ONLINE_OPTIN=false": "README.md:155",
+      "/plugin marketplace add thedotmack/claude-mem": "README.md:197",
+      "/plugin install claude-mem": "README.md:199",
+      "npx claude-mem install --ide opencode": "README.md:160",
+      "npx claude-mem install --ide antigravity": "README.md:176",
+      "npm install -g claude-mem": "README.md:204",
+      "30 Day Free Trial": "README.md:153",
+      "<private>": "README.md:224",
+      "search(query=\"authentication bug\", type=\"bugfix\", limit=10)": "README.md:307",
+      "~/.claude-mem/settings.json": "README.md:344",
+      "CLAUDE_MEM_MODE": "README.md:352",
+      "code--[lang]": "README.md:382",
+      "Node.js": "README.md:321",
+      "CMEM is a token": "README.md:463",
+      "license Apache 2.0": "LICENSE:2"
+    },
+    "meta": {
+      "id": "thedotmack-claude-mem",
+      "nameVi": "Claude-Mem — Bộ nhớ lâu dài, tự tóm tắt ngữ cảnh qua các phiên cho Claude Code",
+      "icon": "Brain",
+      "categories": [
+        "nlp_llm",
+        "vector_rag"
+      ],
+      "platforms": [
+        "claude_code",
+        "antigravity"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "freemium",
+      "pricingText": "Plugin miễn phí; có thể dùng khóa OpenRouter, Gemini hoặc gói Anthropic của bạn. Bộ quan sát lưu trữ claude-mem (CMEM Pro) có 30 ngày dùng thử miễn phí, sau đó cần đăng ký",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Việt"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "npx claude-mem install"
+        },
+        {
+          "platform": "antigravity",
+          "platformName": "Antigravity CLI",
+          "cliCommand": "npx claude-mem install --ide antigravity"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "NVIDIA/OpenShell",
+    "license": "Apache License 2.0 (Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES)",
+    "authorName": "NVIDIA",
+    "websiteUrl": "https://docs.nvidia.com/openshell/latest/index.html",
+    "toolType": "cli",
+    "taglineEn": "OpenShell is the safe, private runtime for fleets of autonomous AI agents.",
+    "summaryVi": "OpenShell là môi trường chạy an toàn, riêng tư cho các đội tác tử AI tự hành của NVIDIA: tác tử vẫn đọc tệp, cài gói, gọi API và dùng thông tin xác thực nhưng không có quyền truy cập không giới hạn vào dữ liệu, bí mật hay mạng của bạn. Bạn khai báo trong chính sách những gì mỗi tác tử được chạm tới, OpenShell thực thi ở mức nhân hệ điều hành cho từng truy cập tệp, lời gọi hệ thống và kết nối mạng. Mọi thay đổi chính sách được kiểm tra bằng xác minh hình thức để gắn cờ quyền truy cập rủi ro trước khi con người phê duyệt.",
+    "purposeVi": "Giúp chạy các tác tử lập trình như OpenCode hay Claude Code trong sandbox cô lập, cấp quyền dần theo nhu cầu và không bao giờ để tác tử nhìn thấy thông tin xác thực thật.",
+    "featuresVi": [
+      "Thực thi ở mức nhân: mỗi tác tử chạy trong sandbox cô lập, giới hạn tệp và lời gọi hệ thống, mọi kết nối mạng đi qua kiểm tra chính sách",
+      "Bảo vệ thông tin xác thực: tác tử không thấy khóa thật, OpenShell chỉ gắn khóa vào yêu cầu tới điểm cuối đã được phê duyệt",
+      "Xác minh hình thức chính sách: bộ prover gắn cờ quyền truy cập mới có rủi ro để chờ con người xem xét",
+      "Bộ cố vấn chính sách: khi bị chặn, OpenShell soạn sẵn quy tắc hẹp để bạn duyệt hoặc từ chối; quy tắc được nạp nóng không cần khởi động lại",
+      "Gateway và Kubernetes: mặt phẳng điều khiển cho sandbox, chính sách và quyền truy cập, triển khai bằng Helm",
+      "SDK đa ngôn ngữ: Python, TypeScript, Go, Rust để ứng dụng kết nối tới gateway",
+      "Skill cho tác tử lập trình: dạy tác tử dùng CLI OpenShell, viết chính sách sandbox, gỡ lỗi gateway và định tuyến suy luận",
+      "Mở rộng: middleware, interceptor, compute driver; hỗ trợ GPU trong sandbox"
+    ],
+    "requirementsVi": "Linux, macOS trên Apple Silicon hoặc Windows với WSL 2 (thử nghiệm), cùng Docker, Podman hoặc ảo hóa trên máy chủ. Khi triển khai trên Kubernetes, CNI phải thực thi `NetworkPolicy`.",
+    "installStepsVi": [
+      "Chuẩn bị Linux, macOS Apple Silicon hoặc Windows WSL 2 cùng Docker, Podman hoặc ảo hóa phần cứng",
+      "Cài CLI, bộ prover chính sách và gateway cục bộ: `curl -LsSf https://raw.githubusercontent.com/NVIDIA/OpenShell/main/install.sh | sh`",
+      "Kiểm tra CLI kết nối được gateway: `openshell status`",
+      "Tạo sandbox thử: `openshell sandbox create --name demo` (ảnh mặc định là Ubuntu tối giản, chưa có tác tử)",
+      "Tùy chọn cài skill cho tác tử lập trình: `npx skills add NVIDIA/OpenShell`; hoặc SDK Python: `uv add openshell`"
+    ],
+    "cliCommand": "curl -LsSf https://raw.githubusercontent.com/NVIDIA/OpenShell/main/install.sh | sh",
+    "usageStepsVi": [
+      "Nhập hồ sơ nhà cung cấp và tạo provider lưu khóa: `openshell profile import --url https://raw.githubusercontent.com/NVIDIA/OpenShell/main/providers/openrouter.yaml`, rồi `openshell provider create --name openrouter --type openrouter --from-existing` (đặt `OPENROUTER_API_KEY` trước).",
+      "Tạo sandbox chạy tác tử: `openshell sandbox create --name my-agent --from ghcr.io/anomalyco/opencode:latest --provider openrouter -- opencode -m openrouter/nvidia/nemotron-3.5-lightning:free`.",
+      "Khi tác tử bị chặn, xem đề xuất quy tắc bằng `openshell rule get my-agent --status pending` và duyệt bằng `openshell rule approve my-agent --chunk-id <chunk-id>`.",
+      "Kết nối vào sandbox để làm việc trực tiếp: `openshell sandbox connect my-sandbox`."
+    ],
+    "samplePromptsVi": [
+      "Viết chính sách sandbox OpenShell chỉ cho phép tác tử truy cập github.com và registry.npmjs.org, chặn mọi đích khác",
+      "Sandbox của tôi báo lỗi kết nối tới API suy luận, hãy kiểm tra log gateway và định tuyến suy luận giúp tôi",
+      "Tạo sandbox chạy Claude Code với quyền đẩy mã lên GitHub nhưng không đọc được thư mục chứa khóa bí mật"
+    ],
+    "prosVi": [
+      "Do NVIDIA phát triển, giấy phép Apache-2.0, cài bằng một lệnh",
+      "Cô lập mạnh ở mức nhân và không để lộ thông tin xác thực thật cho tác tử",
+      "Xác minh hình thức giúp phát hiện quyền truy cập rủi ro trước khi áp dụng",
+      "Có SDK nhiều ngôn ngữ, hỗ trợ Kubernetes và skill cho tác tử lập trình"
+    ],
+    "consVi": [
+      "Hỗ trợ Windows qua WSL 2 vẫn đang ở mức thử nghiệm; macOS chỉ hỗ trợ Apple Silicon",
+      "Cần Docker, Podman hoặc ảo hóa phần cứng; ảnh sandbox mặc định chưa có sẵn tác tử",
+      "Thu thập dữ liệu đo lường ẩn danh theo mặc định, phải tắt bằng `OPENSHELL_TELEMETRY_ENABLED=false`",
+      "Phần mềm tự truy xuất tài nguyên bên ngoài, người dùng tự chịu trách nhiệm về điều khoản và độ an toàn của chúng",
+      "Dòng 0.1.x có thay đổi lớn, cần đọc hướng dẫn nâng cấp khi chuyển phiên bản"
+    ],
+    "sourceEvidence": {
+      "curl -LsSf https://raw.githubusercontent.com/NVIDIA/OpenShell/main/install.sh | sh": "README.md:35",
+      "openshell sandbox create --name demo": "README.md:36",
+      "openshell status": "docs/about/installation.mdx:24",
+      "npx skills add NVIDIA/OpenShell": "README.md:59",
+      "uv add openshell": "README.md:70",
+      "openshell profile import": "docs/about/run-your-first-agent.mdx:28",
+      "--url https://raw.githubusercontent.com/NVIDIA/OpenShell/main/providers/openrouter.yaml": "docs/about/run-your-first-agent.mdx:29",
+      "openshell provider create": "docs/about/run-your-first-agent.mdx:31",
+      "OPENROUTER_API_KEY": "docs/about/run-your-first-agent.mdx:37",
+      "openshell sandbox create --name my-agent --from ghcr.io/anomalyco/opencode:latest --provider openrouter -- opencode -m openrouter/nvidia/nemotron-3.5-lightning:free": "docs/about/run-your-first-agent.mdx:57-61",
+      "openshell rule get my-agent --status pending": "docs/about/run-your-first-agent.mdx:83",
+      "openshell rule approve my-agent --chunk-id <chunk-id>": "docs/about/run-your-first-agent.mdx:90",
+      "openshell sandbox connect my-sandbox": "docs/how-it-works/sandboxes/overview.mdx:275",
+      "OPENSHELL_TELEMETRY_ENABLED=false": "README.md:87",
+      "Windows with WSL 2 (experimental)": "README.md:32",
+      "license Apache 2.0": "LICENSE:3",
+      "license copyright NVIDIA": "LICENSE:1"
+    },
+    "meta": {
+      "id": "nvidia-openshell",
+      "nameVi": "OpenShell — Môi trường sandbox an toàn, có chính sách cho đội tác tử AI tự hành của NVIDIA",
+      "icon": "Box",
+      "categories": [
+        "cybersecurity_security",
+        "devops_cicd",
+        "cloud_infrastructure"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "curl -LsSf https://raw.githubusercontent.com/NVIDIA/OpenShell/main/install.sh | sh"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "trycua/cua",
+    "license": "MIT License (Cua Spaces và Cua Driver Bench theo FSL-1.1-MIT)",
+    "authorName": "Cua AI, Inc.",
+    "websiteUrl": "https://cua.ai",
+    "toolType": "mcp",
+    "taglineEn": "Give AI agents computers they can use.",
+    "summaryVi": "Cua là bộ công cụ cung cấp máy tính cho tác tử AI sử dụng: Cua Driver cho tác tử kiểm tra và điều khiển ứng dụng desktop, trình duyệt trên macOS, Windows, Linux qua CLI, MCP hoặc SDK; Cua Spaces cho tác tử cả một desktop riêng (máy ảo macOS, Linux) trên máy của bạn. Kho còn gồm Cua SDK và CLI `cua` để tạo sandbox, Lume quản lý máy ảo trên Apple Silicon, mô hình CUA-S1 và Cua Bench để đánh giá tác tử dùng máy tính.",
+    "purposeVi": "Giúp các tác tử như Claude Code, Codex, Cursor tự động thao tác trên ứng dụng desktop thật hoặc trong máy ảo, sandbox cô lập, đồng thời đánh giá và huấn luyện tác tử dùng máy tính.",
+    "featuresVi": [
+      "Cua Driver: công cụ để tác tử kiểm tra và điều khiển ứng dụng gốc, trình duyệt trên macOS, Windows, Linux; chạy nền không chiếm con trỏ khi nền tảng hỗ trợ",
+      "Cua Spaces: ứng dụng desktop cấp cho tác tử desktop đầy đủ (máy ảo macOS dựng cục bộ, ảnh Linux hoặc Omarchy), chạy trên máy bạn hoặc tài khoản đám mây riêng",
+      "Teleport và Multiplayer: chuyển ứng dụng đã đăng nhập vào Space, người và tác tử cùng làm trên một desktop với con trỏ riêng",
+      "Cua SDK và CLI: lệnh `cua sb` tạo, chạy lệnh, chụp màn hình, xóa sandbox; SDK Python, TypeScript, Rust",
+      "Lume: tạo và quản lý máy ảo macOS, Linux trên Apple Silicon bằng Virtualization.Framework",
+      "CUA-S1: họ mô hình nhỏ chuyên ra quyết định nhanh cho tác vụ dùng máy tính, bản đầu tập trung vào biểu mẫu",
+      "Cua Bench: tạo tác vụ, đánh giá tác tử và xuất quỹ đạo để huấn luyện, có tác vụ mô phỏng không cần máy ảo hay khóa API"
+    ],
+    "requirementsVi": "Cua Spaces cần macOS 26 trở lên; Lume cần Apple Silicon; Cua Driver chạy trên macOS, Windows, Linux; Cua Bench cần Python 3.12 hoặc 3.13 và uv. Tác tử và mô hình do bạn tự chọn.",
+    "installStepsVi": [
+      "Cài CLI `cua` (kèm tùy chọn Cua Spaces, Cua Driver) trên macOS hoặc Linux: `curl -fsSL https://cua.ai/install.sh | sh`; trên Windows PowerShell: `irm https://cua.ai/install.ps1 | iex`",
+      "Chỉ cài Cua Driver trên macOS hoặc Linux: `/bin/bash -c \"$(curl -fsSL https://cua.ai/driver/install.sh)\"`; trên Windows: `irm https://cua.ai/driver/install.ps1 | iex`",
+      "Đăng ký Cua Driver với Claude Code: `claude mcp add --transport stdio cua-driver -- cua-driver mcp`; với ứng dụng khác dùng `cua-driver mcp-config --client <client>` (ví dụ `--client cursor`)",
+      "Tùy chọn cài Lume: `/bin/bash -c \"$(curl -fsSL https://cua.ai/lume/install.sh)\"`; SDK Python: `pip install cua`",
+      "Tùy chọn cài Cua Bench: `uv tool install 'cua-bench[browser]'`"
+    ],
+    "cliCommand": "curl -fsSL https://cua.ai/install.sh | sh",
+    "usageStepsVi": [
+      "Sau khi đăng ký Cua Driver, khởi động lại ứng dụng tác tử rồi yêu cầu thao tác trên ứng dụng desktop, ví dụ tính 6 × 7 bằng Calculator và kiểm tra kết quả 42.",
+      "Tạo sandbox cô lập: `cua sb create ubuntu --name dev`, chạy lệnh `cua sb exec dev uname -a`, chụp màn hình `cua sb screenshot dev`, xóa bằng `cua sb rm dev`.",
+      "Muốn dùng máy khác của mình làm nơi chạy, chạy `cua host setup` để máy truy cập được qua relay cua.ai mà không cần mở cổng.",
+      "Với Cua Bench, tạo một tác vụ nhỏ, chạy lời giải tham chiếu và kiểm tra bộ đánh giá trả về điểm thưởng `1.0`."
+    ],
+    "samplePromptsVi": [
+      "Mở LibreOffice Calc, nhập bảng doanh thu 3 tháng gần nhất và tạo biểu đồ cột",
+      "Trong sandbox Ubuntu, cài Python, tải kho mã của tôi về và chạy bộ kiểm thử, rồi chụp màn hình kết quả",
+      "Điền biểu mẫu đăng ký trên ứng dụng desktop này bằng thông tin trong tệp khach_hang.csv và kiểm tra lại từng trường"
+    ],
+    "prosVi": [
+      "Phần lớn kho theo giấy phép MIT; Cua Spaces miễn phí cho cá nhân",
+      "Cua Driver chạy được trên cả macOS, Windows và Linux, kết nối qua CLI, MCP hoặc SDK",
+      "Tự mang tác tử và mô hình của mình, không bị khóa vào nhà cung cấp",
+      "Hệ sinh thái đầy đủ: sandbox, máy ảo, mô hình chuyên biệt và bộ đánh giá"
+    ],
+    "consVi": [
+      "Cua Spaces và Cua Driver Bench theo giấy phép FSL-1.1-MIT (mã nguồn khả dụng, không được dùng cho dịch vụ lưu trữ cạnh tranh), không phải MIT",
+      "Cua Spaces cần macOS 26 trở lên, Lume chỉ chạy trên Apple Silicon",
+      "Tiện ích `cua-perception` tùy chọn kèm mô hình theo AGPL-3.0, có thể phát sinh nghĩa vụ công bố mã nguồn khi phân phối lại",
+      "CUA-S1 mới là bản nghiên cứu giai đoạn đầu, chỉ có mã nguồn",
+      "Một số gói cũ như `cua-agent`, `cua-computer` đã ngừng bảo trì; `cuabot` có lỗ hổng bảo mật đã biết và không nên chạy"
+    ],
+    "sourceEvidence": {
+      "curl -fsSL https://cua.ai/install.sh | sh": "README.md:142",
+      "irm https://cua.ai/install.ps1 | iex": "README.md:148",
+      "/bin/bash -c \"$(curl -fsSL https://cua.ai/driver/install.sh)\"": "README.md:98",
+      "irm https://cua.ai/driver/install.ps1 | iex": "README.md:104",
+      "/bin/bash -c \"$(curl -fsSL https://cua.ai/lume/install.sh)\"": "README.md:126",
+      "claude mcp add --transport stdio cua-driver -- cua-driver mcp": "libs/cua-driver/README.md:203",
+      "cua-driver mcp-config --client <client>": "docs/content/docs/cua-driver/guides/connect-your-agent.mdx:25",
+      "--client cursor": "docs/content/docs/cua-driver/guides/connect-your-agent.mdx:32",
+      "pip install cua": "README.md:169",
+      "uv tool install 'cua-bench[browser]'": "README.md:198",
+      "cua sb create ubuntu --name dev": "README.md:154",
+      "cua sb exec dev uname -a": "README.md:155",
+      "cua sb screenshot dev": "README.md:156",
+      "cua sb rm dev": "README.md:157",
+      "cua host setup": "README.md:171",
+      "Spaces is free for individuals": "README.md:85",
+      "Install on macOS 26 or later": "README.md:77",
+      "Do not run it:": "README.md:231",
+      "license MIT": "LICENSE.md:1",
+      "license FSL-1.1-MIT": "README.md:270"
+    },
+    "meta": {
+      "id": "trycua-cua",
+      "nameVi": "Cua — Máy tính cho tác tử AI: điều khiển desktop qua MCP, sandbox, máy ảo và bộ đánh giá",
+      "icon": "Cpu",
+      "categories": [
+        "rpa_workflow_automation",
+        "cloud_infrastructure",
+        "qa_testing"
+      ],
+      "platforms": [
+        "claude_code",
+        "cursor",
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT; Cua Spaces theo FSL-1.1-MIT)",
+      "pricingModel": "freemium",
+      "pricingText": "Phần lớn mã nguồn MIT miễn phí; Cua Spaces miễn phí cho cá nhân, gói Pro 18 USD/tháng, Teams 30 USD/người/tháng",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude mcp add --transport stdio cua-driver -- cua-driver mcp"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "cliCommand": "cua-driver mcp-config --client cursor"
+        },
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "curl -fsSL https://cua.ai/install.sh | sh"
+        }
+      ]
+    }
+  }
+]

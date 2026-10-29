@@ -4,6 +4,15 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.3.2 (Ngày 29-10-2026)
+- **Loại hình**: 14 tài nguyên đang nổi trên GitHub Trending tuần cuối tháng 10, tệp dữ kiện `database/scripts/facts/2026-10-29-trending-{a,b,c}.json`.
+- **Skill cho tác tử lập trình**: Cloudflare Security Audit Skill (kiểm tra bảo mật nhiều giai đoạn, MIT), Claude SEO (MIT), Impeccable (thiết kế giao diện, Apache-2.0), Taste Skill (MIT), skills của Jakub Krehel (MIT), skills của Matt Pocock (MIT), Agent Skills của Addy Osmani (MIT), FFmpeg Skill (xử lý video kèm máy chủ MCP, MIT).
+- **Plugin**: Knowledge Work Plugins của Anthropic (plugin cho Claude Cowork theo vai trò công việc, Apache-2.0).
+- **MCP và hạ tầng tác tử**: Chrome DevTools MCP (Apache-2.0), claude-mem (bộ nhớ dài hạn cho Claude Code, Apache-2.0; README quảng bá token CMEM của bên thứ ba, ghi trong nhược điểm), NVIDIA OpenShell (sandbox cho tác tử, Apache-2.0), Cua (tác tử điều khiển máy tính, MIT; chỉ mô tả các phần còn được duy trì).
+- **Khung đa tác tử**: TradingAgents (giao dịch tài chính, Apache-2.0; README ghi chỉ dùng cho nghiên cứu, không phải tư vấn đầu tư).
+- Không thêm: multica-ai/andrej-karpathy-skills (không có tệp LICENSE); obra/superpowers, ruvnet/ruflo, morluto/rea (đã có trong kho).
+- Kho dữ liệu: 2.273 công cụ đang hiển thị, 2.370 cấu hình mẫu.
+
 ### Phiên Bản 2.3.1 (Ngày 29-10-2026)
 - **Loại hình**: Thêm 5 tài nguyên, tệp dữ kiện `database/scripts/facts/2026-10-29-deskbox.json`, `2026-10-29-hallmark-dochub.json`, `2026-10-29-agency-agents.json`, `2026-10-29-windows-mcp.json`.
 - **The Agency** (`msitarzewski/agency-agents`, MIT): hơn 230 tác tử AI chuyên biệt dạng Markdown chia theo bộ phận (Kỹ thuật, Thiết kế, Marketing, Bán hàng, Kiểm thử, Bảo mật...), script cài cho Claude Code, Cursor, Codex, Gemini CLI, OpenCode... Lĩnh vực: LLM, tự động hóa quy trình.
