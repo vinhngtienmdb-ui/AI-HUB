@@ -1,0 +1,509 @@
+[
+  {
+    "repo": "mattpocock/skills",
+    "license": "MIT License",
+    "authorName": "Matt Pocock",
+    "websiteUrl": "",
+    "toolType": "skill",
+    "taglineEn": "My agent skills that I use every day to do real engineering - not vibe coding.",
+    "summaryVi": "Skills For Real Engineers là bộ skill cho tác tử lập trình AI mà Matt Pocock dùng hằng ngày để làm kỹ thuật phần mềm thực thụ thay vì lập trình theo cảm hứng. Các skill nhỏ, dễ chỉnh sửa, kết hợp được với nhau, dùng được với mọi mô hình và chia thành hai nhóm: Engineering (đặc tả, ticket, TDD, gỡ lỗi, rà soát mã, kiến trúc) và Productivity (phỏng vấn làm rõ kế hoạch, bàn giao, dạy học). Bộ skill cài được cho Claude Code, Codex, GitHub Copilot, Gemini CLI và các tác tử khác qua skills.sh.",
+    "purposeVi": "Khắc phục các lỗi thường gặp khi làm việc với tác tử lập trình: tác tử hiểu sai yêu cầu, trả lời dài dòng, mã không chạy và mã nguồn ngày càng rối, bằng các quy trình kỹ thuật phần mềm có thể lặp lại.",
+    "featuresVi": [
+      "Phỏng vấn làm rõ yêu cầu: `/grill-me` và `/grill-with-docs` để tác tử hỏi chi tiết trước khi bắt tay vào làm",
+      "Ngôn ngữ chung của dự án: `/grill-with-docs` xây dựng và cập nhật `GLOSSARY.md` cùng các ADR ngay trong phiên làm việc",
+      "Phát triển hướng kiểm thử: skill `/tdd` theo vòng lặp red-green-refactor, làm từng lát cắt dọc",
+      "Gỡ lỗi có kỷ luật: `/diagnosing-bugs` dựng vòng phản hồi, thu nhỏ, đặt giả thuyết, đo đạc, sửa và viết kiểm thử hồi quy",
+      "Cải thiện kiến trúc: `/improve-codebase-architecture` khảo sát mã nguồn và trình bày các cơ hội cải thiện dưới dạng báo cáo HTML",
+      "Từ đặc tả đến ticket: `/to-spec`, `/to-tickets`, `/implement` và `/implement-spec` biến cuộc trò chuyện thành đặc tả, ticket và mã",
+      "Rà soát mã hai trục: `code-review` kiểm tra theo chuẩn mã của repo và theo đặc tả gốc bằng các subagent song song",
+      "Năng suất: `/handoff` tóm tắt phiên để tác tử khác làm tiếp, `/teach` dạy một kỹ năng qua nhiều phiên"
+    ],
+    "requirementsVi": "Một tác tử lập trình AI như Claude Code, Codex, GitHub Copilot, Gemini CLI hoặc tác tử khác được skills.sh hỗ trợ; Node.js nếu cài bằng `npx`.",
+    "installStepsVi": [
+      "Claude Code (tự cập nhật): `claude plugin install mattpocock-skills@claude-plugins-official`",
+      "Codex: `codex plugin marketplace add mattpocock/skills`, rồi `codex plugin add mattpocock-skills@mattpocock`",
+      "GitHub Copilot: `copilot plugin marketplace add mattpocock/skills`, rồi `copilot plugin install mattpocock-skills@mattpocock`",
+      "Tác tử khác (Cursor, Windsurf, OpenCode...): `npx skills@latest add mattpocock/skills -a <agent>`, nhớ chọn skill `setup-matt-pocock-skills`; cập nhật bằng `npx skills@latest update`",
+      "Chạy `/setup-matt-pocock-skills` một lần cho mỗi repo để chọn trình theo dõi issue, nhãn phân loại và nơi lưu tài liệu"
+    ],
+    "cliCommand": "claude plugin install mattpocock-skills@claude-plugins-official",
+    "usageStepsVi": [
+      "Trước mỗi thay đổi, gõ `/grill-me` hoặc `/grill-with-docs` để tác tử phỏng vấn bạn cho đến khi thống nhất yêu cầu.",
+      "Biến kết quả thảo luận thành đặc tả và ticket bằng `/to-spec` và `/to-tickets`, sau đó triển khai bằng `/implement`.",
+      "Khi viết tính năng hoặc sửa lỗi, để tác tử dùng `/tdd`; gặp lỗi khó thì dùng `/diagnosing-bugs`.",
+      "Vài ngày một lần chạy `/improve-codebase-architecture` để tìm chỗ cần cải thiện thiết kế mã nguồn."
+    ],
+    "samplePromptsVi": [
+      "/grill-me Tôi muốn thêm chức năng thanh toán định kỳ cho ứng dụng quản lý phòng gym, hãy hỏi tôi cho đến khi mọi chi tiết rõ ràng",
+      "/tdd Viết hàm tính phí vận chuyển theo cân nặng và khu vực, làm từng bước red-green-refactor",
+      "/diagnosing-bugs Trang danh sách đơn hàng thỉnh thoảng hiển thị trùng bản ghi sau khi phân trang"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, skill nhỏ gọn, dễ chỉnh sửa theo nhu cầu",
+      "Cài được trên nhiều tác tử: Claude Code, Codex, GitHub Copilot, Gemini CLI và các tác tử qua skills.sh",
+      "Dựa trên các nguyên tắc kỹ thuật phần mềm kinh điển (TDD, Domain-Driven Design, thiết kế module sâu)",
+      "Bản plugin trên Claude Code, Codex và Copilot tự cập nhật"
+    ],
+    "consVi": [
+      "Cần chạy `/setup-matt-pocock-skills` cho từng repo trước khi dùng nhóm skill Engineering",
+      "Không nên cài cả plugin lẫn skills.sh cho cùng một tác tử vì sẽ bị trùng skill",
+      "Bản cài qua skills.sh và Gemini CLI phải tự cập nhật thủ công",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "sourceEvidence": {
+      "claude plugin install mattpocock-skills@claude-plugins-official": "README.md:35",
+      "codex plugin marketplace add mattpocock/skills": "README.md:46",
+      "codex plugin add mattpocock-skills@mattpocock": "README.md:47",
+      "copilot plugin marketplace add mattpocock/skills": "README.md:58",
+      "copilot plugin install mattpocock-skills@mattpocock": "README.md:59",
+      "gemini skills install https://github.com/mattpocock/skills.git --path skills/engineering": "README.md:80",
+      "npx skills@latest add mattpocock/skills -a <agent>": "README.md:92",
+      "npx skills@latest update": "README.md:95",
+      "/setup-matt-pocock-skills": "README.md:99",
+      "/grill-me": "README.md:125",
+      "/grill-with-docs": "README.md:126",
+      "/tdd": "README.md:181",
+      "/diagnosing-bugs": "README.md:183",
+      "/improve-codebase-architecture": "README.md:203",
+      "license MIT": "LICENSE:1"
+    },
+    "meta": {
+      "id": "mattpocock-skills",
+      "nameVi": "Skills For Real Engineers — Bộ skill kỹ thuật phần mềm cho tác tử lập trình của Matt Pocock",
+      "icon": "Wrench",
+      "categories": [
+        "qa_testing"
+      ],
+      "platforms": [
+        "claude_code",
+        "cursor",
+        "windsurf"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude plugin install mattpocock-skills@claude-plugins-official"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "cliCommand": "npx skills@latest add mattpocock/skills -a cursor"
+        },
+        {
+          "platform": "windsurf",
+          "platformName": "Windsurf",
+          "cliCommand": "npx skills@latest add mattpocock/skills -a windsurf"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "addyosmani/agent-skills",
+    "license": "MIT License",
+    "authorName": "Addy Osmani",
+    "websiteUrl": "",
+    "toolType": "skill",
+    "taglineEn": "Production-grade engineering skills for AI coding agents.",
+    "summaryVi": "Agent Skills là bộ 25 skill kỹ thuật phần mềm cấp sản phẩm cho tác tử lập trình AI, đóng gói quy trình, cổng kiểm soát chất lượng và thực hành tốt của kỹ sư cấp cao để tác tử làm theo nhất quán qua mọi giai đoạn phát triển. Bộ skill đi kèm 9 lệnh slash theo vòng đời (`/spec`, `/plan`, `/build`, `/test`, `/review`, `/ship`...), 4 persona chuyên gia rà soát và 7 checklist tham chiếu. Cài được cho Claude Code, Cursor, Antigravity CLI, Gemini CLI, Codex, GitHub Copilot và nhiều tác tử khác.",
+    "purposeVi": "Ngăn tác tử lập trình AI đi đường tắt (bỏ qua đặc tả, kiểm thử, rà soát bảo mật) bằng các quy trình có bước, điểm kiểm tra và yêu cầu bằng chứng, dựa trên thực hành kỹ thuật của Google.",
+    "featuresVi": [
+      "Lệnh theo vòng đời: `/spec`, `/plan`, `/build`, `/test`, `/constraints`, `/review`, `/webperf`, `/code-simplify`, `/ship`",
+      "Chế độ tự động: `/build auto` sinh kế hoạch và triển khai mọi tác vụ sau một lần duyệt, mỗi tác vụ vẫn theo kiểm thử và commit riêng",
+      "25 skill theo giai đoạn: Define, Plan, Build, Verify, Review, Ship, tự kích hoạt theo việc bạn đang làm",
+      "Kiểm thử và gỡ lỗi: phát triển hướng kiểm thử, kiểm thử trình duyệt qua Chrome DevTools MCP, quy trình gỡ lỗi năm bước",
+      "Rà soát chất lượng: rà soát mã năm trục, đơn giản hóa mã, bảo mật theo OWASP Top 10, tối ưu hiệu năng theo Core Web Vitals",
+      "Phát hành: quy trình git, CI/CD, ngưng hỗ trợ và di chuyển hệ thống, ADR, quan sát hệ thống, checklist ra mắt",
+      "Persona chuyên gia: code-reviewer, test-engineer, security-auditor, web-performance-auditor",
+      "Chống biện minh: mỗi skill có bảng các lý do tác tử hay viện ra để bỏ bước, kèm phản bác và yêu cầu bằng chứng xác minh"
+    ],
+    "requirementsVi": "Một tác tử lập trình AI (Claude Code, Cursor, Codex, Gemini CLI, Antigravity CLI, GitHub Copilot...); Node.js để cài bằng `npx skills`; Codex CLI v0.122 trở lên nếu cài dạng plugin Codex.",
+    "installStepsVi": [
+      "Cài cho mọi tác tử bằng một lệnh: `npx skills add addyosmani/agent-skills` (xem trước bằng `npx skills add addyosmani/agent-skills --list`)",
+      "Hoặc cài từng skill: `npx skills add addyosmani/agent-skills --skill test-driven-development`",
+      "Claude Code: `/plugin marketplace add addyosmani/agent-skills`, rồi `/plugin install agent-skills@addy-agent-skills`",
+      "Antigravity CLI: `agy plugin install https://github.com/addyosmani/agent-skills.git`; Gemini CLI: `gemini skills install https://github.com/addyosmani/agent-skills.git --path skills`",
+      "Codex: `codex plugin marketplace add addyosmani/agent-skills`, rồi `codex plugin add agent-skills@agent-skills`"
+    ],
+    "cliCommand": "npx skills add addyosmani/agent-skills",
+    "usageStepsVi": [
+      "Bắt đầu tính năng mới bằng `/spec` để viết đặc tả, rồi `/plan` để chia thành các tác vụ nhỏ có tiêu chí nghiệm thu.",
+      "Triển khai bằng `/build` (hoặc `/build auto`), chứng minh bằng `/test`.",
+      "Trước khi merge chạy `/review` (trong Claude Code dùng `/agent-skills:review` vì trùng lệnh có sẵn), sau đó `/ship` để phát hành.",
+      "Có thể gọi trực tiếp bất kỳ skill nào theo tên, ví dụ `/spec-driven-development`."
+    ],
+    "samplePromptsVi": [
+      "/spec Xây dựng API đặt lịch khám bệnh cho phòng khám, có xác thực người dùng và gửi thông báo nhắc lịch",
+      "/review Rà soát thay đổi trong nhánh hiện tại theo năm trục: đúng đắn, dễ đọc, kiến trúc, bảo mật, hiệu năng",
+      "/webperf Kiểm tra Core Web Vitals của trang chủ và đề xuất cải thiện"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, skill là tệp Markdown thuần, dùng được với mọi tác tử nhận tệp hướng dẫn",
+      "Bao phủ toàn bộ vòng đời phát triển, từ đặc tả đến phát hành",
+      "Hỗ trợ cài đặt gốc cho nhiều công cụ: Claude Code, Antigravity CLI, Gemini CLI, Codex, Command Code",
+      "Mỗi skill yêu cầu bằng chứng xác minh (kiểm thử chạy qua, kết quả build), không chấp nhận 'có vẻ đúng'"
+    ],
+    "consVi": [
+      "Cài từng skill bằng `npx` không kèm thư mục `references/` chung, các checklist bổ trợ sẽ không có",
+      "Cursor, Windsurf, OpenCode cần sao chép skill hoặc cấu hình quy tắc thủ công",
+      "Lệnh slash vòng đời là lệnh của Claude Code, không có trong GitHub Copilot",
+      "Cài qua marketplace Claude Code có thể gặp lỗi SSH nếu chưa cấu hình khóa SSH với GitHub",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "sourceEvidence": {
+      "npx skills add addyosmani/agent-skills": "README.md:51",
+      "npx skills add addyosmani/agent-skills --list": "README.md:52",
+      "npx skills add addyosmani/agent-skills --skill test-driven-development": "README.md:60",
+      "/plugin marketplace add addyosmani/agent-skills": "README.md:78",
+      "/plugin install agent-skills@addy-agent-skills": "README.md:79",
+      "agy plugin install https://github.com/addyosmani/agent-skills.git": "README.md:117",
+      "gemini skills install https://github.com/addyosmani/agent-skills.git --path skills": "README.md:137",
+      "codex plugin marketplace add addyosmani/agent-skills": "README.md:184",
+      "codex plugin add agent-skills@agent-skills": "README.md:185",
+      "/agent-skills:review": "README.md:38",
+      "/build auto": "README.md:40",
+      "license MIT": "LICENSE:1, README.md:410"
+    },
+    "meta": {
+      "id": "addyosmani-agent-skills",
+      "nameVi": "Agent Skills — 25 skill kỹ thuật phần mềm cấp sản phẩm cho tác tử lập trình AI của Addy Osmani",
+      "icon": "Code2",
+      "categories": [
+        "qa_testing",
+        "frontend_ui",
+        "devops_cicd",
+        "cybersecurity_security"
+      ],
+      "platforms": [
+        "claude_code",
+        "cursor",
+        "antigravity",
+        "windsurf"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "/plugin marketplace add addyosmani/agent-skills"
+        },
+        {
+          "platform": "antigravity",
+          "platformName": "Antigravity CLI",
+          "cliCommand": "agy plugin install https://github.com/addyosmani/agent-skills.git"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "cliCommand": "npx skills add addyosmani/agent-skills"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "anthropics/knowledge-work-plugins",
+    "license": "Apache License 2.0",
+    "authorName": "Anthropic",
+    "websiteUrl": "https://claude.com/plugins/",
+    "toolType": "skill",
+    "taglineEn": "Plugins that turn Claude into a specialist for your role, team, and company.",
+    "summaryVi": "Knowledge Work Plugins là bộ plugin mã nguồn mở của Anthropic giúp Claude trở thành chuyên gia theo vai trò công việc: năng suất, bán hàng, chăm sóc khách hàng, quản lý sản phẩm, marketing, pháp lý, tài chính, dữ liệu, tìm kiếm doanh nghiệp và nghiên cứu sinh học. Mỗi plugin gói sẵn skill, connector (máy chủ MCP), lệnh slash và subagent cho một chức năng nghiệp vụ. Plugin được xây dựng cho Claude Cowork và tương thích với Claude Code.",
+    "purposeVi": "Giúp đội ngũ cho Claude biết cách làm việc của công ty: dùng công cụ và dữ liệu nào, xử lý quy trình quan trọng ra sao và lệnh nào được dùng, để kết quả tốt và nhất quán hơn.",
+    "featuresVi": [
+      "11 plugin theo vai trò: productivity, sales, customer-support, product-management, marketing, legal, finance, data, enterprise-search, bio-research, cowork-plugin-management",
+      "Connector qua MCP: kết nối Slack, Notion, Jira, HubSpot, Snowflake, BigQuery, Figma, Microsoft 365, PubMed và nhiều công cụ khác",
+      "Lệnh slash theo nghiệp vụ: ví dụ `/sales:call-prep`, `/data:write-query`, `/finance:reconciliation`, `/product-management:write-spec`",
+      "Skill tự kích hoạt: chứa chuyên môn, thực hành tốt và quy trình từng bước, Claude tự dùng khi phù hợp",
+      "Không cần mã: mọi thành phần là tệp Markdown và JSON, không cần hạ tầng hay bước build",
+      "Tùy biến cho công ty: sửa `.mcp.json` để đổi connector, thêm thuật ngữ, cơ cấu tổ chức và quy trình vào tệp skill",
+      "Tạo plugin mới: plugin `cowork-plugin-management` giúp tạo hoặc tùy biến plugin cho công cụ và quy trình riêng"
+    ],
+    "requirementsVi": "Claude Cowork hoặc Claude Code; tài khoản ở các dịch vụ muốn kết nối (Slack, HubSpot, Snowflake...) nếu dùng connector.",
+    "installStepsVi": [
+      "Trên Cowork: cài plugin từ trang claude.com/plugins",
+      "Trên Claude Code, thêm marketplace: `claude plugin marketplace add anthropics/knowledge-work-plugins`",
+      "Cài plugin cần dùng, ví dụ: `claude plugin install sales@knowledge-work-plugins`",
+      "Tùy chọn: sửa `.mcp.json` của plugin để trỏ tới bộ công cụ của công ty bạn"
+    ],
+    "cliCommand": "claude plugin marketplace add anthropics/knowledge-work-plugins",
+    "usageStepsVi": [
+      "Sau khi cài, plugin tự kích hoạt; skill được Claude dùng khi phù hợp với yêu cầu.",
+      "Gọi lệnh slash của plugin khi cần thao tác cụ thể, ví dụ `/sales:call-prep` hoặc `/data:write-query`.",
+      "Bổ sung thuật ngữ, cơ cấu tổ chức và quy trình của công ty vào tệp skill để Claude làm việc đúng cách của đội.",
+      "Chia sẻ plugin đã tùy biến cho cả đội để mọi người có kết quả nhất quán."
+    ],
+    "samplePromptsVi": [
+      "/sales:call-prep Chuẩn bị cho cuộc gọi với khách hàng tiềm năng là chuỗi bán lẻ điện máy, tóm tắt thông tin công ty và các câu hỏi nên hỏi",
+      "/data:write-query Viết truy vấn SQL tính doanh thu theo tháng và theo kênh bán hàng trong năm nay",
+      "Rà soát hợp đồng bảo mật thông tin (NDA) này và chỉ ra các điều khoản rủi ro cho bên chúng tôi"
+    ],
+    "prosVi": [
+      "Do Anthropic phát hành, giấy phép Apache 2.0",
+      "Bao phủ nhiều phòng ban: bán hàng, chăm sóc khách hàng, pháp lý, tài chính, dữ liệu, marketing",
+      "Chỉ gồm tệp Markdown và JSON, dễ đọc, dễ sửa, không cần lập trình",
+      "Tích hợp sẵn connector MCP tới nhiều công cụ doanh nghiệp phổ biến"
+    ],
+    "consVi": [
+      "Plugin là điểm khởi đầu chung chung, cần tùy biến thêm mới thật sự phù hợp với công ty",
+      "Connector cần tài khoản và quyền truy cập ở từng dịch vụ bên ngoài",
+      "Xây dựng chủ yếu cho Claude Cowork và Claude Code, không dùng cho trợ lý AI khác",
+      "Tài liệu chỉ có tiếng Anh, chưa có ví dụ cho quy trình nghiệp vụ tại Việt Nam"
+    ],
+    "sourceEvidence": {
+      "claude plugin marketplace add anthropics/knowledge-work-plugins": "README.md:41",
+      "claude plugin install sales@knowledge-work-plugins": "README.md:44",
+      "/sales:call-prep": "README.md:47",
+      "/data:write-query": "README.md:47",
+      "/finance:reconciliation": "README.md:62",
+      "/product-management:write-spec": "README.md:62",
+      "license Apache-2.0": "LICENSE:2"
+    },
+    "meta": {
+      "id": "anthropics-knowledge-work-plugins",
+      "nameVi": "Knowledge Work Plugins — Plugin biến Claude thành chuyên gia theo vai trò: bán hàng, pháp lý, tài chính, dữ liệu",
+      "icon": "Layers",
+      "categories": [
+        "office_digital_docs",
+        "crm_sales",
+        "legal_public_service",
+        "accounting_finance",
+        "data_science_analytics"
+      ],
+      "platforms": [
+        "claude_code"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "pricingText": "Plugin miễn phí; cần gói Claude có Cowork hoặc Claude Code",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "claude plugin marketplace add anthropics/knowledge-work-plugins"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "kajisho5/ffmpeg-skill",
+    "license": "MIT License",
+    "authorName": "kajisho5",
+    "websiteUrl": "",
+    "toolType": "skill",
+    "taglineEn": "Give your coding agent a video editor.",
+    "summaryVi": "ffmpeg-skill là Agent Skill giúp Claude Code, Cursor, Codex hoặc bất kỳ client MCP nào biên tập video bằng FFmpeg chạy cục bộ, rồi tự kiểm tra kết quả. Skill dạy tác tử quy trình cố định (đo tệp, sửa không mất chất lượng khi có thể, kiểm tra, xác minh) và cung cấp 42 công cụ Python: cắt, ghép, bỏ khoảng lặng, chỉnh khung hình, phụ đề, chuẩn hóa âm lượng, xuất theo nền tảng mạng xã hội. Không cần đám mây, không cần khóa API, chỉ dùng thư viện chuẩn Python.",
+    "purposeVi": "Giúp tác tử lập trình AI biên tập video và âm thanh chính xác trên máy của bạn thay vì đoán tham số FFmpeg, phù hợp với tư liệu bạn không muốn tải lên đám mây.",
+    "featuresVi": [
+      "Đo tệp trước khi làm: `probe.py` đo thời lượng, fps, độ phân giải, HDR, màu và mọi luồng âm thanh",
+      "Biên tập: cắt không nén lại, ghép có chuyển cảnh, bỏ khoảng lặng, đổi tỉ lệ khung hình 9:16, ổn định hình, làm mờ vùng chỉ định",
+      "Âm thanh: làm sạch giọng nói, chuẩn hóa âm lượng EBU R128, đồng bộ nhiều nguồn ghi bằng tương quan âm thanh",
+      "Phụ đề và đồ họa: chèn phụ đề có hiệu ứng karaoke, logo, lower-third, giữ trong vùng an toàn của từng nền tảng",
+      "Xuất theo nền tảng: mẫu cho TikTok, Reels, Shorts, YouTube, X, LinkedIn, Facebook, podcast, kèm kiểm tra PASS/WARN/FAIL",
+      "Tự xác minh: đo lại tệp đầu ra và tạo ảnh contact sheet bằng `look.py` để tác tử tự xem kết quả",
+      "Máy chủ MCP: `mcp/server.py` cung cấp các công cụ cho Claude Desktop, Cursor và client MCP khác",
+      "An toàn với tệp gốc: không công cụ nào ghi đè tệp đầu vào, mọi công cụ có `--dry-run`"
+    ],
+    "requirementsVi": "FFmpeg 5.0 trở lên (khuyến nghị 6.1+), Python 3.10 trở lên (chỉ thư viện chuẩn), Node.js 16 trở lên nếu cài bằng `npx`. Tạo phụ đề từ giọng nói cần cài thêm một engine nhận dạng giọng nói cục bộ như faster-whisper.",
+    "installStepsVi": [
+      "Cài FFmpeg: Ubuntu/Debian `sudo apt install ffmpeg`, macOS `brew install ffmpeg-full` (rồi đưa vào PATH), Windows `winget install Gyan.FFmpeg`",
+      "Cài skill cho Claude Code: `npx ffmpeg-skill` (Cursor: `npx ffmpeg-skill --cursor`, Codex: `npx ffmpeg-skill --codex`, cả ba: `npx ffmpeg-skill --all`)",
+      "Hoặc cài dạng plugin Claude Code: `claude plugin marketplace add kajisho5/ffmpeg-skill`, rồi `claude plugin install ffmpeg-skill@ffmpeg-skill`",
+      "Kiểm tra máy: `npx ffmpeg-skill doctor`",
+      "Tùy chọn tạo phụ đề từ giọng nói: `pip install faster-whisper`"
+    ],
+    "cliCommand": "npx ffmpeg-skill",
+    "usageStepsVi": [
+      "Mô tả việc cần làm cho tác tử bằng ngôn ngữ tự nhiên, ví dụ cắt đoạn, đổi tỉ lệ khung hình, xuất cho Reels.",
+      "Tác tử tự chạy `probe.py`, các công cụ cắt, chỉnh, xuất, rồi `check.py` và `look.py` để xác minh trước khi báo cáo.",
+      "Xuất cho một nền tảng bằng mẫu có sẵn: `python3 $S/render.py talk.mp4 --template tiktok --cues cues.txt`.",
+      "Với client MCP như Claude Desktop, thêm cấu hình `mcpServers` trỏ tới `mcp/server.py`."
+    ],
+    "samplePromptsVi": [
+      "Lấy tệp phongvan.mp4, giữ đoạn 0:45–3:10 và 5:00–6:30, rồi làm thành video đúng 60 giây cho Reels",
+      "Bỏ các khoảng lặng trong bài giảng.mp4 và chuẩn hóa âm lượng về -14 LUFS",
+      "Chèn phụ đề từ tệp phude.srt vào video và xuất bản dọc 9:16 cho TikTok"
+    ],
+    "prosVi": [
+      "Giấy phép MIT, chạy hoàn toàn cục bộ, không cần khóa API hay tài khoản",
+      "Không phụ thuộc thư viện Python bên ngoài, chỉ cần FFmpeg và Python",
+      "Có bước tự xác minh kết quả và kiểm tra theo thông số từng nền tảng",
+      "Dùng được dạng skill cho Claude Code, Cursor, Codex và dạng máy chủ MCP"
+    ],
+    "consVi": [
+      "Cần cài FFmpeg đủ bộ lọc; bản FFmpeg mặc định của Homebrew thiếu một số bộ lọc như subtitles, drawtext",
+      "Không tự nhận diện khuôn mặt hay bám theo chủ thể khi đổi khung hình, không xóa được phụ đề hoặc logo chuyển động",
+      "Tác tử không tự quyết định nên cắt đoạn nào; người dùng phải chỉ rõ yêu cầu",
+      "Tăng tốc mã hóa bằng GPU chỉ hỗ trợ Apple VideoToolbox trên Apple Silicon",
+      "Tài liệu chỉ có tiếng Anh"
+    ],
+    "sourceEvidence": {
+      "npx ffmpeg-skill": "README.md:36, README.md:533",
+      "npx ffmpeg-skill --cursor": "README.md:534",
+      "npx ffmpeg-skill --codex": "README.md:535",
+      "npx ffmpeg-skill --all": "README.md:536",
+      "npx ffmpeg-skill doctor": "README.md:112",
+      "sudo apt install ffmpeg": "README.md:106",
+      "brew install ffmpeg-full": "README.md:565",
+      "winget install Gyan.FFmpeg": "README.md:567",
+      "pip install faster-whisper": "README.md:118",
+      "claude plugin marketplace add kajisho5/ffmpeg-skill": "README.md:546",
+      "claude plugin install ffmpeg-skill@ffmpeg-skill": "README.md:547",
+      "python3 $S/render.py talk.mp4 --template tiktok --cues cues.txt": "README.md:135",
+      "{\"mcpServers\": {\"ffmpeg-skill\": {\"command\": \"python3\", \"args\": [\"/Users/you/.claude/skills/ffmpeg-skill/mcp/server.py\"]}}}": "README.md:359",
+      "license MIT": "LICENSE:1, README.md:631"
+    },
+    "meta": {
+      "id": "kajisho5-ffmpeg-skill",
+      "nameVi": "ffmpeg-skill — Skill biên tập video bằng FFmpeg cục bộ cho Claude Code, Cursor, Codex và client MCP",
+      "icon": "Wrench",
+      "categories": [
+        "generative_ai_multimedia",
+        "speech_voice"
+      ],
+      "platforms": [
+        "claude_code",
+        "cursor",
+        "claude_desktop"
+      ],
+      "licenseShort": "Mã nguồn mở (MIT)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, chạy cục bộ",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "claude_code",
+          "platformName": "Claude Code",
+          "cliCommand": "npx ffmpeg-skill"
+        },
+        {
+          "platform": "cursor",
+          "platformName": "Cursor",
+          "cliCommand": "npx ffmpeg-skill --cursor"
+        },
+        {
+          "platform": "claude_desktop",
+          "platformName": "Claude Desktop (MCP)",
+          "jsonConfig": "{\"mcpServers\": {\"ffmpeg-skill\": {\"command\": \"python3\", \"args\": [\"/Users/you/.claude/skills/ffmpeg-skill/mcp/server.py\"]}}}"
+        }
+      ]
+    }
+  },
+  {
+    "repo": "TauricResearch/TradingAgents",
+    "license": "Apache License 2.0",
+    "authorName": "Tauric Research",
+    "websiteUrl": "",
+    "toolType": "agent",
+    "taglineEn": "TradingAgents is a multi-agent trading framework that mirrors the dynamics of real-world trading firms.",
+    "summaryVi": "TradingAgents là framework giao dịch đa tác tử dùng mô hình ngôn ngữ lớn, mô phỏng cách vận hành của một công ty giao dịch thực: nhóm phân tích (cơ bản, tâm lý thị trường, tin tức, kỹ thuật), nhóm nghiên cứu tranh luận lạc quan và bi quan, tác tử giao dịch, nhóm quản trị rủi ro và quản lý danh mục. Framework xây dựng trên LangGraph, hỗ trợ nhiều nhà cung cấp LLM (OpenAI, Google, Anthropic, DeepSeek, Qwen, Ollama...) và có CLI tương tác lẫn gói Python. Kèm công cụ backtest để chấm điểm quyết định theo thời gian.",
+    "purposeVi": "Phục vụ nghiên cứu cách các tác tử LLM phối hợp phân tích thị trường và đưa ra quyết định giao dịch cho một mã chứng khoán hoặc tiền mã hóa tại một ngày cụ thể.",
+    "featuresVi": [
+      "Nhóm phân tích chạy song song: phân tích cơ bản, tâm lý thị trường (tin tức, StockTwits, Reddit), tin tức vĩ mô, chỉ báo kỹ thuật như MACD và RSI",
+      "Tranh luận nghiên cứu: các nhà nghiên cứu lạc quan và bi quan tranh luận có cấu trúc để cân bằng lợi nhuận và rủi ro",
+      "Quản trị rủi ro và danh mục: nhóm rủi ro đánh giá biến động, thanh khoản; quản lý danh mục duyệt hoặc từ chối đề xuất",
+      "Nhiều nhà cung cấp LLM: OpenAI, Google, Anthropic, xAI, DeepSeek, Qwen, GLM, MiniMax, OpenRouter, Ollama, Azure OpenAI, AWS Bedrock",
+      "Nhiều thị trường: mọi thị trường Yahoo Finance hỗ trợ (Mỹ, Hồng Kông, Nhật, Ấn Độ, Trung Quốc...) và tiền mã hóa",
+      "Báo cáo tài chính theo thời điểm nộp: dữ liệu SEC EDGAR đúng như tại ngày phân tích, tránh nhìn trước tương lai",
+      "Backtest: chạy trên lưới mã và ngày, chấm điểm theo alpha so với chỉ số chuẩn của từng thị trường",
+      "Bộ nhớ quyết định và khôi phục: nhật ký quyết định luôn bật, tùy chọn `--checkpoint` để chạy tiếp khi bị gián đoạn"
+    ],
+    "requirementsVi": "Python 3.11 trở lên (hoặc Docker); khóa API của ít nhất một nhà cung cấp LLM, hoặc gói ChatGPT Plus/Pro, hoặc mô hình chạy cục bộ qua Ollama; khóa Alpha Vantage và FRED tùy chọn cho dữ liệu.",
+    "installStepsVi": [
+      "Tải mã nguồn: `git clone https://github.com/TauricResearch/TradingAgents.git`, rồi `cd TradingAgents`",
+      "Tạo môi trường ảo: `conda create -n tradingagents python=3.13` và `conda activate tradingagents` (hoặc `uv venv --python 3.13`)",
+      "Cài gói: `pip install .`",
+      "Khai báo khóa API, ví dụ `export OPENAI_API_KEY=...`, hoặc sao chép `cp .env.example .env` rồi điền khóa",
+      "Hoặc chạy bằng Docker: `docker compose run --rm tradingagents` (mô hình cục bộ: `docker compose --profile ollama run --rm tradingagents-ollama`)"
+    ],
+    "cliCommand": "git clone https://github.com/TauricResearch/TradingAgents.git",
+    "usageStepsVi": [
+      "Chạy CLI tương tác bằng `tradingagents`, chọn mã, ngày phân tích, nhà cung cấp LLM và độ sâu nghiên cứu.",
+      "Chạy không hỏi đáp cho tác vụ định kỳ: `tradingagents --ticker NVDA --date 2026-09-23 --analysts market,news,fundamentals --save --no-show`.",
+      "Dùng trong mã Python: khởi tạo `TradingAgentsGraph()` và gọi `.propagate(\"NVDA\", \"2026-09-01\")` để nhận quyết định.",
+      "Đánh giá theo thời gian bằng backtest: `tradingagents backtest NVDA,AAPL --start 2026-06-01 --end 2026-08-01 --every 7`."
+    ],
+    "samplePromptsVi": [
+      "Tình huống: phân tích mã NVDA tại ngày 2026-09-23 với nhóm phân tích thị trường, tin tức và cơ bản, lưu báo cáo HTML",
+      "Tình huống: so sánh quyết định của các tác tử cho cổ phiếu 0700.HK khi dùng mô hình chạy cục bộ qua Ollama",
+      "Tình huống: backtest quyết định cho NVDA và AAPL mỗi tuần từ tháng 6 đến tháng 8 để nghiên cứu độ ổn định của hệ thống"
+    ],
+    "prosVi": [
+      "Giấy phép Apache 2.0, có bài báo khoa học trên arXiv đi kèm",
+      "Hỗ trợ rất nhiều nhà cung cấp LLM, kể cả mô hình chạy cục bộ và endpoint tương thích OpenAI",
+      "Chú trọng tính toàn vẹn theo thời điểm, hạn chế dùng dữ liệu tương lai khi backtest",
+      "Có cả CLI tương tác, gói Python và Docker; cập nhật phiên bản thường xuyên"
+    ],
+    "consVi": [
+      "Chỉ dành cho mục đích nghiên cứu, README nêu rõ không phải lời khuyên tài chính, đầu tư hay giao dịch",
+      "Kết quả không lặp lại được hoàn toàn do mô hình ngôn ngữ và dữ liệu trực tiếp thay đổi; backtest không đảm bảo khớp số liệu công bố",
+      "Tốn chi phí gọi API LLM cho mỗi lần phân tích vì nhiều tác tử cùng chạy và tranh luận",
+      "Chưa hỗ trợ trực tiếp thị trường chứng khoán Việt Nam trong danh sách thị trường README nêu",
+      "Lệnh được gửi tới sàn giao dịch mô phỏng, không phải hệ thống giao dịch thật"
+    ],
+    "sourceEvidence": {
+      "git clone https://github.com/TauricResearch/TradingAgents.git": "README.md:122",
+      "cd TradingAgents": "README.md:123",
+      "conda create -n tradingagents python=3.13": "README.md:128",
+      "conda activate tradingagents": "README.md:129",
+      "uv venv --python 3.13": "README.md:134",
+      "pip install .": "README.md:140",
+      "export OPENAI_API_KEY=...": "README.md:165",
+      "cp .env.example .env": "README.md:200",
+      "docker compose run --rm tradingagents": "README.md:148",
+      "docker compose --profile ollama run --rm tradingagents-ollama": "README.md:157",
+      "tradingagents": "README.md:207",
+      "tradingagents --ticker NVDA --date 2026-09-23 --analysts market,news,fundamentals --save --no-show": "README.md:216",
+      "tradingagents backtest NVDA,AAPL --start 2026-06-01 --end 2026-08-01 --every 7": "README.md:380",
+      "--checkpoint": "README.md:349",
+      "It is not intended as financial, investment, or trading advice.": "README.md:78",
+      "license Apache-2.0": "LICENSE:1"
+    },
+    "meta": {
+      "id": "tauricresearch-tradingagents",
+      "nameVi": "TradingAgents — Framework đa tác tử LLM mô phỏng công ty giao dịch để nghiên cứu quyết định đầu tư",
+      "icon": "Brain",
+      "categories": [
+        "investment_securities",
+        "nlp_llm",
+        "data_science_analytics"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "licenseShort": "Mã nguồn mở (Apache-2.0)",
+      "pricingModel": "free",
+      "pricingText": "Miễn phí, tự host; chi phí gọi API LLM và dữ liệu (Alpha Vantage) tùy nhà cung cấp",
+      "isVietnamMarket": false,
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "configs": [
+        {
+          "platform": "web",
+          "platformName": "Dòng lệnh (Terminal)",
+          "cliCommand": "git clone https://github.com/TauricResearch/TradingAgents.git"
+        }
+      ]
+    }
+  }
+]
