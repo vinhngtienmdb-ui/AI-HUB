@@ -17,6 +17,9 @@
 ### Lỗi phát sinh và giải pháp
 - **Vấn đề:** Phiên làm việc không gọi được GitHub API cho repo bên ngoài nên chưa nạp được `repoPushedAt`.
 - **Giải pháp:** Giao diện tạm dùng `updatedAt`; dữ liệu thật được nạp ở lần chạy kế tiếp của workflow `cap-nhat-so-sao.yml` (hoặc chạy tay trong tab Actions).
+- **Vấn đề:** Hai repo thêm hôm nay (DeepTutor, OPC VN Business Law) không xuất hiện ở đầu trang.
+- **Nguyên nhân:** Hai repo nằm ở nhánh `claude/friendly-maxwell-55lxhc`, chưa hợp nhất vào `main`. Khi ghép thử, cả hai hiện đúng ở đầu với nhãn "Hôm nay". Ngoài ra, cách ưu tiên `repoPushedAt` sẽ đẩy repo vừa thêm nhưng lâu không push xuống dưới.
+- **Giải pháp:** Lấy ngày muộn nhất trong `repoPushedAt`, `updatedAt`, `contributedAt`.
 
 ### Kết quả đạt được và bước tiếp theo
 - Kết quả: kiểm thử tự động đạt, kiểm tra kiểu TypeScript đạt, đóng gói thành công; đã chụp ảnh trang chủ trên máy tính và điện thoại.

@@ -1,9 +1,20 @@
 import { AITool } from '../types';
 
-// Thời điểm cập nhật gần nhất của công cụ: ưu tiên lần push thật của repo GitHub,
-// sau đó đến ngày cập nhật dữ liệu trong kho và ngày gửi đóng góp.
-export const getLastUpdated = (tool: Pick<AITool, 'repoPushedAt' | 'updatedAt' | 'contributedAt'>): string =>
-  tool.repoPushedAt || tool.updatedAt || tool.contributedAt || '';
+// Thời điểm cập nhật gần nhất của công cụ: ngày muộn nhất giữa lần push thật của repo GitHub,
+// ngày thêm/sửa dữ liệu trong kho và ngày gửi đóng góp. Nhờ vậy công cụ vừa thêm vào kho hôm nay
+// vẫn đứng đầu dù repo của nó đã lâu không push.
+export const getLastUpdated = (tool: Pick<AITool, 'repoPushedAt' | 'updatedAt' | 'contributedAt'>): string => {
+  let latest = '';
+  let latestTime = -Infinity;
+  for (const date of [tool.repoPushedAt, tool.updatedAt, tool.contributedAt]) {
+    const time = date ? Date.parse(date) : NaN;
+    if (!Number.isNaN(time) && time > latestTime) {
+      latest = date as string;
+      latestTime = time;
+    }
+  }
+  return latest;
+};
 
 // So sánh để đưa công cụ mới cập nhật lên đầu; công cụ không có ngày nằm cuối danh sách
 export const compareByLastUpdatedDesc = (a: AITool, b: AITool): number => {
