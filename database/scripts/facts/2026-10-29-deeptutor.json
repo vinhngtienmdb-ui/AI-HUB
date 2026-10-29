@@ -67,6 +67,7 @@
       "nameVi": "DeepTutor — Gia sư AI cá nhân hóa: hỏi đáp, giải bài, tạo quiz, học từ tài liệu và video",
       "icon": "Brain",
       "categories": [
+        "education_edtech",
         "nlp_llm",
         "vector_rag"
       ],
