@@ -174279,5 +174279,90 @@
       "guideIsTemplate": false,
       "starsVerified": false
     }
+  },
+  {
+    "id": "hkuds-deeptutor",
+    "slug": "hkuds-deeptutor",
+    "name": "DeepTutor — Gia sư AI cá nhân hóa: hỏi đáp, giải bài, tạo quiz, học từ tài liệu và video",
+    "icon": "Brain",
+    "imageUrl": "",
+    "demoImages": [],
+    "toolType": "agent",
+    "typeNameVi": "Nền tảng tác tử (Agent Platform)",
+    "category": "nlp_llm",
+    "categoryNameVi": "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+    "categories": [
+      "nlp_llm",
+      "vector_rag"
+    ],
+    "categoryNamesVi": [
+      "Xử lý ngôn ngữ tự nhiên & Mô hình LLM",
+      "Dữ liệu Vector & Tìm kiếm tri thức (RAG)"
+    ],
+    "isVietnamMarket": false,
+    "platforms": [
+      "web",
+      "claude_code"
+    ],
+    "sourceUrl": "https://github.com/HKUDS/DeepTutor",
+    "websiteUrl": "https://deeptutor.info",
+    "authorName": "HKUDS (Data Intelligence Lab, Đại học Hồng Kông)",
+    "license": "Mã nguồn mở (Apache-2.0)",
+    "summaryVi": "DeepTutor là không gian học tập dựa trên tác tử AI, gộp gia sư hỏi đáp, giải bài, tạo câu hỏi trắc nghiệm, nghiên cứu, trực quan hóa và luyện tập theo lộ trình thành thạo trong một hệ thống mở rộng được. Ứng dụng gồm Web app và CLI, chạy cục bộ hoặc bằng Docker, dùng mô hình của nhà cung cấp LLM bạn chọn (kể cả Ollama, LM Studio, llama.cpp chạy cục bộ). Kho tri thức RAG hỗ trợ nhiều engine (LlamaIndex, PageIndex, GraphRAG, LightRAG...) và bộ nhớ cá nhân hóa xem và chỉnh được.",
+    "purposeVi": "Giúp người học có một gia sư AI cá nhân hóa lâu dài: học từ tài liệu, sách và video của chính mình, luyện tập có theo dõi lỗi sai và lặp lại theo lịch, trong khi dữ liệu nằm trên máy hoặc máy chủ tự host.",
+    "featuresVi": [
+      "Một runtime cho mọi chế độ: Chat, đặt câu hỏi, Quiz, Research, Visualize, Solve, Mastery Path, Immersive Reading, Audio Overview dùng chung ngữ cảnh phiên",
+      "Kho tri thức đa engine: thư viện RAG có phiên bản trên LlamaIndex, PageIndex, GraphRAG, LightRAG, WeKnora, vault Obsidian, kèm bộ phân tích tài liệu tùy chọn",
+      "Học qua video: thêm link YouTube hoặc Bilibili để xem, tìm trong phụ đề, hỏi gia sư theo mốc thời gian và lưu ghi chú",
+      "Sách học tương tác: mỗi chương gồm khối văn bản, quiz, flash card, dòng thời gian, mã, hình, đồ thị khái niệm, kèm Page Chat riêng",
+      "Subagent và Partner: từ Chat hỏi trực tiếp Claude Code, Codex, opencode, Antigravity, Hermes, OpenClaw...; chạy bạn đồng hành trên các kênh nhắn tin",
+      "Công cụ và skill mở rộng: công cụ sẵn có, máy chủ MCP, CLI app, mô hình sinh ảnh/video/giọng nói, skill cộng đồng cài từ EduHub",
+      "Bộ nhớ minh bạch: các tầng L1/L2/L3 và Memory Graph cho thấy và cho phép sửa thông tin cá nhân hóa",
+      "Bảng nhiệm vụ học tập (To do, In progress, Done), ngân hàng câu hỏi, luyện tập theo dõi lỗi sai và lặp lại ngắt quãng"
+    ],
+    "installGuideVi": "Yêu cầu: Docker (cách nhanh nhất); hoặc Python 3.11–3.14 và Node.js 20+ trên PATH để cài bằng pip. Cần khóa API của một nhà cung cấp LLM hoặc mô hình chạy cục bộ (Ollama, LM Studio, llama.cpp); embedding tùy chọn cho kho tri thức RAG.\nBước 1: Chạy thử bằng Docker: `docker run --rm --name deeptutor -p 127.0.0.1:3782:3782 -v deeptutor-data:/app/data ghcr.io/hkuds/deeptutor:latest`, rồi mở http://127.0.0.1:3782\nBước 2: Hoặc cài bằng pip: tạo thư mục `mkdir -p my-deeptutor && cd my-deeptutor`, chạy `pip install -U \"deeptutor[full]\"`\nBước 3: Khởi tạo cấu hình: `deeptutor init` (hỏi cổng backend 8001, cổng frontend 3782, nhà cung cấp LLM, embedding và tìm kiếm tùy chọn)\nBước 4: Khởi động backend và frontend: `deeptutor start`, mở địa chỉ in ra trong terminal (mặc định http://127.0.0.1:3782)\nBước 5: Tùy chọn cài engine LightRAG: `pip install 'deeptutor[rag-lightrag]'`",
+    "usageGuideVi": "Bước 1: Vào Settings → Providers và Language models để cấu hình nhà cung cấp và mô hình LLM.\nBước 2: Tạo kho tri thức từ tài liệu (ví dụ `deeptutor kb create my-kb --doc textbook.pdf`) hoặc thêm sách, link video vào mục Reading.\nBước 3: Chọn chế độ trong Chat (Solve, Quiz, Research, Visualize...) và đặt câu hỏi; gia sư tự gọi công cụ khi cần.\nBước 4: Dùng CLI không cần giao diện: `deeptutor chat`, `deeptutor run deep_solve \"Solve x^2 = 4\" --kb my-kb`.",
+    "samplePromptsVi": [
+      "Giải thích biến đổi Fourier cho người mới bắt đầu, kèm ví dụ trực quan",
+      "Dựa trên giáo trình trong kho tri thức my-kb, tạo 10 câu trắc nghiệm chương 3 và chấm điểm bài làm của tôi",
+      "Lập lộ trình học xác suất thống kê trong 4 tuần và theo dõi tiến độ trên bảng nhiệm vụ"
+    ],
+    "configs": [
+      {
+        "platform": "web",
+        "platformName": "Dòng lệnh (Terminal)",
+        "cliCommand": "pip install -U \"deeptutor[full]\"",
+        "jsonConfig": "{\n  \"caiDat\": [\n    \"pip install -U \\\"deeptutor[full]\\\"\"\n  ],\n  \"nguon\": \"https://github.com/HKUDS/DeepTutor\"\n}"
+      }
+    ],
+    "status": "published",
+    "linkHealth": "healthy",
+    "pricingModel": "free",
+    "pricingText": "Miễn phí, tự host; chi phí gọi API LLM tùy nhà cung cấp",
+    "prosVi": [
+      "Giấy phép Apache 2.0, tự host, dữ liệu học tập lưu trong thư mục runtime hoặc volume Docker của bạn",
+      "Dùng được nhiều nhà cung cấp LLM và mô hình chạy cục bộ",
+      "Nhiều chế độ học trong một ứng dụng, có cả Web app lẫn CLI và skill SKILL.md cho agent",
+      "Cập nhật rất thường xuyên, tài liệu hướng dẫn chi tiết tại deeptutor.info"
+    ],
+    "consVi": [
+      "Hệ thống lớn, nhiều tùy chọn; cài từ mã nguồn cần cả Python và Node.js",
+      "Cần khóa API LLM hoặc máy đủ mạnh để chạy mô hình cục bộ; RAG cần thêm embedding",
+      "Một số tính năng cần cài thêm (LightRAG, GraphRAG, Manim, giọng nói), có tính năng cần LaTeX/ffmpeg",
+      "README chưa có bản tiếng Việt (có tiếng Anh, Trung, Nhật, Tây Ban Nha, Pháp, Thái...)"
+    ],
+    "languages": [
+      "Tiếng Anh",
+      "Tiếng Trung"
+    ],
+    "updatedAt": "2026-10-29",
+    "readmeVi": "# DeepTutor — Gia sư AI cá nhân hóa: hỏi đáp, giải bài, tạo quiz, học từ tài liệu và video\n\n> DeepTutor is an agent-native learning workspace that connects tutoring, problem solving, quiz generation, research, visualization, and mastery practice in one extensible system.\n\n---\n\n## 1. Giới Thiệu & Mục Đích Giải Quyết\nDeepTutor là không gian học tập dựa trên tác tử AI, gộp gia sư hỏi đáp, giải bài, tạo câu hỏi trắc nghiệm, nghiên cứu, trực quan hóa và luyện tập theo lộ trình thành thạo trong một hệ thống mở rộng được. Ứng dụng gồm Web app và CLI, chạy cục bộ hoặc bằng Docker, dùng mô hình của nhà cung cấp LLM bạn chọn (kể cả Ollama, LM Studio, llama.cpp chạy cục bộ). Kho tri thức RAG hỗ trợ nhiều engine (LlamaIndex, PageIndex, GraphRAG, LightRAG...) và bộ nhớ cá nhân hóa xem và chỉnh được.\n\nGiúp người học có một gia sư AI cá nhân hóa lâu dài: học từ tài liệu, sách và video của chính mình, luyện tập có theo dõi lỗi sai và lặp lại theo lịch, trong khi dữ liệu nằm trên máy hoặc máy chủ tự host.\n\n- **Loại hình thành phần:** Nền tảng tác tử (Agent Platform)\n- **Lĩnh vực chuyên môn:** Xử lý ngôn ngữ tự nhiên & Mô hình LLM\n- **Tác giả / Nhà phát triển:** HKUDS (Data Intelligence Lab, Đại học Hồng Kông)\n- **Giấy phép bản quyền:** Mã nguồn mở (Apache-2.0)\n- **Nền tảng hỗ trợ:** `web`, `claude_code`\n- **Kho lưu trữ chính thức:** [https://github.com/HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor)\n- **Thị trường tối ưu:** Thị trường Toàn cầu\n\n---\n\n## 2. Tính Năng Nổi Bật\n- **Một runtime cho mọi chế độ: Chat, đặt câu hỏi, Quiz, Research, Visualize, Solve, Mastery Path, Immersive Reading, Audio Overview dùng chung ngữ cảnh phiên**\n- **Kho tri thức đa engine: thư viện RAG có phiên bản trên LlamaIndex, PageIndex, GraphRAG, LightRAG, WeKnora, vault Obsidian, kèm bộ phân tích tài liệu tùy chọn**\n- **Học qua video: thêm link YouTube hoặc Bilibili để xem, tìm trong phụ đề, hỏi gia sư theo mốc thời gian và lưu ghi chú**\n- **Sách học tương tác: mỗi chương gồm khối văn bản, quiz, flash card, dòng thời gian, mã, hình, đồ thị khái niệm, kèm Page Chat riêng**\n- **Subagent và Partner: từ Chat hỏi trực tiếp Claude Code, Codex, opencode, Antigravity, Hermes, OpenClaw...; chạy bạn đồng hành trên các kênh nhắn tin**\n- **Công cụ và skill mở rộng: công cụ sẵn có, máy chủ MCP, CLI app, mô hình sinh ảnh/video/giọng nói, skill cộng đồng cài từ EduHub**\n- **Bộ nhớ minh bạch: các tầng L1/L2/L3 và Memory Graph cho thấy và cho phép sửa thông tin cá nhân hóa**\n- **Bảng nhiệm vụ học tập (To do, In progress, Done), ngân hàng câu hỏi, luyện tập theo dõi lỗi sai và lặp lại ngắt quãng**\n\n---\n\n## 3. Hướng Dẫn Cài Đặt & Thiết Lập Môi Trường\n### Cài đặt cho Dòng lệnh (Terminal):\n```bash\npip install -U \"deeptutor[full]\"\n```\n\nYêu cầu: Docker (cách nhanh nhất); hoặc Python 3.11–3.14 và Node.js 20+ trên PATH để cài bằng pip. Cần khóa API của một nhà cung cấp LLM hoặc mô hình chạy cục bộ (Ollama, LM Studio, llama.cpp); embedding tùy chọn cho kho tri thức RAG.\nBước 1: Chạy thử bằng Docker: `docker run --rm --name deeptutor -p 127.0.0.1:3782:3782 -v deeptutor-data:/app/data ghcr.io/hkuds/deeptutor:latest`, rồi mở http://127.0.0.1:3782\nBước 2: Hoặc cài bằng pip: tạo thư mục `mkdir -p my-deeptutor && cd my-deeptutor`, chạy `pip install -U \"deeptutor[full]\"`\nBước 3: Khởi tạo cấu hình: `deeptutor init` (hỏi cổng backend 8001, cổng frontend 3782, nhà cung cấp LLM, embedding và tìm kiếm tùy chọn)\nBước 4: Khởi động backend và frontend: `deeptutor start`, mở địa chỉ in ra trong terminal (mặc định http://127.0.0.1:3782)\nBước 5: Tùy chọn cài engine LightRAG: `pip install 'deeptutor[rag-lightrag]'`\n\n---\n\n## 4. Hướng Dẫn Sử Dụng\nBước 1: Vào Settings → Providers và Language models để cấu hình nhà cung cấp và mô hình LLM.\nBước 2: Tạo kho tri thức từ tài liệu (ví dụ `deeptutor kb create my-kb --doc textbook.pdf`) hoặc thêm sách, link video vào mục Reading.\nBước 3: Chọn chế độ trong Chat (Solve, Quiz, Research, Visualize...) và đặt câu hỏi; gia sư tự gọi công cụ khi cần.\nBước 4: Dùng CLI không cần giao diện: `deeptutor chat`, `deeptutor run deep_solve \"Solve x^2 = 4\" --kb my-kb`.\n\n---\n\n## 5. Ví Dụ Yêu Cầu Mẫu\n- \"Giải thích biến đổi Fourier cho người mới bắt đầu, kèm ví dụ trực quan\"\n- \"Dựa trên giáo trình trong kho tri thức my-kb, tạo 10 câu trắc nghiệm chương 3 và chấm điểm bài làm của tôi\"\n- \"Lập lộ trình học xác suất thống kê trong 4 tuần và theo dõi tiến độ trên bảng nhiệm vụ\"\n",
+    "verification": {
+      "checkedAt": "2026-10-29T09:32:27.528Z",
+      "sourceStatus": "ok",
+      "missingPackages": [],
+      "guideIsTemplate": false,
+      "starsVerified": false
+    }
   }
 ]
