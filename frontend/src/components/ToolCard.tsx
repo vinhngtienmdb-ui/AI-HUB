@@ -1,7 +1,8 @@
 import React from 'react';
-import { ExternalLink, Star, ArrowRight, Database, GitPullRequest, FolderTree, Search, Brain, Globe, Sparkles, Box } from 'lucide-react';
+import { ExternalLink, Star, ArrowRight, Clock, Database, GitPullRequest, FolderTree, Search, Brain, Globe, Sparkles, Box } from 'lucide-react';
 import { AITool } from '../types';
 import { formatStars, getVerifiedStars } from '../lib/verification';
+import { formatRelativeVi, getLastUpdated } from '../lib/recency';
 
 interface ToolCardProps {
   tool: AITool;
@@ -12,6 +13,7 @@ interface ToolCardProps {
 
 export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect, isSaved = false, onToggleSave }) => {
   const verifiedStars = getVerifiedStars(tool);
+  const lastUpdated = getLastUpdated(tool);
   const [hasImgError, setHasImgError] = React.useState(false);
 
   const renderIcon = (iconName: string) => {
@@ -227,17 +229,28 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect, isSaved = fa
 
       {/* Chân thẻ: Nguồn liên kết chính thức & Nút xem chi tiết */}
       <div className="px-4 py-2.5 bg-slate-50/70 dark:bg-slate-850/50 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
-        <a
-          href={tool.sourceUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
-          className="inline-flex items-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
-          title="Mở liên kết nguồn chính thức trong tab mới"
-        >
-          <span>Nguồn gốc</span>
-          <ExternalLink className="w-3 h-3 ml-1" />
-        </a>
+        <div className="flex items-center gap-3 min-w-0">
+          <a
+            href={tool.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="inline-flex items-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors shrink-0"
+            title="Mở liên kết nguồn chính thức trong tab mới"
+          >
+            <span>Nguồn gốc</span>
+            <ExternalLink className="w-3 h-3 ml-1" />
+          </a>
+          {lastUpdated && (
+            <span
+              className="inline-flex items-center gap-1 text-slate-400 dark:text-slate-500 truncate"
+              title={`Cập nhật gần nhất: ${new Date(lastUpdated).toLocaleDateString('vi-VN')}`}
+            >
+              <Clock className="w-3 h-3 shrink-0" />
+              <span className="truncate">{formatRelativeVi(lastUpdated)}</span>
+            </span>
+          )}
+        </div>
 
         <div className="inline-flex items-center space-x-1 font-semibold text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
           <span>Xem & Cài đặt</span>

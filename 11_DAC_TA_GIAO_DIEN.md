@@ -13,13 +13,14 @@ Tài liệu này xác định danh sách các màn hình, cấu trúc bố cục
 - **Bố cục chính**:
   1. **Thanh đầu trang (Header)**: Logo nhận diện thương hiệu, thanh điều hướng chính (Khám phá, Đóng góp công cụ, Tài liệu hướng dẫn), nút chuyển đổi giao diện sáng/tối và nút đăng nhập/tài khoản.
   2. **Khu vực giới thiệu nổi bật (Hero Section)**: Tiêu đề giới thiệu kho công cụ AI, MCP Server và Agent Skill kèm ô tìm kiếm trung tâm lớn hỗ trợ tìm kiếm tức thời.
-  3. **Khu vực bộ lọc bên cạnh hoặc thanh ngang (Filter Bar)**:
+  3. **Repo mới cập nhật**: Ngay dưới Hero, 8 thẻ công cụ có repo vừa được cập nhật gần nhất (mới nhất đứng đầu, điện thoại hiện 4 thẻ), mỗi thẻ ghi thời gian tương đối ("5 ngày trước"). Tiếp theo là Tài nguyên nổi bật, 3 nhóm tài nguyên chính, Chọn theo nhu cầu, rồi đến kho công cụ.
+  4. **Khu vực bộ lọc bên cạnh hoặc thanh ngang (Filter Bar)**:
      - Nhóm lọc theo loại hình: Tất cả, MCP Server, Agent Skill, Web AI Tool.
      - Nhóm lọc theo nền tảng: Claude Desktop, Antigravity, Cursor, Windsurf.
      - Nhóm lọc theo lĩnh vực: Lập trình, Cơ sở dữ liệu, Đám mây, Tự động hóa, Viết lách.
-  4. **Khu vực hiển thị danh mục (Tools Grid)**: Lưới 3 hoặc 4 cột trên máy tính, 2 cột trên máy tính bảng và 1 cột trên điện thoại di động.
-  5. **Thẻ công cụ (Tool Card)**: Biểu tượng công cụ, Tên, Tác giả, Nhãn nền tảng, Tóm tắt công dụng ngắn gọn bằng tiếng Việt, Biểu tượng liên kết nguồn GitHub và Nút "Xem chi tiết & Cấu hình".
-  6. **Chân trang (Footer)**: Thông tin bản quyền, liên kết điều khoản và ghi nhận nguồn đóng góp cộng đồng.
+  5. **Khu vực hiển thị danh mục (Tools Grid)**: Lưới 3 hoặc 4 cột trên máy tính, 2 cột trên máy tính bảng và 1 cột trên điện thoại di động. Thứ tự mặc định "Mới cập nhật": công cụ có repo mới cập nhật đứng đầu.
+  6. **Thẻ công cụ (Tool Card)**: Biểu tượng công cụ, Tên, Tác giả, Nhãn nền tảng, Tóm tắt công dụng ngắn gọn bằng tiếng Việt, Biểu tượng liên kết nguồn GitHub, thời gian cập nhật gần nhất và Nút "Xem chi tiết & Cấu hình".
+  7. **Chân trang (Footer)**: Thông tin bản quyền, liên kết điều khoản và ghi nhận nguồn đóng góp cộng đồng.
 
 ### 2.2. Màn hình MH-02: Trang chi tiết công cụ (Trọng tâm trải nghiệm)
 - **Bố cục 4 khối thông tin bắt buộc**:

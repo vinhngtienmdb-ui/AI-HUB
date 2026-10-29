@@ -4,6 +4,13 @@
 
 ## 1. Nhật Ký Phiên Bản
 
+### Phiên Bản 2.3.0 (Ngày 29-10-2026)
+- **Loại hình**: Sắp xếp lại giao diện trang chủ.
+- Thêm mục **Repo mới cập nhật** ngay dưới Hero (`frontend/src/components/RecentlyUpdated.tsx`): 8 công cụ có repo cập nhật gần nhất, mới nhất đứng đầu.
+- Thứ tự trang chủ mới: Hero → Repo mới cập nhật → Tài nguyên nổi bật → 3 nhóm tài nguyên chính → Chọn theo nhu cầu → Kho công cụ.
+- Thẻ công cụ hiển thị thời gian cập nhật gần nhất ("5 ngày trước").
+- Trường dữ liệu mới `repoPushedAt`; `database/scripts/validate-data.cjs` lấy thêm `pushed_at` từ GitHub API (workflow `cap-nhat-so-sao.yml` hằng tuần tự cập nhật).
+
 ### Phiên Bản 2.2.2 (Ngày 24-10-2026)
 - **Loại hình**: An ninh mạng, SEO & nội dung, nhân sự / pháp lý / văn phòng, đợt 15 (21 tài nguyên), tệp dữ kiện `database/scripts/facts/2026-10-24-dot-15-*.json`.
 - **An ninh mạng (chỉ dùng cho hệ thống của mình hoặc được phép kiểm thử)**: Trivy MCP, GhidraMCP, PentestGPT (chỉ cho giáo dục và kiểm thử được cấp phép), Nuclei, ModelScan, TruffleHog (AGPL-3.0), Gitleaks.

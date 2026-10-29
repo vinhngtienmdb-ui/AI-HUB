@@ -29,6 +29,8 @@ Trường kiểm định trong mỗi bản ghi công cụ (`verification`, sinh 
 | `guideIsTemplate` | Boolean | Hướng dẫn cài đặt hoặc sử dụng là nội dung mẫu chung |
 | `starsVerified` | Boolean | Số sao đã được lấy từ GitHub API. Giao diện chỉ hiển thị số sao khi giá trị này là `true` |
 
+Trường `repoPushedAt` (chuỗi ISO 8601, không bắt buộc): thời điểm repo GitHub nguồn được push gần nhất, lấy từ trường `pushed_at` của GitHub API trong cùng lần gọi lấy số sao (cần `GITHUB_TOKEN`). Áp dụng cho mọi công cụ có nguồn là GitHub, kể cả thành phần nằm trong thư mục con của repo. Giao diện sắp xếp "Mới cập nhật" theo `repoPushedAt`, nếu thiếu thì dùng `updatedAt`, rồi `contributedAt` (`frontend/src/lib/recency.ts`).
+
 `linkHealth` được suy ra từ `sourceStatus`: `ok` → `healthy`, `missing` → `broken`, `unknown` → `unchecked`.
 
 ## 2. Sơ Đồ Thực Thể Quan Hệ (Entity Relationship Diagram)
